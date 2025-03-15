@@ -30,6 +30,7 @@ namespace MVZ2.GameContent.Enemies
                 param.SetProperty(VanillaEnemyProps.PREVIEW_ENEMY, true);
             }
             var horse = entity.Spawn(VanillaEnemyID.skeletonHorse, entity.Position, param);
+            horse.SetFactionAndDirection(entity.GetFaction());
             entity.RideOn(horse);
             entity.SetAnimationBool("Sitting", true);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
@@ -89,6 +90,7 @@ namespace MVZ2.GameContent.Enemies
             var hasHorse = horse.ExistsAndAlive();
             entity.SetAnimationBool("Sitting", hasHorse);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
+            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {

@@ -58,8 +58,6 @@ namespace MVZ2.GameContent.Projectiles
             {
                 zDir = projectile.RNG.Next(2) * 2 - 1;
             }
-            if (vel.z != 0)
-                zDir *= -1;
             vel.z = zDir * zSpeed;
             projectile.Velocity = vel;
         }
