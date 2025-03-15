@@ -49,6 +49,7 @@ namespace MVZ2.GameContent.Enemies
             entity.Level.Explode(entity.GetCenter(), range * 3, faction, damage / 3, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
 
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
+            explosion.SetSize(Vector3.one * (range * 2));
             float arcLength = range * 3;
             float fireLength = range * 2;
             var level = entity.Level;
@@ -67,10 +68,18 @@ namespace MVZ2.GameContent.Enemies
                 float degree = i * 12;
                 float rad = degree * Mathf.Deg2Rad;
                 Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * fireLength;
-                var fire = entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
+                entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
             }
-            explosion.SetSize(Vector3.one * (range * 2));
+            for (int i = 0; i < 30; i++)
+            {
+                float degree = i * 12 + 6;
+                float rad = degree * Mathf.Deg2Rad;
+                Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * (fireLength / 2);
+                entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
+            }
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));
+            entity.PlaySound(VanillaSoundID.darkSkiesImpact, scaleX == 0 ? 1000 : 1 / (scaleX));
+            entity.PlaySound(VanillaSoundID.powerOff, scaleX == 0 ? 1000 : 1 / (scaleX));
         }
     }
 }
