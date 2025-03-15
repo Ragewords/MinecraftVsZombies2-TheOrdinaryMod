@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.stoneShield,
                 VanillaContraptionID.forcePad,
                 VanillaContraptionID.glowstone,
-                VanillaContraptionID.soulFurnace,
+                VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.dreamSilk,
                 VanillaBossID.seija,
                 VanillaEnemyID.mutantZombie,

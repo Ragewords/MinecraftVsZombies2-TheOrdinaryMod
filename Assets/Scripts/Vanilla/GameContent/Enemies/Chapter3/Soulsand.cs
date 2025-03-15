@@ -1,8 +1,15 @@
-﻿using MVZ2.Vanilla.Entities;
+﻿using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Entities;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using System.Collections.Generic;
 using UnityEngine;
+using static MVZ2.GameContent.Contraptions.GravityPad;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -11,6 +18,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public Soulsand(string nsp, string name) : base(nsp, name)
         {
+            AddAura(new SoulsandAura());
         }
         public override void Init(Entity entity)
         {
@@ -52,6 +60,27 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             entity.PostFragmentDeath(info);
             entity.Remove();
+        }
+        public class SoulsandAura : AuraEffectDefinition
+        {
+            public SoulsandAura()
+            {
+                BuffID = VanillaBuffID.soulsand;
+                enemyDetector = new SoulsandDetector();
+            }
+
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var source = auraEffect.Source;
+                var entity = source.GetEntity();
+                if (entity == null)
+                    return;
+                detectBuffer.Clear();
+                enemyDetector.DetectEntities(entity, detectBuffer);
+                results.AddRange(detectBuffer);
+            }
+            private Detector enemyDetector;
+            private List<Entity> detectBuffer = new List<Entity>();
         }
     }
 }

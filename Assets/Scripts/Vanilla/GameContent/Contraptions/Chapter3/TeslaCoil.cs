@@ -28,6 +28,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetAttackTimer(entity, new FrameTimer(ATTACK_COOLDOWN));
+            SetIsConnectedX(entity, false);
+            SetIsConnectedY(entity, false);
         }
         public override void Evoke(Entity entity)
         {
@@ -43,6 +45,13 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            var connectx = GetConnectCoilX(entity);
+            var connecty = GetConnectCoilY(entity);
+            FindCoil(entity);
+            if (!connectx.ExistsAndAlive())
+                SetIsConnectedX(connectx, false);
+            if (!connecty.ExistsAndAlive())
+                SetIsConnectedY(connecty, false);
             if (entity.State == STATE_IDLE)
             {
                 var timer = GetAttackTimer(entity);
@@ -80,8 +89,16 @@ namespace MVZ2.GameContent.Contraptions
                             targetPosition.y = groundY;
                         }
                         Shock(entity, damage, faction, SHOCK_RADIUS, targetPosition);
+                        entity.Level.Explode(entity.Position, 80, entity.GetFaction(), damage / 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.LIGHTNING), entity);
                         CreateArc(entity, sourcePosition, targetPosition);
                         entity.PlaySound(VanillaSoundID.teslaAttack);
+                        entity.Spawn(VanillaEffectID.waterLightningParticles, entity.Position);
+
+                        if (connectx.ExistsAndAlive() && connectx.IsFriendly(entity))
+                            CreateArc(entity, sourcePosition, connectx.Position + ARC_OFFSET);
+
+                        if (connecty.ExistsAndAlive() && connecty.IsFriendly(entity))
+                            CreateArc(entity, sourcePosition, connecty.Position + ARC_OFFSET);
                     }
                     timer.ResetTime(ATTACK_COOLDOWN);
                     entity.State = STATE_IDLE;
@@ -95,6 +112,14 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetAnimationBool("ShowArc", entity.State != STATE_ATTACK && !entity.IsAIFrozen());
             entity.SetAnimationFloat("AttackSpeed", entity.GetAttackSpeed());
         }
+        public override void PostDeath(Entity entity, DeathInfo damageInfo)
+        {
+            base.PostDeath(entity, damageInfo);
+            entity.Level.Explode(entity.Position, 80, entity.GetFaction(), entity.GetMaxHealth(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION), entity);
+            var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
+            explosion.SetSize(Vector3.one * 160);
+            entity.PlaySound(VanillaSoundID.explosion);
+        }
         private float GetTargetPriority(Entity self, Entity target)
         {
             var target2Self = target.Position - self.Position;
@@ -107,11 +132,61 @@ namespace MVZ2.GameContent.Contraptions
             }
             return priority;
         }
+        private void FindCoil(Entity entity)
+        {
+            //寻找同一行的可链接目标。
+            foreach (var coilx in entity.Level.GetEntities(EntityTypes.PLANT))
+            {
+                if (coilx.GetLane() != entity.GetLane())
+                    continue;
+                else if (coilx.IsHostile(entity))
+                    continue;
+                else if (coilx.GetDefinitionID() != VanillaContraptionID.teslaCoil)
+                    continue;
+                else if (coilx.ID == entity.ID)
+                    continue;
+                else if (GetIsConnectedX(entity))
+                    continue;
+                else if (GetIsConnectedX(coilx))
+                    continue;
+                if (coilx != null)
+                {
+                    SetConnectCoilX(entity, coilx);
+                    SetConnectCoilX(coilx, entity);
+                    SetIsConnectedX(coilx, true);
+                    SetIsConnectedX(entity, true);
+                }
+            }
+            //寻找同一列的可链接目标。
+            foreach (var coily in entity.Level.GetEntities(EntityTypes.PLANT))
+            {
+                if (coily.GetColumn() != entity.GetColumn())
+                    continue;
+                else if (coily.IsHostile(entity))
+                    continue;
+                else if (coily.GetDefinitionID() != VanillaContraptionID.teslaCoil)
+                    continue;
+                else if (coily.ID == entity.ID)
+                    continue;
+                else if (GetIsConnectedY(entity))
+                    continue;
+                else if (GetIsConnectedY(coily))
+                    continue;
+                if (coily != null)
+                {
+                    SetConnectCoilY(entity, coily);
+                    SetConnectCoilY(coily, entity);
+                    SetIsConnectedY(coily, true);
+                    SetIsConnectedY(entity, true);
+                }
+            }
+        }
         public static void Shock(Entity source, float damage, int faction, float shockRadius, Vector3 targetPosition, DamageEffectList damageEffects = null)
         {
             damageEffects = damageEffects ?? new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE);
             var level = source.Level;
             detectBuffer.Clear();
+            detectBuffer_alt.Clear();
             gridDetectBuffer.Clear();
             Detection.OverlapSphereNonAlloc(level, targetPosition, shockRadius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
             if (targetPosition.y <= level.GetGroundY(targetPosition.x, targetPosition.z) && level.IsWaterAt(targetPosition.x, targetPosition.z))
@@ -128,9 +203,39 @@ namespace MVZ2.GameContent.Contraptions
                     source.Spawn(VanillaEffectID.waterLightningParticles, new Vector3(x, y, z));
                 }
             }
+            var connectx = GetConnectCoilX(source);
+            if (connectx.ExistsAndAlive())
+            {
+                if (connectx.IsHostile(source))
+                    return;
+                level.GetConnectedLaneGrids(source.Position, connectx.Position, gridDetectBuffer);
+                foreach (var grid in gridDetectBuffer)
+                {
+                    var column = grid.Column;
+                    var lane = grid.Lane;
+                    Detection.OverlapGridGroundNonAlloc(level, column, lane, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer_alt);
+                }
+            }
+            var connecty = GetConnectCoilY(source);
+            if (connecty.ExistsAndAlive())
+            {
+                if (connecty.IsHostile(source))
+                    return;
+                level.GetConnectedColumnGrids(source.Position, connecty.Position, gridDetectBuffer);
+                foreach (var grid in gridDetectBuffer)
+                {
+                    var column = grid.Column;
+                    var lane = grid.Lane;
+                    Detection.OverlapGridGroundNonAlloc(level, column, lane, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer_alt);
+                }
+            }
             foreach (var collider in detectBuffer)
             {
                 collider.TakeDamage(damage, damageEffects, source);
+            }
+            foreach (var collider in detectBuffer_alt)
+            {
+                collider.TakeDamage(damage / 16, damageEffects, source);
             }
         }
         public static void CreateArc(Entity source, Vector3 sourcePosition, Vector3 targetPosition)
@@ -143,10 +248,48 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static FrameTimer GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_ATTACK_TIMER, timer);
+        public static Entity GetConnectCoilX(Entity entity)
+        {
+            var entityID = entity.GetBehaviourField<EntityID>(ID, CONNECT_COIL_X);
+            return entityID?.GetEntity(entity.Level);
+        }
+        public static void SetConnectCoilX(Entity entity, Entity value)
+        {
+            entity.SetBehaviourField(ID, CONNECT_COIL_X, new EntityID(value));
+        }
+        public static Entity GetConnectCoilY(Entity entity)
+        {
+            var entityID = entity.GetBehaviourField<EntityID>(ID, CONNECT_COIL_Y);
+            return entityID?.GetEntity(entity.Level);
+        }
+        public static void SetConnectCoilY(Entity entity, Entity value)
+        {
+            entity.SetBehaviourField(ID, CONNECT_COIL_Y, new EntityID(value));
+        }
+        public static bool GetIsConnectedX(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(ID, CONNECTED_X);
+        }
+        public static void SetIsConnectedX(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(ID, CONNECTED_X, value);
+        }
+        public static bool GetIsConnectedY(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(ID, CONNECTED_Y);
+        }
+        public static void SetIsConnectedY(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(ID, CONNECTED_Y, value);
+        }
 
         public const int ATTACK_COOLDOWN = 65;
         public const int ATTACK_CHARGE = 25;
         public static readonly VanillaEntityPropertyMeta PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta("AttackTimer");
+        public static readonly VanillaEntityPropertyMeta CONNECT_COIL_X = new VanillaEntityPropertyMeta("ConnecteCoilX");
+        public static readonly VanillaEntityPropertyMeta CONNECT_COIL_Y = new VanillaEntityPropertyMeta("ConnecteCoilY");
+        public static readonly VanillaEntityPropertyMeta CONNECTED_X = new VanillaEntityPropertyMeta("ConnectedX");
+        public static readonly VanillaEntityPropertyMeta CONNECTED_Y = new VanillaEntityPropertyMeta("ConnectedY");
         public const float ATTACK_HEIGHT = 160;
         public static readonly Vector3 ARC_OFFSET = new Vector3(0, 96, 0);
         public const float SHOCK_RADIUS = 20;
@@ -156,6 +299,7 @@ namespace MVZ2.GameContent.Contraptions
 
         private Detector detector;
         private static HashSet<EntityCollider> detectBuffer = new HashSet<EntityCollider>();
+        private static HashSet<EntityCollider> detectBuffer_alt = new HashSet<EntityCollider>();
         private static HashSet<LawnGrid> gridDetectBuffer = new HashSet<LawnGrid>();
         private static readonly NamespaceID ID = VanillaContraptionID.teslaCoil;
     }
