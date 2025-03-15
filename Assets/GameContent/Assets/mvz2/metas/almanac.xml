@@ -828,7 +828,7 @@
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>灵魂沙生命：<![CDATA[<color=red>300</color>]]></p>
-                <p>特点：<![CDATA[<color=red>不会被一般高度的子弹打中</color>]]></p>
+                <p>特点：<![CDATA[<color=red>不会被一般高度的子弹打中；经过灵魂沙的敌人会减速</color>]]></p>
             </properties>
             <flavor>
                 <p>其实他用来审判罪行的天平已经坏了很久了，它常放羽毛的那一端比较重一些。</p>

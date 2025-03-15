@@ -36,9 +36,14 @@ namespace MVZ2.GameContent.Enemies
                 timer.Reset();
                 var offset = SUMMON_OFFSET;
                 offset.x *= enemy.GetFacingX();
-                var sand = enemy.Spawn(VanillaEnemyID.soulsand, enemy.Position + offset);
-                sand.AddBuff<SoulsandSummonedBuff>();
-                sand.SetFactionAndDirection(enemy.GetFaction());
+                for (var i = -1; i <=1; i++)
+                {
+                    var sand = enemy.Spawn(VanillaEnemyID.soulsand, enemy.Position + offset);
+                    var vel = sand.Velocity;
+                    vel.x += i * 5;
+                    sand.AddBuff<SoulsandSummonedBuff>();
+                    sand.SetFactionAndDirection(enemy.GetFaction());
+                }
                 enemy.PlaySound(VanillaSoundID.cave);
             }
         }
@@ -67,7 +72,7 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly VanillaEntityPropertyMeta FIELD_SUMMON_TIMER = new VanillaEntityPropertyMeta("SummonTimer");
         public static readonly VanillaEntityPropertyMeta FIELD_BLACKHOLE_BLEND = new VanillaEntityPropertyMeta("BlackholeBlend");
-        public const int SUMMON_INTERVAL = 180;
+        public const int SUMMON_INTERVAL = 270;
         public static readonly Vector3 SUMMON_OFFSET = new Vector3(30, 80, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.anubisand;
     }

@@ -73,6 +73,7 @@ namespace MVZ2.GameContent.Buffs
         public const string redstoneCarrier = "redstone_carrier";
         public const string nightmareComeTrue = "nightmare_come_true";
         public const string soulsandSummoned = "soulsand_summoned";
+        public const string soulsand = "soulsand";
         public const string littleZombie = "little_zombie";
         public const string bigTrouble = "big_trouble";
         public const string seijaMesmerizer = "seija_mesmerizer";
@@ -173,6 +174,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID carryingOther = Get(VanillaBuffNames.carryingOther);
         public static readonly NamespaceID darkMatterProduction = Get(VanillaBuffNames.darkMatterProduction);
         public static readonly NamespaceID gravityPadGravity = Get(VanillaBuffNames.gravityPadGravity);
+        public static readonly NamespaceID soulsand = Get(VanillaBuffNames.soulsand);
         public static readonly NamespaceID forcePadDrag = Get(VanillaBuffNames.forcePadDrag);
         public static readonly NamespaceID stoneShieldProtected = Get(VanillaBuffNames.stoneShieldProtected);
         public static readonly NamespaceID glowstoneProtected = Get(VanillaBuffNames.glowstoneProtected);

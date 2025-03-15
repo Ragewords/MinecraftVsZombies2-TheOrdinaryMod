@@ -604,6 +604,76 @@ namespace MVZ2.Vanilla.Level
                 }
             }
         }
+        public static void GetConnectedLaneGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
+        {
+            var col1 = level.GetColumn(pos1.x);
+            var col2 = level.GetColumn(pos2.x);
+            var lan1 = level.GetLane(pos1.z);
+            var lan2 = level.GetLane(pos2.z);
+            level.GetConnectedLaneGrids(col1, col2, lan1, lan2, results);
+        }
+        public static void GetConnectedLaneGrids(this LevelEngine level, int col1, int col2, int lan1, int lan2, HashSet<LawnGrid> results)
+        {
+            if (lan1 != lan2)
+                return;
+            if (col1 < col2)
+            {
+                for (int xOff = col1; xOff <= col2; xOff++)
+                {
+                    var grid = level.GetGrid(xOff, lan1);
+                    if (grid != null)
+                    {
+                        results.Add(grid);
+                    }
+                }
+            }
+            else
+            {
+                for (int xOff = col2; xOff <= col1; xOff++)
+                {
+                    var grid = level.GetGrid(xOff, lan1);
+                    if (grid != null)
+                    {
+                        results.Add(grid);
+                    }
+                }
+            }
+        }
+        public static void GetConnectedColumnGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
+        {
+            var col1 = level.GetColumn(pos1.x);
+            var col2 = level.GetColumn(pos2.x);
+            var lan1 = level.GetLane(pos1.z);
+            var lan2 = level.GetLane(pos2.z);
+            level.GetConnectedColumnGrids(col1, col2, lan1, lan2, results);
+        }
+        public static void GetConnectedColumnGrids(this LevelEngine level, int col1, int col2, int lan1, int lan2, HashSet<LawnGrid> results)
+        {
+            if (col1 != col2)
+                return;
+            if (lan1 < lan2)
+            {
+                for (int zOff = lan1; zOff <= lan2; zOff++)
+                {
+                    var grid = level.GetGrid(col1, zOff);
+                    if (grid != null)
+                    {
+                        results.Add(grid);
+                    }
+                }
+            }
+            else
+            {
+                for (int zOff = lan2; zOff <= lan1; zOff++)
+                {
+                    var grid = level.GetGrid(col1, zOff);
+                    if (grid != null)
+                    {
+                        results.Add(grid);
+                    }
+                }
+            }
+        }
         public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
         {
             var game = Global.Game;
