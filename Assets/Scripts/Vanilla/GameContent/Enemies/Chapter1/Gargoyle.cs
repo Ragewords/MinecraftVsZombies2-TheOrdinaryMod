@@ -1,4 +1,8 @@
-﻿using MVZ2.Vanilla.Enemies;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.Shells;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -35,6 +39,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
+            entity.Produce(VanillaPickupID.sapphire);
             entity.PostFragmentDeath(info);
             entity.Remove();
         }

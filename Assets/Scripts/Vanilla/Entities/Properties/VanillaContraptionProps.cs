@@ -1,4 +1,5 @@
-﻿using PVZEngine;
+﻿using MVZ2.Vanilla.Entities;
+using PVZEngine;
 using PVZEngine.Entities;
 
 namespace MVZ2.Vanilla.Contraptions
@@ -72,9 +73,19 @@ namespace MVZ2.Vanilla.Contraptions
         public static readonly PropertyMeta FRAGMENT_ID = Get("fragmentId");
         public static readonly PropertyMeta TRIGGER_ACTIVE = Get("triggerActive");
         public static readonly PropertyMeta INSTANT_TRIGGER = Get("instantTrigger");
+        public static readonly PropertyMeta DISPENSER = Get("isDispenser");
+        public static readonly PropertyMeta CONTACT_DAMAGE = Get("contactDamage");
         public static bool IsFloor(this Entity contraption)
         {
             return contraption.GetProperty<bool>(IS_FLOOR);
+        }
+        public static bool IsDispenser(this Entity contraption)
+        {
+            return contraption.GetProperty<bool>(DISPENSER);
+        }
+        public static bool IsContactDamage(this Entity contraption)
+        {
+            return contraption.GetProperty<bool>(CONTACT_DAMAGE);
         }
         public static void SetTriggerActive(this Entity entity, bool value)
         {

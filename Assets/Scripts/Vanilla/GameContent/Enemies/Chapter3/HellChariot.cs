@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
@@ -32,6 +33,8 @@ namespace MVZ2.GameContent.Enemies
                 entity.PlaySound(VanillaSoundID.trainWhistle);
                 entity.Level.AddLoopSoundEntity(VanillaSoundID.trainTravel, entity.ID);
             }
+            var buff = entity.AddBuff<FlyBuff>();
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 5);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -141,6 +144,8 @@ namespace MVZ2.GameContent.Enemies
             anubisandOffset.x *= entity.GetFacingX();
             var anubisand = entity.Spawn(VanillaEnemyID.anubisand, entity.Position + anubisandOffset);
             anubisand.SetFactionAndDirection(entity.GetFaction());
+            var ghast = entity.Spawn(VanillaEnemyID.ghast, entity.Position + anubisandOffset);
+            ghast.SetFactionAndDirection(entity.GetFaction());
             entity.Remove();
         }
         #endregion

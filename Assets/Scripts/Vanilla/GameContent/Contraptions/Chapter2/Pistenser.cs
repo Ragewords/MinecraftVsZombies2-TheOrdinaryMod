@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Contraptions
             var extend = GetExtend(entity);
             entity.SetAnimationFloat("Extend", extend);
             entity.SetProperty(PROP_EXTEND_SHOOT_OFFSET, Vector3.up * extend);
-            entity.SetProperty(PROP_BLOCKS_JUMP, extend > 0);
+            entity.SetProperty(PROP_BLOCKS_JUMP, (extend ) > 0);
         }
 
         protected override void OnEvoke(Entity entity)
@@ -72,7 +72,10 @@ namespace MVZ2.GameContent.Contraptions
             if (detectTimer.Expired)
             {
                 var collider = detector.DetectWithTheMost(pistenser, e => e.Entity.GetRelativeY());
+                var collider1 = detector.DetectWithTheMost(pistenser, e => Mathf.Abs(e.Entity.Position.x - pistenser.Position.x));
                 SetExtendTarget(pistenser, collider?.Entity);
+                if (collider == null)
+                    SetExtendTarget(pistenser, collider1?.Entity);
                 detectTimer.Reset();
             }
 
@@ -90,10 +93,27 @@ namespace MVZ2.GameContent.Contraptions
                     ExtendToTargetHeight(pistenser, targetExtend);
                 }
             }
+            // 存在目标，并且目标的最顶部小于活塞发射器的基础子弹高度，则缩短。
+            else if (target != null && target.Position.y + target.GetScaledSize().y < pistenser.Position.y + BASE_SHOT_HEIGHT)
+            {
+                // 目标缩短高度为目标的中心点减去活塞发射器的基础子弹高度。
+                float targetSubtract = target.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT);
+                var subtract = GetExtend(pistenser);
+
+                // 目标缩短高度和当前高度的差值必须大于或等于2。
+                if (Mathf.Abs(targetSubtract - subtract) >= 2)
+                {
+                    SubtractToTargetHeight(pistenser, targetSubtract);
+                }
+            }
             else
             {
-                // 没有目标，或者目标不高，收回
-                ExtendToTargetHeight(pistenser, 0);
+                // 没有目标，或者目标不符合要求，收回
+                var extend = GetExtend(pistenser);
+                if (extend >= 0)
+                    ExtendToTargetHeight(pistenser, 0);
+                else
+                    SubtractToTargetHeight(pistenser, 0);
             }
         }
 
@@ -140,6 +160,48 @@ namespace MVZ2.GameContent.Contraptions
             SetExtend(pistenser, height);
         }
 
+        private void SubtractToTargetHeight(Entity pistenser, float targetHeight)
+        {
+            // 切换伸缩方向并播放音效。
+            var direction = GetExtendDirection(pistenser);
+            float height = GetExtend(pistenser);
+            if (targetHeight > height)
+            {
+                if (direction != 1)
+                {
+                    pistenser.PlaySound(VanillaSoundID.pistonOut);
+                    direction = 1;
+                }
+            }
+            else if (targetHeight < height)
+            {
+                if (direction != -1)
+                {
+                    pistenser.PlaySound(VanillaSoundID.pistonIn);
+                    direction = -1;
+                }
+            }
+            else
+            {
+                direction = 0;
+            }
+            SetExtendDirection(pistenser, direction);
+
+            // 伸缩。
+            // 如果这次伸缩越过了目标高度，直接把高度修改为目标高度。
+            float nextHeight = height + SUBTRACT_SPEED * direction;
+            if ((targetHeight - nextHeight) * direction < 0)
+            {
+                height = targetHeight;
+            }
+            else
+            {
+                height = nextHeight;
+            }
+
+            height = Mathf.Min(0, height);
+            SetExtend(pistenser, height);
+        }
         private void EvokedUpdate(Entity entity)
         {
             FrameTimer evocationTimer = GetEvocationTimer(entity);
@@ -229,13 +291,14 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.pistenser;
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND = new VanillaEntityPropertyMeta("Extend");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_SHOOT_OFFSET = new VanillaEntityPropertyMeta("ExtendShootOffset");
-        public static readonly VanillaEntityPropertyMeta PROP_BLOCKS_JUMP = new VanillaEntityPropertyMeta("BlocksJump");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_DIRECTION = new VanillaEntityPropertyMeta("ExtendDirection");
+        public static readonly VanillaEntityPropertyMeta PROP_BLOCKS_JUMP = new VanillaEntityPropertyMeta("BlocksJump");
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_DETECT_TIMER = new VanillaEntityPropertyMeta("ExtendDetectTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_TARGET = new VanillaEntityPropertyMeta("ExtendTarget");
         public const float BASE_SHOT_HEIGHT = 30;
         public const float EXTEND_SPEED = 10;
+        public const float SUBTRACT_SPEED = 2;
         public const int DETECT_INTERVAL = 8;
         public const int MAX_EVOCATION_TARGET = 10;
     }

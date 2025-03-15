@@ -12,6 +12,7 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -62,9 +63,22 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 count = 4;
             }
+            else if (level.Difficulty == VanillaDifficulties.lunatic)
+            {
+                count = 5;
+            }
             for (int i = 0; i < count; i++)
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
+                if (health >= MAX_PARASITE_HEALTH)
+                {
+                    health *= 5;
+                    parasite.SetScale(new UnityEngine.Vector3(1.5f, 1.5f, 1.5f));
+                    parasite.SetDisplayScale(new UnityEngine.Vector3(1.5f, 1.5f, 1.5f));
+                    parasite.SetShadowScale(new UnityEngine.Vector3(1.5f, 1.5f, 1.5f));
+                    var buff = parasite.AddBuff<BasicHealthMultiplyBuff>();
+                    buff.SetProperty(BasicHealthMultiplyBuff.PROP_MAX_HEALTH_MULTIPLIER, 5f);
+                }
                 parasite.Health = health;
                 parasite.SetFactionAndDirection(host.GetFaction());
             }

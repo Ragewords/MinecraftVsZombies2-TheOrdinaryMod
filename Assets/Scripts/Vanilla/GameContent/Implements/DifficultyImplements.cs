@@ -34,6 +34,15 @@ namespace MVZ2.GameContent.Implements
                 else
                     level.RemoveBuffs(hardDef);
             }
+            bool lunatic = difficulty == VanillaDifficulties.lunatic;
+            var lunaticDef = level.Content.GetBuffDefinition(VanillaBuffID.Level.levelLunatic);
+            if (lunatic != level.HasBuff(lunaticDef))
+            {
+                if (lunatic)
+                    level.AddBuff(lunaticDef);
+                else
+                    level.RemoveBuffs(lunaticDef);
+            }
         }
     }
 }

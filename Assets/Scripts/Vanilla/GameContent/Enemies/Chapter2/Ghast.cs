@@ -1,6 +1,5 @@
 ﻿using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Detections;
-using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
@@ -32,7 +31,7 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(SHOOT_COOLDOWN));
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 80);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120);
         }
         protected override void UpdateAI(Entity enemy)
         {
@@ -110,24 +109,17 @@ namespace MVZ2.GameContent.Enemies
         }
         private void Fire(Entity self, Entity target)
         {
-            var param = self.GetShootParams();
             var shootPoint = self.GetShootPoint();
             var velocity = self.GetShotVelocity();
             var speed = velocity.magnitude;
             var direciton = (target.GetCenter() - shootPoint).normalized;
-            param.velocity = speed * direciton;
-            var damageMultiplier = 1.5f;
-            if (self.Level.Difficulty == VanillaDifficulties.hard)
-            {
-                damageMultiplier = 3;
-            }
-            param.damage = self.GetDamage() * damageMultiplier;
-            var bullet = self.ShootProjectile(param);
+            velocity = speed * direciton;
+            var bullet = self.ShootProjectile(self.GetProjectileID(), velocity);
             self.PlaySound(VanillaSoundID.fireCharge);
         }
         private Detector detector;
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public const int SHOOT_COOLDOWN = 135;
+        public const int SHOOT_COOLDOWN = 120;
         public const int SHOOT_DURATION = 15;
         public static readonly NamespaceID ID = VanillaEnemyID.ghast;
     }

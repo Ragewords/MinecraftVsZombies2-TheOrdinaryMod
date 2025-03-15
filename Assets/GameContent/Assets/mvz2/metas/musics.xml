@@ -134,6 +134,14 @@
             <p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
         </description>
     </music>
+	<music id="nightmare_boss3" path="mvz2:nightmare_boss3" name="披萨时间到！">
+		<source>披萨魔塔</source>
+		<description>
+			<p>梦魇特殊第二阶段的音乐。</p>
+			<p>《披萨魔塔》中，主角佩皮诺打倒石像约翰后逃亡的音乐。</p>
+			<p>我对这款游戏不是非常熟悉，但这首音乐的压迫感给我留下了很深的印象，和这一特殊阶段中“死里逃生”的主题十分契合。</p>
+		</description>
+	</music>
 
     <music id="gensokyo_map" path="mvz2:gensokyo_map" name="青空之影">
         <source>东方星莲船</source>

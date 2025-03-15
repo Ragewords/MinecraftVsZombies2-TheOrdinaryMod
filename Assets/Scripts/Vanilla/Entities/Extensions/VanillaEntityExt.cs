@@ -97,7 +97,11 @@ namespace MVZ2.Vanilla.Entities
                     result.BodyResult = BodyTakeDamage(input);
                 }
             }
-
+            if (input.Effects.HasEffect(VanillaDamageEffects.FIRE))
+            {
+                if (result.Entity.HasBuff<FreezeSlowBuff>())
+                    result.Entity.RemoveBuffs<FreezeSlowBuff>();
+            }
             PostTakeDamage(result);
             return result;
         }

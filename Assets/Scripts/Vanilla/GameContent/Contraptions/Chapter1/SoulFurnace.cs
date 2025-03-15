@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -197,7 +198,7 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.soulFurnace;
         public static readonly VanillaEntityPropertyMeta PROP_FUEL = new VanillaEntityPropertyMeta("Fuel");
         public static readonly VanillaEntityPropertyMeta PROP_DISPLAY_FUEL = new VanillaEntityPropertyMeta("DisplayFuel");
-        public const int MAX_FUEL = 60;
+        public const int MAX_FUEL = 120;
         public const int REFUEL_THRESOLD = 10;
         private Detector evocationDetector;
         private List<EntityCollider> detectBuffer = new List<EntityCollider>();

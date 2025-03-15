@@ -45,7 +45,7 @@ TextureImporter:
       213: 4039136606957829479
     second: level_button_9
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -141,6 +141,19 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -361,6 +374,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: map_button_10
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 48
+        width: 56
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5c304b4b575c749a0fe641c451c03d
+      internalID: -1052411346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: map_button_11
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 22
+        width: 52
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc47cdc1d19aa24eb725aa45f45f6b7
+      internalID: -966843784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: map_button_12
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 56
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc93da3d6f5a2846a9ce2a84b2b4c68
+      internalID: -1375071573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -382,6 +458,9 @@ TextureImporter:
       level_button_7: 1686918570674494234
       level_button_8: -4745778892844803770
       level_button_9: 4039136606957829479
+      map_button_10: -1052411346
+      map_button_11: -966843784
+      map_button_12: -1375071573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

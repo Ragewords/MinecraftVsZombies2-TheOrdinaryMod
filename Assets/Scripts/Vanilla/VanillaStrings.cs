@@ -116,6 +116,8 @@ namespace MVZ2.Vanilla
         [TranslateMsg("关卡难度", CONTEXT_DIFFICULTY)]
         public const string DIFFICULTY_HARD = "困难";
         [TranslateMsg("关卡难度", CONTEXT_DIFFICULTY)]
+        public const string DIFFICULTY_LUNATIC = "月狂";
+        [TranslateMsg("关卡难度", CONTEXT_DIFFICULTY)]
         public const string DIFFICULTY_UNKNOWN = "未知难度";
 
         public const string CONTEXT_LEVEL_NAME = "levelname";

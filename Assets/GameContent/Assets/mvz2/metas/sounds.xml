@@ -9,6 +9,12 @@
     <sound name="anvil">
         <sample path="mvz2:anvil" weight="1" />
     </sound>
+	<sound name="anvil_fix">
+		<sample path="mvz2:entity/anvil/anvil_fix" weight="1" />
+	</sound>
+	<sound name="anvil_fix_break">
+		<sample path="mvz2:entity/anvil/anvil_fix_break" weight="1" />
+	</sound>
     <sound name="armor_up">
         <sample path="mvz2:armor_up" weight="1" />
     </sound>
@@ -211,6 +217,9 @@
     <sound name="frankenstein_steel_laugh">
         <sample path="mvz2:frankenstein_steel_laugh" weight="1" />
     </sound>
+	<sound name="freeze">
+		<sample path="mvz2:freeze" weight="1" />
+	</sound>
     <sound name="fuse">
         <sample path="mvz2:fuse" weight="1" />
     </sound>
@@ -309,6 +318,9 @@
     <sound name="huge_wave" priority="64">
         <sample path="mvz2:huge_wave" weight="1" />
     </sound>
+	<sound name="immortal_totem">
+		<sample path="mvz2:entity/totenser/immortal_totem" weight="1" />
+	</sound>
     <sound name="imp_laugh">
         <sample path="mvz2:entity/imp/imp_laugh1" weight="1" />
         <sample path="mvz2:entity/imp/imp_laugh2" weight="1" />
@@ -508,6 +520,12 @@
     <sound name="siren" maxCount="1" priority="64">
         <sample path="mvz2:siren" weight="1" />
     </sound>
+	<sound name="slime">
+		<sample path="mvz2:random/slime1" weight="1" />
+		<sample path="mvz2:random/slime2" weight="1" />
+		<sample path="mvz2:random/slime3" weight="1" />
+		<sample path="mvz2:random/slime4" weight="1" />
+	</sound>
     <sound name="skeleton_cry">
         <sample path="mvz2:entity/skeleton/skeleton_cry1" weight="1" />
         <sample path="mvz2:entity/skeleton/skeleton_cry2" weight="1" />

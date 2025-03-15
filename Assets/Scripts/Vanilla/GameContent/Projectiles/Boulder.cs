@@ -29,6 +29,8 @@ namespace MVZ2.GameContent.Projectiles
                 var vel = other.Velocity;
                 vel.x += 6 * Mathf.Sign(projectile.Velocity.x);
                 other.Velocity = vel;
+                if (other.EquipedArmor == null)
+                    other.Stun(30);
                 projectile.PlaySound(VanillaSoundID.bash);
             }
 

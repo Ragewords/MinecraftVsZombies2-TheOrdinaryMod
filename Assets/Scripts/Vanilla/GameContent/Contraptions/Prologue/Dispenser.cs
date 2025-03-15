@@ -18,6 +18,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
+            SetRepeatTimer(entity, new FrameTimer(15));
             var evocationTimer = new FrameTimer(120);
             SetEvocationTimer(entity, evocationTimer);
         }
@@ -27,11 +28,36 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
+                int repeatCount = GetRepeatCount(entity);
+                if (repeatCount > 0)
+                {
+                    var repeatTimer = GetRepeatTimer(entity);
+                    repeatTimer.Run(entity.GetAttackSpeed());
+                    if (repeatTimer.Expired)
+                    {
+                        Shoot(entity);
+                        SetRepeatCount(entity, repeatCount - 1);
+                        repeatTimer.Reset();
+                    }
+                }
                 return;
             }
 
             EvokedUpdate(entity);
         }
+        public override void OnShootTick(Entity entity)
+        {
+            int count = 0;
+            if (entity.RNG.Next(9) > 3)
+                count = 2;
+            else
+                count = 1;
+            SetRepeatCount(entity, count);
+            var repeatTimer = GetRepeatTimer(entity);
+            repeatTimer.ResetTime(5);
+            repeatTimer.Frame = 0;
+        }
+
 
         protected override void OnEvoke(Entity entity)
         {
@@ -58,7 +84,13 @@ namespace MVZ2.GameContent.Contraptions
                 shootTimer.Reset();
             }
         }
+        public static FrameTimer GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_REPEAT_TIMER);
+        public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_REPEAT_TIMER, timer);
+        public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_REPEAT_COUNT);
+        public static void SetRepeatCount(Entity entity, int count) => entity.SetBehaviourField(ID, PROP_REPEAT_COUNT, count);
         private static readonly NamespaceID ID = VanillaContraptionID.dispenser;
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
+        public static readonly VanillaEntityPropertyMeta PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta("RepeatTimer");
+        public static readonly VanillaEntityPropertyMeta PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta("RepeatCount");
     }
 }

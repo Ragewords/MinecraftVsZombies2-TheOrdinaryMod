@@ -49,7 +49,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             entity.AddBuff<MoonlightSensorEvokedBuff>();
-            Upgrade(entity);
+            if (GetUpgraded(entity) == false)
+                Upgrade(entity);
             entity.PlaySound(VanillaSoundID.sparkle);
             entity.SetAnimationBool("Sparks", true);
         }
@@ -60,6 +61,8 @@ namespace MVZ2.GameContent.Contraptions
             SetUpgraded(entity, true);
             entity.RemoveBuffs<MoonlightSensorLaunchingBuff>();
             entity.PlaySound(VanillaSoundID.screw);
+            var energyDirection = entity.IsFriendlyEntity() ? 1 : -1;
+            entity.Level.AddEnergy(150 * energyDirection);
         }
         public static FrameTimer GetProductionTimer(Entity entity)
         {

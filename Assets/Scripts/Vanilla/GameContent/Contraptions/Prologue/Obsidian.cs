@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Contraptions
             if (contraption.HasBuff<ObsidianArmorBuff>())
             {
                 state = GetArmoredHealthState(contraption, maxHP);
-                if (contraption.Health <= maxHP * 0.4f)
+                if (contraption.Health <= maxHP * 0.5f)
                 {
                     contraption.RemoveBuffs<ObsidianArmorBuff>();
                 }

@@ -15,17 +15,20 @@ namespace MVZ2.GameContent.Buffs
         public const string faction = "faction";
         public const string withered = "withered";
         public const string changeLane = "change_lane";
+        public const string basicHealthMultiply = "basic_health_multiply";
 
         // Contraption
         public const string productionColor = "production_color";
         public const string mineTNTInvincible = "mine_tnt_invincible";
         public const string obsidianArmor = "obsidian_armor";
+        public const string transformGargoyle = "transform_gargoyle";
         public const string moonlightSensorLaunching = "moonlight_sensor_launching";
         public const string moonlightSensorEvoked = "moonlight_sensor_evoked";
         public const string glowstoneEvoke = "glowstone_evoke";
         public const string tntIgnited = "tnt_ignited";
         public const string tntCharged = "tnt_charged";
         public const string sacrificed = "sacrificed";
+        public const string silvenser_minion = "silvenser_minion";
         public const string magichestInvincible = "magichest_invincible";
         public const string frankensteinShocked = "frankenstein_shocked";
         public const string dreamKeyShield = "dream_key_shield";
@@ -47,6 +50,8 @@ namespace MVZ2.GameContent.Buffs
         public const string brokenLantern = "broken_lantern";
         // Enemy
         public const string gemCarrier = "gem_carrier";
+        public const string flagzombieEnemySpeed = "flagzombie_enemy_speed";
+        public const string freezeSlow = "freeze_slow";
         public const string punchtonAchievement = "punchton_achievement";
         public const string starshardCarrier = "starshard_carrier";
         public const string randomEnemySpeed = "random_enemy_speed";
@@ -91,6 +96,7 @@ namespace MVZ2.GameContent.Buffs
         public const string easyContraption = "easy_contraption";
         public const string easyArmor = "easy_armor";
         public const string hardEnemy = "hard_enemy";
+        public const string lunaticEnemy = "lunatic_enemy";
 
         public const string littleZombieArmor = "little_zombie_armor";
         public const string bigTroubleArmor = "big_trouble_armor";
@@ -105,6 +111,7 @@ namespace MVZ2.GameContent.Buffs
         {
             public const string tutorialDisable = "tutorial_disable";
             public const string easyBlueprint = "easy_blueprint";
+            public const string lunaticBlueprint = "lunatic_blueprint";
             public const string theCreaturesHeartReduceCost = "the_creatures_heart_reduce_cost";
             public const string slendermanMindSwap = "slenderman_mind_swap";
             public const string upgradeEndlessCost = "upgrade_endless_cost";
@@ -114,6 +121,7 @@ namespace MVZ2.GameContent.Buffs
         {
             public const string levelEasy = "level_easy";
             public const string levelHard = "level_hard";
+            public const string levelLunatic = "level_lunatic";
             public const string taintedSun = "tainted_sun";
             public const string tutorialPickaxeDisable = "tutorial_pickaxe_disable";
             public const string tutorialTriggerDisable = "tutorial_trigger_disable";
@@ -159,6 +167,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID easyContraption = Get(VanillaBuffNames.easyContraption);
         public static readonly NamespaceID easyArmor = Get(VanillaBuffNames.easyArmor);
         public static readonly NamespaceID hardEnemy = Get(VanillaBuffNames.hardEnemy);
+        public static readonly NamespaceID lunaticEnemy = Get(VanillaBuffNames.lunaticEnemy);
         public static readonly NamespaceID dreamKeyShield = Get(VanillaBuffNames.dreamKeyShield);
         public static readonly NamespaceID carriedByLilyPad = Get(VanillaBuffNames.carriedByLilyPad);
         public static readonly NamespaceID carryingOther = Get(VanillaBuffNames.carryingOther);
@@ -179,6 +188,7 @@ namespace MVZ2.GameContent.Buffs
         {
             public static readonly NamespaceID tutorialDisable = Get(VanillaBuffNames.SeedPack.tutorialDisable);
             public static readonly NamespaceID easyBlueprint = Get(VanillaBuffNames.SeedPack.easyBlueprint);
+            public static readonly NamespaceID lunaticBlueprint = Get(VanillaBuffNames.SeedPack.lunaticBlueprint);
             public static readonly NamespaceID theCreaturesHeartReduceCost = Get(VanillaBuffNames.SeedPack.theCreaturesHeartReduceCost);
             public static readonly NamespaceID upgradeEndlessCost = Get(VanillaBuffNames.SeedPack.upgradeEndlessCost);
             public static readonly NamespaceID witherSkeletonSkullReduceCost = Get(VanillaBuffNames.SeedPack.witherSkeletonSkullReduceCost);
@@ -187,6 +197,7 @@ namespace MVZ2.GameContent.Buffs
         {
             public static readonly NamespaceID levelEasy = Get(VanillaBuffNames.Level.levelEasy);
             public static readonly NamespaceID levelHard = Get(VanillaBuffNames.Level.levelHard);
+            public static readonly NamespaceID levelLunatic = Get(VanillaBuffNames.Level.levelLunatic);
             public static readonly NamespaceID tutorialPickaxeDisable = Get(VanillaBuffNames.Level.tutorialPickaxeDisable);
             public static readonly NamespaceID darkMatterDark = Get(VanillaBuffNames.Level.darkMatterDark);
             public static readonly NamespaceID pagodaBranchLevel = Get(VanillaBuffNames.Level.pagodaBranchLevel);

@@ -1,15 +1,19 @@
-﻿using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -46,6 +50,15 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             UpdateFireBreath(entity);
+            var count = 0;
+            foreach (var target in entity.Level.GetEntities(EntityTypes.PLANT))
+            {
+                if (target.IsHostile(entity))
+                    return;
+                else if (target.IsDispenser() && target.ID != entity.ID)
+                    count++;
+            }
+            SetDispenserCount(entity, count);
         }
         public override void Evoke(Entity entity)
         {
@@ -81,7 +94,7 @@ namespace MVZ2.GameContent.Contraptions
                     fireBreath.SetParent(entity);
                     SetFireBreath(entity, fireBreath);
                 }
-                fireBreath.SetDamage(entity.GetDamage() * 2 / 3);
+                fireBreath.SetDamage((entity.GetDamage() * 2 / 3) + Mathf.CeilToInt(GetDispenserCount(entity) / 5));
                 fireBreath.Position = position;
                 fireBreath.SetFactionAndDirection(entity.GetFaction());
             }
@@ -107,7 +120,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var shootParams = entity.GetShootParams();
                 shootParams.position = entity.Position + new Vector3(80 * entity.GetFacingX(), 80);
-                shootParams.velocity = entity.GetFacingDirection() * 33;
+                shootParams.velocity = entity.GetFacingDirection() * (33 + GetDispenserCount(entity));
                 shootParams.projectileID = VanillaProjectileID.poisonJavelin;
                 shootParams.damage = 1800;
                 shootParams.soundID = VanillaSoundID.fling;
@@ -125,6 +138,8 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetFireDetectTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_FIRE_DETECT_TIMER, value);
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
+        public static int GetDispenserCount(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_DISPENSER_COUNT);
+        public static void SetDispenserCount(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_DISPENSER_COUNT, value);
         public static Entity GetFireBreath(Entity entity)
         {
             var entityID = entity.GetBehaviourField<EntityID>(ID, PROP_FIRE_BREATH);
@@ -140,6 +155,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta PROP_FIRE_DETECT_TIMER = new VanillaEntityPropertyMeta("FireDetectTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta("EvocationTime");
         public static readonly VanillaEntityPropertyMeta PROP_FIRE_BREATH = new VanillaEntityPropertyMeta("FireBreath");
+        public static readonly VanillaEntityPropertyMeta PROP_DISPENSER_COUNT = new VanillaEntityPropertyMeta("DispenserCount");
         private Detector fireBreathDetector;
         public const int FIRE_DETECT_INTERVAL = 7;
         public const int THROW_JAVELIN_TIME = 30;

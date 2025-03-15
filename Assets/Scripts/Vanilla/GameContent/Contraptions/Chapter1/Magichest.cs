@@ -14,6 +14,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using UnityEngine.WSA;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -83,6 +84,11 @@ namespace MVZ2.GameContent.Contraptions
             entity.AddBuff<MagichestInvincibleBuff>();
             entity.PlaySound(VanillaSoundID.magical);
         }
+        public static NamespaceID GetEatenEntityID(Entity entity)
+        {
+            return entity.GetBehaviourField<NamespaceID>(ID, EAT_ID);
+        }
+        public static void SetEatenEntityID(Entity entity, NamespaceID value) => entity.SetBehaviourField(ID, EAT_ID, value);
         private void AttackUpdate(Entity entity)
         {
             switch (entity.State)
@@ -115,6 +121,7 @@ namespace MVZ2.GameContent.Contraptions
                             if (nearest != null)
                             {
                                 Eat(entity, nearest.Entity);
+                                SetEatenEntityID(entity, nearest.Entity.GetDefinitionID());
                                 entity.State = VanillaEntityStates.MAGICHEST_EAT;
                                 stateTimer.ResetTime(30);
                             }
@@ -146,6 +153,9 @@ namespace MVZ2.GameContent.Contraptions
                             entity.Remove();
                             var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
                             effect.SetTint(new Color(1, 0.8f, 1, 1));
+                            var id = GetEatenEntityID(entity);
+                            var enemy = entity.Level.Spawn(id, entity.Position, entity);
+                            enemy.SetFactionAndDirection(entity.GetFaction());
                         }
                         break;
                     }
@@ -183,9 +193,9 @@ namespace MVZ2.GameContent.Contraptions
                         stateTimer.Run();
                         if (stateTimer.PassedFrame(30))
                         {
-                            var ghast = entity.Level.Spawn(VanillaEnemyID.ghast, entity.GetCenter(), entity);
+                            var ghast = entity.Level.Spawn(VanillaEnemyID.hellChariot, entity.GetCenter(), entity);
                             ghast.SetFactionAndDirection(entity.GetFaction());
-                            entity.PlaySound(VanillaSoundID.fireCharge);
+                            entity.PlaySound(VanillaSoundID.trainWhistle);
                         }
                         if (stateTimer.Expired)
                         {
@@ -203,6 +213,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static readonly NamespaceID ID = VanillaContraptionID.magichest;
         public static readonly VanillaEntityPropertyMeta PROP_FLASH_VISIBLE = new VanillaEntityPropertyMeta("FlashVisible");
+        public static readonly VanillaEntityPropertyMeta EAT_ID = new VanillaEntityPropertyMeta("EatID");
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
         private Detector openDetector;
         private Detector eatDetector;

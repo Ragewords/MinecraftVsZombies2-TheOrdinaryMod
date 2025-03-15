@@ -11,6 +11,7 @@ using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -50,7 +51,7 @@ namespace MVZ2.GameContent.Contraptions
                     target.RemoveCharm();
                     target.PlaySound(VanillaSoundID.mindClear);
                 }
-                else if (target.IsEntityOf(VanillaProjectileID.compellingOrb) && target.IsHostile(entity))
+                else if (target.Type == EntityTypes.PROJECTILE && target.IsHostile(entity))
                 {
                     target.Die();
                 }
@@ -81,6 +82,11 @@ namespace MVZ2.GameContent.Contraptions
                     var ent = level.FindEntityByID(id);
                     if (ent == null)
                         continue;
+                    if (ent.Type == EntityTypes.PLANT && ent.IsCharmed())
+                    { 
+                        ent.RemoveCharm();
+                        ent.PlaySound(VanillaSoundID.mindClear);
+                    }
                     results.Add(ent);
                 }
             }

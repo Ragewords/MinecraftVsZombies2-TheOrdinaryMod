@@ -7,8 +7,11 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Triggers;
+using System.Runtime.InteropServices;
 using Tools;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -30,18 +33,16 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             if (!entity.IsEvoked())
             {
-                ShootTick(entity);
-                int repeatCount = GetRepeatCount(entity);
-                if (repeatCount > 0)
+                var shootTimer = GetShootTimer(entity);
+                shootTimer.Run(entity.GetAttackSpeed());
+                if (shootTimer.Expired)
                 {
-                    var repeatTimer = GetRepeatTimer(entity);
-                    repeatTimer.Run(entity.GetAttackSpeed());
-                    if (repeatTimer.Expired)
+                    var target = detector.Detect(entity);
+                    if (target != null)
                     {
-                        Shoot(entity);
-                        SetRepeatCount(entity, repeatCount - 1);
-                        repeatTimer.Reset();
+                        OnShootTick(entity);
                     }
+                    shootTimer.ResetTime((Mathf.FloorToInt(GetTimerTime(entity) / (GetUpgradeLevel(entity) + 1))));
                 }
             }
             else
@@ -82,13 +83,10 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override void OnShootTick(Entity entity)
         {
-            int count = GetUpgradeLevel(entity) + 1;
-            SetRepeatCount(entity, count);
-            var repeatTimer = GetRepeatTimer(entity);
-            repeatTimer.ResetTime(Mathf.FloorToInt(15f / count));
-            repeatTimer.Frame = 0;
+            var arrow = Shoot(entity);
+            arrow.Velocity += new Vector3(GetUpgradeLevel(entity), 0f, 0f) * 1f;
+            arrow.SetDamage(20 + (2 * (GetUpgradeLevel(entity) + 1)));
         }
-
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);

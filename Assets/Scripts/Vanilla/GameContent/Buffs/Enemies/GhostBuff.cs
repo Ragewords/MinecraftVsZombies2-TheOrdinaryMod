@@ -85,6 +85,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             float tintSpeed = illuminated ? TINT_SPEED : -TINT_SPEED;
             float shadowSpeed = illuminated ? SHADOW_ALPHA_SPEED : -SHADOW_ALPHA_SPEED;
             bool ethereal = illuminated ? false : true;
+            bool invisible = illuminated ? false : true;
 
             var tint = buff.GetProperty<Color>(PROP_TINT_MULTIPLIER);
             tint.a = Mathf.Clamp(tint.a + tintSpeed, GetMinAlpha(buff), TINT_ALPHA_MAX);
@@ -95,12 +96,14 @@ namespace MVZ2.GameContent.Buffs.Enemies
             buff.SetProperty(PROP_TINT_MULTIPLIER, tint);
             buff.SetProperty(PROP_SHADOW_ALPHA, shadowAlpha);
             buff.SetProperty(PROP_ETHEREAL, ethereal);
+            buff.SetProperty(PROP_ILLUMINATED, invisible);
         }
         public static void Illuminate(Buff buff)
         {
             buff.SetProperty(PROP_TINT_MULTIPLIER, Color.white);
             buff.SetProperty(PROP_SHADOW_ALPHA, SHADOW_ALPHA_MAX);
             buff.SetProperty(PROP_ETHEREAL, false);
+            buff.SetProperty(PROP_ILLUMINATED, false);
         }
         private static float GetMinAlpha(Buff buff)
         {
@@ -131,7 +134,25 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
             return false;
         }
+        public static bool IsIlluminated(Buff buff)
+        {
+            return buff.GetProperty<bool>(PROP_ILLUMINATED);
+        }
+        public static bool IsIlluminated(Entity entity)
+        {
+            checkBuffer.Clear();
+            entity.GetBuffs<GhostBuff>(checkBuffer);
+            foreach (var buff in checkBuffer)
+            {
+                if (GhostBuff.IsIlluminated(buff))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public static readonly VanillaBuffPropertyMeta PROP_EVER_ILLUMINATED = new VanillaBuffPropertyMeta("EverIlluminated");
+        public static readonly VanillaBuffPropertyMeta PROP_ILLUMINATED = new VanillaBuffPropertyMeta("Illuminated");
         public static readonly VanillaBuffPropertyMeta PROP_TINT_MULTIPLIER = new VanillaBuffPropertyMeta("TintMultiplier");
         public static readonly VanillaBuffPropertyMeta PROP_SHADOW_ALPHA = new VanillaBuffPropertyMeta("ShadowAlpha");
         public static readonly VanillaBuffPropertyMeta PROP_ETHEREAL = new VanillaBuffPropertyMeta("Ethereal");

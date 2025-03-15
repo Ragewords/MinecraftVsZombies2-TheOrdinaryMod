@@ -19,7 +19,10 @@ namespace MVZ2.GameContent.Artifacts
             var level = artifact.Level;
             foreach (var contraption in level.GetEntities(EntityTypes.PLANT))
             {
-                contraption.HealEffects(0.33333333f, contraption);
+                var healAmount = 0.33333333f;
+                if (contraption.IsAIFrozen())
+                    healAmount *= 3;
+                contraption.HealEffects(healAmount, contraption);
             }
         }
         public static readonly NamespaceID ID = VanillaArtifactID.sweetSleepPillow;

@@ -244,7 +244,7 @@ namespace MVZ2.Map
         }
         private void OnMapNightmareBoxClickCallback()
         {
-            if (Main.SaveManager.DreamIsNightmare())
+            if (Main.SaveManager.IsUnlocked(VanillaUnlockID.dreamIsNightmare))
             {
                 Main.SaveManager.Relock(VanillaUnlockID.dreamIsNightmare);
             }

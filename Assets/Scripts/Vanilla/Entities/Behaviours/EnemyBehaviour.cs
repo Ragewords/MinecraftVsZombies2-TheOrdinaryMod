@@ -25,6 +25,9 @@ namespace MVZ2.Vanilla.Entities
 
             entity.SetFaction(entity.Level.Option.RightFaction);
 
+            if (entity.HasBuff<LunaticEnemyBuff>())
+                entity.Health = entity.GetMaxHealth();
+
             entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT
                 | EntityCollisionHelper.MASK_ENEMY
                 | EntityCollisionHelper.MASK_OBSTACLE

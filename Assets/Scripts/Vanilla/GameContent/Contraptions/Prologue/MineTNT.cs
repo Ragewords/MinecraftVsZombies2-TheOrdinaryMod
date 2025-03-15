@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
 
-            var riseTimer = new FrameTimer(450);
+            var riseTimer = new FrameTimer(150);
             SetRiseTimer(entity, riseTimer);
             entity.SetAnimationBool("Ready", riseTimer.Frame < 30);
 
@@ -104,7 +104,7 @@ namespace MVZ2.GameContent.Contraptions
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
             var other = collision.Other;
-            if (!other.IsVulnerableEntity() || !other.ExistsAndAlive())
+            if (!other.IsVulnerableEntity())
                 return;
             var self = collision.Entity;
             if (!self.IsHostile(other))

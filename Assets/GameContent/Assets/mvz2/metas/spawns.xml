@@ -44,6 +44,7 @@
     <!-- Dream -->
     <entry id="spider" entity="mvz2:spider" >
         <spawn level="2" />
+		<terrain water="true"/>
         <weight base="2000" />
     </entry>
     <entry id="cave_spider" entity="mvz2:cave_spider" >
@@ -58,6 +59,7 @@
     </entry>
     <entry id="mother_terror" entity="mvz2:mother_terror" >
         <spawn level="3"/>
+		<terrain water="true"/>
         <weight base="2000" />
     </entry>
 
@@ -76,6 +78,7 @@
     </entry>
     <entry id="hell_chariot" entity="mvz2:hell_chariot" >
         <spawn level="6" />
+		<terrain water="true" air="true"/>
         <weight base="2000" />
     </entry>
     

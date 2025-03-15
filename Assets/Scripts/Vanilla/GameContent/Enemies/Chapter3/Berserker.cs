@@ -45,8 +45,30 @@ namespace MVZ2.GameContent.Enemies
             var scaleX = Mathf.Abs(scale.x);
             var range = entity.GetRange() * scaleX;
             entity.Level.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
+            entity.Level.Explode(entity.GetCenter(), range * 2, faction, damage * 2 / 3, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
+            entity.Level.Explode(entity.GetCenter(), range * 3, faction, damage / 3, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
 
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
+            float arcLength = range * 3;
+            float fireLength = range * 2;
+            var level = entity.Level;
+            for (int i = 0; i < 8; i++)
+            {
+                var arc = level.Spawn(VanillaEffectID.electricArc, entity.Position, entity);
+
+                float degree = i * 45;
+                float rad = degree * Mathf.Deg2Rad;
+                Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * arcLength;
+                ElectricArc.Connect(arc, pos);
+                ElectricArc.UpdateArc(arc);
+            }
+            for (int i = 0; i < 30; i++)
+            {
+                float degree = i * 12;
+                float rad = degree * Mathf.Deg2Rad;
+                Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * fireLength;
+                var fire = entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
+            }
             explosion.SetSize(Vector3.one * (range * 2));
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));
         }

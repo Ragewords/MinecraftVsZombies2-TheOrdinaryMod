@@ -41,6 +41,9 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 ProductionUpdate(entity);
+                var count = entity.Level.GetEntityCount(ID) - 1;
+                var evocationTimer = new FrameTimer(EVOCATION_DURATION + EVOCATION_INTERVAL * count);
+                SetEvocationTimer(entity, evocationTimer);
             }
         }
         protected override void UpdateLogic(Entity entity)

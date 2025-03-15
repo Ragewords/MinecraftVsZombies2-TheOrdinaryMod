@@ -14,14 +14,15 @@
     </fragment>
     <fragment name="obsidian" blend="true">
         <colorKeys>
-            <key hex="#39305A" time="0"/>
-            <key hex="#101010" time="1"/>
+            <key hex="#040208" time="0"/>
+			<key hex="#220060" time="0.5"/>
+            <key hex="#4c0488" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="obsidian_armor" blend="true">
         <colorKeys>
-            <key hex="#5A555A" time="0"/>
-            <key hex="#312829" time="1"/>
+            <key hex="#503833" time="0"/>
+            <key hex="#341810" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="mine_tnt">
@@ -62,9 +63,8 @@
     </fragment>
     <fragment name="magichest">
         <colorKeys>
-            <key hex="#0000FF" time="0.3"/>
-            <key hex="#FF0000" time="0.6"/>
-            <key hex="#FFFFFF" time="1"/>
+            <key hex="#F800F8" time="0.5"/>
+            <key hex="#000000" time="0.5"/>
         </colorKeys>
     </fragment>
     <fragment name="lily_pad">
@@ -115,6 +115,20 @@
             <key hex="#7A7A7A" time="1"/>
         </colorKeys>
     </fragment>
+	<fragment name="stone_shield">
+		<colorKeys>
+			<key hex="#73c262" time="1"/>
+			<key hex="#5baa43" time="0.6"/>
+		</colorKeys>
+	</fragment>
+	<fragment name="golden_apple">
+		<colorKeys>
+			<key hex="#92e5f8" time="0.25"/>
+			<key hex="#13dbc3" time="0.5"/>
+			<key hex="#45ece7" time="0.75"/>
+			<key hex="#57d1ee" time="1"/>
+		</colorKeys>
+	</fragment>
     <fragment name="thunder_drum">
         <colorKeys>
             <key hex="#F0DABE" time="0.5"/>
@@ -165,6 +179,13 @@
             <key hex="#0000FF" time="1"/>
         </colorKeys>
     </fragment>
+	<fragment name="mummy">
+		<colorKeys>
+			<key hex="#736d31" time="0.25"/>
+			<key hex="#c4bd7b" time="0.5"/>
+			<key hex="#9e964c" time="0.25"/>
+		</colorKeys>
+	</fragment>
     <fragment name="hell_chariot">
         <colorKeys>
             <key hex="#24232B" time="0.25"/>

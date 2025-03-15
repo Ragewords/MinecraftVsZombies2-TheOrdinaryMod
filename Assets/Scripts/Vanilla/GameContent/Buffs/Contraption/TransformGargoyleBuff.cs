@@ -1,0 +1,30 @@
+using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
+using PVZEngine.Entities;
+using PVZEngine.Level;
+using PVZEngine.Modifiers;
+using UnityEngine;
+
+namespace MVZ2.GameContent.Buffs.Contraptions
+{
+    [BuffDefinition(VanillaBuffNames.transformGargoyle)]
+    public class TransformGargoyleBuff : BuffDefinition
+    {
+        public TransformGargoyleBuff(string nsp, string name) : base(nsp, name)
+        {
+        }
+        public override void PostUpdate(Buff buff)
+        {
+            base.PostUpdate(buff);
+            var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
+            timeout--;
+            buff.SetProperty(PROP_TIMEOUT, 2);
+            if (timeout <= 0)
+            {
+                buff.Remove();
+            }
+        }
+        public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
+    }
+}

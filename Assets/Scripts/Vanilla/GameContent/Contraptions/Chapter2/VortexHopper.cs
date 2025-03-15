@@ -2,14 +2,19 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
+using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -23,10 +28,28 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
+            SetRepeatTimer(entity, new FrameTimer(0));
+            StartSpin(entity);
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            var repeatTimer = GetRepeatTimer(entity);
+            repeatTimer.Run();
+            var dir = GetDir(entity);
+            SetDir(entity, dir + 20);
+            if (repeatTimer.Expired)
+            {
+                for (int i = 0; i < 30; i++)
+                {
+                    var direction = Quaternion.Euler(0, i * 12 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
+                    var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
+                    projectile.SetDamage(30);
+                    projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
+                    projectile.SetPiercing(true);
+                }
+                SetRepeatTimer(entity, new FrameTimer(10));
+            }
             if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
             {
                 DragEnemiesNearby(entity);
@@ -135,7 +158,15 @@ namespace MVZ2.GameContent.Contraptions
             var distance = Vector2.Distance(hopperPos, targetPos);
             return distance < hopper.GetRange();
         }
+        public static FrameTimer GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_REPEAT_TIMER);
+        public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_REPEAT_TIMER, timer);
+        public static int GetDir(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_DIR);
+        public static void SetDir(Entity entity, int timer) => entity.SetBehaviourField(ID, PROP_DIR, timer);
+
+        private static readonly NamespaceID ID = VanillaContraptionID.vortexHopper;
         public const float EVOKED_SPIN_RADIUS = 120;
         public const float SPIN_RADIUS = 40;
+        public static readonly VanillaEntityPropertyMeta PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta("RepeatTimer");
+        public static readonly VanillaEntityPropertyMeta PROP_DIR = new VanillaEntityPropertyMeta("Dir");
     }
 }

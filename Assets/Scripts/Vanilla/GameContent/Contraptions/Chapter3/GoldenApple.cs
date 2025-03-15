@@ -3,9 +3,15 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using System.Linq;
+using System;
+using Tools;
+using MVZ2.GameContent.Buffs.Enemies;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -15,6 +21,11 @@ namespace MVZ2.GameContent.Contraptions
         public GoldenApple(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            SetEnemyRNG(entity, new RandomGenerator(entity.RNG.Next()));
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -48,14 +59,44 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                enemy.Charm(target.GetFaction());
+                var rng = GetEnemyRNG(target);
+                NamespaceID[] pool = enemyPool;
+                var targetID = pool.Random(rng);
+                var random = target.Spawn(targetID, enemy.Position);
+                random.Charm(target.GetFaction());
                 enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
                 enemy.Neutralize();
+                enemy.Remove();
                 enemy.PlaySound(VanillaSoundID.charmed);
                 enemy.PlaySound(VanillaSoundID.floop);
             }
             target.Remove();
         }
+        private static NamespaceID[] enemyPool = new NamespaceID[]
+        {
+            VanillaEnemyID.zombie,
+            VanillaEnemyID.leatherCappedZombie,
+            VanillaEnemyID.ironHelmettedZombie,
+            VanillaEnemyID.skeleton,
+            VanillaEnemyID.gargoyle,
+            VanillaEnemyID.ghost,
+            VanillaEnemyID.mummy,
+            VanillaEnemyID.necromancer,
+            VanillaEnemyID.spider,
+            VanillaEnemyID.caveSpider,
+            VanillaEnemyID.ghast,
+            VanillaEnemyID.motherTerror,
+            VanillaEnemyID.parasiteTerror,
+            VanillaEnemyID.mesmerizer,
+            VanillaEnemyID.berserker,
+            VanillaEnemyID.anubisand,
+            VanillaEnemyID.imp,
+            VanillaEnemyID.skeletonHorse,
+            VanillaEnemyID.bedserker,
+        };
+        public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
+        public static void SetEnemyRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_ENEMY_RNG, value);
+        public static readonly VanillaEntityPropertyMeta PROP_ENEMY_RNG = new VanillaEntityPropertyMeta("EnemyRNG");
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
     }
 }

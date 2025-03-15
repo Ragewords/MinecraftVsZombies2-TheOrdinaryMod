@@ -16,6 +16,12 @@ namespace MVZ2.GameContent.Buffs
         {
             AddModifier(new ColorModifier(EngineEntityProps.COLOR_OFFSET, new Color(1, 0, 1, 0.5f)));
             AddModifier(new IntModifier(EngineEntityProps.FACTION, NumberOperator.Set, PROP_FACTION));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, PROP_SPEED));
+        }
+        public override void PostAdd(Buff buff)
+        {
+            base.PostAdd(buff);
+            buff.SetProperty(PROP_SPEED, 1f);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -40,6 +46,8 @@ namespace MVZ2.GameContent.Buffs
                 {
                     targetFaction = source.GetFaction();
                     buff.SetProperty(PROP_FACTION, targetFaction);
+                    if (targetFaction == entity.GetFaction() && entity.Type == EntityTypes.ENEMY)
+                        buff.SetProperty(PROP_SPEED, 2f);
                 }
             }
         }
@@ -70,6 +78,7 @@ namespace MVZ2.GameContent.Buffs
 
         public static readonly VanillaBuffPropertyMeta PROP_MODE = new VanillaBuffPropertyMeta("Mode");
         public static readonly VanillaBuffPropertyMeta PROP_FACTION = new VanillaBuffPropertyMeta("Faction");
+        public static readonly VanillaBuffPropertyMeta PROP_SPEED = new VanillaBuffPropertyMeta("Speed");
         public static readonly VanillaBuffPropertyMeta PROP_SOURCE = new VanillaBuffPropertyMeta("Source");
     }
 

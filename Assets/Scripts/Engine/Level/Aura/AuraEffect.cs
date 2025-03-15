@@ -101,8 +101,6 @@ namespace PVZEngine.Auras
             foreach (var reference in buffCaches)
             {
                 var buff = reference.GetBuff(Level);
-                if (buff == null)
-                    continue;
                 buff.Remove();
             }
             buffCaches.Clear();

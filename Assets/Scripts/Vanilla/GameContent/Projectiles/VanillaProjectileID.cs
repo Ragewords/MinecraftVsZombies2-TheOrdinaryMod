@@ -29,6 +29,7 @@ namespace MVZ2.GameContent.Projectiles
         public const string woodenBall = "wooden_ball";
         public const string cobble = "cobble";
         public const string boulder = "boulder";
+        public const string bounceBoulder = "bounce_boulder";
         public const string goldenBall = "golden_ball";
         public const string diamondCaltrop = "diamond_caltrop";
         public const string compellingOrb = "compelling_orb";
@@ -62,6 +63,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID woodenBall = Get(VanillaProjectileNames.woodenBall);
         public static readonly NamespaceID cobble = Get(VanillaProjectileNames.cobble);
         public static readonly NamespaceID boulder = Get(VanillaProjectileNames.boulder);
+        public static readonly NamespaceID bounceBoulder = Get(VanillaProjectileNames.bounceBoulder);
         public static readonly NamespaceID goldenBall = Get(VanillaProjectileNames.goldenBall);
         public static readonly NamespaceID diamondCaltrop = Get(VanillaProjectileNames.diamondCaltrop);
         public static readonly NamespaceID compellingOrb = Get(VanillaProjectileNames.compellingOrb);

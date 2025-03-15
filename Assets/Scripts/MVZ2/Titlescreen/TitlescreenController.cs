@@ -85,7 +85,7 @@ namespace MVZ2.Titlescreen
         [TranslateMsg("标题页面的版本号文本，{0}为版本号")]
         public const string VERSION_TEXT = "版本{0}";
         [TranslateMsg("标题界面按钮文本")]
-        public const string CLICK_TO_START = "点击以开始！";
+        public const string CLICK_TO_START = "点击发现新大陆！";
         private MainManager main => MainManager.Instance;
         private TaskPipeline loadPipeline;
         private float progress;

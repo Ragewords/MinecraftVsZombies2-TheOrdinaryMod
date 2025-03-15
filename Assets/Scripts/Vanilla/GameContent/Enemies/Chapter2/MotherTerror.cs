@@ -33,6 +33,7 @@ namespace MVZ2.GameContent.Enemies
             var timer = GetRestoreEggTimer(enemy);
             if (!HasEggs(enemy))
             {
+                enemy.HealEffects(1 / 6, enemy);
                 timer.Run();
                 if (timer.Expired)
                 {
@@ -70,6 +71,10 @@ namespace MVZ2.GameContent.Enemies
             if (level.Difficulty == VanillaDifficulties.hard)
             {
                 count = 2;
+            }
+            if (level.Difficulty == VanillaDifficulties.lunatic)
+            {
+                count = 3;
             }
             for (int i = 0; i < count; i++)
             {

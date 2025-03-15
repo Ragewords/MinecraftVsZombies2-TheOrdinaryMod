@@ -115,6 +115,10 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity.GetProperty<bool>(INVISIBLE);
         }
+        public static void SetIsInvisible(this Entity entity, bool value)
+        {
+            entity.SetProperty(INVISIBLE, value);
+        }
         public static bool IsAIFrozen(this Entity entity)
         {
             return entity.GetProperty<bool>(AI_FROZEN);

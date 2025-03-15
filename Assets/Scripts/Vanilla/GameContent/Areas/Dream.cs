@@ -5,7 +5,6 @@ using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
-using MVZ2.Vanilla.Saves;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -68,7 +67,7 @@ namespace MVZ2.GameContent.Areas
 
         private void UpdateNightmareOrDream(LevelEngine level)
         {
-            if (Global.Game.DreamIsNightmare())
+            if (Global.Game.IsUnlocked(VanillaUnlockID.dreamIsNightmare))
             {
                 SetToNightmare(level);
             }

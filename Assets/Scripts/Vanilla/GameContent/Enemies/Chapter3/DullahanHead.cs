@@ -23,7 +23,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 30);
         }
         public override void PreTakeDamage(DamageInput input)
         {

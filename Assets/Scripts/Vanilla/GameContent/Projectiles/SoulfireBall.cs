@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
@@ -10,6 +11,7 @@ using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
@@ -18,6 +20,16 @@ namespace MVZ2.GameContent.Projectiles
     {
         public SoulfireBall(string nsp, string name) : base(nsp, name)
         {
+        }
+        protected override void PreHitEntity(ProjectileHitInput hit, DamageInput damage)
+        {
+            base.PreHitEntity(hit, damage);
+            var entity = hit.Projectile;
+            var other = hit.Other;
+            if (damage.Entity == GetSplitSource(entity))
+            {
+                damage.Cancel();
+            }
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damageOutput)
         {
@@ -36,6 +48,15 @@ namespace MVZ2.GameContent.Projectiles
             var armorBlocksFire = armorShell != null ? armorShell.BlocksFire() : false;
             var blocksFire = bodyBlocksFire || armorBlocksFire;
 
+            if (damageOutput.Entity == GetSplitSource(entity))
+            {
+                hitResult.Pierce = true;
+            }
+            else
+            {
+                hitResult.Pierce = false;
+            }
+
             var blast = IsBlast(entity);
             if (blast)
             {
@@ -44,6 +65,25 @@ namespace MVZ2.GameContent.Projectiles
                 entity.Level.Spawn(VanillaEffectID.soulfireBlast, entity.Position, entity);
             }
             else if (!blocksFire)
+            {
+                entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
+            }
+            if (!IsSplit(entity) && !blast)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    var direction = Quaternion.Euler(0, 45 - i * 30, 0) * new Vector3(1f, 0f, 0f);
+                    var velocity = direction * 15;
+                    var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velocity);
+                    projectile.SetDamage(entity.GetDamage() / 2);
+                    projectile.SetScale(new Vector3(0.5f, 0.5f, 0.5f));
+                    projectile.SetDisplayScale(new Vector3(0.5f, 0.5f, 0.5f));
+                    projectile.SetShadowScale(new Vector3(0.5f, 0.5f, 0.5f));
+                    projectile.SetPiercing(true);
+                    SetSplit(projectile, true);
+                    SetSplitSource(projectile, other);
+                }
+            }
             {
                 entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
             }
@@ -58,11 +98,31 @@ namespace MVZ2.GameContent.Projectiles
         {
             entity.SetBehaviourField(ID, PROP_BLAST, value);
         }
+        public static void SetSplit(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(ID, PROP_SPLIT, value);
+        }
         public static bool IsBlast(Entity entity)
         {
             return entity.GetBehaviourField<bool>(ID, PROP_BLAST);
         }
+        public static Entity GetSplitSource(Entity entity)
+        {
+            var entityID = entity.GetBehaviourField<EntityID>(ID, SPLIT_SOURCE);
+            return entityID?.GetEntity(entity.Level);
+        }
+        public static void SetSplitSource(Entity entity, Entity value)
+        {
+            entity.SetBehaviourField(ID, SPLIT_SOURCE, new EntityID(value));
+        }
+
+        public static bool IsSplit(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(ID, PROP_SPLIT);
+        }
         public static NamespaceID ID => VanillaProjectileID.soulfireBall;
         public static readonly VanillaEntityPropertyMeta PROP_BLAST = new VanillaEntityPropertyMeta("Blast");
+        public static readonly VanillaEntityPropertyMeta PROP_SPLIT = new VanillaEntityPropertyMeta("Split");
+        public static readonly VanillaEntityPropertyMeta SPLIT_SOURCE = new VanillaEntityPropertyMeta("SplitSource");
     }
 }

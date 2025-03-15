@@ -30,12 +30,23 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override Entity Shoot(Entity entity)
         {
-            if (entity.RNG.Next(4) == 0)
+            if (entity.RNG.Next(50) == 1)
             {
                 var param = entity.GetShootParams();
-                param.projectileID = VanillaProjectileID.boulder;
-                param.damage = entity.GetDamage() * 4;
+                param.projectileID = VanillaProjectileID.bounceBoulder;
+                param.damage = entity.GetDamage() * 20;
+                param.velocity = new Vector3(5, 20, 0);
                 return entity.ShootProjectile(param);
+            }
+            else
+            {
+                if (entity.RNG.Next(4) == 0)
+                {
+                    var param = entity.GetShootParams();
+                    param.projectileID = VanillaProjectileID.boulder;
+                    param.damage = entity.GetDamage() * 4;
+                    return entity.ShootProjectile(param);
+                }
             }
             return base.Shoot(entity);
         }

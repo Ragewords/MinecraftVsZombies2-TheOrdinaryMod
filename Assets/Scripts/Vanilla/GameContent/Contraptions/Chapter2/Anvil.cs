@@ -1,12 +1,16 @@
 ﻿using System.Linq;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -43,9 +47,29 @@ namespace MVZ2.GameContent.Contraptions
             float damageModifier = Mathf.Clamp(anvil.Velocity.magnitude, 0, 1);
             collision.OtherCollider.TakeDamage(1800 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
         }
-        public override bool CanEvoke(Entity entity)
+        protected override void OnEvoke(Entity entity)
         {
-            return false;
+            base.OnEvoke(entity);
+            bool hurt = false;
+            foreach (var target in entity.Level.GetEntities(EntityTypes.PLANT))
+            {
+                if (target.Health < target.GetMaxHealth() && target.GetDefinitionID() != VanillaContraptionID.anvil)
+                {
+                    target.HealEffects(target.GetMaxHealth() / 3, entity);
+                    if (entity.RNG.Next(25) == 1)
+                        hurt = true;
+                    else
+                        entity.PlaySound(VanillaSoundID.anvil_fix);
+                }
+            }
+            if (hurt)
+            {
+                entity.TakeDamage(entity.GetMaxHealth() / 3, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
+                if (entity.Health <= entity.GetMaxHealth() / 3)
+                    entity.PlaySound(VanillaSoundID.anvil_fix_break);
+                else
+                    entity.PlaySound(VanillaSoundID.anvil_fix);
+            }
         }
         public override void PostContactGround(Entity anvil, Vector3 velocity)
         {

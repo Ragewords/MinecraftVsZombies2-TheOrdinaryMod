@@ -49,7 +49,7 @@ namespace MVZ2.Save
         public static UserDataList FromSerializable(SerializableUserDataList serializable)
         {
             var metaList = new UserDataList(serializable.metas.Length);
-            metaList.CurrentUserIndex = Math.Clamp(serializable.currentUserIndex, 0, serializable.metas.Length - 1);
+            metaList.CurrentUserIndex = serializable.currentUserIndex;
             for (int i = 0; i < metaList.metas.Length; i++)
             {
                 var seriMeta = serializable.metas[i];

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
@@ -16,6 +17,8 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEditorInternal;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -35,6 +38,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer());
+            SetFirstDamage(entity, 10);
+            SetFirstPush(entity, 5);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -69,7 +74,7 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f;
                 SetArmExtension(entity, extension);
 
-                var target = detector.Detect(entity);
+                    var target = detector.Detect(entity);
                 if (target != null)
                 {
                     var timer = GetStateTimer(entity);
@@ -122,15 +127,17 @@ namespace MVZ2.GameContent.Contraptions
             detector.DetectMultiple(entity, detectBuffer);
             foreach (var collider in detectBuffer)
             {
-                collider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE), entity);
+                collider.TakeDamage(entity.GetDamage() * GetFirstDamage(entity), new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE), entity);
 
                 var ent = collider.Entity;
                 if (ent.Type == EntityTypes.ENEMY)
                 {
-                    ent.Velocity += entity.GetFacingDirection() * 20;
+                    ent.Velocity += entity.GetFacingDirection() * 20 * GetFirstPush(entity);
                     CheckAchievement(ent);
                 }
             }
+            SetFirstDamage(entity, 1);
+            SetFirstPush(entity, 1);
         }
         private void EvokedUpdate(Entity entity)
         {
@@ -190,10 +197,18 @@ namespace MVZ2.GameContent.Contraptions
                 return 1;
             return 0;
         }
+        public void SetFirstAttack(Entity entity, int v)
+        {
+            throw new NotImplementedException();
+        }
         public float GetArmExtension(Entity entity) => entity.GetBehaviourField<float>(ID, PROP_ARM_EXTENSION);
         public void SetArmExtension(Entity entity, float value) => entity.SetBehaviourField(ID, PROP_ARM_EXTENSION, value);
         public FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         public void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
+        public static int GetFirstDamage(Entity entity) => entity.GetBehaviourField<int>(ID, FIRST_DAMAGE_MULTIPLIER);
+        public static void SetFirstDamage(Entity entity, int value) => entity.SetBehaviourField(ID, FIRST_DAMAGE_MULTIPLIER, value);
+        public static int GetFirstPush(Entity entity) => entity.GetBehaviourField<int>(ID, FIRST_PUSH_MULTIPLIER);
+        public static void SetFirstPush(Entity entity, int value) => entity.SetBehaviourField(ID, FIRST_PUSH_MULTIPLIER, value);
         private void CheckAchievement(Entity entity)
         {
             if (entity.Type != EntityTypes.ENEMY)
@@ -212,6 +227,8 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.punchton;
         public static readonly VanillaEntityPropertyMeta PROP_ARM_EXTENSION = new VanillaEntityPropertyMeta("ArmExtension");
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
+        public static readonly VanillaEntityPropertyMeta FIRST_DAMAGE_MULTIPLIER = new VanillaEntityPropertyMeta("OnFirstDamage");
+        public static readonly VanillaEntityPropertyMeta FIRST_PUSH_MULTIPLIER = new VanillaEntityPropertyMeta("OnFirstPush");
         private Detector detector;
         private Detector evokedDetector;
         private List<EntityCollider> detectBuffer = new List<EntityCollider>();

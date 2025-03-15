@@ -1,6 +1,10 @@
 ﻿using System.Linq;
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
@@ -30,8 +34,23 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             ShootTick(entity);
             EvokedUpdate(entity);
+            var phantom = GetPhantom(entity);
+            if (!phantom.ExistsAndAlive() && !GetIsPhantom(entity))
+                SummonPhantom(entity);
         }
-
+        public override void PostRemove(Entity entity)
+        {
+            base.PostRemove(entity);
+            var phantom = GetPhantom(entity);
+            if (phantom.ExistsAndAlive())
+                phantom.Remove();
+        }
+        public override bool CanEvoke(Entity entity)
+        {
+            if (entity.HasBuff<SilvenserMinion>())
+                return false;
+            return true;
+        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -46,6 +65,43 @@ namespace MVZ2.GameContent.Contraptions
                 SetEvocationTargetPositions(entity, positions);
                 entity.PlaySound(VanillaSoundID.spellCard);
             }
+        }
+        public static Entity SummonPhantom(Entity entity)
+        {
+            var level = entity.Level;
+            var x = 220;
+            var z = entity.Position.z;
+            var y = level.GetGroundY(x, z);
+            Vector3 Pos = new Vector3(x, y, z);
+            var phantom = entity.Spawn(VanillaContraptionID.silvenser, Pos);
+            phantom.SetDamage(5);
+            phantom.SetRange(415);
+            phantom.AddBuff<SilvenserMinion>();
+            phantom.SetShadowHidden(true);
+            phantom.SetSize(new Vector3(0f, 0f, 0f));
+            var buff = phantom.AddBuff<FlyBuff>();
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 30);
+            SetPhantom(entity, phantom);
+            SetIsPhantom(phantom, true);
+            SetIsPhantom(entity, true);
+            return phantom;
+        }
+        public static bool GetIsPhantom(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(ID, IS_PHANTOM);
+        }
+        public static void SetIsPhantom(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(ID, IS_PHANTOM, value);
+        }
+        public static Entity GetPhantom(Entity entity)
+        {
+            var entityID = entity.GetBehaviourField<EntityID>(ID, PHANTOM);
+            return entityID?.GetEntity(entity.Level);
+        }
+        public static void SetPhantom(Entity entity, Entity value)
+        {
+            entity.SetBehaviourField(ID, PHANTOM, new EntityID(value));
         }
         public static FrameTimer GetEvocationTimer(Entity entity)
         {
@@ -126,6 +182,8 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TARGET_POSITIONS = new VanillaEntityPropertyMeta("EvocationTargetPositions");
 
+        public static readonly VanillaEntityPropertyMeta PHANTOM = new VanillaEntityPropertyMeta("Phantom");
+        public static readonly VanillaEntityPropertyMeta IS_PHANTOM = new VanillaEntityPropertyMeta("IsPhantom");
         public static readonly NamespaceID ID = VanillaContraptionID.silvenser;
     }
 }

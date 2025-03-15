@@ -86,8 +86,6 @@ namespace MVZ2.GameContent.Contraptions
                 var entity = source.GetEntity();
                 if (entity == null)
                     return;
-                if (entity.IsAIFrozen())
-                    return;
                 detectBuffer.Clear();
                 enemyDetector.DetectEntities(entity, detectBuffer);
                 results.AddRange(detectBuffer);

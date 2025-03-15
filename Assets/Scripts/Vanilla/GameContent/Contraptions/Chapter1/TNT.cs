@@ -15,6 +15,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -84,8 +85,13 @@ namespace MVZ2.GameContent.Contraptions
                     var target = output.Entity;
                     var distance = (target.Position - entity.Position).magnitude;
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
-                    target.Velocity = target.Velocity + Vector3.up * speed;
                 }
+                var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
+                projectile.SetDamage(900);
+                projectile.SetRange(40);
+                projectile.SetScale(new Vector3(0.7f, 0.7f, 0.7f));
+                projectile.SetDisplayScale(new Vector3(0.7f, 0.7f, 0.7f));
+                projectile.SetShadowScale(new Vector3(0.7f, 0.7f, 0.7f));
             }
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
             explosion.SetSize(Vector3.one * (range * 2));
@@ -116,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        var direction = Quaternion.Euler(0, i * 90, 0) * Vector3.right * 10;
+                        var direction = Quaternion.Euler(0, i * 90 + 45, 0) * new Vector3(0f, 1f, -1f) * 10;
                         var velocity = direction;
                         velocity.y = 10;
                         var projectile = entity.ShootProjectile(VanillaProjectileID.flyingTNT, velocity);
