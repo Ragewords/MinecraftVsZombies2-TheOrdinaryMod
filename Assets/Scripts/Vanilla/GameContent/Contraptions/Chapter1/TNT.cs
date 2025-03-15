@@ -85,6 +85,7 @@ namespace MVZ2.GameContent.Contraptions
                     var target = output.Entity;
                     var distance = (target.Position - entity.Position).magnitude;
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
+                    target.Velocity = target.Velocity + Vector3.up * speed;
                 }
                 var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
                 projectile.SetDamage(900);

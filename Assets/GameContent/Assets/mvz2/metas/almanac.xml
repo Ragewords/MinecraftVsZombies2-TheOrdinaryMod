@@ -383,12 +383,13 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人，并在周围产生电磁爆。攻击时，处于两个同一行或列的磁暴线圈之间会产生电场，对其中的敌人造成伤害。</p>
             </header>
             <properties>
+				<p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>80</color>]]></p>
-                <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>80（电击），20（电磁爆），5（电场）</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害；被摧毁时会爆炸</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>
