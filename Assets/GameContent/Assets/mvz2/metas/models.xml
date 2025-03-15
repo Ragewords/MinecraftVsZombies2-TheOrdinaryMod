@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+    <!-- Contraptions -->
+    <model name="dispenser" type="entity" path="mvz2:contraption/prologue/dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="furnace" type="entity" path="mvz2:contraption/prologue/furnace" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="obsidian" type="entity" path="mvz2:contraption/prologue/obsidian" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="mine_tnt" type="entity" path="mvz2:contraption/prologue/mine_tnt" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <model name="small_dispenser" type="entity" path="mvz2:contraption/halloween/small_dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="moonlight_sensor" type="entity" path="mvz2:contraption/halloween/moonlight_sensor" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="glowstone" type="entity" path="mvz2:contraption/halloween/glowstone" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="punchton" type="entity" path="mvz2:contraption/halloween/punchton" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="tnt" type="entity" path="mvz2:contraption/halloween/tnt" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="soul_furnace" type="entity" path="mvz2:contraption/halloween/soul_furnace" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="silvenser" type="entity" path="mvz2:contraption/halloween/silvenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="magichest" type="entity" path="mvz2:contraption/halloween/magichest" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <model name="lily_pad" type="entity" path="mvz2:contraption/dream/lily_pad" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="drivenser" type="entity" path="mvz2:contraption/dream/drivenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="gravity_pad" type="entity" path="mvz2:contraption/dream/gravity_pad" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="vortex_hopper" type="entity" path="mvz2:contraption/dream/vortex_hopper" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="pistenser" type="entity" path="mvz2:contraption/dream/pistenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="totenser" type="entity" path="mvz2:contraption/dream/totenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="dream_crystal" type="entity" path="mvz2:contraption/dream/dream_crystal" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="dream_silk" type="entity" path="mvz2:contraption/dream/dream_silk" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <model name="wooden_dropper" type="entity" path="mvz2:contraption/castle/wooden_dropper" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="spike_block" type="entity" path="mvz2:contraption/castle/spike_block" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="stone_dropper" type="entity" path="mvz2:contraption/castle/stone_dropper" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="stone_shield" type="entity" path="mvz2:contraption/castle/stone_shield" width="80" height="80" xOffset="0" yOffset="-28"/>
+    <model name="golden_apple" type="entity" path="mvz2:contraption/castle/golden_apple" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="thunder_drum" type="entity" path="mvz2:contraption/castle/thunder_drum" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="tesla_coil" type="entity" path="mvz2:contraption/castle/tesla_coil" width="64" height="128" xOffset="0" yOffset="-60"/>
+    <model name="giant_bowl" type="entity" path="mvz2:contraption/castle/giant_bowl" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="force_pad" type="entity" path="mvz2:contraption/upgrade/force_pad" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="golden_dropper" type="entity" path="mvz2:contraption/upgrade/golden_dropper" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="diamond_spikes" type="entity" path="mvz2:contraption/upgrade/diamond_spikes" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <model name="anvil" type="entity" path="mvz2:contraption/dream/anvil" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="random_china" type="entity" path="mvz2:contraption/prologue/random_china" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <!-- Enemies -->
+    <model name="zombie" type="entity" path="mvz2:enemy/prologue/zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="leather_capped_zombie" type="entity" path="mvz2:enemy/prologue/leather_capped_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="iron_helmetted_zombie" type="entity" path="mvz2:enemy/prologue/iron_helmetted_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="flag_zombie" type="entity" path="mvz2:enemy/prologue/flag_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+
+    <model name="skeleton" type="entity" path="mvz2:enemy/halloween/skeleton" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="gargoyle" type="entity" path="mvz2:enemy/halloween/gargoyle" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="ghost" type="entity" path="mvz2:enemy/halloween/ghost" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="mummy" type="entity" path="mvz2:enemy/halloween/mummy" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="necromancer" type="entity" path="mvz2:enemy/halloween/necromancer" width="64" height="96" xOffset="10" yOffset="-44"/>
+
+    <model name="spider" type="entity" path="mvz2:enemy/dream/spider" width="108" height="108" xOffset="0" yOffset="-48"/>
+    <model name="cave_spider" type="entity" path="mvz2:enemy/dream/cave_spider" width="54" height="54" xOffset="0" yOffset="-24"/>
+    <model name="ghast" type="entity" path="mvz2:enemy/dream/ghast" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="mother_terror" type="entity" path="mvz2:enemy/dream/mother_terror" width="108" height="108" xOffset="0" yOffset="-48"/>
+    <model name="parasite_terror" type="entity" path="mvz2:enemy/dream/parasite_terror" width="54" height="54" xOffset="0" yOffset="-24"/>
+
+    <model name="mesmerizer" type="entity" path="mvz2:enemy/castle/mesmerizer" width="64" height="116" xOffset="10" yOffset="-64"/>
+    <model name="berserker" type="entity" path="mvz2:enemy/castle/berserker" width="64" height="100" xOffset="10" yOffset="-46"/>
+    <model name="dullahan" type="entity" path="mvz2:enemy/castle/dullahan" width="94" height="120" xOffset="9" yOffset="-53"/>
+    <model name="hell_chariot" type="entity" path="mvz2:enemy/castle/hell_chariot" width="152" height="120" xOffset="9" yOffset="-60"/>
+    <model name="anubisand" type="entity" path="mvz2:enemy/castle/anubisand" width="52" height="88" xOffset="12" yOffset="-41"/>
+
+    <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
+    <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
+    <model name="imp" type="entity" path="mvz2:enemy/shrine/imp" width="48" height="56" xOffset="0" yOffset="-28"/>
+
+    <model name="bone_wall" type="entity" path="mvz2:enemy/halloween/bone_wall" width="80" height="80" xOffset="0" yOffset="-40"/>
+    <model name="napstablook" type="entity" path="mvz2:enemy/halloween/napstablook" width="64" height="88" xOffset="0" yOffset="-44"/>
+    <model name="reverse_satellite" type="entity" path="mvz2:enemy/castle/reverse_satellite" width="64" height="80" xOffset="0" yOffset="-40"/>
+    <model name="skeleton_horse" type="entity" path="mvz2:enemy/castle/skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>
+    <model name="dullahan_head" type="entity" path="mvz2:enemy/castle/dullahan_head" width="32" height="22" xOffset="0" yOffset="-11"/>
+    <model name="dullahan_main" type="entity" path="mvz2:enemy/castle/dullahan_main" width="64" height="100" xOffset="10" yOffset="-46"/>
+    <model name="soulsand" type="entity" path="mvz2:enemy/castle/soulsand" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="seija_cursed_doll" type="entity" path="mvz2:enemy/castle/seija_cursed_doll"  width="32" height="32" xOffset="0" yOffset="-16"/>
+    <model name="bedserker" type="entity" path="mvz2:enemy/castle/bedserker" width="72" height="100" xOffset="10" yOffset="-48"/>
+
+
+    <!-- Obstacles -->
+    <model name="gargoyle_statue" type="entity" path="mvz2:obstacle/gargoyle_statue" width="64" height="96" xOffset="0" yOffset="-44"/>
+
+    <!-- Bosses -->
+    <model name="frankenstein" type="entity" path="mvz2:boss/frankenstein" width="100" height="200" xOffset="24" yOffset="-96"/>
+    <model name="slenderman" type="entity" path="mvz2:boss/slenderman" width="200" height="150" xOffset="0" yOffset="-60"/>
+    <model name="nightmareaper" type="entity" path="mvz2:boss/nightmareaper" width="240" height="200" xOffset="0" yOffset="-20"/>
+    <model name="seija" type="entity" path="mvz2:boss/seija" width="30" height="88" xOffset="0" yOffset="-44"/>
+    <model name="wither" type="entity" path="mvz2:boss/wither" width="112" height="168" xOffset="6" yOffset="-84"/>
+
+    <!-- Carts -->
+    <model name="minecart" type="entity" path="mvz2:cart/minecart" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="pumpkin_carriage" type="entity" path="mvz2:cart/pumpkin_carriage" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="nyan_cat" type="entity" path="mvz2:cart/nyan_cat" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="nyaightmare" type="entity" path="mvz2:cart/nyaightmare" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="bowl_chariot" type="entity" path="mvz2:cart/bowl_chariot" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <!-- Pickups -->
+    <model name="redstone" type="entity" path="mvz2:pickup/redstone" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="emerald" type="entity" path="mvz2:pickup/emerald" width="32" height="32" xOffset="0" yOffset="-16"/>
+    <model name="ruby" type="entity" path="mvz2:pickup/ruby" width="48" height="48" xOffset="0" yOffset="-20"/>
+    <model name="sapphire" type="entity" path="mvz2:pickup/sapphire" width="48" height="48" xOffset="0" yOffset="-20"/>
+    <model name="diamond" type="entity" path="mvz2:pickup/diamond" width="96" height="96" xOffset="0" yOffset="-32"/>
+    <model name="map_pickup" type="entity" path="mvz2:pickup/map_pickup" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="money_chest" type="entity" path="mvz2:pickup/money_chest" width="96" height="96" xOffset="0" yOffset="-32"/>
+    <model name="blueprint_pickup" type="entity" path="mvz2:pickup/blueprint_pickup" width="64" height="80" xOffset="0" yOffset="-32"/>
+    <model name="almanac_pickup" type="entity" path="mvz2:pickup/almanac_pickup" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="dream_key" type="entity" path="mvz2:pickup/dream_key" width="64" height="64" xOffset="0" yOffset="-24"/>
+    <model name="ender_chest" type="entity" path="mvz2:pickup/ender_chest" width="96" height="96" xOffset="0" yOffset="-32"/>
+    <model name="artifact_pickup" type="entity" path="mvz2:pickup/artifact_pickup" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="wither_scroll" type="entity" path="mvz2:pickup/wither_scroll" width="64" height="64" xOffset="0" yOffset="-16"/>
+
+    <model name="starshard.default" type="entity" path="mvz2:pickup/starshards/default" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="starshard.halloween" type="entity" path="mvz2:pickup/starshards/halloween" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="starshard.dream" type="entity" path="mvz2:pickup/starshards/dream" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="starshard.castle" type="entity" path="mvz2:pickup/starshards/castle" width="64" height="64" xOffset="0" yOffset="-16"/>
+    
+    <!-- Effects -->
+    <model name="miner" type="entity" path="mvz2:effect/miner" width="32" height="32" xOffset="0" yOffset="-16"/>
+    <model name="mine_debris" type="entity" path="mvz2:effect/mine_debris" width="150" height="100" xOffset="0" yOffset="-20"/>
+    <model name="fragment" type="entity" path="mvz2:effect/fragment" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
+    <model name="star_particles" type="entity" path="mvz2:effect/star_particles" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
+    <model name="smoke" type="entity" path="mvz2:effect/smoke" width="160" shot="false" height="160" xOffset="0" yOffset="0"/>
+    <model name="thunder_bolt" type="entity" path="mvz2:effect/thunder_bolt" width="120" height="550" xOffset="0" yOffset="-275"/>
+    <model name="evocation_star" type="entity" path="mvz2:effect/evocation_star" width="240" height="240" xOffset="0" yOffset="0"/>
+    <model name="shine_ring" type="entity" path="mvz2:effect/shine_ring" shot="false" width="100" height="100" xOffset="0" yOffset="0"/>
+    <model name="stun_stars" type="entity" path="mvz2:effect/stun_stars" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="stunning_flash" type="entity" path="mvz2:effect/stunning_flash" shot="false" width="120" height="120" xOffset="0" yOffset="0"/>
+    <model name="piston_palm" type="entity" path="mvz2:effect/piston_palm" width="32" height="64" xOffset="-16" yOffset="-16"/>
+    <model name="explosion" type="entity" path="mvz2:effect/explosion" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
+    <model name="soulfire" type="entity" path="mvz2:effect/soulfire" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="soulfire_burn" type="entity" path="mvz2:effect/soulfire_burn" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="soulfire_blast" type="entity" path="mvz2:effect/soulfire_blast" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+	<model name="fire" type="entity" path="mvz2:effect/fire" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="gas" type="entity" path="mvz2:effect/gas" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="burning_gas" type="entity" path="mvz2:effect/burning_gas" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="magic_stars" type="entity" path="mvz2:effect/magic_stars" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="bone_particles" type="entity" path="mvz2:effect/bone_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="blood_particles" type="entity" path="mvz2:effect/blood_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="smoke_cluster" type="entity" path="mvz2:effect/smoke_cluster" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="rain" type="entity" path="mvz2:effect/rain" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="electric_arc" type="entity" path="mvz2:effect/electric_arc" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="gore_particles" type="entity" path="mvz2:effect/gore_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="frankenstein_jump_trail" type="entity" path="mvz2:effect/frankenstein_jump_trail" width="120" height="240" xOffset="24" yOffset="0"/>
+    <model name="frankenstein_head" type="entity" path="mvz2:effect/frankenstein_head" width="56" height="48" xOffset="0" yOffset="0"/>
+    <model name="splash_particles" type="entity" path="mvz2:effect/splash_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="gear_particles" type="entity" path="mvz2:effect/gear_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="pow" type="entity" path="mvz2:effect/pow" width="56" height="56" xOffset="0" yOffset="0"/>
+    <model name="vortex" type="entity" path="mvz2:effect/vortex" width="240" height="240" xOffset="0" yOffset="0"/>
+    <model name="giant_spike" type="entity" path="mvz2:effect/giant_spike" width="16" height="128" xOffset="0" yOffset="-64"/>
+    <model name="fire_breath" type="entity" path="mvz2:effect/fire_breath" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="magnetic_line" type="entity" path="mvz2:effect/magnetic_line" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="hoe" type="entity" path="mvz2:effect/hoe" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="breakout_board" type="entity" path="mvz2:effect/breakout_board" width="32" height="160" xOffset="0" yOffset="0"/>
+    <model name="nightmare_watching_eye" type="entity" path="mvz2:effect/nightmare_watching_eye" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="nightmare_portal" type="entity" path="mvz2:effect/nightmare_portal" width="64" height="120" xOffset="0" yOffset="-50" />
+    <model name="dark_matter_particles" type="entity" path="mvz2:effect/dark_matter_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="nightmareaper_splash" type="entity" path="mvz2:effect/nightmareaper_splash" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="nightmareaper_shadow" type="entity" path="mvz2:effect/nightmareaper_shadow" width="240" height="200" xOffset="0" yOffset="-20"/>
+    <model name="slice_spark" type="entity" path="mvz2:effect/slice_spark" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="crushing_walls" type="entity" path="mvz2:effect/crushing_walls" width="800" height="600" xOffset="0" yOffset="0"/>
+    <model name="nightmareaper_timer" type="entity" path="mvz2:effect/nightmareaper_timer" width="160" height="50" xOffset="0" yOffset="0"/>
+    <model name="nightmare_darkness" type="entity" path="mvz2:effect/nightmare_darkness" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="nightmare_glass" type="entity" path="mvz2:effect/nightmare_glass" shot="false" width="1020" height="600" xOffset="510" yOffset="300"/>
+    <model name="floating_text" type="entity" path="mvz2:effect/floating_text" width="80" height="25" xOffset="0" yOffset="0"/>
+    <model name="spike_particles" type="entity" path="mvz2:effect/spike_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="diamond_spike_particles" type="entity" path="mvz2:effect/diamond_spike_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="mind_control_lines" type="entity" path="mvz2:effect/mind_control_lines" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="mutant_zombie_weapon" type="entity" path="mvz2:effect/mutant_zombie_weapon" width="180" height="50" xOffset="0" yOffset="-25"/>
+    <model name="water_lightning_particles" type="entity" path="mvz2:effect/water_lightning_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="thunder_cloud" type="entity" path="mvz2:effect/thunder_cloud" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="magic_bomb_explosion" type="entity" path="mvz2:effect/magic_bomb_explosion" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
+    <model name="seija_camera_frame" type="entity" path="mvz2:effect/seija_camera_frame" shot="false" width="160" height="240" xOffset="0" yOffset="0"/>
+    <model name="seija_faint_effect" type="entity" path="mvz2:effect/seija_faint_effect" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="wither_summoners" type="entity" path="mvz2:effect/wither_summoners" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="castle_twilight" type="entity" path="mvz2:effect/castle_twilight" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+
+    <!-- Projectiles -->
+    <model name="arrow" type="entity" path="mvz2:projectile/arrow" width="32" height="10" xOffset="0" yOffset="0"/>
+    <model name="mine_tnt_seed" type="entity" path="mvz2:projectile/mine_tnt_seed" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="snowball" type="entity" path="mvz2:projectile/snowball" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="large_snowball" type="entity" path="mvz2:projectile/large_snowball" width="32" height="32" xOffset="0" yOffset="-12"/>
+    <model name="soulfire_ball" type="entity" path="mvz2:projectile/soulfire_ball" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="knife" type="entity" path="mvz2:projectile/knife" width="32" height="10" xOffset="0" yOffset="0"/>
+    <model name="fire_charge" type="entity" path="mvz2:projectile/fire_charge" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="bullet" type="entity" path="mvz2:projectile/bullet" width="32" height="2" xOffset="0" yOffset="0"/>
+    <model name="missile" type="entity" path="mvz2:projectile/missile" width="64" height="20" xOffset="0" yOffset="0"/>
+    <model name="large_arrow" type="entity" path="mvz2:projectile/large_arrow" width="64" height="20" xOffset="0" yOffset="0"/>
+    <model name="spike" type="entity" path="mvz2:projectile/spike" width="20" height="11" xOffset="0" yOffset="0"/>
+    <model name="spike_ball" type="entity" path="mvz2:projectile/spike_ball" width="20" height="20" xOffset="0" yOffset="0"/>
+    <model name="dart" type="entity" path="mvz2:projectile/dart" width="32" height="10" xOffset="0" yOffset="0"/>
+    <model name="poison_javelin" type="entity" path="mvz2:projectile/poison_javelin" width="96" height="10" xOffset="0" yOffset="0"/>
+    <model name="parabot" type="entity" path="mvz2:projectile/parabot" width="32" height="16" xOffset="0" yOffset="0"/>
+    <model name="breakout_pearl" type="entity" path="mvz2:projectile/breakout_pearl" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="wooden_ball" type="entity" path="mvz2:projectile/wooden_ball" width="24" height="24" xOffset="0" yOffset="-12"/>
+    <model name="cobble" type="entity" path="mvz2:projectile/cobble" width="12" height="12" xOffset="0" yOffset="-6"/>
+    <model name="boulder" type="entity" path="mvz2:projectile/boulder" width="48" height="48" xOffset="0" yOffset="-24"/>
+	<model name="bounce_boulder" type="entity" path="mvz2:projectile/bounce_boulder" width="56" height="56" xOffset="0" yOffset="-28"/>
+    <model name="golden_ball" type="entity" path="mvz2:projectile/golden_ball" width="24" height="24" xOffset="0" yOffset="-12"/>
+    <model name="diamond_caltrop" type="entity" path="mvz2:projectile/diamond_caltrop" width="16" height="16" xOffset="0" yOffset="-8"/>
+    <model name="compelling_orb" type="entity" path="mvz2:projectile/compelling_orb" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="seija_magic_bomb" type="entity" path="mvz2:projectile/seija_magic_bomb" width="24" height="24" xOffset="0" yOffset="-12"/>
+    <model name="seija_bullet" type="entity" path="mvz2:projectile/seija_bullet" width="32" height="16" xOffset="0" yOffset="0"/>
+    <model name="wither_skull" type="entity" path="mvz2:projectile/wither_skull" width="32" height="32" xOffset="0" yOffset="0"/>
+
+    <!-- Armors -->
+    <model name="leather_cap" type="armor" path="mvz2:armor/leather_cap" width="33" height="14" xOffset="0" yOffset="0"/>
+    <model name="iron_helmet" type="armor" path="mvz2:armor/iron_helmet" width="33" height="14" xOffset="0" yOffset="0"/>
+    <model name="boat_item" type="armor" path="mvz2:armor/boat_item" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="mesmerizer_crown" type="armor" path="mvz2:armor/mesmerizer_crown" width="34" height="40" xOffset="0" yOffset="-21"/>
+    <model name="berserker_helmet" type="armor" path="mvz2:armor/berserker_helmet" width="32" height="14" xOffset="0" yOffset="-9"/>
+    <model name="bedserker_helmet" type="armor" path="mvz2:armor/bedserker_helmet" width="32" height="14" xOffset="0" yOffset="-9"/>
+
+    <!-- HeldItems -->
+    <model name="starshard.default" type="held" path="mvz2:held/starshards/default" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="starshard.halloween" type="held" path="mvz2:held/starshards/halloween" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="starshard.dream" type="held" path="mvz2:held/starshards/dream" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="starshard.castle" type="held" path="mvz2:held/starshards/castle" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="pickaxe" type="held" path="mvz2:held/pickaxe" shot="false" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="trigger" type="held" path="mvz2:held/trigger" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="sword" type="held" path="mvz2:held/sword" shot="false" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="target" type="held" path="mvz2:held/target" shot="false" width="64" height="64" xOffset="0" yOffset="-28"/>
+
+    <!-- Icons -->
+    <model name="short_circuit" type="icon" path="mvz2:icon/short_circuit" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="nocturnal" type="icon" path="mvz2:icon/nocturnal" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="static_particles" type="icon" path="mvz2:icon/static_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="dream_key_shield" type="icon" path="mvz2:icon/dream_key_shield" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="terror_parasitized" type="icon" path="mvz2:icon/terror_parasitized" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="weakness_particles" type="icon" path="mvz2:icon/weakness_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="wither_particles" type="icon" path="mvz2:icon/wither_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="dream_alarm" type="icon" path="mvz2:icon/dream_alarm" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="parabot_insected" type="icon" path="mvz2:icon/parabot_insected" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="knockback_wave" type="icon" path="mvz2:icon/knockback_wave" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+
+    <model name="mind_swap" type="ui" path="mvz2:ui/mind_swap" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+</models>

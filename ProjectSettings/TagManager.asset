@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Grid
+  - Shadow
+  - ModelShot
+  - RaycastReceiver
+  - Pickup
+  - Light
+  - Background
+  - LevelShading
+  - GlobalUI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 2237204161
+    locked: 0
+  - name: Pool
+    uniqueID: 2595234015
+    locked: 0
+  - name: Receivers
+    uniqueID: 683829979
+    locked: 0
+  - name: Night
+    uniqueID: 3927748679
+    locked: 0
+  - name: Grid
+    uniqueID: 2302159725
+    locked: 0
+  - name: Carriers
+    uniqueID: 2266745205
+    locked: 0
+  - name: Shadow
+    uniqueID: 2786581321
+    locked: 0
+  - name: BackUI
+    uniqueID: 2202724129
+    locked: 0
+  - name: Entities
+    uniqueID: 4028947305
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4254708015
+    locked: 0
+  - name: Darkness
+    uniqueID: 1572647217
+    locked: 0
+  - name: Pickups
+    uniqueID: 4057018865
+    locked: 0
+  - name: FrontUI
+    uniqueID: 4110715849
+    locked: 0
+  - name: Talk
+    uniqueID: 1660876549
+    locked: 0
+  - name: Money
+    uniqueID: 3947008057
+    locked: 0
+  - name: BlueprintChoose
+    uniqueID: 1393130353
+    locked: 0
+  - name: Almanac
+    uniqueID: 1742501395
+    locked: 0
+  - name: Dialog
+    uniqueID: 2478835277
+    locked: 0
+  - name: ScreenCover
+    uniqueID: 1206696159
+    locked: 0
