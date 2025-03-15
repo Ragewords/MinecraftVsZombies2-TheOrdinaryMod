@@ -294,7 +294,7 @@
             <id name="fragmentId" value="mvz2:furnace"/>
             <id name="stackOn" value="mvz2:drivenser"/>
 
-            <int name="cost" value="125" />
+            <int name="cost" value="150" />
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
         <contraption id="gravity_pad" name="重力板" tooltip="增强上方物体的重力" unlock="mvz2:level.dream_3">
@@ -331,7 +331,7 @@
             <id name="projectileId" value="mvz2:spike" />
             <idArray name="attackerFor" value="mvz2:flying_enemy"/>
 
-            <int name="cost" value="150" />
+            <int name="cost" value="125" />
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
         <dispenser id="totenser" name="图腾发射器" tooltip="发射虚弱的飞镖并灼烧前方的僵尸" unlock="mvz2:level.dream_7">
