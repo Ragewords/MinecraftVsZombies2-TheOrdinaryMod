@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -9,6 +12,9 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffID;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -107,10 +113,11 @@ namespace MVZ2.GameContent.Contraptions
                 if (target.Type != EntityTypes.ENEMY)
                     continue;
                 var vel = target.Velocity;
-                vel.x = 4;
+                vel.x = -4;
                 vel.y = 15;
                 target.Velocity = vel;
                 target.RandomChangeAdjacentLane(self.RNG);
+                target.Stun(300);
 
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
@@ -131,7 +138,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public const int RESTORE_TIME = 1800;
         public const int EVOCATION_DURATION = 120;
-        public const float TOTAL_HP_LOSS = 0.25f;
+        public const float TOTAL_HP_LOSS = 0.4f;
         public static readonly VanillaEntityPropertyMeta FIELD_BROKEN = new VanillaEntityPropertyMeta("Broken");
         public static readonly VanillaEntityPropertyMeta FIELD_RESTORE_TIMER = new VanillaEntityPropertyMeta("RestoreTimer");
         public static readonly VanillaEntityPropertyMeta FIELD_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
