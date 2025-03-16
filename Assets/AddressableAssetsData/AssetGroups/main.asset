@@ -2535,6 +2535,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60dba1fe463246140afed5c3c3c74079
+    m_Address: mvz2:entity/boss/seija_yinyang_orb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 60dc5506a0c15d74d86a0c2fce225f25
     m_Address: mvz2:entity/terror/terror_cry2
     m_ReadOnly: 0
@@ -4396,6 +4402,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a91f725ba10a5c545a6a951003948a10
     m_Address: mvz2:mobile_blueprint/diamond_spikes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a953fd3b13583a946b500bfdc2573157
+    m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/seija_yinyang_orb.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -6307,6 +6319,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Meta
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef4c1bc90c05f0544b518a95513e5f98
+    m_Address: mvz2:enemy/castle/seija_yinyang_orb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef5ee485e90ae3a4cafeb446d07a548c
     m_Address: mvz2:entity/skeleton_horse/skeleton_horse2

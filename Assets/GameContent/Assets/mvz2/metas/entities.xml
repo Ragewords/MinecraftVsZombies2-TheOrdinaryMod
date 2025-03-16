@@ -938,7 +938,7 @@
 
             <int name="cost" value="25" />
         </enemy>
-        <enemy id="seija_cursed_doll" name="正邪的诅咒人偶" deathMessage="？" unlock="mvz2:level.castle_7">
+        <enemy id="seija_yinyang_orb" name="正邪的诅咒人偶" deathMessage="？" unlock="mvz2:level.castle_7">
             <bool name="harmless" value="true" />
             <bool name="notActiveEnemy" value="true"/>
             <bool name="loyal" value="true"/>
@@ -953,6 +953,22 @@
 
             <int name="cost" value="25" />
         </enemy>
+		<enemy id="seija_cursed_doll" name="渴望鲜血的阴阳玉" deathMessage="满身疮痍" unlock="mvz2:level.castle_7">
+			<bool name="harmless" value="true" />
+			<bool name="notActiveEnemy" value="true"/>
+			<bool name="loyal" value="true"/>
+			<bool name="canDeactive" value="false"/>
+			<bool name="invincible" value="true"/>
+			<float name="fallResistance" value="10000"/>
+			<id name="shell" value="mvz2:normal"/>
+			<id name="crySound" null="true"/>
+			<id name="deathSound" null="true"/>
+			<float name="maxHealth" value="9999"/>
+			<float name="damage" value="100"/>
+			<vector3 name="size" x="18" y="18" z="18"/>
+
+			<int name="cost" value="25" />
+		</enemy>
         <enemy id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <float name="range" value="80"/>
             <float name="speed" value="2"/>

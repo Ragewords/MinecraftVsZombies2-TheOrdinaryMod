@@ -37,6 +37,8 @@ namespace MVZ2.GameContent.Bosses
 
             var doll = boss.Spawn(VanillaEnemyID.seijaCursedDoll, boss.Position);
             doll.SetParent(boss);
+            var orb = boss.Spawn(VanillaEnemyID.seijaYinyangOrb, boss.Position);
+            orb.SetParent(boss);
         }
         protected override void UpdateAI(Entity entity)
         {
