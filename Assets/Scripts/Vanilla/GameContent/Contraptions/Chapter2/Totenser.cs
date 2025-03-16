@@ -60,6 +60,11 @@ namespace MVZ2.GameContent.Contraptions
             }
             SetDispenserCount(entity, count);
         }
+        public override void OnShootTick(Entity entity)
+        {
+            var arrow = Shoot(entity);
+            arrow.SetDamage(entity.GetDamage() + Mathf.Min(Mathf.CeilToInt(GetDispenserCount(entity)), entity.GetDamage() / 3));
+        }
         public override void Evoke(Entity entity)
         {
             base.Evoke(entity);
@@ -94,7 +99,7 @@ namespace MVZ2.GameContent.Contraptions
                     fireBreath.SetParent(entity);
                     SetFireBreath(entity, fireBreath);
                 }
-                fireBreath.SetDamage((entity.GetDamage() * 2 / 3) + Mathf.CeilToInt(GetDispenserCount(entity) / 5));
+                fireBreath.SetDamage((entity.GetDamage() * 2 / 3) + Mathf.Min(Mathf.CeilToInt(GetDispenserCount(entity)), entity.GetDamage() / 3));
                 fireBreath.Position = position;
                 fireBreath.SetFactionAndDirection(entity.GetFaction());
             }

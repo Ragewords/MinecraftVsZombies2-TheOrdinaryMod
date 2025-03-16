@@ -85,7 +85,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             var arrow = Shoot(entity);
             arrow.Velocity += new Vector3(GetUpgradeLevel(entity), 0f, 0f) * 1f;
-            arrow.SetDamage(20 + (2 * (GetUpgradeLevel(entity) + 1)));
+            arrow.SetDamage(entity.GetDamage() + (2 * (GetUpgradeLevel(entity) + 1)));
         }
         protected override void OnEvoke(Entity entity)
         {

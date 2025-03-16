@@ -9,7 +9,7 @@ namespace MVZ2.GameContent.Detections
         public SoulsandDetector()
         {
             mask = EntityCollisionHelper.MASK_ENEMY;
-            factionTarget = FactionTarget.Hostile | FactionTarget.Friendly;
+            factionTarget = FactionTarget.Any;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

@@ -129,7 +129,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            entity.Level.Explode(entity.Position, 80, entity.GetFaction(), entity.GetMaxHealth(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION), entity);
+            entity.Level.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION), entity);
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
             explosion.SetSize(Vector3.one * 160);
             entity.PlaySound(VanillaSoundID.explosion);
