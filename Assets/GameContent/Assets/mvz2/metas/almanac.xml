@@ -742,7 +742,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>，而后<color=red>-0.6</color>（产卵后）]]></p>
-                <p>特点：<![CDATA[<color=red>碰到的血肉之躯会被寄生，产卵后持续回复生命</color>]]></p>
+                <p>特点：<![CDATA[<color=red>碰到的血肉之躯会被寄生</color>]]></p>
             </properties>
             <flavor>
                 <p>擅长在网络文件中捆绑流氓软件和BUG。</p>
@@ -753,8 +753,9 @@
                 <p>恐怖寄生虫会在宿主死亡或者成长到极限后撕碎身体并钻出来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>0-50（变化）->250（成长至极限）</color>]]></p>
+                <p>生命：<![CDATA[<color=red>0-50（变化）</color>]]></p>
                 <p>速度：<![CDATA[<color=red>4</color>]]></p>
+				<p>特点：<![CDATA[<color=red>成长到极限后额外钻出一只恐怖之母</color>]]></p>
             </properties>
             <flavor>
                 <p>它还没想好自己的网络冷笑话该怎么写。</p>

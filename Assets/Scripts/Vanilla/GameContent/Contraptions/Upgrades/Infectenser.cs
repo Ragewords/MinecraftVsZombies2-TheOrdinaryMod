@@ -2,6 +2,7 @@
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -28,6 +29,12 @@ namespace MVZ2.GameContent.Contraptions
                 ShootTick(entity);
                 return;
             }
+        }
+        public override void PostTakeDamage(DamageOutput result)
+        {
+            base.PostTakeDamage(result);
+            if (result.HasAnyFatal())
+                result.Entity.Spawn(VanillaContraptionID.smallDispenser, result.Entity.Position);
         }
         public override Entity Shoot(Entity entity)
         {

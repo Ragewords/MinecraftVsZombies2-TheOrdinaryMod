@@ -3,6 +3,7 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using PVZEngine;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -15,6 +16,12 @@ namespace MVZ2.GameContent.Contraptions
     {
         public DiamondSpikes(string nsp, string name) : base(nsp, name)
         {
+        }
+        public override void PostTakeDamage(DamageOutput result)
+        {
+            base.PostTakeDamage(result);
+            if (result.HasAnyFatal())
+                result.Entity.Spawn(VanillaContraptionID.spikeBlock, result.Entity.Position);
         }
         protected override void OnEvoke(Entity entity)
         {

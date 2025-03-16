@@ -31,6 +31,14 @@ namespace MVZ2.GameContent.Contraptions
             SetIsConnectedX(entity, false);
             SetIsConnectedY(entity, false);
         }
+        public override void PreTakeDamage(DamageInput input)
+        {
+            base.PreTakeDamage(input);
+            if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
+            {
+                input.Multiply(0);
+            }
+        }
         public override void Evoke(Entity entity)
         {
             base.Evoke(entity);
@@ -48,10 +56,6 @@ namespace MVZ2.GameContent.Contraptions
             var connectx = GetConnectCoilX(entity);
             var connecty = GetConnectCoilY(entity);
             FindCoil(entity);
-            if (!connectx.ExistsAndAlive())
-                SetIsConnectedX(connectx, false);
-            if (!connecty.ExistsAndAlive())
-                SetIsConnectedY(connecty, false);
             if (entity.State == STATE_IDLE)
             {
                 var timer = GetAttackTimer(entity);
@@ -111,6 +115,16 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetAnimationBool("Attacking", entity.State == STATE_ATTACK);
             entity.SetAnimationBool("ShowArc", entity.State != STATE_ATTACK && !entity.IsAIFrozen());
             entity.SetAnimationFloat("AttackSpeed", entity.GetAttackSpeed());
+        }
+        public override void PostRemove(Entity entity)
+        {
+            base.PostRemove(entity);
+            var connectx = GetConnectCoilX(entity);
+            var connecty = GetConnectCoilY(entity);
+            if (connectx.ExistsAndAlive())
+                SetIsConnectedX(connectx, false);
+            if (connecty.ExistsAndAlive())
+                SetIsConnectedY(connecty, false);
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {

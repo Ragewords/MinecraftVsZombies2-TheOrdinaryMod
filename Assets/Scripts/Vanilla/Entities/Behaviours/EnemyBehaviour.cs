@@ -2,9 +2,11 @@ using System;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.Vanilla.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
+using PVZEngine.Modifiers;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -25,8 +27,8 @@ namespace MVZ2.Vanilla.Entities
 
             entity.SetFaction(entity.Level.Option.RightFaction);
 
-            if (entity.HasBuff<LunaticEnemyBuff>())
-                entity.Health = entity.GetMaxHealth();
+            if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
+                AddModifier(new FloatModifier(EngineEntityProps.HEALTH, NumberOperator.Multiply, 1.5f));
 
             entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT
                 | EntityCollisionHelper.MASK_ENEMY
