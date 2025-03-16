@@ -27,9 +27,6 @@ namespace MVZ2.Vanilla.Entities
 
             entity.SetFaction(entity.Level.Option.RightFaction);
 
-            if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
-                AddModifier(new FloatModifier(EngineEntityProps.HEALTH, NumberOperator.Multiply, 1.5f));
-
             entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT
                 | EntityCollisionHelper.MASK_ENEMY
                 | EntityCollisionHelper.MASK_OBSTACLE
