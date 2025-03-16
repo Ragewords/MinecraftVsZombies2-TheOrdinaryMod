@@ -1,0 +1,30 @@
+{
+    "name": "MVZ2.EditorTests",
+    "rootNamespace": "MVZ2.EditorTests",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Tools",
+        "PVZEngine.Base",
+        "PVZEngine.Level",
+        "MVZ2.Logic",
+        "MVZ2.Vanilla",
+        "MVZ2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

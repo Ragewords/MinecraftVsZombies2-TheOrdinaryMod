@@ -1,0 +1,17 @@
+{
+    "name": "MukioI18n.Editor",
+    "references": [
+        "GUID:4f9765a07f207e1409c08135e58b0219"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
