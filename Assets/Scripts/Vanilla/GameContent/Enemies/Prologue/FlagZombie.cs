@@ -34,9 +34,9 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        public override void PostDeath(Entity entity, DeathInfo damageInfo)
+        public override void PostRemove(Entity entity)
         {
-            base.PostDeath(entity, damageInfo);
+            base.PostRemove(entity);
             foreach (var target in entity.Level.GetEntities(EntityTypes.ENEMY))
             {
                 if (target.IsFriendly(entity))

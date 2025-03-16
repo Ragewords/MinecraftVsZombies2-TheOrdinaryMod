@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     var direction = Quaternion.Euler(0, i * 12 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
                     var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
-                    projectile.SetDamage(30);
+                    projectile.SetDamage(entity.GetDamage());
                     projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
                     projectile.SetPiercing(true);
                 }

@@ -314,6 +314,7 @@
         <contraption id="vortex_hopper" name="漩涡漏斗" tooltip="把附近的僵尸拉入水底" unlock="mvz2:level.dream_4">
 
             <bool name="isFloor" value="true"/>
+			<float name="damage" value="30"/>
             <bool name="loyal" value="true"/>
             <float name="range" value="40"/>
             <id name="shell" value="mvz2:metal"/>

@@ -66,6 +66,7 @@ namespace MVZ2.GameContent.Enemies
             public SoulsandAura()
             {
                 BuffID = VanillaBuffID.soulsand;
+                UpdateInterval = 5;
                 enemyDetector = new SoulsandDetector();
             }
 
