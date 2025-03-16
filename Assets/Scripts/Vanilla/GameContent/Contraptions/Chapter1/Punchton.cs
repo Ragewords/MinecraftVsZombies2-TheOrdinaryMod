@@ -55,6 +55,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetAnimationFloat("Extension", GetArmExtension(entity));
+            entity.SetAnimationFloat("FirstAttack", GetFirstDamage(entity));
             entity.SetAnimationInt("ArmState", GetArmState(entity));
         }
 

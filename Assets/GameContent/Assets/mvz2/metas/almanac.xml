@@ -262,8 +262,8 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>15（飞镖），20+(场上发射器数量÷5)/秒（火焰）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>15-20（飞镖），20-30/秒（火焰）</color>]]></p>
+                <p>特点：<![CDATA[<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害；与场上的远程攻击型器械连携，增加自身伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>投出穿透敌人的长矛，并留下使敌人虚弱的毒雾轨迹</color>]]></p>
             </properties>
             <flavor>
@@ -383,7 +383,7 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人，并在周围产生电磁爆。攻击时，处于两个同一行或列的磁暴线圈之间会产生电场，对其中的敌人造成伤害。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人，并在周围产生电磁爆。攻击时，处于同一行或列的两个磁暴线圈之间会产生电场，对其中的敌人造成伤害。</p>
             </header>
             <properties>
 				<p>耐久：<![CDATA[<color=red>1200</color>]]></p>
@@ -647,7 +647,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>1200</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>冲击活塞</color>]]></p>
-				<p>特点：<![CDATA[<color=red>死亡时掉落蓝宝石</color>]]></p>
+				<p>特点：<![CDATA[<color=red>死亡时掉落一个绿宝石</color>]]></p>
             </properties>
             <flavor>
                 <p>石像鬼和他的妈妈住在山上的一间小屋中。石像鬼画画，玩玩具，妈妈就在电视上看广播。生活很简单，他们也很幸福。直到有一天石像鬼的妈妈从天上听到了雷声……</p>

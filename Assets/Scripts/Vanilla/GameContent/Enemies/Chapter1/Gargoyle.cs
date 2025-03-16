@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            entity.Produce(VanillaPickupID.sapphire);
+            entity.Produce(VanillaPickupID.emerald);
             entity.PostFragmentDeath(info);
             entity.Remove();
         }

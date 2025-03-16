@@ -14,7 +14,7 @@ namespace MVZ2.GameContent.Buffs.Level
     {
         public LevelLunaticBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiplie, 0.5f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiplie, 1f));
             AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());
@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Buffs.Level
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
             {
                 var level = auraEffect.Source.GetLevel();
-                results.AddRange(level.GetEntities(EntityTypes.ENEMY));
+                results.AddRange(level.GetEntities(EntityTypes.PLANT));
             }
         }
         public class EnemyAura : AuraEffectDefinition
