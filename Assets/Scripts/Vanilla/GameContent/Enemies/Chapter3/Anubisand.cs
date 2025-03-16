@@ -38,9 +38,7 @@ namespace MVZ2.GameContent.Enemies
                 offset.x *= enemy.GetFacingX();
                 for (var i = -1; i <=1; i++)
                 {
-                    var sand = enemy.Spawn(VanillaEnemyID.soulsand, enemy.Position + offset);
-                    var vel = sand.Velocity;
-                    vel.x += i * 5;
+                    var sand = enemy.Spawn(VanillaEnemyID.soulsand, enemy.Position + offset + i * new Vector3(64, 0, 0));
                     sand.AddBuff<SoulsandSummonedBuff>();
                     sand.SetFactionAndDirection(enemy.GetFaction());
                 }

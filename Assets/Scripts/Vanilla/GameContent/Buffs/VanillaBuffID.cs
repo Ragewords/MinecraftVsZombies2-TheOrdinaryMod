@@ -95,6 +95,7 @@ namespace MVZ2.GameContent.Buffs
 
         // Difficulty
         public const string easyContraption = "easy_contraption";
+        public const string lunaticContraption = "lunatic_contraption";
         public const string easyArmor = "easy_armor";
         public const string hardEnemy = "hard_enemy";
         public const string lunaticEnemy = "lunatic_enemy";
@@ -166,6 +167,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID thunderLightFadeout = Get(VanillaBuffNames.thunderLightFadeout);
         public static readonly NamespaceID cartFadeIn = Get(VanillaBuffNames.cartFadeIn);
         public static readonly NamespaceID easyContraption = Get(VanillaBuffNames.easyContraption);
+        public static readonly NamespaceID lunaticContraption = Get(VanillaBuffNames.lunaticContraption);
         public static readonly NamespaceID easyArmor = Get(VanillaBuffNames.easyArmor);
         public static readonly NamespaceID hardEnemy = Get(VanillaBuffNames.hardEnemy);
         public static readonly NamespaceID lunaticEnemy = Get(VanillaBuffNames.lunaticEnemy);

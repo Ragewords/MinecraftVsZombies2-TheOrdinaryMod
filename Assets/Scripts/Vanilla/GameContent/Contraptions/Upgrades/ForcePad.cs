@@ -19,6 +19,7 @@ using MVZ2Logic.Models;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.SeedPacks;
@@ -40,6 +41,12 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.SetSortingLayer(SortingLayers.carriers);
+        }
+        public override void PostTakeDamage(DamageOutput result)
+        {
+            base.PostTakeDamage(result);
+            if (result.HasAnyFatal())
+                result.Entity.Spawn(VanillaContraptionID.gravityPad, result.Entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {
