@@ -972,7 +972,7 @@
 
 			<int name="cost" value="25" />
 		</enemy>
-		<enemy id="seija_jizo" name="替身地藏">
+		<enemy id="seija_jizo" name="替身地藏" deathMessage="不是哥们" unlock="mvz2:level.castle_7">
 			<float name="maxHealth" value="1000"/>
 			<vector3 name="size" x="32" y="47" z="32"/>
 			<bool name="loyal" value="true"/>
