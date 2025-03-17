@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
@@ -27,6 +28,8 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            var buff = entity.AddBuff<FlyBuff>();
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 30);
             SetShootTimer(entity, new FrameTimer(150));
             SetRepeatTime(entity, 5);
             SetRepeatShootTimer(entity, new FrameTimer(5));

@@ -98,10 +98,10 @@ namespace MVZ2.GameContent.Contraptions
                         entity.PlaySound(VanillaSoundID.teslaAttack);
                         entity.Spawn(VanillaEffectID.waterLightningParticles, entity.Position);
 
-                        if (connectx.ExistsAndAlive() && connectx.IsFriendly(entity))
+                        if (connectx.ExistsAndAlive() && connectx.IsFriendly(entity) && !connectx.IsAIFrozen())
                             CreateArc(entity, sourcePosition, connectx.Position + ARC_OFFSET);
 
-                        if (connecty.ExistsAndAlive() && connecty.IsFriendly(entity))
+                        if (connecty.ExistsAndAlive() && connecty.IsFriendly(entity) && !connecty.IsAIFrozen())
                             CreateArc(entity, sourcePosition, connecty.Position + ARC_OFFSET);
                     }
                     timer.ResetTime(ATTACK_COOLDOWN);
@@ -155,6 +155,8 @@ namespace MVZ2.GameContent.Contraptions
                     continue;
                 else if (coilx.IsHostile(entity))
                     continue;
+                else if (coilx.IsAIFrozen())
+                    continue;
                 else if (coilx.GetDefinitionID() != VanillaContraptionID.teslaCoil)
                     continue;
                 else if (coilx.ID == entity.ID)
@@ -177,6 +179,8 @@ namespace MVZ2.GameContent.Contraptions
                 if (coily.GetColumn() != entity.GetColumn())
                     continue;
                 else if (coily.IsHostile(entity))
+                    continue;
+                else if (coily.IsAIFrozen())
                     continue;
                 else if (coily.GetDefinitionID() != VanillaContraptionID.teslaCoil)
                     continue;
@@ -220,7 +224,7 @@ namespace MVZ2.GameContent.Contraptions
             var connectx = GetConnectCoilX(source);
             if (connectx.ExistsAndAlive())
             {
-                if (connectx.IsHostile(source))
+                if (connectx.IsHostile(source) || connectx.IsAIFrozen())
                     return;
                 level.GetConnectedLaneGrids(source.Position, connectx.Position, gridDetectBuffer);
                 foreach (var grid in gridDetectBuffer)
@@ -233,7 +237,7 @@ namespace MVZ2.GameContent.Contraptions
             var connecty = GetConnectCoilY(source);
             if (connecty.ExistsAndAlive())
             {
-                if (connecty.IsHostile(source))
+                if (connecty.IsHostile(source) || connecty.IsAIFrozen())
                     return;
                 level.GetConnectedColumnGrids(source.Position, connecty.Position, gridDetectBuffer);
                 foreach (var grid in gridDetectBuffer)

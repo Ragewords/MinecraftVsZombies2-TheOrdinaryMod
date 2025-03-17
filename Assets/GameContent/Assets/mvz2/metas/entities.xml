@@ -945,6 +945,7 @@
             <bool name="loyal" value="true"/>
             <bool name="canDeactive" value="false"/>
             <bool name="invincible" value="true"/>
+			<bool name="invisible" value="true"/>
             <float name="fallResistance" value="10000"/>
             <id name="shell" value="mvz2:normal"/>
             <id name="crySound" null="true"/>
@@ -960,6 +961,7 @@
 			<bool name="loyal" value="true"/>
 			<bool name="canDeactive" value="false"/>
 			<bool name="invincible" value="true"/>
+			<bool name="invisible" value="true"/>
 			<float name="fallResistance" value="10000"/>
 			<id name="shell" value="mvz2:normal"/>
 			<id name="crySound" null="true"/>
@@ -969,6 +971,20 @@
 			<vector3 name="size" x="18" y="18" z="18"/>
 
 			<int name="cost" value="25" />
+		</enemy>
+		<enemy id="seija_jizo" name="替身地藏">
+			<float name="maxHealth" value="1000"/>
+			<vector3 name="size" x="32" y="47" z="32"/>
+			<bool name="loyal" value="true"/>
+			<bool name="notActiveEnemy" value="true"/>
+			<bool name="harmless" value="true" />
+			<bool name="canDeactive" value="false"/>
+			<id name="shell" value="mvz2:stone"/>
+			<id name="crySound" null="true"/>
+			<float name="fallResistance" value="10000"/>
+			<id name="fragmentId" value="mvz2:furnace"/>
+			<vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
+			<idArray name="gridLayers" value="mvz2:main mvz2:carrier"/>
 		</enemy>
         <enemy id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <float name="range" value="80"/>
@@ -1017,7 +1033,7 @@
         </boss>
         <boss id="seija" name="鬼人正邪">
             <int name="waterInteraction" value="1"/>
-            <float name="maxHealth" value="2552"/>
+            <float name="maxHealth" value="6699"/>
             <vector3 name="size" x="30" y="88" z="30"/>
             <color name="bloodColor" value="#7F0000FF"/>
             <color name="bloodColorCensored" value="#00007FFF"/>

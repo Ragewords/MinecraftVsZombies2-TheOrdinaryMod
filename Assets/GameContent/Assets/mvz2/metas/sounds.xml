@@ -187,6 +187,9 @@
     <sound name="fast_forward" priority="64">
         <sample path="mvz2:fast_forward" weight="1" />
     </sound>
+	<sound name="fault" maxCount="1">
+		<sample path="mvz2:entity/seija/fault" weight="1" />
+	</sound>
     <sound name="final_item" priority="0">
         <sample path="mvz2:final_item" weight="1" />
     </sound>
@@ -474,6 +477,9 @@
     <sound name="punch">
         <sample path="mvz2:punch" weight="1" />
     </sound>
+	<sound name="jizo_appear">
+		<sample path="mvz2:entity/seija/jizo_appear" weight="1" />
+	</sound>
     <sound name="rain">
         <sample path="mvz2:rain" weight="1" />
     </sound>

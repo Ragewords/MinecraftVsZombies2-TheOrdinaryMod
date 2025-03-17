@@ -59,6 +59,10 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
+                if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
+                {
+                    enemy.Charm(target.GetFaction());
+                }
                 var rng = GetEnemyRNG(target);
                 NamespaceID[] pool = enemyPool;
                 var targetID = pool.Random(rng);

@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
@@ -10,6 +11,8 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -49,6 +52,7 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.UpdateAI(entity);
             var timer = GetFabricCooldownTimer(entity);
             timer.Run();
+            entity.SetIsInvisible(entity.HasBuff<SeijaLanternBuff>());
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -168,6 +172,12 @@ namespace MVZ2.GameContent.Bosses
             SetRecentTakenDamage(boss, 0);
             boss.PlaySound(VanillaSoundID.nimbleFabric);
         }
+        public static void UseLantern(Entity boss)
+        {
+            var buff = boss.AddBuff<SeijaLanternBuff>();
+            buff.SetProperty(SeijaLanternBuff.PROP_TIMEOUT, 300);
+            boss.PlaySound(VanillaSoundID.fault, volume: 0.5f);
+        }
         public static bool ShouldCamera(Entity boss)
         {
             return cameraDetector.DetectEntityCount(boss) >= CAMERA_ENEMY_COUNT;
@@ -236,6 +246,7 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_GAP_BOMB = VanillaEntityStates.SEIJA_GAP_BOMB;
         private const int STATE_CAMERA = VanillaEntityStates.SEIJA_CAMERA;
         private const int STATE_FABRIC = VanillaEntityStates.SEIJA_FABRIC;
+        private const int STATE_LANTERN = VanillaEntityStates.SEIJA_LANTERN;
         private const int STATE_FAINT = VanillaEntityStates.SEIJA_FAINT;
         #endregion 常量
 

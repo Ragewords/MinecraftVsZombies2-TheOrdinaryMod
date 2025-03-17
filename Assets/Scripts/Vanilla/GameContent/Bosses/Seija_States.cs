@@ -2,6 +2,8 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Obstacles;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
@@ -9,7 +11,9 @@ using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
+using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -29,6 +33,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new GapBombState());
                 AddState(new CameraState());
                 AddState(new FabricState());
+                AddState(new LanternState());
                 AddState(new FaintState());
             }
         }
@@ -281,6 +286,10 @@ namespace MVZ2.GameContent.Bosses
                             }
                             else
                             {
+                                var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
+                                jizo.SetFaction(entity.GetFaction());
+                                jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 2, 0);
+                                entity.PlaySound(VanillaSoundID.jizo_appear);
                                 stateMachine.StartState(entity, STATE_IDLE);
                             }
                         }
@@ -558,6 +567,55 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_OFF:
                         if (substateTimer.Expired)
                         {
+                            if (!entity.HasBuff<SeijaLanternBuff>())
+                                stateMachine.StartState(entity, STATE_LANTERN);
+                            else
+                            {
+                                if (CanBackflip(entity))
+                                {
+                                    stateMachine.StartState(entity, STATE_BACKFLIP);
+                                }
+                                else
+                                {
+                                    stateMachine.StartState(entity, STATE_IDLE);
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+            public const int SUBSTATE_FABRICED = 0;
+            public const int SUBSTATE_OFF = 1;
+
+        }
+        private class LanternState : EntityStateMachineState
+        {
+            public LanternState() : base(STATE_LANTERN) { }
+
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(35);
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+                var substate = stateMachine.GetSubState(entity);
+                switch (substate)
+                {
+                    case SUBSTATE_USELANTERN:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            UseLantern(entity);
+                            substateTimer.ResetTime(15);
+                        }
+                        break;
+                    case SUBSTATE_END:
+                        if (substateTimer.Expired)
+                        {
                             if (CanBackflip(entity))
                             {
                                 stateMachine.StartState(entity, STATE_BACKFLIP);
@@ -570,9 +628,8 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
-            public const int SUBSTATE_FABRICED = 0;
-            public const int SUBSTATE_OFF = 1;
-
+            public const int SUBSTATE_USELANTERN = 0;
+            public const int SUBSTATE_END = 1;
         }
         private class FaintState : EntityStateMachineState
         {
