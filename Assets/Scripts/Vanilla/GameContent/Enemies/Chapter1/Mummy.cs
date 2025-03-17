@@ -31,7 +31,6 @@ namespace MVZ2.GameContent.Enemies
             gas.SetScale(entity.GetScale());
             var zombie = entity.Level.Spawn(VanillaEnemyID.zombie, entity.Position, entity);
             zombie.SetFactionAndDirection(entity.GetFaction());
-            zombie.SetScale(entity.GetScale());
             if (entity.RNG.Next(20) < 6)
                 zombie.EquipArmor<LeatherCap>();
             else if (entity.RNG.Next(20) >= 6 && entity.RNG.Next(20) <= 8)

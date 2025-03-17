@@ -50,7 +50,7 @@ namespace MVZ2.GameContent.Enemies
             var head = GetHead(entity);
             if (!head.ExistsAndAlive())
                 return;
-            CharmBuff.CloneCharm(buff, head);
+            head.Die();
         }
         protected override int GetActionState(Entity enemy)
         {

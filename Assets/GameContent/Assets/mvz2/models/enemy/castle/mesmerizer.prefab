@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300008, guid: 2223b622235c77b41858ab56433232a5, type: 3}
+    - target: {fileID: 5266264180507097031, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: animators.Array.size
       value: 2

@@ -78,6 +78,7 @@
     <model name="soulsand" type="entity" path="mvz2:enemy/castle/soulsand" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="seija_cursed_doll" type="entity" path="mvz2:enemy/castle/seija_cursed_doll"  width="32" height="32" xOffset="0" yOffset="-16"/>
 	<model name="seija_yinyang_orb" type="entity" path="mvz2:enemy/castle/seija_yinyang_orb"  width="32" height="32" xOffset="0" yOffset="-16"/>
+	<model name="seija_jizo" type="entity" path="mvz2:enemy/castle/seija_jizo" width="32" height="47" xOffset="0" yOffset="-24"/>
     <model name="bedserker" type="entity" path="mvz2:enemy/castle/bedserker" width="72" height="100" xOffset="10" yOffset="-48"/>
 
 

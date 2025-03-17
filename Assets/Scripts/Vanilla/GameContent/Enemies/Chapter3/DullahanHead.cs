@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Enemies
             var body = GetBody(entity);
             if (!body.ExistsAndAlive())
                 return;
-            CharmBuff.CloneCharm(buff, body);
+            body.Die();
         }
         public static Entity GetBody(Entity entity)
         {

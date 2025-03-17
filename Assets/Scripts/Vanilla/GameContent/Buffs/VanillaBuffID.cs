@@ -151,6 +151,7 @@ namespace MVZ2.GameContent.Buffs
             public const string nightmareaperFall = "nightmareaper_fall";
             public const string nightmareaperEnraged = "nightmareaper_enraged";
             public const string seijaFabric = "seija_fabric";
+            public const string seijaLantern = "seija_lantern";
             public const string seijaGap = "seija_gap";
         }
     }

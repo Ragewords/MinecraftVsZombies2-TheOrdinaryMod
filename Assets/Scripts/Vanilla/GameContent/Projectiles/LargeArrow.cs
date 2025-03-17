@@ -35,7 +35,6 @@ namespace MVZ2.GameContent.Projectiles
             shootTimer.Run();
             if (shootTimer.Expired)
             {
-                projectile.TriggerAnimation("Shoot");
                 var shootParams = projectile.GetShootParams();
                 shootParams.projectileID = VanillaProjectileID.arrow;
                 shootParams.damage = 20;
