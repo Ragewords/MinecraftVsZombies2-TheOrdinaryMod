@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -24,6 +28,7 @@ namespace MVZ2.GameContent.Enemies
                 mask = EntityCollisionHelper.MASK_PROJECTILE,
                 invulnerableFilter = (param, e) => e.Type == EntityTypes.PROJECTILE
             };
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
         public override void Init(Entity entity)
         {
@@ -61,6 +66,13 @@ namespace MVZ2.GameContent.Enemies
                 vel = vel.normalized * speed;
                 target.Velocity = vel;
             }
+        }
+        private void PostProjectileHitCallback(ProjectileHitOutput hit, DamageOutput damage)
+        {
+            var projectile = hit.Projectile;
+            if (projectile == null)
+                return;
+            projectile.Die();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
