@@ -45,24 +45,19 @@ namespace MVZ2.GameContent.Projectiles
 
             var lane = projectile.GetLane();
             var zSpeed = speed / 2 * Mathf.Sqrt(3);
-            int zDir = 0;
-            if (zDir == 0)
+            int zDir;
+            if (lane <= 0)
             {
-                if (lane <= 0)
-                {
-                    zDir = -1;
-                }
-                else if (lane >= projectile.Level.GetMaxLaneCount() - 1)
-                {
-                    zDir = 1;
-                }
-                else
-                {
-                    zDir = projectile.RNG.Next(2) * 2 - 1;
-                }
+                zDir = -1;
+            }
+            else if (lane >= projectile.Level.GetMaxLaneCount() - 1)
+            {
+                zDir = 1;
             }
             else
-                zDir *= -1;
+            {
+                zDir = projectile.RNG.Next(2) * 2 - 1;
+            }
             vel.z = zDir * zSpeed;
             projectile.Velocity = vel;
         }

@@ -31,6 +31,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new DanmakuState());
                 AddState(new HammerState());
                 AddState(new GapBombState());
+                AddState(new GapMoveState());
                 AddState(new CameraState());
                 AddState(new FabricState());
                 AddState(new LanternState());
@@ -290,7 +291,7 @@ namespace MVZ2.GameContent.Bosses
                                 jizo.SetFaction(entity.GetFaction());
                                 jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 3, 0);
                                 entity.PlaySound(VanillaSoundID.jizo_appear, volume: 2f);
-                                stateMachine.StartState(entity, STATE_IDLE);
+                                stateMachine.StartState(entity, STATE_GAP_MOVE);
                             }
                         }
                         break;
@@ -300,6 +301,71 @@ namespace MVZ2.GameContent.Bosses
             private List<EntityCollider> smashDetectBuffer = new List<EntityCollider>();
             public const int SUBSTATE_RAISE = 0;
             public const int SUBSTATE_HAMMERED = 1;
+        }
+        private class GapMoveState : EntityStateMachineState
+        {
+            public GapMoveState() : base(STATE_GAP_MOVE) { }
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(52);
+
+                if (!entity.HasBuff<SeijaGapBuff>())
+                {
+                    entity.AddBuff<SeijaGapBuff>();
+                }
+                entity.PlaySound(VanillaSoundID.gapWarp);
+            }
+            public override void OnExit(EntityStateMachine machine, Entity entity)
+            {
+                base.OnExit(machine, entity);
+                entity.RemoveBuffs<SeijaGapBuff>();
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+                var substate = stateMachine.GetSubState(entity);
+
+                switch (substate)
+                {
+                    case SUBSTATE_PRE_RETURN:
+                        if (substateTimer.Expired)
+                        {
+                            var level = entity.Level;
+                            stateMachine.SetSubState(entity, SUBSTATE_RETURN);
+                            substateTimer.ResetTime(23);
+                            var pos = entity.Position;
+                            pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? level.GetMaxColumnCount() - 1 : 0);
+                            var lane = entity.RNG.Next(level.GetMaxLaneCount());
+                            pos.z = level.GetEntityLaneZ(lane);
+                            pos.y = level.GetGroundY(pos.x, pos.z);
+                            entity.Position = pos;
+                            entity.PlaySound(VanillaSoundID.gapWarp);
+                        }
+                        break;
+
+                    case SUBSTATE_RETURN:
+                        if (entity.IsOnGround)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_LANDED);
+                            substateTimer.ResetTime(17);
+                        }
+                        break;
+
+                    case SUBSTATE_LANDED:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.StartState(entity, STATE_IDLE);
+                        }
+                        break;
+                }
+            }
+            public const int SUBSTATE_PRE_RETURN = 0;
+            public const int SUBSTATE_RETURN = 1;
+            public const int SUBSTATE_LANDED = 2;
         }
         private class GapBombState : EntityStateMachineState
         {
@@ -610,7 +676,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_USELANTERN);
                             entity.PlaySound(VanillaSoundID.fault, volume: 0.5f);
-                            substateTimer.ResetTime(5);
+                            substateTimer.ResetTime(10);
                         }
                         break;
                     case SUBSTATE_USELANTERN:
@@ -618,7 +684,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_END);
                             UseLantern(entity);
-                            substateTimer.ResetTime(10);
+                            substateTimer.ResetTime(15);
                         }
                         break;
                     case SUBSTATE_END:

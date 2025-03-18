@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var entity = damageInfo.Entity;
             if (!entity.HasBuff<StoneShieldProtected>())
                 return;
-            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || damageInfo.Effects.HasEffect(VanillaDamageEffects.FIRE) || damageInfo.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
+            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.EXPLOSION))
             {
                 damageInfo.Cancel();
             }

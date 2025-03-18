@@ -227,7 +227,7 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta("BulletAngle");
 
-        private const int MAX_FABRIC_COUNT = 6;
+        private const int MAX_FABRIC_COUNT = 9;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
@@ -246,6 +246,7 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_CAMERA = VanillaEntityStates.SEIJA_CAMERA;
         private const int STATE_FABRIC = VanillaEntityStates.SEIJA_FABRIC;
         private const int STATE_LANTERN = VanillaEntityStates.SEIJA_LANTERN;
+        private const int STATE_GAP_MOVE = VanillaEntityStates.SEIJA_GAP_MOVE;
         private const int STATE_FAINT = VanillaEntityStates.SEIJA_FAINT;
         #endregion 常量
 

@@ -13,6 +13,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -47,7 +48,10 @@ namespace MVZ2.GameContent.Contraptions
                         foreach (var target in detectBuffer)
                         {
                             target.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.GROUND_SPIKES), entity);
-                            if (entity.RNG.Next(100) < 5)
+                        }
+                        if (entity.RNG.Next(100) < 5)
+                        {
+                            foreach (var target in detectBuffer)
                             {
                                 if (target.Entity.Type == EntityTypes.ENEMY)
                                 {
