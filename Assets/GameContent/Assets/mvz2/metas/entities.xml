@@ -980,11 +980,13 @@
 			<bool name="harmless" value="true" />
 			<bool name="canDeactive" value="false"/>
 			<id name="shell" value="mvz2:stone"/>
+			<bool name="noReward" value="true"/>
 			<id name="crySound" null="true"/>
 			<float name="fallResistance" value="10000"/>
-			<id name="fragmentId" value="mvz2:furnace"/>
+			<id name="fragmentId" value="mvz2:jizo"/>
 			<vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
-			<idArray name="gridLayers" value="mvz2:main mvz2:carrier"/>
+
+			<int name="cost" value="25" />
 		</enemy>
         <enemy id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <float name="range" value="80"/>

@@ -3,6 +3,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -117,7 +118,8 @@ namespace MVZ2.GameContent.Contraptions
                 vel.y = 15;
                 target.Velocity = vel;
                 target.RandomChangeAdjacentLane(self.RNG);
-                target.Stun(300);
+                if (target.CanDeactive())
+                    target.Stun(600);
 
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)

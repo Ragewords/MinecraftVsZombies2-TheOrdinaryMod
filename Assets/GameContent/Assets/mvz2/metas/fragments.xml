@@ -186,6 +186,13 @@
 			<key hex="#9e964c" time="0.25"/>
 		</colorKeys>
 	</fragment>
+	<fragment name="jizo">
+		<colorKeys>
+			<key hex="#838383" time="1"/>
+			<key hex="#5d5d5d" time="0.5"/>
+			<key hex="#b40000" time="1"/>
+		</colorKeys>
+	</fragment>
     <fragment name="hell_chariot">
         <colorKeys>
             <key hex="#24232B" time="0.25"/>

@@ -176,7 +176,6 @@ namespace MVZ2.GameContent.Bosses
         {
             var buff = boss.AddBuff<SeijaLanternBuff>();
             buff.SetProperty(SeijaLanternBuff.PROP_TIMEOUT, 300);
-            boss.PlaySound(VanillaSoundID.fault, volume: 0.5f);
         }
         public static bool ShouldCamera(Entity boss)
         {
@@ -228,7 +227,7 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta("BulletAngle");
 
-        private const int MAX_FABRIC_COUNT = 3;
+        private const int MAX_FABRIC_COUNT = 6;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
