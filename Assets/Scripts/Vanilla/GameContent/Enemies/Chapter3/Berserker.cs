@@ -45,8 +45,8 @@ namespace MVZ2.GameContent.Enemies
             var scaleX = Mathf.Abs(scale.x);
             var range = entity.GetRange() * scaleX;
             entity.Level.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
-            entity.Level.Explode(entity.GetCenter(), range * 2, faction, damage / 2, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
-            entity.Level.Explode(entity.GetCenter(), range * 3, faction, damage / 6, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
+            entity.Level.Explode(entity.GetCenter(), range * 2, faction, damage / 2, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
+            entity.Level.Explode(entity.GetCenter(), range * 3, faction, damage / 6, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), entity);
 
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
             explosion.SetSize(Vector3.one * (range * 2));
