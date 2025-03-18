@@ -12,6 +12,7 @@ using System;
 using Tools;
 using MVZ2.GameContent.Buffs.Enemies;
 using static UnityEngine.EventSystems.EventTrigger;
+using PVZEngine.Triggers;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -61,7 +62,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
                 {
-                    enemy.Charm(target.GetFaction());
+                    enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, c => c(enemy));
                 }
                 var rng = GetEnemyRNG(target);
                 NamespaceID[] pool = enemyPool;
