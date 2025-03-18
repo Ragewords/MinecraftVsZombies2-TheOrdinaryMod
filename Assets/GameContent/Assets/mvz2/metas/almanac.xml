@@ -374,7 +374,7 @@
             </header>
             <properties>
                 <p>修复时间：<![CDATA[<color=red>60秒</color>]]></p>
-				<p>眩晕时间：<![CDATA[<color=red>10秒</color>]]></p>
+				<p>眩晕时间：<![CDATA[<color=red>20秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>引发4秒地震，对所有地面上的敌人造成总共40%最大生命的伤害</color>]]></p>
             </properties>
             <flavor>

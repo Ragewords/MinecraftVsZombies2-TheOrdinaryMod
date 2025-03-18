@@ -72,7 +72,9 @@ namespace MVZ2.GameContent.Enemies
             var projectile = hit.Projectile;
             if (projectile == null)
                 return;
-            projectile.Die();
+            var other = hit.Other;
+            if (other.GetDefinitionID() == VanillaEnemyID.seijaCursedDoll)
+                projectile.Die();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
