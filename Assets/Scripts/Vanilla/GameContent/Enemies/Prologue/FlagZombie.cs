@@ -29,20 +29,8 @@ namespace MVZ2.GameContent.Enemies
                     if (!target.HasBuff<FlagZombieEnemySpeedBuff>())
                     {
                         var buff = target.AddBuff<FlagZombieEnemySpeedBuff>();
-                        buff.SetProperty(FlagZombieEnemySpeedBuff.PROP_SPEED_MULTIPLIER, 3);
+                        buff.SetProperty(FlagZombieEnemySpeedBuff.PROP_SPEED_MULTIPLIER, 2);
                     }
-                }
-            }
-        }
-        public override void PostRemove(Entity entity)
-        {
-            base.PostRemove(entity);
-            foreach (var target in entity.Level.GetEntities(EntityTypes.ENEMY))
-            {
-                if (target.IsFriendly(entity))
-                {
-                    if (target.HasBuff<FlagZombieEnemySpeedBuff>())
-                        target.RemoveBuffs<FlagZombieEnemySpeedBuff>();
                 }
             }
         }

@@ -1,9 +1,11 @@
 ﻿using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Projectiles
 {
@@ -29,7 +31,7 @@ namespace MVZ2.GameContent.Projectiles
                 var vel = other.Velocity;
                 vel.x += 6 * Mathf.Sign(projectile.Velocity.x);
                 other.Velocity = vel;
-                if (other.EquipedArmor == null)
+                if (other.EquipedArmor == null && other.CanDeactive())
                     other.Stun(30);
                 projectile.PlaySound(VanillaSoundID.bash);
             }

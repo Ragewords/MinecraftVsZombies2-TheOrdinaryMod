@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_TINT_MULTIPLIER, new Color(0.5f, 0, 1, 0.5f));
+            buff.SetProperty(PROP_TINT_MULTIPLIER, new Color(1, 1, 0, 0.5f));
         }
         public override void PostUpdate(Buff buff)
         {

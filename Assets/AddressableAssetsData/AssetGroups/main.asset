@@ -293,6 +293,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d6c1fd6012e660478636f45f155c05b
+    m_Address: mvz2:entity/boss/seija_jizo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d7f2041adf80d54c9e2d84f3b4a6f2c
     m_Address: mvz2:shading/pool_shade
     m_ReadOnly: 0
@@ -417,6 +423,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 117c828467bf8d947ba2bb0334dd220e
+    m_Address: mvz2:enemy/castle/seija_jizo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1180289811b708d4781f5bd9065fb543
     m_Address: mvz2:entity/projectiles/breakout_pearl
@@ -2535,6 +2547,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 605e1b0f229b5d049a6c0b71f461752f
+    m_Address: mvz2:mobile_blueprint/seija_jizo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6095a96fe9b0021419be1746f4e90d1d
     m_Address: mvz2:power_on
     m_ReadOnly: 0
@@ -3211,12 +3229,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f33cb7a60de87b489f72c12c74ed74d
-    m_Address: mvz2:entity/seija/poyon
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f64dc978ad07e748b9a8a4f54a4215a
     m_Address: mvz2:win_music
@@ -3986,6 +3998,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 996b77b7cfd4ae142901f158112cd3e0
+    m_Address: mvz2:entity/seija/jizo_appear
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99dfee54195e2854daabe32609c9e6d1
     m_Address: mvz2:icon/dream_key_shield
     m_ReadOnly: 0
@@ -4419,7 +4437,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a953fd3b13583a946b500bfdc2573157
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/seija_yinyang_orb.png
+    m_Address: mvz2:mobile_blueprint/seija_yinyang_orb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite

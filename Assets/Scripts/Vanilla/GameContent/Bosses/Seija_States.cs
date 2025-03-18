@@ -288,8 +288,8 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
                                 jizo.SetFaction(entity.GetFaction());
-                                jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 2, 0);
-                                entity.PlaySound(VanillaSoundID.jizo_appear);
+                                jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 3, 0);
+                                entity.PlaySound(VanillaSoundID.jizo_appear, volume: 1.5f);
                                 stateMachine.StartState(entity, STATE_IDLE);
                             }
                         }
@@ -605,12 +605,20 @@ namespace MVZ2.GameContent.Bosses
                 var substate = stateMachine.GetSubState(entity);
                 switch (substate)
                 {
+                    case INTRO:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            entity.PlaySound(VanillaSoundID.fault, volume: 0.5f);
+                            substateTimer.ResetTime(5);
+                        }
+                        break;
                     case SUBSTATE_USELANTERN:
                         if (substateTimer.Expired)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_END);
                             UseLantern(entity);
-                            substateTimer.ResetTime(15);
+                            substateTimer.ResetTime(10);
                         }
                         break;
                     case SUBSTATE_END:
@@ -628,8 +636,9 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
-            public const int SUBSTATE_USELANTERN = 0;
-            public const int SUBSTATE_END = 1;
+            public const int INTRO = 0;
+            public const int SUBSTATE_USELANTERN = 1;
+            public const int SUBSTATE_END = 2;
         }
         private class FaintState : EntityStateMachineState
         {

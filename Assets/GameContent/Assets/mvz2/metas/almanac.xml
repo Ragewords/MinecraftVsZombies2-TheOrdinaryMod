@@ -620,7 +620,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-				<p>特点：<![CDATA[<color=red>在场时所有敌人速度翻倍</color>]]></p>
+				<p>特点：<![CDATA[<color=red>在场时使所有敌人速度×2</color>]]></p>
             </properties>
             <flavor>
                 <p>当他被授予旗帜时，他感到无比的荣幸和骄傲。他觉得自己作为僵尸的领导拥有至高无上的地位，便无时无刻不飘飘然。然而他不知道他的背后有多少人在嘲笑他是个肉盾。</p>
