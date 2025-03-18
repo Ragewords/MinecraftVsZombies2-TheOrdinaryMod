@@ -982,6 +982,7 @@
 			<id name="shell" value="mvz2:stone"/>
 			<bool name="noReward" value="true"/>
 			<id name="crySound" null="true"/>
+			<id name="deathSound" null="true"/>
 			<float name="fallResistance" value="10000"/>
 			<id name="fragmentId" value="mvz2:jizo"/>
 			<vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>

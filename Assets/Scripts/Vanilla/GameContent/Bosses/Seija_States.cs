@@ -289,7 +289,7 @@ namespace MVZ2.GameContent.Bosses
                                 var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
                                 jizo.SetFaction(entity.GetFaction());
                                 jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 3, 0);
-                                entity.PlaySound(VanillaSoundID.jizo_appear, volume: 1.5f);
+                                entity.PlaySound(VanillaSoundID.jizo_appear, volume: 2f);
                                 stateMachine.StartState(entity, STATE_IDLE);
                             }
                         }
@@ -608,7 +608,7 @@ namespace MVZ2.GameContent.Bosses
                     case INTRO:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.SetSubState(entity, SUBSTATE_USELANTERN);
                             entity.PlaySound(VanillaSoundID.fault, volume: 0.5f);
                             substateTimer.ResetTime(5);
                         }
