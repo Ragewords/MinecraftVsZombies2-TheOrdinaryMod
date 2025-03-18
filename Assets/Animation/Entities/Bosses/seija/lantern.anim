@@ -695,7 +695,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 90}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -969,6 +969,15 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -3906,6 +3915,15 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -4077,7 +4095,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
+        value: 90
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -4317,7 +4335,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
+    path: Root/Center/Main/OuterLeg/Lower/Foot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4329,7 +4347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
+    path: Root/Center/Main/OuterLeg/Lower/Foot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4341,7 +4359,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
+    path: Root/Center/Main/OuterLeg/Lower/Foot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4605,7 +4623,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Center/Main/OuterLeg/Lower/Foot
+    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4617,7 +4635,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Center/Main/OuterLeg/Lower/Foot
+    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4629,7 +4647,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Center/Main/OuterLeg/Lower/Foot
+    path: Root/Center/Main/Body/OuterArm/LowerArm/Hand/Lantern
     classID: 4
     script: {fileID: 0}
     flags: 0
