@@ -109,19 +109,20 @@ namespace MVZ2.GameContent.Enemies
                 if (target.GetDefinitionID() == VanillaContraptionID.glowstone)
                     target.Die();
             }
-            var targets = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.Type != EntityTypes.CART).Take(maxcount);
+            var targets = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.GetLane() == entity.GetLane() && e.Type != EntityTypes.CART).Take(maxcount);
             foreach (var target in targets)
             {
                 if (target.GetDefinitionID() != VanillaContraptionID.glowstone)
                     target.Charm(entity.GetFaction());
+                entity.PlaySound(VanillaSoundID.mindControl);
             }
-            var targets_cart = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.Type == EntityTypes.CART).Take(1);
+            var targets_cart = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.GetLane() == entity.GetLane() && e.Type == EntityTypes.CART);
             foreach (var target in targets_cart)
             {
                 target.Charm(entity.GetFaction());
                 target.State = VanillaEntityStates.CART_TRIGGERED;
+                entity.PlaySound(VanillaSoundID.mindControl);
             }
-            entity.PlaySound(VanillaSoundID.mindControl);
         }
         private static bool BrainwashTarget(Entity self, Entity target)
         {
