@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Stages
             if (level.GetProperty<bool>(FIELD_MESMERIZER_SPAWNED))
                 return null;
             level.SetProperty(FIELD_MESMERIZER_SPAWNED, true);
-            var entity = level.Spawn(VanillaEnemyID.hypnotizer, position, null);
+            var entity = level.Spawn(VanillaEnemyID.brainwasher, position, null);
             entity.AddBuff<SeijaMesmerizerBuff>();
             return entity;
         }

@@ -84,7 +84,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 04e36c9db99c20749a276d4252127f71
-    m_Address: mvz2:enemy/castle/hypnotizer
+    m_Address: mvz2:enemy/castle/brainwasher
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
@@ -849,6 +849,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 233a02debafc3624d876e97a93c16291
+    m_Address: mvz2:armor/brainwasher_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23518f4eda2b37a4d93c7c80da15582c
     m_Address: mvz2:entity/effect/miner
@@ -2333,6 +2339,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5a0ed5d8cf792294fb28827ccdea1c42
     m_Address: mvz2:entity/armor/mesmerizer_crown
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a1b2822216b76243b6a5ac76e3e1fbe
+    m_Address: mvz2:mobile_blueprint/hypnotizer
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite

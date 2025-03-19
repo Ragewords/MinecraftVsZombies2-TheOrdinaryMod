@@ -991,7 +991,7 @@
 
 			<int name="cost" value="25" />
 		</enemy>
-		<enemy id="hypnotizer" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_7">
+		<enemy id="brainwasher" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_7">
 			<float name="maxHealth" value="5000"/>
 			<float name="range" value="800"/>
 			<vector3 name="shotOffset" x="30" y="96" z="0"/>
@@ -1002,7 +1002,7 @@
 			<id name="hitSound" value="mvz2:bone_hit"/>
 			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
 
-			<int name="cost" value="150" />
+			<int name="cost" value="250" />
 			<int name="waterInteraction" value="2"/>
 		</enemy>
         <enemy id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
@@ -1275,6 +1275,9 @@
         </projectile>
         <projectile id="compelling_orb">
             <vector3 name="size" x="24" y="24" z="24" />
+			<bool name="isLightSource" value="true"/>
+			<vector3 name="lightRange" x="40" y="40" z="40"/>
+			<color name="lightColor" value="#CF83D1"/>
         </projectile>
         <projectile id="seija_magic_bomb">
             <bool name="noHitEntities" value="true"/>
