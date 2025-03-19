@@ -67,7 +67,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetStateTimer(entity);
-                stateTimer.ResetTime(90);
+                stateTimer.ResetTime(120);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -338,7 +338,7 @@ namespace MVZ2.GameContent.Bosses
                             stateMachine.SetSubState(entity, SUBSTATE_RETURN);
                             substateTimer.ResetTime(23);
                             var pos = entity.Position;
-                            pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? level.GetMaxColumnCount() - 1 : 0);
+                            pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? entity.RNG.Next(level.GetMaxColumnCount() - 3, level.GetMaxColumnCount() - 1) : entity.RNG.Next(0, 2));
                             var lane = entity.RNG.Next(level.GetMaxLaneCount());
                             pos.z = level.GetEntityLaneZ(lane);
                             pos.y = level.GetGroundY(pos.x, pos.z);

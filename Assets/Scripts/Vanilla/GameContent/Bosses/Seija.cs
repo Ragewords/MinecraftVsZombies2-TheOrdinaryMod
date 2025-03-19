@@ -81,7 +81,7 @@ namespace MVZ2.GameContent.Bosses
                     UseFabric(boss);
                 }
             }
-            if (boss.State == STATE_FABRIC)
+            if (boss.State == STATE_FABRIC || boss.State == STATE_LANTERN)
             {
                 damageInfo.Cancel();
             }
