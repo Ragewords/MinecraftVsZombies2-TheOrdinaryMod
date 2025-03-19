@@ -20,8 +20,20 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public SeijaMesmerizerBuff(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
+            AddTrigger(LevelCallbacks.POST_ENTITY_REMOVE, PostEntityRemoveCallback);
         }
         private void PostEntityDeathCallback(Entity enemy, DeathInfo info)
+        {
+            if (!enemy.HasBuff<SeijaMesmerizerBuff>())
+                return;
+            foreach (var seija in enemy.Level.FindEntities(VanillaBossID.seija))
+            {
+                if (seija.IsDead)
+                    continue;
+                seija.Die();
+            }
+        }
+        private void PostEntityRemoveCallback(Entity enemy)
         {
             if (!enemy.HasBuff<SeijaMesmerizerBuff>())
                 return;

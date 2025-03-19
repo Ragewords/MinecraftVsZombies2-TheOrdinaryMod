@@ -57,6 +57,6 @@ namespace MVZ2.GameContent.Artifacts
                 break;
             }
         }
-        public const int TARGET_COLUMN = 3;
+        public const int TARGET_COLUMN = 5;
     }
 }

@@ -97,6 +97,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.anubisand,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
+            VanillaEnemyID.brainwasher,
             VanillaEnemyID.bedserker,
         };
         public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
