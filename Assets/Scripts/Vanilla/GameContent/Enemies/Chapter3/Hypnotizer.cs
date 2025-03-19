@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Projectiles;
@@ -96,14 +97,22 @@ namespace MVZ2.GameContent.Enemies
             {
                 EndCasting(entity);
             }
-            var maxcount = 3;
+            int maxcount = 3;
             if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
                 maxcount = 4;
-            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.IsLoyal()).OrderByDescending(e => e.GetRelativeY()).Take(maxcount);
+            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity));
+            foreach (var target in targets_glowstone)
+            {
+                if (target.GetDefinitionID() == VanillaContraptionID.glowstone)
+                    target.Die();
+            }
+            var targets = entity.Level.FindEntities(e => e.IsHostile(entity)).Take(maxcount);
             foreach (var target in targets)
             {
-                target.Charm(entity.GetFaction());
+                if (target.GetDefinitionID() != VanillaContraptionID.glowstone)
+                    target.Charm(entity.GetFaction());
             }
+            entity.PlaySound(VanillaSoundID.mindControl);
         }
         private void EndCasting(Entity entity)
         {
