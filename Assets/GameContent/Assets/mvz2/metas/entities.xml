@@ -991,7 +991,7 @@
 
 			<int name="cost" value="25" />
 		</enemy>
-		<enemy id="hypnotizer" name="催眠师" deathMessage="H E L P" unlock="mvz2:level.castle_7">
+		<enemy id="hypnotizer" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_7">
 			<float name="maxHealth" value="5000"/>
 			<float name="range" value="800"/>
 			<vector3 name="shotOffset" x="30" y="96" z="0"/>
