@@ -545,6 +545,7 @@
         <contraption id="diamond_spikes" name="钻石尖刺" tooltip="（需要尖刺方块）\n更快扎伤上面的敌人，并具有更高耐久" unlock="mvz2:level.castle_5">
             <float name="maxHealth" value="5400"/>
 			<bool name="contactDamage" value="true"/>
+			<bool name="canDeactive" value="false"/>
             <bool name="defensive" value="false"/>
             <float name="damage" value="20"/>
             <bool name="shadowHidden" value="true"/>
