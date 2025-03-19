@@ -189,8 +189,8 @@
 	<fragment name="jizo">
 		<colorKeys>
 			<key hex="#838383" time="0.5"/>
-			<key hex="#5d5d5d" time="0.25"/>
-			<key hex="#b40000" time="0.5"/>
+			<key hex="#5D5D5D" time="0.25"/>
+			<key hex="#B40000" time="0.5"/>
 		</colorKeys>
 	</fragment>
     <fragment name="hell_chariot">

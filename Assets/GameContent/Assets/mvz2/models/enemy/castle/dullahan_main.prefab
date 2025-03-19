@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 37361269256455460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.006, y: -0.142, z: 0}
+  m_LocalPosition: {x: -0.005, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 8914927994344846242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.048, y: 0.116999984, z: 0}
+  m_LocalPosition: {x: 0.06, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -335,14 +335,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 266275285394652633, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.048
-      objectReference: {fileID: 0}
-    - target: {fileID: 266275285394652633, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.116999984
-      objectReference: {fileID: 0}
     - target: {fileID: 363496779674261978, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: m_Controller
       value: 
@@ -386,22 +378,6 @@ PrefabInstance:
     - target: {fileID: 1002251205305341444, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003734159046245391, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.012000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003734159046245391, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.18699998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267357401874530198, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.007999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267357401874530198, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14699998
       objectReference: {fileID: 0}
     - target: {fileID: 2748955311970698656, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: sprites.Array.data[0]
@@ -503,21 +479,9 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300008, guid: 2223b622235c77b41858ab56433232a5, type: 3}
-    - target: {fileID: 5266264180507097031, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5795746347716959356, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114132798279822428, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114132798279822428, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: animators.Array.size
@@ -579,14 +543,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300006, guid: 2223b622235c77b41858ab56433232a5, type: 3}
-    - target: {fileID: 7800611666529223268, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.092
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800611666529223268, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.063
-      objectReference: {fileID: 0}
     - target: {fileID: 7835400697556474647, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: m_Sprite
       value: 

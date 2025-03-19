@@ -83,6 +83,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04e36c9db99c20749a276d4252127f71
+    m_Address: mvz2:enemy/castle/hypnotizer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0560677ce3ebb444a8893193b27d43fc
     m_Address: mvz2:mainmenu/stats
     m_ReadOnly: 0

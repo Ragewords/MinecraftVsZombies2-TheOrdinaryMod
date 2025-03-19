@@ -289,7 +289,7 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
                                 jizo.SetFaction(entity.GetFaction());
-                                jizo.Velocity = new Vector3(entity.GetFacingX() * 2, 3, 0);
+                                jizo.Velocity = new Vector3(entity.GetFacingX() * 4, 3.5f, 0);
                                 entity.PlaySound(VanillaSoundID.jizo_appear, volume: 2f);
                                 stateMachine.StartState(entity, STATE_GAP_MOVE);
                             }

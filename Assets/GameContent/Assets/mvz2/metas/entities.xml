@@ -985,10 +985,25 @@
 			<id name="crySound" null="true"/>
 			<id name="deathSound" null="true"/>
 			<float name="fallResistance" value="10000"/>
+			<int name="maxTimeout" value="900"/>
 			<id name="fragmentId" value="mvz2:jizo"/>
 			<vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
 
 			<int name="cost" value="25" />
+		</enemy>
+		<enemy id="hypnotizer" name="催眠师" deathMessage="H E L P" unlock="mvz2:level.castle_7">
+			<float name="maxHealth" value="5000"/>
+			<float name="range" value="800"/>
+			<vector3 name="shotOffset" x="30" y="96" z="0"/>
+			<vector3 name="shotVelocity" x="0" y="0" z="0"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="projectileId" value="mvz2:compelling_orb"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="150" />
+			<int name="waterInteraction" value="2"/>
 		</enemy>
         <enemy id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <float name="range" value="80"/>

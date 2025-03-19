@@ -209,6 +209,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: dullahan_head
       objectReference: {fileID: 0}
+    - target: {fileID: 4473588116722756895, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473588116722756895, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5441237328102164597, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.11
