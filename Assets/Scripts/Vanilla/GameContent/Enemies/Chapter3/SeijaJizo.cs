@@ -16,14 +16,19 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             entity.InitFragment();
+            entity.Timeout = entity.GetMaxTimeout();
         }
-        public override void PostTakeDamage(DamageOutput result)
+        protected override void UpdateLogic(Entity entity)
         {
-            base.PostTakeDamage(result);
-            var bodyResult = result.BodyResult;
-            if (bodyResult != null)
+            base.UpdateLogic(entity);
+            entity.UpdateFragment();
+            if (entity.Timeout >= 0)
             {
-                bodyResult.Entity.AddFragmentTickDamage(bodyResult.Amount);
+                entity.Timeout--;
+                if (entity.Timeout <= 0)
+                {
+                    entity.Die(entity);
+                }
             }
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)

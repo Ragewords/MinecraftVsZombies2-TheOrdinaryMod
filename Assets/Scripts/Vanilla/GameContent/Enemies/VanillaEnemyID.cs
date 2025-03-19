@@ -41,6 +41,7 @@ namespace MVZ2.GameContent.Enemies
         public const string seijaCursedDoll = "seija_cursed_doll";
         public const string seijaYinyangOrb = "seija_yinyang_orb";
         public const string seijaJizo = "seija_jizo";
+        public const string hypnotizer = "hypnotizer";
         public const string bedserker = "bedserker";
     }
     public static class VanillaEnemyID
@@ -81,6 +82,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID seijaCursedDoll = Get(VanillaEnemyNames.seijaCursedDoll);
         public static readonly NamespaceID seijaYinyangOrb = Get(VanillaEnemyNames.seijaYinyangOrb);
         public static readonly NamespaceID seijaJizo = Get(VanillaEnemyNames.seijaJizo);
+        public static readonly NamespaceID hypnotizer = Get(VanillaEnemyNames.hypnotizer);
         public static readonly NamespaceID bedserker = Get(VanillaEnemyNames.bedserker);
         private static NamespaceID Get(string name)
         {
