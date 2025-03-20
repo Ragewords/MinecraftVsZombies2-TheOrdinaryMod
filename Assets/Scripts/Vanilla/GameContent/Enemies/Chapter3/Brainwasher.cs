@@ -119,7 +119,7 @@ namespace MVZ2.GameContent.Enemies
             var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.GetLane() != entity.GetLane() && e.Type == EntityTypes.ENEMY).Take(maxcount * 2);
             foreach (var target in targets_enemy)
             {
-                target.Charm(entity.GetFaction());
+                target.Mesmerize();
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
         }
