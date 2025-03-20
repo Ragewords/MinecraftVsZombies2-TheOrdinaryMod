@@ -87,12 +87,15 @@ namespace MVZ2.GameContent.Contraptions
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
                     target.Velocity = target.Velocity + Vector3.up * speed;
                 }
-                var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
-                projectile.SetDamage(900);
-                projectile.SetRange(40);
-                projectile.SetScale(new Vector3(0.7f, 0.7f, 0.7f));
-                projectile.SetDisplayScale(new Vector3(0.7f, 0.7f, 0.7f));
-                projectile.SetShadowScale(new Vector3(0.7f, 0.7f, 0.7f));
+                if (entity.GetDefinitionID() != VanillaProjectileID.flyingTNT)
+                {
+                    var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
+                    projectile.SetDamage(900);
+                    projectile.SetRange(40);
+                    projectile.SetScale(new Vector3(0.7f, 0.7f, 0.7f));
+                    projectile.SetDisplayScale(new Vector3(0.7f, 0.7f, 0.7f));
+                    projectile.SetShadowScale(new Vector3(0.7f, 0.7f, 0.7f));
+                }
             }
             var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
             explosion.SetSize(Vector3.one * (range * 2));
