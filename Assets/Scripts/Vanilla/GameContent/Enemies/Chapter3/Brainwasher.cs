@@ -105,38 +105,23 @@ namespace MVZ2.GameContent.Enemies
                 maxcount = 4;
             if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
                 maxcount = 5;
-            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity));
+            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetDefinitionID() == VanillaContraptionID.glowstone);
             foreach (var target in targets_glowstone)
             {
-                if (target.GetDefinitionID() == VanillaContraptionID.glowstone)
-                    target.Die();
+                target.Die();
             }
-            var targets = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.GetLane() == entity.GetLane() && e.Type != EntityTypes.CART).Take(maxcount);
+            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetLane() == entity.GetLane() && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).Take(maxcount);
             foreach (var target in targets)
             {
-                if (target.GetDefinitionID() != VanillaContraptionID.glowstone)
-                    target.Charm(entity.GetFaction());
+                target.Charm(entity.GetFaction());
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
-            var targets_cart = entity.Level.FindEntities(e => BrainwashTarget(entity, e) && e.GetLane() == entity.GetLane() && e.Type == EntityTypes.CART);
-            foreach (var target in targets_cart)
+            var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.GetLane() != entity.GetLane() && e.Type == EntityTypes.ENEMY).Take(maxcount * 2);
+            foreach (var target in targets_enemy)
             {
                 target.Charm(entity.GetFaction());
-                target.State = VanillaEntityStates.CART_TRIGGERED;
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
-        }
-        private static bool BrainwashTarget(Entity self, Entity target)
-        {
-            if (target == null)
-                return false;
-            if (target.IsDead)
-                return false;
-            if (!self.IsHostile(target))
-                return false;
-            if (!(target.Type == EntityTypes.PLANT || target.Type == EntityTypes.ENEMY || target.Type == EntityTypes.OBSTACLE || target.Type == EntityTypes.CART))
-                return false;
-            return true;
         }
         private void EndCasting(Entity entity)
         {

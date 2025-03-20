@@ -97,6 +97,15 @@ namespace MVZ2.GameContent.Stages
             if (level.GetProperty<bool>(FIELD_MESMERIZER_SPAWNED))
                 return null;
             level.SetProperty(FIELD_MESMERIZER_SPAWNED, true);
+            var entity = level.Spawn(VanillaEnemyID.mesmerizer, position, null);
+            entity.AddBuff<SeijaMesmerizerBuff>();
+            return entity;
+        }
+        private Entity SpawnBrainwasher(LevelEngine level, Vector3 position)
+        {
+            if (level.GetProperty<bool>(FIELD_MESMERIZER_SPAWNED))
+                return null;
+            level.SetProperty(FIELD_MESMERIZER_SPAWNED, true);
             var entity = level.Spawn(VanillaEnemyID.brainwasher, position, null);
             entity.AddBuff<SeijaMesmerizerBuff>();
             return entity;
@@ -111,7 +120,7 @@ namespace MVZ2.GameContent.Stages
             var x = contraption.Position.x;
             var z = contraption.Position.z;
             var y = 800;
-            SpawnMesmerizer(level, new Vector3(x, y, z));
+            SpawnBrainwasher(level, new Vector3(x, y, z));
         }
         public const string PROP_REGION = "seija_stage_behaviour";
         [PropertyRegistry(PROP_REGION)]
