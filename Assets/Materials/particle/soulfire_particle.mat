@@ -39,6 +39,6 @@ Material:
     - _LifeTime: 0
     - _Threshold: 0
     m_Colors:
-    - _EdgeColor: {r: 0, g: 0.6392157, b: 0.5764706, a: 0.32941177}
+    - _EdgeColor: {r: 0, g: 0.8039216, b: 0.69411767, a: 0.32941177}
     - _LocalRect: {r: 0, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
