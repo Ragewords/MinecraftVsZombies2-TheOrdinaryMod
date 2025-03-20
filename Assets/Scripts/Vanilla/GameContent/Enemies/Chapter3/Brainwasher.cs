@@ -101,8 +101,10 @@ namespace MVZ2.GameContent.Enemies
                 EndCasting(entity);
             }
             int maxcount = 3;
-            if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
+            if (entity.Level.Difficulty == VanillaDifficulties.hard)
                 maxcount = 4;
+            if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
+                maxcount = 5;
             var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity));
             foreach (var target in targets_glowstone)
             {
