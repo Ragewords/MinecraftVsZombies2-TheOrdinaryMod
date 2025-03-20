@@ -12,6 +12,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using MVZ2.GameContent.Projectiles;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -34,9 +35,12 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             ShootTick(entity);
             EvokedUpdate(entity);
-            var phantom = GetPhantom(entity);
-            if (!phantom.ExistsAndAlive() && !GetIsPhantom(entity))
-                SummonPhantom(entity);
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            var collider = detector.DetectWithTheMost(entity, e => Mathf.Abs(e.Entity.Position.x - entity.Position.x));
+            entity.Target = collider?.Entity;
         }
         public override void PostRemove(Entity entity)
         {
@@ -44,6 +48,22 @@ namespace MVZ2.GameContent.Contraptions
             var phantom = GetPhantom(entity);
             if (phantom.ExistsAndAlive())
                 phantom.Remove();
+        }
+        public override void OnShootTick(Entity entity)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                var projectile = Shoot(entity);
+                var direction = Quaternion.Euler(0, 20 - i * 40, 0) * entity.GetShotVelocity().normalized;
+                projectile.Velocity = direction * entity.GetShotVelocity().magnitude;
+                var target = entity.Target;
+                var pos = new Vector3(0, 0, 0);
+                if (entity.Target == null)
+                    pos = new Vector3(1020, entity.GetShotOffset().y, entity.GetShotOffset().z);
+                else
+                    pos = new Vector3(target.Position.x, entity.GetShotOffset().y, target.Position.z);
+                Knife.SetDestination(projectile, pos);
+            }
         }
         public override bool CanEvoke(Entity entity)
         {
@@ -161,6 +181,7 @@ namespace MVZ2.GameContent.Contraptions
                             projectile.SetDamage(entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                             projectile.SetFaction(entity.GetFaction());
                             projectile.Velocity = direction * -10;
+                            Knife.SetSpecial(projectile, true);
 
                             var buff = projectile.AddBuff<ProjectileWaitBuff>();
                             buff.SetProperty(ProjectileWaitBuff.PROP_TIMEOUT, 90);
