@@ -12,6 +12,7 @@ namespace MVZ2.GameContent.Buffs
         public const string parabot = "parabot";
         public const string whiteFlash = "white_flash";
         public const string charm = "charm";
+        public const string mesmerize = "mesmerize";
         public const string faction = "faction";
         public const string withered = "withered";
         public const string changeLane = "change_lane";

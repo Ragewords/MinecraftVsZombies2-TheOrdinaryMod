@@ -662,6 +662,28 @@ namespace MVZ2.Vanilla.Entities
             buff.Update();
             entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, c => c(entity, buff));
         }
+        public static void Mesmerize(this Entity entity)
+        {
+            var buff = entity.GetFirstBuff<MesmerizeBuff>();
+            if (buff == null)
+            {
+                buff = entity.AddBuff<MesmerizeBuff>();
+            }
+            MesmerizeBuff.SetPermanent(buff);
+            buff.Update();
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, c => c(entity, buff));
+        }
+        public static void MesmerizeWithSource(this Entity entity, Entity source)
+        {
+            var buff = entity.GetFirstBuff<MesmerizeBuff>();
+            if (buff == null)
+            {
+                buff = entity.AddBuff<MesmerizeBuff>();
+            }
+            MesmerizeBuff.SetSource(buff, source);
+            buff.Update();
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, c => c(entity, buff));
+        }
         public static void RemoveCharm(this Entity entity)
         {
             entity.RemoveBuffs<CharmBuff>();
