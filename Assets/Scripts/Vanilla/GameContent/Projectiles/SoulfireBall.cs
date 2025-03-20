@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Projectiles
                     var projectile = other.ShootProjectile(VanillaProjectileID.soulfireBall, velocity);
                     projectile.Position = entity.Position;
                     projectile.SetFactionAndDirection(entity.GetFaction());
-                    projectile.SetDamage(entity.GetDamage() / 2);
+                    projectile.SetDamage(entity.GetDamage() / 4);
                     projectile.SetScale(new Vector3(0.5f, 0.5f, 0.5f));
                     projectile.SetDisplayScale(new Vector3(0.5f, 0.5f, 0.5f));
                     projectile.SetShadowScale(new Vector3(0.5f, 0.5f, 0.5f));
