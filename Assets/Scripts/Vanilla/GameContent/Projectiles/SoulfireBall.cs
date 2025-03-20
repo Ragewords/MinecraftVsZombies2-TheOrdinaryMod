@@ -54,7 +54,7 @@ namespace MVZ2.GameContent.Projectiles
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    var direction = Quaternion.Euler(0, 45 - i * 30, 0) * new Vector3(1f, 0f, 0f);
+                    var direction = Quaternion.Euler(0, 45 - i * 30, 0) * entity.Velocity.normalized;
                     var velocity = direction * 15;
                     var projectile = other.ShootProjectile(VanillaProjectileID.soulfireBall, velocity);
                     projectile.Position = entity.Position;
