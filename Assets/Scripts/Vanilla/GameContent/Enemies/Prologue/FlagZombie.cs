@@ -22,6 +22,10 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             entity.SetAnimationBool("HasFlag", true);
+        }
+        protected override void UpdateAI(Entity entity)
+        {
+            base.UpdateAI(entity);
             foreach (var target in entity.Level.GetEntities(EntityTypes.ENEMY))
             {
                 if (target.IsFriendly(entity))
