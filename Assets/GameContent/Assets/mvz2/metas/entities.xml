@@ -1001,6 +1001,7 @@
 			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
 			<id name="hitSound" value="mvz2:bone_hit"/>
 			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+			<bool name="loyal" value="true"/>
 
 			<int name="cost" value="250" />
 			<int name="waterInteraction" value="2"/>
