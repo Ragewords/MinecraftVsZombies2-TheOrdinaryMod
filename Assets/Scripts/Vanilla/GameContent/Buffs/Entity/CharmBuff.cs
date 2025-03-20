@@ -6,6 +6,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Buffs
 {
@@ -32,6 +33,8 @@ namespace MVZ2.GameContent.Buffs
 
             var mode = buff.GetProperty<int>(PROP_MODE);
             int targetFaction = buff.GetProperty<int>(PROP_FACTION);
+            if (targetFaction == entity.GetFaction() && entity.Type == EntityTypes.ENEMY)
+                buff.SetProperty(PROP_SPEED, 2f);
             if (mode == CharmModes.SOURCE)
             {
                 var sourceID = buff.GetProperty<EntityID>(PROP_SOURCE);
@@ -46,8 +49,6 @@ namespace MVZ2.GameContent.Buffs
                 {
                     targetFaction = source.GetFaction();
                     buff.SetProperty(PROP_FACTION, targetFaction);
-                    if (targetFaction == entity.GetFaction() && entity.Type == EntityTypes.ENEMY)
-                        buff.SetProperty(PROP_SPEED, 2f);
                 }
             }
         }
