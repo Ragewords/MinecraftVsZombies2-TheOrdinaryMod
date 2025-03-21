@@ -166,12 +166,10 @@
         </entry>
         <entry id="mvz2:silvenser">
             <header>
-                <p>银质发射器能发射穿透血肉之躯的飞刀，并召唤分身协助作战。</p>
+                <p>银质发射器能发射穿透血肉之躯的飞刀，飞刀射出一段时间后向锁定位置飞行。</p>
             </header>
             <properties>
-				<p>分身射程：<![CDATA[<color=red>5.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
-				<p>分身伤害：<![CDATA[<color=red>5，10（对肉体）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
                 <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>]]></p>
             </properties>
