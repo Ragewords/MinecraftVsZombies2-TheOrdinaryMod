@@ -34,6 +34,7 @@ namespace MVZ2.GameContent.Enemies
 
         public const string boneWall = "bone_wall";
         public const string napstablook = "napstablook";
+        public const string frankensteinHead = "frankenstein_head_enemy";
         public const string reverseSatellite = "reverse_satellite";
         public const string skeletonHorse = "skeleton_horse";
         public const string dullahanHead = "dullahan_head";
@@ -75,6 +76,7 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly NamespaceID boneWall = Get(VanillaEnemyNames.boneWall);
         public static readonly NamespaceID napstablook = Get(VanillaEnemyNames.napstablook);
+        public static readonly NamespaceID frankensteinHead = Get(VanillaEnemyNames.frankensteinHead);
         public static readonly NamespaceID reverseSatellite = Get(VanillaEnemyNames.reverseSatellite);
         public static readonly NamespaceID skeletonHorse = Get(VanillaEnemyNames.skeletonHorse);
         public static readonly NamespaceID dullahanHead = Get(VanillaEnemyNames.dullahanHead);

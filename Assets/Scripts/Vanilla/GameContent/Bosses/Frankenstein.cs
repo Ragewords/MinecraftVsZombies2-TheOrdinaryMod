@@ -4,6 +4,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -18,6 +19,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -40,7 +42,7 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.Init(boss);
             stateMachine.StartState(boss, STATE_WAKING);
 
-            if (boss.Level.Difficulty == VanillaDifficulties.hard)
+            if (boss.Level.Difficulty == VanillaDifficulties.hard || boss.Level.Difficulty == VanillaDifficulties.lunatic)
             {
                 EnterSteelPhase(boss);
             }
@@ -67,6 +69,14 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.UpdateLogic(entity);
             entity.SetAnimationBool("MissileVisible", entity.State == STATE_MISSILE && stateMachine.GetSubState(entity) == SUBSTATE_MISSILE_AIM);
             entity.SetAnimationFloat("ActionSpeed", GetFrankensteinActionSpeed(entity));
+            if (IsSteelPhase(entity))
+            {
+                if (entity.Health <= entity.GetMaxHealth() * 0.5f && !IsHeadSplit(entity) && entity.Level.Difficulty != VanillaDifficulties.normal)
+                {
+                    HeadSplit(entity);
+                }
+            }
+            
         }
         public override void PostDeath(Entity boss, DeathInfo damageInfo)
         {
@@ -76,9 +86,16 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damageInfo)
         {
             base.PreTakeDamage(damageInfo);
-            if (damageInfo.Amount > 600)
+            if (damageInfo.Amount > 300)
             {
-                damageInfo.SetAmount(600);
+                damageInfo.SetAmount(300);
+            }
+            if (damageInfo.Entity.State == STATE_FAINT)
+            {
+                if (damageInfo.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
+                {
+                    damageInfo.SetAmount(0);
+                }
             }
         }
         #endregion 事件
@@ -113,7 +130,7 @@ namespace MVZ2.GameContent.Bosses
             SetGunDirection(boss, Vector3.Lerp(gunDir, innerDir, 0.3f));
 
             // 外手臂，发射火箭
-            Vector3 outerArmRootPosition = boss.Position + innerArmRootOffset;
+            Vector3 outerArmRootPosition = boss.Position + outerArmRootOffset;
 
             Vector3 outerDir = boss.GetFacingDirection();
             if (boss.State == STATE_MISSILE && substate == SUBSTATE_MISSILE_AIM && target != null)
@@ -208,7 +225,7 @@ namespace MVZ2.GameContent.Bosses
 
         public static float GetFrankensteinActionSpeed(Entity boss)
         {
-            return boss.Level.Difficulty == VanillaDifficulties.hard ? 2 : 1;
+            return (boss.Level.Difficulty == VanillaDifficulties.hard || boss.Level.Difficulty == VanillaDifficulties.lunatic) ? 2 : 1;
         }
 
         #region 属性
@@ -297,6 +314,24 @@ namespace MVZ2.GameContent.Bosses
             float innerAngle = Vector2.SignedAngle(boss.GetFacingDirection(), direction);
             boss.SetAnimationFloat("OuterArmAngle", innerAngle);
         }
+        private static void HeadSplit(Entity boss)
+        {
+            var level = boss.Level;
+            Vector3 headPos = boss.Position + headOffset;
+            var head = level.Spawn(VanillaEnemyID.frankensteinHead, headPos, boss);
+            head.SetParent(boss);
+            FrankensteinHeadEnemy.SetMoveTarget(head, new Vector3(headPos.x, 60, headPos.z));
+            boss.PlaySound(VanillaSoundID.explosion);
+            boss.PlaySound(VanillaSoundID.powerOff);
+            var expPart = level.Spawn(VanillaEffectID.explosion, headPos, boss);
+            expPart.SetSize(Vector3.one * 60);
+            boss.SetBehaviourField(ID, PROP_HEAD_MISSING, true);
+            boss.SetAnimationBool("HeadMissing", true);
+        }
+        public static bool IsHeadSplit(Entity boss)
+        {
+            return boss.GetBehaviourField<bool>(ID, PROP_HEAD_MISSING);
+        }
 
         private static Vector3 GetJumpTarget(Entity boss)
         {
@@ -306,6 +341,7 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.SetBehaviourField(ID, PROP_JUMP_TARGET, target);
         }
+
 
         #endregion 属性
 
@@ -337,6 +373,8 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_SHOCK_RNG = new VanillaEntityPropertyMeta("ShockRNG");
         private static readonly VanillaEntityPropertyMeta PROP_JUMP_RNG = new VanillaEntityPropertyMeta("JumpRNG");
         private static readonly VanillaEntityPropertyMeta PROP_BULLET_RNG = new VanillaEntityPropertyMeta("BulletRNG");
+
+        private static readonly VanillaEntityPropertyMeta PROP_HEAD_MISSING = new VanillaEntityPropertyMeta("HeadMissing");
 
         private const int STATE_IDLE = VanillaEntityStates.FRANKENSTEIN_IDLE;
         private const int STATE_JUMP = VanillaEntityStates.FRANKENSTEIN_JUMP;

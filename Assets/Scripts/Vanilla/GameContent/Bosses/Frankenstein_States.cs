@@ -6,6 +6,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Damages;
@@ -13,6 +14,9 @@ using PVZEngine.Entities;
 using PVZEngine.Grids;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffID;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -200,10 +204,14 @@ namespace MVZ2.GameContent.Bosses
             {
                 var level = boss.Level;
                 Vector3 headPos = boss.Position + headOffset;
-                var headEffect = level.Spawn(VanillaEffectID.frankensteinHead, headPos, boss);
-                headEffect.Velocity += new Vector3(boss.GetFacingX() * 5, 1, 0);
-                headEffect.SetDisplayScale(new Vector3(-boss.GetFacingX(), 1, 1));
-                FrankensteinHead.SetSteelPhase(headEffect, IsSteelPhase(boss));
+                if (!IsHeadSplit(boss))
+                {
+                    var headEffect = level.Spawn(VanillaEffectID.frankensteinHead, headPos, boss);
+                    headEffect.Velocity += new Vector3(boss.GetFacingX() * 5, 1, 0);
+                    headEffect.SetDisplayScale(new Vector3(-boss.GetFacingX(), 1, 1));
+                    FrankensteinHead.SetSteelPhase(headEffect, IsSteelPhase(boss));
+                    boss.SetAnimationBool("HeadMissing", true);
+                }
 
                 level.ShakeScreen(5, 0, 15);
                 boss.PlaySound(VanillaSoundID.explosion);
@@ -218,6 +226,19 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
+                // 使周围的子弹偏移。
+                var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PROJECTILE && (entity.Position - e.Position).magnitude <= 120);
+                foreach (var target in targets)
+                {
+                    var vel = target.Velocity;
+                    var speed = vel.magnitude;
+                    if (target.GetLane() == entity.GetLane())
+                        vel.x -= (entity.Position.x - target.Position.x) / 4;
+                    else
+                        vel -= (entity.Position - target.Position).normalized * 2;
+                    vel = vel.normalized * speed;
+                    target.Velocity = vel;
+                }
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.Run(stateMachine.GetSpeed(entity));
                 if (substateTimer.Expired)
@@ -227,7 +248,22 @@ namespace MVZ2.GameContent.Bosses
                         EnterSteelPhase(entity);
                         DoTransformationEffects(entity);
                     }
-                    stateMachine.StartState(entity, STATE_WAKING);
+                    else
+                    {
+                        var shockables = entity.Level.FindEntities(e => IsShockable(entity, e));
+                        bool soundPlayed = false;
+                        foreach (Entity contraption in shockables)
+                        {
+                            if (contraption.CanDeactive())
+                                contraption.ShortCircuit(150);
+                            if (!soundPlayed)
+                            {
+                                contraption.PlaySound(VanillaSoundID.powerOff);
+                                soundPlayed = true;
+                            }
+                        }
+                    }
+                        stateMachine.StartState(entity, STATE_WAKING);
                 }
             }
         }

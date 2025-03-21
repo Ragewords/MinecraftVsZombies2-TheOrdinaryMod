@@ -1,3 +1,4 @@
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -24,6 +25,13 @@ namespace MVZ2.GameContent.Effects
             var vel = entity.Velocity;
             vel.y *= -0.4f;
             entity.Velocity = vel;
+        }
+        public override void PostRemove(Entity entity)
+        {
+            base.PostRemove(entity);
+            entity.PlaySound(VanillaSoundID.explosion);
+            var expPart = entity.Level.Spawn(VanillaEffectID.explosion, entity.Position, entity);
+            expPart.SetSize(Vector3.one * 60);
         }
         public static void SetSteelPhase(Entity entity, bool steel)
         {

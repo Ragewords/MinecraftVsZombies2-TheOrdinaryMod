@@ -50,10 +50,8 @@ namespace MVZ2.GameContent.Contraptions
                 var direction = Quaternion.Euler(0, 20 - i * 40, 0) * entity.GetShotVelocity().normalized;
                 projectile.Velocity = direction * entity.GetShotVelocity().magnitude;
                 var target = entity.Target;
-                var pos = new Vector3(0, 0, 0);
-                if (entity.Target == null)
-                    pos = new Vector3(1020, entity.GetShotOffset().y, entity.GetShotOffset().z);
-                else
+                var pos = new Vector3(1020, entity.GetShotOffset().y, entity.GetShotOffset().z);
+                if (entity.Target != null)
                     pos = new Vector3(target.Position.x, entity.GetShotOffset().y, target.Position.z);
                 Knife.SetDestination(projectile, pos);
             }
