@@ -15,6 +15,9 @@ namespace MVZ2.GameContent.Projectiles
         public const string knife = "knife";
         public const string bullet = "bullet";
         public const string missile = "missile";
+        public const string missile_fragments_1 = "missile_fragments_1";
+        public const string missile_fragments_2 = "missile_fragments_2";
+        public const string missile_fragments_3 = "missile_fragments_3";
 
         public const string largeArrow = "large_arrow";
         public const string breakoutPearl = "breakout_pearl";
@@ -49,6 +52,9 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID knife = Get(VanillaProjectileNames.knife);
         public static readonly NamespaceID bullet = Get(VanillaProjectileNames.bullet);
         public static readonly NamespaceID missile = Get(VanillaProjectileNames.missile);
+        public static readonly NamespaceID missile_fragments_1 = Get(VanillaProjectileNames.missile_fragments_1);
+        public static readonly NamespaceID missile_fragments_2 = Get(VanillaProjectileNames.missile_fragments_2);
+        public static readonly NamespaceID missile_fragments_3 = Get(VanillaProjectileNames.missile_fragments_3);
 
         public static readonly NamespaceID largeArrow = Get(VanillaProjectileNames.largeArrow);
         public static readonly NamespaceID breakoutPearl = Get(VanillaProjectileNames.breakoutPearl);

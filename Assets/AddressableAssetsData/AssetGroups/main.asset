@@ -53,6 +53,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 038ff67526649204880f93af49eb24c6
+    m_Address: mvz2:entity/projectiles/missile_fragments_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 03a01e1df2865d441a9fa227eab6a1f6
     m_Address: mvz2:mobile_blueprint/golden_apple
     m_ReadOnly: 0
@@ -885,6 +891,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 245b4e7874a4b8046bd2bd23b5848d05
+    m_Address: mvz2:projectile/missile_fragments_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 246bf4383058f29459ba61df6b57ff55
     m_Address: mvz2:mainmenu/quit
@@ -2211,6 +2223,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5417b719acb5e5b409f69c2c9d136271
+    m_Address: mvz2:entity/boss/frankenstein_head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 544a0e954e368bd47922b782463ea965
     m_Address: mvz2:slow_down
     m_ReadOnly: 0
@@ -3062,6 +3080,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78eefaed2ed6c5b418e9c1c56bb3bd6e
+    m_Address: mvz2:projectile/missile_fragments_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 79171aca3bcf918459cf2160bda1f9f2
     m_Address: mvz2:entity/effects/nightmareaper_shadow
     m_ReadOnly: 0
@@ -3280,6 +3304,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fe15cf03f7a8c64cb0f6007db72398c
     m_Address: mvz2:options/add_pearl
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8031a6442d8e88949b3f996267cacbd7
+    m_Address: mvz2:entity/projectiles/missile_fragments_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -3835,6 +3865,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92b985a62bb31ee47afd41a44c8178b5
+    m_Address: mvz2:entity/projectiles/missile_fragments_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92c4dbf29f435db47a77583bbca3cfd6
     m_Address: mvz2:punch
@@ -5108,6 +5144,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0f8f27b90cc90249ba04e9a05aecb95
+    m_Address: mvz2:projectile/missile_fragments_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c10d5cdc8afb68b48a2e80b9dae85b0f
     m_Address: mvz2:bash
     m_ReadOnly: 0
@@ -5311,6 +5353,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8054f8190ff5fc45a11697ceefe738e
+    m_Address: mvz2:entity/enemy/brainwasher
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c833ac401af4ce44c872c8fe55574646
     m_Address: mvz2:mainmenu/birch_planks
@@ -6013,6 +6061,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1420ae47d7f82d4aa4857af5aaa2cf7
+    m_Address: mvz2:boss/frankenstein_head_enemy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1fb23c573bc08a4bbdc50771db3851b
     m_Address: mvz2:entity/pot/pot_break1

@@ -251,7 +251,7 @@
             <int name="cost" value="150" />
             <id name="rechargeId" value="mvz2:short" />
         </contraption>
-        <dispenser id="silvenser" name="银质发射器" tooltip="射出穿透肉体的飞刀，生成分身协助攻击"  unlock="mvz2:level.halloween_8">
+        <dispenser id="silvenser" name="银质发射器" tooltip="射出穿透肉体的飞刀"  unlock="mvz2:level.halloween_8">
             <float name="damage" value="15"/>
             <id name="projectileId" value="mvz2:knife"/>
             <id name="shell" value="mvz2:metal"/>
@@ -1036,6 +1036,15 @@
             <color name="bloodColor" value="#7F0000FF"/>
             <color name="bloodColorCensored" value="#00007FFF"/>
         </boss>
+		<boss id="frankenstein_head_enemy" name="科学怪人的怪物的头">
+			<int name="waterInteraction" value="1"/>
+			<float name="maxHealth" value="15000"/>
+			<vector3 name="size" x="51" y="42" z="51"/>
+			<vector3 name="shotVelocity" x="20" y="0" z="0"/>
+			<id name="shell" value="mvz2:metal"/>
+			<color name="bloodColor" value="#7F0000FF"/>
+			<color name="bloodColorCensored" value="#00007FFF"/>
+		</boss>
         <boss id="slenderman" name="瘦长鬼影">
             <int name="waterInteraction" value="0"/>
             <float name="maxHealth" value="2500"/>
@@ -1183,6 +1192,21 @@
             <float name="range" value="40"/>
             <vector3 name="size" x="64" y="8" z="8" />
         </projectile>
+		<projectile id="missile_fragments_1">
+			<float name="range" value="40"/>
+			<float name="gravity" value="1" />
+			<vector3 name="size" x="17" y="9" z="9" />
+		</projectile>
+		<projectile id="missile_fragments_2">
+			<float name="range" value="40"/>
+			<float name="gravity" value="1" />
+			<vector3 name="size" x="38" y="9" z="9" />
+		</projectile>
+		<projectile id="missile_fragments_3">
+			<float name="range" value="40"/>
+			<float name="gravity" value="1" />
+			<vector3 name="size" x="17" y="6" z="4" />
+		</projectile>
         <projectile id="fire_charge">
             <bool name="isFire" value="true" />
             <float name="range" value="40"/>
