@@ -1,4 +1,5 @@
-﻿using MVZ2.Vanilla;
+﻿using MVZ2.GameContent.Enemies;
+using MVZ2.Vanilla;
 using PVZEngine;
 
 namespace MVZ2.GameContent.Bosses
@@ -6,16 +7,20 @@ namespace MVZ2.GameContent.Bosses
     public static class VanillaBossNames
     {
         public const string frankenstein = "frankenstein";
+        public const string frankensteinHead = "frankenstein_head_enemy";
         public const string slenderman = "slenderman";
         public const string nightmareaper = "nightmareaper";
+        public const string theEye = "the_eye";
         public const string seija = "seija";
         public const string wither = "wither";
     }
     public static class VanillaBossID
     {
         public static readonly NamespaceID frankenstein = Get(VanillaBossNames.frankenstein);
+        public static readonly NamespaceID frankensteinHead = Get(VanillaBossNames.frankensteinHead);
         public static readonly NamespaceID slenderman = Get(VanillaBossNames.slenderman);
         public static readonly NamespaceID nightmareaper = Get(VanillaBossNames.nightmareaper);
+        public static readonly NamespaceID theEye = Get(VanillaBossNames.theEye);
         public static readonly NamespaceID seija = Get(VanillaBossNames.seija);
         public static readonly NamespaceID wither = Get(VanillaBossNames.wither);
         private static NamespaceID Get(string name)
