@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Bosses
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60);
             entity.AddBuff<FrankensteinSteelBuff>();
-            SetFireTimer(entity, new FrameTimer(30));
+            SetFireTimer(entity, new FrameTimer(45));
             SetMode(entity, GUN_MODE);
             entity.SetAnimationBool("Jet", false);
         }
@@ -71,6 +71,7 @@ namespace MVZ2.GameContent.Bosses
                 case SUBSTATE_PRE_FIRE:
                     if (shootTimer.Expired)
                     {
+                        enemy.SetAnimationBool("JawOpen", true);
                         shootTimer.ResetTime(SHOOT_DURATION / 2);
                         SetState(enemy, SUBSTATE_GUN_FIRE);
                     }
@@ -141,6 +142,14 @@ namespace MVZ2.GameContent.Bosses
                 return;
             }
         }
+        public override void PreTakeDamage(DamageInput damageInfo)
+        {
+            base.PreTakeDamage(damageInfo);
+            if (damageInfo.Amount > 300)
+            {
+                damageInfo.SetAmount(300);
+            }
+        }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
@@ -199,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
             boss.SetBehaviourField(ID, PROP_MOVE_TARGET, target);
         }
         public static readonly NamespaceID ID = VanillaBossID.frankensteinHead;
-        public const int SHOOT_COOLDOWN = 240;
+        public const int SHOOT_COOLDOWN = 300;
         public const int SHOOT_DURATION = 20;
         private static readonly VanillaEntityPropertyMeta PROP_MOVE_TARGET = new VanillaEntityPropertyMeta("MoveTarget");
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
