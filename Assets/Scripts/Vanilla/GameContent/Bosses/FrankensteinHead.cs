@@ -22,8 +22,8 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.frankensteinHead)]
-    public class FrankensteinHeadEnemy : StateEnemy
+    [EntityBehaviourDefinition(VanillaBossNames.frankensteinHead)]
+    public class FrankensteinHeadEnemy : BossBehaviour
     {
         public FrankensteinHeadEnemy(string nsp, string name) : base(nsp, name)
         {
@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Bosses
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60);
             entity.AddBuff<FrankensteinSteelBuff>();
-            SetFireTimer(entity, new FrameTimer(45));
+            SetFireTimer(entity, new FrameTimer(30));
             SetMode(entity, GUN_MODE);
             entity.SetAnimationBool("Jet", false);
         }
@@ -198,8 +198,8 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.SetBehaviourField(ID, PROP_MOVE_TARGET, target);
         }
-        public static readonly NamespaceID ID = VanillaEnemyID.frankensteinHead;
-        public const int SHOOT_COOLDOWN = 300;
+        public static readonly NamespaceID ID = VanillaBossID.frankensteinHead;
+        public const int SHOOT_COOLDOWN = 240;
         public const int SHOOT_DURATION = 20;
         private static readonly VanillaEntityPropertyMeta PROP_MOVE_TARGET = new VanillaEntityPropertyMeta("MoveTarget");
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
