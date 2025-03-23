@@ -73,7 +73,7 @@ namespace MVZ2.GameContent.Enemies
             }
             if (level.Difficulty == VanillaDifficulties.lunatic)
             {
-                count = 4;
+                count = 3;
             }
             for (int i = 0; i < count; i++)
             {

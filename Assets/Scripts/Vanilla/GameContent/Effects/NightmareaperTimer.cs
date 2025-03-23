@@ -30,6 +30,10 @@ namespace MVZ2.GameContent.Effects
             {
                 timeout = 1800;
             }
+            else if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
+            {
+                timeout = 900;
+            }
             SetTimeout(entity, timeout);
             entity.SetSortingLayer(SortingLayers.frontUI);
             entity.SetSortingOrder(-9000);

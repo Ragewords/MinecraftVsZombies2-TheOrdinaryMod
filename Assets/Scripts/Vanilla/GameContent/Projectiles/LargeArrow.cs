@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Projectiles
         public override void Update(Entity projectile)
         {
             base.Update(projectile);
-            projectile.Velocity += projectile.Velocity.normalized * 0.3f;
+            projectile.Velocity -= projectile.Velocity.normalized * 0.3f;
 
             var rotation = projectile.RenderRotation;
             rotation.x += projectile.Velocity.magnitude * 30;

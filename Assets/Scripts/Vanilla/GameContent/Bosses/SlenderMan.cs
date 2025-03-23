@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using MukioI18n;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Buffs.SeedPacks;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
@@ -14,6 +17,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic;
@@ -28,6 +32,7 @@ using PVZEngine.Triggers;
 using Tools;
 using Tools.Mathematics;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -252,6 +257,8 @@ namespace MVZ2.GameContent.Bosses
 
             var rng = GetMindSwapRNG(entity);
             NamespaceID[] pool = level.Difficulty == VanillaDifficulties.hard ? hardMindSwapPool : mindSwapPool;
+            if (level.Difficulty == VanillaDifficulties.lunatic)
+                pool = lunaticMindSwapPool;
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
             {
                 var blueprint = level.GetConveyorSeedPackAt(i);
@@ -290,6 +297,12 @@ namespace MVZ2.GameContent.Bosses
             {
                 count = 2;
             }
+            else if (level.Difficulty == VanillaDifficulties.lunatic)
+            {
+                count = 1;
+                title = Global.Game.GetText(ACCEPT_FATE_TITLE);
+                desc = Global.Game.GetText(ACCEPT_FATE_DESCRIPTION);
+            }
             var rng = GetFateOptionRNG(entity);
             var selected = fateOptions.RandomTake(count, rng).ToArray();
             var options = selected.Select(i => GetFateOptionText(i)).ToArray();
@@ -325,6 +338,9 @@ namespace MVZ2.GameContent.Bosses
                 case FATE_BLACK_SUN:
                     BlackSun(boss);
                     break;
+                case FATE_ILLUSION_EYE:
+                    IllusionEye(boss);
+                    break;
             }
         }
 
@@ -340,6 +356,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 contraption.ClearTakenGrids();
             }
+            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
             var grids = level.GetAllGrids();
             foreach (var contraption in contraptions)
             {
@@ -352,7 +369,27 @@ namespace MVZ2.GameContent.Bosses
                     continue;
                 var grid = targetGrids.Random(rng);
                 contraption.Position = grid.GetEntityPosition();
+                contraption.SetScale(new Vector3(-contraption.GetScale().x, contraption.GetScale().y, contraption.GetScale().z));
+                contraption.SetDisplayScale(new Vector3(-contraption.GetDisplayScale().x, contraption.GetDisplayScale().y, contraption.GetDisplayScale().z));
                 contraption.UpdateTakenGrids();
+            }
+            foreach (var enemy in enemies)
+            {
+                var targetGrids = grids.Where(g => g.CanPlaceEntity(enemy.GetDefinitionID()));
+                if (targetGrids.Count() <= 0)
+                    continue;
+                var grid = targetGrids.Random(rng);
+                enemy.Position = grid.GetEntityPosition();
+                enemy.SetScale(new Vector3(-enemy.GetScale().x, enemy.GetScale().y, enemy.GetScale().z));
+                enemy.SetDisplayScale(new Vector3(-enemy.GetDisplayScale().x, enemy.GetDisplayScale().y, enemy.GetDisplayScale().z));
+                if (level.IsWaterLane(grid.Lane))
+                {
+                    if (enemy.GetWaterInteraction() == 2)
+                    {
+                        enemy.AddBuff<BoatBuff>();
+                        enemy.SetAnimationBool("HasBoat", true);
+                    }
+                }
             }
         }
         private void Biohazard(Entity boss)
@@ -368,7 +405,9 @@ namespace MVZ2.GameContent.Bosses
                     var z = level.GetEntityLaneZ(lane);
                     var y = level.GetGroundY(x, z);
                     Vector3 pos = new Vector3(x, y, z);
-                    SpawnPortal(boss, pos, VanillaEnemyID.ironHelmettedZombie);
+                    SpawnPortal(boss, pos, VanillaEnemyID.leatherCappedZombie);
+                    SpawnPortal(boss, pos, VanillaEnemyID.mummy);
+                    SpawnPortal(boss, pos, VanillaEnemyID.boneWall);
                 }
             }
         }
@@ -377,18 +416,33 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.PlaySound(VanillaSoundID.decrepify);
             boss.Level.AddBuff<NightmareDecrepifyBuff>();
+            var level = boss.Level;
+            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY);
+            foreach (var enemy in targets_enemy)
+            {
+                enemy.TakeDamage(enemy.Health / 2, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), boss);
+                enemy.RemoveArmor();
+            }
         }
 
         private void Insanity(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.confuse);
+            boss.PlaySound(VanillaSoundID.mindControl);
 
             var level = boss.Level;
             var rng = GetEventRNG(boss);
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && !e.IsLoyal()).RandomTake(5, rng);
+            var targetFaction = 0;
             foreach (var target in targets)
             {
+                targetFaction = target.GetFaction();
                 target.Charm(boss.GetFaction());
+            }
+            var targets1 = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsLoyal()).RandomTake(10, rng);
+            foreach (var target in targets1)
+            {
+                target.Charm(targetFaction);
             }
         }
 
@@ -406,6 +460,13 @@ namespace MVZ2.GameContent.Bosses
                 ghast.AddBuff<NightmareComeTrueBuff>();
                 enemy.Remove();
             }
+            var rng = GetEventRNG(boss);
+            var targets_contraption = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
+            foreach (var contraption in targets_contraption)
+            {
+                var buff = contraption.AddBuff<DreamButterflyShieldBuff>();
+                buff.SetProperty(DreamButterflyShieldBuff.PROP_TIMEOUT, 150);
+            }
         }
 
         private void TheLurker(Entity boss)
@@ -416,9 +477,9 @@ namespace MVZ2.GameContent.Bosses
             var rng = GetEventRNG(boss);
             var level = boss.Level;
             level.ShakeScreen(50, 0, 30);
-            var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsOnWater());
-            var randomTargets = targets.RandomTake(Mathf.CeilToInt(targets.Length * 0.5f), rng);
-            foreach (var target in randomTargets)
+            var targets = level.FindEntities(e => (e.Type == EntityTypes.PLANT || e.Type == EntityTypes.ENEMY) && e.IsOnWater());
+            // var randomTargets = targets.RandomTake(Mathf.CeilToInt(targets.Length * 0.5f), rng);
+            foreach (var target in targets)
             {
                 target.Die(boss);
             }
@@ -435,6 +496,24 @@ namespace MVZ2.GameContent.Bosses
             foreach (var contraption in targets)
             {
                 contraption.ShortCircuit(300);
+            }
+            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.CanDeactive());
+            foreach (var enemy in targets_enemy)
+            {
+                enemy.Stun(100);
+            }
+        }
+        private void IllusionEye(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.reverseVampire);
+            var level = boss.Level;
+            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
+            foreach (var enemy in targets_enemy)
+            {
+                if (!enemy.HasBuff<IllusionEyeBuff>())
+                {
+                    enemy.AddBuff<IllusionEyeBuff>();
+                }
             }
         }
         private static string GetFateOptionText(int option)
@@ -454,6 +533,10 @@ namespace MVZ2.GameContent.Bosses
             else if (level.Difficulty == VanillaDifficulties.hard)
             {
                 return 5;
+            }
+            else if (level.Difficulty == VanillaDifficulties.lunatic)
+            {
+                return 6;
             }
             return 4;
         }
@@ -503,8 +586,12 @@ namespace MVZ2.GameContent.Bosses
 
         [TranslateMsg("梦魇对话框标题")]
         public const string CHOOSE_FATE_TITLE = "选择你的命运";
+        [TranslateMsg("梦魇对话框标题")]
+        public const string ACCEPT_FATE_TITLE = "接受你的命运";
         [TranslateMsg("梦魇对话框文本")]
         public const string CHOOSE_FATE_DESCRIPTION = "选吧。";
+        [TranslateMsg("梦魇对话框文本")]
+        public const string ACCEPT_FATE_DESCRIPTION = "不必挣扎。";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_PANDORAS_BOX = "潘多拉的魔盒";
         [TranslateMsg("梦魇选项")]
@@ -519,6 +606,8 @@ namespace MVZ2.GameContent.Bosses
         public const string FATE_TEXT_THE_LURKER = "深潜者";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_BLACK_SUN = "黑太阳";
+        [TranslateMsg("梦魇选项")]
+        public const string FATE_TEXT_ILLUSION_EYE = "幻视之眼";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -546,6 +635,7 @@ namespace MVZ2.GameContent.Bosses
         public const int FATE_COME_TRUE = 4;
         public const int FATE_THE_LURKER = 5;
         public const int FATE_BLACK_SUN = 6;
+        public const int FATE_ILLUSION_EYE = 7;
 
         private static NamespaceID[] portalPool = new NamespaceID[]
         {
@@ -583,6 +673,26 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
         };
+        private static NamespaceID[] lunaticMindSwapPool = new NamespaceID[]
+        {
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.obsidian),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.glowstone),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.punchton),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.ironHelmettedZombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.skeleton),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.spider),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.caveSpider),
+        };
         private static int[] fateOptions = new int[]
         {
             FATE_PANDORAS_BOX,
@@ -592,6 +702,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_COME_TRUE,
             FATE_THE_LURKER,
             FATE_BLACK_SUN,
+            FATE_ILLUSION_EYE,
         };
         private static string[] fateTexts = new string[]
         {
@@ -602,6 +713,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_TEXT_COME_TRUE,
             FATE_TEXT_THE_LURKER,
             FATE_TEXT_BLACK_SUN,
+            FATE_TEXT_ILLUSION_EYE,
         };
         #endregion 常量
     }

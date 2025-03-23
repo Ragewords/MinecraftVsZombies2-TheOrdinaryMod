@@ -65,13 +65,18 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
             else if (level.Difficulty == VanillaDifficulties.lunatic)
             {
-                count = 6;
+                count = 5;
             }
             for (int i = 0; i < count; i++)
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
                 parasite.Health = health;
                 parasite.SetFactionAndDirection(host.GetFaction());
+                if (health >= MAX_PARASITE_HEALTH)
+                {
+                    parasite.SetScale(parasite.GetScale() * 1.5f);
+                    parasite.SetDisplayScale(parasite.GetDisplayScale() * 1.5f);
+                }
             }
             if (health >= MAX_PARASITE_HEALTH)
             {

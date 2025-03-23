@@ -4,12 +4,14 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
@@ -88,6 +90,16 @@ namespace MVZ2.GameContent.Contraptions
                     ent.Die(new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.SELF_DAMAGE), anvil, null);
                 }
             }
+            foreach (Entity target in anvil.Level.FindEntities(e => CanStun(anvil, e)))
+            {
+                if (target.Type == EntityTypes.ENEMY)
+                {
+                    var distance = (target.Position - anvil.Position).magnitude;
+                    var speed = 20 * Mathf.Lerp(1f, 0.5f, distance / 120);
+                    target.Velocity = target.Velocity + Vector3.up * speed;
+                    target.Stun(30);
+                }
+            }
         }
         public static bool CanSmash(Entity anvil, Entity other)
         {
@@ -104,6 +116,10 @@ namespace MVZ2.GameContent.Contraptions
             if (selfGridLayers == null || otherGridLayers == null)
                 return false;
             return selfGridLayers.Any(l => otherGridLayers.Contains(l));
+        }
+        private static bool CanStun(Entity self, Entity target)
+        {
+            return Detection.IsInSphere(target.MainHitbox, self.GetCenter(), 120) && self.IsHostile(target);
         }
     }
 }

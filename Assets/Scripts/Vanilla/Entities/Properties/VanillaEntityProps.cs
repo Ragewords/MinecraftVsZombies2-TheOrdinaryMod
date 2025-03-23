@@ -43,6 +43,10 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity.GetProperty<NamespaceID>(PROJECTILE_ID);
         }
+        public static void SetProjectileID(this Entity entity, NamespaceID id)
+        {
+            entity.SetProperty(PROJECTILE_ID, id);
+        }
         #endregion
 
         #region 攻击

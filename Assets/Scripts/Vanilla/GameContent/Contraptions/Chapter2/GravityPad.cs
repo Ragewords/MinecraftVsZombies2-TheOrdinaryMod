@@ -4,6 +4,7 @@ using MVZ2.GameContent.Artifacts;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
@@ -39,9 +40,7 @@ namespace MVZ2.GameContent.Contraptions
             projectileDetector.DetectEntities(entity, detectBuffer);
             foreach (var projectile in detectBuffer)
             {
-                Vector3 pos = projectile.Position;
-                pos.y = Mathf.Max(pos.y + PULL_DOWN_SPEED, minY);
-                projectile.Position = pos;
+                projectile.SetGravity(1);
             }
         }
         protected override void UpdateLogic(Entity entity)
@@ -65,9 +64,9 @@ namespace MVZ2.GameContent.Contraptions
             var anvil = level.Spawn(VanillaContraptionID.anvil, pos, entity);
             anvil.SetFactionAndDirection(entity.GetFaction());
         }
-        public const float AFFECT_HEIGHT = 64;
+        public const float AFFECT_HEIGHT = 32;
         public const float MIN_HEIGHT = 5;
-        public const float PULL_DOWN_SPEED = -3.333f;
+        public const float PULL_DOWN_SPEED = -6.666f;
         private Detector projectileDetector;
         private List<Entity> detectBuffer = new List<Entity>();
 

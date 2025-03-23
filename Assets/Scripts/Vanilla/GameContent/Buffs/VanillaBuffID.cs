@@ -65,14 +65,16 @@ namespace MVZ2.GameContent.Buffs
         public const string frankensteinTransformer = "frankenstein_transformer";
         public const string boat = "boat";
         public const string spiderClimb = "spider_climb";
-        public const string motherTerrorLaid = "mother_terror_laid";
         public const string terrorParasitized = "terror_parasitized";
+        public const string motherTerrorLaid = "mother_terror_laid";
+        public const string totenserWeb = "totenser_web";
         public const string gravityPadGravity = "gravity_pad_gravity";
         public const string vortexHopperDrag = "vortex_hopper_drag";
         public const string enemyWeakness = "enemy_weakness";
         public const string forcePadDrag = "force_pad_frag";
         public const string redstoneCarrier = "redstone_carrier";
         public const string nightmareComeTrue = "nightmare_come_true";
+        public const string nightmareIllusionEye = "nightmare_illusion_eye";
         public const string soulsandSummoned = "soulsand_summoned";
         public const string soulsand = "soulsand";
         public const string littleZombie = "little_zombie";

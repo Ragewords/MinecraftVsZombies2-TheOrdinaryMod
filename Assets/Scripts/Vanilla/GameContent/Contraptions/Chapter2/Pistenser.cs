@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Contraptions
             var extend = GetExtend(entity);
             entity.SetAnimationFloat("Extend", extend);
             entity.SetProperty(PROP_EXTEND_SHOOT_OFFSET, Vector3.up * extend);
-            entity.SetProperty(PROP_BLOCKS_JUMP, (extend ) > 0);
+            entity.SetProperty(PROP_BLOCKS_JUMP, extend > 0);
         }
 
         protected override void OnEvoke(Entity entity)
@@ -103,7 +103,10 @@ namespace MVZ2.GameContent.Contraptions
                 // 目标缩短高度和当前高度的差值必须大于或等于2。
                 if (Mathf.Abs(targetSubtract - subtract) >= 2)
                 {
-                    SubtractToTargetHeight(pistenser, targetSubtract);
+                    if (subtract > 0)
+                        ExtendToTargetHeight(pistenser, 0);
+                    else
+                        SubtractToTargetHeight(pistenser, targetSubtract);
                 }
             }
             else
@@ -234,7 +237,7 @@ namespace MVZ2.GameContent.Contraptions
             var projectileID = VanillaProjectileID.spikeBall;
             var projectileDefinition = entity.Level.Content.GetEntityDefinition(projectileID);
             var projectileGravity = projectileDefinition?.GetGravity() ?? 0;
-            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY()).Take(MAX_EVOCATION_TARGET);
+            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY());
             foreach (var target in targets)
             {
                 if (!soundPlayed)

@@ -674,6 +674,12 @@
     <sound name="tesla_power">
         <sample path="mvz2:tesla_power" weight="1" />
     </sound>
+	<sound name="the_eye_death1">
+		<sample path="mvz2:entity/the_eye/the_eye_death1" weight="1" />
+	</sound>
+	<sound name="the_eye_death2">
+		<sample path="mvz2:entity/the_eye/the_eye_death2" weight="1" />
+	</sound>
     <sound name="throw">
         <sample path="mvz2:throw" weight="1" />
     </sound>
