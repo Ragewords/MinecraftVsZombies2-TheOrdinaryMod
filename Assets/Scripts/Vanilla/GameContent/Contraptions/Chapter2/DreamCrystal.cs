@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Contraptions
             contraption.AddBuff<DreamCrystalEvocationBuff>();
             contraption.PlaySound(VanillaSoundID.sparkle);
         }
-        public const float HEAL_PER_FRAME = 1.3333333333f;
+        public const float HEAL_PER_FRAME = 2f;
         public static FrameTimer GetHealthUpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_HEALTH_UP_TIMER);
         public static void SetHealthUpTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
         public static bool GetHealthUp(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_HEALTH_UP);

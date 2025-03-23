@@ -71,7 +71,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity == null)
                 return;
             bool illuminated = entity.Level.IsDay() || entity.IsIlluminated() || entity.IsAIFrozen();
-            SetIlluminated(buff, illuminated);
+            if (!IgnoreIlluminated(buff))
+                SetIlluminated(buff, illuminated);
         }
         public static void SetIlluminated(Buff buff, bool illuminated)
         {
@@ -151,8 +152,13 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
             return false;
         }
+        public static bool IgnoreIlluminated(Buff buff)
+        {
+            return buff.GetProperty<bool>(PROP_IGNORE_ILLUMINATED);
+        }
         public static readonly VanillaBuffPropertyMeta PROP_EVER_ILLUMINATED = new VanillaBuffPropertyMeta("EverIlluminated");
         public static readonly VanillaBuffPropertyMeta PROP_ILLUMINATED = new VanillaBuffPropertyMeta("Illuminated");
+        public static readonly VanillaBuffPropertyMeta PROP_IGNORE_ILLUMINATED = new VanillaBuffPropertyMeta("IgnoreIlluminated");
         public static readonly VanillaBuffPropertyMeta PROP_TINT_MULTIPLIER = new VanillaBuffPropertyMeta("TintMultiplier");
         public static readonly VanillaBuffPropertyMeta PROP_SHADOW_ALPHA = new VanillaBuffPropertyMeta("ShadowAlpha");
         public static readonly VanillaBuffPropertyMeta PROP_ETHEREAL = new VanillaBuffPropertyMeta("Ethereal");

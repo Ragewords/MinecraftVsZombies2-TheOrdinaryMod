@@ -1,4 +1,6 @@
+using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Difficulties;
+using MVZ2.GameContent.Stages;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
@@ -12,6 +14,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools.Mathematics;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Effects
 {
@@ -47,6 +50,7 @@ namespace MVZ2.GameContent.Effects
             base.Init(entity);
             entity.SetSortingLayer(SortingLayers.frontUI);
             entity.SetSortingOrder(-9999);
+            SetFirstClosed(entity, false);
         }
         public override void Update(Entity entity)
         {
@@ -64,6 +68,12 @@ namespace MVZ2.GameContent.Effects
         }
         public static void Close(Entity wall)
         {
+            SetFirstClosed(wall, true);
+            wall.State = VanillaEntityStates.CRUSHING_WALLS_CLOSED;
+        }
+        public static void CloseSecondTime(Entity wall)
+        {
+            SetFirstClosed(wall, false);
             wall.State = VanillaEntityStates.CRUSHING_WALLS_CLOSED;
         }
         private void UpdateState(Entity entity)
@@ -79,11 +89,12 @@ namespace MVZ2.GameContent.Effects
                         {
                             speed = 3;
                         }
-                        else if (difficulty == VanillaDifficulties.hard)
+                        else if (difficulty == VanillaDifficulties.hard || difficulty == VanillaDifficulties.lunatic)
                         {
                             speed = 5;
                         }
-
+                        if (entity.Level.EntityExists(e => e.GetDefinitionID() == VanillaBossID.theEye && e.IsHostileEntity() && !e.IsDead))
+                            speed = 3;
                         progress += speed * 0.01f / 30f;
                         progress = Mathf.Clamp01(progress);
                         entity.SetModelProperty("Progress", progress);
@@ -124,7 +135,8 @@ namespace MVZ2.GameContent.Effects
 
             if (progress >= 1)
             {
-                entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
+                if (!GetFirstClosed(entity))
+                    entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
             }
         }
         private void UpdateShake(Entity entity)
@@ -152,8 +164,11 @@ namespace MVZ2.GameContent.Effects
         public static void SetProgress(Entity entity, float value) => entity.SetBehaviourField(ID, PROP_PROGRESS, value);
         public static ShakeInt GetShake(Entity entity) => entity.GetBehaviourField<ShakeInt>(ID, PROP_SHAKE);
         public static void SetShake(Entity entity, ShakeInt value) => entity.SetBehaviourField(ID, PROP_SHAKE, value);
+        public static bool GetFirstClosed(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_FIRST_CLOSED);
+        public static void SetFirstClosed(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_FIRST_CLOSED, value);
         public static readonly VanillaEntityPropertyMeta PROP_PROGRESS = new VanillaEntityPropertyMeta("Progress");
         public static readonly VanillaEntityPropertyMeta PROP_SHAKE = new VanillaEntityPropertyMeta("Shake");
+        public static readonly VanillaEntityPropertyMeta PROP_FIRST_CLOSED = new VanillaEntityPropertyMeta("FirstClosed");
         public static readonly NamespaceID ID = VanillaEffectID.crushingWalls;
     }
 }

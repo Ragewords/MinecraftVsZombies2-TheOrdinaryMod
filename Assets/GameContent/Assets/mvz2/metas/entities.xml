@@ -297,7 +297,7 @@
             <int name="cost" value="150" />
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
-        <contraption id="gravity_pad" name="重力板" tooltip="增强上方物体的重力" unlock="mvz2:level.dream_3">
+        <contraption id="gravity_pad" name="超重力板" tooltip="大幅度增强上方物体的重力" unlock="mvz2:level.dream_3">
 
             <bool name="shadowHidden" value="true"/>
             <bool name="defensive" value="false"/>
@@ -309,7 +309,7 @@
             <idArray name="gridLayers" value="mvz2:carrier"/>
             <idArray name="attackerFor" value="mvz2:low_enemy"/>
 
-            <int name="cost" value="75" />
+            <int name="cost" value="100" />
             <id name="rechargeId" value="mvz2:short" />
         </contraption>
         <contraption id="vortex_hopper" name="漩涡漏斗" tooltip="把附近的僵尸拉入水底" unlock="mvz2:level.dream_4">
@@ -332,6 +332,7 @@
             <id name="fragmentId" value="mvz2:dispenser"/>
             <id name="projectileId" value="mvz2:spike" />
             <idArray name="attackerFor" value="mvz2:flying_enemy"/>
+			<float name="damage" value="30"/>
 
             <int name="cost" value="125" />
             <id name="rechargeId" value="mvz2:short" />
@@ -1060,6 +1061,13 @@
             <color name="bloodColor" value="#000000FF"/>
             <color name="bloodColorCensored" value="#000000FF"/>
         </boss>
+		<boss id="the_eye" name="眼">
+			<int name="waterInteraction" value="0"/>
+			<float name="maxHealth" value="10000"/>
+			<vector3 name="size" x="74" y="74" z="74"/>
+			<color name="bloodColor" value="#7F0000FF"/>
+			<color name="bloodColorCensored" value="#00007FFF"/>
+		</boss>
         <boss id="seija" name="鬼人正邪">
             <int name="waterInteraction" value="1"/>
             <float name="maxHealth" value="6699"/>
@@ -1225,6 +1233,7 @@
         <projectile id="spike">
             <bool name="pointToDirection" value="true" />
             <vector3 name="size" x="20" y="11" z="11" />
+			<bool name="piercing" value="true" />
         </projectile>
         <projectile id="spike_ball">
             <bool name="noHitEntities" value="true"/>
@@ -1245,6 +1254,10 @@
             <bool name="pointToDirection" value="true" />
             <vector3 name="size" x="32" y="6" z="6" />
         </projectile>
+		<projectile id="web">
+			<bool name="pointToDirection" value="true" />
+			<vector3 name="size" x="29" y="17" z="17" />
+		</projectile>
         <projectile id="poison_javelin">
             <float name="gravity" value="1"/>
             <bool name="pointToDirection" value="true" />

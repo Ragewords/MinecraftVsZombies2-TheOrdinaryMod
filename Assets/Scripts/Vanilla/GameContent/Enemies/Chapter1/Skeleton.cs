@@ -1,7 +1,9 @@
-﻿using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
@@ -20,6 +22,16 @@ namespace MVZ2.GameContent.Enemies
                 ignoreHighEnemy = true,
                 ignoreLowEnemy = true
             };
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            var level = entity.Level;
+            if (level.IsWaterLane(entity.GetLane()))
+            {
+                entity.AddBuff<BoatBuff>();
+                entity.SetAnimationBool("HasBoat", true);
+            }
         }
         protected override void UpdateAI(Entity enemy)
         {

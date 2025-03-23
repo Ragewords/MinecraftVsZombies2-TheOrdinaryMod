@@ -347,6 +347,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f37708e93750684a859069a167af55c
+    m_Address: mvz2:boss/the_eye
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f85791f4565cdd48b780ea2b27b64f5
     m_Address: mvz2:random/crystal/crystal_place1
     m_ReadOnly: 0
@@ -544,8 +550,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1569444c4ef53b842ba7b91f0bee696b
+    m_Address: mvz2:projectile/web
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1572d8be8ee0060479965033d1f67013
     m_Address: mvz2:entity/boss/wither_crack_light
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 158b9c64b8f0e4d4a978b7b5026c589e
+    m_Address: mvz2:icons/web
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -1737,6 +1755,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41a100848f06fed4d98c3508a294d5aa
+    m_Address: mvz2:entity/the_eye/the_eye_death1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41d1f6bfb664db14899e2d2411e931a8
     m_Address: mvz2:icon/short_circuit
     m_ReadOnly: 0
@@ -2192,6 +2216,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52b5d0c452643904d940cc3cbed2d56f
+    m_Address: mvz2:entity/the_eye/the_eye_death2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 52d0c9dce5e1cc34e97bc3379cbf9f36
     m_Address: mvz2:effect/blood_particles
@@ -3256,6 +3286,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f17579a8f0c42344b02ba3589ca2d6e
     m_Address: mvz2:ui/level/pause_image_5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f176684b37adfa44ad24d0d8fd2b77f
+    m_Address: mvz2:entity/projectiles/web
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -6598,6 +6634,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f33715c080e647f4eb47909df824bc60
     m_Address: mvz2:note/help_back
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3893f585b3c69048a2e5e09abd36111
+    m_Address: mvz2:entity/boss/the_eye
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite

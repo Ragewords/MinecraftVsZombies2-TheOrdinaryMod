@@ -26,6 +26,7 @@ namespace MVZ2.GameContent.Projectiles
         public const string parabot = "parabot";
         public const string fireCharge = "fire_charge";
         public const string dart = "dart";
+        public const string web = "web";
         public const string poisonJavelin = "poison_javelin";
         public const string weaknessGas = "weakness_gas";
 
@@ -63,6 +64,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID parabot = Get(VanillaProjectileNames.parabot);
         public static readonly NamespaceID fireCharge = Get(VanillaProjectileNames.fireCharge);
         public static readonly NamespaceID dart = Get(VanillaProjectileNames.dart);
+        public static readonly NamespaceID web = Get(VanillaProjectileNames.web);
         public static readonly NamespaceID poisonJavelin = Get(VanillaProjectileNames.poisonJavelin);
         public static readonly NamespaceID weaknessGas = Get(VanillaProjectileNames.weaknessGas);
 

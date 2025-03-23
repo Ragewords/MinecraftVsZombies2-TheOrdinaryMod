@@ -56,7 +56,7 @@ namespace MVZ2.GameContent.Contraptions
                     shootParams.projectileID = VanillaProjectileID.largeArrow;
                     shootParams.damage = entity.GetDamage() * 50;
                     shootParams.soundID = VanillaSoundID.spellCard;
-                    shootParams.velocity = shootParams.velocity.normalized;
+                    shootParams.velocity = shootParams.velocity.normalized * 15;
                     entity.ShootProjectile(shootParams);
 
                     int repeatCount = GetRepeatCount(entity);
@@ -84,7 +84,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void OnShootTick(Entity entity)
         {
             var arrow = Shoot(entity);
-            arrow.Velocity += new Vector3(GetUpgradeLevel(entity), 0f, 0f) * 1f;
+            arrow.Velocity += new Vector3(GetUpgradeLevel(entity), 0f, 0f) * (entity.IsFacingLeft() ? -1 : 1);
             arrow.SetDamage(entity.GetDamage() + (2 * (GetUpgradeLevel(entity) + 1)));
         }
         protected override void OnEvoke(Entity entity)

@@ -14,6 +14,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -414,7 +415,7 @@ namespace MVZ2.GameContent.Bosses
                     {
                         var target = collider.Entity;
                         var colliderReference = collider.ToReference();
-                        var damage = level.Difficulty == VanillaDifficulties.hard ? SPIN_DAMAGE_HARD : SPIN_DAMAGE;
+                        var damage = level.Difficulty == VanillaDifficulties.lunatic ? SPIN_DAMAGE_LUNATIC : SPIN_DAMAGE;
                         var damageOutput = collider.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.SLICE), entity);
                         PostSpinDamage(entity, damageOutput);
                     }
@@ -560,6 +561,15 @@ namespace MVZ2.GameContent.Bosses
                 foreach (var wall in entity.Level.FindEntities(VanillaEffectID.crushingWalls))
                 {
                     CrushingWalls.Enrage(wall);
+                }
+
+                var level = entity.Level;
+                var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(entity));
+                foreach (var enemy in targets_enemy)
+                {
+                    var pos = enemy.Position;
+                    pos.x = 1020;
+                    enemy.Position = pos;
                 }
 
                 CancelDarkness(entity.Level);
