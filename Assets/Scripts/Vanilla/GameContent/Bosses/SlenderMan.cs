@@ -690,8 +690,6 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.ironHelmettedZombie),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.skeleton),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.spider),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.caveSpider),
         };
         private static int[] fateOptions = new int[]
         {
