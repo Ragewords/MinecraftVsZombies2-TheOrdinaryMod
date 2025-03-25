@@ -13,6 +13,7 @@ using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 using MVZ2.GameContent.Projectiles;
+using MVZ2.Vanilla.Level;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -47,12 +48,12 @@ namespace MVZ2.GameContent.Contraptions
             for (int i = 0; i < 2; i++)
             {
                 var projectile = Shoot(entity);
-                var direction = Quaternion.Euler(0, 20 - i * 40, 0) * entity.GetShotVelocity().normalized;
+                var direction = Quaternion.Euler(0, 20 - i * 40, 0) * entity.GetFacingDirection();
                 projectile.Velocity = direction * entity.GetShotVelocity().magnitude;
                 var target = entity.Target;
-                var pos = new Vector3(1020, entity.GetShotOffset().y, entity.GetShotOffset().z);
+                var pos = new Vector3(entity.IsFacingLeft() ? VanillaLevelExt.LEFT_BORDER + 40 : VanillaLevelExt.RIGHT_BORDER - 40, entity.GetShotOffset().y + entity.GetRelativeY(), entity.Level.GetLaneZ(entity.GetLane()));
                 if (entity.Target != null)
-                    pos = new Vector3(target.Position.x, entity.GetShotOffset().y, target.Position.z);
+                    pos = target.GetCenter();
                 Knife.SetDestination(projectile, pos);
             }
         }

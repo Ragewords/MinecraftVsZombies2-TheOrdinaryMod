@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-19 07:38+0800\n"
+"POT-Creation-Date: 2025-03-26 01:17+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>6000</color>\n"
 "照明半径：<color=red>1.4格</color>\n"
-"技能：<color=red>获得下界合金装甲，耐久提高至12000</color>"
+"技能：<color=red>获得远古残骸装甲，耐久提高至12000</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:obsidian
@@ -255,16 +255,14 @@ msgstr ""
 #. Header for contraptions mvz2:silvenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "银质发射器能发射穿透血肉之躯的飞刀，并召唤分身协助作战。"
+msgid "银质发射器能发射穿透血肉之躯的飞刀，飞刀射出一段时间后向锁定位置飞行。"
 msgstr ""
 
 #. Properties for contraptions mvz2:silvenser
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid ""
-"分身射程：<color=red>5.5格</color>\n"
 "伤害：<color=red>15，30（对肉体）</color>\n"
-"分身伤害：<color=red>5，10（对肉体）</color>\n"
 "特点：<color=red>穿透多个敌人，但无法穿透硬物</color>\n"
 "技能：<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>"
 msgstr ""
@@ -338,7 +336,7 @@ msgstr ""
 #. Header for contraptions mvz2:gravity_pad
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "重力板能够降低上方子弹的高度并能让它上面的敌人无法跳跃。"
+msgid "超重力板能够增加上方子弹的重力并能让它上面的敌人无法跳跃。"
 msgstr ""
 
 #. Properties for contraptions mvz2:gravity_pad
@@ -379,7 +377,7 @@ msgstr ""
 #. Header for contraptions mvz2:pistenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "活塞发射器能够伸缩自己来攻击高处或低矮的敌人。"
+msgid "活塞发射器能够伸缩自己来攻击高处或低矮的敌人，向他们发射能够穿过最多3个敌人的尖刺。"
 msgstr ""
 
 #. Properties for contraptions mvz2:pistenser
@@ -387,9 +385,9 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
-"伤害：<color=red>20</color>\n"
+"伤害：<color=red>30</color>\n"
 "特点：<color=red>能够攻击高处的敌人</color>\n"
-"技能：<color=red>向至多10个敌人发射穿甲的巨型尖刺</color>"
+"技能：<color=red>向所有敌人发射穿甲的巨型尖刺</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:pistenser
@@ -403,7 +401,7 @@ msgstr ""
 #. Header for contraptions mvz2:totenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "图腾发射器在发射飞镖的同时还会喷火烧伤近处的敌人。"
+msgid "图腾发射器在发射飞镖的同时能够喷火烧伤近处的敌人，并发射困住敌人的捕猎网。"
 msgstr ""
 
 #. Properties for contraptions mvz2:totenser
@@ -411,8 +409,8 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
-"伤害：<color=red>15-20（飞镖），20-30/秒（火焰）</color>\n"
-"特点：<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害；与场上的远程攻击型器械连携，增加自身伤害</color>\n"
+"伤害：<color=red>15（飞镖），20/秒（火焰）</color>\n"
+"特点：<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害</color>\n"
 "技能：<color=red>投出穿透敌人的长矛，并留下使敌人虚弱的毒雾轨迹</color>"
 msgstr ""
 
@@ -433,7 +431,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>2000</color>\n"
-"恢复速度：<color=red>40×损伤阶段/秒，最大120/秒</color>\n"
+"恢复速度：<color=red>60×损伤阶段/秒，最大180/秒</color>\n"
 "技能：<color=red>进入无敌状态，并为周围的器械恢复耐久</color>"
 msgstr ""
 
@@ -1158,7 +1156,7 @@ msgstr ""
 #. Properties for artifacts mvz2:almanac
 #: Almanac meta file
 msgctxt "artifacts.description"
-msgid "效果：<color=red>战斗开始时，本场战斗每出现1种怪物，获得10能量</color>"
+msgid "效果：<color=red>战斗开始时，本场战斗每出现1种怪物，获得15能量</color>"
 msgstr ""
 
 #. Flavor for artifacts mvz2:almanac
@@ -1459,9 +1457,10 @@ msgstr ""
 #: Almanac meta file
 msgctxt "misc.description"
 msgid ""
-"生命：<color=red>2500+4000</color>\n"
+"生命：<color=red>2500+4000+10000</color>\n"
 "阶段1：<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>\n"
-"阶段2：<color=red>限时击杀，并且需要阻止碾压墙</color>"
+"阶段2：<color=red>限时击杀，并且需要阻止碾压墙</color>\n"
+"阶段3：<color=red>阶段2未能限时击杀时进入，随机打乱敌人位置和器械的射弹</color>"
 msgstr ""
 
 #. Flavor for misc mvz2:nightmare_boss
@@ -1491,9 +1490,9 @@ msgstr ""
 #: Almanac meta file
 msgctxt "misc.description"
 msgid ""
-"生命：<color=red>12000，每秒恢复30</color>\n"
-"阶段1：<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>\n"
-"阶段2：<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“床战士”</color>"
+"生命：<color=red>9000+9000，每秒恢复30</color>\n"
+"阶段1：<color=red>飞行，发射凋灵头颅，冲刺，啃咬，使用魔法</color>\n"
+"阶段2：<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，使用魔法，召唤“洗脑者”、“床战士”和“万圣骑士”</color>"
 msgstr ""
 
 #. Flavor for misc mvz2:wither
@@ -2262,7 +2261,7 @@ msgstr ""
 #. Properties for entity mvz2:silvenser
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "射出穿透肉体的飞刀，生成分身协助攻击"
+msgid "射出穿透肉体的飞刀"
 msgstr ""
 
 #. Header for entity mvz2:magichest
@@ -2304,13 +2303,13 @@ msgstr ""
 #. Header for entity mvz2:gravity_pad
 #: Entity meta file
 msgctxt "entity.name"
-msgid "重力板"
+msgid "超重力板"
 msgstr ""
 
 #. Properties for entity mvz2:gravity_pad
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "增强上方物体的重力"
+msgid "大幅度增强上方物体的重力"
 msgstr ""
 
 #. Header for entity mvz2:vortex_hopper
@@ -2893,13 +2892,13 @@ msgctxt "death_message"
 msgid "不是哥们"
 msgstr ""
 
-#. Header for entity mvz2:hypnotizer
+#. Header for entity mvz2:brainwasher
 #: Entity meta file
 msgctxt "entity.name"
 msgid "洗脑者"
 msgstr ""
 
-#. Death message for entity mvz2:hypnotizer
+#. Death message for entity mvz2:brainwasher
 #: Entity meta file
 msgctxt "death_message"
 msgid "H E L P"
@@ -2917,6 +2916,42 @@ msgctxt "death_message"
 msgid "晚安"
 msgstr ""
 
+#. Header for entity mvz2:jackdullahan
+#: Entity meta file
+msgctxt "entity.name"
+msgid "万圣骑士"
+msgstr ""
+
+#. Death message for entity mvz2:jackdullahan
+#: Entity meta file
+msgctxt "death_message"
+msgid "南瓜头也是头！"
+msgstr ""
+
+#. Header for entity mvz2:jackdullahan_head
+#: Entity meta file
+msgctxt "entity.name"
+msgid "万圣骑士的头"
+msgstr ""
+
+#. Death message for entity mvz2:jackdullahan_head
+#: Entity meta file
+msgctxt "death_message"
+msgid "两个头给你看晕了？"
+msgstr ""
+
+#. Header for entity mvz2:soul_skeleton_horse
+#: Entity meta file
+msgctxt "entity.name"
+msgid "鬼火骷髅马"
+msgstr ""
+
+#. Death message for entity mvz2:soul_skeleton_horse
+#: Entity meta file
+msgctxt "death_message"
+msgid "TMD好大的胆子，敢杀我的马？！"
+msgstr ""
+
 #. Header for entity mvz2:gargoyle_statue
 #: Entity meta file
 msgctxt "entity.name"
@@ -2929,6 +2964,12 @@ msgctxt "entity.name"
 msgid "科学怪人的怪物"
 msgstr ""
 
+#. Header for entity mvz2:frankenstein_head_enemy
+#: Entity meta file
+msgctxt "entity.name"
+msgid "科学怪人的怪物的头"
+msgstr ""
+
 #. Header for entity mvz2:slenderman
 #: Entity meta file
 msgctxt "entity.name"
@@ -2939,6 +2980,12 @@ msgstr ""
 #: Entity meta file
 msgctxt "entity.name"
 msgid "梦魇收割者"
+msgstr ""
+
+#. Header for entity mvz2:the_eye
+#: Entity meta file
+msgctxt "entity.name"
+msgid "眼"
 msgstr ""
 
 #. Header for entity mvz2:seija
@@ -3088,7 +3135,7 @@ msgstr ""
 #. Tooltip for artifact mvz2:almanac
 #: Artifact meta file
 msgctxt "artifact.tooltip"
-msgid "本场战斗每出现1种怪物，开始战斗时+10能量"
+msgid "本场战斗每出现1种怪物，开始战斗时+15能量"
 msgstr ""
 
 #. Name for artifact mvz2:hoe

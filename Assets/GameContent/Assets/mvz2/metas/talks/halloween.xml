@@ -28,7 +28,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这位是我们的老朋友，小型发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">和我们的小伙伴打个招呼吧！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">小型发射器不需要能量就能放置，能够喷射短距离的雪球，是夜晚的一大利器！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">小型发射器不需要能量就能放置，能够喷射短距离的雪球减速敌人，是夜晚的一大利器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="bubble hide;character create mvz2:orant right;delay 0.5;next">好好利用吧！</sentence>
         <sentence speaker="mvz2:orant" description="（欧兰特出现）" sounds="mvz2:talk" onClick="end">……你们是？</sentence>
       </sentences>
@@ -184,7 +184,7 @@
         <character id="mvz2:crazy_villager" side="left" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这个是冲击活塞！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这个是一拳活塞！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能够击退前方的敌人一大格距离！并且重创脆弱的石头或者其他东西！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">不过，在它击退之后会坏掉，需要一段时间来维修自己！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">冲散它们的阵型吧！</sentence>
@@ -275,7 +275,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">艺术就是爆炸！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">这个是TNT！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">这个是Etho台阶！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">什么？怎么触发？</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">下一次，我们就来试试吧！</sentence>
       </sentences>
@@ -319,7 +319,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">我会夺取你的灵魂！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后还会焚烧一群敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后会焚烧一群敌人，还能分裂！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">但代价是什么？它需要牺牲前方的器械来当作它的燃料！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">让怪物们下地狱吧！</sentence>
       </sentences>
@@ -426,7 +426,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">有没有想起三个月亮的疯狂？</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">魔术箱！它会吃掉前方的一个敌人，然后自己变成一个星之碎片！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">魔术箱！它会吃掉前方的一个敌人，把它们变得友好，然后自己变成一个星之碎片！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2" onClick="end">谁渴望来一场华丽的表演？</sentence>
       </sentences>
     </section>

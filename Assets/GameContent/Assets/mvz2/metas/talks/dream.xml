@@ -79,9 +79,9 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">高科技产品，驱动发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">它能像普通发射器一样向敌人发射箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">但你能够在它上面再放置驱动发射器，以提升每次发射的箭矢数量！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">最多能够提升4次，也就是一次发射5支箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">一支解决不了的，那就用一堆！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">但你能够在它上面再放置驱动发射器，以提升每次发射箭矢的速度和伤害！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">最多能够提升4次！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">天下武功唯快不破！</sentence>
       </sentences>
     </section>
   </group>
@@ -194,7 +194,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">旋转吧！漩涡漏斗！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">漩涡漏斗可以放置在水中，然后在被碰到的时候，会把周围的敌人拉下水！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">漩涡漏斗可以放置在水中，甩出内部储存的箭矢，并且会把周围的敌人拉下水！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让僵尸都变成溺尸吧！</sentence>
       </sentences>
     </section>
@@ -297,7 +297,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">活塞发射器！会伸缩的发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它会发射和箭矢类似的尖刺！并且在遇见飞行敌人的时候会伸长脖子来攻击敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它会发射和箭矢类似的尖刺，能够穿透3个敌人！并且在遇见飞行和低矮的敌人的时候会伸缩脖子来攻击敌人！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">对了，把气球拿远点！</sentence>
       </sentences>
     </section>
@@ -351,7 +351,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是图腾发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能射出能够虚弱敌人的飞镖，让敌人完全无法造成伤害！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">而且还能够向近处的敌人喷出火焰，持续进行灼烧！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">而且还能够向近处的敌人喷出火焰，持续进行灼烧，并发射困住敌人的捕猎网！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">最后，来一发致命的毒素投枪吧！</sentence>
       </sentences>
     </section>

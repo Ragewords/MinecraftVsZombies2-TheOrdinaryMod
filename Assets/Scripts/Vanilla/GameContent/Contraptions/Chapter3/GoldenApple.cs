@@ -48,6 +48,10 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             if (target.IsAIFrozen())
                 return;
+            if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
+            {
+                enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, c => c(enemy));
+            }
             if (target.IsEvoked())
             {
                 var mutant = target.Spawn(VanillaEnemyID.mutantZombie, enemy.Position);
@@ -60,10 +64,6 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
-                {
-                    enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, c => c(enemy));
-                }
                 var rng = GetEnemyRNG(target);
                 NamespaceID[] pool = enemyPool;
                 var targetID = pool.Random(rng);
@@ -97,8 +97,6 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.anubisand,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
-            VanillaEnemyID.brainwasher,
-            VanillaEnemyID.bedserker,
         };
         public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
         public static void SetEnemyRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_ENEMY_RNG, value);

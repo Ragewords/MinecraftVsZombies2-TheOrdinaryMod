@@ -397,7 +397,6 @@
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
         <contraption id="spike_block" name="尖刺方块" tooltip="扎伤上面的敌人" unlock="mvz2:level.castle_2">
-            <bool name="canDeactive" value="false"/>
             <bool name="defensive" value="false"/>
 			<bool name="contactDamage" value="true"/>
 			<float name="maxHealth" value="900"/>
@@ -546,7 +545,6 @@
         <contraption id="diamond_spikes" name="钻石尖刺" tooltip="（需要尖刺方块）\n更快扎伤上面的敌人，并具有更高耐久" unlock="mvz2:level.castle_5">
             <float name="maxHealth" value="5400"/>
 			<bool name="contactDamage" value="true"/>
-			<bool name="canDeactive" value="false"/>
             <bool name="defensive" value="false"/>
             <float name="damage" value="20"/>
             <bool name="shadowHidden" value="true"/>
@@ -975,25 +973,25 @@
 			<int name="cost" value="25" />
 		</enemy>
 		<enemy id="seija_jizo" name="替身地藏" deathMessage="不是哥们" unlock="mvz2:level.castle_7">
-			<float name="maxHealth" value="1000"/>
+			<float name="maxHealth" value="500"/>
 			<vector3 name="size" x="32" y="47" z="32"/>
 			<bool name="loyal" value="true"/>
-			<bool name="notActiveEnemy" value="true"/>
 			<bool name="harmless" value="true" />
 			<bool name="canDeactive" value="false"/>
+			<bool name="invisible" value="true"/>
 			<id name="shell" value="mvz2:stone"/>
 			<bool name="noReward" value="true"/>
 			<id name="crySound" null="true"/>
 			<id name="deathSound" null="true"/>
 			<float name="fallResistance" value="10000"/>
 			<int name="maxTimeout" value="900"/>
-			<id name="fragmentId" value="mvz2:jizo"/>
+			<id name="fragmentId" value="mvz2:furnace"/>
 			<vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
 
 			<int name="cost" value="25" />
 		</enemy>
-		<enemy id="brainwasher" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_7">
-			<float name="maxHealth" value="6000"/>
+		<enemy id="brainwasher" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_11">
+			<float name="maxHealth" value="800"/>
 			<float name="range" value="800"/>
 			<vector3 name="shotOffset" x="30" y="96" z="0"/>
 			<vector3 name="shotVelocity" x="0" y="0" z="0"/>
@@ -1019,6 +1017,38 @@
             <int name="cost" value="1000" />
             <int name="waterInteraction" value="2"/>
         </enemy>
+		<enemy id="jackdullahan" name="万圣骑士" deathMessage="南瓜头也是头！" unlock="mvz2:level.castle_11">
+			<float name="maxHealth" value="600"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="500" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
+		<enemy id="jackdullahan_head" name="万圣骑士的头" deathMessage="两个头给你看晕了？" unlock="mvz2:level.castle_11">
+			<float name="maxHealth" value="300"/>
+			<float name="speed" value="2"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+			<vector3 name="size" x="32" y="22" z="32"/>
+
+			<int name="cost" value="100" />
+		</enemy>
+		<enemy id="soul_skeleton_horse" name="鬼火骷髅马" deathMessage="TMD好大的胆子，敢杀我的马？！" unlock="mvz2:level.castle_11">
+			<float name="maxHealth" value="900"/>
+			<float name="fallResistance" value="15"/>
+			<id name="shell" value="mvz2:bone"/>
+			<id name="crySound" value="mvz2:skeleton_horse_cry"/>
+			<id name="deathSound" value="mvz2:skeleton_horse_death"/>
+			<vector3 name="size" x="56" y="50" z="40"/>
+			<vector3 name="passengerOffset" x="10" y="20" z="-1"/>
+
+			<int name="cost" value="250" />
+		</enemy>
 
         <!-- Obstacles -->
         <obstacle id="gargoyle_statue" name="石像鬼雕像">
@@ -1070,14 +1100,14 @@
 		</boss>
         <boss id="seija" name="鬼人正邪">
             <int name="waterInteraction" value="1"/>
-            <float name="maxHealth" value="6699"/>
+            <float name="maxHealth" value="4884"/>
             <vector3 name="size" x="30" y="88" z="30"/>
             <color name="bloodColor" value="#7F0000FF"/>
             <color name="bloodColorCensored" value="#00007FFF"/>
         </boss>
         <boss id="wither" name="凋灵">
             <int name="waterInteraction" value="1"/>
-            <float name="maxHealth" value="12000"/>
+            <float name="maxHealth" value="9000"/>
             <float name="gravity" value="0"/>
             <id name="shell" value="mvz2:bone"/>
             <vector3 name="size" x="64" y="160" z="64"/>
@@ -1256,6 +1286,7 @@
         </projectile>
 		<projectile id="web">
 			<bool name="pointToDirection" value="true" />
+			<float name="gravity" value="1"/>
 			<vector3 name="size" x="29" y="17" z="17" />
 		</projectile>
         <projectile id="poison_javelin">

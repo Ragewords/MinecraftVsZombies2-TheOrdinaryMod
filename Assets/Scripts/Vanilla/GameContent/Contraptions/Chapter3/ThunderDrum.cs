@@ -114,7 +114,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (target.Type != EntityTypes.ENEMY)
                     continue;
                 var vel = target.Velocity;
-                vel.x = -4;
+                vel.x = -2;
                 vel.y = 15;
                 target.Velocity = vel;
                 target.RandomChangeAdjacentLane(self.RNG);

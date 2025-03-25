@@ -48,6 +48,9 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            var ghsat = entity.GetRidingEntity();
+            var hasGhast = ghsat.ExistsAndAlive();
+            entity.SetAnimationBool("Sitting", hasGhast);
         }
         protected override void UpdateAI(Entity entity)
         {

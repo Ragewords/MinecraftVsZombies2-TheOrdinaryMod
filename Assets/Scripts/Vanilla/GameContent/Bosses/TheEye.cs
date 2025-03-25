@@ -44,7 +44,6 @@ namespace MVZ2.GameContent.Bosses
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            StartMove(entity);
             var deathTimer = GetTimeout(entity);
             deathTimer.Run();
             if (deathTimer.Expired)
@@ -55,6 +54,11 @@ namespace MVZ2.GameContent.Bosses
                 }
                 entity.PlaySound(VanillaSoundID.fling);
             }
+            Vector3 destination = GetMoveDisplacement(entity);
+            var posi = entity.Position;
+            posi.x = posi.x * 0.5f + destination.x * 0.5f;
+            posi.z = posi.z * 0.5f + destination.z * 0.5f;
+            entity.Position = posi;
             var moveTimer = GetMoveTimer(entity);
             moveTimer.Run();
             if (moveTimer.Expired)
@@ -121,20 +125,6 @@ namespace MVZ2.GameContent.Bosses
                 entity.PlaySound(VanillaSoundID.odd);
                 transTimer.Reset();
             }
-        }
-        private void StartMove(Entity entity)
-        {
-            var destination = GetMoveDisplacement(entity);
-            var pos = entity.Position;
-            if (destination.x != entity.Position.x && destination.z != entity.Position.z)
-            {
-                pos.y += 20;
-                entity.Position = pos;
-                if (pos.y >= 400)
-                {
-                    entity.Position = GetMoveDisplacement(entity) + Vector3.up * 400;
-                }
-            }  
         }
         protected override void UpdateLogic(Entity entity)
         {

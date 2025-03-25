@@ -4,17 +4,21 @@ using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -77,6 +81,11 @@ namespace MVZ2.GameContent.Bosses
         public override void PostDeath(Entity boss, DeathInfo damageInfo)
         {
             base.PostDeath(boss, damageInfo);
+            if (GetPhase(boss) == PHASE_1)
+            {
+                boss.IsDead = false;
+                return;
+            }
             boss.PlaySound(VanillaSoundID.witherDeath);
             stateMachine.StartState(boss, STATE_DEATH);
         }
@@ -109,6 +118,8 @@ namespace MVZ2.GameContent.Bosses
                         {
                             Stun(self);
                             self.TakeDamage(GOLDEN_APPLE_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), other);
+                            if (other.IsEvoked())
+                                self.TakeDamage(GOLDEN_APPLE_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), other);
                         }
                         else
                         {
@@ -185,6 +196,8 @@ namespace MVZ2.GameContent.Bosses
         public static void SetSkullCharges(Entity entity, float[] value) => entity.SetBehaviourField(PROP_SKULL_CHARGES, value);
         public static int GetTargetLane(Entity entity) => entity.GetBehaviourField<int>(PROP_TARGET_LANE);
         public static void SetTargetLane(Entity entity, int value) => entity.SetBehaviourField(PROP_TARGET_LANE, value);
+        public static void SetMagicType(Entity entity, int value) => entity.SetBehaviourField(PROP_MAGIC_TYPE, value);
+        public static int GetMagicType(Entity entity) => entity.GetBehaviourField<int>(PROP_MAGIC_TYPE);
         #endregion
 
         private void Stun(Entity entity)
@@ -338,8 +351,14 @@ namespace MVZ2.GameContent.Bosses
         public static void Appear(Entity entity)
         {
             stateMachine.StartState(entity, STATE_APPEAR);
+            SetMagicType(entity, MAGIC_MESMERIZER);
+            entity.SetAnimationInt("LightColor", 2);
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
+            entity.PlaySound(VanillaSoundID.explosion);
+            entity.Level.Explode(entity.GetCenter(), 240, entity.GetFaction(), entity.GetDamage() * 30, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+            var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
+            exp.SetSize(Vector3.one * 360);
         }
 
         #region 常量
@@ -350,6 +369,7 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_SKULL_CHARGES = new VanillaEntityPropertyMeta("SkullCharges");
         private static readonly VanillaEntityPropertyMeta PROP_PHASE = new VanillaEntityPropertyMeta("Phase");
         private static readonly VanillaEntityPropertyMeta PROP_TARGET_LANE = new VanillaEntityPropertyMeta("TargetLane");
+        private static readonly VanillaEntityPropertyMeta PROP_MAGIC_TYPE = new VanillaEntityPropertyMeta("MagicType");
 
         private static readonly Vector3[] headPositionOffsets = new Vector3[]
         {
@@ -362,6 +382,7 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_APPEAR = VanillaEntityStates.WITHER_APPEAR;
         private const int STATE_CHARGE = VanillaEntityStates.WITHER_CHARGE;
         private const int STATE_EAT = VanillaEntityStates.WITHER_EAT;
+        private const int STATE_MAGIC = VanillaEntityStates.WITHER_MAGIC;
         private const int STATE_SWITCH = VanillaEntityStates.WITHER_SWITCH;
         private const int STATE_SUMMON = VanillaEntityStates.WITHER_SUMMON;
         private const int STATE_STUNNED = VanillaEntityStates.WITHER_STUNNED;
@@ -381,6 +402,11 @@ namespace MVZ2.GameContent.Bosses
         public const float REGENERATION_SPEED = 1;
         public const float EAT_HEALING = 300;
         public const float GOLDEN_APPLE_DAMAGE = 600;
+
+        public const int MAGIC_MESMERIZER = 0;
+        public const int MAGIC_BERSERKER = 1;
+        public const int MAGIC_DULLAHAN = 2;
+        public const int MAGIC_SUMMON = 3;
         #endregion 常量
 
         private static WitherStateMachine stateMachine = new WitherStateMachine();

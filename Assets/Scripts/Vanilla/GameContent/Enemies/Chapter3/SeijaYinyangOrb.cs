@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
@@ -10,12 +12,17 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
+using PVZEngine.Grids;
 using PVZEngine.Level;
+using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static MVZ2.GameContent.Buffs.VanillaBuffID;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -24,15 +31,21 @@ namespace MVZ2.GameContent.Enemies
     {
         public SeijaYinyangOrb(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostPlantInitCallback, filter: EntityTypes.PLANT);
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.ForceSet, EntityCollisionHelper.DETECTION_IGNORE));
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 40);
-            SetShootTimer(entity, new FrameTimer(150));
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20);
+            SetShootTimer(entity, new FrameTimer(300));
             SetRepeatTime(entity, 5);
             SetRepeatShootTimer(entity, new FrameTimer(5));
+            var x = entity.Level.GetEntityColumnX(entity.Level.GetMaxColumnCount() - 2);
+            var z = entity.Level.GetEntityLaneZ(entity.Level.GetMaxLaneCount() / 2);
+            var y = 20;
+            SetMoveTarget(entity, new Vector3(x, y, z));
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -43,16 +56,35 @@ namespace MVZ2.GameContent.Enemies
                 return;
             }
 
-            // Orbit.
-            var angle = GetOrbitAngle(entity);
-            angle += ORBIT_ANGLE_SPEED;
-            SetOrbitAngle(entity, angle);
+            // Move.
+            Vector3 target = GetMoveTarget(entity);
+            var pos = entity.Position;
+            pos.x = pos.x * 0.6f + target.x * 0.4f;
+            pos.z = pos.z * 0.6f + target.z * 0.4f;
+            entity.Position = pos;
 
-            var orbitOffset = Vector2.right.RotateClockwise(angle) * ORBIT_DISTANCE;
-            var targetPosition = entity.Parent.Position + new Vector3(orbitOffset.x, 0, orbitOffset.y);
-            targetPosition.y = Mathf.Max(targetPosition.y, entity.Level.GetGroundY(targetPosition));
-            entity.Position = targetPosition;
-
+            Shoot(entity);
+        }
+        public override void PostDeath(Entity entity, DeathInfo info)
+        {
+            base.PostDeath(entity, info);
+            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+                return;
+            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter());
+            smoke.SetSize(entity.GetSize());
+            entity.Remove();
+        }
+        private void PostPlantInitCallback(Entity entity)
+        {
+            if (entity.IsOnWater())
+                return;
+            foreach (Entity orb in entity.Level.FindEntities(VanillaEnemyID.seijaYinyangOrb))
+            {
+                SetMoveTarget(orb, entity.Position);
+            }
+        }
+        private void Shoot(Entity entity)
+        {
             // Shoot.
             Color color = Color.red;
             var timer = GetShootTimer(entity);
@@ -91,14 +123,13 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        public override void PostDeath(Entity entity, DeathInfo info)
+        private static Vector3 GetMoveTarget(Entity boss)
         {
-            base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
-                return;
-            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter());
-            smoke.SetSize(entity.GetSize());
-            entity.Remove();
+            return boss.GetBehaviourField<Vector3>(ID, PROP_MOVE_TARGET);
+        }
+        private static void SetMoveTarget(Entity boss, Vector3 target)
+        {
+            boss.SetBehaviourField(ID, PROP_MOVE_TARGET, target);
         }
         public static float GetOrbitAngle(Entity entity) => entity.GetBehaviourField<float>(PROP_ORBIT_ANGLE);
         public static void SetOrbitAngle(Entity entity, float value) => entity.SetBehaviourField(PROP_ORBIT_ANGLE, value);
@@ -113,6 +144,7 @@ namespace MVZ2.GameContent.Enemies
         private static readonly VanillaEntityPropertyMeta SHOOT_TIMER = new VanillaEntityPropertyMeta("ShootTimer");
         private static readonly VanillaEntityPropertyMeta REPEAT_SHOOT_TIMER = new VanillaEntityPropertyMeta("RepeatShootTimer");
         private static readonly VanillaEntityPropertyMeta REPEAT_TIME = new VanillaEntityPropertyMeta("RepeatTime");
+        private static readonly VanillaEntityPropertyMeta PROP_MOVE_TARGET = new VanillaEntityPropertyMeta("MoveTarget");
         public const float ORBIT_DISTANCE = 80;
         public const float ORBIT_ANGLE_SPEED = -2;
         private static readonly NamespaceID ID = VanillaEnemyID.seijaYinyangOrb;

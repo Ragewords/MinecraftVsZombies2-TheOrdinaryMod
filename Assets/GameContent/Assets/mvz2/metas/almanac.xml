@@ -216,7 +216,7 @@
         </entry>
         <entry id="mvz2:gravity_pad">
             <header>
-                <p>超重力板能够降低上方子弹的高度并能让它上面的敌人无法跳跃。</p>
+                <p>超重力板能够增加上方子弹的重力并能让它上面的敌人无法跳跃。</p>
             </header>
             <properties>
                 <p>特点：<![CDATA[<color=red>敌人无法发现</color>]]></p>
@@ -328,12 +328,13 @@
         </entry>
         <entry id="mvz2:stone_dropper">
             <header>
-                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。</p>
+                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。弹出的子弹有可能被替换为不断弹跳的弹力巨石。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>巨石概率：<![CDATA[<color=red>25%</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10（卵石），40（巨石）</color>]]></p>
+				<p>弹力巨石概率：<![CDATA[<color=red>2%</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>10（卵石），40（巨石），200（弹力巨石）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射30发巨石</color>]]></p>
             </properties>
             <flavor>
@@ -342,10 +343,11 @@
         </entry>
         <entry id="mvz2:stone_shield">
             <header>
-                <p>黏液护罩可以和其他器械放在一起，并保护其内部的器械。</p>
+                <p>黏液护罩可以和其他器械放在一起，并保护其内部的器械，自身的弹性则能减少受到的伤害。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+				<p>特点：<![CDATA[<color=red>减少20%自身受到的伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>3x3范围内的器械无敌5秒</color>]]></p>
             </properties>
             <flavor>
@@ -1033,9 +1035,10 @@
                     <p>梦魇是具有蒙骗感官和腐蚀能力的恐怖魔物，具有无数的化身。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>2500+4000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>2500+4000+10000</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>限时击杀，并且需要阻止碾压墙</color>]]></p>
+					<p>阶段3：<![CDATA[<color=red>阶段2未能限时击杀时进入，随机打乱敌人位置和器械的射弹</color>]]></p>
                 </properties>
                 <flavor>
                     <p>从前，有个国王做了一场噩梦。梦里他看到一个来自星空的，扭曲而无形的怪物。它化作一匹马在他的土地上狂奔，污染身后的土地。</p>
@@ -1050,9 +1053,9 @@
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>12000，每秒恢复30</color>]]></p>
-                    <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“床战士”</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>9000+9000，每秒恢复30</color>]]></p>
+                    <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬，使用魔法</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，使用魔法，召唤“洗脑者”、“床战士”和“万圣骑士”</color>]]></p>
                 </properties>
                 <flavor>
                     <p>单枪匹马对付众多的怪物并不是个好主意，骑士打算去招募一些帮手。</p>

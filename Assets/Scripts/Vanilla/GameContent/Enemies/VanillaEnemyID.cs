@@ -43,6 +43,9 @@ namespace MVZ2.GameContent.Enemies
         public const string seijaJizo = "seija_jizo";
         public const string brainwasher = "brainwasher";
         public const string bedserker = "bedserker";
+        public const string soulSkeletonHorse = "soul_skeleton_horse";
+        public const string jackDullahan = "jackdullahan";
+        public const string jackDullahanHead = "jackdullahan_head";
     }
     public static class VanillaEnemyID
     {
@@ -84,6 +87,9 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID seijaJizo = Get(VanillaEnemyNames.seijaJizo);
         public static readonly NamespaceID brainwasher = Get(VanillaEnemyNames.brainwasher);
         public static readonly NamespaceID bedserker = Get(VanillaEnemyNames.bedserker);
+        public static readonly NamespaceID soulSkeletonHorse = Get(VanillaEnemyNames.soulSkeletonHorse);
+        public static readonly NamespaceID jackDullahan = Get(VanillaEnemyNames.jackDullahan);
+        public static readonly NamespaceID jackDullahanHead = Get(VanillaEnemyNames.jackDullahanHead);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

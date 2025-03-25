@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -14,6 +16,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -28,6 +31,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new IdleState());
                 AddState(new ChargeState());
                 AddState(new EatState());
+                AddState(new MagicState());
                 AddState(new SwitchState());
                 AddState(new SummonState());
                 AddState(new StunState());
@@ -92,8 +96,9 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                if (GetPhase(entity) == PHASE_1 && entity.Health <= entity.GetMaxHealth() * 0.5f)
+                if (GetPhase(entity) == PHASE_1 && entity.Health <= 0)
                 {
+                    entity.Health = entity.GetMaxHealth();
                     SetPhase(entity, PHASE_2);
                     stateMachine.StartState(entity, STATE_SWITCH);
                     return;
@@ -236,7 +241,7 @@ namespace MVZ2.GameContent.Bosses
             private int GetNextState(EntityStateMachine stateMachine, Entity entity)
             {
                 var lastState = stateMachine.GetPreviousState(entity);
-                if (lastState == STATE_IDLE || lastState == STATE_EAT)
+                if (lastState == STATE_IDLE || lastState == STATE_MAGIC)
                 {
                     lastState = STATE_SUMMON;
                     if (GetPhase(entity) == PHASE_2)
@@ -259,6 +264,11 @@ namespace MVZ2.GameContent.Bosses
                     {
                         return lastState;
                     }
+                }
+                if (lastState == STATE_EAT)
+                {
+                    lastState = STATE_MAGIC;
+                    return lastState;
                 }
 
                 return STATE_IDLE;
@@ -357,6 +367,11 @@ namespace MVZ2.GameContent.Bosses
                                 vel.x = 0;
                                 stateMachine.SetSubState(entity, SUBSTATE_DASH_END);
                                 substateTimer.ResetTime(30);
+                                var column = level.GetMaxColumnCount();
+                                var spawnX = level.GetEntityColumnX(column);
+                                var lane = entity.GetLane();
+                                var spawnZ = level.GetEntityLaneZ(lane);
+                                entity.Level.Spawn(VanillaEnemyID.hellChariot, new Vector3(spawnX, 0, spawnZ), entity);
                             }
                             entity.Position = pos;
                             entity.Velocity = vel;
@@ -518,6 +533,126 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_DASH = 2;
             public const int SUBSTATE_EATEN = 3;
         }
+        private class MagicState : EntityStateMachineState
+        {
+            public MagicState() : base(STATE_MAGIC) { }
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(15);
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                int magic = GetMagicType(entity);
+                var substate = stateMachine.GetSubState(entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+
+                var level = entity.Level;
+                switch (substate)
+                {
+                    case SUBSTATE_MOVE:
+                        {
+                            //移动
+                            var column = entity.IsFacingLeft() ? level.GetMaxColumnCount() - 3 : 2;
+                            var lane = level.GetMaxLaneCount() / 2;
+                            var targetX = level.GetEntityColumnX(column);
+                            var targetZ = level.GetEntityLaneZ(lane);
+                            var targetY = level.GetGroundY(targetX, targetZ);
+
+                            var pos = entity.Position;
+                            pos.x = pos.x * 0.85f + targetX * 0.15f;
+                            pos.y = pos.y * 0.85f + targetY * 0.15f;
+                            pos.z = pos.z * 0.85f + targetZ * 0.15f;
+                            entity.Position = pos;
+
+                            if (substateTimer.Expired)
+                            {
+                                substateTimer.ResetTime(30);
+                                stateMachine.SetSubState(entity, SUBSTATE_ROAR);
+                                entity.PlaySound(VanillaSoundID.witherCry);
+                                entity.SetAnimationBool("Shaking", true);
+                                entity.SetAnimationInt("LightColor", magic);
+                            }
+                        }
+                        break;
+
+                    case SUBSTATE_ROAR:
+                        {
+                            //张嘴
+                            var headOpen = GetHeadOpen(entity);
+                            headOpen = headOpen * 0.7f + 1 * 0.3f;
+                            SetHeadOpen(entity, headOpen);
+
+                            if (substateTimer.Expired)
+                            {
+                                entity.PlaySound(VanillaSoundID.witherSpawn);
+                                switch (magic)
+                                {
+                                    case MAGIC_MESMERIZER:
+                                        {
+                                            entity.PlaySound(VanillaSoundID.mindControl);
+                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(10, entity.RNG);
+                                            foreach (var target in targets)
+                                            {
+                                                target.Charm(entity.GetFaction());
+                                            }
+                                            SetMagicType(entity, MAGIC_BERSERKER);
+                                        }
+                                        break;
+                                    case MAGIC_BERSERKER:
+                                        {
+                                            entity.PlaySound(VanillaSoundID.explosion);
+                                            entity.Level.Explode(entity.GetCenter(), 360, entity.GetFaction(), entity.GetDamage() * 10, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                                            var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
+                                            exp.SetSize(Vector3.one * 480);
+                                            SetMagicType(entity, MAGIC_DULLAHAN);
+                                        }
+                                        break;
+                                    case MAGIC_DULLAHAN:
+                                        {
+                                            for (int i = 0; i < 8; i++)
+                                            {
+                                                var direction = Quaternion.Euler(0, i * 45, 0) * Vector3.left * 80;
+                                                var param = entity.GetSpawnParams();
+                                                if (i == 2 || i == 6)
+                                                    entity.Spawn(VanillaEnemyID.dullahan, entity.Position + direction, param);
+                                                else
+                                                    entity.Spawn(VanillaEnemyID.dullahanHead, entity.Position + direction, param);
+                                                var smoke = entity.Spawn(VanillaEffectID.smoke, entity.Position + direction);
+                                                smoke.SetSize(Vector3.one * 80);
+                                            }
+                                            SetMagicType(entity, MAGIC_MESMERIZER);
+                                        }
+                                        break;
+                                }
+                                entity.SetAnimationBool("Shaking", false);
+                                entity.SetAnimationInt("LightColor", 2);
+                                stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
+                                substateTimer.ResetTime(30);
+                            }
+                        }
+                        break;
+                    case SUBSTATE_SUMMONED:
+                        {
+                            var headOpen = GetHeadOpen(entity);
+                            headOpen = headOpen * 0.7f;
+                            SetHeadOpen(entity, headOpen);
+
+                            if (substateTimer.Expired)
+                            {
+                                stateMachine.StartState(entity, STATE_IDLE);
+                            }
+                        }
+                        break;
+                }
+            }
+            public const int SUBSTATE_MOVE = 0;
+            public const int SUBSTATE_ROAR = 1;
+            public const int SUBSTATE_SUMMONED = 2;
+        }
         private class SwitchState : EntityStateMachineState
         {
             public SwitchState() : base(STATE_SWITCH) { }
@@ -563,6 +698,7 @@ namespace MVZ2.GameContent.Bosses
                             var y = entity.Level.GetGroundY(x, z);
                             var param = entity.GetSpawnParams();
                             entity.Spawn(VanillaEnemyID.dullahan, new Vector3(x, y, z), param);
+                            entity.Spawn(VanillaEnemyID.anubisand, new Vector3(x, y, z), param);
                         }
                     }
                 }
@@ -648,6 +784,7 @@ namespace MVZ2.GameContent.Bosses
                                 stateMachine.SetSubState(entity, SUBSTATE_ROAR);
                                 entity.PlaySound(VanillaSoundID.witherCry);
                                 entity.SetAnimationBool("Shaking", true);
+                                entity.SetAnimationInt("LightColor", 3);
                             }
                         }
                         break;
@@ -662,15 +799,23 @@ namespace MVZ2.GameContent.Bosses
                             if (substateTimer.Expired)
                             {
                                 entity.SetAnimationBool("Shaking", false);
+                                entity.SetAnimationInt("LightColor", 2);
                                 stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
                                 substateTimer.ResetTime(30);
 
                                 entity.PlaySound(VanillaSoundID.witherSpawn);
                                 var param = entity.GetSpawnParams();
+                                var brainwasher = entity.Spawn(VanillaEnemyID.brainwasher, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, 80), param);
                                 var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
+                                var jackdullahan = entity.Spawn(VanillaEnemyID.jackDullahan, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, -80), param);
 
+                                var cluster = entity.Spawn(VanillaEffectID.smokeCluster, brainwasher.GetCenter());
+                                cluster.SetSize(Vector3.one * 120);
+                                cluster.SetTint(Color.magenta);
                                 var exp = entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter());
                                 exp.SetSize(Vector3.one * 120);
+                                var blast = entity.Spawn(VanillaEffectID.soulfireBurn, jackdullahan.GetCenter());
+                                blast.SetSize(Vector3.one * 120);
                                 entity.PlaySound(VanillaSoundID.explosion);
                             }
                         }

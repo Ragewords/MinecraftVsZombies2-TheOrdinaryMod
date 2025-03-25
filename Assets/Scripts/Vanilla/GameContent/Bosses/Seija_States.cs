@@ -14,6 +14,7 @@ using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
 using static MVZ2.GameContent.Buffs.VanillaBuffNames;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -30,8 +31,9 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new FrontflipState());
                 AddState(new DanmakuState());
                 AddState(new HammerState());
-                AddState(new GapBombState());
                 AddState(new GapMoveState());
+                AddState(new GapBombState());
+                AddState(new TeleportState());
                 AddState(new CameraState());
                 AddState(new FabricState());
                 AddState(new LanternState());
@@ -67,7 +69,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetStateTimer(entity);
-                stateTimer.ResetTime(120);
+                stateTimer.ResetTime(90);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -279,28 +281,108 @@ namespace MVZ2.GameContent.Bosses
                             int count = hammerPlaceBombDetector.DetectEntityCount(entity);
                             if (count >= BACKFLIP_ENEMY_COUNT && CanBackflip(entity))
                             {
-                                stateMachine.StartState(entity, STATE_BACKFLIP);
                                 var tnt = entity.Spawn(VanillaProjectileID.seijaMagicBomb, entity.GetCenter());
                                 tnt.SetFaction(entity.GetFaction());
                                 tnt.SetDamage(entity.GetDamage());
-                                tnt.Velocity = new Vector3(0, 5, 0);
+                                if (!GetJizo(entity).ExistsAndAlive())
+                                {
+                                    tnt.Velocity = new Vector3(0, 5, 0);
+                                    stateMachine.StartState(entity, STATE_BACKFLIP);
+                                }
+                                else
+                                {
+                                    tnt.Velocity = new Vector3(entity.GetFacingDirection().magnitude * 5, 5, 0);
+                                    stateMachine.StartState(entity, STATE_TELEPORT);
+                                }
                             }
                             else
                             {
-                                var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
-                                jizo.SetFaction(entity.GetFaction());
-                                jizo.Velocity = new Vector3(entity.GetFacingX() * 4, 3.5f, 0);
-                                entity.PlaySound(VanillaSoundID.jizo_appear, volume: 2f);
-                                stateMachine.StartState(entity, STATE_GAP_MOVE);
+                                if (!GetJizo(entity).ExistsAndAlive())
+                                {
+                                    stateMachine.StartState(entity, STATE_GAP_MOVE);
+                                    LeaveJizo(entity);
+                                }
+                                else
+                                    stateMachine.StartState(entity, STATE_TELEPORT);
                             }
                         }
                         break;
                 }
             }
+            private void LeaveJizo(Entity entity)
+            {
+                var jizo = entity.Spawn(VanillaEnemyID.seijaJizo, entity.GetCenter());
+                jizo.SetFaction(entity.GetFaction());
+                jizo.Velocity = new Vector3(entity.GetFacingX() * 4, 3.5f, 0);
+                entity.PlaySound(VanillaSoundID.jizo_appear, volume: 2f);
+                SetJizo(entity, jizo);
+            }
 
             private List<EntityCollider> smashDetectBuffer = new List<EntityCollider>();
             public const int SUBSTATE_RAISE = 0;
             public const int SUBSTATE_HAMMERED = 1;
+        }
+        private class TeleportState : EntityStateMachineState
+        {
+            public TeleportState() : base(STATE_TELEPORT) { }
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(15);
+
+                if (!entity.HasBuff<SeijaGapBuff>())
+                {
+                    entity.AddBuff<SeijaGapBuff>();
+                }
+            }
+            public override void OnExit(EntityStateMachine machine, Entity entity)
+            {
+                base.OnExit(machine, entity);
+                entity.RemoveBuffs<SeijaGapBuff>();
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+                var substate = stateMachine.GetSubState(entity);
+                var posi = GetOrb(entity).Position;
+
+                switch (substate)
+                {
+                    case SUBSTATE_PRE_TELEPORT:
+                        if (substateTimer.Expired)
+                        {
+                            substateTimer.ResetTime(15);
+                            var posx = entity.Position.x;
+                            if (posi.x <= posx)
+                                stateMachine.SetSubState(entity, SUBSTATE_FORWARD);
+                            else
+                                stateMachine.SetSubState(entity, SUBSTATE_BACKWARD);
+                            entity.PlaySound(VanillaSoundID.boon);
+                        }
+                        break;
+
+                    case SUBSTATE_FORWARD:
+                    case SUBSTATE_BACKWARD:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.StartState(entity, STATE_IDLE);
+                        }
+                        else
+                        {
+                            var pos = entity.Position;
+                            pos.x = pos.x * 0.8f + posi.x * 0.2f;
+                            pos.z = pos.z * 0.8f + posi.z * 0.2f;
+                            entity.Position = pos;
+                        }
+                        break;
+                }
+            }
+            public const int SUBSTATE_PRE_TELEPORT = 0;
+            public const int SUBSTATE_FORWARD = 1;
+            public const int SUBSTATE_BACKWARD = 2;
         }
         private class GapMoveState : EntityStateMachineState
         {
@@ -334,9 +416,9 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_PRE_RETURN:
                         if (substateTimer.Expired)
                         {
-                            var level = entity.Level;
                             stateMachine.SetSubState(entity, SUBSTATE_RETURN);
-                            substateTimer.ResetTime(23);
+                            substateTimer.ResetTime(15);
+                            var level = entity.Level;
                             var pos = entity.Position;
                             pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? entity.RNG.Next(level.GetMaxColumnCount() - 3, level.GetMaxColumnCount() - 1) : entity.RNG.Next(0, 2));
                             var lane = entity.RNG.Next(level.GetMaxLaneCount());

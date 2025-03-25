@@ -1,0 +1,124 @@
+﻿using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Models;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Enemies;
+using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
+using PVZEngine;
+using PVZEngine.Buffs;
+using PVZEngine.Damages;
+using PVZEngine.Entities;
+using PVZEngine.Level;
+using Tools;
+
+namespace MVZ2.GameContent.Enemies
+{
+    [EntityBehaviourDefinition(VanillaEnemyNames.jackDullahan)]
+    public class JackDullahan : MeleeEnemy
+    {
+        public JackDullahan(string nsp, string name) : base(nsp, name)
+        {
+            AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.ChangeModel(VanillaModelID.jackDullahanMain);
+            var param = entity.GetSpawnParams();
+            if (entity.IsPreviewEnemy())
+            {
+                param.SetProperty(VanillaEnemyProps.PREVIEW_ENEMY, true);
+            }
+            var horse = entity.Spawn(VanillaEnemyID.soulSkeletonHorse, entity.Position, param);
+            horse.SetFactionAndDirection(entity.GetFaction());
+            entity.RideOn(horse);
+            entity.SetAnimationBool("Sitting", true);
+            entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
+        }
+        public override void PreTakeDamage(DamageInput input)
+        {
+            base.PreTakeDamage(input);
+            if (input.Effects.HasEffect(VanillaDamageEffects.GOLD))
+            {
+                input.Multiply(3);
+            }
+        }
+        protected override int GetActionState(Entity enemy)
+        {
+            var baseState = base.GetActionState(enemy);
+            if (baseState == VanillaEntityStates.WALK)
+            {
+                var horse = enemy.GetRidingEntity();
+                var hasHorse = horse.ExistsAndAlive();
+                if (hasHorse)
+                {
+                    return STATE_IDLE;
+                }
+            }
+            return baseState;
+        }
+        protected override void UpdateAI(Entity enemy)
+        {
+            base.UpdateAI(enemy);
+            var horse = enemy.GetRidingEntity();
+            if (horse == null)
+            {
+                DropHead(enemy);
+            }
+            else if (horse.IsEntityOf(VanillaEnemyID.soulSkeletonHorse))
+            {
+                if (horse.State == SkeletonHorse.STATE_JUMP)
+                {
+                    DropHead(enemy);
+                }
+            }
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+
+            var horse = entity.GetRidingEntity();
+            var hasHorse = horse.ExistsAndAlive();
+            entity.SetAnimationBool("Sitting", hasHorse);
+            entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
+            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+        }
+        public override void PostDeath(Entity entity, DeathInfo info)
+        {
+            base.PostDeath(entity, info);
+            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+            {
+                return;
+            }
+            DropHead(entity);
+        }
+        public static Entity DropHead(Entity entity)
+        {
+            if (IsHeadDropped(entity))
+                return null;
+            var head = entity.Spawn(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
+            head.SetFactionAndDirection(entity.GetFaction());
+            SetHeadDropped(entity, true);
+            return head;
+        }
+        private void PostEnemyMeleeAttackCallback(Entity enemy, Entity target)
+        {
+            if (!enemy.IsEntityOf(VanillaEnemyID.jackDullahan))
+                return;
+            if (!target.IsHostile(enemy))
+                return;
+            target.InflictWither(30);
+        }
+
+        public static bool IsHeadDropped(Entity entity) => entity.GetBehaviourField<bool>(ID, FIELD_HEAD_DROPPED);
+        public static void SetHeadDropped(Entity entity, bool value) => entity.SetBehaviourField(ID, FIELD_HEAD_DROPPED, value);
+
+        public static readonly VanillaEntityPropertyMeta FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta("HeadDropped");
+        public const int STATE_IDLE = VanillaEntityStates.IDLE;
+        private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
+    }
+}

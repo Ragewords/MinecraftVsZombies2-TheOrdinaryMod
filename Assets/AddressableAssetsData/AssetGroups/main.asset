@@ -347,6 +347,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f2d44f30f44fee48b88e2a09fbb31fc
+    m_Address: mvz2:entity/enemy/soul_skeleton_horse
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f37708e93750684a859069a167af55c
     m_Address: mvz2:boss/the_eye
     m_ReadOnly: 0
@@ -1318,6 +1324,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Meta
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33cac88b1977c434fb547ae7a0e7c3bb
+    m_Address: mvz2:entity/enemies/jackdullahan_head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33d140b9942701745a921a9fc102ca79
     m_Address: mvz2:damage/fall/fall_small
     m_ReadOnly: 0
@@ -1523,6 +1535,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3a6ff83055599244a872a7e3cd5865cd
     m_Address: mvz2:effect/crushing_walls
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3af68432d5f507047b227771e348a250
+    m_Address: mvz2:enemy/castle/soul_skeleton_horse
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
@@ -2078,6 +2096,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d2a737bbbb64094dbf739c9018c6968
+    m_Address: mvz2:icon/totenser_web
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d49d253e83fc104d9eb629a8a238ee3
     m_Address: mvz2:mobile_blueprint/obsidian
@@ -3758,6 +3782,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e818e1b663dad245b2f38f80c163636
+    m_Address: mvz2:enemy/castle/jackdullahan
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8e9c31adececf9d4ba3918d8941732d7
     m_Address: mvz2:random/stone1
     m_ReadOnly: 0
@@ -3973,6 +4003,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94645a63ddfdcc246b0199659d5a6533
+    m_Address: mvz2:enemy/castle/jackdullahan_main
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9471881cde5f3d841abcd44501e0f922
     m_Address: mvz2:mobile_blueprint/mummy
@@ -4234,6 +4270,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e43064c78598fd4493a1d5c14308edb
     m_Address: mvz2:mobile_blueprint/vortex_hopper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e74a7a12d5351549a77cabbe4735460
+    m_Address: mvz2:entity/enemies/jackdullahan_jackolantern
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -5755,6 +5797,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d58ddd2f066906e47b56fc4eef51f1ca
+    m_Address: mvz2:enemy/castle/jackdullahan_head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d5941984467fb3b47acd928d4b2b9fe3
     m_Address: mvz2:effect/burning_gas
