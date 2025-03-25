@@ -97,9 +97,9 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damage)
         {
             base.PreTakeDamage(damage);
-            if (damage.Amount > 500)
+            if (damage.Amount > 50)
             {
-                damage.SetAmount(500);
+                damage.SetAmount(50);
             }
         }
         public override void PostTakeDamage(DamageOutput damage)
@@ -467,6 +467,8 @@ namespace MVZ2.GameContent.Bosses
                 var buff = contraption.AddBuff<DreamButterflyShieldBuff>();
                 buff.SetProperty(DreamButterflyShieldBuff.PROP_TIMEOUT, 150);
             }
+            if (level.HasBuff<NightmareDecrepifyBuff>())
+                level.RemoveBuffs<NightmareDecrepifyBuff>();
         }
 
         private void TheLurker(Entity boss)
@@ -675,9 +677,9 @@ namespace MVZ2.GameContent.Bosses
         };
         private static NamespaceID[] lunaticMindSwapPool = new NamespaceID[]
         {
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.obsidian),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.glowstone),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.punchton),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.tnt),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
@@ -687,9 +689,8 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.ironHelmettedZombie),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.skeleton),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.ghast),
         };
         private static int[] fateOptions = new int[]
         {

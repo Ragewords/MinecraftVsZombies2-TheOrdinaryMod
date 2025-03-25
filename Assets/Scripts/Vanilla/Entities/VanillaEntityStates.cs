@@ -24,6 +24,7 @@
         public const int BOSS_SPECIAL_3 = 312;
         public const int BOSS_SPECIAL_4 = 313;
         public const int BOSS_SPECIAL_5 = 314;
+        public const int BOSS_SPECIAL_6 = 315;
         public const int BOSS_FAINT = 350;
 
         public const int CART_TRIGGERED = 500;
@@ -100,13 +101,15 @@
         public const int SEIJA_FRONTFLIP = BOSS_SPECIAL_2;
         public const int SEIJA_FABRIC = BOSS_SPECIAL_3;
         public const int SEIJA_LANTERN = BOSS_SPECIAL_4;
-        public const int SEIJA_GAP_MOVE = BOSS_SPECIAL_5;
+        public const int SEIJA_TELEPORT = BOSS_SPECIAL_5;
+        public const int SEIJA_GAP_MOVE = BOSS_SPECIAL_6;
         public const int SEIJA_FAINT = DEAD;
 
         public const int WITHER_APPEAR = BOSS_APPEAR;
         public const int WITHER_IDLE = IDLE;
         public const int WITHER_CHARGE = ATTACK;
         public const int WITHER_EAT = BOSS_ATTACK_2;
+        public const int WITHER_MAGIC = BOSS_ATTACK_4;
         public const int WITHER_SWITCH = BOSS_SPECIAL;
         public const int WITHER_SUMMON = BOSS_ATTACK_3;
         public const int WITHER_STUNNED = BOSS_FAINT;

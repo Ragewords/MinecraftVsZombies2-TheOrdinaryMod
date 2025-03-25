@@ -48,6 +48,9 @@ namespace MVZ2.GameContent.Stages
             // 如果有Boss存活，不停生成怪物。
             if (!level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
+                var wither = level.FindFirstEntity(VanillaBossID.wither);
+                if (Wither.GetPhase(wither) == Wither.PHASE_1)
+                    return;
                 level.WaveState = VanillaLevelStates.STATE_AFTER_BOSS;
                 level.StopMusic();
                 if (!level.IsRerun)

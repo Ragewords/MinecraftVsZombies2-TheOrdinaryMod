@@ -30,12 +30,6 @@ namespace MVZ2.GameContent.Enemies
             };
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 40);
-        }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);

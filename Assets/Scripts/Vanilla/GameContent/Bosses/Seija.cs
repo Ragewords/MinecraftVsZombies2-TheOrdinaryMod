@@ -42,6 +42,7 @@ namespace MVZ2.GameContent.Bosses
             doll.SetParent(boss);
             var orb = boss.Spawn(VanillaEnemyID.seijaYinyangOrb, boss.Position);
             orb.SetParent(boss);
+            SetOrb(boss, orb);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -74,6 +75,15 @@ namespace MVZ2.GameContent.Bosses
         {
             base.PreTakeDamage(damageInfo);
             var boss = damageInfo.Entity;
+            var jizo = GetJizo(boss);
+            if (jizo.ExistsAndAlive())
+            {
+                damageInfo.Cancel();
+                jizo.TakeDamage(damageInfo.Amount, damageInfo.Effects, damageInfo.Source);
+                var cluster = jizo.Spawn(VanillaEffectID.smokeCluster, jizo.GetCenter(), jizo.GetSpawnParams());
+                cluster.SetSize(Vector3.one * 80);
+                cluster.SetTint(new Color(0.5f, 0.5f, 0.5f, 0.5f));
+            }
             if (damageInfo.Amount > 600)
             {
                 if (CanUseFabric(boss))
@@ -121,6 +131,24 @@ namespace MVZ2.GameContent.Bosses
         public static void SetBulletAngle(Entity boss, float value) => boss.SetBehaviourField(PROP_BULLET_ANGLE, value);
         public static FrameTimer GetDanmakuTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(PROP_DANMAKU_TIMER);
         public static void SetDanmakuTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(PROP_DANMAKU_TIMER, value);
+        public static Entity GetJizo(Entity boss)
+        {
+            var entityID = boss.GetBehaviourField<EntityID>(FIELD_JIZO);
+            return entityID?.GetEntity(boss.Level);
+        }
+        public static void SetJizo(Entity boss, Entity value)
+        {
+            boss.SetBehaviourField(FIELD_JIZO, new EntityID(value));
+        }
+        public static Entity GetOrb(Entity boss)
+        {
+            var entityID = boss.GetBehaviourField<EntityID>(FIELD_ORB);
+            return entityID?.GetEntity(boss.Level);
+        }
+        public static void SetOrb(Entity boss, Entity value)
+        {
+            boss.SetBehaviourField(FIELD_ORB, new EntityID(value));
+        }
         #endregion 属性
 
         private static float GetChangeAdjacentLaneZSpeed(Entity boss)
@@ -226,8 +254,10 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_DANMAKU_TIMER = new VanillaEntityPropertyMeta("DanmakuTimer");
         private static readonly VanillaEntityPropertyMeta PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta("BulletAngle");
+        public static readonly VanillaEntityPropertyMeta FIELD_JIZO = new VanillaEntityPropertyMeta("Jizo");
+        public static readonly VanillaEntityPropertyMeta FIELD_ORB = new VanillaEntityPropertyMeta("Orb");
 
-        private const int MAX_FABRIC_COUNT = 9;
+        private const int MAX_FABRIC_COUNT = 6;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
@@ -242,11 +272,12 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_HAMMER = VanillaEntityStates.SEIJA_HAMMER;
         private const int STATE_BACKFLIP = VanillaEntityStates.SEIJA_BACKFLIP;
         private const int STATE_FRONTFLIP = VanillaEntityStates.SEIJA_FRONTFLIP;
+        private const int STATE_GAP_MOVE = VanillaEntityStates.SEIJA_GAP_MOVE;
         private const int STATE_GAP_BOMB = VanillaEntityStates.SEIJA_GAP_BOMB;
         private const int STATE_CAMERA = VanillaEntityStates.SEIJA_CAMERA;
         private const int STATE_FABRIC = VanillaEntityStates.SEIJA_FABRIC;
         private const int STATE_LANTERN = VanillaEntityStates.SEIJA_LANTERN;
-        private const int STATE_GAP_MOVE = VanillaEntityStates.SEIJA_GAP_MOVE;
+        private const int STATE_TELEPORT = VanillaEntityStates.SEIJA_TELEPORT;
         private const int STATE_FAINT = VanillaEntityStates.SEIJA_FAINT;
         #endregion 常量
 

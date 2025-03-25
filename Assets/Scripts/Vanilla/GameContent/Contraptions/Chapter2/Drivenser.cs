@@ -56,7 +56,7 @@ namespace MVZ2.GameContent.Contraptions
                     shootParams.projectileID = VanillaProjectileID.largeArrow;
                     shootParams.damage = entity.GetDamage() * 50;
                     shootParams.soundID = VanillaSoundID.spellCard;
-                    shootParams.velocity = shootParams.velocity.normalized * 15;
+                    shootParams.velocity = shootParams.velocity.normalized;
                     entity.ShootProjectile(shootParams);
 
                     int repeatCount = GetRepeatCount(entity);

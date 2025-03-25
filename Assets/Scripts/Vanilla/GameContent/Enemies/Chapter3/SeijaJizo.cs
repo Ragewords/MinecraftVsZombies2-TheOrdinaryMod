@@ -3,6 +3,7 @@ using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -11,6 +12,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public SeijaJizo(string nsp, string name) : base(nsp, name)
         {
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.ForceSet, EntityCollisionHelper.DETECTION_IGNORE));
         }
         public override void Init(Entity entity)
         {

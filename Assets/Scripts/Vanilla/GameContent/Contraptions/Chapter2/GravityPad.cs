@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Contraptions
             projectileDetector.DetectEntities(entity, detectBuffer);
             foreach (var projectile in detectBuffer)
             {
-                projectile.SetGravity(1);
+                projectile.SetGravity(projectile.GetGravity() + 0.1f);
             }
         }
         protected override void UpdateLogic(Entity entity)

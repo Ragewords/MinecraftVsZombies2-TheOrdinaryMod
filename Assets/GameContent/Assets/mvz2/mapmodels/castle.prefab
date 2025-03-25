@@ -970,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450122154962902690, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.34
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 8450122154962902690, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1336,7 +1336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450122154962902690, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.31
+      value: -2.29
       objectReference: {fileID: 0}
     - target: {fileID: 8450122154962902690, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2185,6 +2185,10 @@ PrefabInstance:
     - target: {fileID: 3821586918481071554, guid: c8cae4454a6eaa749b10e51e0a2d3674, type: 3}
       propertyPath: m_Name
       value: MapButton7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820694600104008178, guid: c8cae4454a6eaa749b10e51e0a2d3674, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

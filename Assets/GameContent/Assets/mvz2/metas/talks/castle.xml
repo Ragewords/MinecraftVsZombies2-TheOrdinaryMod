@@ -27,7 +27,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是木制投掷器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸，并在敌群中反弹！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">感受物理学的力量吧！</sentence>
       </sentences>
     </section>
@@ -123,7 +123,7 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">……嗯？这个凋灵骷髅是？</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">头上戴着个金质头冠，手里拿着法杖。是干什么的呢？</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">我也不知道啊，不过我有一种预感！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">你会用到萤石的，邻居！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">你会用到荧石的，邻居！</sentence>
       </sentences>
     </section>
   </group>
@@ -136,7 +136,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是尖刺方块！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能对走在它上面的敌人造成伤害！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能对走在它上面的敌人造成伤害并击退！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">还能破坏敌人的车辆！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让战场上洒满钉子吧！</sentence>
       </sentences>
@@ -221,6 +221,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">这个是石制投掷器！他能弹射出微小的石子！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">不过，有时候它也能射出能击退敌人并且分裂的巨石！</sentence>
+		<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">甚至有可能弹出不断弹跳的弹力巨石！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1" onClick="end">在洞穴中，你最好当心脚下的踏板！</sentence>
       </sentences>
     </section>
@@ -303,9 +304,9 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这个是石护罩！他能和普通的器械重叠放置！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它的硬度能够保护它里面的器械不受伤害！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉石护罩！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这个是黏液护罩！他能和普通的器械重叠放置！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它的弹性能够保护它里面的器械不受伤害！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉黏液护罩！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">如果你瞄准上部，则会挖掉里面的器械！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">当然，星之碎片也是同理的！</sentence>
       </sentences>
@@ -407,8 +408,8 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是金苹果！不过它可不是用来回血的！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">实际上它是一个魅惑果实，能魅惑第一个攻击它的敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是转生苹果！能给你新的人生！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能转生第一个攻击它的敌人！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">然后！这个敌人就会为你作战！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">不过，要注意它也是只能在晚上用的！</sentence>
       </sentences>
@@ -540,7 +541,7 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">原来如此，它利用了正邪的能力反转了自己的重力，让自己处在我们的视线盲区内！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">她好像只是昏过去了，应该没事，等她醒吧！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">另外，这个器械是雷鼓！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这玩意可以让地面震动起来，然后把僵尸击退，顺便把它们送到不同的行！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这玩意可以让地面震动起来，虽然会让僵尸前进，但能够眩晕它们相当长的时间，顺便把它们送到不同的行！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1" onClick="end">当心地震！</sentence>
       </sentences>
     </section>
@@ -661,8 +662,8 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这个是磁暴线圈！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它能够电击周围的敌人！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">当然，也包括空中的！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它能够电击周围的敌人！也包括空中的！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">电击时不仅能产生电磁爆，还能够和其它磁暴线圈之间产生电场！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">你确定这是我们世界的东西？</sentence>
       </sentences>
     </section>

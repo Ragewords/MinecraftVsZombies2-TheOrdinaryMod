@@ -119,7 +119,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static bool CanStun(Entity self, Entity target)
         {
-            return Detection.IsInSphere(target.MainHitbox, self.GetCenter(), 120) && self.IsHostile(target);
+            return Detection.IsInSphere(target.MainHitbox, self.GetCenter(), 120) && self.IsHostile(target) && target.IsOnGround;
         }
     }
 }

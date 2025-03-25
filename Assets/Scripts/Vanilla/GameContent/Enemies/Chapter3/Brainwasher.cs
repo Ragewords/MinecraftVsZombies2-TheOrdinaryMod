@@ -100,23 +100,18 @@ namespace MVZ2.GameContent.Enemies
             {
                 EndCasting(entity);
             }
-            int maxcount = 3;
-            if (entity.Level.Difficulty == VanillaDifficulties.hard)
-                maxcount = 4;
-            if (entity.Level.Difficulty == VanillaDifficulties.lunatic)
-                maxcount = 5;
-            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetDefinitionID() == VanillaContraptionID.glowstone);
+            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetDefinitionID() == VanillaContraptionID.glowstone).RandomTake(2, entity.RNG);
             foreach (var target in targets_glowstone)
             {
                 target.Die();
             }
-            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetLane() == entity.GetLane() && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).Take(maxcount);
+            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).RandomTake(5, entity.RNG);
             foreach (var target in targets)
             {
                 target.Charm(entity.GetFaction());
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
-            var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.GetLane() != entity.GetLane() && e.Type == EntityTypes.ENEMY).Take(maxcount * 2);
+            var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY).RandomTake(10, entity.RNG);
             foreach (var target in targets_enemy)
             {
                 target.Mesmerize();
