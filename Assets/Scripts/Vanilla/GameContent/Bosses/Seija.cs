@@ -80,11 +80,11 @@ namespace MVZ2.GameContent.Bosses
             {
                 damageInfo.Cancel();
                 jizo.TakeDamage(damageInfo.Amount, damageInfo.Effects, damageInfo.Source);
-                var cluster = jizo.Spawn(VanillaEffectID.smokeCluster, jizo.GetCenter(), jizo.GetSpawnParams());
+                var cluster = boss.Spawn(VanillaEffectID.smokeCluster, boss.GetCenter(), boss.GetSpawnParams());
                 cluster.SetSize(Vector3.one * 80);
                 cluster.SetTint(new Color(0.5f, 0.5f, 0.5f, 0.5f));
             }
-            if (damageInfo.Amount > 600)
+            else if (damageInfo.Amount > 600)
             {
                 if (CanUseFabric(boss))
                 {

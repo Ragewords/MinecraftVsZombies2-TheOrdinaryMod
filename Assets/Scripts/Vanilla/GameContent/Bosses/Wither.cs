@@ -6,6 +6,8 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Stages;
+using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
@@ -17,6 +19,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using static MVZ2.GameContent.Buffs.VanillaBuffID;
 using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -28,6 +31,7 @@ namespace MVZ2.GameContent.Bosses
         public Wither(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
+            AddTrigger(VanillaLevelCallbacks.POST_CONTRAPTION_EVOKE, PostGlowstoneEvokeCallback, filter: VanillaContraptionID.glowstone);
         }
 
         #region 回调
@@ -36,6 +40,7 @@ namespace MVZ2.GameContent.Bosses
             base.Init(boss);
             stateMachine.Init(boss);
             stateMachine.StartState(boss, STATE_IDLE);
+            boss.SetAnimationInt("LightColor", 2);
 
             boss.CollisionMaskHostile |= 
                 EntityCollisionHelper.MASK_PLANT | 
@@ -352,13 +357,42 @@ namespace MVZ2.GameContent.Bosses
         {
             stateMachine.StartState(entity, STATE_APPEAR);
             SetMagicType(entity, MAGIC_MESMERIZER);
-            entity.SetAnimationInt("LightColor", 2);
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
             entity.PlaySound(VanillaSoundID.explosion);
             entity.Level.Explode(entity.GetCenter(), 240, entity.GetFaction(), entity.GetDamage() * 30, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
             var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
             exp.SetSize(Vector3.one * 360);
+        }
+        private void PostGlowstoneEvokeCallback(Entity contraption)
+        {
+            var level = contraption.Level;
+            foreach (var wither in level.FindEntities(VanillaBossID.wither))
+            {
+                if (wither.State == STATE_MAGIC)
+                {
+                    Stun(wither);
+                    switch (GetMagicType(wither))
+                    {
+                        case MAGIC_MESMERIZER:
+                            {
+                                SetMagicType(wither, MAGIC_BERSERKER);
+                            }
+                            break;
+                        case MAGIC_BERSERKER:
+                            {
+                                SetMagicType(wither, MAGIC_DULLAHAN);
+                            }
+                            break;
+                        case MAGIC_DULLAHAN:
+                            {
+                                SetMagicType(wither, MAGIC_MESMERIZER);
+                            }
+                            break;
+                    }
+                    wither.SetAnimationInt("LightColor", 2);
+                }
+            }
         }
 
         #region 常量

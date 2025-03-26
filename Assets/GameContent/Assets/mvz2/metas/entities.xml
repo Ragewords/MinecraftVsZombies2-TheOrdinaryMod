@@ -451,7 +451,7 @@
             <int name="cost" value="75" />
             <id name="rechargeId" value="mvz2:long" />
         </contraption>
-        <contraption id="thunder_drum" name="雷鼓" tooltip="触发后反向震退并震晕敌人" unlock="mvz2:level.castle_7">
+        <contraption id="thunder_drum" name="雷鼓" tooltip="触发后将敌人向前震并震晕" unlock="mvz2:level.castle_7">
             <bool name="canDeactive" value="false"/>
             <bool name="loyal" value="true"/>
             <id name="shell" value="mvz2:wood"/>

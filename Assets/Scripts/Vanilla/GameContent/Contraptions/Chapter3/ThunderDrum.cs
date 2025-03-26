@@ -114,12 +114,12 @@ namespace MVZ2.GameContent.Contraptions
                 if (target.Type != EntityTypes.ENEMY)
                     continue;
                 var vel = target.Velocity;
-                vel.x = -2;
-                vel.y = 15;
+                vel.x = -3;
+                vel.y = 18;
                 target.Velocity = vel;
                 target.RandomChangeAdjacentLane(self.RNG);
                 if (target.CanDeactive())
-                    target.Stun(600);
+                    target.Stun(900);
 
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
