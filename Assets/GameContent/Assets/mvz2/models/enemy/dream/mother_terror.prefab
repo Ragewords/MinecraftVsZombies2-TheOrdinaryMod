@@ -84,6 +84,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670644642867940497, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+      propertyPath: subSortingGroups.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670644642867940497, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+      propertyPath: subSortingGroups.Array.data[0]
+      value: 
+      objectReference: {fileID: 5678861722435048078}
+    - target: {fileID: 6670644642867940497, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+      propertyPath: subSortingGroups.Array.data[1]
+      value: 
+      objectReference: {fileID: 7803490109487433360}
+    - target: {fileID: 6670644642867940497, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+      propertyPath: subSortingGroups.Array.data[2]
+      value: 
+      objectReference: {fileID: 2155806438965837513}
     - target: {fileID: 6735453676292339929, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -109,3 +125,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+--- !u!210 &2155806438965837513 stripped
+SortingGroup:
+  m_CorrespondingSourceObject: {fileID: 1309327331421065218, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+  m_PrefabInstance: {fileID: 1135290619080404683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &5678861722435048078 stripped
+SortingGroup:
+  m_CorrespondingSourceObject: {fileID: 4687686923363499077, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+  m_PrefabInstance: {fileID: 1135290619080404683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &7803490109487433360 stripped
+SortingGroup:
+  m_CorrespondingSourceObject: {fileID: 7172769817493710939, guid: a66a8e7b59dead94fb585912ec7a67af, type: 3}
+  m_PrefabInstance: {fileID: 1135290619080404683}
+  m_PrefabAsset: {fileID: 0}
