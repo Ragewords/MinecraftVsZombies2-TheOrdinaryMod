@@ -502,11 +502,11 @@ PrefabInstance:
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[6]
       value: 
-      objectReference: {fileID: 2160681733115417533}
+      objectReference: {fileID: 4171874938652011913}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[7]
       value: 
-      objectReference: {fileID: 4171874938652011913}
+      objectReference: {fileID: 2160681733115417533}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[8]
       value: 
