@@ -90,7 +90,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (entity.GetDefinitionID() != VanillaProjectileID.flyingTNT)
                 {
                     var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
-                    projectile.SetDamage(900);
+                    projectile.SetDamage(damage / 2);
                     projectile.SetRange(40);
                     projectile.SetScale(new Vector3(0.7f, 0.7f, 0.7f));
                     projectile.SetDisplayScale(new Vector3(0.7f, 0.7f, 0.7f));
