@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Bosses
             private int GetNextState(EntityStateMachine stateMachine, Entity entity)
             {
                 var lastState = stateMachine.GetPreviousState(entity);
-                if (lastState == STATE_IDLE || lastState == STATE_BACKFLIP)
+                if (lastState == STATE_IDLE || lastState == STATE_BACKFLIP || lastState == STATE_TELEPORT)
                 {
                     lastState = STATE_DANMAKU;
                     return lastState;
@@ -138,6 +138,8 @@ namespace MVZ2.GameContent.Bosses
                     {
                         return lastState;
                     }
+                    else
+                        return STATE_TELEPORT;
                 }
                 if (lastState == STATE_FRONTFLIP)
                 {
@@ -146,6 +148,8 @@ namespace MVZ2.GameContent.Bosses
                     {
                         return lastState;
                     }
+                    else
+                        return STATE_TELEPORT;
                 }
 
                 return STATE_DANMAKU;
@@ -284,26 +288,18 @@ namespace MVZ2.GameContent.Bosses
                                 var tnt = entity.Spawn(VanillaProjectileID.seijaMagicBomb, entity.GetCenter());
                                 tnt.SetFaction(entity.GetFaction());
                                 tnt.SetDamage(entity.GetDamage());
-                                if (!GetJizo(entity).ExistsAndAlive())
-                                {
-                                    tnt.Velocity = new Vector3(0, 5, 0);
-                                    stateMachine.StartState(entity, STATE_BACKFLIP);
-                                }
-                                else
-                                {
-                                    tnt.Velocity = new Vector3(entity.GetFacingDirection().magnitude * 5, 5, 0);
-                                    stateMachine.StartState(entity, STATE_TELEPORT);
-                                }
+                                tnt.Velocity = new Vector3(0, 5, 0);
+                                stateMachine.StartState(entity, STATE_BACKFLIP);
                             }
                             else
                             {
                                 if (!GetJizo(entity).ExistsAndAlive())
                                 {
-                                    stateMachine.StartState(entity, STATE_GAP_MOVE);
+                                    stateMachine.StartState(entity, STATE_IDLE);
                                     LeaveJizo(entity);
                                 }
                                 else
-                                    stateMachine.StartState(entity, STATE_TELEPORT);
+                                    stateMachine.StartState(entity, STATE_GAP_MOVE);
                             }
                         }
                         break;
@@ -373,8 +369,8 @@ namespace MVZ2.GameContent.Bosses
                         else
                         {
                             var pos = entity.Position;
-                            pos.x = pos.x * 0.8f + posi.x * 0.2f;
-                            pos.z = pos.z * 0.8f + posi.z * 0.2f;
+                            pos.x = pos.x * 0.5f + posi.x * 0.5f;
+                            pos.z = pos.z * 0.5f + posi.z * 0.5f;
                             entity.Position = pos;
                         }
                         break;

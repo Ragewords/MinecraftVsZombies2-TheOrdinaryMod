@@ -371,7 +371,9 @@ namespace MVZ2.GameContent.Bosses
                                 var spawnX = level.GetEntityColumnX(column);
                                 var lane = entity.GetLane();
                                 var spawnZ = level.GetEntityLaneZ(lane);
-                                entity.Level.Spawn(VanillaEnemyID.hellChariot, new Vector3(spawnX, 0, spawnZ), entity);
+                                var chariot = entity.Level.Spawn(VanillaEnemyID.hellChariot, new Vector3(spawnX, 0, spawnZ), entity); 
+                                var exp = chariot.Spawn(VanillaEffectID.explosion, chariot.GetCenter());
+                                exp.SetSize(Vector3.one * 180);
                             }
                             entity.Position = pos;
                             entity.Velocity = vel;
@@ -616,6 +618,10 @@ namespace MVZ2.GameContent.Bosses
                                             for (int i = 0; i < 8; i++)
                                             {
                                                 var direction = Quaternion.Euler(0, i * 45, 0) * Vector3.left * 80;
+                                                if (i == 1 || i == 3 || i == 5 || i == 7)
+                                                {
+                                                    direction = Quaternion.Euler(0, i * 45, 0) * Vector3.left * 100;
+                                                }
                                                 var param = entity.GetSpawnParams();
                                                 if (i == 2 || i == 6)
                                                     entity.Spawn(VanillaEnemyID.dullahan, entity.Position + direction, param);

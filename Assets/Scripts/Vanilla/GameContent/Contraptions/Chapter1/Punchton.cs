@@ -90,6 +90,10 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f + entity.GetRange() * 0.5f;
                 SetArmExtension(entity, extension);
 
+                var damage = Mathf.Lerp(GetFirstDamage(entity), 1, 0.2f);
+                SetFirstDamage(entity, damage);
+                SetFirstPush(entity, 1);
+
                 var timer = GetStateTimer(entity);
                 timer.Run();
                 if (timer.Expired)
@@ -137,8 +141,6 @@ namespace MVZ2.GameContent.Contraptions
                     CheckAchievement(ent);
                 }
             }
-            SetFirstDamage(entity, 1);
-            SetFirstPush(entity, 1);
         }
         private void EvokedUpdate(Entity entity)
         {
@@ -206,8 +208,8 @@ namespace MVZ2.GameContent.Contraptions
         public void SetArmExtension(Entity entity, float value) => entity.SetBehaviourField(ID, PROP_ARM_EXTENSION, value);
         public FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         public void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
-        public static int GetFirstDamage(Entity entity) => entity.GetBehaviourField<int>(ID, FIRST_DAMAGE_MULTIPLIER);
-        public static void SetFirstDamage(Entity entity, int value) => entity.SetBehaviourField(ID, FIRST_DAMAGE_MULTIPLIER, value);
+        public static float GetFirstDamage(Entity entity) => entity.GetBehaviourField<float>(ID, FIRST_DAMAGE_MULTIPLIER);
+        public static void SetFirstDamage(Entity entity, float value) => entity.SetBehaviourField(ID, FIRST_DAMAGE_MULTIPLIER, value);
         public static int GetFirstPush(Entity entity) => entity.GetBehaviourField<int>(ID, FIRST_PUSH_MULTIPLIER);
         public static void SetFirstPush(Entity entity, int value) => entity.SetBehaviourField(ID, FIRST_PUSH_MULTIPLIER, value);
         private void CheckAchievement(Entity entity)

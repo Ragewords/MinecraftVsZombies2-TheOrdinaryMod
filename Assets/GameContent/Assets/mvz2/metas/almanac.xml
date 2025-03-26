@@ -370,11 +370,11 @@
         </entry>
         <entry id="mvz2:thunder_drum">
             <header>
-                <p>雷鼓在触发后会震飞所有地面上的敌人，使其眩晕、反向后退并换行。之后进入破损状态，需要时间修复。</p>
+                <p>雷鼓在触发后会震飞所有地面上的敌人，使其前进、眩晕并换行。之后进入破损状态，需要时间修复。</p>
             </header>
             <properties>
                 <p>修复时间：<![CDATA[<color=red>60秒</color>]]></p>
-				<p>眩晕时间：<![CDATA[<color=red>20秒</color>]]></p>
+				<p>眩晕时间：<![CDATA[<color=red>30秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>引发4秒地震，对所有地面上的敌人造成总共40%最大生命的伤害</color>]]></p>
             </properties>
             <flavor>
