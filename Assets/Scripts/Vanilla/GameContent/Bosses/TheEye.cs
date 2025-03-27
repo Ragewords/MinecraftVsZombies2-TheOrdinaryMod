@@ -106,6 +106,8 @@ namespace MVZ2.GameContent.Bosses
                     {
                         if (target.IsEntityOf(pool1.Random(rng)))
                             continue;
+                        if (target.IsDead)
+                            continue;
                         var random = entity.Level.Spawn(pool1.Random(rng), target.Position, entity);
                         random.SetFactionAndDirection(target.GetFaction());
                         target.Level.Spawn(VanillaEffectID.smokeCluster, target.Position, entity);
