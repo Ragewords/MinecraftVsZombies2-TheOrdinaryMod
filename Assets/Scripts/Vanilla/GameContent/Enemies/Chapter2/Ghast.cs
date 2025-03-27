@@ -117,11 +117,11 @@ namespace MVZ2.GameContent.Enemies
             var direciton = (target.GetCenter() - shootPoint).normalized;
             param.velocity = speed * direciton;
             var damageMultiplier = 1f;
-            if (self.Level.Difficulty == VanillaDifficulties.hard)
+            if (self.Level.Difficulty == VanillaDifficulties.normal)
             {
                 damageMultiplier = 1.5f;
             }
-            else if (self.Level.Difficulty == VanillaDifficulties.lunatic)
+            else if (self.Level.Difficulty == VanillaDifficulties.hard || self.Level.Difficulty == VanillaDifficulties.lunatic)
             {
                 damageMultiplier = 3f;
             }
