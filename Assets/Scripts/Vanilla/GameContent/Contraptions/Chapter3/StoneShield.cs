@@ -36,8 +36,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void PreTakeDamage(DamageInput damageInfo)
         {
             base.PreTakeDamage(damageInfo);
-            if (!(damageInfo.Effects.HasEffect(VanillaDamageEffects.SACRIFICE) || damageInfo.Effects.HasEffect(VanillaDamageEffects.SELF_DAMAGE)))
-                damageInfo.Multiply(0.6f);
+            damageInfo.Multiply(0.6f);
         }
         protected override void OnEvoke(Entity contraption)
         {
