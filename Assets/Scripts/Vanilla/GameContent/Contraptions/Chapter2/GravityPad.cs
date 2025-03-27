@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Contraptions
             projectileDetector.DetectEntities(entity, detectBuffer);
             foreach (var projectile in detectBuffer)
             {
-                projectile.SetGravity(projectile.GetGravity() + 0.1f);
+                projectile.SetGravity(projectile.GetGravity() + PULL_DOWN_SPEED);
             }
         }
         protected override void UpdateLogic(Entity entity)
@@ -66,7 +66,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const float AFFECT_HEIGHT = 64;
         public const float MIN_HEIGHT = 5;
-        public const float PULL_DOWN_SPEED = -6.666f;
+        public const float PULL_DOWN_SPEED = 3.333f;
         private Detector projectileDetector;
         private List<Entity> detectBuffer = new List<Entity>();
 
