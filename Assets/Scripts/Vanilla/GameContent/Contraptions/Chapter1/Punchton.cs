@@ -89,7 +89,7 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f + entity.GetRange() * 0.5f;
                 SetArmExtension(entity, extension);
 
-                var damage = Mathf.Lerp(GetFirstDamage(entity), 1, 0.2f);
+                var damage = Mathf.Lerp(GetFirstDamage(entity), 1, 0.1f);
                 SetFirstDamage(entity, damage);
                 SetFirstPush(entity, 1);
 
