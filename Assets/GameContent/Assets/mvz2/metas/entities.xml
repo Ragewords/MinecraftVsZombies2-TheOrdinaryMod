@@ -332,7 +332,7 @@
             <id name="fragmentId" value="mvz2:dispenser"/>
             <id name="projectileId" value="mvz2:spike" />
             <idArray name="attackerFor" value="mvz2:flying_enemy"/>
-			<float name="damage" value="30"/>
+			<float name="damage" value="25"/>
 
             <int name="cost" value="125" />
             <id name="rechargeId" value="mvz2:short" />
