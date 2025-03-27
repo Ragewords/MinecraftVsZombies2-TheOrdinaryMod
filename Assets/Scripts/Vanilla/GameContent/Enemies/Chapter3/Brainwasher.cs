@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.EquipArmor<BrainwasherHat>();
+            entity.EquipArmor<BrainwasherCrown>();
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
         }
         protected override int GetActionState(Entity enemy)
@@ -99,11 +99,6 @@ namespace MVZ2.GameContent.Enemies
             if (entity.State == STATE_CAST)
             {
                 EndCasting(entity);
-            }
-            var targets_glowstone = entity.Level.FindEntities(e => e.IsHostile(entity) && e.GetDefinitionID() == VanillaContraptionID.glowstone).RandomTake(2, entity.RNG);
-            foreach (var target in targets_glowstone)
-            {
-                target.Die();
             }
             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).RandomTake(5, entity.RNG);
             foreach (var target in targets)

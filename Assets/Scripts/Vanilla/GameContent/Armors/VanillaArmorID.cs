@@ -8,7 +8,7 @@ namespace MVZ2.GameContent.Armors
         public const string leatherCap = "leather_cap";
         public const string ironHelmet = "iron_helmet";
         public const string mesmerizerCrown = "mesmerizer_crown";
-        public const string brainwasherHat = "brainwasher_hat";
+        public const string brainwasherCrown = "brainwasher_crown";
         public const string berserkerHelmet = "berserker_helmet";
         public const string bedserkerHelmet = "bedserker_helmet";
     }
@@ -17,7 +17,7 @@ namespace MVZ2.GameContent.Armors
         public static readonly NamespaceID leatherCap = Get(VanillaArmorNames.leatherCap);
         public static readonly NamespaceID ironHelmet = Get(VanillaArmorNames.ironHelmet);
         public static readonly NamespaceID mesmerizerCrown = Get(VanillaArmorNames.mesmerizerCrown);
-        public static readonly NamespaceID brainwasherHat = Get(VanillaArmorNames.brainwasherHat);
+        public static readonly NamespaceID brainwasherCrown = Get(VanillaArmorNames.brainwasherCrown);
         public static readonly NamespaceID bersekerHelmet = Get(VanillaArmorNames.berserkerHelmet);
         public static readonly NamespaceID bedserkerHelmet = Get(VanillaArmorNames.bedserkerHelmet);
         private static NamespaceID Get(string name)

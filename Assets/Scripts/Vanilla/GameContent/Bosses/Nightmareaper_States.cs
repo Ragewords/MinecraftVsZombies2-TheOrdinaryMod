@@ -5,6 +5,7 @@ using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -15,6 +16,7 @@ using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
 using static MVZ2.GameContent.Buffs.VanillaBuffNames;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -227,6 +229,8 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_READY_1:
                     case SUBSTATE_READY_2:
                     case SUBSTATE_READY_3:
+                    case SUBSTATE_READY_4:
+                    case SUBSTATE_READY_5:
                         Jab(entity, entity.Target);
                         stateMachine.SetSubState(entity, substate + 1);
                         substateTimer.ResetTime(9);
@@ -234,6 +238,8 @@ namespace MVZ2.GameContent.Bosses
 
                     case SUBSTATE_JAB_1:
                     case SUBSTATE_JAB_2:
+                    case SUBSTATE_JAB_3:
+                    case SUBSTATE_JAB_4:
                         var jabTarget = FindJabTarget(entity);
                         entity.Target = jabTarget;
                         if (jabTarget != null)
@@ -248,7 +254,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
 
-                    case SUBSTATE_JAB_3:
+                    case SUBSTATE_JAB_5:
                         stateMachine.StartState(entity, STATE_IDLE);
                         break;
                 }
@@ -291,11 +297,19 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_JAB_2 = 3;
             public const int SUBSTATE_READY_3 = 4;
             public const int SUBSTATE_JAB_3 = 5;
+            public const int SUBSTATE_READY_4 = 6;
+            public const int SUBSTATE_JAB_4 = 7;
+            public const int SUBSTATE_READY_5 = 8;
+            public const int SUBSTATE_JAB_5 = 9;
         }
         private static Entity FindJabTarget(Entity entity)
         {
             targetBuffer.Clear();
-            entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c), targetBuffer);
+            var substate = stateMachine.GetSubState(entity);
+            if (substate >= 6)
+                entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c) && c.IsDispenser(), targetBuffer);
+            else
+                entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c), targetBuffer);
             if (targetBuffer.Count > 0)
             {
                 var actRNG = GetStateRNG(entity);
@@ -415,7 +429,7 @@ namespace MVZ2.GameContent.Bosses
                     {
                         var target = collider.Entity;
                         var colliderReference = collider.ToReference();
-                        var damage = level.Difficulty == VanillaDifficulties.lunatic ? SPIN_DAMAGE_LUNATIC : SPIN_DAMAGE;
+                        var damage = (level.Difficulty == VanillaDifficulties.hard || level.Difficulty == VanillaDifficulties.lunatic) ? SPIN_DAMAGE_LUNATIC : SPIN_DAMAGE;
                         var damageOutput = collider.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.SLICE), entity);
                         PostSpinDamage(entity, damageOutput);
                     }
