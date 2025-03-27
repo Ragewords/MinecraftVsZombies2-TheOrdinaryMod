@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
@@ -35,7 +36,8 @@ namespace MVZ2.GameContent.Contraptions
         public override void PreTakeDamage(DamageInput damageInfo)
         {
             base.PreTakeDamage(damageInfo);
-            damageInfo.SetAmount(damageInfo.Amount * 0.8f);
+            if (!(damageInfo.Effects.HasEffect(VanillaDamageEffects.SACRIFICE) || damageInfo.Effects.HasEffect(VanillaDamageEffects.SELF_DAMAGE)))
+                damageInfo.Multiply(0.6f);
         }
         protected override void OnEvoke(Entity contraption)
         {
