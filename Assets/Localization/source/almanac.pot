@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-26 01:17+0800\n"
+"POT-Creation-Date: 2025-03-27 07:48+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -514,7 +514,7 @@ msgstr ""
 #. Header for contraptions mvz2:stone_dropper
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。"
+msgid "石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。弹出的子弹有可能被替换为不断弹跳的弹力巨石。"
 msgstr ""
 
 #. Properties for contraptions mvz2:stone_dropper
@@ -523,7 +523,8 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "巨石概率：<color=red>25%</color>\n"
-"伤害：<color=red>10（卵石），40（巨石）</color>\n"
+"弹力巨石概率：<color=red>2%</color>\n"
+"伤害：<color=red>10（卵石），40（巨石），200（弹力巨石）</color>\n"
 "技能：<color=red>立即喷射30发巨石</color>"
 msgstr ""
 
@@ -536,7 +537,7 @@ msgstr ""
 #. Header for contraptions mvz2:stone_shield
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "黏液护罩可以和其他器械放在一起，并保护其内部的器械。"
+msgid "黏液护罩可以和其他器械放在一起，并保护其内部的器械，自身的弹性则能减少受到的伤害。"
 msgstr ""
 
 #. Properties for contraptions mvz2:stone_shield
@@ -544,6 +545,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>4000</color>\n"
+"特点：<color=red>减少20%自身受到的伤害</color>\n"
 "技能：<color=red>3x3范围内的器械无敌5秒</color>"
 msgstr ""
 
@@ -573,13 +575,13 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "转生苹果对于砸到重力方块这件事情感到很抱歉，所以它赔了重力方块自己的一块皮。\n"
-"这就是为什么重力方块变成了紫色的板子。"
+"这就是为什么超重力板是一个紫色的板子。"
 msgstr ""
 
 #. Header for contraptions mvz2:thunder_drum
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "雷鼓在触发后会震飞所有地面上的敌人，使其眩晕、反向后退并换行。之后进入破损状态，需要时间修复。"
+msgid "雷鼓在触发后会震飞所有地面上的敌人，使其前进、眩晕并换行。之后进入破损状态，需要时间修复。"
 msgstr ""
 
 #. Properties for contraptions mvz2:thunder_drum
@@ -587,7 +589,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "修复时间：<color=red>60秒</color>\n"
-"眩晕时间：<color=red>20秒</color>\n"
+"眩晕时间：<color=red>30秒</color>\n"
 "技能：<color=red>引发4秒地震，对所有地面上的敌人造成总共40%最大生命的伤害</color>"
 msgstr ""
 
@@ -2441,7 +2443,7 @@ msgstr ""
 #. Properties for entity mvz2:thunder_drum
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "触发后反向震退并震晕敌人"
+msgid "触发后将敌人向前震并震晕"
 msgstr ""
 
 #. Header for entity mvz2:tesla_coil
