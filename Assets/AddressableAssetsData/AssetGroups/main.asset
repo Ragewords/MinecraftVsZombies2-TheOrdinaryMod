@@ -119,6 +119,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05bdaeb029f463a4da2289f189783b5b
+    m_Address: mvz2:armor/brainwasher_crown
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0647dca389a10684db3237b158058da6
     m_Address: mvz2:soul_sand4
     m_ReadOnly: 0
@@ -4060,6 +4066,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9696331d07114754fbccc29acd1b4846
     m_Address: mvz2:map/gensokyo/pins/castle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9715bb3348d5b30448e5b28dfde0a228
+    m_Address: mvz2:entity/armor/brainwasher_crown
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
