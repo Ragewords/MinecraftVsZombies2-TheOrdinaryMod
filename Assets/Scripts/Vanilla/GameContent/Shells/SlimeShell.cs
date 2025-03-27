@@ -16,13 +16,9 @@ namespace MVZ2.GameContent.Shells
         public override void EvaluateDamage(DamageInput damageInfo)
         {
             base.EvaluateDamage(damageInfo);
-            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.FIRE))
+            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.FIRE) || damageInfo.Effects.HasEffect(VanillaDamageEffects.SLICE))
             {
                 damageInfo.Multiply(2);
-            }
-            if (!(damageInfo.Effects.HasEffect(VanillaDamageEffects.SACRIFICE) && damageInfo.Effects.HasEffect(VanillaDamageEffects.SLICE) && damageInfo.Effects.HasEffect(VanillaDamageEffects.SELF_DAMAGE)))
-            {
-                damageInfo.Multiply(0.6f);
             }
         }
     }
