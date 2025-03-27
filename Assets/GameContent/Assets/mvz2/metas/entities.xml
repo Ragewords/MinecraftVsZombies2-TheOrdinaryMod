@@ -978,6 +978,7 @@
 			<bool name="loyal" value="true"/>
 			<bool name="harmless" value="true" />
 			<bool name="canDeactive" value="false"/>
+			<bool name="notActiveEnemy" value="true"/>
 			<bool name="invisible" value="true"/>
 			<id name="shell" value="mvz2:stone"/>
 			<bool name="noReward" value="true"/>
