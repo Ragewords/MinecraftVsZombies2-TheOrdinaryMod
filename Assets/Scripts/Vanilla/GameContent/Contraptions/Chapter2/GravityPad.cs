@@ -64,7 +64,7 @@ namespace MVZ2.GameContent.Contraptions
             var anvil = level.Spawn(VanillaContraptionID.anvil, pos, entity);
             anvil.SetFactionAndDirection(entity.GetFaction());
         }
-        public const float AFFECT_HEIGHT = 32;
+        public const float AFFECT_HEIGHT = 64;
         public const float MIN_HEIGHT = 5;
         public const float PULL_DOWN_SPEED = -6.666f;
         private Detector projectileDetector;
