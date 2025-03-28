@@ -396,7 +396,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream2">他们突然之间变得非常小了！而且数量非常多！</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">诶，怎么回事？</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">小僵尸是吗？我来试试解决他们！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">当然，好像也不止是小……</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3" onClick="end">当然，好像也不止是小僵尸……</sentence>
       </sentences>
     </section>
   </group>

@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.HeldItems
             {
                 timeout = 22;
             }
-            else if (level.Difficulty == VanillaDifficulties.hard)
+            else if (level.Difficulty == VanillaDifficulties.hard || level.Difficulty == VanillaDifficulties.lunatic)
             {
                 timeout = 90;
             }

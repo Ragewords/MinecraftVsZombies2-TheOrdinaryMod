@@ -887,6 +887,20 @@
 
             <int name="cost" value="0" />
         </enemy>
+		<enemy id="willo_skull" name="萤火骷髅头" deathMessage="把我所有的东西留给我的嗝屁猫。" unlock="mvz2:level.halloween_6">
+			<float name="maxHealth" value="200"/>
+			<id name="shell" value="mvz2:bone"/>
+			<id name="crySound" value="mvz2:skeleton_cry"/>
+			<id name="deathSound" value="mvz2:skeleton_death"/>
+			<bool name="isFire" value="true" />
+			<bool name="isLightSource" value="true"/>
+			<vector3 name="lightRange" x="120" y="120" z="120"/>
+			<color name="lightColor" value="#FF7F00"/>
+			<float name="speed" value="0.5"/>
+
+			<int name="cost" value="50" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
         <enemy id="reverse_satellite" name="反则卫星" deathMessage="？" unlock="mvz2:level.castle_1">
             <bool name="harmless" value="true" />
             <bool name="notActiveEnemy" value="true"/>

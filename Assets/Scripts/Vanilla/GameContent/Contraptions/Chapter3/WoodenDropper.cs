@@ -27,6 +27,12 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             }
         }
+        public override void OnShootTick(Entity entity)
+        {
+            var projectile = Shoot(entity);
+            projectile.SetScale(entity.GetScale());
+            projectile.SetDisplayScale(entity.GetDisplayScale());
+        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -38,7 +44,9 @@ namespace MVZ2.GameContent.Contraptions
                 var zspeed = rng.Next(-1.5f, 1.5f);
                 var param = entity.GetShootParams();
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
-                entity.ShootProjectile(param);
+                var projectile = entity.ShootProjectile(param);
+                projectile.SetScale(entity.GetScale());
+                projectile.SetDisplayScale(entity.GetDisplayScale());
             }
             entity.PlaySound(VanillaSoundID.launch);
         }

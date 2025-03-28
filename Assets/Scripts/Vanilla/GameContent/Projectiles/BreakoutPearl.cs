@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Projectiles
             var level = projectile.Level;
             var position = projectile.Position;
             var velocity = projectile.Velocity;
-            if (position.x > MAX_X)
+            if (position.x < MAX_X)
             {
                 position.x = MAX_X;
                 velocity.x *= -1;
@@ -74,6 +74,6 @@ namespace MVZ2.GameContent.Projectiles
             base.Update(projectile);
         }
 
-        public const float MAX_X = VanillaLevelExt.RIGHT_BORDER - 40;
+        public const float MAX_X = VanillaLevelExt.LEFT_BORDER + 40;
     }
 }

@@ -23,6 +23,7 @@ namespace MVZ2.GameContent.Stages
             AddBehaviour(new ConveyorStageBehaviour(this));
 
             AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostEnemyInitCallback, filter: EntityTypes.ENEMY);
+            AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostPlantInitCallback, filter: EntityTypes.PLANT);
         }
         public override void OnStart(LevelEngine level)
         {
@@ -70,11 +71,41 @@ namespace MVZ2.GameContent.Stages
             }
             entity.Health = entity.GetMaxHealth();
         }
+        public void PostPlantInitCallback(Entity entity)
+        {
+            var level = entity.Level;
+            if (level.StageDefinition != this)
+                return;
+            bool small = false;
+            if (level.CurrentWave > 10)
+            {
+                var smallCounter = GetSmallCounter(level);
+                if (smallCounter > MAX_SMALL_COUNTER)
+                {
+                    smallCounter -= MAX_SMALL_COUNTER;
+                    small = true;
+                }
+                else
+                {
+                    smallCounter++;
+                }
+                SetSmallCounter(level, smallCounter);
+            }
+            if (small)
+            {
+                entity.AddBuff<LittleZombieBuff>();
+            }
+            entity.Health = entity.GetMaxHealth();
+        }
         public static int GetBigCounter(LevelEngine level) => level.GetBehaviourField<int>(ID, FIELD_BIG_COUNTER);
         public static void SetBigCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_BIG_COUNTER, value);
+        public static int GetSmallCounter(LevelEngine level) => level.GetBehaviourField<int>(ID, FIELD_SMALL_COUNTER);
+        public static void SetSmallCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_SMALL_COUNTER, value);
 
         public static readonly NamespaceID ID = new NamespaceID(VanillaMod.spaceName, "little_zombie_stage");
         public static readonly VanillaLevelPropertyMeta FIELD_BIG_COUNTER = new VanillaLevelPropertyMeta("BigCounter");
+        public static readonly VanillaLevelPropertyMeta FIELD_SMALL_COUNTER = new VanillaLevelPropertyMeta("SmallCounter");
         public const int MAX_BIG_COUNTER = 6;
+        public const int MAX_SMALL_COUNTER = 3;
     }
 }

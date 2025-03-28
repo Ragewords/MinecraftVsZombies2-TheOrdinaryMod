@@ -63,7 +63,7 @@ namespace MVZ2.GameContent.Effects
             var target = entity.Target;
             if (target != null && target.Exists())
             {
-                var targetPosition = entity.Position + Vector3.right * 40;
+                var targetPosition = entity.Position + Vector3.left * 40;
                 if (target.State == VanillaEntityStates.BREAKOUT_PEARL_RETURN)
                 {
                     target.Velocity = (targetPosition - target.Position) * 0.5f;
@@ -141,7 +141,7 @@ namespace MVZ2.GameContent.Effects
         public static Entity SpawnPearl(Entity board)
         {
             var level = board.Level;
-            var pearl = level.Spawn(VanillaProjectileID.breakoutPearl, board.Position + Vector3.right * 40, board);
+            var pearl = level.Spawn(VanillaProjectileID.breakoutPearl, board.Position + Vector3.left * 40, board);
             board.Target = pearl;
             pearl.SetParent(board);
             board.State = VanillaEntityStates.BREAKOUT_PEARL_IDLE;
@@ -161,7 +161,7 @@ namespace MVZ2.GameContent.Effects
             {
                 board.Target = null;
                 pearl.SetParent(null);
-                pearl.Velocity = Vector3.right * PEARL_SPEED;
+                pearl.Velocity = Vector3.left * PEARL_SPEED;
                 board.State = VanillaEntityStates.BREAKOUT_PEARL_FIRED;
             }
         }

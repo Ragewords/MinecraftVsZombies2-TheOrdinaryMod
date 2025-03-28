@@ -79,6 +79,7 @@ namespace MVZ2.GameContent.Buffs
         public const string soulsand = "soulsand";
         public const string littleZombie = "little_zombie";
         public const string bigTrouble = "big_trouble";
+        public const string littleContraption = "little_contraption";
         public const string seijaMesmerizer = "seija_mesmerizer";
 
         public const string beingRiden = "being_riden";

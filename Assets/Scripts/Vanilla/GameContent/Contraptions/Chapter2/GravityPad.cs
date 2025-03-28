@@ -66,7 +66,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const float AFFECT_HEIGHT = 64;
         public const float MIN_HEIGHT = 5;
-        public const float PULL_DOWN_SPEED = 0.333f;
+        public const float PULL_DOWN_SPEED = 0.133f;
         private Detector projectileDetector;
         private List<Entity> detectBuffer = new List<Entity>();
 

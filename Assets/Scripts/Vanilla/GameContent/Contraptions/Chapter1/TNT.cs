@@ -74,6 +74,9 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static DamageOutput[] Explode(Entity entity, float range, float damage)
         {
+            var scale = entity.GetScale();
+            var scaleX = Mathf.Abs(scale.x);
+            range *= scaleX;
             var damageEffects = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION);
             var damageOutputs = entity.Level.Explode(entity.Position, range, entity.GetFaction(), damage, damageEffects, entity);
             foreach (var output in damageOutputs)
@@ -86,7 +89,7 @@ namespace MVZ2.GameContent.Contraptions
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
                     target.Velocity = target.Velocity + Vector3.up * speed;
                 }
-                if (entity.GetDefinitionID() != VanillaProjectileID.flyingTNT)
+                if (entity.GetDefinitionID() == VanillaContraptionID.tnt)
                 {
                     var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
                     projectile.SetDamage(damage / 2);
