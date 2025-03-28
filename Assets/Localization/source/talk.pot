@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-27 07:48+0800\n"
+"POT-Creation-Date: 2025-03-28 08:15+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -974,7 +974,7 @@ msgstr ""
 #. Text for talk sentence 4 in talk group castle_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6"
-msgid "当然，好像也不止是小……"
+msgid "当然，好像也不止是小僵尸……"
 msgstr ""
 
 #. Archive name for talk group castle_6_over
@@ -5636,7 +5636,7 @@ msgstr ""
 #. Text for talk sentence 3 in talk group halloween_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_6"
-msgid "不过不要怕，我们还是能用闪电的光发现它们！"
+msgid "不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火骷髅头发现它们！"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group halloween_6's section 0
