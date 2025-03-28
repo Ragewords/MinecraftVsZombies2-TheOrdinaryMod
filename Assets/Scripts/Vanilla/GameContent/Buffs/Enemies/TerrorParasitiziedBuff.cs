@@ -72,11 +72,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
                 parasite.Health = health;
                 parasite.SetFactionAndDirection(host.GetFaction());
-                if (health >= MAX_PARASITE_HEALTH)
-                {
-                    parasite.SetScale(parasite.GetScale() * 1.5f);
-                    parasite.SetDisplayScale(parasite.GetDisplayScale() * 1.5f);
-                }
             }
             if (health >= MAX_PARASITE_HEALTH)
             {
