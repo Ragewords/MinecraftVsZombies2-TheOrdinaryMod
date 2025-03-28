@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-27 07:48+0800\n"
+"POT-Creation-Date: 2025-03-28 08:15+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -385,7 +385,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
-"伤害：<color=red>30</color>\n"
+"伤害：<color=red>25</color>\n"
 "特点：<color=red>能够攻击高处的敌人</color>\n"
 "技能：<color=red>向所有敌人发射穿甲的巨型尖刺</color>"
 msgstr ""
@@ -545,7 +545,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>4000</color>\n"
-"特点：<color=red>减少20%自身受到的伤害</color>\n"
+"特点：<color=red>减少40%自身受到的伤害</color>\n"
 "技能：<color=red>3x3范围内的器械无敌5秒</color>"
 msgstr ""
 
@@ -2814,6 +2814,18 @@ msgstr ""
 #: Entity meta file
 msgctxt "death_message"
 msgid "抱歉……我不是有意这么做的……"
+msgstr ""
+
+#. Header for entity mvz2:willo_skull
+#: Entity meta file
+msgctxt "entity.name"
+msgid "萤火骷髅头"
+msgstr ""
+
+#. Death message for entity mvz2:willo_skull
+#: Entity meta file
+msgctxt "death_message"
+msgid "把我所有的东西留给我的嗝屁猫。"
 msgstr ""
 
 #. Header for entity mvz2:reverse_satellite

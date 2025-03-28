@@ -3398,6 +3398,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80bc97165215c834f91b1af34611cc4a
+    m_Address: mvz2:enemy/halloween/willo_skull
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80c498f2605fad848859bce97a8c16ed
     m_Address: mvz2:misc/nightmare_art
     m_ReadOnly: 0
