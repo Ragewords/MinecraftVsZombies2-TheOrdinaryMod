@@ -71,6 +71,7 @@
 
     <model name="bone_wall" type="entity" path="mvz2:enemy/halloween/bone_wall" width="80" height="80" xOffset="0" yOffset="-40"/>
     <model name="napstablook" type="entity" path="mvz2:enemy/halloween/napstablook" width="64" height="88" xOffset="0" yOffset="-44"/>
+	<model name="willo_skull" type="entity" path="mvz2:enemy/halloween/willo_skull" width="32" height="22" xOffset="0" yOffset="-11"/>
 	<model name="frankenstein_head_enemy" type="entity" path="mvz2:boss/frankenstein_head_enemy" width="51" height="42" xOffset="0" yOffset="-21"/>
     <model name="reverse_satellite" type="entity" path="mvz2:enemy/castle/reverse_satellite" width="64" height="80" xOffset="0" yOffset="-40"/>
     <model name="skeleton_horse" type="entity" path="mvz2:enemy/castle/skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>

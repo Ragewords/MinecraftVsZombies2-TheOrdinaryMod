@@ -3872,6 +3872,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90a02dbfbce08a84ba0c99cd8c5903bb
+    m_Address: mvz2:entity/enemies/brainwasher_rod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 90b1efed9d95d3b43a897fa9d566324a
     m_Address: mvz2:mobile_blueprint/return_pearl
     m_ReadOnly: 0
@@ -5263,6 +5269,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c238ec0fd949e03469dee128c3a6209c
+    m_Address: mvz2:entity/enemies/willo_skull
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2578011139751f4ebed15184256f29d
     m_Address: mvz2:map/dream/apollo_meridian_blue
