@@ -58,9 +58,19 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var xspeed = entity.GetFacingX() * rng.Next(10f, 18f);
                 var yspeed = rng.Next(30f);
-                var zspeed = rng.Next(-1.5f, 1.5f);
+                var zspeed = rng.Next(-3f, 3f);
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.boulder;
+                param.velocity = new Vector3(xspeed, yspeed, zspeed);
+                entity.ShootProjectile(param);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                var xspeed = entity.GetFacingX() * 5;
+                var yspeed = 20f;
+                var zspeed = -1f + i;
+                var param = entity.GetShootParams();
+                param.projectileID = VanillaProjectileID.bounceBoulder;
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
                 entity.ShootProjectile(param);
             }

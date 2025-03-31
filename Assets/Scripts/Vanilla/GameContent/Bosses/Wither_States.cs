@@ -572,8 +572,8 @@ namespace MVZ2.GameContent.Bosses
 
                             if (substateTimer.Expired)
                             {
-                                substateTimer.ResetTime(30);
-                                stateMachine.SetSubState(entity, SUBSTATE_ROAR);
+                                substateTimer.ResetTime(45);
+                                stateMachine.SetSubState(entity, SUBSTATE_CAST);
                                 entity.PlaySound(VanillaSoundID.witherCry);
                                 entity.SetAnimationBool("Shaking", true);
                                 entity.SetAnimationInt("LightColor", magic);
@@ -581,7 +581,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
 
-                    case SUBSTATE_ROAR:
+                    case SUBSTATE_CAST:
                         {
                             //张嘴
                             var headOpen = GetHeadOpen(entity);
@@ -636,12 +636,12 @@ namespace MVZ2.GameContent.Bosses
                                 }
                                 entity.SetAnimationBool("Shaking", false);
                                 entity.SetAnimationInt("LightColor", 2);
-                                stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
+                                stateMachine.SetSubState(entity, SUBSTATE_END);
                                 substateTimer.ResetTime(30);
                             }
                         }
                         break;
-                    case SUBSTATE_SUMMONED:
+                    case SUBSTATE_END:
                         {
                             var headOpen = GetHeadOpen(entity);
                             headOpen = headOpen * 0.7f;
@@ -656,8 +656,8 @@ namespace MVZ2.GameContent.Bosses
                 }
             }
             public const int SUBSTATE_MOVE = 0;
-            public const int SUBSTATE_ROAR = 1;
-            public const int SUBSTATE_SUMMONED = 2;
+            public const int SUBSTATE_CAST = 1;
+            public const int SUBSTATE_END = 2;
         }
         private class SwitchState : EntityStateMachineState
         {

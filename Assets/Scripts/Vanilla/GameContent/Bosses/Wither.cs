@@ -6,8 +6,6 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
-using MVZ2.GameContent.Stages;
-using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
@@ -19,9 +17,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffID;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -369,7 +364,8 @@ namespace MVZ2.GameContent.Bosses
             var level = contraption.Level;
             foreach (var wither in level.FindEntities(VanillaBossID.wither))
             {
-                if (wither.State == STATE_MAGIC)
+                var substate = stateMachine.GetSubState(wither);
+                if (wither.State == STATE_MAGIC && substate == MagicState.SUBSTATE_CAST)
                 {
                     Stun(wither);
                     switch (GetMagicType(wither))

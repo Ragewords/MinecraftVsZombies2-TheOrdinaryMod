@@ -517,7 +517,8 @@ MonoBehaviour:
   - m_GUID: 133c9e96a7019a64bbe603d2c49b5870
     m_Address: mvz2:icon/time_stop
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 134305071b87df346a0a0fe64e2edbdf
     m_Address: mvz2:effect/thunder_bolt
