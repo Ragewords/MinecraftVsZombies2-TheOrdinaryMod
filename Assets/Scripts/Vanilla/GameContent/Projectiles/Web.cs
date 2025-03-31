@@ -1,4 +1,5 @@
 using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
@@ -26,7 +27,10 @@ namespace MVZ2.GameContent.Projectiles
             }
             hitResult.Pierce = false;
             if (enemy.HasBuff<TotenserWebBuff>())
+            {
+                hitResult.Pierce = true;
                 return;
+            }
             enemy.AddBuff<TotenserWebBuff>();
         }
     }

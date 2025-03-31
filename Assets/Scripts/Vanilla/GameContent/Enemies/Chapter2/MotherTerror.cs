@@ -78,7 +78,9 @@ namespace MVZ2.GameContent.Enemies
             for (int i = 0; i < count; i++)
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, entity.GetCenter(), entity);
-                parasite.SetFactionAndDirection(entity.GetFaction());
+                parasite.SetFaction(entity.GetFaction());
+                parasite.SetScale(entity.GetScale());
+                parasite.SetDisplayScale(entity.GetDisplayScale());
             }
             entity.PlaySound(VanillaSoundID.bloody);
             entity.EmitBlood();

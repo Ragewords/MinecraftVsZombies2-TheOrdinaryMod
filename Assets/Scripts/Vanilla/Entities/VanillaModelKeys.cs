@@ -4,6 +4,7 @@ namespace MVZ2.Vanilla.Models
 {
     public class VanillaModelKeys
     {
+        public static readonly NamespaceID timeStop = Get("time_stop");
         public static readonly NamespaceID shortCircuit = Get("short_circuit");
         public static readonly NamespaceID staticParticles = Get("static_particles");
         public static readonly NamespaceID dreamKeyShield = Get("dream_key_shield");

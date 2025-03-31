@@ -514,6 +514,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 133c9e96a7019a64bbe603d2c49b5870
+    m_Address: mvz2:icon/time_stop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 134305071b87df346a0a0fe64e2edbdf
     m_Address: mvz2:effect/thunder_bolt
     m_ReadOnly: 0
@@ -912,6 +917,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 237ffa5c541517f40ac8dbcb9bdd1f01
     m_Address: mvz2:shading/pool_shade_nightmare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 240cfc0f830bde143b3b8fb30c77afdf
+    m_Address: mvz2:icons/time_stop_clockhand
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -2075,6 +2086,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4bc6ce89adce4a6418ff0875e511fd9b
     m_Address: mvz2:mobile_blueprint/mutant_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4be6db7001d9d2342a436c89bc8da11a
+    m_Address: mvz2:icons/time_stop
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite

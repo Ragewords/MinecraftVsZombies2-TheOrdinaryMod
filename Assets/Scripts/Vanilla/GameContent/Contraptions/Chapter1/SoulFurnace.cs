@@ -18,6 +18,7 @@ using PVZEngine.Level;
 using PVZEngine.Triggers;
 using Tools;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -82,6 +83,27 @@ namespace MVZ2.GameContent.Contraptions
             fuel = Mathf.Max(REFUEL_THRESOLD, fuel);
             SetFuel(entity, fuel);
             entity.SetEvoked(true);
+        }
+        public override void PostTakeDamage(DamageOutput damage)
+        {
+            base.PostTakeDamage(damage);
+            var furnace = damage.Entity;
+            var fuel = GetFuel(furnace);
+            var rng = furnace.RNG;
+            if (damage.HasAnyFatal())
+            {
+                for (int i = 0; i < fuel; i++)
+                {
+                    var xspeed = rng.Next(15f, -15f);
+                    var yspeed = rng.Next(20f);
+                    var zspeed = rng.Next(-10f, 10f);
+                    var param = furnace.GetShootParams();
+                    param.velocity = new Vector3(xspeed, yspeed, zspeed);
+                    var projectile = furnace.ShootProjectile(param);
+                    projectile.SetGravity(1);
+                    SoulfireBall.SetBlast(projectile, true);
+                }
+            }
         }
 
         public int GetFuel(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_FUEL);

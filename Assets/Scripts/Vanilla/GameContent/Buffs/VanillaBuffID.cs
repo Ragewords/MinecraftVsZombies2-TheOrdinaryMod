@@ -62,6 +62,7 @@ namespace MVZ2.GameContent.Buffs
         public const string stun = "stun";
         public const string minigameEnemySpeed = "minigame_enemy_speed";
         public const string napstablookAngry = "napstablook_angry";
+        public const string timeStop = "time_stop";
         public const string frankensteinTransformer = "frankenstein_transformer";
         public const string boat = "boat";
         public const string spiderClimb = "spider_climb";

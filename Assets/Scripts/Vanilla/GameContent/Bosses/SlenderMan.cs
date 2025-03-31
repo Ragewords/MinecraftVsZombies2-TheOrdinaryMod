@@ -97,9 +97,9 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damage)
         {
             base.PreTakeDamage(damage);
-            if (damage.Amount > 50)
+            if (damage.Amount > 100)
             {
-                damage.SetAmount(50);
+                damage.SetAmount(100);
             }
         }
         public override void PostTakeDamage(DamageOutput damage)
@@ -351,12 +351,12 @@ namespace MVZ2.GameContent.Bosses
             var level = boss.Level;
             var eventRng = GetEventRNG(boss);
             var rng = new RandomGenerator(eventRng.Next());
-            var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
+            var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss)).RandomTake(3, rng);
             foreach (var contraption in contraptions)
             {
                 contraption.ClearTakenGrids();
             }
-            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
+            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss)).RandomTake(3, rng);
             var grids = level.GetAllGrids();
             foreach (var contraption in contraptions)
             {
@@ -369,8 +369,12 @@ namespace MVZ2.GameContent.Bosses
                     continue;
                 var grid = targetGrids.Random(rng);
                 contraption.Position = grid.GetEntityPosition();
-                contraption.SetScale(new Vector3(-contraption.GetScale().x, contraption.GetScale().y, contraption.GetScale().z));
-                contraption.SetDisplayScale(new Vector3(-contraption.GetDisplayScale().x, contraption.GetDisplayScale().y, contraption.GetDisplayScale().z));
+                var scale = contraption.GetScale();
+                var displayScale = contraption.GetDisplayScale();
+                scale.x *= -1;
+                displayScale.x *= -1;
+                contraption.SetScale(scale);
+                contraption.SetDisplayScale(displayScale);
                 contraption.UpdateTakenGrids();
             }
             foreach (var enemy in enemies)
@@ -380,8 +384,12 @@ namespace MVZ2.GameContent.Bosses
                     continue;
                 var grid = targetGrids.Random(rng);
                 enemy.Position = grid.GetEntityPosition();
-                enemy.SetScale(new Vector3(-enemy.GetScale().x, enemy.GetScale().y, enemy.GetScale().z));
-                enemy.SetDisplayScale(new Vector3(-enemy.GetDisplayScale().x, enemy.GetDisplayScale().y, enemy.GetDisplayScale().z));
+                var scale = enemy.GetScale();
+                var displayScale = enemy.GetDisplayScale();
+                scale.x *= -1;
+                displayScale.x *= -1;
+                enemy.SetScale(scale);
+                enemy.SetDisplayScale(displayScale);
                 if (level.IsWaterLane(grid.Lane))
                 {
                     if (enemy.GetWaterInteraction() == 2)
@@ -467,8 +475,6 @@ namespace MVZ2.GameContent.Bosses
                 var buff = contraption.AddBuff<DreamButterflyShieldBuff>();
                 buff.SetProperty(DreamButterflyShieldBuff.PROP_TIMEOUT, 150);
             }
-            if (level.HasBuff<NightmareDecrepifyBuff>())
-                level.RemoveBuffs<NightmareDecrepifyBuff>();
         }
 
         private void TheLurker(Entity boss)
@@ -516,6 +522,9 @@ namespace MVZ2.GameContent.Bosses
                 {
                     enemy.AddBuff<IllusionEyeBuff>();
                 }
+                var pos = enemy.Position;
+                pos.x = 1020;
+                enemy.Position = pos;
             }
         }
         private static string GetFateOptionText(int option)

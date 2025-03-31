@@ -91,7 +91,7 @@
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20，10（分身）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
 				<p>特殊：<![CDATA[<color=red>火焰伤害会抵消减速</color>]]></p>
                 <p>技能：<![CDATA[<color=red>射出一个越滚越大的雪球</color>]]></p>
             </properties>
@@ -155,8 +155,9 @@
                 <p>灵魂熔炉发射恐怖的分裂灵魂火，但需要烧毁前方的器械。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>60，30（分裂后）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>60，15（分裂后）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料</color>]]></p>
+				<p>被摧毁：<![CDATA[<color=red>存储有燃料时，喷射出爆炸灵魂火球</color>]]></p>
                 <p>燃料上限：<![CDATA[<color=red>120</color>]]></p>
                 <p>技能：<![CDATA[<color=red>消耗所有燃料，每有一发燃料被消耗，便随机对一个敌人发射爆炸灵魂火球</color>]]></p>
             </properties>
@@ -170,7 +171,7 @@
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
+                <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物；时停锁定的目标1秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>]]></p>
             </properties>
             <flavor>
@@ -328,7 +329,7 @@
         </entry>
         <entry id="mvz2:stone_dropper">
             <header>
-                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。弹出的子弹有可能被替换为不断弹跳的弹力巨石。</p>
+                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。有更低的概率改为发射不断弹跳的弹力巨石。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
@@ -389,7 +390,8 @@
 				<p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80（电击），20（电磁爆），5（电场）</color>]]></p>
-                <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害；被摧毁时会爆炸</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
+				<p>被摧毁：<![CDATA[<color=red>造成一次半径1格，伤害为320的爆炸</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>
