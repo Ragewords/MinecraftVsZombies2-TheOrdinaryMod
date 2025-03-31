@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Projectiles
                 shootParams.projectileID = VanillaProjectileID.arrow;
                 shootParams.damage = 20;
                 shootParams.soundID = null;
-                shootParams.velocity = new Vector3(10f, 0f, 0f);
+                shootParams.velocity = projectile.GetFacingDirection() * 10;
                 projectile.ShootProjectile(shootParams);
                 shootTimer.ResetTime(15);
             }
