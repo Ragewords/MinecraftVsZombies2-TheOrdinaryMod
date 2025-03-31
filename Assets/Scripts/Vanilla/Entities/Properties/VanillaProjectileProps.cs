@@ -34,10 +34,6 @@ namespace MVZ2.Vanilla.Entities
         {
             projectile.SetProperty(PIERCING, value);
         }
-        public static void SetKillOnGround(this Entity projectile, bool value)
-        {
-            projectile.SetProperty(KILL_ON_GROUND, value);
-        }
         public static NamespaceID[] GetDamageEffects(this Entity projectile)
         {
             return projectile.GetProperty<NamespaceID[]>(DAMAGE_EFFECTS);

@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Artifacts;
 using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Projectiles;
@@ -40,9 +41,7 @@ namespace MVZ2.GameContent.Contraptions
             projectileDetector.DetectEntities(entity, detectBuffer);
             foreach (var projectile in detectBuffer)
             {
-                projectile.SetGravity(projectile.GetGravity() + PULL_DOWN_SPEED);
-                if (projectile.KillOnGround())
-                    projectile.SetKillOnGround(false);
+                projectile.AddBuff<ProjectileGravityPadBuff>();
             }
         }
         protected override void UpdateLogic(Entity entity)
@@ -68,7 +67,6 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const float AFFECT_HEIGHT = 64;
         public const float MIN_HEIGHT = 5;
-        public const float PULL_DOWN_SPEED = 0.133f;
         private Detector projectileDetector;
         private List<Entity> detectBuffer = new List<Entity>();
 
