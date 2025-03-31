@@ -627,6 +627,7 @@
         </talks>
         <conveyor>
             <entry id="mvz2:glowstone" count="4" minCount="0"/>
+			<entry id="mvz2:pistenser" count="5"/>
             <entry id="mvz2:wooden_dropper" count="5"/>
             <entry id="mvz2:spike_block" count="5"/>
             <entry id="mvz2:stone_dropper" count="8"/>
