@@ -93,6 +93,7 @@ namespace MVZ2.GameContent.Buffs
         // Projectile
         public const string projectileWait = "projectile_wait";
         public const string projectileKnockback = "projectile_knockback";
+        public const string projectileGravityPad = "projectile_gravity_pad";
         public const string invertedMirror = "inverted_mirror";
 
         // Cart
