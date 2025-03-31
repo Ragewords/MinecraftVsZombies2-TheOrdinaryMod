@@ -71,12 +71,16 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
                 parasite.Health = health;
-                parasite.SetFactionAndDirection(host.GetFaction());
+                parasite.SetFaction(host.GetFaction());
+                parasite.SetScale(host.GetScale());
+                parasite.SetDisplayScale(host.GetDisplayScale());
             }
             if (health >= MAX_PARASITE_HEALTH)
             {
                 var mother = level.Spawn(VanillaEnemyID.motherTerror, host.GetCenter(), host);
-                mother.SetFactionAndDirection(host.GetFaction());
+                mother.SetFaction(host.GetFaction());
+                mother.SetScale(host.GetScale());
+                mother.SetDisplayScale(host.GetDisplayScale());
             }
             host.PlaySound(VanillaSoundID.bloody);
             host.EmitBlood();

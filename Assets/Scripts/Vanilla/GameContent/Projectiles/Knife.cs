@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Bosses;
+using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Shells;
@@ -24,13 +25,16 @@ namespace MVZ2.GameContent.Projectiles
             if (!IsSpecial(projectile))
             {
                 var shootPoint = projectile.Position;
-                if (projectile.Velocity.magnitude >= 1)
-                    projectile.Velocity -= projectile.Velocity / 10;
-                else
+                if (!projectile.HasBuff<ProjectileWaitBuff>())
                 {
-                    var shootDir = (GetDestination(projectile) - shootPoint).normalized;
-                    projectile.Velocity = 10 * shootDir;
-                    SetSpecial(projectile, true);
+                    if (projectile.Velocity.magnitude >= 1)
+                        projectile.Velocity -= projectile.Velocity / 10;
+                    else
+                    {
+                        var shootDir = (GetDestination(projectile) - shootPoint).normalized;
+                        projectile.Velocity = 10 * shootDir;
+                        SetSpecial(projectile, true);
+                    }
                 }
             }
         }

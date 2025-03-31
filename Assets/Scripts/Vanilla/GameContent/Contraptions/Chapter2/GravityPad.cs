@@ -41,6 +41,8 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var projectile in detectBuffer)
             {
                 projectile.SetGravity(projectile.GetGravity() + PULL_DOWN_SPEED);
+                if (projectile.KillOnGround())
+                    projectile.SetKillOnGround(false);
             }
         }
         protected override void UpdateLogic(Entity entity)

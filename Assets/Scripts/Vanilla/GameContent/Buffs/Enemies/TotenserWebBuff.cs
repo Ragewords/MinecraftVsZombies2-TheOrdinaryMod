@@ -1,3 +1,4 @@
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Entities;
@@ -10,7 +11,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 
-namespace MVZ2.GameContent.Buffs.Contraptions
+namespace MVZ2.GameContent.Buffs.Enemies
 {
     [BuffDefinition(VanillaBuffNames.totenserWeb)]
     public class TotenserWebBuff : BuffDefinition
@@ -23,12 +24,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         }
         private void PostEntityDeathCallback(Entity entity, DeathInfo info)
         {
-            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
-                return;
-            foreach (var buff in entity.GetBuffs<TotenserWebBuff>())
-            {
-                buff.Remove();
-            }
+            entity.RemoveBuffs<TotenserWebBuff>();
         }
     }
 }

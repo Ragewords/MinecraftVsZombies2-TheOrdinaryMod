@@ -48,12 +48,16 @@ namespace MVZ2.GameContent.Contraptions
             for (int i = 0; i < 2; i++)
             {
                 var projectile = Shoot(entity);
-                var direction = Quaternion.Euler(0, 20 - i * 40, 0) * entity.GetFacingDirection();
+                var direction = Quaternion.Euler(0, 30 - i * 60, 0) * entity.GetFacingDirection();
                 projectile.Velocity = direction * entity.GetShotVelocity().magnitude;
                 var target = entity.Target;
                 var pos = new Vector3(entity.IsFacingLeft() ? VanillaLevelExt.LEFT_BORDER + 40 : VanillaLevelExt.RIGHT_BORDER - 40, entity.GetShotOffset().y + entity.GetRelativeY(), entity.Level.GetLaneZ(entity.GetLane()));
-                if (entity.Target != null)
+                if (target != null)
+                {
+                    if (target.CanDeactive() && !target.HasBuff<TimeStopBuff>())
+                        target.AddBuff<TimeStopBuff>();
                     pos = target.GetCenter();
+                }
                 Knife.SetDestination(projectile, pos);
             }
         }
@@ -129,8 +133,8 @@ namespace MVZ2.GameContent.Contraptions
                             var projectile = entity.Level.Spawn(entity.GetProjectileID(), knifePos, entity);
                             projectile.SetDamage(entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                             projectile.SetFaction(entity.GetFaction());
-                            projectile.Velocity = direction * -10;
-                            Knife.SetSpecial(projectile, true);
+                            projectile.Velocity = direction * -20;
+                            Knife.SetDestination(projectile, target);
 
                             var buff = projectile.AddBuff<ProjectileWaitBuff>();
                             buff.SetProperty(ProjectileWaitBuff.PROP_TIMEOUT, 90);
@@ -144,7 +148,7 @@ namespace MVZ2.GameContent.Contraptions
             }
         }
         public const int EVOCATION_MAX_TARGET_COUNT = 10;
-        public const int MAX_EVOCATION_KNIFE_COUNT = 45;
+        public const int MAX_EVOCATION_KNIFE_COUNT = 90;
         public const int EVOCATION_DURATION = 30;
         public const int EVOCATION_KNIVES_PER_LAYER = 30;
         public const float EVOCATION_RADIUS = 100;
