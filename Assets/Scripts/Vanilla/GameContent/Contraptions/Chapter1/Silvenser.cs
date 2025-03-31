@@ -14,6 +14,7 @@ using Tools;
 using UnityEngine;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Level;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -54,12 +55,18 @@ namespace MVZ2.GameContent.Contraptions
                 var pos = new Vector3(entity.IsFacingLeft() ? VanillaLevelExt.LEFT_BORDER + 40 : VanillaLevelExt.RIGHT_BORDER - 40, entity.GetShotOffset().y + entity.GetRelativeY(), entity.Level.GetLaneZ(entity.GetLane()));
                 if (target != null)
                 {
-                    if (target.CanDeactive() && !target.HasBuff<TimeStopBuff>())
-                        target.AddBuff<TimeStopBuff>();
                     pos = target.GetCenter();
                 }
                 Knife.SetDestination(projectile, pos);
             }
+            var collider = detector.DetectWithTheLeast(entity, e => Mathf.Abs(e.Entity.Position.x - entity.Position.x));
+            var timestop_target = collider?.Entity;
+            if (timestop_target != null)
+            {
+                if (timestop_target.CanDeactive())
+                    timestop_target.AddBuff<TimeStopBuff>();
+            }
+
         }
         protected override void OnEvoke(Entity entity)
         {

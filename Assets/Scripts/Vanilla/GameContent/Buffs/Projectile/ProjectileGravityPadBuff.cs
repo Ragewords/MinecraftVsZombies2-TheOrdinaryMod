@@ -13,6 +13,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
         {
             AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Add, PULL_DOWN_SPEED));
             AddModifier(new BooleanModifier(VanillaProjectileProps.KILL_ON_GROUND, false));
+            AddModifier(new BooleanModifier(VanillaProjectileProps.ROLLS, true));
         }
         public const float PULL_DOWN_SPEED = 0.133f;
     }
