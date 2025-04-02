@@ -133,6 +133,7 @@ namespace MVZ2.Vanilla
                 switch (meta.Type)
                 {
                     case StageTypes.TYPE_NORMAL:
+                    case StageTypes.TYPE_EXTRA:
                         {
                             var stage = new ClassicStage(spaceName, meta.ID);
                             AddDefinition(stage);

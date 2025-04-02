@@ -262,6 +262,52 @@
             <integer name="statueCount" value="2" />
         </properties>
     </stage>
+	<stage id="halloween_EX1" name="万圣夜" dayNumber="12" type="extra" unlock="mvz2:level.halloween_11" music="mvz2:halloween_level_extra" >
+		<talks>
+			<talk type="end" value="mvz2:halloween_EX1_over"/>
+		</talks>
+		<clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:poisonser"/>
+		<spawns flags="2" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:skeleton"/>
+			<spawn id="mvz2:skelebomb"/>
+		</spawns>
+		<properties>
+			<integer name="statueCount" value="12" />
+		</properties>
+	</stage>
+	<stage id="halloween_EX2" name="万圣夜" dayNumber="13" type="extra" unlock="mvz2:level.halloween_EX1" music="mvz2:halloween_level_extra" >
+		<clear pickupModel="mvz2:entity.money_chest" />
+		<spawns flags="2" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:ghost"/>
+			<spawn id="mvz2:necromancer"/>
+			<spawn id="mvz2:skelebomb"/>
+		</spawns>
+		<properties>
+			<integer name="statueCount" value="16" />
+		</properties>
+	</stage>
+	<stage id="halloween_EX3" name="万圣夜" dayNumber="14" type="extra" unlock="mvz2:level.halloween_EX2" music="mvz2:halloween_level_extra" >
+		<clear pickupModel="mvz2:entity.money_chest" />
+		<spawns flags="3" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:skeleton"/>
+			<spawn id="mvz2:ghost"/>
+			<spawn id="mvz2:mummy"/>
+			<spawn id="mvz2:necromancer"/>
+			<spawn id="mvz2:skelebomb"/>
+		</spawns>
+		<properties>
+			<integer name="statueCount" value="20" />
+		</properties>
+	</stage>
 
     <!-- Dream -->
     <stage id="dream_1" name="梦境世界" dayNumber="1" unlock="mvz2:entered_dream">

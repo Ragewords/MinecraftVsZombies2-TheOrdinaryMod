@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
@@ -131,9 +134,17 @@ namespace MVZ2.GameContent.Contraptions
             detector.DetectMultiple(entity, detectBuffer);
             foreach (var collider in detectBuffer)
             {
+                var ent = collider.Entity;
+                if (ent.IsEntityOf(VanillaEnemyID.skelebomb))
+                {
+                    Skelebomb.StartCasting(ent);
+                    ent.AddBuff<MineTNTInvincibleBuff>();
+                    ent.AddBuff<InvertedMirrorBuff>();
+                    ent.SetDamage(ent.GetDamage() * 2);
+                }
+
                 collider.TakeDamage(entity.GetDamage() * GetFirstDamage(entity), new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE), entity);
 
-                var ent = collider.Entity;
                 if (ent.Type == EntityTypes.ENEMY)
                 {
                     ent.Velocity += entity.GetFacingDirection() * 20 * GetFirstPush(entity);

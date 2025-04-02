@@ -1,11 +1,9 @@
 ﻿using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Projectiles
 {

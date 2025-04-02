@@ -519,4 +519,17 @@
       </sentences>
     </section>
   </group>
+	<group id="halloween_EX1_over" tags="mvz2:halloween;mvz2:over">
+		<archive name="万圣夜拓展第1天结束" background="mvz2:misc/eternal_night_swamp" unlock="mvz2:level.halloween_EX1" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是淬毒发射器！能够在较远的一段距离发射毒球！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">毒球击中的敌人会中毒，持续受到伤害！也能腐蚀它们的盔甲！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2" onClick="end">也许是女巫制造的机械？谁知道呢！</sentence>
+			</sentences>
+		</section>
+	</group>
 </talks>

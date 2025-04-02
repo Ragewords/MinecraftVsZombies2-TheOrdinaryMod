@@ -30,6 +30,16 @@ namespace MVZ2.Map
                 return null;
             return mapButtons[index];
         }
+        public int GetExtraMapButtonCount()
+        {
+            return mapExtraButtons.Length;
+        }
+        public MapButton GetExtraMapButton(int index)
+        {
+            if (index < 0 || index >= mapExtraButtons.Length)
+                return null;
+            return mapExtraButtons[index];
+        }
         public void SetEndlessButtonInteractable(bool interactable)
         {
             if (!endlessButton)
@@ -86,6 +96,34 @@ namespace MVZ2.Map
                 return;
             button.SetDifficulty(difficulty);
         }
+        public void SetExtraMapButtonInteractable(int index, bool interactable)
+        {
+            var button = GetExtraMapButton(index);
+            if (!button)
+                return;
+            button.interactable = interactable;
+        }
+        public void SetExtraMapButtonColor(int index, Color color)
+        {
+            var button = GetExtraMapButton(index);
+            if (!button)
+                return;
+            button.SetColor(color);
+        }
+        public void SetExtraMapButtonText(int index, string text)
+        {
+            var button = GetExtraMapButton(index);
+            if (!button)
+                return;
+            button.SetText(text);
+        }
+        public void SetExtraMapButtonDifficulty(int index, NamespaceID difficulty)
+        {
+            var button = GetExtraMapButton(index);
+            if (!button)
+                return;
+            button.SetDifficulty(difficulty);
+        }
         public NamespaceID[] GetMapElementUnlocks()
         {
             return mapElements.Select(e => e.unlock.Get()).ToArray();
@@ -105,6 +143,11 @@ namespace MVZ2.Map
             {
                 var index = Array.IndexOf(mapButtons, button);
                 button.OnClick += () => OnMapButtonClick?.Invoke(index);
+            }
+            foreach (var button in mapExtraButtons)
+            {
+                var index = Array.IndexOf(mapExtraButtons, button);
+                button.OnClick += () => OnExtraMapButtonClick?.Invoke(index);
             }
             if (endlessButton)
             {
@@ -127,6 +170,7 @@ namespace MVZ2.Map
             }
         }
         public event Action<int> OnMapButtonClick;
+        public event Action<int> OnExtraMapButtonClick;
         public event Action OnEndlessButtonClick;
         public event Action OnMapKeyClick;
         public event Action OnMapNightmareBoxClick;
@@ -141,6 +185,8 @@ namespace MVZ2.Map
         private MapElementButton nightmareBox;
         [SerializeField]
         private MapButton[] mapButtons;
+        [SerializeField]
+        private MapButton[] mapExtraButtons;
         [SerializeField]
         private MapElement[] mapElements;
         [SerializeField]

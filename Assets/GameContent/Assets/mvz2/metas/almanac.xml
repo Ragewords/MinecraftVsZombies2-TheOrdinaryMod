@@ -577,6 +577,33 @@
             </flavor>
         </entry>
         <entry/>
+		
+		<!-- Extras -->
+		<entry id="mvz2:poisonser">
+			<header>
+				<p>淬毒发射器能够发射使敌人中毒的毒球。</p>
+			</header>
+			<properties>
+				<p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
+				<p>伤害：<![CDATA[<color=red>10</color>]]></p>
+				<p>特殊：<![CDATA[<color=red>剧毒对蜘蛛无效</color>]]></p>
+				<p>技能：<![CDATA[<color=red>在前方3×3的格子释放剧毒毒雾</color>]]></p>
+			</properties>
+			<flavor>
+				<p>良药苦口利于病，只可惜这毒药对于某些怪物来讲根本没用。</p>
+			</flavor>
+		</entry>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
+		<entry/>
     </contraptions>
     <enemies>
         <entry id="mvz2:zombie">
@@ -838,6 +865,22 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
+		<entry id="mvz2:skelebomb">
+			<header>
+				<p>爆破骨兵抱着一个随时都会爆炸的炸弹，并在死亡时将炸弹留下。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>200+270</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>爆炸伤害：<![CDATA[<color=red>300</color>]]></p>
+				<p>范围：<![CDATA[<color=red>1.5格</color>]]></p>
+				<p>特殊：<![CDATA[<color=red>受到冲击时会被立即引爆，造成无差别伤害</color>]]></p>
+			</properties>
+			<flavor>
+				<p>当它抱起那颗炸弹时，它的心中便有了一股信念：用自己生命最后的火花，创造出最为绚烂的爆炸。</p>
+				<p>“艺术即是爆炸，而我，生来就是艺术家。”</p>
+			</flavor>
+		</entry>
     </enemies>
     <artifacts>
         <entry id="mvz2:almanac">

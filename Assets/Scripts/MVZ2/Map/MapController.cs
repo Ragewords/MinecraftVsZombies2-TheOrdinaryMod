@@ -57,6 +57,7 @@ namespace MVZ2.Map
             if (model)
             {
                 model.OnMapButtonClick -= OnMapButtonClickCallback;
+                model.OnExtraMapButtonClick -= OnExtraMapButtonClickCallback;
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
@@ -123,6 +124,7 @@ namespace MVZ2.Map
             if (model)
             {
                 model.OnMapButtonClick -= OnMapButtonClickCallback;
+                model.OnExtraMapButtonClick -= OnExtraMapButtonClickCallback;
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
@@ -132,6 +134,7 @@ namespace MVZ2.Map
 
             model = Instantiate(modelPrefab.gameObject, modelRoot).GetComponent<MapModel>();
             model.OnMapButtonClick += OnMapButtonClickCallback;
+            model.OnExtraMapButtonClick += OnExtraMapButtonClickCallback;
             model.OnEndlessButtonClick += OnEndlessButtonClickCallback;
             model.OnMapKeyClick += OnMapKeyClickCallback;
             model.OnMapNightmareBoxClick += OnMapNightmareBoxClickCallback;
@@ -215,6 +218,11 @@ namespace MVZ2.Map
         private void OnMapButtonClickCallback(int index)
         {
             var stageID = mapMeta.stages[index];
+            StartCoroutine(EnterLevel(stageID));
+        }
+        private void OnExtraMapButtonClickCallback(int index)
+        {
+            var stageID = mapMeta.stages[index + 11];
             StartCoroutine(EnterLevel(stageID));
         }
         private void OnEndlessButtonClickCallback()
@@ -566,6 +574,30 @@ namespace MVZ2.Map
                 model.SetMapButtonText(i, (i + 1).ToString());
                 model.SetMapButtonDifficulty(i, GetLevelDifficulty(i));
             }
+
+            for (int i = 0; i < model.GetExtraMapButtonCount(); i++)
+            {
+                var j = i + 11;
+                var unlocked = IsLevelUnlocked(j);
+                var cleared = IsLevelCleared(j);
+                var stageType = GetStageType(i);
+
+                var color = buttonColorClearedExtra;
+                if (!unlocked)
+                    color = buttonColorLocked;
+                else if (stageType == StageTypes.TYPE_MINIGAME)
+                    color = buttonColorMinigame;
+                else if (stageType == StageTypes.TYPE_BOSS)
+                    color = buttonColorBoss;
+                else if (!cleared)
+                    color = buttonColorUncleared;
+
+                model.SetExtraMapButtonInteractable(i, unlocked);
+                model.SetExtraMapButtonColor(i, color);
+                model.SetExtraMapButtonText(i, "EX" + (i + 1).ToString());
+                model.SetExtraMapButtonDifficulty(i, GetLevelDifficulty(j));
+            }
+
             var endlessColor = buttonColorEndless;
             var endlessUnlocked = IsEndlessUnlocked();
             if (!endlessUnlocked)
@@ -681,6 +713,8 @@ namespace MVZ2.Map
         private Color buttonColorUncleared = new Color(0, 1, 0, 1);
         [SerializeField]
         private Color buttonColorCleared = new Color(0, 0.5f, 1, 1);
+        [SerializeField]
+        private Color buttonColorClearedExtra = new Color(1, 0.5f, 0, 1);
 
         private class TouchData
         {

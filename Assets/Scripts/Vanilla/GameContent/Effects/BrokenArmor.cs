@@ -24,6 +24,8 @@ namespace MVZ2.GameContent.Effects
             base.PostContactGround(entity, velocity);
             var vel = entity.Velocity;
             vel.y = velocity.y * -0.4f;
+            vel.x = velocity.x * 0.4f;
+            vel.z = velocity.z * 0.4f;
             entity.Velocity = vel;
         }
         #endregion
