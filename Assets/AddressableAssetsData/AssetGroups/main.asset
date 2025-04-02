@@ -688,6 +688,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b5cf06234c97a2478e57ed59637962b
+    m_Address: mvz2:halloween_level_extra
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b77173cc372d294799227cf43061173
     m_Address: mvz2:water
     m_ReadOnly: 0
@@ -735,6 +741,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cbc6eb2a2eb74f4ca62cf75c6a2f1ac
+    m_Address: mvz2:entity/projectiles/poison_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1ce53b3037e41f04cb8ff0ff9897fd49
     m_Address: mvz2:talk/villager/villager_short1
@@ -921,6 +933,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23c76a5f65fc9e84ea9a1b3c72cd6ea6
+    m_Address: mvz2:enemy/halloween/skelebomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 240cfc0f830bde143b3b8fb30c77afdf
     m_Address: mvz2:icons/time_stop_clockhand
@@ -1270,6 +1288,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 318f30bce77a89b44b435e1066b1c313
+    m_Address: mvz2:entity/enemies/skelebomb_bomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 31d9bab9e0866384faddc3f3fd0790a6
     m_Address: mvz2:shock
     m_ReadOnly: 0
@@ -1550,6 +1574,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a6712b8d704de34f998f38145bf7638
+    m_Address: mvz2:entity/contraptions/tnt_full
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3a6ff83055599244a872a7e3cd5865cd
     m_Address: mvz2:effect/crushing_walls
@@ -2019,6 +2049,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a32cca22f11efd439372f6e3ab41395
+    m_Address: mvz2:projectile/poison_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4a34d2e0337c5e24196eb44240e1b00c
     m_Address: mvz2:level/dream/nightmare_ground
     m_ReadOnly: 0
@@ -2216,6 +2252,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 512049488154add4090a1736f3979547
+    m_Address: mvz2:entity/contraptions/pioisonser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51407c787c6ea6b4790f4d9c7a0c78dd
     m_Address: mvz2:icon/knockback_wave
@@ -2811,6 +2853,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65d312391b826ec42b5c7818218f9e7e
+    m_Address: mvz2:entity/enemies/brainwasher_head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 65f5a79b8f9519a4280b272150a69514
     m_Address: mvz2:fizz
     m_ReadOnly: 0
@@ -3152,6 +3200,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 781511a9b17cfc748a32dddab7543d91
+    m_Address: mvz2:entity/armor/skelebomb_cap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7865af6122289884aa1160a9bb226b43
     m_Address: mvz2:pickup/ruby
     m_ReadOnly: 0
@@ -3265,6 +3319,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ca7d6aca46eb6546b58639d1e1559b5
+    m_Address: mvz2:mobile_blueprint/poisonser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7cd67e193c23b1f46ae2e123c4a0bd3a
     m_Address: mvz2:entity/contraptions/pressure_plate
@@ -4094,6 +4154,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 967a990516ac45d4f996639580cc03fe
+    m_Address: mvz2:icon/poison_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9696331d07114754fbccc29acd1b4846
     m_Address: mvz2:map/gensokyo/pins/castle
     m_ReadOnly: 0
@@ -4256,6 +4322,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c5bc89dac38d444ab2933e812e1e8a4
+    m_Address: mvz2:contraption/halloween/poisonser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c8eef82c98cc73429569c81597c1516
     m_Address: mvz2:pickup/starshards/castle
     m_ReadOnly: 0
@@ -4330,6 +4402,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f3677037dfb70d4b9d5a6856f524235
     m_Address: mvz2:projectile/dart
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f4d2cac4681b3a40ad2ae4aa57c840c
+    m_Address: mvz2:enemy/halloween/bomb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
@@ -5050,6 +5128,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b75237ff7ac07d84ca23add635c58097
     m_Address: mvz2:map/dream/nightmare_box_open
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7b841ed6bb99e546ab2165545440367
+    m_Address: mvz2:entity/contraptions/pioisonser_evoked
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -5827,6 +5911,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4ad3c42d0f7f71468d2ca01d9c093bd
+    m_Address: mvz2:armor/skelebomb_cap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d502efd9e6fce1543ae6919e926b244c
     m_Address: mvz2:mobile_blueprint/lily_pad

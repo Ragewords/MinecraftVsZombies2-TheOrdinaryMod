@@ -13,6 +13,7 @@ namespace MVZ2.Metas
         public LoreTalkMetaList loreTalks;
         public MapPreset[] presets;
         public NamespaceID[] stages;
+        public NamespaceID[] extraStages;
         public NamespaceID endlessStage;
         public static MapMeta FromXmlNode(XmlNode node, string defaultNsp)
         {

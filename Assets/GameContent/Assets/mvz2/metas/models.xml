@@ -14,6 +14,7 @@
     <model name="soul_furnace" type="entity" path="mvz2:contraption/halloween/soul_furnace" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="silvenser" type="entity" path="mvz2:contraption/halloween/silvenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="magichest" type="entity" path="mvz2:contraption/halloween/magichest" width="64" height="64" xOffset="0" yOffset="-28"/>
+	<model name="poisonser" type="entity" path="mvz2:contraption/halloween/poisonser" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="lily_pad" type="entity" path="mvz2:contraption/dream/lily_pad" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="drivenser" type="entity" path="mvz2:contraption/dream/drivenser" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -52,6 +53,7 @@
     <model name="ghost" type="entity" path="mvz2:enemy/halloween/ghost" width="64" height="96" xOffset="10" yOffset="-44"/>
     <model name="mummy" type="entity" path="mvz2:enemy/halloween/mummy" width="64" height="96" xOffset="10" yOffset="-44"/>
     <model name="necromancer" type="entity" path="mvz2:enemy/halloween/necromancer" width="64" height="96" xOffset="10" yOffset="-44"/>
+	<model name="skelebomb" type="entity" path="mvz2:enemy/halloween/skelebomb" width="64" height="96" xOffset="10" yOffset="-44"/>
 
     <model name="spider" type="entity" path="mvz2:enemy/dream/spider" width="108" height="108" xOffset="0" yOffset="-48"/>
     <model name="cave_spider" type="entity" path="mvz2:enemy/dream/cave_spider" width="54" height="54" xOffset="0" yOffset="-24"/>
@@ -70,7 +72,8 @@
     <model name="imp" type="entity" path="mvz2:enemy/shrine/imp" width="48" height="56" xOffset="0" yOffset="-28"/>
 
     <model name="bone_wall" type="entity" path="mvz2:enemy/halloween/bone_wall" width="80" height="80" xOffset="0" yOffset="-40"/>
-    <model name="napstablook" type="entity" path="mvz2:enemy/halloween/napstablook" width="64" height="88" xOffset="0" yOffset="-44"/>
+	<model name="bomb" type="entity" path="mvz2:enemy/halloween/bomb" width="27" height="31" xOffset="0" yOffset="-15"/>
+	<model name="napstablook" type="entity" path="mvz2:enemy/halloween/napstablook" width="64" height="88" xOffset="0" yOffset="-44"/>
 	<model name="willo_skull" type="entity" path="mvz2:enemy/halloween/willo_skull" width="32" height="22" xOffset="0" yOffset="-11"/>
 	<model name="frankenstein_head_enemy" type="entity" path="mvz2:boss/frankenstein_head_enemy" width="51" height="42" xOffset="0" yOffset="-21"/>
     <model name="reverse_satellite" type="entity" path="mvz2:enemy/castle/reverse_satellite" width="64" height="80" xOffset="0" yOffset="-40"/>
@@ -200,6 +203,7 @@
 	<model name="missile_fragments_1" type="entity" path="mvz2:projectile/missile_fragments_1" width="17" height="9" xOffset="0" yOffset="0"/>
 	<model name="missile_fragments_2" type="entity" path="mvz2:projectile/missile_fragments_2" width="38" height="9" xOffset="0" yOffset="0"/>
 	<model name="missile_fragments_3" type="entity" path="mvz2:projectile/missile_fragments_3" width="17" height="6" xOffset="0" yOffset="0"/>
+	<model name="poison_ball" type="entity" path="mvz2:projectile/poison_ball" width="15" height="15" xOffset="0" yOffset="0"/>
     <model name="large_arrow" type="entity" path="mvz2:projectile/large_arrow" width="64" height="20" xOffset="0" yOffset="0"/>
     <model name="spike" type="entity" path="mvz2:projectile/spike" width="20" height="11" xOffset="0" yOffset="0"/>
     <model name="spike_ball" type="entity" path="mvz2:projectile/spike_ball" width="20" height="20" xOffset="0" yOffset="0"/>
@@ -222,6 +226,7 @@
     <!-- Armors -->
     <model name="leather_cap" type="armor" path="mvz2:armor/leather_cap" width="33" height="14" xOffset="0" yOffset="0"/>
     <model name="iron_helmet" type="armor" path="mvz2:armor/iron_helmet" width="33" height="14" xOffset="0" yOffset="0"/>
+	<model name="skelebomb_cap" type="armor" path="mvz2:armor/skelebomb_cap" width="33" height="14" xOffset="0" yOffset="-4"/>
     <model name="boat_item" type="armor" path="mvz2:armor/boat_item" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="mesmerizer_crown" type="armor" path="mvz2:armor/mesmerizer_crown" width="34" height="40" xOffset="0" yOffset="-21"/>
 	<model name="brainwasher_crown" type="armor" path="mvz2:armor/brainwasher_crown" width="34" height="40" xOffset="0" yOffset="-21"/>
@@ -244,6 +249,7 @@
 	<model name="time_stop" type="icon" path="mvz2:icon/time_stop" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="static_particles" type="icon" path="mvz2:icon/static_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="dream_key_shield" type="icon" path="mvz2:icon/dream_key_shield" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+	<model name="poison_particles" type="icon" path="mvz2:icon/poison_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
 	<model name="totenser_web" type="icon" path="mvz2:icon/totenser_web" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="terror_parasitized" type="icon" path="mvz2:icon/terror_parasitized" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="weakness_particles" type="icon" path="mvz2:icon/weakness_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>

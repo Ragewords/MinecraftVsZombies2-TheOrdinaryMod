@@ -63,6 +63,13 @@
             <p>呵呵，你可否想到自己？史蒂夫？</p>
         </description>
     </music>
+	<music id="halloween_level_extra" path="mvz2:halloween_level_extra" name="潮湿沼泽-关卡">
+		<source>我的世界：地下城</source>
+		<description>
+			<p>万圣夜拓展关卡的音乐。</p>
+			<p>出自我的世界的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。</p>
+		</description>
+	</music>
 
     <music id="dream_level" path="mvz2:dream_level" name="破碎的童话-关卡">
         <source>书虫大冒险 Vol.2</source>

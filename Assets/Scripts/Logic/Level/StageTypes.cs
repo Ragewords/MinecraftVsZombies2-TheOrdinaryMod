@@ -7,5 +7,6 @@
         public const string TYPE_MINIGAME = "minigame";
         public const string TYPE_ENDLESS = "endless";
         public const string TYPE_BOSS = "boss";
+        public const string TYPE_EXTRA = "extra";
     }
 }

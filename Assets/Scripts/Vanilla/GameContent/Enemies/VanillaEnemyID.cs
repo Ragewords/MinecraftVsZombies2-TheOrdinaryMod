@@ -15,6 +15,7 @@ namespace MVZ2.GameContent.Enemies
         public const string ghost = "ghost";
         public const string mummy = "mummy";
         public const string necromancer = "necromancer";
+        public const string skelebomb = "skelebomb";
 
         public const string spider = "spider";
         public const string caveSpider = "cave_spider";
@@ -33,6 +34,7 @@ namespace MVZ2.GameContent.Enemies
         public const string imp = "imp";
 
         public const string boneWall = "bone_wall";
+        public const string bomb = "bomb";
         public const string napstablook = "napstablook";
         public const string willoSkull = "willo_skull";
         public const string reverseSatellite = "reverse_satellite";
@@ -60,6 +62,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID ghost = Get(VanillaEnemyNames.ghost);
         public static readonly NamespaceID mummy = Get(VanillaEnemyNames.mummy);
         public static readonly NamespaceID necromancer = Get(VanillaEnemyNames.necromancer);
+        public static readonly NamespaceID skelebomb = Get(VanillaEnemyNames.skelebomb);
 
         public static readonly NamespaceID spider = Get(VanillaEnemyNames.spider);
         public static readonly NamespaceID caveSpider = Get(VanillaEnemyNames.caveSpider);
@@ -78,6 +81,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID imp = Get(VanillaEnemyNames.imp);
 
         public static readonly NamespaceID boneWall = Get(VanillaEnemyNames.boneWall);
+        public static readonly NamespaceID bomb = Get(VanillaEnemyNames.bomb);
         public static readonly NamespaceID napstablook = Get(VanillaEnemyNames.napstablook);
         public static readonly NamespaceID willoSkull = Get(VanillaEnemyNames.willoSkull);
         public static readonly NamespaceID reverseSatellite = Get(VanillaEnemyNames.reverseSatellite);

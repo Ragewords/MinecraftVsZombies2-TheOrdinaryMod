@@ -87,6 +87,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.ghost,
             VanillaEnemyID.mummy,
             VanillaEnemyID.necromancer,
+            VanillaEnemyID.skelebomb,
             VanillaEnemyID.spider,
             VanillaEnemyID.caveSpider,
             VanillaEnemyID.ghast,

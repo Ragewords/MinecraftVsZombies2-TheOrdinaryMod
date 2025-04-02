@@ -7,6 +7,7 @@ using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
@@ -19,23 +20,31 @@ namespace MVZ2.GameContent.Projectiles
         public Knife(string nsp, string name) : base(nsp, name)
         {
         }
+        public override void Init(Entity projectile)
+        {
+            base.Init(projectile);
+            SetWaitTimer(projectile, new FrameTimer(30));
+            SetNoDelay(projectile, false);
+        }
         public override void Update(Entity projectile)
         {
             base.Update(projectile);
-            if (!IsSpecial(projectile))
+            var timer = GetWaitTimer(projectile);
+            var shootPoint = projectile.Position;
+            if (!projectile.HasBuff<ProjectileWaitBuff>())
+                timer.Run();
+            if (timer.Expired)
             {
-                var shootPoint = projectile.Position;
-                if (!projectile.HasBuff<ProjectileWaitBuff>())
+                var shootDir = (GetDestination(projectile) - shootPoint).normalized;
+                if (!IsNoDelay(projectile))
                 {
-                    if (projectile.Velocity.magnitude >= 1)
-                        projectile.Velocity -= projectile.Velocity / 10;
-                    else
-                    {
-                        var shootDir = (GetDestination(projectile) - shootPoint).normalized;
-                        projectile.Velocity = 10 * shootDir;
-                        SetSpecial(projectile, true);
-                    }
+                    projectile.Velocity = 10 * shootDir;
+                    SetNoDelay(projectile, true);
                 }
+            }
+            else if (!projectile.HasBuff<ProjectileWaitBuff>())
+            {
+                projectile.Velocity -= projectile.Velocity / 10;
             }
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damageOutput)
@@ -63,16 +72,25 @@ namespace MVZ2.GameContent.Projectiles
         {
             entity.SetBehaviourField(ID, PROP_DESTINATION, target);
         }
-        public static bool IsSpecial(Entity entity)
+        public static bool IsNoDelay(Entity entity)
         {
-            return entity.GetBehaviourField<bool>(ID, PROP_SPECIAL);
+            return entity.GetBehaviourField<bool>(ID, PROP_NO_DELAY);
         }
-        public static void SetSpecial(Entity entity, bool value)
+        public static void SetNoDelay(Entity entity, bool value)
         {
-            entity.SetBehaviourField(ID, PROP_SPECIAL, value);
+            entity.SetBehaviourField(ID, PROP_NO_DELAY, value);
+        }
+        public static FrameTimer GetWaitTimer(Entity entity)
+        {
+            return entity.GetBehaviourField<FrameTimer>(ID, PROP_WAIT_TIMER);
+        }
+        public static void SetWaitTimer(Entity entity, FrameTimer value)
+        {
+            entity.SetBehaviourField(ID, PROP_WAIT_TIMER, value);
         }
         public static readonly NamespaceID ID = VanillaProjectileID.knife;
         public static readonly VanillaEntityPropertyMeta PROP_DESTINATION = new VanillaEntityPropertyMeta("Destination");
-        public static readonly VanillaEntityPropertyMeta PROP_SPECIAL = new VanillaEntityPropertyMeta("Special");
+        public static readonly VanillaEntityPropertyMeta PROP_NO_DELAY = new VanillaEntityPropertyMeta("NoDelay");
+        public static readonly VanillaEntityPropertyMeta PROP_WAIT_TIMER = new VanillaEntityPropertyMeta("WaitTimer");
     }
 }

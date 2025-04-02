@@ -29,6 +29,15 @@ namespace MVZ2.Vanilla.Entities
                 return;
             enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.ENEMY_DROP_REWARDS, c => c(enemy));
         }
+        public static void InflictPoison(this Entity enemy, int time)
+        {
+            Buff buff = enemy.GetFirstBuff<PoisonedBuff>();
+            if (buff == null)
+            {
+                buff = enemy.AddBuff<PoisonedBuff>();
+            }
+            buff.SetProperty(PoisonedBuff.PROP_TIMEOUT, time);
+        }
         public static void InflictWeakness(this Entity enemy, int time)
         {
             Buff buff = enemy.GetFirstBuff<EnemyWeaknessBuff>();

@@ -42,6 +42,8 @@ namespace MVZ2.GameContent.Contraptions
         public const string goldenDropper = "golden_dropper";
         public const string diamondSpikes = "diamond_spikes";
 
+        public const string poisonser = "poisonser";
+
         public const string anvil = "anvil";
         public const string randomChina = "random_china";
     }
@@ -83,6 +85,8 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly NamespaceID forcePad = Get(VanillaContraptionNames.forcePad);
         public static readonly NamespaceID goldenDropper = Get(VanillaContraptionNames.goldenDropper);
         public static readonly NamespaceID diamondSpikes = Get(VanillaContraptionNames.diamondSpikes);
+
+        public static readonly NamespaceID poisonser = Get(VanillaContraptionNames.poisonser);
 
         public static readonly NamespaceID anvil = Get(VanillaContraptionNames.anvil);
         public static readonly NamespaceID randomChina = Get(VanillaContraptionNames.randomChina);

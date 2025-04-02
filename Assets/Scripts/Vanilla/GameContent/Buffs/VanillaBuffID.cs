@@ -64,6 +64,7 @@ namespace MVZ2.GameContent.Buffs
         public const string napstablookAngry = "napstablook_angry";
         public const string timeStop = "time_stop";
         public const string frankensteinTransformer = "frankenstein_transformer";
+        public const string poisoned = "poisoned";
         public const string boat = "boat";
         public const string spiderClimb = "spider_climb";
         public const string terrorParasitized = "terror_parasitized";
@@ -91,6 +92,7 @@ namespace MVZ2.GameContent.Buffs
         public const string thunderLightFadeout = "thunder_light_fadeout";
 
         // Projectile
+        public const string projectileSpin = "projectile_spin";
         public const string projectileWait = "projectile_wait";
         public const string projectileKnockback = "projectile_knockback";
         public const string projectileGravityPad = "projectile_gravity_pad";

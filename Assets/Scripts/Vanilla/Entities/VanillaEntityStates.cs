@@ -59,6 +59,8 @@
 
         public const int MESMERIZER_CAST = ENEMY_CAST;
 
+        public const int SKELEBOMB_EXPLODE = ENEMY_CAST;
+
         public const int HYPNOTIZER_CAST = ENEMY_CAST;
 
         public const int SKELETON_HORSE_GALLOP = ENEMY_RUN;

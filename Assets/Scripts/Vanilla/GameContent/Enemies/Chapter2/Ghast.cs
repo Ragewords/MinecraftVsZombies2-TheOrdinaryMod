@@ -32,7 +32,7 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(SHOOT_COOLDOWN));
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 100);
         }
         protected override void UpdateAI(Entity enemy)
         {

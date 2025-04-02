@@ -14,14 +14,14 @@
     </fragment>
     <fragment name="obsidian" blend="true">
         <colorKeys>
-            <key hex="#040208" time="0"/>
+            <key hex="#040208" time="0.5"/>
 			<key hex="#220060" time="0.5"/>
             <key hex="#4c0488" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="obsidian_armor" blend="true">
         <colorKeys>
-            <key hex="#503833" time="0"/>
+            <key hex="#503833" time="0.6"/>
             <key hex="#341810" time="1"/>
         </colorKeys>
     </fragment>
@@ -63,10 +63,17 @@
     </fragment>
     <fragment name="magichest">
         <colorKeys>
-            <key hex="#F800F8" time="0.5"/>
-            <key hex="#000000" time="0.5"/>
+            <key hex="#F800F8" time="0.7"/>
+            <key hex="#000000" time="1"/>
         </colorKeys>
     </fragment>
+	<fragment name="poisonser">
+		<colorKeys>
+			<key hex="#001A06" time="0.4"/>
+			<key hex="#009C27" time="0.6"/>
+			<key hex="#00320D" time="1"/>
+		</colorKeys>
+	</fragment>
     <fragment name="lily_pad">
         <colorKeys>
             <key hex="#104018" time="0.75"/>
@@ -181,9 +188,9 @@
     </fragment>
 	<fragment name="mummy">
 		<colorKeys>
-			<key hex="#736d31" time="0.25"/>
-			<key hex="#c4bd7b" time="0.5"/>
+			<key hex="#736d31" time="0.5"/>
 			<key hex="#9e964c" time="0.25"/>
+			<key hex="#c4bd7b" time="1"/>
 		</colorKeys>
 	</fragment>
     <fragment name="hell_chariot">

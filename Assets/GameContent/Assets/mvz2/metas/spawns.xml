@@ -40,6 +40,10 @@
         <spawn level="3" />
         <weight base="1500" />
     </entry>
+	<entry id="skelebomb" entity="mvz2:skelebomb" >
+		<spawn level="3" />
+		<weight base="4000" />
+	</entry>
 
     <!-- Dream -->
     <entry id="spider" entity="mvz2:spider" >

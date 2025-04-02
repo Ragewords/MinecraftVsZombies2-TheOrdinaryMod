@@ -231,6 +231,18 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
+        #region 蜘蛛
+        public static readonly PropertyMeta IS_SPIDER = Get("spider");
+        public static void SetIsSpider(this Entity entity, bool value)
+        {
+            entity.SetProperty(IS_SPIDER, value);
+        }
+        public static bool IsSpider(this Entity entity)
+        {
+            return entity.GetProperty<bool>(IS_SPIDER);
+        }
+        #endregion
+
         #region 火焰
 
         public static readonly PropertyMeta IS_FIRE = Get("isFire");
