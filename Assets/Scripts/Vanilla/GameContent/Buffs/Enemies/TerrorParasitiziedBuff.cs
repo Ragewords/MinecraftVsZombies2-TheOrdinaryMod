@@ -13,6 +13,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -47,6 +48,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (health >= MAX_PARASITE_HEALTH)
             {
                 SpawnParasites(entity, health);
+                if (!entity.HasBuff<TerrorNestBuff>())
+                    entity.AddBuff<TerrorNestBuff>();
                 buff.Remove();
             }
         }
@@ -54,29 +57,24 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             var level = host.Level;
             host.TakeDamage(DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), host);
-            int count = 3;
+            int count = 2;
             if (level.Difficulty == VanillaDifficulties.easy)
             {
-                count = 2;
+                count = 1;
             }
             else if (level.Difficulty == VanillaDifficulties.hard)
             {
-                count = 4;
+                count = 3;
             }
             else if (level.Difficulty == VanillaDifficulties.lunatic)
             {
-                count = 5;
+                count = 3;
             }
             for (int i = 0; i < count; i++)
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
                 parasite.Health = health;
                 parasite.SetFactionAndDirection(host.GetFaction());
-            }
-            if (health >= MAX_PARASITE_HEALTH)
-            {
-                var mother = level.Spawn(VanillaEnemyID.motherTerror, host.GetCenter(), host);
-                mother.SetFactionAndDirection(host.GetFaction());
             }
             host.PlaySound(VanillaSoundID.bloody);
             host.EmitBlood();

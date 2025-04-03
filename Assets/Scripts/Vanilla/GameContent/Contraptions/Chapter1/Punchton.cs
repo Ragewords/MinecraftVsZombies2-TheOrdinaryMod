@@ -41,7 +41,7 @@ namespace MVZ2.GameContent.Contraptions
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer());
             SetFirstDamage(entity, 10);
-            SetFirstPush(entity, 5);
+            SetFirstPush(entity, 2);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -138,8 +138,8 @@ namespace MVZ2.GameContent.Contraptions
                 if (ent.IsEntityOf(VanillaEnemyID.skelebomb))
                 {
                     Skelebomb.StartCasting(ent);
-                    ent.AddBuff<MineTNTInvincibleBuff>();
                     ent.AddBuff<InvertedMirrorBuff>();
+                    ent.AddBuff<CarryingOtherBuff>();
                     ent.SetDamage(ent.GetDamage() * 2);
                 }
 

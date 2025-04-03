@@ -258,6 +258,7 @@ namespace MVZ2.Vanilla.Entities
 
         #region 光照
         public static readonly PropertyMeta IS_LIGHT_SOURCE = Get("isLightSource");
+        public static readonly PropertyMeta IS_NOT_LIGHT_SOURCE = Get("isNotLightSource");
         public static readonly PropertyMeta LIGHT_RANGE = Get("lightRange");
         public static readonly PropertyMeta LIGHT_COLOR = Get("lightColor");
         public static void SetLightSource(this Entity entity, bool value)
@@ -267,6 +268,10 @@ namespace MVZ2.Vanilla.Entities
         public static bool IsLightSource(this Entity entity)
         {
             return entity.GetProperty<bool>(IS_LIGHT_SOURCE);
+        }
+        public static bool IsNotLightSource(this Entity entity)
+        {
+            return entity.GetProperty<bool>(IS_NOT_LIGHT_SOURCE);
         }
         public static void SetLightRange(this Entity entity, Vector3 value)
         {

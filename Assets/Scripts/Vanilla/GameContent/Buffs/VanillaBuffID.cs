@@ -49,6 +49,7 @@ namespace MVZ2.GameContent.Buffs
         public const string miracleMalletReplicaDamage = "miracle_mallet_replica_damage";
         public const string witherSkeletonSkullReduceHealth = "wither_skeleton_skull_reduce_health";
         public const string brokenLantern = "broken_lantern";
+        public const string jackOLantern = "jack_o_lantern";
         // Enemy
         public const string gemCarrier = "gem_carrier";
         public const string flagzombieEnemySpeed = "flagzombie_enemy_speed";
@@ -68,6 +69,7 @@ namespace MVZ2.GameContent.Buffs
         public const string boat = "boat";
         public const string spiderClimb = "spider_climb";
         public const string terrorParasitized = "terror_parasitized";
+        public const string terrorNest = "terror_nest";
         public const string motherTerrorLaid = "mother_terror_laid";
         public const string totenserWeb = "totenser_web";
         public const string gravityPadGravity = "gravity_pad_gravity";
@@ -191,6 +193,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID glowstoneProtected = Get(VanillaBuffNames.glowstoneProtected);
         public static readonly NamespaceID miracleMalletReplicaDamage = Get(VanillaBuffNames.miracleMalletReplicaDamage);
         public static readonly NamespaceID brokenLantern = Get(VanillaBuffNames.brokenLantern);
+        public static readonly NamespaceID jackOLantern = Get(VanillaBuffNames.jackOLantern);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
         private static NamespaceID Get(string name)

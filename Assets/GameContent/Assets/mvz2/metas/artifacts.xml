@@ -5,7 +5,7 @@
     <artifact id="dream_key" name="梦境钥匙" tooltip="对器械使用星之碎片会恢复所有耐久，并在此期间无敌" sprite="mvz2:artifacts/dream_key" unlock="mvz2:level.halloween_11" />
     <artifact id="the_creatures_heart" name="怪物的心" tooltip="场上每有一个同类器械，该器械的能量消耗减少5" sprite="mvz2:artifacts/the_creatures_heart" unlock="mvz2:artifact.the_creatures_heart" />
     
-    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，无法行动时回血量×3" sprite="mvz2:artifacts/sweet_sleep_pillow" unlock="mvz2:level.dream_2" />
+    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，无法行动时回复量×3" sprite="mvz2:artifacts/sweet_sleep_pillow" unlock="mvz2:level.dream_2" />
     <artifact id="pagoda_branch" name="槐树树枝" tooltip="战斗开始时获得2个星之碎片，但敌人数量+200%" sprite="mvz2:artifacts/pagoda_branch" unlock="mvz2:artifact.pagoda_branch" />
     <artifact id="dream_butterfly" name="梦蝶" tooltip="刚放置的器械无敌3秒" sprite="mvz2:artifacts/dream_butterfly" unlock="mvz2:level.dream_11" />
     <artifact id="dark_matter" name="暗物质" tooltip="器械生产效率×200%，但场景变得黑暗" sprite="mvz2:artifacts/dark_matter" unlock="mvz2:artifact.dark_matter" />
@@ -13,8 +13,10 @@
     <artifact id="smart_phone" name="智能手机" tooltip="你在最后一波开始前每有10能量，关卡结束时便获得10金钱" sprite="mvz2:artifacts/smart_phone" unlock="mvz2:kourindou_visited_castle" />
     <artifact id="inverted_mirror" name="倒置的镜子" tooltip="敌人的射弹能够击中其他敌人" sprite="mvz2:artifacts/inverted_mirror" unlock="mvz2:artifact.inverted_mirror" />
     <artifact id="miracle_mallet_replica" name="万宝槌仿制品" tooltip="+15%器械伤害，对近战攻击的器械则增加30%伤害" sprite="mvz2:artifacts/miracle_mallet_replica" unlock="mvz2:level.castle_11" />
-    <artifact id="wither_skeleton_skull" name="凋灵骷髅头" tooltip="×80%蓝图消耗，但新放下的器械的最大耐久×60%" sprite="mvz2:artifacts/wither_skeleton_skull" unlock="mvz2:artifact.wither_skeleton_skull" />
     <artifact id="nether_star" name="下界之星" tooltip="每有4个星之碎片被使用，生成一个星之碎片" sprite="mvz2:artifacts/nether_star" unlock="mvz2:artifact.nether_star" />
     <artifact id="broken_lantern" name="破灯笼" tooltip="发光的器械×50%光照范围，+25%生产速度和攻击速度" sprite="mvz2:artifacts/broken_lantern" unlock="mvz2:artifact.broken_lantern" />
+
+	<artifact id="jack_o_lantern" name="南瓜灯" tooltip="非光源器械会发出黄色光芒" sprite="mvz2:artifacts/jack_o_lantern" unlock="mvz2:level.halloween_EX3" />
+	<artifact id="wither_skeleton_skull" name="凋灵骷髅头" tooltip="×80%蓝图消耗，×50%蓝图充能时间，但新放下的器械的最大耐久×60%" sprite="mvz2:artifacts/wither_skeleton_skull" unlock="mvz2:level.castle_EX3" />
 
 </artifacts>

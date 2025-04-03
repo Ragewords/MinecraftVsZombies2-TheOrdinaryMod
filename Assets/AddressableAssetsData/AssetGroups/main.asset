@@ -1545,6 +1545,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 391038a584564bb4f81f26b57c2a9267
+    m_Address: mvz2:pickup/artifacts/jack_o_lantern
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 392d5a1a4322ba24193d5f42088e6c59
     m_Address: mvz2:ui/musicroom/bar_handler
     m_ReadOnly: 0
