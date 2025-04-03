@@ -110,6 +110,8 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             if (target.HasBuff<TerrorParasitizedBuff>())
                 return false;
+            if (target.HasBuff<TerrorNestBuff>())
+                return false;
             return true;
         }
         public static void LayEgg(Entity spider, Entity target)

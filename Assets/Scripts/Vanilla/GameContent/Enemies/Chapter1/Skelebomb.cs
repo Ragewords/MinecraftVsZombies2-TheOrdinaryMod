@@ -45,25 +45,27 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            if (entity.IsDead)
+                return;
+            var stateTimer = GetStateTimer(entity);
+            if (entity.State == VanillaEntityStates.SKELEBOMB_EXPLODE)
+            {
+                stateTimer.Run();
+                if (stateTimer.Expired)
+                {
+                    Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
+                    entity.Die(entity);
+                    entity.SetAnimationBool("HoldingBomb", false);
+                    entity.Level.ShakeScreen(5, 0, 20);
+                }
+            }
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            var stateTimer = GetStateTimer(entity);
-            if (entity.State == VanillaEntityStates.SKELEBOMB_EXPLODE)
-            {
-                stateTimer.Run(entity.GetAttackSpeed());
-                if (stateTimer.Expired)
-                {
-                    Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
-                    entity.Die(entity);
-                    entity.SetAnimationBool("HoldingBomb", false);
-                    entity.Level.ShakeScreen(10, 0, 20);
-                }
-            }
-            else
+            if (entity.State != VanillaEntityStates.SKELEBOMB_EXPLODE)
             {
                 var exploding = GetExplodingRNG(entity);
                 exploding++;
@@ -91,7 +93,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
                 entity.SetAnimationBool("HoldingBomb", false);
-                entity.Level.ShakeScreen(10, 0, 20);
+                entity.Level.ShakeScreen(5, 0, 20);
                 EndCasting(entity);
             }
             else
@@ -156,7 +158,7 @@ namespace MVZ2.GameContent.Enemies
 
         #region ³£Á¿
         private const int CAST_COOLDOWN = 300;
-        private const int CAST_TIME = 45;
+        private const int CAST_TIME = 30;
         private const int CAST_RNG = 3000;
         private Vector3 BOMB_OFFSET = new Vector3(32, 40, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.skelebomb;

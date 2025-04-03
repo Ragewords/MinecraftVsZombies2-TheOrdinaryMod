@@ -1,5 +1,5 @@
 <stages>
-    <stage id="debug" name="测试关卡" type="special">
+    <stage id="debug" name="测试关卡" type="special" unlock="mvz2:level.prologue">
         <camera transition="instant"/>
         <conveyor>
             <entry id="mvz2:lily_pad" count="16"/>
@@ -293,7 +293,7 @@
 		</properties>
 	</stage>
 	<stage id="halloween_EX3" name="万圣夜" dayNumber="14" type="extra" unlock="mvz2:level.halloween_EX2" music="mvz2:halloween_level_extra" >
-		<clear pickupModel="mvz2:entity.money_chest" />
+		<clear pickupModel="mvz2:entity.jack_o_lantern" />
 		<spawns flags="3" >
 			<spawn id="mvz2:zombie"/>
 			<spawn id="mvz2:leather_capped_zombie"/>
