@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 7409640506443533082}
   - component: {fileID: 4625838573388235100}
   - component: {fileID: 629663188276272077}
+  - component: {fileID: 4797615161545916767}
   m_Layer: 0
   m_Name: Clockhand
   m_TagString: Untagged
@@ -241,6 +242,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 0, z: 0}
+--- !u!114 &4797615161545916767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565598552105618602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
 --- !u!1001 &6918996579605802393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,12 +313,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6702236362217210405, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
       propertyPath: renderers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6702236362217210405, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
       propertyPath: renderers.Array.data[0]
       value: 
       objectReference: {fileID: 3212144021173326565}
+    - target: {fileID: 6702236362217210405, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
+      propertyPath: renderers.Array.data[1]
+      value: 
+      objectReference: {fileID: 4797615161545916767}
     - target: {fileID: 7694393783756858985, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
       propertyPath: m_Controller
       value: 

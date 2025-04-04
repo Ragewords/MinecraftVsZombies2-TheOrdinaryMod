@@ -31,6 +31,7 @@ namespace MVZ2.GameContent.Projectiles
         public const string web = "web";
         public const string poisonJavelin = "poison_javelin";
         public const string weaknessGas = "weakness_gas";
+        public const string arrowBullet = "arrow_bullet";
 
         public const string woodenBall = "wooden_ball";
         public const string cobble = "cobble";
@@ -71,6 +72,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID web = Get(VanillaProjectileNames.web);
         public static readonly NamespaceID poisonJavelin = Get(VanillaProjectileNames.poisonJavelin);
         public static readonly NamespaceID weaknessGas = Get(VanillaProjectileNames.weaknessGas);
+        public static readonly NamespaceID arrowBullet = Get(VanillaProjectileNames.arrowBullet);
 
         public static readonly NamespaceID woodenBall = Get(VanillaProjectileNames.woodenBall);
         public static readonly NamespaceID cobble = Get(VanillaProjectileNames.cobble);

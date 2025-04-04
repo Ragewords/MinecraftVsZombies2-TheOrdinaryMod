@@ -149,6 +149,14 @@
 			<p>将怒火一并发泄吧！嫦娥啊，你在看着吗！</p>
 		</description>
 	</music>
+	<music id="dream_level_extra" path="mvz2:dream_level_extra" name="遥遥38万公里的航程">
+		<source>东方绀珠传</source>
+		<description>
+			<p>梦境世界拓展关卡的音乐。</p>
+			<p>是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。</p>
+			<p>充满速度感和浪漫感的曲子，也不乏一些紧张感。</p>
+		</description>
+	</music>
 
     <music id="gensokyo_map" path="mvz2:gensokyo_map" name="青空之影">
         <source>东方星莲船</source>

@@ -560,6 +560,15 @@
         <sample path="mvz2:sand_dig3" weight="1" />
         <sample path="mvz2:sand_dig4" weight="1" />
     </sound>
+	<sound name="silverfish_cry">
+		<sample path="mvz2:entity/silverfish/silverfish_cry1" weight="1" />
+		<sample path="mvz2:entity/silverfish/silverfish_cry2" weight="1" />
+		<sample path="mvz2:entity/silverfish/silverfish_cry3" weight="1" />
+		<sample path="mvz2:entity/silverfish/silverfish_cry4" weight="1" />
+	</sound>
+	<sound name="silverfish_death">
+		<sample path="mvz2:entity/silverfish/silverfish_death" weight="1" />
+	</sound>
     <sound name="slice">
         <sample path="mvz2:damage/slice/slice1" weight="1" />
         <sample path="mvz2:damage/slice/slice2" weight="1" />

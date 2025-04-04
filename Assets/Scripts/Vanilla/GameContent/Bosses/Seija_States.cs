@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Bosses
             private int GetNextState(EntityStateMachine stateMachine, Entity entity)
             {
                 var lastState = stateMachine.GetPreviousState(entity);
-                if (lastState == STATE_IDLE || lastState == STATE_BACKFLIP || lastState == STATE_TELEPORT)
+                if (lastState == STATE_IDLE || lastState == STATE_TELEPORT)
                 {
                     lastState = STATE_DANMAKU;
                     return lastState;
@@ -136,20 +136,24 @@ namespace MVZ2.GameContent.Bosses
                     lastState = STATE_FRONTFLIP;
                     if (attackAttempted && ShouldFrontFlip(entity) && CanFrontflip(entity))
                     {
-                        return lastState;
+                            return lastState;
                     }
-                    else
-                        return STATE_TELEPORT;
                 }
                 if (lastState == STATE_FRONTFLIP)
                 {
                     lastState = STATE_BACKFLIP;
                     if (attackAttempted && ShouldBackflip(entity) && CanBackflip(entity))
                     {
+                            return lastState;
+                    }
+                }
+                if (lastState == STATE_BACKFLIP)
+                {
+                    lastState = STATE_TELEPORT;
+                    if (ShouldYinyangOrb(entity))
+                    {
                         return lastState;
                     }
-                    else
-                        return STATE_TELEPORT;
                 }
 
                 return STATE_DANMAKU;

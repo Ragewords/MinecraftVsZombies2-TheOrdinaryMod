@@ -93,6 +93,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.ghast,
             VanillaEnemyID.motherTerror,
             VanillaEnemyID.parasiteTerror,
+            VanillaEnemyID.silverfish,
             VanillaEnemyID.mesmerizer,
             VanillaEnemyID.berserker,
             VanillaEnemyID.anubisand,

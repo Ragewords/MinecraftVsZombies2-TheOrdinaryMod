@@ -66,6 +66,11 @@
 		<terrain water="true"/>
         <weight base="2000" />
     </entry>
+	<entry id="silverfish" entity="mvz2:silverfish" >
+		<spawn level="3" />
+		<terrain water="true"/>
+		<weight base="2000" />
+	</entry>
 
     <!-- Castle -->
     <entry id="mesmerizer" entity="mvz2:mesmerizer" >

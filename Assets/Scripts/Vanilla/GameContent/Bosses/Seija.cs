@@ -5,6 +5,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -222,6 +223,21 @@ namespace MVZ2.GameContent.Bosses
                     return false;
             }
             return gapBombDetector.DetectEntityCount(boss) >= GAP_BOMB_ENEMY_COUNT;
+        }
+        public static bool ShouldYinyangOrb(Entity boss)
+        {
+            var orb = GetOrb(boss);
+            var grid = orb?.GetGrid();
+            var main = grid.GetMainEntity();
+            var carrier = grid.GetCarrierEntity();
+            var protector = grid.GetProtectorEntity();
+            if (main != null)
+                return main.IsHostile(boss);
+            else if (carrier != null)
+                return carrier.IsHostile(boss);
+            else if (protector != null)
+                return protector.IsHostile(boss);
+            return false;
         }
         public static bool ShouldFrontFlip(Entity boss)
         {

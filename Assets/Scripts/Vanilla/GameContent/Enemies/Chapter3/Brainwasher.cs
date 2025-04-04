@@ -96,6 +96,10 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
+            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+                return;
+            if (info.Effects.HasEffect(VanillaDamageEffects.DROWN))
+                return;
             if (entity.State == STATE_CAST)
             {
                 EndCasting(entity);
