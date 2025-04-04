@@ -590,6 +590,30 @@
 			<int name="cost" value="50" />
 			<id name="rechargeId" value="mvz2:short" />
 		</dispenser>
+		<contraption id="dimension_hammer" name="次元锤" tooltip="锤击地面，震晕敌人并产生弹幕"  unlock="mvz2:level.dream_EX1">
+			<bool name="cannotDig" value="true"/>
+			<bool name="invisible" value="true"/>
+			<bool name="invincible" value="true"/>
+			<bool name="canDeactive" value="false"/>
+			<bool name="defensive" value="false"/>
+			<bool name="loyal" value="true"/>
+			<int name="waterInteraction" value="0"/>
+			<int name="maxTimeout" value="15"/>
+			<float name="damage" value="150"/>
+			<float name="range" value="40"/>
+			<vector3 name="size" x="0" y="0" z="0"/>
+			<vector3 name="shotOffset" x="0" y="32" z="0"/>
+			<id name="shell" value="mvz2:wood"/>
+			<id name="placement" value="mvz2:any"/>
+			<id name="fragmentId" value="mvz2:wooden_dropper"/>
+			<id name="placeSound" value="mvz2:wood"/>
+			<id name="deathSound" value="mvz2:wood"/>
+			<id name="hitSound" null="true"/>
+			<idArray name="gridLayers" value=""/>
+
+			<int name="cost" value="125" />
+			<id name="rechargeId" value="mvz2:long" />
+		</contraption>
 
         <!-- Token Contraptions -->
         <contraption id="anvil" name="铁砧" tooltip="阻碍敌人的前进" unlock="mvz2:level.dream_3">
@@ -894,6 +918,24 @@
 
 			<int name="cost" value="125" />
 			<int name="waterInteraction" value="2"/>
+		</enemy>
+		<enemy id="silverfish" name="蠹虫" deathMessage="你脚下的每一块石头里都是虫……" unlock="mvz2:level.dream_11">
+			<float name="maxHealth" value="100"/>
+			<float name="maxAttackHeight" value="10"/>
+			<float name="speed" value="2"/>
+			<bool name="undead" value="false"/>
+			<vector3 name="size" x="59" y="17" z="17"/>
+			<id name="crySound" value="mvz2:silverfish_cry"/>
+			<id name="deathSound" value="mvz2:silverfish_death"/>
+			<idArray name="attackerTags" value="mvz2:low_enemy"/>
+
+			<vector3 name="shadowScale" x="1" y="1" z="1"/>
+
+			<color name="bloodColor" value="#007F00FF"/>
+			<color name="bloodColorCensored" value="#007F00FF"/>
+
+			<int name="cost" value="50" />
+			<int name="waterInteraction" value="3"/>
 		</enemy>
 		
         <!-- Token Enemies-->
@@ -1342,6 +1384,10 @@
             <float name="gravity" value="1"/>
             <vector3 name="size" x="24" y="24" z="24" />
         </projectile>
+		<projectile id="arrow_bullet">
+			<bool name="pointToDirection" value="true" />
+			<vector3 name="size" x="28" y="16" z="16" />
+		</projectile>
         <projectile id="diamond_caltrop">
             <int name="maxTimeout" value="900"/>
             <float name="gravity" value="1"/>

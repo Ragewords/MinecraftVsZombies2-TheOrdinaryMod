@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: transforms.Array.size
@@ -307,15 +307,15 @@ PrefabInstance:
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[7]
       value: 
-      objectReference: {fileID: 6176072969840120672}
+      objectReference: {fileID: 6116249471027949746}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[8]
       value: 
-      objectReference: {fileID: 2512533570551803630}
+      objectReference: {fileID: 6176072969840120672}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[9]
       value: 
-      objectReference: {fileID: 6176072969840120672}
+      objectReference: {fileID: 2512533570551803630}
     - target: {fileID: 6670644642867940497, guid: 995a5c513facdb94293c6ce226198cfa, type: 3}
       propertyPath: renderers.Array.data[10]
       value: 

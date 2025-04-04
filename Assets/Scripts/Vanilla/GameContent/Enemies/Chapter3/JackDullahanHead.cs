@@ -41,6 +41,8 @@ namespace MVZ2.GameContent.Enemies
             {
                 return;
             }
+            if (info.Effects.HasEffect(VanillaDamageEffects.DROWN))
+                return;
             var skull = entity.Level.Spawn(VanillaProjectileID.witherSkull, entity.Position, entity);
             skull.Velocity = entity.GetFacingDirection() * 10;
             skull.SetDamage(entity.GetMaxHealth());

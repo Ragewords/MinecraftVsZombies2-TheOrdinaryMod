@@ -56,10 +56,14 @@ namespace MVZ2.GameContent.Projectiles
                 {
                     var direction = Quaternion.Euler(0, 45 - i * 30, 0) * entity.Velocity.normalized;
                     var velocity = direction * 15;
-                    var projectile = other.ShootProjectile(VanillaProjectileID.soulfireBall, velocity);
-                    projectile.Position = entity.Position;
-                    projectile.SetFactionAndDirection(entity.GetFaction());
-                    projectile.SetDamage(entity.GetDamage() / 4);
+                    var projectile = other.ShootProjectile(new ShootParams()
+                    {
+                        projectileID = VanillaProjectileID.soulfireBall,
+                        position = entity.Position,
+                        velocity = velocity,
+                        faction = entity.GetFaction(),
+                        damage = entity.GetDamage() / 4
+                    });
                     projectile.SetScale(new Vector3(0.5f, 0.5f, 0.5f));
                     projectile.SetDisplayScale(new Vector3(0.5f, 0.5f, 0.5f));
                     projectile.SetShadowScale(new Vector3(0.5f, 0.5f, 0.5f));

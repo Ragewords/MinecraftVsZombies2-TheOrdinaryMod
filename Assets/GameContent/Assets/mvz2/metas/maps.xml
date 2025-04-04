@@ -45,6 +45,9 @@
             <stage id="mvz2:dream_9"/>
             <stage id="mvz2:dream_10"/>
             <stage id="mvz2:dream_11"/>
+			<stage id="mvz2:dream_EX1"/>
+			<stage id="mvz2:dream_EX2"/>
+			<stage id="mvz2:dream_EX3"/>
         </stages>
     </map>
     <map id="gensokyo" width="1020" height="600">

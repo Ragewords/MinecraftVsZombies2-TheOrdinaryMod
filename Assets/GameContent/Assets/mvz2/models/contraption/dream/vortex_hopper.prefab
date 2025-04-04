@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vortex_hopper
       objectReference: {fileID: 0}
+    - target: {fileID: 3332216054191891256, guid: b945c9918327bcc4f9bd3fabcb076700, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6702236362217210405, guid: b945c9918327bcc4f9bd3fabcb076700, type: 3}
       propertyPath: lights.Array.size
       value: 1

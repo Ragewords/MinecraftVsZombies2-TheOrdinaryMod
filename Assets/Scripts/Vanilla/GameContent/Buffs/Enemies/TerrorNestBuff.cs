@@ -13,6 +13,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using MVZ2.GameContent.Damages;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -47,6 +48,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 var parasite = entity.Level.Spawn(VanillaEnemyID.parasiteTerror, entity.GetCenter(), entity);
                 parasite.SetFactionAndDirection(entity.GetFaction());
                 entity.PlaySound(VanillaSoundID.bloody);
+                entity.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
                 entity.EmitBlood();
                 timer.Reset();
             }

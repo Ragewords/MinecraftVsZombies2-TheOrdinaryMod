@@ -97,7 +97,8 @@ namespace MVZ2.GameContent.Contraptions
                     var distance = (target.Position - anvil.Position).magnitude;
                     var speed = 20 * Mathf.Lerp(1f, 0.5f, distance / 120);
                     target.Velocity = target.Velocity + Vector3.up * speed;
-                    target.Stun(30);
+                    if (target.CanDeactive())
+                        target.Stun(30);
                 }
             }
         }

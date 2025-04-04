@@ -501,6 +501,41 @@
             <spawn id="mvz2:leather_capped_zombie"/>
         </spawns>
     </stage>
+	<stage id="dream_EX1" name="梦境世界" type="extra" dayNumber="12" unlock="mvz2:level.dream_11" music="mvz2:dream_level_extra" >
+		<talks>
+			<talk type="end" value="mvz2:dream_EX1_over"/>
+		</talks>
+		<clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:dimension_hammer"/>
+		<spawns flags="2" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:silverfish"/>
+		</spawns>
+	</stage>
+	<stage id="dream_EX2" name="梦境世界" type="extra" dayNumber="13" unlock="mvz2:level.dream_EX1" music="mvz2:dream_level_extra" >
+		<clear pickupModel="mvz2:entity.money_chest"/>
+		<spawns flags="3" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:spider"/>
+			<spawn id="mvz2:cave_spider"/>
+			<spawn id="mvz2:silverfish"/>
+		</spawns>
+	</stage>
+	<stage id="dream_EX3" name="梦境世界" type="extra" dayNumber="14" unlock="mvz2:level.dream_EX2" music="mvz2:dream_level_extra" >
+		<clear pickupModel="mvz2:entity.telekinesis"/>
+		<spawns flags="4" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:spider"/>
+			<spawn id="mvz2:cave_spider"/>
+			<spawn id="mvz2:ghast"/>
+			<spawn id="mvz2:mother_terror"/>
+			<spawn id="mvz2:silverfish"/>
+		</spawns>
+	</stage>
 
     <!-- Castle -->
     <stage id="castle_1" name="辉针城" dayNumber="1" unlock="mvz2:entered_castle">
