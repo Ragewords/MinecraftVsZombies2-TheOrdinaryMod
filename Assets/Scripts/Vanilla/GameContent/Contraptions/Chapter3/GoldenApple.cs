@@ -97,6 +97,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.mesmerizer,
             VanillaEnemyID.berserker,
             VanillaEnemyID.anubisand,
+            VanillaEnemyID.curseer,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
         };

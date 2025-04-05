@@ -13,8 +13,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffID;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -27,33 +25,30 @@ namespace MVZ2.GameContent.Bosses
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetTimeout(entity, new FrameTimer(6300));
             SetMoveTimer(entity, new FrameTimer(150));
             SetTransformTimer(entity, new FrameTimer(300));
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED_FACTOR, 0.5f);
-            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20);
+            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60);
             SetProjectileRNG(entity, new RandomGenerator(entity.RNG.Next()));
             SetMoveRNG(entity, new RandomGenerator(entity.RNG.Next()));
             var level = entity.Level;
             SetMoveDisplacement(entity, new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2)));
+        }
+        public override void PreTakeDamage(DamageInput input)
+        {
+            base.PreTakeDamage(input);
+            if (input.Amount > 300)
+            {
+                input.SetAmount(300);
+            }
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            var deathTimer = GetTimeout(entity);
-            deathTimer.Run();
-            if (deathTimer.Expired)
-            {
-                foreach (var wall in entity.Level.FindEntities(VanillaEffectID.crushingWalls))
-                {
-                    CrushingWalls.CloseSecondTime(wall);
-                }
-                entity.PlaySound(VanillaSoundID.fling);
-            }
             Vector3 destination = GetMoveDisplacement(entity);
             var posi = entity.Position;
             posi.x = posi.x * 0.5f + destination.x * 0.5f;
@@ -89,7 +84,7 @@ namespace MVZ2.GameContent.Bosses
                 entity.PlaySound(VanillaSoundID.reverseVampire);
                 moveTimer.ResetTime(300);
                 var buff = entity.GetFirstBuff<FlyBuff>();
-                buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, entity.RNG.Next(0, 80));
+                buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, entity.RNG.Next(20, 80));
             }
             var transTimer = GetTransformTimer(entity);
             transTimer.Run();

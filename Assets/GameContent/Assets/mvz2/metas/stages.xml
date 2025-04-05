@@ -739,4 +739,41 @@
             <spawn id="mvz2:leather_capped_zombie"/>
         </spawns>
     </stage>
+	<stage id="castle_EX1" name="辉针城" type="extra" dayNumber="12" unlock="mvz2:level.castle_11" music="mvz2:castle_level_extra" >
+		<talks>
+			<talk type="end" value="mvz2:castle_EX1_over"/>
+		</talks>
+		<clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:fire_charge_dispenser"/>
+		<spawns flags="2" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:mesmerizer"/>
+			<spawn id="mvz2:curseer"/>
+		</spawns>
+	</stage>
+	<stage id="castle_EX2" name="辉针城" type="extra" dayNumber="13" unlock="mvz2:level.castle_EX1" music="mvz2:castle_level_extra" >
+		<clear pickupModel="mvz2:entity.money_chest" />
+		<spawns flags="3" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:mesmerizer"/>
+			<spawn id="mvz2:berserker"/>
+			<spawn id="mvz2:curseer"/>
+		</spawns>
+	</stage>
+	<stage id="castle_EX3" name="辉针城" type="extra" dayNumber="14" unlock="mvz2:level.castle_EX2" music="mvz2:castle_level_extra" >
+		<clear pickupModel="mvz2:entity.wither_skeleton_skull"/>
+		<spawns flags="4" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:mesmerizer"/>
+			<spawn id="mvz2:berserker"/>
+			<spawn id="mvz2:dullahan"/>
+			<spawn id="mvz2:hell_chariot"/>
+			<spawn id="mvz2:curseer"/>
+		</spawns>
+	</stage>
 </stages>

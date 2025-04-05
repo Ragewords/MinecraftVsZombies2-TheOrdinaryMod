@@ -55,6 +55,9 @@ namespace MVZ2.GameContent.Stages
         public const string castle9 = "castle_9";
         public const string castle10 = "castle_10";
         public const string castle11 = "castle_11";
+        public const string castleEX1 = "castle_EX1";
+        public const string castleEX2 = "castle_EX2";
+        public const string castleEX3 = "castle_EX3";
         public const string castleEndless = "castle_endless";
     }
     public static class VanillaStageID

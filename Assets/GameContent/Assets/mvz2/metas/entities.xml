@@ -614,6 +614,19 @@
 			<int name="cost" value="125" />
 			<id name="rechargeId" value="mvz2:long" />
 		</contraption>
+		<contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的敌人投掷火焰弹"  unlock="mvz2:level.castle_EX1">
+			<float name="range" value="200"/>
+			<float name="damage" value="80"/>
+			<id name="projectileId" value="mvz2:fire_charge"/>
+			<id name="shootSound" value="mvz2:fire_charge"/>
+			<id name="fragmentId" value="mvz2:furnace"/>
+			<vector3 name="shotOffset" x="0" y="50" z="0"/>
+			<vector3 name="size" x="48" y="48" z="48"/>
+			<idArray name="attackerFor" value="mvz2:low_enemy mvz2:flying_enemy"/>
+
+			<int name="cost" value="175" />
+			<id name="rechargeId" value="mvz2:long" />
+		</contraption>
 
         <!-- Token Contraptions -->
         <contraption id="anvil" name="铁砧" tooltip="阻碍敌人的前进" unlock="mvz2:level.dream_3">
@@ -934,8 +947,18 @@
 			<color name="bloodColor" value="#007F00FF"/>
 			<color name="bloodColorCensored" value="#007F00FF"/>
 
-			<int name="cost" value="50" />
+			<int name="cost" value="150" />
 			<int name="waterInteraction" value="3"/>
+		</enemy>
+		<enemy id="curseer" name="咒术师" deathMessage="画个圈圈诅咒你！" unlock="mvz2:level.castle_11">
+			<float name="maxHealth" value="300"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="200" />
+			<int name="waterInteraction" value="2"/>
 		</enemy>
 		
         <!-- Token Enemies-->
@@ -1187,6 +1210,13 @@
 			<color name="bloodColor" value="#7F0000FF"/>
 			<color name="bloodColorCensored" value="#00007FFF"/>
 		</boss>
+		<boss id="the_eye" name="眼">
+			<int name="waterInteraction" value="0"/>
+			<float name="maxHealth" value="7500"/>
+			<vector3 name="size" x="74" y="74" z="74"/>
+			<color name="bloodColor" value="#7F0000FF"/>
+			<color name="bloodColorCensored" value="#00007FFF"/>
+		</boss>
         <boss id="slenderman" name="瘦长鬼影">
             <int name="waterInteraction" value="0"/>
             <float name="maxHealth" value="2500"/>
@@ -1196,19 +1226,12 @@
         </boss>
         <boss id="nightmareaper" name="梦魇收割者">
             <int name="waterInteraction" value="0"/>
-            <float name="maxHealth" value="4000"/>
+            <float name="maxHealth" value="5000"/>
             <id name="shell" value="mvz2:bone"/>
             <vector3 name="size" x="48" y="52" z="48"/>
             <color name="bloodColor" value="#000000FF"/>
             <color name="bloodColorCensored" value="#000000FF"/>
         </boss>
-		<boss id="the_eye" name="眼">
-			<int name="waterInteraction" value="0"/>
-			<float name="maxHealth" value="10000"/>
-			<vector3 name="size" x="74" y="74" z="74"/>
-			<color name="bloodColor" value="#7F0000FF"/>
-			<color name="bloodColorCensored" value="#00007FFF"/>
-		</boss>
         <boss id="seija" name="鬼人正邪">
             <int name="waterInteraction" value="1"/>
             <float name="maxHealth" value="4884"/>

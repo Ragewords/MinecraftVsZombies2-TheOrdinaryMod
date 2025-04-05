@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -24,7 +25,7 @@ namespace MVZ2.GameContent.Stages
         protected override void AfterFinalWaveUpdate(LevelEngine level)
         {
             base.AfterFinalWaveUpdate(level);
-            SlendermanTransitionUpdate(level);
+            TheEyeTransitionUpdate(level);
         }
         protected override void BossFightWaveUpdate(LevelEngine level)
         {
@@ -32,6 +33,12 @@ namespace MVZ2.GameContent.Stages
             var state = GetBossState(level);
             switch (state)
             {
+                case BOSS_STATE_THE_EYE:
+                    TheEyeUpdate(level);
+                    break;
+                case BOSS_STATE_SLENDERMAN_TRANSITION:
+                    SlendermanTransitionUpdate(level);
+                    break;
                 case BOSS_STATE_SLENDERMAN:
                     SlendermanUpdate(level);
                     break;
@@ -41,20 +48,52 @@ namespace MVZ2.GameContent.Stages
                 case BOSS_STATE_NIGHTMAREAPER:
                     NightmareaperUpdate(level);
                     break;
-                case BOSS_STATE_THE_EYE_TRANSITION:
-                    TheEyeTransitionUpdate(level);
-                    break;
-                case BOSS_STATE_THE_EYE:
-                    TheEyeUpdate(level);
-                    break;
+            }
+        }
+        private void TheEyeTransitionUpdate(LevelEngine level)
+        {
+            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
+            {
+                // 眼出现
+                level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
+                level.PlayMusic(VanillaMusicID.nightmareBoss3);
+                level.SetMusicVolume(1);
+                level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
+                return;
+            }
+            // 音乐放缓。
+            level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
+            if (level.GetMusicVolume() <= 0)
+            {
+                Vector3 pos = new Vector3(level.GetEntityColumnX(4), 800, level.GetEntityLaneZ(2));
+                var boss = level.Spawn(VanillaBossID.theEye, pos, null);
+            }
+        }
+        private void TheEyeUpdate(LevelEngine level)
+        {
+            // 眼战斗
+            // 如果不存在Boss，或者所有Boss死亡，进入BOSS后阶段。
+            // 如果有Boss存活，不停生成怪物。
+            var targetBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead);
+            if (targetBosses.Length <= 0)
+            {
+                level.StopMusic();
+                SetBossState(level, BOSS_STATE_SLENDERMAN_TRANSITION);
+                level.AddBuff<SlendermanTransitionBuff>();
+            }
+            else
+            {
+                RunBossWave(level);
             }
         }
         private void SlendermanTransitionUpdate(LevelEngine level)
         {
+            ClearEnemies(level);
             if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
                 // 瘦长鬼影出现
-                level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
+                SetBossState(level, BOSS_STATE_SLENDERMAN);
+                level.SetUIAndInputDisabled(false);
                 return;
             }
             if (!level.HasBuff<SlendermanTransitionBuff>())
@@ -134,95 +173,6 @@ namespace MVZ2.GameContent.Stages
             else
             {
                 RunBossWave(level);
-                // 碾压墙被强制合拢时生成眼。
-                foreach (var wall in level.FindEntities(VanillaEffectID.crushingWalls))
-                {
-                    if (CrushingWalls.GetProgress(wall) >= 1 && CrushingWalls.GetFirstClosed(wall))
-                    {
-                        CrushingWalls.Enrage(wall);
-                        var reaper = level.FindFirstEntity(VanillaBossID.nightmareaper);
-                        reaper.Remove();
-                        Vector3 pos = new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2));
-                        var boss = level.Spawn(VanillaBossID.theEye, pos, null);
-                        boss.PlaySound(VanillaSoundID.splashBig);
-                        boss.Spawn(VanillaEffectID.nightmareaperSplash, pos);
-                        level.ShakeScreen(30, 0, 30);
-                        ClearEnemies(level);
-                        SetBossState(level, BOSS_STATE_THE_EYE_TRANSITION);
-                    }
-                }
-            }
-        }
-        private void TheEyeTransitionUpdate(LevelEngine level)
-        {
-            ClearEnemies(level);
-            // 恢复场上所有器械的朝向。
-            foreach (var entity in level.FindEntities(e => (e.Type == EntityTypes.PLANT) && !e.IsDead && e.IsFriendlyEntity()))
-            {
-                if (entity.GetScale().x < 0)
-                {
-                    entity.SetScale(new Vector3(-entity.GetScale().x, entity.GetScale().y, entity.GetScale().z));
-                    entity.SetDisplayScale(new Vector3(-entity.GetDisplayScale().x, entity.GetDisplayScale().y, entity.GetDisplayScale().z));
-                }
-            }
-            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
-            {
-                // 眼出现
-                level.SetUIAndInputDisabled(false);
-                SetBossState(level, BOSS_STATE_THE_EYE);
-                level.PlayMusic(VanillaMusicID.nightmareBoss3);
-                foreach (var wall in level.FindEntities(VanillaEffectID.crushingWalls))
-                {
-                    CrushingWalls.SetFirstClosed(wall, false);
-                }
-                foreach (var timer in level.FindEntities(VanillaEffectID.nightmareaperTimer))
-                {
-                    NightmareaperTimer.SetTimeout(timer, 6300);
-                }
-                return;
-            }
-        }
-        private void TheEyeUpdate(LevelEngine level)
-        {
-            // 眼战斗
-            // 如果不存在Boss，或者所有Boss死亡，进入BOSS后阶段。
-            // 如果有Boss存活，不停生成怪物。
-            if (!level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
-            {
-                level.WaveState = VanillaLevelStates.STATE_AFTER_BOSS;
-                level.StopMusic();
-                if (!level.IsRerun)
-                {
-                    // 隐藏UI，关闭输入
-                    level.ResetHeldItem();
-                    level.SetUIAndInputDisabled(true);
-                }
-                else
-                {
-                    var reaper = level.FindFirstEntity(VanillaBossID.theEye);
-                    Vector3 position;
-                    if (reaper != null)
-                    {
-                        position = reaper.Position;
-                    }
-                    else
-                    {
-                        var x = (level.GetGridLeftX() + level.GetGridRightX()) * 0.5f;
-                        var z = (level.GetGridTopZ() + level.GetGridBottomZ()) * 0.5f;
-                        var y = level.GetGroundY(x, z);
-                        position = new Vector3(x, y, z);
-                    }
-                    level.Produce(VanillaPickupID.clearPickup, position, null);
-                }
-            }
-            else
-            {
-                RunBossWave(level);
-                foreach (var wall in level.FindEntities(VanillaEffectID.crushingWalls))
-                {
-                    if (CrushingWalls.GetProgress(wall) <= 0.01)
-                        wall.State = VanillaEntityStates.CRUSHING_WALLS_IDLE;
-                }
             }
         }
         protected override void AfterBossWaveUpdate(LevelEngine level)
@@ -244,10 +194,10 @@ namespace MVZ2.GameContent.Stages
             }
         }
 
-        public const int BOSS_STATE_SLENDERMAN = 0;
-        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 1;
-        public const int BOSS_STATE_NIGHTMAREAPER = 2;
-        public const int BOSS_STATE_THE_EYE_TRANSITION = 3;
-        public const int BOSS_STATE_THE_EYE = 4;
+        public const int BOSS_STATE_THE_EYE = 0;
+        public const int BOSS_STATE_SLENDERMAN_TRANSITION = 1;
+        public const int BOSS_STATE_SLENDERMAN = 2;
+        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 3;
+        public const int BOSS_STATE_NIGHTMAREAPER = 4;
     }
 }

@@ -72,14 +72,14 @@ namespace MVZ2.GameContent.Contraptions
             if (detectTimer.Expired)
             {
                 var collider = detector.DetectWithTheMost(pistenser, e => e.Entity.GetRelativeY());
-                var collider1 = detector.DetectWithTheMost(pistenser, e => Mathf.Abs(e.Entity.Position.x - pistenser.Position.x));
+                var collider1 = detector.DetectWithTheLeast(pistenser, e => e.Entity.GetRelativeY() + e.Entity.GetScaledSize().y);
                 SetExtendTarget(pistenser, collider?.Entity);
-                if (collider == null)
-                    SetExtendTarget(pistenser, collider1?.Entity);
+                SetSubtractTarget(pistenser, collider1?.Entity);
                 detectTimer.Reset();
             }
 
             var target = GetExtendTarget(pistenser);
+            var target_s = GetSubtractTarget(pistenser);
             // 存在目标，并且目标的最底部大于活塞发射器的基础子弹高度，则延长。
             if (target != null && target.Position.y > pistenser.Position.y + BASE_SHOT_HEIGHT)
             {
@@ -94,10 +94,10 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
             // 存在目标，并且目标的最顶部小于活塞发射器的基础子弹高度，则缩短。
-            else if (target != null && target.Position.y + target.GetScaledSize().y < pistenser.Position.y + BASE_SHOT_HEIGHT)
+            else if (target_s != null && target_s.Position.y + target_s.GetScaledSize().y < pistenser.Position.y + BASE_SHOT_HEIGHT)
             {
                 // 目标缩短高度为目标的中心点减去活塞发射器的基础子弹高度。
-                float targetSubtract = target.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT);
+                float targetSubtract = target_s.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT);
                 var subtract = GetExtend(pistenser);
 
                 // 目标缩短高度和当前高度的差值必须大于或等于2。
@@ -106,7 +106,7 @@ namespace MVZ2.GameContent.Contraptions
                     if (subtract > 0)
                         ExtendToTargetHeight(pistenser, 0);
                     else
-                        SubtractToTargetHeight(pistenser, targetSubtract);
+                        SubtractToTargetHeight(pistenser, Mathf.Max(targetSubtract, -20));
                 }
             }
             else
@@ -283,6 +283,17 @@ namespace MVZ2.GameContent.Contraptions
         {
             entity.SetBehaviourField(ID, PROP_EXTEND_TARGET, new EntityID(value));
         }
+        public static Entity GetSubtractTarget(Entity entity)
+        {
+            var id = entity.GetBehaviourField<EntityID>(ID, PROP_SUBTRACT_TARGET);
+            if (id == null)
+                return null;
+            return id.GetEntity(entity.Level);
+        }
+        public static void SetSubtractTarget(Entity entity, Entity value)
+        {
+            entity.SetBehaviourField(ID, PROP_SUBTRACT_TARGET, new EntityID(value));
+        }
         public static FrameTimer GetExtendDetectTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_EXTEND_DETECT_TIMER);
         public static void SetExtendDetectTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_EXTEND_DETECT_TIMER, value);
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);
@@ -299,6 +310,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_DETECT_TIMER = new VanillaEntityPropertyMeta("ExtendDetectTimer");
         public static readonly VanillaEntityPropertyMeta PROP_EXTEND_TARGET = new VanillaEntityPropertyMeta("ExtendTarget");
+        public static readonly VanillaEntityPropertyMeta PROP_SUBTRACT_TARGET = new VanillaEntityPropertyMeta("SubtractTarget");
         public const float BASE_SHOT_HEIGHT = 30;
         public const float EXTEND_SPEED = 10;
         public const float SUBTRACT_SPEED = 2;

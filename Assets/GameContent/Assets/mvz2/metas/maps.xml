@@ -83,6 +83,9 @@
             <stage id="mvz2:castle_9"/>
             <stage id="mvz2:castle_10"/>
             <stage id="mvz2:castle_11"/>
+			<stage id="mvz2:castle_EX1"/>
+			<stage id="mvz2:castle_EX2"/>
+			<stage id="mvz2:castle_EX3"/>
         </stages>
     </map>
 </maps>
