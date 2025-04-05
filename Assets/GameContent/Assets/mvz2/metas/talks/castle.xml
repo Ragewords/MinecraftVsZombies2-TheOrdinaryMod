@@ -950,4 +950,19 @@
       </sentences>
     </section>
   </group>
+	<group id="castle_EX1_over" tags="mvz2:castle;mvz2:over">
+		<archive name="辉针城拓展第1天结束" background="mvz2:misc/castle" unlock="mvz2:level.castle_EX1" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">这是火焰弹发射器！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能够向周围的敌人投掷火焰弹！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">同时，由于自身的攻击特点，它也能攻击到空中的敌人！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">对怪物们进行火力威慑吧！</sentence>
+			</sentences>
+		</section>
+	</group>
 </talks>

@@ -44,6 +44,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public const string poisonser = "poisonser";
         public const string dimensionHammer = "dimension_hammer";
+        public const string fireChargeDispenser = "fire_charge_dispenser";
 
         public const string anvil = "anvil";
         public const string randomChina = "random_china";
@@ -89,6 +90,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public static readonly NamespaceID poisonser = Get(VanillaContraptionNames.poisonser);
         public static readonly NamespaceID dimensionHammer = Get(VanillaContraptionNames.dimensionHammer);
+        public static readonly NamespaceID fireChargeDispenser = Get(VanillaContraptionNames.fireChargeDispenser);
 
         public static readonly NamespaceID anvil = Get(VanillaContraptionNames.anvil);
         public static readonly NamespaceID randomChina = Get(VanillaContraptionNames.randomChina);

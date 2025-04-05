@@ -577,15 +577,6 @@ namespace MVZ2.GameContent.Bosses
                     CrushingWalls.Enrage(wall);
                 }
 
-                var level = entity.Level;
-                var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(entity));
-                foreach (var enemy in targets_enemy)
-                {
-                    var pos = enemy.Position;
-                    pos.x = 1020;
-                    enemy.Position = pos;
-                }
-
                 CancelDarkness(entity.Level);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)

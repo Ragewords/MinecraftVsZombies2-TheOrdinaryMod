@@ -123,30 +123,30 @@
             <p>等着吧，哆来咪，我们绝对会把你救出来的。</p>
         </description>
     </music>
-    <music id="nightmare_boss" path="mvz2:nightmare_boss" name="Pandemonic Planet（前段）">
-        <source>东方绀珠传</source>
-        <description>
-            <p>梦魇第一阶段的音乐。</p>
-            <p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。</p>
-            <p>之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。</p>
-            <p>至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。</p>
-        </description>
-    </music>
-    <music id="nightmare_boss2" path="mvz2:nightmare_boss2" name="Pandemonic Planet（后段）">
-        <source>东方绀珠传</source>
-        <description>
-            <p>梦魇第二阶段的音乐。</p>
-            <p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。</p>
-            <p>虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：</p>
-            <p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
-        </description>
-    </music>
 	<music id="nightmare_boss3" path="mvz2:nightmare_boss3" name="Pure Furies ～ 心之所在">
 		<source>东方绀珠传</source>
 		<description>
-			<p>梦魇第三阶段的音乐。</p>
+			<p>梦魇第一阶段的音乐。</p>
 			<p>是《东方绀珠传》的六面Boss——纯狐的音乐。</p>
-			<p>将怒火一并发泄吧！嫦娥啊，你在看着吗！</p>
+			<p>这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。</p>
+		</description>
+	</music>
+	<music id="nightmare_boss" path="mvz2:nightmare_boss" name="Pandemonic Planet（前段）">
+		<source>东方绀珠传</source>
+		<description>
+			<p>梦魇第二阶段的音乐。</p>
+			<p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。</p>
+			<p>之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。</p>
+			<p>至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。</p>
+		</description>
+	</music>
+	<music id="nightmare_boss2" path="mvz2:nightmare_boss2" name="Pandemonic Planet（后段）">
+		<source>东方绀珠传</source>
+		<description>
+			<p>梦魇第三阶段的音乐。</p>
+			<p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。</p>
+			<p>虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：</p>
+			<p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
 		</description>
 	</music>
 	<music id="dream_level_extra" path="mvz2:dream_level_extra" name="遥遥38万公里的航程">
@@ -250,4 +250,11 @@
             <p>因为老大哥在看着我。</p>
         </description>
     </music>
+	<music id="castle_level_extra" path="mvz2:castle_level_extra" name="沉向空中的辉针城">
+		<source>东方辉针城</source>
+		<description>
+			<p>辉针城拓展关卡的音乐。</p>
+			<p>是《东方辉针城》的第五关关卡音乐，在旧版本中直接被用于关卡音乐，这里被复用于拓展关卡。</p>
+		</description>
+	</music>
 </musics>

@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.Buffs.Level
         public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
         public static readonly VanillaBuffPropertyMeta PROP_NIGHT_ADDITION = new VanillaBuffPropertyMeta("NightAddition");
         public const float NIGHT_SPEED = 0.07f;
-        public const int MAX_TIMEOUT = CREATE_DARKNESS_TIMEOUT + 90;
+        public const int MAX_TIMEOUT = CREATE_DARKNESS_TIMEOUT + 290;
         public const int CREATE_DARKNESS_TIMEOUT = FADEOUT_TIMEOUT + 165;
         public const int FADEOUT_TIMEOUT = 15;
     }

@@ -135,8 +135,7 @@ namespace MVZ2.GameContent.Effects
 
             if (progress >= 1)
             {
-                if (!GetFirstClosed(entity))
-                    entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
+                entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
             }
         }
         private void UpdateShake(Entity entity)

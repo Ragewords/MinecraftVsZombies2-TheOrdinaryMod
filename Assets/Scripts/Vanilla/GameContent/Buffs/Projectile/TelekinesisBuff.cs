@@ -1,15 +1,12 @@
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using System.Collections.Generic;
-using Tools;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Buffs.Projectiles
 {
@@ -23,6 +20,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
                 mask = EntityCollisionHelper.MASK_VULNERABLE,
                 invulnerableFilter = (param, e) => e.Type == EntityTypes.PROJECTILE
             };
+            AddModifier(new BooleanModifier(VanillaProjectileProps.PIERCING, false));
         }
         public override void PostAdd(Buff buff)
         {
@@ -45,7 +43,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             }
         }
         public const float ABSORB_RADIUS = 80;
-        public const float ABSORB_SPEED = 2;
+        public const float ABSORB_SPEED = 4;
         public const float ABSORB_MAX_SPEED = 10;
         private List<Entity> detectBuffer = new List<Entity>();
         private Detector absorbDetector;

@@ -90,6 +90,10 @@
 		<terrain water="true" air="true"/>
         <weight base="2000" />
     </entry>
+	<entry id="curseer" entity="mvz2:curseer" >
+		<spawn level="3" />
+		<weight base="2500" />
+	</entry>
     
     <entry id="mutant_zombie" entity="mvz2:mutant_zombie" >
         <spawn level="10"/>

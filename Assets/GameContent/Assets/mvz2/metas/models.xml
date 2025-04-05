@@ -34,6 +34,7 @@
     <model name="thunder_drum" type="entity" path="mvz2:contraption/castle/thunder_drum" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="tesla_coil" type="entity" path="mvz2:contraption/castle/tesla_coil" width="64" height="128" xOffset="0" yOffset="-60"/>
     <model name="giant_bowl" type="entity" path="mvz2:contraption/castle/giant_bowl" width="64" height="64" xOffset="0" yOffset="-28"/>
+	<model name="fire_charge_dispenser" type="entity" path="mvz2:contraption/castle/fire_charge_dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="force_pad" type="entity" path="mvz2:contraption/upgrade/force_pad" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -68,6 +69,7 @@
     <model name="dullahan" type="entity" path="mvz2:enemy/castle/dullahan" width="94" height="120" xOffset="9" yOffset="-53"/>
     <model name="hell_chariot" type="entity" path="mvz2:enemy/castle/hell_chariot" width="152" height="120" xOffset="9" yOffset="-60"/>
     <model name="anubisand" type="entity" path="mvz2:enemy/castle/anubisand" width="52" height="88" xOffset="12" yOffset="-41"/>
+	<model name="curseer" type="entity" path="mvz2:enemy/castle/curseer" width="64" height="96" xOffset="10" yOffset="-44"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -129,6 +131,7 @@
 
 	<model name="jack_o_lantern" type="entity" path="mvz2:pickup/artifacts/jack_o_lantern" width="64" height="64" xOffset="0" yOffset="-16"/>
 	<model name="telekinesis" type="entity" path="mvz2:pickup/artifacts/telekinesis" width="64" height="64" xOffset="0" yOffset="-16"/>
+	<model name="wither_skeleton_skull" type="entity" path="mvz2:pickup/artifacts/wither_skeleton_skull" width="64" height="64" xOffset="0" yOffset="-16"/>
 
     <model name="starshard.default" type="entity" path="mvz2:pickup/starshards/default" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="starshard.halloween" type="entity" path="mvz2:pickup/starshards/halloween" width="64" height="64" xOffset="0" yOffset="-16"/>
