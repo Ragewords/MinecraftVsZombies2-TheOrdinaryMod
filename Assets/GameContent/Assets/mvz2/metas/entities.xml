@@ -983,6 +983,7 @@
 			<bool name="notActiveEnemy" value="true"/>
 			<bool name="loyal" value="true"/>
 			<bool name="canDeactive" value="false"/>
+			<bool name="noReward" value="true"/>
 			<float name="fallResistance" value="10000"/>
 			<float name="range" value="120"/>
 			<int name="maxTimeout" value="300"/>
