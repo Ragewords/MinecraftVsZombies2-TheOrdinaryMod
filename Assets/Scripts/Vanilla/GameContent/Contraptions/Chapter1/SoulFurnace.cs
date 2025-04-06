@@ -28,6 +28,7 @@ namespace MVZ2.GameContent.Contraptions
         public SoulFurnace(string nsp, string name) : base(nsp, name)
         {
             evocationDetector = new SoulFurnaceEvocationDetector();
+            detector.canDetectInvisible = true;
         }
 
         public override void Init(Entity entity)

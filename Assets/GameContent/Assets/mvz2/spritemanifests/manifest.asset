@@ -163,6 +163,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8866a258ae8eb3e458f9c444ebdba22c, type: 3}
   - name: mobile_blueprint/dullahan_head
     sprite: {fileID: 21300000, guid: 9e859336bcdaf054593a5dc4ca4b79ae, type: 3}
+  - name: mobile_blueprint/fire_charge_dispenser
+    sprite: {fileID: 21300000, guid: 6ee512fd77a0dc8459eaf2d3c9cc39a6, type: 3}
   - name: mobile_blueprint/flag_zombie
     sprite: {fileID: 21300000, guid: 4756509eba10d744bb3323a794303f92, type: 3}
   - name: mobile_blueprint/force_pad
@@ -431,6 +433,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 45e4ec0a78ad63e4da7576e9c122689c, type: 3}
   - name: entity/contraptions/drivenser_blocker
     sprite: {fileID: 21300000, guid: ab45c539e2bb18040b691583b08639f1, type: 3}
+  - name: entity/contraptions/firecharge_dispenser
+    sprite: {fileID: 21300000, guid: 78c20e0b07a17e3458c71c08eeba7030, type: 3}
   - name: entity/contraptions/force_wave
     sprite: {fileID: 21300000, guid: c91919e3f10e9004f85638cba2384e3e, type: 3}
   - name: entity/contraptions/giant_bowl
@@ -573,6 +577,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 65d312391b826ec42b5c7818218f9e7e, type: 3}
   - name: entity/enemies/brainwasher_rod
     sprite: {fileID: 21300000, guid: 90a02dbfbce08a84ba0c99cd8c5903bb, type: 3}
+  - name: entity/enemies/curseer_arm
+    sprite: {fileID: 21300000, guid: aaf437ca9eaf4eb43b39c4c2bba718a9, type: 3}
+  - name: entity/enemies/curseer_head
+    sprite: {fileID: 21300000, guid: 9da6fd0af3ae7e642b22ea45d6088295, type: 3}
   - name: entity/enemies/dullahan_bended_arm
     sprite: {fileID: 21300000, guid: c9bb0408ef5a7624eb4980e99c0c4888, type: 3}
   - name: entity/enemies/dullahan_head
@@ -627,6 +635,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: b619b60be7108ed4fafb8ba9257d68ce, type: 3}
   - name: entity/projectiles/compelling_orb
     sprite: {fileID: 21300000, guid: f1e4625420d356e4eb58b79513629607, type: 3}
+  - name: entity/projectiles/dark_matter_ball
+    sprite: {fileID: 21300000, guid: f66bbbc22a26f8c4db9cf5a41f9f3a06, type: 3}
   - name: entity/projectiles/dart
     sprite: {fileID: 21300000, guid: 0a0f7cbdb4c6650409a18d59ba158a03, type: 3}
   - name: entity/projectiles/fire_charge
@@ -1538,6 +1548,10 @@ MonoBehaviour:
     - {fileID: -1477107463, guid: d59a40ebc8e2cc64392de05f2870d045, type: 3}
     - {fileID: 1435127597, guid: d59a40ebc8e2cc64392de05f2870d045, type: 3}
     - {fileID: 556428364, guid: d59a40ebc8e2cc64392de05f2870d045, type: 3}
+  - name: entity/enemy/curseer_body
+    spritesheet:
+    - {fileID: 815795662, guid: 323c937ccf5b0c2409641c937f5b319c, type: 3}
+    - {fileID: 1044798732, guid: 323c937ccf5b0c2409641c937f5b319c, type: 3}
   - name: entity/enemy/dullahan_body
     spritesheet:
     - {fileID: 1555906369, guid: 0b96758788dd52c42bf9e6331f37143a, type: 3}
@@ -1662,6 +1676,19 @@ MonoBehaviour:
     - {fileID: 93071313, guid: 95a0ff4bc65b3c3489a4dd2274848c9d, type: 3}
     - {fileID: -1939588279, guid: 95a0ff4bc65b3c3489a4dd2274848c9d, type: 3}
     - {fileID: 1767264598, guid: 95a0ff4bc65b3c3489a4dd2274848c9d, type: 3}
+  - name: entity/enemy/silverfish
+    spritesheet:
+    - {fileID: 1521919333, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: 562980845, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: -1873987682, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: -1938634833, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: -1463952829, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: -789669097, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+    - {fileID: -1376662827, guid: da3b5489b8576894c8df97344ad80e7a, type: 3}
+  - name: entity/enemy/silverfish_death
+    spritesheet:
+    - {fileID: -1325256689, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
+    - {fileID: 1258825829, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
   - name: entity/enemy/skeleton
     spritesheet:
     - {fileID: 21300000, guid: 20e366ae3ad04144489c4e881a2d2b4a, type: 3}

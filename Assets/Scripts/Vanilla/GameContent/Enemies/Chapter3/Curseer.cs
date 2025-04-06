@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Enemies
                 stateTimer.Run(entity.GetAttackSpeed());
                 if (stateTimer.Expired)
                 {
-                    var heal_target = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY && e.ID != entity.ID && !e.IsDead && e.Health < e.GetMaxHealth()).RandomTake(1, entity.RNG);
+                    var heal_target = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY && e.ID != entity.ID && !e.IsNotActiveEnemy() && !e.IsDead && e.Health < e.GetMaxHealth()).RandomTake(1, entity.RNG);
                     if (heal_target == null)
                     {
                         stateTimer.Frame = CONTROL_DETECT_TIME;

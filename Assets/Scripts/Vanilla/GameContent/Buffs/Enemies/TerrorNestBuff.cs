@@ -52,6 +52,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 entity.EmitBlood();
                 timer.Reset();
             }
+            if (entity.IsDead)
+                buff.Remove();
         }
         private void PostEntityDeathCallback(Entity entity, DeathInfo info)
         {

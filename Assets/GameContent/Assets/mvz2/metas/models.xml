@@ -220,6 +220,7 @@
     <model name="poison_javelin" type="entity" path="mvz2:projectile/poison_javelin" width="96" height="10" xOffset="0" yOffset="0"/>
     <model name="parabot" type="entity" path="mvz2:projectile/parabot" width="32" height="16" xOffset="0" yOffset="0"/>
     <model name="breakout_pearl" type="entity" path="mvz2:projectile/breakout_pearl" width="32" height="32" xOffset="0" yOffset="0"/>
+	<model name="dark_matter_ball" type="entity" path="mvz2:projectile/dark_matter_ball" width="80" height="80" xOffset="0" yOffset="0"/>
 	<model name="arrow_bullet" type="entity" path="mvz2:projectile/arrow_bullet" width="32" height="16" xOffset="0" yOffset="0"/>
     <model name="wooden_ball" type="entity" path="mvz2:projectile/wooden_ball" width="24" height="24" xOffset="0" yOffset="-12"/>
     <model name="cobble" type="entity" path="mvz2:projectile/cobble" width="12" height="12" xOffset="0" yOffset="-6"/>

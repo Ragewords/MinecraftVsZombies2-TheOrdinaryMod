@@ -156,7 +156,7 @@
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>60，15（分裂后）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料</color>]]></p>
+                <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料，能够发现隐身的敌人</color>]]></p>
 				<p>被摧毁：<![CDATA[<color=red>存储有燃料时，喷射出爆炸灵魂火球</color>]]></p>
                 <p>燃料上限：<![CDATA[<color=red>120</color>]]></p>
                 <p>技能：<![CDATA[<color=red>消耗所有燃料，每有一发燃料被消耗，便随机对一个敌人发射爆炸灵魂火球</color>]]></p>
@@ -167,12 +167,12 @@
         </entry>
         <entry id="mvz2:silvenser">
             <header>
-                <p>银质发射器能发射穿透血肉之躯的飞刀，并时停距离自己最近的敌人。飞刀射出一段时间后向距离自己最远的敌人位置飞行。</p>
+                <p>银质发射器能发射穿透血肉之躯的飞刀，并时停距离自己最近的敌人。</p>
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
-                <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>]]></p>
+                <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在一段时间后再次向中心飞行</color>]]></p>
             </properties>
             <flavor>
                 <p>"发发，我从人生中学到了一件事情，发射器越是发射箭矢，就越会感到无力，除非超越箭矢……""你到底想说什么！""我不发射箭了，发发！"</p>
@@ -709,11 +709,11 @@
         </entry>
         <entry id="mvz2:ghost">
             <header>
-                <p>幽灵能够在虚无的情况下极大降低受到的伤害。</p>
+                <p>幽灵能够在虚无的情况下极大降低受到的伤害，并且不会被大多数器械发现。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>抗性：<![CDATA[<color=red>虚无状态下减少90%受到的伤害，且无法被发现</color>]]></p>
+                <p>抗性：<![CDATA[<color=red>虚无状态下减少90%受到的伤害</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>被光照到时会失去虚无效果</color>]]></p>
             </properties>
             <flavor>
@@ -1155,7 +1155,7 @@
                 </header>
                 <properties>
                     <p>生命：<![CDATA[<color=red>7500+2500+5000</color>]]></p>
-					<p>阶段1：<![CDATA[<color=red>随机打乱敌人位置和器械的射弹</color>]]></p>
+					<p>阶段1：<![CDATA[<color=red>伤害周围器械，打乱敌人位置，抛掷暗物质球，在水中生成敌人</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>]]></p>
                     <p>阶段3：<![CDATA[<color=red>限时击杀，并且需要阻止碾压墙</color>]]></p>
                 </properties>

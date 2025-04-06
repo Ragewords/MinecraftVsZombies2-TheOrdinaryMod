@@ -44,6 +44,7 @@ namespace MVZ2.GameContent.Contraptions
             base.PreTakeDamage(input);
             if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
             {
+                input.Cancel();
                 Ignite(input.Entity);
             }
             if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
