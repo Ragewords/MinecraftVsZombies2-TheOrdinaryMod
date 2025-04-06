@@ -38,27 +38,10 @@ namespace MVZ2.GameContent.Contraptions
             ShootTick(entity);
             EvokedUpdate(entity);
         }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            var collider = detector.DetectWithTheMost(entity, e => Mathf.Abs(e.Entity.Position.x - entity.Position.x));
-            entity.Target = collider?.Entity;
-        }
         public override void OnShootTick(Entity entity)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                var projectile = Shoot(entity);
-                var direction = Quaternion.Euler(0, 30 - i * 60, 0) * entity.GetFacingDirection();
-                projectile.Velocity = direction * entity.GetShotVelocity().magnitude;
-                var target = entity.Target;
-                var pos = new Vector3(entity.IsFacingLeft() ? VanillaLevelExt.LEFT_BORDER + 40 : VanillaLevelExt.RIGHT_BORDER - 40, entity.GetShotOffset().y + entity.GetRelativeY(), entity.Level.GetLaneZ(entity.GetLane()));
-                if (target != null)
-                {
-                    pos = target.GetCenter();
-                }
-                Knife.SetDestination(projectile, pos);
-            }
+            var projectile = Shoot(entity);
+            Knife.SetNoDelay(projectile, true);
             var collider = detector.DetectWithTheLeast(entity, e => Mathf.Abs(e.Entity.Position.x - entity.Position.x));
             var timestop_target = collider?.Entity;
             if (timestop_target != null)

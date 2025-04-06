@@ -33,6 +33,7 @@ using Tools;
 using Tools.Mathematics;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -351,14 +352,14 @@ namespace MVZ2.GameContent.Bosses
             var level = boss.Level;
             var eventRng = GetEventRNG(boss);
             var rng = new RandomGenerator(eventRng.Next());
-            var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss)).RandomTake(3, rng);
-            foreach (var contraption in contraptions)
+            var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
+            var randomContraptions = contraptions.RandomTake(Mathf.CeilToInt(contraptions.Length * 0.25f), rng);
+            foreach (var contraption in randomContraptions)
             {
                 contraption.ClearTakenGrids();
             }
-            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss)).RandomTake(3, rng);
             var grids = level.GetAllGrids();
-            foreach (var contraption in contraptions)
+            foreach (var contraption in randomContraptions)
             {
                 var placementID = contraption.Definition.GetPlacementID();
                 var placementDef = level.Content.GetPlacementDefinition(placementID);
@@ -377,6 +378,8 @@ namespace MVZ2.GameContent.Bosses
                 contraption.SetDisplayScale(displayScale);
                 contraption.UpdateTakenGrids();
             }
+            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
+            var randomEnemies = contraptions.RandomTake(Mathf.CeilToInt(enemies.Length * 0.25f), rng);
             foreach (var enemy in enemies)
             {
                 var targetGrids = grids.Where(g => g.CanPlaceEntity(enemy.GetDefinitionID()));

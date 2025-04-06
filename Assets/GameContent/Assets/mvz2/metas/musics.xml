@@ -250,11 +250,12 @@
             <p>因为老大哥在看着我。</p>
         </description>
     </music>
-	<music id="castle_level_extra" path="mvz2:castle_level_extra" name="沉向空中的辉针城">
+	<music id="castle_level_extra" path="mvz2:castle_level_extra" name="幻想净琉璃">
 		<source>东方辉针城</source>
 		<description>
 			<p>辉针城拓展关卡的音乐。</p>
-			<p>是《东方辉针城》的第五关关卡音乐，在旧版本中直接被用于关卡音乐，这里被复用于拓展关卡。</p>
+			<p>是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。</p>
+			<p>曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。</p>
 		</description>
 	</music>
 </musics>

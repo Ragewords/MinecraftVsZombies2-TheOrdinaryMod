@@ -33,18 +33,21 @@ namespace MVZ2.GameContent.Projectiles
             var shootPoint = projectile.Position;
             if (!projectile.HasBuff<ProjectileWaitBuff>())
                 timer.Run();
-            if (timer.Expired)
+
+            if (!IsNoDelay(projectile))
             {
-                var shootDir = (GetDestination(projectile) - shootPoint).normalized;
-                if (!IsNoDelay(projectile))
+                if (timer.Expired)
                 {
-                    projectile.Velocity = 10 * shootDir;
-                    SetNoDelay(projectile, true);
+                    var shootDir = (GetDestination(projectile) - shootPoint).normalized;
+                    {
+                        projectile.Velocity = 10 * shootDir;
+                        SetNoDelay(projectile, true);
+                    }
                 }
-            }
-            else if (!projectile.HasBuff<ProjectileWaitBuff>())
-            {
-                projectile.Velocity -= projectile.Velocity / 10;
+                else if (!projectile.HasBuff<ProjectileWaitBuff>())
+                {
+                    projectile.Velocity -= projectile.Velocity / 10;
+                }
             }
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damageOutput)

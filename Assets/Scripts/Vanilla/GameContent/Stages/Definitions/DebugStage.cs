@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.forcePad,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.pistenser,
-                VanillaBossID.frankenstein,
+                VanillaBossID.slenderman,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.curseer,

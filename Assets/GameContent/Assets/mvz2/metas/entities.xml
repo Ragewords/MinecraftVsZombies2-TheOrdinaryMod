@@ -1446,6 +1446,13 @@
             <bool name="piercing" value="true" />
             <float name="damage" value="800" />
         </projectile>
+		<projectile id="dark_matter_ball">
+			<vector3 name="size" x="80" y="80" z="80" />
+			<bool name="noHitEntities" value="true"/>
+			<float name="gravity" value="1"/>
+			<float name="range" value="120"/>
+			<float name="damage" value="100" />
+		</projectile>
         <projectile id="wooden_ball">
             <bool name="killOnGround" value="false" />
             <bool name="rolls" value="true" />
