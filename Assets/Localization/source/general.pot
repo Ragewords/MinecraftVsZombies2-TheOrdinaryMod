@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-28 08:15+0800\n"
+"POT-Creation-Date: 2025-04-06 05:51+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -328,737 +328,737 @@ msgid "错误"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:199
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:199
 msgctxt "advice.starshard_tutorial.0"
 msgid "点击星之碎片槽选中星之碎片！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:201
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:201
 msgctxt "advice.starshard_tutorial.1"
 msgid "点击发射器！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:203
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:203
 msgctxt "advice.starshard_tutorial.2"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:205
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:205
 msgctxt "advice.starshard_tutorial.3"
 msgid "绿色的怪物会携带星之碎片！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:207
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:207
 msgctxt "advice.starshard_tutorial.4"
 msgid "点击收集星之碎片！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:209
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\StarshardTutorialStage.cs:209
 msgctxt "advice.starshard_tutorial.5"
 msgid "现在干掉铁盔僵尸！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:296
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:296
 msgctxt "advice.trigger_tutorial.0"
 msgid "放置TNT！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:298
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:298
 msgctxt "advice.trigger_tutorial.1"
 msgid "点击选中触发器！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:300
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:300
 msgctxt "advice.trigger_tutorial.2"
 msgid "点击以触发TNT！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:302
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:302
 msgctxt "advice.trigger_tutorial.3"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:304
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:304
 msgctxt "advice.trigger_tutorial.4"
 msgid "选中触发器！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:306
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:306
 msgctxt "advice.trigger_tutorial.5"
 msgid "点击TNT蓝图！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:308
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:308
 msgctxt "advice.trigger_tutorial.6"
 msgid "放置TNT，它会立即被触发！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:310
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:310
 msgctxt "advice.trigger_tutorial.7"
 msgid "干得好！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:312
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:312
 msgctxt "advice.trigger_tutorial.8"
 msgid "立即触发只限于一次性消耗类型的器械。"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:314
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:314
 msgctxt "advice.trigger_tutorial.9"
 msgid "如果你想交换这两个动作的效果，你可以在设置中更改。"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:316
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:316
 msgctxt "advice.trigger_tutorial.10"
 msgid "祝你好运！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:451
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:451
 msgctxt "advice.tutorial.0"
 msgid "点击器械卡牌选中器械！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:453
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:453
 msgctxt "advice.tutorial.1"
 msgid "点击草坪放置器械！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:455
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:455
 msgctxt "advice.tutorial.2"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:457
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:457
 msgctxt "advice.tutorial.3"
 msgid "点击红石收集能量！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:459
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:459
 msgctxt "advice.tutorial.4"
 msgid "收集足够的能量来放置器械！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:461
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:461
 msgctxt "advice.tutorial.5"
 msgid "用发射器干掉僵尸！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:463
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:463
 msgctxt "advice.tutorial.6"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:465
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:465
 msgctxt "advice.tutorial.7"
 msgid "选择熔炉并放置！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:467
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:467
 msgctxt "advice.tutorial.8"
 msgid "熔炉能为你提供额外的红石！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:469
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:469
 msgctxt "advice.tutorial.9"
 msgid "熔炉越多，你放器械的速度就越快！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:471
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:471
 msgctxt "advice.tutorial.10"
 msgid "请至少放下三个熔炉！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:473
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:473
 msgctxt "advice.tutorial.11"
 msgid "用黑曜石来挡住僵尸的进攻！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:475
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:475
 msgctxt "advice.tutorial.12"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:477
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:477
 msgctxt "advice.tutorial.13"
 msgid "地雷TNT在一段时间的填装后能炸飞敌人！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:479
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:479
 msgctxt "advice.tutorial.14"
 msgid "用地雷TNT炸死铁盔僵尸！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:481
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:481
 msgctxt "advice.tutorial.15"
 msgid "干得漂亮！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:483
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:483
 msgctxt "advice.tutorial.16"
 msgid "最后，镐子能够挖掉你所放下的器械！"
 msgstr ""
 
 # 教程关指引
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:485
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Stages\Definitions\TutorialStage.cs:485
 msgctxt "advice.tutorial.17"
 msgid "试着挖掉所有器械！"
 msgstr ""
 
 # 选卡警告，{0}为原器械，{1}为升级器械
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:152
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:152
 msgid "你确定想要在没有{0}的情况下使用{1}？"
 msgstr ""
 
 # 选卡警告，{0}为目标敌人
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:154
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:154
 msgid "你没有选能干掉{0}的器械，确定要继续吗？"
 msgstr ""
 
 # 选卡警告
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:156
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:156
 msgid "你没有选能生产能量的器械，确定要继续吗？"
 msgstr ""
 
 # 选卡警告
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:158
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:158
 msgid "你确定这关不使用任何水生器械吗？"
 msgstr ""
 
 # 拾取宝石的帮助提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\GemStageImplements.cs:88
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\GemStageImplements.cs:88
 msgctxt "advice.collect_money"
 msgid "点击收集宝石！"
 msgstr ""
 
 # 拾取宝石的帮助提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\GemStageImplements.cs:90
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Implements\GemStageImplements.cs:90
 msgctxt "advice.collect_money"
 msgid "收集宝石来获得更酷的道具吧！"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:220
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:220
 msgctxt "random_china.event_name"
 msgid "黑曜石囚牢"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:222
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:222
 msgctxt "random_china.event_name"
 msgid "陶瓷镇"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:224
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:224
 msgctxt "random_china.event_name"
 msgid "塔-XVI"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:226
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:226
 msgctxt "random_china.event_name"
 msgid "红石俱备"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:228
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:228
 msgctxt "random_china.event_name"
 msgid "方片A"
 msgstr ""
 
 # 随机瓷器事件名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:230
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Contraptions\Prologue\RandomChina.cs:230
 msgctxt "random_china.event_name"
 msgid "地狱金属"
 msgstr ""
 
 # 梦魇对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:589
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:601
 msgid "选择你的命运"
 msgstr ""
 
 # 梦魇对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:591
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:603
 msgid "接受你的命运"
 msgstr ""
 
 # 梦魇对话框文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:593
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:605
 msgid "选吧。"
 msgstr ""
 
 # 梦魇对话框文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:595
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:607
 msgid "不必挣扎。"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:597
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:609
 msgid "潘多拉的魔盒"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:599
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:611
 msgid "尸潮"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:601
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:613
 msgid "衰老"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:603
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:615
 msgid "疯狂"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:605
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:617
 msgid "成真"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:607
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:619
 msgid "深潜者"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:609
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:621
 msgid "黑太阳"
 msgstr ""
 
 # 梦魇选项
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:611
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:623
 msgid "幻视之眼"
 msgstr ""
 
 # 教程无法使用提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:8
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:8
 msgid "无法使用"
 msgstr ""
 
 # 教程无法使用提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:10
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:10
 msgid "受到衰老诅咒！"
 msgstr ""
 
 # 梦魇战斗提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:13
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:13
 msgctxt "advice"
 msgid "点击屏幕阻止碾压墙！"
 msgstr ""
 
 # 获得新制品提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:15
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:15
 msgctxt "advice"
 msgid "你找到了新制品！"
 msgstr ""
 
 # 剩余内容正在开发提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:17
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:17
 msgctxt "advice"
 msgid "剩余内容正在开发中，敬请期待！"
 msgstr ""
 
 # 无尽模式的提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:20
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:20
 msgctxt "advice"
 msgid "更多的敌人要来了！"
 msgstr ""
 
 # 预览战场的提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:22
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:22
 msgctxt "advice"
 msgid "点击以继续"
 msgstr ""
 
 # 固有蓝图的提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:25
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:25
 msgid "固有"
 msgstr ""
 
 # 不推荐使用的提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:27
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:27
 msgid "不推荐在这关使用"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:30
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:30
 msgid "购买"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:32
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:32
 msgid "购买第七个器械槽位？"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:34
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:34
 msgid "是否进行新手教程？"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:36
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:36
 msgid "新手教程"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:38
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:38
 msgid "通关"
 msgstr ""
 
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:40
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:40
 msgid ""
 "恭喜通关！\n"
 "接下来的内容还在开发中，敬请期待！"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:43
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:43
 msgid "用户名不能为空"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:45
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:45
 msgid "已经存在该用户名"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:47
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:47
 msgid "无法重命名为该用户名"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:49
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:49
 msgid "第一次游戏必须输入用户名"
 msgstr ""
 
 # 删除用户时的警告，{0}为名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:51
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:51
 msgid ""
 "确认删除用户{0}吗？\n"
 "该用户所有的数据都将被删除！"
 msgstr ""
 
 # 重命名特殊用户时的警告
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:53
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:53
 msgid "你无法重命名该用户"
 msgstr ""
 
 # 冷却时间
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:57
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:57
 msgctxt "recharge_time"
 msgid "无"
 msgstr ""
 
 # 冷却时间
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:59
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:59
 msgctxt "recharge_time"
 msgid "短"
 msgstr ""
 
 # 冷却时间
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:61
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:61
 msgctxt "recharge_time"
 msgid "长"
 msgstr ""
 
 # 冷却时间
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:63
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:63
 msgctxt "recharge_time"
 msgid "很长"
 msgstr ""
 
 # 对话档案对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:67
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:67
 msgctxt "archive"
 msgid "剧情分支"
 msgstr ""
 
 # 对话档案对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:69
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:69
 msgctxt "archive"
 msgid "是否拥有足够的金钱？"
 msgstr ""
 
 # 对话档案对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:71
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:71
 msgctxt "archive"
 msgid "对话结束"
 msgstr ""
 
 # 对话档案对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:73
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:73
 msgctxt "archive"
 msgid "是否重新播放？"
 msgstr ""
 
 # 通用的是
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:77
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:77
 msgid "是"
 msgstr ""
 
 # 通用的否
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:79
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:79
 msgid "否"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:85
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:85
 msgid "返回地图"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:87
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:87
 msgid "返回主菜单"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:91
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:91
 msgid "警告"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:93
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:93
 msgid "提示"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:95
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:95
 msgid "退出"
 msgstr ""
 
 # 通用文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:99
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:99
 msgid "确认"
 msgstr ""
 
 # 游戏内文本提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:102
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:102
 msgid "能量不足"
 msgstr ""
 
 # 游戏内文本提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:104
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:104
 msgid "重新充能中…"
 msgstr ""
 
 # 游戏内文本提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:106
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:106
 msgid "挖掉器械"
 msgstr ""
 
 # 游戏内文本提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:108
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:108
 msgid "触发器械"
 msgstr ""
 
 # 关卡难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:112
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:112
 msgctxt "difficulty"
 msgid "简单"
 msgstr ""
 
 # 关卡难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:114
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:114
 msgctxt "difficulty"
 msgid "普通"
 msgstr ""
 
 # 关卡难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:116
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:116
 msgctxt "difficulty"
 msgid "困难"
 msgstr ""
 
 # 关卡难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:118
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:118
 msgctxt "difficulty"
 msgid "月狂"
 msgstr ""
 
 # 关卡难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:120
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:120
 msgctxt "difficulty"
 msgid "未知难度"
 msgstr ""
 
 # 关卡名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:124
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:124
 msgctxt "levelname"
 msgid "未知关卡"
 msgstr ""
 
 # 关卡名称，{0}为关卡名，{1}为冒险模式天数
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:126
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:126
 msgctxt "levelname"
 msgid "{0} - 第{1}天"
 msgstr ""
 
 # 关卡名称，{0}为关卡名，{1}为无尽模式轮数
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:128
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:128
 msgctxt "levelname"
 msgid "{0} - 第{1}轮"
 msgstr ""
 
 # 死亡信息-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:132
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:132
 msgctxt "death_message"
 msgid "你死了！"
 msgstr ""
 
 # 死亡信息-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:134
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:134
 msgctxt "death_message"
 msgid "<color=red>来到我们之中吧</color>"
 msgstr ""
 
 # 实体名称-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:137
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:137
 msgctxt "entity.name"
 msgid "？？？"
 msgstr ""
 
 # 蓝图选项名称-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:140
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:140
 msgctxt "option.name"
 msgid "？？？"
 msgstr ""
 
 # 实体说明-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:143
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:143
 msgctxt "entity.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 制品名称-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:146
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:146
 msgctxt "artifact.name"
 msgid "？？？"
 msgstr ""
 
 # 制品说明-未知
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:149
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:149
 msgctxt "artifact.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 怪物说明-还没有遇到
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:152
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:152
 msgctxt "almanac"
 msgid "（还没有遇到）"
 msgstr ""
 
 # 音乐名-无
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:156
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\Vanilla\VanillaStrings.cs:156
 msgctxt "music.name"
 msgid "无"
 msgstr ""
 
 # 标题页面的版本号文本，{0}为版本号
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Titlescreen\TitlescreenController.cs:85
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Titlescreen\TitlescreenController.cs:85
 msgid "版本{0}"
 msgstr ""
 
 # 标题界面按钮文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Titlescreen\TitlescreenController.cs:87
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Titlescreen\TitlescreenController.cs:87
 msgid "点击发现新大陆！"
 msgstr ""
 
 # 前景图生效时的对话模板，{0}为讨论者，{1}为文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Talks\Components\TalkController.cs:818
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Talks\Components\TalkController.cs:818
 msgid ""
 "<color=blue>[{0}]</color>\n"
 "{1}"
 msgstr ""
 
 # 商店对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:234
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:234
 msgid "购买物品"
 msgstr ""
 
 # 商店对话框内容，{0}为价格
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:236
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:236
 msgid "确定以{0:N0}的价格买下这个物品？"
 msgstr ""
 
 # 商店对话框标题
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:238
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:238
 msgid "金钱不足"
 msgstr ""
 
 # 商店对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:240
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:240
 msgid "你没有足够的金钱！"
 msgstr ""
 
 # 商店的页面计数，{0}为当前页面，{1}为总页面
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:242
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreController.cs:242
 msgid "{0}/{1}"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的描述，{0}为错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:142
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:142
 msgid ""
 "游戏加载失败：\n"
 "{0}"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:144
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:144
 msgid "文件目录丢失"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:146
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:146
 msgid "文件丢失"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:148
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:148
 msgid "文件被占用"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:150
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:150
 msgid "文件读取失败"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:152
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:152
 msgid "文件格式错误"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息，{0}为新使用的存档，{1}为存档列表
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:154
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:154
 msgid ""
 "部分存档无法读取，将使用存档{0}开始游戏。\n"
 "无法读取的存档：\n"
@@ -1066,279 +1066,279 @@ msgid ""
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:156
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:156
 msgid ""
 "所有存档均无法读取，文件可能已损坏。\n"
 "必须新建存档以继续游戏。"
 msgstr ""
 
 # 开始游戏时读取出错，对话框的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:158
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Scene\GameEntrance.cs:158
 msgid ""
 "所有存档均无法读取，文件可能已损坏。\n"
 "必须删除一个存档，并新建存档以继续游戏。"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:178
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:178
 msgid "交换触发：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:180
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:180
 msgid "全屏：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:182
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:182
 msgid "设备震动：{0}"
 msgstr ""
 
 # 选项，{0}为难度
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:184
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:184
 msgid "难度：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:186
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:186
 msgid "后台暂停：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:190
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:190
 msgid "音乐音量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:192
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:192
 msgid "音效音量：{0}"
 msgstr ""
 
 # 值，{0}为百分数
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:194
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:194
 msgid "{0}%"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:197
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:197
 msgid "血与碎块：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:200
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:200
 msgid "跳过对话：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:202
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:202
 msgid "赞助者名称：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:205
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:205
 msgid "粒子数量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:207
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogic.cs:207
 msgid "屏幕震动：{0}"
 msgstr ""
 
 # 对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogicLevel.cs:73
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Options\OptionsLogicLevel.cs:73
 msgid ""
 "确认要返回吗？\n"
 "你的进度会被保存。"
 msgstr ""
 
 # 音乐室中的信息模板，{0}为音乐来源
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:162
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:162
 msgid "来源：{0}"
 msgstr ""
 
 # 音乐室中的信息模板，{0}为音乐原曲
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:164
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:164
 msgid "原曲：{0}"
 msgstr ""
 
 # 音乐室中的信息模板，{0}为音乐作者
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:166
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\MusicRoom\MusicRoomController.cs:166
 msgid "作者：{0}"
 msgstr ""
 
 # 地图的提示文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:637
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:669
 msgid ""
 "按住右键拖动以移动视图\n"
 "滚轮以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:639
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:671
 msgid ""
 "单指拖动以移动视图\n"
 "双指触摸以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:641
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:673
 msgid "正在进入关卡……"
 msgstr ""
 
 # 地图的无尽模式提示文本，{0}为当前轮数，{1}为历史最高
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:643
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Map\MapController.cs:675
 msgid ""
 "轮数\n"
 "{0}/{1}"
 msgstr ""
 
 # 初始化任务名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Managers\MainManager.cs:359
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Managers\MainManager.cs:359
 msgid "获取赞助者列表……"
 msgstr ""
 
 # 删除用户时的错误信息，{0}为错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:618
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:618
 msgid "无法删除用户：{0}"
 msgstr ""
 
 # 切换用户时的错误信息，{0}为错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:620
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:620
 msgid "无法切换至用户：{0}"
 msgstr ""
 
 # 删除用户时的错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:622
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:622
 msgid "没有其他有效的用户可供切换。"
 msgstr ""
 
 # 退出对话框的描述
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:624
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Mainmenu\MainmenuController.cs:624
 msgid "确认要退出吗？"
 msgstr ""
 
 # 当前语言名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Localization\LanguageManager.cs:175
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Localization\LanguageManager.cs:175
 msgctxt "language_name"
 msgid "中文"
 msgstr ""
 
 # 分辨率名，{0}为宽，{1}为高
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Managers\ResolutionManager.cs:63
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Managers\ResolutionManager.cs:63
 msgid "{0}x{1}"
 msgstr ""
 
 # 对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:964
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:964
 msgid "你没有携带满蓝图，确认要继续吗？"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:968
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:968
 msgid "上一次选择的蓝图中包含多个相同的器械。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:970
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:970
 msgid "上一次选择的蓝图中包含未解锁的器械。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:972
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:972
 msgid "上一次选择的制品中包含多个相同的制品。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:974
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:974
 msgid "上一次选择的制品中包含未解锁的制品。"
 msgstr ""
 
 # 实体提示
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_Entities.cs:255
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_Entities.cs:255
 msgctxt "entity.tooltip"
 msgid "在图鉴中查看"
 msgstr ""
 
 # 对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:869
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:869
 msgid ""
 "确认要重新开始关卡吗？\n"
 "本关的进度都将丢失。"
 msgstr ""
 
 # 对话框内容，{0}为错误信息
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:871
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:871
 msgid "加载关卡失败，出现错误：{0}"
 msgstr ""
 
 # 对话框内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:873
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Level\LevelController_UI.cs:873
 msgid "加载关卡失败，存档状态和当前游戏状态不匹配。"
 msgstr ""
 
 # 对话档案中语句的模板，{0}为人物，{1}为语句内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Archive\ArchiveController.cs:249
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Archive\ArchiveController.cs:249
 msgid "<b>[{0}]</b> {1}"
 msgstr ""
 
 # 对话档案中语句的模板，{0}为前缀描述，{1}为人物，{2}为语句内容
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Archive\ArchiveController.cs:251
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Archive\ArchiveController.cs:251
 msgid ""
 "<color=blue>{0}</color>\n"
 "<b>[{1}]</b> {2}"
 msgstr ""
 
 # 图鉴描述模板，{0}为能量
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:315
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:315
 msgctxt "almanac"
 msgid "花费：<color=red>{0}</color>"
 msgstr ""
 
 # 图鉴描述模板，{0}为冷却时间
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:317
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:317
 msgctxt "almanac"
 msgid "冷却时间：<color=red>{0}</color>"
 msgstr ""
 
 # 图鉴描述
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:319
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:319
 msgctxt "almanac"
 msgid "<color=blue>白天失效</color>"
 msgstr ""
 
 # 图鉴描述
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:321
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Almanac\AlmanacController.cs:321
 msgctxt "almanac"
 msgid "<color=blue>只能放在水上</color>"
 msgstr ""
 
 # 商店文本
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Store\StoreManager.cs:114
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Store\StoreManager.cs:114
 msgid "<color=red>售罄</color>"
 msgstr ""
 
 # 覆盖语言包的警告，{0}为语言包名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:318
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:318
 msgid "已经存在同名语言包“{0}”，是否覆盖？"
 msgstr ""
 
 # 删除语言包的警告，{0}为语言包名称
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:320
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:320
 msgid "是否删除语言包“{0}”？"
 msgstr ""
 
 # 语言包导出失败的警告
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:322
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:322
 msgid "导出语言包失败。"
 msgstr ""
 
 # 语言包导入失败的警告
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:324
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:324
 msgid "导入语言包失败。"
 msgstr ""
 
 # 语言包导出成功的提示，{0}为路径
-#: D:\个人创作\植物大战僵尸\MC大战僵尸2普通版\R1\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:326
+#: D:\My Creations\MVZ2Ordinary\newestbuild\Assets\Scripts\MVZ2\Addons\LanguagePacks\LanguagePacksController.cs:326
 msgid "语言包已导出至{0}。"
 msgstr ""
 
@@ -1641,6 +1641,26 @@ msgid ""
 "呵呵，你可否想到自己？史蒂夫？"
 msgstr ""
 
+#. Name for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "潮湿沼泽-关卡"
+msgstr ""
+
+#. Source for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.source"
+msgid "我的世界：地下城"
+msgstr ""
+
+#. Description for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"万圣夜拓展关卡的音乐。\n"
+"出自《我的世界》的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。"
+msgstr ""
+
 #. Name for music mvz2:dream_level
 #: Music meta file
 msgctxt "music.name"
@@ -1759,6 +1779,21 @@ msgid ""
 "等着吧，哆来咪，我们绝对会把你救出来的。"
 msgstr ""
 
+#. Name for music mvz2:nightmare_boss3
+#: Music meta file
+msgctxt "music.name"
+msgid "Pure Furies ～ 心之所在"
+msgstr ""
+
+#. Description for music mvz2:nightmare_boss3
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"梦魇第一阶段的音乐。\n"
+"是《东方绀珠传》的六面Boss——纯狐的音乐。\n"
+"这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。"
+msgstr ""
+
 #. Name for music mvz2:nightmare_boss
 #: Music meta file
 msgctxt "music.name"
@@ -1769,7 +1804,7 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第一阶段的音乐。\n"
+"梦魇第二阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。\n"
 "之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。\n"
 "至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。"
@@ -1785,25 +1820,25 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第二阶段的音乐。\n"
+"梦魇第三阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。\n"
 "虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：\n"
 "梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。"
 msgstr ""
 
-#. Name for music mvz2:nightmare_boss3
+#. Name for music mvz2:dream_level_extra
 #: Music meta file
 msgctxt "music.name"
-msgid "Pure Furies ～ 心之所在"
+msgid "遥遥38万公里的航程"
 msgstr ""
 
-#. Description for music mvz2:nightmare_boss3
+#. Description for music mvz2:dream_level_extra
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第三阶段的音乐。\n"
-"是《东方绀珠传》的六面Boss——纯狐的音乐。\n"
-"将怒火一并发泄吧！嫦娥啊，你在看着吗！"
+"梦境世界拓展关卡的音乐。\n"
+"是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。\n"
+"充满速度感和浪漫感的曲子，也不乏一些紧张感。"
 msgstr ""
 
 #. Name for music mvz2:gensokyo_map
@@ -2003,6 +2038,21 @@ msgid ""
 "之前提到过《书虫大冒险 Vol.2》中Lex的故事，我们先跳过第五本书，讲一讲第六本书。\n"
 "Lex穿越的第六本书，也是最后一本书，它叫做《惊疑星球》，包括了大量的科幻小说内容。飞船、机器人、变异、时空穿梭……不过，我已经不能再说了。\n"
 "因为老大哥在看着我。"
+msgstr ""
+
+#. Name for music mvz2:castle_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "幻想净琉璃"
+msgstr ""
+
+#. Description for music mvz2:castle_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"辉针城拓展关卡的音乐。\n"
+"是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。\n"
+"曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。"
 msgstr ""
 
 #. Name for archive tag mvz2:prologue
