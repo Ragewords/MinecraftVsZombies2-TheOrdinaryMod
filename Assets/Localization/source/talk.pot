@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-03-28 08:15+0800\n"
+"POT-Creation-Date: 2025-04-06 05:51+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2337,6 +2337,36 @@ msgstr ""
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11_map"
 msgid "<color=blue>（只是那背影，无比落寞，逐渐消失在了漆黑的夜空中，化作了一颗小小的星星。）</color>"
+msgstr ""
+
+#. Archive name for talk group castle_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "辉针城拓展第1天结束"
+msgstr ""
+
+#. Text for talk sentence 0 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "这是火焰弹发射器！"
+msgstr ""
+
+#. Text for talk sentence 1 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "它能够向周围的敌人投掷火焰弹！"
+msgstr ""
+
+#. Text for talk sentence 2 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "同时，由于自身的攻击特点，它也能攻击到空中的敌人！"
+msgstr ""
+
+#. Text for talk sentence 3 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "对怪物们进行火力威慑吧！"
 msgstr ""
 
 #. Archive name for talk group dream_1
@@ -4943,6 +4973,36 @@ msgctxt "talk-mvz2:exited_kourindou"
 msgid "试试就知道了！"
 msgstr ""
 
+#. Archive name for talk group dream_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "梦境世界拓展第1天结束"
+msgstr ""
+
+#. Text for talk sentence 0 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "这是次元锤！"
+msgstr ""
+
+#. Text for talk sentence 1 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "它能够重击地面，对敌人造成大量伤害，并击晕它们！"
+msgstr ""
+
+#. Text for talk sentence 2 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "锤击地面还会生成弹幕！"
+msgstr ""
+
+#. Text for talk sentence 3 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "这样一把武器，简直是天赐良击！"
+msgstr ""
+
 #. Archive name for talk group halloween_1
 #: Talk meta file
 msgctxt "archive"
@@ -6195,6 +6255,30 @@ msgstr ""
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_final"
 msgid "该你出场的时候了，朋友。"
+msgstr ""
+
+#. Archive name for talk group halloween_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "万圣夜拓展第1天结束"
+msgstr ""
+
+#. Text for talk sentence 0 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "这是淬毒发射器！能够在较远的一段距离发射毒球！"
+msgstr ""
+
+#. Text for talk sentence 1 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "毒球击中的敌人会中毒，持续受到伤害！也能腐蚀它们的盔甲！"
+msgstr ""
+
+#. Text for talk sentence 2 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "也许是女巫制造的机械？谁知道呢！"
 msgstr ""
 
 #. Archive name for talk group tutorial
