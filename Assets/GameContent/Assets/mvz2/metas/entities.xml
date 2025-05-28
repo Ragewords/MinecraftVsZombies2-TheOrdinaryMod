@@ -2396,7 +2396,7 @@
         </effect>
         <effect id="poison_gas">
             <properties>
-                <bool name="effective" value="true"/>
+                <bool name="decorative" value="false"/>
                 <int name="maxTimeout" value="270"/>
                 <color name="tint" value="#87A363" />
                 <vector3 name="size" x="80" y="80" z="80" />
