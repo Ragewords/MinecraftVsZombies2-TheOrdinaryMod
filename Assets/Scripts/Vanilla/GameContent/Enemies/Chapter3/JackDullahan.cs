@@ -10,6 +10,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -34,14 +35,13 @@ namespace MVZ2.GameContent.Enemies
                 param.SetProperty(VanillaEnemyProps.PREVIEW_ENEMY, true);
             }
             var horse = entity.Spawn(VanillaEnemyID.soulSkeletonHorse, entity.Position, param);
-            horse.SetFactionAndDirection(entity.GetFaction());
             entity.RideOn(horse);
             entity.SetAnimationBool("Sitting", true);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
         }
-        public override void PreTakeDamage(DamageInput input)
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
-            base.PreTakeDamage(input);
+            base.PreTakeDamage(input, result);
             if (input.Effects.HasEffect(VanillaDamageEffects.GOLD))
             {
                 input.Multiply(3);
@@ -100,13 +100,14 @@ namespace MVZ2.GameContent.Enemies
         {
             if (IsHeadDropped(entity))
                 return null;
-            var head = entity.Spawn(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
-            head.SetFactionAndDirection(entity.GetFaction());
+            var head = entity.SpawnWithParams(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
             SetHeadDropped(entity, true);
             return head;
         }
-        private void PostEnemyMeleeAttackCallback(Entity enemy, Entity target)
+        private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
         {
+            var enemy = param.enemy;
+            var target = param.target;
             if (!enemy.IsEntityOf(VanillaEnemyID.jackDullahan))
                 return;
             if (!target.IsHostile(enemy))
@@ -117,7 +118,7 @@ namespace MVZ2.GameContent.Enemies
         public static bool IsHeadDropped(Entity entity) => entity.GetBehaviourField<bool>(ID, FIELD_HEAD_DROPPED);
         public static void SetHeadDropped(Entity entity, bool value) => entity.SetBehaviourField(ID, FIELD_HEAD_DROPPED, value);
 
-        public static readonly VanillaEntityPropertyMeta FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta("HeadDropped");
+        public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
         private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
     }

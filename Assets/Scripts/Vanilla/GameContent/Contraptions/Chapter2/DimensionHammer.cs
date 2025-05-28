@@ -100,12 +100,12 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static bool CanStun(Entity self, Entity target)
         {
-            return Detection.IsInSphere(target.MainHitbox, self.GetCenter(), 80) && self.IsHostile(target) && target.IsOnGround;
+            return target.GetMainCollider().CheckSphere(self.GetCenter(), 80) && self.IsHostile(target) && target.IsOnGround;
         }
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
         private static readonly NamespaceID ID = VanillaContraptionID.dimensionHammer;
-        public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta("EvocationTime");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("EvocationTime");
         public const int START_TIME = 20;
         public const int FLING_TIME = 30;
         public const int THROW_TIME = 35;

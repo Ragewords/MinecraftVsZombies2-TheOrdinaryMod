@@ -13,9 +13,9 @@ namespace MVZ2.GameContent.Buffs
     {
         public BasicHealthMultiplyBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new Vector3Modifier(EngineEntityProps.MAX_HEALTH, NumberOperator.Multiply, PROP_MAX_HEALTH_MULTIPLIER));
+            AddModifier(new MaxHealthModifier(NumberOperator.Multiply, PROP_MAX_HEALTH_MULTIPLIER));
         }
 
-        public static readonly VanillaBuffPropertyMeta PROP_MAX_HEALTH_MULTIPLIER = new VanillaBuffPropertyMeta("MaxHealthMultiplier");
+        public static readonly VanillaBuffPropertyMeta<float> PROP_MAX_HEALTH_MULTIPLIER = new VanillaBuffPropertyMeta<float>("MaxHealthMultiplier");
     }
 }

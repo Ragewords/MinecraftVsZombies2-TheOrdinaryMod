@@ -63,7 +63,7 @@ namespace MVZ2.GameContent.Enemies
                         foreach (var target in heal_target)
                         {
                             target.HealEffects(entity.GetDamage() * 2, entity);
-                            target.HealArmor(entity.GetDamage(), entity);
+                            target.HealMainArmor(entity.GetDamage(), entity);
                             entity.PlaySound(VanillaSoundID.heal);
                             SetCasting(entity, true);
                         }
@@ -109,9 +109,9 @@ namespace MVZ2.GameContent.Enemies
         public const int STATE_ATTACK = VanillaEntityStates.ATTACK;
         public const int STATE_CAST = VanillaEntityStates.MESMERIZER_CAST;
         public static readonly NamespaceID ID = VanillaEnemyID.curseer;
-        public static readonly VanillaEntityPropertyMeta PROP_CASTING = new VanillaEntityPropertyMeta("Casting");
-        public static readonly VanillaEntityPropertyMeta PROP_ORB = new VanillaEntityPropertyMeta("Orb");
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
+        public static readonly VanillaEntityPropertyMeta<EntityID> PROP_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         #endregion ³£Á¿
     }
 }

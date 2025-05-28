@@ -98,6 +98,6 @@ namespace MVZ2.GameContent.Contraptions
             return entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         }
         public static readonly NamespaceID ID = VanillaContraptionID.poisonser;
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
     }
 }

@@ -23,8 +23,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.totenserWeb, VanillaModelID.totenserWeb);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
         }
-        private void PostEntityDeathCallback(Entity entity, DeathInfo info)
+        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
+            var entity = param.entity;
             entity.RemoveBuffs<TotenserWebBuff>();
         }
     }

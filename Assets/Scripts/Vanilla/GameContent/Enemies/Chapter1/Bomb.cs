@@ -60,6 +60,6 @@ namespace MVZ2.GameContent.Enemies
             Skelebomb.Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
             entity.Remove();
         }
-        public static readonly VanillaEntityPropertyMeta PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta("ColorOffset");
+        public static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("ColorOffset");
     }
 }

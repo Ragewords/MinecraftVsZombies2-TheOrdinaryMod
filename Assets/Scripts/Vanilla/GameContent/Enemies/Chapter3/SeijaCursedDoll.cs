@@ -10,6 +10,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -26,7 +27,6 @@ namespace MVZ2.GameContent.Enemies
             absorbDetector = new SphereDetector(ABSORB_RADIUS)
             {
                 mask = EntityCollisionHelper.MASK_PROJECTILE,
-                invulnerableFilter = (param, e) => e.Type == EntityTypes.PROJECTILE
             };
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
@@ -61,8 +61,9 @@ namespace MVZ2.GameContent.Enemies
                 target.Velocity = vel;
             }
         }
-        private void PostProjectileHitCallback(ProjectileHitOutput hit, DamageOutput damage)
+        private void PostProjectileHitCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
+            var hit = param.hit;
             var projectile = hit.Projectile;
             if (projectile == null)
                 return;
@@ -75,14 +76,15 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter());
-            smoke.SetSize(entity.GetSize());
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SIZE, entity.GetSize());
+            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
             entity.Remove();
         }
         public static float GetOrbitAngle(Entity entity) => entity.GetBehaviourField<float>(PROP_ORBIT_ANGLE);
         public static void SetOrbitAngle(Entity entity, float value) => entity.SetBehaviourField(PROP_ORBIT_ANGLE, value);
 
-        private static readonly VanillaEntityPropertyMeta PROP_ORBIT_ANGLE = new VanillaEntityPropertyMeta("OrbitAngle");
+        private static readonly VanillaEntityPropertyMeta<float> PROP_ORBIT_ANGLE = new VanillaEntityPropertyMeta<float>("OrbitAngle");
         private List<Entity> detectBuffer = new List<Entity>();
         private Detector absorbDetector;
         public const float ORBIT_DISTANCE = 120;

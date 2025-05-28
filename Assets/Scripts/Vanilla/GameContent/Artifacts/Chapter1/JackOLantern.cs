@@ -24,8 +24,9 @@ namespace MVZ2.GameContent.Artifacts
             base.PostUpdate(artifact);
             artifact.SetGlowing(true);
         }
-        private void PostContraptionInitCallback(Entity contraption)
+        private void PostContraptionInitCallback(EntityCallbackParams param, CallbackResult result)
         {
+            var contraption = param.entity;
             if (!contraption.IsNotLightSource())
                 return;
             var level = contraption.Level;
@@ -49,7 +50,7 @@ namespace MVZ2.GameContent.Artifacts
             {
                 var level = auraEffect.Source.GetLevel();
                 updateBuffer.Clear();
-                level.FindEntitiesNonAlloc(e => e.IsNotLightSource() && e.Type == EntityTypes.PLANT, updateBuffer);
+                level.FindEntitiesNonAlloc(e => e.Definition.IsLightSource() && e.Type == EntityTypes.PLANT, updateBuffer);
                 foreach (var entity in updateBuffer)
                 {
                     results.Add(entity);

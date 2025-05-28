@@ -1,5 +1,6 @@
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Modifiers;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -12,18 +13,16 @@ namespace MVZ2.GameContent.Enemies
     {
         public SeijaJizo(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.ForceSet, EntityCollisionHelper.DETECTION_IGNORE));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.Set, EntityCollisionHelper.DETECTION_IGNORE, VanillaModifierPriorities.FORCE));
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.InitFragment();
             entity.Timeout = entity.GetMaxTimeout();
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.UpdateFragment();
             if (entity.Timeout >= 0)
             {
                 entity.Timeout--;
@@ -36,7 +35,6 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            entity.PostFragmentDeath(damageInfo);
             entity.Remove();
         }
     }

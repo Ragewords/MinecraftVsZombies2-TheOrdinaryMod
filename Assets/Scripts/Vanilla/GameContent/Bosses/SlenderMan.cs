@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MukioI18n;
+using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
@@ -25,10 +26,10 @@ using MVZ2Logic.Level;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using PVZEngine.Triggers;
 using Tools;
 using Tools.Mathematics;
 using UnityEngine;
@@ -61,7 +62,7 @@ namespace MVZ2.GameContent.Bosses
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED_FACTOR, 0.5f);
-            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 80);
+            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 80f);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -95,9 +96,9 @@ namespace MVZ2.GameContent.Bosses
             }
             entity.SetAnimationBool("IsDead", entity.IsDead);
         }
-        public override void PreTakeDamage(DamageInput damage)
+        public override void PreTakeDamage(DamageInput damage, CallbackResult result)
         {
-            base.PreTakeDamage(damage);
+            base.PreTakeDamage(damage, result);
             if (damage.Amount > 100)
             {
                 damage.SetAmount(100);
@@ -231,9 +232,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private Entity SpawnPortal(Entity boss, Vector3 position, NamespaceID enemyID)
         {
-            var level = boss.Level;
-            var portal = level.Spawn(VanillaEffectID.nightmarePortal, position, boss);
-            portal.SetFactionAndDirection(boss.GetFaction());
+            var portal = boss.SpawnWithParams(VanillaEffectID.nightmarePortal, position);
             NightmarePortal.SetEnemyID(portal, enemyID);
             return portal;
         }
@@ -257,7 +256,7 @@ namespace MVZ2.GameContent.Bosses
                 return;
 
             var rng = GetMindSwapRNG(entity);
-            NamespaceID[] pool = level.Difficulty == VanillaDifficulties.hard ? hardMindSwapPool : mindSwapPool;
+            NamespaceID[] pool = level.GetBossAILevel() > 0 ? hardMindSwapPool : mindSwapPool;
             if (level.Difficulty == VanillaDifficulties.lunatic)
                 pool = lunaticMindSwapPool;
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
@@ -289,16 +288,8 @@ namespace MVZ2.GameContent.Bosses
             var title = Global.Game.GetText(CHOOSE_FATE_TITLE);
             var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
 
-            int count = 3;
-            if (level.Difficulty == VanillaDifficulties.easy)
-            {
-                count = 4;
-            }
-            else if (level.Difficulty == VanillaDifficulties.hard)
-            {
-                count = 2;
-            }
-            else if (level.Difficulty == VanillaDifficulties.lunatic)
+            int count = 3 - level.GetBossAILevel();
+            if (level.Difficulty == VanillaDifficulties.lunatic)
             {
                 count = 1;
                 title = Global.Game.GetText(ACCEPT_FATE_TITLE);
@@ -365,7 +356,7 @@ namespace MVZ2.GameContent.Bosses
                 var placementDef = level.Content.GetPlacementDefinition(placementID);
                 if (placementDef == null)
                     continue;
-                var targetGrids = grids.Where(g => g.CanPlaceEntity(contraption.GetDefinitionID()));
+                var targetGrids = grids.Where(g => g.CanSpawnEntity(contraption.GetDefinitionID()));
                 if (targetGrids.Count() <= 0)
                     continue;
                 var grid = targetGrids.Random(rng);
@@ -432,7 +423,7 @@ namespace MVZ2.GameContent.Bosses
             foreach (var enemy in targets_enemy)
             {
                 enemy.TakeDamage(enemy.Health / 2, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), boss);
-                enemy.RemoveArmor();
+                enemy.RemoveArmor(VanillaArmorSlots.main);
             }
         }
 
@@ -466,8 +457,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsEntityOf(VanillaEnemyID.ghast));
             foreach (var enemy in targets)
             {
-                var ghast = level.Spawn(VanillaEnemyID.ghast, enemy.Position, boss);
-                ghast.SetFactionAndDirection(boss.GetFaction());
+                var ghast = boss.SpawnWithParams(VanillaEnemyID.ghast, enemy.Position);
                 ghast.AddBuff<NightmareComeTrueBuff>();
                 enemy.Remove();
             }
@@ -540,19 +530,7 @@ namespace MVZ2.GameContent.Bosses
 
         private int GetMaxFateTimes(LevelEngine level)
         {
-            if (level.Difficulty == VanillaDifficulties.easy)
-            {
-                return 3;
-            }
-            else if (level.Difficulty == VanillaDifficulties.hard)
-            {
-                return 5;
-            }
-            else if (level.Difficulty == VanillaDifficulties.lunatic)
-            {
-                return 6;
-            }
-            return 4;
+            return 4 + level.GetBossAILevel();
         }
 
         #region 属性
@@ -625,22 +603,22 @@ namespace MVZ2.GameContent.Bosses
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
-        public static readonly VanillaEntityPropertyMeta PROP_SELECTED_FATE_TIMES = new VanillaEntityPropertyMeta("SelectedFateTimes");
-        public static readonly VanillaEntityPropertyMeta PROP_READY_FATE_TIMES = new VanillaEntityPropertyMeta("ReadyFateTimes");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_SELECTED_FATE_TIMES = new VanillaEntityPropertyMeta<int>("SelectedFateTimes");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_READY_FATE_TIMES = new VanillaEntityPropertyMeta<int>("ReadyFateTimes");
 
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_TIMER = new VanillaEntityPropertyMeta("MoveTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_TIMEOUT = new VanillaEntityPropertyMeta("MoveTimeout");
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_DISPLACEMENT = new VanillaEntityPropertyMeta("MoveDisplacement");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MOVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("MoveTimer");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_MOVE_TIMEOUT = new VanillaEntityPropertyMeta<int>("MoveTimeout");
+        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_DISPLACEMENT = new VanillaEntityPropertyMeta<Vector3>("MoveDisplacement");
 
-        public static readonly VanillaEntityPropertyMeta PROP_PORTAL_TIMER = new VanillaEntityPropertyMeta("PortalTimer");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PORTAL_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("PortalTimer");
 
-        public static readonly VanillaEntityPropertyMeta PROP_MIND_SWAP_TIMER = new VanillaEntityPropertyMeta("MindSwapTimer");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MIND_SWAP_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("MindSwapTimer");
 
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_RNG = new VanillaEntityPropertyMeta("MoveRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_PORTAL_RNG = new VanillaEntityPropertyMeta("PortalRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_MIND_SWAP_RNG = new VanillaEntityPropertyMeta("MindSwapRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_FATE_OPTION_RNG = new VanillaEntityPropertyMeta("FateOptionRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_EVENT_RNG = new VanillaEntityPropertyMeta("EventRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_MOVE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("MoveRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_PORTAL_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("PortalRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_MIND_SWAP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("MindSwapRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_FATE_OPTION_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("FateOptionRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_EVENT_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("EventRNG");
 
         public const int FATE_PANDORAS_BOX = 0;
         public const int FATE_BIOHAZARD = 1;

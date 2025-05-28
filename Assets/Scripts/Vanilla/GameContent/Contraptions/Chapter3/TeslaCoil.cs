@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -31,22 +32,21 @@ namespace MVZ2.GameContent.Contraptions
             SetIsConnectedX(entity, false);
             SetIsConnectedY(entity, false);
         }
-        public override void PreTakeDamage(DamageInput input)
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
-            base.PreTakeDamage(input);
+            base.PreTakeDamage(input, result);
             if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
             {
                 input.Multiply(0);
             }
         }
-        public override void Evoke(Entity entity)
+        protected override void OnEvoke(Entity entity)
         {
-            base.Evoke(entity);
+            base.OnEvoke(entity);
             entity.PlaySound(VanillaSoundID.lightningAttack);
             var pos = entity.Position;
             pos.y += 240;
-            var cloud = entity.Spawn(VanillaEffectID.thunderCloud, pos);
-            cloud.SetFaction(entity.GetFaction());
+            var cloud = entity.SpawnWithParams(VanillaEffectID.thunderCloud, pos);
 
             CreateArc(entity, entity.Position + ARC_OFFSET, cloud.GetCenter());
         }
@@ -206,7 +206,7 @@ namespace MVZ2.GameContent.Contraptions
             detectBuffer.Clear();
             detectBuffer_alt.Clear();
             gridDetectBuffer.Clear();
-            Detection.OverlapSphereNonAlloc(level, targetPosition, shockRadius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
+            level.OverlapSphereNonAlloc(targetPosition, shockRadius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
             if (targetPosition.y <= level.GetGroundY(targetPosition.x, targetPosition.z) && level.IsWaterAt(targetPosition.x, targetPosition.z))
             {
                 level.GetConnectedWaterGrids(targetPosition, 1, 1, gridDetectBuffer);
@@ -303,11 +303,11 @@ namespace MVZ2.GameContent.Contraptions
 
         public const int ATTACK_COOLDOWN = 65;
         public const int ATTACK_CHARGE = 25;
-        public static readonly VanillaEntityPropertyMeta PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta("AttackTimer");
-        public static readonly VanillaEntityPropertyMeta CONNECT_COIL_X = new VanillaEntityPropertyMeta("ConnecteCoilX");
-        public static readonly VanillaEntityPropertyMeta CONNECT_COIL_Y = new VanillaEntityPropertyMeta("ConnecteCoilY");
-        public static readonly VanillaEntityPropertyMeta CONNECTED_X = new VanillaEntityPropertyMeta("ConnectedX");
-        public static readonly VanillaEntityPropertyMeta CONNECTED_Y = new VanillaEntityPropertyMeta("ConnectedY");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
+        public static readonly VanillaEntityPropertyMeta<EntityID> CONNECT_COIL_X = new VanillaEntityPropertyMeta<EntityID>("ConnecteCoilX");
+        public static readonly VanillaEntityPropertyMeta<EntityID> CONNECT_COIL_Y = new VanillaEntityPropertyMeta<EntityID>("ConnecteCoilY");
+        public static readonly VanillaEntityPropertyMeta<bool> CONNECTED_X = new VanillaEntityPropertyMeta<bool>("ConnectedX");
+        public static readonly VanillaEntityPropertyMeta<bool> CONNECTED_Y = new VanillaEntityPropertyMeta<bool>("ConnectedY");
         public const float ATTACK_HEIGHT = 160;
         public static readonly Vector3 ARC_OFFSET = new Vector3(0, 96, 0);
         public const float SHOCK_RADIUS = 20;
@@ -316,8 +316,8 @@ namespace MVZ2.GameContent.Contraptions
         public const int STATE_ATTACK = VanillaEntityStates.TESLA_COIL_ATTACK;
 
         private Detector detector;
-        private static HashSet<EntityCollider> detectBuffer = new HashSet<EntityCollider>();
-        private static HashSet<EntityCollider> detectBuffer_alt = new HashSet<EntityCollider>();
+        private static List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
+        private static List<IEntityCollider> detectBuffer_alt = new List<IEntityCollider>();
         private static HashSet<LawnGrid> gridDetectBuffer = new HashSet<LawnGrid>();
         private static readonly NamespaceID ID = VanillaContraptionID.teslaCoil;
     }

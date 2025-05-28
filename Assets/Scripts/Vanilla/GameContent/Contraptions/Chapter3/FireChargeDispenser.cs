@@ -18,6 +18,7 @@ using PVZEngine.SeedPacks;
 using MVZ2.Vanilla.Level;
 using static UnityEngine.EventSystems.EventTrigger;
 using MVZ2.GameContent.Projectiles;
+using PVZEngine.Models;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -133,22 +134,22 @@ namespace MVZ2.GameContent.Contraptions
         public const int ATTACK_COOLDOWN = 90;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 160;
-        public static readonly VanillaEntityPropertyMeta PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta("AttackTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_MISSLE_TARGET = new VanillaEntityPropertyMeta("MissleTarget");
-        public static readonly VanillaEntityPropertyMeta PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta("MissleTimeout");
-        public static readonly VanillaEntityPropertyMeta PROP_MISSLE_TARGET_LOCKED = new VanillaEntityPropertyMeta("MissleTargetLocked");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
+        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_MISSLE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MissleTarget");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<int>("MissleTimeout");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_MISSLE_TARGET_LOCKED = new VanillaEntityPropertyMeta<bool>("MissleTargetLocked");
 
         private Detector detector;
         private static readonly NamespaceID ID = VanillaContraptionID.fireChargeDispenser;
 
-        bool IHeldEntityBehaviour.CheckRaycast(Entity entity, HeldItemTarget target, IHeldItemData data)
+        bool IHeldEntityBehaviour.IsValidFor(Entity entity, HeldItemTarget target, IHeldItemData data)
         {
             return target is HeldItemTargetGrid targetGrid;
         }
 
         HeldHighlight IHeldEntityBehaviour.GetHighlight(Entity entity, HeldItemTarget target, IHeldItemData data)
         {
-            return HeldHighlight.Green;
+            return HeldHighlight.Green();
         }
 
         void IHeldEntityBehaviour.Use(Entity entity, HeldItemTarget target, IHeldItemData data, PointerInteraction interaction)
@@ -168,10 +169,6 @@ namespace MVZ2.GameContent.Contraptions
             level.ResetHeldItem();
             entity.PlaySound(VanillaSoundID.parabotTick);
         }
-        SeedPack IHeldEntityBehaviour.GetSeedPack(Entity entity, LevelEngine level, IHeldItemData data)
-        {
-            return null;
-        }
         NamespaceID IHeldEntityBehaviour.GetModelID(Entity entity, LevelEngine level, IHeldItemData data)
         {
             return VanillaModelID.targetHeldItem;
@@ -189,6 +186,10 @@ namespace MVZ2.GameContent.Contraptions
                 level.ResetHeldItem();
                 return;
             }
+        }
+        void IHeldEntityBehaviour.PostSetModel(Entity entity, LevelEngine level, IHeldItemData data, IModelInterface model)
+        {
+
         }
     }
 }

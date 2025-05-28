@@ -71,9 +71,9 @@ namespace MVZ2.GameContent.Buffs
             targetBuff.SetProperty(PROP_SOURCE, newSource);
         }
 
-        public static readonly VanillaBuffPropertyMeta PROP_MODE = new VanillaBuffPropertyMeta("Mode");
-        public static readonly VanillaBuffPropertyMeta PROP_SPEED = new VanillaBuffPropertyMeta("Speed");
-        public static readonly VanillaBuffPropertyMeta PROP_SOURCE = new VanillaBuffPropertyMeta("Source");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_MODE = new VanillaBuffPropertyMeta<int>("Mode");
+        public static readonly VanillaBuffPropertyMeta<float> PROP_SPEED = new VanillaBuffPropertyMeta<float>("Speed");
+        public static readonly VanillaBuffPropertyMeta<EntityID> PROP_SOURCE = new VanillaBuffPropertyMeta<EntityID>("Source");
     }
 
     public static class MesmerizeModes

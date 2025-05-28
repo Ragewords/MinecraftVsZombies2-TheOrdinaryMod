@@ -1,5 +1,4 @@
 ﻿using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Buffs.Level;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Properties;
@@ -25,14 +24,6 @@ namespace MVZ2.GameContent.Stages
             AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostEnemyInitCallback, filter: EntityTypes.ENEMY);
             AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostPlantInitCallback, filter: EntityTypes.PLANT);
         }
-        public override void OnStart(LevelEngine level)
-        {
-            base.OnStart(level);
-            if (!level.HasBuff<LittleZombieLevelBuff>())
-            {
-                level.AddBuff<LittleZombieLevelBuff>();
-            }
-        }
         public override void OnPostWave(LevelEngine level, int wave)
         {
             base.OnPostWave(level, wave);
@@ -41,8 +32,9 @@ namespace MVZ2.GameContent.Stages
                 level.PlaySound(VanillaSoundID.growBig);
             }
         }
-        public void PostEnemyInitCallback(Entity entity)
+        public void PostEnemyInitCallback(EntityCallbackParams param, CallbackResult result)
         {
+            var entity = param.entity;
             var level = entity.Level;
             if (level.StageDefinition != this)
                 return;
@@ -69,10 +61,10 @@ namespace MVZ2.GameContent.Stages
             {
                 entity.AddBuff<LittleZombieBuff>();
             }
-            entity.Health = entity.GetMaxHealth();
         }
-        public void PostPlantInitCallback(Entity entity)
+        private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
         {
+            var entity = param.entity;
             var level = entity.Level;
             if (level.StageDefinition != this)
                 return;
@@ -103,8 +95,8 @@ namespace MVZ2.GameContent.Stages
         public static void SetSmallCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_SMALL_COUNTER, value);
 
         public static readonly NamespaceID ID = new NamespaceID(VanillaMod.spaceName, "little_zombie_stage");
-        public static readonly VanillaLevelPropertyMeta FIELD_BIG_COUNTER = new VanillaLevelPropertyMeta("BigCounter");
-        public static readonly VanillaLevelPropertyMeta FIELD_SMALL_COUNTER = new VanillaLevelPropertyMeta("SmallCounter");
+        public static readonly VanillaLevelPropertyMeta<int> FIELD_BIG_COUNTER = new VanillaLevelPropertyMeta<int>("BigCounter");
+        public static readonly VanillaLevelPropertyMeta<int> FIELD_SMALL_COUNTER = new VanillaLevelPropertyMeta<int>("SmallCounter");
         public const int MAX_BIG_COUNTER = 6;
         public const int MAX_SMALL_COUNTER = 3;
     }

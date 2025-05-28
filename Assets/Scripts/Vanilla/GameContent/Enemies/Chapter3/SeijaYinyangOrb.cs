@@ -1,28 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MVZ2.GameContent.Bosses;
-using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Contraptions;
+﻿using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Modifiers;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
-using PVZEngine.Grids;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static MVZ2.GameContent.Buffs.VanillaBuffID;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -32,13 +23,13 @@ namespace MVZ2.GameContent.Enemies
         public SeijaYinyangOrb(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostPlantInitCallback, filter: EntityTypes.PLANT);
-            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.ForceSet, EntityCollisionHelper.DETECTION_IGNORE));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.Set, EntityCollisionHelper.DETECTION_IGNORE, VanillaModifierPriorities.FORCE));
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20f);
             SetShootTimer(entity, new FrameTimer(300));
             SetRepeatTime(entity, 5);
             SetRepeatShootTimer(entity, new FrameTimer(5));
@@ -74,8 +65,9 @@ namespace MVZ2.GameContent.Enemies
             smoke.SetSize(entity.GetSize());
             entity.Remove();
         }
-        private void PostPlantInitCallback(Entity entity)
+        private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
         {
+            var entity = param.entity;
             if (entity.IsOnWater())
                 return;
             foreach (Entity orb in entity.Level.FindEntities(VanillaEnemyID.seijaYinyangOrb))
@@ -140,11 +132,11 @@ namespace MVZ2.GameContent.Enemies
         public static FrameTimer GetRepeatShootTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, REPEAT_SHOOT_TIMER);
         public static void SetRepeatShootTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, REPEAT_SHOOT_TIMER, value);
 
-        private static readonly VanillaEntityPropertyMeta PROP_ORBIT_ANGLE = new VanillaEntityPropertyMeta("OrbitAngle");
-        private static readonly VanillaEntityPropertyMeta SHOOT_TIMER = new VanillaEntityPropertyMeta("ShootTimer");
-        private static readonly VanillaEntityPropertyMeta REPEAT_SHOOT_TIMER = new VanillaEntityPropertyMeta("RepeatShootTimer");
-        private static readonly VanillaEntityPropertyMeta REPEAT_TIME = new VanillaEntityPropertyMeta("RepeatTime");
-        private static readonly VanillaEntityPropertyMeta PROP_MOVE_TARGET = new VanillaEntityPropertyMeta("MoveTarget");
+        private static readonly VanillaEntityPropertyMeta<float> PROP_ORBIT_ANGLE = new VanillaEntityPropertyMeta<float>("OrbitAngle");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> SHOOT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ShootTimer");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> REPEAT_SHOOT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatShootTimer");
+        private static readonly VanillaEntityPropertyMeta<float> REPEAT_TIME = new VanillaEntityPropertyMeta<float>("RepeatTime");
+        private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MoveTarget");
         public const float ORBIT_DISTANCE = 80;
         public const float ORBIT_ANGLE_SPEED = -2;
         private static readonly NamespaceID ID = VanillaEnemyID.seijaYinyangOrb;

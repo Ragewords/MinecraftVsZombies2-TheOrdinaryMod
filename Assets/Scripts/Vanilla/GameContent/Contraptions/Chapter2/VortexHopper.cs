@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Contraptions
             base.PostCollision(collision, state);
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
-            if (!collision.Collider.IsMain())
+            if (!collision.Collider.IsForMain())
                 return;
             var hopper = collision.Entity;
             if (hopper.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
@@ -95,9 +95,9 @@ namespace MVZ2.GameContent.Contraptions
             }
             return base.CanEvoke(entity);
         }
-        public override void Evoke(Entity entity)
+        protected override void OnEvoke(Entity entity)
         {
-            base.Evoke(entity);
+            base.OnEvoke(entity);
             entity.SetEvoked(true);
             entity.AddBuff<VortexHopperEvokedBuff>();
             StartSpin(entity);
@@ -166,7 +166,7 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.vortexHopper;
         public const float EVOKED_SPIN_RADIUS = 120;
         public const float SPIN_RADIUS = 40;
-        public static readonly VanillaEntityPropertyMeta PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta("RepeatTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_DIR = new VanillaEntityPropertyMeta("Dir");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_DIR = new VanillaEntityPropertyMeta<int>("Dir");
     }
 }

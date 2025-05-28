@@ -201,7 +201,7 @@ namespace MVZ2.GameContent.Bosses
                         param.damage = entity.GetDamage() * 0.5f;
                         param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * SeijaBullet.LIGHT_SPEED;
                         var bullet = entity.ShootProjectile(param);
-                        bullet.SetTint(color);
+                        bullet.SetHSVToColor(color);
                     }
                     SetBulletAngle(entity, bulletAngle);
                     entity.PlaySound(VanillaSoundID.danmaku, volume: 0.5f);
@@ -289,10 +289,10 @@ namespace MVZ2.GameContent.Bosses
                             int count = hammerPlaceBombDetector.DetectEntityCount(entity);
                             if (count >= BACKFLIP_ENEMY_COUNT && CanBackflip(entity))
                             {
-                                var tnt = entity.Spawn(VanillaProjectileID.seijaMagicBomb, entity.GetCenter());
-                                tnt.SetFaction(entity.GetFaction());
-                                tnt.SetDamage(entity.GetDamage());
-                                tnt.Velocity = new Vector3(0, 5, 0);
+                                var param = entity.GetSpawnParams();
+                                param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage());
+                                var bomb = entity.Spawn(VanillaProjectileID.seijaMagicBomb, entity.GetCenter(), param);
+                                bomb.Velocity = new Vector3(0, 5, 0);
                                 stateMachine.StartState(entity, STATE_BACKFLIP);
                             }
                             else
@@ -318,7 +318,7 @@ namespace MVZ2.GameContent.Bosses
                 SetJizo(entity, jizo);
             }
 
-            private List<EntityCollider> smashDetectBuffer = new List<EntityCollider>();
+            private List<IEntityCollider> smashDetectBuffer = new List<IEntityCollider>();
             public const int SUBSTATE_RAISE = 0;
             public const int SUBSTATE_HAMMERED = 1;
         }
@@ -500,10 +500,10 @@ namespace MVZ2.GameContent.Bosses
 
                             var pos = entity.Position;
                             pos.y += 40;
-                            var tnt = entity.Spawn(VanillaProjectileID.seijaMagicBomb, pos);
-                            tnt.SetFaction(entity.GetFaction());
-                            tnt.SetDamage(entity.GetDamage());
-                            tnt.Velocity = new Vector3(entity.GetFacingX() * -5, 10, 0);
+                            var param = entity.GetSpawnParams();
+                            param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage());
+                            var bomb = entity.Spawn(VanillaProjectileID.seijaMagicBomb, pos, param);
+                            bomb.Velocity = new Vector3(entity.GetFacingX() * -5, 10, 0);
                             entity.PlaySound(VanillaSoundID.fling);
                         }
                         break;
@@ -570,8 +570,7 @@ namespace MVZ2.GameContent.Bosses
                             var pos = entity.Position;
                             pos.x += entity.GetFacingX() * 80;
                             pos.y = entity.Level.GetGroundY(pos);
-                            var frame = entity.Spawn(VanillaEffectID.seijaCameraFrame, pos);
-                            frame.SetFaction(entity.GetFaction());
+                            var frame = entity.SpawnWithParams(VanillaEffectID.seijaCameraFrame, pos);
                             frame.Velocity = new Vector3(entity.GetFacingX() * 30, 0, 0);
                             entity.Velocity = new Vector3(entity.GetFacingX() * 10, 10, GetChangeAdjacentLaneZSpeed(entity));
                         }

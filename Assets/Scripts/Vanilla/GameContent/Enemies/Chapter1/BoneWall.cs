@@ -41,8 +41,7 @@ namespace MVZ2.GameContent.Enemies
             entity.Level.Spawn(VanillaEffectID.boneParticles, entity.GetCenter(), entity);
             if (entity.RNG.Next(100) < 5)
             {
-                var skeleton = entity.Level.Spawn(VanillaEnemyID.skeleton, entity.GetCenter(), entity);
-                skeleton.SetFactionAndDirection(entity.GetFaction());
+                var skeleton = entity.SpawnWithParams(VanillaEnemyID.skeleton, entity.GetCenter());
             }
             entity.Remove();
         }

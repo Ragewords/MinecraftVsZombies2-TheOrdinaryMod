@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -72,18 +73,18 @@ namespace MVZ2.GameContent.Bosses
             boss.Spawn(VanillaEffectID.seijaFaintEffect, boss.GetCenter());
             stateMachine.StartState(boss, STATE_FAINT);
         }
-        public override void PreTakeDamage(DamageInput damageInfo)
+        public override void PreTakeDamage(DamageInput damageInfo, CallbackResult result)
         {
-            base.PreTakeDamage(damageInfo);
+            base.PreTakeDamage(damageInfo, result);
             var boss = damageInfo.Entity;
             var jizo = GetJizo(boss);
             if (jizo.ExistsAndAlive())
             {
-                damageInfo.Cancel();
                 jizo.TakeDamage(damageInfo.Amount, damageInfo.Effects, damageInfo.Source);
                 var cluster = boss.Spawn(VanillaEffectID.smokeCluster, boss.GetCenter(), boss.GetSpawnParams());
                 cluster.SetSize(Vector3.one * 80);
                 cluster.SetTint(new Color(0.5f, 0.5f, 0.5f, 0.5f));
+                result.SetFinalValue(false);
             }
             else if (damageInfo.Amount > 600)
             {
@@ -94,7 +95,8 @@ namespace MVZ2.GameContent.Bosses
             }
             if (boss.State == STATE_FABRIC || boss.State == STATE_LANTERN)
             {
-                damageInfo.Cancel();
+                result.SetFinalValue(false);
+                return;
             }
             if (damageInfo.Amount > 600)
             {
@@ -110,7 +112,7 @@ namespace MVZ2.GameContent.Bosses
             var takenDamage = GetRecentTakenDamage(boss);
             takenDamage += result.BodyResult.SpendAmount;
             SetRecentTakenDamage(boss, takenDamage);
-            if (takenDamage >= FABRIC_DAMAGE_THRESOLD)
+            if (takenDamage >= FABRIC_DAMAGE_THRESOLD && !boss.IsDead)
             {
                 if (CanUseFabric(boss))
                 {
@@ -265,13 +267,13 @@ namespace MVZ2.GameContent.Bosses
         }
 
         #region 常量
-        private static readonly VanillaEntityPropertyMeta PROP_FABRIC_COUNT = new VanillaEntityPropertyMeta("FabricCount");
-        private static readonly VanillaEntityPropertyMeta PROP_FABRIC_COOLDOWN_TIMER = new VanillaEntityPropertyMeta("FabricCooldownTimer");
-        private static readonly VanillaEntityPropertyMeta PROP_DANMAKU_TIMER = new VanillaEntityPropertyMeta("DanmakuTimer");
-        private static readonly VanillaEntityPropertyMeta PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta("RecentTakenDamage");
-        private static readonly VanillaEntityPropertyMeta PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta("BulletAngle");
-        public static readonly VanillaEntityPropertyMeta FIELD_JIZO = new VanillaEntityPropertyMeta("Jizo");
-        public static readonly VanillaEntityPropertyMeta FIELD_ORB = new VanillaEntityPropertyMeta("Orb");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_FABRIC_COUNT = new VanillaEntityPropertyMeta<int>("FabricCount");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_FABRIC_COOLDOWN_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("FabricCooldownTimer");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DANMAKU_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("DanmakuTimer");
+        private static readonly VanillaEntityPropertyMeta<float> PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta<float>("RecentTakenDamage");
+        private static readonly VanillaEntityPropertyMeta<float> PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta<float>("BulletAngle");
+        public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_JIZO = new VanillaEntityPropertyMeta<EntityID>("Jizo");
+        public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
 
         private const int MAX_FABRIC_COUNT = 6;
         private const float FABRIC_DAMAGE_THRESOLD = 300;

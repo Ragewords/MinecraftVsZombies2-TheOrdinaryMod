@@ -3,6 +3,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Damages;
@@ -26,7 +27,7 @@ namespace MVZ2.GameContent.Enemies
             }
             entity.SetIsInvisible(true);
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 1f);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -48,7 +49,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (!GhostBuff.IsEverIlluminated(entity) && !info.Effects.HasEffect(VanillaDamageEffects.WHACK))
+            if (!GhostBuff.IsEverIlluminated(entity) && !info.Effects.HasEffect(VanillaDamageEffects.WHACK) && !entity.Level.IsIZombie())
             {
                 Global.Game.Unlock(VanillaUnlockID.ghostBuster);
             }

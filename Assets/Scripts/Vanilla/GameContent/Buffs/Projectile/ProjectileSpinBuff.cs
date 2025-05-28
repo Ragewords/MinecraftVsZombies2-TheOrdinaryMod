@@ -1,6 +1,7 @@
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
+using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             var rotation = buff.GetEntity().RenderRotation.magnitude;
             buff.GetEntity().RenderRotation += Vector3.forward * (angle - rotation) * 0.2f;
         }
-        public static readonly VanillaBuffPropertyMeta PROP_ANGLE = new VanillaBuffPropertyMeta("Angle");
-        public static readonly VanillaBuffPropertyMeta PROP_DIRECTION = new VanillaBuffPropertyMeta("Direction");
+        public static readonly VanillaBuffPropertyMeta<Vector3> PROP_ANGLE = new VanillaBuffPropertyMeta<Vector3>("Angle");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_DIRECTION = new VanillaBuffPropertyMeta<int>("Direction");
     }
 }

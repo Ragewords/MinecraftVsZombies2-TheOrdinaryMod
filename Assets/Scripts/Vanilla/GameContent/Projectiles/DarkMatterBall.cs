@@ -8,10 +8,12 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using static UnityEngine.Networking.UnityWebRequest;
 
 namespace MVZ2.GameContent.Projectiles
 {
@@ -21,10 +23,10 @@ namespace MVZ2.GameContent.Projectiles
         public DarkMatterBall(string nsp, string name) : base(nsp, name)
         {
         }
-        protected override void PreHitEntity(ProjectileHitInput hit, DamageInput damage)
+        protected override void PreHitEntity(ProjectileHitInput hit, DamageInput damage, CallbackResult result)
         {
-            base.PreHitEntity(hit, damage);
-            damage.Cancel();
+            base.PreHitEntity(hit, damage, result);
+            result.SetFinalValue(false);
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {

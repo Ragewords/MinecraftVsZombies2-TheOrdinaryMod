@@ -5,14 +5,10 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using System.Linq;
-using System;
 using Tools;
-using MVZ2.GameContent.Buffs.Enemies;
-using static UnityEngine.EventSystems.EventTrigger;
-using PVZEngine.Triggers;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -40,8 +36,10 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.sparkle);
         }
 
-        private void PostEnemyMeleeAttackCallback(Entity enemy, Entity target)
+        private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
         {
+            var enemy = param.enemy;
+            var target = param.target;
             if (!target.IsEntityOf(VanillaContraptionID.goldenApple))
                 return;
             if (!target.IsHostile(enemy))
@@ -50,7 +48,8 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
             {
-                enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, c => c(enemy));
+                var callbackParam = new EntityCallbackParams(enemy);
+                enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, callbackParam);
             }
             if (target.IsEvoked())
             {
@@ -103,7 +102,7 @@ namespace MVZ2.GameContent.Contraptions
         };
         public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
         public static void SetEnemyRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_ENEMY_RNG, value);
-        public static readonly VanillaEntityPropertyMeta PROP_ENEMY_RNG = new VanillaEntityPropertyMeta("EnemyRNG");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_ENEMY_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("EnemyRNG");
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
     }
 }

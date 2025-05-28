@@ -51,7 +51,6 @@ namespace MVZ2.GameContent.Enemies
                     var vel = direction * 12;
                     var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, vel);
                     projectile.Position = entity.Position;
-                    projectile.SetFactionAndDirection(entity.GetFaction());
                     projectile.SetDamage(60);
                     SoulfireBall.SetSplit(projectile, true);
                 }
@@ -80,7 +79,6 @@ namespace MVZ2.GameContent.Enemies
                         var velo = direction * 12;
                         var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velo);
                         projectile.Position = entity.Position;
-                        projectile.SetFactionAndDirection(entity.GetFaction());
                         projectile.SetDamage(60);
                         SoulfireBall.SetSplit(projectile, true);
                     }
@@ -116,7 +114,6 @@ namespace MVZ2.GameContent.Enemies
                         var velo = direction * 12;
                         var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velo);
                         projectile.Position = entity.Position;
-                        projectile.SetFactionAndDirection(entity.GetFaction());
                         projectile.SetDamage(60);
                         SoulfireBall.SetSplit(projectile, true);
                         SoulfireBall.SetBlast(projectile, true);
@@ -189,11 +186,11 @@ namespace MVZ2.GameContent.Enemies
         public static void SetGallopSoundTime(Entity entity, int value) => entity.SetBehaviourField(ID, FIELD_GALLOP_SOUND_TIME, value);
         #endregion
 
-        public static readonly VanillaEntityPropertyMeta FIELD_GALLOP_TIME = new VanillaEntityPropertyMeta("GallopTime");
-        public static readonly VanillaEntityPropertyMeta FIELD_GALLOP_SOUND_TIME = new VanillaEntityPropertyMeta("GallopSoundTime");
-        public static readonly VanillaEntityPropertyMeta FIELD_JUMP_STATE = new VanillaEntityPropertyMeta("JumpState");
-        public static readonly VanillaEntityPropertyMeta FIELD_LAND_TIMER = new VanillaEntityPropertyMeta("LandTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_SPEED_MULTIPLIER = new VanillaEntityPropertyMeta("SpeedMultiplier");
+        public static readonly VanillaEntityPropertyMeta<int> FIELD_GALLOP_TIME = new VanillaEntityPropertyMeta<int>("GallopTime");
+        public static readonly VanillaEntityPropertyMeta<int> FIELD_GALLOP_SOUND_TIME = new VanillaEntityPropertyMeta<int>("GallopSoundTime");
+        public static readonly VanillaEntityPropertyMeta<int> FIELD_JUMP_STATE = new VanillaEntityPropertyMeta<int>("JumpState");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> FIELD_LAND_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("LandTimer");
+        public static readonly VanillaEntityPropertyMeta<float> PROP_SPEED_MULTIPLIER = new VanillaEntityPropertyMeta<float>("SpeedMultiplier");
         public const int GALLOP_SOUND_INTERVAL = 15;
         public const int JUMP_STATE_NONE = 0;
         public const int JUMP_STATE_JUMP = 1;

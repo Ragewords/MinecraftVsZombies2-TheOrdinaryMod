@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3181005545837354617}
   - component: {fileID: 1679525846385360698}
+  - component: {fileID: 1454401669891712749}
   - component: {fileID: 5977507412171048665}
+  - component: {fileID: 5003617234545049521}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1221712028896741284, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  m_Sprite: {fileID: 4886630257185471161, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +87,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1454401669891712749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118304099046852937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9733804c13f33934d9d161b4c7ebce22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1221712028896741284, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -2183945180960425977, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -2493962405233981728, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -7933208544285842616, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -2870429872245953509, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: 81582735622651703, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -7021028823641962876, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -6330606556036316505, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -7967844677914448634, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: 1664692618759813936, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -7760324040334233758, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: -3414009260396193802, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  - {fileID: 4886630257185471161, guid: 97fb6eef6b0b240438ad3bc4f783cf48, type: 3}
+  index: 0
 --- !u!114 &5977507412171048665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118304099046852937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
+--- !u!114 &5003617234545049521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +151,7 @@ GameObject:
   - component: {fileID: 2995974976111680438}
   - component: {fileID: 3412475991367583906}
   - component: {fileID: 3560349925815085322}
+  - component: {fileID: 4634801119385916728}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -196,6 +239,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
+--- !u!114 &4634801119385916728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083682124762091628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9733804c13f33934d9d161b4c7ebce22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 2933340885890360790, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  - {fileID: 9055510684579093494, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  - {fileID: 821189768589261446, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  - {fileID: 2958353647522255803, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  - {fileID: 7676379331505311182, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  - {fileID: -7080666168918176775, guid: 071d4c30cf6fe5042ba032e38c0b03ef, type: 3}
+  index: 0
 --- !u!1001 &7248766974060387990
 PrefabInstance:
   m_ObjectHideFlags: 0

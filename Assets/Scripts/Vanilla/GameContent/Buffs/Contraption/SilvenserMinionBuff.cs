@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -31,8 +32,9 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             buff.SetProperty(PROP_ETHEREAL, true);
             buff.SetProperty(PROP_SHADOW_ALPHA, SHADOW_ALPHA_MIN);
         }
-        private void PreEntityTakeDamageCallback(DamageInput damageInfo)
+        private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
         {
+            var damageInfo = param.input;
             var entity = damageInfo.Entity;
             if (entity == null)
                 return;
@@ -53,10 +55,10 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         {
             return TINT_ALPHA_MIN;
         }
-        public static readonly VanillaBuffPropertyMeta PROP_EVER_ILLUMINATED = new VanillaBuffPropertyMeta("EverIlluminated");
-        public static readonly VanillaBuffPropertyMeta PROP_TINT_MULTIPLIER = new VanillaBuffPropertyMeta("TintMultiplier");
-        public static readonly VanillaBuffPropertyMeta PROP_SHADOW_ALPHA = new VanillaBuffPropertyMeta("ShadowAlpha");
-        public static readonly VanillaBuffPropertyMeta PROP_ETHEREAL = new VanillaBuffPropertyMeta("Ethereal");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_EVER_ILLUMINATED = new VanillaBuffPropertyMeta<bool>("EverIlluminated");
+        public static readonly VanillaBuffPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaBuffPropertyMeta<Color>("TintMultiplier");
+        public static readonly VanillaBuffPropertyMeta<float> PROP_SHADOW_ALPHA = new VanillaBuffPropertyMeta<float>("ShadowAlpha");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_ETHEREAL = new VanillaBuffPropertyMeta<bool>("Ethereal");
         public const float TINT_ALPHA_MIN = 0.5f;
         public const float TINT_ALPHA_MAX = 1;
         public const float TINT_SPEED = 0.02f;

@@ -27,20 +27,17 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             SetPunctureTimer(entity, new FrameTimer(PUNCTURE_TIME));
-            entity.InitFragment();
             if (!entity.IsPreviewEnemy())
             {
                 entity.PlaySound(VanillaSoundID.trainWhistle);
                 entity.Level.AddLoopSoundEntity(VanillaSoundID.trainTravel, entity.ID);
             }
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 5);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 5f);
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-
-            entity.UpdateFragment();
 
             bool broken = entity.Health <= BROKEN_THRESOLD;
             if (!entity.IsDead && broken)
@@ -76,7 +73,7 @@ namespace MVZ2.GameContent.Enemies
             base.PostCollision(collision, state);
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
-            if (!collision.Collider.IsMain())
+            if (!collision.Collider.IsForMain())
                 return;
             var other = collision.Other;
             if (other.IsDead || !other.IsVulnerableEntity())
@@ -121,31 +118,20 @@ namespace MVZ2.GameContent.Enemies
                 Puncture(chariot);
             }
         }
-        public override void PostTakeDamage(DamageOutput result)
-        {
-            base.PostTakeDamage(result);
-            var bodyResult = result.BodyResult;
-            if (bodyResult != null)
-            {
-                result.Entity.AddFragmentTickDamage(result.BodyResult.Amount);
-            }
-        }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
 
-            var explosion = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
-            explosion.SetSize(entity.GetScaledSize());
-            entity.PostFragmentDeath(info);
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SIZE, entity.GetScaledSize());
+            var explosion = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
 
             var anubisandOffset = ANUBISAND_OFFSET;
             anubisandOffset.x *= entity.GetFacingX();
-            var anubisand = entity.Spawn(VanillaEnemyID.anubisand, entity.Position + anubisandOffset);
-            anubisand.SetFactionAndDirection(entity.GetFaction());
-            var ghast = entity.Spawn(VanillaEnemyID.ghast, entity.Position + anubisandOffset);
-            ghast.SetFactionAndDirection(entity.GetFaction());
+            var anubisand = entity.SpawnWithParams(VanillaEnemyID.anubisand, entity.Position + anubisandOffset);
+            var ghast = entity.SpawnWithParams(VanillaEnemyID.ghast, entity.Position + anubisandOffset);
             entity.Remove();
         }
         #endregion
@@ -170,8 +156,8 @@ namespace MVZ2.GameContent.Enemies
         public const float BROKEN_THRESOLD = 200;
         public static readonly Vector3 ANUBISAND_OFFSET = new Vector3(-48, 32, 0);
         public const int PUNCTURE_TIME = 40;
-        private static readonly VanillaEntityPropertyMeta FIELD_PUNCTURED = new VanillaEntityPropertyMeta("Punctured");
-        private static readonly VanillaEntityPropertyMeta FIELD_PUNCTURE_TIMER = new VanillaEntityPropertyMeta("PunctureTimer");
+        private static readonly VanillaEntityPropertyMeta<bool> FIELD_PUNCTURED = new VanillaEntityPropertyMeta<bool>("Punctured");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> FIELD_PUNCTURE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("PunctureTimer");
         private static readonly NamespaceID ID = VanillaEnemyID.hellChariot;
     }
 }

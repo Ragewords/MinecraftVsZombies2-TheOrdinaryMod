@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -25,7 +26,7 @@ namespace MVZ2.GameContent.Bosses
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(SHOOT_COOLDOWN));
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60f);
             entity.AddBuff<FrankensteinSteelBuff>();
             SetFireTimer(entity, new FrameTimer(45));
             SetMode(entity, GUN_MODE);
@@ -134,9 +135,9 @@ namespace MVZ2.GameContent.Bosses
                 return;
             }
         }
-        public override void PreTakeDamage(DamageInput damageInfo)
+        public override void PreTakeDamage(DamageInput damageInfo, CallbackResult result)
         {
-            base.PreTakeDamage(damageInfo);
+            base.PreTakeDamage(damageInfo, result);
             if (damageInfo.Amount > 300)
             {
                 damageInfo.SetAmount(300);
@@ -202,11 +203,11 @@ namespace MVZ2.GameContent.Bosses
         public static readonly NamespaceID ID = VanillaBossID.frankensteinHead;
         public const int SHOOT_COOLDOWN = 300;
         public const int SHOOT_DURATION = 20;
-        private static readonly VanillaEntityPropertyMeta PROP_MOVE_TARGET = new VanillaEntityPropertyMeta("MoveTarget");
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_FIRE_TIMER = new VanillaEntityPropertyMeta("FireTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_STATE = new VanillaEntityPropertyMeta("State");
-        public static readonly VanillaEntityPropertyMeta PROP_MODE = new VanillaEntityPropertyMeta("Mode");
+        private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MoveTarget");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_FIRE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("FireTimer");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_STATE = new VanillaEntityPropertyMeta<int>("State");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_MODE = new VanillaEntityPropertyMeta<int>("Mode");
         private const int SUBSTATE_GUN_READY = 0;
         private const int SUBSTATE_PRE_FIRE = 1;
         private const int SUBSTATE_GUN_FIRE = 2;

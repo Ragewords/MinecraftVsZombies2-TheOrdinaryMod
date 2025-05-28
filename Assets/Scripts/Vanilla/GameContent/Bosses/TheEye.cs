@@ -13,6 +13,7 @@ using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -39,16 +40,16 @@ namespace MVZ2.GameContent.Bosses
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED_FACTOR, 0.5f);
-            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60);
+            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60f);
             SetProjectileRNG(entity, new RandomGenerator(entity.RNG.Next()));
             SetMoveRNG(entity, new RandomGenerator(entity.RNG.Next()));
             SetSoundPlayed(entity, false);
             SetAttackState(entity, STATE_ENEMY_MOVE);
             var level = entity.Level;
         }
-        public override void PreTakeDamage(DamageInput input)
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
-            base.PreTakeDamage(input);
+            base.PreTakeDamage(input, result);
             if (input.Amount > 300)
             {
                 input.SetAmount(300);
@@ -103,7 +104,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 timer.Reset();
                 var buff = entity.GetFirstBuff<FlyBuff>();
-                buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, entity.RNG.Next(2, 8) * 10);
+                buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, entity.RNG.Next(2, 8) * 10f);
                 StartMove(entity);
             }
             var motionTime = GetMoveTimeout(entity);
@@ -282,15 +283,15 @@ namespace MVZ2.GameContent.Bosses
 
         public static readonly NamespaceID ID = VanillaBossID.theEye;
 
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_RNG = new VanillaEntityPropertyMeta("MoveRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_TIMER = new VanillaEntityPropertyMeta("MoveTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_TIMEOUT = new VanillaEntityPropertyMeta("MoveTimeout");
-        public static readonly VanillaEntityPropertyMeta PROP_MOVE_DISPLACEMENT = new VanillaEntityPropertyMeta("MoveDisplacement");
-        public static readonly VanillaEntityPropertyMeta PROP_TRANSFORM_TIMER = new VanillaEntityPropertyMeta("TransformTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_PROJECTILE_RNG = new VanillaEntityPropertyMeta("ProjectileRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_ATTACK_STATE = new VanillaEntityPropertyMeta("AttackState");
-        public static readonly VanillaEntityPropertyMeta PROP_SOUND = new VanillaEntityPropertyMeta("Sound");
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_MOVE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("MoveRNG");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MOVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("MoveTimer");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_MOVE_TIMEOUT = new VanillaEntityPropertyMeta<int>("MoveTimeout");
+        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_DISPLACEMENT = new VanillaEntityPropertyMeta<Vector3>("MoveDisplacement");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_TRANSFORM_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("TransformTimer");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_PROJECTILE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("ProjectileRNG");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_ATTACK_STATE = new VanillaEntityPropertyMeta<int>("AttackState");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_SOUND = new VanillaEntityPropertyMeta<bool>("Sound");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
 
         private static NamespaceID[] summonPool = new NamespaceID[]
         {

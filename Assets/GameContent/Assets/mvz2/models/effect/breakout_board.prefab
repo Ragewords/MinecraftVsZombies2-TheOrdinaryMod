@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3208733514382678327}
   - component: {fileID: 6919448814417152839}
   - component: {fileID: 2446164616065827562}
+  - component: {fileID: 9077850829624931443}
   - component: {fileID: 3975994170329279252}
   m_Layer: 0
   m_Name: Countdown
@@ -172,6 +173,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 6919448814417152839}
   m_maskType: 0
+--- !u!114 &9077850829624931443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955712226301548056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
 --- !u!114 &3975994170329279252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 74170501792220475, guid: 53551aac6de617747bf4df641b1c506d, type: 3}
       propertyPath: renderers.Array.data[2]
       value: 
-      objectReference: {fileID: 3975994170329279252}
+      objectReference: {fileID: 9077850829624931443}
     - target: {fileID: 3664503004788589356, guid: 53551aac6de617747bf4df641b1c506d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -66.32001

@@ -28,8 +28,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 if (entity.Health > 20)
                     entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
-                else if (entity.EquipedArmor != null)
-                    entity.EquipedArmor.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), null);
+                else if (entity.GetMainArmor() != null)
+                    entity.GetMainArmor().TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), null);
             }
 
             var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 buff.Remove();
             }
         }
-        public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         public const float WITHER_DAMAGE = 2 / 3f;
     }
 }

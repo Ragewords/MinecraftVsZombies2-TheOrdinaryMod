@@ -38,18 +38,21 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            var gas = entity.Level.Spawn(VanillaEffectID.mummyGas, entity.Position, entity);
-            gas.SetFaction(entity.GetFaction());
-            gas.SetScale(entity.GetScale());
-            var zombie = entity.Level.Spawn(VanillaEnemyID.zombie, entity.Position, entity);
-            zombie.SetFactionAndDirection(entity.GetFaction());
-            if (entity.RNG.Next(20) < 6)
-                zombie.EquipArmor<LeatherCap>();
-            else if (entity.RNG.Next(20) >= 6 && entity.RNG.Next(20) <= 8)
-                zombie.EquipArmor<IronHelmet>();
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SCALE, entity.GetScale());
+            var gas = entity.Spawn(VanillaEffectID.mummyGas, entity.Position, param);
+            var zombie = entity.SpawnWithParams(VanillaEnemyID.zombie, entity.Position);
+
+            var randomValue = entity.RNG.Next(20);
+            if (randomValue < 6)
+                zombie.EquipMainArmor(VanillaArmorID.leatherCap);
+            else if (randomValue >= 6 && randomValue <= 8)
+                zombie.EquipMainArmor(VanillaArmorID.ironHelmet);
             entity.PlaySound(VanillaSoundID.poisonCast);
-            entity.PostFragmentDeath(info);
             entity.Remove();
+
+            var fragment = entity.CreateFragment();
+            Fragment.AddEmitSpeed(fragment, 500);
         }
     }
 }

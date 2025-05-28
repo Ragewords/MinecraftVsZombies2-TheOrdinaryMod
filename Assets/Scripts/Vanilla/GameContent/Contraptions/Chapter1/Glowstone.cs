@@ -80,7 +80,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var id in detectBuffer)
                 {
                     var ent = level.FindEntityByID(id);
-                    if (ent == null)
+                    if (!ent.ExistsAndAlive() || !ent.IsVulnerableEntity())
                         continue;
                     if (ent.Type == EntityTypes.PLANT && ent.IsCharmed())
                     { 

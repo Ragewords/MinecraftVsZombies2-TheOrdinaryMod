@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using MVZ2.GameContent.Buffs.Contraptions;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
@@ -11,8 +11,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -21,6 +19,7 @@ namespace MVZ2.GameContent.Contraptions
     {
         public Anvil(string nsp, string name) : base(nsp, name)
         {
+            smashDetector = new CollisionDetector();
         }
         public override void Init(Entity entity)
         {
@@ -38,7 +37,7 @@ namespace MVZ2.GameContent.Contraptions
             base.PostCollision(collision, state);
             if (state != EntityCollisionHelper.STATE_ENTER)
                 return;
-            if (!collision.Collider.IsMain())
+            if (!collision.Collider.IsForMain())
                 return;
             var anvil = collision.Entity;
             if (anvil.Velocity == Vector3.zero)
@@ -76,6 +75,23 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostContactGround(Entity anvil, Vector3 velocity)
         {
             base.PostContactGround(anvil, velocity);
+
+            if (velocity != Vector3.zero)
+            {
+                smashBuffer.Clear();
+                smashDetector.DetectMultiple(anvil, smashBuffer);
+                foreach (var target in smashBuffer)
+                {
+                    var other = target.Entity;
+                    if (CanSmash(anvil, other))
+                    {
+                        float damageModifier = Mathf.Clamp(velocity.magnitude, 0, 1);
+                        target.TakeDamage(1800 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
+                    }
+                }
+            }
+
+
             anvil.PlaySound(VanillaSoundID.anvil);
 
             var grid = anvil.GetGrid();
@@ -120,7 +136,9 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static bool CanStun(Entity self, Entity target)
         {
-            return Detection.IsInSphere(target.MainHitbox, self.GetCenter(), 120) && self.IsHostile(target) && target.IsOnGround;
+            return target.GetMainCollider().CheckSphere(self.GetCenter(), 120) && self.IsHostile(target) && target.IsOnGround;
         }
+        private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
+        private Detector smashDetector;
     }
 }

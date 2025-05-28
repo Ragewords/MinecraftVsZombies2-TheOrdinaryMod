@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -33,10 +34,10 @@ namespace MVZ2.GameContent.Contraptions
             contraption.SetAnimationInt("HealthState", contraption.GetHealthState(3));
         }
 
-        public override void PreTakeDamage(DamageInput damageInfo)
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
-            base.PreTakeDamage(damageInfo);
-            damageInfo.Multiply(0.6f);
+            base.PreTakeDamage(input, result);
+            input.Multiply(0.6f);
         }
         protected override void OnEvoke(Entity contraption)
         {

@@ -17,8 +17,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
         {
             absorbDetector = new SphereDetector(ABSORB_RADIUS)
             {
-                mask = EntityCollisionHelper.MASK_VULNERABLE,
-                invulnerableFilter = (param, e) => e.Type == EntityTypes.PROJECTILE
+                mask = EntityCollisionHelper.MASK_VULNERABLE | EntityCollisionHelper.MASK_PROJECTILE,
             };
             AddModifier(new BooleanModifier(VanillaProjectileProps.PIERCING, false));
         }

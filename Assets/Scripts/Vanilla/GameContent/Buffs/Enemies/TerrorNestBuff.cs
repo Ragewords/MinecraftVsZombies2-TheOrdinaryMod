@@ -14,6 +14,7 @@ using MVZ2.Vanilla.Audios;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using MVZ2.GameContent.Damages;
+using MVZ2.Vanilla.Callbacks;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -45,8 +46,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
             if (timer.Expired)
             {
-                var parasite = entity.Level.Spawn(VanillaEnemyID.parasiteTerror, entity.GetCenter(), entity);
-                parasite.SetFactionAndDirection(entity.GetFaction());
+                var parasite = entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
                 entity.PlaySound(VanillaSoundID.bloody);
                 entity.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
                 entity.EmitBlood();
@@ -55,14 +55,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity.IsDead)
                 buff.Remove();
         }
-        private void PostEntityDeathCallback(Entity entity, DeathInfo info)
+        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
+            var entity = param.entity;
             foreach (var buff in entity.GetBuffs<TerrorNestBuff>())
             {
                 buff.Remove();
             }
         }
-        public static readonly VanillaBuffPropertyMeta PROP_SPAWN_TIMER = new VanillaBuffPropertyMeta("SpawnTimer");
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_SPAWN_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("SpawnTimer");
         public const int MAX_SPAWN_TIMEOUT = 60;
     }
 }

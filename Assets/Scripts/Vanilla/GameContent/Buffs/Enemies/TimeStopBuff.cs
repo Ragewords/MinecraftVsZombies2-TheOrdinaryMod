@@ -27,8 +27,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMEOUT, MAX_TIMEOUT);
         }
-        private void PostEntityDeathCallback(Entity entity, DeathInfo info)
+        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
+            var entity = param.entity;
             entity.RemoveBuffs<TimeStopBuff>();
         }
         public override void PostUpdate(Buff buff)
@@ -51,7 +52,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 model.SetAnimationFloat("Clock", (timeout - RING_DURATION) / (float)(MAX_TIMEOUT - RING_DURATION));
             }
         }
-        public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         private const float RING_DURATION = 0.5f;
         private const int MAX_TIMEOUT = 30;
     }

@@ -89,12 +89,19 @@ namespace MVZ2.Map
                 return;
             button.SetText(text);
         }
-        public void SetMapButtonDifficulty(int index, NamespaceID difficulty)
+        public void SetMapButtonBorder(int index, Sprite back, Sprite bottom, Sprite overlay)
         {
             var button = GetMapButton(index);
             if (!button)
                 return;
-            button.SetDifficulty(difficulty);
+            button.SetBorderSprite(back, bottom, overlay);
+        }
+        public void SetMapButtonBorderToDefault(int index)
+        {
+            var button = GetMapButton(index);
+            if (!button)
+                return;
+            button.SetBorderSpriteToDefault();
         }
         public void SetExtraMapButtonInteractable(int index, bool interactable)
         {
@@ -117,12 +124,19 @@ namespace MVZ2.Map
                 return;
             button.SetText(text);
         }
-        public void SetExtraMapButtonDifficulty(int index, NamespaceID difficulty)
+        public void SetExtraMapButtonBorder(int index, Sprite back, Sprite bottom, Sprite overlay)
         {
             var button = GetExtraMapButton(index);
             if (!button)
                 return;
-            button.SetDifficulty(difficulty);
+            button.SetBorderSprite(back, bottom, overlay);
+        }
+        public void SetExtraMapButtonBorderToDefault(int index)
+        {
+            var button = GetExtraMapButton(index);
+            if (!button)
+                return;
+            button.SetBorderSpriteToDefault();
         }
         public NamespaceID[] GetMapElementUnlocks()
         {

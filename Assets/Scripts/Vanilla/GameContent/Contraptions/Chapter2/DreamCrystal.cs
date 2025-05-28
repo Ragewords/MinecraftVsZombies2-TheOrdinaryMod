@@ -54,8 +54,8 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetHealthUpTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
         public static bool GetHealthUp(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_HEALTH_UP);
         public static void SetHealthUp(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP, value);
-        public static readonly VanillaEntityPropertyMeta PROP_HEALTH_UP_TIMER = new VanillaEntityPropertyMeta("HealthUpTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_HEALTH_UP = new VanillaEntityPropertyMeta("HealthUp");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_HEALTH_UP_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("HealthUpTimer");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_HEALTH_UP = new VanillaEntityPropertyMeta<bool>("HealthUp");
         private static readonly NamespaceID ID = VanillaContraptionID.dreamCrystal;
     }
 }

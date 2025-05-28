@@ -31,6 +31,12 @@ namespace MVZ2.GameContent.Enemies
         public const string anubisand = "anubisand";
         public const string curseer = "curseer";
 
+        public const string reflectiveBarrierZombie = "reflective_barrier_zombie";
+        public const string talismanZombie = "talisman_zombie";
+        public const string wickedHermitZombie = "wicked_hermit_zombie";
+        public const string shikaisenZombie = "shikaisen_zombie";
+        public const string emperorZombie = "emperor_zombie";
+
         public const string mutantZombie = "mutant_zombie";
         public const string megaMutantZombie = "mega_mutant_zombie";
         public const string imp = "imp";
@@ -48,9 +54,13 @@ namespace MVZ2.GameContent.Enemies
         public const string seijaJizo = "seija_jizo";
         public const string brainwasher = "brainwasher";
         public const string bedserker = "bedserker";
+        public const string skeletonWarrior = "skeleton_warrior";
+        public const string skeletonMage = "skeleton_mage";
+        public const string shikaisenStaff = "shikaisen_staff";
         public const string soulSkeletonHorse = "soul_skeleton_horse";
         public const string jackDullahan = "jackdullahan";
         public const string jackDullahanHead = "jackdullahan_head";
+
     }
     public static class VanillaEnemyID
     {
@@ -80,6 +90,12 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID anubisand = Get(VanillaEnemyNames.anubisand);
         public static readonly NamespaceID curseer = Get(VanillaEnemyNames.curseer);
 
+        public static readonly NamespaceID reflectiveBarrierZombie = Get(VanillaEnemyNames.reflectiveBarrierZombie);
+        public static readonly NamespaceID talismanZombie = Get(VanillaEnemyNames.talismanZombie);
+        public static readonly NamespaceID wickedHermitZombie = Get(VanillaEnemyNames.wickedHermitZombie);
+        public static readonly NamespaceID shikaisenZombie = Get(VanillaEnemyNames.shikaisenZombie);
+        public static readonly NamespaceID emperorZombie = Get(VanillaEnemyNames.emperorZombie);
+
         public static readonly NamespaceID mutantZombie = Get(VanillaEnemyNames.mutantZombie);
         public static readonly NamespaceID megaMutantZombie = Get(VanillaEnemyNames.megaMutantZombie);
         public static readonly NamespaceID imp = Get(VanillaEnemyNames.imp);
@@ -97,6 +113,9 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID seijaJizo = Get(VanillaEnemyNames.seijaJizo);
         public static readonly NamespaceID brainwasher = Get(VanillaEnemyNames.brainwasher);
         public static readonly NamespaceID bedserker = Get(VanillaEnemyNames.bedserker);
+        public static readonly NamespaceID skeletonWarrior = Get(VanillaEnemyNames.skeletonWarrior);
+        public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
+        public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);
         public static readonly NamespaceID soulSkeletonHorse = Get(VanillaEnemyNames.soulSkeletonHorse);
         public static readonly NamespaceID jackDullahan = Get(VanillaEnemyNames.jackDullahan);
         public static readonly NamespaceID jackDullahanHead = Get(VanillaEnemyNames.jackDullahanHead);

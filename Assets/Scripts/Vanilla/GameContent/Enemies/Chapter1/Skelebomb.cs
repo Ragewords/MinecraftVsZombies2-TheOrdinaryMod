@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Enemies
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
             entity.SetAnimationBool("HoldingBomb", true);
             SetExplodingRNG(entity, -150);
-            entity.EquipArmor<SkelebombCap>();
+            entity.EquipMainArmor(VanillaArmorID.skelebombCap);
         }
         protected override int GetActionState(Entity enemy)
         {
@@ -100,8 +100,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 var offset = BOMB_OFFSET;
                 offset.x *= entity.GetFacingX();
-                var bomb = entity.Spawn(VanillaEnemyID.bomb, entity.Position + offset);
-                bomb.SetFactionAndDirection(entity.GetFaction());
+                var bomb = entity.SpawnWithParams(VanillaEnemyID.bomb, entity.Position + offset);
                 bomb.Velocity = entity.Velocity;
                 entity.SetAnimationBool("HoldingBomb", false);
             }
@@ -162,9 +161,9 @@ namespace MVZ2.GameContent.Enemies
         private const int CAST_RNG = 3000;
         private Vector3 BOMB_OFFSET = new Vector3(32, 40, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.skelebomb;
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_CASTING = new VanillaEntityPropertyMeta("Casting");
-        public static readonly VanillaEntityPropertyMeta PROP_EXPLODING = new VanillaEntityPropertyMeta("Exploding");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_EXPLODING = new VanillaEntityPropertyMeta<int>("Exploding");
         #endregion ³£Á¿
     }
 }
