@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -40,7 +41,7 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.Init(boss);
             stateMachine.StartState(boss, STATE_WAKING);
 
-            if (boss.Level.GetBossAILevel() > 0)
+            if (boss.Level.FrankensteinInstantSteelPhase())
             {
                 EnterSteelPhase(boss);
             }
@@ -69,7 +70,7 @@ namespace MVZ2.GameContent.Bosses
             entity.SetAnimationFloat("ActionSpeed", GetFrankensteinActionSpeed(entity));
             if (IsSteelPhase(entity))
             {
-                if (entity.Health <= entity.GetMaxHealth() * 0.5f && !IsHeadSplit(entity) && entity.Level.GetEnemyAILevel() != 0)
+                if (entity.Health <= entity.GetMaxHealth() * 0.5f && !IsHeadSplit(entity) && entity.Level.FrankensteinInstantSteelPhase())
                 {
                     HeadSplit(entity);
                 }
@@ -214,14 +215,14 @@ namespace MVZ2.GameContent.Bosses
         }
         private static bool CanTransformPhase(Entity boss)
         {
-            if (boss.Level.GetBossAILevel() < 0)
+            if (boss.Level.FrankensteinNoSteelPhase())
                 return false;
             return boss.Health <= boss.GetMaxHealth() * 0.5f && !IsSteelPhase(boss);
         }
 
         public static float GetFrankensteinActionSpeed(Entity boss)
         {
-            return boss.Level.GetBossAILevel() > 0 ? 2 : 1;
+            return boss.Level.GetFrankensteinSpeed();
         }
 
         #region 属性

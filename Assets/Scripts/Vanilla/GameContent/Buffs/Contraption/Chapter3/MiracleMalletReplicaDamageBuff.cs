@@ -10,7 +10,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
     {
         public MiracleMalletReplicaDamageBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.AddMultiplie, ADDMULTIPLIE));
+            AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.AddMultiple, ADDMULTIPLIE));
         }
         public const float ADDMULTIPLIE = 0.15f;
     }

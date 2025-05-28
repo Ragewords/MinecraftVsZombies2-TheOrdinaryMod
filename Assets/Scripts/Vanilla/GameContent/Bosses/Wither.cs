@@ -3,13 +3,13 @@ using System.Linq;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
@@ -65,9 +65,10 @@ namespace MVZ2.GameContent.Bosses
 
             RotateHeadsUpdate(entity);
 
-            if (!entity.IsDead && entity.Level.GetBossAILevel() >= 0)
+            if (!entity.IsDead)
             {
-                entity.Heal(REGENERATION_SPEED, entity);
+                var regen = entity.Level.GetWitherRegeneration();
+                entity.Heal(regen, entity);
             }
         }
         public override void PostDeath(Entity boss, DeathInfo damageInfo)
@@ -346,7 +347,7 @@ namespace MVZ2.GameContent.Bosses
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
             entity.PlaySound(VanillaSoundID.explosion);
-            entity.Level.Explode(entity.GetCenter(), 240, entity.GetFaction(), entity.GetDamage() * 30, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+            entity.Explode(entity.GetCenter(), 240, entity.GetFaction(), entity.GetDamage() * 30, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
             var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
             exp.SetSize(Vector3.one * 360);
         }
@@ -420,7 +421,6 @@ namespace MVZ2.GameContent.Bosses
         public const int HEAD_COUNT = 3;
         public const float HEAD_ROTATE_SPEED = 10;
         public const float FLY_HEIGHT = 80;
-        public const float REGENERATION_SPEED = 1;
         public const float EAT_HEALING = 300;
         public const float GOLDEN_APPLE_DAMAGE = 600;
 

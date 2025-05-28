@@ -253,7 +253,7 @@ namespace MVZ2.GameContent.Bosses
                 return;
 
             var rng = GetMindSwapRNG(entity);
-            NamespaceID[] pool = level.GetBossAILevel() > 0 ? hardMindSwapPool : mindSwapPool;
+            NamespaceID[] pool = level.SlendermanMindSwapZombies() ? hardMindSwapPool : mindSwapPool;
             if (level.Difficulty == VanillaDifficulties.lunatic)
                 pool = lunaticMindSwapPool;
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
@@ -285,7 +285,7 @@ namespace MVZ2.GameContent.Bosses
             var title = Global.Game.GetText(CHOOSE_FATE_TITLE);
             var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
 
-            int count = 3 - level.GetBossAILevel();
+            int count = level.GetSlendermanFateChoiceCount();
             if (level.Difficulty == VanillaDifficulties.lunatic)
             {
                 count = 1;
@@ -383,7 +383,7 @@ namespace MVZ2.GameContent.Bosses
                 enemy.SetDisplayScale(displayScale);
                 if (level.IsWaterLane(grid.Lane))
                 {
-                    if (enemy.GetWaterInteraction() == 2)
+                    if (enemy.GetWaterInteraction() == WaterInteraction.DROWN)
                     {
                         enemy.AddBuff<BoatBuff>();
                         enemy.SetAnimationBool("HasBoat", true);
@@ -527,7 +527,7 @@ namespace MVZ2.GameContent.Bosses
 
         private int GetMaxFateTimes(LevelEngine level)
         {
-            return 4 + level.GetBossAILevel();
+            return level.GetSlendermanMaxFateTimes();
         }
 
         #region 属性
