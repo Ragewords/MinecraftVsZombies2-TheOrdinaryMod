@@ -1,4 +1,3 @@
-using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Models;
@@ -6,8 +5,6 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
-using PVZEngine.Damages;
-using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 

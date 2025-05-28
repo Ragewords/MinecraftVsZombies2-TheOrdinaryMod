@@ -1,9 +1,4 @@
-using MVZ2.GameContent.Armors;
-using MVZ2.GameContent.Detections;
-using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -12,8 +7,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
-using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Enemies
 {

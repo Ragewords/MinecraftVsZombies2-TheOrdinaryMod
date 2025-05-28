@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
@@ -15,7 +14,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -370,7 +368,7 @@ namespace MVZ2.GameContent.Bosses
                                 var spawnX = level.GetEntityColumnX(column);
                                 var lane = entity.GetLane();
                                 var spawnZ = level.GetEntityLaneZ(lane);
-                                var chariot = entity.Level.Spawn(VanillaEnemyID.hellChariot, new Vector3(spawnX, 0, spawnZ), entity); 
+                                var chariot = entity.Level.Spawn(VanillaEnemyID.hellChariot, new Vector3(spawnX, 0, spawnZ), entity);
                                 var exp = chariot.Spawn(VanillaEffectID.explosion, chariot.GetCenter());
                                 exp.SetSize(Vector3.one * 180);
                             }
@@ -817,7 +815,7 @@ namespace MVZ2.GameContent.Bosses
                                 var param = entity.GetSpawnParams();
                                 param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 120);
                                 entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter(), param);
-                                
+
                                 var cluster = entity.Spawn(VanillaEffectID.smokeCluster, brainwasher.GetCenter());
                                 cluster.SetSize(Vector3.one * 120);
                                 cluster.SetTint(Color.magenta);

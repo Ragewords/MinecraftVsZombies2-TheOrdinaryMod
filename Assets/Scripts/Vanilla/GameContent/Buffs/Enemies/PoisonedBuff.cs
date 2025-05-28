@@ -1,4 +1,3 @@
-using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Entities;
@@ -8,7 +7,6 @@ using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Level;
-using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {

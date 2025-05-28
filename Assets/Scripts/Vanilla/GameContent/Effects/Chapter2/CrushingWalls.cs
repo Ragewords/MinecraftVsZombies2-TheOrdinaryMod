@@ -1,5 +1,4 @@
 using MVZ2.GameContent.Bosses;
-using MVZ2.GameContent.Stages;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
@@ -14,7 +13,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools.Mathematics;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Effects
 {

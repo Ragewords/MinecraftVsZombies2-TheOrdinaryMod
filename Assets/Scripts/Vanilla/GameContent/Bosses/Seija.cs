@@ -13,8 +13,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Bosses
 {

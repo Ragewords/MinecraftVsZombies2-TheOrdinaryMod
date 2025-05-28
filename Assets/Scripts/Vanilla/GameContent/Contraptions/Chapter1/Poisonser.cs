@@ -1,5 +1,3 @@
-using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;

@@ -1,6 +1,4 @@
-﻿using MVZ2.GameContent.Bosses;
-using MVZ2.GameContent.Detections;
-using MVZ2.GameContent.Difficulties;
+﻿using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;

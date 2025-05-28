@@ -26,7 +26,7 @@ namespace MVZ2.GameContent.Artifacts
         public const string greedyVacuum = "greedy_vacuum";
         public const string lightbomb = "lightbomb";
         public const string eyeOfTheGiant = "eye_of_the_giant";
-        
+
         public const string jackOLantern = "jack_o_lantern";
         public const string telekinesis = "telekinesis";
         public const string witherSkeletonSkull = "wither_skeleton_skull";
@@ -54,11 +54,11 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID greedyVacuum = Get(VanillaArtifactNames.greedyVacuum);
         public static readonly NamespaceID lightbomb = Get(VanillaArtifactNames.lightbomb);
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaArtifactNames.eyeOfTheGiant);
-        
+
         public static readonly NamespaceID jackOLantern = Get(VanillaArtifactNames.jackOLantern);
         public static readonly NamespaceID telekinesis = Get(VanillaArtifactNames.telekinesis);
         public static readonly NamespaceID witherSkeletonSkull = Get(VanillaArtifactNames.witherSkeletonSkull);
-        
+
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

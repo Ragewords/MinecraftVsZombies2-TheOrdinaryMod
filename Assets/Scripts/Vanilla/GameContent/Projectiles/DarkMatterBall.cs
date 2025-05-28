@@ -1,5 +1,3 @@
-using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
@@ -13,7 +11,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
 
 namespace MVZ2.GameContent.Projectiles
 {

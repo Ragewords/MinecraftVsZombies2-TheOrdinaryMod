@@ -41,9 +41,9 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.SetIsInvisible(false);
             }
-            else 
-            { 
-                entity.SetIsInvisible(true); 
+            else
+            {
+                entity.SetIsInvisible(true);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)

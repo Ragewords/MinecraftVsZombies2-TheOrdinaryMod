@@ -1,6 +1,5 @@
 ﻿using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Level;
-using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Audios;
@@ -10,10 +9,7 @@ using MVZ2Logic.Level;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using System;
-using System.Threading;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Stages
 {

@@ -2,7 +2,6 @@
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
@@ -11,7 +10,6 @@ using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -83,7 +81,7 @@ namespace MVZ2.GameContent.Contraptions
                     if (!ent.ExistsAndAlive() || !ent.IsVulnerableEntity())
                         continue;
                     if (ent.Type == EntityTypes.PLANT && ent.IsCharmed())
-                    { 
+                    {
                         ent.RemoveCharm();
                         ent.PlaySound(VanillaSoundID.mindClear);
                     }

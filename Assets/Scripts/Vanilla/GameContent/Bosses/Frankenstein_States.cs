@@ -13,9 +13,6 @@ using PVZEngine.Entities;
 using PVZEngine.Grids;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffID;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -262,7 +259,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                         }
                     }
-                        stateMachine.StartState(entity, STATE_WAKING);
+                    stateMachine.StartState(entity, STATE_WAKING);
                 }
             }
         }

@@ -1,12 +1,10 @@
+using System.Linq;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
@@ -17,8 +15,6 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using System.Collections.Generic;
-using System.Linq;
 using Tools;
 using Tools.Mathematics;
 using UnityEngine;
@@ -63,7 +59,7 @@ namespace MVZ2.GameContent.Bosses
             MoveUpdate(entity);
             AttackUpdate(entity);
             entity.Level.Explode(entity.Position, 200, entity.GetFaction(), 0.1f, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
-            
+
         }
         protected override void UpdateLogic(Entity entity)
         {

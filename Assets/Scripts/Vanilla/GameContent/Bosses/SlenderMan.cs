@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MukioI18n;
 using MVZ2.GameContent.Armors;
-using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Level;
@@ -33,8 +32,6 @@ using PVZEngine.Level;
 using Tools;
 using Tools.Mathematics;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Bosses
 {

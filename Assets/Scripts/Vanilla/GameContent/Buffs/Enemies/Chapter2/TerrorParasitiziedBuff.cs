@@ -12,8 +12,6 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using PVZEngine.Modifiers;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {

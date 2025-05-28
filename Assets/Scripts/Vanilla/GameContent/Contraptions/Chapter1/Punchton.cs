@@ -77,7 +77,7 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f;
                 SetArmExtension(entity, extension);
 
-                    var target = detector.Detect(entity);
+                var target = detector.Detect(entity);
                 if (target != null)
                 {
                     var timer = GetStateTimer(entity);

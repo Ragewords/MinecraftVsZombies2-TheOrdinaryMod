@@ -16,7 +16,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
 
 namespace MVZ2.GameContent.Contraptions
 {

@@ -3,7 +3,6 @@ using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -19,7 +18,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
-using static MVZ2.GameContent.Buffs.VanillaBuffNames;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -76,7 +74,7 @@ namespace MVZ2.GameContent.Bosses
                     HeadSplit(entity);
                 }
             }
-            
+
         }
         public override void PostDeath(Entity boss, DeathInfo damageInfo)
         {

@@ -1,4 +1,3 @@
-using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Modifiers;
 using PVZEngine.Damages;

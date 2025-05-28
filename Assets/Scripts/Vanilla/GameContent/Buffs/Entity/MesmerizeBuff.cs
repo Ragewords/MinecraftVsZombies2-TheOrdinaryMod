@@ -6,7 +6,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace MVZ2.GameContent.Buffs
 {

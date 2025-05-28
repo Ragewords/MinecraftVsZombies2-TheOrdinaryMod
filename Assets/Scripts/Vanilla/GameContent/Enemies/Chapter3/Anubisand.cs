@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Enemies
                 timer.Reset();
                 var offset = SUMMON_OFFSET;
                 offset.x *= enemy.GetFacingX();
-                for (var i = -1; i <=1; i++)
+                for (var i = -1; i <= 1; i++)
                 {
                     var sand = enemy.SpawnWithParams(VanillaEnemyID.soulsand, enemy.Position + offset + i * new Vector3(64, 0, 0));
                     sand.AddBuff<SoulsandSummonedBuff>();

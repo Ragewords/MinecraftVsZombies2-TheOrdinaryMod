@@ -1,12 +1,10 @@
 using System;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Difficulties;
 using MVZ2.Vanilla.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.Vanilla.Entities

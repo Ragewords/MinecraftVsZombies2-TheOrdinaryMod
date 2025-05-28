@@ -8,7 +8,6 @@ using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
 using PVZEngine.SeedPacks;
-using static MVZ2.Vanilla.Callbacks.VanillaLevelCallbacks.PlaceEntityParams;
 
 namespace MVZ2.Vanilla.Callbacks
 {

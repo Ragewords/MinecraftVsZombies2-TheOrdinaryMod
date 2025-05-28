@@ -2,7 +2,6 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
@@ -12,7 +11,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace MVZ2.GameContent.Contraptions
 {

@@ -1,11 +1,9 @@
 ﻿using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Level;
 using PVZEngine;
 using PVZEngine.Definitions;
 using PVZEngine.Level;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Stages
 {

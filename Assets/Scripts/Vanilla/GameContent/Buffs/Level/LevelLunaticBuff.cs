@@ -5,7 +5,6 @@ using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
-using static MVZ2.GameContent.Buffs.Level.LevelEasyBuff;
 
 namespace MVZ2.GameContent.Buffs.Level
 {

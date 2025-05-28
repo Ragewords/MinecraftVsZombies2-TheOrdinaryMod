@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
