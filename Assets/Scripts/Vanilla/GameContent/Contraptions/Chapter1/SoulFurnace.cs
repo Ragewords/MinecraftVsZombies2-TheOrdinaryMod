@@ -97,15 +97,12 @@ namespace MVZ2.GameContent.Contraptions
             var rng = furnace.RNG;
             if (damage.HasAnyFatal())
             {
-                for (int i = 0; i < fuel; i++)
+                for (int i = 1; i <= fuel; i++)
                 {
-                    var xspeed = rng.Next(15f, -15f);
-                    var yspeed = rng.Next(20f);
-                    var zspeed = rng.Next(-10f, 10f);
+                    var angle = i * Mathf.CeilToInt(360 / fuel);
                     var param = furnace.GetShootParams();
-                    param.velocity = new Vector3(xspeed, yspeed, zspeed);
+                    param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 12;
                     var projectile = furnace.ShootProjectile(param);
-                    projectile.SetGravity(1);
                     SoulfireBall.SetBlast(projectile, true);
                 }
             }

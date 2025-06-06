@@ -45,18 +45,18 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.soulFurnace,
                 VanillaContraptionID.dispenser,
                 VanillaContraptionID.hellfire,
-                VanillaContraptionID.gravityPad,
-                VanillaContraptionID.necrotombstone,
+                VanillaContraptionID.mineTNT,
+                VanillaContraptionID.splitenser,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.shikaisenStaff,
                 VanillaEnemyID.ghost,
-                VanillaEnemyID.curseer,
+                VanillaEnemyID.reflectiveBarrierZombie,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.theCreaturesHeart,
+                VanillaArtifactID.jackOLantern,
                 VanillaArtifactID.sweetSleepPillow,
                 VanillaArtifactID.dreamKey,
             });

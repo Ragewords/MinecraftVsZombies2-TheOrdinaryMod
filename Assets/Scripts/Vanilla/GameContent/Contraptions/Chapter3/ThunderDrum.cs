@@ -67,15 +67,23 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override bool CanTrigger(Entity entity)
         {
-            return base.CanTrigger(entity) && !entity.IsEvoked() && !IsBroken(entity);
+            return base.CanTrigger(entity) && !entity.IsEvoked();
         }
         protected override void OnTrigger(Entity entity)
         {
             base.OnTrigger(entity);
-            Quake(entity);
-            SetBroken(entity, true);
-            var restoreTimer = GetRestoreTimer(entity);
-            restoreTimer.ResetTime(RESTORE_TIME);
+            if (!IsBroken(entity))
+            {
+                Quake(entity);
+                SetBroken(entity, true);
+                var restoreTimer = GetRestoreTimer(entity);
+                restoreTimer.ResetTime(RESTORE_TIME);
+            }
+            else
+            {
+                WeakQuake(entity);
+                entity.TakeDamage(60, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.SELF_DAMAGE), entity);
+            }
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -111,8 +119,8 @@ namespace MVZ2.GameContent.Contraptions
                 var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
 
                 var vel = target.Velocity;
-                vel.x = -3 * knockbackMultiplier;
-                vel.y = 18 * knockbackMultiplier;
+                vel.x = 4 * knockbackMultiplier;
+                vel.y = 15 * knockbackMultiplier;
                 target.Velocity = vel;
 
                 if (target.GetMass() <= VanillaMass.MEDIUM)
@@ -120,7 +128,7 @@ namespace MVZ2.GameContent.Contraptions
                     target.RandomChangeAdjacentLane(self.RNG);
                 }
                 if (target.CanDeactive())
-                    target.Stun(900);
+                    target.Stun(300);
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
                 {
@@ -129,6 +137,23 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
             self.Level.ShakeScreen(15, 0, 30);
+            self.PlaySound(VanillaSoundID.lightningAttack);
+        }
+        private void WeakQuake(Entity self)
+        {
+            detectBuffer.Clear();
+            self.Level.FindEntitiesNonAlloc(e => IsValidTarget(self, e), detectBuffer);
+            foreach (var target in detectBuffer)
+            {
+                if (target.Type != EntityTypes.ENEMY)
+                    continue;
+                var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
+
+                var vel = target.Velocity;
+                vel.x = 2 * knockbackMultiplier;
+                target.Velocity = vel;
+            }
+            self.Level.ShakeScreen(5, 0, 10);
             self.PlaySound(VanillaSoundID.lightningAttack);
         }
         public static bool IsBroken(Entity entity) => entity.GetBehaviourField<bool>(ID, FIELD_BROKEN);

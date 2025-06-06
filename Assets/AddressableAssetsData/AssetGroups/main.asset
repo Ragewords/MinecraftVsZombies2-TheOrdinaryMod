@@ -5376,6 +5376,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89feb926e3a033d4e950965b3ad380c9
+    m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/contraptions/dispenser_bookworm.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a0fa8e6a83d14c4581f8cee8ce07eed
     m_Address: mvz2:mobile_blueprint/necromancer
     m_ReadOnly: 0

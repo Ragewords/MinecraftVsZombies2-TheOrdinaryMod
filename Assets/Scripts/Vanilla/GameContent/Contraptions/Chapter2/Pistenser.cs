@@ -233,7 +233,7 @@ namespace MVZ2.GameContent.Contraptions
             var projectileID = VanillaProjectileID.spikeBall;
             var projectileDefinition = entity.Level.Content.GetEntityDefinition(projectileID);
             var projectileGravity = projectileDefinition?.GetGravity() ?? 0;
-            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY());
+            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY()).Take(20);
             foreach (var target in targets)
             {
                 if (!soundPlayed)

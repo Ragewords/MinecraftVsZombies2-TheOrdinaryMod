@@ -34,19 +34,6 @@ namespace MVZ2.GameContent.Contraptions
             ShootTick(entity);
             EvokedUpdate(entity);
         }
-        public override void OnShootTick(Entity entity)
-        {
-            var projectile = Shoot(entity);
-            Knife.SetNoDelay(projectile, true);
-            var collider = detector.DetectWithTheLeast(entity, e => Mathf.Abs(e.Entity.Position.x - entity.Position.x));
-            var timestop_target = collider?.Entity;
-            if (timestop_target != null)
-            {
-                if (timestop_target.CanDeactive())
-                    timestop_target.AddBuff<TimeStopBuff>();
-            }
-
-        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -60,6 +47,11 @@ namespace MVZ2.GameContent.Contraptions
 
                 SetEvocationTargetPositions(entity, positions);
                 entity.PlaySound(VanillaSoundID.spellCard);
+                foreach (var target in entities)
+                {
+                    if (target.CanDeactive())
+                        target.AddBuff<TimeStopBuff>();
+                }
             }
         }
         public static FrameTimer GetEvocationTimer(Entity entity)
@@ -120,6 +112,7 @@ namespace MVZ2.GameContent.Contraptions
                             param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                             var projectile = entity.Spawn(entity.GetProjectileID(), knifePos, param);
                             projectile.Velocity = direction * -20;
+                            Knife.SetNoDelay(projectile, true);
                             Knife.SetDestination(projectile, target);
 
                             var buff = projectile.AddBuff<ProjectileWaitBuff>();

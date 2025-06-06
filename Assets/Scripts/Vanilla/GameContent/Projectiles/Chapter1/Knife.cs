@@ -22,7 +22,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.Init(projectile);
             SetWaitTimer(projectile, new FrameTimer(30));
-            SetNoDelay(projectile, false);
+            SetNoDelay(projectile, true);
         }
         public override void Update(Entity projectile)
         {

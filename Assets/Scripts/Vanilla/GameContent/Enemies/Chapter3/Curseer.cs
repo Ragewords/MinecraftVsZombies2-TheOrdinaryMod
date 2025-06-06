@@ -56,7 +56,6 @@ namespace MVZ2.GameContent.Enemies
                         foreach (var target in heal_target)
                         {
                             target.HealEffects(entity.GetDamage() * 2, entity);
-                            target.HealMainArmor(entity.GetDamage(), entity);
                             entity.PlaySound(VanillaSoundID.heal);
                             SetCasting(entity, true);
                         }
@@ -94,7 +93,7 @@ namespace MVZ2.GameContent.Enemies
         public static void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
         public static FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
 
-        #region ³£Á¿
+        #region ï¿½ï¿½ï¿½ï¿½
         private const int CAST_COOLDOWN = 300;
         private const int CONTROL_DETECT_TIME = 30;
 
@@ -105,6 +104,6 @@ namespace MVZ2.GameContent.Enemies
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
-        #endregion ³£Á¿
+        #endregion ï¿½ï¿½ï¿½ï¿½
     }
 }

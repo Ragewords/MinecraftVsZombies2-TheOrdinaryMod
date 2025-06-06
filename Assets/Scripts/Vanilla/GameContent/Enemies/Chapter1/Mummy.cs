@@ -40,14 +40,8 @@ namespace MVZ2.GameContent.Enemies
                 return;
             var param = entity.GetSpawnParams();
             param.SetProperty(EngineEntityProps.SCALE, entity.GetScale());
-            var gas = entity.Spawn(VanillaEffectID.mummyGas, entity.Position, param);
-            var zombie = entity.SpawnWithParams(VanillaEnemyID.zombie, entity.Position);
-
-            var randomValue = entity.RNG.Next(20);
-            if (randomValue < 6)
-                zombie.EquipMainArmor(VanillaArmorID.leatherCap);
-            else if (randomValue >= 6 && randomValue <= 8)
-                zombie.EquipMainArmor(VanillaArmorID.ironHelmet);
+            entity.Spawn(VanillaEffectID.mummyGas, entity.Position, param);
+            entity.SpawnWithParams(VanillaEnemyID.zombie, entity.Position);
             entity.PlaySound(VanillaSoundID.poisonCast);
             entity.Remove();
 

@@ -171,6 +171,15 @@
             <key hex="#000000" time="1"/>
         </colorKeys>
     </fragment>
+    <fragment name="splitenser">
+        <colorKeys>
+            <key hex="#4F4F4F" time="0.35"/>
+            <key hex="#ABABAB" time="0.7"/>
+            <key hex="#C3A26D" time="0.3"/>
+            <key hex="#0012FE" time="0.4"/>
+            <key hex="#FFFFFF" time="0.45"/>
+        </colorKeys>
+    </fragment>
     <fragment name="hellfire" blend="true">
         <colorKeys>
             <key hex="#854242" time="0"/>

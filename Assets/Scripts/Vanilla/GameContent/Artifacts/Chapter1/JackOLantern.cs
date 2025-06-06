@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.Artifacts
         private void PostContraptionInitCallback(EntityCallbackParams param, CallbackResult result)
         {
             var contraption = param.entity;
-            if (!contraption.IsNotLightSource())
+            if (!contraption.UnableToGlow())
                 return;
             var level = contraption.Level;
             var lantern = level.GetArtifact(GetID());

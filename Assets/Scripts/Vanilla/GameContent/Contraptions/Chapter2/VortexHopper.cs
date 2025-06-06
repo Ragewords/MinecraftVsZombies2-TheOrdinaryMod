@@ -28,7 +28,6 @@ namespace MVZ2.GameContent.Contraptions
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
             SetRepeatTimer(entity, new FrameTimer(0));
-            StartSpin(entity);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -45,9 +44,8 @@ namespace MVZ2.GameContent.Contraptions
                     var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
                     projectile.SetDamage(entity.GetDamage());
                     projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
-                    projectile.SetPiercing(true);
                 }
-                SetRepeatTimer(entity, new FrameTimer(10));
+                SetRepeatTimer(entity, new FrameTimer(5));
             }
             if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
             {

@@ -14,6 +14,7 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            entity.EquipArmorTo(VanillaArmorSlots.main, VanillaArmorID.ironHelmet);
             entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.reflectiveBarrier);
         }
     }
