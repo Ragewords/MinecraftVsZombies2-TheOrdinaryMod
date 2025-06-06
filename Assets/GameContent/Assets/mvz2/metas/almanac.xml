@@ -129,15 +129,17 @@
         </entry>
         <entry id="mvz2:punchton">
             <header>
-                <p>一拳活塞能够击退前方的敌人并击碎石制品，但之后需要一定时间来修复自身。</p>
+                <p>冲击活塞能够通过蓄力来击退前方的敌人并击碎石制品，但之后需要一定时间来修复自身。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>100（无视护甲），首次攻击伤害×10</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
+                <p>伤害倍率：<![CDATA[<color=red>0.5</color>]]>-<![CDATA[<color=red>10</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>30秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
             <flavor>
-                <p>活塞变强了，也变秃了。</p>
+                <p>这本来会是一条非常具有冲击性的描述，可惜它目前还在进行修复。</p>
             </flavor>
         </entry>
         <entry id="mvz2:tnt">
@@ -145,8 +147,8 @@
                 <p>Etho台阶在触发后能炸飞周围的敌人，并在他们的头顶生成小炸药。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>1800，900（小炸药）</color>]]></p>
-                <p>半径：<![CDATA[<color=red>1.5格，0.5格（小炸药）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>1800，100（小炸药）</color>]]></p>
+                <p>半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>炸出4个Etho台阶分身</color>]]></p>
             </properties>
             <flavor>
@@ -170,12 +172,12 @@
         </entry>
         <entry id="mvz2:silvenser">
             <header>
-                <p>银质发射器能发射穿透血肉之躯的飞刀，并时停距离自己最近的敌人。</p>
+                <p>银质发射器能发射穿透血肉之躯并导致流血的飞刀。</p>
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
-                <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在一段时间后再次向中心飞行</color>]]></p>
+                <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物；飞刀触碰到金属会反弹并失去穿透能力</color>]]></p>
+                <p>技能：<![CDATA[<color=red>时停场上的所有敌人，以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在一段时间后再次向中心飞行</color>]]></p>
             </properties>
             <flavor>
                 <p>"发发，我从人生中学到了一件事情，发射器越是发射箭矢，就越会感到无力，除非超越箭矢……""你到底想说什么！""我不发射箭了，发发！"</p>
@@ -183,10 +185,9 @@
         </entry>
         <entry id="mvz2:magichest">
             <header>
-                <p>魔术箱在吞掉前面的僵尸后会变成一个星之碎片。</p>
+                <p>魔术箱在吞掉前面的僵尸后会变成一个星之碎片，并召唤吃掉的敌人为你而战。</p>
             </header>
             <properties>
-                <p>特殊：<![CDATA[<color=red>召唤吃掉的敌人为你而战</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤一辆地狱战车</color>]]></p>
             </properties>
             <flavor>
@@ -236,8 +237,7 @@
             </header>
             <properties>
                 <p>箭矢伤害：<![CDATA[<color=red>30</color>]]></p>
-                <p>特点：<![CDATA[<color=red>一次性使用，箭矢穿透敌人</color>]]></p>
-                <p>技能：<![CDATA[<color=red>无</color>]]></p>
+                <p>技能：<![CDATA[<color=red>将更大范围的敌人拉入水底</color>]]></p>
             </properties>
             <flavor>
                 <p>他无聊的时候经常一边把自己当陀螺抽一边唱：“Well I talk about it talk about it talk about it talk about it”</p>
@@ -250,8 +250,8 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>25</color>]]></p>
-                <p>特点：<![CDATA[<color=red>能够攻击高处的敌人</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向所有敌人发射穿甲的巨型尖刺</color>]]></p>
+                <p>特点：<![CDATA[<color=red>能够攻击高处或低矮的敌人</color>]]></p>
+                <p>技能：<![CDATA[<color=red>向至多20个敌人发射穿甲的巨型尖刺</color>]]></p>
             </properties>
             <flavor>
                 <p>活塞发射器其实可以伸的非常长，甚至能达到直升机飞行的高度。</p>
@@ -351,7 +351,6 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
-                <p>特点：<![CDATA[<color=red>减少40%自身受到的伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>3x3范围内的器械无敌5秒</color>]]></p>
             </properties>
             <flavor>
@@ -374,11 +373,11 @@
         </entry>
         <entry id="mvz2:thunder_drum">
             <header>
-                <p>雷鼓在触发后会震飞所有地面上的敌人，使其前进、眩晕并换行。之后进入破损状态，需要时间修复。</p>
+                <p>雷鼓在触发后会震飞所有地面上的敌人，使其后退、眩晕并换行。之后进入破损状态，需要时间修复，也可以以自身耐久为代价触发，造成击退效果。</p>
             </header>
             <properties>
                 <p>修复时间：<![CDATA[<color=red>60秒</color>]]></p>
-                <p>眩晕时间：<![CDATA[<color=red>30秒</color>]]></p>
+                <p>眩晕时间：<![CDATA[<color=red>10秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>引发4秒地震，对所有地面上的敌人造成总共40%最大生命的伤害</color>]]></p>
             </properties>
             <flavor>
@@ -394,7 +393,7 @@
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80（电击），20（电磁爆），5（电场）</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>造成一次半径1格，伤害为320的爆炸</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>造成一次半径1格的爆炸，造成320点电流伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>
@@ -418,13 +417,14 @@
         <!-- Chapter 4 -->
         <entry id="mvz2:note_block">
             <header>
-                <p>音符盒发射在自身和敌人间不停反弹的音符，持续造成伤害。</p>
+                <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，也可以释放音波攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>5</color>]]></p>
-                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>5（音符），30（音波）</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒（音符），2秒（音波）</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度</color>]]></p>
+                <p>音波范围：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>]]></p>
             </properties>
             <flavor>
                 <p>永远不要试图做音符盒的邻居，别问为什么。</p>
@@ -446,12 +446,12 @@
         </entry>
         <entry id="mvz2:splitenser">
             <header>
-                <p>双向发射器在向前发射箭矢的同时，也会向后方发射双倍的箭矢。</p>
+                <p>双向发射器在向前发射双倍箭矢的同时，会向后方发射双倍的飞刀。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>1发/1.5秒（前方），2发/1.5秒（后方）</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢，最后向后发射一支大箭矢</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>2发/1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20（箭矢），15（飞刀）</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢和飞刀，最后向后发射一支大箭矢</color>]]></p>
             </properties>
             <flavor>
                 <p>“别射了，你把我晃得头晕！”后面的发射器很不爽。</p>
@@ -467,9 +467,10 @@
         </entry>
         <entry id="mvz2:devourer">
             <header>
-                <p>吞噬者可以用于消除刷怪笼，或者用于将器械变回一张蓝图掉落物。</p>
+                <p>吞噬者可以用于消除刷怪笼，或者用于将器械变回一张蓝图掉落物。吞噬完毕后会眩晕周围的敌人。</p>
             </header>
             <properties>
+                <p>眩晕时间：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变成吃豆人中的小幽灵！</color>]]></p>
             </properties>
             <flavor>
@@ -482,11 +483,14 @@
         </entry>
         <entry id="hellfire">
             <header>
-                <p>地狱火会点燃穿过它的箭矢，使其额外造成火焰伤害。</p>
+                <p>地狱火会烧伤接近的敌人，并点燃穿过它的箭矢，使其额外造成火焰伤害。</p>
             </header>
             <properties>
+                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+20火焰伤害，+13.33溅射伤害</color>]]></p>
-                <p>技能：<![CDATA[<color=red>变为诅咒火焰，为箭矢+40火焰伤害，+26.66溅射伤害</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成1800点火焰伤害</color>]]></p>
+                <p>技能：<![CDATA[<color=red>变为诅咒火焰，×200%自身伤害，为箭矢+40火焰伤害，+26.66溅射伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>烧吧！我内心中的熊熊烈火，点燃我的<![CDATA[<color=red>愤怒</color>]]>！</p>
@@ -500,13 +504,13 @@
         </entry>
         <entry id="necrotombstone">
             <header>
-                <p>死灵墓碑会不断召唤友方的骷髅战士，让它们为你而战。</p>
+                <p>死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师和骷髅战士，让它们为你而战。</p>
             </header>
             <properties>
                 <p>召唤时间：<![CDATA[<color=red>15秒</color>]]></p>
                 <p>骷髅战士生命：<![CDATA[<color=red>200+300（头盔）+200（盾）</color>]]></p>
                 <p>骷髅战士速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>技能：<![CDATA[<color=red>召唤3个同种的火焰、冰霜或闪电骷髅法师</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在自身与毗邻的格子上各召唤1个火焰、冰霜或闪电骷髅法师</color>]]></p>
             </properties>
             <flavor>
                 <p>看着这座墓碑，恍惚中，你的脑海中似乎浮现出了一句熟悉的话：</p>
@@ -752,7 +756,7 @@
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向指定位置发射一枚导弹</color>]]></p>
+                <p>技能：<![CDATA[<color=red>抛射出大量火焰弹及1一个Etho台阶至场上的随机位置</color>]]></p>
             </properties>
             <flavor>
                 <p>“军火库？开什么玩笑，火焰弹也算热兵器吗？”</p>
@@ -812,7 +816,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>在场时使所有敌人速度×2</color>]]></p>
+                <p>特点：<![CDATA[<color=red>使所有敌人速度×2</color>]]></p>
             </properties>
             <flavor>
                 <p>当他被授予旗帜时，他感到无比的荣幸和骄傲。他觉得自己作为僵尸的领导拥有至高无上的地位，便无时无刻不飘飘然。然而他不知道他的背后有多少人在嘲笑他是个肉盾。</p>
@@ -834,13 +838,13 @@
         </entry>
         <entry id="mvz2:gargoyle">
             <header>
-                <p>宝石石像鬼会在最后一波到来时复苏并进攻你的房子。</p>
+                <p>深渊石像鬼会在最后一波到来时复苏并进攻你的房子。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>1200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>900</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>冲击活塞</color>]]></p>
                 <p>质量：<![CDATA[<color=red>重</color>]]></p>
-                <p>特点：<![CDATA[<color=red>死亡时掉落一个绿宝石</color>]]></p>
+                <p>特点：<![CDATA[<color=red>为触碰的器械附上诅咒，其在被摧毁时会变为新的深渊石像鬼</color>]]></p>
             </properties>
             <flavor>
                 <p>石像鬼和他的妈妈住在山上的一间小屋中。石像鬼画画，玩玩具，妈妈就在电视上看广播。生活很简单，他们也很幸福。直到有一天石像鬼的妈妈从天上听到了雷声……</p>
@@ -874,12 +878,11 @@
         </entry>
         <entry id="mvz2:necromancer">
             <header>
-                <p>死灵法师会生成临时的骨墙阻挡子弹。</p>
+                <p>死灵法师会生成临时的骨墙阻挡子弹，有时会召唤出骷髅战士。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>骨墙生命：<![CDATA[<color=red>350</color>]]></p>
-                <p>特点：<![CDATA[<color=red>骨墙消失时有可能会出现骷髅</color>]]></p>
             </properties>
             <flavor>
                 <p>死灵法师想不通，为什么就因为复活了死者，他们就莫名其妙的被人们称为“邪恶巫师”，然后就被多收了税。他们其实只是想砌堵墙罢了。</p>
@@ -980,8 +983,8 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>爆炸伤害：<![CDATA[<color=red>300（正常），150（火焰），50（电弧）</color>]]></p>
-                <p>范围：<![CDATA[<color=red>1.5格（正常），3格（火焰），4.5格（电弧）</color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red>300，150（火焰），50（电弧）</color>]]></p>
+                <p>范围：<![CDATA[<color=red>1.5格，3格（火焰），4.5格（电弧）</color>]]></p>
             </properties>
             <flavor>
                 <p>没人喜欢狂战士，他们就是一群到处搞破坏的疯子，追究起责任时还要倒打你一耙，穷途末路了还要拉几个人下水。</p>
@@ -1022,17 +1025,94 @@
         </entry>
         <entry id="mvz2:anubisand">
             <header>
-                <p>灵魂沙王飞在空中，不时向下方召唤阻挡子弹的灵魂沙。</p>
+                <p>灵魂沙王飞在空中，不时向下方召唤阻挡子弹并使敌人减速的灵魂沙。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>灵魂沙生命：<![CDATA[<color=red>300</color>]]></p>
-                <p>特点：<![CDATA[<color=red>不会被一般高度的子弹打中；经过灵魂沙的敌人会减速</color>]]></p>
+                <p>特点：<![CDATA[<color=red>不会被一般高度的子弹打中</color>]]></p>
             </properties>
             <flavor>
                 <p>其实他用来审判罪行的天平已经坏了很久了，它常放羽毛的那一端比较重一些。</p>
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:reflective_barrier_zombie">
+            <header>
+                <p>反射壁僵尸使用反射壁保护自己，并对飞来的子弹作出反击。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200+1100（头盔）+600（盾牌）</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>特点：<![CDATA[<color=red>子弹击中反射壁并消失后，产生伤害相同的子弹进行回击</color>]]></p>
+            </properties>
+            <flavor>
+                <p>“我诅咒你永世不得超生！”</p>
+                <p>“反弹！”</p>
+                <p>“再反弹！”</p>
+                <p>“反弹回去！”</p>
+                <p>“再弹！”</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:talisman_zombie">
+            <header>
+                <p>灵符僵尸跳跃前进，并能够在攻击的同时恢复生命值。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>特点：<![CDATA[<color=red>攻击时恢复等量生命值</color>]]></p>
+            </properties>
+            <flavor>
+                <p>你知道的，伙计——只要在那个灵符上写上任何东西，它就会按照上面写的事情去照办。</p>
+                <p>比如……写上“不要照着这句话做”。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:wicked_hermit_zombie">
+            <header>
+                <p>邪仙僵尸出场时会召唤一只灵符僵尸，在灵符僵尸死后会传送到最左侧，反向破坏你的阵型。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>特点：<![CDATA[<color=red>自带灵符僵尸。灵符僵尸死后传送到最左侧，从后方攻击，并再生成一只灵符僵尸</color>]]></p>
+            </properties>
+            <flavor>
+                <p>邪仙僵尸生前害怕死亡，因此他打算成为邪仙，逃避死亡的命运。</p>
+                <p>即使是在他死后，这份执念也依然没有结束。他变成了僵尸，为的就是继续生前的进程。</p>
+                <p>终于，他成为了邪仙，现在他再也不用害怕死亡了！</p>
+                <p>……你就不觉得哪里不对吗？</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:shikaisen_zombie">
+            <header>
+                <p>尸解仙僵尸在生命较低时会将竹杖插入地面，形成可以复活周围所有怪物的图腾。彻底死亡时，灵魂会寄托于身上的壶以继续进攻。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>竹杖耐久：<![CDATA[<color=red>1200</color>]]></p>
+                <p>壶耐久：<![CDATA[<color=red>10</color>]]></p>
+                <p>壶抗性：<![CDATA[<color=red>只会受到1点伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；死亡且无法复活时身上的壶会继续前进</color>]]></p>
+                <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖；冲击和爆炸会无视壶的抗性</color>]]></p>
+            </properties>
+            <flavor>
+                <p>非常擅长做仰卧起坐。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:emperor_zombie">
+            <header>
+                <p>皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾，使它们免疫下一次受到的伤害。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
+                <p>施法冷却：<![CDATA[<color=red>5秒</color>]]></p>
+                <p>特点：<![CDATA[<color=red>一次最多给予10个周围的敌人圣盾与伤害抗性，抵消下一次受到的伤害，并在15秒内-10受到的伤害</color>]]></p>
+            </properties>
+            <flavor>
+                <p>他并不是什么大国的皇帝，就是一个僵尸小圈子里面，天天被捧的高高的，实际上就只会套盾，被碰一下就破防，还以为自己有多大能耐的土皇帝罢了。</p>
+                <p><![CDATA[<color=red>【图鉴 已被禁言，有效期是永久】</color>]]></p>
             </flavor>
         </entry>
         <entry id="mvz2:skelebomb">
@@ -1075,83 +1155,6 @@
             </properties>
             <flavor>
                 <p>很多人因着咒术师这个名字对他留下了不好的印象，他对此很苦恼，便尝试学习治疗他人的法术。然而因为治疗法术的施展方式过于暴力，他在别人眼里的印象更差了。</p>
-            </flavor>
-        </entry>
-
-        
-        <entry id="mvz2:reflective_barrier_zombie">
-            <header>
-                <p>反射壁僵尸使用反射壁保护自己，并对飞来的子弹作出反击。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200+600</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>子弹击中反射壁并消失后，产生伤害相同的子弹进行回击</color>]]></p>
-            </properties>
-            <flavor>
-                <p>“我诅咒你永世不得超生！”</p>
-                <p>“反弹！”</p>
-                <p>“再反弹！”</p>
-                <p>“反弹回去！”</p>
-                <p>“再弹！”</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:talisman_zombie">
-            <header>
-                <p>灵符僵尸跳跃前进，并能够在攻击的同时恢复生命值。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>攻击时恢复等量生命值</color>]]></p>
-            </properties>
-            <flavor>
-                <p>你知道的，伙计——只要在那个灵符上写上任何东西，它就会按照上面写的事情去照办。</p>
-                <p>比如……写上“不要照着这句话做”。</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:wicked_hermit_zombie">
-            <header>
-                <p>邪仙僵尸出场时会召唤一只灵符僵尸，在灵符僵尸死后会传送到最左侧，反向破坏你的阵型。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>自带灵符僵尸。灵符僵尸死后传送到最左侧，从后方攻击</color>]]></p>
-            </properties>
-            <flavor>
-                <p>邪仙僵尸生前害怕死亡，因此他打算成为邪仙，逃避死亡的命运。</p>
-                <p>即使是在他死后，这份执念也依然没有结束。他变成了僵尸，为的就是继续生前的进程。</p>
-                <p>终于，他成为了邪仙，现在他再也不用害怕死亡了！</p>
-                <p>……你就不觉得哪里不对吗？</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:shikaisen_zombie">
-            <header>
-                <p>尸解仙僵尸在生命较低时会将竹杖插入地面，形成可以复活周围所有怪物的图腾。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>竹杖耐久：<![CDATA[<color=red>1200</color>]]></p>
-                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物</color>]]></p>
-                <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖</color>]]></p>
-            </properties>
-            <flavor>
-                <p>非常擅长做仰卧起坐。</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:emperor_zombie">
-            <header>
-                <p>皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾，使它们免疫下一次受到的伤害。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
-                <p>施法冷却：<![CDATA[<color=red>5秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>一次最多给予10个周围的敌人圣盾，抵消下一次受到的伤害</color>]]></p>
-            </properties>
-            <flavor>
-                <p>他并不是什么大国的皇帝，就是一个僵尸小圈子里面，天天被捧的高高的，实际上就只会套盾，被碰一下就破防，还以为自己有多大能耐的土皇帝罢了。</p>
-                <p><![CDATA[<color=red>【图鉴 已被禁言，有效期是永久】</color>]]></p>
             </flavor>
         </entry>
     </enemies>
