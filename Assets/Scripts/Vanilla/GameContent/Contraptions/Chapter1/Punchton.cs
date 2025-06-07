@@ -56,9 +56,10 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationFloat("Extension", GetArmExtension(entity));
-            entity.SetAnimationFloat("FirstAttack", GetFirstDamage(entity));
             entity.SetAnimationInt("ArmState", GetArmState(entity));
+            entity.SetAnimationFloat("Extension", GetArmExtension(entity));
+            entity.SetAnimationFloat("FixBlend", GetArmFixBlend(entity));
+            entity.SetAnimationFloat("FirstAttack", GetFirstDamage(entity));
         }
 
         protected override void OnEvoke(Entity entity)
@@ -215,9 +216,12 @@ namespace MVZ2.GameContent.Contraptions
                 return 1;
             return 0;
         }
-        public void SetFirstAttack(Entity entity, int v)
+        private float GetArmFixBlend(Entity entity)
         {
-            throw new NotImplementedException();
+            if (entity.State != VanillaEntityStates.PUNCHTON_BROKEN)
+                return 1;
+            var timer = GetStateTimer(entity);
+            return timer?.GetPassedPercentage() ?? 0;
         }
         public float GetArmExtension(Entity entity) => entity.GetBehaviourField<float>(ID, PROP_ARM_EXTENSION);
         public void SetArmExtension(Entity entity, float value) => entity.SetBehaviourField(ID, PROP_ARM_EXTENSION, value);

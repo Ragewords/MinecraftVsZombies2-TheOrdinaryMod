@@ -31,6 +31,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00ad714282dc4364fa67260f36745fae
+    m_Address: mvz2:random/netherrack/break3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 01ea06eaff14a0746a137123701e46b3
     m_Address: mvz2:entity/projectiles/arrow
     m_ReadOnly: 0
@@ -969,13 +976,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 192fd705260459944b02604fe6907cf5
-    m_Address: mvz2:cart/nyaightmare
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1969da4876c7d6b4e86f72d69e483f78
     m_Address: mvz2:mausoleum_level_sub
     m_ReadOnly: 0
@@ -1010,6 +1010,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1affba9129ab411489955b3026819333
+    m_Address: mvz2:random/netherrack/break5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b5cf06234c97a2478e57ed59637962b
     m_Address: mvz2:halloween_level_extra
@@ -1765,6 +1772,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d508ee9563c4a64aa13edf30218cd42
+    m_Address: mvz2:ui/almanac/shell_tags
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d8cc2e256684364897cd68a561a74bf
     m_Address: mvz2:entity/effects/mine_debris
@@ -3431,6 +3445,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 542969b534462a84393dbe4e1b39a87a
+    m_Address: mvz2:random/netherrack/break1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5417b719acb5e5b409f69c2c9d136271
     m_Address: mvz2:entity/boss/frankenstein_head
     m_ReadOnly: 0
@@ -3787,6 +3808,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d2c28a61405a06409579f821db2bf10
+    m_Address: mvz2:ui/almanac/placement_tags
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5d3cf3664e1b8304f90a615e9b1e27af
     m_Address: mvz2:talk/villager/villager_extra_long3
@@ -4264,12 +4292,26 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b4f42cf51641ec4cb0ec0a85724237d
+    m_Address: mvz2:random/netherrack/break6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b600f1f5110d7644843e4595de25748
     m_Address: mvz2:entity/contraption/moonlight_sensor
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b7890603e8ff0b449785725ca9663e1
+    m_Address: mvz2:cart/nyaightmare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b99780004967464787b9b86745a18c2
     m_Address: mvz2:enemy/castle/mesmerizer
@@ -5641,6 +5683,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f5188cc46ef9a44696613996b27b1ec
+    m_Address: mvz2:ui/almanac/special_marks
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f7e35986ffa8894c8241697cb5846ec
     m_Address: mvz2:suspension
@@ -7245,6 +7294,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b54c9c31fd15a2049873ac7dd3397b9b
+    m_Address: mvz2:ui/almanac/mass_tags
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b54fb45c2064c9149942a6ea99c593f3
     m_Address: mvz2:entity/contraptions/stone_dropper
     m_ReadOnly: 0
@@ -7679,6 +7735,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c12e1db49f78c4141a010f0e2c92453d
+    m_Address: mvz2:random/netherrack/break4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c15c0ad358a95a2418ff64fa1c67a224
     m_Address: mvz2:soul_sand_break5
     m_ReadOnly: 0
@@ -7818,6 +7881,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c419009eb7b0cae44aca6be02f48b0d4
+    m_Address: mvz2:ui/almanac/attribute_tags
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c45e65a66018ee54cb5c8165984aaa2d
     m_Address: mvz2:enemy/mausoleum/wicked_hermit_zombie
@@ -9793,6 +9863,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4743b7a556142b4db02b61d15e9da06
+    m_Address: mvz2:ui/almanac/grid_layer_tags
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f47cc08bb024bd04d87a290c78ab60de
     m_Address: mvz2:map/dream/nightmare_sleepenser
     m_ReadOnly: 0
@@ -9840,6 +9917,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f60acf63ccf6f504fadfd959dc2d20c6
+    m_Address: mvz2:random/netherrack/break2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f645825912b9d5248a6ed2242f3169da
     m_Address: mvz2:entity/ghost/ghost_death
@@ -10119,6 +10203,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd045d9b19051854898d84facdd55d17
+    m_Address: mvz2:ui/almanac/tag_backgrounds
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd0564e8ade3f984fb22a344c641970a
     m_Address: mvz2:projectile/diamond_caltrop

@@ -3,12 +3,10 @@ using MVZ2.Models;
 using MVZ2.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace MVZ2.Almanacs
 {
-    public class ContraptionAlmanacPage : AlmanacPage
+    public class ContraptionAlmanacPage : BookAlmanacPage
     {
         public void SetEntries(ChoosingBlueprintViewData[] entries, bool commandBlockVisible, ChoosingBlueprintViewData commandBlockViewData)
         {
@@ -19,9 +17,7 @@ namespace MVZ2.Almanacs
         public void SetActiveEntry(Model prefab, Camera camera, string name, string description, string cost, string recharge)
         {
             entryModel.ChangeModel(prefab, camera);
-            nameText.text = name;
-            descriptionText.text = description;
-            descriptionScrollRect.verticalNormalizedPosition = 1;
+            SetDescription(name, description);
             costText.text = cost;
             rechargeText.text = recharge;
         }
@@ -29,9 +25,9 @@ namespace MVZ2.Almanacs
         {
             base.Awake();
             blueprintDisplayer.OnBlueprintSelect += OnEntryClickCallback;
-            commandBlockSlot.OnClick += OnCommandBlockClickCallback;
+            commandBlockSlot.OnSelect += OnCommandBlockClickCallback;
         }
-        private void OnEntryClickCallback(int index, PointerEventData eventData)
+        private void OnEntryClickCallback(int index)
         {
             OnEntryClick?.Invoke(index);
         }
@@ -39,20 +35,14 @@ namespace MVZ2.Almanacs
         {
             OnCommandBlockClick?.Invoke();
         }
-        public Action<int> OnEntryClick;
-        public Action OnCommandBlockClick;
+        public event Action<int> OnEntryClick;
+        public event Action OnCommandBlockClick;
         [SerializeField]
         private BlueprintDisplayer blueprintDisplayer;
         [SerializeField]
         CommandBlockSlot commandBlockSlot;
         [SerializeField]
         private AlmanacModel entryModel;
-        [SerializeField]
-        private ScrollRect descriptionScrollRect;
-        [SerializeField]
-        private TextMeshProUGUI nameText;
-        [SerializeField]
-        private TextMeshProUGUI descriptionText;
         [SerializeField]
         private TextMeshProUGUI costText;
         [SerializeField]

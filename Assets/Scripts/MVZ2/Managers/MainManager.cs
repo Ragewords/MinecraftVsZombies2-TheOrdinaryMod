@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using MukioI18n;
 using MVZ2.Almanacs;
@@ -33,9 +34,13 @@ namespace MVZ2.Managers
         {
             InitGameSettings();
             InitSerializable();
+            LogInformations();
             await LoadManagersInit();
             Scene.Init();
             ModManager.PostGameInit();
+        }
+        public void UpdateManagerFixed()
+        {
         }
         public bool IsMobile()
         {
@@ -74,7 +79,11 @@ namespace MVZ2.Managers
         public void InitLoad()
         {
             loadPipeline = new TaskPipeline();
-            loadPipeline.AddTask(new PipelineTask(TASK_LOAD_RESOURCES, (p) => ResourceManager.LoadAllModResourcesMain(p)));
+            loadPipeline.AddTask(new PipelineTask(TASK_LOAD_RESOURCES, async (p) =>
+            {
+                await ResourceManager.LoadAllModResourcesMain(p);
+                FontManager.InitFontSprites();
+            }));
             loadPipeline.AddTask(new PipelineTask(TASK_LOAD_SPONSORS, (p) => SponsorManager.PullSponsors(p)));
 
             var task = loadPipeline.Run();
@@ -216,9 +225,21 @@ namespace MVZ2.Managers
             SerializeHelper.RegisterClass<SerializableUnityCollisionEntity>();
             SerializeHelper.RegisterClass<SerializableUnityEntityCollider>();
         }
+        private void LogInformations()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"游戏已启动。");
+            sb.AppendLine($"应用程序信息：");
+            sb.AppendLine($"platform: {Application.platform}");
+            sb.AppendLine($"version: {Application.version}");
+            sb.AppendLine($"systemLanguage: {Application.systemLanguage}");
+
+            Debug.Log(sb.ToString());
+        }
         private async Task LoadManagersInit()
         {
             GraphicsManager.Init();
+            FontManager.Init();
             InputManager.InitKeys();
             OptionsManager.InitOptions();
             OptionsManager.LoadOptions();
@@ -283,6 +304,7 @@ namespace MVZ2.Managers
         public CursorManager CursorManager => cursor;
         public ShakeManager ShakeManager => shake;
         public FileManager FileManager => file;
+        public FontManager FontManager => fontManager;
         public OptionsManager OptionsManager => options;
         public ResolutionManager ResolutionManager => resolution;
         public SceneLoadingManager SceneManager => sceneLoadingManager;
@@ -291,12 +313,14 @@ namespace MVZ2.Managers
         public InputManager InputManager => inputManager;
         public SponsorManager SponsorManager => sponsorManager;
         public GraphicsManager GraphicsManager => graphicsManager;
+        public DebugManager DebugManager => debugManager;
         public MainSceneController Scene => scene;
         ISceneController IMainManager.Scene => scene;
         IMusicManager IMainManager.Music => music;
         ILevelManager IMainManager.Level => level;
         IOptionsManager IMainManager.Options => options;
         IGlobalSave IMainManager.Saves => save;
+        IInputManager IMainManager.Input => inputManager;
 
         private Task initTask;
         private TaskPipeline loadPipeline;
@@ -331,6 +355,8 @@ namespace MVZ2.Managers
         [SerializeField]
         private FileManager file;
         [SerializeField]
+        private FontManager fontManager;
+        [SerializeField]
         private OptionsManager options;
         [SerializeField]
         private ResolutionManager resolution;
@@ -346,6 +372,8 @@ namespace MVZ2.Managers
         private SponsorManager sponsorManager;
         [SerializeField]
         private GraphicsManager graphicsManager;
+        [SerializeField]
+        private DebugManager debugManager;
         [SerializeField]
         private MainSceneController scene;
         public enum PlatformMode

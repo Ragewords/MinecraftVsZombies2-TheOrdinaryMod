@@ -1,5 +1,4 @@
 ﻿using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -94,7 +93,8 @@ namespace MVZ2.GameContent.Stages
         public static int GetSmallCounter(LevelEngine level) => level.GetBehaviourField<int>(ID, FIELD_SMALL_COUNTER);
         public static void SetSmallCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_SMALL_COUNTER, value);
 
-        public static readonly NamespaceID ID = new NamespaceID(VanillaMod.spaceName, "little_zombie_stage");
+        public const string REGION_NAME = "little_zombie_stage";
+        [LevelPropertyRegistry(REGION_NAME)]
         public static readonly VanillaLevelPropertyMeta<int> FIELD_BIG_COUNTER = new VanillaLevelPropertyMeta<int>("BigCounter");
         public static readonly VanillaLevelPropertyMeta<int> FIELD_SMALL_COUNTER = new VanillaLevelPropertyMeta<int>("SmallCounter");
         public const int MAX_BIG_COUNTER = 6;

@@ -1,7 +1,9 @@
 using System;
+using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Level;
+using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -27,6 +29,17 @@ namespace MVZ2.Vanilla.Entities
                 | EntityCollisionHelper.MASK_ENEMY
                 | EntityCollisionHelper.MASK_OBSTACLE
                 | EntityCollisionHelper.MASK_BOSS;
+
+            var startingArmor = entity.GetStartingArmor();
+            var startingShield = entity.GetStartingShield();
+            if (NamespaceID.IsValid(startingArmor))
+            {
+                entity.EquipMainArmor(startingArmor);
+            }
+            if (NamespaceID.IsValid(startingShield))
+            {
+                entity.EquipArmorTo(VanillaArmorSlots.shield, startingShield);
+            }
         }
         public override void Update(Entity entity)
         {
@@ -47,9 +60,18 @@ namespace MVZ2.Vanilla.Entities
                 return;
             }
 
-            Vector3 pos = entity.Position;
-            pos.x = Mathf.Min(pos.x, VanillaLevelExt.GetEnemyRightBorderX());
-            entity.Position = pos;
+            if (entity.IsFacingLeft())
+            {
+                Vector3 pos = entity.Position;
+                if (pos.x > VanillaLevelExt.GetEnemyRightBorderX())
+                {
+                    pos.x = Mathf.Min(pos.x, VanillaLevelExt.GetEnemyRightBorderX());
+                    var vel = entity.Velocity;
+                    vel.x = Mathf.Min(vel.x, 0);
+                    entity.Velocity = vel;
+                }
+                entity.Position = pos;
+            }
 
             ChangeLaneUpdate(entity);
             var scale = entity.GetFinalDisplayScale();

@@ -7,6 +7,7 @@ using MVZ2.GameContent.Buffs.Carts;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
@@ -420,7 +421,15 @@ namespace MVZ2.Vanilla.Entities
         }
         public static bool IsAliveEnemy(this Entity entity)
         {
-            return entity.Type == EntityTypes.ENEMY && !entity.IsDead && !entity.IsNotActiveEnemy() && entity.IsHostile(entity.Level.Option.LeftFaction);
+            if (entity.Type != EntityTypes.ENEMY)
+                return false;
+            if (entity.IsDead && !entity.AssumeAlive())
+                return false;
+            if (entity.IsNotActiveEnemy())
+                return false;
+            if (!entity.IsHostile(entity.Level.Option.LeftFaction))
+                return false;
+            return true;
         }
         public static bool CanEntityEnterHouse(this Entity entity)
         {
@@ -854,6 +863,13 @@ namespace MVZ2.Vanilla.Entities
             Vector2Int.right,
             Vector2Int.left
         };
+        #endregion
+
+        #region 蓝图掉落物
+        public static bool IsBlueprintPickup(this Entity entity)
+        {
+            return entity != null && entity.IsEntityOf(VanillaPickupID.blueprintPickup);
+        }
         #endregion
         public static SpawnParams GetSpawnParams(this Entity entity)
         {
