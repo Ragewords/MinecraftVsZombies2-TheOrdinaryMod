@@ -39,6 +39,7 @@ namespace MVZ2.GameContent.Buffs
         public const string carriedByLilyPad = "carried_by_lily_pad";
         public const string carryingOther = "carrying_other";
         public const string lilyPadEvocation = "lily_pad_evocation";
+        public const string drivenserUpgrade = "drivenser_upgrade";
         public const string dreamButterflyShield = "dream_butterfly_shield";
         public const string darkMatterProduction = "dark_matter_production";
         public const string vortexHopperSpin = "vortex_hopper_spin";

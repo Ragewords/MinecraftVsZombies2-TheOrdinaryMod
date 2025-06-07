@@ -1,4 +1,6 @@
-﻿using MVZ2.GameContent.Effects;
+﻿using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
@@ -43,7 +45,7 @@ namespace MVZ2.GameContent.Contraptions
                     {
                         OnShootTick(entity);
                     }
-                    shootTimer.ResetTime((Mathf.FloorToInt(GetTimerTime(entity) / (GetUpgradeLevel(entity) + 1))));
+                    shootTimer.Reset();
                 }
             }
             else
@@ -82,12 +84,6 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetAnimationFloat("BlockerBlend", blend);
             entity.SetAnimationFloat("RotateSpeed", blend + 1);
         }
-        public override void OnShootTick(Entity entity)
-        {
-            var arrow = Shoot(entity);
-            arrow.Velocity += new Vector3(GetUpgradeLevel(entity), 0f, 0f) * (entity.IsFacingLeft() ? -1 : 1);
-            arrow.SetDamage(entity.GetDamage() + (2 * (GetUpgradeLevel(entity) + 1)));
-        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -117,6 +113,7 @@ namespace MVZ2.GameContent.Contraptions
             SetUpgradeLevel(drivenser, GetUpgradeLevel(drivenser) + 1);
             drivenser.PlaySound(VanillaSoundID.mechanism);
             drivenser.Level.Spawn(VanillaEffectID.gearParticles, drivenser.Position, drivenser);
+            drivenser.AddBuff<DrivenserUpgradeBuff>();
         }
         public const int MAX_UPGRADE_LEVEL = 4;
         public const int I_ZOMBIE_LEVEL = 2;

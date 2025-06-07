@@ -150,7 +150,7 @@ namespace MVZ2.GameContent.Contraptions
                 var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
 
                 var vel = target.Velocity;
-                vel.x = 2 * knockbackMultiplier;
+                vel.x = 6 * knockbackMultiplier;
                 target.Velocity = vel;
             }
             self.Level.ShakeScreen(5, 0, 10);

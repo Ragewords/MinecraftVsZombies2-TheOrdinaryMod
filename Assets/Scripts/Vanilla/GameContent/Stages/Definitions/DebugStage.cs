@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.thunderDrum,
                 VanillaContraptionID.hellfire,
                 VanillaContraptionID.punchton,
-                VanillaContraptionID.splitenser,
+                VanillaContraptionID.drivenser,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.shikaisenStaff,
