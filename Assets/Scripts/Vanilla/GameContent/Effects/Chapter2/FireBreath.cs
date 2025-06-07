@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -15,7 +17,7 @@ namespace MVZ2.GameContent.Effects
     [EntityBehaviourDefinition(VanillaEffectNames.fireBreath)]
     public class FireBreath : EffectBehaviour
     {
-        #region ¹«ÓÐ·½·¨
+        #region ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½
         public FireBreath(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new Vector3Modifier(VanillaEntityProps.LIGHT_RANGE, NumberOperator.Multiply, PROP_LIGHT_RANGE_MULTIPLIER));
@@ -24,6 +26,7 @@ namespace MVZ2.GameContent.Effects
         {
             base.Init(entity);
             entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_OBSTACLE | EntityCollisionHelper.MASK_BOSS;
+            entity.CollisionMaskFriendly = EntityCollisionHelper.MASK_PROJECTILE;
             entity.Level.AddLoopSoundEntity(VanillaSoundID.fireBreath, entity.ID);
         }
         public override void Update(Entity entity)
@@ -42,11 +45,27 @@ namespace MVZ2.GameContent.Effects
                     entity.GetCurrentCollisions(collisionBuffer);
                     foreach (var collision in collisionBuffer)
                     {
-                        collision.OtherCollider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.FIRE), entity);
+                        var other = collision.OtherCollider.Entity;
+                        if (other.Type != EntityTypes.PROJECTILE)
+                            collision.OtherCollider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.FIRE), entity);
                     }
                     cooldown = DAMAGE_COOLDOWN;
                 }
                 SetDamageCooldown(entity, cooldown);
+                projectileCollisionBuffer.Clear();
+                entity.GetCurrentCollisions(projectileCollisionBuffer);
+                foreach (var collision in projectileCollisionBuffer)
+                {
+                    var other = collision.OtherCollider.Entity;
+                    if (other.Type == EntityTypes.PROJECTILE)
+                    {
+                        var canIgnite = other.Definition?.HasBehaviour<HellfireIgnitedProjectileBehaviour>() ?? false;
+                        if (!canIgnite)
+                           return;
+                        if (!other.HasBuff<HellfireIgnitedBuff>())
+                             other.AddBuff<HellfireIgnitedBuff>();
+                    }
+                }
             }
             entity.SetAnimationBool("Burning", existing);
             var lightPercentage = Mathf.Max(0, (entity.Timeout / (float)MAX_TIMEOUT) * 3 - 2);
@@ -60,5 +79,6 @@ namespace MVZ2.GameContent.Effects
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_LIGHT_RANGE_MULTIPLIER = new VanillaEntityPropertyMeta<Vector3>("LightRangeMultiplier");
         private static readonly VanillaEntityPropertyMeta<int> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<int>("DamageCooldown");
         private List<EntityCollision> collisionBuffer = new List<EntityCollision>();
+        private List<EntityCollision> projectileCollisionBuffer = new List<EntityCollision>();
     }
 }

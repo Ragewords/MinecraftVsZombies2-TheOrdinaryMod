@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
 
                 var vel = target.Velocity;
                 vel.x = 4 * knockbackMultiplier;
-                vel.y = 15 * knockbackMultiplier;
+                vel.y = 18 * knockbackMultiplier;
                 target.Velocity = vel;
 
                 if (target.GetMass() <= VanillaMass.MEDIUM)

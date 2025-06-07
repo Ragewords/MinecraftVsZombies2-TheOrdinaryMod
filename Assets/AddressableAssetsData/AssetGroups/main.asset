@@ -5426,7 +5426,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89feb926e3a033d4e950965b3ad380c9
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/contraptions/dispenser_bookworm.png
+    m_Address: mvz2:entity/contraptions/dispenser_bookworm
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -7755,6 +7755,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1d0f9ebcdf253846af34cd01d640805
+    m_Address: mvz2:icon/curse_of_the_abyss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c1f7123b5f8de1640b46858b3fc6914e
     m_Address: mvz2:entity/effect/flesh_part_censored

@@ -70,8 +70,7 @@ namespace MVZ2.GameContent.Enemies
                         var rngNum = entity.RNG.Next(9);
                         if (rngNum == 0)
                             SummonWarrior(entity);
-                        else
-                            BuildBoneWalls(entity);
+                        BuildBoneWalls(entity);
                     }
                 }
             }
