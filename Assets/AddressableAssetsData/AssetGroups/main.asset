@@ -4495,6 +4495,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7149a1e5881e1174ab5514db1475c02a
+    m_Address: mvz2:icons/curse_of_the_abyss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71622a34f9dcc4f4689cee2fc30656c3
     m_Address: mvz2:enemy/castle/berserker
     m_ReadOnly: 0

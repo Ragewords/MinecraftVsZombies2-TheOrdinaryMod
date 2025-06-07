@@ -44,14 +44,14 @@ namespace MVZ2.GameContent.Stages
             level.FillSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.lightningOrb,
-                VanillaContraptionID.tnt,
+                VanillaContraptionID.stoneShield,
                 VanillaContraptionID.blackHoleBomb,
                 VanillaContraptionID.totenser,
-                VanillaContraptionID.noteBlock,
+                VanillaContraptionID.dispenser,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.ghost,
-                VanillaEnemyID.mesmerizer,
+                VanillaEnemyID.gargoyle,
+                VanillaEnemyID.necromancer,
                 VanillaEnemyID.reflectiveBarrierZombie,
             });
             level.GetSeedPackAt(1).SetCommandBlock(true);

@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Buffs
         public const string productionColor = "production_color";
         public const string mineTNTInvincible = "mine_tnt_invincible";
         public const string obsidianArmor = "obsidian_armor";
-        public const string transformGargoyle = "transform_gargoyle";
+        public const string curseOfTheAbyss = "curse_of_the_abyss";
         public const string moonlightSensorLaunching = "moonlight_sensor_launching";
         public const string moonlightSensorEvoked = "moonlight_sensor_evoked";
         public const string glowstoneEvoke = "glowstone_evoke";

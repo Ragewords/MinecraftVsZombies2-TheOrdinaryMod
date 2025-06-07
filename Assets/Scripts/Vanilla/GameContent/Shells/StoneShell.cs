@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Shells;
@@ -26,6 +27,15 @@ namespace MVZ2.GameContent.Shells
             if (damageInfo.Source.DefinitionID == VanillaEnemyID.silverfish)
             {
                 damageInfo.Multiply(5);
+            }
+            if (damageInfo.Source.DefinitionID == VanillaEnemyID.gargoyle)
+            {
+                var entity = damageInfo.Entity;
+                if (!entity.HasBuff<CurseOfTheAbyssBuff>())
+                {
+                    var buff = entity.AddBuff<CurseOfTheAbyssBuff>();
+                    CurseOfTheAbyssBuff.SetCurseFaction(buff, damageInfo.Source.Faction);
+                }
             }
         }
     }

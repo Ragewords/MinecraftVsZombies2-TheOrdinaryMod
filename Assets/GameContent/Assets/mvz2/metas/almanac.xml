@@ -140,6 +140,7 @@
             <value value="mvz2:nether" name="下界" description="免疫火焰伤害" sprite="mvz2:ui/almanac/shell_tags[7]" backgroundColor="#36131d"/>
             <value value="mvz2:diamond" name="钻石" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[8]" backgroundColor="#417368"/>
             <value value="mvz2:sand" name="沙子" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590"/>
+            <value value="mvz2:slime" name="黏液" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#5aaa43"/>
         </enum>
     </tags>
     <contraptions>
@@ -489,7 +490,7 @@
         </entry>
         <entry id="mvz2:stone_shield">
             <header>
-                <p>黏液护罩可以和其他器械放在一起，并保护其内部的器械，自身的弹性则能减少受到的伤害。</p>
+                <p>黏液护罩可以和其他器械放在一起，并保护其内部的器械。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
@@ -987,7 +988,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>900</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>冲击活塞</color>]]></p>
-                <p>特点：<![CDATA[<color=red>为触碰的器械附上诅咒，其在被摧毁时会变为新的深渊石像鬼</color>]]></p>
+                <p>特点：<![CDATA[<color=red>为触碰的<tag id="mvz2:shell" enum="mvz2:stone"/>石制器械附上诅咒，其在被摧毁时会变为新的深渊石像鬼</color>]]></p>
             </properties>
             <flavor>
                 <p>石像鬼和他的妈妈住在山上的一间小屋中。石像鬼画画，玩玩具，妈妈就在电视上看广播。生活很简单，他们也很幸福。直到有一天石像鬼的妈妈从天上听到了雷声……</p>

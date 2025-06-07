@@ -1,4 +1,5 @@
-﻿using MVZ2.Vanilla.Audios;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -66,7 +67,11 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        BuildBoneWalls(entity);
+                        var rngNum = entity.RNG.Next(9);
+                        if (rngNum == 0)
+                            SummonWarrior(entity);
+                        else
+                            BuildBoneWalls(entity);
                     }
                 }
             }
@@ -139,6 +144,17 @@ namespace MVZ2.GameContent.Enemies
                 Vector3 wallPos = new Vector3(x, y, z);
                 entity.SpawnWithParams(VanillaEnemyID.boneWall, wallPos);
             }
+        }
+        private void SummonWarrior(Entity entity)
+        {
+            var level = entity.Level;
+            var x = entity.Position.x + level.GetGridWidth() * 0.8f * entity.GetFacingX();
+            var z = entity.Position.z;
+            var y = level.GetGroundY(x, z) - 100;
+            Vector3 wallPos = new Vector3(x, y, z);
+            var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
+            warrior.AddBuff<NecrotombstoneRisingBuff>();
+            warrior.UpdateModel();
         }
         #region 常量
         private const int CAST_COOLDOWN = 300;
