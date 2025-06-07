@@ -51,6 +51,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
         }
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         private const float RING_DURATION = 0.5f;
-        private const int MAX_TIMEOUT = 30;
+        private const int MAX_TIMEOUT = 90;
     }
 }

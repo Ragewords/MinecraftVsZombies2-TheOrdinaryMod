@@ -28,7 +28,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity != null)
             {
-                entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.SLICE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
             }
 
             var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
@@ -40,6 +40,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
         }
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        public const float WITHER_DAMAGE = 1 / 6f;
+        public const float WITHER_DAMAGE = 1 / 8f;
     }
 }
