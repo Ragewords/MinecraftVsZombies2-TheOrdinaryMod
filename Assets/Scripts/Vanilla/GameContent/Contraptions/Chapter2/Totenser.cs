@@ -37,10 +37,11 @@ namespace MVZ2.GameContent.Contraptions
                 ShootTick(entity);
                 if (GetShootWeb(entity))
                 {
-                    entity.TriggerAnimation("Shoot");
+                    entity.TriggerAnimation("TopShoot");
                     var shootParams = entity.GetShootParams();
                     shootParams.projectileID = VanillaProjectileID.web;
                     shootParams.velocity += Vector3.up * 5 + entity.GetFacingDirection() * 5;
+                    shootParams.position = entity.Position + new Vector3(20, 50);
                     shootParams.soundID = VanillaSoundID.bow;
                     shootParams.damage = 0;
                     entity.ShootProjectile(shootParams);
@@ -118,7 +119,7 @@ namespace MVZ2.GameContent.Contraptions
             if (evocationTime == THROW_JAVELIN_TIME)
             {
                 var shootParams = entity.GetShootParams();
-                shootParams.position = entity.Position + new Vector3(80 * entity.GetFacingX(), 80);
+                shootParams.position = entity.Position + new Vector3(80 * entity.GetFacingX(), 100);
                 shootParams.velocity = entity.GetFacingDirection() * 33;
                 shootParams.projectileID = VanillaProjectileID.poisonJavelin;
                 shootParams.damage = 1800;

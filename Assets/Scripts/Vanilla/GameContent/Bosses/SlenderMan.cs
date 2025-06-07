@@ -339,13 +339,12 @@ namespace MVZ2.GameContent.Bosses
             var eventRng = GetEventRNG(boss);
             var rng = new RandomGenerator(eventRng.Next());
             var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
-            var randomContraptions = contraptions.RandomTake(Mathf.CeilToInt(contraptions.Length * 0.25f), rng);
-            foreach (var contraption in randomContraptions)
+            foreach (var contraption in contraptions)
             {
                 contraption.ClearTakenGrids();
             }
             var grids = level.GetAllGrids();
-            foreach (var contraption in randomContraptions)
+            foreach (var contraption in contraptions)
             {
                 var placementID = contraption.Definition.GetPlacementID();
                 var placementDef = level.Content.GetPlacementDefinition(placementID);
@@ -356,37 +355,7 @@ namespace MVZ2.GameContent.Bosses
                     continue;
                 var grid = targetGrids.Random(rng);
                 contraption.Position = grid.GetEntityPosition();
-                var scale = contraption.GetScale();
-                var displayScale = contraption.GetDisplayScale();
-                scale.x *= -1;
-                displayScale.x *= -1;
-                contraption.SetScale(scale);
-                contraption.SetDisplayScale(displayScale);
                 contraption.UpdateTakenGrids();
-            }
-            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
-            var randomEnemies = contraptions.RandomTake(Mathf.CeilToInt(enemies.Length * 0.25f), rng);
-            foreach (var enemy in enemies)
-            {
-                var targetGrids = grids.Where(g => g.CanPlaceEntity(enemy.GetDefinitionID()));
-                if (targetGrids.Count() <= 0)
-                    continue;
-                var grid = targetGrids.Random(rng);
-                enemy.Position = grid.GetEntityPosition();
-                var scale = enemy.GetScale();
-                var displayScale = enemy.GetDisplayScale();
-                scale.x *= -1;
-                displayScale.x *= -1;
-                enemy.SetScale(scale);
-                enemy.SetDisplayScale(displayScale);
-                if (level.IsWaterLane(grid.Lane))
-                {
-                    if (enemy.GetWaterInteraction() == WaterInteraction.DROWN)
-                    {
-                        enemy.AddBuff<BoatBuff>();
-                        enemy.SetAnimationBool("HasBoat", true);
-                    }
-                }
             }
         }
         private void Biohazard(Entity boss)

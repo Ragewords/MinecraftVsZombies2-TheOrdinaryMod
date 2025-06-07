@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.Artifacts
         private void PostContraptionInitCallback(EntityCallbackParams param, CallbackResult result)
         {
             var contraption = param.entity;
-            if (!contraption.UnableToGlow())
+            if (contraption.Definition.IsLightSource())
                 return;
             var level = contraption.Level;
             var lantern = level.GetArtifact(GetID());
@@ -50,7 +50,7 @@ namespace MVZ2.GameContent.Artifacts
             {
                 var level = auraEffect.Source.GetLevel();
                 updateBuffer.Clear();
-                level.FindEntitiesNonAlloc(e => e.Definition.IsLightSource() && e.Type == EntityTypes.PLANT, updateBuffer);
+                level.FindEntitiesNonAlloc(e => !e.Definition.IsLightSource() && e.Type == EntityTypes.PLANT, updateBuffer);
                 foreach (var entity in updateBuffer)
                 {
                     results.Add(entity);

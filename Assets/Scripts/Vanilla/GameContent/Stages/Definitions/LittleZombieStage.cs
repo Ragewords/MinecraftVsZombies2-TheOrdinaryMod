@@ -88,10 +88,10 @@ namespace MVZ2.GameContent.Stages
             }
             entity.Health = entity.GetMaxHealth();
         }
-        public static int GetBigCounter(LevelEngine level) => level.GetBehaviourField<int>(ID, FIELD_BIG_COUNTER);
-        public static void SetBigCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_BIG_COUNTER, value);
-        public static int GetSmallCounter(LevelEngine level) => level.GetBehaviourField<int>(ID, FIELD_SMALL_COUNTER);
-        public static void SetSmallCounter(LevelEngine level, int value) => level.SetBehaviourField(ID, FIELD_SMALL_COUNTER, value);
+        public static int GetBigCounter(LevelEngine level) => level.GetBehaviourField<int>(FIELD_BIG_COUNTER);
+        public static void SetBigCounter(LevelEngine level, int value) => level.SetBehaviourField(FIELD_BIG_COUNTER, value);
+        public static int GetSmallCounter(LevelEngine level) => level.GetBehaviourField<int>(FIELD_SMALL_COUNTER);
+        public static void SetSmallCounter(LevelEngine level, int value) => level.SetBehaviourField(FIELD_SMALL_COUNTER, value);
 
         public const string REGION_NAME = "little_zombie_stage";
         [LevelPropertyRegistry(REGION_NAME)]

@@ -43,16 +43,15 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.soulFurnace,
+                VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.tnt,
                 VanillaContraptionID.blackHoleBomb,
-                VanillaContraptionID.silvenser,
-                VanillaContraptionID.smallDispenser,
+                VanillaContraptionID.totenser,
+                VanillaContraptionID.noteBlock,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.ghost,
                 VanillaEnemyID.mesmerizer,
-                VanillaEnemyID.shikaisenStaff,
                 VanillaEnemyID.reflectiveBarrierZombie,
             });
             level.GetSeedPackAt(1).SetCommandBlock(true);

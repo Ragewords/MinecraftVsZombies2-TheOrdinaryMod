@@ -9,12 +9,5 @@ namespace MVZ2.GameContent.Enemies
         public ReflectiveBarrierZombie(string nsp, string name) : base(nsp, name)
         {
         }
-
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            entity.EquipArmorTo(VanillaArmorSlots.main, VanillaArmorID.ironHelmet);
-            entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.reflectiveBarrier);
-        }
     }
 }

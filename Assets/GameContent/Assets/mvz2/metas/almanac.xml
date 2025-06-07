@@ -132,9 +132,9 @@
         <enum id="shell" type="id">
             <value value="mvz2:stone" name="石头" description="阻挡锐利物体和火焰溅射，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[0]" backgroundColor="#6b6b6b"/>
             <value value="mvz2:grass" name="草" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[1]" backgroundColor="#a48f34"/>
-            <value value="mvz2:flesh" name="血肉" description="会被锐利物体穿透" sprite="mvz2:ui/almanac/shell_tags[2]" backgroundColor="#934329"/>
+            <value value="mvz2:flesh" name="血肉" description="会被锐利物体穿透，并造成流血" sprite="mvz2:ui/almanac/shell_tags[2]" backgroundColor="#934329"/>
             <value value="mvz2:leather" name="皮革" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[3]" backgroundColor="#893b25"/>
-            <value value="mvz2:metal" name="金属" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa"/>
+            <value value="mvz2:metal" name="金属" description="阻挡锐利物体，受到3x电流伤害" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa"/>
             <value value="mvz2:bone" name="骨" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[5]" backgroundColor="#494b3e"/>
             <value value="mvz2:wood" name="木头" description="受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[6]" backgroundColor="#b28553"/>
             <value value="mvz2:nether" name="下界" description="免疫火焰伤害" sprite="mvz2:ui/almanac/shell_tags[7]" backgroundColor="#36131d"/>
@@ -875,7 +875,8 @@
                 <p>技能：<![CDATA[<color=red>在前方3×3的格子释放剧毒毒雾</color>]]></p>
             </properties>
             <flavor>
-                <p>良药苦口利于病，只可惜这毒药对于某些怪物来讲根本没用。</p>
+                <p>俗话说良药苦口利于病。</p>
+                <p>慢着，你确定这是良药？</p>
             </flavor>
         </entry>
         <entry id ="mvz2:dimension_hammer">
@@ -1037,7 +1038,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>160</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>可以爬上并越过绝大多数器械</color>]]></p>
+                <p>特点：<![CDATA[<color=red>可以爬上并越过<tag id="mvz2:defensive"/>防御性器械</color>]]></p>
             </properties>
             <flavor>
                 <p>蜘蛛开的网吧相当赚钱，因为大家都被黏住了。</p>

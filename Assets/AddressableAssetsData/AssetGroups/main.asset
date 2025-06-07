@@ -3445,19 +3445,19 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 542969b534462a84393dbe4e1b39a87a
-    m_Address: mvz2:random/netherrack/break1
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5417b719acb5e5b409f69c2c9d136271
     m_Address: mvz2:entity/boss/frankenstein_head
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 542969b534462a84393dbe4e1b39a87a
+    m_Address: mvz2:random/netherrack/break1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 544a0e954e368bd47922b782463ea965
     m_Address: mvz2:slow_down

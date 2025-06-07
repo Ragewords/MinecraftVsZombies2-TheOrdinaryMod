@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 7973670329155907510}
   - component: {fileID: 4254253166936228738}
   - component: {fileID: 3494808574932504856}
+  - component: {fileID: 7384008013529739444}
   m_Layer: 0
   m_Name: DeathRenderer
   m_TagString: Untagged
@@ -280,6 +281,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
+--- !u!114 &7384008013529739444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504310391239483034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9733804c13f33934d9d161b4c7ebce22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1325256689, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
+  - {fileID: 1258825829, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
+  index: 0
 --- !u!1 &3875394997873838390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 7717581738674343506, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e42f686f7dc866c4896b6cb549f773f1, type: 2}
+      objectReference: {fileID: 9100000, guid: 032e625fa4e1b174ba771bfbc89b7a9a, type: 2}
     - target: {fileID: 8053024829104482126, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       propertyPath: headTransform
       value: 

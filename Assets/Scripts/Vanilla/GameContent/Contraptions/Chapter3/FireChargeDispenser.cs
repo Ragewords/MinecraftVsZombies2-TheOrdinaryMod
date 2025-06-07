@@ -21,7 +21,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Contraptions
 {
     [EntityBehaviourDefinition(VanillaContraptionNames.fireChargeDispenser)]
-    public class FireChargeDispenser : ContraptionBehaviour, IHeldEntityBehaviour
+    public class FireChargeDispenser : ContraptionBehaviour
     {
         public FireChargeDispenser(string nsp, string name) : base(nsp, name)
         {
@@ -36,11 +36,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             var shootTimer = GetAttackTimer(entity);
-            shootTimer.ResetTime(ATTACK_COOLDOWN * 2);
             entity.SetEvoked(true);
-            SetMissleTargetLocked(entity, false);
             entity.PlaySound(VanillaSoundID.fuse);
-            entity.Level.SetHeldItem(VanillaHeldTypes.entity, entity.ID, 100, true);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -91,16 +88,16 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void EvokedUpdate(Entity pad)
         {
-            // ·¢Éäµ¼µ¯¡£
+            // ï¿½ï¿½ï¿½äµ¼ï¿½ï¿½ï¿½ï¿½
             bool locked = IsMissleTargetLocked(pad);
             Vector3 targetPosition = GetMissleTarget(pad);
 
-            // ·¢Éäµ¹¼ÆÊ±¡£
+            // ï¿½ï¿½ï¿½äµ¹ï¿½ï¿½Ê±ï¿½ï¿½
             var shootTimer = GetAttackTimer(pad);
             shootTimer.Run();
 
-            // µ¹¼ÆÊ±½áÊø£¬»òÕßÃ»ÓÐÔÚÊÖ³Ö¸ÃÆ÷Ðµ
-            // ½áÊø´óÕÐ¡£
+            // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö³Ö¸ï¿½ï¿½ï¿½Ðµ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
             bool holdingThis = pad.Level.IsHoldingEntity(pad);
             if (shootTimer.Expired || (!holdingThis && !locked))
             {
@@ -139,56 +136,6 @@ namespace MVZ2.GameContent.Contraptions
 
         private Detector detector;
         private static readonly NamespaceID ID = VanillaContraptionID.fireChargeDispenser;
-
-        bool IHeldEntityBehaviour.IsValidFor(Entity entity, HeldItemTarget target, IHeldItemData data)
-        {
-            return target is HeldItemTargetGrid targetGrid;
-        }
-
-        HeldHighlight IHeldEntityBehaviour.GetHighlight(Entity entity, HeldItemTarget target, IHeldItemData data)
-        {
-            return HeldHighlight.Green();
-        }
-
-        void IHeldEntityBehaviour.Use(Entity entity, HeldItemTarget target, IHeldItemData data, PointerInteraction interaction)
-        {
-            var targetPhase = Global.IsMobile() ? PointerInteraction.Release : PointerInteraction.Press;
-            if (interaction != targetPhase)
-                return;
-            if (target is not HeldItemTargetGrid targetGrid)
-                return;
-            if (targetGrid.Target == null)
-                return;
-            var level = target.GetLevel();
-            SetMissleTarget(entity, targetGrid.Target.GetEntityPosition());
-            SetMissleTargetLocked(entity, true);
-            var shootTimer = GetAttackTimer(entity);
-            shootTimer.ResetTime(30);
-            level.ResetHeldItem();
-            entity.PlaySound(VanillaSoundID.parabotTick);
-        }
-        NamespaceID IHeldEntityBehaviour.GetModelID(Entity entity, LevelEngine level, IHeldItemData data)
-        {
-            return VanillaModelID.targetHeldItem;
-        }
-
-        float IHeldEntityBehaviour.GetRadius(Entity entity, LevelEngine level, IHeldItemData data)
-        {
-            return 0;
-        }
-
-        void IHeldEntityBehaviour.Update(Entity entity, LevelEngine level, IHeldItemData data)
-        {
-            if (entity == null || !entity.Exists() || entity.IsAIFrozen())
-            {
-                level.ResetHeldItem();
-                return;
-            }
-        }
-        void IHeldEntityBehaviour.PostSetModel(Entity entity, LevelEngine level, IHeldItemData data, IModelInterface model)
-        {
-
-        }
     }
 }
 

@@ -319,10 +319,6 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity.GetProperty<bool>(IS_LIGHT_SOURCE);
         }
-        public static bool IsLightSource(this EntityDefinition definition)
-        {
-            return definition.GetProperty<bool>(IS_LIGHT_SOURCE);
-        }
         public static bool UnableToGlow(this Entity entity)
         {
             return entity.GetProperty<bool>(IS_NOT_LIGHT_SOURCE);

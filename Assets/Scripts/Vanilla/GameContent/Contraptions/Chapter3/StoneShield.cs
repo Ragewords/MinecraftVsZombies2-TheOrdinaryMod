@@ -32,12 +32,6 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateLogic(contraption);
             contraption.SetAnimationInt("HealthState", contraption.GetHealthState(3));
         }
-
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
-        {
-            base.PreTakeDamage(input, result);
-            input.Multiply(0.6f);
-        }
         protected override void OnEvoke(Entity contraption)
         {
             base.OnEvoke(contraption);
