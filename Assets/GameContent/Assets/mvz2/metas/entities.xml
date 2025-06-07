@@ -1928,6 +1928,7 @@
         <projectile id="snowball">
             <properties>
                 <vector3 name="mvz2:size" x="24" y="24" z="24" />
+                <idArray name="mvz2:damageEffects" value="mvz2:ice mvz2:slow" />
             </properties>
         </projectile>
         <projectile id="large_snowball">
@@ -1937,7 +1938,7 @@
                 <bool name="mvz2:piercing" value="true" />
                 <float name="mvz2:gravity" value="1" />
                 <vector3 name="mvz2:size" x="24" y="24" z="24" />
-                <idArray name="mvz2:damageEffects" value="mvz2:damage_both_armor_and_body" />
+                <idArray name="mvz2:damageEffects" value="mvz2:damage_both_armor_and_body mvz2:ice mvz2:slow" />
             </properties>
         </projectile>
         <projectile id="flying_tnt">

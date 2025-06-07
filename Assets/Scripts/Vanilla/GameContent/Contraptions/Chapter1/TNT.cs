@@ -132,7 +132,8 @@ namespace MVZ2.GameContent.Contraptions
                 if (entity.GetDefinitionID() == VanillaContraptionID.tnt)
                 {
                     var projectile = entity.Level.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, entity);
-                    projectile.SetDamage(100);
+                    projectile.SetDamage(damage / 18);
+                    projectile.SetRange(range);
                     projectile.SetScale(new Vector3(0.7f, 0.7f, 0.7f));
                     projectile.SetDisplayScale(new Vector3(0.7f, 0.7f, 0.7f));
                     projectile.SetShadowScale(new Vector3(0.7f, 0.7f, 0.7f));

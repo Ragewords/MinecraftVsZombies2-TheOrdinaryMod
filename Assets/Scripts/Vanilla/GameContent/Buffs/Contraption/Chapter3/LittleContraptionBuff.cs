@@ -17,6 +17,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new Vector3Modifier(VanillaEntityProps.SHADOW_SCALE, NumberOperator.Multiply, new Vector3(0.5f, 0.5f, 0.5f)));
             AddModifier(new FloatModifier(EngineEntityProps.MAX_HEALTH, NumberOperator.Multiply, 0.25f));
             AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.Multiply, 0.25f));
+            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 4));
         }
     }
 }

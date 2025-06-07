@@ -112,7 +112,7 @@ namespace MVZ2.GameContent.Contraptions
                             param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                             var projectile = entity.Spawn(entity.GetProjectileID(), knifePos, param);
                             projectile.Velocity = direction * -20;
-                            Knife.SetNoDelay(projectile, true);
+                            Knife.SetNoDelay(projectile, false);
                             Knife.SetDestination(projectile, target);
 
                             var buff = projectile.AddBuff<ProjectileWaitBuff>();

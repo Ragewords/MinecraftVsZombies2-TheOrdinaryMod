@@ -43,10 +43,10 @@ namespace MVZ2.GameContent.Stages
             level.FillSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.soulFurnace,
-                VanillaContraptionID.thunderDrum,
-                VanillaContraptionID.hellfire,
-                VanillaContraptionID.punchton,
-                VanillaContraptionID.drivenser,
+                VanillaContraptionID.tnt,
+                VanillaContraptionID.blackHoleBomb,
+                VanillaContraptionID.silvenser,
+                VanillaContraptionID.smallDispenser,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.shikaisenStaff,

@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 if (buff.GetProperty<bool>(PROP_ETHEREAL))
                 {
-                    damageInfo.Multiply(0.1f);
+                    damageInfo.Multiply(0.3f);
                     break;
                 }
             }

@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Shells;
 using PVZEngine.Damages;
@@ -19,7 +20,10 @@ namespace MVZ2.GameContent.Shells
             base.EvaluateDamage(damageInfo);
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.SLICE))
             {
+                var entity = damageInfo.Entity;
                 damageInfo.Multiply(2);
+                if (!entity.HasBuff<BleedingBuff>())
+                    entity.AddBuff<BleedingBuff>();
             }
         }
     }

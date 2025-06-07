@@ -48,15 +48,6 @@ namespace MVZ2.Vanilla.Entities
             }
             buff.SetProperty(EnemyWeaknessBuff.PROP_TIMEOUT, time);
         }
-        public static void FreezeSlow(this Entity enemy, int time)
-        {
-            Buff buff = enemy.GetFirstBuff<FreezeSlowBuff>();
-            if (buff == null)
-            {
-                buff = enemy.AddBuff<FreezeSlowBuff>();
-            }
-            buff.SetProperty(FreezeSlowBuff.PROP_TIMEOUT, time);
-        }
         public static void UpdateWalkVelocity(this Entity enemy)
         {
             var velocity = enemy.Velocity;

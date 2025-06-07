@@ -13,15 +13,5 @@ namespace MVZ2.GameContent.Projectiles
         public Snowball(string nsp, string name) : base(nsp, name)
         {
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damage)
-        {
-            base.PostHitEntity(hitResult, damage);
-            var enemy = hitResult.Other;
-            if (enemy.Type != EntityTypes.ENEMY)
-                return;
-            else if (!enemy.HasBuff<FreezeSlowBuff>())
-                enemy.PlaySound(VanillaSoundID.freeze);
-            enemy.FreezeSlow(150);
-        }
     }
 }
