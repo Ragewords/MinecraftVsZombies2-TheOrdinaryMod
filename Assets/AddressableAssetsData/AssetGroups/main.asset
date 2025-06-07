@@ -9066,7 +9066,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1420ae47d7f82d4aa4857af5aaa2cf7
-    m_Address: mvz2:boss/frankenstein_head
+    m_Address: mvz2:boss/frankenstein_head_enemy
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

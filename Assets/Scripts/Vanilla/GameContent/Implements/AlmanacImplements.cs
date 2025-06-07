@@ -103,6 +103,11 @@ namespace MVZ2.GameContent.Implements
             {
                 tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.nocturnal));
             }
+            // 导体
+            if (entityDef.IsConductor())
+            {
+                tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.conductor));
+            }
             // 防御性
             if (entityDef.IsDefensive())
             {

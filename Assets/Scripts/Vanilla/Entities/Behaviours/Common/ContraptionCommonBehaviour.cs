@@ -23,6 +23,10 @@ namespace MVZ2.Vanilla.Entities
             {
                 entity.AddBuff<NocturnalBuff>();
             }
+            if (entity.IsConductor())
+            {
+                entity.AddBuff<ConductorBuff>();
+            }
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {

@@ -32,14 +32,6 @@ namespace MVZ2.GameContent.Contraptions
             SetIsConnectedX(entity, false);
             SetIsConnectedY(entity, false);
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
-        {
-            base.PreTakeDamage(input, result);
-            if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
-            {
-                input.Multiply(0);
-            }
-        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);

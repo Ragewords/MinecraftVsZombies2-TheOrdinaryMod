@@ -36,6 +36,7 @@ namespace MVZ2.GameContent.Buffs
         public const string frankensteinShocked = "frankenstein_shocked";
         public const string dreamKeyShield = "dream_key_shield";
         public const string nocturnal = "nocturnal";
+        public const string conductor = "conductor";
         public const string carriedByLilyPad = "carried_by_lily_pad";
         public const string carryingOther = "carrying_other";
         public const string lilyPadEvocation = "lily_pad_evocation";

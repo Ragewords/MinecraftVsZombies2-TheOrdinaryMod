@@ -45,12 +45,12 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.stoneShield,
-                VanillaContraptionID.blackHoleBomb,
-                VanillaContraptionID.totenser,
+                VanillaContraptionID.silvenser,
+                VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.dispenser,
                 VanillaEnemyID.caveSpider,
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.gargoyle,
+                VanillaEnemyID.mesmerizer,
                 VanillaEnemyID.necromancer,
                 VanillaEnemyID.reflectiveBarrierZombie,
             });

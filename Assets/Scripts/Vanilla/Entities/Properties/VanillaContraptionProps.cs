@@ -23,6 +23,18 @@ namespace MVZ2.Vanilla.Contraptions
         }
         #endregion
 
+        #region 导体
+        public static readonly PropertyMeta<bool> CONDUCTOR = Get<bool>("conductor");
+        public static bool IsConductor(this EntityDefinition definition)
+        {
+            return definition.GetProperty<bool>(CONDUCTOR);
+        }
+        public static bool IsConductor(this Entity entity)
+        {
+            return entity.GetProperty<bool>(CONDUCTOR);
+        }
+        #endregion
+
         #region 可攀爬
         public static readonly PropertyMeta<bool> NO_CLIMB = Get<bool>("noClimb");
         public static bool NoClimb(this Entity contraption)

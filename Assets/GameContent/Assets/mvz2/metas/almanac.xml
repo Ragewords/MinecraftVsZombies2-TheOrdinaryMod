@@ -120,6 +120,11 @@
             <icon sprite="mvz2:ui/almanac/attribute_tags[13]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#3b5b3b" />
         </tag>
+        <tag id="conductor" name="导体" description="免疫电流伤害" priority="4000" >
+            <icon sprite="mvz2:ui/almanac/attribute_tags[14]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#b0bec1" />
+        </tag>
+
 
 
         <enum id="mass" type="int">
@@ -536,7 +541,7 @@
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80（电击），20（电磁爆），5（电场）</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>造成一次半径1格的爆炸，造成320点电流伤害</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>产生一次半径1格的爆炸，造成320点电流伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>

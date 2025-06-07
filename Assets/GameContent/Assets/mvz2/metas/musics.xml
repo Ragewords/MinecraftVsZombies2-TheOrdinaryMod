@@ -71,8 +71,8 @@
             <p>呵呵，你可否想到自己？史蒂夫？</p>
         </description>
     </music>
-	<music id="halloween_level_extra" name="潮湿沼泽-关卡">
-        <track main="mvz2:halloweenlevel_extra"/>
+	<music id="halloween_level_extra" name="潮湿沼泽-关卡" unlock="mvz2:level.halloween_EX1">
+        <track main="mvz2:halloween_level_extra"/>
 		<source>我的世界：地下城</source>
 		<description>
 			<p>万圣夜拓展关卡的音乐。</p>
@@ -166,7 +166,7 @@
 			<p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
 		</description>
 	</music>
-	<music id="dream_level_extra" name="遥遥38万公里的航程">
+	<music id="dream_level_extra" name="遥遥38万公里的航程" unlock="mvz2:level.dream_EX1">
         <track main="mvz2:dream_level_extra"/>
 		<source>东方绀珠传</source>
 		<description>
@@ -277,7 +277,7 @@
             <p>因为老大哥在看着我。</p>
         </description>
     </music>
-	<music id="castle_level_extra" name="幻想净琉璃">
+	<music id="castle_level_extra" name="幻想净琉璃" unlock="mvz2:level.castle_EX1">
         <track main="mvz2:castle_level_extra"/>
 		<source>东方辉针城</source>
 		<description>
