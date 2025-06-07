@@ -296,7 +296,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="punchton" name="一拳活塞" tooltip="冲击前方敌人，需要时间再次准备" unlock="mvz2:level.halloween_4">
+        <contraption id="punchton" name="冲击活塞" tooltip="冲击前方敌人，需要时间再次准备" unlock="mvz2:level.halloween_4">
             <properties>
                 <bool name="mvz2:contactDamage" value="true"/>
                 <float name="mvz2:damage" value="100" />

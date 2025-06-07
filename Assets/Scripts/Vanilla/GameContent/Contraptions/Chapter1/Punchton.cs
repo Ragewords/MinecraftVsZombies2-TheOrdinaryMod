@@ -40,8 +40,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer());
-            SetFirstDamage(entity, 10);
-            SetFirstPush(entity, 2);
+            SetFirstDamage(entity, 0.5f);
+            SetFirstPush(entity, 0.5f);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -76,6 +76,11 @@ namespace MVZ2.GameContent.Contraptions
                 var extension = GetArmExtension(entity);
                 extension = extension * 0.5f;
                 SetArmExtension(entity, extension);
+                
+                var damage = Mathf.Lerp(GetFirstDamage(entity), 10, 0.001f);
+                SetFirstDamage(entity, damage);
+                var push = Mathf.Lerp(GetFirstPush(entity), 2, 0.005f);
+                SetFirstPush(entity, push);
 
                 var target = detector.Detect(entity);
                 if (target != null)
@@ -92,7 +97,7 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f + entity.GetRange() * 0.5f;
                 SetArmExtension(entity, extension);
 
-                var damage = Mathf.Lerp(GetFirstDamage(entity), 1, 0.1f);
+                var damage = Mathf.Lerp(GetFirstDamage(entity), 0.5f, 0.1f);
                 SetFirstDamage(entity, damage);
                 SetFirstPush(entity, 1);
 
@@ -220,8 +225,8 @@ namespace MVZ2.GameContent.Contraptions
         public void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
         public static float GetFirstDamage(Entity entity) => entity.GetBehaviourField<float>(ID, FIRST_DAMAGE_MULTIPLIER);
         public static void SetFirstDamage(Entity entity, float value) => entity.SetBehaviourField(ID, FIRST_DAMAGE_MULTIPLIER, value);
-        public static int GetFirstPush(Entity entity) => entity.GetBehaviourField<int>(ID, FIRST_PUSH_MULTIPLIER);
-        public static void SetFirstPush(Entity entity, int value) => entity.SetBehaviourField(ID, FIRST_PUSH_MULTIPLIER, value);
+        public static float GetFirstPush(Entity entity) => entity.GetBehaviourField<float>(ID, FIRST_PUSH_MULTIPLIER);
+        public static void SetFirstPush(Entity entity, float value) => entity.SetBehaviourField(ID, FIRST_PUSH_MULTIPLIER, value);
         private void CheckAchievement(Entity entity)
         {
             if (entity.Type != EntityTypes.ENEMY)
@@ -241,7 +246,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<float> PROP_ARM_EXTENSION = new VanillaEntityPropertyMeta<float>("ArmExtension");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<float> FIRST_DAMAGE_MULTIPLIER = new VanillaEntityPropertyMeta<float>("OnFirstDamage");
-        public static readonly VanillaEntityPropertyMeta<int> FIRST_PUSH_MULTIPLIER = new VanillaEntityPropertyMeta<int>("OnFirstPush");
+        public static readonly VanillaEntityPropertyMeta<float> FIRST_PUSH_MULTIPLIER = new VanillaEntityPropertyMeta<float>("OnFirstPush");
         private Detector detector;
         private Detector evokedDetector;
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
