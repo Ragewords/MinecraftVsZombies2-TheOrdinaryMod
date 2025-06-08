@@ -54,12 +54,13 @@ namespace MVZ2.GameContent.Enemies
         public const string seijaJizo = "seija_jizo";
         public const string brainwasher = "brainwasher";
         public const string bedserker = "bedserker";
-        public const string skeletonWarrior = "skeleton_warrior";
-        public const string skeletonMage = "skeleton_mage";
-        public const string shikaisenStaff = "shikaisen_staff";
         public const string soulSkeletonHorse = "soul_skeleton_horse";
         public const string jackDullahan = "jackdullahan";
         public const string jackDullahanHead = "jackdullahan_head";
+        public const string skeletonWarrior = "skeleton_warrior";
+        public const string skeletonMage = "skeleton_mage";
+        public const string shikaisenStaff = "shikaisen_staff";
+        public const string shikaisenPot = "shikaisen_pot";
 
     }
     public static class VanillaEnemyID
@@ -113,12 +114,13 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID seijaJizo = Get(VanillaEnemyNames.seijaJizo);
         public static readonly NamespaceID brainwasher = Get(VanillaEnemyNames.brainwasher);
         public static readonly NamespaceID bedserker = Get(VanillaEnemyNames.bedserker);
-        public static readonly NamespaceID skeletonWarrior = Get(VanillaEnemyNames.skeletonWarrior);
-        public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
-        public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);
         public static readonly NamespaceID soulSkeletonHorse = Get(VanillaEnemyNames.soulSkeletonHorse);
         public static readonly NamespaceID jackDullahan = Get(VanillaEnemyNames.jackDullahan);
         public static readonly NamespaceID jackDullahanHead = Get(VanillaEnemyNames.jackDullahanHead);
+        public static readonly NamespaceID skeletonWarrior = Get(VanillaEnemyNames.skeletonWarrior);
+        public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
+        public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);
+        public static readonly NamespaceID shikaisenPot = Get(VanillaEnemyNames.shikaisenPot);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

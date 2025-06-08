@@ -53,6 +53,10 @@
             <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
             <mark sprite="mvz2:ui/almanac/special_marks[2]" />
         </tag>
+        <tag id="shell_pot" name="壶材质" enum="mvz2:shell" priority="2000" >
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
+            <mark sprite="mvz2:ui/almanac/special_marks[5]" />
+        </tag>
 
         <tag id="mass" name="质量" enum="mvz2:mass" priority="3000" >
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]" />
@@ -64,6 +68,10 @@
         <tag id="mass_horse" name="马质量" enum="mvz2:mass" priority="3000" >
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]"/>
             <mark sprite="mvz2:ui/almanac/special_marks[4]" />
+        </tag>
+        <tag id="mass_pot" name="壶质量" enum="mvz2:mass" priority="3000" >
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[4]"/>
+            <mark sprite="mvz2:ui/almanac/special_marks[5]" />
         </tag>
 
 
@@ -565,13 +573,13 @@
         <!-- Chapter 4 -->
         <entry id="mvz2:note_block">
             <header>
-                <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，也可以释放音波攻击周围的敌人。</p>
+                <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音波攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>5（音符），30（音波）</color>]]></p>
-                <p>发射速度：<![CDATA[<color=red>1.5秒（音符），2秒（音波）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>5</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
-                <p>音波范围：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>音波半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>]]></p>
             </properties>
             <flavor>
@@ -585,7 +593,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
                 <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）；之后在吸收敌弹时，发射一个30点伤害的能量弹幕</color>]]></p>
             </properties>
             <flavor>
                 <p>它就是音符盒的邻居。</p>
@@ -615,10 +623,9 @@
         </entry>
         <entry id="mvz2:devourer">
             <header>
-                <p>吞噬者可以用于消除刷怪笼，或者用于将器械变回一张蓝图掉落物。吞噬完毕后会眩晕周围的敌人。</p>
+                <p>吞噬者可以用于消除刷怪笼，或者用于将器械变回一张蓝图掉落物。</p>
             </header>
             <properties>
-                <p>眩晕时间：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变成吃豆人中的小幽灵！</color>]]></p>
             </properties>
             <flavor>
@@ -634,8 +641,8 @@
                 <p>地狱火会烧伤接近的敌人，并点燃穿过它的箭矢，使其额外造成火焰伤害。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>30</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%火焰伤害，+66%溅射伤害</color>]]></p>
                 <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成1800点火焰伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变为诅咒火焰，×200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
@@ -861,7 +868,7 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
-                <p>变形时间：<![CDATA[<color=red>3.2秒</color>]]></p>
+                <p>变形时间：<![CDATA[<color=red>1秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变形为器械后立即将其激发</color>]]></p>
             </properties>
             <flavor>
@@ -904,9 +911,9 @@
                 <p>火焰弹发射器会向周围的敌人投掷火焰弹。</p>
             </header>
             <properties>
-                <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>80</color>]]></p>
-                <p>技能：<![CDATA[<color=red>抛射出大量火焰弹及1一个Etho台阶至场上的随机位置</color>]]></p>
+                <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>60</color>]]></p>
+                <p>技能：<![CDATA[<color=red>抛射出40个火焰弹，12支×300%自身伤害的导弹和5个×500%自身伤害的Etho台阶至场上的随机位置</color>]]></p>
             </properties>
             <flavor>
                 <p>“军火库？开什么玩笑，火焰弹也算热兵器吗？”</p>
@@ -1223,7 +1230,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>自带灵符僵尸。灵符僵尸死后传送到最左侧，从后方攻击，并再生成一只灵符僵尸</color>]]></p>
+                <p>特点：<![CDATA[<color=red>自带灵符僵尸。灵符僵尸死后传送到最左侧，从后方攻击，并再召唤一只灵符僵尸</color>]]></p>
             </properties>
             <flavor>
                 <p>邪仙僵尸生前害怕死亡，因此他打算成为邪仙，逃避死亡的命运。</p>
@@ -1235,16 +1242,18 @@
         <entry id="mvz2:shikaisen_zombie">
             <tags>
                 <tag id="mvz2:shell_staff" value="mvz2:wood" />
+                <tag id="mvz2:shell_pot" value="mvz2:stone" />
+                <tag id="mvz2:mass_pot" value="0" />
             </tags>
             <header>
-                <p>尸解仙僵尸在生命较低时会将竹杖插入地面，形成可以复活周围所有怪物的图腾。彻底死亡时，灵魂会寄托于身上的壶以继续进攻。</p>
+                <p>尸解仙僵尸在生命较低时会将竹杖插入地面，形成可以复活周围所有怪物的图腾。彻底死亡时，灵魂会寄托于身上的壶，以初始状态复活。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>竹杖耐久：<![CDATA[<color=red>1200</color>]]></p>
-                <p>壶耐久：<![CDATA[<color=red>10</color>]]></p>
+                <p>壶耐久：<![CDATA[<color=red>30</color>]]></p>
                 <p>壶抗性：<![CDATA[<color=red>只会受到1点伤害</color>]]></p>
-                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；死亡且无法复活时身上的壶会继续前进</color>]]></p>
+                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；倒下时放下身上的壶，并在彻底死亡时在壶的位置以初始状态复活。</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖；冲击和爆炸会无视壶的抗性</color>]]></p>
             </properties>
             <flavor>
@@ -1486,40 +1495,6 @@
                 <p>呃，还是别告诉针妙丸了吧，她可能会生气的。</p>
             </flavor>
         </entry>
-        <entry id="mvz2:jack_o_lantern">
-            <header>
-                <p>沼泽小屋门口用于装饰的南瓜灯。</p>
-            </header>
-            <properties>
-                <p>效果：<![CDATA[<color=red>非光源器械会发出黄色光芒</color>]]></p>
-            </properties>
-            <flavor>
-                <p>在万圣节时可以试试戴在头上，据说会很吓人。</p>
-                <p>开玩笑的，谁会傻到把南瓜灯戴在头上呢？普通的雕刻南瓜头就行了。</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:telekinesis">
-            <header>
-                <p>通过意识直接影响物理系统的超心理学现象。</p>
-            </header>
-            <properties>
-                <p>效果：<![CDATA[<color=red>器械发射的子弹能够跟踪附近的敌人，但会失去穿透敌人的能力</color>]]></p>
-            </properties>
-            <flavor>
-                <p>虽然念力并没有科学依据，不过在梦里能做到的事情可多了去了，这何尝不是一种念力呢。</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:wither_skeleton_skull">
-            <header>
-                <p>凋灵骷髅的头颅。</p>
-            </header>
-            <properties>
-                <p>效果：<![CDATA[<color=red>×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%</color>]]></p>
-            </properties>
-            <flavor>
-                <p>多么惊悚恐怖的骷髅头！</p>
-            </flavor>
-        </entry>
         <entry id="mvz2:manipulative_talismans">
             <header>
                 <p>青娥赠送的一叠符箓，据说可以控制僵尸。</p>
@@ -1585,6 +1560,39 @@
                 <p><![CDATA[<color=red>“然后，永无止境地<b>贪婪</b>下去！！！”</color>]]></p>
                 <p/>
                 <p>眼睛愤怒地缩紧了瞳孔。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:jack_o_lantern">
+            <header>
+                <p>沼泽小屋门口用于装饰的南瓜灯。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>非光源器械会发出黄色光芒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>在万圣节时可以试试戴在头上，应该会很吓人。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:telekinesis">
+            <header>
+                <p>通过意识直接影响物理系统的超心理学现象。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>器械发射的子弹能够跟踪附近的敌人，但会失去穿透敌人的能力</color>]]></p>
+            </properties>
+            <flavor>
+                <p>虽然念力并没有科学依据，不过在梦里能做到的事情可多了去了，这何尝不是一种念力呢。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:wither_skeleton_skull">
+            <header>
+                <p>凋灵骷髅的头颅。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%</color>]]></p>
+            </properties>
+            <flavor>
+                <p>多么惊悚恐怖的骷髅头！</p>
             </flavor>
         </entry>
     </artifacts>

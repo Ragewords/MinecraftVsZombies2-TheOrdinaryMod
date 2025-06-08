@@ -97,6 +97,11 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.berserker,
             VanillaEnemyID.anubisand,
             VanillaEnemyID.curseer,
+            VanillaEnemyID.reflectiveBarrierZombie,
+            VanillaEnemyID.talismanZombie,
+            VanillaEnemyID.wickedHermitZombie,
+            VanillaEnemyID.shikaisenZombie,
+            VanillaEnemyID.emperorZombie,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
         };

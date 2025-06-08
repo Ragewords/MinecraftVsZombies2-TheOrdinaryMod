@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.SeedPacks;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
@@ -597,6 +598,10 @@ namespace MVZ2.Vanilla.Level
                         seedPack.FullRecharge();
                     }
                     seedPack.SetCommandBlock(commandBlock);
+                    if (commandBlock)
+                    {
+                        seedPack.AddBuff<CommandBlockBlueprintBuff>();
+                    }
                 }
                 level.ReplaceSeedPackAt(i, seedPack);
             }

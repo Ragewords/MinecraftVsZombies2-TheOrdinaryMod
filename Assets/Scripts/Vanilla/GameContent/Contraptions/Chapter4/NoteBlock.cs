@@ -11,6 +11,7 @@ using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -106,6 +107,12 @@ namespace MVZ2.GameContent.Contraptions
             var volume = entity.HasBuff<NoteBlockLoudBuff>() ? 5 : 1;
             entity.PlaySound(VanillaSoundID.harp, pitch, volume);
         }
+        public static void SonicWave(Entity entity)
+        {
+            var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
+            entity.Explode(entity.Position, 120 * rangeMultiplier, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE));
+            entity.TriggerAnimation("Wave");
+        }
         public static List<EntityID> GetNoteChildren(Entity entity)
         {
             return entity.GetBehaviourField<List<EntityID>>(PROP_NOTE_CHILDREN);
@@ -120,7 +127,6 @@ namespace MVZ2.GameContent.Contraptions
             }
             children.Add(new EntityID(child));
         }
-
         public const int MAX_NOTE_COUNT = 10;
         private static readonly VanillaEntityPropertyMeta<List<EntityID>> PROP_NOTE_CHILDREN = new VanillaEntityPropertyMeta<List<EntityID>>("NoteChildren");
     }

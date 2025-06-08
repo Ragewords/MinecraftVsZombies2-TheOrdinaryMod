@@ -2780,6 +2780,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42def65f3c96ced419e2d0edd33479f3
+    m_Address: mvz2:enemy/mausoleum/shikaisen_pot
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4339bf5f9f84c374c80373f3c986dc65
     m_Address: mvz2:ui/level/pickaxe_slot
     m_ReadOnly: 0
@@ -6524,6 +6531,13 @@ MonoBehaviour:
     - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a296b9b624a895e4a86068dd9fbb59f5
+    m_Address: mvz2:entity/enemy/shikaisen_pot
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2c663f155f7ff44eb88ea0b4b0a285e
     m_Address: mvz2:mobile_blueprint/iron_helmetted_zombie
     m_ReadOnly: 0
@@ -10162,6 +10176,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa819afca41cc3947a9d00a11d208a21
+    m_Address: mvz2:flame
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa8fc80a727b0a549974a51278bbe414
     m_Address: mvz2:soul_sand_break1
     m_ReadOnly: 0
@@ -10199,6 +10220,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fbd4f223bde2b0548986faf783bc0f17
     m_Address: mvz2:effect/magnetic_line
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc2782941349db443b87b2e5d3f212c8
+    m_Address: mvz2:effect/fireblock
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

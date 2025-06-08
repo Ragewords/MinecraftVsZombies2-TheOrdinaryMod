@@ -1,20 +1,13 @@
 using MVZ2.GameContent.Detections;
-using MVZ2.GameContent.HeldItems;
-using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Projectiles;
-using MVZ2.HeldItems;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
-using MVZ2Logic;
-using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using PVZEngine.Models;
 using Tools;
 using UnityEngine;
 
@@ -31,11 +24,13 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetAttackTimer(entity, new FrameTimer(ATTACK_COOLDOWN));
+            SetEvocationTimer(entity, new FrameTimer(EVOKATION_TIMER));
         }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            var shootTimer = GetAttackTimer(entity);
+            var evokeTimer = GetEvocationTimer(entity);
+            evokeTimer.Reset();
             entity.SetEvoked(true);
             entity.PlaySound(VanillaSoundID.fuse);
         }
@@ -43,22 +38,24 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateAI(entity);
             var shootTimer = GetAttackTimer(entity);
-            shootTimer.Run(entity.GetAttackSpeed());
-            if (shootTimer.Expired)
+            if (!entity.IsEvoked())
             {
-                var target = detector.DetectEntityWithTheMost(entity, t => GetTargetPriority(entity, t));
-                if (target != null)
+                shootTimer.Run(entity.GetAttackSpeed());
+                if (shootTimer.Expired)
                 {
-                    var targetPos = target.Position;
-                    var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
-                    Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), entity.GetShootSound(), velocity);
+                    var target = detector.DetectEntityWithTheMost(entity, t => GetTargetPriority(entity, t));
+                    if (target != null)
+                    {
+                        var targetPos = target.Position;
+                        var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
+                        Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
+                    }
+                    shootTimer.ResetTime(ATTACK_COOLDOWN);
                 }
-                shootTimer.ResetTime(ATTACK_COOLDOWN);
+                return;
             }
-            if (entity.IsEvoked())
-            {
-                EvokedUpdate(entity);
-            }
+
+            EvokedUpdate(entity);
         }
         private float GetTargetPriority(Entity self, Entity target)
         {
@@ -72,7 +69,7 @@ namespace MVZ2.GameContent.Contraptions
             }
             return priority;
         }
-        public void Shoot(Entity entity, NamespaceID id, float damage, NamespaceID sound, Vector3 velocity)
+        public void Shoot(Entity entity, NamespaceID id, float damage, Vector3 velocity)
         {
             entity.TriggerAnimation("Shoot");
             var projectile = entity.ShootProjectile(new ShootParams()
@@ -81,58 +78,51 @@ namespace MVZ2.GameContent.Contraptions
                 position = entity.GetShootPoint(),
                 faction = entity.GetFaction(),
                 damage = damage,
-                soundID = sound,
+                soundID = entity.GetShootSound(),
                 velocity = velocity,
             });
             projectile.SetGravity(GRAVITY);
         }
-        private void EvokedUpdate(Entity pad)
+        private void EvokedUpdate(Entity entity)
         {
-            // ���䵼����
-            bool locked = IsMissleTargetLocked(pad);
-            Vector3 targetPosition = GetMissleTarget(pad);
+            var evokeTimer = GetEvocationTimer(entity);
+            evokeTimer.Run();
+            var level = entity.Level;
+            var grid = level.GetAllGrids().Random(entity.RNG);
+            var targetPos = grid.GetEntityPosition();
+            var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 60, GRAVITY);
 
-            // ���䵹��ʱ��
-            var shootTimer = GetAttackTimer(pad);
-            shootTimer.Run();
-
-            // ����ʱ����������û�����ֳָ���е
-            // �������С�
-            bool holdingThis = pad.Level.IsHoldingEntity(pad);
-            if (shootTimer.Expired || (!holdingThis && !locked))
+            if (evokeTimer.PassedInterval(10))
             {
-                if (locked)
-                {
-                    var velocity = VanillaProjectileExt.GetLobVelocityByTime(pad.GetShootPoint(), targetPosition, 30, GRAVITY);
-                    Shoot(pad, VanillaProjectileID.missile, pad.GetDamage() * 10, VanillaSoundID.missile, velocity);
-                }
-                if (holdingThis)
-                {
-                    pad.Level.ResetHeldItem();
-                }
-                pad.SetEvoked(false);
+                Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 3, velocity);
+            }
 
-                shootTimer.ResetTime(ATTACK_COOLDOWN / 3);
-                SetMissleTimeout(pad, 0);
-                SetMissleTarget(pad, Vector3.zero);
+            if (evokeTimer.PassedInterval(3))
+            {
+                Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
+            }
+
+            if (evokeTimer.PassedInterval(24))
+            {
+                Shoot(entity, VanillaProjectileID.flyingTNT, entity.GetDamage() * 5, velocity);
+            }
+
+            if (evokeTimer.Expired)
+            {
+                entity.SetEvoked(false);
             }
         }
         public static FrameTimer GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_ATTACK_TIMER, timer);
-        public static Vector3 GetMissleTarget(Entity pad) => pad.GetBehaviourField<Vector3>(ID, PROP_MISSLE_TARGET);
-        public static void SetMissleTarget(Entity pad, Vector3 position) => pad.SetBehaviourField(ID, PROP_MISSLE_TARGET, position);
-        public static int GetMissleTimeout(Entity pad) => pad.GetBehaviourField<int>(ID, PROP_MISSLE_TIMEOUT);
-        public static void SetMissleTimeout(Entity pad, int value) => pad.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, value);
-        public static bool IsMissleTargetLocked(Entity pad) => pad.GetBehaviourField<bool>(ID, PROP_MISSLE_TARGET_LOCKED);
-        public static void SetMissleTargetLocked(Entity pad, bool value) => pad.SetBehaviourField(ID, PROP_MISSLE_TARGET_LOCKED, value);
+        public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_MISSLE_TIMEOUT);
+        public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
-        public const int ATTACK_COOLDOWN = 90;
+        public const int ATTACK_COOLDOWN = 60;
+        public const int EVOKATION_TIMER = 120;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 160;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
-        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_MISSLE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MissleTarget");
-        public static readonly VanillaEntityPropertyMeta<int> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<int>("MissleTimeout");
-        public static readonly VanillaEntityPropertyMeta<bool> PROP_MISSLE_TARGET_LOCKED = new VanillaEntityPropertyMeta<bool>("MissleTargetLocked");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<FrameTimer>("MissleTimeout");
 
         private Detector detector;
         private static readonly NamespaceID ID = VanillaContraptionID.fireChargeDispenser;

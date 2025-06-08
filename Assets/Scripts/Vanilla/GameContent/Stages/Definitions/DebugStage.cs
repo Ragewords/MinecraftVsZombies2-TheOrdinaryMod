@@ -44,15 +44,15 @@ namespace MVZ2.GameContent.Stages
             level.FillSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.lightningOrb,
-                VanillaContraptionID.stoneShield,
-                VanillaContraptionID.silvenser,
                 VanillaContraptionID.teslaCoil,
-                VanillaContraptionID.dispenser,
+                VanillaContraptionID.splitenser,
+                VanillaContraptionID.goldenApple,
+                VanillaContraptionID.hellfire,
                 VanillaEnemyID.caveSpider,
-                VanillaEnemyID.zombie,
-                VanillaEnemyID.mesmerizer,
-                VanillaEnemyID.necromancer,
-                VanillaBossID.theEye,
+                VanillaEnemyID.shikaisenPot,
+                VanillaEnemyID.reflectiveBarrierZombie,
+                VanillaEnemyID.shikaisenZombie,
+                VanillaEnemyID.wickedHermitZombie,
             });
             level.GetSeedPackAt(1).SetCommandBlock(true);
             level.SetArtifactSlotCount(3);

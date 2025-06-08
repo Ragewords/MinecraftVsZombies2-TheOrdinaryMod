@@ -85,7 +85,7 @@
     <model name="reflective_barrier_zombie" type="entity" path="mvz2:enemy/mausoleum/reflective_barrier_zombie" width="80" height="116" xOffset="16" yOffset="-50"/>
     <model name="talisman_zombie" type="entity" path="mvz2:enemy/mausoleum/talisman_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
     <model name="wicked_hermit_zombie" type="entity" path="mvz2:enemy/mausoleum/wicked_hermit_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
-    <model name="shikaisen_zombie" type="entity" path="mvz2:enemy/mausoleum/shikaisen_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="shikaisen_zombie" type="entity" path="mvz2:enemy/mausoleum/shikaisen_zombie" width="96" height="96" xOffset="4" yOffset="-44"/>
     <model name="emperor_zombie" type="entity" path="mvz2:enemy/mausoleum/emperor_zombie" width="70" height="104" xOffset="1" yOffset="-47"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -106,13 +106,14 @@
 	<model name="seija_jizo" type="entity" path="mvz2:enemy/castle/seija_jizo" width="32" height="47" xOffset="0" yOffset="-24"/>
 	<model name="brainwasher" type="entity" path="mvz2:enemy/castle/brainwasher" width="64" height="116" xOffset="10" yOffset="-64"/>
     <model name="bedserker" type="entity" path="mvz2:enemy/castle/bedserker" width="72" height="100" xOffset="10" yOffset="-48"/>
-    <model name="skeleton_warrior" type="entity" path="mvz2:enemy/mausoleum/skeleton_warrior" width="64" height="96" xOffset="16" yOffset="-44"/>
-    <model name="skeleton_mage" type="entity" path="mvz2:enemy/mausoleum/skeleton_mage" width="64" height="96" xOffset="10" yOffset="-44"/>
-    <model name="shikaisen_staff" type="entity" path="mvz2:enemy/mausoleum/shikaisen_staff" width="24" height="64" xOffset="0" yOffset="-26"/>
 	<model name="jackdullahan" type="entity" path="mvz2:enemy/castle/jackdullahan" width="94" height="120" xOffset="9" yOffset="-53"/>
 	<model name="jackdullahan_head" type="entity" path="mvz2:enemy/castle/jackdullahan_head" width="32" height="22" xOffset="0" yOffset="-11"/>
 	<model name="jackdullahan_main" type="entity" path="mvz2:enemy/castle/jackdullahan_main" width="64" height="100" xOffset="10" yOffset="-46"/>
 	<model name="soul_skeleton_horse" type="entity" path="mvz2:enemy/castle/soul_skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>
+    <model name="skeleton_warrior" type="entity" path="mvz2:enemy/mausoleum/skeleton_warrior" width="64" height="96" xOffset="16" yOffset="-44"/>
+    <model name="skeleton_mage" type="entity" path="mvz2:enemy/mausoleum/skeleton_mage" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="shikaisen_staff" type="entity" path="mvz2:enemy/mausoleum/shikaisen_staff" width="24" height="64" xOffset="0" yOffset="-26"/>
+    <model name="shikaisen_pot" type="entity" path="mvz2:enemy/mausoleum/shikaisen_pot" width="48" height="48" xOffset="0" yOffset="-16"/>
 
 
     <!-- Obstacles -->
@@ -228,6 +229,7 @@
     <model name="spawner_appear_embers" type="entity" path="mvz2:effect/spawner_appear_embers" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="ember_particles" type="entity" path="mvz2:effect/ember_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="fireburn" type="entity" path="mvz2:effect/fireburn" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+	<model name="fireblock" type="entity" path="mvz2:effect/fireblock" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="cursed_fireburn" type="entity" path="mvz2:effect/cursed_fireburn" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="cursed_meteor" type="entity" path="mvz2:effect/cursed_meteor" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="cursed_fire_particles" type="entity" path="mvz2:effect/cursed_fire_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

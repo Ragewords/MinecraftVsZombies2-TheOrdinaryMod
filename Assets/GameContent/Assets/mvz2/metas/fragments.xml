@@ -273,6 +273,14 @@
             <key hex="#463529" time="1"/>
         </colorKeys>
     </fragment>
+    <fragment name="monster_spawner">
+        <colorKeys>
+            <key hex="#2A4455" time="1"/>
+            <key hex="#406278" time="0.7"/>
+            <key hex="#2A2435" time="0.4"/>
+            <key hex="#182C39" time="0.3"/>
+        </colorKeys>
+    </fragment>
     <fragment name="reflective_barrier">
         <colorKeys>
             <key hex="#869C2E" time="1"/>
@@ -285,6 +293,12 @@
         <colorKeys>
             <key hex="#BB8028" time="0.5"/>
             <key hex="#DAB276" time="1"/>
+        </colorKeys>
+    </fragment>
+    <fragment name="shikaisen_pot">
+        <colorKeys>
+            <key hex="#704E33" time="1"/>
+            <key hex="#3E2714" time="0.3"/>
         </colorKeys>
     </fragment>
     <fragment name="divine_shield">

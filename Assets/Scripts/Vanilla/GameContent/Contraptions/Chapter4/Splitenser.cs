@@ -102,7 +102,7 @@ namespace MVZ2.GameContent.Contraptions
             param.position = entity.Position + offset;
 
             param.projectileID = VanillaProjectileID.knife;
-            param.damage = entity.GetDamage() / 4 * 3;
+            param.damage = entity.GetDamage() * 3 / 4;
 
             var vel = param.velocity;
             vel.x *= -1;

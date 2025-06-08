@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Difficulties;
+using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -51,6 +52,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     entity.Position = position;
                     entity.Velocity = Vector3.zero;
                     entity.AddBuff<WickedHermitWarppedBuff>();
+                    var talisman = entity.SpawnWithParams(VanillaEnemyID.talismanZombie, entity.Position);
+                    talisman.AddBuff<WickedHermitWarppedBuff>();
                 }
                 var scaleT = 1 - Mathf.Abs(timer.Frame - WARP_TIME) / (float)WARP_TIME;
                 entity.SetAnimationFloat("WarpBlend", scaleT);

@@ -70,6 +70,7 @@ namespace MVZ2.GameContent.Effects
         public const string emberParticles = "ember_particles";
         public const string spawnerAppearEmbers = "spawner_appear_embers";
         public const string fireburn = "fireburn";
+        public const string fireblock = "fireblock";
         public const string cursedFireburn = "cursed_fireburn";
         public const string cursedMeteor = "cursed_meteor";
         public const string cursedFireParticles = "cursed_fire_particles";
@@ -151,6 +152,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID emberParticles = Get(VanillaEffectNames.emberParticles);
         public static readonly NamespaceID spawnerAppearEmbers = Get(VanillaEffectNames.spawnerAppearEmbers);
         public static readonly NamespaceID fireburn = Get(VanillaEffectNames.fireburn);
+        public static readonly NamespaceID fireblock = Get(VanillaEffectNames.fireblock);
         public static readonly NamespaceID cursedFireburn = Get(VanillaEffectNames.cursedFireburn);
         public static readonly NamespaceID cursedMeteor = Get(VanillaEffectNames.cursedMeteor);
         public static readonly NamespaceID cursedFireParticles = Get(VanillaEffectNames.cursedFireParticles);

@@ -123,7 +123,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_PRODUCTION_TIMER, timer);
         public static NamespaceID GetTargetEntity(Entity entity) => entity.GetBehaviourField<NamespaceID>(PROP_TARGET_ENTITY);
         public static void SetTargetEntity(Entity entity, NamespaceID value) => entity.SetBehaviourField(PROP_TARGET_ENTITY, value);
-        public const int IDLE_TIME = 69;
+        public const int IDLE_TIME = 30;
         public const int WORK_TIME = 27;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
         public const int STATE_WORKING = VanillaEntityStates.CONTRAPTION_SPECIAL;

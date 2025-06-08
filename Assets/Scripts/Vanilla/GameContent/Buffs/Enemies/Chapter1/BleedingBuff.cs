@@ -7,6 +7,7 @@ using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Level;
+using Tools;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -19,27 +20,31 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMEOUT, 150);
+            buff.SetProperty(PROP_TIMEOUT, new FrameTimer(150));
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
 
             var entity = buff.GetEntity();
-            if (entity != null)
+            var timeout = buff.GetProperty<FrameTimer>(PROP_TIMEOUT);
+            timeout.Run();
+            
+            if (timeout.PassedInterval(5))
             {
-                entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.SLICE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                if (entity != null)
+                {
+                    entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.SLICE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                }
             }
 
-            var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
-            timeout--;
             buff.SetProperty(PROP_TIMEOUT, timeout);
-            if (timeout <= 0)
+            if (timeout.Expired)
             {
                 buff.Remove();
             }
         }
-        public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        public const float WITHER_DAMAGE = 1 / 8f;
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMEOUT = new VanillaBuffPropertyMeta<FrameTimer>("Timeout");
+        public const float WITHER_DAMAGE = 1f;
     }
 }

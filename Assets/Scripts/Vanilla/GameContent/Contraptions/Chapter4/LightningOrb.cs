@@ -1,7 +1,9 @@
 ﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -22,6 +24,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateLogic(contraption);
             contraption.SetAnimationFloat("Damaged", 1 - contraption.Health / contraption.GetMaxHealth());
             contraption.SetAnimationBool("Absorbing", contraption.HasBuff<LightningOrbEvokedBuff>());
+            contraption.SetAnimationBool("Charged", IsCharged(contraption));
         }
         private void PreProjectileHitCallback(VanillaLevelCallbacks.PreProjectileHitParams param, CallbackResult result)
         {
@@ -43,6 +46,12 @@ namespace MVZ2.GameContent.Contraptions
             projectile.Remove();
             result.SetFinalValue(false);
             orb.PlaySound(VanillaSoundID.energyShieldHit);
+            if (IsCharged(orb))
+            {
+                var sparam = orb.GetShootParams();
+                sparam.soundID = null;
+                orb.ShootProjectile(sparam);
+            }
         }
         public override bool CanEvoke(Entity entity)
         {
@@ -55,7 +64,17 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             entity.PlaySound(VanillaSoundID.lightningAttack);
             entity.AddBuff<LightningOrbEvokedBuff>();
+            SetCharged(entity, true);
         }
+        public static void SetCharged(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(PROP_CHARGED, value);
+        }
+        public static bool IsCharged(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(PROP_CHARGED);
+        }
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_CHARGED = new VanillaEntityPropertyMeta<bool>("Charged");
         public const float HEAL_AMOUNT = 100;
     }
 }

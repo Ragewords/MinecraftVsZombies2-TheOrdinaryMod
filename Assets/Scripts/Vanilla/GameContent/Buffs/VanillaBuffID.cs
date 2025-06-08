@@ -156,6 +156,7 @@ namespace MVZ2.GameContent.Buffs
             public const string slendermanMindSwap = "slenderman_mind_swap";
             public const string upgradeEndlessCost = "upgrade_endless_cost";
             public const string witherSkeletonSkullReduceCost = "wither_skeleton_skull_reduce_cost";
+            public const string commandBlockBlueprint = "command_block_blueprint";
         }
         public static class Level
         {

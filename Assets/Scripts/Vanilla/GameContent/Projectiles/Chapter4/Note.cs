@@ -77,6 +77,7 @@ namespace MVZ2.GameContent.Projectiles
             note.ClearIgnoredProjectileColliders();
             noteBlock.TriggerAnimation("Shoot");
             NoteBlock.PlayHarpSound(noteBlock);
+            NoteBlock.SonicWave(noteBlock);
         }
         public static void Reflect(Entity note, Entity other)
         {

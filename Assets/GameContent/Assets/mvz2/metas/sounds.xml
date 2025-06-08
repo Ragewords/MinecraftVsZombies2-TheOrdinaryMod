@@ -249,6 +249,9 @@
     <sound name="fizz">
         <sample path="mvz2:fizz" weight="1" />
     </sound>
+    <sound name="flame">
+        <sample path="mvz2:flame" weight="1" />
+    </sound>
     <sound name="fling">
         <sample path="mvz2:entity/totenser/fling" weight="1" />
     </sound>

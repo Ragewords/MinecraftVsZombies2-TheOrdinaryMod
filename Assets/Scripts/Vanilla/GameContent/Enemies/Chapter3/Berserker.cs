@@ -61,14 +61,14 @@ namespace MVZ2.GameContent.Enemies
                 float degree = i * 12;
                 float rad = degree * Mathf.Deg2Rad;
                 Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * fireLength;
-                entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
+                entity.Level.Spawn(VanillaEffectID.fireburn, pos, entity);
             }
             for (int i = 0; i < 30; i++)
             {
                 float degree = i * 12 + 6;
                 float rad = degree * Mathf.Deg2Rad;
                 Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * (fireLength / 2);
-                entity.Level.Spawn(VanillaEffectID.fire, pos, entity);
+                entity.Level.Spawn(VanillaEffectID.fireburn, pos, entity);
             }
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));
             entity.PlaySound(VanillaSoundID.darkSkiesImpact, scaleX == 0 ? 1000 : 1 / (scaleX));
