@@ -1,7 +1,9 @@
 ﻿using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
@@ -45,6 +47,7 @@ namespace MVZ2.GameContent.Contraptions
         public virtual Entity Shoot(Entity entity)
         {
             entity.TriggerAnimation("Shoot");
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_CONTRAPTION_SHOT, new EntityCallbackParams(entity));
             return entity.ShootProjectile();
         }
         public static FrameTimer GetShootTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_TIMER);

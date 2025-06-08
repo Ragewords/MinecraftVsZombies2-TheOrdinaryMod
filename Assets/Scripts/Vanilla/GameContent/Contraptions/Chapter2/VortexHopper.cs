@@ -32,23 +32,23 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            var repeatTimer = GetRepeatTimer(entity);
-            repeatTimer.Run();
-            var dir = GetDir(entity);
-            SetDir(entity, dir + 20);
-            if (repeatTimer.Expired)
-            {
-                for (int i = 0; i < 30; i++)
-                {
-                    var direction = Quaternion.Euler(0, i * 12 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
-                    var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
-                    projectile.SetDamage(entity.GetDamage());
-                    projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
-                }
-                SetRepeatTimer(entity, new FrameTimer(5));
-            }
             if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
             {
+                var repeatTimer = GetRepeatTimer(entity);
+                var dir = GetDir(entity);
+                SetDir(entity, dir + 20);
+                repeatTimer.Run();
+                if (repeatTimer.Expired)
+                {
+                    for (int i = 0; i < 30; i++)
+                    {
+                       var direction = Quaternion.Euler(0, i * 12 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
+                        var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
+                        projectile.SetDamage(entity.GetDamage());
+                        projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
+                    }
+                    SetRepeatTimer(entity, new FrameTimer(5));
+                }
                 DragEnemiesNearby(entity);
                 var relativeY = entity.GetRelativeY();
                 relativeY -= 1;

@@ -1850,6 +1850,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ee311d16a8eadb4e8b9649175c4c7bc
+    m_Address: mvz2:entity/boss/the_eye_telepathy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2ef60f7a077178f429877e76ff61731a
     m_Address: mvz2:mausoleum_boss
     m_ReadOnly: 0

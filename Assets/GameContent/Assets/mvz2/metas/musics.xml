@@ -147,7 +147,8 @@
 			<p>这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。</p>
 		</description>
 	</music>
-	<music id="nightmare_boss" path="mvz2:nightmare_boss" name="Pandemonic Planet（前段）">
+	<music id="nightmare_boss" name="Pandemonic Planet（前段）">
+        <track main="mvz2:nightmare_boss"/>
 		<source>东方绀珠传</source>
 		<description>
 			<p>梦魇第二阶段的音乐。</p>

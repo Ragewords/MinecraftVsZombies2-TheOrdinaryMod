@@ -382,13 +382,6 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.PlaySound(VanillaSoundID.decrepify);
             boss.Level.AddBuff<NightmareDecrepifyBuff>();
-            var level = boss.Level;
-            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY);
-            foreach (var enemy in targets_enemy)
-            {
-                enemy.TakeDamage(enemy.Health / 2, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), boss);
-                enemy.RemoveArmor(VanillaArmorSlots.main);
-            }
         }
 
         private void Insanity(Entity boss)
@@ -405,7 +398,7 @@ namespace MVZ2.GameContent.Bosses
                 targetFaction = target.GetFaction();
                 target.Charm(boss.GetFaction());
             }
-            var targets1 = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsLoyal()).RandomTake(10, rng);
+            var targets1 = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsLoyal()).RandomTake(5, rng);
             foreach (var target in targets1)
             {
                 target.Charm(targetFaction);
@@ -424,13 +417,6 @@ namespace MVZ2.GameContent.Bosses
                 var ghast = boss.SpawnWithParams(VanillaEnemyID.ghast, enemy.Position);
                 ghast.AddBuff<NightmareComeTrueBuff>();
                 enemy.Remove();
-            }
-            var rng = GetEventRNG(boss);
-            var targets_contraption = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
-            foreach (var contraption in targets_contraption)
-            {
-                var buff = contraption.AddBuff<DreamButterflyShieldBuff>();
-                buff.SetProperty(DreamButterflyShieldBuff.PROP_TIMEOUT, 150);
             }
         }
 
@@ -465,7 +451,7 @@ namespace MVZ2.GameContent.Bosses
             var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.CanDeactive());
             foreach (var enemy in targets_enemy)
             {
-                enemy.Stun(100);
+                enemy.Stun(90);
             }
         }
         private void IllusionEye(Entity boss)
@@ -476,12 +462,7 @@ namespace MVZ2.GameContent.Bosses
             foreach (var enemy in targets_enemy)
             {
                 if (!enemy.HasBuff<IllusionEyeBuff>())
-                {
                     enemy.AddBuff<IllusionEyeBuff>();
-                }
-                var pos = enemy.Position;
-                pos.x = 1020;
-                enemy.Position = pos;
             }
         }
         private static string GetFateOptionText(int option)

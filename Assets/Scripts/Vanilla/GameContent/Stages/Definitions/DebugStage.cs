@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.mesmerizer,
                 VanillaEnemyID.necromancer,
-                VanillaEnemyID.reflectiveBarrierZombie,
+                VanillaBossID.theEye,
             });
             level.GetSeedPackAt(1).SetCommandBlock(true);
             level.SetArtifactSlotCount(3);

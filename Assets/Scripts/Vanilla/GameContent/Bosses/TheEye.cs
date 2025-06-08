@@ -1,4 +1,5 @@
 using System.Linq;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
@@ -31,7 +32,7 @@ namespace MVZ2.GameContent.Bosses
         {
             base.Init(entity);
             SetMoveTimer(entity, new FrameTimer(300));
-            SetStateTimer(entity, new FrameTimer(300));
+            SetStateTimer(entity, new FrameTimer(150));
             SetTransformTimer(entity, new FrameTimer(40));
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
@@ -58,7 +59,7 @@ namespace MVZ2.GameContent.Bosses
                 return;
             MoveUpdate(entity);
             AttackUpdate(entity);
-            entity.Level.Explode(entity.Position, 200, entity.GetFaction(), 0.1f, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+            entity.Level.Explode(entity.Position, 200, entity.GetFaction(), 0.15f, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
 
         }
         protected override void UpdateLogic(Entity entity)
@@ -67,29 +68,26 @@ namespace MVZ2.GameContent.Bosses
             if (entity.IsDead)
             {
                 entity.Timeout--;
-                if (entity.Timeout == 30)
+                if (entity.Timeout == 50)
                 {
-                    entity.PlaySound(VanillaSoundID.theEyeDeath2);
+                    entity.SetAnimationBool("FadeOut", true);
                 }
                 else if (entity.Timeout <= 0)
                 {
-                    var expPart = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
-                    expPart.SetSize(Vector3.one * 240);
-                    expPart.SetTint(Color.black);
-                    entity.Level.ShakeScreen(60, 0, 30);
                     entity.Remove();
                 }
             }
-            entity.SetAnimationBool("IsDead", entity.IsDead);
         }
         public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
             base.PostDeath(entity, deathInfo);
 
-            entity.Spawn(VanillaEffectID.darkMatterParticles, entity.GetCenter());
             entity.PlaySound(VanillaSoundID.theEyeDeath1);
             entity.SetAnimationBool("IsDead", true);
-            entity.Timeout = 200;
+            var level = entity.Level;
+            Vector3 pos = new Vector3(level.GetEntityColumnX(4), 20, level.GetEntityLaneZ(2));
+            entity.Position = pos;
+            entity.Timeout = 100;
         }
         #region Move
         private void MoveUpdate(Entity entity)
@@ -177,11 +175,15 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.PlaySound(VanillaSoundID.magnetic);
                                 SetSoundPlayed(entity, true);
+                                entity.SetAnimationInt("AttackState", 2);
                             }
 
-                            entity.SetAnimationInt("AttackState", 1);
                             var transTimer = GetTransformTimer(entity);
                             transTimer.Run();
+
+                            if (transTimer.PassedFrame(10))
+                                entity.SetAnimationInt("AttackState", 1);
+                            
                             if (transTimer.Expired)
                             {
                                 var level = entity.Level;
@@ -206,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_SUMMON);
                                 SetSoundPlayed(entity, false);
                                 entity.SetAnimationInt("AttackState", 0);
-                                transTimer.ResetTime(150);
+                                transTimer.Reset();
                                 timer.Reset();
                             }
                         }
@@ -225,22 +227,16 @@ namespace MVZ2.GameContent.Bosses
                             if (transTimer.Expired)
                             {
                                 var level = entity.Level;
-                                var grids = level.GetAllGrids();
-                                var targetGrids = grids.Where(g => g.IsWater());
                                 entity.PlaySound(VanillaSoundID.odd);
-                                foreach (var grid in targetGrids)
+                                var contraption = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity));
+                                foreach (var target in contraption)
                                 {
-                                    var pool = summonPool.Random(GetProjectileRNG(entity));
-                                    Vector3 pos = grid.GetEntityPosition();
-                                    level.Spawn(pool, pos, entity);
-                                    var expPart = entity.Level.Spawn(VanillaEffectID.smokeCluster, pos, entity);
-                                    expPart.SetSize(Vector3.one * 800);
-                                    expPart.SetTint(Color.black);
+                                    target.AddBuff<RUAWizardBuff>();
                                 }
                                 entity.SetAnimationInt("AttackState", 0);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_ENEMY_MOVE);
-                                transTimer.ResetTime(40);
+                                transTimer.Reset();
                                 timer.Reset();
                             }
                         }
@@ -250,7 +246,7 @@ namespace MVZ2.GameContent.Bosses
         }
         #endregion
 
-        #region ÊôÐÔ
+        #region ï¿½ï¿½ï¿½ï¿½
         public static FrameTimer GetMoveTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_MOVE_TIMER);
         public static void SetMoveTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(ID, PROP_MOVE_TIMER, value);
         public static int GetMoveTimeout(Entity boss) => boss.GetBehaviourField<int>(ID, PROP_MOVE_TIMEOUT);
