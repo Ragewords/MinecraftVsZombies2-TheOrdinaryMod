@@ -128,6 +128,8 @@
         public const int THE_GIANT_ROAR = BOSS_ATTACK_2;
         public const int THE_GIANT_ARMS = BOSS_ATTACK_3;
         public const int THE_GIANT_BREATH = BOSS_ATTACK_4;
+        public const int THE_GIANT_VOMIT = BOSS_SPECIAL_3;
+        public const int THE_GIANT_SNEEZE = BOSS_SPECIAL_4;
         public const int THE_GIANT_STUNNED = BOSS_FAINT;
         public const int THE_GIANT_PACMAN = BOSS_ATTACK_5;
         public const int THE_GIANT_SNAKE = BOSS_ATTACK_6;

@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        GrantShields(entity, detectBuffer.RandomTake(10, entity.RNG));
+                        GrantShields(entity, detectBuffer.RandomTake(12, entity.RNG));
                     }
                 }
             }

@@ -555,6 +555,8 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_ROAR = VanillaEntityStates.THE_GIANT_ROAR;
         public const int STATE_ARMS = VanillaEntityStates.THE_GIANT_ARMS;
         public const int STATE_BREATH = VanillaEntityStates.THE_GIANT_BREATH;
+        public const int STATE_VOMIT = VanillaEntityStates.THE_GIANT_VOMIT;
+        public const int STATE_SNEEZE = VanillaEntityStates.THE_GIANT_SNEEZE;
         public const int STATE_STUNNED = VanillaEntityStates.THE_GIANT_STUNNED;
         public const int STATE_PACMAN = VanillaEntityStates.THE_GIANT_PACMAN;
         public const int STATE_SNAKE = VanillaEntityStates.THE_GIANT_SNAKE;
@@ -571,6 +573,8 @@ namespace MVZ2.GameContent.Bosses
         public const int ANIMATION_STATE_CHASE = 6;
         public const int ANIMATION_STATE_PACMAN = 7;
         public const int ANIMATION_STATE_SNAKE = 8;
+        public const int ANIMATION_STATE_VOMIT = 9;
+        public const int ANIMATION_STATE_SNEEZE = 10;
         public const int ANIMATION_STATE_STUNNED = 100;
         public const int ANIMATION_STATE_FAINT = 101;
         public const int ANIMATION_STATE_DEATH = 102;

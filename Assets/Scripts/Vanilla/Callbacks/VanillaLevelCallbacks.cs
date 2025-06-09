@@ -136,7 +136,6 @@ namespace MVZ2.Vanilla.Callbacks
         }
 
 
-        public readonly static CallbackType<EntityCallbackParams> POST_ENTITY_REINCARNATE = new();
         public readonly static CallbackType<LevelCallbackParams> POST_HUGE_WAVE_APPROACH = new();
         public readonly static CallbackType<LevelCallbackParams> POST_FINAL_WAVE = new();
 
@@ -149,6 +148,7 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostPlaceEntityParams> POST_PLACE_ENTITY = new();
         public readonly static CallbackType<PostUseEntityBlueprintParams> POST_USE_ENTITY_BLUEPRINT = new();
         public readonly static CallbackType<PostEntityCharmParams> POST_ENTITY_CHARM = new();
+        public readonly static CallbackType<EntityCallbackParams> POST_ENTITY_REINCARNATE = new();
 
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_TRIGGER = new();
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_EVOKE = new();

@@ -14,7 +14,6 @@ namespace MVZ2.GameContent.Enemies
     {
         public ShikaisenPot(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEnemyDeathCallback, filter: EntityTypes.ENEMY);
         }
         public override void Init(Entity entity)
         {
@@ -26,11 +25,23 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
+            var pot = entity;
+            if (pot.Parent == null)
+                return;
+            if (pot.Parent.HasBuff<ShikaisenReviveBuff>())
+                return;
+            if (pot.Parent.IsDead)
+            {
+                pot.Parent.Remove();
+                var shikaisen = pot.Spawn(pot.Parent.GetDefinitionID(), pot.Position);
+                shikaisen.SetFaction(pot.Parent.GetFaction());
+                pot.Die(pot);
+            }
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
             base.PreTakeDamage(input, result);
-            if (!(input.HasEffect(VanillaDamageEffects.EXPLOSION) && input.HasEffect(VanillaDamageEffects.PUNCH)))
+            if (!input.HasEffect(VanillaDamageEffects.EXPLOSION) && !input.HasEffect(VanillaDamageEffects.PUNCH))
             {
                 input.SetAmount(1);
             }
@@ -39,25 +50,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.PostDeath(entity, info);
             entity.Remove();
-        }
-        private void PostEnemyDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            var info = param.deathInfo;
-            if (info.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
-                return;
-            if (!entity.IsEntityOf(VanillaEnemyID.shikaisenZombie))
-                return;
-            var pot = entity.Level.FindFirstEntity(e => e.IsEntityOf(VanillaEnemyID.shikaisenPot) && e.ExistsAndAlive());
-            if (pot == null)
-                return;
-            if (pot.Parent == null)
-                return;
-            if (pot.Parent.HasBuff<ShikaisenReviveBuff>())
-                return;
-            pot.Parent.Remove();
-            pot.Spawn(pot.Parent.GetDefinitionID(), pot.Position);
-            pot.Die(pot);
         }
     }
 }

@@ -659,7 +659,7 @@
         </entry>
         <entry id="necrotombstone">
             <header>
-                <p>死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师和骷髅战士，让它们为你而战。</p>
+                <p>死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师、爆破骨兵、骷髅马和骷髅战士，让它们为你而战。</p>
             </header>
             <properties>
                 <p>召唤时间：<![CDATA[<color=red>15秒</color>]]></p>
@@ -676,7 +676,7 @@
         </entry>
         <entry id="black_hole_bomb">
             <header>
-                <p>黑洞炸弹在触发后会产生小型黑洞，吸引周围所有的敌怪和子弹。</p>
+                <p>黑洞炸弹在触发后会产生小型黑洞，吸引周围所有的敌怪和子弹，并在消失时将它们传送至场地边缘。</p>
             </header>
             <properties>
                 <p>持续时间：<![CDATA[<color=red>8秒</color>]]></p>
@@ -695,6 +695,7 @@
                 <p>欲望壶会复制敌人身上拥有的星之碎片。</p>
             </header>
             <properties>
+                <p>特点：<![CDATA[<color=red>复制时，33%概率改为自我激发一次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>将最前方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>]]></p>
             </properties>
             <flavor>
@@ -1257,17 +1258,17 @@
                 <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖；冲击和爆炸会无视壶的抗性</color>]]></p>
             </properties>
             <flavor>
-                <p>非常擅长做仰卧起坐。</p>
+                <p>非常擅长做仰卧起坐和表演密室逃脱。</p>
             </flavor>
         </entry>
         <entry id="mvz2:emperor_zombie">
             <header>
-                <p>皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾，使它们免疫下一次受到的伤害。</p>
+                <p>皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾，使它们免疫下一次受到的伤害的同时获得伤害抗性。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
                 <p>施法冷却：<![CDATA[<color=red>5秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>一次最多给予10个周围的敌人圣盾与伤害抗性，抵消下一次受到的伤害，并在15秒内-10受到的伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>一次最多给予12个周围的敌人圣盾与伤害抗性，抵消下一次受到的伤害；抵消伤害后敌人获得50%伤害抗性</color>]]></p>
             </properties>
             <flavor>
                 <p>他并不是什么大国的皇帝，就是一个僵尸小圈子里面，天天被捧的高高的，实际上就只会套盾，被碰一下就破防，还以为自己有多大能耐的土皇帝罢了。</p>

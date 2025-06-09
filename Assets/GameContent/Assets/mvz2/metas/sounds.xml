@@ -371,6 +371,9 @@
 	<sound name="heal">
 		<sample path="mvz2:heal" weight="1" />
 	</sound>
+	<sound name="holy">
+		<sample path="mvz2:holy" weight="1" />
+	</sound>
     <sound name="horse_angry" priority="64">
         <sample path="mvz2:horse_angry" weight="1" />
     </sound>

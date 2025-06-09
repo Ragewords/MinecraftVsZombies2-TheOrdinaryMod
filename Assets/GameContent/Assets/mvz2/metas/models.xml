@@ -234,6 +234,7 @@
     <model name="cursed_meteor" type="entity" path="mvz2:effect/cursed_meteor" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="cursed_fire_particles" type="entity" path="mvz2:effect/cursed_fire_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="blackhole" type="entity" path="mvz2:effect/blackhole" width="130" height="130" xOffset="0" yOffset="0"/>
+    <model name="whitehole" type="entity" path="mvz2:effect/whitehole" width="130" height="130" xOffset="0" yOffset="0"/>
     <model name="annihilation_field" type="entity" path="mvz2:effect/annihilation_field" width="130" height="130" xOffset="0" yOffset="0"/>
     <model name="desire_lump" type="entity" path="mvz2:effect/desire_lump" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="binary_particles" type="entity" path="mvz2:effect/binary_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
@@ -243,6 +244,7 @@
     <model name="zombie_block" type="entity" path="mvz2:effect/zombie_block" width="80" height="80" xOffset="0" yOffset="0"/>
     <model name="dark_hole" type="entity" path="mvz2:effect/dark_hole" shot="false" width="120" height="120" xOffset="0" yOffset="0"/>
     <model name="amplified_roar" type="entity" path="mvz2:effect/amplified_roar" shot="false" width="120" height="120" xOffset="0" yOffset="0"/>
+    <model name="vomit_splash" type="entity" path="mvz2:effect/vomit_splash" shot="false" width="78" height="78" xOffset="0" yOffset="0"/>
 
     <!-- Projectiles -->
     <model name="arrow" type="entity" path="mvz2:projectile/arrow" width="32" height="10" xOffset="0" yOffset="0"/>
@@ -258,6 +260,7 @@
 	<model name="missile_fragments_2" type="entity" path="mvz2:projectile/missile_fragments_2" width="38" height="9" xOffset="0" yOffset="0"/>
 	<model name="missile_fragments_3" type="entity" path="mvz2:projectile/missile_fragments_3" width="17" height="6" xOffset="0" yOffset="0"/>
 	<model name="poison_ball" type="entity" path="mvz2:projectile/poison_ball" width="15" height="15" xOffset="0" yOffset="0"/>
+
     <model name="large_arrow" type="entity" path="mvz2:projectile/large_arrow" width="64" height="20" xOffset="0" yOffset="0"/>
     <model name="spike" type="entity" path="mvz2:projectile/spike" width="20" height="11" xOffset="0" yOffset="0"/>
     <model name="spike_ball" type="entity" path="mvz2:projectile/spike_ball" width="20" height="20" xOffset="0" yOffset="0"/>
@@ -286,6 +289,7 @@
     <model name="fireball" type="entity" path="mvz2:projectile/fireball" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="ice_bolt" type="entity" path="mvz2:projectile/ice_bolt" width="64" height="20" xOffset="6" yOffset="0"/>
     <model name="charged_bolt" type="entity" path="mvz2:projectile/charged_bolt" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="vomit" type="entity" path="mvz2:projectile/vomit" width="49" height="25" xOffset="0" yOffset="0"/>
 
     <!-- Armors -->
     <model name="leather_cap" type="armor" path="mvz2:armor/leather_cap" width="33" height="14" xOffset="0" yOffset="0"/>

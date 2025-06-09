@@ -5,6 +5,7 @@ using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -42,12 +43,46 @@ namespace MVZ2.GameContent.Effects
 
             bool active = entity.Timeout > 5;
             entity.SetAnimationBool("Started", active);
-            if (!active)
-                return;
-
-            // Absorb.
             detectBuffer.Clear();
             absorbDetector.DetectMultiple(entity, detectBuffer);
+            if (!active)
+            {
+                bool whitehole_left = false;
+                bool whitehole_right = false;
+                foreach (var collider in detectBuffer)
+                {
+                    var target = collider.Entity;
+                    bool hostile = target.IsHostile(entity);
+                    if (target.Type == EntityTypes.ENEMY)
+                    {
+                        if (hostile)
+                        {
+                            var pos = target.Position;
+                            pos.x = VanillaLevelExt.RIGHT_BORDER;
+                            pos.y = entity.Position.y;
+                            pos.z = entity.Position.z;
+                            target.Position = pos;
+                            whitehole_right = true;
+                        }
+                    }
+                    else if (target.Type == EntityTypes.PROJECTILE)
+                    {
+                        var pos = target.Position;
+                        pos.x = VanillaLevelExt.LEFT_BORDER;
+                        pos.y = entity.Position.y;
+                        pos.z = entity.Position.z;
+                        target.Position = pos;
+                        whitehole_left = true;
+                    }
+                }
+                if (whitehole_left)
+                    entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.LEFT_BORDER, entity.Position.y, entity.Position.z));
+                if (whitehole_right)
+                    entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.RIGHT_BORDER, entity.Position.y, entity.Position.z));
+                return;
+            }
+
+            // Absorb.
             foreach (var collider in detectBuffer)
             {
                 var target = collider.Entity;

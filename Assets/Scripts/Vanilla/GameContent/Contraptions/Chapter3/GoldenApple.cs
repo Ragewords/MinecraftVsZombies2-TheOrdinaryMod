@@ -46,14 +46,11 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             if (target.IsAIFrozen())
                 return;
-            if (enemy.GetDefinitionID() == VanillaEnemyID.dullahan || enemy.GetDefinitionID() == VanillaEnemyID.dullahanHead)
-            {
-                var callbackParam = new EntityCallbackParams(enemy);
-                enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, callbackParam);
-            }
+            var callbackParam = new EntityCallbackParams(enemy);
+            enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, callbackParam);
             if (target.IsEvoked())
             {
-                var mutant = target.Spawn(VanillaEnemyID.mutantZombie, enemy.Position);
+                var mutant = target.SpawnWithParams(VanillaEnemyID.mutantZombie, enemy.Position);
                 mutant.Charm(target.GetFaction());
                 enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
                 enemy.Neutralize();
@@ -66,7 +63,7 @@ namespace MVZ2.GameContent.Contraptions
                 var rng = GetEnemyRNG(target);
                 NamespaceID[] pool = enemyPool;
                 var targetID = pool.Random(rng);
-                var random = target.Spawn(targetID, enemy.Position);
+                var random = target.SpawnWithParams(targetID, enemy.Position);
                 random.Charm(target.GetFaction());
                 enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
                 enemy.Neutralize();
@@ -104,6 +101,8 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.emperorZombie,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
+            VanillaEnemyID.skeletonWarrior,
+            VanillaEnemyID.skeletonMage
         };
         public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
         public static void SetEnemyRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_ENEMY_RNG, value);

@@ -30,6 +30,8 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new ArmsState());
                 AddState(new RoarState());
                 AddState(new BreathState());
+                AddState(new VomitState());
+                AddState(new SneezeState());
                 AddState(new PacmanState());
                 AddState(new SnakeState());
                 AddState(new StunState());
@@ -562,25 +564,6 @@ namespace MVZ2.GameContent.Bosses
                 base.OnUpdateLogic(machine, entity);
                 CheckDeath(entity);
             }
-            private void ShootBullet(Entity entity, Entity target, bool outerEye)
-            {
-                entity.Level.ShakeScreen(5, 0, 5);
-                var param = entity.GetShootParams();
-                var offset = outerEye ? OUTER_EYE_BULLET_OFFSET : INNER_EYE_BULLET_OFFSET;
-                offset = entity.ModifyShotOffset(offset);
-                param.position = entity.Position + offset;
-                param.soundID = null;
-                param.damage = entity.GetDamage() * EYE_BULLET_DAMAGE_MULTIPLIER;
-                param.projectileID = VanillaProjectileID.reflectionBullet;
-                param.velocity = (target.GetCenter() - param.position).normalized * EYE_BULLET_SPEED;
-                var spawnParam = entity.GetSpawnParams();
-                spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
-                spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
-                param.spawnParam = spawnParam;
-                var bullet = entity.ShootProjectile(param);
-                bullet.PlaySound(VanillaSoundID.reflection, 0.5f);
-                bullet.PlaySound(VanillaSoundID.mineExplode, 0.5f);
-            }
             public const int SUBSTATE_OUTER_LIFT = 0;
             public const int SUBSTATE_OUTER_SMASH = 1;
             public const int SUBSTATE_OUTER_SMASHED = 2;
@@ -705,6 +688,42 @@ namespace MVZ2.GameContent.Bosses
             }
             public const int SUBSTATE_START = 0;
             public const int SUBSTATE_BREATH = 1;
+            public const int SUBSTATE_END = 2;
+        }
+        private class VomitState : EntityStateMachineState
+        {
+            public VomitState() : base(STATE_VOMIT, ANIMATION_STATE_VOMIT) { }
+            public override void OnEnter(EntityStateMachine machine, Entity entity)
+            {
+                base.OnEnter(machine, entity);
+                var substateTimer = machine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(30);
+            }
+            public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
+            {
+                base.OnUpdateLogic(machine, entity);
+                CheckDeath(entity);
+            }
+            public const int SUBSTATE_START = 0;
+            public const int SUBSTATE_VOMIT = 1;
+            public const int SUBSTATE_END = 2;
+        }
+        private class SneezeState : EntityStateMachineState
+        {
+            public SneezeState() : base(STATE_SNEEZE, ANIMATION_STATE_SNEEZE) { }
+            public override void OnEnter(EntityStateMachine machine, Entity entity)
+            {
+                base.OnEnter(machine, entity);
+                var substateTimer = machine.GetSubStateTimer(entity);
+                substateTimer.ResetTime(30);
+            }
+            public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
+            {
+                base.OnUpdateLogic(machine, entity);
+                CheckDeath(entity);
+            }
+            public const int SUBSTATE_START = 0;
+            public const int SUBSTATE_SNEEZE = 1;
             public const int SUBSTATE_END = 2;
         }
         private class PacmanState : EntityStateMachineState

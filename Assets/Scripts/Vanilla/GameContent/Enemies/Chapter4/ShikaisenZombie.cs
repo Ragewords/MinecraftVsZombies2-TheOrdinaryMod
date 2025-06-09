@@ -55,6 +55,7 @@ namespace MVZ2.GameContent.Enemies
             var pos = entity.Position + entity.GetFacingDirection() * 30;
             var staff = entity.Spawn(VanillaEnemyID.shikaisenStaff, pos);
             staff.PlaySound(VanillaSoundID.wood);
+            staff.SetFaction(entity.GetFaction());
             return staff;
         }
         public static Entity SpawnPot(Entity entity)
@@ -62,6 +63,7 @@ namespace MVZ2.GameContent.Enemies
             var pos = entity.Position + new Vector3(-20 * entity.GetFacingX(), 44);
             var pot = entity.Spawn(VanillaEnemyID.shikaisenPot, pos);
             pot.SetParent(entity);
+            pot.SetFaction(entity.GetFaction());
             return pot;
         }
         public static bool HasStaff(Entity enemy) => enemy.GetBehaviourField<bool>(PROP_HAS_STAFF);

@@ -76,10 +76,10 @@ namespace MVZ2.GameContent.Contraptions
                     target.TakeDamage(entity.GetDamage() * 60 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
                 }
                 entity.PlaySound(VanillaSoundID.flame);
-                var border_distance = VanillaLevelExt.PROJECTILE_RIGHT_BORDER - VanillaLevelExt.PROJECTILE_LEFT_BORDER;
+                var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
                 for (var i = 0; i < Mathf.CeilToInt(border_distance / 48); i++)
                 {
-                    var x_pos = VanillaLevelExt.PROJECTILE_LEFT_BORDER + 48 * i;
+                    var x_pos = VanillaLevelExt.LEFT_BORDER + 48 * i;
                     var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
                     Fireblock.SetCursed(block, IsCursed(entity));
                     block.Timeout += i * 3;

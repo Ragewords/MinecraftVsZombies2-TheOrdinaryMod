@@ -75,6 +75,7 @@ namespace MVZ2.GameContent.Effects
         public const string cursedMeteor = "cursed_meteor";
         public const string cursedFireParticles = "cursed_fire_particles";
         public const string blackhole = "blackhole";
+        public const string whitehole = "whitehole";
         public const string annihilationField = "annihilation_field";
         public const string desireLump = "desire_lump";
         public const string binaryParticles = "binary_particles";
@@ -157,6 +158,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID cursedMeteor = Get(VanillaEffectNames.cursedMeteor);
         public static readonly NamespaceID cursedFireParticles = Get(VanillaEffectNames.cursedFireParticles);
         public static readonly NamespaceID blackhole = Get(VanillaEffectNames.blackhole);
+        public static readonly NamespaceID whitehole = Get(VanillaEffectNames.whitehole);
         public static readonly NamespaceID annihilationField = Get(VanillaEffectNames.annihilationField);
         public static readonly NamespaceID desireLump = Get(VanillaEffectNames.desireLump);
         public static readonly NamespaceID binaryParticles = Get(VanillaEffectNames.binaryParticles);

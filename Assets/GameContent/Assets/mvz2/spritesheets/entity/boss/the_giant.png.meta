@@ -248,6 +248,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: the_giant_6
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 97
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a48392984cb00a4b9f34a178aa90e23
+      internalID: -1519409249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -265,6 +286,7 @@ TextureImporter:
       the_giant_3: -685544824
       the_giant_4: -1785123263
       the_giant_5: -702476823
+      the_giant_6: -1519409249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

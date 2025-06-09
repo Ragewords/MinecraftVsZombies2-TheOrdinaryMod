@@ -761,7 +761,7 @@
                 <vector3 name="mvz2:size" x="30" y="54" z="30" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
-                <int name="mvz2:cost" value="200" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </contraption>
@@ -2282,6 +2282,12 @@
                 <color name="mvz2:lightColor" value="#FFFFFF" />
             </properties>
         </projectile>
+        <projectile id="vomit">
+            <properties>
+                <vector3 name="mvz2:size" x="49" y="25" z="25" />
+                <bool name="mvz2:noHitEntities" value="true" />
+            </properties>
+        </projectile>
 
         <!-- Effects -->
         <effect id="miner">
@@ -2733,6 +2739,13 @@
                 <float name="mvz2:damage" value="1" />
             </properties>
         </effect>
+        <effect id="whitehole">
+            <properties>
+                <bool name="mvz2:decorative" value="false" />
+                <int name="mvz2:maxTimeout" value="20" />
+                <float name="mvz2:range" value="120" />
+            </properties>
+        </effect>
         <effect id="annihilation_field">
             <properties>
                 <bool name="mvz2:decorative" value="false" />
@@ -2772,6 +2785,13 @@
                 <int name="mvz2:sortingOrder" value="9999"/>
                 <bool name="mvz2:updateBeforeGame" value="true" />
                 <bool name="mvz2:updateAfterGameOver" value="true" />
+            </properties>
+        </effect>
+        <effect id="vomit_splash">
+            <properties>
+                <bool name="mvz2:decorative" value="false" />
+                <float name="mvz2:damage" value="1" />
+                <vector3 name="mvz2:size" x="80" y="5" z="80" />
             </properties>
         </effect>
         <effect id="zombie_block">

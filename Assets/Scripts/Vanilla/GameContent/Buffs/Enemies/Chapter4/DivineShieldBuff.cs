@@ -54,6 +54,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
 
             buff.Remove();
+            
+            var waferBuff = entity.GetFirstBuff<TheWaferBuff>();
+            if (waferBuff == null)
+                entity.AddBuff<TheWaferBuff>();
 
             result.SetFinalValue(false);
             PlayBreakEffect(entity);

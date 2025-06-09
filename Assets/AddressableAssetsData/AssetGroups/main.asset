@@ -115,6 +115,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 048a09e50fc19164cb8ac3fcdd786bb7
+    m_Address: mvz2:effect/vomit_splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 04dcfd1cd164cbb41b834f5a6fdfba4b
     m_Address: mvz2:entity/effects/nightmare_portal_mask
     m_ReadOnly: 0
@@ -509,6 +516,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f2d44f30f44fee48b88e2a09fbb31fc
     m_Address: mvz2:entity/enemy/soul_skeleton_horse
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f3401e1c57e38f46b477c0db79802ea
+    m_Address: mvz2:entity/projectiles/the_giant_vomit
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -1283,6 +1297,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 211f438e842e7854ca3490b7904c2170
+    m_Address: mvz2:effect/whitehole
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2144539b9ee0718458cb1aa68cdfd6a0
     m_Address: mvz2:talk/dialog_cut
@@ -7644,6 +7665,13 @@ MonoBehaviour:
     - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bcf8b8c87c67dc44882835da451eea36
+    m_Address: mvz2:holy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bd0166eac6ec2f24bb929b81e615e7cc
     m_Address: mvz2:effect/zombie_block
     m_ReadOnly: 0
@@ -10196,6 +10224,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: faf74c2145d012a47bb26c250ee10575
+    m_Address: mvz2:projectile/vomit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fafac1d45c5bdb24b9dfb56a50fc4fe2
     m_Address: mvz2:pacman_kill
