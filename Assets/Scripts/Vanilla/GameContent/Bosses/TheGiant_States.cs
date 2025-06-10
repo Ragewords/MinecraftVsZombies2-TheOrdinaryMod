@@ -763,7 +763,7 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_END);
-                            substateTimer.ResetTime(10);
+                            substateTimer.ResetTime(5);
                         }
                         break;
                     case SUBSTATE_END:
@@ -814,14 +814,15 @@ namespace MVZ2.GameContent.Bosses
                             entity.PlaySound(VanillaSoundID.zombieHurt, 0.5f);
                             for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                             {
-                                for (int i = 0; i < entity.RNG.Next(3, 5); i++)
+                                for (int i = 0; i < 3; i++)
                                 {
-                                    var x = entity.Position.x;
+                                    var x = entity.Position.x + 80 * entity.GetFacingX();
                                     var z = entity.Level.GetEntityLaneZ(lane);
                                     var y = entity.Level.GetGroundY(x, z);
                                     var param = entity.GetSpawnParams();
                                     var zombie = entity.Spawn(VanillaEnemyID.zombie, new Vector3(x, y, z), param);
                                     zombie.SetFlipX(entity.IsFlipX());
+                                    zombie.Velocity += entity.GetFacingDirection() * (i + 3) * 10;
                                 }
                             }
                             stateMachine.SetSubState(entity, SUBSTATE_END);

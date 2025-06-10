@@ -82,6 +82,8 @@ namespace MVZ2.GameContent.Contraptions
                     var x_pos = VanillaLevelExt.LEFT_BORDER + 48 * i;
                     var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
                     Fireblock.SetCursed(block, IsCursed(entity));
+                    if (IsCursed(entity))
+                        block.AddBuff<HellfireCursedBuff>();
                     block.Timeout += i * 3;
                 }
             }
@@ -117,11 +119,17 @@ namespace MVZ2.GameContent.Contraptions
             var self = collision.Entity;
             if (!self.IsFriendly(other))
                 return;
-            if (other.HasBuff<HellfireIgnitedBuff>())
-                return;
-            var buff = other.AddBuff<HellfireIgnitedBuff>();
-            if (IsCursed(self))
+            if (!other.HasBuff<HellfireIgnitedBuff>())
             {
+                var buff = other.AddBuff<HellfireIgnitedBuff>();
+                if (IsCursed(self))
+                {
+                    HellfireIgnitedBuff.Curse(buff);
+                }
+            }
+            else if (IsCursed(self))
+            {
+                var buff = other.GetFirstBuff<HellfireIgnitedBuff>();
                 HellfireIgnitedBuff.Curse(buff);
             }
         }
