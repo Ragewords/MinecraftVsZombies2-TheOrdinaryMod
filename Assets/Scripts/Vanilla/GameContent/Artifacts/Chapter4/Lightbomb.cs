@@ -35,6 +35,7 @@ namespace MVZ2.GameContent.Artifacts
                 foreach (var enemy in level.FindEntities(e => e.IsVulnerableEntity() && e.IsHostile(contraption)))
                 {
                     enemy.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), contraption);
+                    enemy.Stun(30);
                 }
                 contraption.Spawn(VanillaEffectID.stunningFlash, contraption.GetCenter());
                 contraption.PlaySound(VanillaSoundID.evocation);

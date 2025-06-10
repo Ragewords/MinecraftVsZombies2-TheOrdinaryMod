@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Stages
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.theCreaturesHeart,
+                VanillaArtifactID.lightbomb,
                 VanillaArtifactID.sweetSleepPillow,
                 VanillaArtifactID.dreamKey,
             });
