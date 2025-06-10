@@ -33,6 +33,7 @@ namespace MVZ2.GameContent.Stages
         public override void OnUpdate(LevelEngine level)
         {
             base.OnUpdate(level);
+            level.SetEnergy(9990);
             level.SetStarshardSlotCount(5);
             level.SetStarshardCount(5);
             level.CheckGameOver();
@@ -46,9 +47,9 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.blackHoleBomb,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.splitenser,
-                VanillaContraptionID.necrotombstone,
+                VanillaContraptionID.noteBlock,
                 VanillaContraptionID.hellfire,
-                VanillaEnemyID.reflectiveBarrierZombie,
+                VanillaContraptionID.devourer,
                 VanillaEnemyID.shikaisenZombie,
                 VanillaEnemyID.emperorZombie,
                 VanillaEnemyID.wickedHermitZombie,
@@ -58,7 +59,7 @@ namespace MVZ2.GameContent.Stages
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.jackOLantern,
+                VanillaArtifactID.theCreaturesHeart,
                 VanillaArtifactID.sweetSleepPillow,
                 VanillaArtifactID.dreamKey,
             });

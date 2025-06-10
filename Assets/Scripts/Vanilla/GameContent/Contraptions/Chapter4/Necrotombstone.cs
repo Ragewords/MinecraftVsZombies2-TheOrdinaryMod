@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Contraptions
                 var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos + new Vector3(0, 0, 80));
                 MageUpdate(mage, mageClass);
             }
-            if (lane != entity.Level.GetMaxLaneCount())
+            if (lane != entity.Level.GetMaxLaneCount() - 1)
             {
                 var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos - new Vector3(0, 0, 80));
                 MageUpdate(mage, mageClass);

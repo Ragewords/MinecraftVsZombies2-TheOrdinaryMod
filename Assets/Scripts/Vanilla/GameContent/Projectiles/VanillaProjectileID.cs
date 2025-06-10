@@ -51,6 +51,7 @@ namespace MVZ2.GameContent.Projectiles
         public const string fireball = "fireball";
         public const string iceBolt = "ice_bolt";
         public const string chargedBolt = "charged_bolt";
+        public const string vomit = "vomit";
     }
     public static class VanillaProjectileID
     {
@@ -100,6 +101,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID fireball = Get(VanillaProjectileNames.fireball);
         public static readonly NamespaceID iceBolt = Get(VanillaProjectileNames.iceBolt);
         public static readonly NamespaceID chargedBolt = Get(VanillaProjectileNames.chargedBolt);
+        public static readonly NamespaceID vomit = Get(VanillaProjectileNames.vomit);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

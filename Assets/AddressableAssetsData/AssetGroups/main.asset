@@ -4496,7 +4496,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 706b7253177e8ab4f87b65901d915482
-    m_Address: mvz2:projectile/missile
+    m_Address: mvz2:projectile/vomit
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10226,7 +10226,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: faf74c2145d012a47bb26c250ee10575
-    m_Address: mvz2:projectile/vomit
+    m_Address: mvz2:projectile/missile
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

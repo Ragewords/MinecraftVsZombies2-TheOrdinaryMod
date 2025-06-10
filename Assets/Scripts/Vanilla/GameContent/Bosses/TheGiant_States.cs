@@ -188,40 +188,51 @@ namespace MVZ2.GameContent.Bosses
                 int attackFlag = GetAttackFlag(entity);
                 if (atLeft)
                 {
-                    var attack1Used = (attackFlag & 1) != 0;
-                    attackFlag ^= 1;
-                    SetAttackFlag(entity, attackFlag);
+                    var attack1Used = attackFlag == STATE_ARMS;
+                    var attack2Used = attackFlag == STATE_ROAR;
                     if (attack1Used)
                     {
                         if (!phase2)
                         {
                             lastState = STATE_BREATH;
+                            SetAttackFlag(entity, lastState);
                             return lastState;
                         }
                         else
                         {
                             lastState = STATE_SNAKE;
+                            SetAttackFlag(entity, STATE_BREATH);
                             return lastState;
                         }
                     }
-                    lastState = STATE_EYES;
-                    var innerTarget = FindEyeBulletTarget(entity, false);
-                    var outerTarget = FindEyeBulletTarget(entity, true);
-                    if (innerTarget.ExistsAndAlive() || outerTarget.ExistsAndAlive())
+                    else if (attack2Used)
                     {
+                        lastState = STATE_VOMIT;
+                        SetAttackFlag(entity, lastState);
                         return lastState;
+                    }
+                    else
+                    {
+                        lastState = STATE_EYES;
+                        SetAttackFlag(entity, lastState);
+                        var innerTarget = FindEyeBulletTarget(entity, false);
+                        var outerTarget = FindEyeBulletTarget(entity, true);
+                        if (innerTarget.ExistsAndAlive() || outerTarget.ExistsAndAlive())
+                        {
+                            return lastState;
+                        }
                     }
                 }
                 else
                 {
-                    var attack1Used = (attackFlag & 2) != 0;
-                    attackFlag ^= 2;
-                    SetAttackFlag(entity, attackFlag);
+                    var attack1Used = attackFlag == STATE_BREATH;
+                    var attack2Used = attackFlag == STATE_VOMIT;
                     if (attack1Used)
                     {
                         if (!phase2)
                         {
                             lastState = STATE_ROAR;
+                            SetAttackFlag(entity, lastState);
                             if (entity.Level.EntityExists(e => CanRoarStun(entity, e)))
                             {
                                 return lastState;
@@ -230,13 +241,24 @@ namespace MVZ2.GameContent.Bosses
                         else
                         {
                             lastState = STATE_PACMAN;
+                            SetAttackFlag(entity, STATE_ROAR);
                             return lastState;
                         }
                     }
-                    lastState = STATE_ARMS;
-                    if (CanArmsAttack(entity))
+                    else if (attack2Used)
                     {
+                        lastState = STATE_SNEEZE;
+                        SetAttackFlag(entity, lastState);
                         return lastState;
+                    }
+                    else
+                    {
+                        lastState = STATE_ARMS;
+                        SetAttackFlag(entity, lastState);
+                        if (CanArmsAttack(entity))
+                        {
+                            return lastState;
+                        }
                     }
                 }
                 return STATE_IDLE;
@@ -699,6 +721,59 @@ namespace MVZ2.GameContent.Bosses
                 var substateTimer = machine.GetSubStateTimer(entity);
                 substateTimer.ResetTime(30);
             }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+
+                var substate = stateMachine.GetSubState(entity);
+                switch (substate)
+                {
+                    case SUBSTATE_START:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_VOMIT);
+                            substateTimer.ResetTime(15);
+                        }
+                        break;
+                    case SUBSTATE_VOMIT:
+                        if (substateTimer.PassedInterval(3))
+                        {
+                            entity.PlaySound(VanillaSoundID.throwSound, 0.5f);
+                            for (int lane = 0; lane < 3; lane++)
+                            {
+                                var grid = entity.Level.GetAllGrids().Random(entity.RNG);
+                                var targetPos = grid.GetEntityPosition();
+                                var param = entity.GetShootParams();
+                                var offset = MOUTH_OFFSET;
+                                offset = entity.ModifyShotOffset(offset);
+                                param.position = entity.Position + offset;
+                                param.soundID = null;
+                                param.damage = 0;
+                                param.projectileID = VanillaProjectileID.vomit;
+                                param.velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position + offset, targetPos, 45, 1);
+                                var spawnParam = entity.GetSpawnParams();
+                                spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 1.2f);
+                                spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 1.2f);
+                                param.spawnParam = spawnParam;
+                                entity.ShootProjectile(param);
+                            }
+                        }
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            substateTimer.ResetTime(10);
+                        }
+                        break;
+                    case SUBSTATE_END:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.StartState(entity, STATE_IDLE);
+                        }
+                        break;
+                }
+            }
             public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
             {
                 base.OnUpdateLogic(machine, entity);
@@ -716,6 +791,50 @@ namespace MVZ2.GameContent.Bosses
                 base.OnEnter(machine, entity);
                 var substateTimer = machine.GetSubStateTimer(entity);
                 substateTimer.ResetTime(30);
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                var substateTimer = stateMachine.GetSubStateTimer(entity);
+                substateTimer.Run(stateMachine.GetSpeed(entity));
+
+                var substate = stateMachine.GetSubState(entity);
+                switch (substate)
+                {
+                    case SUBSTATE_START:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.SetSubState(entity, SUBSTATE_SNEEZE);
+                            substateTimer.ResetTime(5);
+                        }
+                        break;
+                    case SUBSTATE_SNEEZE:
+                        if (substateTimer.Expired)
+                        {
+                            entity.PlaySound(VanillaSoundID.zombieHurt, 0.5f);
+                            for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
+                            {
+                                for (int i = 0; i < entity.RNG.Next(3, 5); i++)
+                                {
+                                    var x = entity.Position.x;
+                                    var z = entity.Level.GetEntityLaneZ(lane);
+                                    var y = entity.Level.GetGroundY(x, z);
+                                    var param = entity.GetSpawnParams();
+                                    var zombie = entity.Spawn(VanillaEnemyID.zombie, new Vector3(x, y, z), param);
+                                    zombie.SetFlipX(entity.IsFlipX());
+                                }
+                            }
+                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            substateTimer.ResetTime(5);
+                        }
+                        break;
+                    case SUBSTATE_END:
+                        if (substateTimer.Expired)
+                        {
+                            stateMachine.StartState(entity, STATE_IDLE);
+                        }
+                        break;
+                }
             }
             public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
             {

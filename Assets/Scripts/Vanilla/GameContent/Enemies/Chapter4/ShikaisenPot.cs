@@ -33,8 +33,9 @@ namespace MVZ2.GameContent.Enemies
             if (pot.Parent.IsDead)
             {
                 pot.Parent.Remove();
-                var shikaisen = pot.Spawn(pot.Parent.GetDefinitionID(), pot.Position);
-                shikaisen.SetFaction(pot.Parent.GetFaction());
+                var revive_id = pot.Parent.GetDefinitionID();
+                var shikaisen = pot.SpawnWithParams(revive_id, pot.Position);
+                ShikaisenZombie.SetPot(shikaisen, false);
                 pot.Die(pot);
             }
         }
