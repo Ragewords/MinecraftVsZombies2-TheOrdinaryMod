@@ -46,8 +46,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationBool("Evoked", entity.State == STATE_EVOKED);
-            entity.SetAnimationBool("Draw", entity.State == STATE_DRAW);
+            entity.SetModelProperty("Evoked", entity.State);
         }
 
         private void DuplicateUpdate(Entity entity)
@@ -183,6 +182,7 @@ namespace MVZ2.GameContent.Contraptions
             if (drawnDesirePots >= 2)
             {
                 Global.Game.Unlock(VanillaUnlockID.overdraw);
+                Global.Game.SaveToFile(); // 完成成就后保存游戏。
             }
         }
         private SeedPack[] GetBlueprintsToCopy(Entity entity, int number)
@@ -264,8 +264,8 @@ namespace MVZ2.GameContent.Contraptions
         public const int FATIGUE_INCREAMENT = 25;
         public const int DETECT_INTERVAL = 10;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_DRAW = VanillaEntityStates.CONTRAPTION_COOLDOWN;
-        public const int STATE_EVOKED = VanillaEntityStates.CONTRAPTION_SPECIAL;
+        public const int STATE_DRAW = 2;
+        public const int STATE_EVOKED = 1;
         public const string PROP_REGION = VanillaContraptionNames.desirePot;
         private List<Entity> detectBuffer = new List<Entity>();
         [LevelPropertyRegistry(PROP_REGION)]

@@ -4,7 +4,6 @@ using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Level;
-using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Definitions;
@@ -55,7 +54,6 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.wickedHermitZombie,
                 VanillaBossID.theGiant,
             });
-            level.GetSeedPackAt(1).SetCommandBlock(false);
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {

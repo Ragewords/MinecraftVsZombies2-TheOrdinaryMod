@@ -65,17 +65,28 @@ namespace MVZ2.GameContent.Contraptions
             }
             if (productionTimer.Expired)
             {
-                var pos = entity.Position;
-                pos.y = entity.GetGroundY() - 100;
-                var enemyID = GetRandomProductionEnemyID(entity.RNG);
-                var warrior = entity.SpawnWithParams(enemyID, pos);
-                warrior.AddBuff<NecrotombstoneRisingBuff>();
-                warrior.UpdateModel();
+                if (SkeletonOutOfLimit(entity))
+                {
+                    productionTimer.Frame = RECHECK_INTERVAL;
+                }
+                else
+                {
+                    var pos = entity.Position;
+                    pos.y = entity.GetGroundY() - 100;
+                    var enemyID = GetRandomProductionEnemyID(entity.RNG);
+                    var warrior = entity.SpawnWithParams(enemyID, pos);
+                    warrior.AddBuff<NecrotombstoneRisingBuff>();
+                    warrior.UpdateModel();
 
-                warrior.PlaySound(VanillaSoundID.dirtRise);
+                    warrior.PlaySound(VanillaSoundID.dirtRise);
 
-                productionTimer.ResetTime(SPAWN_INTERVAL);
+                    productionTimer.ResetTime(SPAWN_INTERVAL);
+                }
             }
+        }
+        private bool SkeletonOutOfLimit(Entity entity)
+        {
+            return entity.Level.GetEntityCount(VanillaEnemyID.skeletonWarrior) >= SKELETON_LIMIT;
         }
         private void MageUpdate(Entity mage, int mageClass)
         {
@@ -109,7 +120,9 @@ namespace MVZ2.GameContent.Contraptions
             4,
             10
         };
+        public const int SKELETON_LIMIT = 30;
         public const int SPAWN_INTERVAL = 450;
+        public const int RECHECK_INTERVAL = 60;
         public const int MAGE_COUNT = 3;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
     }

@@ -835,6 +835,7 @@
                 <float name="mvz2:damage" value="20" />
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
+                <bool name="mvz2:canDeactive" value="false" />
                 <id name="mvz2:shell" value="mvz2:diamond" />
                 <vector3 name="mvz2:size" x="64" y="16" z="64" />
                 <idArray name="mvz2:gridLayers" value="mvz2:carrier mvz2:main" />
@@ -1068,7 +1069,7 @@
                 <float name="mvz2:speed" value="2" />
                 <float name="mvz2:fallResistance" value="15" />
                 <bool name="mvz2:undead" value="false" />
-            <bool name="spider" value="true"/>
+                <bool name="spider" value="true"/>
                 <vector3 name="mvz2:size" x="104" y="48" z="48" />
                 <id name="mvz2:crySound" value="mvz2:spider_cry" />
                 <id name="mvz2:deathSound" value="mvz2:spider_death" />
@@ -1089,7 +1090,7 @@
                 <float name="mvz2:maxHealth" value="120" />
                 <float name="mvz2:maxAttackHeight" value="15" />
                 <float name="mvz2:speed" value="2" />
-            <bool name="spider" value="true"/>
+                <bool name="spider" value="true"/>
                 <float name="mvz2:fallResistance" value="15" />
                 <bool name="mvz2:undead" value="false" />
                 <bool name="mvz2:low_enemy" value="true" />
@@ -1526,14 +1527,14 @@
                 <int name="mvz2:cost" value="25" />
             </properties>
         </enemy>
-        <enemy id="seija_yinyang_orb" name="正邪的诅咒人偶" deathMessage="？" unlock="mvz2:level.castle_7">
+        <enemy id="seija_cursed_doll" name="正邪的诅咒人偶" deathMessage="？" unlock="mvz2:level.castle_7">
             <properties>
                 <bool name="mvz2:harmless" value="true" />
                 <bool name="mvz2:notActiveEnemy" value="true" />
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:invincible" value="true" />
-            <bool name="invisible" value="true"/>
+                <bool name="invisible" value="true"/>
                 <float name="mvz2:fallResistance" value="10000" />
                 <id name="mvz2:shell" value="mvz2:normal" />
                 <id name="mvz2:crySound" null="true" />
@@ -1544,7 +1545,7 @@
                 <int name="mvz2:cost" value="25" />
             </properties>
         </enemy>
-        <enemy id="seija_cursed_doll" name="渴望鲜血的阴阳玉" deathMessage="满身疮痍" unlock="mvz2:level.castle_7">
+        <enemy id="seija_yinyang_orb" name="渴望鲜血的阴阳玉" deathMessage="满身疮痍" unlock="mvz2:level.castle_7">
             <properties>
                 <bool name="mvz2:harmless" value="true" />
                 <bool name="mvz2:notActiveEnemy" value="true"/>
@@ -1673,7 +1674,7 @@
         <enemy id="skeleton_mage" name="骷髅法师" deathMessage="骸死我了" unlock="mvz2:level.mausoleum_7">
             <properties>
                 <float name="mvz2:range" value="800" />
-                <vector3 name="mvz2:shotOffset" x="10" y="60" z="0" />
+                <vector3 name="mvz2:shotOffset" x="10" y="54" z="0" />
                 <vector3 name="mvz2:shotVelocity" x="15" y="0" z="0" />
                 <id name="mvz2:projectileId" value="mvz2:arrow" />
                 <id name="mvz2:shell" value="mvz2:bone" />
@@ -2269,7 +2270,7 @@
         <projectile id="ice_bolt">
             <properties>
                 <bool name="mvz2:pointToDirection" value="true" />
-                <vector3 name="mvz2:size" x="52" y="20" z="20" />
+                <vector3 name="mvz2:size" x="52" y="16" z="16" />
                 <idArray name="mvz2:damageEffects" value="mvz2:ice mvz2:slow" />
             </properties>
         </projectile>

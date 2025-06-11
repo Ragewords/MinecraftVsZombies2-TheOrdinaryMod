@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.CollisionMaskFriendly = EntityCollisionHelper.MASK_PROJECTILE;
+            entity.CollisionMaskFriendly |= EntityCollisionHelper.MASK_PROJECTILE;
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -119,18 +119,15 @@ namespace MVZ2.GameContent.Contraptions
             var self = collision.Entity;
             if (!self.IsFriendly(other))
                 return;
-            if (!other.HasBuff<HellfireIgnitedBuff>())
+
+            var igniteBuff = other.GetFirstBuff<HellfireIgnitedBuff>();
+            if (igniteBuff == null)
             {
-                var buff = other.AddBuff<HellfireIgnitedBuff>();
-                if (IsCursed(self))
-                {
-                    HellfireIgnitedBuff.Curse(buff);
-                }
+                igniteBuff = other.AddBuff<HellfireIgnitedBuff>();
             }
-            else if (IsCursed(self))
+            if (!HellfireIgnitedBuff.GetCursed(igniteBuff) && IsCursed(self))
             {
-                var buff = other.GetFirstBuff<HellfireIgnitedBuff>();
-                HellfireIgnitedBuff.Curse(buff);
+                HellfireIgnitedBuff.Curse(igniteBuff);
             }
         }
         public static void Curse(Entity entity)

@@ -25,9 +25,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity != null)
             {
                 if (entity.Health > 20)
-                    entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
-                else if (entity.GetMainArmor() != null)
-                    entity.GetMainArmor().TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE), null);
+                    entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
             }
 
             var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
