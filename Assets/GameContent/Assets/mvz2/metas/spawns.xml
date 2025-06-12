@@ -98,6 +98,10 @@
         <terrain water="true" air="true"/>
         <weight base="2000" />
     </entry>
+	<entry id="curseer" entity="mvz2:curseer" >
+		<spawn level="3" />
+		<weight base="2500" />
+	</entry>
 
     <!-- Mausoleum -->
     <entry id="reflective_barrier_zombie" entity="mvz2:reflective_barrier_zombie" >
@@ -117,10 +121,10 @@
         <spawn level="3" minWave="10"/>
         <weight base="2000" />
     </entry>
-	<entry id="curseer" entity="mvz2:curseer" >
-		<spawn level="3" />
-		<weight base="2500" />
-	</entry>
+    <entry id="gnawed_zombie" entity="mvz2:gnawed_zombie" >
+        <spawn level="3" minWave="5"/>
+        <weight base="2000" />
+    </entry>
     
     <entry id="mutant_zombie" entity="mvz2:mutant_zombie" >
         <spawn level="10" minWave="15"/>

@@ -99,6 +99,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.wickedHermitZombie,
             VanillaEnemyID.shikaisenZombie,
             VanillaEnemyID.emperorZombie,
+            VanillaEnemyID.gnawedZombie,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
             VanillaEnemyID.skeletonWarrior,

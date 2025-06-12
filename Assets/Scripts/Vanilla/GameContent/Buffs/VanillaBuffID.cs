@@ -107,6 +107,9 @@ namespace MVZ2.GameContent.Buffs
         public const string iZombieImp = "i_zombie_imp";
         public const string iZombieSkeletonWarrior = "i_zombie_skeleton_warrior";
         public const string shikaisenRevive = "shikaisen_revive";
+        public const string youkaiLeaf = "youkai_leaf";
+        public const string youkaiLeafRegeneration = "youkai_leaf_regeneration";
+        public const string gnawedZombieStone = "gnawed_zombie_stone";
 
         public const string beingRiden = "being_riden";
         public const string ridingPassenger = "riding_passenger";
@@ -124,6 +127,7 @@ namespace MVZ2.GameContent.Buffs
         public const string hellfireIgnited = "hellfire_ignited";
         public const string ghastFireCharge = "ghast_fire_charge";
         public const string telekinesis = "telekinesis";
+        public const string infinityDoor = "infinity_door";
 
         // Cart
         public const string cartFadeIn = "cart_fade_in";
@@ -247,6 +251,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.eyeOfTheGiant);
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
         public static readonly NamespaceID jackOLantern = Get(VanillaBuffNames.jackOLantern);
+        public static readonly NamespaceID infinityDoor = Get(VanillaBuffNames.infinityDoor);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
         private static NamespaceID Get(string name)

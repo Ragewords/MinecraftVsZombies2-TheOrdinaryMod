@@ -71,6 +71,9 @@ namespace MVZ2.GameContent.Stages
         public const string mausoleum9 = "mausoleum_9";
         public const string mausoleum10 = "mausoleum_10";
         public const string mausoleum11 = "mausoleum_11";
+        public const string mausoleumEX1 = "mausoleum_EX1";
+        public const string mausoleumEX2 = "mausoleum_EX2";
+        public const string mausoleumEX3 = "mausoleum_EX3";
         public const string mausoleumEndless = "mausoleum_endless";
 
         // Minigames

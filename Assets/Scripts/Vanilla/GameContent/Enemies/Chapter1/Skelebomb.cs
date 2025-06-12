@@ -43,7 +43,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetModelHealthStateByCount(2);
             if (entity.IsDead)
                 return;
             var stateTimer = GetStateTimer(entity);
@@ -154,7 +154,7 @@ namespace MVZ2.GameContent.Enemies
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));
         }
 
-        #region ³£Á¿
+        #region ï¿½ï¿½ï¿½ï¿½
         private const int CAST_COOLDOWN = 300;
         private const int CAST_TIME = 30;
         private const int CAST_RNG = 3000;
@@ -163,6 +163,6 @@ namespace MVZ2.GameContent.Enemies
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         public static readonly VanillaEntityPropertyMeta<int> PROP_EXPLODING = new VanillaEntityPropertyMeta<int>("Exploding");
-        #endregion ³£Á¿
+        #endregion ï¿½ï¿½ï¿½ï¿½
     }
 }

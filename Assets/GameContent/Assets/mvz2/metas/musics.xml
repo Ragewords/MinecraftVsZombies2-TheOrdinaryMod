@@ -358,4 +358,13 @@
             <p>而最后，这压迫感会将你推向深渊。</p>
         </description>
     </music>
+	<music id="mausoleum_level_extra" name="后院的妖怪参拜道" unlock="mvz2:level.mausoleum_EX1">
+        <track main="mvz2:mausoleum_level_extra"/>
+		<source>东方神灵庙</source>
+		<description>
+			<p>梦殿大祀庙拓展关卡的音乐。</p>
+			<p>是《东方神灵庙》Extra关关卡音乐，二岩猯藏战斗前的音乐。</p>
+			<p>听着听着绝对会突然冒出什么复古妖怪的吧。</p>
+		</description>
+	</music>
 </musics>

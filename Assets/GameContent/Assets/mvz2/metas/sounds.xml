@@ -333,6 +333,9 @@
     <sound name="glowstone">
         <sample path="mvz2:glowstone" weight="1" />
     </sound>
+    <sound name="gnawedleaf_stone">
+        <sample path="mvz2:gnawedleaf_stone" weight="1" />
+    </sound>
     <sound name="grass">
         <sample path="mvz2:random/grass1" weight="1" />
         <sample path="mvz2:random/grass2" weight="1" />

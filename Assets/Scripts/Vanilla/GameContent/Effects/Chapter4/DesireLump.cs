@@ -44,7 +44,6 @@ namespace MVZ2.GameContent.Effects
             {
                 if (entity.RNG.Next(3) == 1)
                 {
-                    DesirePot.SetForcedEvoke(parent, true);
                     parent.Evoke();
                 }
                 else

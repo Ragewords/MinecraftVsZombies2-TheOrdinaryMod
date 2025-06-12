@@ -208,6 +208,14 @@
             <key hex="#69976C" time="1"/>
         </colorKeys>
     </fragment>
+    <fragment name="youkai_leaf">
+        <colorKeys>
+			<key hex="#485F28" time="0.4"/>
+			<key hex="#61742D" time="0.6"/>
+			<key hex="#354523" time="0.2"/>
+			<key hex="#658729" time="1"/>
+        </colorKeys>
+    </fragment>
     <fragment name="infectenser">
         <colorKeys>
             <key hex="#FF0000" time="0.2"/>

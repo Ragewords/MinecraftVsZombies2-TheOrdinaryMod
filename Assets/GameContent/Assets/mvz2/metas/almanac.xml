@@ -945,7 +945,21 @@
                 <p>“军火库？开什么玩笑，火焰弹也算热兵器吗？”</p>
             </flavor>
         </entry>
-        <entry/>
+        <entry id ="mvz2:youkai_leaf">
+            <header>
+                <p>妖怪树叶会模仿场上的一个生命值最高的敌人。</p>
+            </header>
+            <properties>
+                <p>特点：<![CDATA[<color=red>模仿的敌人血量与自身相同</color>]]></p>
+                <p>技能：<![CDATA[<color=red>模仿的敌人获得持续的生命恢复</color>]]></p>
+            </properties>
+            <flavor>
+                <p>妖怪树叶拜师于一个擅长变化姿态的大妖怪，它这样做除了学本事，还有一个目的——</p>
+                <p/>
+                <p/>
+                <p>（在那个大妖怪的头上呆着。）</p>
+            </flavor>
+        </entry>
         <entry/>
         <entry/>
         <entry/>
@@ -1279,7 +1293,7 @@
                 <p>竹杖耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>壶耐久：<![CDATA[<color=red>30</color>]]></p>
                 <p>壶抗性：<![CDATA[<color=red>只会受到1点伤害</color>]]></p>
-                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；倒下时放下身上的壶，并在彻底死亡时在壶的位置以初始状态复活</color>]]></p>
+                <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；生命低于30%时放下身上的壶，并在彻底死亡时在壶的位置以初始状态复活</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖；冲击和爆炸会无视壶的抗性</color>]]></p>
             </properties>
             <flavor>
@@ -1340,6 +1354,19 @@
             </properties>
             <flavor>
                 <p>很多人因着咒术师这个名字对他留下了不好的印象，他对此很苦恼，便尝试学习治疗他人的法术。然而因为治疗法术的施展方式过于暴力，他在别人眼里的印象更差了。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:gnawed_zombie">
+            <header>
+                <p>狸猫僵尸每承受一定的伤害便会变成石像。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，可承受900伤害</color>]]></p>
+            </properties>
+            <flavor>
+                <p>别搞错了，这不是妖怪树叶仰慕的那个大妖怪，只是个乔装打扮后的僵尸。</p>
             </flavor>
         </entry>
     </enemies>
@@ -1608,7 +1635,7 @@
                 <p>效果：<![CDATA[<color=red>器械发射的子弹能够跟踪附近的敌人，但会失去穿透敌人的能力</color>]]></p>
             </properties>
             <flavor>
-                <p>虽然念力并没有科学依据，不过在梦里能做到的事情可多了去了，这何尝不是一种念力呢。</p>
+                <p>念力并没有科学依据，不过在梦里能做到的事情可多了，这何尝不是一种“念力”呢。</p>
             </flavor>
         </entry>
         <entry id="mvz2:wither_skeleton_skull">
@@ -1620,6 +1647,17 @@
             </properties>
             <flavor>
                 <p>多么惊悚恐怖的骷髅头！</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:infinity_door">
+            <header>
+                <p>一种能够传送实体的特殊通道。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>子弹离开屏幕后会回到屏幕另一侧</color>]]></p>
+            </properties>
+            <flavor>
+                <p>我陷入死循环了……</p>
             </flavor>
         </entry>
     </artifacts>

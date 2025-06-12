@@ -65,6 +65,8 @@
 
         public const int HYPNOTIZER_CAST = ENEMY_CAST;
 
+        public const int GNAWED_STONE = ENEMY_CAST;
+
         public const int SKELETON_HORSE_GALLOP = ENEMY_RUN;
         public const int SKELETON_HORSE_JUMP = ENEMY_CAST;
         public const int SKELETON_HORSE_LAND = ENEMY_SPECIAL;

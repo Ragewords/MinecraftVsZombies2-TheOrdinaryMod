@@ -44,6 +44,7 @@
     <model name="necrotombstone" type="entity" path="mvz2:contraption/mausoleum/necrotombstone" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="black_hole_bomb" type="entity" path="mvz2:contraption/mausoleum/black_hole_bomb" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="desire_pot" type="entity" path="mvz2:contraption/mausoleum/desire_pot" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="youkai_leaf" type="entity" path="mvz2:contraption/mausoleum/youkai_leaf" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="force_pad" type="entity" path="mvz2:contraption/upgrade/force_pad" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -87,6 +88,7 @@
     <model name="wicked_hermit_zombie" type="entity" path="mvz2:enemy/mausoleum/wicked_hermit_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
     <model name="shikaisen_zombie" type="entity" path="mvz2:enemy/mausoleum/shikaisen_zombie" width="96" height="96" xOffset="4" yOffset="-44"/>
     <model name="emperor_zombie" type="entity" path="mvz2:enemy/mausoleum/emperor_zombie" width="70" height="104" xOffset="1" yOffset="-47"/>
+    <model name="gnawed_zombie" type="entity" path="mvz2:enemy/mausoleum/gnawed_zombie" width="76" height="96" xOffset="6" yOffset="-44"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -159,6 +161,7 @@
 	<model name="jack_o_lantern" type="entity" path="mvz2:pickup/artifacts/jack_o_lantern" width="64" height="64" xOffset="0" yOffset="-16"/>
 	<model name="telekinesis" type="entity" path="mvz2:pickup/artifacts/telekinesis" width="64" height="64" xOffset="0" yOffset="-16"/>
 	<model name="wither_skeleton_skull" type="entity" path="mvz2:pickup/artifacts/wither_skeleton_skull" width="64" height="64" xOffset="0" yOffset="-16"/>
+	<model name="infinity_door" type="entity" path="mvz2:pickup/artifacts/infinity_door" width="64" height="64" xOffset="0" yOffset="-16"/>
 
     <model name="starshard.default" type="entity" path="mvz2:pickup/starshards/default" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="starshard.halloween" type="entity" path="mvz2:pickup/starshards/halloween" width="64" height="64" xOffset="0" yOffset="-16"/>

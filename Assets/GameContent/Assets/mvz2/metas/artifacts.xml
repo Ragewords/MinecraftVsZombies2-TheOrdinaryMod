@@ -25,4 +25,5 @@
 	<artifact id="jack_o_lantern" name="南瓜灯" tooltip="非光源器械获得小范围光源" sprite="mvz2:artifacts/jack_o_lantern" unlock="mvz2:level.halloween_EX3" />
 	<artifact id="telekinesis" name="念力" tooltip="器械的射弹会跟踪附近的敌人，但失去穿透能力" sprite="mvz2:artifacts/telekinesis" unlock="mvz2:level.dream_EX3" />
 	<artifact id="wither_skeleton_skull" name="凋灵骷髅头" tooltip="×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%" sprite="mvz2:artifacts/wither_skeleton_skull" unlock="mvz2:level.castle_EX3" />
+	<artifact id="infinity_door" name="无限门扉" tooltip="子弹离开屏幕后会回到屏幕另一侧" sprite="mvz2:artifacts/infinity_door" unlock="mvz2:level.mausoleum_EX3" />
 </artifacts>

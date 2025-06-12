@@ -1241,4 +1241,18 @@
       </sentences>
     </section>
   </group>
+  <group id="mausoleum_EX1_over" tags="mvz2:mausoleum;mvz2:over">
+       <archive name="梦殿大祀庙拓展第1天结束" background="mvz2:misc/mausoleum" unlock="mvz2:level.mausoleum_EX1" />
+       <section>
+           <characters>
+               <character id="mvz2:crazy_villager" side="left" />
+               <character id="mvz2:steve" side="self" />
+           </characters>
+           <sentences>
+               <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">狸猫十变化！</sentence>
+               <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是妖怪树叶！能模仿场上血最厚的怪物！</sentence>
+               <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end"><![CDATA[<color=blue>（它看起来好可爱！）</color>]]></sentence>
+           </sentences>
+       </section>
+  </group>
 </talks>

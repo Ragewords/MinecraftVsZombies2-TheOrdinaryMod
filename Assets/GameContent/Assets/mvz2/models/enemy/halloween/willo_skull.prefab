@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 4706164489198618654}
   - component: {fileID: 9027556503271583014}
   - component: {fileID: 8902394468816253645}
+  - component: {fileID: 7767516294239332657}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -238,6 +239,18 @@ MonoBehaviour:
   trail: {fileID: 4706164489198618654}
   velocity: {x: 0.5, y: 0, z: 0}
   scaleWithHierarchy: 0
+--- !u!114 &7767516294239332657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190957742434379121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176d4d84fc1a4b443a8890362320b0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3851879306464596819
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,32 +532,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8023020662430592919}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3152729976638313519, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4112652312738039199}
     - targetCorrespondingSourceObject: {fileID: 1408606006542680449, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3201141883481278341}
   m_SourcePrefab: {fileID: 100100000, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
---- !u!1 &250761764797502416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3152729976638313519, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
-  m_PrefabInstance: {fileID: 2934760682282928127}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4112652312738039199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250761764797502416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93953b84997bfb4eae03d2b62e6b62a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trails:
-  - {fileID: 8902394468816253645}
 --- !u!1 &4266600967735379582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1408606006542680449, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}

@@ -48,16 +48,16 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.splitenser,
                 VanillaContraptionID.noteBlock,
                 VanillaContraptionID.hellfire,
-                VanillaContraptionID.devourer,
-                VanillaEnemyID.shikaisenZombie,
+                VanillaContraptionID.youkaiLeaf,
+                VanillaEnemyID.shikaisenPot,
                 VanillaEnemyID.emperorZombie,
                 VanillaEnemyID.wickedHermitZombie,
-                VanillaBossID.theGiant,
+                VanillaEnemyID.gnawedZombie,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.lightbomb,
+                VanillaArtifactID.infinityDoor,
                 VanillaArtifactID.sweetSleepPillow,
                 VanillaArtifactID.dreamKey,
             });

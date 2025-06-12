@@ -32,12 +32,11 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetEvocationTimer(entity, new FrameTimer(EVOCATION_COOLDOWN));
-            SetForcedEvoke(entity, false);
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            if (entity.State == STATE_EVOKED || entity.State == STATE_DRAW)
+            if (entity.State == STATE_EVOKED)
             {
                 EvokedUpdate(entity);
             }
@@ -46,7 +45,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelProperty("Evoked", entity.State);
+            entity.SetModelProperty("Evoked", entity.State == STATE_EVOKED);
         }
 
         private void DuplicateUpdate(Entity entity)
@@ -90,10 +89,7 @@ namespace MVZ2.GameContent.Contraptions
             var evocationTimer = GetEvocationTimer(entity);
             evocationTimer.Reset();
             
-            if (ForcedEvoke(entity))
-                entity.State = STATE_DRAW;
-            else
-                entity.State = STATE_EVOKED;
+            entity.State = STATE_EVOKED;
 
             entity.AddBuff<DesirePotHighlightBuff>();
             entity.PlaySound(VanillaSoundID.arcaneIntellect);
@@ -107,7 +103,6 @@ namespace MVZ2.GameContent.Contraptions
             {
                 entity.AddBuff<DesirePotHighlightBuff>();
                 entity.State = STATE_IDLE;
-                SetForcedEvoke(entity, false);
             }
         }
         private void SpawnBlueprintPickups(Entity entity, SeedPack[] selected)
@@ -223,9 +218,6 @@ namespace MVZ2.GameContent.Contraptions
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_EVOCATION_TIMER);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
 
-        public static bool ForcedEvoke(Entity entity) => entity.GetProperty<bool>(PROP_FORCED_EVOKE);
-        public static void SetForcedEvoke(Entity entity, bool value) => entity.SetProperty(PROP_FORCED_EVOKE, value);
-
         public static float GetFatigueDamage(LevelEngine level) => level.GetBehaviourField<float>(PROP_FATIGUE_DAMAGE);
         public static void SetFatigueDamage(LevelEngine level, float value) => level.SetBehaviourField(PROP_FATIGUE_DAMAGE, value);
 
@@ -264,12 +256,10 @@ namespace MVZ2.GameContent.Contraptions
         public const int FATIGUE_INCREAMENT = 25;
         public const int DETECT_INTERVAL = 10;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_DRAW = 2;
-        public const int STATE_EVOKED = 1;
+        public const int STATE_EVOKED = VanillaEntityStates.CONTRAPTION_SPECIAL;
         public const string PROP_REGION = VanillaContraptionNames.desirePot;
         private List<Entity> detectBuffer = new List<Entity>();
         [LevelPropertyRegistry(PROP_REGION)]
-        public static readonly VanillaBuffPropertyMeta<bool> PROP_FORCED_EVOKE = new VanillaBuffPropertyMeta<bool>("forced_evoke");
         private static readonly VanillaLevelPropertyMeta<float> PROP_FATIGUE_DAMAGE = new VanillaLevelPropertyMeta<float>("FatigueDamage");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         private static readonly VanillaEntityPropertyMeta<List<long>> PROP_DRAINED_ENEMIES = new VanillaEntityPropertyMeta<List<long>>("DrainedEnemies");

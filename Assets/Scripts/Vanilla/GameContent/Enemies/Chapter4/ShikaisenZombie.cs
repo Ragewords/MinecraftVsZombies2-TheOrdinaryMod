@@ -31,6 +31,11 @@ namespace MVZ2.GameContent.Enemies
                 SpawnStaff(enemy);
                 SetStaff(enemy, false);
             }
+            if (HasPot(enemy) && enemy.Health <= enemy.GetMaxHealth() * 0.3f)
+            {
+                SpawnPot(enemy);
+                SetPot(enemy, false);
+            }
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -39,31 +44,18 @@ namespace MVZ2.GameContent.Enemies
             entity.SetAnimationBool("HasStaff", HasStaff(entity));
             entity.SetAnimationBool("HasPot", HasPot(entity));
         }
-        public override void PostDeath(Entity entity, DeathInfo info)
-        {
-            base.PostDeath(entity, info);
-            if (info.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
-                return;
-            if (HasPot(entity))
-            {
-                SpawnPot(entity);
-                SetPot(entity, false);
-            }
-        }
         public static Entity SpawnStaff(Entity entity)
         {
             var pos = entity.Position + entity.GetFacingDirection() * 30;
-            var staff = entity.Spawn(VanillaEnemyID.shikaisenStaff, pos);
+            var staff = entity.SpawnWithParams(VanillaEnemyID.shikaisenStaff, pos);
             staff.PlaySound(VanillaSoundID.wood);
-            staff.SetFaction(entity.GetFaction());
             return staff;
         }
         public static Entity SpawnPot(Entity entity)
         {
             var pos = entity.Position + new Vector3(-20 * entity.GetFacingX(), 44);
-            var pot = entity.Spawn(VanillaEnemyID.shikaisenPot, pos);
+            var pot = entity.SpawnWithParams(VanillaEnemyID.shikaisenPot, pos);
             pot.SetParent(entity);
-            pot.SetFaction(entity.GetFaction());
             return pot;
         }
         public static bool HasStaff(Entity enemy) => enemy.GetBehaviourField<bool>(PROP_HAS_STAFF);

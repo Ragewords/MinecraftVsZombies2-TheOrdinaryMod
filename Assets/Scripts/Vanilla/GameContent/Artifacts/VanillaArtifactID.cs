@@ -30,6 +30,7 @@ namespace MVZ2.GameContent.Artifacts
         public const string jackOLantern = "jack_o_lantern";
         public const string telekinesis = "telekinesis";
         public const string witherSkeletonSkull = "wither_skeleton_skull";
+        public const string infinityDoor = "infinity_door";
     }
     public static class VanillaArtifactID
     {
@@ -58,6 +59,7 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID jackOLantern = Get(VanillaArtifactNames.jackOLantern);
         public static readonly NamespaceID telekinesis = Get(VanillaArtifactNames.telekinesis);
         public static readonly NamespaceID witherSkeletonSkull = Get(VanillaArtifactNames.witherSkeletonSkull);
+        public static readonly NamespaceID infinityDoor = Get(VanillaArtifactNames.infinityDoor);
 
         private static NamespaceID Get(string name)
         {

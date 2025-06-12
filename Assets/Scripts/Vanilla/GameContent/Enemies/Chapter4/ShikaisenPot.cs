@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
+            entity.SetModelHealthStateByCount(3);
             var pot = entity;
             if (pot.Parent == null)
                 return;
