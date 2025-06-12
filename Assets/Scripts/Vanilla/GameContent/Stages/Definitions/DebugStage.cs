@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Stages
             level.FillSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.goldenApple,
-                VanillaContraptionID.lightningOrb,
+                VanillaContraptionID.punchton,
                 VanillaContraptionID.poisonser,
                 VanillaContraptionID.dimensionHammer,
                 VanillaContraptionID.fireChargeDispenser,

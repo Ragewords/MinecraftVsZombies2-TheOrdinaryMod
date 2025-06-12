@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Projectiles;
@@ -59,7 +58,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetAnimationInt("ArmState", GetArmState(entity));
             entity.SetAnimationFloat("Extension", GetArmExtension(entity));
             entity.SetAnimationFloat("FixBlend", GetArmFixBlend(entity));
-            entity.SetAnimationFloat("FirstAttack", GetFirstDamage(entity));
+            entity.SetAnimationFloat("DamageBlend", GetFirstDamage(entity));
         }
 
         protected override void OnEvoke(Entity entity)

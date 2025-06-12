@@ -62,9 +62,7 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 var rng = GetEnemyRNG(target);
-                NamespaceID[] pool = target.Level.GetEnemyPool();
-                if (pool == null)
-                    pool = enemyPool;
+                NamespaceID[] pool = enemyPool;
                 var targetID = pool.Random(rng);
                 var random = target.SpawnWithParams(targetID, enemy.Position);
                 random.Charm(target.GetFaction());

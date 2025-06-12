@@ -22,7 +22,7 @@
     <model name="vortex_hopper" type="entity" path="mvz2:contraption/dream/vortex_hopper" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="pistenser" type="entity" path="mvz2:contraption/dream/pistenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="totenser" type="entity" path="mvz2:contraption/dream/totenser" width="64" height="96" xOffset="0" yOffset="-44"/>
-    <model name="dream_crystal" type="entity" path="mvz2:contraption/dream/dream_crystal" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="dream_crystal" type="entity" path="mvz2:contraption/dream/dream_crystal" width="64" height="70" xOffset="0" yOffset="-30"/>
     <model name="dream_silk" type="entity" path="mvz2:contraption/dream/dream_silk" width="64" height="64" xOffset="0" yOffset="-28"/>
 	<model name="dimension_hammer" type="entity" path="mvz2:contraption/dream/dimension_hammer" width="64" height="64" xOffset="0" yOffset="-28"/>
 
@@ -88,7 +88,7 @@
     <model name="wicked_hermit_zombie" type="entity" path="mvz2:enemy/mausoleum/wicked_hermit_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
     <model name="shikaisen_zombie" type="entity" path="mvz2:enemy/mausoleum/shikaisen_zombie" width="96" height="96" xOffset="4" yOffset="-44"/>
     <model name="emperor_zombie" type="entity" path="mvz2:enemy/mausoleum/emperor_zombie" width="70" height="104" xOffset="1" yOffset="-47"/>
-    <model name="tanooki_zombie" type="entity" path="mvz2:enemy/mausoleum/tanooki_zombie" width="76" height="96" xOffset="6" yOffset="-44"/>
+    <model name="tanooki_zombie" type="entity" path="mvz2:enemy/mausoleum/tanooki_zombie" width="76" height="104" xOffset="6" yOffset="-44"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>

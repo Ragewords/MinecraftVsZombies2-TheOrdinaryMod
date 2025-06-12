@@ -5,7 +5,7 @@ using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
-namespace MVZ2.GameContent.Buffs.Enemies
+namespace MVZ2.GameContent.Buffs.Contraptions
 {
     [BuffDefinition(VanillaBuffNames.littleContraption)]
     public class LittleContraptionBuff : BuffDefinition

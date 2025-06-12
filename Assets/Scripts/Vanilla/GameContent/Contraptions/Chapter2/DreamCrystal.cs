@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(contraption);
             var health = contraption.Health;
             var maxHealth = contraption.GetMaxHealth();
-            contraption.HealEffects(HEAL_PER_FRAME * (3 - (1 - health / maxHealth)), contraption);
+            contraption.HealEffects(HEAL_PER_FRAME * (1 - health / maxHealth), contraption);
         }
         protected override void UpdateLogic(Entity contraption)
         {

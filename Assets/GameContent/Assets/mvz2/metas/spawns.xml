@@ -123,7 +123,7 @@
     </entry>
     <entry id="tanooki_zombie" entity="mvz2:tanooki_zombie" >
         <spawn level="3" minWave="5"/>
-        <weight base="2000" />
+        <weight base="3000" />
     </entry>
     
     <entry id="mutant_zombie" entity="mvz2:mutant_zombie" >

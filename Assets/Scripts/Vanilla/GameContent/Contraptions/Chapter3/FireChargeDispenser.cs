@@ -94,9 +94,10 @@ namespace MVZ2.GameContent.Contraptions
             var targetPos = grid.GetEntityPosition();
             foreach (var target in targets)
             {
-                targetPos = target.GetGrid().GetEntityPosition();
+                var targetGrid = target.GetGrid();
+                if (targetGrid != null)
+                    targetPos = targetGrid.GetEntityPosition();
             }
-                
             var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 60, GRAVITY);
 
             if (evokeTimer.PassedInterval(10))

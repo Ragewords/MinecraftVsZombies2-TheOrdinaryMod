@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Buffs.Enemies;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -84,7 +85,7 @@ namespace MVZ2.GameContent.Stages
             }
             if (small)
             {
-                entity.AddBuff<LittleZombieBuff>();
+                entity.AddBuff<LittleContraptionBuff>();
             }
             entity.Health = entity.GetMaxHealth();
         }
@@ -98,6 +99,6 @@ namespace MVZ2.GameContent.Stages
         public static readonly VanillaLevelPropertyMeta<int> FIELD_BIG_COUNTER = new VanillaLevelPropertyMeta<int>("BigCounter");
         public static readonly VanillaLevelPropertyMeta<int> FIELD_SMALL_COUNTER = new VanillaLevelPropertyMeta<int>("SmallCounter");
         public const int MAX_BIG_COUNTER = 6;
-        public const int MAX_SMALL_COUNTER = 3;
+        public const int MAX_SMALL_COUNTER = 2;
     }
 }
