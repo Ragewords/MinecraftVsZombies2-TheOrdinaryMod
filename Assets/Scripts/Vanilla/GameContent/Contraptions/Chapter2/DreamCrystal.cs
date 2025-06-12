@@ -23,18 +23,16 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            contraption.HealEffects(HEAL_PER_FRAME * (3 - contraption.GetHealthState(3)), contraption);
-            if (contraption.GetHealthState(3) > 0)
-                contraption.SetAnimationFloat("HealthUP", 0);
-            else
-                contraption.SetAnimationFloat("HealthUP", 1);
+            var health = contraption.Health;
+            var maxHealth = contraption.GetMaxHealth();
+            contraption.HealEffects(HEAL_PER_FRAME * (3 - (1 - health / maxHealth)), contraption);
         }
         protected override void UpdateLogic(Entity contraption)
         {
             base.UpdateLogic(contraption);
             bool evoked = contraption.HasBuff<DreamCrystalEvocationBuff>();
             contraption.SetEvoked(evoked);
-            contraption.SetModelHealthStateByCount(3);
+            contraption.SetModelDamagePercent();
             contraption.SetAnimationBool("Evoked", evoked);
         }
 

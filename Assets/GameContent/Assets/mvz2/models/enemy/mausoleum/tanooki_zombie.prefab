@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 3667829824191615618}
   - component: {fileID: 7481192259681002614}
   - component: {fileID: 1814898446327911264}
-  - component: {fileID: 2246250580649463047}
+  - component: {fileID: 9027164188408896386}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
---- !u!114 &2246250580649463047
+--- !u!114 &9027164188408896386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -575,14 +575,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911600461685971742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50435992d69428c4db295c41af96e2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 149ee9d8821a57d4ea377e28859c5b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300006, guid: 55e108afa20824c4bb9a1fab72673c9f, type: 3}
   - {fileID: 21300008, guid: 55e108afa20824c4bb9a1fab72673c9f, type: 3}
   - {fileID: -357007936, guid: 55e108afa20824c4bb9a1fab72673c9f, type: 3}
-  propertyName: HealthState
 --- !u!1 &2035454105787715213
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +593,7 @@ GameObject:
   - component: {fileID: 5197366429126930018}
   - component: {fileID: 1795583326936852019}
   - component: {fileID: 8126826673394367496}
-  - component: {fileID: 2105643147717917870}
+  - component: {fileID: 3400088300028461336}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -682,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
---- !u!114 &2105643147717917870
+--- !u!114 &3400088300028461336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,13 +690,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2035454105787715213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50435992d69428c4db295c41af96e2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 149ee9d8821a57d4ea377e28859c5b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300006, guid: 1bf54b349ebb4ae48b1cee1197c7c2ae, type: 3}
   - {fileID: 21300008, guid: 1bf54b349ebb4ae48b1cee1197c7c2ae, type: 3}
-  propertyName: HealthState
 --- !u!1 &2147868032872076460
 GameObject:
   m_ObjectHideFlags: 0

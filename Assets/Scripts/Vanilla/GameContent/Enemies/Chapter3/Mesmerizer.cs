@@ -45,10 +45,10 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelHealthStateByCount(2);
             var ghsat = entity.GetRidingEntity();
             var hasGhast = ghsat.ExistsAndAlive();
             entity.SetAnimationBool("Sitting", hasGhast);
+            entity.SetModelDamagePercent();
         }
         protected override void UpdateAI(Entity entity)
         {

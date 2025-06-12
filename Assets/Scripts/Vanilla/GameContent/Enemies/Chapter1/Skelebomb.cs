@@ -43,7 +43,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelHealthStateByCount(2);
+            entity.SetModelDamagePercent();
             if (entity.IsDead)
                 return;
             var stateTimer = GetStateTimer(entity);

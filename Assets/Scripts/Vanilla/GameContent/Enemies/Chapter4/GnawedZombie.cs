@@ -26,8 +26,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            var state_addtion = entity.HasBuff<TanookiZombieStoneBuff>() ? 1 : 0;
-            entity.SetModelHealthStateByCount(2 + state_addtion);
+            entity.SetModelDamagePercent();
             entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>());
 
             var damage = GetTakenDamage(entity);
