@@ -109,7 +109,7 @@ namespace MVZ2.GameContent.Buffs
         public const string shikaisenRevive = "shikaisen_revive";
         public const string youkaiLeaf = "youkai_leaf";
         public const string youkaiLeafRegeneration = "youkai_leaf_regeneration";
-        public const string gnawedZombieStone = "gnawed_zombie_stone";
+        public const string tanookiZombieStone = "tanooki_zombie_stone";
 
         public const string beingRiden = "being_riden";
         public const string ridingPassenger = "riding_passenger";

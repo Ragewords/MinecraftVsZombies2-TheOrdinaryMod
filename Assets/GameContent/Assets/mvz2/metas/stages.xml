@@ -1007,7 +1007,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:reflective_barrier_zombie"/>
-            <spawn id="mvz2:gnawed_zombie"/>
+            <spawn id="mvz2:tanooki_zombie"/>
         </spawns>
         <properties>
             <integer name="spawnerCount" value="8" />
@@ -1021,7 +1021,7 @@
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:wicked_hermit_zombie"/>
             <spawn id="mvz2:shikaisen_zombie"/>
-            <spawn id="mvz2:gnawed_zombie"/>
+            <spawn id="mvz2:tanooki_zombie"/>
         </spawns>
         <properties>
             <integer name="spawnerCount" value="9" />
@@ -1037,7 +1037,7 @@
             <spawn id="mvz2:wicked_hermit_zombie"/>
             <spawn id="mvz2:shikaisen_zombie"/>
             <spawn id="mvz2:emperor_zombie"/>
-            <spawn id="mvz2:gnawed_zombie"/>
+            <spawn id="mvz2:tanooki_zombie"/>
         </spawns>
         <properties>
             <integer name="spawnerCount" value="10" />

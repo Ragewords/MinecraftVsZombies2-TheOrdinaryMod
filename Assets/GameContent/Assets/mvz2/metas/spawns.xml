@@ -121,7 +121,7 @@
         <spawn level="3" minWave="10"/>
         <weight base="2000" />
     </entry>
-    <entry id="gnawed_zombie" entity="mvz2:gnawed_zombie" >
+    <entry id="tanooki_zombie" entity="mvz2:tanooki_zombie" >
         <spawn level="3" minWave="5"/>
         <weight base="2000" />
     </entry>

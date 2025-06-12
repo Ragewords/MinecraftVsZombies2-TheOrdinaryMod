@@ -11,10 +11,10 @@ using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.gnawedZombieStone)]
-    public class GnawedZombieStoneBuff : BuffDefinition
+    [BuffDefinition(VanillaBuffNames.tanookiZombieStone)]
+    public class TanookiZombieStoneBuff : BuffDefinition
     {
-        public GnawedZombieStoneBuff(string nsp, string name) : base(nsp, name)
+        public TanookiZombieStoneBuff(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             var damage = param.input;
             var entity = damage.Entity;
-            foreach (var buff in entity.GetBuffs<GnawedZombieStoneBuff>())
+            foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
                 AddTakenDamage(buff, damage.Amount);
                 result.SetFinalValue(false);
@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
-            entity.RemoveBuffs<GnawedZombieStoneBuff>();
+            entity.RemoveBuffs<TanookiZombieStoneBuff>();
         }
         public const float MAX_DAMAGE = 900;
         public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);

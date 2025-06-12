@@ -138,7 +138,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gnawed_zombie_stone_0
+      name: tanooki_zombie_stone_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnawed_zombie_stone_1
+      name: tanooki_zombie_stone_1
       rect:
         serializedVersion: 2
         x: 33
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnawed_zombie_stone_2
+      name: tanooki_zombie_stone_2
       rect:
         serializedVersion: 2
         x: 0
@@ -201,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnawed_zombie_stone_3
+      name: tanooki_zombie_stone_3
       rect:
         serializedVersion: 2
         x: 19
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnawed_zombie_stone_4
+      name: tanooki_zombie_stone_4
       rect:
         serializedVersion: 2
         x: 39
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnawed_zombie_stone_5
+      name: tanooki_zombie_stone_5
       rect:
         serializedVersion: 2
         x: 59
@@ -279,12 +279,12 @@ TextureImporter:
       Zombie_2: 21300004
       Zombie_3: 21300006
       Zombie_4: 21300008
-      gnawed_zombie_stone_0: 21300000
-      gnawed_zombie_stone_1: 21300002
-      gnawed_zombie_stone_2: 21300004
-      gnawed_zombie_stone_3: 21300006
-      gnawed_zombie_stone_4: 21300008
-      gnawed_zombie_stone_5: -357007936
+      tanooki_zombie_stone_0: 21300000
+      tanooki_zombie_stone_1: 21300002
+      tanooki_zombie_stone_2: 21300004
+      tanooki_zombie_stone_3: 21300006
+      tanooki_zombie_stone_4: 21300008
+      tanooki_zombie_stone_5: -357007936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

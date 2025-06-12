@@ -3,6 +3,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -61,7 +62,9 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 var rng = GetEnemyRNG(target);
-                NamespaceID[] pool = enemyPool;
+                NamespaceID[] pool = target.Level.GetEnemyPool();
+                if (pool == null)
+                    pool = enemyPool;
                 var targetID = pool.Random(rng);
                 var random = target.SpawnWithParams(targetID, enemy.Position);
                 random.Charm(target.GetFaction());
@@ -99,7 +102,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.wickedHermitZombie,
             VanillaEnemyID.shikaisenZombie,
             VanillaEnemyID.emperorZombie,
-            VanillaEnemyID.gnawedZombie,
+            VanillaEnemyID.tanookiZombie,
             VanillaEnemyID.imp,
             VanillaEnemyID.skeletonHorse,
             VanillaEnemyID.skeletonWarrior,

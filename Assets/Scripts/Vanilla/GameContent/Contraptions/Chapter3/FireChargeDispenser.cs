@@ -1,3 +1,4 @@
+using System.Linq;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -89,7 +90,13 @@ namespace MVZ2.GameContent.Contraptions
             evokeTimer.Run();
             var level = entity.Level;
             var grid = level.GetAllGrids().Random(entity.RNG);
+            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).Take(1);
             var targetPos = grid.GetEntityPosition();
+            foreach (var target in targets)
+            {
+                targetPos = target.GetGrid().GetEntityPosition();
+            }
+                
             var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 60, GRAVITY);
 
             if (evokeTimer.PassedInterval(10))
@@ -111,6 +118,20 @@ namespace MVZ2.GameContent.Contraptions
             {
                 entity.SetEvoked(false);
             }
+        }
+        private static bool IsEvocationTarget(Entity self, Entity target)
+        {
+            if (target == null)
+                return false;
+            if (target.IsDead)
+                return false;
+            if (!target.IsVulnerableEntity())
+                return false;
+            if (!self.IsHostile(target))
+                return false;
+            if (!Detection.CanDetect(target))
+                return false;
+            return true;
         }
         public static FrameTimer GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_ATTACK_TIMER, timer);

@@ -998,7 +998,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1886de419a093a2469341cd08c3568ed
-    m_Address: mvz2:entity/enemies/gnawed_zombie_tail
+    m_Address: mvz2:entity/enemies/tanooki_zombie_tail
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -3565,7 +3565,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55e108afa20824c4bb9a1fab72673c9f
-    m_Address: mvz2:entity/enemy/gnawed_zombie_stone
+    m_Address: y/enemy/tanooki_zombie_stonembie_stone
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -5237,7 +5237,7 @@ MonoBehaviour:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8289b4127ccd205489fbda27d1f14cdc
-    m_Address: mvz2:enemy/mausoleum/gnawed_zombie
+    m_Address: mvz2:enemy/mausoleum/tanooki_zombie
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

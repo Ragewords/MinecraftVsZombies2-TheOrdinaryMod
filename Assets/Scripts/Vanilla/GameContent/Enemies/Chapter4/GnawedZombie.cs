@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Callbacks;
@@ -12,10 +11,10 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.gnawedZombie)]
-    public class GnawedZombie : MeleeEnemy
+    [EntityBehaviourDefinition(VanillaEnemyNames.tanookiZombie)]
+    public class TanookiZombie : MeleeEnemy
     {
-        public GnawedZombie(string nsp, string name) : base(nsp, name)
+        public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
         }
@@ -27,14 +26,14 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            var state_addtion = entity.HasBuff<GnawedZombieStoneBuff>() ? 1 : 0;
+            var state_addtion = entity.HasBuff<TanookiZombieStoneBuff>() ? 1 : 0;
             entity.SetModelHealthStateByCount(2 + state_addtion);
-            entity.SetAnimationBool("Stone", entity.HasBuff<GnawedZombieStoneBuff>());
+            entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>());
 
             var damage = GetTakenDamage(entity);
             if (damage >= MAX_DAMAGE)
             {
-                entity.AddBuff<GnawedZombieStoneBuff>();
+                entity.AddBuff<TanookiZombieStoneBuff>();
                 SetTakenDamage(entity, 0);
                 var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
                 effect.SetTint(new Color(0.5f, 0.5f, 0.5f, 1));

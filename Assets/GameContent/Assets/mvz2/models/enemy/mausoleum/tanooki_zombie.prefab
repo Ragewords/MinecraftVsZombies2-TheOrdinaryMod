@@ -3189,7 +3189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152729976638313519, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       propertyPath: m_Name
-      value: gnawed_zombie
+      value: tanooki_zombie
       objectReference: {fileID: 0}
     - target: {fileID: 6691928640828811806, guid: 689034d4e1df7594b85450c0b364f6b6, type: 3}
       propertyPath: elements.Array.size
