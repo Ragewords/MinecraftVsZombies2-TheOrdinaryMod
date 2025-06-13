@@ -130,6 +130,17 @@ namespace MVZ2.Vanilla.Callbacks
                 this.buff = buff;
             }
         }
+        public struct PostEntityMesmerizeParams
+        {
+            public Entity entity;
+            public Buff buff;
+
+            public PostEntityMesmerizeParams(Entity entity, Buff buff)
+            {
+                this.entity = entity;
+                this.buff = buff;
+            }
+        }
 
         public struct ContraptionSacrificeValueParams
         {
@@ -204,6 +215,7 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostPlaceEntityParams> POST_PLACE_ENTITY = new();
         public readonly static CallbackType<PostUseEntityBlueprintParams> POST_USE_ENTITY_BLUEPRINT = new();
         public readonly static CallbackType<PostEntityCharmParams> POST_ENTITY_CHARM = new();
+        public readonly static CallbackType<PostEntityMesmerizeParams> POST_ENTITY_MESMERIZE = new();
         public readonly static CallbackType<EntityCallbackParams> POST_ENTITY_REINCARNATE = new();
 
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_TRIGGER = new();

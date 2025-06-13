@@ -15,7 +15,8 @@ namespace MVZ2.GameContent.Buffs
         public MesmerizeBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new ColorModifier(EngineEntityProps.COLOR_OFFSET, new Color(0.5f, 0, 0.5f, 0.5f)));
-            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, PROP_SPEED));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, 1.5f));
+            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 1.5f));
         }
         public override void PostAdd(Buff buff)
         {

@@ -109,7 +109,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SonicWave(Entity entity)
         {
             var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
-            entity.Explode(entity.Position, 120 * rangeMultiplier, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE));
+            entity.Explode(entity.Position, 120 * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * 0.5f, new DamageEffectList(VanillaDamageEffects.MUTE));
             entity.TriggerAnimation("Wave");
         }
         public static List<EntityID> GetNoteChildren(Entity entity)

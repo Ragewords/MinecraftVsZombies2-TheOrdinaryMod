@@ -43,9 +43,12 @@ namespace MVZ2.GameContent.Contraptions
                     target.Stun(150);
                     stunned = true;
                 }
-                else if (target.Type == EntityTypes.PLANT && target.IsCharmed())
+                else if (target.Type == EntityTypes.PLANT)
                 {
-                    target.RemoveCharm();
+                    if (target.IsCharmed())
+                        target.RemoveCharm();
+                    if (target.IsMesmerized())
+                        target.RemoveMesmerize();
                     target.PlaySound(VanillaSoundID.mindClear);
                 }
                 else if (target.Type == EntityTypes.PROJECTILE && target.IsHostile(entity))

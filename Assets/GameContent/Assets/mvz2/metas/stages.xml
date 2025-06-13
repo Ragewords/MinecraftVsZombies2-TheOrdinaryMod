@@ -785,7 +785,7 @@
             <talk type="end" value="mvz2:mausoleum_1_over"/>
             <talk type="map" value="mvz2:mausoleum_1_map"/>
         </talks>
-        <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:note_block"/>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:lightning_orb"/>
         <spawns flags="1">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
@@ -798,7 +798,7 @@
             <talk type="end" value="mvz2:mausoleum_2_over"/>
             <talk type="map" value="mvz2:mausoleum_2_map"/>
         </talks>
-        <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:lightning_orb"/>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:note_block"/>
         <spawns flags="1">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>

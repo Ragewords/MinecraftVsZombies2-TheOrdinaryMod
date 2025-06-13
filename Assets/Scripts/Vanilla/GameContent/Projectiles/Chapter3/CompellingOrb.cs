@@ -58,8 +58,7 @@ namespace MVZ2.GameContent.Projectiles
                 return;
             }
             target.CharmWithSource(projectile.Parent);
-            if (target.Type == EntityTypes.ENEMY)
-                target.MesmerizeWithSource(projectile.Parent);
+            target.MesmerizeWithSource(projectile.Parent);
             target.PlaySound(VanillaSoundID.mindControl);
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)

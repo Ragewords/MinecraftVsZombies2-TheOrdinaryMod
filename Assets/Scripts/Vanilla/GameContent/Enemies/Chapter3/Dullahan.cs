@@ -19,6 +19,7 @@ namespace MVZ2.GameContent.Enemies
         public Dullahan(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_ENTITY_CHARM, PostEntityCharmCallback);
+            AddTrigger(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, PostEntityMesmerizeCallback);
             AddTrigger(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, PostEntityReincarnateCallback);
         }
         public override void Init(Entity entity)
@@ -53,6 +54,17 @@ namespace MVZ2.GameContent.Enemies
             if (!head.ExistsAndAlive())
                 return;
             CharmBuff.CloneCharm(buff, head);
+        }
+        private void PostEntityMesmerizeCallback(VanillaLevelCallbacks.PostEntityMesmerizeParams param, CallbackResult result)
+        {
+            var entity = param.entity;
+            var buff = param.buff;
+            if (!entity.IsEntityOf(VanillaEnemyID.dullahan))
+                return;
+            var head = GetHead(entity);
+            if (!head.ExistsAndAlive())
+                return;
+            MesmerizeBuff.CloneMesmerize(buff, head);
         }
         private void PostEntityReincarnateCallback(EntityCallbackParams param, CallbackResult result)
         {

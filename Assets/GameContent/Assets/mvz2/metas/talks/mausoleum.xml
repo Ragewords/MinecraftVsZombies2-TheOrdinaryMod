@@ -136,10 +136,10 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是唱片机！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能发射音符，音符会在唱片机和敌人之间来回反弹，并产生音波！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">也就是说，它与敌人的距离越近，造成的伤害就越高！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让怪物们听听这美妙的音乐吧！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是闪电之珠！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够阻挡敌人的前进，并且免疫对方的子弹！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">这可是高阶的法术器械！</sentence>
       </sentences>
     </section>
   </group>
@@ -217,10 +217,10 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是闪电之珠！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够阻挡敌人的前进，并且免疫对方的子弹！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">这可是高阶的法术器械！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是唱片机！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能发射音符，音符会在唱片机和敌人之间来回反弹，并产生音波！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">也就是说，它与敌人的距离越近，造成的伤害就越高！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让怪物们听听这美妙的音乐吧！</sentence>
       </sentences>
     </section>
   </group>

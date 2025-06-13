@@ -836,8 +836,7 @@ namespace MVZ2.Vanilla.Entities
             }
             MesmerizeBuff.SetPermanent(buff);
             buff.Update();
-            var param = new VanillaLevelCallbacks.PostEntityCharmParams(entity, buff);
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, param);
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, new VanillaLevelCallbacks.PostEntityMesmerizeParams(entity, buff));
         }
         public static void MesmerizeWithSource(this Entity entity, Entity source)
         {
@@ -848,15 +847,24 @@ namespace MVZ2.Vanilla.Entities
             }
             MesmerizeBuff.SetSource(buff, source);
             buff.Update();
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, new VanillaLevelCallbacks.PostEntityCharmParams(entity, buff));
+            var param = new VanillaLevelCallbacks.PostEntityMesmerizeParams(entity, buff);
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, param);
         }
         public static void RemoveCharm(this Entity entity)
+        {
+            entity.RemoveBuffs<CharmBuff>();
+        }
+        public static void RemoveMesmerize(this Entity entity)
         {
             entity.RemoveBuffs<CharmBuff>();
         }
         public static bool IsCharmed(this Entity entity)
         {
             return entity.HasBuff<CharmBuff>();
+        }
+        public static bool IsMesmerized(this Entity entity)
+        {
+            return entity.HasBuff<MesmerizeBuff>();
         }
         #endregion
 
