@@ -881,7 +881,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
-        <contraption id="dimension_hammer" name="次元锤" tooltip="锤击地面，震晕敌人并产生弹幕"  unlock="mvz2:level.dream_EX1">
+        <contraption id="dimension_hammer" name="次元锤" tooltip="锤击地面，震晕怪物并发射弹幕"  unlock="mvz2:level.dream_EX1">
             <properties>
                 <bool name="mvz2:cannotDig" value="true"/>
                 <bool name="mvz2:invisible" value="true"/>
@@ -908,7 +908,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的敌人投掷火焰弹"  unlock="mvz2:level.castle_EX1">
+        <contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的怪物投掷火焰弹"  unlock="mvz2:level.castle_EX1">
             <properties>
                 <float name="mvz2:range" value="200"/>
                 <float name="mvz2:damage" value="60"/>
@@ -923,7 +923,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="youkai_leaf" name="妖怪树叶" tooltip="模仿场上生命值最高的敌人"
+        <contraption id="youkai_leaf" name="妖怪树叶" tooltip="模仿场上生命值最高的怪物"
             unlock="mvz2:level.mausoleum_EX1">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />

@@ -571,7 +571,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>80）</color>（电击），<color=red>20）</color>（电磁爆），<color=red>5</color>（电场）]]></p>
+                <p>伤害：<![CDATA[<color=red>80</color>（电击），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
                 <p>被摧毁：<![CDATA[<color=red>产生一次半径1格的爆炸，造成320点电流伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
@@ -911,7 +911,7 @@
         <!-- Extras -->
         <entry id="mvz2:poisonser">
             <header>
-                <p>淬毒发射器能够发射使敌人中毒的毒球。</p>
+                <p>淬毒发射器能够发射使怪物中毒的毒球。</p>
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
@@ -926,7 +926,7 @@
         </entry>
         <entry id ="mvz2:dimension_hammer">
             <header>
-                <p>次元锤锤击地面，击晕地面上的敌人并生成弹幕。</p>
+                <p>次元锤锤击地面，击晕地面上的怪物并发射弹幕。</p>
             </header>
             <properties>
                 <p>范围：<![CDATA[<color=red>1格</color>]]></p>
@@ -940,12 +940,12 @@
         </entry>
         <entry id ="mvz2:fire_charge_dispenser">
             <header>
-                <p>火焰弹发射器会向周围的敌人投掷火焰弹。</p>
+                <p>火焰弹发射器会向周围的怪物投掷火焰弹。</p>
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向敌人抛射出40个火焰弹，12支×300%自身伤害的导弹和5个×500%自身伤害的Etho台阶</color>]]></p>
+                <p>技能：<![CDATA[<color=red>投掷出40个火焰弹，12支×300%自身伤害的导弹和5个×500%自身伤害的Etho台阶</color>]]></p>
             </properties>
             <flavor>
                 <p>“军火库？开什么玩笑，火焰弹也算热兵器吗？”</p>
@@ -953,11 +953,11 @@
         </entry>
         <entry id ="mvz2:youkai_leaf">
             <header>
-                <p>妖怪树叶会模仿场上的一个生命值最高的敌人。</p>
+                <p>妖怪树叶会模仿场上的一个生命值最高的怪物。</p>
             </header>
             <properties>
-                <p>特点：<![CDATA[<color=red>模仿的敌人血量与自身相同</color>]]></p>
-                <p>技能：<![CDATA[<color=red>模仿的敌人获得持续的生命恢复</color>]]></p>
+                <p>特点：<![CDATA[<color=red>模仿的怪物血量与自身相同</color>]]></p>
+                <p>技能：<![CDATA[<color=red>模仿的怪物每秒恢复50生命</color>]]></p>
             </properties>
             <flavor>
                 <p>妖怪树叶拜师于一个擅长变化姿态的大妖怪，它这样做除了学本事，还有一个目的——</p>
@@ -1368,7 +1368,7 @@
                 <tag id="mvz2:mass_statue" value="1" />
             </tags>
             <header>
-                <p>狸猫僵尸每承受一定的伤害便会变成石像。</p>
+                <p>狸猫僵尸每受到一定的伤害便会变成石像。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>

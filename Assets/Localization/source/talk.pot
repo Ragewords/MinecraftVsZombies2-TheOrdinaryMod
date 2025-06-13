@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-12 05:29+0800\n"
+"POT-Creation-Date: 2025-06-13 09:18+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6722,25 +6722,25 @@ msgstr ""
 #. Text for talk sentence 0 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "这是唱片机！"
+msgid "这是闪电之珠！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "它能发射音符，音符会在唱片机和敌人之间来回反弹，并产生音波！"
+msgid "它能够阻挡敌人的前进，并且免疫对方的子弹！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "也就是说，它与敌人的距离越近，造成的伤害就越高！"
+msgid "并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "让怪物们听听这美妙的音乐吧！"
+msgid "这可是高阶的法术器械！"
 msgstr ""
 
 #. Archive name for talk group mausoleum_1_map
@@ -6944,25 +6944,25 @@ msgstr ""
 #. Text for talk sentence 0 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "这是闪电之珠！"
+msgid "这是唱片机！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "它能够阻挡敌人的前进，并且免疫对方的子弹！"
+msgid "它能发射音符，音符会在唱片机和敌人之间来回反弹，并产生音波！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！"
+msgid "也就是说，它与敌人的距离越近，造成的伤害就越高！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "这可是高阶的法术器械！"
+msgid "让怪物们听听这美妙的音乐吧！"
 msgstr ""
 
 #. Archive name for talk group mausoleum_2_map

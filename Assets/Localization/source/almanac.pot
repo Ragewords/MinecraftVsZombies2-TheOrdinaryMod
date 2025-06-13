@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-12 05:29+0800\n"
+"POT-Creation-Date: 2025-06-13 09:18+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -185,6 +185,12 @@ msgctxt "almanac_tag.name"
 msgid "壶材质"
 msgstr ""
 
+#. Name for almanac tag shell_statue
+#: Almanac meta file
+msgctxt "almanac_tag.name"
+msgid "石像材质"
+msgstr ""
+
 #. Name for almanac tag mass
 #: Almanac meta file
 msgctxt "almanac_tag.name"
@@ -207,6 +213,12 @@ msgstr ""
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "壶质量"
+msgstr ""
+
+#. Name for almanac tag mass_statue
+#: Almanac meta file
+msgctxt "almanac_tag.name"
+msgid "石像质量"
 msgstr ""
 
 #. Name for almanac tag light_source
@@ -680,7 +692,6 @@ msgctxt "contraptions.description"
 msgid ""
 "射程：<color=red>3.5格</color>\n"
 "伤害：<color=red>20</color>\n"
-"特殊：<color=red>火焰伤害会抵消减速</color>\n"
 "技能：<color=red>射出一个越滚越大的雪球</color>"
 msgstr ""
 
@@ -972,8 +983,8 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>2000</color>\n"
-"恢复速度：<color=red>60×损伤阶段/秒，最大180/秒</color>\n"
-"技能：<color=red>进入无敌状态，并为周围的器械恢复耐久</color>"
+"恢复速度：<color=red>60×(1-当前耐久/最大耐久)秒</color>\n"
+"技能：<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:dream_crystal
@@ -1151,7 +1162,7 @@ msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>1200</color>\n"
 "攻击速度：<color=red>3秒</color>\n"
-"伤害：<color=red>80（电击），20（电磁爆），5（电场）</color>\n"
+"伤害：<color=red>80</color>（电击），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）\n"
 "特殊：<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>\n"
 "被摧毁：<color=red>产生一次半径1格的爆炸，造成320点电流伤害</color>\n"
 "技能：<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>"
@@ -1184,29 +1195,6 @@ msgctxt "contraptions.description"
 msgid "话说这该叫盆了吧？"
 msgstr ""
 
-#. Header for contraptions mvz2:note_block
-#: Almanac meta file
-msgctxt "contraptions.description"
-msgid "唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音波攻击周围的敌人。"
-msgstr ""
-
-#. Properties for contraptions mvz2:note_block
-#: Almanac meta file
-msgctxt "contraptions.description"
-msgid ""
-"伤害：<color=red>5</color>\n"
-"发射速度：<color=red>1.5秒</color>\n"
-"音符上限：<color=red>10</color>\n"
-"音波半径：<color=red>1.5格</color>\n"
-"技能：<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>"
-msgstr ""
-
-#. Flavor for contraptions mvz2:note_block
-#: Almanac meta file
-msgctxt "contraptions.description"
-msgid "永远不要试图做音符盒的邻居，别问为什么。"
-msgstr ""
-
 #. Header for contraptions mvz2:lightning_orb
 #: Almanac meta file
 msgctxt "contraptions.description"
@@ -1225,9 +1213,30 @@ msgstr ""
 #. Flavor for contraptions mvz2:lightning_orb
 #: Almanac meta file
 msgctxt "contraptions.description"
+msgid "由于能够吸收掉噪音，在这栋吵闹的居民楼里，许多住户希望邀请它同居。"
+msgstr ""
+
+#. Header for contraptions mvz2:note_block
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid "唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音波攻击周围的敌人。"
+msgstr ""
+
+#. Properties for contraptions mvz2:note_block
+#: Almanac meta file
+msgctxt "contraptions.description"
 msgid ""
-"它就是音符盒的邻居。\n"
-"天哪！还好它能吸收掉那些噪音……"
+"伤害：<color=red>5</color>，<color=red>2.5</color>（音波）\n"
+"发射速度：<color=red>1.5秒</color>\n"
+"音符上限：<color=red>10</color>\n"
+"音波半径：<color=red>1.5格</color>\n"
+"技能：<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>"
+msgstr ""
+
+#. Flavor for contraptions mvz2:note_block
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid "永远不要试图做唱片机的邻居，别问为什么。"
 msgstr ""
 
 #. Header for contraptions mvz2:splitenser
@@ -1250,11 +1259,11 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "“别射了，你把我晃得头晕！”后面的发射器很不爽。\n"
-"“可是你每次都发射两次，论头晕，我比你还要严重哩！”前面的发射器反驳。\n"
+"“可是咱们每次都发射两次，论头晕，我们可不相上下！”前面的发射器反驳。\n"
 "自从双向发射器被发明以来，它和自己的争吵就从来没停过。\n"
 "“你这么和你哥哥说的话吗？放尊重点！”\n"
 "“谁是你弟弟？我们都不知道是谁先被造出来的！”\n"
-"“我发射更快，理应当哥哥！”\n"
+"“我伤害更高，理应当哥哥！”\n"
 "“那大部分时候还是我把前面的敌人干掉的嘞！”\n"
 "……\n"
 "幸好他邻居是闪电之珠，不然就又有人要来投诉了。"
@@ -1502,7 +1511,7 @@ msgstr ""
 #. Header for contraptions mvz2:poisonser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "淬毒发射器能够发射使敌人中毒的毒球。"
+msgid "淬毒发射器能够发射使怪物中毒的毒球。"
 msgstr ""
 
 #. Properties for contraptions mvz2:poisonser
@@ -1511,7 +1520,7 @@ msgctxt "contraptions.description"
 msgid ""
 "射程：<color=red>5.5格</color>\n"
 "伤害：<color=red>10</color>\n"
-"特殊：<color=red>剧毒对蜘蛛无效</color>\n"
+"特点：<color=red>剧毒对蜘蛛无效</color>\n"
 "技能：<color=red>在前方3×3的格子释放剧毒毒雾</color>"
 msgstr ""
 
@@ -1526,7 +1535,7 @@ msgstr ""
 #. Header for contraptions mvz2:dimension_hammer
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "次元锤锤击地面，击晕地面上的敌人并生成弹幕。"
+msgid "次元锤锤击地面，击晕地面上的怪物并发射弹幕。"
 msgstr ""
 
 #. Properties for contraptions mvz2:dimension_hammer
@@ -1548,7 +1557,7 @@ msgstr ""
 #. Header for contraptions mvz2:fire_charge_dispenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "火焰弹发射器会向周围的敌人投掷火焰弹。"
+msgid "火焰弹发射器会向周围的怪物投掷火焰弹。"
 msgstr ""
 
 #. Properties for contraptions mvz2:fire_charge_dispenser
@@ -1557,7 +1566,7 @@ msgctxt "contraptions.description"
 msgid ""
 "攻击速度：<color=red>2秒</color>\n"
 "伤害：<color=red>60</color>\n"
-"技能：<color=red>抛射出40个火焰弹，12支×300%自身伤害的导弹和5个×500%自身伤害的Etho台阶至场上的随机位置</color>"
+"技能：<color=red>投掷出40个火焰弹，12支×300%自身伤害的导弹和5个×500%自身伤害的Etho台阶</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:fire_charge_dispenser
@@ -1569,15 +1578,15 @@ msgstr ""
 #. Header for contraptions mvz2:youkai_leaf
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "妖怪树叶会模仿场上的一个生命值最高的敌人。"
+msgid "妖怪树叶会模仿场上的一个生命值最高的怪物。"
 msgstr ""
 
 #. Properties for contraptions mvz2:youkai_leaf
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid ""
-"特点：<color=red>模仿的敌人血量与自身相同</color>\n"
-"技能：<color=red>模仿的敌人获得持续的生命恢复</color>"
+"特点：<color=red>模仿的怪物血量与自身相同</color>\n"
+"技能：<color=red>模仿的怪物每秒恢复50生命</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:youkai_leaf
@@ -1852,7 +1861,7 @@ msgstr ""
 msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200</color>\n"
-"速度：<color=red>2</color>，而后<color=red>-0.6</color>（产卵后）\n"
+"速度：<color=red>2</color>，而后<color=red>0.6</color>（产卵后）\n"
 "特点：<color=red>碰到的血肉之躯会被寄生</color>"
 msgstr ""
 
@@ -1980,7 +1989,7 @@ msgstr ""
 #. Header for enemies mvz2:anubisand
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "灵魂沙王飞在空中，不时向下方召唤阻挡子弹并使敌人减速的灵魂沙。"
+msgid "灵魂沙王飞在空中，不时向下方召唤阻挡子弹的灵魂沙。"
 msgstr ""
 
 #. Properties for enemies mvz2:anubisand
@@ -2012,7 +2021,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200+1100（头盔）+600（盾牌）</color>\n"
 "速度：<color=red>1</color>\n"
-"特点：<color=red>子弹击中反射壁并消失后，产生伤害相同的子弹进行回击</color>"
+"特点：<color=red>子弹击中反射壁时，产生伤害相同的子弹进行回击</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:reflective_barrier_zombie
@@ -2135,7 +2144,7 @@ msgid ""
 "速度：<color=red>2</color>\n"
 "爆炸伤害：<color=red>300</color>\n"
 "范围：<color=red>1.5格</color>\n"
-"特殊：<color=red>受到冲击时会被立即引爆，造成无差别伤害</color>"
+"特点：<color=red>受到冲击时会被立即引爆，造成无差别伤害</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:skelebomb
@@ -2158,7 +2167,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>100</color>\n"
 "速度：<color=red>2</color>\n"
-"特点：<color=red>对石头造成5倍伤害</color>"
+"特点：<color=red>对<tag id=\"mvz2:shell\" enum=\"mvz2:stone\"/>石头造成5倍伤害</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:silverfish
@@ -2179,7 +2188,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>300</color>\n"
 "速度：<color=red>1</color>\n"
-"恢复生命：<color=red>200</color>，<color=red>100（盔甲）</color>"
+"恢复生命：<color=red>200</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:curseer
@@ -2188,22 +2197,22 @@ msgctxt "enemies.description"
 msgid "很多人因着咒术师这个名字对他留下了不好的印象，他对此很苦恼，便尝试学习治疗他人的法术。然而因为治疗法术的施展方式过于暴力，他在别人眼里的印象更差了。"
 msgstr ""
 
-#. Header for enemies mvz2:gnawed_zombie
+#. Header for enemies mvz2:tanooki_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "狸猫僵尸每承受一定的伤害便会变成石像。"
+msgid "狸猫僵尸每受到一定的伤害便会变成石像。"
 msgstr ""
 
-#. Properties for enemies mvz2:gnawed_zombie
+#. Properties for enemies mvz2:tanooki_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200</color>\n"
-"速度：<color=red>1</color>\n"
+"速度：<color=red>1</color>，<color=red>0.3</color>（石像）\n"
 "特点：<color=red>每受到100伤害变成石像，可承受900伤害</color>"
 msgstr ""
 
-#. Flavor for enemies mvz2:gnawed_zombie
+#. Flavor for enemies mvz2:tanooki_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "别搞错了，这不是妖怪树叶仰慕的那个大妖怪，只是个乔装打扮后的僵尸。"
@@ -4081,18 +4090,6 @@ msgctxt "entity.tooltip"
 msgid "生产并储存星之碎片"
 msgstr ""
 
-#. Name for entity mvz2:note_block
-#: Entity meta file
-msgctxt "entity.name"
-msgid "唱片机"
-msgstr ""
-
-#. Tooltip for entity mvz2:note_block
-#: Entity meta file
-msgctxt "entity.tooltip"
-msgid "发射反弹的音符并释放音波"
-msgstr ""
-
 #. Name for entity mvz2:lightning_orb
 #: Entity meta file
 msgctxt "entity.name"
@@ -4103,6 +4100,18 @@ msgstr ""
 #: Entity meta file
 msgctxt "entity.tooltip"
 msgid "阻碍敌人前进，并吸收子弹来治疗自己"
+msgstr ""
+
+#. Name for entity mvz2:note_block
+#: Entity meta file
+msgctxt "entity.name"
+msgid "唱片机"
+msgstr ""
+
+#. Tooltip for entity mvz2:note_block
+#: Entity meta file
+msgctxt "entity.tooltip"
+msgid "发射反弹的音符并释放音波"
 msgstr ""
 
 #. Name for entity mvz2:splitenser
@@ -4266,7 +4275,7 @@ msgstr ""
 #. Tooltip for entity mvz2:dimension_hammer
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "锤击地面，震晕敌人并产生弹幕"
+msgid "锤击地面，震晕怪物并发射弹幕"
 msgstr ""
 
 #. Name for entity mvz2:fire_charge_dispenser
@@ -4278,7 +4287,7 @@ msgstr ""
 #. Tooltip for entity mvz2:fire_charge_dispenser
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "向周围的敌人投掷火焰弹"
+msgid "向周围的怪物投掷火焰弹"
 msgstr ""
 
 #. Name for entity mvz2:youkai_leaf
@@ -4290,7 +4299,7 @@ msgstr ""
 #. Tooltip for entity mvz2:youkai_leaf
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "模仿场上生命值最高的敌人"
+msgid "模仿场上生命值最高的怪物"
 msgstr ""
 
 #. Name for entity mvz2:anvil
@@ -4667,13 +4676,13 @@ msgctxt "death_message"
 msgid "画个圈圈诅咒你！"
 msgstr ""
 
-#. Name for entity mvz2:gnawed_zombie
+#. Name for entity mvz2:tanooki_zombie
 #: Entity meta file
 msgctxt "entity.name"
 msgid "狸猫僵尸"
 msgstr ""
 
-#. Death message for entity mvz2:gnawed_zombie
+#. Death message for entity mvz2:tanooki_zombie
 #: Entity meta file
 msgctxt "death_message"
 msgid "让我先喘口气吧"
