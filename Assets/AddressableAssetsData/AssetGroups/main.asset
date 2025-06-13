@@ -997,13 +997,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1886de419a093a2469341cd08c3568ed
-    m_Address: mvz2:entity/enemies/tanooki_zombie_tail
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 18bdc9c8c3fe2c548bee01dd98e6d9df
     m_Address: mvz2:damage/shield/shield_hit1
     m_ReadOnly: 0
@@ -3565,7 +3558,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55e108afa20824c4bb9a1fab72673c9f
-    m_Address: y/enemy/tanooki_zombie_stonembie_stone
+    m_Address: y/enemy/tanooki_zombie_stone
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6145,6 +6138,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9739243e65a79be45b3cbef707b83c65
+    m_Address: y/enemy/tanooki_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9745c6a03a6cf954f8359f1d2bcaf4b9
     m_Address: mvz2:pickup/sapphire

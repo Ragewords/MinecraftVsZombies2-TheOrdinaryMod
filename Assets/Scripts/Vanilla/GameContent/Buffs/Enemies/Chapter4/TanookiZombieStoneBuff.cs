@@ -20,6 +20,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, 0.3f));
+            AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
         }
         public override void PostAdd(Buff buff)
         {

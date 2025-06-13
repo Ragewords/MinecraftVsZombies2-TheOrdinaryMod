@@ -74,6 +74,10 @@
             <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
             <mark sprite="mvz2:ui/almanac/special_marks[5]" />
         </tag>
+        <tag id="shell_statue" name="石像材质" enum="mvz2:shell" priority="2000" >
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
+            <mark sprite="mvz2:ui/almanac/special_marks[6]" />
+        </tag>
 
         <tag id="mass" name="质量" enum="mvz2:mass" priority="3000" >
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]" />
@@ -89,6 +93,10 @@
         <tag id="mass_pot" name="壶质量" enum="mvz2:mass" priority="3000" >
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]"/>
             <mark sprite="mvz2:ui/almanac/special_marks[5]" />
+        </tag>
+        <tag id="mass_statue" name="石像质量" enum="mvz2:mass" priority="3000" >
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[4]"/>
+            <mark sprite="mvz2:ui/almanac/special_marks[6]" />
         </tag>
 
 
@@ -1356,13 +1364,17 @@
             </flavor>
         </entry>
         <entry id="mvz2:tanooki_zombie">
+            <tags>
+                <tag id="mvz2:shell_statue" value="mvz2:stone" />
+                <tag id="mvz2:mass_statue" value="1" />
+            </tags>
             <header>
                 <p>狸猫僵尸每承受一定的伤害便会变成石像。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>，<color=red>0.3</color>（石像）]]></p>
-                <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，材质变为<tag id="mvz2:shell" enum="mvz2:stone"/>石头，可承受900伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，可承受900伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>别搞错了，这不是妖怪树叶仰慕的那个大妖怪，只是个乔装打扮后的僵尸。</p>

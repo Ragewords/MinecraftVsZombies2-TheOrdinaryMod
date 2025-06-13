@@ -149,10 +149,10 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (target.Type != EntityTypes.ENEMY)
                     continue;
-                var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
+                var knockbackMultiplier = target.GetWeakKnockbackMultiplier();
 
                 var vel = target.Velocity;
-                vel.x = 6 * knockbackMultiplier;
+                vel.x = 8 * knockbackMultiplier;
                 target.Velocity = vel;
             }
             self.Level.ShakeScreen(5, 0, 10);
