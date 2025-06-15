@@ -86,7 +86,13 @@ namespace MVZ2.GameContent.Contraptions
         }
         private bool SkeletonOutOfLimit(Entity entity)
         {
-            return entity.Level.GetEntityCount(VanillaEnemyID.skeletonWarrior) >= SKELETON_LIMIT;
+            var warrior_count = entity.Level.GetEntityCount(VanillaEnemyID.skeletonWarrior);
+            var skeleton_count = entity.Level.GetEntityCount(VanillaEnemyID.skeleton);
+            var ghost_count = entity.Level.GetEntityCount(VanillaEnemyID.ghost);
+            var necromancer_count = entity.Level.GetEntityCount(VanillaEnemyID.necromancer);
+            var bomb_count = entity.Level.GetEntityCount(VanillaEnemyID.skelebomb);
+            
+            return warrior_count + skeleton_count + ghost_count + necromancer_count + bomb_count >= SKELETON_LIMIT;
         }
         private void MageUpdate(Entity mage, int mageClass)
         {
@@ -108,7 +114,6 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.ghost,
             VanillaEnemyID.necromancer,
             VanillaEnemyID.skelebomb,
-            VanillaEnemyID.skeletonHorse,
             VanillaEnemyID.skeletonWarrior
         };
         private static int[] productionPoolWeights = new int[]
@@ -117,8 +122,7 @@ namespace MVZ2.GameContent.Contraptions
             2,
             1,
             3,
-            4,
-            10
+            12
         };
         public const int SKELETON_LIMIT = 30;
         public const int SPAWN_INTERVAL = 450;

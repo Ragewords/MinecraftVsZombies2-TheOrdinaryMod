@@ -602,22 +602,23 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
                 <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）；之后在吸收敌弹时，发射一个30点伤害的能量弹幕</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）；之后在吸收敌弹时，发射一个30点伤害的能量弹</color>]]></p>
             </properties>
             <flavor>
-                <p>由于能够吸收掉噪音，在这栋吵闹的居民楼里，许多住户希望邀请它同居。</p>
+                <p>它有一群非常吵闹的邻居。</p>
+                <p>如果不是能吸收噪音，一般人很难想象它是怎样在这栋居民楼生活的……</p>
             </flavor>
         </entry>
         <entry id="mvz2:note_block">
             <header>
-                <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音波攻击周围的敌人。</p>
+                <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>5</color>，<color=red>2.5</color>（音波）]]></p>
+                <p>伤害：<![CDATA[<color=red>5</color>，<color=red>2.5</color>（音浪）]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
                 <p>音波半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音浪范围</color>]]></p>
             </properties>
             <flavor>
                 <p>永远不要试图做唱片机的邻居，别问为什么。</p>
@@ -1245,7 +1246,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+1100（头盔）+600（盾牌）</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>子弹击中反射壁时，产生伤害相同的子弹进行回击</color>]]></p>
+                <p>特点：<![CDATA[<color=red>子弹击中反射壁时，产生伤害相同的子弹进行回击，不同的子弹产生的反射弹幕也不同</color>]]></p>
             </properties>
             <flavor>
                 <p>“我诅咒你永世不得超生！”</p>

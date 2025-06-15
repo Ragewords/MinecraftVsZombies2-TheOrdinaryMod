@@ -10393,6 +10393,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd356a2762bff554ca6c91d3b6dfa15b
+    m_Address: mvz2:entity/projectiles/reflection_sonicwave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd39fe758a297d8448167d0de18eceff
     m_Address: mvz2:mind_control
     m_ReadOnly: 0

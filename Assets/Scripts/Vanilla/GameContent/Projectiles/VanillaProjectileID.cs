@@ -47,6 +47,7 @@ namespace MVZ2.GameContent.Projectiles
 
         public const string crossbowBolt = "crossbow_bolt";
         public const string reflectionBullet = "reflection_bullet";
+        public const string reflectionSonicwave = "reflection_sonicwave";
         public const string note = "note";
         public const string fireball = "fireball";
         public const string iceBolt = "ice_bolt";
@@ -97,6 +98,7 @@ namespace MVZ2.GameContent.Projectiles
 
         public static readonly NamespaceID crossbowBolt = Get(VanillaProjectileNames.crossbowBolt);
         public static readonly NamespaceID reflectionBullet = Get(VanillaProjectileNames.reflectionBullet);
+        public static readonly NamespaceID reflectionSonicwave = Get(VanillaProjectileNames.reflectionSonicwave);
         public static readonly NamespaceID note = Get(VanillaProjectileNames.note);
         public static readonly NamespaceID fireball = Get(VanillaProjectileNames.fireball);
         public static readonly NamespaceID iceBolt = Get(VanillaProjectileNames.iceBolt);

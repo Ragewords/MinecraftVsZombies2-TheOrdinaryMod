@@ -288,6 +288,7 @@
     
     <model name="crossbow_bolt" type="entity" path="mvz2:projectile/crossbow_bolt" width="32" height="5" xOffset="0" yOffset="0"/>
     <model name="reflection_bullet" type="entity" path="mvz2:projectile/reflection_bullet" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="reflection_sonicwave" type="entity" path="mvz2:projectile/reflection_sonicwave" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="note" type="entity" path="mvz2:projectile/note" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="fireball" type="entity" path="mvz2:projectile/fireball" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="ice_bolt" type="entity" path="mvz2:projectile/ice_bolt" width="64" height="20" xOffset="6" yOffset="0"/>

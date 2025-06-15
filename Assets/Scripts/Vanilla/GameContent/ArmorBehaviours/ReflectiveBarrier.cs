@@ -59,10 +59,18 @@ namespace MVZ2.GameContent.Armors
 
             var owner = shield.Owner;
             var shootParams = owner.GetShootParams();
-            if (hit.Pierce)
+            if (hit.Projectile.GetDefinitionID() == VanillaProjectileID.note)
+            {
+                shootParams.projectileID = VanillaProjectileID.reflectionSonicwave;
+            }
+            else if (hit.Pierce)
+            {
                 shootParams.projectileID = VanillaProjectileID.arrowBullet;
+            }
             else
+            {
                 shootParams.projectileID = VanillaProjectileID.reflectionBullet;
+            }
             shootParams.position = hit.Projectile.Position;
             shootParams.damage = shieldResult.Amount;
             shootParams.soundID = VanillaSoundID.reflection;
