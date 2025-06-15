@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Bosses
             base.Init(boss);
             stateMachine.Init(boss);
             stateMachine.StartState(boss, STATE_IDLE);
-            boss.SetAnimationInt("LightColor", 2);
+            boss.SetAnimationInt("LightColor", -1);
 
             boss.CollisionMaskHostile |=
                 EntityCollisionHelper.MASK_PLANT |
@@ -379,7 +379,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                             break;
                     }
-                    wither.SetAnimationInt("LightColor", 2);
+                    wither.SetAnimationInt("LightColor", -1);
                 }
             }
         }

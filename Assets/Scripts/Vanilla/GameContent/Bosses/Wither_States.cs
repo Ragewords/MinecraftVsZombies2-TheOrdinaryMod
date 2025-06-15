@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
@@ -571,7 +572,7 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 substateTimer.ResetTime(45);
                                 stateMachine.SetSubState(entity, SUBSTATE_CAST);
-                                entity.PlaySound(VanillaSoundID.witherCry);
+                                entity.PlaySound(VanillaSoundID.witherMagicCast);
                                 entity.SetAnimationBool("Shaking", true);
                                 entity.SetAnimationInt("LightColor", magic);
                             }
@@ -587,12 +588,11 @@ namespace MVZ2.GameContent.Bosses
 
                             if (substateTimer.Expired)
                             {
-                                entity.PlaySound(VanillaSoundID.witherSpawn);
+                                entity.PlaySound(VanillaSoundID.witherMagicEnd);
                                 switch (magic)
                                 {
                                     case MAGIC_MESMERIZER:
                                         {
-                                            entity.PlaySound(VanillaSoundID.mindControl);
                                             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(10, entity.RNG);
                                             foreach (var target in targets)
                                             {
@@ -603,36 +603,39 @@ namespace MVZ2.GameContent.Bosses
                                         break;
                                     case MAGIC_BERSERKER:
                                         {
-                                            entity.PlaySound(VanillaSoundID.explosion);
-                                            entity.Level.Explode(entity.GetCenter(), 360, entity.GetFaction(), entity.GetDamage() * 10, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
-                                            var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter());
-                                            exp.SetSize(Vector3.one * 480);
+                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(1, entity.RNG);
+                                            foreach (var target in targets)
+                                            {
+                                                var buff = target.GetFirstBuff<AboutToExplodeBuff>();
+                                                if (buff == null)
+                                                {
+                                                    buff = target.AddBuff<AboutToExplodeBuff>();
+                                                }
+                                                buff.SetProperty(AboutToExplodeBuff.PROP_FACTION, entity.GetFaction());
+                                            }
                                             SetMagicType(entity, MAGIC_DULLAHAN);
                                         }
                                         break;
                                     case MAGIC_DULLAHAN:
                                         {
-                                            for (int i = 0; i < 8; i++)
+                                            for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                                             {
-                                                var direction = Quaternion.Euler(0, i * 45, 0) * Vector3.left * 80;
-                                                if (i == 1 || i == 3 || i == 5 || i == 7)
-                                                {
-                                                    direction = Quaternion.Euler(0, i * 45, 0) * Vector3.left * 100;
-                                                }
+                                                var x = entity.IsFacingLeft() ? VanillaLevelExt.ENEMY_RIGHT_BORDER : VanillaLevelExt.ENEMY_LEFT_BORDER;
+                                                var z = entity.Level.GetEntityLaneZ(lane);
+                                                var y = entity.Level.GetGroundY(x, z);
                                                 var param = entity.GetSpawnParams();
-                                                if (i == 2 || i == 6)
-                                                    entity.Spawn(VanillaEnemyID.dullahan, entity.Position + direction, param);
-                                                else
-                                                    entity.Spawn(VanillaEnemyID.dullahanHead, entity.Position + direction, param);
-                                                var smoke = entity.Spawn(VanillaEffectID.smoke, entity.Position + direction);
-                                                smoke.SetSize(Vector3.one * 80);
+                                                entity.Spawn(VanillaEnemyID.dullahan, new Vector3(x, y, z), param);
+                                                for (int i = 0; i < 2; i++)
+                                                {
+                                                    entity.Spawn(VanillaEnemyID.dullahanHead, new Vector3(x, y, z), param);
+                                                }
                                             }
                                             SetMagicType(entity, MAGIC_MESMERIZER);
                                         }
                                         break;
                                 }
                                 entity.SetAnimationBool("Shaking", false);
-                                entity.SetAnimationInt("LightColor", 2);
+                                entity.SetAnimationInt("LightColor", -1);
                                 stateMachine.SetSubState(entity, SUBSTATE_END);
                                 substateTimer.ResetTime(30);
                             }
@@ -803,7 +806,7 @@ namespace MVZ2.GameContent.Bosses
                             if (substateTimer.Expired)
                             {
                                 entity.SetAnimationBool("Shaking", false);
-                                entity.SetAnimationInt("LightColor", 2);
+                                entity.SetAnimationInt("LightColor", -1);
                                 stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
                                 substateTimer.ResetTime(30);
 

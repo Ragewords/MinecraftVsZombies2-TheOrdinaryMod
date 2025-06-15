@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Enemies
                 entity.Level.AddLoopSoundEntity(VanillaSoundID.trainTravel, entity.ID);
             }
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 5f);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0f);
         }
         protected override void UpdateLogic(Entity entity)
         {

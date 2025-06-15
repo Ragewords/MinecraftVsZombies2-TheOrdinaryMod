@@ -149,7 +149,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (target.Type != EntityTypes.ENEMY)
                     continue;
-                var knockbackMultiplier = target.GetWeakKnockbackMultiplier();
+                var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
 
                 var vel = target.Velocity;
                 vel.x = 8 * knockbackMultiplier;

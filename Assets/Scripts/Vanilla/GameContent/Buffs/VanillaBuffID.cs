@@ -52,6 +52,7 @@ namespace MVZ2.GameContent.Buffs
         public const string glowstoneProtected = "glowstone_protected";
         public const string ironCurtain = "iron_curtain";
         public const string littleContraption = "little_contraption";
+        public const string aboutToExplode = "about_to_explode";
         public const string miracleMalletReplicaDamage = "miracle_mallet_replica_damage";
         public const string witherSkeletonSkullReduceHealth = "wither_skeleton_skull_reduce_health";
         public const string brokenLantern = "broken_lantern";

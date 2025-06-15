@@ -900,6 +900,12 @@
         <sample path="mvz2:entity/wither/damage3" weight="1" />
         <sample path="mvz2:entity/wither/damage4" weight="1" />
     </sound>
+    <sound name="wither_magic_cast">
+        <sample path="mvz2:entity/wither/magic_cast" weight="1" />
+    </sound>
+    <sound name="wither_magic_end">
+        <sample path="mvz2:entity/wither/magic_end" weight="1" />
+    </sound>
     <sound name="wither_shoot">
         <sample path="mvz2:entity/wither/shoot" weight="1" />
     </sound>

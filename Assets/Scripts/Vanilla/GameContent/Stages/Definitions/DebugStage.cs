@@ -43,16 +43,16 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
+                VanillaContraptionID.woodenDropper,
+                VanillaContraptionID.spikeBlock,
+                VanillaContraptionID.stoneDropper,
+                VanillaContraptionID.stoneShield,
                 VanillaContraptionID.goldenApple,
-                VanillaContraptionID.punchton,
-                VanillaContraptionID.poisonser,
-                VanillaContraptionID.dimensionHammer,
+                VanillaContraptionID.thunderDrum,
+                VanillaContraptionID.teslaCoil,
+                VanillaContraptionID.giantBowl,
                 VanillaContraptionID.fireChargeDispenser,
-                VanillaContraptionID.youkaiLeaf,
-                VanillaEnemyID.skelebomb,
-                VanillaEnemyID.silverfish,
-                VanillaEnemyID.curseer,
-                VanillaEnemyID.tanookiZombie,
+                VanillaBossID.wither,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

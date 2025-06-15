@@ -90,7 +90,7 @@ namespace MVZ2.GameContent.Contraptions
             evokeTimer.Run();
             var level = entity.Level;
             var grid = level.GetAllGrids().Random(entity.RNG);
-            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).Take(1);
+            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).RandomTake(1, entity.RNG);
             var targetPos = grid.GetEntityPosition();
             foreach (var target in targets)
             {

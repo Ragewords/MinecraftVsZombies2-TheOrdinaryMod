@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
       propertyPath: renderers.Array.size
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
       propertyPath: animators.Array.data[2]
@@ -462,23 +462,27 @@ PrefabInstance:
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
       propertyPath: renderers.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 256263105435193484}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
-      propertyPath: renderers.Array.data[9]
+      propertyPath: renderers.Array.data[8]
       value: 
       objectReference: {fileID: 1428489828865222626}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
-      propertyPath: renderers.Array.data[10]
+      propertyPath: renderers.Array.data[9]
       value: 
       objectReference: {fileID: 595916957217829589}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
-      propertyPath: renderers.Array.data[11]
+      propertyPath: renderers.Array.data[10]
       value: 
       objectReference: {fileID: 1444361937751283988}
     - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
-      propertyPath: renderers.Array.data[12]
+      propertyPath: renderers.Array.data[11]
       value: 
       objectReference: {fileID: 7358583832148180452}
+    - target: {fileID: 8370149636781919086, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
+      propertyPath: renderers.Array.data[12]
+      value: 
+      objectReference: {fileID: 129365406042620685}
     - target: {fileID: 8706863058933128067, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -499,6 +503,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6271172241245848738}
   m_SourcePrefab: {fileID: 100100000, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
+--- !u!114 &129365406042620685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6176072969840120672, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
+  m_PrefabInstance: {fileID: 6088383469758664813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &256263105435193484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6336605829480022241, guid: 1bbe75d5487a3c0488fa0041cebec312, type: 3}
