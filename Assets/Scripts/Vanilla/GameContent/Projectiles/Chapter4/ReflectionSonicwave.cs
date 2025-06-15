@@ -71,9 +71,6 @@ namespace MVZ2.GameContent.Projectiles
                 return;
             if (noteBlock.IsDead)
                 return;
-            var dmg = note.GetDamage(true);
-            dmg++;
-            note.SetDamage(dmg);
             note.Velocity = noteBlock.GetFacingDirection() * note.Velocity.magnitude;
             SetHitProtected(note, false);
             note.ClearIgnoredProjectileColliders();
