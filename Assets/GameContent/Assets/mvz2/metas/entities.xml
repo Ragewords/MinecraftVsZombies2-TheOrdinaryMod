@@ -1845,7 +1845,7 @@
         <boss id="wither" name="凋灵">
             <properties>
                 <int name="mvz2:waterInteraction" value="1" />
-                <float name="mvz2:maxHealth" value="9000" />
+                <float name="mvz2:maxHealth" value="6000" />
                 <float name="mvz2:gravity" value="0" />
                 <id name="mvz2:shell" value="mvz2:bone" />
                 <vector3 name="mvz2:size" x="64" y="160" z="64" />
