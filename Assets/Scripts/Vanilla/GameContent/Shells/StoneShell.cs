@@ -4,6 +4,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Shells;
 using PVZEngine.Damages;
+using PVZEngine.Entities;
 using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Shells
@@ -31,10 +32,13 @@ namespace MVZ2.GameContent.Shells
             if (damageInfo.Source.DefinitionID == VanillaEnemyID.gargoyle)
             {
                 var entity = damageInfo.Entity;
-                if (!entity.HasBuff<CurseOfTheAbyssBuff>())
+                if (entity.Type == EntityTypes.PLANT)
                 {
-                    var buff = entity.AddBuff<CurseOfTheAbyssBuff>();
-                    CurseOfTheAbyssBuff.SetCurseFaction(buff, damageInfo.Source.Faction);
+                    if (!entity.HasBuff<CurseOfTheAbyssBuff>())
+                    {
+                        var buff = entity.AddBuff<CurseOfTheAbyssBuff>();
+                        CurseOfTheAbyssBuff.SetCurseFaction(buff, damageInfo.Source.Faction);
+                    }
                 }
             }
         }
