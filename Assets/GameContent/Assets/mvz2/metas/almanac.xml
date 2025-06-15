@@ -487,7 +487,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>30，每次反弹后-5</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即喷射30发木球</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>使用技能前：木制投掷器</p>
@@ -716,11 +716,11 @@
         </entry>
         <entry id="desire_pot">
             <header>
-                <p>欲望壶会复制敌人身上拥有的星之碎片。</p>
+                <p>欲望壶会从敌人身上复制其携带的星之碎片，每个欲望壶最多复制三个。</p>
             </header>
             <properties>
-                <p>特点：<![CDATA[<color=red>复制时，33%概率改为自我激发一次</color>]]></p>
-                <p>技能：<![CDATA[<color=red>将最前方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>]]></p>
+                <p>特点：<![CDATA[<color=red>复制时，11%概率改为恢复一次复制耐久</color>]]></p>
+                <p>技能：<![CDATA[<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>]]></p>
             </properties>
             <flavor>
                 <p>我是壶中的神灵，我能实现你的愿望，让我听听你内心中的欲望吧……</p>

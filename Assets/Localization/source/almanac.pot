@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-13 09:18+0800\n"
+"POT-Creation-Date: 2025-06-14 09:41+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1027,7 +1027,7 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red>30，每次反弹后-5</color>\n"
-"技能：<color=red>立即喷射30发木球</color>"
+"技能：<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:wooden_dropper
@@ -1376,15 +1376,13 @@ msgstr ""
 #. Header for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "欲望壶会复制敌人身上拥有的星之碎片。"
+msgid "欲望壶会从敌人身上复制其携带的星之碎片，每个欲望壶最多复制三个。"
 msgstr ""
 
 #. Properties for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid ""
-"特点：<color=red>复制时，33%概率改为自我激发一次</color>\n"
-"技能：<color=red>将最前方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
+msgid "技能：<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:desire_pot
@@ -5354,52 +5352,28 @@ msgctxt "artifact.tooltip"
 msgid "器械x250%伤害，但x50%攻击速度"
 msgstr ""
 
-#. Name for artifact mvz2:jack_o_lantern
-#: Artifact meta file
-msgctxt "artifact.name"
-msgid "南瓜灯"
+#. Message for blueprint error recharging
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "重新充能中…"
 msgstr ""
 
-#. Tooltip for artifact mvz2:jack_o_lantern
-#: Artifact meta file
-msgctxt "artifact.tooltip"
-msgid "非光源器械获得小范围光源"
+#. Message for blueprint error not_enough_energy
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "能量不足"
 msgstr ""
 
-#. Name for artifact mvz2:telekinesis
-#: Artifact meta file
-msgctxt "artifact.name"
-msgid "念力"
+#. Message for blueprint error tutorial
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "无法使用"
 msgstr ""
 
-#. Tooltip for artifact mvz2:telekinesis
-#: Artifact meta file
-msgctxt "artifact.tooltip"
-msgid "器械的射弹会跟踪附近的敌人，但失去穿透能力"
-msgstr ""
-
-#. Name for artifact mvz2:wither_skeleton_skull
-#: Artifact meta file
-msgctxt "artifact.name"
-msgid "凋灵骷髅头"
-msgstr ""
-
-#. Tooltip for artifact mvz2:wither_skeleton_skull
-#: Artifact meta file
-msgctxt "artifact.tooltip"
-msgid "×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%"
-msgstr ""
-
-#. Name for artifact mvz2:infinity_door
-#: Artifact meta file
-msgctxt "artifact.name"
-msgid "无限门扉"
-msgstr ""
-
-#. Tooltip for artifact mvz2:infinity_door
-#: Artifact meta file
-msgctxt "artifact.tooltip"
-msgid "子弹离开屏幕后会回到屏幕另一侧"
+#. Message for blueprint error decrepify
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "受到衰老诅咒！"
 msgstr ""
 
 #. Name for blueprint option return_pearl

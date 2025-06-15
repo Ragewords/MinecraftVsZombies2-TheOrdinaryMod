@@ -1,5 +1,4 @@
 ﻿using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Entities;
@@ -44,10 +43,9 @@ namespace MVZ2.GameContent.Effects
             {
                 if (entity.RNG.Next(3) == 1)
                 {
-                    parent.Evoke();
                 }
                 else
-                    parent.Spawn(VanillaPickupID.starshard, parent.GetCenter());
+                    DesirePot.DuplicateStarshard(parent);
             }
         }
         public static Vector3 GetStartPosition(Entity entity) => entity.GetBehaviourField<Vector3>(PROP_START_POSITION);
