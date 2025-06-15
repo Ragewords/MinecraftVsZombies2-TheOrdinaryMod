@@ -222,7 +222,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">这个是石制投掷器！它能弹射出微小的石子！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">不过，有时候它也能射出能击退敌人并且分裂的巨石！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">甚至有可能弹出不断弹跳的弹力巨石！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1" onClick="end">在洞穴中，你最好当心脚下的踏板！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2" onClick="end">在洞穴中，你最好当心脚下的踏板！</sentence>
       </sentences>
     </section>
   </group>
@@ -854,9 +854,11 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">小心点，那个可怕的骷髅怪物——凋灵马上就要来了！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能冲锋，并且以它的威力，很可能一下冲锋就毁掉你一整排的器械！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它还能使用特殊的魔法，扰乱你的阵型！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">……听起来确实难搞。</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">不过，应该有办法能阻止它的。</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">试试用强大的东西挡住它的去路，或者直接在它冲锋前把它击垮！</sentence>
+        <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">以及，也许可以像对付那些皇冠骷髅那样，用荧石打断它的魔法！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">并且，转生苹果对凋灵这种亡灵生物来说可能会产生奇效！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">试着骗它吃掉一些转生苹果！</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">我们小人族就靠你了，史蒂夫……</sentence>

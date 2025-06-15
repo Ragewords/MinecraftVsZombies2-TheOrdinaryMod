@@ -6601,6 +6601,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a23c8af314ec1574b926c4474369b10e
+    m_Address: mvz2:entity/wither/magic_cast
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a24f2a1292d3c6949ae1ebf80560127c
     m_Address: mvz2:mausoleum_level
     m_ReadOnly: 0
@@ -7426,6 +7433,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b58e610c9d22ce244b8a4b91ef205fcc
+    m_Address: mvz2:entity/wither/magic_end
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b5bea0ef6d58f2d47ad694ab28830cba
     m_Address: mvz2:ui/level/level_progress_back

@@ -603,7 +603,7 @@ namespace MVZ2.GameContent.Bosses
                                         break;
                                     case MAGIC_BERSERKER:
                                         {
-                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(1, entity.RNG);
+                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(2, entity.RNG);
                                             foreach (var target in targets)
                                             {
                                                 var buff = target.GetFirstBuff<AboutToExplodeBuff>();
