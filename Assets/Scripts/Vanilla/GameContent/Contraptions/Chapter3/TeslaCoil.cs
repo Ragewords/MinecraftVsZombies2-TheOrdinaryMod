@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -8,7 +9,6 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
-using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -242,6 +242,12 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var collider in detectBuffer)
             {
                 collider.TakeDamage(damage, damageEffects, source);
+                var targetBuff = collider.Entity.GetFirstBuff<ElectricArcBuff>();
+                if (targetBuff == null)
+                {
+                    targetBuff = collider.Entity.AddBuff<ElectricArcBuff>();
+                }
+                targetBuff.SetProperty(ElectricArcBuff.PROP_ZAP_TIME, 5);
             }
             foreach (var collider in detectBuffer_alt)
             {

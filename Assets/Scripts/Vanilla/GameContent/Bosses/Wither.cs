@@ -74,11 +74,6 @@ namespace MVZ2.GameContent.Bosses
         public override void PostDeath(Entity boss, DeathInfo damageInfo)
         {
             base.PostDeath(boss, damageInfo);
-            if (GetPhase(boss) == PHASE_1)
-            {
-                boss.IsDead = false;
-                return;
-            }
             boss.PlaySound(VanillaSoundID.witherDeath);
             stateMachine.StartState(boss, STATE_DEATH);
         }

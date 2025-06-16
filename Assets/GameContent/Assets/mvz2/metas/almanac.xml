@@ -314,7 +314,8 @@
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
-                <p>伤害倍率：<![CDATA[<color=red>0.5</color>]]>-<![CDATA[<color=red>10</color>]]></p>
+                <p>伤害倍率：<![CDATA[<color=red>0.7</color>]]>-<![CDATA[<color=red>10</color>]]></p>
+                <p>击退倍率：<![CDATA[<color=red>0.5</color>]]>-<![CDATA[<color=red>2</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
                 <p>蓄力时间：<![CDATA[<color=red>32.5秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
@@ -487,7 +488,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>30，每次反弹后-5</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即喷射30颗大型木球，每颗造成120点伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>使用技能前：木制投掷器</p>
@@ -566,12 +567,12 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人，并在周围产生电磁爆。攻击时，处于同一行或列的两个磁暴线圈之间会产生电场，对其中的敌人造成伤害。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人，产生电流连锁，并在周围产生电磁爆。攻击时，处于同一行或列的两个磁暴线圈之间会产生电场，对其中的敌人造成伤害。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>80</color>（电击），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）]]></p>
+                <p>伤害：<![CDATA[<color=red>80</color>（电击），<color=red>40-10</color>（电流连锁），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
                 <p>被摧毁：<![CDATA[<color=red>产生一次半径1格的爆炸，造成320点电流伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
@@ -1714,7 +1715,7 @@
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>6000+6000，每秒恢复30</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>12000，每秒恢复30</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬，使用魔法</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，使用魔法，召唤“洗脑者”、“床战士”和“万圣骑士”</color>]]></p>
                 </properties>

@@ -100,6 +100,7 @@ namespace MVZ2.GameContent.Buffs
         public const string littleZombie = "little_zombie";
         public const string bigTrouble = "big_trouble";
         public const string seijaMesmerizer = "seija_mesmerizer";
+        public const string electricArc = "electric_arc";
         public const string wickedHermitWarp = "wicked_hermit_warp";
         public const string wickedHermitWarpped = "wicked_hermit_warpped";
         public const string necrotombstoneRising = "necrotombstone_rising";

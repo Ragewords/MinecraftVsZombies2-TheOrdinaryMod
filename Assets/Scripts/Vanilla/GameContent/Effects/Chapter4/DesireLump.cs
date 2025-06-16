@@ -41,9 +41,8 @@ namespace MVZ2.GameContent.Effects
 
             if (entity.Timeout <= 0)
             {
-                if (entity.RNG.Next(3) == 1)
-                {
-                }
+                if (entity.RNG.Next(8) == 0)
+                    DesirePot.DuplicateRegenerate(parent);
                 else
                     DesirePot.DuplicateStarshard(parent);
             }

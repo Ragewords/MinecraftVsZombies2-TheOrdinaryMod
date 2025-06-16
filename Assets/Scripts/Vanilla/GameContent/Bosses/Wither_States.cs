@@ -94,11 +94,15 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                if (GetPhase(entity) == PHASE_1 && entity.Health <= 0)
+                if (GetPhase(entity) == PHASE_1 && entity.Health <= entity.GetMaxHealth() / 2)
                 {
-                    entity.Health = entity.GetMaxHealth();
                     SetPhase(entity, PHASE_2);
                     stateMachine.StartState(entity, STATE_SWITCH);
+                    return;
+                }
+                else if (GetPhase(entity) == PHASE_2 && entity.Health > entity.GetMaxHealth() / 2)
+                {
+                    SetPhase(entity, PHASE_1);
                     return;
                 }
                 UpdateAction(stateMachine, entity);
@@ -695,8 +699,8 @@ namespace MVZ2.GameContent.Bosses
                         entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
 
                         var param = entity.GetSpawnParams();
-                        param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 240);
                         var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+                        exp.SetSize(Vector3.one * 240);
                         for (int i = 0; i < entity.Level.GetMaxLaneCount(); i++)
                         {
                             if (i == entity.GetLane())
@@ -898,8 +902,8 @@ namespace MVZ2.GameContent.Bosses
                     entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
 
                     var param = entity.GetSpawnParams();
-                    param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 240);
                     var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+                    exp.SetSize(Vector3.one * 240);
                     entity.Level.ShakeScreen(20, 0, 30);
                     entity.Remove();
                 }

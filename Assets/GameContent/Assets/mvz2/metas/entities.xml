@@ -1046,11 +1046,14 @@
 
                 <idArray name="mvz2:excludedAreaTags" value="mvz2:day" />
 
-                <int name="mvz2:cost" value="200" />
+                <int name="mvz2:cost" value="100" />
                 <int name="mvz2:waterInteraction" value="3" />
             </properties>
         </enemy>
         <enemy id="mummy" name="木乃伊" deathMessage="裹成个粽子。" unlock="mvz2:level.halloween_6">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:fragmented"/>
+            </behaviours>
             <properties>
                 <id name="mvz2:shell" value="mvz2:grass" />
                 <id name="mvz2:hitSound" value="mvz2:splat" />
@@ -1292,7 +1295,7 @@
             unlock="mvz2:level.mausoleum_3">
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:wicked_hermit_hat" />
-                <int name="mvz2:cost" value="150" />
+                <int name="mvz2:cost" value="175" />
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
         </enemy>
@@ -1849,7 +1852,7 @@
         <boss id="wither" name="凋灵">
             <properties>
                 <int name="mvz2:waterInteraction" value="1" />
-                <float name="mvz2:maxHealth" value="6000" />
+                <float name="mvz2:maxHealth" value="12000" />
                 <float name="mvz2:gravity" value="0" />
                 <id name="mvz2:shell" value="mvz2:bone" />
                 <vector3 name="mvz2:size" x="64" y="160" z="64" />

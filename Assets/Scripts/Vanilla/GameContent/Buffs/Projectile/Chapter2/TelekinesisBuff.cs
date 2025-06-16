@@ -15,10 +15,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
     {
         public TelekinesisBuff(string nsp, string name) : base(nsp, name)
         {
-            absorbDetector = new SphereDetector(ABSORB_RADIUS)
-            {
-                mask = EntityCollisionHelper.MASK_VULNERABLE,
-            };
+            absorbDetector = new SphereDetector(ABSORB_RADIUS);
             AddModifier(new BooleanModifier(VanillaProjectileProps.PIERCING, false));
         }
         public override void PostAdd(Buff buff)

@@ -17,6 +17,7 @@ namespace MVZ2.GameContent.Stages
         public DebugStage(string nsp, string name) : base(nsp, name)
         {
             //AddBehaviour(new ConveyorStageBehaviour(this));
+            AddBehaviour(new StarshardStageBehaviour(this));
         }
         public override void OnStart(LevelEngine level)
         {
@@ -34,7 +35,7 @@ namespace MVZ2.GameContent.Stages
             base.OnUpdate(level);
             level.SetEnergy(9990);
             level.SetStarshardSlotCount(5);
-            level.SetStarshardCount(5);
+            level.SetStarshardCount(3);
             level.CheckGameOver();
         }
         private void ClassicStart(LevelEngine level)
@@ -51,15 +52,15 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.thunderDrum,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.giantBowl,
-                VanillaContraptionID.fireChargeDispenser,
-                VanillaBossID.wither,
+                VanillaEnemyID.hellChariot,
+                VanillaBossID.seija,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
                 VanillaArtifactID.infinityDoor,
-                VanillaArtifactID.telekinesis,
-                VanillaArtifactID.jackOLantern,
+                VanillaArtifactID.dreamKey,
+                VanillaArtifactID.sweetSleepPillow,
             });
             level.SetRechargeSpeed(9999999);
         }

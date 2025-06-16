@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer());
-            SetFirstDamage(entity, 0.5f);
+            SetFirstDamage(entity, 0.7f);
             SetFirstPush(entity, 0.5f);
         }
         protected override void UpdateAI(Entity entity)

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-14 09:41+0800\n"
+"POT-Creation-Date: 2025-06-16 07:56+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -753,7 +753,8 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "伤害：<color=red>100（无视护甲）</color>\n"
-"伤害倍率：<color=red>0.5</color>-<color=red>10</color>\n"
+"伤害倍率：<color=red>0.7</color>-<color=red>10</color>\n"
+"击退倍率：<color=red>0.5</color>-<color=red>2</color>\n"
 "修复时间：<color=red>20秒</color>\n"
 "蓄力时间：<color=red>32.5秒</color>\n"
 "技能：<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>"
@@ -1027,7 +1028,7 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red>30，每次反弹后-5</color>\n"
-"技能：<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>"
+"技能：<color=red>立即喷射30颗大型木球，每颗造成120点伤害</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:wooden_dropper
@@ -1153,7 +1154,7 @@ msgstr ""
 #. Header for contraptions mvz2:tesla_coil
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "磁暴线圈会电击周围大范围内的敌人，并在周围产生电磁爆。攻击时，处于同一行或列的两个磁暴线圈之间会产生电场，对其中的敌人造成伤害。"
+msgid "磁暴线圈会电击周围大范围内的敌人，产生电流连锁，并在周围产生电磁爆。攻击时，处于同一行或列的两个磁暴线圈之间会产生电场，对其中的敌人造成伤害。"
 msgstr ""
 
 #. Properties for contraptions mvz2:tesla_coil
@@ -1162,7 +1163,7 @@ msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>1200</color>\n"
 "攻击速度：<color=red>3秒</color>\n"
-"伤害：<color=red>80</color>（电击），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）\n"
+"伤害：<color=red>80</color>（电击），<color=red>40-10</color>（电流连锁），<color=red>20</color>（电磁爆），<color=red>5</color>（电场）\n"
 "特殊：<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>\n"
 "被摧毁：<color=red>产生一次半径1格的爆炸，造成320点电流伤害</color>\n"
 "技能：<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>"
@@ -1207,30 +1208,32 @@ msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>3000</color>\n"
 "特点：<color=red>吸收敌弹，并恢复100耐久</color>\n"
-"技能：<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）；之后在吸收敌弹时，发射一个30点伤害的能量弹幕</color>"
+"技能：<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）；之后在吸收敌弹时，发射一个30点伤害的能量弹</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:lightning_orb
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "由于能够吸收掉噪音，在这栋吵闹的居民楼里，许多住户希望邀请它同居。"
+msgid ""
+"它有一群非常吵闹的邻居。\n"
+"如果不是能吸收噪音，一般人很难想象它是怎样在这栋居民楼生活的……"
 msgstr ""
 
 #. Header for contraptions mvz2:note_block
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音波攻击周围的敌人。"
+msgid "唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。"
 msgstr ""
 
 #. Properties for contraptions mvz2:note_block
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid ""
-"伤害：<color=red>5</color>，<color=red>2.5</color>（音波）\n"
+"伤害：<color=red>5</color>，<color=red>2.5</color>（音浪）\n"
 "发射速度：<color=red>1.5秒</color>\n"
 "音符上限：<color=red>10</color>\n"
 "音波半径：<color=red>1.5格</color>\n"
-"技能：<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音波范围</color>"
+"技能：<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音浪范围</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:note_block
@@ -1382,7 +1385,9 @@ msgstr ""
 #. Properties for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "技能：<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
+msgid ""
+"特点：<color=red>复制时，11%概率改为恢复一次复制耐久</color>\n"
+"技能：<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:desire_pot
@@ -1987,7 +1992,7 @@ msgstr ""
 #. Header for enemies mvz2:anubisand
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "灵魂沙王飞在空中，不时向下方召唤阻挡子弹的灵魂沙。"
+msgid "灵魂沙王飞在空中，不时向下方召唤阻挡子弹并减速敌人的灵魂沙。"
 msgstr ""
 
 #. Properties for enemies mvz2:anubisand
@@ -2019,7 +2024,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200+1100（头盔）+600（盾牌）</color>\n"
 "速度：<color=red>1</color>\n"
-"特点：<color=red>子弹击中反射壁时，产生伤害相同的子弹进行回击</color>"
+"特点：<color=red>子弹击中反射壁时，产生伤害相同的子弹进行回击，不同的子弹产生的反射弹幕也不同</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:reflective_barrier_zombie
@@ -2752,7 +2757,7 @@ msgstr ""
 #: Almanac meta file
 msgctxt "misc.description"
 msgid ""
-"生命：<color=red>9000+9000，每秒恢复30</color>\n"
+"生命：<color=red>12000，每秒恢复30</color>\n"
 "阶段1：<color=red>飞行，发射凋灵头颅，冲刺，啃咬，使用魔法</color>\n"
 "阶段2：<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，使用魔法，召唤“洗脑者”、“床战士”和“万圣骑士”</color>"
 msgstr ""
@@ -4109,7 +4114,7 @@ msgstr ""
 #. Tooltip for entity mvz2:note_block
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "发射反弹的音符并释放音波"
+msgid "发射反弹的音符并释放音浪"
 msgstr ""
 
 #. Name for entity mvz2:splitenser
@@ -5350,6 +5355,54 @@ msgstr ""
 #: Artifact meta file
 msgctxt "artifact.tooltip"
 msgid "器械x250%伤害，但x50%攻击速度"
+msgstr ""
+
+#. Name for artifact mvz2:jack_o_lantern
+#: Artifact meta file
+msgctxt "artifact.name"
+msgid "南瓜灯"
+msgstr ""
+
+#. Tooltip for artifact mvz2:jack_o_lantern
+#: Artifact meta file
+msgctxt "artifact.tooltip"
+msgid "非光源器械获得小范围光源"
+msgstr ""
+
+#. Name for artifact mvz2:telekinesis
+#: Artifact meta file
+msgctxt "artifact.name"
+msgid "念力"
+msgstr ""
+
+#. Tooltip for artifact mvz2:telekinesis
+#: Artifact meta file
+msgctxt "artifact.tooltip"
+msgid "器械的射弹会跟踪附近的敌人，但失去穿透能力"
+msgstr ""
+
+#. Name for artifact mvz2:wither_skeleton_skull
+#: Artifact meta file
+msgctxt "artifact.name"
+msgid "凋灵骷髅头"
+msgstr ""
+
+#. Tooltip for artifact mvz2:wither_skeleton_skull
+#: Artifact meta file
+msgctxt "artifact.tooltip"
+msgid "×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%"
+msgstr ""
+
+#. Name for artifact mvz2:infinity_door
+#: Artifact meta file
+msgctxt "artifact.name"
+msgid "无限门扉"
+msgstr ""
+
+#. Tooltip for artifact mvz2:infinity_door
+#: Artifact meta file
+msgctxt "artifact.tooltip"
+msgid "子弹离开屏幕后会回到屏幕另一侧"
 msgstr ""
 
 #. Message for blueprint error recharging

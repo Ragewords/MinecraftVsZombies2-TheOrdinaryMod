@@ -709,7 +709,7 @@
         </talks>
         <conveyor>
             <entry id="mvz2:glowstone" count="4" minCount="0"/>
-            <entry id="mvz2:punchton" count="5"/>
+            <entry id="mvz2:punchton" count="3"/>
             <entry id="mvz2:wooden_dropper" count="5"/>
             <entry id="mvz2:spike_block" count="5"/>
             <entry id="mvz2:stone_dropper" count="8"/>
@@ -1108,7 +1108,7 @@
             <bool name="autoCollectMoney" value="true"/>
         </properties>
     </stage>
-    <stage id="puzzle_i_skeleton" name="我是骷髅" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_i_zombie" >
+    <stage id="puzzle_i_skeleton" name="我是骷髅" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_i_zombie;mvz2:level.halloween_EX1" >
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <camera position="lawn" transition="instant"/>
         <properties>
@@ -1124,7 +1124,7 @@
             <bool name="autoCollectMoney" value="true"/>
         </properties>
     </stage>
-    <stage id="puzzle_absolute_defense" name="绝对防御" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_can_you_pass_it;mvz2:level.mausoleum_11" >
+    <stage id="puzzle_absolute_defense" name="绝对防御" needBlueprints="false" type="puzzle" startEnergy="200" music="mvz2:puzzle" unlock="mvz2:level.puzzle_can_you_pass_it;mvz2:level.mausoleum_11" >
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <camera position="lawn" transition="instant"/>
         <properties>
@@ -1132,7 +1132,7 @@
             <bool name="autoCollectMoney" value="true"/>
         </properties>
     </stage>
-    <stage id="puzzle_dead_balloon" name="死亡热气球" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_absolute_defense" >
+    <stage id="puzzle_dead_balloon" name="来自深渊" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_absolute_defense" >
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <camera position="lawn" transition="instant"/>
         <properties>

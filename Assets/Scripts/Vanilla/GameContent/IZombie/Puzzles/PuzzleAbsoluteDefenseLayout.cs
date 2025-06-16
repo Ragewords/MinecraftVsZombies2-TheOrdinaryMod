@@ -17,7 +17,8 @@ namespace MVZ2.GameContent.IZombie
             {
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.ironHelmettedZombie,
-                VanillaEnemyID.skeletonHorse
+                VanillaEnemyID.skeletonHorse,
+                VanillaEnemyID.dullahan
             };
         }
         public override void Fill(IIZombieMap map, RandomGenerator rng)

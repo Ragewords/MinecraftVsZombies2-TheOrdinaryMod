@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-14 09:32+0800\n"
+"POT-Creation-Date: 2025-06-16 07:56+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,9 @@ msgstr ""
 
 #. 初始界面的作者标识
 #: /MainGame/MainScene/Init/Splash/Canvas/Creator
-msgid "Cuerzor制作"
+msgid ""
+"Cuerzor制作\n"
+"生气字改编"
 msgstr ""
 
 #. 菜单对话框的标题
@@ -719,48 +721,63 @@ msgid "收集宝石来获得更酷的道具吧！"
 msgstr ""
 
 # 梦魇对话框标题
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:484
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:524
 msgid "选择你的命运"
 msgstr ""
 
+# 梦魇对话框标题
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:526
+msgid "接受你的命运"
+msgstr ""
+
 # 梦魇对话框文本
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:486
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:528
 msgid "选吧。"
 msgstr ""
 
+# 梦魇对话框文本
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:530
+msgid "不必挣扎。"
+msgstr ""
+
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:488
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:532
 msgid "潘多拉的魔盒"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:490
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:534
 msgid "尸潮"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:492
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:536
 msgid "衰老"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:494
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:538
 msgid "疯狂"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:496
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:540
 msgid "成真"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:498
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:542
 msgid "深潜者"
 msgstr ""
 
 # 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:500
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:544
 msgid "黑太阳"
+msgstr ""
+
+# 梦魇选项
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:546
+msgid "幻视之眼"
 msgstr ""
 
 # 教程无法使用提示
@@ -932,126 +949,138 @@ msgstr ""
 # 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:75
 msgctxt "recharge_time"
-msgid "长"
+msgid "中等"
 msgstr ""
 
 # 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:77
 msgctxt "recharge_time"
+msgid "长"
+msgstr ""
+
+# 冷却时间
+#: Scripts\Vanilla\VanillaStrings.cs:79
+msgctxt "recharge_time"
 msgid "很长"
 msgstr ""
 
 # 对话档案对话框标题
-#: Scripts\Vanilla\VanillaStrings.cs:81
+#: Scripts\Vanilla\VanillaStrings.cs:83
 msgctxt "archive"
 msgid "剧情分支"
 msgstr ""
 
 # 对话档案对话框内容
-#: Scripts\Vanilla\VanillaStrings.cs:83
+#: Scripts\Vanilla\VanillaStrings.cs:85
 msgctxt "archive"
 msgid "是否拥有足够的金钱？"
 msgstr ""
 
 # 对话档案对话框标题
-#: Scripts\Vanilla\VanillaStrings.cs:85
+#: Scripts\Vanilla\VanillaStrings.cs:87
 msgctxt "archive"
 msgid "对话结束"
 msgstr ""
 
 # 对话档案对话框内容
-#: Scripts\Vanilla\VanillaStrings.cs:87
+#: Scripts\Vanilla\VanillaStrings.cs:89
 msgctxt "archive"
 msgid "是否重新播放？"
 msgstr ""
 
 # 通用的是
-#: Scripts\Vanilla\VanillaStrings.cs:91
+#: Scripts\Vanilla\VanillaStrings.cs:93
 msgid "是"
 msgstr ""
 
 # 通用的否
-#: Scripts\Vanilla\VanillaStrings.cs:93
+#: Scripts\Vanilla\VanillaStrings.cs:95
 msgid "否"
 msgstr ""
 
 # 通用的开
-#: Scripts\Vanilla\VanillaStrings.cs:95
+#: Scripts\Vanilla\VanillaStrings.cs:97
 msgid "开"
 msgstr ""
 
 # 通用的关
-#: Scripts\Vanilla\VanillaStrings.cs:97
+#: Scripts\Vanilla\VanillaStrings.cs:99
 msgid "关"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:103
+#: Scripts\Vanilla\VanillaStrings.cs:105
 msgid "返回地图"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:105
+#: Scripts\Vanilla\VanillaStrings.cs:107
 msgid "返回主菜单"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:109
+#: Scripts\Vanilla\VanillaStrings.cs:111
 msgid "警告"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:111
+#: Scripts\Vanilla\VanillaStrings.cs:113
 msgid "提示"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:113
+#: Scripts\Vanilla\VanillaStrings.cs:115
 msgid "退出"
 msgstr ""
 
 # 游戏内文本提示
-#: Scripts\Vanilla\VanillaStrings.cs:120
+#: Scripts\Vanilla\VanillaStrings.cs:122
 msgid "挖掉器械"
 msgstr ""
 
 # 游戏内文本提示
-#: Scripts\Vanilla\VanillaStrings.cs:122
+#: Scripts\Vanilla\VanillaStrings.cs:124
 msgid "触发器械"
-msgstr ""
-
-# 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:126
-msgctxt "difficulty"
-msgid "简单"
 msgstr ""
 
 # 关卡难度
 #: Scripts\Vanilla\VanillaStrings.cs:128
 msgctxt "difficulty"
-msgid "普通"
+msgid "简单"
 msgstr ""
 
 # 关卡难度
 #: Scripts\Vanilla\VanillaStrings.cs:130
 msgctxt "difficulty"
-msgid "困难"
+msgid "普通"
 msgstr ""
 
 # 关卡难度
 #: Scripts\Vanilla\VanillaStrings.cs:132
 msgctxt "difficulty"
+msgid "困难"
+msgstr ""
+
+# 关卡难度
+#: Scripts\Vanilla\VanillaStrings.cs:134
+msgctxt "difficulty"
+msgid "月狂"
+msgstr ""
+
+# 关卡难度
+#: Scripts\Vanilla\VanillaStrings.cs:136
+msgctxt "difficulty"
 msgid "未知难度"
 msgstr ""
 
 # 关卡名称
-#: Scripts\Vanilla\VanillaStrings.cs:136
+#: Scripts\Vanilla\VanillaStrings.cs:140
 msgctxt "levelname"
 msgid "未知关卡"
 msgstr ""
 
 # 关卡名称，{0}为关卡名，{1}为冒险模式天数
-#: Scripts\Vanilla\VanillaStrings.cs:138
+#: Scripts\Vanilla\VanillaStrings.cs:142
 msgctxt "levelname"
 msgid "{0} - 第{1}天"
 msgid_plural "{0} - 第{1}天"
@@ -1059,7 +1088,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 关卡名称，{0}为关卡名，{1}为无尽模式轮数
-#: Scripts\Vanilla\VanillaStrings.cs:140
+#: Scripts\Vanilla\VanillaStrings.cs:144
 msgctxt "levelname"
 msgid "{0} - 第{1}轮"
 msgid_plural "{0} - 第{1}轮"
@@ -1067,67 +1096,67 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 死亡信息-未知
-#: Scripts\Vanilla\VanillaStrings.cs:144
+#: Scripts\Vanilla\VanillaStrings.cs:148
 msgctxt "death_message"
 msgid "你死了！"
 msgstr ""
 
 # 死亡信息-梦魇碾压墙
-#: Scripts\Vanilla\VanillaStrings.cs:146
+#: Scripts\Vanilla\VanillaStrings.cs:150
 msgctxt "death_message"
 msgid "<color=red>来到我们之中吧</color>"
 msgstr ""
 
 # 死亡信息-我是僵尸
-#: Scripts\Vanilla\VanillaStrings.cs:148
+#: Scripts\Vanilla\VanillaStrings.cs:152
 msgctxt "death_message"
 msgid "你失去了所有能量！"
 msgstr ""
 
 # 实体名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:151
+#: Scripts\Vanilla\VanillaStrings.cs:155
 msgctxt "entity.name"
 msgid "？？？"
 msgstr ""
 
 # 实体对策名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:154
+#: Scripts\Vanilla\VanillaStrings.cs:158
 msgctxt "entity_counter.name"
 msgid "？？？"
 msgstr ""
 
 # 蓝图选项名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:157
+#: Scripts\Vanilla\VanillaStrings.cs:161
 msgctxt "option.name"
 msgid "？？？"
 msgstr ""
 
 # 实体说明-未知
-#: Scripts\Vanilla\VanillaStrings.cs:160
+#: Scripts\Vanilla\VanillaStrings.cs:164
 msgctxt "entity.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 制品名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:163
+#: Scripts\Vanilla\VanillaStrings.cs:167
 msgctxt "artifact.name"
 msgid "？？？"
 msgstr ""
 
 # 制品说明-未知
-#: Scripts\Vanilla\VanillaStrings.cs:166
+#: Scripts\Vanilla\VanillaStrings.cs:170
 msgctxt "artifact.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 怪物说明-还没有遇到
-#: Scripts\Vanilla\VanillaStrings.cs:169
+#: Scripts\Vanilla\VanillaStrings.cs:173
 msgctxt "almanac"
 msgid "（还没有遇到）"
 msgstr ""
 
 # 音乐名-无
-#: Scripts\Vanilla\VanillaStrings.cs:173
+#: Scripts\Vanilla\VanillaStrings.cs:177
 msgctxt "music.name"
 msgid "无"
 msgstr ""
@@ -1139,7 +1168,7 @@ msgstr ""
 
 # 标题界面按钮文本
 #: Scripts\MVZ2\Titlescreen\TitlescreenController.cs:80
-msgid "点击以开始！"
+msgid "点击发现新大陆！"
 msgstr ""
 
 # 前景图生效时的对话模板，{0}为讨论者，{1}为文本
@@ -1490,26 +1519,26 @@ msgid "作者：{0}"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:676
+#: Scripts\MVZ2\Map\MapController.cs:727
 msgid ""
 "按住右键拖动以移动视图\n"
 "滚轮以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:678
+#: Scripts\MVZ2\Map\MapController.cs:729
 msgid ""
 "单指拖动以移动视图\n"
 "双指触摸以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:680
+#: Scripts\MVZ2\Map\MapController.cs:731
 msgid "正在进入关卡……"
 msgstr ""
 
 # 地图的无尽模式提示文本，{0}为当前轮数，{1}为历史最高
-#: Scripts\MVZ2\Map\MapController.cs:682
+#: Scripts\MVZ2\Map\MapController.cs:733
 msgid ""
 "轮数\n"
 "{0}/{1}"
@@ -2655,7 +2684,7 @@ msgstr ""
 #. Name for stage mvz2:puzzle_dead_balloon
 #: Stage meta file
 msgctxt "levelname"
-msgid "死亡热气球"
+msgid "来自深渊"
 msgstr ""
 
 #. Name for stage mvz2:puzzle_unbreakable
@@ -2987,6 +3016,26 @@ msgid ""
 "呵呵，你可否想到自己？史蒂夫？"
 msgstr ""
 
+#. Name for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "潮湿沼泽-关卡"
+msgstr ""
+
+#. Source for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.source"
+msgid "我的世界：地下城"
+msgstr ""
+
+#. Description for music mvz2:halloween_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"万圣夜拓展关卡的音乐。\n"
+"出自《我的世界》的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。"
+msgstr ""
+
 #. Name for music mvz2:dream_level
 #: Music meta file
 msgctxt "music.name"
@@ -3105,6 +3154,21 @@ msgid ""
 "等着吧，哆来咪，我们绝对会把你救出来的。"
 msgstr ""
 
+#. Name for music mvz2:nightmare_boss3
+#: Music meta file
+msgctxt "music.name"
+msgid "Pure Furies ～ 心之所在"
+msgstr ""
+
+#. Description for music mvz2:nightmare_boss3
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"梦魇第一阶段的音乐。\n"
+"是《东方绀珠传》的六面Boss——纯狐的音乐。\n"
+"这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。"
+msgstr ""
+
 #. Name for music mvz2:nightmare_boss
 #: Music meta file
 msgctxt "music.name"
@@ -3115,7 +3179,7 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第一阶段的音乐。\n"
+"梦魇第二阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。\n"
 "之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。\n"
 "至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。"
@@ -3131,10 +3195,25 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第二阶段的音乐。\n"
+"梦魇第三阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。\n"
 "虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：\n"
 "梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。"
+msgstr ""
+
+#. Name for music mvz2:dream_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "遥遥38万公里的航程"
+msgstr ""
+
+#. Description for music mvz2:dream_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"梦境世界拓展关卡的音乐。\n"
+"是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。\n"
+"充满速度感和浪漫感的曲子，也不乏一些紧张感。"
 msgstr ""
 
 #. Name for music mvz2:gensokyo_map
@@ -3336,6 +3415,21 @@ msgid ""
 "因为老大哥在看着我。"
 msgstr ""
 
+#. Name for music mvz2:castle_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "幻想净琉璃"
+msgstr ""
+
+#. Description for music mvz2:castle_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"辉针城拓展关卡的音乐。\n"
+"是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。\n"
+"曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。"
+msgstr ""
+
 #. Name for music mvz2:mausoleum_map
 #: Music meta file
 msgctxt "music.name"
@@ -3477,6 +3571,21 @@ msgid ""
 "是《洛克人X5》的头目音乐《Lamdabamda》，作为头目“Rangda Bangda”的主题曲。\n"
 "房间里是一副奇怪的壁画，整个房间内充斥着神秘的压迫感。\n"
 "而最后，这压迫感会将你推向深渊。"
+msgstr ""
+
+#. Name for music mvz2:mausoleum_level_extra
+#: Music meta file
+msgctxt "music.name"
+msgid "后院的妖怪参拜道"
+msgstr ""
+
+#. Description for music mvz2:mausoleum_level_extra
+#: Music meta file
+msgctxt "music.description"
+msgid ""
+"梦殿大祀庙拓展关卡的音乐。\n"
+"是《东方神灵庙》Extra关关卡音乐，二岩猯藏战斗前的音乐。\n"
+"听着听着绝对会突然冒出什么复古妖怪的吧。"
 msgstr ""
 
 #. Name for archive tag mvz2:prologue
@@ -4039,6 +4148,18 @@ msgstr ""
 #: Credits meta file
 msgctxt "staff_name"
 msgid "Charlie Calvin"
+msgstr ""
+
+#. Name for credits category 游戏改编
+#: Credits meta file
+msgctxt "credits_category"
+msgid "游戏改编"
+msgstr ""
+
+#. Name for credit staff 游戏改编
+#: Credits meta file
+msgctxt "staff_name"
+msgid "生气字"
 msgstr ""
 
 #. Name for credits category 特别感谢

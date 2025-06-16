@@ -17,9 +17,8 @@ namespace MVZ2.GameContent.IZombie
             Blueprints = new NamespaceID[]
             {
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.gargoyle,
-                VanillaEnemyID.dullahan,
-                VanillaEnemyID.hellChariot
+                VanillaEnemyID.hellChariot,
+                VanillaEnemyID.mutantZombie
             };
         }
         public override void Fill(IIZombieMap map, RandomGenerator rng)

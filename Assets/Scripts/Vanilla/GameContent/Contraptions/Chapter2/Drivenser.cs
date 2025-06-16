@@ -116,7 +116,7 @@ namespace MVZ2.GameContent.Contraptions
             drivenser.AddBuff<DrivenserUpgradeBuff>();
         }
         public const int MAX_UPGRADE_LEVEL = 4;
-        public const int I_ZOMBIE_LEVEL = 2;
+        public const int I_ZOMBIE_LEVEL = 3;
         private static readonly NamespaceID ID = VanillaContraptionID.drivenser;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
