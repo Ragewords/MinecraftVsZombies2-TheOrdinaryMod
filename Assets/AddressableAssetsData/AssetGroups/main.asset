@@ -2171,6 +2171,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3579daed6c79cc1439ba871829710bdc
+    m_Address: mvz2:redlightning4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3583655055a075342acf09efa95d3f56
     m_Address: mvz2:day
     m_ReadOnly: 0
@@ -4327,6 +4334,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69eac26259216454f9b14d45b3207838
+    m_Address: mvz2:redlightning1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a18698f112f8244db4b1e5de5873248
     m_Address: mvz2:ui/effect/crushing_wall_right
     m_ReadOnly: 0
@@ -4602,6 +4616,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 733266dbebe372949b508891f27eed17
     m_Address: mvz2:fuse
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 734db76865ebcb9478c48f1b99045296
+    m_Address: mvz2:redlightning2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -5711,6 +5732,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e65e8930fdbf684686698a59587bdc4
+    m_Address: mvz2:redlightning3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8e818e1b663dad245b2f38f80c163636
     m_Address: mvz2:enemy/castle/jackdullahan
