@@ -1,10 +1,13 @@
 ﻿using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
@@ -45,6 +48,20 @@ namespace MVZ2.GameContent.Projectiles
             velocity.y = 0;
             velocity.z = newVelocity.z;
             bullet.Velocity = velocity;
+            for (int i = 0; i < 8; i++)
+            {
+                var direction = Quaternion.Euler(0, 45 - i * 45, 0) * bullet.Velocity.normalized;
+                var vel = direction * 15;
+                var projectile = target.ShootProjectile(new ShootParams()
+                {
+                    projectileID = GetRandomProductionEnemyID(bullet.RNG),
+                    position = bullet.Position,
+                    velocity = vel,
+                    faction = bullet.GetFaction(),
+                    damage = bullet.GetDamage() / 8
+                });
+                projectile.SetHSVToColor(Color.magenta);
+            }
         }
         public override void Update(Entity projectile)
         {
@@ -81,6 +98,23 @@ namespace MVZ2.GameContent.Projectiles
             projectile.Velocity = velocity;
             base.Update(projectile);
         }
+        private NamespaceID GetRandomProductionEnemyID(RandomGenerator rng)
+        {
+            var index = rng.WeightedRandom(productionPoolWeights);
+            return productionPool[index];
+        }
+        private static NamespaceID[] productionPool = new NamespaceID[]
+        {
+            VanillaProjectileID.reflectionBullet,
+            VanillaProjectileID.arrowBullet,
+            VanillaProjectileID.reflectionSonicwave
+        };
+        private static int[] productionPoolWeights = new int[]
+        {
+            7,
+            2,
+            1
+        };
 
         public const float MAX_X = VanillaLevelExt.LEFT_BORDER + 40;
     }

@@ -203,6 +203,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void DuplicateRegenerate(Entity pot)
         {
+            pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
             var count = GetDuplicatedCount(pot);
             var count_filled = GetFilledCount(pot);
             if (count > 0)
@@ -215,7 +216,6 @@ namespace MVZ2.GameContent.Contraptions
             pot.PlaySound(VanillaSoundID.heal);
             if (count_filled > MAX_FILL_COUNT)
             {
-                pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
                 var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE);
                 pot.Die(effects, pot);
             }

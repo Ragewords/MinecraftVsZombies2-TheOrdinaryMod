@@ -720,7 +720,7 @@
                 <p>欲望壶会从敌人身上复制其携带的星之碎片，每个欲望壶最多复制三个。</p>
             </header>
             <properties>
-                <p>特点：<![CDATA[<color=red>复制时，11%概率改为恢复一次复制耐久</color>]]></p>
+                <p>特点：<![CDATA[<color=red>复制时，11%概率恢复一次复制耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>]]></p>
             </properties>
             <flavor>

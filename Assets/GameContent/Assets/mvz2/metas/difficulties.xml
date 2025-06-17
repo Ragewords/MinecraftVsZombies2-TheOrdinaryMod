@@ -17,7 +17,7 @@
         <buff id="level_hard" iZombie="mvz2:i_zombie_hard" />
     </difficulty>
     <difficulty id="lunatic" name="月狂" value="200">
-        <button back="mvz2:map_button[3]" bottom="mvz2:map_button[6]" overlay="mvz2:map_button[9]"/>
+        <button back="mvz2:map_button[10]" bottom="mvz2:map_button[11]" overlay="mvz2:map_button[12]"/>
         <icon arcade="mvz2:ui/arcade/clear_trophy[3]"/>
         <clear cartMoney="50" clearMoney="1000" rerunMoney="3000" puzzleMoney="3000"/>
         <buff id="level_lunatic" iZombie="mvz2:i_zombie_hard" />
