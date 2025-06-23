@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
@@ -16,11 +18,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
         public TelekinesisBuff(string nsp, string name) : base(nsp, name)
         {
             absorbDetector = new SphereDetector(ABSORB_RADIUS);
-            AddModifier(new BooleanModifier(VanillaProjectileProps.PIERCING, false));
-        }
-        public override void PostAdd(Buff buff)
-        {
-            base.PostAdd(buff);
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -37,6 +35,13 @@ namespace MVZ2.GameContent.Buffs.Projectiles
                 vel = vel.normalized * speed;
                 entity.Velocity = vel;
             }
+        }
+        private void PostProjectileHitCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
+        {
+            var hit = param.hit;
+            var projectile = hit.Projectile;
+            var buff = projectile.GetFirstBuff<TelekinesisBuff>();
+            buff?.Remove();
         }
         public const float ABSORB_RADIUS = 80;
         public const float ABSORB_SPEED = 4;

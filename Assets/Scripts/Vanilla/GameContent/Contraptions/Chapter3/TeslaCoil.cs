@@ -121,9 +121,10 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            entity.Level.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION), entity);
-            var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
-            explosion.SetSize(Vector3.one * 160);
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 160);
+            entity.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
+            entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
             entity.PlaySound(VanillaSoundID.explosion);
         }
         private float GetTargetPriority(Entity self, Entity target)
@@ -242,12 +243,13 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var collider in detectBuffer)
             {
                 collider.TakeDamage(damage, damageEffects, source);
-                var targetBuff = collider.Entity.GetFirstBuff<ElectricArcBuff>();
+                collider.Entity.AddBuff<ElectricChainBuff>();
+                var targetBuff = collider.Entity.GetFirstBuff<ElectricChainBuff>();
                 if (targetBuff == null)
                 {
-                    targetBuff = collider.Entity.AddBuff<ElectricArcBuff>();
+                    targetBuff = collider.Entity.AddBuff<ElectricChainBuff>();
                 }
-                targetBuff.SetProperty(ElectricArcBuff.PROP_ZAP_TIME, 5);
+                targetBuff.SetProperty(ElectricChainBuff.PROP_ZAP_TIME, 5);
             }
             foreach (var collider in detectBuffer_alt)
             {

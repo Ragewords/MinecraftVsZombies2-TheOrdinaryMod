@@ -10,8 +10,7 @@ namespace MVZ2.GameContent.Buffs.SeedPacks
         public CommandBlockBlueprintBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(EngineSeedProps.COST, NumberOperator.Set, 100));
-            SetProperty(EngineRechargeProps.START_MAX_RECHARGE, 1050);
-            SetProperty(EngineRechargeProps.MAX_RECHARGE, 1500);
+            AddModifier(new FloatModifier(EngineSeedProps.RECHARGE_SPEED, NumberOperator.Multiply, 0.3f));
         }
     }
 }

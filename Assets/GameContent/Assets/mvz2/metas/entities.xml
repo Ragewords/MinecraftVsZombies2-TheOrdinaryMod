@@ -295,7 +295,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="punchton" name="冲击活塞" tooltip="冲击前方敌人，需要时间再次准备" unlock="mvz2:level.halloween_4">
+        <contraption id="punchton" name="冲击活塞" tooltip="蓄力冲击前方敌人，需要时间再次准备" unlock="mvz2:level.halloween_4">
             <properties>
                 <bool name="mvz2:contactDamage" value="true" />
                 <float name="mvz2:damage" value="100" />
@@ -539,7 +539,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="stone_dropper" name="石制投掷器" tooltip="投出石子或巨石" unlock="mvz2:level.castle_3">
+        <dispenser id="stone_dropper" name="石制投掷器" tooltip="投出石子，巨石或弹力巨石" unlock="mvz2:level.castle_3">
             <properties>
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
                 <id name="mvz2:projectileId" value="mvz2:cobble" />
@@ -860,7 +860,7 @@
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
                 <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:rechargeId" value="mvz2:none" />
             </properties>
         </contraption>
 
@@ -2173,7 +2173,7 @@
         </projectile>
         <projectile id="breakout_pearl">
             <properties>
-                <bool name="mvz2:noDestroyOutsideLawn" value="false"/>
+                <bool name="mvz2:noDestroyOutsideLawn" value="true"/>
                 <vector3 name="mvz2:size" x="32" y="32" z="32" />
                 <bool name="mvz2:piercing" value="true" />
                 <float name="mvz2:damage" value="800" />

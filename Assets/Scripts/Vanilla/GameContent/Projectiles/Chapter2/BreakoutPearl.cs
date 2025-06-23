@@ -48,25 +48,11 @@ namespace MVZ2.GameContent.Projectiles
             velocity.y = 0;
             velocity.z = newVelocity.z;
             bullet.Velocity = velocity;
-            for (int i = 0; i < 8; i++)
-            {
-                var direction = Quaternion.Euler(0, 45 - i * 45, 0) * bullet.Velocity.normalized;
-                var vel = direction * 15;
-                var projectile = target.ShootProjectile(new ShootParams()
-                {
-                    projectileID = GetRandomProductionEnemyID(bullet.RNG),
-                    position = bullet.Position,
-                    velocity = vel,
-                    faction = bullet.GetFaction(),
-                    damage = bullet.GetDamage() / 8
-                });
-                projectile.SetHSVToColor(Color.magenta);
-            }
         }
         public override void Update(Entity projectile)
         {
             var bounds = projectile.GetBounds();
-            if (bounds.max.x < VanillaLevelExt.PROJECTILE_LEFT_BORDER)
+            if (bounds.max.x > VanillaLevelExt.PROJECTILE_RIGHT_BORDER)
             {
                 projectile.Remove();
                 return;

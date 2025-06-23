@@ -22,14 +22,14 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {
             base.PostContactGround(projectile, velocity);
-            projectile.Velocity = new Vector3(projectile.Velocity.x, 20f, projectile.Velocity.z);
+            projectile.Velocity = new Vector3(projectile.Velocity.x, 10f, projectile.Velocity.z);
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damage)
         {
             base.PostHitEntity(hitResult, damage);
             var projectile = hitResult.Projectile;
             var other = hitResult.Other;
-            projectile.Velocity = new Vector3(projectile.Velocity.x, 20f, projectile.Velocity.z);
+            projectile.Velocity = new Vector3(projectile.Velocity.x, 10f, projectile.Velocity.z);
             if (other.Type == EntityTypes.ENEMY)
             {
                 var vel = other.Velocity;

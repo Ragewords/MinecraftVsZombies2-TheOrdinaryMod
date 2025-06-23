@@ -14,10 +14,10 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.electricArc)]
-    public class ElectricArcBuff : BuffDefinition
+    [BuffDefinition(VanillaBuffNames.electricChain)]
+    public class ElectricChainBuff : BuffDefinition
     {
-        public ElectricArcBuff(string nsp, string name) : base(nsp, name)
+        public ElectricChainBuff(string nsp, string name) : base(nsp, name)
         {
             zapDetector = new SphereDetector(ZAP_RADIUS)
             {
@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var target = zapDetector.DetectEntityWithTheLeast(entity, e => Mathf.Abs(e.Position.magnitude - entity.Position.magnitude));
             if (target == null)
                 return;
-            if (target.HasBuff<ElectricArcBuff>())
+            if (target.HasBuff<ElectricChainBuff>())
                 return;
 
             entity.PlaySound(VanillaSoundID.redLightning);
@@ -64,10 +64,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             ElectricArc.UpdateArc(arc);
             arc.Timeout = 15;
 
-            var targetBuff = target.GetFirstBuff<ElectricArcBuff>();
+            var targetBuff = target.GetFirstBuff<ElectricChainBuff>();
             if (targetBuff == null)
             {
-                targetBuff = target.AddBuff<ElectricArcBuff>();
+                targetBuff = target.AddBuff<ElectricChainBuff>();
             }
             targetBuff.SetProperty(PROP_ZAP_TIME, zap_time - 1);
         }

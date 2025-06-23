@@ -902,8 +902,8 @@ namespace MVZ2.GameContent.Bosses
                     entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
 
                     var param = entity.GetSpawnParams();
-                    var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
-                    exp.SetSize(Vector3.one * 240);
+                    param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 240);
+                    entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
                     entity.Level.ShakeScreen(20, 0, 30);
                     entity.Remove();
                 }

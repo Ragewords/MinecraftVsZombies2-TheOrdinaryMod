@@ -314,10 +314,8 @@
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
-                <p>伤害倍率：<![CDATA[<color=red>0.7</color>]]>-<![CDATA[<color=red>10</color>]]></p>
-                <p>击退倍率：<![CDATA[<color=red>0.5</color>]]>-<![CDATA[<color=red>2</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
-                <p>蓄力时间：<![CDATA[<color=red>32.5秒</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>66.7秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
             <flavor>
@@ -513,12 +511,12 @@
         </entry>
         <entry id="mvz2:stone_dropper">
             <header>
-                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。有更低的概率改为发射不断弹跳的弹力巨石。</p>
+                <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌人并分裂的巨石，击晕没有护甲的敌人。有更低的概率发射不断弹跳的弹力巨石。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>巨石概率：<![CDATA[<color=red>25%</color>]]></p>
-                <p>弹力巨石概率：<![CDATA[<color=red>2%</color>]]></p>
+                <p>巨石概率：<![CDATA[<color=red>20%</color>]]></p>
+                <p>弹力巨石概率：<![CDATA[<color=red>5%</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>10（卵石），40（巨石），200（弹力巨石）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射30发巨石和3个弹力巨石</color>]]></p>
             </properties>
@@ -1644,7 +1642,7 @@
                 <p>通过意识直接影响物理系统的超心理学现象。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>器械发射的子弹能够跟踪附近的敌人，但会失去穿透敌人的能力</color>]]></p>
+                <p>效果：<![CDATA[<color=red>器械的射弹在命中前会跟踪附近的敌人</color>]]></p>
             </properties>
             <flavor>
                 <p>念力并没有科学依据，不过在梦里能做到的事情可多了，这何尝不是一种“念力”呢。</p>
@@ -1784,6 +1782,7 @@
                 <tags>
                     <tag id="mvz2:shell" value="mvz2:stone"/>
                     <tag id="mvz2:grid_layer_main"/>
+                    <tag id="mvz2:grid_layer_carrier"/>
                 </tags>
                 <header>
                     <p>石像鬼雕像会在最后一波时变成石像鬼。</p>
@@ -1875,6 +1874,7 @@
                 <icon model="mvz2:entity.monster_spawner"/>
                 <tags>
                     <tag id="mvz2:grid_layer_main"/>
+                    <tag id="mvz2:grid_layer_carrier"/>
                 </tags>
                 <header>
                     <p>刷怪笼会在一大波僵尸来临时召唤一只其内部的敌人。</p>

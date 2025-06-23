@@ -1,8 +1,10 @@
 ﻿using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -30,23 +32,14 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override Entity Shoot(Entity entity)
         {
-            if (entity.RNG.Next(50) == 1)
+            if (entity.RNG.Next(4) == 0)
             {
                 var param = entity.GetShootParams();
-                param.projectileID = VanillaProjectileID.bounceBoulder;
-                param.damage = entity.GetDamage() * 20;
-                param.velocity = new Vector3(5, 20, 0);
+                param.projectileID = GetRandomProjectileID(entity.RNG);
+                var yspeed = param.projectileID == VanillaProjectileID.bounceBoulder ? 10f : 0f;
+                param.damage = param.projectileID == VanillaProjectileID.bounceBoulder ? entity.GetDamage() * 20 : entity.GetDamage() * 4;
+                param.velocity.y = yspeed;
                 return entity.ShootProjectile(param);
-            }
-            else
-            {
-                if (entity.RNG.Next(4) == 0)
-                {
-                    var param = entity.GetShootParams();
-                    param.projectileID = VanillaProjectileID.boulder;
-                    param.damage = entity.GetDamage() * 4;
-                    return entity.ShootProjectile(param);
-                }
             }
             return base.Shoot(entity);
         }
@@ -66,8 +59,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             for (int i = 0; i < 3; i++)
             {
-                var xspeed = entity.GetFacingX() * 5;
-                var yspeed = 20f;
+                var xspeed = entity.GetFacingX() * rng.Next(10f, 18f);
+                var yspeed = 10f;
                 var zspeed = -1f + i;
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.bounceBoulder;
@@ -76,5 +69,20 @@ namespace MVZ2.GameContent.Contraptions
             }
             entity.PlaySound(VanillaSoundID.launch);
         }
+        private NamespaceID GetRandomProjectileID(RandomGenerator rng)
+        {
+            var index = rng.WeightedRandom(projectilePoolWeights);
+            return projectilePool[index];
+        }
+        private static NamespaceID[] projectilePool = new NamespaceID[]
+        {
+            VanillaProjectileID.boulder,
+            VanillaProjectileID.bounceBoulder,
+        };
+        private static int[] projectilePoolWeights = new int[]
+        {
+            20,
+            5
+        };
     }
 }
