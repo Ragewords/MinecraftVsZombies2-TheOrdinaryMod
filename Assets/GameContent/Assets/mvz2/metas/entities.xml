@@ -42,7 +42,8 @@
                 <float name="mvz2:friction" value="0.2" />
                 <float name="mvz2:gravity" value="1" />
                 <float name="mvz2:attackSpeed" value="1" />
-                <bool name="mvz2:defensive" value="true"/>
+                <bool name="mvz2:defensive" value="false"/>
+                <bool name="mvz2:block" value="true"/>
                 <bool name="isDispenser" value="false"/>
                 <bool name="mvz2:contactDamage" value="false" />
                 <bool name="glowUnable" value="true"/>
@@ -233,6 +234,7 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <float name="mvz2:damage" value="2400" />
                 <float name="mvz2:range" value="120" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
@@ -243,7 +245,6 @@
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
 
                 <int name="mvz2:cost" value="50" />
-                <bool name="mvz2:defensive" value="false"/>
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
             
@@ -378,6 +379,7 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
+                <bool name="mvz2:block" value="false" />
 
                 <id name="mvz2:shell" value="mvz2:grass" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
@@ -407,7 +409,6 @@
         <contraption id="gravity_pad" name="超重力板" tooltip="大幅度增强上方物体的重力" unlock="mvz2:level.dream_3">
             <properties>
                 <bool name="mvz2:shadowHidden" value="true" />
-                <bool name="mvz2:defensive" value="false"/>
                 <bool name="mvz2:isFloor" value="true" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
@@ -480,7 +481,7 @@
                 <bool name="mvz2:invisible" value="true" />
                 <bool name="mvz2:invincible" value="true" />
                 <bool name="mvz2:shadowHidden" value="true" />
-                <bool name="mvz2:defensive" value="false"/>
+                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:instantEvoke" value="false" />
@@ -522,7 +523,7 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <float name="mvz2:damage" value="20" />
-                <bool name="mvz2:defensive" value="false"/>
+                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:contactDamage" value="true" />
                 <float name="mvz2:maxHealth" value="900"/>
                 <bool name="mvz2:shadowHidden" value="true" />
@@ -572,7 +573,7 @@
         <contraption id="golden_apple" name="转生苹果" tooltip="转生攻击它的敌人" unlock="mvz2:level.castle_6">
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
-                <bool name="mvz2:defensive" value="false"/>
+                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
@@ -623,6 +624,7 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <vector3 name="mvz2:size" x="60" y="40" z="60" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
@@ -639,6 +641,7 @@
                 <bool name="mvz2:defensive" value="true" />
                 <bool name="mvz2:noClimb" value="true" />
                 <bool name="mvz2:fragments/noDamageFragments" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <float name="mvz2:maxHealth" value="3000" />
                 <id name="mvz2:projectileId" value="mvz2:charged_bolt" />
                 <float name="mvz2:damage" value="30" />
@@ -656,7 +659,6 @@
                 <vector3 name="mvz2:lightRange" x="80" y="80" z="80" />
                 <color name="mvz2:lightColor" value="#00BBFF" />
                 <int name="mvz2:waterInteraction" value="0" />
-                <bool name="mvz2:glowUnable" value="false"/>
 
                 <vector3 name="mvz2:shadowScale" x="0.5" y="0.5" z="0.5" />
 
@@ -732,6 +734,7 @@
                 <id name="mvz2:placement" value="mvz2:buried" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
+                <bool name="mvz2:block" value="false" />
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
@@ -756,6 +759,7 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <vector3 name="mvz2:size" x="30" y="54" z="30" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
@@ -829,7 +833,7 @@
             <properties>
                 <float name="mvz2:maxHealth" value="5400" />
                 <bool name="contactDamage" value="true" />
-                <bool name="mvz2:defensive" value="false" />
+                <bool name="mvz2:block" value="false" />
                 <float name="mvz2:damage" value="20" />
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
@@ -887,7 +891,7 @@
                 <bool name="mvz2:invisible" value="true"/>
                 <bool name="mvz2:invincible" value="true"/>
                 <bool name="mvz2:canDeactive" value="false"/>
-                <bool name="mvz2:defensive" value="false"/>
+                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:loyal" value="true"/>
                 <int name="mvz2:waterInteraction" value="0"/>
                 <int name="mvz2:maxTimeout" value="15"/>
@@ -2237,10 +2241,11 @@
         </projectile>
         <projectile id="compelling_orb">
             <properties>
-            <bool name="mvz2:isLightSource" value="true"/>
-            <vector3 name="mvz2:lightRange" x="40" y="40" z="40"/>
-            <color name="lightColor" value="#CF83D1"/>
-            <vector3 name="mvz2:size" x="24" y="24" z="24" />
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="40" y="40" z="40" />
+                <color name="mvz2:lightColor" value="#FF00FF" />
+
+                <vector3 name="mvz2:size" x="24" y="24" z="24" />
             </properties>
         </projectile>
         <projectile id="seija_magic_bomb">

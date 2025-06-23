@@ -55,6 +55,18 @@ namespace MVZ2.Vanilla.Contraptions
         }
         #endregion
 
+        #region 方块
+        public static readonly PropertyMeta<bool> BLOCK = Get<bool>("block");
+        public static bool IsBlock(this Entity contraption)
+        {
+            return contraption.GetProperty<bool>(BLOCK);
+        }
+        public static bool IsBlock(this EntityDefinition contraptionDef)
+        {
+            return contraptionDef.GetProperty<bool>(BLOCK);
+        }
+        #endregion
+
         #region 克制
         public static readonly PropertyMeta<NamespaceID[]> COUNTER_TAGS_FOR = Get<NamespaceID[]>("counter_for", obsoleteNames: "attackerFor");
         public static NamespaceID[] GetCounterTagsFor(this EntityDefinition contraption)

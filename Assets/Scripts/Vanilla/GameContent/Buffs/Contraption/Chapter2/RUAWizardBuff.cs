@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         }
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("Timer");
         public static readonly VanillaBuffPropertyMeta<Vector3> ADD_DIAGONAL = new VanillaBuffPropertyMeta<Vector3>("AddDiagonal");
-        public const int MAX_TIMEOUT = 300;
+        public const int MAX_TIMEOUT = 150;
         public Vector3 DIAGONAL_1 = Vector3.forward * 10;
         public Vector3 DIAGONAL_2 = Vector3.back * 10;
     }

@@ -157,6 +157,10 @@
             <icon sprite="mvz2:ui/almanac/attribute_tags[14]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#b0bec1" />
         </tag>
+        <tag id="block" name="方块" description="具有完整方块表面" priority="4000" >
+            <icon sprite="mvz2:ui/almanac/attribute_tags[15]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#1fa067" />
+        </tag>
 
 
 
@@ -1098,7 +1102,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>160</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>可以爬上并越过<tag id="mvz2:defensive"/>防御性器械</color>]]></p>
+                <p>特点：<![CDATA[<color=red>可以爬上并越过<tag id="mvz2:block"/>方块器械</color>]]></p>
             </properties>
             <flavor>
                 <p>蜘蛛开的网吧相当赚钱，因为大家都被黏住了。</p>

@@ -814,7 +814,7 @@ namespace MVZ2.GameContent.Bosses
                             entity.PlaySound(VanillaSoundID.zombieHurt, 0.5f);
                             for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                             {
-                                for (int i = 0; i < 3; i++)
+                                for (int i = 0; i < 5; i++)
                                 {
                                     var x = entity.Position.x + 80 * entity.GetFacingX();
                                     var z = entity.Level.GetEntityLaneZ(lane);

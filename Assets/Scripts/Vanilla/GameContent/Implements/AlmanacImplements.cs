@@ -113,6 +113,11 @@ namespace MVZ2.GameContent.Implements
             {
                 tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.defensive));
             }
+            // 方块
+            if (entityDef.IsBlock())
+            {
+                tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.block));
+            }
             // 地面器械
             if (entityDef.IsFloor())
             {
