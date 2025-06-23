@@ -54,6 +54,7 @@ namespace MVZ2.GameContent.Contraptions
                 var zspeed = rng.Next(-3f, 3f);
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.boulder;
+                param.damage = entity.GetDamage() * 4;
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
                 entity.ShootProjectile(param);
             }
@@ -64,6 +65,7 @@ namespace MVZ2.GameContent.Contraptions
                 var zspeed = -1f + i;
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.bounceBoulder;
+                param.damage = entity.GetDamage() * 20;
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
                 entity.ShootProjectile(param);
             }

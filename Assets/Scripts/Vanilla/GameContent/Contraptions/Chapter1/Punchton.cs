@@ -139,9 +139,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (ent.IsEntityOf(VanillaEnemyID.skelebomb))
                 {
                     Skelebomb.StartCasting(ent);
-                    ent.AddBuff<InvertedMirrorBuff>();
-                    ent.AddBuff<CarryingOtherBuff>();
-                    ent.SetDamage(ent.GetDamage() * 2);
+                    ent.AddBuff<SkelebombPunchedBuff>();
                 }
 
                 collider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE), entity);

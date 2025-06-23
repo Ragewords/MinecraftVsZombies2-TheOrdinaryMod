@@ -44,21 +44,21 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.woodenDropper,
-                VanillaContraptionID.spikeBlock,
+                VanillaContraptionID.fireChargeDispenser,
+                VanillaContraptionID.punchton,
                 VanillaContraptionID.stoneDropper,
                 VanillaContraptionID.stoneShield,
                 VanillaContraptionID.goldenApple,
                 VanillaContraptionID.thunderDrum,
-                VanillaContraptionID.teslaCoil,
-                VanillaContraptionID.giantBowl,
-                VanillaEnemyID.hellChariot,
+                VanillaContraptionID.magichest,
+                VanillaEnemyID.dullahan,
+                VanillaEnemyID.skelebomb,
                 VanillaBossID.seija,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.infinityDoor,
+                VanillaArtifactID.dreamButterfly,
                 VanillaArtifactID.dreamKey,
                 VanillaArtifactID.sweetSleepPillow,
             });

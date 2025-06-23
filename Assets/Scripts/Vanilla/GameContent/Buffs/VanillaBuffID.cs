@@ -82,6 +82,7 @@ namespace MVZ2.GameContent.Buffs
         public const string timeStop = "time_stop";
         public const string frankensteinTransformer = "frankenstein_transformer";
         public const string poisoned = "poisoned";
+        public const string skelebombPunched = "skelebomb_punched";
         public const string boat = "boat";
         public const string spiderClimb = "spider_climb";
         public const string terrorParasitized = "terror_parasitized";
