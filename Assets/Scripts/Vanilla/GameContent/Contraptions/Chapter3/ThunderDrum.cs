@@ -2,7 +2,6 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
