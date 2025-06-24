@@ -100,11 +100,6 @@ namespace MVZ2.GameContent.Bosses
                     stateMachine.StartState(entity, STATE_SWITCH);
                     return;
                 }
-                else if (GetPhase(entity) == PHASE_2 && entity.Health > entity.GetMaxHealth() / 2)
-                {
-                    SetPhase(entity, PHASE_1);
-                    return;
-                }
                 UpdateAction(stateMachine, entity);
                 UpdateStateSwitch(stateMachine, entity);
             }

@@ -474,7 +474,7 @@
                 <p>美梦丝能够让一个器械陷入沉睡，醒来后出现一个星之碎片。</p>
             </header>
             <properties>
-                <p>特点：<![CDATA[<color=red>一次性使用</color>]]></p>
+                <p>特点：<![CDATA[<color=red>一次性使用；沉睡的器械每秒恢复15耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>

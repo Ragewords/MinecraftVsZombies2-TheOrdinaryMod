@@ -39,6 +39,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var contraption = buff.GetEntity();
             if (contraption == null)
                 return;
+            contraption.HealEffects(0.5f, contraption);
             // Dream.
             var timer = buff.GetProperty<FrameTimer>(PROP_TIMER);
             timer.Run();

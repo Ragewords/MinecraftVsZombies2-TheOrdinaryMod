@@ -353,13 +353,13 @@ namespace MVZ2.GameContent.Bosses
                         LoopUpdate(entity);
                         if (substateTimer.Expired && GetOutbound(entity) < 0)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
-                            substateTimer.ResetTime(30);
+                            stateMachine.SetSubState(entity, SUBSTATE_INERTIA);
+                            substateTimer.ResetTime(120);
                         }
                         break;
 
-                    case SUBSTATE_END:
-                        StartOrEndUpdate(entity);
+                    case SUBSTATE_INERTIA:
+                        InertiaUpdate(entity);
                         if (substateTimer.Expired)
                         {
                             stateMachine.StartState(entity, STATE_IDLE);
@@ -407,9 +407,71 @@ namespace MVZ2.GameContent.Bosses
                     entity.Velocity -= entity.Velocity.normalized * acc;
                 }
             }
+            private void InertiaSpeedUpdate(Entity entity)
+            {
+                const float MIN_X = VanillaLevelExt.LEFT_BORDER + 40;
+                const float MAX_X = VanillaLevelExt.RIGHT_BORDER - 40;
+
+                var level = entity.Level;
+                var position = entity.Position;
+                var velocity = entity.Velocity;
+                if (position.x < MIN_X)
+                {
+                    position.x = MIN_X;
+                    velocity.x *= -1;
+                    entity.PlaySound(VanillaSoundID.reflection);
+                }
+                if (position.x > MAX_X)
+                {
+                    position.x = MAX_X;
+                    velocity.x *= -1;
+                    entity.PlaySound(VanillaSoundID.reflection);
+                }
+                if (position.z > level.GetGridTopZ())
+                {
+                    position.z = level.GetGridTopZ();
+                    velocity.z *= -1;
+                    entity.PlaySound(VanillaSoundID.reflection);
+                }
+                else if (position.z < level.GetGridBottomZ())
+                {
+                    position.z = level.GetGridBottomZ();
+                    velocity.z *= -1;
+                    entity.PlaySound(VanillaSoundID.reflection);
+                }
+                entity.Position = position;
+                entity.Velocity = velocity;
+            }
             private void LoopUpdate(Entity entity)
             {
                 SetSpinVelocity(entity);
+
+                var level = entity.Level;
+                if (entity.IsTimeInterval(SPIN_DAMAGE_INTERVAL))
+                {
+                    var rng = GetStateRNG(entity);
+                    detectBuffer.Clear();
+
+                    var point0 = entity.GetCenter() + Vector3.up * SPIN_HEIGHT * 0.5f;
+                    var point1 = entity.GetCenter() + Vector3.down * SPIN_HEIGHT * 0.5f;
+                    level.OverlapCapsuleNonAlloc(point0, point1, SPIN_RADIUS, entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
+                    foreach (IEntityCollider collider in detectBuffer)
+                    {
+                        var target = collider.Entity;
+                        var colliderReference = collider.ToReference();
+                        var damage = level.GetNightmareaperSpinDamage();
+                        var damageOutput = collider.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.SLICE), entity);
+                        PostSpinDamage(entity, damageOutput);
+                    }
+                }
+                if (!level.HasLoopSoundEntity(VanillaSoundID.wheelOfDeathLoop, entity.ID))
+                {
+                    level.AddLoopSoundEntity(VanillaSoundID.wheelOfDeathLoop, entity.ID);
+                }
+            }
+            private void InertiaUpdate(Entity entity)
+            {
+                InertiaSpeedUpdate(entity);
 
                 var level = entity.Level;
                 if (entity.IsTimeInterval(SPIN_DAMAGE_INTERVAL))
@@ -472,7 +534,7 @@ namespace MVZ2.GameContent.Bosses
 
             public const int SUBSTATE_START = 0;
             public const int SUBSTATE_LOOP = 1;
-            public const int SUBSTATE_END = 2;
+            public const int SUBSTATE_INERTIA = 2;
             private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
         }
         #endregion

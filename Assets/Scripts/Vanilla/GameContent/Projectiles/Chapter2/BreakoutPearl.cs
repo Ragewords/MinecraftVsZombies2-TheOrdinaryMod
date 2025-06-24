@@ -84,23 +84,6 @@ namespace MVZ2.GameContent.Projectiles
             projectile.Velocity = velocity;
             base.Update(projectile);
         }
-        private NamespaceID GetRandomProductionEnemyID(RandomGenerator rng)
-        {
-            var index = rng.WeightedRandom(productionPoolWeights);
-            return productionPool[index];
-        }
-        private static NamespaceID[] productionPool = new NamespaceID[]
-        {
-            VanillaProjectileID.reflectionBullet,
-            VanillaProjectileID.arrowBullet,
-            VanillaProjectileID.reflectionSonicwave
-        };
-        private static int[] productionPoolWeights = new int[]
-        {
-            7,
-            2,
-            1
-        };
 
         public const float MAX_X = VanillaLevelExt.LEFT_BORDER + 40;
     }
