@@ -84,7 +84,7 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 WeakQuake(entity);
-                entity.TakeDamage(60, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.SELF_DAMAGE), entity);
+                entity.TakeDamage(30, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.SELF_DAMAGE), entity);
             }
         }
         protected override void OnEvoke(Entity entity)
