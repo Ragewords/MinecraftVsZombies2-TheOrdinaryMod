@@ -49,11 +49,11 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.stoneDropper,
                 VanillaContraptionID.stoneShield,
                 VanillaContraptionID.goldenApple,
-                VanillaContraptionID.thunderDrum,
+                VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.magichest,
                 VanillaEnemyID.dullahan,
                 VanillaEnemyID.skelebomb,
-                VanillaBossID.seija,
+                VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

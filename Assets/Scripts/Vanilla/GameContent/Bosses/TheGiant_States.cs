@@ -822,7 +822,7 @@ namespace MVZ2.GameContent.Bosses
                                     var param = entity.GetSpawnParams();
                                     var zombie = entity.Spawn(VanillaEnemyID.zombie, new Vector3(x, y, z), param);
                                     zombie.SetFlipX(entity.IsFlipX());
-                                    zombie.Velocity += entity.GetFacingDirection() * (i + 3) * 15;
+                                    zombie.Velocity += entity.GetFacingDirection() * (i + 3) * 12;
                                 }
                             }
                             stateMachine.SetSubState(entity, SUBSTATE_END);

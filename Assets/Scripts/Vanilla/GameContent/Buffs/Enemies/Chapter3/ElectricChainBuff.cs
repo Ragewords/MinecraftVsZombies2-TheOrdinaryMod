@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -19,62 +20,58 @@ namespace MVZ2.GameContent.Buffs.Enemies
     {
         public ElectricChainBuff(string nsp, string name) : base(nsp, name)
         {
-            zapDetector = new SphereDetector(ZAP_RADIUS)
-            {
-                factionTarget = FactionTarget.Friendly
-            };
         }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMEOUT, 10);
+            attackedEnemies.Clear();
+            var entity = buff.GetEntity();
+            attackedEnemies.Add(entity);
+            FindNextTarget(entity, entity.Position, entity.GetFaction(), DMG);
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
-            var entity = buff.GetEntity();
-            var zap_time = buff.GetProperty<int>(PROP_ZAP_TIME);
-
-            var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
-            timeout--;
-            buff.SetProperty(PROP_TIMEOUT, timeout);
-            if (timeout <= 0)
-            {
+            if (attackedEnemies.Count >= MAX_TARGETS)
                 buff.Remove();
-            }
+        }
+        private void FindNextTarget(Entity entity, Vector3 origin, int faction, float nextDamage)
+        {
+            IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, 0, EntityCollisionHelper.MASK_VULNERABLE);
 
-            if (zap_time <= 0)
+            var validTargets = hitColliders
+                .Where(c => !attackedEnemies.Contains(c.Entity))
+                .OrderBy(c => Vector3.Distance(origin, c.Entity.Position))
+                .ToArray();
+
+            if (validTargets.Length > 0)
             {
-                return;
+                entity.PlaySound(VanillaSoundID.redLightning);
+                AttackTarget(entity, validTargets[0].Entity, nextDamage);
             }
-
-            detectBuffer.Clear();
-            var target = zapDetector.DetectEntityWithTheLeast(entity, e => Mathf.Abs(e.Position.magnitude - entity.Position.magnitude));
-            if (target == null)
+        }
+        private void AttackTarget(Entity entity, Entity target, float currentDamage)
+        {
+            if (attackedEnemies.Count >= MAX_TARGETS || target == null)
                 return;
-            if (target.HasBuff<ElectricChainBuff>())
-                return;
-
-            entity.PlaySound(VanillaSoundID.redLightning);
-            target.TakeDamage(10 * zap_time, new DamageEffectList(VanillaDamageEffects.LIGHTNING), entity);
+            target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), entity);
 
             var arc = entity.Spawn(VanillaEffectID.electricArc, entity.Position);
             ElectricArc.Connect(arc, target.Position);
             ElectricArc.SetPointCount(arc, 20);
             ElectricArc.UpdateArc(arc);
             arc.Timeout = 15;
-
-            var targetBuff = target.GetFirstBuff<ElectricChainBuff>();
-            if (targetBuff == null)
-            {
-                targetBuff = target.AddBuff<ElectricChainBuff>();
-            }
-            targetBuff.SetProperty(PROP_ZAP_TIME, zap_time - 1);
+            
+            attackedEnemies.Add(target);
+            FindNextTarget(target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_REDUCTION));
         }
         public const float ZAP_RADIUS = 120;
+        public const float MAX_TARGETS = 5;
+        public const float DMG = 10;
+        public const float DMG_REDUCTION = 0.2f;
         public static readonly VanillaBuffPropertyMeta<int> PROP_ZAP_TIME = new VanillaBuffPropertyMeta<int>("zaptime");
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        private List<Entity> detectBuffer = new List<Entity>();
-        private Detector zapDetector;
+        private List<Entity> attackedEnemies = new List<Entity>();
     }
 }
