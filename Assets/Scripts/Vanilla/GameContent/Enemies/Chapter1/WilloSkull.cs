@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Enemies
             var self = collision.Entity;
             if (self.IsFriendly(other))
                 return;
-            other.TakeDamage(0.133f, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE), self);
+            other.TakeDamage(3.333f, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE), self);
         }
     }
 }
