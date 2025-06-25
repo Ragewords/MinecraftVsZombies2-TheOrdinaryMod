@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.obsidian,
                 VanillaContraptionID.magichest,
-                VanillaEnemyID.skelebomb,
+                VanillaEnemyID.zombie,
                 VanillaBossID.nightmareaper,
             });
             level.SetArtifactSlotCount(3);
@@ -60,7 +60,7 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaArtifactID.dreamButterfly,
                 VanillaArtifactID.dreamKey,
-                VanillaArtifactID.sweetSleepPillow,
+                VanillaArtifactID.lightbomb,
             });
             level.SetRechargeSpeed(9999999);
         }
