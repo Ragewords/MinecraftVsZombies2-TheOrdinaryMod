@@ -686,7 +686,7 @@
         </entry>
         <entry id="necrotombstone">
             <header>
-                <p>死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师、爆破骨兵、骷髅马和骷髅战士，让它们为你而战。</p>
+                <p>死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师、爆破骨兵和骷髅战士，让它们为你而战。</p>
             </header>
             <properties>
                 <p>召唤时间：<![CDATA[<color=red>15秒</color>]]></p>
