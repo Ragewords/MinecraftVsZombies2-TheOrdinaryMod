@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
 
             var arc = entity.Spawn(VanillaEffectID.electricArc, entity.Position);
             ElectricArc.Connect(arc, target.Position);
-            ElectricArc.SetPointCount(arc, 20);
+            ElectricArc.SetPointCount(arc, 10);
             ElectricArc.UpdateArc(arc);
             arc.Timeout = 15;
             
