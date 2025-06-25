@@ -44,7 +44,7 @@
                 <float name="mvz2:attackSpeed" value="1" />
                 <bool name="mvz2:defensive" value="false"/>
                 <bool name="mvz2:block" value="true"/>
-                <bool name="isDispenser" value="false"/>
+                <bool name="mvz2:isDispenser" value="false"/>
                 <bool name="mvz2:contactDamage" value="false" />
                 <bool name="glowUnable" value="true"/>
                 <bool name="mvz2:conductor" value="false" />
@@ -174,7 +174,7 @@
 
         <dispenser id="1" parent="contraption">
             <properties>
-                <bool name="isDispenser" value="true"/>
+                <bool name="mvz2:isDispenser" value="true"/>
                 <float name="mvz2:damage" value="20" />
                 <float name="mvz2:range" value="800" />
                 <vector3 name="mvz2:shotVelocity" x="10" y="0" z="0" />
@@ -328,7 +328,7 @@
         </contraption>
         <contraption id="soul_furnace" name="灵魂熔炉" tooltip="发射分裂火球，但需要献祭前方的器械作为燃料" unlock="mvz2:level.halloween_7">
             <properties>
-                <bool name="isDispenser" value="true"/>
+                <bool name="mvz2:isDispenser" value="true"/>
                 <bool name="mvz2:nocturnal" value="true" />
 
                 <float name="mvz2:damage" value="80" />
