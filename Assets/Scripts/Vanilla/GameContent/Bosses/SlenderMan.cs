@@ -286,7 +286,6 @@ namespace MVZ2.GameContent.Bosses
             int count = level.GetSlendermanFateChoiceCount();
             if (level.Difficulty == VanillaDifficulties.lunatic)
             {
-                count = 1;
                 title = Global.Game.GetText(ACCEPT_FATE_TITLE);
                 desc = Global.Game.GetText(ACCEPT_FATE_DESCRIPTION);
             }
