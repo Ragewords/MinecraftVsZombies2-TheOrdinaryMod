@@ -1145,7 +1145,7 @@
                 <id name="mvz2:crySound" value="mvz2:ghast_cry" />
                 <id name="mvz2:deathSound" value="mvz2:ghast_death" />
                 <idArray name="mvz2:counter_tags" value="mvz2:flying_enemy" />
-                <vector3 name="mvz2:passengerOffset" x="0" y="35" z="-1" />
+                <vector3 name="mvz2:passengerOffset" x="0" y="20" z="-1" />
 
                 <int name="mvz2:cost" value="125" />
                 <int name="mvz2:waterInteraction" value="3" />
