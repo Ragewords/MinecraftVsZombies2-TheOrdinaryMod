@@ -226,6 +226,7 @@ namespace MVZ2.GameContent.Buffs
     public static class VanillaBuffID
     {
         public static readonly NamespaceID randomEnemySpeed = Get(VanillaBuffNames.randomEnemySpeed);
+        public static readonly NamespaceID flagzombieEnemySpeed = Get(VanillaBuffNames.flagzombieEnemySpeed);
         public static readonly NamespaceID armorDamageColor = Get(VanillaBuffNames.armorDamageColor);
         public static readonly NamespaceID damageColor = Get(VanillaBuffNames.damageColor);
         public static readonly NamespaceID productionColor = Get(VanillaBuffNames.productionColor);

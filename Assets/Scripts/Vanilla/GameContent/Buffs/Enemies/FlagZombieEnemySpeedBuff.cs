@@ -11,8 +11,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
     {
         public FlagZombieEnemySpeedBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, PROP_SPEED_MULTIPLIER));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, 2));
         }
-        public static readonly VanillaBuffPropertyMeta<float> PROP_SPEED_MULTIPLIER = new VanillaBuffPropertyMeta<float>("SpeedMultiplier");
     }
 }

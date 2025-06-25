@@ -1,9 +1,13 @@
-﻿using MVZ2.GameContent.Buffs.Enemies;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 
@@ -14,6 +18,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public FlagZombie(string nsp, string name) : base(nsp, name)
         {
+            AddAura(new FlagAura());
         }
 
         public override void Init(Entity entity)
@@ -40,20 +45,31 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        protected override void UpdateAI(Entity entity)
+        public class FlagAura : AuraEffectDefinition
         {
-            base.UpdateAI(entity);
-            foreach (var target in entity.Level.GetEntities(EntityTypes.ENEMY))
+            public FlagAura()
             {
-                if (target.IsFriendly(entity))
+                BuffID = VanillaBuffID.flagzombieEnemySpeed;
+                UpdateInterval = 5;
+            }
+
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var source = auraEffect.Source;
+                var level = source.GetLevel();
+                var entity = source.GetEntity();
+                if (entity == null)
+                    return;
+                if (entity.IsDead)
+                    return;
+                detectBuffer.Clear();
+                level.FindEntitiesNonAlloc(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY, detectBuffer);
+                foreach (var cherish in detectBuffer)
                 {
-                    if (!target.HasBuff<FlagZombieEnemySpeedBuff>())
-                    {
-                        var buff = target.AddBuff<FlagZombieEnemySpeedBuff>();
-                        buff.SetProperty(FlagZombieEnemySpeedBuff.PROP_SPEED_MULTIPLIER, 2f);
-                    }
+                    results.Add(cherish);
                 }
             }
+            private List<Entity> detectBuffer = new List<Entity>();
         }
     }
 }

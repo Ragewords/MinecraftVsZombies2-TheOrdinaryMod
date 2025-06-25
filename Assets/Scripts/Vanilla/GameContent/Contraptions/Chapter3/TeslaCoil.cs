@@ -88,7 +88,19 @@ namespace MVZ2.GameContent.Contraptions
                         entity.Level.Explode(entity.Position, 80, entity.GetFaction(), damage / 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.LIGHTNING), entity);
                         CreateArc(entity, sourcePosition, targetPosition);
                         entity.PlaySound(VanillaSoundID.teslaAttack);
-                        entity.Spawn(VanillaEffectID.waterLightningParticles, entity.Position);
+                        
+                        for (int i = 0; i < 4; i++)
+                        {
+                            var arc = entity.Spawn(VanillaEffectID.electricArc, entity.Position);
+
+                            float degree = i * 90 + 45;
+                            float rad = degree * Mathf.Deg2Rad;
+                            Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * 80;
+                            ElectricArc.Connect(arc, pos);
+                            ElectricArc.SetPointCount(arc, 5);
+                            ElectricArc.UpdateArc(arc);
+                            arc.Timeout = 10;
+                        }
 
                         if (connectx.ExistsAndAlive() && connectx.IsFriendly(entity) && !connectx.IsAIFrozen())
                             CreateArc(entity, sourcePosition, connectx.Position + ARC_OFFSET);
@@ -244,12 +256,6 @@ namespace MVZ2.GameContent.Contraptions
             {
                 collider.TakeDamage(damage, damageEffects, source);
                 collider.Entity.AddBuff<ElectricChainBuff>();
-                var targetBuff = collider.Entity.GetFirstBuff<ElectricChainBuff>();
-                if (targetBuff == null)
-                {
-                    targetBuff = collider.Entity.AddBuff<ElectricChainBuff>();
-                }
-                targetBuff.SetProperty(ElectricChainBuff.PROP_ZAP_TIME, 5);
             }
             foreach (var collider in detectBuffer_alt)
             {

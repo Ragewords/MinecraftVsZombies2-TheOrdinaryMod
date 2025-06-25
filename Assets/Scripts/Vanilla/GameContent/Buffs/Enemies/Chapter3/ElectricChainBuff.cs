@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         }
         private void AttackTarget(Entity entity, Entity target, float currentDamage)
         {
-            if (attackedEnemies.Count >= MAX_TARGETS || target == null)
+            if (attackedEnemies.Count >= MAX_TARGETS || target == null || target.IsDead)
                 return;
             target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), entity);
 
@@ -70,7 +70,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public const float MAX_TARGETS = 5;
         public const float DMG = 10;
         public const float DMG_REDUCTION = 0.2f;
-        public static readonly VanillaBuffPropertyMeta<int> PROP_ZAP_TIME = new VanillaBuffPropertyMeta<int>("zaptime");
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         private List<Entity> attackedEnemies = new List<Entity>();
     }
