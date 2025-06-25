@@ -261,7 +261,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">虽然很不幸钥匙丢了，但还是注意一下今天的作战吧！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">今天开始下暴雨了，天色一片昏暗！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">虽然今天没有任何的僵尸，但要命的是，幽灵现在能完全隐形了！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火骷髅头发现它们！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火枯骨发现它们！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">拿起你的铁剑砍掉他们！不过注意不要砍到路过的好幽灵，不然它们会惩罚你！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让我们来猎杀那些陷入黑暗的人吧！</sentence>
       </sentences>

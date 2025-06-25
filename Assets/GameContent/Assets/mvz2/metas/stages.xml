@@ -126,6 +126,7 @@
         <camera position="lawn" transition="instant"/>
         <spawns flags="2" firstWaveTime="30" pointsMultiplier="2" pointsAddition="1" >
             <spawn id="mvz2:ghost"/>
+            <spawn id="mvz2:willo_skull"/>
         </spawns>
         <properties>
             <color name="globalLight" value="#7F7F7F"/>
@@ -1052,6 +1053,7 @@
         <camera position="lawn" transition="instant"/>
         <spawns flags="2" firstWaveTime="30" pointsMultiplier="2" pointsAddition="1" >
             <spawn id="mvz2:ghost"/>
+            <spawn id="mvz2:willo_skull"/>
             <spawn id="mvz2:skeleton_horse"/>
             <spawn id="mvz2:dullahan_head"/>
         </spawns>

@@ -32,6 +32,10 @@
         <terrain excludedTags="mvz2:day" water="true"/>
         <weight base="2000" />
     </entry>
+    <entry id="willo_skull" entity="mvz2:willo_skull" noEndless="true" >
+        <spawn level="2" minWave="5" />
+        <weight base="1500" />
+    </entry>
     <entry id="mummy" entity="mvz2:mummy" >
         <spawn level="2" />
         <weight base="2000" />

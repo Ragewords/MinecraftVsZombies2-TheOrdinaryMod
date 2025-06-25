@@ -61,22 +61,6 @@ namespace MVZ2.GameContent.Stages
                 var napstablook = level.Spawn(VanillaEnemyID.napstablook, new Vector3(x, y, z), null, spawnParam);
                 AddSpeedBuff(napstablook);
             }
-            var willoSkullPoints = (wave - 5) / 2f;
-            if (level.IsHugeWave(wave))
-            {
-                willoSkullPoints *= 1.5f;
-            }
-            var willoSkullCount = Mathf.CeilToInt(willoSkullPoints);
-            for (int i = 0; i < willoSkullCount; i++)
-            {
-                var lane = level.GetRandomEnemySpawnLane();
-                var column = level.GetSpawnRNG().Next(7, 9);
-                var x = level.GetColumnX(column);
-                var z = level.GetEntityLaneZ(lane);
-                var y = level.GetGroundY(x, z);
-                var willoSkull = level.Spawn(VanillaEnemyID.willoSkull, new Vector3(x, y, z), null);
-                AddSpeedBuff(willoSkull);
-            }
         }
         public override void PostEnemySpawned(PVZEngine.Entities.Entity entity)
         {

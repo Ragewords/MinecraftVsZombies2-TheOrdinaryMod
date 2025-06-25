@@ -1,5 +1,4 @@
-﻿using MVZ2.GameContent.Pickups;
-using MVZ2.Vanilla.Enemies;
+﻿using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
