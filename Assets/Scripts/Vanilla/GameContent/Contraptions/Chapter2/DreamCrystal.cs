@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(contraption);
             var health = contraption.Health;
             var maxHealth = contraption.GetMaxHealth();
-            contraption.HealEffects(HEAL_PER_FRAME * (1 - health / maxHealth), contraption);
+            contraption.HealEffects(HEAL_PER_FRAME * (2 - health / maxHealth), contraption);
         }
         protected override void UpdateLogic(Entity contraption)
         {
@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Contraptions
             contraption.AddBuff<DreamCrystalEvocationBuff>();
             contraption.PlaySound(VanillaSoundID.sparkle);
         }
-        public const float HEAL_PER_FRAME = 2f;
+        public const float HEAL_PER_FRAME = 4 / 3;
         public static FrameTimer GetHealthUpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_HEALTH_UP_TIMER);
         public static void SetHealthUpTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
         public static bool GetHealthUp(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_HEALTH_UP);

@@ -461,7 +461,7 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>恢复速度：<![CDATA[<color=red>60×(1-当前耐久/最大耐久)秒</color>]]></p>
+                <p>恢复速度：<![CDATA[<color=red>40-80/秒</color>]]>（随耐久变化）</p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>]]></p>
             </properties>
             <flavor>
