@@ -46,13 +46,13 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.lilyPad,
                 VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.drivenser,
+                VanillaContraptionID.woodenDropper,
                 VanillaContraptionID.stoneShield,
                 VanillaContraptionID.glowstone,
-                VanillaContraptionID.teslaCoil,
+                VanillaContraptionID.smallDispenser,
                 VanillaContraptionID.obsidian,
-                VanillaContraptionID.magichest,
-                VanillaEnemyID.zombie,
+                VanillaContraptionID.hellfire,
+                VanillaEnemyID.ironHelmettedZombie,
                 VanillaBossID.nightmareaper,
             });
             level.SetArtifactSlotCount(3);

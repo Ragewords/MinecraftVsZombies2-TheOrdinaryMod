@@ -185,6 +185,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b27d973956921144f81710753ef50c35, type: 3}
   - {fileID: 21300000, guid: 7f17579a8f0c42344b02ba3589ca2d6e, type: 3}
   - {fileID: 21300000, guid: 16ff246ec2a095242a62262d2ac32272, type: 3}
+  - {fileID: 21300000, guid: a9295277f83cc374391677475c7cc8ba, type: 3}
   - {fileID: 21300000, guid: 53000fe10b2b2114a9d2a2a204f7c143, type: 3}
   pickaxeSprite: {fileID: 21300000, guid: c98850842ba8ff14f919f63ce5114326, type: 3}
   triggerSprite: {fileID: 21300000, guid: e0c7697228ff843469a11a3a633766bb, type: 3}

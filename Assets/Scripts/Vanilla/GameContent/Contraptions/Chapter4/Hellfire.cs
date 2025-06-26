@@ -2,7 +2,6 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
@@ -29,10 +28,7 @@ namespace MVZ2.GameContent.Contraptions
             };
             burnDetector = new SphereDetector(BURN_RADIUS)
             {
-                mask = EntityCollisionHelper.MASK_PLANT
-                | EntityCollisionHelper.MASK_ENEMY
-                | EntityCollisionHelper.MASK_OBSTACLE
-                | EntityCollisionHelper.MASK_BOSS
+                mask = EntityCollisionHelper.MASK_VULNERABLE
             };
             jalapenoDetector = new LaneDetector(40, 40);
         }

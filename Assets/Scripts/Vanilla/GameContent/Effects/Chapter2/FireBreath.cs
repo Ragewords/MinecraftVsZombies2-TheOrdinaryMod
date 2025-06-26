@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -59,11 +60,10 @@ namespace MVZ2.GameContent.Effects
                     var other = collision.OtherCollider.Entity;
                     if (other.Type == EntityTypes.PROJECTILE)
                     {
-                        var canIgnite = other.Definition?.HasBehaviour<HellfireIgnitedProjectileBehaviour>() ?? false;
-                        if (!canIgnite)
-                           return;
-                        if (!other.HasBuff<HellfireIgnitedBuff>())
-                             other.AddBuff<HellfireIgnitedBuff>();
+                        var behaviour = other.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
+                        if (behaviour == null)
+                            return;
+                        behaviour.Ignite(other, entity, false);
                     }
                 }
             }
