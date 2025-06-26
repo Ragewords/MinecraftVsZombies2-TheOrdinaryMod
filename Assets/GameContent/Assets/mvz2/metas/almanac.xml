@@ -485,11 +485,11 @@
         <!-- Chapter 3 -->
         <entry id="mvz2:wooden_dropper">
             <header>
-                <p>木制投掷器向敌人发射滚动的木球，木球能够在敌人间反弹。</p>
+                <p>木制投掷器向敌人发射滚动的木球，木球能够在敌人间反弹最多3次。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30，每次反弹后-5</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>30，每次反弹后-10</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射30颗大型木球，每颗造成120点伤害</color>]]></p>
             </properties>
             <flavor>
