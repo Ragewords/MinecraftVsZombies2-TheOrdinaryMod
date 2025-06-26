@@ -28,8 +28,9 @@ namespace MVZ2.GameContent.Contraptions
     {
         public Punchton(string nsp, string name) : base(nsp, name)
         {
-            detector = new PunchtonDetector();
-            evokedDetector = new PunchtonDetector()
+            detector = new PunchtonDetector(false);
+            punchDetector = new PunchtonDetector(true);
+            evokedDetector = new PunchtonDetector(true)
             {
                 infiniteRange = true
             };
@@ -79,8 +80,7 @@ namespace MVZ2.GameContent.Contraptions
                 var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 3f, 0.001f);
                 SetKnockBackMultipiler(entity, push);
 
-                var target = detector.Detect(entity);
-                if (target != null)
+                if (detector.DetectExists(entity))
                 {
                     var timer = GetStateTimer(entity);
                     timer.ResetTime(30);
@@ -132,7 +132,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             entity.PlaySound(VanillaSoundID.impact);
             detectBuffer.Clear();
-            detector.DetectMultiple(entity, detectBuffer);
+            punchDetector.DetectMultiple(entity, detectBuffer);
             foreach (var collider in detectBuffer)
             {
                 var ent = collider.Entity;
@@ -243,6 +243,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<float> KNOCKBACK_MULTIPLIER = new VanillaEntityPropertyMeta<float>("KnockBackMultipiler");
         private Detector detector;
+        private Detector punchDetector;
         private Detector evokedDetector;
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
     }

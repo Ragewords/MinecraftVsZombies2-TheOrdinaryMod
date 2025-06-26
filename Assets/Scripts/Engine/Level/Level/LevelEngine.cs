@@ -128,17 +128,19 @@ namespace PVZEngine.Level
         public void Update()
         {
             ClearEntityTrash();
+
             UpdateSeedPacks();
-            UpdateDelayedEnergyEntities();
 
-            UpdateEntities();
-            CollisionUpdate();
-
-            buffs.Update();
             foreach (var component in levelComponents)
             {
                 component.Update();
             }
+
+            UpdateDelayedEnergyEntities();
+            UpdateEntities();
+            CollisionUpdate();
+
+            buffs.Update();
             AreaDefinition.Update(this);
             StageDefinition.Update(this);
             Triggers.RunCallback(LevelCallbacks.POST_LEVEL_UPDATE, new LevelCallbackParams(this));
@@ -165,9 +167,9 @@ namespace PVZEngine.Level
         {
             properties.SetProperty(name, value);
         }
-        private void UpdateAllBuffedProperties()
+        private void UpdateAllBuffedProperties(bool triggersEvaluation)
         {
-            properties.UpdateAllModifiedProperties();
+            properties.UpdateAllModifiedProperties(triggersEvaluation);
         }
         private void UpdateBuffedProperty(IPropertyKey name)
         {
@@ -193,7 +195,7 @@ namespace PVZEngine.Level
         {
             buffs.GetModifierItems(name, results);
         }
-        void IPropertyModifyTarget.UpdateModifiedProperty(IPropertyKey name, object beforeValue, object afterValue)
+        void IPropertyModifyTarget.UpdateModifiedProperty(IPropertyKey name, object beforeValue, object afterValue, bool triggersEvaluation)
         {
         }
         PropertyModifier[] IPropertyModifyTarget.GetModifiersUsingProperty(IPropertyKey name)
@@ -559,7 +561,7 @@ namespace PVZEngine.Level
             }
 
             level.delayedEnergyEntities = seri.delayedEnergyEntities.ToDictionary(d => level.FindEntityByID(d.entityId), d => d.energy);
-            level.UpdateAllBuffedProperties();
+            level.UpdateAllBuffedProperties(false);
 
             return level;
         }

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
@@ -23,6 +22,11 @@ namespace MVZ2.GameContent.Contraptions
     {
         public Hellfire(string nsp, string name) : base(nsp, name)
         {
+            detector = new HellfireIgniteDetector(32)
+            {
+                factionTarget = FactionTarget.Friendly,
+                mask = EntityCollisionHelper.MASK_PROJECTILE,
+            };
             burnDetector = new SphereDetector(BURN_RADIUS)
             {
                 mask = EntityCollisionHelper.MASK_PLANT
@@ -32,14 +36,12 @@ namespace MVZ2.GameContent.Contraptions
             };
             jalapenoDetector = new LaneDetector(40, 40);
         }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            entity.CollisionMaskFriendly |= EntityCollisionHelper.MASK_PROJECTILE;
-        }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+
+            UpdateIgnite(entity);
+
             entity.SetAnimationBool("Evoked", IsCursed(entity));
             
             var cooldown = GetDamageCooldown(entity);
@@ -107,27 +109,17 @@ namespace MVZ2.GameContent.Contraptions
             SetMeteor(entity, new EntityID(meteor));
             meteor.PlaySound(VanillaSoundID.bombFalling);
         }
-        public override void PostCollision(EntityCollision collision, int state)
+        private void UpdateIgnite(Entity hellfire)
         {
-            base.PostCollision(collision, state);
-            if (state == EntityCollisionHelper.STATE_EXIT)
-                return;
-            var other = collision.Other;
-            var canIgnite = other.Definition?.HasBehaviour<HellfireIgnitedProjectileBehaviour>() ?? false;
-            if (!canIgnite)
-                return;
-            var self = collision.Entity;
-            if (!self.IsFriendly(other))
-                return;
-
-            var igniteBuff = other.GetFirstBuff<HellfireIgnitedBuff>();
-            if (igniteBuff == null)
+            bool cursed = IsCursed(hellfire);
+            igniteBuffer.Clear();
+            detector.DetectEntities(hellfire, igniteBuffer);
+            foreach (Entity target in igniteBuffer)
             {
-                igniteBuff = other.AddBuff<HellfireIgnitedBuff>();
-            }
-            if (!HellfireIgnitedBuff.GetCursed(igniteBuff) && IsCursed(self))
-            {
-                HellfireIgnitedBuff.Curse(igniteBuff);
+                var behaviour = target.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
+                if (behaviour == null)
+                    return;
+                behaviour.Ignite(target, hellfire, cursed);
             }
         }
         public static void Curse(Entity entity)
@@ -143,6 +135,8 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetDamageCooldown(Entity entity, int value) => entity.SetBehaviourField(PROP_DAMAGE_COOLDOWN, value);
         public static readonly VanillaBuffPropertyMeta<bool> PROP_CURSED = new VanillaBuffPropertyMeta<bool>("cursed");
         public static readonly VanillaBuffPropertyMeta<EntityID> PROP_METEOR = new VanillaBuffPropertyMeta<EntityID>("meteor");
+        private Detector detector;
+        private List<Entity> igniteBuffer = new List<Entity>();
         private static readonly VanillaEntityPropertyMeta<int> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<int>("DamageCooldown");
         private List<Entity> detectBuffer = new List<Entity>();
         private List<Entity> jalapenoDetectBuffer = new List<Entity>();
@@ -150,5 +144,9 @@ namespace MVZ2.GameContent.Contraptions
         private Detector jalapenoDetector;
         public const float BURN_RADIUS = 40;
         public const int DAMAGE_COOLDOWN = 30;
+    }
+    public interface IHellfireIgniteBehaviour
+    {
+        void Ignite(Entity entity, Entity hellfire, bool cursed);
     }
 }

@@ -182,7 +182,8 @@
             <value value="mvz2:nether" name="下界" description="免疫火焰伤害" sprite="mvz2:ui/almanac/shell_tags[7]" backgroundColor="#36131d"/>
             <value value="mvz2:diamond" name="钻石" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[8]" backgroundColor="#417368"/>
             <value value="mvz2:sand" name="沙子" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590"/>
-            <value value="mvz2:slime" name="黏液" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#5aaa43"/>
+            <value value="mvz2:netherrack" name="下界岩" description="免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#36131d"/>
+            <value value="mvz2:slime" name="黏液" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#5aaa43"/>
         </enum>
     </tags>
     <contraptions>
@@ -1995,7 +1996,7 @@
                     <p>一位普通的魔法使，也是森近 霖之助曾经的好友。</p>
                 </header>
                 <properties>
-                    <p>画师：<![CDATA[<color=red>小幽喜欢口乙烯 & 三花花</color>]]></p>
+                    <p>画师：<![CDATA[<color=red>小幽喜欢口乙烯</color>]]></p>
                 </properties>
                 <flavor>
                     <p>在幻想乡四处游荡、采集的人类，职业是魔法使（而非种族）。</p>

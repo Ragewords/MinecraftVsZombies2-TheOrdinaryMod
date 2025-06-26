@@ -52,6 +52,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02b2a6769dd3bb84d92a60b6d1867601
+    m_Address: mvz2:entity/projectiles/stoneball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 02d02d3206dc8484c8e80a0aa53c8725
     m_Address: mvz2:mobile_blueprint/berserker
     m_ReadOnly: 0
@@ -429,6 +436,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d1eecefbebaead49b85fb2324fde531
+    m_Address: mvz2:entity/projectiles/cursed_fireball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d2aba7e3e7fc2b44a60708edca144b6
     m_Address: mvz2:archive/dream_note
@@ -1101,6 +1115,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bfca53233078f04bbeb35d311715ae8
+    m_Address: mvz2:entity/projectiles/ignited_wooden_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c22aba89e1241c4986a031d470be726
     m_Address: mvz2:entity/boss/wither_skull
@@ -3361,6 +3382,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5087351033f1d0d4ab74797ba2defe46
+    m_Address: mvz2:entity/projectiles/cursed_fire_trail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 508b6af64add28a4aa27df24e84640ff
     m_Address: mvz2:map/dream/map
     m_ReadOnly: 0
@@ -3472,6 +3500,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53000fe10b2b2114a9d2a2a204f7c143
+    m_Address: mvz2:ui/level/pause_image_loss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5361472b4d206f44eba9f43295606ec2
     m_Address: mvz2:tesla_construction
@@ -7608,6 +7643,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8edef59b9ae0284082846af29941760
+    m_Address: mvz2:entity/projectiles/ignited_wooden_ball_cursed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b944e3154656ac74f8054ed14cb53335
     m_Address: mvz2:products/starshard_slot
