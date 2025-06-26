@@ -6888,6 +6888,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9295277f83cc374391677475c7cc8ba
+    m_Address: mvz2:ui/level/pause_image_7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a947efd639075f8479b747319d6fad58
     m_Address: mvz2:mobile_blueprint/black_hole_bomb
     m_ReadOnly: 0
