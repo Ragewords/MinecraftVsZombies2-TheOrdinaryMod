@@ -8,7 +8,7 @@ namespace MVZ2.GameContent.Effects
     [EntityBehaviourDefinition(VanillaEffectNames.brokenArmor)]
     public class BrokenArmor : EffectBehaviour
     {
-        #region ¹«ÓÐ·½·¨
+        #region ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½
         public BrokenArmor(string nsp, string name) : base(nsp, name)
         {
         }
@@ -24,8 +24,6 @@ namespace MVZ2.GameContent.Effects
             base.PostContactGround(entity, velocity);
             var vel = entity.Velocity;
             vel.y = velocity.y * -0.4f;
-            vel.x = velocity.x * 0.4f;
-            vel.z = velocity.z * 0.4f;
             entity.Velocity = vel;
         }
         #endregion

@@ -1570,7 +1570,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
             {
                 base.OnUpdateLogic(machine, entity);
-                if (entity.IsTimeInterval(30))
+                if (entity.IsTimeInterval(15))
                 {
                     var level = entity.Level;
                     var bounds = entity.GetBounds();
@@ -1578,6 +1578,7 @@ namespace MVZ2.GameContent.Bosses
                     var maxLane = Mathf.Min(level.GetMaxLaneCount() - 1, level.GetLane(bounds.min.z));
                     var targetLane = entity.RNG.Next(minLane, maxLane + 1);
                     var position = entity.Position;
+                    position.x += 120 * entity.GetFacingX();
                     position.z = level.GetEntityLaneZ(targetLane);
                     position.y += 20;
                     entity.SpawnWithParams(VanillaEnemyID.zombie, position);
