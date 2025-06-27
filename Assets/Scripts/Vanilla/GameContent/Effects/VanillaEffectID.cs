@@ -65,6 +65,7 @@ namespace MVZ2.GameContent.Effects
         public const string seijaFaintEffect = "seija_faint_effect";
         public const string witherSummoners = "wither_summoners";
         public const string castleTwilight = "castle_twilight";
+        public const string brainwasherExplosion = "brainwasher_explosion";
 
         public const string thunderBoltHorizontal = "thunder_bolt_horizontal";
         public const string emberParticles = "ember_particles";
@@ -149,6 +150,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID seijaFaintEffect = Get(VanillaEffectNames.seijaFaintEffect);
         public static readonly NamespaceID witherSummoners = Get(VanillaEffectNames.witherSummoners);
         public static readonly NamespaceID castleTwilight = Get(VanillaEffectNames.castleTwilight);
+        public static readonly NamespaceID brainwasherExplosion = Get(VanillaEffectNames.brainwasherExplosion);
 
         public static readonly NamespaceID thunderBoltHorizontal = Get(VanillaEffectNames.thunderBoltHorizontal);
         public static readonly NamespaceID emberParticles = Get(VanillaEffectNames.emberParticles);

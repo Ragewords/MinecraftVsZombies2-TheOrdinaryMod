@@ -1671,6 +1671,7 @@
         <enemy id="jackdullahan_head" name="万圣骑士的头" deathMessage="两个头给你看晕了？" unlock="mvz2:level.castle_11">
             <properties>
                 <float name="mvz2:maxHealth" value="300"/>
+                <float name="mvz2:mass" value="-1" />
                 <float name="mvz2:speed" value="2"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
@@ -2189,18 +2190,18 @@
         </projectile>
         <projectile id="dark_matter_ball">
             <properties>
-                <vector3 name="size" x="80" y="80" z="80" />
-                <bool name="noHitEntities" value="true"/>
-                <float name="gravity" value="1"/>
-                <float name="range" value="120"/>
-                <float name="damage" value="100" />
+                <vector3 name="mvz2:size" x="80" y="80" z="80" />
+                <bool name="mvz2:noHitEntities" value="true" />
+                <float name="mvz2:gravity" value="1" />
+                <float name="mvz2:range" value="120" />
+                <float name="mvz2:damage" value="100" />
             </properties>
         </projectile>
         <projectile id="wooden_ball">
             <properties>
                 <bool name="mvz2:killOnGround" value="false" />
                 <bool name="mvz2:rolls" value="true" />
-            <bool name="piercing" value="true" />
+                <bool name="mvz2:piercing" value="true" />
                 <float name="mvz2:gravity" value="1" />
                 <vector3 name="mvz2:size" x="24" y="24" z="24" />
                 <int name="mvz2:waterInteraction" value="3" />
@@ -2720,6 +2721,13 @@
         <effect id="castle_twilight">
             <properties>
                 <int name="mvz2:sortingOrder" value="-9999" />
+            </properties>
+        </effect>
+        <effect id="brainwasher_explosion">
+            <properties>
+                <int name="mvz2:maxTimeout" value="30" />
+                <color name="mvz2:tint" value="#ff00ff" />
+                <vector3 name="mvz2:size" x="240" y="240" z="240" />
             </properties>
         </effect>
         <effect id="thunder_bolt_horizontal">

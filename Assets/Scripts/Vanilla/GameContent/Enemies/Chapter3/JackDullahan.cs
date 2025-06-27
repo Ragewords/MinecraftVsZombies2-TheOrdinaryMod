@@ -90,13 +90,15 @@ namespace MVZ2.GameContent.Enemies
             }
             DropHead(entity);
         }
-        public static Entity DropHead(Entity entity)
+        public static void DropHead(Entity entity)
         {
             if (IsHeadDropped(entity))
-                return null;
-            var head = entity.SpawnWithParams(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
+                return;
+            for (var i = 0; i < 3; i++)
+            {
+                entity.SpawnWithParams(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
+            }
             SetHeadDropped(entity, true);
-            return head;
         }
         private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
         {

@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Callbacks;
@@ -16,6 +17,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public JackDullahanHead(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
         }
         public override void Init(Entity entity)
         {
@@ -40,12 +42,26 @@ namespace MVZ2.GameContent.Enemies
             }
             if (info.Effects.HasEffect(VanillaDamageEffects.DROWN))
                 return;
-            var skull = entity.Level.Spawn(VanillaProjectileID.witherSkull, entity.Position, entity);
-            skull.Velocity = entity.GetFacingDirection() * 10;
-            skull.SetDamage(entity.GetMaxHealth());
-            skull.SetFaction(VanillaFactions.NEUTRAL);
-            entity.PlaySound(VanillaSoundID.witherShoot);
+            entity.ShootProjectile(new ShootParams()
+            {
+                projectileID = VanillaProjectileID.witherSkull,
+                position = entity.Position,
+                velocity = entity.GetFacingDirection() * 10,
+                faction = VanillaFactions.NEUTRAL,
+                damage = entity.GetMaxHealth() * 10,
+                soundID = VanillaSoundID.witherShoot
+            });
             entity.Remove();
+        }
+        private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
+        {
+            var enemy = param.enemy;
+            var target = param.target;
+            if (!enemy.IsEntityOf(VanillaEnemyID.jackDullahanHead))
+                return;
+            if (!target.IsHostile(enemy))
+                return;
+            target.InflictWither(30);
         }
     }
 }

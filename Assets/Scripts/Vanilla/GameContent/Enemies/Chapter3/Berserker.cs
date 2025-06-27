@@ -43,7 +43,7 @@ namespace MVZ2.GameContent.Enemies
 
             var param = entity.GetSpawnParams();
             param.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
-            entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+            entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity, param);
             float arcLength = range * 3;
             float fireLength = range * 2;
             for (int i = 0; i < 8; i++)

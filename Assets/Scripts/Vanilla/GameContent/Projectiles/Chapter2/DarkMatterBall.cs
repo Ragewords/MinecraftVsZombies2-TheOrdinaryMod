@@ -1,7 +1,6 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
@@ -35,7 +34,7 @@ namespace MVZ2.GameContent.Projectiles
         public static DamageOutput[] Explode(Entity entity, float range, float damage)
         {
             var damageEffects = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION);
-            var damageOutputs = entity.Level.Explode(entity.Position, range, entity.GetFaction(), damage, damageEffects, entity);
+            var damageOutputs = entity.Explode(entity.Position, range, entity.GetFaction(), damage, damageEffects);
             foreach (var output in damageOutputs)
             {
                 var result = output?.Entity;

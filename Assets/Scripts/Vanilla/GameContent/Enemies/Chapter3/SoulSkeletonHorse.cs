@@ -43,14 +43,15 @@ namespace MVZ2.GameContent.Enemies
                 SetJumpState(entity, JUMP_STATE_LAND);
                 entity.PlaySound(VanillaSoundID.horseGallop);
                 entity.Level.Spawn(VanillaEffectID.soulfireBlast, entity.Position, entity);
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 12; i++)
                 {
-                    var direction = Quaternion.Euler(0, i * 45, 0) * new Vector3(1, 0, 0);
-                    var vel = direction * 12;
-                    var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, vel);
+                    var direction = Quaternion.Euler(0, i * 30, 0) * new Vector3(1, 0, 0);
+                    var velo = direction * 12;
+                    var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velo);
                     projectile.Position = entity.Position;
                     projectile.SetDamage(60);
-                    SoulfireBall.SetSplit(projectile, true);
+                    SoulfireBall.SetSplit(projectile, false);
+                    SoulfireBall.SetBlast(projectile, true);
                 }
             }
         }
@@ -70,15 +71,15 @@ namespace MVZ2.GameContent.Enemies
                     entity.Velocity = vel;
                     SetJumpState(entity, JUMP_STATE_JUMP);
                     entity.PlaySound(VanillaSoundID.horseGallop);
-                    entity.Level.Spawn(VanillaEffectID.soulfireBurn, entity.Position, entity);
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 12; i++)
                     {
-                        var direction = Quaternion.Euler(0, i * 60, 0) * new Vector3(1, 0, 0);
+                        var direction = Quaternion.Euler(0, i * 30, 0) * new Vector3(1, 0, 0);
                         var velo = direction * 12;
                         var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velo);
                         projectile.Position = entity.Position;
                         projectile.SetDamage(60);
-                        SoulfireBall.SetSplit(projectile, true);
+                        SoulfireBall.SetSplit(projectile, false);
+                        SoulfireBall.SetBlast(projectile, true);
                     }
                 }
 
@@ -90,7 +91,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     soundTime = GALLOP_SOUND_INTERVAL;
                     entity.PlaySound(VanillaSoundID.horseGallop);
-                    entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
+                    entity.Level.Spawn(VanillaEffectID.soulfireBurn, entity.Position, entity);
                 }
                 SetGallopSoundTime(entity, soundTime);
             }
@@ -106,14 +107,14 @@ namespace MVZ2.GameContent.Enemies
                     entity.Stun(30);
                     entity.PlaySound(VanillaSoundID.bonk);
                     entity.Level.Spawn(VanillaEffectID.soulfireBlast, entity.Position, entity);
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 12; i++)
                     {
-                        var direction = Quaternion.Euler(0, i * 36, 0) * new Vector3(1, 0, 0);
+                        var direction = Quaternion.Euler(0, i * 30, 0) * new Vector3(1, 0, 0);
                         var velo = direction * 12;
                         var projectile = entity.ShootProjectile(VanillaProjectileID.soulfireBall, velo);
                         projectile.Position = entity.Position;
                         projectile.SetDamage(60);
-                        SoulfireBall.SetSplit(projectile, true);
+                        SoulfireBall.SetSplit(projectile, false);
                         SoulfireBall.SetBlast(projectile, true);
                     }
                 }

@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -100,6 +101,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 EndCasting(entity);
             }
+            entity.Level.Spawn(VanillaEffectID.brainwasherExplosion, entity.GetCenter(), entity);
             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).RandomTake(5, entity.RNG);
             foreach (var target in targets)
             {
