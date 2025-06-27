@@ -203,51 +203,51 @@ namespace MVZ2.GameContent.Bosses
                 int attackFlag = GetAttackFlag(entity);
                 if (atLeft)
                 {
-                    var attack1Used = attackFlag == STATE_ARMS;
-                    var attack2Used = attackFlag == STATE_ROAR;
+                    var attack1Used = (attackFlag & 1) != 0;
+                    attackFlag ^= 1;
+                    SetAttackFlag(entity, attackFlag);
                     if (attack1Used)
                     {
                         if (!phase2)
                         {
                             lastState = STATE_BREATH;
-                            SetAttackFlag(entity, lastState);
                             return lastState;
                         }
                         else
                         {
                             lastState = STATE_SNAKE;
-                            SetAttackFlag(entity, STATE_BREATH);
                             return lastState;
                         }
                     }
-                    else if (attack2Used)
-                    {
-                        lastState = STATE_VOMIT;
-                        SetAttackFlag(entity, lastState);
-                        return lastState;
-                    }
                     else
                     {
-                        lastState = STATE_EYES;
-                        SetAttackFlag(entity, lastState);
-                        var innerTarget = FindEyeBulletTarget(entity, false);
-                        var outerTarget = FindEyeBulletTarget(entity, true);
-                        if (innerTarget.ExistsAndAlive() || outerTarget.ExistsAndAlive())
+                        if (phase2)
                         {
+                            lastState = STATE_EYES;
+                            var innerTarget = FindEyeBulletTarget(entity, false);
+                            var outerTarget = FindEyeBulletTarget(entity, true);
+                            if (innerTarget.ExistsAndAlive() || outerTarget.ExistsAndAlive())
+                            {
+                                return lastState;
+                            }
+                        }
+                        else
+                        {
+                            lastState = STATE_VOMIT;
                             return lastState;
                         }
                     }
                 }
                 else
                 {
-                    var attack1Used = attackFlag == STATE_BREATH;
-                    var attack2Used = attackFlag == STATE_VOMIT;
+                    var attack1Used = (attackFlag & 2) != 0;
+                    attackFlag ^= 2;
+                    SetAttackFlag(entity, attackFlag);
                     if (attack1Used)
                     {
                         if (!phase2)
                         {
                             lastState = STATE_ROAR;
-                            SetAttackFlag(entity, lastState);
                             if (entity.Level.EntityExists(e => CanRoarStun(entity, e)))
                             {
                                 return lastState;
@@ -256,22 +256,22 @@ namespace MVZ2.GameContent.Bosses
                         else
                         {
                             lastState = STATE_PACMAN;
-                            SetAttackFlag(entity, STATE_ROAR);
                             return lastState;
                         }
                     }
-                    else if (attack2Used)
-                    {
-                        lastState = STATE_SNEEZE;
-                        SetAttackFlag(entity, lastState);
-                        return lastState;
-                    }
                     else
                     {
-                        lastState = STATE_ARMS;
-                        SetAttackFlag(entity, lastState);
-                        if (CanArmsAttack(entity))
+                        if (!phase2)
                         {
+                            lastState = STATE_ARMS;
+                            if (CanArmsAttack(entity))
+                            {
+                                return lastState;
+                            }
+                        }
+                        else
+                        {
+                            lastState = STATE_SNEEZE;
                             return lastState;
                         }
                     }
@@ -749,7 +749,7 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_VOMIT);
-                            substateTimer.ResetTime(15);
+                            substateTimer.ResetTime(18);
                         }
                         break;
                     case SUBSTATE_VOMIT:

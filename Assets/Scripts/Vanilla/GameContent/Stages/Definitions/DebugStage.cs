@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.brainwasher,
                 VanillaEnemyID.bedserker,
                 VanillaEnemyID.jackDullahan,
-                VanillaBossID.theEye,
+                VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
