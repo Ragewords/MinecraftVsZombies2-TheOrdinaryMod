@@ -598,10 +598,14 @@ namespace MVZ2.Vanilla.Level
                         seedPack.FullRecharge();
                     }
                     seedPack.SetCommandBlock(commandBlock);
-                    if (commandBlock)
-                    {
+                }
+                if (commandBlock)
+                {
+                    if (seedPack == null)
+                        continue;
+                    var cost = seedPack.Definition.GetCost();
+                    if (cost > 100)
                         seedPack.AddBuff<CommandBlockBlueprintBuff>();
-                    }
                 }
                 level.ReplaceSeedPackAt(i, seedPack);
             }
