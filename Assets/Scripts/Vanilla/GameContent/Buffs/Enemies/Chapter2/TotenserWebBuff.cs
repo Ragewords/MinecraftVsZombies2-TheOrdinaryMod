@@ -41,12 +41,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             var bounds = proj.GetBounds();
             var position = proj.Position;
-            return bounds.max.x < VanillaLevelExt.PROJECTILE_LEFT_BORDER ||
-                bounds.min.x > VanillaLevelExt.PROJECTILE_RIGHT_BORDER ||
-                position.z > VanillaLevelExt.PROJECTILE_UP_BORDER ||
-                position.z < VanillaLevelExt.PROJECTILE_DOWN_BORDER ||
-                position.y > VanillaLevelExt.PROJECTILE_TOP_BORDER ||
-                position.y < VanillaLevelExt.PROJECTILE_BOTTOM_BORDER;
+            return bounds.max.x < VanillaLevelExt.ATTACK_LEFT_BORDER ||
+                bounds.min.x > VanillaLevelExt.ATTACK_RIGHT_BORDER;
         }
     }
 }
