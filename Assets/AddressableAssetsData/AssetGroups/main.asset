@@ -10059,6 +10059,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1f192fde604d2445ae42b6acb59eee7
+    m_Address: mvz2:effect/brainwasher_explosion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f25d2b94a621a1e4d8cd823493b4a29f
     m_Address: mvz2:mobile_blueprint/force_pad
     m_ReadOnly: 0
