@@ -1,10 +1,12 @@
-﻿using MVZ2.GameContent.Effects;
+﻿using System.Linq;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -23,7 +25,6 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetEnemyRNG(entity, new RandomGenerator(entity.RNG.Next()));
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -61,10 +62,19 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                var rng = GetEnemyRNG(target);
-                NamespaceID[] pool = enemyPool;
-                var targetID = pool.Random(rng);
-                var random = target.SpawnWithParams(targetID, enemy.Position);
+                var game = Global.Game;
+                var rng = target.RNG;
+                var grid = enemy.GetGrid();
+                var validEnemies = enemyPool.Where(id =>
+                {
+                    if (!game.GetUnlockedEnemies().Contains(id))
+                        return false;
+                    return grid.CanSpawnEntity(id);
+                });
+                if (validEnemies.Count() <= 0)
+                    return;
+                var enemyID = validEnemies.Random(rng);
+                var random = target.SpawnWithParams(enemyID, enemy.Position);
                 random.Charm(target.GetFaction());
                 enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
                 enemy.Neutralize();
@@ -106,8 +116,6 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.skeletonWarrior,
             VanillaEnemyID.skeletonMage
         };
-        public static RandomGenerator GetEnemyRNG(Entity contraption) => contraption.GetBehaviourField<RandomGenerator>(ID, PROP_ENEMY_RNG);
-        public static void SetEnemyRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_ENEMY_RNG, value);
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_ENEMY_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("EnemyRNG");
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
     }
