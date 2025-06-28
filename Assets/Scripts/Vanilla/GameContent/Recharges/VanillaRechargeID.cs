@@ -10,6 +10,7 @@ namespace MVZ2.GameContent.Recharges
         public const string mediumTime = "medium";
         public const string longTime = "long";
         public const string veryLongTime = "very_long";
+        public const string fairlyLongTime = "fairly_long";
     }
     public static class VanillaRechargeID
     {
@@ -19,6 +20,7 @@ namespace MVZ2.GameContent.Recharges
 
         public static readonly NamespaceID longTime = Get(VanillaRechargeNames.longTime);
         public static readonly NamespaceID veryLongTime = Get(VanillaRechargeNames.veryLongTime);
+        public static readonly NamespaceID fairlyLongTime = Get(VanillaRechargeNames.fairlyLongTime);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

@@ -167,7 +167,6 @@ namespace MVZ2.GameContent.Buffs
         }
         public static class Level
         {
-            public const string levelLunatic = "level_lunatic";
             public const string taintedSun = "tainted_sun";
             public const string tutorialPickaxeDisable = "tutorial_pickaxe_disable";
             public const string tutorialTriggerDisable = "tutorial_trigger_disable";
@@ -182,10 +181,12 @@ namespace MVZ2.GameContent.Buffs
             public const string superRecharge = "super_recharge";
             public const string ancientEgypt = "ancient_egypt";
             public const string spiritUniverseNight = "spirit_universe_night";
+            public const string commandBlockBlueprint = "command_block_blueprint";
 
             // 难度
             public const string levelEasy = "level_easy";
             public const string levelHard = "level_hard";
+            public const string levelLunatic = "level_lunatic";
             public const string iZombieEasy = "i_zombie_easy";
             public const string iZombieHard = "i_zombie_hard";
 
@@ -270,6 +271,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID theCreaturesHeartReduceCost = Get(VanillaBuffNames.SeedPack.theCreaturesHeartReduceCost);
             public static readonly NamespaceID upgradeEndlessCost = Get(VanillaBuffNames.SeedPack.upgradeEndlessCost);
             public static readonly NamespaceID witherSkeletonSkullReduceCost = Get(VanillaBuffNames.SeedPack.witherSkeletonSkullReduceCost);
+            public static readonly NamespaceID commandBlockBlueprint = Get(VanillaBuffNames.SeedPack.commandBlockBlueprint);
         }
         public static class Level
         {

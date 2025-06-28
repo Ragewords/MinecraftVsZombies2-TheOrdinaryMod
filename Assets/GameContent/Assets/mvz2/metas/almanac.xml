@@ -906,7 +906,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
                 <p>变形时间：<![CDATA[<color=red>3.2秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>对于花费高于100的蓝图，将其消耗变为100，并×30%充能速度</color>]]></p>
+                <p>特点：<![CDATA[<color=red>将花费高于100的蓝图消耗变为100，并延长充能时间</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变形为器械后立即将其激发</color>]]></p>
             </properties>
             <flavor>

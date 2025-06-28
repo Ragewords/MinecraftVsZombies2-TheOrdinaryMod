@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Buffs.SeedPacks;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
@@ -598,17 +597,6 @@ namespace MVZ2.Vanilla.Level
                         seedPack.FullRecharge();
                     }
                     seedPack.SetCommandBlock(commandBlock);
-                }
-                if (commandBlock)
-                {
-                    if (seedPack == null)
-                        continue;
-                    var cost = seedPack.Definition.GetCost();
-                    if (cost > 100)
-                    {
-                        if (!seedPack.HasBuff<CommandBlockBlueprintBuff>())
-                            seedPack.AddBuff<CommandBlockBlueprintBuff>();
-                    }
                 }
                 level.ReplaceSeedPackAt(i, seedPack);
             }

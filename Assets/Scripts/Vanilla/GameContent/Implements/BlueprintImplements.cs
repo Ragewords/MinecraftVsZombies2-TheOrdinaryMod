@@ -1,4 +1,5 @@
-﻿using MVZ2.Vanilla.Callbacks;
+﻿using MVZ2.GameContent.Buffs.Level;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.SeedPacks;
@@ -13,7 +14,14 @@ namespace MVZ2.GameContent.Implements
     {
         public override void Implement(Mod mod)
         {
+            mod.AddTrigger(LevelCallbacks.POST_LEVEL_START, PostLevelStartCallback);
             mod.AddTrigger(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
+        }
+        public void PostLevelStartCallback(LevelCallbackParams param, CallbackResult result)
+        {
+            var level = param.level;
+            if (!level.HasBuff<CommandBlockSeedPackBuff>())
+                level.AddBuff<CommandBlockSeedPackBuff>();
         }
         private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {
