@@ -605,7 +605,10 @@ namespace MVZ2.Vanilla.Level
                         continue;
                     var cost = seedPack.Definition.GetCost();
                     if (cost > 100)
-                        seedPack.AddBuff<CommandBlockBlueprintBuff>();
+                    {
+                        if (!seedPack.HasBuff<CommandBlockBlueprintBuff>())
+                            seedPack.AddBuff<CommandBlockBlueprintBuff>();
+                    }
                 }
                 level.ReplaceSeedPackAt(i, seedPack);
             }
