@@ -1,8 +1,10 @@
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2.Vanilla.Shells;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -21,6 +23,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, 0.3f));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
+            AddModifier(new BooleanModifier(VanillaShellProps.BLOCKS_SLICE, true));
         }
         public override void PostAdd(Buff buff)
         {
@@ -48,13 +51,20 @@ namespace MVZ2.GameContent.Buffs.Enemies
             foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
                 AddTakenDamage(buff, damage.Amount);
-                result.SetFinalValue(false);
             }
+            entity.DamageBlink();
+            result.SetFinalValue(false);
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
-            entity.RemoveBuffs<TanookiZombieStoneBuff>();
+            var info = param.deathInfo;
+            if (info.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+                return;
+            foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
+            {
+                buff.Remove();
+            }
         }
         public const float MAX_DAMAGE = 900;
         public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
