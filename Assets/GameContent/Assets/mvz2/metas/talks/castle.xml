@@ -541,7 +541,7 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">原来如此，它利用了正邪的能力反转了自己的重力，让自己处在我们的视线盲区内！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">她好像只是昏过去了，应该没事，等她醒吧！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">另外，这个器械是雷鼓！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这玩意可以让地面震动起来，虽然会让僵尸前进，但能够眩晕它们相当长的时间，顺便把它们送到不同的行！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这玩意可以让地面震动起来，然后把僵尸击退，顺便把它们送到不同的行！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1" onClick="end">当心地震！</sentence>
       </sentences>
     </section>
