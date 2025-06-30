@@ -6,7 +6,6 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
@@ -69,22 +68,6 @@ namespace MVZ2.GameContent.Bosses
                 var malleable = GetMalleable(entity);
                 malleable = Mathf.Max(0, malleable - MALLEABLE_DECAY_PHASE_3);
                 SetMalleable(entity, malleable);
-            }
-            else if (entity.Level.TheGiantIsMalleable())
-            { 
-                if (entity.IsTimeInterval(30))
-                {
-                    var level = entity.Level;
-                    var bounds = entity.GetBounds();
-                    var minLane = Mathf.Max(0, level.GetLane(bounds.max.z));
-                    var maxLane = Mathf.Min(level.GetMaxLaneCount() - 1, level.GetLane(bounds.min.z));
-                    var targetLane = entity.RNG.Next(minLane, maxLane + 1);
-                    var position = entity.Position;
-                    position.x += 80 * entity.GetFacingX();
-                    position.z = level.GetEntityLaneZ(targetLane);
-                    position.y += 20;
-                    entity.SpawnWithParams(VanillaEnemyID.zombie, position);
-                }
             }
         }
         public override void PostCollision(EntityCollision collision, int state)
