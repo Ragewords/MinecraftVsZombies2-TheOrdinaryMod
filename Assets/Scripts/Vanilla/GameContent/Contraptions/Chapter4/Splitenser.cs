@@ -133,7 +133,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void RepeatShootFront(Entity entity)
         {
-            SetFrontRepeatCount(entity, 1);
+            SetFrontRepeatCount(entity, 2);
             var repeatTimer = GetFrontRepeatTimer(entity);
             repeatTimer.ResetTime(REPEAT_INTERVAL);
             repeatTimer.Frame = 0;
