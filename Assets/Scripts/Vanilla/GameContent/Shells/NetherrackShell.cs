@@ -1,7 +1,10 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Shells;
 using PVZEngine.Damages;
+using PVZEngine.Entities;
 using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Shells
@@ -25,6 +28,22 @@ namespace MVZ2.GameContent.Shells
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.PUNCH))
             {
                 damageInfo.Multiply(20);
+            }
+            if (damageInfo.Source.DefinitionID == VanillaEnemyID.silverfish)
+            {
+                damageInfo.Multiply(5);
+            }
+            if (damageInfo.Source.DefinitionID == VanillaEnemyID.gargoyle)
+            {
+                var entity = damageInfo.Entity;
+                if (entity.Type == EntityTypes.PLANT)
+                {
+                    if (!entity.HasBuff<CurseOfTheAbyssBuff>())
+                    {
+                        var buff = entity.AddBuff<CurseOfTheAbyssBuff>();
+                        CurseOfTheAbyssBuff.SetCurseFaction(buff, damageInfo.Source.Faction);
+                    }
+                }
             }
         }
     }
