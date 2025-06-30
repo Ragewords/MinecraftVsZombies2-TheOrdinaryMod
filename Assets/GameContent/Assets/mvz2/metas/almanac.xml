@@ -1378,7 +1378,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>，<color=red>0.3</color>（石像）]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，可承受900伤害</color>]]></p>
             </properties>
             <flavor>
