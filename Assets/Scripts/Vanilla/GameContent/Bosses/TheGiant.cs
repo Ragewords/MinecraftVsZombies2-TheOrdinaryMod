@@ -80,7 +80,7 @@ namespace MVZ2.GameContent.Bosses
                     var maxLane = Mathf.Min(level.GetMaxLaneCount() - 1, level.GetLane(bounds.min.z));
                     var targetLane = entity.RNG.Next(minLane, maxLane + 1);
                     var position = entity.Position;
-                    position.x += 120 * entity.GetFacingX();
+                    position.x += 80 * entity.GetFacingX();
                     position.z = level.GetEntityLaneZ(targetLane);
                     position.y += 20;
                     entity.SpawnWithParams(VanillaEnemyID.zombie, position);
