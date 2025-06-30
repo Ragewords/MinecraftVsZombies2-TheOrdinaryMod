@@ -54,6 +54,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     entity.AddBuff<WickedHermitWarppedBuff>();
                     var talisman = entity.SpawnWithParams(VanillaEnemyID.talismanZombie, entity.Position);
                     talisman.AddBuff<WickedHermitWarppedBuff>();
+                    talisman.Stun(GetStunDuration(entity) + 30);
                 }
                 var scaleT = 1 - Mathf.Abs(timer.Frame - WARP_TIME) / (float)WARP_TIME;
                 entity.SetAnimationFloat("WarpBlend", scaleT);
