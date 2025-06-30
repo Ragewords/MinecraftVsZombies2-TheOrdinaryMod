@@ -100,8 +100,7 @@ namespace MVZ2.GameContent.Areas
             VanillaEnemyID.ironHelmettedZombie,
             VanillaEnemyID.skeleton,
             VanillaEnemyID.spider,
-            VanillaEnemyID.caveSpider,
-            VanillaEnemyID.silverfish
+            VanillaEnemyID.caveSpider
         };
         public const int SPAWNER_MIN_COLUMN = 5;
     }
