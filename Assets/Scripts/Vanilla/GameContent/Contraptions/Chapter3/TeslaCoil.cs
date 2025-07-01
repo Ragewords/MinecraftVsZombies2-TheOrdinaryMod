@@ -4,11 +4,13 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -130,14 +132,19 @@ namespace MVZ2.GameContent.Contraptions
             if (connecty.ExistsAndAlive())
                 SetIsConnectedY(connecty, false);
         }
-        public override void PostDeath(Entity entity, DeathInfo damageInfo)
+        public override void PostTakeDamage(DamageOutput result)
         {
-            base.PostDeath(entity, damageInfo);
-            var param = entity.GetSpawnParams();
-            param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 160);
-            entity.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
-            entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
-            entity.PlaySound(VanillaSoundID.explosion);
+            base.PostTakeDamage(result);
+            if (result.HasAnyFatal())
+            {
+                var entity = result.Entity;
+                var param = entity.GetSpawnParams();
+                param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 160);
+                entity.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
+                entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+                entity.PlaySound(VanillaSoundID.explosion);
+                entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
+            }
         }
         private float GetTargetPriority(Entity self, Entity target)
         {
