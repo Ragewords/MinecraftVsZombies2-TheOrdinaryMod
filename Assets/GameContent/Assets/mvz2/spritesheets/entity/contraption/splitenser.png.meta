@@ -128,8 +128,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 44
+        width: 62
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,8 @@ TextureImporter:
       name: splitenser_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 13
+        x: 63
+        y: 9
         width: 15
         height: 31
       alignment: 0
@@ -160,28 +160,6 @@ TextureImporter:
       bones: []
       spriteID: 9fc3a83b9756c0347b793954e37917b0
       internalID: -1257104159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-<<<<<<< HEAD
-    - serializedVersion: 2
-      name: splitenser_3
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 4
-        width: 37
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7bbca9c6d61c1847baebfa8b66e25dc
-      internalID: 1975971985
       vertices: []
       indices: 
       edges: []
@@ -202,11 +180,7 @@ TextureImporter:
       splitenser_0: -391827783
       splitenser_1: -1257104159
       splitenser_2: 1631164139
-<<<<<<< HEAD
-      splitenser_3: 1975971985
-=======
       splitenser_3: 506219901
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

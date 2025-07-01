@@ -722,7 +722,9 @@ namespace MVZ2.Vanilla.Level
                 }
             }
         }
-<<<<<<< HEAD
+        #endregion
+
+        #region 连接的格子
         public static void GetConnectedLaneGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
         {
             var col1 = level.GetColumn(pos1.x);
@@ -793,7 +795,6 @@ namespace MVZ2.Vanilla.Level
                 }
             }
         }
-=======
         #endregion
 
         #region 空路
@@ -827,7 +828,6 @@ namespace MVZ2.Vanilla.Level
             return level.IsAirGrid(column, lane);
         }
         #endregion
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
         public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
         {
             var game = Global.Game;

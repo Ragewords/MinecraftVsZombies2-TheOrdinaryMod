@@ -381,21 +381,18 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-<<<<<<< HEAD
   - m_GUID: 0b96758788dd52c42bf9e6331f37143a
     m_Address: mvz2:entity/enemy/dullahan_body
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Spritesheet
-=======
   - m_GUID: 0baadbd18e9ae0f479fe464c035e2947
     m_Address: mvz2:random/cloth/cloth3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Sound
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0bad8dd7ca96eb047840a09bdbdcc162
     m_Address: mvz2:mainmenu/submenu_background

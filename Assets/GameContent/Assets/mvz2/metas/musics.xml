@@ -71,14 +71,14 @@
             <p>呵呵，你可否想到自己？史蒂夫？</p>
         </description>
     </music>
-	<music id="halloween_level_extra" name="潮湿沼泽-关卡" unlock="mvz2:level.halloween_EX1">
+    <music id="halloween_level_extra" name="潮湿沼泽-关卡" unlock="mvz2:level.halloween_EX1">
         <track main="mvz2:halloween_level_extra"/>
-		<source>我的世界：地下城</source>
-		<description>
-			<p>万圣夜拓展关卡的音乐。</p>
-			<p>出自《我的世界》的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。</p>
-		</description>
-	</music>
+        <source>我的世界：地下城</source>
+        <description>
+            <p>万圣夜拓展关卡的音乐。</p>
+            <p>出自《我的世界》的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。</p>
+        </description>
+    </music>
 
     <music id="dream_level" name="破碎的童话-关卡">
         <track main="mvz2:dream_level"/>
@@ -140,42 +140,42 @@
     </music>
     <music id="nightmare_boss3" name="Pure Furies ～ 心之所在">
         <track main="mvz2:nightmare_boss3"/>
-		<source>东方绀珠传</source>
-		<description>
-			<p>梦魇第一阶段的音乐。</p>
-			<p>是《东方绀珠传》的六面Boss——纯狐的音乐。</p>
-			<p>这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。</p>
-		</description>
-	</music>
-	<music id="nightmare_boss" name="Pandemonic Planet（前段）">
+        <source>东方绀珠传</source>
+        <description>
+            <p>梦魇第一阶段的音乐。</p>
+            <p>是《东方绀珠传》的六面Boss——纯狐的音乐。</p>
+            <p>这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。</p>
+        </description>
+    </music>
+    <music id="nightmare_boss" name="Pandemonic Planet（前段）">
         <track main="mvz2:nightmare_boss"/>
-		<source>东方绀珠传</source>
-		<description>
-			<p>梦魇第二阶段的音乐。</p>
-			<p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。</p>
-			<p>之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。</p>
-			<p>至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。</p>
-		</description>
-	</music>
+        <source>东方绀珠传</source>
+        <description>
+            <p>梦魇第二阶段的音乐。</p>
+            <p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。</p>
+            <p>之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。</p>
+            <p>至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。</p>
+        </description>
+    </music>
     <music id="nightmare_boss2" name="Pandemonic Planet（后段）">
         <track main="mvz2:nightmare_boss2"/>
-		<source>东方绀珠传</source>
-		<description>
-			<p>梦魇第三阶段的音乐。</p>
-			<p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。</p>
-			<p>虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：</p>
-			<p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
-		</description>
-	</music>
-	<music id="dream_level_extra" name="遥遥38万公里的航程" unlock="mvz2:level.dream_EX1">
+        <source>东方绀珠传</source>
+        <description>
+            <p>梦魇第三阶段的音乐。</p>
+            <p>是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。</p>
+            <p>虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：</p>
+            <p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
+        </description>
+    </music>
+    <music id="dream_level_extra" name="遥遥38万公里的航程" unlock="mvz2:level.dream_EX1">
         <track main="mvz2:dream_level_extra"/>
-		<source>东方绀珠传</source>
-		<description>
-			<p>梦境世界拓展关卡的音乐。</p>
-			<p>是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。</p>
-			<p>充满速度感和浪漫感的曲子，也不乏一些紧张感。</p>
-		</description>
-	</music>
+        <source>东方绀珠传</source>
+        <description>
+            <p>梦境世界拓展关卡的音乐。</p>
+            <p>是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。</p>
+            <p>充满速度感和浪漫感的曲子，也不乏一些紧张感。</p>
+        </description>
+    </music>
 
     <music id="gensokyo_map" name="青空之影">
         <track main="mvz2:gensokyo_map"/>
@@ -278,15 +278,15 @@
             <p>因为老大哥在看着我。</p>
         </description>
     </music>
-	<music id="castle_level_extra" name="幻想净琉璃" unlock="mvz2:level.castle_EX1">
+    <music id="castle_level_extra" name="幻想净琉璃" unlock="mvz2:level.castle_EX1">
         <track main="mvz2:castle_level_extra"/>
-		<source>东方辉针城</source>
-		<description>
-			<p>辉针城拓展关卡的音乐。</p>
-			<p>是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。</p>
-			<p>曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。</p>
-		</description>
-	</music>
+        <source>东方辉针城</source>
+        <description>
+            <p>辉针城拓展关卡的音乐。</p>
+            <p>是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。</p>
+            <p>曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。</p>
+        </description>
+    </music>
 
     <music id="mausoleum_map" name="游魂的夜樱" unlock="mvz2:level.mausoleum_1">
         <track main="mvz2:mausoleum_map"/>
@@ -358,17 +358,15 @@
             <p>而最后，这压迫感会将你推向深渊。</p>
         </description>
     </music>
-<<<<<<< HEAD
-	<music id="mausoleum_level_extra" name="后院的妖怪参拜道" unlock="mvz2:level.mausoleum_EX1">
+    <music id="mausoleum_level_extra" name="后院的妖怪参拜道" unlock="mvz2:level.mausoleum_EX1">
         <track main="mvz2:mausoleum_level_extra"/>
-		<source>东方神灵庙</source>
-		<description>
-			<p>梦殿大祀庙拓展关卡的音乐。</p>
-			<p>是《东方神灵庙》Extra关关卡音乐，二岩猯藏战斗前的音乐。</p>
-			<p>听着听着绝对会突然冒出什么复古妖怪的吧。</p>
-		</description>
-	</music>
-=======
+        <source>东方神灵庙</source>
+        <description>
+            <p>梦殿大祀庙拓展关卡的音乐。</p>
+            <p>是《东方神灵庙》Extra关关卡音乐，二岩猯藏战斗前的音乐。</p>
+            <p>听着听着绝对会突然冒出什么复古妖怪的吧。</p>
+        </description>
+    </music>
     <music id="ship_level" name="晴空中的UFO恋曲" unlock="mvz2:level.ship_1">
         <track main="mvz2:ship_level" sub="mvz2:ship_level_sub"/>
         <source>东方星莲船</source>
@@ -380,5 +378,4 @@
             <p>=====乐评施工中=====</p>
         </description>
     </music>
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
 </musics>

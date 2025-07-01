@@ -905,7 +905,6 @@
                 <bool name="mvz2:canDeactive" value="false"/>
                 <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:loyal" value="true"/>
-                <int name="mvz2:waterInteraction" value="0"/>
                 <int name="mvz2:maxTimeout" value="15"/>
                 <float name="mvz2:damage" value="150"/>
                 <float name="mvz2:range" value="40"/>
@@ -919,6 +918,8 @@
                 <id name="mvz2:hitSound" null="true"/>
                 <idArray name="mvz2:gridLayers" value="mvz2:tool"/>
                 <bool name="mvz2:instantEvoke" value="false" />
+                <int name="mvz2:waterInteraction" value="0"/>
+                <int name="mvz2:airInteraction" value="0" />
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
@@ -949,8 +950,9 @@
                 <id name="mvz2:placeSound" value="mvz2:grass" />
                 <id name="mvz2:deathSound" value="mvz2:grass" />
 
+                <int name="mvz2:waterInteraction" value="0"/>
+                <int name="mvz2:airInteraction" value="0" />
                 <int name="mvz2:cost" value="100" />
-                <int name="mvz2:waterInteraction" value="0" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>

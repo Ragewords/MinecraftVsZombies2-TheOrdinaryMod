@@ -152,11 +152,8 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID powerOn = Get("power_on");
         public readonly static NamespaceID punch = Get("punch");
         public readonly static NamespaceID rain = Get("rain");
-<<<<<<< HEAD
-        public readonly static NamespaceID redLightning = Get("red_lightning");
-=======
         public readonly static NamespaceID readySetBuild = Get("ready_set_build");
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
+        public readonly static NamespaceID redLightning = Get("red_lightning");
         public readonly static NamespaceID reflection = Get("reflection");
         public readonly static NamespaceID refuel = Get("refuel");
         public readonly static NamespaceID reviveCast = Get("revive_cast");

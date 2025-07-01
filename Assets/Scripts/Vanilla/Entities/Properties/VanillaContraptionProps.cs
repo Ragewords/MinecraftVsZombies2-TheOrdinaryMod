@@ -132,14 +132,8 @@ namespace MVZ2.Vanilla.Contraptions
 
         #region 地板器械
         public static readonly PropertyMeta<bool> IS_FLOOR = Get<bool>("isFloor");
-<<<<<<< HEAD
-        public static readonly PropertyMeta<NamespaceID> FRAGMENT_ID = Get<NamespaceID>("fragmentId");
-        public static readonly PropertyMeta<bool> TRIGGER_ACTIVE = Get<bool>("triggerActive");
-        public static readonly PropertyMeta<bool> INSTANT_TRIGGER = Get<bool>("instantTrigger");
-        public static readonly PropertyMeta<bool> DISPENSER = Get<bool>("isDispenser");
-        public static readonly PropertyMeta<bool> CONTACT_DAMAGE = Get<bool>("contactDamage");
-=======
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
+
+
         public static bool IsFloor(this Entity contraption)
         {
             return contraption.GetProperty<bool>(IS_FLOOR);
@@ -148,7 +142,11 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return definition.GetProperty<bool>(IS_FLOOR);
         }
-<<<<<<< HEAD
+        #endregion
+
+        #region 攻击模式
+        public static readonly PropertyMeta<bool> DISPENSER = Get<bool>("isDispenser");
+        public static readonly PropertyMeta<bool> CONTACT_DAMAGE = Get<bool>("contactDamage");
         public static bool IsDispenser(this Entity contraption)
         {
             return contraption.GetProperty<bool>(DISPENSER);
@@ -157,7 +155,6 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return contraption.GetProperty<bool>(CONTACT_DAMAGE);
         }
-=======
         #endregion
 
         #region 碎片ID
@@ -167,7 +164,6 @@ namespace MVZ2.Vanilla.Contraptions
 
         #region 可触发
         public static readonly PropertyMeta<bool> TRIGGER_ACTIVE = Get<bool>("triggerActive");
->>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
         public static void SetTriggerActive(this Entity entity, bool value)
         {
             entity.SetProperty(TRIGGER_ACTIVE, value);
