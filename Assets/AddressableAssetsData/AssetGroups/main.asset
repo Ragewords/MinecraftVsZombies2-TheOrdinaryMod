@@ -387,6 +387,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0baadbd18e9ae0f479fe464c035e2947
     m_Address: mvz2:random/cloth/cloth3
     m_ReadOnly: 0
@@ -5668,6 +5669,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b5c2b9c35854d848a4877e248c0d640
+    m_Address: mvz2:cart/unzan_fist
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b6fcf46139505d41b1ef83b75aedd0d
     m_Address: mvz2:entity/enemy/parasite_terror

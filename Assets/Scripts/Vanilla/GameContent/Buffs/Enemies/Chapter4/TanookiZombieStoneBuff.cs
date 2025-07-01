@@ -1,4 +1,5 @@
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
@@ -20,6 +21,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
+            AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback, filter: VanillaProjectileID.knife);
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
         }
@@ -80,6 +82,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 buff.Remove();
             }
+        }
+        private void PreProjectileHitCallback(VanillaLevelCallbacks.PreProjectileHitParams param, CallbackResult result)
+        {
+            var hitInput = param.hit;
+            var other = hitInput.Other;
+            if (!other.HasBuff<TanookiZombieStoneBuff>())
+                return;
+            var knife = hitInput.Projectile;
+            knife.Remove();
         }
         public const float MAX_DAMAGE = 900;
         public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
