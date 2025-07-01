@@ -128,8 +128,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 62
-        height: 40
+        width: 37
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,8 @@ TextureImporter:
       name: splitenser_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 9
+        x: 38
+        y: 13
         width: 15
         height: 31
       alignment: 0
@@ -166,36 +166,15 @@ TextureImporter:
       weights: []
 <<<<<<< HEAD
     - serializedVersion: 2
-      name: splitenser_2
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 26
-        width: 4
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dc059e8df2155d479a95be71a5c38cd
-      internalID: 1631164139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: splitenser_3
       rect:
         serializedVersion: 2
-        x: 59
-        y: 0
-        width: 39
-        height: 37
+        x: 54
+        y: 4
+        width: 37
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

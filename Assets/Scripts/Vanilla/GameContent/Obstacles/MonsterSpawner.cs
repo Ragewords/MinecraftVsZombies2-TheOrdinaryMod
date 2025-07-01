@@ -3,6 +3,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -10,6 +11,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Obstacles
@@ -31,6 +33,7 @@ namespace MVZ2.GameContent.Obstacles
                 mainCollider.SetEnabled(false);
             }
             SetEntityToSpawn(entity, VanillaEnemyID.zombie);
+            SetTimer(entity, new FrameTimer(entity.RNG.Next(1200, 1800)));
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
@@ -50,6 +53,15 @@ namespace MVZ2.GameContent.Obstacles
             else
             {
                 spinSpeed = Mathf.Lerp(1, 5, (level.CurrentWave / (float)level.GetWavesPerFlag()) % 1);
+                var timer = GetTimer(entity);
+                timer.Run();
+                if (timer.Expired)
+                {
+                    if (entity.Level.IsAllEnemiesCleared())
+                        return;
+                    Trigger(entity);
+                    timer.ResetTime(entity.RNG.Next(600, 1200));
+                }
             }
             entity.SetAnimationFloat("SpinSpeed", spinSpeed);
         }
@@ -107,6 +119,9 @@ namespace MVZ2.GameContent.Obstacles
             entity.SetProperty(PROP_ENTITY_TO_SPAWN, id);
             entity.SetModelProperty("EntityToSpawn", id);
         }
+        public static FrameTimer GetTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
+        public static void SetTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
+        public static readonly VanillaLevelPropertyMeta<FrameTimer> PROP_TIMER = new VanillaLevelPropertyMeta<FrameTimer>("SpawnerTimer");
         public static readonly VanillaEntityPropertyMeta<NamespaceID> PROP_ENTITY_TO_SPAWN = new VanillaEntityPropertyMeta<NamespaceID>("EntityToSpawn");
         public static readonly Vector2Int[] spawnGrids = new Vector2Int[]
         {

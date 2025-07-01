@@ -1,5 +1,6 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -19,6 +20,7 @@ namespace MVZ2.GameContent.Projectiles
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
             entity.SpawnWithParams(VanillaEffectID.vomitSplash, entity.GetCenter());
+            entity.PlaySound(VanillaSoundID.splat);
         }
     }
 }

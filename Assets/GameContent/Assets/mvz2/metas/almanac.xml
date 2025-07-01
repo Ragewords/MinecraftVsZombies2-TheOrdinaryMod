@@ -1378,11 +1378,11 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>，<color=red>0.3</color>（石像）]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，可承受900伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>别搞错了，这不是妖怪树叶仰慕的那个大妖怪，只是个乔装打扮后的僵尸。</p>
+                <p>他喜欢打扮成动物，那套狸猫套装是他在一个到处是浮空砖块的地方找到的。</p>
             </flavor>
         </entry>
     </enemies>
@@ -1887,7 +1887,7 @@
                     <tag id="mvz2:grid_layer_carrier"/>
                 </tags>
                 <header>
-                    <p>刷怪笼会在一大波僵尸来临时召唤一只其内部的敌人。</p>
+                    <p>刷怪笼每过一段时间或在一大波僵尸来临时召唤一只其内部的敌人。</p>
                 </header>
                 <flavor>
                     <p>我的水桶、告示牌和灵魂沙呢？</p>
