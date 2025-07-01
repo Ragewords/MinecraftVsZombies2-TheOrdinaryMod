@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -50,6 +51,15 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             entity.SetEvoked(true);
             Ignite(entity);
+        }
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        {
+            base.PreTakeDamage(input, result);
+            if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
+            {
+                Ignite(input.Entity);
+                result.SetFinalValue(false);
+            }
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
