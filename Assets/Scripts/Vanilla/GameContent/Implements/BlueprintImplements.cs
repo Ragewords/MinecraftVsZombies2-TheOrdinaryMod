@@ -1,8 +1,6 @@
 ﻿using MVZ2.GameContent.Buffs.Level;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
-﻿using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic.Modding;

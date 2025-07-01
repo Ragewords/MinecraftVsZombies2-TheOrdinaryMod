@@ -23,9 +23,8 @@ namespace MVZ2.GameContent.Areas
         {
             base.Update(level);
             var skyOffsetSpeed = GetSkyOffsetSpeed(level);
-            var waveState = level.WaveState;
             var targetSpeed = SKY_OFFSET_SPEED_NORMAL;
-            if (waveState == VanillaLevelStates.STATE_HUGE_WAVE_APPROACHING || (waveState == VanillaLevelStates.STATE_STARTED && level.IsHugeWave(level.CurrentWave)))
+            if (level.IsDuringHugeWave())
             {
                 targetSpeed = SKY_OFFSET_SPEED_FAST;
             }

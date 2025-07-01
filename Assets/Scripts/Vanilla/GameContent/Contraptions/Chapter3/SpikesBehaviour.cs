@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Contraptions
                                 if (target.Entity.Type == EntityTypes.ENEMY)
                                 {
                                     entity.PlaySound(VanillaSoundID.bonk);
-                                    target.Entity.Velocity += new Vector3(entity.GetFacingDirection() * 10, 5, 0);
+                                    target.Entity.Velocity += new Vector3(entity.GetFacingX() * 10, 5, 0);
                                 }
                             }
                         }

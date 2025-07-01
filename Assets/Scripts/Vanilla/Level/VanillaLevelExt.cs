@@ -724,6 +724,54 @@ namespace MVZ2.Vanilla.Level
         }
         #endregion
 
+        #region 空路
+        public static IEnumerable<int> GetAirLanes(this LevelEngine level)
+        {
+            return level.GetAllLanes().Where(l => level.IsAirLane(l));
+        }
+        public static bool IsAirLane(this LevelEngine level, int lane)
+        {
+            for (int column = 0; column < level.GetMaxColumnCount(); column++)
+            {
+                var grid = level.GetGrid(column, lane);
+                if (grid == null)
+                    continue;
+                if (grid.IsAir())
+                    return true;
+            }
+            return false;
+        }
+        public static bool IsAirGrid(this LevelEngine level, int column, int lane)
+        {
+            var grid = level.GetGrid(column, lane);
+            if (grid == null)
+                return false;
+            return grid.IsAir();
+        }
+        public static bool IsAirAt(this LevelEngine level, float x, float z)
+        {
+            var column = level.GetColumn(x);
+            var lane = level.GetLane(z);
+            return level.IsAirGrid(column, lane);
+        }
+        #endregion
+
+        public static bool IsDuringHugeWave(this LevelEngine level)
+        {
+            var waveState = level.WaveState;
+            if (waveState == VanillaLevelStates.STATE_HUGE_WAVE_APPROACHING)
+                return true;
+            if (level.IsHugeWave(level.CurrentWave))
+            {
+                if (waveState == VanillaLevelStates.STATE_STARTED)
+                    return true;
+                if (waveState == VanillaLevelStates.STATE_FINAL_WAVE)
+                    return true;
+            }
+            return false;
+        }
+
+
         #region 连接的格子
         public static void GetConnectedLaneGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
         {
@@ -794,38 +842,6 @@ namespace MVZ2.Vanilla.Level
                     }
                 }
             }
-        }
-        #endregion
-
-        #region 空路
-        public static IEnumerable<int> GetAirLanes(this LevelEngine level)
-        {
-            return level.GetAllLanes().Where(l => level.IsAirLane(l));
-        }
-        public static bool IsAirLane(this LevelEngine level, int lane)
-        {
-            for (int column = 0; column < level.GetMaxColumnCount(); column++)
-            {
-                var grid = level.GetGrid(column, lane);
-                if (grid == null)
-                    continue;
-                if (grid.IsAir())
-                    return true;
-            }
-            return false;
-        }
-        public static bool IsAirGrid(this LevelEngine level, int column, int lane)
-        {
-            var grid = level.GetGrid(column, lane);
-            if (grid == null)
-                return false;
-            return grid.IsAir();
-        }
-        public static bool IsAirAt(this LevelEngine level, float x, float z)
-        {
-            var column = level.GetColumn(x);
-            var lane = level.GetLane(z);
-            return level.IsAirGrid(column, lane);
         }
         #endregion
         public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
