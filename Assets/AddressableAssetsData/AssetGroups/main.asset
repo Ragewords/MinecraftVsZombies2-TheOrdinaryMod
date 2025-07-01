@@ -381,12 +381,21 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+<<<<<<< HEAD
   - m_GUID: 0b96758788dd52c42bf9e6331f37143a
     m_Address: mvz2:entity/enemy/dullahan_body
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Spritesheet
+=======
+  - m_GUID: 0baadbd18e9ae0f479fe464c035e2947
+    m_Address: mvz2:random/cloth/cloth3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0bad8dd7ca96eb047840a09bdbdcc162
     m_Address: mvz2:mainmenu/submenu_background
@@ -2081,6 +2090,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3322237d80cabdd4cb9ca5b49b955e2e
+    m_Address: mvz2:ship_level_sub
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 333296bf7a142dd43a413222f3881bcb
     m_Address: mvz2:mobile_blueprint/parasite_terror
     m_ReadOnly: 0
@@ -2257,6 +2273,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 364cbf731035032499adb5896b6b058e
     m_Address: mvz2:grind2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 366ec22d96589624e80dcffad730f39a
+    m_Address: mvz2:random/cloth/cloth2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -2801,6 +2824,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 414b6a75aa993d841b9de8b3ba9c9e27
+    m_Address: mvz2:random/cloth/cloth4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41531d8ef0693fa41a5341fcbd896474
     m_Address: mvz2:archive/prologue_note
     m_ReadOnly: 0
@@ -2863,6 +2893,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 433c6b1a800db444f899d76baf7237fa
+    m_Address: mvz2:ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AreaModel
+    - Main
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 434824b4c6871cb40b7121122b27dfd9
     m_Address: mvz2:charged_bolt2
@@ -4019,6 +4056,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f4cc3fb20d2e444dadca8933f948c21
+    m_Address: mvz2:random/cloth/cloth1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5fd5dd6553755524490a5b49f96a2b43
     m_Address: mvz2:entity/armor/reflective_barrier
     m_ReadOnly: 0
@@ -4277,6 +4321,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 662e52d9c6cc3e446ae341b425b857bf
+    m_Address: mvz2:level/ship/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6661be6b03238a2409e5b705222184e0
     m_Address: mvz2:misc/graveyard
@@ -5893,6 +5944,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9063aaf9537da714b930248c1c3085ee
+    m_Address: mvz2:ship_level
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 906ce113fd4d66149af2e0d8c40a4299
     m_Address: mvz2:anvil
@@ -7944,6 +8002,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1584df56dfc82b429b7dc438127d3c2
+    m_Address: mvz2:level/ship/clouds
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c15c0ad358a95a2418ff64fa1c67a224
     m_Address: mvz2:soul_sand_break5

@@ -12,6 +12,7 @@ Shader "MinecraftVSZombies2/Legacy/Lit"
 		_LIT("Lit", Int) = 1
 		[HideInInspector] _LightDisabled("Light Disabled", Int) = 0
 		[Toggle] _BackgroundLit("Lit by Background", Int) = 0
+		[Toggle] _SpotLit("Lit by Spot", Int) = 1
         _LightMapSpot("Light Map Spot", 2D) = "black" {}
         _LightMapST ("Light Map ST", Vector) = (14, 10.2, 0, 0)
     }
@@ -51,6 +52,7 @@ Shader "MinecraftVSZombies2/Legacy/Lit"
             };
 
             sampler2D _MainTex;
+            float4 _MainTex_ST;
             half4 _Color;
 
             v2f vert (appdata v)
@@ -60,7 +62,7 @@ Shader "MinecraftVSZombies2/Legacy/Lit"
                 #if LIT
                 o.lightUV = GetLightUV(v.vertex);
                 #endif
-                o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.color = v.color;
                 return o;
             }

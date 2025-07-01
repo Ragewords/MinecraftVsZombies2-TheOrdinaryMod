@@ -167,7 +167,7 @@
         <talks>
             <talk type="start" value="mvz2:seventh_slot">
                 <repeat>
-                    <condition requiredNot="mvz2:blueprint_slot.1;mvz2:level.dream_5"/>
+                    <condition requiredNot="mvz2:blueprint_slot.1 mvz2:level.dream_5"/>
                 </repeat>
             </talk>
             <talk type="end" value="mvz2:halloween_8_over"/>
@@ -1129,7 +1129,11 @@
             <bool name="autoCollectMoney" value="true"/>
         </properties>
     </stage>
+<<<<<<< HEAD
     <stage id="puzzle_absolute_defense" name="绝对防御" needBlueprints="false" type="puzzle" startEnergy="200" music="mvz2:puzzle" unlock="mvz2:level.puzzle_can_you_pass_it;mvz2:level.mausoleum_11" >
+=======
+    <stage id="puzzle_absolute_defense" name="绝对防御" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_can_you_pass_it mvz2:level.mausoleum_11" >
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <camera position="lawn" transition="instant"/>
         <properties>

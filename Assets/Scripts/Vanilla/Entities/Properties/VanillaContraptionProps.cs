@@ -13,6 +13,7 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return new VanillaEntityPropertyMeta<T>(name, defaultValue, obsoleteNames);
         }
+
         #region 夜用
         public static readonly PropertyMeta<bool> NOCTURNAL = Get<bool>("nocturnal");
         public static bool IsNocturnal(this EntityDefinition definition)
@@ -85,6 +86,19 @@ namespace MVZ2.Vanilla.Contraptions
         }
         #endregion
 
+        #region 激发
+        public static readonly PropertyMeta<bool> PROP_EVOKED = Get<bool>("evoked");
+        public static bool IsEvoked(this Entity contraption)
+        {
+            return contraption.GetProperty<bool>(PROP_EVOKED);
+        }
+        public static void SetEvoked(this Entity contraption, bool value)
+        {
+            contraption.SetProperty(PROP_EVOKED, value);
+        }
+        #endregion
+
+        #region 阻挡跳跃
         public static readonly PropertyMeta<bool> BLOCKS_JUMP = Get<bool>("blocksJump");
         public static bool BlocksJump(this Entity contraption)
         {
@@ -94,12 +108,17 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return definition.GetProperty<bool>(BLOCKS_JUMP);
         }
+        #endregion
 
+        #region 无法挖掘
         public static readonly PropertyMeta<bool> CANNOT_DIG = Get<bool>("cannotDig");
         public static bool CannotDig(this Entity contraption)
         {
             return contraption.GetProperty<bool>(CANNOT_DIG);
         }
+        #endregion
+
+        #region 升级蓝图
         public static readonly PropertyMeta<bool> UPGRADE_BLUEPRINT = Get<bool>("upgradeBlueprint");
         public static bool IsUpgradeBlueprint(this EntityDefinition definition)
         {
@@ -109,13 +128,18 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return contraption.GetProperty<bool>(UPGRADE_BLUEPRINT);
         }
+        #endregion
 
+        #region 地板器械
         public static readonly PropertyMeta<bool> IS_FLOOR = Get<bool>("isFloor");
+<<<<<<< HEAD
         public static readonly PropertyMeta<NamespaceID> FRAGMENT_ID = Get<NamespaceID>("fragmentId");
         public static readonly PropertyMeta<bool> TRIGGER_ACTIVE = Get<bool>("triggerActive");
         public static readonly PropertyMeta<bool> INSTANT_TRIGGER = Get<bool>("instantTrigger");
         public static readonly PropertyMeta<bool> DISPENSER = Get<bool>("isDispenser");
         public static readonly PropertyMeta<bool> CONTACT_DAMAGE = Get<bool>("contactDamage");
+=======
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
         public static bool IsFloor(this Entity contraption)
         {
             return contraption.GetProperty<bool>(IS_FLOOR);
@@ -124,6 +148,7 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return definition.GetProperty<bool>(IS_FLOOR);
         }
+<<<<<<< HEAD
         public static bool IsDispenser(this Entity contraption)
         {
             return contraption.GetProperty<bool>(DISPENSER);
@@ -132,6 +157,17 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return contraption.GetProperty<bool>(CONTACT_DAMAGE);
         }
+=======
+        #endregion
+
+        #region 碎片ID
+        public static readonly PropertyMeta<NamespaceID> FRAGMENT_ID = Get<NamespaceID>("fragmentId");
+        public static NamespaceID GetFragmentID(this Entity entity) => entity.GetProperty<NamespaceID>(FRAGMENT_ID);
+        #endregion
+
+        #region 可触发
+        public static readonly PropertyMeta<bool> TRIGGER_ACTIVE = Get<bool>("triggerActive");
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
         public static void SetTriggerActive(this Entity entity, bool value)
         {
             entity.SetProperty(TRIGGER_ACTIVE, value);
@@ -144,12 +180,17 @@ namespace MVZ2.Vanilla.Contraptions
         {
             return entity.GetProperty<bool>(TRIGGER_ACTIVE);
         }
+        #endregion
+
+        #region 立即触发
+        public static readonly PropertyMeta<bool> INSTANT_TRIGGER = Get<bool>("instantTrigger");
         public static bool CanInstantTrigger(this EntityDefinition definition)
         {
             return definition.GetProperty<bool>(INSTANT_TRIGGER);
         }
+        #endregion
 
-
+        #region 立即激发
         public static readonly PropertyMeta<bool> INSTANT_EVOKE = Get<bool>("instantEvoke");
         public static bool CanInstantEvoke(this EntityDefinition definition)
         {
@@ -165,7 +206,7 @@ namespace MVZ2.Vanilla.Contraptions
                 return false;
             return true;
         }
-        public static NamespaceID GetFragmentID(this Entity entity) => entity.GetProperty<NamespaceID>(VanillaContraptionProps.FRAGMENT_ID);
+        #endregion
     }
 }
 

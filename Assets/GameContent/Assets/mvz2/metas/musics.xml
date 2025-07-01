@@ -358,6 +358,7 @@
             <p>而最后，这压迫感会将你推向深渊。</p>
         </description>
     </music>
+<<<<<<< HEAD
 	<music id="mausoleum_level_extra" name="后院的妖怪参拜道" unlock="mvz2:level.mausoleum_EX1">
         <track main="mvz2:mausoleum_level_extra"/>
 		<source>东方神灵庙</source>
@@ -367,4 +368,17 @@
 			<p>听着听着绝对会突然冒出什么复古妖怪的吧。</p>
 		</description>
 	</music>
+=======
+    <music id="ship_level" name="晴空中的UFO恋曲" unlock="mvz2:level.ship_1">
+        <track main="mvz2:ship_level" sub="mvz2:ship_level_sub"/>
+        <source>东方星莲船</source>
+        <origin>夜空中的UFO恋曲</origin>
+        <author>Dr.糕萌酸钾-Studio</author>
+        <description>
+            <p>星莲船关卡的音乐。</p>
+            <p>原曲是《东方星莲船》Extra关的音乐《夜空中的UFO恋曲》。</p>
+            <p>=====乐评施工中=====</p>
+        </description>
+    </music>
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
 </musics>

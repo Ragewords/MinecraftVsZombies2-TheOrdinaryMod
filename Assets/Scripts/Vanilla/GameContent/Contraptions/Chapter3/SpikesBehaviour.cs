@@ -2,7 +2,11 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+<<<<<<< HEAD
 using MVZ2.Vanilla.Audios;
+=======
+using MVZ2.Vanilla.Contraptions;
+>>>>>>> a918ceb91ea1ed32ca377c6ebad7b630ab2b805d
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;

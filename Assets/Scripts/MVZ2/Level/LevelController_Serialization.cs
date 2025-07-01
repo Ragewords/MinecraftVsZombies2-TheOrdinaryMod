@@ -5,6 +5,7 @@ using MVZ2.Entities;
 using MVZ2.Games;
 using MVZ2.Level.Components;
 using MVZ2.Level.UI;
+using MVZ2.Models;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -57,12 +58,12 @@ namespace MVZ2.Level
                 uiPreset = GetUIPreset().ToSerializable(),
             };
         }
-        public void LoadGame(SerializableLevelController seri, Game game, NamespaceID areaID, NamespaceID stageID)
+        public bool LoadGame(SerializableLevelController seri, Game game, NamespaceID areaID, NamespaceID stageID)
         {
             if (!LevelManager.GetLevelStateIdentifierList().Compare(seri.identifiers))
             {
                 ShowLevelErrorLoadingDialog();
-                return;
+                return false;
             }
 
             try
@@ -127,7 +128,7 @@ namespace MVZ2.Level
             {
                 ShowLevelErrorLoadingDialog(e);
                 Debug.LogException(e);
-                return;
+                return false;
             }
 
             // 设置UI可见状态
@@ -171,6 +172,8 @@ namespace MVZ2.Level
             levelLoaded = true;
 
             level.AreaDefinition.PostLoad(level);
+
+            return true;
         }
 
         #endregion
@@ -201,6 +204,7 @@ namespace MVZ2.Level
         {
             level.AddComponent(new AdviceComponent(level, this));
             level.AddComponent(new HeldItemComponent(level, this));
+            level.AddComponent(new AreaComponent(level, this));
             level.AddComponent(new UIComponent(level, this));
             level.AddComponent(new LogicComponent(level, this));
             level.AddComponent(new SoundComponent(level, this));
@@ -248,7 +252,7 @@ namespace MVZ2.Level
         public float twinkleTime;
 
         public SerializableEntityController[] entities;
-        public SerializableAreaModelData areaModel;
+        public SerializableModelData areaModel;
 
         public SerializableLevel level;
 

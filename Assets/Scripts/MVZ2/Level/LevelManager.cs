@@ -65,8 +65,11 @@ namespace MVZ2.Level
             {
                 controller.SetActive(true);
                 var seri = LoadLevelStateData(stageID);
-                controller.LoadGame(seri, Main.Game, areaID, stageID);
-                UpdateCurrentEndlessFlags(stageID, controller.GetCurrentFlag());
+                bool success = controller.LoadGame(seri, Main.Game, areaID, stageID);
+                if (success)
+                {
+                    UpdateCurrentEndlessFlags(stageID, controller.GetCurrentFlag());
+                }
             }
             catch (Exception e)
             {
@@ -200,7 +203,7 @@ namespace MVZ2.Level
                 Main.SaveManager.SetCurrentEndlessFlag(stageID, flags);
             }
         }
-        public const int CURRENT_DATA_VERSION = 2;
+        public const int CURRENT_DATA_VERSION = 3;
         public float LawnToTransScale => 1 / transToLawnScale;
         public float TransToLawnScale => transToLawnScale;
         public MainManager Main => main;
