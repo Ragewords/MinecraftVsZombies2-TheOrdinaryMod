@@ -1458,7 +1458,11 @@
             </properties>
         </enemy>
         <enemy id="tanooki_zombie" name="狸猫僵尸" deathMessage="让我先喘口气吧" unlock="mvz2:level.mausoleum_11">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:fragmented"/>
+            </behaviours>
             <properties>
+                <bool name="mvz2:fragments/noDamageFragments" value="true" />
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
                 <int name="mvz2:waterInteraction" value="2"/>

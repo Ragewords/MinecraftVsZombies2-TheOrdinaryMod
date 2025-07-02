@@ -1,4 +1,5 @@
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
@@ -22,6 +23,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback, filter: VanillaProjectileID.knife);
+            AddModifier(new BooleanModifier(FragmentExt.PROP_NO_DAMAGE_FRAGMENTS, false));
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
         }
@@ -64,11 +66,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             var damage = param.input;
             var entity = damage.Entity;
+            var amount = damage.Amount;
             foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
-                AddTakenDamage(buff, damage.Amount);
+                amount *= damage.HasEffect(VanillaDamageEffects.PUNCH) ? 20 : 1;
+                AddTakenDamage(buff, amount);
                 entity.DamageBlink();
-                entity.PlaySound(VanillaSoundID.stone);
+                entity.AddFragmentTickDamage(amount);
+                if (!damage.HasEffect(VanillaDamageEffects.MUTE))
+                    entity.PlaySound(VanillaSoundID.stone);
                 result.SetFinalValue(false);
             }
         }
@@ -80,6 +86,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
+                entity.GetOrCreateFragment();
                 buff.Remove();
             }
         }
