@@ -91,6 +91,7 @@ namespace MVZ2.GameContent.Contraptions
                     param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * Mathf.CeilToInt(15 / (j + 1));
                     var bullet = entity.ShootProjectile(param);
                     bullet.SetPiercing(false);
+                    bullet.SetHSVToColor(new Color(1, 0.6f, 1, 1));
                 }
             }
 
