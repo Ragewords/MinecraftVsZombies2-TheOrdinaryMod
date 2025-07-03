@@ -57,10 +57,12 @@ namespace MVZ2.GameContent.Obstacles
                 timer.Run();
                 if (timer.Expired)
                 {
+                    timer.ResetTime(entity.RNG.Next(600, 1200));
                     if (entity.Level.IsAllEnemiesCleared())
                         return;
+                    if (entity.IsIlluminated())
+                        return;
                     Trigger(entity);
-                    timer.ResetTime(entity.RNG.Next(600, 1200));
                 }
             }
             entity.SetAnimationFloat("SpinSpeed", spinSpeed);
