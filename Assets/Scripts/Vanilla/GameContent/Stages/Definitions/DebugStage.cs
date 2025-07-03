@@ -46,14 +46,14 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.splitenser,
                 VanillaContraptionID.punchton,
-                VanillaContraptionID.gravityPad,
+                VanillaContraptionID.woodenDropper,
                 VanillaContraptionID.thunderDrum,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
-                VanillaContraptionID.teslaCoil,
-                VanillaEnemyID.tanookiZombie,
+                VanillaContraptionID.goldenDropper,
+                VanillaEnemyID.reflectiveBarrierZombie,
                 VanillaEnemyID.gargoyle,
-                VanillaEnemyID.mummy,
+                VanillaEnemyID.mutantZombie,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

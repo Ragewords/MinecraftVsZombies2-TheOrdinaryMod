@@ -2109,6 +2109,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3361958d591e63149bd8f5450f9d8487
+    m_Address: mvz2:projectile/emerald_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3384110aaaae15847b5653001ee976b2
     m_Address: mvz2:spell_card
     m_ReadOnly: 0
@@ -2527,6 +2534,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b02697d2e485a845ad9eb38c9c02f61
+    m_Address: mvz2:projectile/sapphire_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b8ba75cdb635b54db18d67e1674ea4d
     m_Address: mvz2:entity/enemy/napstablook
@@ -4796,6 +4810,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 757546e6035a35745b71e86fbe503387
+    m_Address: mvz2:projectile/ruby_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75aeaeb2218da954b8273a0ea8a1b93f
     m_Address: mvz2:enemy/halloween/necromancer
     m_ReadOnly: 0
@@ -5726,6 +5747,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c434f08261e5314fa3a343039ab48ab
+    m_Address: mvz2:entity/projectiles/ruby_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c5cc48f60d7d3e4f81a1b121d8fdde2
     m_Address: mvz2:enemy/halloween/skeleton_base
     m_ReadOnly: 0
@@ -5872,6 +5900,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f2895aa1fd1fee4096c0efd25f8d7d6
+    m_Address: mvz2:entity/projectiles/emerald_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f4a25505be15d244b85ae394574d811
     m_Address: mvz2:entity/armor/skeleton_warrior_helmet
@@ -6099,6 +6134,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92e692ae88b62a541bef812a89e2bac3
     m_Address: mvz2:ui/refresh
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92edfd143d2cc9143acc62133118075c
+    m_Address: mvz2:entity/projectiles/sapphire_ball
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6495,6 +6537,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d0c0895ff7e6b84d93c8f9bd1c03466
+    m_Address: mvz2:entity/projectiles/diamond_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d154f9c691d05c42917f982f9de86ca
     m_Address: mvz2:entity/mutant_zombie/mutant_cry2

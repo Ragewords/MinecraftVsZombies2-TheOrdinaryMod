@@ -820,7 +820,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </contraption>
-        <dispenser id="golden_dropper" name="金制投掷器" tooltip="（需要木制投掷器）\n投出反弹并产生绿宝石的金球"
+        <dispenser id="golden_dropper" name="珠宝投掷器" tooltip="（需要木制投掷器）\n投出反弹的金球及产生宝石的宝石球"
             unlock="mvz2:contraption.golden_dropper">
             <properties>
                 <id name="mvz2:projectileId" value="mvz2:golden_ball" />
@@ -2298,6 +2298,42 @@
                 <float name="mvz2:gravity" value="1" />
                 <vector3 name="mvz2:size" x="24" y="24" z="24" />
                 <idArray name="mvz2:damageEffects" value="mvz2:gold" />
+            </properties>
+        </projectile>
+        <projectile id="emerald_ball">
+            <properties>
+                <bool name="mvz2:killOnGround" value="false" />
+                <bool name="mvz2:rolls" value="true" />
+                <bool name="mvz2:piercing" value="true" />
+                <float name="mvz2:gravity" value="1" />
+                <vector3 name="mvz2:size" x="24" y="24" z="24" />
+            </properties>
+        </projectile>
+        <projectile id="ruby_ball">
+            <properties>
+                <bool name="mvz2:killOnGround" value="false" />
+                <bool name="mvz2:rolls" value="true" />
+                <bool name="mvz2:piercing" value="true" />
+                <float name="mvz2:gravity" value="1" />
+                <vector3 name="mvz2:size" x="24" y="24" z="24" />
+            </properties>
+        </projectile>
+        <projectile id="sapphire_ball">
+            <properties>
+                <bool name="mvz2:killOnGround" value="false" />
+                <bool name="mvz2:rolls" value="true" />
+                <bool name="mvz2:piercing" value="true" />
+                <float name="mvz2:gravity" value="1" />
+                <vector3 name="mvz2:size" x="24" y="24" z="24" />
+            </properties>
+        </projectile>
+        <projectile id="diamond_ball">
+            <properties>
+                <bool name="mvz2:killOnGround" value="false" />
+                <bool name="mvz2:rolls" value="true" />
+                <bool name="mvz2:piercing" value="true" />
+                <float name="mvz2:gravity" value="1" />
+                <vector3 name="mvz2:size" x="24" y="24" z="24" />
             </properties>
         </projectile>
         <projectile id="compelling_orb">

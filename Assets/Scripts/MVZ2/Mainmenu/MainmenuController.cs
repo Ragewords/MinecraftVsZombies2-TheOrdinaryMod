@@ -477,7 +477,7 @@ namespace MVZ2.Mainmenu
             var task = main.LevelManager.GotoLevelSceneAsync();
             while (!task.IsCompleted)
                 yield return null;
-            main.LevelManager.InitLevel(VanillaAreaID.ship, VanillaStageID.halloween1);
+            main.LevelManager.InitLevel(VanillaAreaID.ship, VanillaStageID.debug);
             Hide();
         }
 

@@ -24,10 +24,6 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var projectile = hitResult.Projectile;
-            if (projectile.RNG.Next(100) < 25)
-            {
-                projectile.Produce(VanillaPickupID.emerald);
-            }
 
             var dmg = projectile.GetDamage();
             dmg *= 0.5f;
