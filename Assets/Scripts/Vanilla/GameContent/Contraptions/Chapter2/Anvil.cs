@@ -136,7 +136,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static bool CanStun(Entity self, Entity target)
         {
-            return target.GetMainCollider().CheckSphere(self.GetCenter(), 120) && self.IsHostile(target) && target.IsOnGround;
+            return target.GetMainCollider().CheckSphere(self.GetCenter(), 40) && self.IsHostile(target) && target.IsOnGround;
         }
         private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
         private Detector smashDetector;
