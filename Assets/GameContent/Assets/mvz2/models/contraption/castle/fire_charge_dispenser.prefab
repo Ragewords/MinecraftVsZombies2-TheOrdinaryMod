@@ -796,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358871617538941006, guid: b945c9918327bcc4f9bd3fabcb076700, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 6702236362217210405, guid: b945c9918327bcc4f9bd3fabcb076700, type: 3}
       propertyPath: lights.Array.size
