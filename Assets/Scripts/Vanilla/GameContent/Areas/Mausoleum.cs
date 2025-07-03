@@ -97,10 +97,7 @@ namespace MVZ2.GameContent.Areas
         {
             VanillaEnemyID.zombie,
             VanillaEnemyID.leatherCappedZombie,
-            VanillaEnemyID.ironHelmettedZombie,
-            VanillaEnemyID.skeleton,
-            VanillaEnemyID.spider,
-            VanillaEnemyID.caveSpider
+            VanillaEnemyID.ironHelmettedZombie
         };
         public const int SPAWNER_MIN_COLUMN = 5;
     }
