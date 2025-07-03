@@ -10303,6 +10303,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5fef6cacecdf1244837b0b2c1d53290
+    m_Address: mvz2:projectile/diamond_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f60acf63ccf6f504fadfd959dc2d20c6
     m_Address: mvz2:random/netherrack/break2
     m_ReadOnly: 0
