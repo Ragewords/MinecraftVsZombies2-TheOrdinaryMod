@@ -2,6 +2,7 @@
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -20,6 +21,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            SetRNG(entity, new RandomGenerator(entity.RNG.Next()));
             InitShootTimer(entity);
         }
         protected override void UpdateAI(Entity entity)
@@ -36,7 +38,7 @@ namespace MVZ2.GameContent.Contraptions
             if (entity.RNG.Next(4) == 0)
             {
                 var param = entity.GetShootParams();
-                param.projectileID = GetRandomProjectileID(entity.RNG);
+                param.projectileID = GetRandomProjectileID(GetRNG(entity));
                 var yspeed = param.projectileID == VanillaProjectileID.bounceBoulder ? 10f : 0f;
                 param.damage = param.projectileID == VanillaProjectileID.bounceBoulder ? entity.GetDamage() * 20 : entity.GetDamage() * 4;
                 param.velocity.y = yspeed;
@@ -87,5 +89,9 @@ namespace MVZ2.GameContent.Contraptions
             20,
             5
         };
+        public static RandomGenerator GetRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
+        public static void SetRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_RNG, value);
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");
+        public static readonly NamespaceID ID = VanillaContraptionID.stoneDropper;
     }
 }
