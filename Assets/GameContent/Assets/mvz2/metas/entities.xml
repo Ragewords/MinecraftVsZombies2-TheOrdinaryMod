@@ -911,7 +911,6 @@
                 <vector3 name="mvz2:size" x="0" y="0" z="0"/>
                 <vector3 name="mvz2:shotOffset" x="0" y="32" z="0"/>
                 <id name="mvz2:shell" value="mvz2:wood"/>
-                <id name="mvz2:placement" value="mvz2:suspension"/>
                 <id name="mvz2:fragmentId" value="mvz2:wooden_dropper"/>
                 <id name="mvz2:placeSound" value="mvz2:wood"/>
                 <id name="mvz2:deathSound" value="mvz2:wood"/>
