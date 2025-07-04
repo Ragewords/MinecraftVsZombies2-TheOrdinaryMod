@@ -113,7 +113,7 @@ namespace MVZ2.GameContent.Contraptions
 
             if (evokeTimer.PassedInterval(24))
             {
-                Shoot(entity, VanillaProjectileID.flyingTNT, entity.GetDamage() * 5, velocity);
+                Shoot(entity, VanillaProjectileID.miniTNT, entity.GetDamage() * 5, velocity);
             }
 
             if (evokeTimer.Expired)

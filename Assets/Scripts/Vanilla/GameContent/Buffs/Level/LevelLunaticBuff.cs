@@ -14,6 +14,8 @@ namespace MVZ2.GameContent.Buffs.Level
     {
         public LevelLunaticBuff(string nsp, string name) : base(nsp, name)
         {
+            AddModifier(new FloatModifier(VanillaDifficultyProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
+
             AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
             AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.3f));
             AddModifier(new IntModifier(VanillaDifficultyProps.NAPSTABLOOK_PARALYSIS_TIME, NumberOperator.Multiply, 2));

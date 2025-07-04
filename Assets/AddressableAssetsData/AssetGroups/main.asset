@@ -493,7 +493,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-
   - m_GUID: 0d6c1fd6012e660478636f45f155c05b
     m_Address: mvz2:entity/boss/seija_jizo
     m_ReadOnly: 0
@@ -3720,7 +3719,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55e108afa20824c4bb9a1fab72673c9f
-    m_Address: y/enemy/tanooki_zombie_stone
+    m_Address: mvz2:entity/enemy/tanooki_zombie_stone
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6393,7 +6392,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9739243e65a79be45b3cbef707b83c65
-    m_Address: y/enemy/tanooki_zombie
+    m_Address: mvz2:entity/enemy/tanooki_zombie
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9543,7 +9542,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1420ae47d7f82d4aa4857af5aaa2cf7
-    m_Address: mvz2:boss/frankenstein_head_enemy
+    m_Address: mvz2:boss/frankenstein_s_head
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10873,6 +10872,4 @@ MonoBehaviour:
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a46faf0c3a4988d45b208f5a8e98bb12, type: 2}
   m_SchemaSet:
-    m_Schemas:
-    - {fileID: 11400000, guid: 7c106615bd1cb164b9db4e368e0d547e, type: 2}
-    - {fileID: 11400000, guid: 0d935a3b06163924b8545c7e659eae0a, type: 2}
+    m_Schemas: []
