@@ -3,7 +3,9 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
@@ -28,7 +30,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
-
+            SetBombRNG(entity, new RandomGenerator(entity.RNG.Next()));
             var productionTimer = new FrameTimer(entity.RNG.Next(90, 375));
             SetProductionTimer(entity, productionTimer);
         }
@@ -78,6 +80,8 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetProductionTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_PRODUCTION_TIMER, timer);
         public static bool IsFurious(Entity entity) => entity.GetBehaviourField<bool>(PROP_FURIOUS);
         public static void SetFurious(Entity entity, bool value) => entity.SetBehaviourField(PROP_FURIOUS, value);
+        public static RandomGenerator GetBombRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
+        public static void SetBombRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_RNG, value);
         private void ProductionUpdate(Entity entity)
         {
             var productionTimer = GetProductionTimer(entity);
@@ -106,13 +110,21 @@ namespace MVZ2.GameContent.Contraptions
             if (productionTimer.Expired)
             {
                 var pickupID = IsFurious(entity) ? VanillaPickupID.furiousGunpowder : VanillaPickupID.gunpowder;
+                var bombProduceLimit = IsFurious(entity) ? 10 : 5;
                 if (entity.IsFriendlyEntity())
                 {
-                    var spawnParams = entity.GetSpawnParams();
-                    spawnParams.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage());
-                    spawnParams.SetProperty(VanillaEntityProps.RANGE, entity.GetRange());
-                    entity.Produce(pickupID);
-                    entity.PlaySound(VanillaSoundID.throwSound);
+                    if (entity.RNG.Next(100) < bombProduceLimit)
+                    {
+                        ProduceBomb(entity);
+                    }
+                    else
+                    {
+                        var spawnParams = entity.GetSpawnParams();
+                        spawnParams.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage());
+                        spawnParams.SetProperty(VanillaEntityProps.RANGE, entity.GetRange());
+                        entity.Produce(pickupID);
+                        entity.PlaySound(VanillaSoundID.throwSound);
+                    }
                 }
                 else
                 {
@@ -120,12 +132,35 @@ namespace MVZ2.GameContent.Contraptions
                     var energyValue = redstoneDefinition?.GetEnergyValue() ?? 50;
                     entity.Level.AddEnergy(-energyValue);
                 }
-                productionTimer.ResetTime(720);
+                productionTimer.ResetTime(1080);
             }
         }
+        private void ProduceBomb(Entity entity)
+        {
+            var bombID = bombPool.Random(GetBombRNG(entity));
+            if (!IsFurious(entity))
+            {
+                var spawnParams = entity.GetSpawnParams();
+                spawnParams.SetProperty(BlueprintPickup.PROP_BLUEPRINT_ID, VanillaBlueprintID.FromEntity(bombID));
+                entity.Produce(VanillaPickupID.blueprintPickup, spawnParams);
+            }
+            else
+            {
+                var bomb = entity.SpawnWithParams(bombID, entity.GetCenter());
+                bomb.Velocity = new Vector3(bomb.RNG.Next(-1.6f, 1.6f), 7, 0);
+                bomb.Trigger();
+            }
+        }
+        private static NamespaceID[] bombPool = new NamespaceID[]
+        {
+            VanillaContraptionID.tnt,
+            VanillaContraptionID.blackHoleBomb
+        };
 
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_FURIOUS = new VanillaEntityPropertyMeta<bool>("fury");
         private static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("color_offset");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");
+        public static readonly NamespaceID ID = VanillaContraptionID.gunpowderBarrel;
     }
 }
