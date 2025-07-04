@@ -102,7 +102,7 @@
 	<model name="willo_skull" type="entity" path="mvz2:enemy/halloween/willo_skull" width="32" height="22" xOffset="0" yOffset="-11"/>
     <model name="reverse_satellite" type="entity" path="mvz2:enemy/castle/reverse_satellite" width="64" height="80" xOffset="0" yOffset="-40"/>
     <model name="skeleton_horse" type="entity" path="mvz2:enemy/castle/skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>
-    <model name="dullahan_head" type="entity" path="mvz2:enemy/castle/dullahan_head" width="38" height="27" xOffset="0" yOffset="-14"/>
+    <model name="dullahan_head" type="entity" path="mvz2:enemy/castle/dullahan_head" width="44" height="32" xOffset="0" yOffset="-17"/>
     <model name="dullahan_main" type="entity" path="mvz2:enemy/castle/dullahan_main" width="77" height="120" xOffset="12" yOffset="-55"/>
     <model name="soulsand" type="entity" path="mvz2:enemy/castle/soulsand" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="seija_cursed_doll" type="entity" path="mvz2:enemy/castle/seija_cursed_doll"  width="32" height="32" xOffset="0" yOffset="-16"/>
