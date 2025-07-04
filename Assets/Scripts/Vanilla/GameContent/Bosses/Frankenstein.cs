@@ -314,9 +314,9 @@ namespace MVZ2.GameContent.Bosses
         {
             var level = boss.Level;
             Vector3 headPos = boss.Position + headOffset;
-            var head = level.Spawn(VanillaBossID.frankensteinHead, headPos, boss);
+            var head = level.Spawn(VanillaBossID.frankensteinsHead, headPos, boss);
             head.SetParent(boss);
-            FrankensteinHeadEnemy.SetMoveTarget(head, new Vector3(headPos.x, 60, headPos.z));
+            FrankensteinsHead.SetMoveTarget(head, new Vector3(headPos.x, 60, headPos.z));
             boss.PlaySound(VanillaSoundID.explosion);
             boss.PlaySound(VanillaSoundID.powerOff);
             var expPart = level.Spawn(VanillaEffectID.explosion, headPos, boss);

@@ -126,7 +126,7 @@
 
     <!-- Bosses -->
     <model name="frankenstein" type="entity" path="mvz2:boss/frankenstein" width="100" height="200" xOffset="24" yOffset="-96"/>
-	<model name="frankenstein_head_enemy" type="entity" path="mvz2:boss/frankenstein_head_enemy" width="51" height="42" xOffset="0" yOffset="-21"/>
+	<model name="frankenstein_s_head" type="entity" path="mvz2:boss/frankenstein_s_head" width="51" height="42" xOffset="0" yOffset="-21"/>
     <model name="slenderman" type="entity" path="mvz2:boss/slenderman" width="200" height="150" xOffset="0" yOffset="-60"/>
     <model name="nightmareaper" type="entity" path="mvz2:boss/nightmareaper" width="240" height="200" xOffset="0" yOffset="-15"/>
 	<model name="the_eye" type="entity" path="mvz2:boss/the_eye" width="74" height="74" xOffset="0" yOffset="-37"/>

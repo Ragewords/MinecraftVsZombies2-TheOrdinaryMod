@@ -6,7 +6,7 @@ namespace MVZ2.GameContent.Bosses
     public static class VanillaBossNames
     {
         public const string frankenstein = "frankenstein";
-        public const string frankensteinHead = "frankenstein_head_enemy";
+        public const string frankensteinsHead = "frankenstein_s_head";
         public const string slenderman = "slenderman";
         public const string nightmareaper = "nightmareaper";
         public const string theEye = "the_eye";
@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Bosses
     public static class VanillaBossID
     {
         public static readonly NamespaceID frankenstein = Get(VanillaBossNames.frankenstein);
-        public static readonly NamespaceID frankensteinHead = Get(VanillaBossNames.frankensteinHead);
+        public static readonly NamespaceID frankensteinsHead = Get(VanillaBossNames.frankensteinsHead);
         public static readonly NamespaceID slenderman = Get(VanillaBossNames.slenderman);
         public static readonly NamespaceID nightmareaper = Get(VanillaBossNames.nightmareaper);
         public static readonly NamespaceID theEye = Get(VanillaBossNames.theEye);

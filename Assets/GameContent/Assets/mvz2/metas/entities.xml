@@ -1874,7 +1874,7 @@
                 <color name="mvz2:bloodColorCensored" value="#00007FFF" />
             </properties>
         </boss>
-        <boss id="frankenstein_head_enemy" name="科学怪人的怪物的头">
+        <boss id="frankenstein_s_head" name="科学怪人的怪物的头">
             <properties>
                 <int name="mvz2:waterInteraction" value="1"/>
                 <float name="mvz2:maxHealth" value="15000"/>
