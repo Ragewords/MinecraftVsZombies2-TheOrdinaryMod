@@ -46,6 +46,8 @@
     <model name="desire_pot" type="entity" path="mvz2:contraption/mausoleum/desire_pot" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="youkai_leaf" type="entity" path="mvz2:contraption/mausoleum/youkai_leaf" width="64" height="64" xOffset="0" yOffset="-28"/>
 
+    <model name="gunpowder_barrel" type="entity" path="mvz2:contraption/ship/gunpowder_barrel" width="64" height="64" xOffset="0" yOffset="-28"/>
+
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="force_pad" type="entity" path="mvz2:contraption/upgrade/force_pad" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="golden_dropper" type="entity" path="mvz2:contraption/upgrade/golden_dropper" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -144,6 +146,8 @@
 
     <!-- Pickups -->
     <model name="redstone" type="entity" path="mvz2:pickup/redstone" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="gunpowder" type="entity" path="mvz2:pickup/gunpowder" width="64" height="64" xOffset="0" yOffset="-16"/>
+    <model name="furious_gunpowder" type="entity" path="mvz2:pickup/furious_gunpowder" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="emerald" type="entity" path="mvz2:pickup/emerald" width="32" height="32" xOffset="0" yOffset="-16"/>
     <model name="ruby" type="entity" path="mvz2:pickup/ruby" width="48" height="48" xOffset="0" yOffset="-20"/>
     <model name="sapphire" type="entity" path="mvz2:pickup/sapphire" width="48" height="48" xOffset="0" yOffset="-20"/>
@@ -169,7 +173,8 @@
     <model name="starshard.dream" type="entity" path="mvz2:pickup/starshards/dream" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="starshard.castle" type="entity" path="mvz2:pickup/starshards/castle" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="starshard.mausoleum" type="entity" path="mvz2:pickup/starshards/mausoleum" width="64" height="64" xOffset="0" yOffset="-16"/>
-    
+    <model name="starshard.ship" type="entity" path="mvz2:pickup/starshards/ship" width="64" height="64" xOffset="0" yOffset="-16"/>
+
     <!-- Effects -->
     <model name="miner" type="entity" path="mvz2:effect/miner" width="32" height="32" xOffset="0" yOffset="-16"/>
     <model name="mine_debris" type="entity" path="mvz2:effect/mine_debris" width="150" height="100" xOffset="0" yOffset="-20"/>
@@ -322,6 +327,7 @@
     <model name="starshard.dream" type="held" path="mvz2:held/starshards/dream" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
     <model name="starshard.castle" type="held" path="mvz2:held/starshards/castle" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
     <model name="starshard.mausoleum" type="held" path="mvz2:held/starshards/mausoleum" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
+    <model name="starshard.ship" type="held" path="mvz2:held/starshards/ship" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
     <model name="pickaxe" type="held" path="mvz2:held/pickaxe" shot="false" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="trigger" type="held" path="mvz2:held/trigger" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>
     <model name="sword" type="held" path="mvz2:held/sword" shot="false" width="64" height="64" xOffset="0" yOffset="-28"/>

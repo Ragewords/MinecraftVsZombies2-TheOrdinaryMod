@@ -59,5 +59,7 @@ namespace MVZ2.Level
     public class SerializableAreaModelData : SerializableModelData
     {
         public string currentPreset;
+        [Obsolete]
+        public SerializableModelUpdateGroup updateGroup;
     }
 }

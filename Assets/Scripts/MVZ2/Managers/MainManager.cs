@@ -211,7 +211,8 @@ namespace MVZ2.Managers
             SerializeHelper.RegisterClass<SerializableAreaModelData>();
 
             SerializeHelper.RegisterClass<SerializableModelGraphicGroup>();
-            SerializeHelper.RegisterClass<SerializableModelSortedRendererGroup>();
+            SerializeHelper.RegisterClass<SerializableModelUnsortedRendererGroup>();
+            SerializeHelper.RegisterClass<SerializableModelRendererGroup>();
             SerializeHelper.RegisterClass<SerializableModelImageGroup>();
 
             SerializeHelper.RegisterClass<SerializableGraphicElement>();

@@ -24,7 +24,7 @@ namespace MVZ2.Models
         #region 私有方法
         protected override SerializableModelGraphicGroup CreateSerializable()
         {
-            var serializable = new SerializableModelSortedRendererGroup();
+            var serializable = new SerializableModelRendererGroup();
             serializable.sortingLayerID = SortingLayerID;
             serializable.sortingOrder = SortingOrder;
             serializable.particles = particles.Select(e => e.ToSerializable()).ToArray();
@@ -34,7 +34,7 @@ namespace MVZ2.Models
         protected override void LoadSerializable(SerializableModelGraphicGroup serializable)
         {
             base.LoadSerializable(serializable);
-            if (serializable is not SerializableModelSortedRendererGroup spriteGroup)
+            if (serializable is not SerializableModelRendererGroup spriteGroup)
                 return;
             SortingLayerID = spriteGroup.sortingLayerID;
             SortingOrder = spriteGroup.sortingOrder;
@@ -101,7 +101,7 @@ namespace MVZ2.Models
         #endregion
 
     }
-    public class SerializableModelSortedRendererGroup : SerializableModelRendererGroup
+    public class SerializableModelRendererGroup : SerializableModelUnsortedRendererGroup
     {
         public int sortingLayerID;
         public int sortingOrder;

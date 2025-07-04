@@ -34,7 +34,7 @@
             </behaviours>
             <properties>
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
 
                 <bool name="mvz2:receivesLight" value="true" />
                 <bool name="mvz2:canDeactive" value="true" />
@@ -87,7 +87,7 @@
                 <int name="mvz2:faction" value="1" />
 
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
             </properties>
         </enemy>
         <obstacle id="3" parent="entity">
@@ -106,7 +106,7 @@
                 <bool name="mvz2:faceLeftAtDefault" value="true" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main" />
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
                 <int name="mvz2:faction" value="1" />
             </properties>
         </obstacle>
@@ -139,7 +139,7 @@
                 <id name="mvz2:cartTriggerSound" value="mvz2:minecart" />
                 <float name="mvz2:gravity" value="1" />
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
             </properties>
         </cart>
         <pickup id="6" parent="entity">
@@ -164,7 +164,7 @@
                 <float name="mvz2:changeLaneSpeed" value="10" />
                 <vector3 name="mvz2:shadowScale" x="0.5" y="0.5" z="0.5" />
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
             </properties>
         </projectile>
         <effect id="8" parent="entity">
@@ -777,6 +777,24 @@
 
                 <int name="mvz2:cost" value="250" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+            </properties>
+        </contraption>
+        
+        <!-- Ship Contraptions -->
+        <contraption id="gunpowder_barrel" name="火药桶" tooltip="提供大量能量，但有爆炸的风险" unlock="mvz2/:level.ship_1">
+            <properties>
+                <bool name="mvz2:producer" value="true" />
+                <float name="mvz2:range" value="120" />
+                <float name="mvz2:damage" value="150" />
+
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <id name="mvz2:shell" value="mvz2:wood" />
+                <id name="mvz2:hitSound" value="mvz2:wood" />
+                <id name="mvz2:placeSound" value="mvz2:wood" />
+                <id name="mvz2:deathSound" value="mvz2:wood" />
+
+                <int name="mvz2:cost" value="25" />
+                <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
 
@@ -1987,9 +2005,38 @@
 
         <!-- Pickups -->
         <pickup id="redstone" name="红石">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:energy_pickup"/>
+            </behaviours>
             <properties>
                 <int name="mvz2:sortingOrder" value="9999" />
                 <int name="mvz2:energyValue" value="25" />
+                <id name="mvz2:collectSound" value="mvz2:points" />
+            </properties>
+        </pickup>
+        <pickup id="gunpowder" name="火药">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:energy_pickup"/>
+            </behaviours>
+            <properties>
+                <float name="mvz2:range" value="120" />
+                <float name="mvz2:damage" value="150" />
+                <int name="mvz2:sortingOrder" value="9999" />
+                <int name="mvz2:energyValue" value="25" />
+                <id name="mvz2:collectSound" value="mvz2:points" />
+            </properties>
+        </pickup>
+        <pickup id="furious_gunpowder" name="暴怒火药">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:energy_pickup"/>
+                <behaviour operator="add" id="mvz2:gunpowder"/>
+            </behaviours>
+            <properties>
+                <float name="mvz2:range" value="120" />
+                <float name="mvz2:damage" value="150" />
+                <int name="mvz2:sortingOrder" value="9999" />
+                <int name="mvz2:energyValue" value="50" />
+                <int name="mvz2:maxTimeout" value="90" />
                 <id name="mvz2:collectSound" value="mvz2:points" />
             </properties>
         </pickup>
@@ -2467,7 +2514,7 @@
             <properties>
                 <int name="mvz2:maxTimeout" value="60" />
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
                 <float name="mvz2:friction" value="0.1" />
                 <float name="mvz2:gravity" value="1" />
             </properties>
@@ -2765,7 +2812,7 @@
             <properties>
                 <int name="mvz2:maxTimeout" value="90" />
                 <int name="mvz2:waterInteraction" value="1" />
-                <int name="mvz2:airInteraction" value="1" />
+                <int name="mvz2:airInteraction" value="2" />
                 <float name="mvz2:friction" value="0.1" />
                 <float name="mvz2:gravity" value="1" />
                 <vector3 name="mvz2:size" x="180" y="50" z="50" />

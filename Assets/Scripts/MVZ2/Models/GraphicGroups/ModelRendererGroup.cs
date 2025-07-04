@@ -106,7 +106,7 @@ namespace MVZ2.Models
         #region 私有方法
         protected override SerializableModelGraphicGroup CreateSerializable()
         {
-            var serializable = new SerializableModelRendererGroup();
+            var serializable = new SerializableModelUnsortedRendererGroup();
             serializable.particles = particles.Select(e => e.ToSerializable()).ToArray();
             serializable.renderers = renderers.Select(e => e.ToSerializable()).ToArray();
             return serializable;
@@ -114,7 +114,7 @@ namespace MVZ2.Models
         protected override void LoadSerializable(SerializableModelGraphicGroup serializable)
         {
             base.LoadSerializable(serializable);
-            if (serializable is not SerializableModelRendererGroup areaGroup)
+            if (serializable is not SerializableModelUnsortedRendererGroup areaGroup)
                 return;
             for (int i = 0; i < renderers.Count; i++)
             {
@@ -147,7 +147,7 @@ namespace MVZ2.Models
         #endregion
 
     }
-    public class SerializableModelRendererGroup : SerializableModelGraphicGroup
+    public class SerializableModelUnsortedRendererGroup : SerializableModelGraphicGroup
     {
         public SerializableParticleSystem[] particles;
         public SerializableGraphicElement[] renderers;

@@ -76,6 +76,23 @@ namespace MVZ2.Vanilla.Level
             }
             return damageOutputs.ToArray();
         }
+        public static DamageOutput[] ExplodeAgainstFriendly(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source)
+        {
+            return level.ExplodeAgainstFriendly(center, radius, faction, amount, effects, new EntityReferenceChain(source));
+        }
+        public static DamageOutput[] ExplodeAgainstFriendly(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, EntityReferenceChain source)
+        {
+            List<DamageOutput> damageOutputs = new List<DamageOutput>();
+            foreach (IEntityCollider entityCollider in level.OverlapSphere(center, radius, faction, 0, EntityCollisionHelper.MASK_VULNERABLE))
+            {
+                var damageOutput = entityCollider.TakeDamage(amount, effects, source);
+                if (damageOutput != null)
+                {
+                    damageOutputs.Add(damageOutput);
+                }
+            }
+            return damageOutputs.ToArray();
+        }
         public static DamageOutput[] SplashDamage(this LevelEngine level, IEntityCollider excludeCollider, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source)
         {
             return level.SplashDamage(excludeCollider, center, radius, faction, amount, effects, new EntityReferenceChain(source));
@@ -736,7 +753,7 @@ namespace MVZ2.Vanilla.Level
                 var grid = level.GetGrid(column, lane);
                 if (grid == null)
                     continue;
-                if (grid.IsAir())
+                if (grid.IsCloud())
                     return true;
             }
             return false;
@@ -746,7 +763,7 @@ namespace MVZ2.Vanilla.Level
             var grid = level.GetGrid(column, lane);
             if (grid == null)
                 return false;
-            return grid.IsAir();
+            return grid.IsCloud();
         }
         public static bool IsAirAt(this LevelEngine level, float x, float z)
         {
@@ -770,8 +787,21 @@ namespace MVZ2.Vanilla.Level
             }
             return false;
         }
-
-
+        public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
+        {
+            var game = Global.Game;
+            level.SetSeedSlotCount(game.GetBlueprintSlots());
+            level.SetStarshardSlotCount(game.GetStarshardSlots());
+            level.SetArtifactSlotCount(game.GetArtifactSlots());
+        }
+        public static bool ValidateGridOutOfBounds(this LevelEngine level, Vector2Int position)
+        {
+            if (position.x < 0 || position.y < 0)
+                return false;
+            if (position.x >= level.GetMaxColumnCount() || position.y >= level.GetMaxLaneCount())
+                return false;
+            return true;
+        }
         #region 连接的格子
         public static void GetConnectedLaneGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
         {
@@ -844,20 +874,6 @@ namespace MVZ2.Vanilla.Level
             }
         }
         #endregion
-        public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
-        {
-            var game = Global.Game;
-            level.SetSeedSlotCount(game.GetBlueprintSlots());
-            level.SetStarshardSlotCount(game.GetStarshardSlots());
-            level.SetArtifactSlotCount(game.GetArtifactSlots());
-        }
-        public static bool ValidateGridOutOfBounds(this LevelEngine level, Vector2Int position)
-        {
-            if (position.x < 0 || position.y < 0)
-                return false;
-            if (position.x >= level.GetMaxColumnCount() || position.y >= level.GetMaxLaneCount())
-                return false;
-            return true;
-        }
+
     }
 }

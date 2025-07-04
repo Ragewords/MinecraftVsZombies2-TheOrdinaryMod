@@ -52,7 +52,7 @@ namespace MVZ2.Level
 
                 parts = parts.Select(p => p.ToSerializable()).ToArray(),
 
-                areaModel = model.ToSerializable(),
+                model = model.ToSerializable(),
 
                 level = SerializeLevel(),
                 uiPreset = GetUIPreset().ToSerializable(),
@@ -60,9 +60,10 @@ namespace MVZ2.Level
         }
         public bool LoadGame(SerializableLevelController seri, Game game, NamespaceID areaID, NamespaceID stageID)
         {
-            if (!LevelManager.GetLevelStateIdentifierList().Compare(seri.identifiers))
+            var compareResult = LevelManager.GetLevelStateIdentifierList().Compare(seri.identifiers);
+            if (!compareResult.valid)
             {
-                ShowLevelErrorLoadingDialog();
+                ShowLevelMismatchLoadingDialog(compareResult);
                 return false;
             }
 
@@ -122,7 +123,7 @@ namespace MVZ2.Level
                     controller.UpdateFrame(0);
                     controller.UpdateAnimators(0);
                 }
-                model.LoadFromSerializable(seri.areaModel);
+                model.LoadFromSerializable(seri.model ?? seri.areaModel);
             }
             catch (Exception e)
             {
@@ -252,7 +253,9 @@ namespace MVZ2.Level
         public float twinkleTime;
 
         public SerializableEntityController[] entities;
-        public SerializableModelData areaModel;
+        public SerializableModelData model;
+        [Obsolete]
+        public SerializableAreaModelData areaModel;
 
         public SerializableLevel level;
 

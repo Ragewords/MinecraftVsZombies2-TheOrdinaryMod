@@ -472,6 +472,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d46d25231baa8046982678dbbe0b2d2
+    m_Address: mvz2:held/starshards/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d4af8afe02894146b1bf6b83fd5c2e6
     m_Address: mvz2:enemy/shrine/imp
     m_ReadOnly: 0
@@ -486,8 +493,16 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+
   - m_GUID: 0d6c1fd6012e660478636f45f155c05b
     m_Address: mvz2:entity/boss/seija_jizo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d763afc8cc9cb644953bb63087e098a
+    m_Address: mvz2:level/ship/ship_back
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -808,12 +823,26 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 135dff09421d4164c91798ffaa81d047
+    m_Address: mvz2:entity/carts/unzan_fist
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13b6d5b3963809543b2c3ae66757af81
     m_Address: mvz2:damage/hit3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13f4669be302ba24296364d49d0b1219
+    m_Address: mvz2:level/ship/sky
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13f6471543c524e498c1b3c2aaa1c3c3
     m_Address: mvz2:reflection
@@ -962,6 +991,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16fc5dd769a48d34292fd51b6a315f93
+    m_Address: mvz2:ship_map
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 16ff246ec2a095242a62262d2ac32272
     m_Address: mvz2:ui/level/pause_image_6
     m_ReadOnly: 0
@@ -1066,6 +1102,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ac6185d8f5264948af85daee6364e54
+    m_Address: mvz2:pickup/furious_gunpowder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1adb67d35f526fa46b4f9eef62188a56
     m_Address: mvz2:entity/cart/nyaightmare
@@ -1227,6 +1270,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dcd2061d05fd3c429fd6b75083a5b5d
+    m_Address: mvz2:starshard_rings/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e040a7ca0ea87148a69fcf7c9a900a3
     m_Address: mvz2:mechanism
@@ -1815,6 +1865,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c2cb3e709a9af442bc70a6482d2ec2a
+    m_Address: mvz2:entity/contraption/gunpowder_barrel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c42c8de90a7c30499eae9212c363c7d
     m_Address: mvz2:mainmenu/back_to_mainmenu
@@ -2626,6 +2683,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d448719755b3604297b30ed821122ef
+    m_Address: mvz2:entity/pickups/gunpowder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d56ca3e620bfb14abab50beefc95cbe
     m_Address: mvz2:contraption/dream/vortex_hopper
     m_ReadOnly: 0
@@ -3073,6 +3137,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46fd845ce654ebb43bd75d875facaea1
+    m_Address: mvz2:map/ship/end_ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4733fb55accce48499a5e6432fba9112
     m_Address: mvz2:talk/villager/villager_extra_long2
@@ -4335,7 +4406,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 662e52d9c6cc3e446ae341b425b857bf
-    m_Address: mvz2:level/ship/ship
+    m_Address: mvz2:level/ship/ship_fore
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -4480,6 +4551,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b616186e5a21fc438c9a232f796d56d
+    m_Address: mvz2:entity/pickups/furious_gunpowder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b7890603e8ff0b449785725ca9663e1
     m_Address: mvz2:cart/nyaightmare
@@ -6083,6 +6161,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92270fbfb47f6dc42abdb3c3f9a1f0ee
+    m_Address: mvz2:pickup/starshards/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 924887d4b0c49ca4a95e462a77626841
     m_Address: mvz2:random/crystal/crystal_place3
     m_ReadOnly: 0
@@ -6566,6 +6651,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d5c273c39ad9474c83c4f932481251b
+    m_Address: mvz2:contraption/ship/gunpowder_barrel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d730e080bace4646938c15cdabc88d0
     m_Address: mvz2:entity/effects/water_splash
     m_ReadOnly: 0
@@ -6834,6 +6926,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a517e81da420e4941880bb250f059923
     m_Address: mvz2:entity/enemies/bow_texture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a530bd663cca7d34aa3b3fd92ffddc00
+    m_Address: mvz2:map/gensokyo/pins/ship
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -7966,6 +8065,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be28a0498d9e8fc45b4efff2a2fc70ba
+    m_Address: mvz2:pickup/gunpowder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: beaefb38f5a5fce469c095db69c2fbdc
     m_Address: mvz2:effect/binary_particles
     m_ReadOnly: 0
@@ -8357,6 +8463,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c81f845f2fb22814b8806ad126a5c494
+    m_Address: mvz2:level/ship/ufo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c833ac401af4ce44c872c8fe55574646
     m_Address: mvz2:mainmenu/birch_planks
@@ -9163,6 +9276,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dac1586e39e4041458440f57f1c2bca6
+    m_Address: mvz2:ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - MapModel
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db3c78d339728b54896ae08ad492515f
     m_Address: mvz2:entity/zombie/zombie_death
     m_ReadOnly: 0
@@ -9295,6 +9415,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de297cfa423d4064ba27277d2746f079
+    m_Address: mvz2:starshards/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: de2ac3b8888568f44a60df2ff9aaa6a3
     m_Address: mvz2:effect/spirit_universe
@@ -10379,6 +10506,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f771d42a2d0c8f94986cc56fa505e972
+    m_Address: mvz2:map/ship/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f77f74f52e5407f41a2a580c09dca22a
     m_Address: mvz2:effect/gas

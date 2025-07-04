@@ -105,5 +105,9 @@ namespace MVZ2.Models
     public class SerializableModelImageGroup : SerializableModelGraphicGroup
     {
         public SerializableGraphicElement[] images;
+        [Obsolete]
+        public int sortingLayerID;
+        [Obsolete]
+        public int sortingOrder;
     }
 }

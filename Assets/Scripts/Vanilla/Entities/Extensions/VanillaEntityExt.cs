@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Carts;
@@ -349,6 +350,10 @@ namespace MVZ2.Vanilla.Entities
         public static DamageOutput[] Explode(this Entity entity, Vector3 center, float radius, int faction, float amount, DamageEffectList effects)
         {
             return entity.Level.Explode(center, radius, faction, amount, effects, entity);
+        }
+        public static DamageOutput[] ExplodeAgainstFriendly(this Entity entity, Vector3 center, float radius, int faction, float amount, DamageEffectList effects)
+        {
+            return entity.Level.ExplodeAgainstFriendly(center, radius, faction, amount, effects, entity);
         }
         public static DamageOutput[] SplashDamage(this Entity entity, IEntityCollider excludeCollider, Vector3 center, float radius, int faction, float amount, DamageEffectList effects)
         {
@@ -770,19 +775,30 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity.IsOnWater() && entity.IsOnGround;
         }
-        public static bool IsOnAir(this Entity entity)
+        public static bool IsAboveCloud(this Entity entity)
         {
             var grid = entity.GetGrid();
-            return grid != null && grid.IsAir();
+            if (grid != null && grid.IsCloud())
+                return true;
+            if (entity.Level.AreaID == VanillaAreaID.ship)
+            {
+                var column = entity.GetColumn();
+                var lane = entity.GetLane();
+                if (column >= 0 && column < entity.Level.GetMaxColumnCount() && (lane < 0 || lane >= entity.Level.GetMaxLaneCount()))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        public static bool IsInAir(this Entity entity)
+        public static bool IsInCloud(this Entity entity)
         {
-            return entity.IsOnAir() && entity.IsOnGround;
+            return entity.IsAboveCloud() && entity.IsOnGround;
         }
         public static bool IsAboveLand(this Entity entity)
         {
             var grid = entity.GetGrid();
-            return grid == null || (!grid.IsWater() && !grid.IsAir());
+            return grid == null || (!grid.IsWater() && !grid.IsCloud());
         }
         public static void PlaySplashEffect(this Entity entity)
         {
@@ -1014,6 +1030,11 @@ namespace MVZ2.Vanilla.Entities
             return entity != null && entity.IsEntityOf(VanillaPickupID.blueprintPickup);
         }
         #endregion
+
+        public static float GetRealGroundLimitY(this Entity entity)
+        {
+            return entity.GetGroundLimitOffset() + entity.GetGroundY();
+        }
         public static SpawnParams GetSpawnParams(this Entity entity)
         {
             var param = new SpawnParams();
