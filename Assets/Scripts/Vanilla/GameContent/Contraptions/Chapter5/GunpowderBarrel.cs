@@ -1,4 +1,6 @@
-﻿using MVZ2.GameContent.Buffs;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
@@ -7,12 +9,14 @@ using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
+using PVZEngine.Grids;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
@@ -146,8 +150,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                var bomb = entity.SpawnWithParams(bombID, entity.GetCenter());
-                bomb.Velocity = new Vector3(bomb.RNG.Next(-1.6f, 1.6f), 7, 0);
+                var bomb = entity.SpawnWithParams(bombID, entity.Position);
+                bomb.Velocity = new Vector3(bomb.RNG.Next(-8f, 8f), 8, 0);
                 bomb.Trigger();
             }
         }

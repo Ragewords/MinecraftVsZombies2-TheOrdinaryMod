@@ -3557,6 +3557,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51abea7cfd5932c48b27c925354a02b6
+    m_Address: mvz2:projectile/mini_tnt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51b054752ef1472469ec6b367036d3bb
     m_Address: mvz2:pickup/money_chest
     m_ReadOnly: 0
