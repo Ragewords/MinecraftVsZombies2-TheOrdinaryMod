@@ -7,6 +7,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
@@ -14,6 +15,7 @@ using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -66,6 +68,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), explosionParam);
 
             entity.PlaySound(VanillaSoundID.explosion);
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
         }
         public override bool CanEvoke(Entity entity)
         {
