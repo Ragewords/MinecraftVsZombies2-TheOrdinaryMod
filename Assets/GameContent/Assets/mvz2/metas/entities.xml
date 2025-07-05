@@ -1560,7 +1560,7 @@
                 <int name="mvz2:cost" value="0" />
             </properties>
         </enemy>
-        <enemy id="willo_skull" name="萤火枯骨" deathMessage="把我所有的东西留给我的嗝屁猫。" unlock="mvz2:level.halloween_6">
+        <enemy id="willo_skull" name="萤火枯骨" deathMessage="再见，这个可怕的世界。" unlock="mvz2:level.halloween_6">
             <properties>
                 <float name="mvz2:mass" value="-2" />
                 <float name="mvz2:maxHealth" value="200"/>
