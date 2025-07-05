@@ -150,6 +150,7 @@ namespace MVZ2.GameContent.Contraptions
                 var spawnParams = entity.GetSpawnParams();
                 spawnParams.SetProperty(BlueprintPickup.PROP_BLUEPRINT_ID, VanillaBlueprintID.FromEntity(bombID));
                 entity.Produce(VanillaPickupID.blueprintPickup, spawnParams);
+                entity.PlaySound(VanillaSoundID.throwSound);
             }
             else
             {
