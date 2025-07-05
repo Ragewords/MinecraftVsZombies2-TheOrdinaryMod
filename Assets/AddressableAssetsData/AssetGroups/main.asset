@@ -1327,7 +1327,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1ee9f34f711abb1419304e93c72a23df
-    m_Address: mvz2:enemy/castle/curseer
+    m_Address: mvz2:enemy/castle/spellcaster
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

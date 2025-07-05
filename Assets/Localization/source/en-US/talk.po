@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2025-06-09 11:55+0800\n"
-"PO-Revision-Date: 2025-06-09 11:58+0800\n"
+"POT-Creation-Date: 2025-07-05 09:04+0800\n"
+"PO-Revision-Date: 2025-07-06 00:44+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-Language: en-US\n"
 "X-Crowdin-File: /crowdin/talk.pot\n"
 "X-Crowdin-File-ID: 22\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Archive name for talk group castle_1
 #: Talk meta file
@@ -76,9 +76,10 @@ msgstr "This is the wooden dropper!"
 #. Text for talk sentence 1 in talk group castle_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_1_over"
-msgid "它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸！"
+msgid "它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸，并在敌群中反弹！"
 msgstr ""
-"It drops wooden balls which can roll down slopes, striking the zombies below!"
+"It drops wooden balls which can roll down slopes, striking and bouncing "
+"between the zombies below!"
 
 #. Text for talk sentence 2 in talk group castle_1_over's section 0
 #: Talk meta file
@@ -323,8 +324,8 @@ msgstr "This is the spike block!"
 #. Text for talk sentence 1 in talk group castle_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_2_over"
-msgid "它能对走在它上面的敌人造成伤害！"
-msgstr "It damages enemies that walk over it!"
+msgid "它能对走在它上面的敌人造成伤害并击退！"
+msgstr "It damages and knocks back enemies that walk over it!"
 
 #. Text for talk sentence 2 in talk group castle_2_over's section 0
 #: Talk meta file
@@ -546,6 +547,12 @@ msgstr ""
 #. Text for talk sentence 2 in talk group castle_3_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_3_over"
+msgid "甚至有可能弹出不断弹跳的弹力巨石！"
+msgstr ""
+
+#. Text for talk sentence 3 in talk group castle_3_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_3_over"
 msgid "在洞穴中，你最好当心脚下的踏板！"
 msgstr "Always look out for pressure plates in a cave!"
 
@@ -747,21 +754,22 @@ msgstr "Castle Day 4 Outro"
 #. Text for talk sentence 0 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "这个是石护罩！他能和普通的器械重叠放置！"
-msgstr "This is the stone shield! It can be placed on any regular contraption!"
+msgid "这个是黏液护罩！他能和普通的器械重叠放置！"
+msgstr "This is the slime shield! It can be placed on any regular contraption!"
 
 #. Text for talk sentence 1 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "它的硬度能够保护它里面的器械不受伤害！"
-msgstr "It's tough enough to keep the contraption inside from getting damaged!"
+msgid "它的弹性能够保护它里面的器械不受伤害！"
+msgstr ""
+"It's bouncy enough to keep the contraption inside from getting damaged!"
 
 #. Text for talk sentence 2 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉石护罩！"
+msgid "有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉黏液护罩！"
 msgstr ""
-"Here's a tip: aim below with the pickaxe to mine away the stone shield!"
+"Here's a tip: aim below with the pickaxe to mine away the slime shield!"
 
 #. Text for talk sentence 3 in talk group castle_4_over's section 0
 #: Talk meta file
@@ -1046,8 +1054,8 @@ msgstr "Tiny zombies, was it? Let me take a shot at them!"
 #. Text for talk sentence 4 in talk group castle_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6"
-msgid "当然，好像也不止是小……"
-msgstr "\"Tiny\" doesn't seem to be the end of it..."
+msgid "当然，好像也不止是小僵尸……"
+msgstr "\"Tiny zombies\" doesn't seem to be the end of it..."
 
 #. Archive name for talk group castle_6_over
 #: Talk meta file
@@ -1058,15 +1066,14 @@ msgstr "Castle Day 6 Outro"
 #. Text for talk sentence 0 in talk group castle_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6_over"
-msgid "这是金苹果！不过它可不是用来回血的！"
-msgstr "This is the golden apple! Despite that, it's not for restoring health!"
+msgid "这是转生苹果！能给你新的人生！"
+msgstr "This is Reincarnation Apple! Which gives you a new life!"
 
 #. Text for talk sentence 1 in talk group castle_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6_over"
-msgid "实际上它是一个魅惑果实，能魅惑第一个攻击它的敌人！"
-msgstr ""
-"In reality, it is a charming fruit that charms the first enemy to attack it!"
+msgid "它能转生第一个攻击它的敌人！"
+msgstr "It reincarnates the first enemy to attack it!"
 
 #. Text for talk sentence 2 in talk group castle_6_over's section 0
 #: Talk meta file
@@ -1743,14 +1750,16 @@ msgstr "This is the Tesla Coil!"
 #. Text for talk sentence 1 in talk group castle_8_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_8_over"
-msgid "它能够电击周围的敌人！"
-msgstr "It electrocutes surrounding enemies!"
+msgid "它能够电击周围的敌人！也包括空中的！"
+msgstr "It electrocutes surrounding enemies! Including flying enemies!"
 
 #. Text for talk sentence 2 in talk group castle_8_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_8_over"
-msgid "当然，也包括空中的！"
-msgstr "Flying enemies included, of course!"
+msgid "电击时不仅能产生电磁爆，还能够和其它磁暴线圈之间产生电场！"
+msgstr ""
+"While electrocuting, it creates a electromagnetic explosion, and a electric "
+"field if other Tesla Coils are nearby!"
 
 #. Text for talk sentence 3 in talk group castle_8_over's section 0
 #: Talk meta file
@@ -2241,16 +2250,22 @@ msgstr ""
 #. Text for talk sentence 2 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
+msgid "它还能使用特殊的魔法，扰乱你的阵型！"
+msgstr "It also could use special magic to disrupt your defense!"
+
+#. Text for talk sentence 3 in talk group castle_11's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_11"
 msgid "……听起来确实难搞。"
 msgstr "...That does sound like a headache to deal with."
 
-#. Text for talk sentence 3 in talk group castle_11's section 0
+#. Text for talk sentence 4 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "不过，应该有办法能阻止它的。"
 msgstr "But you should be able to stop it somehow."
 
-#. Text for talk sentence 4 in talk group castle_11's section 0
+#. Text for talk sentence 5 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "试试用强大的东西挡住它的去路，或者直接在它冲锋前把它击垮！"
@@ -2258,33 +2273,41 @@ msgstr ""
 "Try putting something tough to block its path, or simply stagger it before "
 "it can dash!"
 
-#. Text for talk sentence 5 in talk group castle_11's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_11"
-msgid "并且，金苹果对凋灵这种亡灵生物来说可能会产生奇效！"
-msgstr ""
-"Also, Golden Apple may be super effective against undead creatures like "
-"Wither!"
-
 #. Text for talk sentence 6 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "试着骗它吃掉一些金苹果！"
-msgstr "Try to trick it into eating some Golden Apples!"
+msgid "以及，也许可以像对付那些皇冠骷髅那样，用荧石打断它的魔法！"
+msgstr ""
+"And, maybe you can use Glowstone to interrupt its magic, just like how "
+"Glowstone is used against those crowned skeletons!"
 
 #. Text for talk sentence 7 in talk group castle_11's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_11"
+msgid "并且，转生苹果对凋灵这种亡灵生物来说可能会产生奇效！"
+msgstr ""
+"Also, Reincarnation Apple may be super effective against undead creatures "
+"like Wither!"
+
+#. Text for talk sentence 8 in talk group castle_11's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_11"
+msgid "试着骗它吃掉一些转生苹果！"
+msgstr "Try to trick it into eating some Reincarnation Apples!"
+
+#. Text for talk sentence 9 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "我们小人族就靠你了，史蒂夫……"
 msgstr "We inchlings are counting on you, Steve..."
 
-#. Text for talk sentence 8 in talk group castle_11's section 0
+#. Text for talk sentence 10 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "遵命。"
 msgstr "Understood."
 
-#. Text for talk sentence 9 in talk group castle_11's section 0
+#. Text for talk sentence 11 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid ""
@@ -2293,7 +2316,7 @@ msgstr ""
 "<color=blue>(Dark clouds are enveloping this castle. Their shadow had "
 "smothered it for far too long.)</color>"
 
-#. Text for talk sentence 10 in talk group castle_11's section 0
+#. Text for talk sentence 12 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "<color=blue>（是时候该让它们散去了。）</color>"
@@ -2540,6 +2563,36 @@ msgstr ""
 "<color=blue>(Her figure as she left was one of solitude, slowly shrinking "
 "into the darkness of night, transforming into a tiny star.)</color>"
 
+#. Archive name for talk group castle_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "辉针城拓展第1天结束"
+msgstr "Castle Day 12 Outro"
+
+#. Text for talk sentence 0 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "这是火焰弹发射器！"
+msgstr "This is Fire Charge Dispenser!"
+
+#. Text for talk sentence 1 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "它能够向周围的敌人投掷火焰弹！"
+msgstr "It lobs fire charges onto enemies nearby!"
+
+#. Text for talk sentence 2 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "同时，由于自身的攻击特点，它也能攻击到空中的敌人！"
+msgstr "Also including flying enemies thanks to its attack method!"
+
+#. Text for talk sentence 3 in talk group castle_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:castle_EX1_over"
+msgid "对怪物们进行火力威慑吧！"
+msgstr "Terrorize the monsters with firepower!"
+
 #. Archive name for talk group dream_1
 #: Talk meta file
 msgctxt "archive"
@@ -2774,22 +2827,22 @@ msgstr "It can shoot arrows towards enemies like Dispensers!"
 #. Text for talk sentence 2 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "但你能够在它上面再放置驱动发射器，以提升每次发射的箭矢数量！"
+msgid "但你能够在它上面再放置驱动发射器，以提升每次发射箭矢的速度和伤害！"
 msgstr ""
-"But you can place another Drivenser on it to increase the number of arrows "
-"fired per shot!"
+"But you can place another Drivenser on it to increase the fire rate and "
+"damage of arrows fired!"
 
 #. Text for talk sentence 3 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "最多能够提升4次，也就是一次发射5支箭矢！"
-msgstr "The maximum is 5 arrows per shot!"
+msgid "最多能够提升4次！"
+msgstr "Maximum to upgrade 4 times!"
 
 #. Text for talk sentence 4 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "一支解决不了的，那就用一堆！"
-msgstr "If one can't solve the problem, use a pile!"
+msgid "天下武功唯快不破！"
+msgstr "The only martial art is the fastest!"
 
 #. Archive name for talk group dream_2_map
 #: Talk meta file
@@ -3135,10 +3188,10 @@ msgstr "S P E E N! Vortex Hopper!"
 #. Text for talk sentence 1 in talk group dream_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_4_over"
-msgid "漩涡漏斗可以放置在水中，然后在被碰到的时候，会把周围的敌人拉下水！"
+msgid "漩涡漏斗可以放置在水中，甩出内部储存的箭矢，并且会把周围的敌人拉下水！"
 msgstr ""
-"Vortex Hoppers can be placed on water, and will pull enemies underwater upon "
-"contact!"
+"Vortex Hoppers can be placed on water, throwing arrows it stores, and will "
+"pull enemies underwater upon contact!"
 
 #. Text for talk sentence 2 in talk group dream_4_over's section 0
 #: Talk meta file
@@ -3479,10 +3532,11 @@ msgstr "Pistenser! A retractable Dispenser!"
 #: Talk meta file
 msgctxt "talk-mvz2:dream_6_over"
 msgid ""
-"它会发射和箭矢类似的尖刺！并且在遇见飞行敌人的时候会伸长脖子来攻击敌人！"
+"它会发射和箭矢类似的尖刺，能够穿透3个敌人！并且在遇见飞行和低矮的敌人的时候会"
+"伸缩脖子来攻击敌人！"
 msgstr ""
-"It can shoot spikes similar to arrows! And when encountering flying enemies, "
-"it will stretch itself to attack them!"
+"It can shoot spikes similar to arrows! And when encountering flying enemies "
+"and low enemies, it will stretch itself to attack them!"
 
 #. Text for talk sentence 2 in talk group dream_6_over's section 0
 #: Talk meta file
@@ -3661,8 +3715,10 @@ msgstr ""
 #. Text for talk sentence 2 in talk group dream_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_7_over"
-msgid "而且还能够向近处的敌人喷出火焰，持续进行灼烧！"
-msgstr "It can also use fire breath to burn nearby enemies!"
+msgid "而且还能够向近处的敌人喷出火焰，持续进行灼烧，并发射困住敌人的捕猎网！"
+msgstr ""
+"It can also use fire breath to burn nearby enemies, and shoots snare net to "
+"trap an enemy!"
 
 #. Text for talk sentence 3 in talk group dream_7_over's section 0
 #: Talk meta file
@@ -5314,6 +5370,37 @@ msgctxt "talk-mvz2:exited_kourindou"
 msgid "试试就知道了！"
 msgstr "Just try it and see!"
 
+#. Archive name for talk group dream_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "梦境世界拓展第1天结束"
+msgstr "Dream World Day 12 Outro"
+
+#. Text for talk sentence 0 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "这是次元锤！"
+msgstr "This is Dimension Hammer!"
+
+#. Text for talk sentence 1 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "它能够重击地面，对敌人造成大量伤害，并击晕它们！"
+msgstr ""
+"It heavily punches ground, dealing massive damage to enemies and stun them!"
+
+#. Text for talk sentence 2 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "锤击地面还会生成弹幕！"
+msgstr "It could spawn bullets as well!"
+
+#. Text for talk sentence 3 in talk group dream_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:dream_EX1_over"
+msgid "这样一把武器，简直是天赐良击！"
+msgstr "Over-Overkill for such a weapon!"
+
 #. Archive name for talk group halloween_1
 #: Talk meta file
 msgctxt "archive"
@@ -5395,10 +5482,12 @@ msgstr "Say hello to our little friend!"
 #. Text for talk sentence 2 in talk group halloween_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_1_over"
-msgid "小型发射器不需要能量就能放置，能够喷射短距离的雪球，是夜晚的一大利器！"
+msgid ""
+"小型发射器不需要能量就能放置，能够喷射短距离的雪球减速敌人，是夜晚的一大利"
+"器！"
 msgstr ""
 "Small Dispensers don't need energy to be placed. They can shoot short-ranged "
-"snowballs and are great contraptions for nighttime!"
+"snowballs slowing enemies and are great contraptions for nighttime!"
 
 #. Text for talk sentence 3 in talk group halloween_1_over's section 0
 #: Talk meta file
@@ -5801,10 +5890,10 @@ msgstr "This is Punchton!"
 #. Text for talk sentence 1 in talk group halloween_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_4_over"
-msgid "它能够击退前方的敌人一大格距离！并且重创脆弱的石头或者其他东西！"
+msgid "它能够蓄力击退前方的敌人一大格距离！并且重创脆弱的石头或者其他东西！"
 msgstr ""
-"It can knock enemies back a long distance! And heavily damage fragile stones "
-"or other objects!"
+"It can knock enemies back a long distance by charging! And heavily damage "
+"fragile stones or other objects!"
 
 #. Text for talk sentence 2 in talk group halloween_4_over's section 0
 #: Talk meta file
@@ -6045,9 +6134,10 @@ msgstr ""
 #. Text for talk sentence 3 in talk group halloween_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_6"
-msgid "不过不要怕，我们还是能用闪电的光发现它们！"
+msgid "不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火枯骨发现它们！"
 msgstr ""
-"Never fear, we can still discover them by the light from lightning strikes!"
+"Never fear, we can still discover them by the light from lightning strikes "
+"and willo skulls in the ghosts!"
 
 #. Text for talk sentence 4 in talk group halloween_6's section 0
 #: Talk meta file
@@ -6078,10 +6168,10 @@ msgstr "Happy birthday! Here’s your dangerous cake!"
 #. Text for talk sentence 1 in talk group halloween_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_6_over"
-msgid "这个是TNT！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！"
+msgid "这个是Etho台阶！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！"
 msgstr ""
-"This is TNT! After you trigger it, it will go KABOOM and blow up all the "
-"surrounding enemies!"
+"This is Etho Slab! After you trigger it, it will go KABOOM and blow up all "
+"the surrounding enemies!"
 
 #. Text for talk sentence 2 in talk group halloween_6_over's section 0
 #: Talk meta file
@@ -6213,10 +6303,11 @@ msgstr "Your soul shall be mine!"
 #. Text for talk sentence 1 in talk group halloween_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_7_over"
-msgid "看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后还会焚烧一群敌人！"
+msgid ""
+"看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后会焚烧一群敌人，还能分裂！"
 msgstr ""
 "Behold, the Soul Furnace! It can shoot DEADLY soulfire balls and burn groups "
-"of enemies on hit!"
+"of enemies and splits on hit!"
 
 #. Text for talk sentence 2 in talk group halloween_7_over's section 0
 #: Talk meta file
@@ -6419,10 +6510,11 @@ msgstr "Do you still remember the clown fairy from Hell?"
 #. Text for talk sentence 1 in talk group halloween_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_9_over"
-msgid "魔术箱！它会吃掉前方的一个敌人，然后自己变成一个星之碎片！"
+msgid ""
+"魔术箱！它会吃掉前方的一个敌人，把它们变得友好，然后自己变成一个星之碎片！"
 msgstr ""
-"Magic Chest, or Magichest! It swallows an enemy in front of it, and then "
-"transforms itself into a Starshard!"
+"Magic Chest, or Magichest! It swallows an enemy in front of it, turning the "
+"enemy friendly, and then transforms itself into a Starshard!"
 
 #. Text for talk sentence 2 in talk group halloween_9_over's section 0
 #: Talk meta file
@@ -6505,8 +6597,8 @@ msgstr ""
 msgctxt "talk-mvz2:halloween_11"
 msgid "并且据我所知，TNT可以吸收闪电，并且在那之后会变得非常……危险。"
 msgstr ""
-"From what I’ve seen, TNTs have the ability to absorb lightning and become..."
-"dangerous."
+"From what I’ve seen, TNTs have the ability to absorb lightning and "
+"become...dangerous."
 
 #. Text for talk sentence 5 in talk group halloween_11's section 0
 #: Talk meta file
@@ -6679,6 +6771,32 @@ msgstr "(Steve and Villager went to the Dream World.)"
 msgctxt "talk-mvz2:halloween_final"
 msgid "该你出场的时候了，朋友。"
 msgstr "Time to come out, friend."
+
+#. Archive name for talk group halloween_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "万圣夜拓展第1天结束"
+msgstr "Halloween Day 12 Outro"
+
+#. Text for talk sentence 0 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "这是淬毒发射器！能够在较远的一段距离发射毒球！"
+msgstr "It's Poisonser! Fires poison balls in a long distance!"
+
+#. Text for talk sentence 1 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "毒球击中的敌人会中毒，持续受到伤害！也能腐蚀它们的盔甲！"
+msgstr ""
+"Poison balls poisons a enemy on hit, continuously taking damage, and corrode "
+"their armor!"
+
+#. Text for talk sentence 2 in talk group halloween_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:halloween_EX1_over"
+msgid "也许是女巫制造的机械？谁知道呢！"
+msgstr "Maybe some gadget made by a witch? Who knows!"
 
 #. Archive name for talk group kourindou_visit_mausoleum_1
 #: Talk meta file
@@ -7128,28 +7246,29 @@ msgstr "Mausoleum Day 1 Outro"
 #. Text for talk sentence 0 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "这是音符盒！"
-msgstr "This is the Note Block!"
+msgid "这是闪电之珠！"
+msgstr "This is the Lightning Orb!"
 
 #. Text for talk sentence 1 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "它能发射音符，音符会在音符盒和敌人之间来回反弹！"
+msgid "它能够阻挡敌人的前进，并且免疫对方的子弹！"
 msgstr ""
-"It shoots musical notes which bounce back and forth between itself and the "
-"enemy!"
+"It deters enemies from advancing, as well as nullify enemy projectiles!"
 
 #. Text for talk sentence 2 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "也就是说，它与敌人的距离越近，造成的伤害就越高！"
-msgstr "That is to say, the closer an enemy is, the more damage it'll take!"
+msgid "并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！"
+msgstr ""
+"Also, instead of taking damage when hit by enemy projectiles, it can use "
+"them to heal!"
 
 #. Text for talk sentence 3 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "让怪物们听听这美妙的音乐吧！"
-msgstr "Give those monsters a sublime melody!"
+msgid "这可是高阶的法术器械！"
+msgstr "A contraption on the highest degree of sorcery!"
 
 #. Archive name for talk group mausoleum_1_map
 #: Talk meta file
@@ -7373,29 +7492,28 @@ msgstr "Mausoleum Day 2 Outro"
 #. Text for talk sentence 0 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "这是闪电之珠！"
-msgstr "This is the Lightning Orb!"
+msgid "这是唱片机！"
+msgstr "This is the Jukebox!"
 
 #. Text for talk sentence 1 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "它能够阻挡敌人的前进，并且免疫对方的子弹！"
+msgid "它能发射音符，音符会在唱片机和敌人之间来回反弹，并产生音波！"
 msgstr ""
-"It deters enemies from advancing, as well as nullify enemy projectiles!"
+"It shoots musical notes which bounce back and forth between itself and the "
+"enemy, and releases sound wave!"
 
 #. Text for talk sentence 2 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！"
-msgstr ""
-"Also, instead of taking damage when hit by enemy projectiles, it can use "
-"them to heal!"
+msgid "也就是说，它与敌人的距离越近，造成的伤害就越高！"
+msgstr "That is to say, the closer an enemy is, the more damage it'll take!"
 
 #. Text for talk sentence 3 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "这可是高阶的法术器械！"
-msgstr "A contraption on the highest degree of sorcery!"
+msgid "让怪物们听听这美妙的音乐吧！"
+msgstr "Give those monsters a sublime melody!"
 
 #. Archive name for talk group mausoleum_2_map
 #: Talk meta file
@@ -7533,16 +7651,17 @@ msgstr "In comes the Splitenser!"
 #. Text for talk sentence 1 in talk group mausoleum_3_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_3_over"
-msgid "它能够像发射器一样向前发射箭矢，并且还可以同时向后方发射双倍的箭矢！"
+msgid ""
+"它能够像发射器一样向前发射双倍箭矢，并且还可以同时向后方发射双倍的飞刀！"
 msgstr ""
-"It shoots arrows towards the front—just like a dispenser does—but it also "
-"shoots TWICE the number of arrows behind it!"
+"It shoots TWICE the number of arrows towards the front—just like a dispenser "
+"does—but it also shoots knives behind it!"
 
 #. Text for talk sentence 2 in talk group mausoleum_3_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_3_over"
 msgid "当心你的背后！"
-msgstr "Watch your back!"
+msgstr "Backstabber!"
 
 #. Archive name for talk group mausoleum_3_map
 #: Talk meta file
@@ -8285,10 +8404,10 @@ msgstr "Burn!"
 #. Text for talk sentence 1 in talk group mausoleum_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_6_over"
-msgid "这是地狱火，它能点燃飞过它的箭矢，造成额外的火焰伤害！"
+msgid "这是地狱火，它能烧伤附近的敌人，点燃飞过它的箭矢，造成额外的火焰伤害！"
 msgstr ""
-"This is Hellfire! It ignites any arrows that pass through it, making them "
-"deal additional fire damage!"
+"This is Hellfire! It burns closing enemies, ignites any arrows that pass "
+"through it, making them deal additional fire damage!"
 
 #. Text for talk sentence 2 in talk group mausoleum_6_over's section 0
 #: Talk meta file
@@ -8523,8 +8642,9 @@ msgstr "Well, no use crying over spilled milk!"
 #. Text for talk sentence 3 in talk group mausoleum_7's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_7"
-msgid "还有，好像有一种拿着竹竿的僵尸出现了！"
-msgstr "By the way, I think some type of zombie with a rod has appeared!"
+msgid "还有，好像有一种拿着竹竿和壶的僵尸出现了！"
+msgstr ""
+"By the way, I think some type of zombie with a rod and a pot has appeared!"
 
 #. Text for talk sentence 4 in talk group mausoleum_7's section 0
 #: Talk meta file
@@ -8555,9 +8675,9 @@ msgstr "The dead are coming back to life!"
 #. Text for talk sentence 1 in talk group mausoleum_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_7_over"
-msgid "这是死灵墓碑，它可以不停召唤骷髅战士，为你而战！"
+msgid "这是死灵墓碑，它可以不停召唤各种骷髅，为你而战！"
 msgstr ""
-"This is the Necrotombstone! It summons an endless army of skeleton warriors "
+"This is the Necrotombstone! It summons an endless army of various skeletons "
 "to fight for you!"
 
 #. Text for talk sentence 2 in talk group mausoleum_7_over's section 0
@@ -10171,6 +10291,30 @@ msgctxt "talk-mvz2:mausoleum_11_map"
 msgid "呜呜呜……呜呜呜……"
 msgstr "Waaaaah.... Waaaaah...."
 
+#. Archive name for talk group mausoleum_EX1_over
+#: Talk meta file
+msgctxt "archive"
+msgid "梦殿大祀庙拓展第1天结束"
+msgstr "Mausoleum Day 12 Outro"
+
+#. Text for talk sentence 0 in talk group mausoleum_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:mausoleum_EX1_over"
+msgid "狸猫十变化！"
+msgstr "Tanuki Ten Transformations!"
+
+#. Text for talk sentence 1 in talk group mausoleum_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:mausoleum_EX1_over"
+msgid "这是妖怪树叶！能模仿场上血最厚的怪物！"
+msgstr "It's Youkai Leaf! Can imitate an enemy with highest toughness!"
+
+#. Text for talk sentence 2 in talk group mausoleum_EX1_over's section 0
+#: Talk meta file
+msgctxt "talk-mvz2:mausoleum_EX1_over"
+msgid "<color=blue>（它看起来好可爱！）</color>"
+msgstr "<color=blue>(It looks so cute!)</color>"
+
 #. Archive name for talk group tutorial
 #: Talk meta file
 msgctxt "archive"
@@ -10300,6 +10444,33 @@ msgctxt "talk-mvz2:prologue_note"
 msgid "很疯狂吧？？？那我们就去找——这道看起来特别可疑的传送门吧！"
 msgstr ""
 "CRAAZZYY, RIGHT??? We’re coming for ya, very-suspicious-looking portal!"
+
+#~ msgctxt "talk-mvz2:castle_6_over"
+#~ msgid "这是金苹果！不过它可不是用来回血的！"
+#~ msgstr ""
+#~ "This is the golden apple! Despite that, it's not for restoring health!"
+
+#~ msgctxt "talk-mvz2:castle_6_over"
+#~ msgid "实际上它是一个魅惑果实，能魅惑第一个攻击它的敌人！"
+#~ msgstr ""
+#~ "In reality, it is a charming fruit that charms the first enemy to attack "
+#~ "it!"
+
+#~ msgctxt "talk-mvz2:castle_8_over"
+#~ msgid "当然，也包括空中的！"
+#~ msgstr "Flying enemies included, of course!"
+
+#~ msgctxt "talk-mvz2:dream_2_over"
+#~ msgid "最多能够提升4次，也就是一次发射5支箭矢！"
+#~ msgstr "The maximum is 5 arrows per shot!"
+
+#~ msgctxt "talk-mvz2:dream_2_over"
+#~ msgid "一支解决不了的，那就用一堆！"
+#~ msgstr "If one can't solve the problem, use a pile!"
+
+#~ msgctxt "talk-mvz2:mausoleum_1_over"
+#~ msgid "这是音符盒！"
+#~ msgstr "This is the Note Block!"
 
 #~ msgctxt "talk-mvz2:mausoleum_6_map"
 #~ msgid "…………唉。"

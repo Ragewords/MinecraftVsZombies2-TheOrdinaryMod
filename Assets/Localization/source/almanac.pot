@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-07-05 09:04+0800\n"
+"POT-Creation-Date: 2025-07-06 03:25+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -812,7 +812,7 @@ msgstr ""
 #. Flavor for contraptions mvz2:tnt
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "注意：并不能用于治疗设备尔的核心病，以及在一百年后因为能够治疗核心病而获得设备尔奖，以及用于建筑材料。"
+msgid "注意：并不能用于治疗设备尔的核心病、在一百年后因为能够治疗核心病而获得设备尔奖，或者是用于建筑材料。"
 msgstr ""
 
 #. Header for contraptions mvz2:soul_furnace
@@ -825,7 +825,8 @@ msgstr ""
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid ""
-"伤害：<color=red>60，15（分裂后）</color>\n"
+"伤害：<color=red>80，20（分裂后）</color>\n"
+"溅射伤害：<color=red>20（不伤害直接目标）</color>\n"
 "特点：<color=red>需要烧毁器械补充燃料，能够发现隐身的敌人</color>\n"
 "被摧毁：<color=red>存储有燃料时，喷射出爆炸灵魂火球</color>\n"
 "燃料上限：<color=red>120</color>\n"
@@ -1511,7 +1512,7 @@ msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red>60，每次反弹后减半</color>\n"
 "宝石球概率：<color=red>20%</color>\n"
-"宝石概率：<color=red>50%</color>\n"
+"宝石概率：<color=red>25%</color>\n"
 "技能：<color=red>立即喷射30发金球和宝石球</color>"
 msgstr ""
 
@@ -2187,7 +2188,7 @@ msgstr ""
 #. Header for enemies mvz2:emperor_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾，使它们免疫下一次受到的伤害的同时获得伤害抗性。"
+msgid "皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾和圣饼，使它们免疫下一次受到的伤害的同时获得伤害抗性。"
 msgstr ""
 
 #. Properties for enemies mvz2:emperor_zombie
@@ -2196,7 +2197,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200+50</color>\n"
 "施法冷却：<color=red>5秒</color>\n"
-"特点：<color=red>一次最多给予12个周围的敌人圣盾与伤害抗性，抵消下一次受到的伤害；抵消伤害后敌人获得50%伤害抗性</color>"
+"特点：<color=red>一次最多给予12个周围的敌人圣盾与圣饼，抵消下一次受到的伤害；抵消伤害后敌人获得50%伤害抗性</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:emperor_zombie
@@ -2253,13 +2254,13 @@ msgctxt "enemies.description"
 msgid "它每周花5天时间来申请挖掘石头的许可证。"
 msgstr ""
 
-#. Header for enemies mvz2:curseer
+#. Header for enemies mvz2:spellcaster
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "咒术师会治疗场上的敌人。"
 msgstr ""
 
-#. Properties for enemies mvz2:curseer
+#. Properties for enemies mvz2:spellcaster
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid ""
@@ -2268,7 +2269,7 @@ msgid ""
 "恢复生命：<color=red>200</color>"
 msgstr ""
 
-#. Flavor for enemies mvz2:curseer
+#. Flavor for enemies mvz2:spellcaster
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "很多人因着咒术师这个名字对他留下了不好的印象，他对此很苦恼，便尝试学习治疗他人的法术。然而因为治疗法术的施展方式过于暴力，他在别人眼里的印象更差了。"
@@ -2568,7 +2569,7 @@ msgstr ""
 #. Properties for artifacts mvz2:broken_lantern
 #: Almanac meta file
 msgctxt "artifacts.description"
-msgid "效果：<color=red>发光的器械+25%生产速度和攻击速度，但×50%光照范围</color>"
+msgid "效果：<color=red><tag id=\"mvz2:light_source\"/>发光的器械+25%生产速度和攻击速度，但×50%光照范围</color>"
 msgstr ""
 
 #. Flavor for artifacts mvz2:broken_lantern
@@ -4775,13 +4776,13 @@ msgctxt "death_message"
 msgid "你脚下的每一块石头里都是虫……"
 msgstr ""
 
-#. Name for entity mvz2:curseer
+#. Name for entity mvz2:spellcaster
 #: Entity meta file
 msgctxt "entity.name"
 msgid "咒术师"
 msgstr ""
 
-#. Death message for entity mvz2:curseer
+#. Death message for entity mvz2:spellcaster
 #: Entity meta file
 msgctxt "death_message"
 msgid "画个圈圈诅咒你！"
@@ -4844,7 +4845,7 @@ msgstr ""
 #. Death message for entity mvz2:willo_skull
 #: Entity meta file
 msgctxt "death_message"
-msgid "把我所有的东西留给我的嗝屁猫。"
+msgid "再见，这个可怕的世界。"
 msgstr ""
 
 #. Name for entity mvz2:reverse_satellite

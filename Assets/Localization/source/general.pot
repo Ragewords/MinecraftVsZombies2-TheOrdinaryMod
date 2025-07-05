@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-07-05 09:04+0800\n"
+"POT-Creation-Date: 2025-07-06 03:20+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4023,13 +4023,13 @@ msgstr ""
 #. Store item description of mvz2:golden_dropper by character mvz2:crazy_villager
 #: Store meta file
 msgctxt "store_talk"
-msgid "把金制投掷器放在木制投掷器上，让它能够发射可以反弹，并产生绿宝石的金球！"
+msgid "把珠宝投掷器放在木制投掷器上，让它能够发射可以反弹的金球和产生宝石的宝石球！"
 msgstr ""
 
 #. Store item description of mvz2:golden_dropper by character mvz2:tokiko
 #: Store meta file
 msgctxt "store_talk"
-msgid "金制投掷器能升级木制投掷器，能发出不停弹来弹去，并且可以赚钱的金球！"
+msgid "珠宝投掷器能升级木制投掷器，能发出不停弹来弹去的金球，和可以赚钱的宝石球！"
 msgstr ""
 
 #. Store item description of mvz2:hoe by character mvz2:crazy_villager
