@@ -102,7 +102,7 @@
         <terrain water="true" air="true"/>
         <weight base="2000" />
     </entry>
-	<entry id="curseer" entity="mvz2:curseer" >
+	<entry id="spellcaster" entity="mvz2:spellcaster" >
 		<spawn level="3" />
 		<weight base="2500" />
 	</entry>
