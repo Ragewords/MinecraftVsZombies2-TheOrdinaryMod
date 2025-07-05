@@ -29,7 +29,7 @@ namespace MVZ2.GameContent.Enemies
         public const string dullahan = "dullahan";
         public const string hellChariot = "hell_chariot";
         public const string anubisand = "anubisand";
-        public const string curseer = "curseer";
+        public const string spellcaster = "spellcaster";
 
         public const string reflectiveBarrierZombie = "reflective_barrier_zombie";
         public const string talismanZombie = "talisman_zombie";
@@ -90,7 +90,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID dullahan = Get(VanillaEnemyNames.dullahan);
         public static readonly NamespaceID hellChariot = Get(VanillaEnemyNames.hellChariot);
         public static readonly NamespaceID anubisand = Get(VanillaEnemyNames.anubisand);
-        public static readonly NamespaceID curseer = Get(VanillaEnemyNames.curseer);
+        public static readonly NamespaceID spellcaster = Get(VanillaEnemyNames.spellcaster);
 
         public static readonly NamespaceID reflectiveBarrierZombie = Get(VanillaEnemyNames.reflectiveBarrierZombie);
         public static readonly NamespaceID talismanZombie = Get(VanillaEnemyNames.talismanZombie);

@@ -10,10 +10,10 @@ using Tools;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.curseer)]
-    public class Curseer : MeleeEnemy
+    [EntityBehaviourDefinition(VanillaEnemyNames.spellcaster)]
+    public class Spellcaster : MeleeEnemy
     {
-        public Curseer(string nsp, string name) : base(nsp, name)
+        public Spellcaster(string nsp, string name) : base(nsp, name)
         {
         }
 
@@ -100,7 +100,7 @@ namespace MVZ2.GameContent.Enemies
         public const int STATE_WALK = VanillaEntityStates.WALK;
         public const int STATE_ATTACK = VanillaEntityStates.ATTACK;
         public const int STATE_CAST = VanillaEntityStates.MESMERIZER_CAST;
-        public static readonly NamespaceID ID = VanillaEnemyID.curseer;
+        public static readonly NamespaceID ID = VanillaEnemyID.spellcaster;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

@@ -1478,7 +1478,7 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="curseer" name="咒术师" deathMessage="画个圈圈诅咒你！" unlock="mvz2:level.castle_11">
+        <enemy id="spellcaster" name="咒术师" deathMessage="画个圈圈诅咒你！" unlock="mvz2:level.castle_11">
             <properties>
                 <float name="mvz2:maxHealth" value="300"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
