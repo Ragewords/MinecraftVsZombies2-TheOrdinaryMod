@@ -1585,7 +1585,7 @@
                 <p>辉针城内装饰用的灯笼，被扯坏了。会减少发光器械的光照范围，但提升它们的生产速度和攻击速度。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>发光的器械+25%生产速度和攻击速度，但×50%光照范围</color>]]></p>
+                <p>效果：<![CDATA[<color=red><tag id="mvz2:light_source"/>发光的器械+25%生产速度和攻击速度，但×50%光照范围</color>]]></p>
             </properties>
             <flavor>
                 <p>呃，还是别告诉针妙丸了吧，她可能会生气的。</p>
