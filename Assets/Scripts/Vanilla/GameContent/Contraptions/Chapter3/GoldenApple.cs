@@ -105,7 +105,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.mesmerizer,
             VanillaEnemyID.berserker,
             VanillaEnemyID.anubisand,
-            VanillaEnemyID.curseer,
+            VanillaEnemyID.spellcaster,
             VanillaEnemyID.reflectiveBarrierZombie,
             VanillaEnemyID.talismanZombie,
             VanillaEnemyID.wickedHermitZombie,
