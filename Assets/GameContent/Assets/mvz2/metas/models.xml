@@ -47,6 +47,7 @@
     <model name="youkai_leaf" type="entity" path="mvz2:contraption/mausoleum/youkai_leaf" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="gunpowder_barrel" type="entity" path="mvz2:contraption/ship/gunpowder_barrel" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="funnelenser" type="entity" path="mvz2:contraption/ship/funnelenser" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="force_pad" type="entity" path="mvz2:contraption/upgrade/force_pad" width="64" height="64" xOffset="0" yOffset="-28"/>

@@ -972,6 +972,23 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
+        <dispenser id="funnelenser" name="浮游发射器" tooltip="向敌人发射弹幕的僚机"  unlock="mvz2/:level.ship_EX1">
+            <properties>
+                <id name="mvz2:projectileId" value="mvz2:reflection_bullet"/>
+                <id name="mvz2:shootSound" value="mvz2:danmaku"/>
+                <id name="mvz2:placement" value="mvz2:suspension" />
+                <id name="mvz2:fragmentId" value="mvz2:furnace"/>
+                <idArray name="mvz2:gridLayers" value="mvz2:tool" />
+                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
+                <vector3 name="mvz2:shotOffset" x="25" y="15" z="0"/>
+                <vector3 name="mvz2:size" x="32" y="32" z="32"/>
+                <int name="mvz2:waterInteraction" value="0"/>
+                <int name="mvz2:airInteraction" value="0" />
+
+                <int name="mvz2:cost" value="125" />
+                <id name="mvz2:rechargeId" value="mvz2:short" />
+            </properties>
+        </dispenser>
 
         <!-- Token Contraptions -->
         <contraption id="anvil" name="铁砧" tooltip="阻碍敌人的前进" unlock="mvz2:level.dream_3">

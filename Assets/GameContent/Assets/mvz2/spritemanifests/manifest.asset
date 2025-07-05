@@ -237,6 +237,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4756509eba10d744bb3323a794303f92, type: 3}
   - name: mobile_blueprint/force_pad
     sprite: {fileID: 21300000, guid: f25d2b94a621a1e4d8cd823493b4a29f, type: 3}
+  - name: mobile_blueprint/funnelenser
+    sprite: {fileID: 21300000, guid: f5f28e9f69ec69d4c8a128faadbacd70, type: 3}
   - name: mobile_blueprint/furnace
     sprite: {fileID: 21300000, guid: acc2e6159831cab4bb25141293768c3c, type: 3}
   - name: mobile_blueprint/gargoyle
@@ -567,6 +569,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 78c20e0b07a17e3458c71c08eeba7030, type: 3}
   - name: entity/contraptions/force_wave
     sprite: {fileID: 21300000, guid: c91919e3f10e9004f85638cba2384e3e, type: 3}
+  - name: entity/contraptions/funnelenser_goggles
+    sprite: {fileID: 21300000, guid: 12d387470de1d444caf9d5494a99b9c3, type: 3}
   - name: entity/contraptions/giant_bowl
     sprite: {fileID: 21300000, guid: 84a7f7624ce186d43bdfe0a7c6d53f6b, type: 3}
   - name: entity/contraptions/giant_bowl_point
@@ -761,6 +765,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 842c7ddcc4687ac43bd7fd5d478c0b7f, type: 3}
   - name: entity/pickups/ender_chest
     sprite: {fileID: 21300000, guid: 329b9a3401e28284e914a54eee51e840, type: 3}
+  - name: entity/pickups/furious_gunpowder
+    sprite: {fileID: 21300000, guid: 6b616186e5a21fc438c9a232f796d56d, type: 3}
+  - name: entity/pickups/gunpowder
+    sprite: {fileID: 21300000, guid: 3d448719755b3604297b30ed821122ef, type: 3}
   - name: entity/pickups/map_pickup
     sprite: {fileID: 21300000, guid: aad19d3d7617e834f8cccff23f786aa5, type: 3}
   - name: entity/pickups/money_chest
@@ -1665,12 +1673,22 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 29141504, guid: bafd8d60319920d40a5881b8a2776d56, type: 3}
     - {fileID: -2067564325, guid: bafd8d60319920d40a5881b8a2776d56, type: 3}
+  - name: entity/contraption/funnelenser
+    spritesheet:
+    - {fileID: -410507342, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
+    - {fileID: 1738013645, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
+    - {fileID: -761731477, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
+    - {fileID: 1412319369, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
   - name: entity/contraption/furnace
     spritesheet:
     - {fileID: -2038677847, guid: 516d74eccaaf1e24fb1a0ab53d0f2657, type: 3}
     - {fileID: -1758956819, guid: 516d74eccaaf1e24fb1a0ab53d0f2657, type: 3}
     - {fileID: -2083500495, guid: 516d74eccaaf1e24fb1a0ab53d0f2657, type: 3}
     - {fileID: 552944845, guid: 516d74eccaaf1e24fb1a0ab53d0f2657, type: 3}
+  - name: entity/contraption/gunpowder_barrel
+    spritesheet:
+    - {fileID: -1122046318, guid: 2c2cb3e709a9af442bc70a6482d2ec2a, type: 3}
+    - {fileID: -1750288129, guid: 2c2cb3e709a9af442bc70a6482d2ec2a, type: 3}
   - name: entity/contraption/hellfire_base
     spritesheet:
     - {fileID: 412644075, guid: 2562dbc08cdc1bd459d0a70219d7d4e4, type: 3}
