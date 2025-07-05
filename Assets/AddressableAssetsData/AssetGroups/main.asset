@@ -773,6 +773,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12d387470de1d444caf9d5494a99b9c3
+    m_Address: mvz2:entity/contraptions/funnelenser_goggles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 12d4c96d4fdd547419603de3a1afb289
     m_Address: mvz2:charged_bolt3
     m_ReadOnly: 0
@@ -1584,6 +1591,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2501fb9a8891dcb45861bc4193910469
+    m_Address: mvz2:contraption/ship/funnelenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 252362d9526afa14281b2009197a4acd
     m_Address: mvz2:random/wood2
@@ -8190,6 +8204,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1d7959b29cd74a4e8c55b17b3233c75
+    m_Address: mvz2:entity/contraption/funnelenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c1f7123b5f8de1640b46858b3fc6914e
     m_Address: mvz2:entity/effect/flesh_part_censored
     m_ReadOnly: 0
@@ -10435,6 +10456,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5f28e9f69ec69d4c8a128faadbacd70
+    m_Address: mvz2:mobile_blueprint/funnelenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f5fef6cacecdf1244837b0b2c1d53290
     m_Address: mvz2:projectile/diamond_ball

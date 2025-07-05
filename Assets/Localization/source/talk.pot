@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-16 07:56+0800\n"
+"POT-Creation-Date: 2025-07-05 09:04+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1382,7 +1382,7 @@ msgstr ""
 #. Text for talk sentence 5 in talk group castle_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_7_over"
-msgid "这玩意可以让地面震动起来，虽然会让僵尸前进，但能够眩晕它们相当长的时间，顺便把它们送到不同的行！"
+msgid "这玩意可以让地面震动起来，然后把僵尸击退，顺便把它们送到不同的行！"
 msgstr ""
 
 #. Text for talk sentence 6 in talk group castle_7_over's section 0
@@ -5492,13 +5492,13 @@ msgstr ""
 #. Text for talk sentence 0 in talk group halloween_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_4_over"
-msgid "这个是一拳活塞！"
+msgid "这个是冲击活塞！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group halloween_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_4_over"
-msgid "它能够击退前方的敌人一大格距离！并且重创脆弱的石头或者其他东西！"
+msgid "它能够蓄力击退前方的敌人一大格距离！并且重创脆弱的石头或者其他东西！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_4_over's section 0
@@ -5720,7 +5720,7 @@ msgstr ""
 #. Text for talk sentence 3 in talk group halloween_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_6"
-msgid "不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火骷髅头发现它们！"
+msgid "不过不要怕，我们还是能用闪电的光以及幽灵群中的萤火枯骨发现它们！"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group halloween_6's section 0
