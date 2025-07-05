@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Contraptions
                 }
                 else if (target.Type == EntityTypes.PROJECTILE && target.IsHostile(entity))
                 {
-                    target.Die();
+                    target.Remove();
                 }
             }
             if (stunned)
