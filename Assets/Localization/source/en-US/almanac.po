@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
 "POT-Creation-Date: 2025-07-06 03:25+0800\n"
-"PO-Revision-Date: 2025-07-06 03:28+0800\n"
+"PO-Revision-Date: 2025-07-06 15:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -1586,7 +1586,8 @@ msgstr ""
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid "死灵墓碑会不断召唤友方的骷髅、幽灵、死灵法师、爆破骨兵和骷髅战士，让它们为你而战。"
-msgstr "Necrotombstones will constantly summon friendly skeletons, ghosts, skelebombs and skeleton warriors to fight for you."
+msgstr ""
+"Necrotombstones will constantly summon friendly skeletons, ghosts, necromancers, skelebombs and skeleton warriors to fight for you."
 
 #. Properties for contraptions mvz2:necrotombstone
 #: Almanac meta file
