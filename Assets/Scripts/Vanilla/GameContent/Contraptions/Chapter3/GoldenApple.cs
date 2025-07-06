@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using PVZEngine;
@@ -63,12 +64,14 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                var game = Global.Game;
+                var level = target.Level;
                 var rng = target.RNG;
-                var grid = enemy.GetGrid();
+                var grid = target.GetGrid();
                 var validEnemies = enemyPool.Where(id =>
                 {
-                    if (!game.GetUnlockedEnemies().Contains(id))
+                    if (!level.GetEnemyPool().Contains(id))
+                        return false;
+                    if (enemy.GetDefinitionID() == id)
                         return false;
                     return grid.CanSpawnEntity(id);
                 });
