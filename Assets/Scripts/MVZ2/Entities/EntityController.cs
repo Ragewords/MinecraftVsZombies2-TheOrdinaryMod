@@ -396,8 +396,15 @@ namespace MVZ2.Entities
             var armorModel = Model.GetArmorModel(slot);
             if (!armorModel)
                 return;
-            armorModel.GraphicGroup.SetTint(armor.GetTint());
-            armorModel.GraphicGroup.SetColorOffset(armor.GetColorOffset());
+            var tint = armor.GetTint();
+            var colorOffset = armor.GetColorOffset();
+            if (slot == VanillaArmorSlots.main)
+            {
+                tint *= Entity.GetHelmetTint();
+                colorOffset += Entity.GetHelmetColorOffset();
+            }
+            armorModel.GraphicGroup.SetTint(tint);
+            armorModel.GraphicGroup.SetColorOffset(colorOffset);
         }
         private void UpdateArmorModels()
         {
