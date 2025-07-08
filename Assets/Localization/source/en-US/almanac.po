@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
 "POT-Creation-Date: 2025-07-06 03:25+0800\n"
-"PO-Revision-Date: 2025-07-08 14:39+0800\n"
+"PO-Revision-Date: 2025-07-08 14:56+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -1444,7 +1444,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid "唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。"
 msgstr ""
-"Jukebox shoots notes that bounces between itself and enemies, dealing damage over time, notes hitting it self will release sound wave "
+"Jukebox shoots notes that bounces between itself and enemies, dealing damage over time, notes hitting itself will release sound wave "
 "to attack surrounding enemies."
 
 #. Properties for contraptions mvz2:note_block
@@ -1811,7 +1811,7 @@ msgstr "It bought the joke patent of the Wooden Dropper, so it can joke about Go
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid "钻石尖刺会对走在上面的敌人造成双重伤害，每次造成伤害都有概率产生击退效果，并具有更高的耐久。"
-msgstr "Diamond Spikes deal double damage to enemies stepped on it, each has to cause knock back and have more toughness."
+msgstr "Diamond Spikes deal double damage to enemies stepped on it, each has chance to cause knock back and have more toughness."
 
 #. Properties for contraptions mvz2:diamond_spikes
 #: Almanac meta file
@@ -1923,8 +1923,8 @@ msgid ""
 "次元锤是个物理发烧友，它致力于探索多元宇宙的无限可能性。它的家里摆着一本笑话书，里面夹着一本量子物理学书，再里面夹着一本笑话书，再再里"
 "面还夹着……"
 msgstr ""
-"Dimension Hammer is quite an enthusiast on physics, he's dedicated to exploring the infinite possibilities of the multiverse. He has a "
-"joke book in his house, a quantum physics book sandwiched inside of it, then a joke book sandwiched inside of the quantum physics "
+"Dimension Hammer is quite an enthusiast on physics who is dedicated to exploring the infinite possibilities of the multiverse. He has "
+"a joke book in his house, a quantum physics book sandwiched inside of it, then a joke book sandwiched inside of the quantum physics "
 "book, and then a... uhh..."
 
 #. Header for contraptions mvz2:fire_charge_dispenser
@@ -2590,7 +2590,7 @@ msgstr ""
 "Toughness: <color=red>200+50</color>\n"
 "Speed: <color=red>1</color>\n"
 "Special: <color=red>Comes with a Talisman Zombie. Teleports to the left side once the Talisman Zombie dies, attacking from behind, and "
-"summons a Talisman Zombie again.</color>"
+"summons a Talisman Zombie again</color>"
 
 #. Flavor for enemies mvz2:wicked_hermit_zombie
 #: Almanac meta file
@@ -2633,7 +2633,7 @@ msgstr ""
 "Special: <color=red>Plunges its staff into the ground when health drops below 50%, reviving all nearby defeated monsters at the cost "
 "of its own toughness; drops its pot when health drops below 30%, revive with full toughness and staff when defeated absolutely</"
 "color>\n"
-"Weakness: <color=red>Fire instantly burns the staff; impact and explosion ignore pot resistance</color>"
+"Weakness: <color=red>Fire instantly burns the staff; impact and explosion ignores pot resistance</color>"
 
 #. Flavor for enemies mvz2:shikaisen_zombie
 #: Almanac meta file
@@ -2712,7 +2712,7 @@ msgstr ""
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "蠹虫会对石头造成更高的伤害。"
-msgstr "Silverfish dealing higher damage to stone."
+msgstr "Silverfish deal higher damage to stone."
 
 #. Properties for enemies mvz2:silverfish
 #: Almanac meta file
