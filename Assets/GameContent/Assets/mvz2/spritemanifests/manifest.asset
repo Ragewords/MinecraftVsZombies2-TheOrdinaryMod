@@ -257,10 +257,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 55c4fb06ca097e24eaa9171673390143, type: 3}
   - name: mobile_blueprint/gravity_pad
     sprite: {fileID: 21300000, guid: b362171cd0a32824e9b3ac7c42f24dd7, type: 3}
+  - name: mobile_blueprint/gunpowder_barrel
+    sprite: {fileID: 21300000, guid: c7c2c17e30f15d84fa48bd11657b600a, type: 3}
   - name: mobile_blueprint/hellfire
     sprite: {fileID: 21300000, guid: 358463c4a1670b441b15bd6423009e35, type: 3}
   - name: mobile_blueprint/hell_chariot
     sprite: {fileID: 21300000, guid: b9be44ffa4015754eaf65066f0522ab8, type: 3}
+  - name: mobile_blueprint/high_frequency_pulse_dispenser
+    sprite: {fileID: 21300000, guid: f24e02b7e9159cb4ebd603ab477f2152, type: 3}
   - name: mobile_blueprint/hypnotizer
     sprite: {fileID: 21300000, guid: 5a1b2822216b76243b6a5ac76e3e1fbe, type: 3}
   - name: mobile_blueprint/imp
@@ -317,6 +321,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 739dc404e782a0c4dae8390f142f0cc5, type: 3}
   - name: mobile_blueprint/reflective_barrier_zombie
     sprite: {fileID: 21300000, guid: 61e062545e6a32f479757806ec86d744, type: 3}
+  - name: mobile_blueprint/repeatenser
+    sprite: {fileID: 21300000, guid: 8ca4037f1d5fcf342b4ffe04c46d6590, type: 3}
   - name: mobile_blueprint/return_pearl
     sprite: {fileID: 21300000, guid: 90b1efed9d95d3b43a897fa9d566324a, type: 3}
   - name: mobile_blueprint/reverse_satellite
