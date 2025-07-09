@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2025-07-06 03:20+0800\n"
-"PO-Revision-Date: 2025-07-06 03:21+0800\n"
+"POT-Creation-Date: 2025-07-09 12:58+0800\n"
+"PO-Revision-Date: 2025-07-09 13:01+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-Language: en-US\n"
 "X-Crowdin-File: /crowdin/general.pot\n"
 "X-Crowdin-File-ID: 20\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.5\n"
 
 #. 初始界面的作者标识
 #: /MainGame/MainScene/Init/Splash/Canvas/Creator
@@ -707,55 +707,41 @@ msgctxt "advice.collect_money"
 msgid "收集宝石来获得更酷的道具吧！"
 msgstr "Collect gems to purchase COOL stuff!"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:524
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:485
 msgid "选择你的命运"
 msgstr "Choose your fate"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:526
-msgid "接受你的命运"
-msgstr "Accept your fate"
-
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:528
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:487
 msgid "选吧。"
 msgstr "Choose."
 
-# 梦魇对话框文本
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:530
-msgid "不必挣扎。"
-msgstr "No need to struggle."
-
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:532
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:489
 msgid "潘多拉的魔盒"
 msgstr "Pandora's Box"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:534
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:491
 msgid "尸潮"
 msgstr "Biohazard"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:536
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:493
 msgid "衰老"
 msgstr "Decrepify"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:538
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:495
 msgid "疯狂"
 msgstr "Insanity"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:540
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:497
 msgid "成真"
 msgstr "Come True"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:542
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:499
 msgid "深潜者"
 msgstr "The Lurker"
 
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:544
+#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:501
 msgid "黑太阳"
 msgstr "The Black Sun"
-
-# 梦魇选项
-#: Scripts\Vanilla\GameContent\Bosses\SlenderMan.cs:546
-msgid "幻视之眼"
-msgstr "Illusionary eye"
 
 #: Scripts\Vanilla\VanillaStrings.cs:8
 msgid "无法使用"
@@ -914,185 +900,173 @@ msgctxt "recharge_time"
 msgid "短"
 msgstr "Short"
 
-# 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:75
-msgctxt "recharge_time"
-msgid "中等"
-msgstr "Medium"
-
-#: Scripts\Vanilla\VanillaStrings.cs:77
 msgctxt "recharge_time"
 msgid "长"
 msgstr "Long"
 
-#: Scripts\Vanilla\VanillaStrings.cs:79
+#: Scripts\Vanilla\VanillaStrings.cs:77
 msgctxt "recharge_time"
 msgid "很长"
 msgstr "Very Long"
 
-#: Scripts\Vanilla\VanillaStrings.cs:83
+#: Scripts\Vanilla\VanillaStrings.cs:81
 msgctxt "archive"
 msgid "剧情分支"
 msgstr "Plot Branch"
 
-#: Scripts\Vanilla\VanillaStrings.cs:85
+#: Scripts\Vanilla\VanillaStrings.cs:83
 msgctxt "archive"
 msgid "是否拥有足够的金钱？"
 msgstr "Do you have enough money to buy this?"
 
-#: Scripts\Vanilla\VanillaStrings.cs:87
+#: Scripts\Vanilla\VanillaStrings.cs:85
 msgctxt "archive"
 msgid "对话结束"
 msgstr "Replay Ended"
 
-#: Scripts\Vanilla\VanillaStrings.cs:89
+#: Scripts\Vanilla\VanillaStrings.cs:87
 msgctxt "archive"
 msgid "是否重新播放？"
 msgstr "Play again?"
 
-#: Scripts\Vanilla\VanillaStrings.cs:93
+#: Scripts\Vanilla\VanillaStrings.cs:91
 msgid "是"
 msgstr "Yes"
 
-#: Scripts\Vanilla\VanillaStrings.cs:95
+#: Scripts\Vanilla\VanillaStrings.cs:93
 msgid "否"
 msgstr "No"
 
 # 通用的开
-#: Scripts\Vanilla\VanillaStrings.cs:97
+#: Scripts\Vanilla\VanillaStrings.cs:95
 msgid "开"
 msgstr "On"
 
-#: Scripts\Vanilla\VanillaStrings.cs:99
+#: Scripts\Vanilla\VanillaStrings.cs:97
 msgid "关"
 msgstr "Off"
 
-#: Scripts\Vanilla\VanillaStrings.cs:105
+#: Scripts\Vanilla\VanillaStrings.cs:103
 msgid "返回地图"
 msgstr "Back to map"
 
-#: Scripts\Vanilla\VanillaStrings.cs:107
+#: Scripts\Vanilla\VanillaStrings.cs:105
 msgid "返回主菜单"
 msgstr "Back to main menu"
 
-#: Scripts\Vanilla\VanillaStrings.cs:111
+#: Scripts\Vanilla\VanillaStrings.cs:109
 msgid "警告"
 msgstr "Warning"
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:113
+#: Scripts\Vanilla\VanillaStrings.cs:111
 msgid "提示"
 msgstr "Hint"
 
-#: Scripts\Vanilla\VanillaStrings.cs:115
+#: Scripts\Vanilla\VanillaStrings.cs:113
 msgid "退出"
 msgstr "Quit"
 
-#: Scripts\Vanilla\VanillaStrings.cs:122
+#: Scripts\Vanilla\VanillaStrings.cs:120
 msgid "挖掉器械"
 msgstr "Dig a contraption"
 
-#: Scripts\Vanilla\VanillaStrings.cs:124
+#: Scripts\Vanilla\VanillaStrings.cs:122
 msgid "触发器械"
 msgstr "Trigger a contraption"
 
-#: Scripts\Vanilla\VanillaStrings.cs:128
+#: Scripts\Vanilla\VanillaStrings.cs:126
 msgctxt "difficulty"
 msgid "简单"
 msgstr "EASY"
 
-#: Scripts\Vanilla\VanillaStrings.cs:130
+#: Scripts\Vanilla\VanillaStrings.cs:128
 msgctxt "difficulty"
 msgid "普通"
 msgstr "NORMAL"
 
-#: Scripts\Vanilla\VanillaStrings.cs:132
+#: Scripts\Vanilla\VanillaStrings.cs:130
 msgctxt "difficulty"
 msgid "困难"
 msgstr "HARD"
 
-# 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:134
-msgctxt "difficulty"
-msgid "月狂"
-msgstr "LUNATIC"
-
-#: Scripts\Vanilla\VanillaStrings.cs:136
+#: Scripts\Vanilla\VanillaStrings.cs:132
 msgctxt "difficulty"
 msgid "未知难度"
 msgstr "Unknown"
 
-#: Scripts\Vanilla\VanillaStrings.cs:140
+#: Scripts\Vanilla\VanillaStrings.cs:136
 msgctxt "levelname"
 msgid "未知关卡"
 msgstr "Unknown Level"
 
-#: Scripts\Vanilla\VanillaStrings.cs:142
+#: Scripts\Vanilla\VanillaStrings.cs:138
 msgctxt "levelname"
 msgid "{0} - 第{1}天"
 msgid_plural "{0} - 第{1}天"
 msgstr[0] "{0} - Day {1}"
 msgstr[1] "{0} - Day {1}"
 
-#: Scripts\Vanilla\VanillaStrings.cs:144
+#: Scripts\Vanilla\VanillaStrings.cs:140
 msgctxt "levelname"
 msgid "{0} - 第{1}轮"
 msgid_plural "{0} - 第{1}轮"
 msgstr[0] "{0} - Flag {1}"
 msgstr[1] "{0} - Flag {1}"
 
-#: Scripts\Vanilla\VanillaStrings.cs:148
+#: Scripts\Vanilla\VanillaStrings.cs:144
 msgctxt "death_message"
 msgid "你死了！"
 msgstr "You died!"
 
-#: Scripts\Vanilla\VanillaStrings.cs:150
+#: Scripts\Vanilla\VanillaStrings.cs:146
 msgctxt "death_message"
 msgid "<color=red>来到我们之中吧</color>"
 msgstr "<color=red>COME TO US</color>"
 
 # 死亡信息-我是僵尸
-#: Scripts\Vanilla\VanillaStrings.cs:152
+#: Scripts\Vanilla\VanillaStrings.cs:148
 msgctxt "death_message"
 msgid "你失去了所有能量！"
 msgstr "You have lost all your energy!"
 
-#: Scripts\Vanilla\VanillaStrings.cs:155
+#: Scripts\Vanilla\VanillaStrings.cs:151
 msgctxt "entity.name"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:158
+#: Scripts\Vanilla\VanillaStrings.cs:154
 msgctxt "entity_counter.name"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:161
+#: Scripts\Vanilla\VanillaStrings.cs:157
 msgctxt "option.name"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:164
+#: Scripts\Vanilla\VanillaStrings.cs:160
 msgctxt "entity.tooltip"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:167
+#: Scripts\Vanilla\VanillaStrings.cs:163
 msgctxt "artifact.name"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:170
+#: Scripts\Vanilla\VanillaStrings.cs:166
 msgctxt "artifact.tooltip"
 msgid "？？？"
 msgstr "???"
 
-#: Scripts\Vanilla\VanillaStrings.cs:173
+#: Scripts\Vanilla\VanillaStrings.cs:169
 msgctxt "almanac"
 msgid "（还没有遇到）"
 msgstr "(Not encountered yet)"
 
-#: Scripts\Vanilla\VanillaStrings.cs:177
+#: Scripts\Vanilla\VanillaStrings.cs:173
 msgctxt "music.name"
 msgid "无"
 msgstr "None"
@@ -1101,10 +1075,9 @@ msgstr "None"
 msgid "版本{0}"
 msgstr "Version {0}"
 
-# 标题界面按钮文本
 #: Scripts\MVZ2\Titlescreen\TitlescreenController.cs:80
-msgid "点击发现新大陆！"
-msgstr "Click to discover a new world!"
+msgid "点击以开始！"
+msgstr "Click to start!"
 
 #: Scripts\MVZ2\Talks\Components\TalkController.cs:854
 msgid ""
@@ -1428,7 +1401,7 @@ msgstr "Origin: {0}"
 msgid "作者：{0}"
 msgstr "Composer: {0}"
 
-#: Scripts\MVZ2\Map\MapController.cs:731
+#: Scripts\MVZ2\Map\MapController.cs:680
 msgid ""
 "按住右键拖动以移动视图\n"
 "滚轮以缩放视图"
@@ -1436,7 +1409,7 @@ msgstr ""
 "Hold right mouse and drag to move the view\n"
 "Scroll to scale the view"
 
-#: Scripts\MVZ2\Map\MapController.cs:733
+#: Scripts\MVZ2\Map\MapController.cs:682
 msgid ""
 "单指拖动以移动视图\n"
 "双指触摸以缩放视图"
@@ -1444,11 +1417,11 @@ msgstr ""
 "Drag with one finger to move the view\n"
 "Touch with two fingers to scale the view"
 
-#: Scripts\MVZ2\Map\MapController.cs:735
+#: Scripts\MVZ2\Map\MapController.cs:684
 msgid "正在进入关卡……"
 msgstr "Entering Level…"
 
-#: Scripts\MVZ2\Map\MapController.cs:737
+#: Scripts\MVZ2\Map\MapController.cs:686
 msgid ""
 "轮数\n"
 "{0}/{1}"
@@ -2455,34 +2428,34 @@ msgstr ""
 "Best Streak:\n"
 "{0}"
 
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:749
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:795
 msgctxt "almanac"
 msgid "花费：<color=red>{0}</color>"
 msgstr "Cost: <color=red>{0}</color>"
 
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:751
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:797
 msgctxt "almanac"
 msgid "冷却时间：<color=red>{0}</color>"
 msgstr "Recharge: <color=red>{0}</color>"
 
 # 图鉴放大选项，{0}为缩放等级
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:753
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:799
 msgctxt "almanac"
 msgid "缩放：{0}"
 msgstr "Scale: {0}"
 
 # 图鉴标签枚举值的名称模板，{0}为标签名，{1}为值名
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:755
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:801
 msgctxt "almanac"
 msgid "{0}：{1}"
 msgstr "{0}: {1}"
 
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:757
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:803
 msgctxt "almanac"
 msgid "左键拖拽以移动视图；滚轮以缩放视图"
 msgstr "Hold left mouse and drag to move; Scroll to scale"
 
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:759
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:805
 msgctxt "almanac"
 msgid "单指拖拽以移动视图；双指拖拽以缩放视图"
 msgstr "Drag with one finger to move; Touch with two fingers to scale"
@@ -2586,13 +2559,13 @@ msgstr "Mausoleum Endless"
 #: Stage meta file
 msgctxt "levelname"
 msgid "圣辇船"
-msgstr ""
+msgstr "Ship"
 
 #. Name for stage mvz2:ship_endless
 #: Stage meta file
 msgctxt "levelname"
 msgid "圣辇船无尽"
-msgstr ""
+msgstr "Ship Endless"
 
 #. Name for stage mvz2:whack_a_ghost
 #: Stage meta file
@@ -3790,7 +3763,7 @@ msgstr ""
 #: Music meta file
 msgctxt "music.name"
 msgid "美猴王-地图"
-msgstr ""
+msgstr "Monkey King Map"
 
 #. Description for music mvz2:ship_map
 #: Music meta file
@@ -4412,6 +4385,42 @@ msgctxt "staff_name"
 msgid "Minecraft幻想乡地图-TouhouCraft团队"
 msgstr "Minecraft Gensokyo Map-TouhouCraft Team"
 
+#. Name for credits category 地图背景-圣辇船
+#: Credits meta file
+msgctxt "credits_category"
+msgid "地图背景-圣辇船"
+msgstr "Map Background - Ship"
+
+#. Name for credit staff 地图背景-圣辇船
+#: Credits meta file
+msgctxt "staff_name"
+msgid "传说中的金色小丑鱼"
+msgstr "传说中的金色小丑鱼"
+
+#. Name for credit staff 地图背景-圣辇船
+#: Credits meta file
+msgctxt "staff_name"
+msgid "琉"
+msgstr "琉"
+
+#. Name for credit staff 地图背景-圣辇船
+#: Credits meta file
+msgctxt "staff_name"
+msgid "一个发射器"
+msgstr "一个发射器"
+
+#. Name for credit staff 地图背景-圣辇船
+#: Credits meta file
+msgctxt "staff_name"
+msgid "creator"
+msgstr "creator"
+
+#. Name for credit staff 地图背景-圣辇船
+#: Credits meta file
+msgctxt "staff_name"
+msgid "修瞑"
+msgstr "修瞑"
+
 #. Name for credits category 音乐
 #: Credits meta file
 msgctxt "credits_category"
@@ -4490,8 +4499,30 @@ msgctxt "staff_name"
 msgid "正邪の老鼠"
 msgstr "正邪の老鼠"
 
-#~ msgid "点击以开始！"
-#~ msgstr "Click to start!"
+#~ msgid "接受你的命运"
+#~ msgstr "Accept your fate"
+
+# 梦魇对话框文本
+#~ msgid "不必挣扎。"
+#~ msgstr "No need to struggle."
+
+# 梦魇选项
+#~ msgid "幻视之眼"
+#~ msgstr "Illusionary eye"
+
+# 冷却时间
+#~ msgctxt "recharge_time"
+#~ msgid "中等"
+#~ msgstr "Medium"
+
+# 关卡难度
+#~ msgctxt "difficulty"
+#~ msgid "月狂"
+#~ msgstr "LUNATIC"
+
+# 标题界面按钮文本
+#~ msgid "点击发现新大陆！"
+#~ msgstr "Click to discover a new world!"
 
 #~ msgctxt "levelname"
 #~ msgid "死亡热气球"

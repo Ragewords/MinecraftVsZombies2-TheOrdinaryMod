@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetBombRNG(entity, new RandomGenerator(entity.RNG.Next()));
-            var productionTimer = new FrameTimer(entity.RNG.Next(90, 375));
+            var productionTimer = new FrameTimer(entity.RNG.Next(PRODUCTION_TIME_START_MIN, PRODUCTION_TIME_START_MAX));
             SetProductionTimer(entity, productionTimer);
         }
         protected override void UpdateAI(Entity entity)
@@ -161,6 +161,9 @@ namespace MVZ2.GameContent.Contraptions
             VanillaContraptionID.blackHoleBomb
         };
 
+        public const int PRODUCTION_TIME_START_MIN = 90;
+        public const int PRODUCTION_TIME_START_MAX = 360;
+        public const int PRODUCTION_TIME = 1080;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_FURIOUS = new VanillaEntityPropertyMeta<bool>("fury");
         private static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("color_offset");

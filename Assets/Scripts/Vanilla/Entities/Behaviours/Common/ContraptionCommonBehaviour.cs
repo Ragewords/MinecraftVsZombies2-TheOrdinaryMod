@@ -35,6 +35,10 @@ namespace MVZ2.Vanilla.Entities
             {
                 entity.AddBuff<SacrificedBuff>();
             }
+            else if (damageInfo.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+            {
+                entity.Remove();
+            }
             else
             {
                 entity.PlayCrySound(entity.GetDeathSound());

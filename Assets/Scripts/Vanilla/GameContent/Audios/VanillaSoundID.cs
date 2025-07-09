@@ -122,6 +122,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID missile = Get("missile");
         public readonly static NamespaceID moneyFall = Get("money_fall");
         public readonly static NamespaceID morseCodeReverse = Get("morse_code_reverse");
+        public readonly static NamespaceID motor = Get("motor");
         public readonly static NamespaceID mutantCry = Get("mutant_cry");
         public readonly static NamespaceID netherrackBreak = Get("netherrack_break");
         public readonly static NamespaceID nightmareaperRage = Get("nightmareaper_rage");
@@ -150,6 +151,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID potion = Get("potion");
         public readonly static NamespaceID powerOff = Get("power_off");
         public readonly static NamespaceID powerOn = Get("power_on");
+        public readonly static NamespaceID powerUp = Get("power_up");
         public readonly static NamespaceID punch = Get("punch");
         public readonly static NamespaceID rain = Get("rain");
         public readonly static NamespaceID readySetBuild = Get("ready_set_build");
@@ -207,6 +209,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID vortex = Get("vortex");
         public readonly static NamespaceID wakeup = Get("wakeup");
         public readonly static NamespaceID water = Get("water");
+        public readonly static NamespaceID wind = Get("wind");
         public readonly static NamespaceID witherCry = Get("wither_cry");
         public readonly static NamespaceID witherDamage = Get("wither_damage");
         public readonly static NamespaceID witherDeath = Get("wither_death");

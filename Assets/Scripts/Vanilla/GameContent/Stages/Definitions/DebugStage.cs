@@ -16,7 +16,6 @@ namespace MVZ2.GameContent.Stages
         public DebugStage(string nsp, string name) : base(nsp, name)
         {
             //AddBehaviour(new ConveyorStageBehaviour(this));
-            AddBehaviour(new StarshardStageBehaviour(this));
         }
         public override void OnStart(LevelEngine level)
         {
@@ -32,9 +31,8 @@ namespace MVZ2.GameContent.Stages
         public override void OnUpdate(LevelEngine level)
         {
             base.OnUpdate(level);
-            level.SetEnergy(9990);
             level.SetStarshardSlotCount(5);
-            level.SetStarshardCount(3);
+            level.SetStarshardCount(5);
             level.CheckGameOver();
         }
         private void ClassicStart(LevelEngine level)
@@ -43,23 +41,23 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.fireChargeDispenser,
+                VanillaContraptionID.furnace,
                 VanillaContraptionID.gunpowderBarrel,
-                VanillaContraptionID.funnelenser,
+                VanillaContraptionID.goldenDropper,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
-                VanillaContraptionID.glowstone,
+                VanillaContraptionID.mineTNT,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.ghast,
-                VanillaEnemyID.anubisand,
+                VanillaEnemyID.dullahanHead,
                 VanillaBossID.wither,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.greedyVacuum,
-                VanillaArtifactID.dreamKey,
-                VanillaArtifactID.lightbomb,
+                VanillaArtifactID.netherStar,
+                VanillaArtifactID.almanac,
+                VanillaArtifactID.theCreaturesHeart,
             });
             level.SetRechargeSpeed(9999999);
         }

@@ -208,7 +208,6 @@
             <key hex="#69976C" time="1"/>
         </colorKeys>
     </fragment>
-
     <fragment name="youkai_leaf">
         <colorKeys>
             <key hex="#485F28" time="0.4"/>
@@ -221,6 +220,15 @@
         <colorKeys>
             <key hex="#C6A570" time="0.5"/>
             <key hex="#805E36" time="1"/>
+        </colorKeys>
+    </fragment>
+    <fragment name="repeatenser">
+        <colorKeys>
+            <key hex="#4F4F4F" time="0.35"/>
+            <key hex="#ABABAB" time="0.7"/>
+            <key hex="#7D5A32" time="0.3"/>
+        </colorKeys>
+    </fragment>
         </colorKeys>
     </fragment>
     <fragment name="infectenser">
@@ -240,6 +248,13 @@
         <colorKeys>
             <key hex="#FFD400" time="0.5"/>
             <key hex="#FFA900" time="1"/>
+        </colorKeys>
+    </fragment>
+    <fragment name="high_frequency_pulse_dispenser">
+        <colorKeys>
+            <key hex="#940000" time="0.333"/>
+            <key hex="#4E4E4E" time="0.666"/>
+            <key hex="#ABABAB" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="diamond_spikes">

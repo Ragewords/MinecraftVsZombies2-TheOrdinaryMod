@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-07-06 03:25+0800\n"
+"POT-Creation-Date: 2025-07-09 12:56+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,6 +81,18 @@ msgstr ""
 #: Almanac meta file
 msgctxt "almanac_tag.description"
 msgid "必须放置在木制投掷器上"
+msgstr ""
+
+#. Name for almanac tag placement_repeatenser
+#: Almanac meta file
+msgctxt "almanac_tag.name"
+msgid "升级器械：连射发射器"
+msgstr ""
+
+#. Description for almanac tag placement_repeatenser
+#: Almanac meta file
+msgctxt "almanac_tag.description"
+msgid "必须放置在连射发射器上"
 msgstr ""
 
 #. Name for almanac tag placement_diamond_spikes
@@ -1441,6 +1453,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "爆炸伤害：<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>\n"
+"爆炸半径：<color=red>1.5格</color>\n"
 "生产时间：<color=red>36秒</color>\n"
 "提供能量：<color=red>50</color>\n"
 "技能：<color=red>改为生成暴怒火药，提供75能量，但是会更快爆炸</color>"
@@ -1455,6 +1468,29 @@ msgid ""
 "硝石（被埋葬的尸体旁一般会产生结晶）\n"
 "木炭（燃烧木头的产物）\n"
 "那么——等等，我为什么要告诉你这些？"
+msgstr ""
+
+#. Header for contraptions mvz2:repeatenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid "连射发射器一次能发射两支箭矢。"
+msgstr ""
+
+#. Properties for contraptions mvz2:repeatenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"发射速度：<color=red>2支/1.5秒</color>\n"
+"伤害：<color=red>20</color>\n"
+"技能：<color=red>快速发射60支箭矢，最后发射一支大箭矢</color>"
+msgstr ""
+
+#. Flavor for contraptions mvz2:repeatenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。\n"
+"它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。"
 msgstr ""
 
 #. Header for contraptions mvz2:infectenser
@@ -1520,6 +1556,31 @@ msgstr ""
 #: Almanac meta file
 msgctxt "contraptions.description"
 msgid "它把木制投掷器的笑话专利买下来了，所以它可以理所应当地玩鑫鑫鑫鑫鑫鑫鑫鑫鑫鑫制投掷器的笑话了！"
+msgstr ""
+
+#. Header for contraptions mvz2:high_frequency_pulse_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid "高频脉冲发射器一次能发射四支箭矢。"
+msgstr ""
+
+#. Properties for contraptions mvz2:high_frequency_pulse_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"发射速度：<color=red>4支/1.5秒</color>\n"
+"伤害：<color=red>20</color>\n"
+"技能：<color=red>永久改为发射六支箭矢，并<tag id=\"mvz2:light_source\"/>发光</color>"
+msgstr ""
+
+#. Flavor for contraptions mvz2:high_frequency_pulse_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。\n"
+"高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。\n"
+"高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。\n"
+"高——闭嘴吧。"
 msgstr ""
 
 #. Header for contraptions mvz2:diamond_spikes
@@ -2188,7 +2249,7 @@ msgstr ""
 #. Header for enemies mvz2:emperor_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "皇帝僵尸使用手中的圣剑来给予周围的敌人圣盾和圣饼，使它们免疫下一次受到的伤害的同时获得伤害抗性。"
+msgid "皇帝僵尸使用手中的圣剑来给予周围的友方单位圣盾和圣饼，使它们免疫下一次受到的伤害的同时获得伤害抗性。"
 msgstr ""
 
 #. Properties for enemies mvz2:emperor_zombie
@@ -2197,7 +2258,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200+50</color>\n"
 "施法冷却：<color=red>5秒</color>\n"
-"特点：<color=red>一次最多给予12个周围的敌人圣盾与圣饼，抵消下一次受到的伤害；抵消伤害后敌人获得50%伤害抗性</color>"
+"特点：<color=red>一次最多给予12个周围的友方单位圣盾与圣饼，抵消下一次受到的伤害；抵消伤害后它们获得50%伤害抗性</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:emperor_zombie
@@ -4286,6 +4347,18 @@ msgctxt "entity.tooltip"
 msgid "提供大量能量，但有爆炸的风险"
 msgstr ""
 
+#. Name for entity mvz2:repeatenser
+#: Entity meta file
+msgctxt "entity.name"
+msgid "连射发射器"
+msgstr ""
+
+#. Tooltip for entity mvz2:repeatenser
+#: Entity meta file
+msgctxt "entity.tooltip"
+msgid "一次射出两支箭矢"
+msgstr ""
+
 #. Name for entity mvz2:infectenser
 #: Entity meta file
 msgctxt "entity.name"
@@ -4326,6 +4399,20 @@ msgctxt "entity.tooltip"
 msgid ""
 "（需要木制投掷器）\n"
 "投出反弹的金球及产生宝石的宝石球"
+msgstr ""
+
+#. Name for entity mvz2:high_frequency_pulse_dispenser
+#: Entity meta file
+msgctxt "entity.name"
+msgid "高频脉冲发射器"
+msgstr ""
+
+#. Tooltip for entity mvz2:high_frequency_pulse_dispenser
+#: Entity meta file
+msgctxt "entity.tooltip"
+msgid ""
+"（需要连射发射器）\n"
+"一次射出四支箭矢"
 msgstr ""
 
 #. Name for entity mvz2:diamond_spikes
