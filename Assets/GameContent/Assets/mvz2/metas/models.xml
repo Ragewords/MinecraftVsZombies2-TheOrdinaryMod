@@ -47,9 +47,6 @@
     <model name="youkai_leaf" type="entity" path="mvz2:contraption/mausoleum/youkai_leaf" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="gunpowder_barrel" type="entity" path="mvz2:contraption/ship/gunpowder_barrel" width="64" height="64" xOffset="0" yOffset="-28"/>
-    <model name="funnelenser" type="entity" path="mvz2:contraption/ship/funnelenser" width="64" height="64" xOffset="0" yOffset="-28"/>
-
-    <model name="gunpowder_barrel" type="entity" path="mvz2:contraption/ship/gunpowder_barrel" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="repeatenser" type="entity" path="mvz2:contraption/ship/repeatenser" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -167,11 +164,6 @@
     <model name="wither_scroll" type="entity" path="mvz2:pickup/wither_scroll" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="zombie_scroll" type="entity" path="mvz2:pickup/zombie_scroll" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="trophy" type="entity" path="mvz2:pickup/trophy" width="64" height="64" xOffset="0" yOffset="-32"/>
-
-	<model name="jack_o_lantern" type="entity" path="mvz2:pickup/artifacts/jack_o_lantern" width="64" height="64" xOffset="0" yOffset="-16"/>
-	<model name="telekinesis" type="entity" path="mvz2:pickup/artifacts/telekinesis" width="64" height="64" xOffset="0" yOffset="-16"/>
-	<model name="wither_skeleton_skull" type="entity" path="mvz2:pickup/artifacts/wither_skeleton_skull" width="64" height="64" xOffset="0" yOffset="-16"/>
-	<model name="infinity_door" type="entity" path="mvz2:pickup/artifacts/infinity_door" width="64" height="64" xOffset="0" yOffset="-16"/>
 
     <model name="starshard.default" type="entity" path="mvz2:pickup/starshards/default" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="starshard.halloween" type="entity" path="mvz2:pickup/starshards/halloween" width="64" height="64" xOffset="0" yOffset="-16"/>

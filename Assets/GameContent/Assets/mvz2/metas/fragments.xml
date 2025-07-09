@@ -229,8 +229,6 @@
             <key hex="#7D5A32" time="0.3"/>
         </colorKeys>
     </fragment>
-        </colorKeys>
-    </fragment>
     <fragment name="infectenser">
         <colorKeys>
             <key hex="#FF0000" time="0.2"/>

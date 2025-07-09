@@ -24,6 +24,7 @@ namespace MVZ2.Metas
 
         public NamespaceID ClearPickupModel { get; private set; }
         public NamespaceID ClearPickupBlueprint { get; private set; }
+        public NamespaceID ClearPickupArtifact { get; private set; }
         public bool DropsTrophy { get; private set; }
         public NamespaceID EndNote { get; private set; }
 
@@ -77,6 +78,7 @@ namespace MVZ2.Metas
             var clearNode = node["clear"];
             var clearPickupModel = clearNode?.GetAttributeNamespaceID("pickupModel", defaultNsp);
             var clearPickupBlueprint = clearNode?.GetAttributeNamespaceID("blueprint", defaultNsp);
+            var clearPickupArtifact = clearNode?.GetAttributeNamespaceID("artifact", defaultNsp);
             var dropsTrophy = clearNode?.GetAttributeBool("trophy") ?? false;
             var endNote = clearNode?.GetAttributeNamespaceID("note", defaultNsp);
 
@@ -124,6 +126,7 @@ namespace MVZ2.Metas
 
                 ClearPickupModel = clearPickupModel,
                 ClearPickupBlueprint = clearPickupBlueprint,
+                ClearPickupArtifact = clearPickupArtifact,
                 DropsTrophy = dropsTrophy,
                 EndNote = endNote,
 

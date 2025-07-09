@@ -1024,7 +1024,28 @@
                 <p>妖怪树叶仰慕着一个擅长变化姿态的大妖怪，并向她拜师，当然，主要是为了在那个大妖怪的头上躺着。</p>
             </flavor>
         </entry>
-        <entry id = "mvz2:funnelenser">
+        <entry id ="mvz2:smoker">
+            <header>
+                <p>烟熏炉会对前方近距离的敌人喷射烟熏火焰。</p>
+            </header>
+            <properties>
+                <p>攻击速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>30</color>]]></p>
+                <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
+                <p>技能：<![CDATA[<color=red>持续向前方3×5的区域不断喷射烟熏火焰</color>]]></p>
+            </properties>
+            <flavor>
+                <p>烟熏炉因为不能烧炼矿物而选择了转行，他打算把怪物们全部烤熟。</p>
+            </flavor>
+        </entry>
+        <entry/>
+        <entry/>
+        <entry/>
+        <entry/>
+        <entry/>
+        <entry/>
+        <entry/>
+        <!--- <entry id = "mvz2:funnelenser">
             <header>
                 <p>浮游发射器能够飞在空中，向敌人发射弹幕。</p>
             </header>
@@ -1036,14 +1057,7 @@
             <flavor>
                 <p>它是某个知名巨型机器人动画剧集的代言人。</p>
             </flavor>
-        </entry>
-        <entry/>
-        <entry/>
-        <entry/>
-        <entry/>
-        <entry/>
-        <entry/>
-        <entry/>
+        </entry> -->
     </contraptions>
     <enemies>
         <entry id="mvz2:zombie">

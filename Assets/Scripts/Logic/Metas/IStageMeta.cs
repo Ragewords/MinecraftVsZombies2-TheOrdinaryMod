@@ -20,6 +20,7 @@ namespace MVZ2Logic.Level
 
         NamespaceID ClearPickupModel { get; }
         NamespaceID ClearPickupBlueprint { get; }
+        NamespaceID ClearPickupArtifact { get; }
         bool DropsTrophy { get; }
         NamespaceID EndNote { get; }
 

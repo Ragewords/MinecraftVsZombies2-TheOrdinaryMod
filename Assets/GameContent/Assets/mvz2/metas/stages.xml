@@ -298,7 +298,7 @@
         </properties>
     </stage>
     <stage id="halloween_EX3" name="万圣夜" dayNumber="14" type="extra" unlock="mvz2:level.halloween_EX2" music="mvz2:halloween_level_extra" >
-        <clear pickupModel="mvz2:entity.jack_o_lantern" />
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:jack_o_lantern" />
         <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
@@ -520,7 +520,7 @@
     </stage>
     <stage id="dream_EX2" name="梦境世界" type="extra" dayNumber="13" unlock="mvz2:level.dream_EX1" music="mvz2:dream_level_extra" >
         <clear pickupModel="mvz2:entity.money_chest"/>
-        <spawns flags="3" >
+        <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:spider"/>
@@ -529,8 +529,8 @@
         </spawns>
     </stage>
     <stage id="dream_EX3" name="梦境世界" type="extra" dayNumber="14" unlock="mvz2:level.dream_EX2" music="mvz2:dream_level_extra" >
-        <clear pickupModel="mvz2:entity.telekinesis"/>
-        <spawns flags="4" >
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:telekinesis" />
+        <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
@@ -769,8 +769,8 @@
         </spawns>
     </stage>
     <stage id="castle_EX3" name="辉针城" type="extra" dayNumber="14" unlock="mvz2:level.castle_EX2" music="mvz2:castle_level_extra" >
-        <clear pickupModel="mvz2:entity.wither_skeleton_skull"/>
-        <spawns flags="4" >
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:wither_skeleton_skull" />
+        <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
@@ -1032,7 +1032,7 @@
         </properties>
     </stage>
     <stage id="mausoleum_EX3" name="梦殿大祀庙" type="extra" dayNumber="14" unlock="mvz2:level.mausoleum_EX2" music="mvz2:mausoleum_level_extra" >
-        <clear pickupModel="mvz2:entity.infinity_door"/>
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:infinity_door" />
         <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
@@ -1235,6 +1235,49 @@
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+        </spawns>
+    </stage>
+    <stage id="ship_EX1" name="圣辇船" dayNumber="12" unlock="mvz2:level.ship_11" >
+        <talks>
+            <talk type="end" value="mvz2:ship_11_over"/>
+        </talks>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:smoker"/>
+        <spawns flags="3" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:sailor_zombie"/>
+        </spawns>
+    </stage>
+    <stage id="ship_EX2" name="圣辇船" dayNumber="13" unlock="mvz2:level.ship_EX1" >
+        <talks>
+            <talk type="end" value="mvz2:ship_11_over"/>
+        </talks>
+        <spawns flags="3" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:sailor_zombie"/>
+        </spawns>
+    </stage>
+    <stage id="ship_EX3" name="圣辇船" dayNumber="14" unlock="mvz2:level.ship_EX2" >
+        <talks>
+            <talk type="end" value="mvz2:ship_11_over"/>
+        </talks>
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:captain_s_log" />
+        <spawns flags="3" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:pop_captain"/>
+            <spawn id="mvz2:sailor_zombie"/>
         </spawns>
     </stage>
 
