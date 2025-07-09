@@ -188,7 +188,6 @@
     <model name="soulfire" type="entity" path="mvz2:effect/soulfire" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="soulfire_burn" type="entity" path="mvz2:effect/soulfire_burn" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="soulfire_blast" type="entity" path="mvz2:effect/soulfire_blast" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
-	<model name="fire" type="entity" path="mvz2:effect/fire" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="gas" type="entity" path="mvz2:effect/gas" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="burning_gas" type="entity" path="mvz2:effect/burning_gas" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="magic_stars" type="entity" path="mvz2:effect/magic_stars" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

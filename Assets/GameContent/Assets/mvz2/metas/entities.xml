@@ -2622,12 +2622,6 @@
                 <int name="mvz2:maxTimeout" value="15" />
             </properties>
         </effect>
-        <effect id="fire" >
-            <properties>
-                <bool name="mvz2:isFire" value="true" />
-                <int name="mvz2:maxTimeout" value="30"/>
-            </properties>
-        </effect>
         <effect id="mummy_gas">
             <properties>
                 <bool name="mvz2:decorative" value="false" />

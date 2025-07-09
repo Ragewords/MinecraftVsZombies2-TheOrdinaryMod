@@ -2619,13 +2619,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3a457942153baa7429587289d3238a5c
-    m_Address: mvz2:pickup/artifacts/wither_skeleton_skull
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3a4d775ca16aed8489fddf37bc1ced64
     m_Address: mvz2:mobile_blueprint/mother_terror
     m_ReadOnly: 0
@@ -6699,13 +6692,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 967a990516ac45d4f996639580cc03fe
-    m_Address: mvz2:icon/poison_particles
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9696331d07114754fbccc29acd1b4846
     m_Address: mvz2:map/gensokyo/pins/castle
     m_ReadOnly: 0
@@ -7252,13 +7238,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a47a8091ff9687c448c0a9af6c0fd717
-    m_Address: mvz2:pickup/artifacts/telekinesis
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4fb4d341a16ba64cbad7dd992c94206
     m_Address: mvz2:products/blueprint_slot
     m_ReadOnly: 0
@@ -7756,13 +7735,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b0c4797ffa9b90641b4b9993d398902a
-    m_Address: mvz2:pickup/artifacts/jack_o_lantern
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b0dadde6313f7754d883172449da1188
     m_Address: mvz2:mainmenuviews
     m_ReadOnly: 0
@@ -7839,6 +7811,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b39e207ee049fea4d943f067087b44b5
+    m_Address: mvz2:icon/poison_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3a3739ff4d548643bf93317efaabbad
     m_Address: mvz2:cart/nyan_cat
@@ -10114,13 +10093,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9990b4bebf9f2042b7866c553ff1f34
-    m_Address: mvz2:pickup/artifacts/infinity_door
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e9ab803f0d271bd48b365bc8766feb6b
     m_Address: mvz2:map/gensokyo/map
