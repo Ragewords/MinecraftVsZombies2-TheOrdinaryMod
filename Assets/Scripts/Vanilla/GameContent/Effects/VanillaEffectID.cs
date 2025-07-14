@@ -67,6 +67,7 @@ namespace MVZ2.GameContent.Effects
         public const string brainwasherExplosion = "brainwasher_explosion";
 
         public const string thunderBoltHorizontal = "thunder_bolt_horizontal";
+        public const string soundwave = "soundwave";
         public const string emberParticles = "ember_particles";
         public const string spawnerAppearEmbers = "spawner_appear_embers";
         public const string fireburn = "fireburn";
@@ -151,6 +152,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID brainwasherExplosion = Get(VanillaEffectNames.brainwasherExplosion);
 
         public static readonly NamespaceID thunderBoltHorizontal = Get(VanillaEffectNames.thunderBoltHorizontal);
+        public static readonly NamespaceID soundwave = Get(VanillaEffectNames.soundwave);
         public static readonly NamespaceID emberParticles = Get(VanillaEffectNames.emberParticles);
         public static readonly NamespaceID spawnerAppearEmbers = Get(VanillaEffectNames.spawnerAppearEmbers);
         public static readonly NamespaceID fireburn = Get(VanillaEffectNames.fireburn);

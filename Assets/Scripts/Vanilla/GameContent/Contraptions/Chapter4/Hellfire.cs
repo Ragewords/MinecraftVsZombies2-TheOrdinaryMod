@@ -82,7 +82,7 @@ namespace MVZ2.GameContent.Contraptions
                     Fireblock.SetCursed(block, IsCursed(entity));
                     if (IsCursed(entity))
                         block.AddBuff<HellfireCursedBuff>();
-                    block.Timeout += i * 3;
+                    block.Timeout += i * 2;
                 }
             }
         }

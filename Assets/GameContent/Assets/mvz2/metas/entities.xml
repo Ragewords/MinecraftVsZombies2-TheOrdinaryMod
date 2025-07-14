@@ -2928,6 +2928,14 @@
                 <color name="mvz2:lightColor" value="#FFFFFF" />
             </properties>
         </effect>
+        <effect id="soundwave">
+            <properties>
+                <bool name="mvz2:decorative" value="false" />
+                <int name="mvz2:maxTimeout" value="30" />
+                <float name="mvz2:damage" value="3" />
+                <vector3 name="mvz2:size" x="240" y="5" z="240" />
+            </properties>
+        </effect>
         <effect id="spawner_appear_embers">
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />
@@ -2987,8 +2995,7 @@
         </effect>
         <effect id="whitehole">
             <properties>
-                <bool name="mvz2:decorative" value="false" />
-                <int name="mvz2:maxTimeout" value="20" />
+                <int name="mvz2:maxTimeout" value="25" />
                 <float name="mvz2:range" value="120" />
             </properties>
         </effect>

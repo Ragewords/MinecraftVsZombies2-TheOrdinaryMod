@@ -232,6 +232,7 @@
     <model name="castle_twilight" type="entity" path="mvz2:effect/castle_twilight" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="brainwasher_explosion" type="entity" path="mvz2:effect/brainwasher_explosion" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
     <model name="thunder_bolt_horizontal" type="entity" path="mvz2:effect/thunder_bolt_horizontal" width="920" height="120" xOffset="437" yOffset="0"/>
+    <model name="soundwave" type="entity" path="mvz2:effect/soundwave" shot="false" width="120" height="120" xOffset="0" yOffset="0"/>
     <model name="spawner_appear_embers" type="entity" path="mvz2:effect/spawner_appear_embers" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="ember_particles" type="entity" path="mvz2:effect/ember_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="fireburn" type="entity" path="mvz2:effect/fireburn" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

@@ -11,6 +11,7 @@ using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -26,11 +27,14 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
+            SetWaveTimer(entity, new FrameTimer(WAVE_INTERVAL));
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
             ShootTick(entity);
+            var waveTimer = GetWaveTimer(entity);
+            waveTimer.Run();
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -112,9 +116,17 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void SonicWave(Entity entity)
         {
-            var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
-            entity.Explode(entity.Position, 120 * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * 0.5f, new DamageEffectList(VanillaDamageEffects.MUTE));
-            entity.TriggerAnimation("Wave");
+            var waveTimer = GetWaveTimer(entity);
+            if (waveTimer.Expired)
+            {
+                var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
+                var param = entity.GetSpawnParams();
+                param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 5 * 3);
+                param.SetProperty(EngineEntityProps.SIZE, new Vector3(240, 5, 240) * rangeMultiplier);
+                var wave = entity.Spawn(VanillaEffectID.soundwave, entity.GetCenter(), param);
+                Soundwave.SetLoud(wave, entity.HasBuff<NoteBlockLoudBuff>());
+                waveTimer.Reset();
+            }
         }
         public static List<EntityID> GetNoteChildren(Entity entity)
         {
@@ -131,7 +143,11 @@ namespace MVZ2.GameContent.Contraptions
             children.Add(new EntityID(child));
         }
         public const int FIRE_INTERVAL = 45;
+        public const int WAVE_INTERVAL = 5;
         public const int MAX_NOTE_COUNT = 10;
+        public static FrameTimer GetWaveTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_WAVE_TIMER);
+        public static void SetWaveTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_WAVE_TIMER, timer);
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_WAVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("WaveTimer");
         private static readonly VanillaEntityPropertyMeta<List<EntityID>> PROP_NOTE_CHILDREN = new VanillaEntityPropertyMeta<List<EntityID>>("NoteChildren");
     }
 }
