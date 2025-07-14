@@ -194,7 +194,7 @@ namespace MVZ2.GameContent.Bosses
                                     var projectileGravity = projectileDefinition?.GetGravity() ?? 0;
 
                                     var shotParams = entity.GetShootParams();
-                                    shotParams.position = entity.Position;
+                                    shotParams.position = entity.GetCenter();
                                     shotParams.soundID = VanillaSoundID.odd;
                                     shotParams.projectileID = projectileID;
                                     shotParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, targetPos, 45, projectileGravity);

@@ -50,7 +50,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.ghast,
                 VanillaEnemyID.dullahan,
-                VanillaBossID.wither,
+                VanillaBossID.theEye,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

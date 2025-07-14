@@ -1491,6 +1491,10 @@ MonoBehaviour:
     - {fileID: 6494446197138225416, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5653982790268467409, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5039749940984752654, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
+  - name: entity/boss/the_eye_aura
+    spritesheet:
+    - {fileID: -1411681919, guid: a046c47f674bfc94d81a52fef2486834, type: 3}
+    - {fileID: -164348175, guid: a046c47f674bfc94d81a52fef2486834, type: 3}
   - name: entity/boss/the_giant
     spritesheet:
     - {fileID: 2106222037, guid: cd590dd9f5d29994db2a5356364308e6, type: 3}

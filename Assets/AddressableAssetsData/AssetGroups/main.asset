@@ -8120,6 +8120,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9bba00ca9533984d854cec6e772c232
+    m_Address: mvz2:effect/soundwave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b9be44ffa4015754eaf65066f0522ab8
     m_Address: mvz2:mobile_blueprint/hell_chariot
     m_ReadOnly: 0
