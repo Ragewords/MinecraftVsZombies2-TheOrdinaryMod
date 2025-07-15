@@ -208,6 +208,7 @@
     <model name="magnetic_line" type="entity" path="mvz2:effect/magnetic_line" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="hoe" type="entity" path="mvz2:effect/hoe" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="breakout_board" type="entity" path="mvz2:effect/breakout_board" width="32" height="160" xOffset="0" yOffset="0"/>
+    <model name="confusing_planet" type="entity" path="mvz2:effect/confusing_planet" width="128" height="128" xOffset="0" yOffset="0"/>
     <model name="nightmare_watching_eye" type="entity" path="mvz2:effect/nightmare_watching_eye" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmare_portal" type="entity" path="mvz2:effect/nightmare_portal" width="64" height="120" xOffset="0" yOffset="-50" />
     <model name="dark_matter_particles" type="entity" path="mvz2:effect/dark_matter_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

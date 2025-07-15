@@ -41,9 +41,9 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.noteBlock,
+                VanillaContraptionID.dispenser,
                 VanillaContraptionID.hellfire,
-                VanillaContraptionID.goldenDropper,
+                VanillaContraptionID.dreamCrystal,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.mineTNT,

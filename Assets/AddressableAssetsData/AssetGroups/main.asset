@@ -290,6 +290,13 @@ MonoBehaviour:
     - AreaModel
     - Main
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 074f04070c5730a468d2f7d560c39305
+    m_Address: mvz2:entity/the_eye/the_eye_roar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0772ad3299638fa43ae91ead696caef6
     m_Address: mvz2:contraption/castle/giant_bowl
     m_ReadOnly: 0
@@ -709,6 +716,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10d298fcc56ec124795e678e16230d79
+    m_Address: mvz2:entity/effects/confusing_planet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 10da8cfdbbbeb534289c57027874f461
     m_Address: mvz2:nightmare_final
@@ -1983,6 +1997,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d1578665e2298a4ea93a39661377182
+    m_Address: mvz2:effect/confusing_planet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d37eb66e5d769343ab9e6ee42496b68
     m_Address: mvz2:mobile_blueprint/anubisand
     m_ReadOnly: 0
@@ -2956,7 +2977,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41a100848f06fed4d98c3508a294d5aa
-    m_Address: mvz2:entity/the_eye/the_eye_death1
+    m_Address: mvz2:entity/the_eye/the_eye_death
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -3655,13 +3676,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 52b5d0c452643904d940cc3cbed2d56f
-    m_Address: mvz2:entity/the_eye/the_eye_death2
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 52ceb446c2cda534b811b64884781054
     m_Address: mvz2:entity/zombie/hurt2
     m_ReadOnly: 0
@@ -3969,6 +3983,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Meta
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 591887ad280d6ac49b56d31e4d1c5a9b
+    m_Address: mvz2:entity/the_eye/the_eye_stretch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59ab9a6cecef3704297679a5a4c3e342
     m_Address: mvz2:effect/smoke
@@ -9428,6 +9449,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7e1f49e77fc973459b37c56e266be7d
+    m_Address: mvz2:entity/the_eye/the_eye_screamattack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8130bf7140daa14a9605dddcd5bd851
     m_Address: mvz2:entity/contraptions/infectenser

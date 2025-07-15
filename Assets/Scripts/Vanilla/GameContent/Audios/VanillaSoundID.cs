@@ -196,8 +196,10 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID teslaAttack = Get("tesla_attack");
         public readonly static NamespaceID teslaPower = Get("tesla_power");
         public readonly static NamespaceID thump = Get("thump");
-        public readonly static NamespaceID theEyeDeath1 = Get("the_eye_death1");
-        public readonly static NamespaceID theEyeDeath2 = Get("the_eye_death2");
+        public readonly static NamespaceID theEyeDeath = Get("the_eye_death");
+        public readonly static NamespaceID theEyeRoar = Get("the_eye_roar");
+        public readonly static NamespaceID theEyeScreamAttack = Get("the_eye_screamattack");
+        public readonly static NamespaceID theEyeStretch = Get("the_eye_stretch");
         public readonly static NamespaceID thunder = Get("thunder");
         public readonly static NamespaceID throwSound = Get("throw");
         public readonly static NamespaceID touhouDeath = Get("touhou_death");
