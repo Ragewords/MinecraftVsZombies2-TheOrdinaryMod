@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
 
                 var vel = target.Velocity;
                 vel.x = 4 * knockbackMultiplier;
-                vel.y = 18 * knockbackMultiplier;
+                vel.y = 15 * knockbackMultiplier;
                 target.Velocity = vel;
 
                 if (target.GetMass() <= VanillaMass.MEDIUM)
@@ -130,7 +130,7 @@ namespace MVZ2.GameContent.Contraptions
                     target.RandomChangeAdjacentLane(self.RNG);
                 }
                 if (target.CanDeactive())
-                    target.Stun(300);
+                    target.Stun(120);
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
                 {
