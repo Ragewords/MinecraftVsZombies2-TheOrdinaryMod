@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
+using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
@@ -11,6 +13,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -94,7 +97,6 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie,
             VanillaEnemyID.skeleton,
-            VanillaEnemyID.gargoyle,
             VanillaEnemyID.ghost,
             VanillaEnemyID.mummy,
             VanillaEnemyID.necromancer,
@@ -103,22 +105,15 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.caveSpider,
             VanillaEnemyID.ghast,
             VanillaEnemyID.motherTerror,
-            VanillaEnemyID.parasiteTerror,
             VanillaEnemyID.silverfish,
             VanillaEnemyID.mesmerizer,
             VanillaEnemyID.berserker,
-            VanillaEnemyID.anubisand,
             VanillaEnemyID.spellcaster,
             VanillaEnemyID.reflectiveBarrierZombie,
-            VanillaEnemyID.talismanZombie,
             VanillaEnemyID.wickedHermitZombie,
             VanillaEnemyID.shikaisenZombie,
             VanillaEnemyID.emperorZombie,
             VanillaEnemyID.tanookiZombie,
-            VanillaEnemyID.imp,
-            VanillaEnemyID.skeletonHorse,
-            VanillaEnemyID.skeletonWarrior,
-            VanillaEnemyID.skeletonMage
         };
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_ENEMY_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("EnemyRNG");
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
