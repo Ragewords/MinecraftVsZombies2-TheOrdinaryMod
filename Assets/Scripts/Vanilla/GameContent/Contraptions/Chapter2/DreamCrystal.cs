@@ -1,10 +1,14 @@
-﻿using MVZ2.GameContent.Buffs.Contraptions;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -17,6 +21,10 @@ namespace MVZ2.GameContent.Contraptions
     {
         public DreamCrystal(string nsp, string name) : base(nsp, name)
         {
+            healDetector = new SphereDetector(100)
+            {
+                factionTarget = FactionTarget.Friendly
+            };
         }
         public override void Init(Entity contraption)
         {
@@ -38,6 +46,19 @@ namespace MVZ2.GameContent.Contraptions
             contraption.SetModelDamagePercent();
             contraption.SetAnimationBool("Evoked", evoked);
         }
+        public override void PostTakeDamage(DamageOutput damage)
+        {
+            base.PostTakeDamage(damage);
+            var contraption = damage.Entity;
+            if (contraption == null)
+                return;
+            healBuffer.Clear();
+            healDetector.DetectEntities(contraption, healBuffer);
+            foreach (Entity target in healBuffer)
+            {
+                target.HealEffects(HEAL_PER_FRAME, contraption);
+            }
+        }
 
         protected override void OnEvoke(Entity contraption)
         {
@@ -57,7 +78,7 @@ namespace MVZ2.GameContent.Contraptions
             else if (inputValue < secondThird) return 2;
             else return 1;
         }
-        public const float HEAL_PER_FRAME = 4 / 3;
+        public const float HEAL_PER_FRAME = 1;
         public static FrameTimer GetHealthUpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_HEALTH_UP_TIMER);
         public static void SetHealthUpTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
         public static bool GetHealthUp(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_HEALTH_UP);
@@ -65,5 +86,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_HEALTH_UP_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("HealthUpTimer");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_HEALTH_UP = new VanillaEntityPropertyMeta<bool>("HealthUp");
         private static readonly NamespaceID ID = VanillaContraptionID.dreamCrystal;
+        private List<Entity> healBuffer = new List<Entity>();
+        private Detector healDetector;
     }
 }

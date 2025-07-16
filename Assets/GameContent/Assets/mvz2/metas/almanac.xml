@@ -463,11 +463,11 @@
         </entry>
         <entry id="mvz2:dream_crystal">
             <header>
-                <p>梦境结晶会慢慢地恢复自己的生命。</p>
+                <p>梦境结晶会慢慢地恢复自己的生命，在受到伤害时也会为周围的器械恢复生命。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>恢复速度：<![CDATA[<color=red>40-120/秒</color>]]>（随耐久变化）</p>
+                <p>恢复速度：<![CDATA[<color=red>30-90/秒</color>]]>（随耐久变化）</p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>]]></p>
             </properties>
             <flavor>
