@@ -32,7 +32,7 @@ namespace MVZ2.GameContent.Bosses
         {
             base.Init(entity);
             SetStunTimer(entity, new FrameTimer(120));
-            SetStateTimer(entity, new FrameTimer(300));
+            SetStateTimer(entity, new FrameTimer(240));
             SetActionTimer(entity, new FrameTimer(60));
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
@@ -93,17 +93,23 @@ namespace MVZ2.GameContent.Bosses
             entity.TriggerAnimation("Stun");
         }
         #region Move
-        private void MoveAct(Entity entity)
+        private void MoveLower(Entity entity)
         {
             entity.SetIsInvisible(false);
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 10f);
         }
-        private void MoveActBack(Entity entity)
+        private void MoveBack(Entity entity)
         {
             entity.SetIsInvisible(true);
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
+        }
+        private void MoveHigher(Entity entity)
+        {
+            entity.SetIsInvisible(true);
+            var buff = entity.GetFirstBuff<FlyBuff>();
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 480f);
         }
         #endregion
 
@@ -186,9 +192,42 @@ namespace MVZ2.GameContent.Bosses
                                 }
                                 entity.SetAnimationInt("AttackState", 0);
                                 SetSoundPlayed(entity, false);
+                                SetAttackState(entity, STATE_PLANET);
+                                transTimer.ResetTime(90);
+                                timer.Reset();
+                            }
+                        }
+                        break;
+                    case STATE_PLANET:
+                        {
+                            if (!IsSoundPlayed(entity))
+                            {
+                                entity.PlaySound(VanillaSoundID.magnetic);
+                                SetSoundPlayed(entity, true);
+                                MoveHigher(entity);
+                            }
+
+                            var transTimer = GetActionTimer(entity);
+                            transTimer.Run();
+                            if (transTimer.Frame <= 60)
+                            {
+                                if (transTimer.PassedInterval(6))
+                                {
+                                    var level = entity.Level;
+                                    var grids = level.GetAllGrids().RandomTake(1, entity.RNG);
+                                    foreach (var grid in grids)
+                                    {
+                                        entity.Spawn(VanillaEffectID.confusingPlanet, grid.Level.GetEntityGridPosition(grid.Column, grid.Lane) + new Vector3(0, 48, 0));
+                                    }
+                                }
+                            }
+                            if (transTimer.Expired)
+                            {
+                                SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_BLAST);
                                 transTimer.ResetTime(210);
                                 timer.Reset();
+                                MoveBack(entity);
                             }
                         }
                         break;
@@ -199,7 +238,7 @@ namespace MVZ2.GameContent.Bosses
                                 entity.PlaySound(VanillaSoundID.theEyeStretch);
                                 SetSoundPlayed(entity, true);
                                 entity.SetAnimationInt("AttackState", 2);
-                                MoveAct(entity);
+                                MoveLower(entity);
                             }
 
                             var transTimer = GetActionTimer(entity);
@@ -227,7 +266,7 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_DARK_MATTER);
                                 transTimer.ResetTime(60);
                                 timer.Reset();
-                                MoveActBack(entity);
+                                MoveBack(entity);
                             }
                         }
                         break;
@@ -259,8 +298,8 @@ namespace MVZ2.GameContent.Bosses
 
         public const int STATE_DARK_MATTER = 0;
         public const int STATE_MESS = 1;
-        public const int STATE_BLAST = 2;
-        public const int STATE_STUN = 3;
+        public const int STATE_PLANET = 2;
+        public const int STATE_BLAST = 3;
 
         public const int MAX_MOVE_TIMEOUT = 60;
 

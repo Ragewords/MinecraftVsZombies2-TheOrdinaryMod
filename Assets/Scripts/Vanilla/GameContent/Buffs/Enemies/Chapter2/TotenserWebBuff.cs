@@ -26,6 +26,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             base.PostUpdate(buff);
             var ent = buff.GetEntity();
+            if (ent == null)
+            {
+                buff.Remove();
+            }
             if (IsOutsideView(ent))
             {
                 ent.TakeDamage(20, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), ent);

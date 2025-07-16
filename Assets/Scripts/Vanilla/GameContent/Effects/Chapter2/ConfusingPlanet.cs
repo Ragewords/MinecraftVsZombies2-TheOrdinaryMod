@@ -13,9 +13,9 @@ namespace MVZ2.GameContent.Effects
         #region 公有方法
         public ConfusingPlanet(string nsp, string name) : base(nsp, name)
         {
-            absorbDetector = new SphereDetector(200)
+            absorbDetector = new SphereDetector(120)
             {
-                mask = EntityCollisionHelper.MASK_VULNERABLE,
+                mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY,
                 canDetectInvisible = true,
                 factionTarget = FactionTarget.Any
             };

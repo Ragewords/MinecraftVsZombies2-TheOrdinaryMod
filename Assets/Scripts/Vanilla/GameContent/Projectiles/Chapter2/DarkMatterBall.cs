@@ -1,3 +1,4 @@
+using System.Linq;
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Damages;
@@ -12,6 +13,7 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
@@ -27,7 +29,8 @@ namespace MVZ2.GameContent.Projectiles
             base.PostHitEntity(hitResult, damage);
             var bullet = hitResult.Projectile;
             bool plantEvoke = hitResult.Other.Type == EntityTypes.PLANT && hitResult.Other.IsEvoked();
-            if (plantEvoke || hitResult.Other.IsInvincible())
+            bool fromParent = hitResult.Other == bullet.Parent;
+            if (plantEvoke || hitResult.Other.IsInvincible() || fromParent)
             {
                 hitResult.Pierce = true;
                 Deflect(bullet);
@@ -39,17 +42,26 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostContactGround(projectile, velocity);
             Deflect(projectile);
+            Explode(projectile, projectile.GetRange(), projectile.GetDamage());
         }
         private void Deflect(Entity projectile)
         {
             projectile.PlaySound(VanillaSoundID.reflection);
             var level = projectile.Level;
-            float X = level.GetEntityColumnX(3);
-            float Z = level.GetEntityLaneZ(4);
-            var targetPos = projectile.Parent.ExistsAndAlive() ? projectile.Parent.Position : new Vector3(X, 0, Z);
-            projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, targetPos, 45, projectile.GetGravity());
+            var grids = level.GetAllGrids().Where(g => g.IsEmpty()).RandomTake(1, projectile.RNG);
+            if (grids == null)
+            {
+                projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, projectile.Parent.Position, 45, projectile.GetGravity());
+            }
+            foreach (var grid in grids)
+            {
+                float X = level.GetEntityColumnX(grid.Column);
+                float Z = level.GetEntityLaneZ(grid.Lane);
+                var targetPos = new Vector3(X, 0, Z);
+                projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, targetPos, 45, projectile.GetGravity());
+            }
             projectile.AddBuff<InvertedMirrorBuff>();
-            projectile.SetDamage(1000);
+            projectile.SetDamage(500);
         }
         public static DamageOutput[] Explode(Entity entity, float range, float damage)
         {
@@ -63,9 +75,9 @@ namespace MVZ2.GameContent.Projectiles
                     result.ShortCircuit(90);
                     result.PlaySound(VanillaSoundID.powerOff);
                 }
-                if (result.GetDefinitionID() == VanillaBossID.theEye)
+                if (entity.Parent.ExistsAndAlive())
                 {
-                    TheEye.FakeStun(result);
+                    entity.Parent.HealEffects(50, entity);
                 }
             }
             var param = entity.GetSpawnParams();
@@ -74,7 +86,6 @@ namespace MVZ2.GameContent.Projectiles
             entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
             entity.PlaySound(VanillaSoundID.explosion);
             entity.Level.ShakeScreen(10, 0, 15);
-            entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter());
 
             return damageOutputs;
         }
