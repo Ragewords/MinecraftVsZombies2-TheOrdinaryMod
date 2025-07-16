@@ -824,6 +824,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 744654406394552226, guid: 7ffd1cb9090e03640a99c54a18de2d01, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1555906369, guid: 0b96758788dd52c42bf9e6331f37143a, type: 3}
+    - target: {fileID: 1735853608790412312, guid: 7ffd1cb9090e03640a99c54a18de2d01, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 1555906369, guid: 0b96758788dd52c42bf9e6331f37143a, type: 3}
+    - target: {fileID: 1735853608790412312, guid: 7ffd1cb9090e03640a99c54a18de2d01, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -2029679880, guid: 0b96758788dd52c42bf9e6331f37143a, type: 3}
     - target: {fileID: 2929149933621977752, guid: 7ffd1cb9090e03640a99c54a18de2d01, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 7
