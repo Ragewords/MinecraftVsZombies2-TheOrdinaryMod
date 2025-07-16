@@ -56,7 +56,7 @@ namespace MVZ2.GameContent.Contraptions
             healDetector.DetectEntities(contraption, healBuffer);
             foreach (Entity target in healBuffer)
             {
-                target.HealEffects(HEAL_PER_FRAME, contraption);
+                target.HealEffects(Mathf.CeilToInt(damage.BodyResult.Amount / 2), contraption);
             }
         }
 
