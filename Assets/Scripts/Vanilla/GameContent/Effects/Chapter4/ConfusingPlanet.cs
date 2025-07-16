@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using MVZ2.GameContent.Bosses;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -24,6 +27,12 @@ namespace MVZ2.GameContent.Effects
             };
         }
         #endregion
+        public override void Init(Entity planet)
+        {
+            base.Init(planet);
+            planet.CollisionMaskHostile |=
+                EntityCollisionHelper.MASK_BOSS;
+        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
@@ -42,6 +51,22 @@ namespace MVZ2.GameContent.Effects
             foreach (var target in detectBuffer)
             {
                 target.Entity.Slow(120);
+            }
+        }
+        public override void PostCollision(EntityCollision collision, int state)
+        {
+            base.PostCollision(collision, state);
+            var other = collision.Other;
+            var self = collision.Entity;
+            bool inactive = self.Timeout <= 90;
+            if (inactive)
+                return;
+            if (!other.Exists())
+                return;
+            if (other.IsEntityOf(VanillaBossID.theGiant) && TheGiant.IsSnake(other))
+            {
+                other.TakeDamage(COLLIDE_SELF_DAMAGE, new DamageEffectList(VanillaDamageEffects.MUTE), self);
+                TheGiant.KillSnake(other);
             }
         }
         private void BlackHoleUpdate(Entity entity)
@@ -77,6 +102,7 @@ namespace MVZ2.GameContent.Effects
                 entity.Level.ShakeScreen(10, 0, 15);
             }
         }
+        public const float COLLIDE_SELF_DAMAGE = 600;
         public static void SetAnnihilate(Entity entity, bool value) => entity.SetProperty(PROP_ANNIHILATE, value);
         public static bool IsAnnihilate(Entity entity) => entity.GetProperty<bool>(PROP_ANNIHILATE);
         public static readonly VanillaBuffPropertyMeta<bool> PROP_ANNIHILATE = new VanillaBuffPropertyMeta<bool>("annihilate");

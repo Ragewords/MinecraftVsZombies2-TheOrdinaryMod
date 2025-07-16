@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -22,8 +23,8 @@ namespace MVZ2.GameContent.Stages
             base.OnStart(level);
             ClassicStart(level);
             //ConveyorStart(level);
-            //level.LevelProgressVisible = true;
-            //level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
+            level.LevelProgressVisible = true;
+            level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
             level.SetTriggerActive(true);
             var cartRef = level.GetCartReference();
             level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);
@@ -31,8 +32,9 @@ namespace MVZ2.GameContent.Stages
         public override void OnUpdate(LevelEngine level)
         {
             base.OnUpdate(level);
+            level.SetEnergy(9990);
             level.SetStarshardSlotCount(5);
-            level.SetStarshardCount(5);
+            level.SetStarshardCount(3);
             level.CheckGameOver();
         }
         private void ClassicStart(LevelEngine level)
@@ -55,9 +57,9 @@ namespace MVZ2.GameContent.Stages
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.netherStar,
+                VanillaArtifactID.greedyVacuum,
                 VanillaArtifactID.almanac,
-                VanillaArtifactID.theCreaturesHeart,
+                VanillaArtifactID.dreamKey,
             });
             level.SetRechargeSpeed(9999999);
         }
