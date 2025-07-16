@@ -1,3 +1,4 @@
+using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
@@ -8,6 +9,7 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -165,7 +167,7 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_MESS);
                                 SetSoundPlayed(entity, false);
                                 entity.SetAnimationInt("AttackState", 0);
-                                transTimer.ResetTime(30);
+                                transTimer.ResetTime(90);
                                 timer.Reset();
                             }
                         }
@@ -176,12 +178,13 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.PlaySound(VanillaSoundID.magnetic);
                                 SetSoundPlayed(entity, true);
+                                MoveHigher(entity);
                             }
                             entity.SetAnimationInt("AttackState", 2);
 
                             var transTimer = GetActionTimer(entity);
                             transTimer.Run();
-                            if (transTimer.Expired)
+                            if (transTimer.PassedFrame(60))
                             {
                                 var level = entity.Level;
                                 entity.PlaySound(VanillaSoundID.odd);
@@ -190,39 +193,42 @@ namespace MVZ2.GameContent.Bosses
                                 {
                                     target.AddBuff<RUAWizardBuff>();
                                 }
-                                entity.SetAnimationInt("AttackState", 0);
-                                SetSoundPlayed(entity, false);
-                                SetAttackState(entity, STATE_PLANET);
-                                transTimer.ResetTime(90);
-                                timer.Reset();
                             }
-                        }
-                        break;
-                    case STATE_PLANET:
-                        {
-                            if (!IsSoundPlayed(entity))
+                            if (transTimer.PassedFrame(45))
                             {
-                                entity.PlaySound(VanillaSoundID.magnetic);
-                                SetSoundPlayed(entity, true);
-                                MoveHigher(entity);
-                            }
-
-                            var transTimer = GetActionTimer(entity);
-                            transTimer.Run();
-                            if (transTimer.Frame <= 60)
-                            {
-                                if (transTimer.PassedInterval(6))
+                                var level = entity.Level;
+                                entity.PlaySound(VanillaSoundID.odd);
+                                var enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(entity));
+                                foreach (var target in enemy)
                                 {
-                                    var level = entity.Level;
-                                    var grids = level.GetAllGrids().RandomTake(1, entity.RNG);
-                                    foreach (var grid in grids)
-                                    {
-                                        entity.Spawn(VanillaEffectID.confusingPlanet, grid.Level.GetEntityGridPosition(grid.Column, grid.Lane) + new Vector3(0, 48, 0));
-                                    }
+                                    target.RandomChangeAdjacentLane(target.RNG);
+                                }
+                            }
+                            if (transTimer.PassedFrame(30))
+                            {
+                                var level = entity.Level;
+                                entity.PlaySound(VanillaSoundID.odd);
+                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity)).RandomTake(3, entity.RNG);
+                                var grids = level.GetAllGrids().Where(g => g.IsEmpty()).RandomTake(6, entity.RNG);
+                                foreach (var contraption in contraptions)
+                                {
+                                    var ID = contraption.GetDefinitionID();
+                                    if (ID == VanillaContraptionID.lilyPad || ID == VanillaContraptionID.vortexHopper || contraption.IsDefensive())
+                                        continue;
+                                    var placementID = contraption.Definition.GetPlacementID();
+                                    var placementDef = level.Content.GetPlacementDefinition(placementID);
+                                    if (placementDef == null)
+                                        continue;
+                                    var targetGrids = grids.Where(g => g.CanSpawnEntity(contraption.GetDefinitionID()));
+                                    if (targetGrids.Count() <= 0)
+                                        continue;
+                                    var grid = targetGrids.Random(GetProjectileRNG(entity));
+                                    entity.SpawnWithParams(contraption.Definition.GetID(), grid.GetEntityPosition());
                                 }
                             }
                             if (transTimer.Expired)
                             {
+                                entity.SetAnimationInt("AttackState", 0);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_BLAST);
                                 transTimer.ResetTime(210);
@@ -298,8 +304,7 @@ namespace MVZ2.GameContent.Bosses
 
         public const int STATE_DARK_MATTER = 0;
         public const int STATE_MESS = 1;
-        public const int STATE_PLANET = 2;
-        public const int STATE_BLAST = 3;
+        public const int STATE_BLAST = 2;
 
         public const int MAX_MOVE_TIMEOUT = 60;
 
