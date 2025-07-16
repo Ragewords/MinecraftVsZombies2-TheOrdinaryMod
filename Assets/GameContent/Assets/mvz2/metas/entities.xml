@@ -778,7 +778,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="black_hole_bomb" name="黑洞炸弹" tooltip="触发后产生引力黑洞" unlock="mvz2:level.mausoleum_8">
+        <contraption id="black_hole_bomb" name="天体炸弹" tooltip="触发后产生坍缩的天体" unlock="mvz2:level.mausoleum_8">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <float name="mvz2:range" value="120" />
@@ -2779,14 +2779,6 @@
                 <string name="mvz2:sortingLayer" value="Shadow" />
             </properties>
         </effect>
-        <effect id="confusing_planet" >
-            <properties>
-                <bool name="mvz2:decorative" value="false" />
-                <int name="mvz2:maxTimeout" value="360" />
-                <vector3 name="mvz2:size" x="64" y="64" z="64" />
-                <vector3 name="mvz2:shadowScale" x="1" y="1" z="1" />
-            </properties>
-        </effect>
         <effect id="nightmare_portal">
             <properties>
                 <int name="mvz2:sortingOrder" value="-10" />
@@ -2992,6 +2984,14 @@
                 <bool name="mvz2:decorative" value="false" />
                 <bool name="mvz2:isFire" value="true" />
                 <int name="mvz2:maxTimeout" value="45" />
+            </properties>
+        </effect>
+        <effect id="confusing_planet" >
+            <properties>
+                <bool name="mvz2:decorative" value="false" />
+                <int name="mvz2:maxTimeout" value="450" />
+                <float name="mvz2:range" value="120" />
+                <float name="mvz2:damage" value="1" />
             </properties>
         </effect>
         <effect id="blackhole">

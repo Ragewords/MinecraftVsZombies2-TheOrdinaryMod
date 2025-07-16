@@ -706,7 +706,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">啊！看来我回来的正是时候！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是黑洞炸弹，它在引爆后会炸出一个小型黑洞，吸引周围的敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是天体炸弹，它在引爆后会炸出一个天体减速周围敌人，随后天体坍缩成小型黑洞，吸引周围的敌人！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">并且，能持续对范围内的敌人造成伤害！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2" onClick="end">集中火力对付他们吧！</sentence>
       </sentences>

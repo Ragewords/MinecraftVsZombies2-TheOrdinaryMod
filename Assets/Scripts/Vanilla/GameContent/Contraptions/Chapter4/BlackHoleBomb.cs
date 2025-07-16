@@ -96,34 +96,34 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static Entity Explode(Entity entity, float range, float damage)
         {
-            var blackholeParam = entity.GetSpawnParams();
-            blackholeParam.SetProperty(VanillaEntityProps.DAMAGE, damage);
-            blackholeParam.SetProperty(VanillaEntityProps.RANGE, range);
-            var blackhole = entity.Spawn(VanillaEffectID.blackhole, entity.GetCenter(), blackholeParam);
+            var planetParam = entity.GetSpawnParams();
+            planetParam.SetProperty(VanillaEntityProps.DAMAGE, damage);
+            planetParam.SetProperty(VanillaEntityProps.RANGE, range);
+            var planet = entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter(), planetParam);
 
             var explosionParam = entity.GetSpawnParams();
             explosionParam.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
             var explosion = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), explosionParam);
 
             entity.PlaySound(VanillaSoundID.explosion);
-            entity.PlaySound(VanillaSoundID.gravitation);
             entity.Level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
 
-            return blackhole;
+            return planet;
         }
         public static Entity ExplodeEvoked(Entity entity, float range)
         {
             var fieldParam = entity.GetSpawnParams();
             fieldParam.SetProperty(VanillaEntityProps.RANGE, range);
-            var field = entity.Spawn(VanillaEffectID.annihilationField, entity.GetCenter(), fieldParam);
+            fieldParam.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 15);
+            var field = entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter(), fieldParam);
+            ConfusingPlanet.SetAnnihilate(field, true);
 
             var explosionParam = entity.GetSpawnParams();
             explosionParam.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
             var explosion = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), explosionParam);
 
             entity.PlaySound(VanillaSoundID.explosion);
-            entity.PlaySound(VanillaSoundID.gravitation);
             entity.Level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
 

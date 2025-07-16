@@ -46,11 +46,11 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.dreamCrystal,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
-                VanillaContraptionID.mineTNT,
+                VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.ghast,
                 VanillaEnemyID.dullahan,
-                VanillaBossID.theEye,
+                VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
