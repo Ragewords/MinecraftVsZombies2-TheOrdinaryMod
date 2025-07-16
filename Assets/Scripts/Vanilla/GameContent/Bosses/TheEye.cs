@@ -197,7 +197,7 @@ namespace MVZ2.GameContent.Bosses
                             if (transTimer.PassedFrame(45))
                             {
                                 var level = entity.Level;
-                                entity.PlaySound(VanillaSoundID.odd);
+                                entity.PlaySound(VanillaSoundID.reverseVampire);
                                 var enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(entity));
                                 foreach (var target in enemy)
                                 {
@@ -207,14 +207,12 @@ namespace MVZ2.GameContent.Bosses
                             if (transTimer.PassedFrame(30))
                             {
                                 var level = entity.Level;
-                                entity.PlaySound(VanillaSoundID.odd);
-                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity)).RandomTake(3, entity.RNG);
+                                entity.PlaySound(VanillaSoundID.fault);
+                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity)).Where(c => c.IsDispenser()).RandomTake(3, entity.RNG);
                                 var grids = level.GetAllGrids().Where(g => g.IsEmpty()).RandomTake(6, entity.RNG);
                                 foreach (var contraption in contraptions)
                                 {
                                     var ID = contraption.GetDefinitionID();
-                                    if (ID == VanillaContraptionID.lilyPad || ID == VanillaContraptionID.vortexHopper || contraption.IsDefensive())
-                                        continue;
                                     var placementID = contraption.Definition.GetPlacementID();
                                     var placementDef = level.Content.GetPlacementDefinition(placementID);
                                     if (placementDef == null)
