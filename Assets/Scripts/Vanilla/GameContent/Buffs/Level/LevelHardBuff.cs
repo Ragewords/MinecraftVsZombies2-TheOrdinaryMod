@@ -28,6 +28,7 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new IntModifier(VanillaDifficultyProps.WICKED_HERMIT_ZOMBIE_STUN_TIME, NumberOperator.Add, -75));
 
             AddModifier(new BooleanModifier(VanillaDifficultyProps.FRANKENSTEIN_INSTANT_STEEL, true));
+            AddModifier(new BooleanModifier(VanillaDifficultyProps.FRANKENSTEIN_SPLITS_HEAD, true));
             AddModifier(new FloatModifier(VanillaDifficultyProps.FRANKENSTEIN_SPEED, NumberOperator.Multiply, 2));
 
             AddModifier(new BooleanModifier(VanillaDifficultyProps.SLENDERMAN_MIND_SWAP_ZOMBIES, true));

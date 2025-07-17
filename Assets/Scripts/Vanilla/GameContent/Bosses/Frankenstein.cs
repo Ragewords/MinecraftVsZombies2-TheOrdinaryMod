@@ -69,7 +69,7 @@ namespace MVZ2.GameContent.Bosses
             entity.SetAnimationFloat("ActionSpeed", GetFrankensteinActionSpeed(entity));
             if (IsSteelPhase(entity))
             {
-                if (entity.Health <= entity.GetMaxHealth() * 0.5f && !IsHeadSplit(entity) && entity.Level.FrankensteinInstantSteelPhase())
+                if (entity.Health <= entity.GetMaxHealth() * 0.5f && !IsHeadSplit(entity) && entity.Level.FrankensteinSplitsHead())
                 {
                     HeadSplit(entity);
                 }
