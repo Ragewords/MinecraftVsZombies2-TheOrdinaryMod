@@ -4005,6 +4005,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59bf449666ab22446af83c2e53c155f5
+    m_Address: mvz2:entity/enemy/paratroop_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59cb47d1535f5964b8f9d2b91beb5175
     m_Address: mvz2:spider_cry3
     m_ReadOnly: 0
@@ -6071,6 +6078,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8906cc047bac80744a740e36bfa68a42
     m_Address: mvz2:projectile/bounce_boulder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 895d4ade70a0800439a9fed95fe162a9
+    m_Address: mvz2:enemy/prologue/paratrooper_zombie
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
