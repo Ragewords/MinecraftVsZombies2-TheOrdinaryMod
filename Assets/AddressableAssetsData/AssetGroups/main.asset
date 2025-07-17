@@ -8806,6 +8806,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c92d3aca3bd0f1c49942b12efcac8b89
+    m_Address: mvz2:effect/dark_matter_particles_absorbing
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c95e7586c1c2bff4ea296c7b7e85e482
     m_Address: mvz2:entity/silverfish/silverfish_cry1
     m_ReadOnly: 0
