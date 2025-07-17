@@ -1911,6 +1911,7 @@
         <boss id="frankenstein" name="科学怪人的怪物">
             <properties>
                 <int name="mvz2:waterInteraction" value="1" />
+                <int name="mvz2:vehicleInteraction" value="2" />
                 <float name="mvz2:maxHealth" value="25000" />
                 <vector3 name="mvz2:size" x="60" y="200" z="60" />
                 <vector3 name="mvz2:shotVelocity" x="30" y="0" z="0" />
