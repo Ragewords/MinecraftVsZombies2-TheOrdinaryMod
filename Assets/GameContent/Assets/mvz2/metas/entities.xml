@@ -495,7 +495,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
-        <contraption id="dream_crystal" name="梦境结晶" tooltip="能够自我修复的障碍墙" unlock="mvz2:level.dream_8">
+        <contraption id="dream_crystal" name="梦境结晶" tooltip="能够修复自己和周围生命的障碍墙" unlock="mvz2:level.dream_8">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:defensive" value="true" />
@@ -505,7 +505,7 @@
                 <id name="mvz2:hitSound" value="mvz2:crystal" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
-                <int name="mvz2:cost" value="75" />
+                <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
