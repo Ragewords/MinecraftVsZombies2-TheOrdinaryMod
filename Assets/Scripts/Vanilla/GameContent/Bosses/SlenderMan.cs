@@ -487,6 +487,11 @@ namespace MVZ2.GameContent.Bosses
             {
                 contraption.ShortCircuit(300);
             }
+            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.CanDeactive());
+            foreach (var enemy in targets_enemy)
+            {
+                enemy.Stun(90);
+            }
         }
         private void IllusionEye(Entity boss)
         {
