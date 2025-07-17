@@ -227,8 +227,6 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_READY_1:
                     case SUBSTATE_READY_2:
                     case SUBSTATE_READY_3:
-                    case SUBSTATE_READY_4:
-                    case SUBSTATE_READY_5:
                         Jab(entity, entity.Target);
                         stateMachine.SetSubState(entity, substate + 1);
                         substateTimer.ResetTime(9);
@@ -236,8 +234,6 @@ namespace MVZ2.GameContent.Bosses
 
                     case SUBSTATE_JAB_1:
                     case SUBSTATE_JAB_2:
-                    case SUBSTATE_JAB_3:
-                    case SUBSTATE_JAB_4:
                         var jabTarget = FindJabTarget(entity);
                         entity.Target = jabTarget;
                         if (jabTarget != null)
@@ -252,7 +248,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
 
-                    case SUBSTATE_JAB_5:
+                    case SUBSTATE_JAB_3:
                         stateMachine.StartState(entity, STATE_IDLE);
                         break;
                 }
@@ -295,10 +291,6 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_JAB_2 = 3;
             public const int SUBSTATE_READY_3 = 4;
             public const int SUBSTATE_JAB_3 = 5;
-            public const int SUBSTATE_READY_4 = 6;
-            public const int SUBSTATE_JAB_4 = 7;
-            public const int SUBSTATE_READY_5 = 8;
-            public const int SUBSTATE_JAB_5 = 9;
         }
         private static Entity FindJabTarget(Entity entity)
         {

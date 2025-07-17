@@ -44,7 +44,6 @@ namespace MVZ2.GameContent.Bosses
             SetMoveRNG(entity, new RandomGenerator(entity.RNG.Next()));
             SetSoundPlayed(entity, false);
             SetAttackState(entity, STATE_DARK_MATTER);
-            entity.SetIsInvisible(true);
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -103,7 +102,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private void MoveBack(Entity entity)
         {
-            entity.SetIsInvisible(true);
+            entity.SetIsInvisible(false);
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
         }
@@ -167,7 +166,7 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_MESS);
                                 SetSoundPlayed(entity, false);
                                 entity.SetAnimationInt("AttackState", 0);
-                                transTimer.ResetTime(90);
+                                transTimer.ResetTime(200);
                                 timer.Reset();
                             }
                         }
@@ -184,32 +183,65 @@ namespace MVZ2.GameContent.Bosses
 
                             var transTimer = GetActionTimer(entity);
                             transTimer.Run();
-                            if (transTimer.PassedFrame(60))
+                            if (transTimer.Frame > 180)
+                                return;
+
+                            if (transTimer.PassedInterval(30))
+                            {
+                                var level = entity.Level;
+                                var grid = level.GetAllGrids().Where(g => !g.IsEmpty()).Random(GetProjectileRNG(entity));
+                                var targets = grid?.GetEntities();
+                                foreach (var target in targets)
+                                {
+                                    if (grid.IsWater())
+                                    {
+                                        if (target == grid.GetCarrierEntity())
+                                            target.Die(entity);
+                                        entity.PlaySound(VanillaSoundID.splashBig);
+                                        entity.Spawn(VanillaEffectID.nightmareaperSplash, grid.GetEntityPosition());
+                                    }
+                                    else if (grid.IsCloud())
+                                    {
+                                        target.Die(entity);
+                                        entity.PlaySound(VanillaSoundID.smallExplosion);
+                                        entity.Spawn(VanillaEffectID.splashParticles, grid.GetEntityPosition());
+                                    }
+                                    else
+                                    {
+                                        entity.PlaySound(VanillaSoundID.mineExplode);
+                                        entity.SpawnWithParams(VanillaEffectID.cursedMeteor, grid.GetEntityPosition() + new Vector3(0, 1280, 0));
+                                    }
+                                    level.ShakeScreen(15, 0, 10);
+                                }
+                            }
+                            if (transTimer.Expired)
+                            {
+                                entity.SetAnimationInt("AttackState", 0);
+                                SetSoundPlayed(entity, false);
+                                SetAttackState(entity, STATE_COPY);
+                                transTimer.ResetTime(90);
+                                timer.Reset();
+                                MoveBack(entity);
+                            }
+                        }
+                        break;
+                    case STATE_COPY:
+                        {
+                            if (!IsSoundPlayed(entity))
+                            {
+                                entity.PlaySound(VanillaSoundID.fault);
+                                SetSoundPlayed(entity, true);
+                            }
+                            entity.SetAnimationInt("AttackState", 2);
+
+                            var transTimer = GetActionTimer(entity);
+                            transTimer.Run();
+                            if (transTimer.PassedInterval(30))
                             {
                                 var level = entity.Level;
                                 entity.PlaySound(VanillaSoundID.odd);
-                                var contraption = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity));
-                                foreach (var target in contraption)
-                                {
-                                    target.AddBuff<RUAWizardBuff>();
-                                }
-                            }
-                            if (transTimer.PassedFrame(45))
-                            {
-                                var level = entity.Level;
-                                entity.PlaySound(VanillaSoundID.reverseVampire);
-                                var enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(entity));
-                                foreach (var target in enemy)
-                                {
-                                    target.RandomChangeAdjacentLane(target.RNG);
-                                }
-                            }
-                            if (transTimer.PassedFrame(30))
-                            {
-                                var level = entity.Level;
-                                entity.PlaySound(VanillaSoundID.fault);
-                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity)).Where(c => c.IsDispenser()).RandomTake(3, entity.RNG);
-                                var grids = level.GetAllGrids().Where(g => g.IsEmpty()).RandomTake(6, entity.RNG);
+                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity)).Where(c => c.IsDispenser()).RandomTake(2, entity.RNG);
+                                var grids = level.GetAllGrids().Where(g => g.IsEmpty());
                                 foreach (var contraption in contraptions)
                                 {
                                     var ID = contraption.GetDefinitionID();
@@ -220,8 +252,10 @@ namespace MVZ2.GameContent.Bosses
                                     var targetGrids = grids.Where(g => g.CanSpawnEntity(contraption.GetDefinitionID()));
                                     if (targetGrids.Count() <= 0)
                                         continue;
-                                    var grid = targetGrids.Random(GetProjectileRNG(entity));
-                                    entity.SpawnWithParams(contraption.Definition.GetID(), grid.GetEntityPosition());
+                                    var gridGroup = targetGrids.GroupBy(g => g.Column).OrderByDescending(g => g.Key).Take(3);
+                                    var selectedGrid = gridGroup.SelectMany(g => g.Shuffle(entity.RNG)).Random(GetProjectileRNG(entity));
+                                    entity.SpawnWithParams(contraption.Definition.GetID(), selectedGrid.GetEntityPosition());
+                                    entity.Spawn(VanillaEffectID.spawnerAppearEmbers, selectedGrid.GetEntityPosition());
                                 }
                             }
                             if (transTimer.Expired)
@@ -231,7 +265,6 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_BLAST);
                                 transTimer.ResetTime(210);
                                 timer.Reset();
-                                MoveBack(entity);
                             }
                         }
                         break;
@@ -259,7 +292,7 @@ namespace MVZ2.GameContent.Bosses
                                 var contraption = level.FindEntities(e => e.IsHostile(entity) && e.IsVulnerableEntity());
                                 foreach (var target in contraption)
                                 {
-                                    target.TakeDamage(1, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                                    target.TakeDamage(1, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
                                 }
                             }
 
@@ -302,7 +335,8 @@ namespace MVZ2.GameContent.Bosses
 
         public const int STATE_DARK_MATTER = 0;
         public const int STATE_MESS = 1;
-        public const int STATE_BLAST = 2;
+        public const int STATE_COPY = 2;
+        public const int STATE_BLAST = 3;
 
         public const int MAX_MOVE_TIMEOUT = 60;
 
