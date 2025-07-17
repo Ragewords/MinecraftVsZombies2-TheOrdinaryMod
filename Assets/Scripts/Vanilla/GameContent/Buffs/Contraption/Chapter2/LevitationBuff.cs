@@ -15,13 +15,13 @@ namespace MVZ2.GameContent.Buffs.Contraptions
     {
         public LevitationBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Set, -0.2f));
+            AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Set, -0.05f));
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.levitationStars, VanillaModelID.levitationStars);
         }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMER, new FrameTimer(30));
+            buff.SetProperty(PROP_TIMER, new FrameTimer(90));
         }
 
         public override void PostUpdate(Buff buff)

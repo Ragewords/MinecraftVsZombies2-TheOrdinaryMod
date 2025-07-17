@@ -102,17 +102,11 @@ namespace MVZ2.GameContent.Bosses
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 10f);
         }
-        private void MoveBack(Entity entity)
-        {
-            entity.SetIsInvisible(true);
-            var buff = entity.GetFirstBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
-        }
         private void MoveHigher(Entity entity)
         {
             entity.SetIsInvisible(true);
             var buff = entity.GetFirstBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 480f);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
         }
         #endregion
 
@@ -167,81 +161,11 @@ namespace MVZ2.GameContent.Bosses
                                     expPart.SetTint(Color.black);
                                     entity.Spawn(VanillaEffectID.darkMatterParticlesAbsorbing, effectPos);
                                 }
-                                SetAttackState(entity, STATE_MESS);
-                                SetSoundPlayed(entity, false);
-                                entity.SetAnimationInt("AttackState", 0);
-                                transTimer.ResetTime(200);
-                                timer.Reset();
-                            }
-                        }
-                        break;
-                    case STATE_MESS:
-                        {
-                            if (!IsSoundPlayed(entity))
-                            {
-                                entity.PlaySound(VanillaSoundID.magical);
-                                SetSoundPlayed(entity, true);
-                                MoveHigher(entity);
-                            }
-                            entity.SetAnimationInt("AttackState", 2);
-
-                            var transTimer = GetActionTimer(entity);
-                            transTimer.Run();
-                            if (transTimer.Frame > 180)
-                                return;
-
-                            if (transTimer.PassedInterval(30))
-                            {
-                                var level = entity.Level;
-                                var grids = level.GetAllGrids().Where(g => !g.IsEmpty()).RandomTake(1, GetProjectileRNG(entity));
-                                foreach (var grid in grids)
-                                {
-                                    var targets = grid?.GetEntities();
-                                    foreach (var target in targets)
-                                    {
-                                        if (grid.IsWater())
-                                        {
-                                            target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH), entity);
-                                            entity.PlaySound(VanillaSoundID.splashBig);
-                                            entity.Spawn(VanillaEffectID.nightmareaperSplash, grid.GetEntityPosition());
-                                        }
-                                        else if (grid.IsCloud())
-                                        {
-                                            target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH), entity);
-                                            entity.PlaySound(VanillaSoundID.smallExplosion);
-                                            entity.Spawn(VanillaEffectID.splashParticles, grid.GetEntityPosition());
-                                        }
-                                        else
-                                        {
-                                            target.Die(entity);
-                                            entity.PlaySound(VanillaSoundID.smash);
-                                        }
-                                        level.ShakeScreen(15, 0, 10);
-                                    }
-                                }
-                            }
-                            if (transTimer.Frame > 90)
-                                return;
-                            
-                            if (transTimer.PassedInterval(15))
-                            {
-                                var level = entity.Level;
-                                var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity) && e.CanDeactive() && !e.IsAIFrozen()).RandomTake(1, entity.RNG);
-                                foreach (var target in targets)
-                                {
-                                    target.Stun(150);
-                                    entity.PlaySound(VanillaSoundID.stunned);
-                                }
-                            }
-
-                            if (transTimer.Expired)
-                            {
-                                entity.SetAnimationInt("AttackState", 0);
-                                SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_LEVITATE);
-                                transTimer.ResetTime(75);
+                                SetSoundPlayed(entity, false);
+                                entity.SetAnimationInt("AttackState", 0);
+                                transTimer.ResetTime(150);
                                 timer.Reset();
-                                MoveBack(entity);
                             }
                         }
                         break;
@@ -257,7 +181,7 @@ namespace MVZ2.GameContent.Bosses
                             var transTimer = GetActionTimer(entity);
                             transTimer.Run();
 
-                            if (transTimer.PassedInterval(15))
+                            if (transTimer.PassedInterval(30))
                             {
                                 var level = entity.Level;
                                 var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity) && !e.HasBuff<LevitationBuff>())
@@ -294,24 +218,33 @@ namespace MVZ2.GameContent.Bosses
                                 var level = entity.Level;
                                 entity.PlaySound(VanillaSoundID.odd);
 
-                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity))
+                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT
+                                 && e.GetTakingGridLayers(e.GetGrid()).Contains(VanillaGridLayers.main))
                                 .OrderBy(e => e.GetMaxHealth()).RandomTake(2, entity.RNG);
 
-                                var grids = level.GetAllGrids().Where(g => g.IsEmpty());
+                                var grids = level.GetAllGrids();
                                 foreach (var contraption in contraptions)
                                 {
                                     var ID = contraption.GetDefinitionID();
-                                    var placementID = contraption.Definition.GetPlacementID();
-                                    var placementDef = level.Content.GetPlacementDefinition(placementID);
-                                    if (placementDef == null)
-                                        continue;
-                                    var targetGrids = grids.Where(g => g.CanSpawnEntity(contraption.GetDefinitionID()));
+                                    var waterInteraction = contraption.GetWaterInteraction();
+                                    var targetGrids = grids.Where(g => g.CanSpawnEntity(ID));
                                     if (targetGrids.Count() <= 0)
                                         continue;
                                     var gridGroup = targetGrids.GroupBy(g => g.Column).OrderByDescending(g => g.Key).Take(3);
                                     var selectedGrid = gridGroup.SelectMany(g => g.Shuffle(entity.RNG)).Random(GetProjectileRNG(entity));
-                                    entity.SpawnWithParams(contraption.Definition.GetID(), selectedGrid.GetEntityPosition());
-                                    entity.Spawn(VanillaEffectID.spawnerAppearEmbers, selectedGrid.GetEntityPosition());
+                                    if (selectedGrid.IsWater())
+                                    {
+                                        entity.Spawn(VanillaEffectID.nightmareaperSplash, selectedGrid.GetEntityPosition());
+                                        entity.PlaySound(VanillaSoundID.splashBig);
+                                    }
+                                    else if (selectedGrid.IsCloud())
+                                    {
+                                        entity.Spawn(VanillaEffectID.splashParticles, selectedGrid.GetEntityPosition());
+                                        entity.PlaySound(VanillaSoundID.smallExplosion);
+                                    }
+                                    else
+                                        entity.Spawn(VanillaEffectID.spawnerAppearEmbers, selectedGrid.GetEntityPosition());
+                                    entity.SpawnWithParams(ID, selectedGrid.GetEntityPosition());
                                 }
                             }
                             if (transTimer.Expired)
@@ -349,6 +282,7 @@ namespace MVZ2.GameContent.Bosses
                                 {
                                     target.TakeDamage(1, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
                                 }
+                                level.ShakeScreen(10, 0, 10);
                             }
 
                             if (transTimer.Expired)
@@ -373,7 +307,7 @@ namespace MVZ2.GameContent.Bosses
                                 SetAttackState(entity, STATE_DARK_MATTER);
                                 transTimer.ResetTime(60);
                                 timer.Reset();
-                                MoveBack(entity);
+                                MoveHigher(entity);
                             }
                         }
                         break;
@@ -404,11 +338,10 @@ namespace MVZ2.GameContent.Bosses
         #endregion
 
         public const int STATE_DARK_MATTER = 0;
-        public const int STATE_MESS = 1;
-        public const int STATE_LEVITATE = 2;
-        public const int STATE_COPY = 3;
-        public const int STATE_MIND_BLAST = 4;
-        public const int STATE_REST = 5;
+        public const int STATE_LEVITATE = 1;
+        public const int STATE_COPY = 2;
+        public const int STATE_MIND_BLAST = 3;
+        public const int STATE_REST = 4;
 
         public const int MAX_MOVE_TIMEOUT = 60;
 
