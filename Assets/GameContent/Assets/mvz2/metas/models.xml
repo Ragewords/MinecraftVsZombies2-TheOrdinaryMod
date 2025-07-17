@@ -212,6 +212,7 @@
     <model name="nightmare_watching_eye" type="entity" path="mvz2:effect/nightmare_watching_eye" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmare_portal" type="entity" path="mvz2:effect/nightmare_portal" width="64" height="120" xOffset="0" yOffset="-50" />
     <model name="dark_matter_particles" type="entity" path="mvz2:effect/dark_matter_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="dark_matter_particles_absorbing" type="entity" path="mvz2:effect/dark_matter_particles_absorbing" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_splash" type="entity" path="mvz2:effect/nightmareaper_splash" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_shadow" type="entity" path="mvz2:effect/nightmareaper_shadow" width="240" height="200" xOffset="0" yOffset="-20"/>
     <model name="slice_spark" type="entity" path="mvz2:effect/slice_spark" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
@@ -344,6 +345,7 @@
 	<model name="totenser_web" type="icon" path="mvz2:icon/totenser_web" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="terror_parasitized" type="icon" path="mvz2:icon/terror_parasitized" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="weakness_particles" type="icon" path="mvz2:icon/weakness_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
+    <model name="levitation_stars" type="icon" path="mvz2:icon/levitation_stars" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="wither_particles" type="icon" path="mvz2:icon/wither_particles" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="dream_alarm" type="icon" path="mvz2:icon/dream_alarm" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="parabot_insected" type="icon" path="mvz2:icon/parabot_insected" shot="false" width="64" height="64" xOffset="0" yOffset="0"/>

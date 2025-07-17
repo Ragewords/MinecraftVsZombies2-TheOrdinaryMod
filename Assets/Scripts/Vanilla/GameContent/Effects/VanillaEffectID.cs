@@ -46,6 +46,7 @@ namespace MVZ2.GameContent.Effects
         public const string confusingPlanet = "confusing_planet";
         public const string nightmarePortal = "nightmare_portal";
         public const string darkMatterParticles = "dark_matter_particles";
+        public const string darkMatterParticlesAbsorbing = "dark_matter_particles_absorbing";
         public const string nightmareaperSplash = "nightmareaper_splash";
         public const string nightmareaperShadow = "nightmareaper_shadow";
         public const string sliceSpark = "slice_spark";
@@ -132,6 +133,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID confusingPlanet = Get(VanillaEffectNames.confusingPlanet);
         public static readonly NamespaceID nightmarePortal = Get(VanillaEffectNames.nightmarePortal);
         public static readonly NamespaceID darkMatterParticles = Get(VanillaEffectNames.darkMatterParticles);
+        public static readonly NamespaceID darkMatterParticlesAbsorbing = Get(VanillaEffectNames.darkMatterParticlesAbsorbing);
         public static readonly NamespaceID nightmareaperSplash = Get(VanillaEffectNames.nightmareaperSplash);
         public static readonly NamespaceID nightmareaperShadow = Get(VanillaEffectNames.nightmareaperShadow);
         public static readonly NamespaceID sliceSpark = Get(VanillaEffectNames.sliceSpark);

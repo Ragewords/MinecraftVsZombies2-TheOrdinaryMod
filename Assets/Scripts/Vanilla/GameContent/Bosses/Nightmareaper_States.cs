@@ -296,10 +296,7 @@ namespace MVZ2.GameContent.Bosses
         {
             targetBuffer.Clear();
             var substate = stateMachine.GetSubState(entity);
-            if (substate >= 6)
-                entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c) && c.IsDispenser(), targetBuffer);
-            else
-                entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c), targetBuffer);
+            entity.Level.FindEntitiesNonAlloc(c => c.IsVulnerableEntity() && entity.IsHostile(c), targetBuffer);
             if (targetBuffer.Count > 0)
             {
                 var actRNG = GetStateRNG(entity);

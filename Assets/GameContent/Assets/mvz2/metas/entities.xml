@@ -2792,6 +2792,11 @@
                 <int name="mvz2:maxTimeout" value="180" />
             </properties>
         </effect>
+        <effect id="dark_matter_particles_absorbing">
+            <properties>
+                <int name="mvz2:maxTimeout" value="75" />
+            </properties>
+        </effect>
         <effect id="nightmareaper_splash">
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />

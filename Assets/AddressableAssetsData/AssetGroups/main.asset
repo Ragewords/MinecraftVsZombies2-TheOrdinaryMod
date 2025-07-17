@@ -7322,6 +7322,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5c8241c11c6b6d41bac669efbc8a68a
+    m_Address: mvz2:icon/levitation_stars
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a5d274fd1726efe4e8fef76bfda1c1eb
     m_Address: mvz2:contraption/dream/gravity_pad
     m_ReadOnly: 0

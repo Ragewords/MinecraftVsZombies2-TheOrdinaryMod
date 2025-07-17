@@ -22,7 +22,7 @@ namespace MVZ2.GameContent.Effects
         {
             absorbDetector = new SphereDetector(120)
             {
-                mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_BOSS,
+                mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY,
                 canDetectInvisible = true,
             };
         }

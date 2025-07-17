@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Stages
             ClassicStart(level);
             //ConveyorStart(level);
             level.LevelProgressVisible = true;
-            level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
+            level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
             level.SetTriggerActive(true);
             var cartRef = level.GetCartReference();
             level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);
@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.ghast,
                 VanillaEnemyID.dullahan,
-                VanillaBossID.theGiant,
+                VanillaBossID.theEye,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

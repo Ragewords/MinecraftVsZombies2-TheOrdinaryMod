@@ -49,6 +49,7 @@ namespace MVZ2.GameContent.Buffs
         public const string dreamCrystalEvocation = "dream_crystal_evocation";
         public const string dreamSilk = "dream_silk";
         public const string ruaWizard = "r_u_a_wizard";
+        public const string levitation = "levitation";
         public const string stoneShieldProtected = "stone_shield_protected";
         public const string glowstoneProtected = "glowstone_protected";
         public const string ironCurtain = "iron_curtain";

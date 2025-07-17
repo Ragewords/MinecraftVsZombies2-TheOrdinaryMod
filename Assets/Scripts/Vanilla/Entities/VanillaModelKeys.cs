@@ -15,6 +15,7 @@ namespace MVZ2.Vanilla.Models
         public static readonly NamespaceID totenserWeb = Get("totenser_web");
         public static readonly NamespaceID weaknessParticles = Get("weakness_particles");
         public static readonly NamespaceID dreamAlarm = Get("dream_alarm");
+        public static readonly NamespaceID levitationStars = Get("levitation_stars");
         public static readonly NamespaceID parabotInsected = Get("parabot_insected");
         public static readonly NamespaceID knockbackWave = Get("knockback_wave");
         public static readonly NamespaceID mindSwap = Get("mind_swap");

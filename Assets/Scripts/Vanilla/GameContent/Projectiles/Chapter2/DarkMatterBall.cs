@@ -30,10 +30,15 @@ namespace MVZ2.GameContent.Projectiles
             var bullet = hitResult.Projectile;
             bool plantEvoke = hitResult.Other.Type == EntityTypes.PLANT && hitResult.Other.IsEvoked();
             bool fromParent = hitResult.Other == bullet.Parent;
-            if (plantEvoke || hitResult.Other.IsInvincible() || fromParent)
+            if (plantEvoke || hitResult.Other.IsInvincible())
             {
                 hitResult.Pierce = true;
                 Deflect(bullet);
+                return;
+            }
+            else if (fromParent)
+            {
+                hitResult.Pierce = true;
                 return;
             }
             Explode(bullet, bullet.GetRange(), bullet.GetDamage());
@@ -61,7 +66,6 @@ namespace MVZ2.GameContent.Projectiles
                 projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, targetPos, 45, projectile.GetGravity());
             }
             projectile.AddBuff<InvertedMirrorBuff>();
-            projectile.SetDamage(500);
         }
         public static DamageOutput[] Explode(Entity entity, float range, float damage)
         {
