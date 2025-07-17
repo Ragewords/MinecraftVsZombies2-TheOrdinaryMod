@@ -302,16 +302,27 @@ namespace MVZ2.GameContent.Bosses
         }
         private void DoFate(Entity boss, int option)
         {
+            bool alteredFate = boss.Level.GetSlendermanAlteredFate();
             switch (option)
             {
                 case FATE_PANDORAS_BOX:
-                    PandorasBox(boss);
+                    {
+                        if (alteredFate)
+                            PandorasBoxAltered(boss);
+                        else
+                            PandorasBox(boss);
+                    }
                     break;
                 case FATE_BIOHAZARD:
                     Biohazard(boss);
                     break;
                 case FATE_DECREPIFY:
-                    Decrepify(boss);
+                    {
+                        if (alteredFate)
+                            DecrepifyAltered(boss);
+                        else
+                            Decrepify(boss);
+                    }
                     break;
                 case FATE_INSANITY:
                     Insanity(boss);
@@ -358,6 +369,25 @@ namespace MVZ2.GameContent.Bosses
                 contraption.UpdateTakenGrids();
             }
         }
+        private void PandorasBoxAltered(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.odd);
+
+            var level = boss.Level;
+            var eventRng = GetEventRNG(boss);
+            var rng = new RandomGenerator(eventRng.Next());
+            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
+            var grids = level.GetAllGrids();
+            foreach (var enemy in enemies)
+            {
+                var targetGrids = grids.Where(g => g.CanSpawnEntity(enemy.GetDefinitionID()));
+                if (targetGrids.Count() <= 0)
+                    continue;
+                var grid = targetGrids.Random(rng);
+                enemy.Position = grid.GetEntityPosition();
+                enemy.AddBuff<WickedHermitWarppedBuff>();
+            }
+        }
         private void Biohazard(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.biohazard);
@@ -382,6 +412,15 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.PlaySound(VanillaSoundID.decrepify);
             boss.Level.AddBuff<NightmareDecrepifyBuff>();
+        }
+        private void DecrepifyAltered(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.decrepify);
+            var nonBoss = boss.Level.FindEntities(e => e.Type == EntityTypes.PLANT || e.Type == EntityTypes.ENEMY);
+            foreach (var target in nonBoss)
+            {
+                target.InflictWeakness(300);
+            }
         }
 
         private void Insanity(Entity boss)
@@ -428,9 +467,9 @@ namespace MVZ2.GameContent.Bosses
             var rng = GetEventRNG(boss);
             var level = boss.Level;
             level.ShakeScreen(50, 0, 30);
-            var targets = level.FindEntities(e => (e.Type == EntityTypes.PLANT || e.Type == EntityTypes.ENEMY) && e.IsOnWater());
-            // var randomTargets = targets.RandomTake(Mathf.CeilToInt(targets.Length * 0.5f), rng);
-            foreach (var target in targets)
+            var targets = level.FindEntities(e => (e.Type == EntityTypes.PLANT) && e.IsOnWater());
+            var randomTargets = targets.RandomTake(Mathf.CeilToInt(targets.Length * 0.5f), rng);
+            foreach (var target in randomTargets)
             {
                 target.Die(boss);
             }
