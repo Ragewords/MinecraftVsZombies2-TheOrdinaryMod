@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -91,6 +92,7 @@ namespace MVZ2.GameContent.Areas
             var entity = level.Spawn(enemyID, position, null);
             entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
             entity.AddBuff<ParatroopBuff>();
+            entity.ChangeModel(VanillaModelID.paratrooperZombie);
             return entity;
         }
         private static int GetParatroopWeight(int column)

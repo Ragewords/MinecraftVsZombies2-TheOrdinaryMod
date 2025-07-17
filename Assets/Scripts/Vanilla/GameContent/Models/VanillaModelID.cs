@@ -22,6 +22,7 @@ namespace MVZ2.GameContent.Models
         public static readonly NamespaceID pistonPalm = Get("piston_palm", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID dullahanMain = Get("dullahan_main", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID jackDullahanMain = Get("jackdullahan_main", EngineModelID.TYPE_ENTITY);
+        public static readonly NamespaceID paratrooperZombie = Get("paratrooper_zombie", EngineModelID.TYPE_ENTITY);
 
         public static readonly NamespaceID boatItem = Get("boat_item", TYPE_ARMOR);
 

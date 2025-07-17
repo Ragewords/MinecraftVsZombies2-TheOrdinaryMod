@@ -93,6 +93,8 @@
     <model name="shikaisen_zombie" type="entity" path="mvz2:enemy/mausoleum/shikaisen_zombie" width="96" height="96" xOffset="4" yOffset="-44"/>
     <model name="emperor_zombie" type="entity" path="mvz2:enemy/mausoleum/emperor_zombie" width="70" height="104" xOffset="1" yOffset="-47"/>
     <model name="tanooki_zombie" type="entity" path="mvz2:enemy/mausoleum/tanooki_zombie" width="76" height="104" xOffset="6" yOffset="-44"/>
+    
+    <model name="paratrooper_zombie" type="entity" path="mvz2:enemy/prologue/paratrooper_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
