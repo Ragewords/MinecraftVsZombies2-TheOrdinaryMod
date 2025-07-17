@@ -541,13 +541,6 @@ namespace MVZ2.GameContent.Bosses
 
                 SetDarknessTimeout(entity.Level, 480);
 
-                var weak_target = entity.Level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity));
-                var randomTargets = weak_target.RandomTake(Mathf.CeilToInt(weak_target.Length * 0.5f), entity.RNG);
-                foreach (var target in randomTargets)
-                {
-                    target.InflictWeakness(480);
-                }
-
                 var stateTimer = stateMachine.GetStateTimer(entity);
                 stateTimer.ResetTime(30);
             }
