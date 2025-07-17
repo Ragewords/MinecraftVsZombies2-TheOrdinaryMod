@@ -55,7 +55,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             if (attackedEnemies.Count >= MAX_TARGETS || target == null || target.IsDead)
                 return;
-            target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), entity);
+            target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
 
             var arc = entity.Spawn(VanillaEffectID.electricArc, entity.Position);
             ElectricArc.Connect(arc, target.Position);
