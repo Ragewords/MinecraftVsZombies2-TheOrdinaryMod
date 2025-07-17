@@ -30,6 +30,20 @@ namespace MVZ2.GameContent.Effects
             entity.CollisionMaskFriendly = EntityCollisionHelper.MASK_PROJECTILE;
             entity.Level.AddLoopSoundEntity(VanillaSoundID.fireBreath, entity.ID);
         }
+        public override void PostCollision(EntityCollision collision, int state)
+        {
+            base.PostCollision(collision, state);
+            var other = collision.Other;
+            var self = collision.Entity;
+            var parent = self.Parent;
+            bool existing = parent != null && parent.Exists();
+            if (!existing)
+                return;
+            var behaviour = other.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
+            if (behaviour == null)
+                return;
+            behaviour.Ignite(other, self, false);
+        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
@@ -53,19 +67,6 @@ namespace MVZ2.GameContent.Effects
                     cooldown = DAMAGE_COOLDOWN;
                 }
                 SetDamageCooldown(entity, cooldown);
-                projectileCollisionBuffer.Clear();
-                entity.GetCurrentCollisions(projectileCollisionBuffer);
-                foreach (var collision in projectileCollisionBuffer)
-                {
-                    var other = collision.OtherCollider.Entity;
-                    if (other.Type == EntityTypes.PROJECTILE)
-                    {
-                        var behaviour = other.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
-                        if (behaviour == null)
-                            return;
-                        behaviour.Ignite(other, entity, false);
-                    }
-                }
             }
             entity.SetAnimationBool("Burning", existing);
             var lightPercentage = Mathf.Max(0, (entity.Timeout / (float)MAX_TIMEOUT) * 3 - 2);
