@@ -24,6 +24,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 003a58f863ec748479ce625f218544cc
+    m_Address: mvz2:entity/contraption/smoker
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 003fea51ebc7be1498297e7b66cc61d1
     m_Address: mvz2:ui/level/final_wave
     m_ReadOnly: 0
@@ -4509,6 +4516,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63a3d832ad8867746bfd82b697504690
+    m_Address: mvz2:mobile_blueprint/smoker
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6423a491a15f75342ad5caf161cf634d
     m_Address: mvz2:mobile_blueprint/skeleton_horse
     m_ReadOnly: 0
@@ -4662,13 +4676,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 683416e7dfa91014293d420e6c3e1a9b
-    m_Address: mvz2:entity/contraption/smoker
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 684ec7aa8b558924d9d579d222e0eac5
     m_Address: mvz2:entity/obstacle/gargoyle_statue
