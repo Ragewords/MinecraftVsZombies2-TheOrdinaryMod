@@ -4663,6 +4663,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 683416e7dfa91014293d420e6c3e1a9b
+    m_Address: mvz2:entity/contraption/smoker
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 684ec7aa8b558924d9d579d222e0eac5
     m_Address: mvz2:entity/obstacle/gargoyle_statue
     m_ReadOnly: 0
@@ -7363,6 +7370,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a609720e445fed241a8f89c56c2ceb0e
+    m_Address: mvz2:contraption/ship/smoker
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a62d2d86c3da6164fb85ab8fef46149f
     m_Address: mvz2:ui/level/mobile/card_mobile
