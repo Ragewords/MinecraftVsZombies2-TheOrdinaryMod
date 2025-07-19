@@ -29,14 +29,13 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity contraption)
         {
             base.Init(contraption);
+            SetHealingTimer(contraption, new FrameTimer(0));
         }
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            var health = contraption.Health;
-            var maxHealth = contraption.GetMaxHealth();
-            var heal_multipiler = GetDividedValue3(health, maxHealth);
-            contraption.HealEffects(HEAL_PER_FRAME * heal_multipiler, contraption);
+            contraption.HealEffects(SELF_HEAL_PER_FRAME, contraption);
+            HealingUpdate(contraption);
         }
         protected override void UpdateLogic(Entity contraption)
         {
@@ -52,18 +51,16 @@ namespace MVZ2.GameContent.Contraptions
             var contraption = damage.Entity;
             if (contraption == null)
                 return;
-            healBuffer.Clear();
-            healDetector.DetectEntities(contraption, healBuffer);
-            foreach (Entity target in healBuffer)
-            {
-                target.HealEffects(Mathf.CeilToInt(damage.BodyResult.Amount / 2), contraption);
-            }
+            var healingTimer = GetHealingTimer(contraption);
+            healingTimer.ResetTime(HEALING_TIMER);
         }
 
         protected override void OnEvoke(Entity contraption)
         {
             base.OnEvoke(contraption);
             contraption.SetEvoked(true);
+            var healingTimer = GetHealingTimer(contraption);
+            healingTimer.Stop();
             contraption.Health = contraption.GetMaxHealth();
             contraption.AddBuff<DreamCrystalEvocationBuff>();
             contraption.PlaySound(VanillaSoundID.sparkle);
@@ -78,9 +75,30 @@ namespace MVZ2.GameContent.Contraptions
             else if (inputValue < secondThird) return 3;
             else return 1;
         }
+        private void HealingUpdate(Entity contraption)
+        {
+            var healingTimer = GetHealingTimer(contraption);
+            healingTimer.Run();
+            if (healingTimer.Expired)
+                return;
+            contraption.TriggerAnimation("Heal");
+            healBuffer.Clear();
+            healDetector.DetectEntities(contraption, healBuffer);
+            var health = contraption.Health;
+            var maxHealth = contraption.GetMaxHealth();
+            var heal_multipiler = GetDividedValue3(health, maxHealth);
+            foreach (Entity target in healBuffer)
+            {
+                if (target.ID == contraption.ID)
+                    continue;
+                target.HealEffects(HEAL_PER_FRAME * heal_multipiler, contraption);
+            }
+        }
+        public const float SELF_HEAL_PER_FRAME = 4 / 3;
         public const float HEAL_PER_FRAME = 1;
-        public static FrameTimer GetHealthUpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_HEALTH_UP_TIMER);
-        public static void SetHealthUpTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
+        public const int HEALING_TIMER = 30;
+        public static FrameTimer GetHealingTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_HEALTH_UP_TIMER);
+        public static void SetHealingTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP_TIMER, value);
         public static bool GetHealthUp(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_HEALTH_UP);
         public static void SetHealthUp(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_HEALTH_UP, value);
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_HEALTH_UP_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("HealthUpTimer");
