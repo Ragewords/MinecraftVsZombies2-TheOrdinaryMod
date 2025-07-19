@@ -31,7 +31,8 @@ namespace MVZ2.GameContent.Contraptions
             var productionTimer = new FrameTimer(entity.RNG.Next(90, 375));
             SetProductionTimer(entity, productionTimer);
 
-            var evocationTimer = new FrameTimer(EVOCATION_DURATION);
+            var count = entity.Level.GetEntityCount(VanillaContraptionID.furnace) - 1;
+            var evocationTimer = new FrameTimer(EVOCATION_DURATION + EVOCATION_INTERVAL * count);
             SetEvocationTimer(entity, evocationTimer);
         }
         protected override void UpdateAI(Entity entity)
