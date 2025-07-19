@@ -42,45 +42,15 @@ namespace MVZ2.GameContent.Effects
             entity.SetDisplayScale(Vector3.one * (entity.GetRange() / 80));
 
             bool active = entity.Timeout > 5;
+            bool disappear = entity.Timeout == 5;
             entity.SetAnimationBool("Started", active);
             detectBuffer.Clear();
             absorbDetector.DetectMultiple(entity, detectBuffer);
+            
+            if (disappear)
+                Teleport(entity);
             if (!active)
-            {
-                bool whitehole_left = false;
-                bool whitehole_right = false;
-                foreach (var collider in detectBuffer)
-                {
-                    var target = collider.Entity;
-                    bool hostile = target.IsHostile(entity);
-                    if (target.Type == EntityTypes.ENEMY)
-                    {
-                        if (hostile)
-                        {
-                            var pos = target.Position;
-                            pos.x = VanillaLevelExt.RIGHT_BORDER;
-                            pos.y = entity.Position.y;
-                            pos.z = entity.Position.z;
-                            target.Position = pos;
-                            whitehole_right = true;
-                        }
-                    }
-                    else if (target.Type == EntityTypes.PROJECTILE)
-                    {
-                        var pos = target.Position;
-                        pos.x = VanillaLevelExt.LEFT_BORDER;
-                        pos.y = entity.Position.y;
-                        pos.z = entity.Position.z;
-                        target.Position = pos;
-                        whitehole_left = true;
-                    }
-                }
-                if (whitehole_left)
-                    entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.LEFT_BORDER, entity.Position.y, entity.Position.z));
-                if (whitehole_right)
-                    entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.RIGHT_BORDER, entity.Position.y, entity.Position.z));
                 return;
-            }
 
             // Absorb.
             foreach (var collider in detectBuffer)
@@ -127,6 +97,41 @@ namespace MVZ2.GameContent.Effects
                     collider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
                 }
             }
+        }
+        private void Teleport(Entity entity)
+        {
+            bool whitehole_left = false;
+            bool whitehole_right = false;
+            foreach (var collider in detectBuffer)
+            {
+                var target = collider.Entity;
+                bool hostile = target.IsHostile(entity);
+                if (target.Type == EntityTypes.ENEMY)
+                {
+                    if (hostile)
+                    {
+                        var pos = target.Position;
+                        pos.x = VanillaLevelExt.RIGHT_BORDER;
+                        pos.y = entity.Position.y;
+                        pos.z = entity.Position.z;
+                        target.Position = pos;
+                        whitehole_right = true;
+                    }
+                }
+                else if (target.Type == EntityTypes.PROJECTILE)
+                {
+                    var pos = target.Position;
+                    pos.x = VanillaLevelExt.LEFT_BORDER;
+                    pos.y = entity.Position.y;
+                    pos.z = entity.Position.z;
+                    target.Position = pos;
+                    whitehole_left = true;
+                }
+            }
+            if (whitehole_left)
+                entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.LEFT_BORDER, entity.Position.y, entity.Position.z));
+            if (whitehole_right)
+                entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.RIGHT_BORDER, entity.Position.y, entity.Position.z));
         }
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
         private List<Entity> snakeBuffer = new List<Entity>();
