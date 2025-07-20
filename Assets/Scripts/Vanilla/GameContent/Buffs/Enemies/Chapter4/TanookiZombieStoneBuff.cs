@@ -4,6 +4,7 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -12,6 +13,7 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -26,6 +28,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new BooleanModifier(FragmentExt.PROP_NO_DAMAGE_FRAGMENTS, false));
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
+            AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, NumberOperator.Set, VanillaEntityStates.IDLE));
         }
         public override void PostAdd(Buff buff)
         {
@@ -34,7 +37,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity == null)
                 return;
             entity.PlaySound(VanillaSoundID.gnawedLeafStone);
-            buff.SetProperty(PROP_TIMER, new FrameTimer(300));
+            buff.SetProperty(PROP_TIMER, new FrameTimer(90));
         }
         public override void PostUpdate(Buff buff)
         {
@@ -60,7 +63,25 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             base.PostUpdate(buff);
             var entity = buff.GetEntity();
-            entity.GetOrCreateFragment();
+            if (entity == null)
+                return;
+            if (entity.IsDead)
+                return;
+            var damage = GetTakenDamage(buff);
+            if (damage <= 0)
+                return;
+            entity.PlaySound(VanillaSoundID.danmaku);
+            entity.CreateFragmentAndPlay(entity.GetCenter(), entity.GetFragmentID(), 250);
+            for (int i = 0; i < 15; i++)
+            {
+                var angle = i * 24;
+                var param = entity.GetShootParams();
+                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * (5 + i);
+                param.projectileID = VanillaProjectileID.seijaBullet;
+                param.damage = damage;
+                param.position = entity.GetCenter();
+                var projectile = entity.ShootProjectile(param);
+            }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
         {
@@ -70,6 +91,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
                 amount *= damage.HasEffect(VanillaDamageEffects.PUNCH) ? 20 : 1;
+                amount *= damage.Source.DefinitionID == VanillaEnemyID.silverfish ? 5 : 1;
                 AddTakenDamage(buff, amount);
                 entity.DamageBlink();
                 entity.AddFragmentTickDamage(amount);
@@ -86,7 +108,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
             {
-                entity.GetOrCreateFragment();
                 buff.Remove();
             }
         }

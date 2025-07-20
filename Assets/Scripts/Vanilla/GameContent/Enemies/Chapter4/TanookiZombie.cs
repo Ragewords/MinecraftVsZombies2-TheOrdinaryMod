@@ -5,6 +5,7 @@ using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -16,19 +17,10 @@ namespace MVZ2.GameContent.Enemies
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
         }
-        public override void Init(Entity entity)
+        protected override void UpdateAI(Entity entity)
         {
-            base.Init(entity);
-            SetTakenDamage(entity, 0);
-        }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            entity.SetModelDamagePercent();
-            entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>());
-
+            base.UpdateAI(entity);
             var damage = GetTakenDamage(entity);
             if (damage >= MAX_DAMAGE)
             {
@@ -39,14 +31,22 @@ namespace MVZ2.GameContent.Enemies
                 effect.SetSize(entity.GetSize() * 2);
             }
         }
-        private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
+        protected override void UpdateLogic(Entity entity)
         {
-            var damage = param.input;
-            var entity = damage.Entity;
-            AddTakenDamage(entity, damage.Amount);
+            base.UpdateLogic(entity);
+            entity.SetModelDamagePercent();
+            entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>() && !entity.IsDead);
+        }
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        {
+            base.PreTakeDamage(input, result);
+            var entity = input.Entity;
+            if (entity.HasBuff<TanookiZombieStoneBuff>())
+                return;
+            AddTakenDamage(entity, input.Amount);
         }
         public const float MAX_DAMAGE = 100;
-        public const int STATE_CAST = VanillaEntityStates.GNAWED_STONE;
+
         public static float GetTakenDamage(Entity entity) => entity.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetTakenDamage(Entity entity, float value) => entity.SetProperty(PROP_TAKEN_DAMAGE, value);
         public static void AddTakenDamage(Entity entity, float value) => SetTakenDamage(entity, GetTakenDamage(entity) + value);
