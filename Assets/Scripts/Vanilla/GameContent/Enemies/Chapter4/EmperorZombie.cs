@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        GrantShields(entity, detectBuffer.RandomTake(12, entity.RNG));
+                        GrantShields(entity, detectBuffer.RandomTake(10, entity.RNG));
                     }
                 }
             }
@@ -110,6 +110,10 @@ namespace MVZ2.GameContent.Enemies
             foreach (var target in targets)
             {
                 target.AddBuff<DivineShieldBuff>();
+            
+                var waferBuff = entity.GetFirstBuff<TheWaferBuff>();
+                if (waferBuff == null)
+                    entity.AddBuff<TheWaferBuff>();
             }
         }
         #region 常量
