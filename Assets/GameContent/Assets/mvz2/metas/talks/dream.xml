@@ -79,7 +79,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">高科技产品，驱动发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">它能像普通发射器一样向敌人发射箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">但你能够在它上面再放置驱动发射器，以提升每次发射箭矢的速度和伤害！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">但你能够在它上面再放置驱动发射器，以提升每次发射箭矢的速度！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">最多能够提升4次！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">天下武功唯快不破！</sentence>
       </sentences>

@@ -352,8 +352,8 @@
                 <p>伤害：<![CDATA[<color=red>80，20（分裂后）</color>]]></p>
                 <p>溅射伤害：<![CDATA[<color=red>20（不伤害直接目标）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料，能够发现隐身的敌人</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>存储有燃料时，喷射出爆炸灵魂火球</color>]]></p>
                 <p>燃料上限：<![CDATA[<color=red>120</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>存储有燃料时，喷射出爆炸灵魂火球</color>]]></p>
                 <p>技能：<![CDATA[<color=red>消耗所有燃料，每有一发燃料被消耗，便随机对一个敌人发射爆炸灵魂火球</color>]]></p>
             </properties>
             <flavor>
@@ -397,11 +397,12 @@
         </entry>
         <entry id="mvz2:drivenser">
             <header>
-                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它每次发射箭的速度，以及箭的伤害。</p>
+                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它的发射速度和子弹飞行速度。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>(1.5÷当前等级)秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20+(2×累计升级次数)</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>特点：<![CDATA[<color=red>每次升级+125%发射速度，×125%子弹飞行速度</color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射五支大箭矢</color>]]></p>
             </properties>
@@ -580,7 +581,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>80，20（电磁爆），10-4（电流链），5（电场）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>80（电击），20（电磁爆），10-4（电流链），5（电场）</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
                 <p>被摧毁：<![CDATA[<color=red>产生一次半径1格的爆炸，造成320伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
@@ -623,7 +624,7 @@
                 <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>5，3（音浪）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>5（音符），3（音浪）</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
                 <p>音浪半径：<![CDATA[<color=red>1.5格</color>]]></p>
