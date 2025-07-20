@@ -998,7 +998,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="youkai_leaf" name="妖怪树叶" tooltip="模仿场上生命值最高的怪物" unlock="mvz2:level.mausoleum_EX1">
+        <contraption id="youkai_leaf" name="妖怪树叶" tooltip="模仿攻击自己的怪物" unlock="mvz2:level.mausoleum_EX1">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48"/>
@@ -1516,7 +1516,7 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="tanooki_zombie" name="狸猫僵尸" deathMessage="让我先喘口气吧" unlock="mvz2:level.mausoleum_11">
+        <enemy id="tanooki_zombie" name="妖怪狸僵尸" deathMessage="让我先喘口气吧" unlock="mvz2:level.mausoleum_11">
             <behaviours>
                 <behaviour operator="add" id="mvz2:fragmented"/>
             </behaviours>

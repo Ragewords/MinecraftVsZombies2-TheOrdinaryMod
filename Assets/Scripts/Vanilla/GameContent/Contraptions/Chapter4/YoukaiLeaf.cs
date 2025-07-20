@@ -3,9 +3,12 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -17,29 +20,41 @@ namespace MVZ2.GameContent.Contraptions
     {
         public YoukaiLeaf(string nsp, string name) : base(nsp, name)
         {
-            detector = new LawnDetector();
+            AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("Evoked", entity.IsEvoked());
-
-            detectBuffer.Clear();
-            var collider = detector.DetectWithTheMost(entity, e => e.Entity.Health);
-
-            var target = collider?.Entity;
-            if (target == null)
+        }
+        private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
+        {
+            var enemy = param.enemy;
+            var target = param.target;
+            if (!target.IsEntityOf(VanillaContraptionID.youkaiLeaf))
                 return;
-            if (target.Type != EntityTypes.ENEMY)
+            if (!target.IsHostile(enemy))
                 return;
-            var enemy = entity.SpawnWithParams(target.GetDefinitionID(), entity.Position);
+            if (target.IsAIFrozen())
+                return;
+            var imitate = target.SpawnWithParams(enemy.GetDefinitionID(), target.Position);
             enemy.AddBuff<YoukaiLeafBuff>();
             enemy.Health = enemy.GetMaxHealth();
-            if (entity.IsEvoked())
+            if (target.IsEvoked())
                 enemy.AddBuff<YoukaiLeafRegenerationBuff>();
-            entity.Remove();
-            var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
+            if (target.IsEvoked())
+            {
+                var mutant = target.SpawnWithParams(enemy.Definition.GetID(), enemy.Position);
+                mutant.Charm(target.GetFaction());
+                enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
+                enemy.Neutralize();
+                enemy.Remove();
+                enemy.PlaySound(VanillaSoundID.charmed);
+                enemy.PlaySound(VanillaSoundID.odd);
+            }
+            var effect = target.Level.Spawn(VanillaEffectID.smokeCluster, target.GetCenter(), target);
             effect.SetTint(new Color(0, 1, 0, 1));
+            target.Remove();
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -47,7 +62,5 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetEvoked(true);
             entity.PlaySound(VanillaSoundID.meow);
         }
-        private Detector detector;
-        private List<Entity> detectBuffer = new List<Entity>();
     }
 }

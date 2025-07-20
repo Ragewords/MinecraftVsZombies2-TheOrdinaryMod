@@ -1015,7 +1015,7 @@
         </entry>
         <entry id ="mvz2:youkai_leaf">
             <header>
-                <p>妖怪树叶会模仿场上的一个生命值最高的怪物。</p>
+                <p>妖怪树叶会模仿近战攻击自己的怪物。</p>
             </header>
             <properties>
                 <p>模仿怪物生命：<![CDATA[<color=red>300</color>]]></p>
@@ -1453,15 +1453,15 @@
                 <tag id="mvz2:mass_statue" value="1" />
             </tags>
             <header>
-                <p>狸猫僵尸每受到一定的伤害便会变成石像。</p>
+                <p>妖怪狸僵尸在受到一定的伤害后会变成石像。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>每受到100伤害变成石像，可承受900伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>受到100伤害后变成石像，无法移动，但能够吸收最多900伤害，并在结束时发射相应伤害的弹幕</color>]]></p>
             </properties>
             <flavor>
-                <p>他喜欢打扮成动物，那套狸猫套装是他在一个到处是浮空砖块的地方找到的。</p>
+                <p>他喜欢打扮成动物，那套狸猫套装是他在一个到处是浮空砖块的地方找到的，至少他这么认为。</p>
             </flavor>
         </entry>
     </enemies>
