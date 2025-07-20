@@ -425,7 +425,7 @@
                 <p>漩涡漏斗在旋转时会把接近它的所有僵尸拖入水底，并甩出内部储存的箭矢。</p>
             </header>
             <properties>
-                <p>箭矢伤害：<![CDATA[<color=red>30</color>]]></p>
+                <p>箭矢伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>技能：<![CDATA[<color=red>将更大范围的敌人拉入水底</color>]]></p>
             </properties>
             <flavor>
