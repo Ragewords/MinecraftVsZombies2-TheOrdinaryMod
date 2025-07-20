@@ -42,16 +42,6 @@ namespace MVZ2.GameContent.Contraptions
             enemy.Health = enemy.GetMaxHealth();
             if (target.IsEvoked())
                 enemy.AddBuff<YoukaiLeafRegenerationBuff>();
-            if (target.IsEvoked())
-            {
-                var mutant = target.SpawnWithParams(enemy.Definition.GetID(), enemy.Position);
-                mutant.Charm(target.GetFaction());
-                enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
-                enemy.Neutralize();
-                enemy.Remove();
-                enemy.PlaySound(VanillaSoundID.charmed);
-                enemy.PlaySound(VanillaSoundID.odd);
-            }
             var effect = target.Level.Spawn(VanillaEffectID.smokeCluster, target.GetCenter(), target);
             effect.SetTint(new Color(0, 1, 0, 1));
             target.Remove();

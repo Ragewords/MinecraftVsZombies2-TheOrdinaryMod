@@ -12,6 +12,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             AddModifier(new MaxHealthModifier(NumberOperator.Set, 300));
             AddModifier(new BooleanModifier(VanillaEntityProps.GRAYSCALE, true));
+            AddModifier(new BooleanModifier(VanillaEntityProps.LOYAL, true));
+            AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DEACTIVE, false));
         }
     }
 }
