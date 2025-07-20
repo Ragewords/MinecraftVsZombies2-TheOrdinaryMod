@@ -1,4 +1,5 @@
 using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
@@ -8,6 +9,7 @@ using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -68,6 +70,17 @@ namespace MVZ2.GameContent.Enemies
                 {
                     StartCasting(entity);
                 }
+            }
+        }
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        {
+            base.PreTakeDamage(input, result);
+            var self = input.Entity;
+            if (input.Effects.HasEffect(VanillaDamageEffects.PUNCH))
+            {
+                self.AddBuff<SkelebombPunchedBuff>();
+                StartCasting(self);
+                result.SetFinalValue(false);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)

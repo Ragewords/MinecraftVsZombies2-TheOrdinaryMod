@@ -3,7 +3,6 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
@@ -135,12 +134,6 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var collider in detectBuffer)
             {
                 var ent = collider.Entity;
-                if (ent.IsEntityOf(VanillaEnemyID.skelebomb))
-                {
-                    Skelebomb.StartCasting(ent);
-                    ent.AddBuff<SkelebombPunchedBuff>();
-                }
-
                 collider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE), entity);
 
                 if (collider.IsForMain() && ent.Type == EntityTypes.ENEMY)
