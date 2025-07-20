@@ -38,10 +38,10 @@ namespace MVZ2.GameContent.Contraptions
             if (target.IsAIFrozen())
                 return;
             var imitate = target.SpawnWithParams(enemy.GetDefinitionID(), target.Position);
-            enemy.AddBuff<YoukaiLeafBuff>();
-            enemy.Health = enemy.GetMaxHealth();
+            imitate.AddBuff<YoukaiLeafBuff>();
+            imitate.Health = imitate.GetMaxHealth();
             if (target.IsEvoked())
-                enemy.AddBuff<YoukaiLeafRegenerationBuff>();
+                imitate.AddBuff<YoukaiLeafRegenerationBuff>();
             var effect = target.Level.Spawn(VanillaEffectID.smokeCluster, target.GetCenter(), target);
             effect.SetTint(new Color(0, 1, 0, 1));
             target.Remove();
