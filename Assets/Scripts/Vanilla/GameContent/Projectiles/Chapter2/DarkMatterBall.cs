@@ -28,15 +28,8 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var bullet = hitResult.Projectile;
-            bool plantEvoke = hitResult.Other.Type == EntityTypes.PLANT && hitResult.Other.IsEvoked();
             bool fromParent = hitResult.Other == bullet.Parent;
-            if (plantEvoke || hitResult.Other.IsInvincible())
-            {
-                hitResult.Pierce = true;
-                Deflect(bullet);
-                return;
-            }
-            else if (fromParent)
+            if (fromParent)
             {
                 hitResult.Pierce = true;
                 return;
@@ -53,7 +46,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             projectile.PlaySound(VanillaSoundID.reflection);
             var level = projectile.Level;
-            var grids = level.GetAllGrids().Where(g => g.IsEmpty()).RandomTake(1, projectile.RNG);
+            var grids = level.GetAllGrids().RandomTake(1, projectile.RNG);
             if (grids == null)
             {
                 projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, projectile.Parent.Position, 45, projectile.GetGravity());
@@ -65,7 +58,6 @@ namespace MVZ2.GameContent.Projectiles
                 var targetPos = new Vector3(X, 0, Z);
                 projectile.Velocity = VanillaProjectileExt.GetLobVelocityByTime(projectile.Position, targetPos, 45, projectile.GetGravity());
             }
-            projectile.AddBuff<InvertedMirrorBuff>();
         }
         public static DamageOutput[] Explode(Entity entity, float range, float damage)
         {
