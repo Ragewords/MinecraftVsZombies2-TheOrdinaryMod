@@ -106,7 +106,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var knife = hitInput.Projectile;
             knife.Remove();
         }
-        public const float MAX_DAMAGE = 900;
+        public const float MAX_DAMAGE = 200;
         public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetTakenDamage(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
         public static void AddTakenDamage(Buff buff, float value) => SetTakenDamage(buff, GetTakenDamage(buff) + value);
