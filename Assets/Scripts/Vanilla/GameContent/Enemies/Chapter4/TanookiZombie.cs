@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             AddTakenDamage(entity, input.Amount);
         }
-        public const float MAX_DAMAGE = 100;
+        public const float MAX_DAMAGE = 50;
 
         public static float GetTakenDamage(Entity entity) => entity.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetTakenDamage(Entity entity, float value) => entity.SetProperty(PROP_TAKEN_DAMAGE, value);
