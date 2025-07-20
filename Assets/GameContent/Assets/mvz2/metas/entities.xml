@@ -491,7 +491,7 @@
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
                 <vector3 name="mvz2:size" x="32" y="64" z="32" />
 
-                <int name="mvz2:cost" value="175" />
+                <int name="mvz2:cost" value="225" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
