@@ -401,7 +401,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>(1.5÷当前等级)秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20+(2×当前等级)</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20+(2×累计升级次数)</color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射五支大箭矢</color>]]></p>
             </properties>
@@ -438,7 +438,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>25</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>特点：<![CDATA[<color=red>能够攻击高处或低矮的敌人</color>]]></p>
                 <p>技能：<![CDATA[<color=red>向至多20个敌人发射穿甲的巨型尖刺</color>]]></p>
             </properties>
