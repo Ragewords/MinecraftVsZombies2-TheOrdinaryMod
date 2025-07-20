@@ -67,21 +67,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             if (entity.IsDead)
                 return;
-            var damage = GetTakenDamage(buff);
-            if (damage <= 0)
-                return;
-            entity.PlaySound(VanillaSoundID.danmaku);
             entity.CreateFragmentAndPlay(entity.GetCenter(), entity.GetFragmentID(), 250);
-            for (int i = 0; i < 15; i++)
-            {
-                var angle = i * 24;
-                var param = entity.GetShootParams();
-                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * (5 + i);
-                param.projectileID = VanillaProjectileID.seijaBullet;
-                param.damage = damage;
-                param.position = entity.GetCenter();
-                var projectile = entity.ShootProjectile(param);
-            }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
         {
