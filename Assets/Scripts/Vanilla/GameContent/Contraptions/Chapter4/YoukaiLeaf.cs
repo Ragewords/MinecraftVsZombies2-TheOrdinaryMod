@@ -39,7 +39,6 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             var imitate = target.SpawnWithParams(enemy.GetDefinitionID(), target.Position);
             imitate.AddBuff<YoukaiLeafBuff>();
-            imitate.Health = imitate.GetMaxHealth();
             if (target.IsEvoked())
                 imitate.AddBuff<YoukaiLeafRegenerationBuff>();
             var effect = target.Level.Spawn(VanillaEffectID.smokeCluster, target.GetCenter(), target);
