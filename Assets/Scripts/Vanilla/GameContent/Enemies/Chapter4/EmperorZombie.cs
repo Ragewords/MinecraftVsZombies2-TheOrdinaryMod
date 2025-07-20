@@ -111,9 +111,9 @@ namespace MVZ2.GameContent.Enemies
             {
                 target.AddBuff<DivineShieldBuff>();
             
-                var waferBuff = entity.GetFirstBuff<TheWaferBuff>();
+                var waferBuff = target.GetFirstBuff<TheWaferBuff>();
                 if (waferBuff == null)
-                    entity.AddBuff<TheWaferBuff>();
+                    target.AddBuff<TheWaferBuff>();
             }
         }
         #region 常量
