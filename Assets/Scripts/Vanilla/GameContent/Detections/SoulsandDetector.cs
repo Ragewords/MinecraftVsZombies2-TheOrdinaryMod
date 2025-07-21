@@ -1,3 +1,4 @@
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Detections;
 using PVZEngine.Entities;
 using UnityEngine;
@@ -31,6 +32,8 @@ namespace MVZ2.GameContent.Detections
             if (target.IsDead)
                 return false;
             if (!target.IsFactionTarget(param.faction, factionTarget))
+                return false;
+            if (target.HasBuff<SoulsandBuff>())
                 return false;
             return true;
         }
