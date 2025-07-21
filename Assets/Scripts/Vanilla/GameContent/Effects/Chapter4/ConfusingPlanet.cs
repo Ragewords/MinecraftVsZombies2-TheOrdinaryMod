@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Effects
             absorbDetector.DetectMultiple(entity, detectBuffer);
             foreach (var target in detectBuffer)
             {
-                if (entity.IsTimeInterval(30))
+                if (entity.IsTimeInterval(10))
                 {
                     target.Entity.Slow(120);
                     target.Entity.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
