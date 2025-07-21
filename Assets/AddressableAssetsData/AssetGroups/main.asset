@@ -1592,6 +1592,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 234c0e3c684ac844bbd71630e112c357
+    m_Address: mvz2:entity/effects/energy_shield_effect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23518f4eda2b37a4d93c7c80da15582c
     m_Address: mvz2:entity/effect/miner
     m_ReadOnly: 0
@@ -4900,6 +4907,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e3bed776697370498e3f2a63d2986bb
+    m_Address: mvz2:entity/effects/energy_shield_aura
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e512505562ed4c44ae29837d5cd4be7
     m_Address: mvz2:ui/level/progress_bar/frankenstein
