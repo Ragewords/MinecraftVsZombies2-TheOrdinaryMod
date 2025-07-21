@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Buffs.Enemies;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
@@ -31,10 +32,24 @@ namespace MVZ2.GameContent.Enemies
                 SpawnStaff(enemy);
                 SetStaff(enemy, false);
             }
-            if (HasPot(enemy) && enemy.Health <= enemy.GetMaxHealth() * 0.3f)
+            if (HasPot(enemy) && enemy.IsDead)
             {
+                bool canRevive = false;
+                if (enemy.HasBuff<ShikaisenReviveBuff>())
+                {
+                    var reviveBuffs = enemy.GetBuffs<ShikaisenReviveBuff>();
+                    foreach (var buff in reviveBuffs)
+                    {
+                        if (ShikaisenReviveBuff.GetSource(buff).GetEntity(enemy.Level).ExistsAndAlive())
+                            canRevive = true;
+                    }
+                }
+                if (canRevive)
+                    return;
+                enemy.IsDead = false;
                 SpawnPot(enemy);
                 SetPot(enemy, false);
+                enemy.AddBuff<ShikaisenInvincibleBuff>();
             }
         }
         protected override void UpdateLogic(Entity entity)

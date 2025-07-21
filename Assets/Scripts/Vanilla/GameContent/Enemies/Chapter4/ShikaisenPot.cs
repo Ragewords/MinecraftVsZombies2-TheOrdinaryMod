@@ -1,3 +1,4 @@
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Enemies;
@@ -28,16 +29,7 @@ namespace MVZ2.GameContent.Enemies
             var pot = entity;
             if (pot.Parent == null)
                 return;
-            if (pot.Parent.HasBuff<ShikaisenReviveBuff>())
-                return;
-            if (pot.Parent.IsDead)
-            {
-                pot.Parent.Remove();
-                var revive_id = pot.Parent.GetDefinitionID();
-                var shikaisen = pot.SpawnWithParams(revive_id, pot.Position);
-                ShikaisenZombie.SetPot(shikaisen, false);
-                pot.Die(pot);
-            }
+            pot.Parent.IsDead = false;
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -51,6 +43,10 @@ namespace MVZ2.GameContent.Enemies
         {
             base.PostDeath(entity, info);
             entity.Remove();
+            var pot = entity;
+            if (pot.Parent == null)
+                return;
+            pot.Parent.Die(pot);
         }
     }
 }

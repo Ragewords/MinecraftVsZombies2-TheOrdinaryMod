@@ -114,6 +114,7 @@ namespace MVZ2.GameContent.Buffs
         public const string iZombieImp = "i_zombie_imp";
         public const string iZombieSkeletonWarrior = "i_zombie_skeleton_warrior";
         public const string shikaisenRevive = "shikaisen_revive";
+        public const string shikaisenInvincible = "shikaisen_invincible";
         public const string youkaiLeaf = "youkai_leaf";
         public const string youkaiLeafRegeneration = "youkai_leaf_regeneration";
         public const string tanookiZombieStone = "tanooki_zombie_stone";
