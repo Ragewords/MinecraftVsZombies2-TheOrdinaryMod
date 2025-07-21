@@ -271,6 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509474230542535425}
+  - component: {fileID: 1942356486047105559}
   m_Layer: 0
   m_Name: Filled
   m_TagString: Untagged
@@ -295,6 +296,20 @@ Transform:
   - {fileID: 976790514361172959}
   m_Father: {fileID: 386263865290547382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942356486047105559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960580258757770578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a287da23b59d7e42be6baeb5ac11e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenFalse: 0
+  propertyName: Filled
 --- !u!1 &5121357600287450745
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6244837064857114718}
+  - component: {fileID: 776583202647887623}
   m_Layer: 0
   m_Name: Empty
   m_TagString: Untagged
@@ -667,6 +683,20 @@ Transform:
   - {fileID: 8183461263263326823}
   m_Father: {fileID: 386263865290547382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776583202647887623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859729366355838910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a287da23b59d7e42be6baeb5ac11e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenFalse: 1
+  propertyName: Filled
 --- !u!1001 &2571621336086410524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -795,6 +825,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4797606320031291770}
     m_Modifications:
+    - target: {fileID: 377167055183168024, guid: 01135a0e2629bc5439a4f6e0fab3977a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f3a8cd47181cbe44d86a600ca30932d9, type: 2}
     - target: {fileID: 3749673428984715894, guid: 01135a0e2629bc5439a4f6e0fab3977a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

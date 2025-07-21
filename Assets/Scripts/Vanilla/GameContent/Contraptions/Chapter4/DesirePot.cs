@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("Evoked", entity.State == STATE_EVOKED);
-            entity.SetAnimationBool("Filled", GetFilledCount(entity) > 0);
+            entity.SetModelProperty("Filled", GetFilledCount(entity) > 0);
             entity.SetModelProperty("DuplicatedCount", GetDuplicatedCount(entity));
             entity.SetModelProperty("FilledCount", GetFilledCount(entity) - 1);
         }
