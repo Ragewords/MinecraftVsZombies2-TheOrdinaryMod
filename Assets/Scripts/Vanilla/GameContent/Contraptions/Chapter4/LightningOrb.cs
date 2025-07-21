@@ -1,7 +1,9 @@
-﻿using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Projectiles;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -18,12 +20,33 @@ namespace MVZ2.GameContent.Contraptions
         public LightningOrb(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
+            projectileBlockDetector = new LightningOrbEnergyShieldDetector()
+            {
+                mask = EntityCollisionHelper.MASK_PROJECTILE
+            };
         }
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            if (GetChargedAbsorbCount(contraption) >= 60)
+            if (GetChargedAbsorbCount(contraption) >= 180)
                 SetCharged(contraption, false);
+
+            if (IsCharged(contraption))
+            {
+                projectileBlockBuffer.Clear();
+                projectileBlockDetector.DetectEntities(contraption, projectileBlockBuffer);
+                foreach (var blocked in projectileBlockBuffer)
+                {
+                    blocked.Remove();
+                    AddChargedAbsorbCount(contraption, 1);
+                    contraption.HealEffects(100, blocked);
+                    foreach (var buff in contraption.GetBuffs<LightningOrbEvokedBuff>())
+                    {
+                        LightningOrbEvokedBuff.AddTakenDamage(buff, blocked.GetDamage());
+                    }
+                    contraption.PlaySound(VanillaSoundID.energyShieldHit);
+                }
+            }
         }
         protected override void UpdateLogic(Entity contraption)
         {
@@ -52,16 +75,6 @@ namespace MVZ2.GameContent.Contraptions
             projectile.Remove();
             result.SetFinalValue(false);
             orb.PlaySound(VanillaSoundID.energyShieldHit);
-            if (IsCharged(orb))
-            {
-                for (var i = 0; i < 3; i++)
-                {
-                    var sparam = orb.GetShootParams();
-                    sparam.soundID = null;
-                    orb.ShootProjectile(sparam);
-                }
-                AddChargedAbsorbCount(orb, 1);
-            }
         }
         public override bool CanEvoke(Entity entity)
         {
@@ -93,5 +106,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CHARGED = new VanillaEntityPropertyMeta<bool>("Charged");
         private static readonly VanillaEntityPropertyMeta<int> PROP_CHARGED_ABSORB_COUNT = new VanillaEntityPropertyMeta<int>("ChargedAbsorbCount");
         public const float HEAL_AMOUNT = 100;
+        private Detector projectileBlockDetector;
+        private List<Entity> projectileBlockBuffer = new List<Entity>();
     }
 }
