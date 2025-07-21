@@ -26,10 +26,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
-            var pot = entity;
-            if (pot.Parent == null)
-                return;
-            pot.Parent.IsDead = false;
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -43,10 +39,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.PostDeath(entity, info);
             entity.Remove();
-            var pot = entity;
-            if (pot.Parent == null)
-                return;
-            pot.Parent.Die(pot);
         }
     }
 }

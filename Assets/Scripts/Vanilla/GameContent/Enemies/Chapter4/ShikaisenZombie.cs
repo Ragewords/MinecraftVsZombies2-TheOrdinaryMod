@@ -32,24 +32,31 @@ namespace MVZ2.GameContent.Enemies
                 SpawnStaff(enemy);
                 SetStaff(enemy, false);
             }
+
+            bool canRevive = false;
+            var reviveBuffs = enemy.GetBuffs<ShikaisenReviveBuff>();
+            foreach (var buff in reviveBuffs)
+            {
+                if (ShikaisenReviveBuff.GetSource(buff).GetEntity(enemy.Level).ExistsAndAlive())
+                canRevive = true;
+            }
+            if (canRevive)
+                return;
             if (HasPot(enemy) && enemy.IsDead)
             {
-                bool canRevive = false;
-                if (enemy.HasBuff<ShikaisenReviveBuff>())
-                {
-                    var reviveBuffs = enemy.GetBuffs<ShikaisenReviveBuff>();
-                    foreach (var buff in reviveBuffs)
-                    {
-                        if (ShikaisenReviveBuff.GetSource(buff).GetEntity(enemy.Level).ExistsAndAlive())
-                            canRevive = true;
-                    }
-                }
-                if (canRevive)
-                    return;
                 enemy.IsDead = false;
                 SpawnPot(enemy);
                 SetPot(enemy, false);
                 enemy.AddBuff<ShikaisenInvincibleBuff>();
+            }
+            var children = enemy.GetChildren();
+            foreach (var child in children)
+            {
+                if (child.IsEntityOf(VanillaEnemyID.shikaisenPot))
+                {
+                    if (child.IsDead)
+                        enemy.Die();
+                }
             }
         }
         protected override void UpdateLogic(Entity entity)
