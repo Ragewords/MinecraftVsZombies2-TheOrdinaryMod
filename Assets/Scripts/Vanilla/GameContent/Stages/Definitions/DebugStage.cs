@@ -43,14 +43,14 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.dispenser,
+                VanillaContraptionID.magichest,
                 VanillaContraptionID.furnace,
                 VanillaContraptionID.dreamCrystal,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.ironHelmettedZombie,
-                VanillaEnemyID.ghast,
+                VanillaEnemyID.tanookiZombie,
                 VanillaEnemyID.dullahan,
                 VanillaBossID.frankenstein,
             });

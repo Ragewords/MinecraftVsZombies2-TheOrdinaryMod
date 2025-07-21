@@ -1,5 +1,4 @@
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
@@ -13,7 +12,6 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -22,10 +20,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
     {
         public TanookiZombieStoneBuff(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback, filter: VanillaProjectileID.knife);
-            AddModifier(new BooleanModifier(FragmentExt.PROP_NO_DAMAGE_FRAGMENTS, false));
+            AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
             AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, NumberOperator.Set, VanillaEntityStates.IDLE));
@@ -53,38 +50,16 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 buff.Remove();
             }
-            var damage = GetTakenDamage(buff);
-            if (damage >= MAX_DAMAGE)
-            {
-                buff.Remove();
-            }
         }
         public override void PostRemove(Buff buff)
         {
-            base.PostUpdate(buff);
+            base.PostRemove(buff);
             var entity = buff.GetEntity();
             if (entity == null)
                 return;
             if (entity.IsDead)
                 return;
             entity.CreateFragmentAndPlay(entity.GetCenter(), entity.GetFragmentID(), 250);
-        }
-        private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
-        {
-            var damage = param.input;
-            var entity = damage.Entity;
-            var amount = damage.Amount;
-            foreach (var buff in entity.GetBuffs<TanookiZombieStoneBuff>())
-            {
-                amount *= damage.HasEffect(VanillaDamageEffects.PUNCH) ? 20 : 1;
-                amount *= damage.Source.DefinitionID == VanillaEnemyID.silverfish ? 5 : 1;
-                AddTakenDamage(buff, amount);
-                entity.DamageBlink();
-                entity.AddFragmentTickDamage(amount);
-                if (!damage.HasEffect(VanillaDamageEffects.MUTE))
-                    entity.PlaySound(VanillaSoundID.stone);
-                result.SetFinalValue(false);
-            }
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
@@ -106,11 +81,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var knife = hitInput.Projectile;
             knife.Remove();
         }
-        public const float MAX_DAMAGE = 200;
-        public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
-        public static void SetTakenDamage(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
-        public static void AddTakenDamage(Buff buff, float value) => SetTakenDamage(buff, GetTakenDamage(buff) + value);
-        public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("takenDamage");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("Timer");
     }
 }

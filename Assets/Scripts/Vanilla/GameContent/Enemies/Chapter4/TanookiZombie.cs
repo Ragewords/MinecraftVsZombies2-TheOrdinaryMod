@@ -1,13 +1,18 @@
+using System.Collections.Generic;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
-using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
-using PVZEngine.Callbacks;
+using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
@@ -17,39 +22,107 @@ namespace MVZ2.GameContent.Enemies
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
+            detector = new DispenserDetector()
+            {
+                ignoreHighEnemy = true,
+            };
+            smashDetector = new CollisionDetector();
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            SetJumpTimer(entity, new FrameTimer(210));
+            SetStatueTimer(entity, new FrameTimer(30));
+        }
+        protected override int GetActionState(Entity enemy)
+        {
+            var state = base.GetActionState(enemy);
+            var jumpTimer = GetJumpTimer(enemy);
+            if (state == VanillaEntityStates.WALK && jumpTimer.Expired)
+            {
+                return STATE_CAST;
+            }
+            return state;
+        }
+        protected override void WalkUpdate(Entity enemy)
+        {
+            var jumpTimer = GetJumpTimer(enemy);
+            if (jumpTimer.Expired)
+                return;
+            base.WalkUpdate(enemy);
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            var damage = GetTakenDamage(entity);
-            if (damage >= MAX_DAMAGE)
+
+            if (entity.IsDead)
+                return;
+            if (entity.State == VanillaEntityStates.ATTACK)
+                return;
+            if (entity.HasBuff<TanookiZombieStoneBuff>())
+                return;
+            var jumpTarget = entity.Level.GetEntityGridPosition(entity.GetColumn() + entity.GetFacingX(), entity.GetLane());
+
+            var jumpTimer = GetJumpTimer(entity);
+            var statueTimer = GetStatueTimer(entity);
+            jumpTimer.Run(entity.GetAttackSpeed());
+            if (jumpTimer.PassedFrame(0))
             {
-                entity.AddBuff<TanookiZombieStoneBuff>();
-                SetTakenDamage(entity, 0);
-                var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
-                effect.SetTint(new Color(0.5f, 0.5f, 0.5f, 1));
-                effect.SetSize(entity.GetSize() * 2);
+                entity.PlaySound(VanillaSoundID.jizo_appear);
+                entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, jumpTarget + Vector3.up * 240, 30, entity.GetGravity());
+            }
+            if (jumpTimer.Expired)
+            {
+                statueTimer.Run();
+                if (statueTimer.Expired)
+                {
+                    entity.AddBuff<TanookiZombieStoneBuff>();
+                    var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
+                    effect.SetTint(new Color(0.5f, 0.5f, 0.5f, 1));
+                    effect.SetSize(entity.GetSize() * 2);
+                    statueTimer.Reset();
+                    jumpTimer.Reset();
+                }
             }
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
-            entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>() && !entity.IsDead);
+            entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>());
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        public override void PostContactGround(Entity anvil, Vector3 velocity)
         {
-            base.PreTakeDamage(input, result);
-            var entity = input.Entity;
-            if (entity.HasBuff<TanookiZombieStoneBuff>())
-                return;
-            AddTakenDamage(entity, input.Amount);
-        }
-        public const float MAX_DAMAGE = 50;
+            base.PostContactGround(anvil, velocity);
 
-        public static float GetTakenDamage(Entity entity) => entity.GetProperty<float>(PROP_TAKEN_DAMAGE);
-        public static void SetTakenDamage(Entity entity, float value) => entity.SetProperty(PROP_TAKEN_DAMAGE, value);
-        public static void AddTakenDamage(Entity entity, float value) => SetTakenDamage(entity, GetTakenDamage(entity) + value);
-        public static readonly VanillaEntityPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaEntityPropertyMeta<float>("takenDamage");
+            if (!anvil.HasBuff<TanookiZombieStoneBuff>())
+                return;
+            if (velocity != Vector3.zero)
+            {
+                smashBuffer.Clear();
+                smashDetector.DetectMultiple(anvil, smashBuffer);
+                foreach (var target in smashBuffer)
+                {
+                    var other = target.Entity;
+                    if (anvil.IsHostile(other))
+                    {
+                        float damageModifier = Mathf.Clamp(velocity.magnitude, 0, 1);
+                        target.TakeDamage(300 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
+                    }
+                }
+            }
+        }
+
+        public static readonly NamespaceID ID = VanillaEnemyID.tanookiZombie;
+        public const int STATE_CAST = VanillaEntityStates.TANOOKI_ZOMBIE_JUMP;
+        public static void SetJumpTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_JUMP_TIMER, timer);
+        public static FrameTimer GetJumpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_JUMP_TIMER);
+        public static void SetStatueTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATUE_TIMER, timer);
+        public static FrameTimer GetStatueTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATUE_TIMER);
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_JUMP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("jumpTimer");
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_STATUE_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("statueTimer");
+        private Detector detector;
+        private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
+        private Detector smashDetector;
     }
 }
