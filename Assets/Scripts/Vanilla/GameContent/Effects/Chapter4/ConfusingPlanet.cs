@@ -30,8 +30,9 @@ namespace MVZ2.GameContent.Effects
         public override void Init(Entity planet)
         {
             base.Init(planet);
-            planet.CollisionMaskHostile |=
-                EntityCollisionHelper.MASK_BOSS;
+            planet.CollisionMaskHostile =
+                EntityCollisionHelper.MASK_BOSS
+                | EntityCollisionHelper.MASK_PROJECTILE;
         }
         public override void Update(Entity entity)
         {
@@ -50,7 +51,11 @@ namespace MVZ2.GameContent.Effects
             absorbDetector.DetectMultiple(entity, detectBuffer);
             foreach (var target in detectBuffer)
             {
-                target.Entity.Slow(120);
+                if (entity.IsTimeInterval(30))
+                {
+                    target.Entity.Slow(120);
+                    target.Entity.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                }
             }
         }
         public override void PostCollision(EntityCollision collision, int state)
@@ -67,6 +72,10 @@ namespace MVZ2.GameContent.Effects
             {
                 other.TakeDamage(COLLIDE_SELF_DAMAGE, new DamageEffectList(VanillaDamageEffects.MUTE), self);
                 TheGiant.KillSnake(other);
+            }
+            if (other.Type == EntityTypes.PROJECTILE)
+            {
+                other.Die(self);
             }
         }
         private void BlackHoleUpdate(Entity entity)

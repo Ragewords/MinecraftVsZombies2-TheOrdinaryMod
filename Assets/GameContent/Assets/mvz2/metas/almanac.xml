@@ -710,11 +710,11 @@
         </entry>
         <entry id="black_hole_bomb">
             <header>
-                <p>行星炸弹在触发后会产生一个减速周围敌人的天体，随后坍缩为小型黑洞，吸引周围所有的敌怪和子弹，并在消失时将它们传送至场地边缘。</p>
+                <p>行星炸弹在触发后会产生一个减速周围敌人并阻挡子弹的天体，随后坍缩为小型黑洞，吸引周围所有的敌怪和子弹，并在消失时将它们传送至场地边缘。</p>
             </header>
             <properties>
                 <p>持续时间：<![CDATA[<color=red>12秒（天体），8秒（小型黑洞）</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30/秒（小型黑洞）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>1/秒（天体），30/秒（小型黑洞）</color>]]></p>
                 <p>半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>天体立即坍缩为湮灭领域，直接消灭范围内的所有敌人和敌弹</color>]]></p>
             </properties>
