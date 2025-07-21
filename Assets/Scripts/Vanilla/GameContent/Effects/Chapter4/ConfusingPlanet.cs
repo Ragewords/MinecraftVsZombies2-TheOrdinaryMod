@@ -10,7 +10,6 @@ using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
@@ -27,6 +26,12 @@ namespace MVZ2.GameContent.Effects
             };
         }
         #endregion
+        public override void Init(Entity planet)
+        {
+            base.Init(planet);
+            planet.CollisionMaskHostile =
+                EntityCollisionHelper.MASK_BOSS;
+        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
