@@ -640,7 +640,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>2发/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20（箭矢），15（飞刀）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢和飞刀，最后向后发射一支大箭矢</color>]]></p>
             </properties>
             <flavor>
