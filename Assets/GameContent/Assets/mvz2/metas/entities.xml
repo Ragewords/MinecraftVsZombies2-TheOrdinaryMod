@@ -431,7 +431,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后发射速度和伤害增加" unlock="mvz2:level.dream_2">
+        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后发射速度增加" unlock="mvz2:level.dream_2">
             <properties>
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
                 <id name="mvz2:placement" value="mvz2:drivenser" />
