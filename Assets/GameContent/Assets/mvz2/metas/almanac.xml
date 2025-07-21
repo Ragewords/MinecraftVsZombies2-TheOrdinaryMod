@@ -1453,7 +1453,7 @@
                 <tag id="mvz2:mass_statue" value="1" />
             </tags>
             <header>
-                <p>妖怪狸僵尸会跳起来变成石像，然后砸扁你的器械。</p>
+                <p>妖怪狸僵尸会跳起来变成地藏雕像，然后砸扁你的器械。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
