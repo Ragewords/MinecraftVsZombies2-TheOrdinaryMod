@@ -353,6 +353,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9c37df297dc5c5a47a8448c48eba0204, type: 3}
   - name: mobile_blueprint/small_dispenser
     sprite: {fileID: 21300000, guid: df4339844dabc79468b681d3c124227f, type: 3}
+  - name: mobile_blueprint/smoker
+    sprite: {fileID: 21300000, guid: 63a3d832ad8867746bfd82b697504690, type: 3}
   - name: mobile_blueprint/soulsand
     sprite: {fileID: 21300000, guid: ee236b9bf29256844b94ea76798c4239, type: 3}
   - name: mobile_blueprint/soul_furnace
@@ -555,6 +557,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 135dff09421d4164c91798ffaa81d047, type: 3}
   - name: entity/contraptions/black_hole_bomb
     sprite: {fileID: 21300000, guid: 412713fe007467441a2952c3fd3f3ba9, type: 3}
+  - name: entity/contraptions/black_hole_bomb_satellite
+    sprite: {fileID: 21300000, guid: af91a431bfe2e7141a85689c9d6dd20f, type: 3}
   - name: entity/contraptions/devourer
     sprite: {fileID: 21300000, guid: 0f9ff25f9f164584e85c12f40dbebdd0, type: 3}
   - name: entity/contraptions/dimension_hammer
@@ -649,6 +653,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a6f5c16aaaa862f4a8000dbbb824d5a0, type: 3}
   - name: entity/effects/camera_frame
     sprite: {fileID: 21300000, guid: 5005e9bfb3edbd84082f1c1dbc01250b, type: 3}
+  - name: entity/effects/collapsing_planet
+    sprite: {fileID: 21300000, guid: d4b373762486a5841941e23ff8ec73bd, type: 3}
+  - name: entity/effects/confusing_planet
+    sprite: {fileID: 21300000, guid: 10d298fcc56ec124795e678e16230d79, type: 3}
   - name: entity/effects/cursed_fire_particle
     sprite: {fileID: 21300000, guid: e2f7e29ca0c62d5468d4cab32fae9562, type: 3}
   - name: entity/effects/dark_hole_circle
@@ -657,6 +665,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c278e895010ef2449998e67c90983780, type: 3}
   - name: entity/effects/diamond_spike_particles
     sprite: {fileID: 21300000, guid: 832e7d1ecf7d7eb42a2921e2909679f6, type: 3}
+  - name: entity/effects/energy_shield_aura
+    sprite: {fileID: 21300000, guid: 6e3bed776697370498e3f2a63d2986bb, type: 3}
+  - name: entity/effects/energy_shield_effect
+    sprite: {fileID: 21300000, guid: 234c0e3c684ac844bbd71630e112c357, type: 3}
   - name: entity/effects/evocation_star
     sprite: {fileID: 21300000, guid: 8b93445b685c42440938fc5154ea419c, type: 3}
   - name: entity/effects/fire_particle
@@ -1491,10 +1503,6 @@ MonoBehaviour:
     - {fileID: 6494446197138225416, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5653982790268467409, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5039749940984752654, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
-  - name: entity/boss/the_eye_aura
-    spritesheet:
-    - {fileID: -1411681919, guid: a046c47f674bfc94d81a52fef2486834, type: 3}
-    - {fileID: -164348175, guid: a046c47f674bfc94d81a52fef2486834, type: 3}
   - name: entity/boss/the_giant
     spritesheet:
     - {fileID: 2106222037, guid: cd590dd9f5d29994db2a5356364308e6, type: 3}
@@ -1803,6 +1811,12 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1795380811, guid: 4b61b6a8f9cd754419a8862656f249c1, type: 3}
     - {fileID: 1116002968, guid: 4b61b6a8f9cd754419a8862656f249c1, type: 3}
+  - name: entity/contraption/smoker
+    spritesheet:
+    - {fileID: -231942391, guid: 003a58f863ec748479ce625f218544cc, type: 3}
+    - {fileID: 134423617, guid: 003a58f863ec748479ce625f218544cc, type: 3}
+    - {fileID: -1726882428, guid: 003a58f863ec748479ce625f218544cc, type: 3}
+    - {fileID: 2061928363, guid: 003a58f863ec748479ce625f218544cc, type: 3}
   - name: entity/contraption/splitenser
     spritesheet:
     - {fileID: 1423534089646270007, guid: 824a13f315e37c0479a2e4a8e03f358f, type: 3}
@@ -2128,6 +2142,13 @@ MonoBehaviour:
     - {fileID: -938367861, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
     - {fileID: 516429795, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
     - {fileID: -1181326684, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
+  - name: entity/enemy/paratroop_zombie
+    spritesheet:
+    - {fileID: -224541695, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - {fileID: -616295559, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - {fileID: 1122587241, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - {fileID: -518517166, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - {fileID: 550736574, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
   - name: entity/enemy/reverse_satellite
     spritesheet:
     - {fileID: 1053308388, guid: 95a0ff4bc65b3c3489a4dd2274848c9d, type: 3}
@@ -2240,6 +2261,8 @@ MonoBehaviour:
     - {fileID: 21300006, guid: 9739243e65a79be45b3cbef707b83c65, type: 3}
     - {fileID: 21300008, guid: 9739243e65a79be45b3cbef707b83c65, type: 3}
     - {fileID: 1164703284, guid: 9739243e65a79be45b3cbef707b83c65, type: 3}
+    - {fileID: -2138006151, guid: 9739243e65a79be45b3cbef707b83c65, type: 3}
+    - {fileID: -1120608143, guid: 9739243e65a79be45b3cbef707b83c65, type: 3}
   - name: entity/enemy/tanooki_zombie_stone
     spritesheet:
     - {fileID: 21300000, guid: 55e108afa20824c4bb9a1fab72673c9f, type: 3}
