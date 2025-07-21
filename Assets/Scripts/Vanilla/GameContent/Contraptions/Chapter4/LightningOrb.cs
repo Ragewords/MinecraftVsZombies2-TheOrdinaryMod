@@ -19,6 +19,12 @@ namespace MVZ2.GameContent.Contraptions
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
         }
+        protected override void UpdateAI(Entity contraption)
+        {
+            base.UpdateAI(contraption);
+            if (GetChargedAbsorbCount(contraption) >= 60)
+                SetCharged(contraption, false);
+        }
         protected override void UpdateLogic(Entity contraption)
         {
             base.UpdateLogic(contraption);
@@ -48,9 +54,13 @@ namespace MVZ2.GameContent.Contraptions
             orb.PlaySound(VanillaSoundID.energyShieldHit);
             if (IsCharged(orb))
             {
-                var sparam = orb.GetShootParams();
-                sparam.soundID = null;
-                orb.ShootProjectile(sparam);
+                for (var i = 0; i < 3; i++)
+                {
+                    var sparam = orb.GetShootParams();
+                    sparam.soundID = null;
+                    orb.ShootProjectile(sparam);
+                }
+                AddChargedAbsorbCount(orb, 1);
             }
         }
         public override bool CanEvoke(Entity entity)
@@ -62,9 +72,11 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
+            entity.PlaySound(VanillaSoundID.teslaAttack);
             entity.PlaySound(VanillaSoundID.lightningAttack);
             entity.AddBuff<LightningOrbEvokedBuff>();
             SetCharged(entity, true);
+            ResetChargedAbsorbCount(entity);
         }
         public static void SetCharged(Entity entity, bool value)
         {
@@ -74,7 +86,12 @@ namespace MVZ2.GameContent.Contraptions
         {
             return entity.GetBehaviourField<bool>(PROP_CHARGED);
         }
+        public static int GetChargedAbsorbCount(Entity entity) => entity.GetBehaviourField<int>(PROP_CHARGED_ABSORB_COUNT);
+        public static void SetChargedAbsorbCount(Entity entity, int value) => entity.SetBehaviourField(PROP_CHARGED_ABSORB_COUNT, value);
+        public static void AddChargedAbsorbCount(Entity entity, int value) => SetChargedAbsorbCount(entity, GetChargedAbsorbCount(entity) + value);
+        public static void ResetChargedAbsorbCount(Entity entity) => SetChargedAbsorbCount(entity, 0);
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CHARGED = new VanillaEntityPropertyMeta<bool>("Charged");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_CHARGED_ABSORB_COUNT = new VanillaEntityPropertyMeta<int>("ChargedAbsorbCount");
         public const float HEAL_AMOUNT = 100;
     }
 }
