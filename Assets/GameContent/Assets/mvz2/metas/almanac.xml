@@ -915,7 +915,7 @@
                 <tag id="mvz2:placement_repeatenser"/>
             </tags>
             <header>
-                <p>高频脉冲发射器一次能交替发射一或两支箭矢四次。</p>
+                <p>高频脉冲发射器一轮攻击能交替发射一或两支箭矢四次。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>2×(1+2)支/1.5秒</color>]]></p>
