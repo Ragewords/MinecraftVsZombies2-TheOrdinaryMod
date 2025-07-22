@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.highFrequencyPulseDispenser,
-                VanillaContraptionID.dreamCrystal,
+                VanillaContraptionID.hellfire,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,

@@ -821,7 +821,7 @@
         </contraption>
         <dispenser id="repeatenser" name="连射连射发射器" tooltip="一次射出两支箭矢" unlock="mvz2:level.ship_2">
             <properties>
-                <int name="mvz2:cost" value="200" />
+                <int name="mvz2:cost" value="225" />
             </properties>
         </dispenser>
 
@@ -892,7 +892,7 @@
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
 
-                <int name="mvz2:cost" value="250" />
+                <int name="mvz2:cost" value="300" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </dispenser>
