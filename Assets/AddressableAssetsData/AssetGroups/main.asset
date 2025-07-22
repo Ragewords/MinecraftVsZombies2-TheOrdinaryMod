@@ -5020,6 +5020,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 712e4852c1c76d7439f87901bd8e9cac
+    m_Address: mvz2:energy_shield_break
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7149a1e5881e1174ab5514db1475c02a
     m_Address: mvz2:icons/curse_of_the_abyss
     m_ReadOnly: 0
