@@ -573,6 +573,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 45e4ec0a78ad63e4da7576e9c122689c, type: 3}
   - name: entity/contraptions/drivenser_blocker
     sprite: {fileID: 21300000, guid: ab45c539e2bb18040b691583b08639f1, type: 3}
+  - name: entity/contraptions/energy_shield_aura
+    sprite: {fileID: 21300000, guid: 6e3bed776697370498e3f2a63d2986bb, type: 3}
+  - name: entity/contraptions/energy_shield_effect
+    sprite: {fileID: 21300000, guid: 234c0e3c684ac844bbd71630e112c357, type: 3}
   - name: entity/contraptions/error_block
     sprite: {fileID: 21300000, guid: 1106f96e2391f404caf8c7b2974ba5ea, type: 3}
   - name: entity/contraptions/firecharge_dispenser
@@ -665,10 +669,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c278e895010ef2449998e67c90983780, type: 3}
   - name: entity/effects/diamond_spike_particles
     sprite: {fileID: 21300000, guid: 832e7d1ecf7d7eb42a2921e2909679f6, type: 3}
-  - name: entity/effects/energy_shield_aura
-    sprite: {fileID: 21300000, guid: 6e3bed776697370498e3f2a63d2986bb, type: 3}
-  - name: entity/effects/energy_shield_effect
-    sprite: {fileID: 21300000, guid: 234c0e3c684ac844bbd71630e112c357, type: 3}
   - name: entity/effects/evocation_star
     sprite: {fileID: 21300000, guid: 8b93445b685c42440938fc5154ea419c, type: 3}
   - name: entity/effects/fire_particle

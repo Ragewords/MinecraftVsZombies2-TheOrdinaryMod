@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Contraptions
             }
             foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                LightningOrbEnergyShieldBuff.Heal(buff, 100);
+                LightningOrbEnergyShieldBuff.Heal(buff, 1);
             }
             projectile.Remove();
             result.SetFinalValue(false);

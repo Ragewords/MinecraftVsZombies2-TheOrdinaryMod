@@ -19,7 +19,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public LightningOrbEnergyShieldBuff(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
-            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 3, 5)));
+            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 4, 5)));
+            AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Multiply, VehicleInteraction.BLOCK));
             AddModifier(new NamespaceIDModifier(VanillaContraptionProps.FRAGMENT_ID, VanillaFragmentID.lightningOrbEnergyShield));
         }
         public override void PostUpdate(Buff buff)
@@ -36,6 +37,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             {
                 entity.PlaySound(VanillaSoundID.energyShieldBreak);
                 entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
+                entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, 50);
             }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
@@ -44,8 +46,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var entity = damage.Entity;
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                Damage(buff, damage.Amount);
-                entity.AddFragmentTickDamage(damage.Amount);
+                Damage(buff, 1);
+                entity.AddFragmentTickDamage(5);
                 result.SetFinalValue(false);
             }
         }
@@ -54,7 +56,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public static void Damage(Buff buff, float value) => SetHealth(buff, GetHealth(buff) + value);
         public static void Heal(Buff buff, float value) => SetHealth(buff, Mathf.Max(0, GetHealth(buff) - value));
         public static void ResetHealth(Buff buff) => SetHealth(buff, 0);
-        public const float MAX_DAMAGE = 5000;
+        public const float MAX_DAMAGE = 500;
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("Health");
     }
 }
