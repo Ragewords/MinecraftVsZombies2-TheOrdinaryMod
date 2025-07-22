@@ -137,7 +137,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是闪电之珠！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够阻挡敌人的前进，并且免疫对方的子弹！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够张开护盾，阻挡大范围敌人的前进，并且免疫对方的子弹！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">并且，当敌人的子弹击中它时，它反而可以利用它恢复自己的耐久！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">这可是高阶的法术器械！</sentence>
       </sentences>

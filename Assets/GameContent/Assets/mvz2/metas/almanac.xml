@@ -607,12 +607,14 @@
         <!-- Chapter 4 -->
         <entry id="mvz2:lightning_orb">
             <header>
-                <p>闪电之珠可以阻挡敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
+                <p>闪电之珠可以张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>1000+5000（能量护盾）</color>]]></p>
+                <p>能量护盾半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>护盾恢复时间：<![CDATA[<color=red>20秒</color>]]></p>
                 <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800），随后展开一个可阻挡360次任意形式伤害的能量护盾</color>]]></p>
+                <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
             </properties>
             <flavor>
                 <p>它有一群非常吵闹的邻居。</p>

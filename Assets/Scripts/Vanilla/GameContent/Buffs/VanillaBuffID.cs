@@ -62,6 +62,7 @@ namespace MVZ2.GameContent.Buffs
         public const string bottledBlackholeDamage = "bottled_blackhole_damage";
         public const string noteBlockLoud = "note_block_loud";
         public const string lightningOrbEnergyShield = "lightning_orb_energy_shield";
+        public const string lightningOrbEnergyShieldProtected = "lightning_orb_energy_shield_protected";
         public const string lightningOrbEnergyShieldBreak = "lightning_orb_energy_shield_break";
         public const string lightningOrbEvoked = "lightning_orb_evoked";
         public const string devourerInvincible = "devourer_invincible";
@@ -262,6 +263,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID glowstoneProtected = Get(VanillaBuffNames.glowstoneProtected);
         public static readonly NamespaceID miracleMalletReplicaDamage = Get(VanillaBuffNames.miracleMalletReplicaDamage);
         public static readonly NamespaceID brokenLantern = Get(VanillaBuffNames.brokenLantern);
+        public static readonly NamespaceID lightningOrbEnergyShieldProtected = Get(VanillaBuffNames.lightningOrbEnergyShieldProtected);
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.eyeOfTheGiant);
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
         public static readonly NamespaceID jackOLantern = Get(VanillaBuffNames.jackOLantern);

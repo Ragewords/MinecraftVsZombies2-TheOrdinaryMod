@@ -1,3 +1,5 @@
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
@@ -57,7 +59,15 @@ namespace MVZ2.Vanilla.Enemies
             if (!enemy.IsHostile(target))
                 return false;
             if (!Detection.IsInSameRow(enemy, target))
-                return false;
+            {
+                if (target.IsEntityOf(VanillaContraptionID.lightningOrb))
+                {
+                    if (!target.HasBuff<LightningOrbEnergyShieldBuff>())
+                        return false;
+                }
+                else
+                    return false;
+            }
             if (!Detection.CanDetect(target))
                 return false;
             if (target.Position.y > enemy.Position.y + enemy.GetMaxAttackHeight())

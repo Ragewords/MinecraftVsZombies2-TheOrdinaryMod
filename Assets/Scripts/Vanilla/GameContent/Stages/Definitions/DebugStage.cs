@@ -50,7 +50,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.skeleton,
-                VanillaEnemyID.dullahan,
+                VanillaEnemyID.zombie,
                 VanillaEnemyID.mutantZombie,
                 VanillaBossID.theGiant,
             });

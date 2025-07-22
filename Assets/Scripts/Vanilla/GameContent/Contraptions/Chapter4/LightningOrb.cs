@@ -1,12 +1,21 @@
-﻿using MVZ2.GameContent.Buffs.Contraptions;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -16,6 +25,26 @@ namespace MVZ2.GameContent.Contraptions
         public LightningOrb(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
+            AddAura(new EnergyShield());
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.AddBuff<LightningOrbEnergyShieldBuff>();
+            SetShieldRegenerateTimer(entity, new FrameTimer(REGENERATE_TIME));
+        }
+        protected override void UpdateAI(Entity contraption)
+        {
+            base.UpdateAI(contraption);
+            if (contraption.HasBuff<LightningOrbEnergyShieldBuff>())
+                return;
+            var timer = GetShieldRegenerateTimer(contraption);
+            timer.Run();
+            if (timer.Expired)
+            {
+                timer.ResetTime(REGENERATE_TIME);
+                contraption.AddBuff<LightningOrbEnergyShieldBuff>();
+            }
         }
         protected override void UpdateLogic(Entity contraption)
         {
@@ -43,7 +72,7 @@ namespace MVZ2.GameContent.Contraptions
             }
             foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                LightningOrbEnergyShieldBuff.AddDamageCount(buff, 1);
+                LightningOrbEnergyShieldBuff.Heal(buff, 100);
             }
             projectile.Remove();
             result.SetFinalValue(false);
@@ -58,12 +87,49 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            entity.PlaySound(VanillaSoundID.teslaAttack);
             entity.PlaySound(VanillaSoundID.lightningAttack);
             if (entity.HasBuff<LightningOrbEnergyShieldBuff>())
                 entity.RemoveBuffs<LightningOrbEnergyShieldBuff>();
             entity.AddBuff<LightningOrbEvokedBuff>();
+            var timer = GetShieldRegenerateTimer(entity);
+            timer.ResetTime(REGENERATE_TIME_EVOKED);
         }
+        public class EnergyShield : AuraEffectDefinition
+        {
+            public EnergyShield()
+            {
+                BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
+                UpdateInterval = 3;
+                protectDetector = new CollisionDetector()
+                {
+                    factionTarget = FactionTarget.Friendly
+                };
+            }
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var source = auraEffect.Source;
+                var entity = source.GetEntity();
+                if (entity == null)
+                    return;
+                if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
+                    return;
+                protectDetectBuffer.Clear();
+                protectDetector.DetectEntities(entity, protectDetectBuffer);
+                foreach (var id in protectDetectBuffer)
+                {
+                    if (id.IsEntityOf(VanillaContraptionID.lightningOrb))
+                        continue;
+                    results.Add(id);
+                }
+            }
+            private Detector protectDetector;
+            private List<Entity> protectDetectBuffer = new List<Entity>();
+        }
+        public static FrameTimer GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
+        public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
+        public const int REGENERATE_TIME = 600;
+        public const int REGENERATE_TIME_EVOKED = 180;
     }
 }

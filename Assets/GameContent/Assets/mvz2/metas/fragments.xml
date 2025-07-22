@@ -155,20 +155,28 @@
             <key hex="#FFFF00" time="1"/>
         </colorKeys>
     </fragment>
-    <fragment name="note_block">
-        <colorKeys>
-            <key hex="#764A34" time="0.4"/>
-            <key hex="#62402E" time="0.6"/>
-            <key hex="#483021" time="0.8"/>
-            <key hex="#342013" time="1"/>
-        </colorKeys>
-    </fragment>
     <fragment name="lightning_orb" blend="true">
         <colorKeys>
             <key hex="#ECD03C" time="0"/>
             <key hex="#D49819" time="0.333"/>
             <key hex="#AE6F00" time="0.667"/>
             <key hex="#000000" time="1"/>
+        </colorKeys>
+    </fragment>
+    <fragment name="lightning_orb_energy_shield">
+        <colorKeys>
+            <key hex="#00BBFF" time="1"/>
+        </colorKeys>
+        <alphaKeys>
+            <key alpha="0.5" time="1"/>
+        </alphaKeys>
+    </fragment>
+    <fragment name="note_block">
+        <colorKeys>
+            <key hex="#764A34" time="0.4"/>
+            <key hex="#62402E" time="0.6"/>
+            <key hex="#483021" time="0.8"/>
+            <key hex="#342013" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="splitenser">
