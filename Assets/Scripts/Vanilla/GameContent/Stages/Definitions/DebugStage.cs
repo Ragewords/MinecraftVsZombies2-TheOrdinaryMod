@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Stages
             ClassicStart(level);
             //ConveyorStart(level);
             level.LevelProgressVisible = true;
-            level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
+            level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
             level.SetTriggerActive(true);
             var cartRef = level.GetCartReference();
             level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);
@@ -43,16 +43,16 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.dispenser,
-                VanillaContraptionID.furnace,
+                VanillaContraptionID.repeatenser,
+                VanillaContraptionID.highFrequencyPulseDispenser,
                 VanillaContraptionID.dreamCrystal,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,
-                VanillaEnemyID.ironHelmettedZombie,
-                VanillaEnemyID.tanookiZombie,
-                VanillaEnemyID.shikaisenZombie,
-                VanillaBossID.frankenstein,
+                VanillaEnemyID.skeleton,
+                VanillaEnemyID.dullahan,
+                VanillaEnemyID.mutantZombie,
+                VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

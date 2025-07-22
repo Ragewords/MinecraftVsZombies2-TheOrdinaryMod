@@ -60,6 +60,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                         entity.PlaySound(VanillaSoundID.teslaAttack);
                     }
                 }
+                entity.AddBuff<LightningOrbEnergyShieldBuff>();
                 buff.Remove();
             }
             else
@@ -86,7 +87,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public static float GetTakenDamage(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetTakenDamage(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
         public static void AddTakenDamage(Buff buff, float value) => SetTakenDamage(buff, GetTakenDamage(buff) + value);
-        public const int MAX_TIMEOUT = 150;
+        public const int MAX_TIMEOUT = 155;
         public const float MAX_DAMAGE = 1800;
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("takenDamage");

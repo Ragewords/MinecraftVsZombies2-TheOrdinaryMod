@@ -52,6 +52,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID earthquake = Get("earthquake");
         public readonly static NamespaceID electricSpark = Get("electric_spark");
         public readonly static NamespaceID energyShield = Get("energy_shield");
+        public readonly static NamespaceID energyShieldBreak = Get("energy_shield_break");
         public readonly static NamespaceID energyShieldHit = Get("energy_shield_hit");
         public readonly static NamespaceID errorXP = Get("error_xp");
         public readonly static NamespaceID explosion = Get("explosion");

@@ -61,6 +61,8 @@ namespace MVZ2.GameContent.Buffs
         public const string eyeOfTheGiant = "eye_of_the_giant";
         public const string bottledBlackholeDamage = "bottled_blackhole_damage";
         public const string noteBlockLoud = "note_block_loud";
+        public const string lightningOrbEnergyShield = "lightning_orb_energy_shield";
+        public const string lightningOrbEnergyShieldBreak = "lightning_orb_energy_shield_break";
         public const string lightningOrbEvoked = "lightning_orb_evoked";
         public const string devourerInvincible = "devourer_invincible";
         public const string hellfireCursed = "hellfire_cursed";
