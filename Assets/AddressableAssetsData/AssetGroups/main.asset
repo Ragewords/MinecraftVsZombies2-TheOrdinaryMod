@@ -1593,7 +1593,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 234c0e3c684ac844bbd71630e112c357
-    m_Address: mvz2:entity/effects/energy_shield_effect
+    m_Address: mvz2:entity/contraptions/energy_shield_effect
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -4909,7 +4909,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e3bed776697370498e3f2a63d2986bb
-    m_Address: mvz2:entity/effects/energy_shield_aura
+    m_Address: mvz2:entity/contraptions/energy_shield_aura
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
