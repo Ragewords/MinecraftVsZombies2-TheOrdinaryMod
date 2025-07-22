@@ -22,10 +22,6 @@ namespace MVZ2.GameContent.Enemies
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
-            detector = new DispenserDetector()
-            {
-                ignoreHighEnemy = true,
-            };
             smashDetector = new CollisionDetector();
         }
         public override void Init(Entity entity)
@@ -38,7 +34,7 @@ namespace MVZ2.GameContent.Enemies
         {
             var state = base.GetActionState(enemy);
             var jumpTimer = GetJumpTimer(enemy);
-            if (state == VanillaEntityStates.WALK && jumpTimer.Expired)
+            if (state == VanillaEntityStates.WALK && IsJumping(enemy))
             {
                 return STATE_CAST;
             }
@@ -66,22 +62,27 @@ namespace MVZ2.GameContent.Enemies
             var jumpTimer = GetJumpTimer(entity);
             var statueTimer = GetStatueTimer(entity);
             jumpTimer.Run(entity.GetAttackSpeed());
-            if (jumpTimer.PassedFrame(0))
-            {
-                entity.PlaySound(VanillaSoundID.jizo_appear);
-                entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, jumpTarget + Vector3.up * 240, 30, entity.GetGravity());
-            }
             if (jumpTimer.Expired)
             {
-                statueTimer.Run();
-                if (statueTimer.Expired)
+                if (entity.IsOnGround && !IsJumping(entity))
                 {
-                    entity.AddBuff<TanookiZombieStoneBuff>();
-                    var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
-                    effect.SetTint(new Color(0.5f, 0.5f, 0.5f, 1));
-                    effect.SetSize(entity.GetSize() * 2);
-                    statueTimer.Reset();
-                    jumpTimer.Reset();
+                    entity.PlaySound(VanillaSoundID.jizo_appear);
+                    entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, jumpTarget + Vector3.up * 240, 30, entity.GetGravity());
+                    SetJumping(entity, true);
+                }
+                else if (IsJumping(entity))
+                {
+                    statueTimer.Run();
+                    if (statueTimer.Expired)
+                    {
+                        entity.AddBuff<TanookiZombieStoneBuff>();
+                        var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
+                        effect.SetTint(new Color(0.5f, 0.5f, 0.5f, 1));
+                        effect.SetSize(entity.GetSize() * 2);
+                        SetJumping(entity, false);
+                        statueTimer.Reset();
+                        jumpTimer.Reset();
+                    }
                 }
             }
         }
@@ -115,13 +116,15 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly NamespaceID ID = VanillaEnemyID.tanookiZombie;
         public const int STATE_CAST = VanillaEntityStates.TANOOKI_ZOMBIE_JUMP;
+        public static void SetJumping(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_JUMPING, value);
+        public static bool IsJumping(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_JUMPING);
         public static void SetJumpTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_JUMP_TIMER, timer);
         public static FrameTimer GetJumpTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_JUMP_TIMER);
         public static void SetStatueTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATUE_TIMER, timer);
         public static FrameTimer GetStatueTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATUE_TIMER);
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_JUMPING = new VanillaBuffPropertyMeta<bool>("jumping");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_JUMP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("jumpTimer");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_STATUE_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("statueTimer");
-        private Detector detector;
         private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
         private Detector smashDetector;
     }
