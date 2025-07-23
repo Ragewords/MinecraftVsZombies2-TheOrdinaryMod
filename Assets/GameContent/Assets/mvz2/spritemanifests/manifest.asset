@@ -657,8 +657,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a6f5c16aaaa862f4a8000dbbb824d5a0, type: 3}
   - name: entity/effects/camera_frame
     sprite: {fileID: 21300000, guid: 5005e9bfb3edbd84082f1c1dbc01250b, type: 3}
-  - name: entity/effects/collapsing_planet
-    sprite: {fileID: 21300000, guid: d4b373762486a5841941e23ff8ec73bd, type: 3}
   - name: entity/effects/confusing_planet
     sprite: {fileID: 21300000, guid: 10d298fcc56ec124795e678e16230d79, type: 3}
   - name: entity/effects/cursed_fire_particle

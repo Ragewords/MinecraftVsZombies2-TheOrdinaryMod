@@ -1,15 +1,12 @@
-using System.Collections.Generic;
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
-using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
-using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
@@ -19,50 +16,28 @@ namespace MVZ2.GameContent.Effects
         #region 公有方法
         public ConfusingPlanet(string nsp, string name) : base(nsp, name)
         {
-            absorbDetector = new SphereDetector(120)
-            {
-                mask = EntityCollisionHelper.MASK_VULNERABLE,
-                canDetectInvisible = true,
-            };
         }
         #endregion
         public override void Init(Entity planet)
         {
             base.Init(planet);
             planet.CollisionMaskHostile =
-                EntityCollisionHelper.MASK_BOSS;
+                EntityCollisionHelper.MASK_VULNERABLE;
         }
         public override void Update(Entity entity)
         {
             base.Update(entity);
-            bool inactive = entity.Timeout <= 90;
-            entity.SetAnimationBool("Disappear", inactive && !IsAnnihilate(entity));
-            entity.SetAnimationBool("Collapse", inactive && IsAnnihilate(entity));
+            bool inactive = entity.Timeout <= 100;
+            entity.SetAnimationBool("Disappear", inactive);
 
-            BlackHoleUpdate(entity);
-            AnnihilationUpdate(entity);
-
-            if (inactive)
-                return;
-                
-            detectBuffer.Clear();
-            absorbDetector.DetectMultiple(entity, detectBuffer);
-            foreach (var target in detectBuffer)
-            {
-                if (entity.IsTimeInterval(10))
-                {
-                    if (target.Entity.Type == EntityTypes.PLANT || target.Entity.Type == EntityTypes.ENEMY)
-                        target.Entity.Slow(120);
-                    target.Entity.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
-                }
-            }
+            RotateUpdate(entity, inactive);
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
             base.PostCollision(collision, state);
             var other = collision.Other;
             var self = collision.Entity;
-            bool inactive = self.Timeout <= 90;
+            bool inactive = self.Timeout <= 100;
             if (inactive)
                 return;
             if (!other.Exists())
@@ -72,45 +47,41 @@ namespace MVZ2.GameContent.Effects
                 other.TakeDamage(COLLIDE_SELF_DAMAGE, new DamageEffectList(VanillaDamageEffects.MUTE), self);
                 TheGiant.KillSnake(other);
             }
+            if (state != EntityCollisionHelper.STATE_ENTER)
+                return;
+            other.TakeDamage(self.GetDamage(), new DamageEffectList(), self);
         }
-        private void BlackHoleUpdate(Entity entity)
+        private void RotateUpdate(Entity entity, bool inactive)
         {
-            if (IsAnnihilate(entity)) return;
+            const float angelicSpeed = -6.5f;
+            const float targetRadius = 160;
 
-            if (entity.Timeout == 80)
-            {
-                var range = entity.GetRange();
-                var damage = entity.GetDamage();
+            var center = GetRotateCenter(entity);
+            if (center == null)
+                return;
+            var center2D = new Vector2(center.x, center.z);
+            var pos2D = new Vector2(entity.Position.x, entity.Position.z);
+            var velocity2D = new Vector2(entity.Velocity.x, entity.Velocity.z);
 
-                var blackholeParam = entity.GetSpawnParams();
-                blackholeParam.SetProperty(VanillaEntityProps.DAMAGE, damage);
-                blackholeParam.SetProperty(VanillaEntityProps.RANGE, range);
-                var blackhole = entity.Spawn(VanillaEffectID.blackhole, entity.GetCenter(), blackholeParam);
-                entity.PlaySound(VanillaSoundID.gravitation);
-                entity.Level.ShakeScreen(10, 0, 15);
-            }
-        }
-        private void AnnihilationUpdate(Entity entity)
-        {
-            if (!IsAnnihilate(entity)) return;
+            Vector2 pos2Center2D = pos2D - center2D;
+            var radius = pos2Center2D.magnitude;
+            var direction = pos2Center2D.normalized;
 
-            if (entity.Timeout <= 0)
-            {
-                var range = entity.GetRange();
-                var fieldParam = entity.GetSpawnParams();
-                fieldParam.SetProperty(VanillaEntityProps.RANGE, range);
-                var field = entity.Spawn(VanillaEffectID.annihilationField, entity.GetCenter(), fieldParam);
+            radius = radius * 0.5f + targetRadius * 0.5f;
+            var nextPosition = inactive ? center2D : center2D + direction.RotateClockwise(angelicSpeed) * radius;
+            var targetVelocity = nextPosition - pos2D;
+            velocity2D = velocity2D * 0.5f + targetVelocity * 0.5f;
 
-                entity.PlaySound(VanillaSoundID.explosion);
-                entity.PlaySound(VanillaSoundID.gravitation);
-                entity.Level.ShakeScreen(10, 0, 15);
-            }
+            var velocity = new Vector3(velocity2D.x, 0, velocity2D.y);
+            entity.Velocity = velocity;
         }
         public const float COLLIDE_SELF_DAMAGE = 600;
-        public static void SetAnnihilate(Entity entity, bool value) => entity.SetProperty(PROP_ANNIHILATE, value);
-        public static bool IsAnnihilate(Entity entity) => entity.GetProperty<bool>(PROP_ANNIHILATE);
-        public static readonly VanillaBuffPropertyMeta<bool> PROP_ANNIHILATE = new VanillaBuffPropertyMeta<bool>("annihilate");
-        private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
-        private Detector absorbDetector;
+        public static void SetRotateCenter(Entity entity, Vector3 value) => entity.SetProperty(PROP_ROTATE_CENTER, value);
+        public static Vector3 GetRotateCenter(Entity entity) => entity.GetProperty<Vector3>(PROP_ROTATE_CENTER);
+        public static float GetOrbitAngle(Entity entity) => entity.GetBehaviourField<float>(PROP_ORBIT_ANGLE);
+        public static void SetOrbitAngle(Entity entity, float value) => entity.SetBehaviourField(PROP_ORBIT_ANGLE, value);
+        private static readonly VanillaEntityPropertyMeta<float> PROP_ORBIT_ANGLE = new VanillaEntityPropertyMeta<float>("OrbitAngle");
+
+        public static readonly VanillaBuffPropertyMeta<Vector3> PROP_ROTATE_CENTER = new VanillaBuffPropertyMeta<Vector3>("rotate_center");
     }
 }

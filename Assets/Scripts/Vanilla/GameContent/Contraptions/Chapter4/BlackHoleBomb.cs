@@ -97,9 +97,16 @@ namespace MVZ2.GameContent.Contraptions
         public static Entity Explode(Entity entity, float range, float damage)
         {
             var planetParam = entity.GetSpawnParams();
-            planetParam.SetProperty(VanillaEntityProps.DAMAGE, damage);
+            planetParam.SetProperty(VanillaEntityProps.DAMAGE, damage * 50);
             planetParam.SetProperty(VanillaEntityProps.RANGE, range);
             var planet = entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter(), planetParam);
+            planet.Velocity = new Vector3(entity.GetFacingX(), 0, 0);
+            ConfusingPlanet.SetRotateCenter(planet, entity.GetCenter());
+
+            var blackholeParam = entity.GetSpawnParams();
+            blackholeParam.SetProperty(VanillaEntityProps.DAMAGE, damage);
+            blackholeParam.SetProperty(VanillaEntityProps.RANGE, range);
+            var blackhole = entity.Spawn(VanillaEffectID.blackhole, entity.GetCenter(), blackholeParam);
 
             var explosionParam = entity.GetSpawnParams();
             explosionParam.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
@@ -109,15 +116,13 @@ namespace MVZ2.GameContent.Contraptions
             entity.Level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
 
-            return planet;
+            return blackhole;
         }
         public static Entity ExplodeEvoked(Entity entity, float range)
         {
             var fieldParam = entity.GetSpawnParams();
             fieldParam.SetProperty(VanillaEntityProps.RANGE, range);
-            fieldParam.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 15);
-            var field = entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter(), fieldParam);
-            ConfusingPlanet.SetAnnihilate(field, true);
+            var field = entity.Spawn(VanillaEffectID.annihilationField, entity.GetCenter(), fieldParam);
 
             var explosionParam = entity.GetSpawnParams();
             explosionParam.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
@@ -136,7 +141,7 @@ namespace MVZ2.GameContent.Contraptions
 
             if (timer.Frame < 5)
             {
-                entity.SetDisplayScale(Vector3.one * Mathf.Lerp(2, 1, timer.Frame / 5f));
+                entity.SetDisplayScale(Vector3.one * Mathf.Lerp(entity.IsEvoked() ? 0 : 2, 1, timer.Frame / 5f));
             }
             if (timer.Expired)
             {
