@@ -9408,13 +9408,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d4b373762486a5841941e23ff8ec73bd
-    m_Address: mvz2:entity/effects/collapsing_planet
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d502efd9e6fce1543ae6919e926b244c
     m_Address: mvz2:mobile_blueprint/lily_pad
     m_ReadOnly: 0
