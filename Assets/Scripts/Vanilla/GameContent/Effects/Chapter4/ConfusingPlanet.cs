@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Effects
         }
         private void RotateUpdate(Entity entity, bool inactive)
         {
-            const float angelicSpeed = -6.5f;
+            const float angelicSpeed = -6.2f;
             const float targetRadius = 160;
 
             var center = GetRotateCenter(entity);
