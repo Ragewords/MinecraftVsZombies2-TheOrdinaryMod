@@ -1,7 +1,6 @@
 using MVZ2.GameContent.Fragments;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -19,9 +18,9 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public LightningOrbEnergyShieldBuff(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
-            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 4, 5)));
+            AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
+            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 3, 5)));
             AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Multiply, VehicleInteraction.BLOCK));
-            AddModifier(new NamespaceIDModifier(VanillaContraptionProps.FRAGMENT_ID, VanillaFragmentID.lightningOrbEnergyShield));
         }
         public override void PostUpdate(Buff buff)
         {
@@ -37,7 +36,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             {
                 entity.PlaySound(VanillaSoundID.energyShieldBreak);
                 entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
-                entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, 50);
+                entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, 100);
             }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
@@ -47,9 +46,14 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
                 Damage(buff, 1);
-                entity.AddFragmentTickDamage(5);
                 result.SetFinalValue(false);
             }
+        }
+        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        {
+            var entity = param.entity;
+            var buffs = entity.GetBuffs<LightningOrbEnergyShieldBuff>();
+            entity.RemoveBuffs(buffs);
         }
         public static float GetHealth(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetHealth(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
