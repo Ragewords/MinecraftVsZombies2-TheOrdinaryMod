@@ -117,7 +117,7 @@ namespace MVZ2.GameContent.Contraptions
                 protectDetector.DetectEntities(entity, protectDetectBuffer);
                 foreach (var id in protectDetectBuffer)
                 {
-                    if (id.IsEntityOf(VanillaContraptionID.lightningOrb))
+                    if (id.HasBuff<LightningOrbEnergyShieldBuff>())
                         continue;
                     results.Add(id);
                 }
