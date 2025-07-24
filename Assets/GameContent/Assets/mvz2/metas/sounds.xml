@@ -129,6 +129,9 @@
     <sound name="dark_skies_impact" maxCount="10">
         <sample path="mvz2:dark_skies_impact" weight="1" />
     </sound>
+    <sound name="data_copy">
+        <sample path="mvz2:data_copy" weight="1" />
+    </sound>
     <sound name="data_stream">
         <sample path="mvz2:data_stream" weight="1" />
     </sound>

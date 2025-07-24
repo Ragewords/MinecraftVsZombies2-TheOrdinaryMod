@@ -38,6 +38,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID danmaku = Get("danmaku");
         public readonly static NamespaceID darkSkiesCast = Get("dark_skies_cast");
         public readonly static NamespaceID darkSkiesImpact = Get("dark_skies_impact");
+        public readonly static NamespaceID dataCopy = Get("data_copy");
         public readonly static NamespaceID dataStream = Get("data_stream");
         public readonly static NamespaceID decrepify = Get("decrepify");
         public readonly static NamespaceID desirePotEvocation = Get("desire_pot_evocation");

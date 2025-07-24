@@ -1250,7 +1250,7 @@
            </characters>
            <sentences>
                <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">狸猫十变化！</sentence>
-               <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是妖怪树叶！能模仿场上血最厚的怪物！</sentence>
+               <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是妖怪树叶！能模仿攻击它的怪物！</sentence>
                <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end"><![CDATA[<color=blue>（它看起来好可爱！）</color>]]></sentence>
            </sentences>
        </section>
