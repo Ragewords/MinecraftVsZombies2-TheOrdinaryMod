@@ -857,13 +857,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 12d387470de1d444caf9d5494a99b9c3
-    m_Address: mvz2:entity/contraptions/funnelenser_goggles
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 12d4c96d4fdd547419603de3a1afb289
     m_Address: mvz2:charged_bolt3
     m_ReadOnly: 0
@@ -5041,13 +5034,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 725b15783bc45024f9bf81bac7372247
-    m_Address: mvz2:contraption/ship/funnelenser
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7265f8a33ab317f44ba9a985f1f557ff
     m_Address: mvz2:bones/nyan_cat
     m_ReadOnly: 0
@@ -5291,6 +5277,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 788240ece2bcd42459ca45c8a6842800
+    m_Address: mvz2:data_copy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7891ad9049ccbeb45810adbce12d4cfa
     m_Address: mvz2:misc/giant_in_mausoleum
@@ -8497,13 +8490,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c1d7959b29cd74a4e8c55b17b3233c75
-    m_Address: mvz2:entity/contraption/funnelenser
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c1f7123b5f8de1640b46858b3fc6914e
     m_Address: mvz2:entity/effect/flesh_part_censored
