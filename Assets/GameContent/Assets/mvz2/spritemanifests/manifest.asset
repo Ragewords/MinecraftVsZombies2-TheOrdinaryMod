@@ -583,8 +583,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 78c20e0b07a17e3458c71c08eeba7030, type: 3}
   - name: entity/contraptions/force_wave
     sprite: {fileID: 21300000, guid: c91919e3f10e9004f85638cba2384e3e, type: 3}
-  - name: entity/contraptions/funnelenser_goggles
-    sprite: {fileID: 21300000, guid: 12d387470de1d444caf9d5494a99b9c3, type: 3}
   - name: entity/contraptions/giant_bowl
     sprite: {fileID: 21300000, guid: 84a7f7624ce186d43bdfe0a7c6d53f6b, type: 3}
   - name: entity/contraptions/giant_bowl_point
@@ -1700,12 +1698,6 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 29141504, guid: bafd8d60319920d40a5881b8a2776d56, type: 3}
     - {fileID: -2067564325, guid: bafd8d60319920d40a5881b8a2776d56, type: 3}
-  - name: entity/contraption/funnelenser
-    spritesheet:
-    - {fileID: -410507342, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
-    - {fileID: 1738013645, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
-    - {fileID: -761731477, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
-    - {fileID: 1412319369, guid: c1d7959b29cd74a4e8c55b17b3233c75, type: 3}
   - name: entity/contraption/furnace
     spritesheet:
     - {fileID: -2038677847, guid: 516d74eccaaf1e24fb1a0ab53d0f2657, type: 3}

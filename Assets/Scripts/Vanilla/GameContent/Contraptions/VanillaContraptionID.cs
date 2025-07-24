@@ -62,7 +62,7 @@ namespace MVZ2.GameContent.Contraptions
         public const string dimensionHammer = "dimension_hammer";
         public const string fireChargeDispenser = "fire_charge_dispenser";
         public const string youkaiLeaf = "youkai_leaf";
-        public const string funnelenser = "funnelenser";
+        public const string smoker = "smoker";
 
         public const string anvil = "anvil";
         public const string randomChina = "random_china";
@@ -127,7 +127,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly NamespaceID dimensionHammer = Get(VanillaContraptionNames.dimensionHammer);
         public static readonly NamespaceID fireChargeDispenser = Get(VanillaContraptionNames.fireChargeDispenser);
         public static readonly NamespaceID youkaiLeaf = Get(VanillaContraptionNames.youkaiLeaf);
-        public static readonly NamespaceID funnelenser = Get(VanillaContraptionNames.funnelenser);
+        public static readonly NamespaceID smoker = Get(VanillaContraptionNames.smoker);
 
         public static readonly NamespaceID anvil = Get(VanillaContraptionNames.anvil);
         public static readonly NamespaceID randomChina = Get(VanillaContraptionNames.randomChina);
