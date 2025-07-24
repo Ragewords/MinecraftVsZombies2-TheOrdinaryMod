@@ -149,7 +149,7 @@ namespace MVZ2.GameContent.Contraptions
                 var damage = entity.GetDamage() * DAMAGE_MULTIPLIER;
                 if (entity.IsEvoked())
                 {
-                    ExplodeEvoked(entity, range);
+                    ExplodeEvoked(entity, range * 5 / 3);
                 }
                 else
                 {

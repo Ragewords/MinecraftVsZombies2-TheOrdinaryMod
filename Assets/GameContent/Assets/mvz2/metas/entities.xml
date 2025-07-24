@@ -3009,8 +3009,8 @@
         <effect id="annihilation_field">
             <properties>
                 <bool name="mvz2:decorative" value="false" />
-                <int name="mvz2:maxTimeout" value="35" />
-                <float name="mvz2:range" value="120" />
+                <int name="mvz2:maxTimeout" value="125" />
+                <float name="mvz2:range" value="200" />
             </properties>
         </effect>
         <effect id="desire_lump">

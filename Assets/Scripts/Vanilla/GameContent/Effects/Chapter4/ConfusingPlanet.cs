@@ -37,7 +37,7 @@ namespace MVZ2.GameContent.Effects
             base.PostCollision(collision, state);
             var other = collision.Other;
             var self = collision.Entity;
-            bool inactive = self.Timeout <= 100;
+            bool inactive = self.Timeout <= 30;
             if (inactive)
                 return;
             if (!other.Exists())

@@ -30,23 +30,21 @@ namespace MVZ2.GameContent.Effects
             };
         }
         #endregion
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            entity.Level.AddLoopSoundEntity(VanillaSoundID.gravitationSurge, entity.ID);
-            entity.PlaySound(VanillaSoundID.annihilationField);
-        }
-
         public override void Update(Entity entity)
         {
             base.Update(entity);
 
             var range = entity.GetRange();
             entity.SetDisplayScale(Vector3.one * (range / 65));
-            entity.Level.ShakeScreen(5, 0, 15);
+            entity.Level.ShakeScreen(entity.Timeout <= 35 ? 5 : 0, 0, 15);
 
-            bool active = entity.Timeout > 5;
+            bool active = entity.Timeout > 5 && entity.Timeout <= 35;
             entity.SetAnimationBool("Started", active);
+
+            if (entity.Timeout == 35)
+            {
+                entity.PlaySound(VanillaSoundID.annihilationField);
+            }
             if (!active)
                 return;
 
