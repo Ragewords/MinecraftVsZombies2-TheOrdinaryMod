@@ -130,6 +130,6 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
         public const int REGENERATE_TIME = 600;
-        public const int REGENERATE_TIME_EVOKED = 180;
+        public const int REGENERATE_TIME_EVOKED = 155;
     }
 }
