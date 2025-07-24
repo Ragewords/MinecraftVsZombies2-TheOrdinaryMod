@@ -100,7 +100,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
                 UpdateInterval = 3;
-                protectDetector = new CollisionDetector()
+                protectDetector = new LightningOrbEnergyShieldDetector()
                 {
                     factionTarget = FactionTarget.Friendly
                 };
@@ -118,6 +118,8 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var id in protectDetectBuffer)
                 {
                     if (id.HasBuff<LightningOrbEnergyShieldBuff>())
+                        continue;
+                    if (id.HasBuff<DevourerInvincibleBuff>())
                         continue;
                     results.Add(id);
                 }
