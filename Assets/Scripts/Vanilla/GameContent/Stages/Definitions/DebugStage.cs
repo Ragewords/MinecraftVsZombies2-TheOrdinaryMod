@@ -45,13 +45,13 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.highFrequencyPulseDispenser,
-                VanillaContraptionID.teslaCoil,
+                VanillaContraptionID.fireChargeDispenser,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.skeleton,
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.mutantZombie,
+                VanillaEnemyID.jackDullahan,
                 VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);
