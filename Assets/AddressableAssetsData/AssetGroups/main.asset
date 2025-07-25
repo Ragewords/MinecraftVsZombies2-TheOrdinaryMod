@@ -5859,6 +5859,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8359c6da4c2c5cb47b836796b433cdac
+    m_Address: mvz2:taiko_don
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8365c8b175287344896fb550aa2212b6
     m_Address: mvz2:bones/cart
     m_ReadOnly: 0
