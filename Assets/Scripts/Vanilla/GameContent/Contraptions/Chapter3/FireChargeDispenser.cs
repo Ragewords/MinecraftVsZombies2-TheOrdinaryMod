@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Contraptions
     {
         public FireChargeDispenser(string nsp, string name) : base(nsp, name)
         {
-            detector = new TeslaCoilDetector(ATTACK_HEIGHT);
+            detector = new DispenserDetector();
         }
         public override void Init(Entity entity)
         {

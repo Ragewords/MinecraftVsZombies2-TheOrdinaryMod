@@ -1003,7 +1003,7 @@
         </entry>
         <entry id="mvz2:fire_charge_dispenser">
             <header>
-                <p>火焰弹发射器会同时向周围的最多3个怪物投掷火焰弹。</p>
+                <p>火焰弹发射器会同时向前方的最多3个怪物投掷火焰弹。</p>
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>4秒</color>]]></p>
