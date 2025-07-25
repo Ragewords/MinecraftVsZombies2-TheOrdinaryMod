@@ -30,8 +30,6 @@ namespace MVZ2.GameContent.Projectiles
                 var vel = other.Velocity;
                 vel.x += 5 * Mathf.Sign(projectile.Velocity.x) * other.GetWeakKnockbackMultiplier();
                 other.Velocity = vel;
-                if (other.GetMainArmor() == null && other.CanDeactive())
-                    other.Stun(30);
                 projectile.PlaySound(VanillaSoundID.bash);
             }
 
