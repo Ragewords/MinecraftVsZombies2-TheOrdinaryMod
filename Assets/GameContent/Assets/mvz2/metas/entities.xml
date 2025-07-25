@@ -1708,12 +1708,13 @@
                 <int name="mvz2:cost" value="25" />
             </properties>
         </enemy>
-        <enemy id="brainwasher" name="洗脑者" deathMessage="H E L P" unlock="mvz2:level.castle_11">
+        <witherSkeleton id="brainwasher" name="洗脑者" deathMessage="你是爱迪生，你是爱迪生" unlock="mvz2:level.castle_11">
             <properties>
                 <float name="mvz2:maxHealth" value="800"/>
                 <float name="mvz2:range" value="800"/>
                 <vector3 name="mvz2:shotOffset" x="30" y="96" z="0"/>
                 <vector3 name="mvz2:shotVelocity" x="0" y="0" z="0"/>
+                <id name="mvz2:starting_armor" value="mvz2:brainwasher_crown" />
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:projectileId" value="mvz2:compelling_orb"/>
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
@@ -1725,7 +1726,7 @@
                 <int name="mvz2:waterInteraction" value="2"/>
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
-        </enemy>
+        </witherSkeleton>
         <witherSkeleton id="bedserker" name="床战士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:bedserker_helmet" />
@@ -1740,7 +1741,7 @@
                 <int name="mvz2:cost" value="1000" />
             </properties>
         </witherSkeleton>
-        <enemy id="jackdullahan" name="万圣骑士" deathMessage="南瓜头也是头！" unlock="mvz2:level.castle_11">
+        <witherSkeleton id="jackdullahan" name="万圣骑士" deathMessage="南瓜头也是头！" unlock="mvz2:level.castle_11">
             <properties>
                 <float name="mvz2:maxHealth" value="600"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
@@ -1752,7 +1753,7 @@
                 <int name="mvz2:waterInteraction" value="2"/>
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
-        </enemy>
+        </witherSkeleton>
         <enemy id="jackdullahan_head" name="万圣骑士的头" deathMessage="两个头给你看晕了？" unlock="mvz2:level.castle_11">
             <properties>
                 <float name="mvz2:maxHealth" value="300"/>
@@ -1762,7 +1763,7 @@
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
                 <id name="mvz2:hitSound" value="mvz2:bone_hit"/>
                 <id name="mvz2:deathSound" value="mvz2:wither_skeleton_death"/>
-                <vector3 name="mvz2:size" x="32" y="22" z="32"/>
+                <vector3 name="mvz2:size" x="38" y="26" z="38" />
 
                 <int name="cost" value="100" />
             </properties>
