@@ -1032,7 +1032,7 @@
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>30/秒</color>]]></p>
                 <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
                 <p>技能：<![CDATA[<color=red>持续向前方3×5的区域不断喷射烟熏火焰</color>]]></p>
             </properties>
