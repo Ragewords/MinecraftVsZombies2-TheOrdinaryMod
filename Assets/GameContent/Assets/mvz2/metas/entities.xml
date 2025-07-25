@@ -1710,7 +1710,7 @@
         </enemy>
         <witherSkeleton id="brainwasher" name="洗脑者" deathMessage="你是爱迪生，你是爱迪生" unlock="mvz2:level.castle_11">
             <properties>
-                <float name="mvz2:maxHealth" value="800"/>
+                <float name="mvz2:maxHealth" value="3000"/>
                 <float name="mvz2:range" value="800"/>
                 <vector3 name="mvz2:shotOffset" x="30" y="96" z="0"/>
                 <vector3 name="mvz2:shotVelocity" x="0" y="0" z="0"/>
@@ -1741,9 +1741,9 @@
                 <int name="mvz2:cost" value="1000" />
             </properties>
         </witherSkeleton>
-        <witherSkeleton id="jackdullahan" name="万圣骑士" deathMessage="南瓜头也是头！" unlock="mvz2:level.castle_11">
+        <witherSkeleton id="jackdullahan" name="万圣骑士" deathMessage="不要到遮里来……" unlock="mvz2:level.castle_11">
             <properties>
-                <float name="mvz2:maxHealth" value="600"/>
+                <float name="mvz2:maxHealth" value="1000"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
                 <id name="mvz2:hitSound" value="mvz2:bone_hit"/>
@@ -1754,9 +1754,9 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </witherSkeleton>
-        <enemy id="jackdullahan_head" name="万圣骑士的头" deathMessage="两个头给你看晕了？" unlock="mvz2:level.castle_11">
+        <enemy id="jackdullahan_head" name="万圣骑士的头" deathMessage="脑袋好疼。" unlock="mvz2:level.castle_11">
             <properties>
-                <float name="mvz2:maxHealth" value="300"/>
+                <float name="mvz2:maxHealth" value="500"/>
                 <float name="mvz2:mass" value="-1" />
                 <float name="mvz2:speed" value="2"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
@@ -1770,7 +1770,7 @@
         </enemy>
         <enemy id="soul_skeleton_horse" name="灵魂骷髅马" deathMessage="TMD好大的胆子，敢杀我的马？！" unlock="mvz2:level.castle_11">
             <properties>
-                <float name="mvz2:maxHealth" value="900"/>
+                <float name="mvz2:maxHealth" value="1500"/>
                 <float name="mvz2:fallResistance" value="15"/>
                 <id name="mvz2:shell" value="mvz2:bone"/>
                 <id name="mvz2:crySound" value="mvz2:skeleton_horse_cry"/>

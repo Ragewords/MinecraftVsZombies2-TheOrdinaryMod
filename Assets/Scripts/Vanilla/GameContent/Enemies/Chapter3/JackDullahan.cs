@@ -1,7 +1,10 @@
-﻿using MVZ2.GameContent.Damages;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Models;
-using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -14,11 +17,11 @@ using PVZEngine.Level;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.jackDullahan)]
-    public class JackDullahan : MeleeEnemy
+    public class JackDullahan : StateEnemy
     {
         public JackDullahan(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
+            spinDetector = new JackDullahanSpinDetector(48);
         }
         public override void Init(Entity entity)
         {
@@ -53,6 +56,10 @@ namespace MVZ2.GameContent.Enemies
                 {
                     return STATE_IDLE;
                 }
+                else
+                {
+                    return STATE_CAST;
+                }
             }
             return baseState;
         }
@@ -71,6 +78,23 @@ namespace MVZ2.GameContent.Enemies
                     DropHead(enemy);
                 }
             }
+            if (enemy.State == STATE_CAST)
+            {
+                var vel = enemy.Velocity;
+                vel.x = enemy.GetSpeed() * 1.5f * enemy.GetFacingX();
+                enemy.Velocity = vel;
+                if (enemy.IsTimeInterval(10))
+                {
+                    enemy.PlaySound(VanillaSoundID.swing, pitch: enemy.RNG.Next(0.8f, 1.2f));
+                }
+                spinBuffer.Clear();
+                spinDetector.DetectEntities(enemy, spinBuffer);
+                foreach (var target in spinBuffer)
+                {
+                    target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
+                    target.InflictWither(150);
+                }
+            }
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -85,7 +109,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
             {
                 return;
             }
@@ -95,21 +119,8 @@ namespace MVZ2.GameContent.Enemies
         {
             if (IsHeadDropped(entity))
                 return;
-            for (var i = 0; i < 3; i++)
-            {
-                entity.SpawnWithParams(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
-            }
+            entity.SpawnWithParams(VanillaEnemyID.jackDullahanHead, entity.GetCenter());
             SetHeadDropped(entity, true);
-        }
-        private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
-        {
-            var enemy = param.enemy;
-            var target = param.target;
-            if (!enemy.IsEntityOf(VanillaEnemyID.jackDullahan))
-                return;
-            if (!target.IsHostile(enemy))
-                return;
-            target.InflictWither(30);
         }
 
         public static bool IsHeadDropped(Entity entity) => entity.GetBehaviourField<bool>(ID, FIELD_HEAD_DROPPED);
@@ -117,6 +128,9 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
+        public const int STATE_CAST = VanillaEntityStates.ENEMY_CAST;
         private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
+        private Detector spinDetector;
+        private List<Entity> spinBuffer = new List<Entity>();
     }
 }
