@@ -34,7 +34,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             ShootTick(entity);
             var waveTimer = GetWaveTimer(entity);
-            waveTimer.Run();
+            waveTimer.Run(entity.GetAttackSpeed());
         }
         protected override void UpdateLogic(Entity entity)
         {
