@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -15,6 +19,11 @@ namespace MVZ2.GameContent.Enemies
     {
         public Spellcaster(string nsp, string name) : base(nsp, name)
         {
+            detector = new LawnDetector()
+            {
+                mask = EntityCollisionHelper.MASK_ENEMY,
+                factionTarget = FactionTarget.Friendly
+            };
         }
 
         public override void Init(Entity entity)
@@ -44,9 +53,11 @@ namespace MVZ2.GameContent.Enemies
             {
                 var stateTimer = GetStateTimer(entity);
                 stateTimer.Run(entity.GetAttackSpeed());
+                healBuffer.Clear();
+                detector.DetectEntities(entity, healBuffer);
                 if (stateTimer.Expired)
                 {
-                    var heal_target = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY && e.ID != entity.ID && !e.IsNotActiveEnemy() && !e.IsDead && e.Health < e.GetMaxHealth()).RandomTake(1, entity.RNG);
+                    var heal_target = healBuffer.Where(e => !e.IsNotActiveEnemy() && e.Health < e.GetMaxHealth()).RandomTake(1, entity.RNG);
                     if (heal_target == null)
                     {
                         stateTimer.Frame = CONTROL_DETECT_TIME;
@@ -94,8 +105,10 @@ namespace MVZ2.GameContent.Enemies
         public static FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
 
         #region ����
-        private const int CAST_COOLDOWN = 300;
+        private const int CAST_COOLDOWN = 240;
         private const int CONTROL_DETECT_TIME = 30;
+        private Detector detector;
+        private List<Entity> healBuffer = new List<Entity>();
 
         public const int STATE_WALK = VanillaEntityStates.WALK;
         public const int STATE_ATTACK = VanillaEntityStates.ATTACK;
