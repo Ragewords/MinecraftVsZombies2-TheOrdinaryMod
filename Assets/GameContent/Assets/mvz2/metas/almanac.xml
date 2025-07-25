@@ -298,7 +298,7 @@
             </header>
             <properties>
                 <p>提供能量：<![CDATA[<color=red>1点/1.6秒，而后1点/1秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>升级后立即提供150能量</color>]]></p>
+                <p>特点：<![CDATA[<color=red>升级后立即提供75能量</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即升级，发出蓝光，并使生产量变为2.5倍</color>]]></p>
             </properties>
             <flavor>

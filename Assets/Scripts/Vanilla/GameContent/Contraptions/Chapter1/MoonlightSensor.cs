@@ -62,7 +62,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.RemoveBuffs<MoonlightSensorLaunchingBuff>();
             entity.PlaySound(VanillaSoundID.screw);
             var energyDirection = entity.IsFriendlyEntity() ? 1 : -1;
-            entity.Level.AddEnergy(150 * energyDirection);
+            entity.Level.AddEnergy(75 * energyDirection);
         }
         public static FrameTimer GetProductionTimer(Entity entity)
         {
