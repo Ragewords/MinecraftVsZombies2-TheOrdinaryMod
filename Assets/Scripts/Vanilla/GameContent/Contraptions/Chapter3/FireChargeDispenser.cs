@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Contraptions
                     var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(3);
                     foreach (var target in targets)
                     {
-                        var targetPos = target.Position;
+                        var targetPos = target.GetCenter();
                         var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
                         Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
                     }
@@ -99,7 +99,7 @@ namespace MVZ2.GameContent.Contraptions
             var targetPos = grid.GetEntityPosition();
             foreach (var target in targets)
             {
-                targetPos = target.Position;
+                targetPos = target.GetCenter();
             }
             var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
 
