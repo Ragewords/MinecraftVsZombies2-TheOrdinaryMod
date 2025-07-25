@@ -98,6 +98,7 @@ namespace MVZ2.GameContent.Contraptions
             public EnergyShield()
             {
                 BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
+                UpdateInterval = 3;
                 protectDetector = new LightningOrbEnergyShieldDetector()
                 {
                     mask = EntityCollisionHelper.MASK_VULNERABLE,

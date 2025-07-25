@@ -54,8 +54,8 @@ namespace MVZ2.GameContent.Enemies
             {
                 if (child.IsEntityOf(VanillaEnemyID.shikaisenPot))
                 {
-                    if (!child.ExistsAndAlive())
-                        enemy.Die();
+                    if (child.IsDead)
+                        enemy.Die(child);
                 }
             }
         }
