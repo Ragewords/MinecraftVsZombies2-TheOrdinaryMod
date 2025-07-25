@@ -662,8 +662,8 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这个是磁暴线圈！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它能够电击周围的敌人！也包括空中的！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">电击时不仅能产生电磁爆，还能够和其它磁暴线圈之间产生电场！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它能够电击周围的敌人！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">当然，也包括空中的！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">你确定这是我们世界的东西？</sentence>
       </sentences>
     </section>

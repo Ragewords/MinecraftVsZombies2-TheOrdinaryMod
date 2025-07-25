@@ -651,7 +651,7 @@
                 <bool name="glowUnable" value="false"/>
                 <color name="mvz2:lightColor" value="#7F7FFF" />
 
-                <int name="mvz2:cost" value="325" />
+                <int name="mvz2:cost" value="300" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
