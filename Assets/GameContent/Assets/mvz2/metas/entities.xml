@@ -1714,6 +1714,7 @@
                 <float name="mvz2:range" value="800"/>
                 <vector3 name="mvz2:shotOffset" x="30" y="96" z="0"/>
                 <vector3 name="mvz2:shotVelocity" x="0" y="0" z="0"/>
+                <vector3 name="mvz2:size" x="38" y="103" z="38" />
                 <id name="mvz2:starting_armor" value="mvz2:brainwasher_crown" />
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:projectileId" value="mvz2:compelling_orb"/>
@@ -1733,6 +1734,7 @@
                 <float name="mvz2:range" value="80" />
                 <float name="mvz2:speed" value="2" />
                 <float name="mvz2:maxHealth" value="10000" />
+                <vector3 name="mvz2:size" x="38" y="103" z="38" />
                 <id name="mvz2:shell" value="mvz2:nether" />
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry" />
                 <id name="mvz2:hitSound" value="mvz2:bone_hit" />
@@ -1743,6 +1745,7 @@
         </witherSkeleton>
         <witherSkeleton id="jackdullahan" name="万圣骑士" deathMessage="不要到遮里来……" unlock="mvz2:level.castle_11">
             <properties>
+                <vector3 name="mvz2:size" x="38" y="77" z="38" />
                 <float name="mvz2:maxHealth" value="2000"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>

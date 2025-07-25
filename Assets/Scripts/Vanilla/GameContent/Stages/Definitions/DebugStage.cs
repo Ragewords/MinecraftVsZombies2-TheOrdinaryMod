@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.skeleton,
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.jackDullahan,
+                VanillaEnemyID.emperorZombie,
                 VanillaBossID.theGiant,
             });
             level.SetArtifactSlotCount(3);

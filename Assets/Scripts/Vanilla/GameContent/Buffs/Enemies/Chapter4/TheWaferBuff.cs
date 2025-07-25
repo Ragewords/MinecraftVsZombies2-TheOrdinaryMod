@@ -1,8 +1,8 @@
+using System.Linq;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
@@ -40,7 +40,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (buff == null)
                 return;
 
-            input.Multiply(0.5f);
+            var buffs = entity.GetBuffs<TheWaferBuff>();
+            input.Multiply(Mathf.Max(1 - buffs.Count() / 10, 0));
+            buff.Remove();
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
