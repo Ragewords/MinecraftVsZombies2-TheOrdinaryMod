@@ -129,8 +129,6 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     target.RandomChangeAdjacentLane(self.RNG);
                 }
-                if (target.CanDeactive())
-                    target.Stun(120);
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
                 {
@@ -151,12 +149,14 @@ namespace MVZ2.GameContent.Contraptions
                     continue;
                 var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
 
+                if (target.CanDeactive())
+                    target.Stun(30);
                 var vel = target.Velocity;
-                vel.x = 8 * knockbackMultiplier;
+                vel.x = 4 * knockbackMultiplier;
                 target.Velocity = vel;
             }
-            self.Level.ShakeScreen(5, 0, 10);
-            self.PlaySound(VanillaSoundID.lightningAttack);
+            self.Level.ShakeScreen(15, 0, 10);
+            self.PlaySound(VanillaSoundID.taikoDon);
         }
         private float GetChargeBlend(Entity self)
         {
@@ -174,7 +174,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public const int RESTORE_TIME = 1800;
         public const int EVOCATION_DURATION = 120;
-        public const float TOTAL_HP_LOSS = 0.4f;
+        public const float TOTAL_HP_LOSS = 0.25f;
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_BROKEN = new VanillaEntityPropertyMeta<bool>("Broken");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> FIELD_RESTORE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RestoreTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> FIELD_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");

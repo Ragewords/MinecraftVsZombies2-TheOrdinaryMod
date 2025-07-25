@@ -194,6 +194,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID stoneHatch = Get("stone_hatch");
         public readonly static NamespaceID stunned = Get("stunned");
         public readonly static NamespaceID swing = Get("swing");
+        public readonly static NamespaceID taikoDon = Get("taiko_don");
         public readonly static NamespaceID tap = Get("tap");
         public readonly static NamespaceID teslaAttack = Get("tesla_attack");
         public readonly static NamespaceID teslaPower = Get("tesla_power");
