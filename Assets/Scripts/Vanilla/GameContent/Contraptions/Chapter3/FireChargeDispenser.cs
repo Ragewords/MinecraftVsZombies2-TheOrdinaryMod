@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Projectiles;
@@ -34,6 +35,7 @@ namespace MVZ2.GameContent.Contraptions
             var evokeTimer = GetEvocationTimer(entity);
             evokeTimer.Reset();
             entity.SetEvoked(true);
+            entity.PlaySound(VanillaSoundID.gunReload);
             entity.PlaySound(VanillaSoundID.fuse);
         }
         protected override void UpdateAI(Entity entity)
@@ -45,8 +47,10 @@ namespace MVZ2.GameContent.Contraptions
                 shootTimer.Run(entity.GetAttackSpeed());
                 if (shootTimer.Expired)
                 {
-                    var target = detector.DetectEntityWithTheMost(entity, t => GetTargetPriority(entity, t));
-                    if (target != null)
+                    detectBuffer.Clear();
+                    detector.DetectEntities(entity, detectBuffer);
+                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(3);
+                    foreach (var target in targets)
                     {
                         var targetPos = target.Position;
                         var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
@@ -95,11 +99,9 @@ namespace MVZ2.GameContent.Contraptions
             var targetPos = grid.GetEntityPosition();
             foreach (var target in targets)
             {
-                var targetGrid = target.GetGrid();
-                if (targetGrid != null)
-                    targetPos = targetGrid.GetEntityPosition();
+                targetPos = target.Position;
             }
-            var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 60, GRAVITY);
+            var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
 
             if (evokeTimer.PassedInterval(10))
             {
@@ -111,7 +113,7 @@ namespace MVZ2.GameContent.Contraptions
                 Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
             }
 
-            if (evokeTimer.PassedInterval(24))
+            if (evokeTimer.PassedInterval(30))
             {
                 Shoot(entity, VanillaProjectileID.miniTNT, entity.GetDamage() * 5, velocity);
             }
@@ -140,14 +142,15 @@ namespace MVZ2.GameContent.Contraptions
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_MISSLE_TIMEOUT);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
-        public const int ATTACK_COOLDOWN = 60;
-        public const int EVOKATION_TIMER = 120;
+        public const int ATTACK_COOLDOWN = 120;
+        public const int EVOKATION_TIMER = 90;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 160;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<FrameTimer>("MissleTimeout");
 
         private Detector detector;
+        private List<Entity> detectBuffer = new List<Entity>();
         private static readonly NamespaceID ID = VanillaContraptionID.fireChargeDispenser;
     }
 }

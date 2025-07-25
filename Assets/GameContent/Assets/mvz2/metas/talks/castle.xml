@@ -972,9 +972,8 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">这是火焰弹发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能够向周围的敌人投掷火焰弹！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">同时，由于自身的攻击特点，它也能攻击到空中的敌人！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">对怪物们进行火力威慑吧！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能够向周围的最多3个敌人投掷火焰弹，造成群体伤害！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">是时候给怪物们一点火力威慑了！</sentence>
       </sentences>
     </section>
   </group>

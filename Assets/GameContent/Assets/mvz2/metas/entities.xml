@@ -982,7 +982,7 @@
         <contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的怪物投掷火焰弹"  unlock="mvz2:level.castle_EX1">
             <properties>
                 <float name="mvz2:range" value="200"/>
-                <float name="mvz2:damage" value="60"/>
+                <float name="mvz2:damage" value="100"/>
                 <id name="mvz2:projectileId" value="mvz2:fire_charge"/>
                 <id name="mvz2:shootSound" value="mvz2:fire_charge"/>
                 <id name="mvz2:fragmentId" value="mvz2:furnace"/>
@@ -990,7 +990,7 @@
                 <vector3 name="mvz2:size" x="48" y="48" z="48"/>
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy mvz2:flying_enemy" />
 
-                <int name="mvz2:cost" value="175" />
+                <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
