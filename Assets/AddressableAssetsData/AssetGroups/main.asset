@@ -2229,7 +2229,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 323c937ccf5b0c2409641c937f5b319c
-    m_Address: mvz2:entity/enemy/curseer_body
+    m_Address: mvz2:entity/enemy/spellcaster_body
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -3817,7 +3817,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55e108afa20824c4bb9a1fab72673c9f
-    m_Address: mvz2:entity/enemy/tanooki_zombie_stone
+    m_Address: mvz2:entity/enemy/tanooki_zombie_statue
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -7057,7 +7057,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9da6fd0af3ae7e642b22ea45d6088295
-    m_Address: mvz2:entity/enemies/curseer_head
+    m_Address: mvz2:entity/enemies/spellcaster_head
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -7631,7 +7631,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aaf437ca9eaf4eb43b39c4c2bba718a9
-    m_Address: mvz2:entity/enemies/curseer_arm
+    m_Address: mvz2:entity/enemies/spellcaster_arm
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
