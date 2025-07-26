@@ -61,8 +61,9 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter());
-            smoke.SetSize(entity.GetSize());
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SIZE, entity.GetSize());
+            var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
             entity.Remove();
         }
         private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
@@ -101,7 +102,7 @@ namespace MVZ2.GameContent.Enemies
                             var bullet = entity.ShootProjectile(param);
                             if (reptimes == 2 || reptimes == 4)
                                 color = Color.blue;
-                            bullet.SetTint(color);
+                            bullet.SetHSVToColor(color);
                         }
                         SetRepeatTime(entity, reptimes - 1);
                         reptimer.Reset();

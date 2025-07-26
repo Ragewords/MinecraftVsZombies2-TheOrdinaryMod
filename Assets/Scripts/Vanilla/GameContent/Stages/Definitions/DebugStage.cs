@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.skeleton,
                 VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.emperorZombie,
-                VanillaBossID.theGiant,
+                VanillaBossID.seija,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
