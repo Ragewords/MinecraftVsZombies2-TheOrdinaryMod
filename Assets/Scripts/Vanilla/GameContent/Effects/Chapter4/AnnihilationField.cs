@@ -25,6 +25,7 @@ namespace MVZ2.GameContent.Effects
         {
             absorbDetector = new BlackholeDetector()
             {
+                mask = EntityCollisionHelper.MASK_VULNERABLE | EntityCollisionHelper.MASK_PROJECTILE,
                 canDetectInvisible = true,
                 factionTarget = FactionTarget.Hostile
             };
