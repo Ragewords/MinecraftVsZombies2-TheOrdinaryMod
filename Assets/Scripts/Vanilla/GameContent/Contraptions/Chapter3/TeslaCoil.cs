@@ -128,6 +128,7 @@ namespace MVZ2.GameContent.Contraptions
             damageEffects = damageEffects ?? new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE);
             var level = source.Level;
             detectBuffer.Clear();
+            gridDetectBuffer.Clear();
             level.OverlapSphereNonAlloc(targetPosition, shockRadius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
             if (targetPosition.y <= level.GetGroundY(targetPosition.x, targetPosition.z) && level.IsWaterAt(targetPosition.x, targetPosition.z))
             {
