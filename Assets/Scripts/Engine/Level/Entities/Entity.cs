@@ -280,15 +280,15 @@ namespace PVZEngine.Entities
         #endregion
 
         #region 增益
-        public Buff CreateBuff<T>() where T : BuffDefinition
+        public Buff NewBuff<T>() where T : BuffDefinition
         {
             return Level.CreateBuff<T>(AllocBuffID());
         }
-        public Buff CreateBuff(BuffDefinition buffDefinition)
+        public Buff NewBuff(BuffDefinition buffDefinition)
         {
             return Level.CreateBuff(buffDefinition, AllocBuffID());
         }
-        public Buff CreateBuff(NamespaceID id)
+        public Buff NewBuff(NamespaceID id)
         {
             return Level.CreateBuff(id, AllocBuffID());
         }
@@ -303,7 +303,7 @@ namespace PVZEngine.Entities
         }
         public Buff AddBuff<T>() where T : BuffDefinition
         {
-            var buff = CreateBuff<T>();
+            var buff = NewBuff<T>();
             AddBuff(buff);
             return buff;
         }
@@ -650,6 +650,7 @@ namespace PVZEngine.Entities
             };
             Level.Triggers.RunCallback(LevelCallbacks.POST_EQUIP_ARMOR, param);
             OnEquipArmor?.Invoke(slot, armor);
+            armor.PostAdd();
         }
         public void RemoveArmor(NamespaceID slot)
         {
@@ -671,6 +672,7 @@ namespace PVZEngine.Entities
             };
             Level.Triggers.RunCallback(LevelCallbacks.POST_REMOVE_ARMOR, param);
             OnRemoveArmor?.Invoke(slot, armor);
+            armor.PostRemove();
         }
         public void DestroyArmor(NamespaceID slot, ArmorDestroyInfo info)
         {
@@ -985,6 +987,8 @@ namespace PVZEngine.Entities
         }
         public void LoadAuras(SerializableEntity seri)
         {
+            buffs.LoadAuras(seri.buffs, Level);
+
             CreateAuraEffects();
             auras.LoadFromSerializable(Level, seri.auras);
 

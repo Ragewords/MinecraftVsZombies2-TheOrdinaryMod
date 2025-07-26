@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-07-09 12:58+0800\n"
+"POT-Creation-Date: 2025-07-11 07:44+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,9 +13,7 @@ msgstr ""
 
 #. 初始界面的作者标识
 #: /MainGame/MainScene/Init/Splash/Canvas/Creator
-msgid ""
-"Cuerzor制作\n"
-"生气字改编"
+msgid "Cuerzor制作"
 msgstr ""
 
 #. 菜单对话框的标题
@@ -689,22 +687,22 @@ msgid "试着挖掉所有器械！"
 msgstr ""
 
 # 选卡警告，{0}为原器械，{1}为升级器械
-#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:159
+#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:155
 msgid "你确定想要在没有{0}的情况下使用{1}？"
 msgstr ""
 
 # 选卡警告，{0}为目标敌人
-#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:161
+#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:157
 msgid "你没有选能干掉{0}的器械，确定要继续吗？"
 msgstr ""
 
 # 选卡警告
-#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:163
+#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:159
 msgid "你没有选能生产能量的器械，确定要继续吗？"
 msgstr ""
 
 # 选卡警告
-#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:165
+#: Scripts\Vanilla\GameContent\Implements\BlueprintRecommendImplements.cs:161
 msgid "你确定这关不使用任何水生器械吗？"
 msgstr ""
 
@@ -1248,134 +1246,139 @@ msgid "确认要重置所有按键绑定吗？"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:532
+#: Scripts\MVZ2\Options\OptionsLogic.cs:546
 msgid "交换触发：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:534
+#: Scripts\MVZ2\Options\OptionsLogic.cs:548
 msgid "全屏：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:536
+#: Scripts\MVZ2\Options\OptionsLogic.cs:550
 msgid "设备震动：{0}"
 msgstr ""
 
 # 选项，{0}为难度
-#: Scripts\MVZ2\Options\OptionsLogic.cs:538
+#: Scripts\MVZ2\Options\OptionsLogic.cs:552
 msgid "难度：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:540
+#: Scripts\MVZ2\Options\OptionsLogic.cs:554
 msgid "后台暂停：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:544
+#: Scripts\MVZ2\Options\OptionsLogic.cs:558
 msgid "音乐音量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:546
+#: Scripts\MVZ2\Options\OptionsLogic.cs:560
 msgid "音效音量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:548
+#: Scripts\MVZ2\Options\OptionsLogic.cs:562
 msgid "加速倍率：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:550
+#: Scripts\MVZ2\Options\OptionsLogic.cs:564
 msgid "动画频率：{0}"
 msgstr ""
 
+# 选项，{0}为量
+#: Scripts\MVZ2\Options\OptionsLogic.cs:566
+msgid "HDR光照：{0}"
+msgstr ""
+
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:553
+#: Scripts\MVZ2\Options\OptionsLogic.cs:569
 msgid "血与碎块：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:556
+#: Scripts\MVZ2\Options\OptionsLogic.cs:572
 msgid "跳过对话：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:558
+#: Scripts\MVZ2\Options\OptionsLogic.cs:574
 msgid "赞助者名称：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:560
+#: Scripts\MVZ2\Options\OptionsLogic.cs:576
 msgid "选卡警告：{0}"
 msgstr ""
 
 # 选项，{0}为模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:562
+#: Scripts\MVZ2\Options\OptionsLogic.cs:578
 msgid "命令方块：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:564
+#: Scripts\MVZ2\Options\OptionsLogic.cs:580
 msgid "显示帧率：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:566
+#: Scripts\MVZ2\Options\OptionsLogic.cs:582
 msgid "显示快捷键：{0}"
 msgstr ""
 
 # 命令方块模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:569
+#: Scripts\MVZ2\Options\OptionsLogic.cs:585
 msgctxt "option.command_block_mode"
 msgid "手选"
 msgstr ""
 
 # 命令方块模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:571
+#: Scripts\MVZ2\Options\OptionsLogic.cs:587
 msgctxt "option.command_block_mode"
 msgid "前位"
 msgstr ""
 
 # FPS模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:574
+#: Scripts\MVZ2\Options\OptionsLogic.cs:590
 msgctxt "option.fps_mode"
 msgid "关闭"
 msgstr ""
 
 # FPS模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:576
+#: Scripts\MVZ2\Options\OptionsLogic.cs:592
 msgctxt "option.fps_mode"
 msgid "左上"
 msgstr ""
 
 # FPS模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:578
+#: Scripts\MVZ2\Options\OptionsLogic.cs:594
 msgctxt "option.fps_mode"
 msgid "右上"
 msgstr ""
 
 # FPS模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:580
+#: Scripts\MVZ2\Options\OptionsLogic.cs:596
 msgctxt "option.fps_mode"
 msgid "左下"
 msgstr ""
 
 # FPS模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:582
+#: Scripts\MVZ2\Options\OptionsLogic.cs:598
 msgctxt "option.fps_mode"
 msgid "右下"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:585
+#: Scripts\MVZ2\Options\OptionsLogic.cs:601
 msgid "粒子数量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:587
+#: Scripts\MVZ2\Options\OptionsLogic.cs:603
 msgid "屏幕震动：{0}"
 msgstr ""
 
@@ -2702,7 +2705,7 @@ msgstr ""
 #. Name for stage mvz2:puzzle_dead_balloon
 #: Stage meta file
 msgctxt "levelname"
-msgid "来自深渊"
+msgid "死亡热气球"
 msgstr ""
 
 #. Name for stage mvz2:puzzle_unbreakable
@@ -3034,26 +3037,6 @@ msgid ""
 "呵呵，你可否想到自己？史蒂夫？"
 msgstr ""
 
-#. Name for music mvz2:halloween_level_extra
-#: Music meta file
-msgctxt "music.name"
-msgid "潮湿沼泽-关卡"
-msgstr ""
-
-#. Source for music mvz2:halloween_level_extra
-#: Music meta file
-msgctxt "music.source"
-msgid "我的世界：地下城"
-msgstr ""
-
-#. Description for music mvz2:halloween_level_extra
-#: Music meta file
-msgctxt "music.description"
-msgid ""
-"万圣夜拓展关卡的音乐。\n"
-"出自《我的世界》的衍生作品《我的世界：地下城》，是其中的地点潮湿沼泽的关卡音乐，音乐的风格也确实符合沼泽的特点。"
-msgstr ""
-
 #. Name for music mvz2:dream_level
 #: Music meta file
 msgctxt "music.name"
@@ -3172,21 +3155,6 @@ msgid ""
 "等着吧，哆来咪，我们绝对会把你救出来的。"
 msgstr ""
 
-#. Name for music mvz2:nightmare_boss3
-#: Music meta file
-msgctxt "music.name"
-msgid "Pure Furies ～ 心之所在"
-msgstr ""
-
-#. Description for music mvz2:nightmare_boss3
-#: Music meta file
-msgctxt "music.description"
-msgid ""
-"梦魇第一阶段的音乐。\n"
-"是《东方绀珠传》的六面Boss——纯狐的音乐。\n"
-"这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。"
-msgstr ""
-
 #. Name for music mvz2:nightmare_boss
 #: Music meta file
 msgctxt "music.name"
@@ -3197,7 +3165,7 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第二阶段的音乐。\n"
+"梦魇第一阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐。\n"
 "之前的版本中，它的音乐也是来自《以撒的结合》中的一首音乐。之后我偶然听到了这首音乐，觉得这首音乐更加符合这场战斗的情景，于是便换了。\n"
 "至今还有很多人对我的这个改动不满意。不过既然都改了，就让它去吧。"
@@ -3213,25 +3181,10 @@ msgstr ""
 #: Music meta file
 msgctxt "music.description"
 msgid ""
-"梦魇第三阶段的音乐。\n"
+"梦魇第二阶段的音乐。\n"
 "是《东方绀珠传》的Extra关Boss——赫卡提亚的音乐的后半段。\n"
 "虽然这首音乐已经不再是《以撒的结合》的音乐了，不过其实有个冷知识：\n"
 "梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。"
-msgstr ""
-
-#. Name for music mvz2:dream_level_extra
-#: Music meta file
-msgctxt "music.name"
-msgid "遥遥38万公里的航程"
-msgstr ""
-
-#. Description for music mvz2:dream_level_extra
-#: Music meta file
-msgctxt "music.description"
-msgid ""
-"梦境世界拓展关卡的音乐。\n"
-"是《东方绀珠传》的第五关关卡音乐，克劳恩皮丝战斗前的音乐。\n"
-"充满速度感和浪漫感的曲子，也不乏一些紧张感。"
 msgstr ""
 
 #. Name for music mvz2:gensokyo_map
@@ -3433,21 +3386,6 @@ msgid ""
 "因为老大哥在看着我。"
 msgstr ""
 
-#. Name for music mvz2:castle_level_extra
-#: Music meta file
-msgctxt "music.name"
-msgid "幻想净琉璃"
-msgstr ""
-
-#. Description for music mvz2:castle_level_extra
-#: Music meta file
-msgctxt "music.description"
-msgid ""
-"辉针城拓展关卡的音乐。\n"
-"是《东方辉针城》的第四关Boss——九十九弁弁和九十九八桥的音乐。\n"
-"曾打算直接复用《沉向天空的辉针城》，但思来想去还是换了另一首曲子。"
-msgstr ""
-
 #. Name for music mvz2:mausoleum_map
 #: Music meta file
 msgctxt "music.name"
@@ -3589,21 +3527,6 @@ msgid ""
 "是《洛克人X5》的头目音乐《Lamdabamda》，作为头目“Rangda Bangda”的主题曲。\n"
 "房间里是一副奇怪的壁画，整个房间内充斥着神秘的压迫感。\n"
 "而最后，这压迫感会将你推向深渊。"
-msgstr ""
-
-#. Name for music mvz2:mausoleum_level_extra
-#: Music meta file
-msgctxt "music.name"
-msgid "后院的妖怪参拜道"
-msgstr ""
-
-#. Description for music mvz2:mausoleum_level_extra
-#: Music meta file
-msgctxt "music.description"
-msgid ""
-"梦殿大祀庙拓展关卡的音乐。\n"
-"是《东方神灵庙》Extra关关卡音乐，二岩猯藏战斗前的音乐。\n"
-"听着听着绝对会突然冒出什么复古妖怪的吧。"
 msgstr ""
 
 #. Name for music mvz2:ship_map
@@ -3996,13 +3919,13 @@ msgstr ""
 #. Store item description of mvz2:golden_dropper by character mvz2:crazy_villager
 #: Store meta file
 msgctxt "store_talk"
-msgid "把珠宝投掷器放在木制投掷器上，让它能够发射可以反弹的金球和产生宝石的宝石球！"
+msgid "把金制投掷器放在木制投掷器上，让它能够发射可以反弹，并产生绿宝石的金球！"
 msgstr ""
 
 #. Store item description of mvz2:golden_dropper by character mvz2:tokiko
 #: Store meta file
 msgctxt "store_talk"
-msgid "珠宝投掷器能升级木制投掷器，能发出不停弹来弹去的金球，和可以赚钱的宝石球！"
+msgid "金制投掷器能升级木制投掷器，能发出不停弹来弹去，并且可以赚钱的金球！"
 msgstr ""
 
 #. Store item description of mvz2:hoe by character mvz2:crazy_villager
@@ -4243,18 +4166,6 @@ msgstr ""
 #: Credits meta file
 msgctxt "staff_name"
 msgid "Charlie Calvin"
-msgstr ""
-
-#. Name for credits category 游戏改编
-#: Credits meta file
-msgctxt "credits_category"
-msgid "游戏改编"
-msgstr ""
-
-#. Name for credit staff 游戏改编
-#: Credits meta file
-msgctxt "staff_name"
-msgid "生气字"
 msgstr ""
 
 #. Name for credits category 特别感谢

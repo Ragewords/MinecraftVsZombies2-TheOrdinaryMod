@@ -1,5 +1,6 @@
 ﻿using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
@@ -14,10 +15,7 @@ namespace MVZ2.GameContent.Contraptions
     {
         public DispenserFamily(string nsp, string name) : base(nsp, name)
         {
-            detector = new DispenserDetector()
-            {
-                ignoreHighEnemy = true
-            };
+            detector = GetDetector();
         }
 
         public void InitShootTimer(Entity entity)
@@ -60,7 +58,14 @@ namespace MVZ2.GameContent.Contraptions
             }
             return entity.RNG.Next(ATTACK_INTERVAL_MIN, ATTACK_INTERVAL_MAX + 1);
         }
-        protected DispenserDetector detector;
+        protected virtual Detector GetDetector()
+        {
+            return new DispenserDetector()
+            {
+                ignoreHighEnemy = true
+            };
+        }
+        protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
         private const string PROP_REGION = "dispenser_family";

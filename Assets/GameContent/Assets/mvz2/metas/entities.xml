@@ -824,6 +824,30 @@
                 <int name="mvz2:cost" value="225" />
             </properties>
         </dispenser>
+        <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" unlock="mvz2:level.ship_3">
+            <properties>
+                <id name="mvz2:fragmentId" value="mvz2:dispenser" />
+                <int name="mvz2:cost" value="300" />
+            </properties>
+        </dispenser>
+        <dispenser id="beacon" name="信标" tooltip="向五个方向发射手里剑" unlock="mvz2:level.ship_4">
+            <properties>
+                <float name="mvz2:damage" value="20" />
+                <float name="mvz2:range" value="800" />
+                <vector3 name="mvz2:shotVelocity" x="10" y="0" z="0" />
+                <vector3 name="mvz2:shotOffset" x="0" y="30" z="0" />
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <id name="mvz2:shootSound" value="mvz2:throw" />
+                <id name="mvz2:projectileId" value="mvz2:shuriken" />
+
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="240" y="240" z="240" />
+                <color name="mvz2:lightColor" value="#FFFFFF" />
+
+                <int name="mvz2:cost" value="125" />
+                <id name="mvz2:rechargeId" value="mvz2:short" />
+            </properties>
+        </dispenser>
 
         <!-- Upgrade Contraptions -->
         <dispenser id="infectenser" name="传染发射器" tooltip="（需要小型发射器）\n发射在敌人之间传播的寄生机器人"
@@ -1390,6 +1414,48 @@
             </properties>
         </humanoid>
 
+        <!-- Chapter 5 -->
+        <enemy id="undead_flying_object" name="不死飞行物" deathMessage="被抓走了！" unlock="mvz2:level.ship_1" >
+            <properties>
+                <id name="mvz2:modelId" value="mvz2:entity.undead_flying_object_red" />
+                <float name="mvz2:maxHealth" value="100" />
+                <bool name="mvz2:flying_enemy" value="true" />
+                <bool name="mvz2:harmless" value="true" />
+                <bool name="mvz2:no_align_to_lane" value="true" />
+                <vector3 name="mvz2:starting_position_offset" x="0" y="600" z="0" />
+                <vector3 name="mvz2:size" x="80" y="56" z="56" />
+                <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:shape" value="mvz2:ufo" />
+                <id name="mvz2:crySound" null="true" />
+                <id name="mvz2:deathSound" value="mvz2:power_off" />
+
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="80" y="80" z="80" />
+                <color name="mvz2:lightColor" value="#FFFF00" />
+
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </enemy>
+        <zombie id="cannoneer_zombie" name="炮手僵尸" deathMessage="炮决！" unlock="mvz2:level.ship_3">
+            <properties>
+                <id name="mvz2:starting_shield" value="mvz2:cannon" />
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </zombie>
+        <zombie id="cannonball_zombie" name="炮弹僵尸" deathMessage="-1up" unlock="mvz2:level.ship_4">
+            <properties>
+                <float name="mvz2:maxHealth" value="100" />
+                <float name="mvz2:mass" value="-1" />
+                <float name="mvz2:speed" value="2" />
+                <bool name="mvz2:noReward" value="true" />
+                <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:shape" value="mvz2:dullahan_head" />
+                <vector3 name="mvz2:size" x="38" y="26" z="38" />
+
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </zombie>
+
         <enemy id="mutant_zombie" name="突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.shrine_8">
             <properties>
                 <float name="mvz2:mass" value="2" />
@@ -1832,7 +1898,6 @@
                 <float name="mvz2:maxHealth" value="1200" />
                 <int name="mvz2:maxTimeout" value="1800" />
                 <vector3 name="mvz2:size" x="10" y="56" z="10" />
-                <vector3 name="mvz2:velocityDampen" x="1" y="1" z="1" />
 
                 <int name="mvz2:cost" value="125" />
             </properties>
@@ -2509,6 +2574,67 @@
                 <float name="mvz2:gravity" value="1" />
                 <bool name="mvz2:pointToDirection" value="true" />
             </properties>
+        </projectile>        <projectile id="hell_planet_otherworld">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:hell_planet"/>
+            </behaviours>
+            <properties>
+                <bool name="mvz2:piercing" value="true" />
+                <bool name="mvz2:killOnGround" value="false" />
+                <float name="mvz2:damage" value="999" />
+                <idArray name="mvz2:damageEffects" value="mvz2:damage_body_after_armor_broken" />
+                <vector3 name="mvz2:size" x="52" y="52" z="52" />
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="104" y="104" z="104" />
+                <color name="mvz2:lightColor" value="#FF0000" />
+            </properties>
+        </projectile>
+        <projectile id="hell_planet_earth">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:hell_planet"/>
+            </behaviours>
+            <properties>
+                <bool name="mvz2:piercing" value="true" />
+                <bool name="mvz2:killOnGround" value="false" />
+                <float name="mvz2:damage" value="333" />
+                <idArray name="mvz2:damageEffects" value="mvz2:damage_body_after_armor_broken" />
+                <vector3 name="mvz2:size" x="42" y="42" z="42" />
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="84" y="84" z="84" />
+                <color name="mvz2:lightColor" value="#0000FF" />
+            </properties>
+        </projectile>
+        <projectile id="hell_planet_moon">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:hell_planet"/>
+            </behaviours>
+            <properties>
+                <bool name="mvz2:piercing" value="true" />
+                <bool name="mvz2:killOnGround" value="false" />
+                <float name="mvz2:damage" value="111" />
+                <idArray name="mvz2:damageEffects" value="mvz2:damage_body_after_armor_broken" />
+                <vector3 name="mvz2:size" x="22" y="22" z="22" />
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="44" y="44" z="44" />
+                <color name="mvz2:lightColor" value="#FFFFFF" />
+            </properties>
+        </projectile>
+        <projectile id="shuriken">
+            <properties>
+                <float name="mvz2:damage" value="20" />
+                <vector3 name="mvz2:size" x="52" y="2" z="52" />
+            </properties>
+        </projectile>
+        <projectile id="beacon_meteor">
+            <properties>
+                <bool name="mvz2:isFire" value="true" />
+                <float name="mvz2:range" value="120" />
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+
+                <bool name="mvz2:isLightSource" value="true" />
+                <vector3 name="mvz2:lightRange" x="120" y="120" z="120" />
+                <color name="mvz2:lightColor" value="#FF7F00" />
+            </properties>
         </projectile>
 
         <!-- Effects -->
@@ -3061,6 +3187,14 @@
         <effect id="amplified_roar">
             <properties>
                 <int name="mvz2:maxTimeout" value="54" />
+            </properties>
+        </effect>
+        <effect id="ufo_background">
+            <properties>
+                <float name="mvz2:groundLimitOffset" value="-1000" />
+                <string name="mvz2:sortingLayer" value="Background"/>
+                <int name="mvz2:sortingOrder" value="-100"/>
+                <int name="mvz2:maxTimeout" value="120" />
             </properties>
         </effect>
     </entries>

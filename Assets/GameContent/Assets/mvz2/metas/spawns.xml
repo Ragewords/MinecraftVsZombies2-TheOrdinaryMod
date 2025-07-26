@@ -16,7 +16,7 @@
         <terrain water="true" air="true"/>
         <weight base="3000" />
     </entry>
-    <entry id="flag_zombie" entity="mvz2:flag_zombie" >
+    <entry id="flag_zombie" entity="mvz2:flag_zombie" noEndless="true">
         <spawn level="0" />
         <terrain water="true" air="true"/>
         <weight base="0" />
@@ -128,6 +128,13 @@
     <entry id="tanooki_zombie" entity="mvz2:tanooki_zombie" >
         <spawn level="3" minWave="5"/>
         <weight base="3000" />
+    </entry>
+
+    <!-- Mausoleum -->
+    <entry id="undead_flying_object" type="custom" entity="mvz2:emperor_zombie" />
+    <entry id="cannoneer_zombie" entity="mvz2:cannoneer_zombie" >
+        <spawn level="4" minWave="10" />
+        <weight base="1500" />
     </entry>
     
     <entry id="mutant_zombie" entity="mvz2:mutant_zombie" >

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Implements;
 using MVZ2.GameContent.Seeds;
 using MVZ2.GameContent.Spawns;
@@ -60,6 +61,7 @@ namespace MVZ2.Vanilla
             LoadArtifactProperties(game);
             // 加载选项蓝图信息。
             LoadSeedOptionProperties(game);
+            LoadCustomEntityBlueprints(game);
 
             // 回调。
             ImplementCallbacks(new GemStageImplements());
@@ -187,6 +189,9 @@ namespace MVZ2.Vanilla
                 if (meta == null)
                     continue;
                 var name = meta.ID;
+                var type = meta.Type;
+                if (type != "entity")
+                    continue;
                 var spawnLevel = meta.SpawnLevel;
                 var terrain = meta.Terrain;
                 var weight = meta.Weight;
@@ -195,7 +200,12 @@ namespace MVZ2.Vanilla
                 var air = meta.Terrain?.Air ?? false;
                 var noEndless = meta.NoEndless;
 
-                var spawnDef = new VanillaSpawnDefinition(Namespace, name, spawnLevel, noEndless, new NamespaceID(Namespace, name), excludedTags);
+                var spawnDef = new VanillaSpawnDefinition(Namespace, name);
+                var entityID = new NamespaceID(Namespace, name);
+                var preview = new SpawnPreviewBehaviour(entityID);
+                var inLevel = new SpawnInLevelBehaviour(spawnDef, spawnLevel, entityID, water, air);
+                var endless = new SpawnEndlessBehaviour(spawnLevel <= 0 || noEndless, excludedTags);
+                spawnDef.SetBehaviours(preview, inLevel, endless);
                 spawnDef.SetProperty(VanillaSpawnProps.MIN_SPAWN_WAVE, meta.MinSpawnWave);
                 spawnDef.SetProperty(VanillaSpawnProps.PREVIEW_COUNT, meta.PreviewCount);
                 if (weight != null)
@@ -205,8 +215,14 @@ namespace MVZ2.Vanilla
                     spawnDef.SetProperty(VanillaSpawnProps.WEIGHT_DECAY_END, weight.DecreaseEnd);
                     spawnDef.SetProperty(VanillaSpawnProps.WEIGHT_DECAY, weight.DecreasePerFlag);
                 }
-                spawnDef.CanSpawnAtWaterLane = water;
-                spawnDef.CanSpawnAtAirLane = air;
+                AddDefinition(spawnDef);
+            }
+            {
+                var spawnDef = new VanillaSpawnDefinition(Namespace, VanillaSpawnNames.undeadFlyingObject);
+                var preview = new SpawnPreviewBehaviour(VanillaEnemyID.ufo);
+                var inLevel = new UFOSpawnInLevelBehaviour(2);
+                var endless = new SpawnEndlessBehaviour(false, Array.Empty<NamespaceID>());
+                spawnDef.SetBehaviours(preview, inLevel, endless);
                 AddDefinition(spawnDef);
             }
         }
@@ -331,7 +347,8 @@ namespace MVZ2.Vanilla
                 if (seedOptionDefinition == null)
                     continue;
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.COST, meta.Cost);
-                seedOptionDefinition.SetProperty(LogicSeedOptionProps.ICON, meta.Icon);
+                seedOptionDefinition.SetProperty(LogicSeedOptionProps.ICON, meta.GetIcon());
+                seedOptionDefinition.SetProperty(LogicSeedOptionProps.MODEL_ID, meta.GetModelID());
             }
         }
         private void LoadArtifactProperties(IGame game)
@@ -346,6 +363,31 @@ namespace MVZ2.Vanilla
                     continue;
                 artifact.SetUnlockID(meta.Unlock);
                 artifact.SetSpriteReference(meta.Sprite);
+            }
+        }
+        private void LoadCustomEntityBlueprints(IGame game)
+        {
+            foreach (IEntitySeedMeta meta in game.GetModEntitySeedMetas(spaceName))
+            {
+                if (meta == null)
+                    continue;
+
+                // 将实体作为蓝图添加到游戏中。
+                var info = new EntitySeedInfo()
+                {
+                    entityID = meta.GetEntityID(),
+                    cost = meta.GetCost(),
+                    rechargeID = meta.GetRechargeID(),
+                    triggerActive = meta.IsTriggerActive(),
+                    canInstantTrigger = meta.CanInstantTrigger(),
+                    upgrade = meta.IsUpgradeBlueprint(),
+                    canInstantEvoke = meta.CanInstantEvoke(),
+                    variant = meta.GetVariant(),
+                    icon = meta.GetIcon(),
+                    model = meta.GetModelID()
+                };
+                var seedDef = new EntitySeed(spaceName, meta.ID, info);
+                AddDefinition(seedDef);
             }
         }
         #endregion
@@ -405,7 +447,8 @@ namespace MVZ2.Vanilla
                     triggerActive = def.IsTriggerActive(),
                     canInstantTrigger = def.CanInstantTrigger(),
                     upgrade = def.IsUpgradeBlueprint(),
-                    canInstantEvoke = def.CanInstantEvoke()
+                    canInstantEvoke = def.CanInstantEvoke(),
+                    model = def.GetModelID()
                 };
                 var blueprintID = VanillaBlueprintID.FromEntity(id);
                 var seedDef = new EntitySeed(blueprintID.SpaceName, blueprintID.Path, info);
@@ -417,6 +460,8 @@ namespace MVZ2.Vanilla
             foreach (var option in GetDefinitions<SeedOptionDefinition>(LogicDefinitionTypes.SEED_OPTION))
             {
                 var seedDef = new OptionSeed(Namespace, option.Name, option.GetCost());
+                seedDef.SetIcon(option.GetIcon());
+                seedDef.SetModelID(option.GetModelID());
                 AddDefinition(seedDef);
             }
         }

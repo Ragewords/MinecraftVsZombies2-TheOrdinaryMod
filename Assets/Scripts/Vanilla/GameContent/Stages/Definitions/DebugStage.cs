@@ -2,7 +2,7 @@
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Enemies;
-using MVZ2.GameContent.ProgressBars;
+using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Stages
             ClassicStart(level);
             //ConveyorStart(level);
             level.LevelProgressVisible = true;
-            level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
+            //level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
             level.SetTriggerActive(true);
             var cartRef = level.GetCartReference();
             level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);
@@ -43,21 +43,21 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.repeatenser,
-                VanillaContraptionID.highFrequencyPulseDispenser,
-                VanillaContraptionID.noteBlock,
-                VanillaContraptionID.lightningOrb,
-                VanillaContraptionID.devourer,
-                VanillaContraptionID.blackHoleBomb,
-                VanillaEnemyID.skeleton,
-                VanillaEnemyID.ironHelmettedZombie,
-                VanillaEnemyID.emperorZombie,
-                VanillaBossID.seija,
+                VanillaContraptionID.smallDispenser,
+                VanillaContraptionID.infectenser,
+                VanillaContraptionID.gravityPad,
+                VanillaContraptionID.forcePad,
+                VanillaPickupID.emerald,
+                VanillaPickupID.ruby,
+                VanillaPickupID.sapphire,
+                VanillaPickupID.diamond,
+                VanillaEnemyID.mutantZombie,
+                VanillaEnemyID.megaMutantZombie,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
-                VanillaArtifactID.greedyVacuum,
+                VanillaArtifactID.ufoToy,
                 VanillaArtifactID.almanac,
                 VanillaArtifactID.dreamKey,
             });

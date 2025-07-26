@@ -59,8 +59,10 @@ namespace MVZ2.GameContent.Detections
                 }
             }
 
-            var sizeZ = projectileSize.z;
-            var centerZ = source.z;
+            var innerZExpansion = innerLaneExpansion * self.Level.GetGridHeight();
+            var outerZExpansion = outerLaneExpansion * self.Level.GetGridHeight();
+            var sizeZ = projectileSize.z + innerZExpansion + outerZExpansion;
+            var centerZ = source.z - innerZExpansion * 0.5f + outerZExpansion * 0.5f;
 
 
             return new Bounds(new Vector3(centerX, centerY, centerZ), new Vector3(sizeX, sizeY, sizeZ));
@@ -69,7 +71,6 @@ namespace MVZ2.GameContent.Detections
         {
             if (!ValidateTarget(self, collider.Entity))
                 return false;
-            Bounds targetBounds = collider.GetBoundingBox();
             if (colliderFilter != null && !colliderFilter(self, collider))
                 return false;
             return true;
@@ -77,6 +78,8 @@ namespace MVZ2.GameContent.Detections
         public bool ignoreLowEnemy;
         public bool ignoreHighEnemy;
         public bool reversed;
+        public int innerLaneExpansion;
+        public int outerLaneExpansion;
         public Func<DetectionParams, IEntityCollider, bool> colliderFilter;
     }
 }

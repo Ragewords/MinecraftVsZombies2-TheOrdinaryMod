@@ -693,9 +693,7 @@ namespace MVZ2.GameContent.Bosses
                         entity.PlaySound(VanillaSoundID.explosion);
                         entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
 
-                        var param = entity.GetSpawnParams();
-                        var exp = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
-                        exp.SetSize(Vector3.one * 240);
+                        Explosion.Spawn(entity, entity.GetCenter(), 120);
                         for (int i = 0; i < entity.Level.GetMaxLaneCount(); i++)
                         {
                             if (i == entity.GetLane())
@@ -704,7 +702,7 @@ namespace MVZ2.GameContent.Bosses
                             var z = entity.Level.GetEntityLaneZ(i);
                             var y = entity.Level.GetGroundY(x, z);
                             entity.SpawnWithParams(VanillaEnemyID.dullahan, new Vector3(x, y, z));
-                            entity.Spawn(VanillaEnemyID.anubisand, new Vector3(x, y, z), param);
+                            entity.SpawnWithParams(VanillaEnemyID.anubisand, new Vector3(x, y, z));
                         }
                     }
                 }
@@ -814,9 +812,7 @@ namespace MVZ2.GameContent.Bosses
                                 var brainwasher = entity.SpawnWithParams(VanillaEnemyID.brainwasher, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, 80));
                                 var jackdullahan = entity.SpawnWithParams(VanillaEnemyID.jackDullahan, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, -80));
 
-                                var param = entity.GetSpawnParams();
-                                param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 120);
-                                entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter(), param);
+                                Explosion.Spawn(entity, bedserker.GetCenter(), 60);
 
                                 var cluster = entity.Spawn(VanillaEffectID.smokeCluster, brainwasher.GetCenter());
                                 cluster.SetSize(Vector3.one * 120);
@@ -896,9 +892,7 @@ namespace MVZ2.GameContent.Bosses
                     entity.PlaySound(VanillaSoundID.explosion);
                     entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
 
-                    var param = entity.GetSpawnParams();
-                    param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 240);
-                    entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+                    Explosion.Spawn(entity, entity.GetCenter(), 120);
                     entity.Level.ShakeScreen(20, 0, 30);
                     entity.Remove();
                 }

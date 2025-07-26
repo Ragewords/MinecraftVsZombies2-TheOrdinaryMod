@@ -36,6 +36,7 @@ namespace MVZ2.GameContent.Buffs
         public const string magichestInvincible = "magichest_invincible";
         public const string frankensteinShocked = "frankenstein_shocked";
         public const string dreamKeyShield = "dream_key_shield";
+        public const string jackOLantern = "jack_o_lantern";
         public const string nocturnal = "nocturnal";
         public const string conductor = "conductor";
         public const string carriedByLilyPad = "carried_by_lily_pad";
@@ -71,8 +72,7 @@ namespace MVZ2.GameContent.Buffs
         public const string imitated = "imitated";
         public const string noteBlockCharged = "note_block_charged";
         public const string hfpdUpgraded = "hfpd_upgraded";
-        public const string funnelenserEvoked = "funnelenser_evoked";
-        public const string jackOLantern = "jack_o_lantern";
+        public const string stolenByUFO = "stolen_by_ufo";
 
         // Enemy
         public const string gemCarrier = "gem_carrier";
@@ -123,6 +123,9 @@ namespace MVZ2.GameContent.Buffs
         public const string tanookiZombieStone = "tanooki_zombie_stone";
 
         public const string paratroop = "paratroop";
+        public const string summonedByUFO = "summoned_by_ufo";
+        public const string ufoBlueAbsorb = "ufo_blue_absorb";
+        public const string heavyCannon = "heavy_cannon";
 
         public const string beingRiden = "being_riden";
         public const string ridingPassenger = "riding_passenger";
@@ -192,6 +195,8 @@ namespace MVZ2.GameContent.Buffs
             public const string ancientEgypt = "ancient_egypt";
             public const string spiritUniverseNight = "spirit_universe_night";
             public const string commandBlockBlueprint = "command_block_blueprint";
+            public const string ufoSpawn = "ufo_spawn";
+            public const string beaconMeteor = "beacon_meteor";
 
             // 难度
             public const string levelEasy = "level_easy";
@@ -233,6 +238,10 @@ namespace MVZ2.GameContent.Buffs
             public const string theGiantSnake = "the_giant_snake";
             public const string theGiantPhase3 = "the_giant_phase3";
         }
+        public static class Pickup
+        {
+            public const string absorbedByUFO = "absorbedByUFO";
+        }
     }
     public static class VanillaBuffID
     {
@@ -253,6 +262,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID hardEnemy = Get(VanillaBuffNames.hardEnemy);
         public static readonly NamespaceID lunaticEnemy = Get(VanillaBuffNames.lunaticEnemy);
         public static readonly NamespaceID dreamKeyShield = Get(VanillaBuffNames.dreamKeyShield);
+        public static readonly NamespaceID jackOLantern = Get(VanillaBuffNames.jackOLantern);
         public static readonly NamespaceID carriedByLilyPad = Get(VanillaBuffNames.carriedByLilyPad);
         public static readonly NamespaceID carryingOther = Get(VanillaBuffNames.carryingOther);
         public static readonly NamespaceID darkMatterProduction = Get(VanillaBuffNames.darkMatterProduction);
@@ -266,8 +276,8 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID lightningOrbEnergyShieldProtected = Get(VanillaBuffNames.lightningOrbEnergyShieldProtected);
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.eyeOfTheGiant);
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
-        public static readonly NamespaceID jackOLantern = Get(VanillaBuffNames.jackOLantern);
         public static readonly NamespaceID infinityDoor = Get(VanillaBuffNames.infinityDoor);
+        public static readonly NamespaceID heavyCannon = Get(VanillaBuffNames.heavyCannon);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
         private static NamespaceID Get(string name)
@@ -283,6 +293,10 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID upgradeEndlessCost = Get(VanillaBuffNames.SeedPack.upgradeEndlessCost);
             public static readonly NamespaceID witherSkeletonSkullReduceCost = Get(VanillaBuffNames.SeedPack.witherSkeletonSkullReduceCost);
             public static readonly NamespaceID commandBlockBlueprint = Get(VanillaBuffNames.SeedPack.commandBlockBlueprint);
+        }
+        public static class Pickup
+        {
+            public static readonly NamespaceID absorbedByUFO = Get(VanillaBuffNames.Pickup.absorbedByUFO);
         }
         public static class Level
         {

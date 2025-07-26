@@ -39,9 +39,8 @@ namespace MVZ2.GameContent.Enemies
             entity.Explode(entity.GetCenter(), range * 2, faction, damage / 2, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
             entity.Explode(entity.GetCenter(), range * 3, faction, damage / 6, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
 
-            var param = entity.GetSpawnParams();
-            param.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
-            entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity, param);
+            Explosion.Spawn(entity, entity.GetCenter(), range);
+
             float arcLength = range * 3;
             float fireLength = range * 2;
             for (int i = 0; i < 8; i++)

@@ -101,6 +101,18 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
+        #region 变种
+        public static readonly PropertyMeta<int> VARIANT = Get<int>("variant");
+        public static int GetVariant(this Entity entity)
+        {
+            return entity.GetProperty<int>(VARIANT);
+        }
+        public static void SetVariant(this Entity entity, int value)
+        {
+            entity.SetProperty(VARIANT, value);
+        }
+        #endregion
+
         #region 沉没
         public static readonly PropertyMeta<int> WATER_INTERACTION = Get<int>("waterInteraction");
         public static int GetWaterInteraction(this EntityDefinition entityDef)
@@ -130,6 +142,14 @@ namespace MVZ2.Vanilla.Entities
         public static void SetAirInteraction(this Entity entity, int value)
         {
             entity.SetProperty(AIR_INTERACTION, value);
+        }
+        #endregion
+
+        #region 起始位置偏移
+        public static readonly PropertyMeta<Vector3> STARTING_POSITION_OFFSET = Get<Vector3>("starting_position_offset");
+        public static Vector3 GetStartingPositionOffset(this EntityDefinition entityDef)
+        {
+            return entityDef.GetProperty<Vector3>(STARTING_POSITION_OFFSET);
         }
         #endregion
 

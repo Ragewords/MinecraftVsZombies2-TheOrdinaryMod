@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.Managers;
-using MVZ2.Metas;
 using MVZ2Logic.Models;
 using PVZEngine;
 using PVZEngine.Models;
@@ -156,6 +155,7 @@ namespace MVZ2.Models
             serializable.id = id;
             serializable.key = parentKey;
             serializable.anchor = parentAnchor;
+            serializable.position = transform.localPosition;
             serializable.rng = rng.ToSerializable();
             serializable.propertyDict = propertyDict != null ? propertyDict.ToSerializable() : null;
             serializable.childModels = childModels.Select(c => c.ToSerializable()).ToArray();
@@ -167,7 +167,6 @@ namespace MVZ2.Models
         {
             rng = RandomGenerator.FromSerializable(serializable.rng);
             destroyTimeout = serializable.destroyTimeout;
-            GraphicGroup.FromSerializable(serializable.graphicGroup);
             if (serializable.propertyDict != null)
             {
                 var dict = PropertyDictionaryString.FromSerializable(serializable.propertyDict);
@@ -179,9 +178,12 @@ namespace MVZ2.Models
             foreach (var seriChild in serializable.childModels)
             {
                 var child = CreateChildModel(seriChild.anchor, seriChild.key, seriChild.id);
+                child.transform.localPosition = seriChild.position;
                 child.LoadFromSerializable(seriChild);
             }
             LoadSerializable(serializable);
+            // 最后再加载GraphicGroup，防止Animator在加载数据前尚未启用。
+            GraphicGroup.FromSerializable(serializable.graphicGroup);
         }
         protected abstract SerializableModelData CreateSerializable();
         protected virtual void LoadSerializable(SerializableModelData serializable)
@@ -317,20 +319,30 @@ namespace MVZ2.Models
         #endregion
 
         #region 创建
+        public static Model Create(ModelViewData viewData, Transform parent)
+        {
+            return Create(viewData.id, parent, viewData.camera, viewData.seed);
+        }
         public static Model Create(NamespaceID modelID, Transform parent, Camera camera, int seed = 0)
         {
-            var prefab = GetPrefab(modelID);
-            var model = Create(prefab, parent, camera, seed);
-            if (model)
-                model.id = modelID;
-            return model;
-        }
-        public static Model Create(Model prefab, Transform parent, Camera camera, int seed = 0)
-        {
+            var main = MainManager.Instance;
+            var res = main.ResourceManager;
+            var modelMeta = res.GetModelMeta(modelID);
+            if (modelMeta == null)
+                return null;
+            var prefab = res.GetModel(modelMeta.Path);
             if (prefab == null)
                 return null;
             var model = Instantiate(prefab, parent).GetComponent<Model>();
-            model.Init(camera, seed);
+            if (model)
+            {
+                model.id = modelID;
+                foreach (var parameter in modelMeta.AnimatorParameters)
+                {
+                    parameter.Apply(model);
+                }
+                model.Init(camera, seed);
+            }
             return model;
         }
         #endregion
@@ -355,21 +367,6 @@ namespace MVZ2.Models
             return anchor.transform;
         }
         #endregion
-        public static ModelMeta GetModelMeta(NamespaceID modelID)
-        {
-            var main = MainManager.Instance;
-            var res = main.ResourceManager;
-            return res.GetModelMeta(modelID);
-        }
-        public static Model GetPrefab(NamespaceID modelID)
-        {
-            var main = MainManager.Instance;
-            var res = main.ResourceManager;
-            var modelMeta = GetModelMeta(modelID);
-            if (modelMeta == null)
-                return null;
-            return res.GetModel(modelMeta.Path);
-        }
         public RandomGenerator GetRNG()
         {
             return rng;
@@ -406,6 +403,7 @@ namespace MVZ2.Models
     public class SerializableModelData
     {
         public string anchor;
+        public Vector3 position;
         public NamespaceID key;
         public NamespaceID id;
         public SerializableRNG rng;

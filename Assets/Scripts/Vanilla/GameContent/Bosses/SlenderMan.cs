@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using MukioI18n;
-using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Buffs.SeedPacks;
 using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
@@ -297,7 +295,8 @@ namespace MVZ2.GameContent.Bosses
             {
                 var option = selected[i];
                 DoFate(entity, option);
-                level.ResumeGame(100);
+                // 用Delayed，防止当前手持僵尸时点击按钮后直接把僵尸放在地上
+                level.ResumeGameDelayed(100);
             });
         }
         private void DoFate(Entity boss, int option)

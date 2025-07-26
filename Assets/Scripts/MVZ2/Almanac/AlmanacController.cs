@@ -26,6 +26,7 @@ using MVZ2Logic.Games;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -150,11 +151,12 @@ namespace MVZ2.Almanacs
             if (page != AlmanacPageType.Miscs)
                 return;
             var entry = Main.ResourceManager.GetAlmanacMetaEntry(VanillaAlmanacCategories.MISC, activeMiscEntryID);
-            var sprite = Main.AlmanacManager.GetMiscEntrySprite(entry);
+            var sprite = Main.AlmanacManager.GetEntryPictureSprite(entry);
             if (sprite)
             {
                 bool canSwitchPage = false;
-                var characterID = entry.character;
+                var picture = entry.picture;
+                var characterID = picture.character;
                 var characterMeta = Main.ResourceManager.GetCharacterMeta(characterID);
                 if (characterMeta != null)
                 {
@@ -182,9 +184,10 @@ namespace MVZ2.Almanacs
         private void OnZoomPageButtonClickCallback(bool next)
         {
             var entry = Main.ResourceManager.GetAlmanacMetaEntry(VanillaAlmanacCategories.MISC, activeMiscEntryID);
-            if (entry == null)
+            var picture = entry?.picture;
+            if (picture == null)
                 return;
-            var characterID = entry.character;
+            var characterID = picture.character;
             var characterMeta = Main.ResourceManager.GetCharacterMeta(characterID);
             var offset = next ? 1 : -1;
             if (characterMeta != null)
@@ -195,7 +198,7 @@ namespace MVZ2.Almanacs
                 int cycleCount = 0;
                 do
                 {
-                    zoomIndex = (zoomIndex + offset) % variants.Count;
+                    zoomIndex = MathTool.CycleOffset(zoomIndex, offset, variants.Count);
                     cycleCount++;
                     if (cycleCount >= variants.Count)
                     {
@@ -286,7 +289,14 @@ namespace MVZ2.Almanacs
         {
             if (!NamespaceID.IsValid(contraptionID))
                 return;
-            GetEntityAlmanacInfos(contraptionID, VanillaAlmanacCategories.CONTRAPTIONS, out var model, out var name, out var description);
+            const string type = VanillaAlmanacCategories.CONTRAPTIONS;
+
+            GetEntityAlmanacInfos(contraptionID, type, out var model, out var name, out var description);
+            var entry = Main.ResourceManager.GetAlmanacMetaEntry(type, contraptionID);
+            if (!string.IsNullOrEmpty(entry.name))
+            {
+                name = GetTranslatedString(VanillaStrings.GetAlmanacNameContext(type), entry.name);
+            }
 
             int cost = 0;
             string recharge = string.Empty;
@@ -305,14 +315,15 @@ namespace MVZ2.Almanacs
             var rechargeText = GetTranslatedString(VanillaStrings.CONTEXT_ALMANAC, RECHARGE_LABEL, recharge);
 
             var page = Global.IsMobile() ? AlmanacPageType.ContraptionsMobile : AlmanacPageType.ContraptionsStandalone;
-            UpdateEntryTags(page, VanillaAlmanacCategories.CONTRAPTIONS, contraptionID);
+            UpdateEntryTags(page, type, contraptionID);
 
             var iconInfos = GetDescriptionTagIconInfos(description);
             var replacements = iconInfos.Select(i => i.replacement).ToArray();
             var iconStacks = iconInfos.Select(i => i.viewData).ToArray();
             var finalDesc = ReplaceText(description, replacements);
 
-            ui.SetActiveContraptionEntry(model, almanacCamera, name, finalDesc, costText, rechargeText);
+            var viewData = new ModelViewData(model, almanacCamera);
+            ui.SetActiveContraptionEntry(viewData, name, finalDesc, costText, rechargeText);
             ui.UpdateContraptionDescriptionIcons(iconStacks);
             UnlockAndHideTooltip();
         }
@@ -320,20 +331,27 @@ namespace MVZ2.Almanacs
         {
             if (!NamespaceID.IsValid(enemyID))
                 return;
-            activeEnemyEntryID = enemyID;
-            GetEntityAlmanacInfos(enemyID, VanillaAlmanacCategories.ENEMIES, out var model, out var name, out var description);
+            const string type = VanillaAlmanacCategories.ENEMIES;
 
-            bool notEncountered = Main.SaveManager.GetSaveStat(VanillaStats.CATEGORY_ENEMY_NEUTRALIZE, enemyID) <= 0;
-            if (notEncountered)
+            activeEnemyEntryID = enemyID;
+            GetEntityAlmanacInfos(enemyID, type, out var model, out var name, out var description);
+            var entry = Main.ResourceManager.GetAlmanacMetaEntry(type, enemyID);
+            if (!string.IsNullOrEmpty(entry.name))
+            {
+                name = GetTranslatedString(VanillaStrings.GetAlmanacNameContext(type), entry.name);
+            }
+
+            bool encountered = Main.SaveManager.IsUnlocked(entry.encounterUnlock) || Main.SaveManager.GetSaveStat(VanillaStats.CATEGORY_ENEMY_NEUTRALIZE, enemyID) > 0;
+            if (encountered)
+            {
+                UpdateEntryTags(AlmanacPageType.Enemies, type, enemyID);
+            }
+            else
             {
                 name = Main.LanguageManager._p(VanillaStrings.CONTEXT_ENTITY_NAME, VanillaStrings.UNKNOWN_ENTITY_NAME);
                 description = Main.LanguageManager._p(VanillaStrings.CONTEXT_ALMANAC, VanillaStrings.NOT_ENCOUNTERED_YET);
 
                 ClearEntryTags(AlmanacPageType.Enemies);
-            }
-            else
-            {
-                UpdateEntryTags(AlmanacPageType.Enemies, VanillaAlmanacCategories.ENEMIES, enemyID);
             }
 
             var iconInfos = GetDescriptionTagIconInfos(description);
@@ -341,7 +359,8 @@ namespace MVZ2.Almanacs
             var iconStacks = iconInfos.Select(i => i.viewData).ToArray();
             var finalDesc = ReplaceText(description, replacements);
 
-            ui.SetActiveEnemyEntry(model, almanacCamera, name, finalDesc);
+            var viewData = new ModelViewData(model, almanacCamera);
+            ui.SetActiveEnemyEntry(viewData, name, finalDesc);
             ui.UpdateEnemyDescriptionIcons(iconStacks);
             UnlockAndHideTooltip();
         }
@@ -386,7 +405,7 @@ namespace MVZ2.Almanacs
             var strings = new string[] { header, properties, flavor }.Where(s => !string.IsNullOrEmpty(s));
             var description = string.Join("\n\n", strings);
 
-            var modelID = entry.model;
+            var picture = entry.picture;
 
             UpdateEntryTags(AlmanacPageType.Miscs, VanillaAlmanacCategories.MISC, miscID);
 
@@ -395,23 +414,27 @@ namespace MVZ2.Almanacs
             var iconStacks = iconInfos.Select(i => i.viewData).ToArray();
             var finalDesc = ReplaceText(description, replacements);
 
-            if (NamespaceID.IsValid(modelID) && Main.ResourceManager.GetModelMeta(modelID) is ModelMeta modelMeta)
+            if (picture != null)
             {
-                var model = Main.ResourceManager.GetModel(modelMeta.Path);
-                ui.SetActiveMiscEntry(model, almanacCamera, name, finalDesc);
-            }
-            else
-            {
-                Sprite sprite = Main.AlmanacManager.GetMiscEntrySprite(entry);
-                var spriteSized = entry.iconFixedSize;
-                var zoom = entry.iconZoom;
+                var modelID = picture.model;
+                if (NamespaceID.IsValid(modelID) && Main.ResourceManager.GetModelMeta(modelID) is ModelMeta modelMeta)
+                {
+                    var viewData = new ModelViewData(modelID, almanacCamera);
+                    ui.SetActiveMiscEntry(viewData, name, finalDesc);
+                }
+                else
+                {
+                    Sprite sprite = Main.AlmanacManager.GetEntryPictureSprite(entry);
+                    var spriteSized = entry.pictureFixedSize;
+                    var zoom = entry.pictureZoom;
 
-                ui.SetActiveMiscEntry(sprite, name, finalDesc, spriteSized, zoom);
+                    ui.SetActiveMiscEntry(sprite, name, finalDesc, spriteSized, zoom);
+                }
             }
             ui.UpdateMiscDescriptionIcons(iconStacks);
             UnlockAndHideTooltip();
         }
-        private void GetEntityAlmanacInfos(NamespaceID entityID, string almanacCategory, out Model model, out string name, out string description)
+        private void GetEntityAlmanacInfos(NamespaceID entityID, string almanacCategory, out NamespaceID model, out string name, out string description)
         {
             model = null;
             name = null;
@@ -427,12 +450,7 @@ namespace MVZ2.Almanacs
 
             if (definition == null)
                 return;
-            var modelID = definition.GetModelID();
-            var modelMeta = Main.ResourceManager.GetModelMeta(modelID);
-            if (modelMeta != null)
-            {
-                model = Main.ResourceManager.GetModel(modelMeta.Path);
-            }
+            model = definition.GetModelID();
         }
         private void GetArtifactAlmanacInfos(NamespaceID entityID, string almanacCategory, out Sprite sprite, out string name, out string description)
         {

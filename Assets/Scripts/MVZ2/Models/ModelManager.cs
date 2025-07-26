@@ -1,4 +1,5 @@
 ﻿using MVZ2.Managers;
+using PVZEngine;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,15 +7,22 @@ namespace MVZ2.Models
 {
     public class ModelManager : MonoBehaviour
     {
-        public Sprite ShotIcon(Model model, int width, int height, Vector2 modelOffset, string name = null)
+        public Sprite ShotIcon(NamespaceID id, int width, int height, Vector2 modelOffset, string name = null)
         {
             var pictureName = name ?? "ModelIcon";
             //激活摄像机与灯光
             modelShotRoot.gameObject.SetActive(true);
 
             //设置模型
-            var modelInstance = Model.Create(model, modelShotPositionTransform, modelShotCamera).gameObject;
+            var modelInstance = Model.Create(id, modelShotPositionTransform, modelShotCamera);
+            if (!modelInstance)
+            {
+                Debug.LogWarning($"Prefab of model {id} is missing!");
+                return null;
+            }
             modelInstance.transform.localPosition = Vector3.zero;
+            modelInstance.UpdateAnimators(0);
+            modelInstance.UpdateFrame(0);
 
 
             //创建一个用于渲染图片的RenderTexture
@@ -62,7 +70,7 @@ namespace MVZ2.Models
             RenderTexture.active = null; // 重置活动的Render Texture
             modelShotCamera.targetTexture = null;
             renderTexture.Release();
-            DestroyImmediate(modelInstance);
+            DestroyImmediate(modelInstance.gameObject);
 
             // 创建Sprite。
             Sprite sprite = main.ResourceManager.CreateSprite(texture, new Rect(0, 0, width, height), Vector2.one * 0.5f, pictureName, "modelIcon");

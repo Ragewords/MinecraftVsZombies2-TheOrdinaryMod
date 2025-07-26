@@ -78,6 +78,7 @@ namespace MVZ2.Vanilla.Grids
                 return;
             var param = new PlaceParams();
             param.SetCommandBlock(seed.IsCommandBlock());
+            param.SetVariant(seed.GetVariant());
             var entity = grid.PlaceEntityBlueprint(seedDef, param);
             if (entity == null)
                 return;
@@ -94,12 +95,13 @@ namespace MVZ2.Vanilla.Grids
         /// <param name="grid"></param>
         /// <param name="seedDef"></param>
         /// <param name="heldItemData"></param>
-        public static void UseEntityBlueprintDefinition(this LawnGrid grid, SeedDefinition seedDef, IHeldItemData heldItemData, bool isCommandBlock = false)
+        public static void UseEntityBlueprintDefinition(this LawnGrid grid, SeedDefinition seedDef, IHeldItemData heldItemData, bool isCommandBlock = false, int variant = 0)
         {
             if (seedDef == null)
                 return;
             var param = new PlaceParams();
             param.SetCommandBlock(isCommandBlock);
+            param.SetVariant(seedDef.GetVariant());
             var entity = grid.PlaceEntityBlueprint(seedDef, param);
             var level = grid.Level;
             level.Triggers.RunCallback(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, new VanillaLevelCallbacks.PostUseEntityBlueprintParams(entity, seedDef, null, heldItemData));
@@ -207,8 +209,10 @@ namespace MVZ2.Vanilla.Grids
             var z = level.GetEntityLaneZ(grid.Lane);
             var y = level.GetGroundY(x, z);
 
-            var position = new Vector3(x, y, z);
             var entityDef = level.Content.GetEntityDefinition(entityID);
+            if (entityDef == null)
+                return null;
+            var position = new Vector3(x, y, z) + entityDef.GetStartingPositionOffset();
             var entity = level.Spawn(entityID, position, null, param);
             entity.PlaySound(grid.GetPlaceSound(entity));
 

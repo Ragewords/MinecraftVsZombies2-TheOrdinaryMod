@@ -137,9 +137,7 @@ namespace MVZ2.GameContent.Contraptions
                     projectile.SetRange(range);
                 }
             }
-            var explosionParam = entity.GetSpawnParams();
-            explosionParam.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
-            var explosion = entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), explosionParam);
+            Explosion.Spawn(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.explosion);
             entity.Level.ShakeScreen(10, 0, 15);
 

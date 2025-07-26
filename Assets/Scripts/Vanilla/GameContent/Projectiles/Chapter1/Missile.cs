@@ -35,8 +35,9 @@ namespace MVZ2.GameContent.Projectiles
         {
             var range = entity.GetRange();
             entity.PlaySound(VanillaSoundID.explosion);
-            var explosion = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
-            explosion.SetSize(Vector3.one * (range * 2));
+
+            Explosion.Spawn(entity, entity.GetCenter(), range);
+
             var damageEffects = new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.MUTE);
             entity.Explode(entity.Position, range, entity.GetFaction(), entity.GetDamage(), damageEffects);
             for (var i = 1; i <= 6; i++)

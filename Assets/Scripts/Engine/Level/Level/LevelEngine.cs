@@ -6,12 +6,9 @@ using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Grids;
 using PVZEngine.Level.Collisions;
 using PVZEngine.Models;
 using PVZEngine.Modifiers;
-using PVZEngine.SeedPacks;
-using Tools;
 using UnityEngine;
 
 namespace PVZEngine.Level
@@ -59,40 +56,15 @@ namespace PVZEngine.Level
         #region 生命周期
         public void Init(NamespaceID areaId, NamespaceID stageId, LevelOption option, int seed = 0)
         {
-            Seed = seed == 0 ? Guid.NewGuid().GetHashCode() : seed;
-
             Option = option;
-
-            levelRandom = new RandomGenerator(Seed);
-            entityRandom = CreateRNG();
-            effectRandom = CreateRNG();
-            roundRandom = CreateRNG();
-            spawnRandom = CreateRNG();
-            conveyorRandom = CreateRNG();
-
-            miscRandom = CreateRNG();
+            InitRandom(seed);
 
             ChangeArea(areaId);
             ChangeStage(stageId);
 
             Energy = this.GetStartEnergy();
 
-            InitAreaProperties();
-
-            // Initalize current stage info.
-            var maxLane = GetMaxLaneCount();
-            int maxColumn = GetMaxColumnCount();
-
-            grids = new LawnGrid[maxColumn * maxLane];
-
-            var gridDefinitions = AreaDefinition.GetGridLayout().Select(i => Content.GetGridDefinition(i)).ToArray();
-            for (int i = 0; i < gridDefinitions.Length; i++)
-            {
-                var definition = gridDefinitions[i];
-                int lane = Mathf.FloorToInt(i / maxColumn);
-                int column = i % maxColumn;
-                grids[i] = new LawnGrid(this, definition, lane, column);
-            }
+            InitGrids(AreaDefinition);
         }
         public void Setup()
         {
@@ -129,7 +101,9 @@ namespace PVZEngine.Level
         {
             ClearEntityTrash();
 
-            UpdateSeedPacks();
+            var rechargeSpeed = this.GetRechargeSpeed();
+            UpdateClassicSeedPacks(rechargeSpeed);
+            UpdateConveyorSeedPacks(rechargeSpeed);
 
             foreach (var component in levelComponents)
             {
@@ -144,13 +118,7 @@ namespace PVZEngine.Level
             AreaDefinition.Update(this);
             StageDefinition.Update(this);
             Triggers.RunCallback(LevelCallbacks.POST_LEVEL_UPDATE, new LevelCallbackParams(this));
-            levelTime++;
-        }
-        public void Clear()
-        {
-            IsCleared = true;
-            OnClear?.Invoke();
-            Triggers.RunCallback(LevelCallbacks.POST_LEVEL_CLEAR, new LevelCallbackParams(this));
+            AddLevelTime();
         }
         #endregion
 
@@ -207,133 +175,6 @@ namespace PVZEngine.Level
             return buffs.GetModifierPropertyNames();
         }
         #endregion
-
-        #region 坐标相关方法
-        public int GetGridIndex(int column, int lane)
-        {
-            return column + lane * GetMaxColumnCount();
-        }
-        public int GetGridLaneByIndex(int index)
-        {
-            return index / GetMaxColumnCount();
-        }
-        public int GetGridColumnByIndex(int index)
-        {
-            return index % GetMaxColumnCount();
-        }
-        public float GetGridWidth()
-        {
-            return gridWidth;
-        }
-        public float GetGridHeight()
-        {
-            return gridHeight;
-        }
-        public float GetGridRightX()
-        {
-            return GetGridLeftX() + GetMaxColumnCount() * GetGridWidth();
-        }
-        public float GetGridLeftX()
-        {
-            return gridLeftX;
-        }
-        public float GetGridTopZ()
-        {
-            return GetGridBottomZ() + GetMaxLaneCount() * GetGridHeight();
-        }
-        public float GetGridBottomZ()
-        {
-            return gridBottomZ;
-        }
-        public float GetLawnCenterX()
-        {
-            return (GetGridLeftX() + GetGridRightX()) * 0.5f;
-        }
-        public float GetLawnCenterZ()
-        {
-            return (GetGridBottomZ() + GetGridTopZ()) * 0.5f;
-        }
-        public int GetMaxLaneCount()
-        {
-            return maxLaneCount;
-        }
-        public int GetMaxColumnCount()
-        {
-            return maxColumnCount;
-        }
-        public int GetLane(float z)
-        {
-            return Mathf.FloorToInt((GetGridTopZ() - z) / GetGridHeight());
-        }
-        public int GetColumn(float x)
-        {
-            return Mathf.FloorToInt((x - GetGridLeftX()) / GetGridWidth());
-        }
-        public int GetNearestEntityLane(float z)
-        {
-            return GetLane(z - entityLaneZOffset + GetGridHeight() * 0.5f);
-        }
-        public float GetEntityLaneZ(int row)
-        {
-            return GetLaneZ(row) + entityLaneZOffset;
-        }
-        public float GetEntityColumnX(int column)
-        {
-            return GetColumnX(column) + GetGridWidth() * 0.5f;
-        }
-        public float GetColumnX(int column)
-        {
-            return GetGridLeftX() + column * GetGridWidth();
-        }
-        public Vector3 GetEntityGridPosition(int column, int lane)
-        {
-            var x = GetEntityColumnX(column);
-            var z = GetEntityLaneZ(lane);
-            var y = GetGroundY(x, z);
-            return new Vector3(x, y, z);
-        }
-        public Vector3 GetEntityGridPositionByIndex(int index)
-        {
-            var column = GetGridColumnByIndex(index);
-            var lane = GetGridLaneByIndex(index);
-            return GetEntityGridPosition(column, lane);
-        }
-        public float GetLaneZ(int lane)
-        {
-            return GetGridTopZ() - (lane + 1) * GetGridHeight();
-        }
-        public float GetGroundY(Vector3 pos)
-        {
-            return GetGroundY(pos.x, pos.z);
-        }
-        public float GetGroundY(float x, float z)
-        {
-            return AreaDefinition.GetGroundY(this, x, z);
-        }
-        public LawnGrid GetGrid(int index)
-        {
-            if (index < 0 || index >= GetMaxColumnCount() * GetMaxLaneCount())
-                return null;
-            return grids[index];
-        }
-
-        public LawnGrid GetGrid(int column, int lane)
-        {
-            if (column < 0 || column >= GetMaxColumnCount() || lane < 0 || lane >= GetMaxLaneCount())
-                return null;
-            return GetGrid(lane * GetMaxColumnCount() + column);
-        }
-
-        public LawnGrid GetGrid(Vector2Int pos)
-        {
-            return GetGrid(pos.x, pos.y);
-        }
-
-        public LawnGrid[] GetAllGrids()
-        {
-            return grids.ToArray();
-        }
-        #endregion 坐标相关方法
 
         #region 时间
         public int GetSecondTicks(float second)
@@ -404,43 +245,37 @@ namespace PVZEngine.Level
                 return null;
             return new Buff(this, buffDef, buffID);
         }
+        public Buff NewBuff<T>() where T : BuffDefinition
+        {
+            return CreateBuff<T>(AllocBuffID());
+        }
+        public Buff NewBuff(NamespaceID id)
+        {
+            return CreateBuff(id, AllocBuffID());
+        }
+        public Buff NewBuff(BuffDefinition buffDef)
+        {
+            return CreateBuff(buffDef, AllocBuffID());
+        }
+
 
         #endregion
 
         #region 序列化
         public SerializableLevel Serialize()
         {
-            return new SerializableLevel()
+            var level = new SerializableLevel()
             {
-                seed = Seed,
-                levelTime = levelTime,
-                isCleared = IsCleared,
                 stageDefinitionID = StageDefinition.GetID(),
                 areaDefinitionID = AreaDefinition.GetID(),
                 difficulty = Difficulty,
                 Option = Option.Serialize(),
 
-                levelRandom = levelRandom.ToSerializable(),
-                entityRandom = entityRandom.ToSerializable(),
-                effectRandom = effectRandom.ToSerializable(),
-                roundRandom = roundRandom.ToSerializable(),
-                spawnRandom = spawnRandom.ToSerializable(),
-                conveyorRandom = conveyorRandom.ToSerializable(),
-                miscRandom = miscRandom.ToSerializable(),
-
                 properties = properties.ToSerializable(),
-                grids = grids.Select(g => g.Serialize()).ToArray(),
-                seedPacks = seedPacks.Select(g => g != null ? g.Serialize() : null).ToArray(),
-                conveyorSeedPacks = conveyorSeedPacks.Select(s => s != null ? s.Serialize() : null).ToArray(),
-                conveyorSlotCount = conveyorSlotCount,
-                conveyorSeedSpendRecord = conveyorSeedSpendRecord.ToSerializable(),
+                currentSeedPackID = currentSeedPackID,
                 collisionSystem = collisionSystem.ToSerializable(),
 
-                currentEntityID = currentEntityID,
                 currentBuffID = currentBuffID,
-                currentSeedPackID = currentSeedPackID,
-                entities = entities.Values.Select(e => e.Serialize()).ToList(),
-                entityTrash = entityTrash.Values.Select(e => e.Serialize()).ToList(),
 
                 energy = Energy,
                 delayedEnergyEntities = delayedEnergyEntities.Select(d => new SerializableDelayedEnergy() { entityId = d.Key.ID, energy = d.Value }).ToArray(),
@@ -449,66 +284,48 @@ namespace PVZEngine.Level
                 currentFlag = CurrentFlag,
                 waveState = WaveState,
                 levelProgressVisible = LevelProgressVisible,
-                spawnedLanes = spawnedLanes,
-                spawnedID = spawnedID,
 
                 buffs = buffs.ToSerializable(),
 
                 components = levelComponents.ToDictionary(c => c.GetID().ToString(), c => c.ToSerializable())
             };
+            WriteSeedPacksToSerializable(level);
+            WriteConveyorToSerializable(level);
+            WriteEntitiesToSerializable(level);
+            WriteProgressToSerializable(level);
+            WriteRandomToSerializable(level);
+            WriteGridsToSerializable(level);
+            return level;
         }
         public static LevelEngine Deserialize(SerializableLevel seri, IGameContent provider, IGameLocalization translator, IGameTriggerSystem triggers, ICollisionSystem collisionSystem)
         {
             var level = new LevelEngine(provider, translator, triggers, collisionSystem);
-            level.Seed = seri.seed;
-            level.levelTime = seri.levelTime;
-            level.levelRandom = RandomGenerator.FromSerializable(seri.levelRandom);
-            level.entityRandom = RandomGenerator.FromSerializable(seri.entityRandom);
-            level.effectRandom = RandomGenerator.FromSerializable(seri.effectRandom);
-            level.roundRandom = RandomGenerator.FromSerializable(seri.roundRandom);
-            level.spawnRandom = RandomGenerator.FromSerializable(seri.spawnRandom);
-            level.conveyorRandom = RandomGenerator.FromSerializable(seri.conveyorRandom);
-            level.miscRandom = RandomGenerator.FromSerializable(seri.miscRandom);
+            level.ReadProgressFromSerializable(seri);
+            level.ReadRandomFromSerializable(seri);
 
-            level.IsCleared = seri.isCleared;
             level.ChangeStage(seri.stageDefinitionID);
             level.ChangeArea(seri.areaDefinitionID);
-            level.InitAreaProperties();
+            level.InitGrids(level.AreaDefinition);
+            level.CreateGridsFromSerializable(seri);
 
             level.Difficulty = seri.difficulty;
             level.Option = LevelOption.Deserialize(seri.Option);
-            level.grids = seri.grids.Select(g => LawnGrid.Deserialize(g, level)).ToArray();
             level.properties = PropertyBlock.FromSerializable(seri.properties, level);
 
             level.Energy = seri.energy;
-            level.currentEntityID = seri.currentEntityID;
             level.currentBuffID = seri.currentBuffID;
-            level.currentSeedPackID = seri.currentSeedPackID;
 
             level.CurrentWave = seri.currentWave;
             level.CurrentFlag = seri.currentFlag;
             level.WaveState = seri.waveState;
             level.LevelProgressVisible = seri.levelProgressVisible;
-            level.spawnedLanes = seri.spawnedLanes;
-            level.spawnedID = seri.spawnedID;
-
-            level.conveyorSlotCount = seri.conveyorSlotCount;
-            level.conveyorSeedSpendRecord = ConveyorSeedSpendRecords.ToDeserialized(seri.conveyorSeedSpendRecord);
 
             // 加载所有种子包。
-            level.seedPacks = seri.seedPacks.Select(g => g != null ? ClassicSeedPack.Deserialize(g, level) : null).ToArray();
-            level.conveyorSeedPacks = seri.conveyorSeedPacks.Select(s => s != null ? ConveyorSeedPack.Deserialize(s, level) : null).ToList();
+            level.currentSeedPackID = seri.currentSeedPackID;
+            level.CreateSeedPacksFromSerializable(seri);
+            level.CreateConveyorFromSerializable(seri);
             // 加载所有实体。
-            foreach (var ent in seri.entities)
-            {
-                var entity = Entity.CreateDeserializingEntity(ent, level);
-                level.entities.Add(ent.id, entity);
-            }
-            foreach (var ent in seri.entityTrash)
-            {
-                var entity = Entity.CreateDeserializingEntity(ent, level);
-                level.entityTrash.Add(ent.id, entity);
-            }
+            level.CreateEntitiesFromSerializable(seri);
             // 加载所有BUFF。
             level.buffs = BuffList.FromSerializable(seri.buffs, level, level);
             level.buffs.OnPropertyChanged += level.UpdateBuffedProperty;
@@ -518,47 +335,15 @@ namespace PVZEngine.Level
 
             // 加载所有种子包、实体、BUFF的详细信息。
             // 因为有光环这种东西的存在，可能会引用buff，所以需要在buff加载完之后加载。
-            foreach (var seed in level.seedPacks)
-            {
-                if (seed == null)
-                    continue;
-                var seriSeed = seri.seedPacks.FirstOrDefault(s => s.id == seed.ID);
-                if (seriSeed == null)
-                    continue;
-                seed.ApplyDeserializedProperties(level, seriSeed);
-            }
-            foreach (var seed in level.conveyorSeedPacks)
-            {
-                if (seed == null)
-                    continue;
-                var seriSeed = seri.conveyorSeedPacks.FirstOrDefault(s => s.id == seed.ID);
-                if (seriSeed == null)
-                    continue;
-                seed.ApplyDeserializedProperties(level, seriSeed);
-            }
-            for (int i = 0; i < level.entities.Count; i++)
-            {
-                var seriEnt = seri.entities[i];
-                var id = seriEnt.id;
-                level.entities[id].ApplyDeserialize(seriEnt);
-            }
-            for (int i = 0; i < level.entityTrash.Count; i++)
-            {
-                var seriEnt = seri.entityTrash[i];
-                var id = seriEnt.id;
-                level.entityTrash[id].ApplyDeserialize(seriEnt);
-            }
+            level.ReadSeedPacksFromSerializable(seri);
+            level.ReadConveyorFromSerializable(seri);
+            level.ReadEntitiesFromSerializable(seri);
             level.buffs.LoadAuras(seri.buffs, level);
 
             // 在实体加载后面
             level.collisionSystem.LoadFromSerializable(level, seri.collisionSystem);
             // 加载所有网格的属性，需要引用实体。
-            for (int i = 0; i < level.grids.Length; i++)
-            {
-                var grid = level.grids[i];
-                var seriGrid = seri.grids[i];
-                grid.LoadFromSerializable(seriGrid, level);
-            }
+            level.ReadGridsFromSerializable(seri);
 
             level.delayedEnergyEntities = seri.delayedEnergyEntities.ToDictionary(d => level.FindEntityByID(d.entityId), d => d.energy);
             level.UpdateAllBuffedProperties(false);
@@ -577,104 +362,35 @@ namespace PVZEngine.Level
         }
         #endregion
 
-        #region 随机数生成器
-        public RandomGenerator CreateRNG()
-        {
-            return new RandomGenerator(levelRandom.Next());
-        }
-
-        public RandomGenerator GetSpawnRNG()
-        {
-            return spawnRandom;
-        }
-        public RandomGenerator GetRoundRNG()
-        {
-            return roundRandom;
-        }
-        public RandomGenerator GetConveyorRNG()
-        {
-            return conveyorRandom;
-        }
-        #endregion
-
-        #region 关卡时间
-        public long GetLevelTime()
-        {
-            return levelTime;
-        }
-        public bool IsTimeInterval(long interval, long offset = 0)
-        {
-            return levelTime % interval == offset;
-        }
-        #endregion
-
         #endregion
 
         #region 私有方法
-        public void InitAreaProperties()
-        {
-            gridWidth = AreaDefinition.GetProperty<float>(EngineAreaProps.GRID_WIDTH);
-            gridHeight = AreaDefinition.GetProperty<float>(EngineAreaProps.GRID_HEIGHT);
-            gridLeftX = AreaDefinition.GetProperty<float>(EngineAreaProps.GRID_LEFT_X);
-            gridBottomZ = AreaDefinition.GetProperty<float>(EngineAreaProps.GRID_BOTTOM_Z);
-            maxLaneCount = AreaDefinition.GetProperty<int>(EngineAreaProps.MAX_LANE_COUNT);
-            entityLaneZOffset = AreaDefinition.GetProperty<float>(EngineAreaProps.ENTITY_LANE_Z_OFFSET);
-            maxColumnCount = AreaDefinition.GetProperty<int>(EngineAreaProps.MAX_COLUMN_COUNT);
-        }
         IModelInterface IBuffTarget.GetInsertedModel(NamespaceID key) => null;
         Entity IBuffTarget.GetEntity() => null;
         Armor IBuffTarget.GetArmor() => null;
         void IBuffTarget.GetBuffs(List<Buff> results) => buffs.GetAllBuffs(results);
         Buff IBuffTarget.GetBuff(long id) => buffs.GetBuff(id);
-        Buff IBuffTarget.CreateBuff(NamespaceID id) => CreateBuff(id, AllocBuffID());
+        Buff IBuffTarget.NewBuff(NamespaceID id) => CreateBuff(id, AllocBuffID());
         bool IBuffTarget.Exists() => true;
         #endregion
-
-        public event Action OnClear;
 
         #region 属性字段
         public IGameContent Content { get; private set; }
         public IGameLocalization Localization { get; private set; }
-        public int Seed { get; private set; }
-        public bool IsRerun { get; set; }
-        public bool IsCleared { get; private set; }
         public NamespaceID StageID { get; private set; }
         public StageDefinition StageDefinition { get; private set; }
         public NamespaceID AreaID { get; private set; }
         public AreaDefinition AreaDefinition { get; private set; }
-        /// <summary>
-        /// 进屋的僵尸。
-        /// </summary>
-        public Entity KillerEnemy { get; private set; }
         public NamespaceID Difficulty { get; set; }
+        public bool IsRerun { get; set; }
         public int TPS => Option.TPS;
         public LevelOption Option { get; private set; }
-        private RandomGenerator levelRandom;
 
-        private RandomGenerator entityRandom;
-        private RandomGenerator effectRandom;
-
-        private RandomGenerator roundRandom;
-        private RandomGenerator spawnRandom;
-        private RandomGenerator conveyorRandom;
-
-        private RandomGenerator miscRandom;
-
-        private long currentBuffID = 1;
-        private string deathMessage;
 
         private PropertyBlock properties;
-        private LawnGrid[] grids;
         private BuffList buffs = new BuffList();
 
-        private float gridWidth;
-        private float gridHeight;
-        private float gridLeftX;
-        private float gridBottomZ;
-        private float entityLaneZOffset;
-        private int maxLaneCount;
-        private int maxColumnCount;
-        private long levelTime = 0;
+        private long currentBuffID = 1;
 
         private List<ILevelComponent> levelComponents = new List<ILevelComponent>();
         #endregion 保存属性

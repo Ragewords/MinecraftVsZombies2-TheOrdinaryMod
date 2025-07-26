@@ -35,13 +35,18 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             var pos = entity.Position;
             pos.y = entity.GetGroundY() - 100;
-            var mageClass = SkeletonMage.mageClasses.Random(entity.RNG);
+            var mageClass = SkeletonMage.mageVariants.Random(entity.RNG);
             var grid = entity.GetGrid();
             var lane = grid.Lane;
             for (int i = -1; i <= 1; i++)
             {
-                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos + new Vector3(80 * i, 0));
-                MageUpdate(mage, mageClass);
+                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos);
+                mage.SetVariant(mageClass);
+                mage.AddBuff<NecrotombstoneRisingBuff>();
+                mage.UpdateModel();
+
+                mage.PlaySound(VanillaSoundID.dirtRise);
+                mage.PlaySound(VanillaSoundID.boneWallBuild);
             }
             if (lane != 0)
             {
@@ -96,7 +101,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void MageUpdate(Entity mage, int mageClass)
         {
-            SkeletonMage.SetClass(mage, mageClass);
+            mage.SetVariant(mageClass);
             mage.AddBuff<NecrotombstoneRisingBuff>();
             mage.UpdateModel();
 

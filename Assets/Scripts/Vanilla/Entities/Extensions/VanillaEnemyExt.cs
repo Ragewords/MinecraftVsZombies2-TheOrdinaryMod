@@ -27,8 +27,6 @@ namespace MVZ2.Vanilla.Entities
         }
         public static void DropRewards(this Entity enemy)
         {
-            if (enemy.HasNoReward())
-                return;
             enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.ENEMY_DROP_REWARDS, new EntityCallbackParams(enemy));
         }
         public static void InflictPoison(this Entity enemy, int time)
@@ -135,7 +133,7 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
-        public static void CheckAlignWithLane(this Entity entity)
+        public static void CheckAlignToLane(this Entity entity)
         {
             if (entity.IsChangingLane())
                 return;
