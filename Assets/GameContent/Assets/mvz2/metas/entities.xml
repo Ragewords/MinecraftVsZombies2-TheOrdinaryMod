@@ -618,7 +618,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="thunder_drum" name="雷鼓" tooltip="触发后震退并震晕敌人" unlock="mvz2:level.castle_7">
+        <contraption id="thunder_drum" name="雷鼓" tooltip="触发后震退或震晕敌人" unlock="mvz2:level.castle_7">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />

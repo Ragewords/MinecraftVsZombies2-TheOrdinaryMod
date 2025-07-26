@@ -2139,6 +2139,15 @@ MonoBehaviour:
     - {fileID: 1122587241, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
     - {fileID: -518517166, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
     - {fileID: 550736574, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+  - name: entity/enemy/reflective_barrier_zombie
+    spritesheet:
+    - {fileID: 2020207070, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: -334746381, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: 153597606, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: -1932637021, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: -348838480, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: 1874139909, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+    - {fileID: 236762705, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
   - name: entity/enemy/reverse_satellite
     spritesheet:
     - {fileID: 1053308388, guid: 95a0ff4bc65b3c3489a4dd2274848c9d, type: 3}
