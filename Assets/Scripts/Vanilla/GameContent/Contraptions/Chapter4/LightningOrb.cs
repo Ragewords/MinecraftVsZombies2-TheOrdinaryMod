@@ -124,6 +124,14 @@ namespace MVZ2.GameContent.Contraptions
                     results.Add(id);
                 }
             }
+            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
+            {
+                base.UpdateTargetBuff(effect, target, buff);
+                var entity = effect?.Source?.GetEntity();
+                if (!entity.ExistsAndAlive())
+                    return;
+                LightningOrbEnergyShieldProtectedBuff.SetSource(buff, new EntityID(entity));
+            }
             private Detector protectDetector;
             private List<Entity> protectDetectBuffer = new List<Entity>();
         }

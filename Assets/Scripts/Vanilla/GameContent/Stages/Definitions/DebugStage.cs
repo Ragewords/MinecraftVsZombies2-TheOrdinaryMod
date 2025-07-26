@@ -45,12 +45,12 @@ namespace MVZ2.GameContent.Stages
             {
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.highFrequencyPulseDispenser,
-                VanillaContraptionID.fireChargeDispenser,
+                VanillaContraptionID.noteBlock,
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.devourer,
                 VanillaContraptionID.blackHoleBomb,
                 VanillaEnemyID.skeleton,
-                VanillaEnemyID.zombie,
+                VanillaEnemyID.ironHelmettedZombie,
                 VanillaEnemyID.emperorZombie,
                 VanillaBossID.theGiant,
             });
