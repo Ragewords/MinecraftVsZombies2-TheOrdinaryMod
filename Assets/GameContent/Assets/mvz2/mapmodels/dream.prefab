@@ -351,6 +351,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapElements.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapElements.Array.data[8]
+      value: 
+      objectReference: {fileID: 1907423704342255263}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapElements.Array.data[9]
+      value: 
+      objectReference: {fileID: 9049924875183089749}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapExtraButtons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapExtraButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2790438241684516756}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapExtraButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 5074223249780768186}
+    - target: {fileID: 3146854895338399448, guid: 10a783cde4776d342bee9862789deb16, type: 3}
+      propertyPath: mapExtraButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 9150313062192758052}
     - target: {fileID: 3332338785299356077, guid: 10a783cde4776d342bee9862789deb16, type: 3}
       propertyPath: m_Enabled
       value: 0
