@@ -1,4 +1,7 @@
-﻿using MVZ2.GameContent.Buffs.Level;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -7,6 +10,8 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -20,6 +25,7 @@ namespace MVZ2.GameContent.Contraptions
         public Beacon(string nsp, string name) : base(nsp, name)
         {
             detector = new BeaconDetector();
+            AddAura(new BeaconAura());
         }
 
         public override void Init(Entity entity)
@@ -51,6 +57,10 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var evoTimer = GetEvocationTimer(entity);
                 evoTimer.Run();
+                if (evoTimer.PassedInterval(6))
+                {
+                    EvokedShoot(entity);
+                }
                 if (evoTimer.Expired)
                 {
                     var buff = entity.Level.NewBuff<BeaconMeteorBuff>();
@@ -93,6 +103,25 @@ namespace MVZ2.GameContent.Contraptions
             }
             entity.TriggerAnimation("Shoot");
         }
+        public void EvokedShoot(Entity entity)
+        {
+            var shotSpeed = entity.GetShotVelocity().magnitude;
+            foreach (var direction in shootDirections)
+            {
+                var spawnParam = entity.GetSpawnParams();
+                spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
+                spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
+
+                var dir = direction;
+                dir.x *= entity.GetFacingX();
+                var shootParams = entity.GetShootParams();
+                shootParams.velocity = dir * shotSpeed;
+                shootParams.damage *= 4;
+                shootParams.soundID = null;
+                shootParams.spawnParam = spawnParam;
+                entity.ShootProjectile(shootParams);
+            }
+        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -128,5 +157,38 @@ namespace MVZ2.GameContent.Contraptions
         };
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_SHOOT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("shoot_timer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("evocation_timer");
+        public class BeaconAura : AuraEffectDefinition
+        {
+            public BeaconAura()
+            {
+                BuffID = VanillaBuffID.beaconDamage;
+                sphereDetector = new SphereDetector(100)
+                {
+                    mask = EntityCollisionHelper.MASK_PLANT,
+                    factionTarget = FactionTarget.Friendly,
+                };
+            }
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var entity = auraEffect.Source.GetEntity();
+                if (entity == null)
+                    return;
+                results.Add(entity);
+            }
+            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
+            {
+                base.UpdateTargetBuff(effect, target, buff);
+                var entity = effect.Source.GetEntity();
+                if (entity == null)
+                    return;
+                sphereDetectBuffer.Clear();
+                sphereDetector.DetectEntities(entity, sphereDetectBuffer);
+                var count = sphereDetectBuffer.Count;
+                BeaconDamageBuff.SetDamageMultiplier(buff, count * DAMAGE_MULTIPLIER);
+            }
+            private Detector sphereDetector;
+            private List<Entity> sphereDetectBuffer = new List<Entity>();
+        }
+        public const float DAMAGE_MULTIPLIER = 0.1f;
     }
 }

@@ -73,6 +73,7 @@ namespace MVZ2.GameContent.Buffs
         public const string noteBlockCharged = "note_block_charged";
         public const string hfpdUpgraded = "hfpd_upgraded";
         public const string stolenByUFO = "stolen_by_ufo";
+        public const string beaconDamage = "beacon_damage";
 
         // Enemy
         public const string gemCarrier = "gem_carrier";
@@ -278,6 +279,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
         public static readonly NamespaceID infinityDoor = Get(VanillaBuffNames.infinityDoor);
         public static readonly NamespaceID heavyCannon = Get(VanillaBuffNames.heavyCannon);
+        public static readonly NamespaceID beaconDamage = Get(VanillaBuffNames.beaconDamage);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
         private static NamespaceID Get(string name)
