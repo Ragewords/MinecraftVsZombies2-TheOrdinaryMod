@@ -844,7 +844,7 @@
                 <vector3 name="mvz2:lightRange" x="240" y="240" z="240" />
                 <color name="mvz2:lightColor" value="#FFFFFF" />
 
-                <int name="mvz2:cost" value="125" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
@@ -2574,7 +2574,8 @@
                 <float name="mvz2:gravity" value="1" />
                 <bool name="mvz2:pointToDirection" value="true" />
             </properties>
-        </projectile>        <projectile id="hell_planet_otherworld">
+        </projectile>
+        <projectile id="hell_planet_otherworld">
             <behaviours>
                 <behaviour operator="add" id="mvz2:hell_planet"/>
             </behaviours>

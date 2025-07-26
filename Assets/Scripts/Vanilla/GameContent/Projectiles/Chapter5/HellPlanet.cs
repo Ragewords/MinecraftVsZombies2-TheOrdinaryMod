@@ -50,6 +50,8 @@ namespace MVZ2.GameContent.Projectiles
             var hostileProjectile = collision.Other;
             if (!collision.OtherCollider.IsMainCollider())
                 return;
+            if (hostileProjectile.Type != EntityTypes.PROJECTILE)
+                return;
             hostileProjectile.Die(planet);
         }
 
