@@ -16,6 +16,11 @@ namespace MVZ2.GameContent.Projectiles
             AddModifier(new Vector3Modifier(EngineEntityProps.SCALE, NumberOperator.Multiply, PROP_SCALE));
             AddModifier(new BooleanModifier(VanillaProjectileProps.NO_DESTROY_OUTSIDE_LAWN, PROP_NO_DESTROY_OUTSIDE_LAWN));
         }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_PROJECTILE;
+        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
@@ -37,6 +42,15 @@ namespace MVZ2.GameContent.Projectiles
                 entity.Velocity = (targetPosition - entity.Position);
             }
             SetNoDestroyOutsideLawn(entity, entity.GetChildren().Length > 0);
+        }
+        public override void PostCollision(EntityCollision collision, int state)
+        {
+            base.PostCollision(collision, state);
+            var planet = collision.Entity;
+            var hostileProjectile = collision.Other;
+            if (!collision.OtherCollider.IsMainCollider())
+                return;
+            hostileProjectile.Die(planet);
         }
 
         public static bool NoDestroyOutsideLawn(Entity entity) => entity.GetBehaviourField<bool>(PROP_NO_DESTROY_OUTSIDE_LAWN);

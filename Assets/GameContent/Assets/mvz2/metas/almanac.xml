@@ -801,7 +801,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>5发/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>召唤10颗陨石，打击场上随机位置</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在每个方向发射10个大手里剑，随后召唤10颗陨石，打击场上随机位置</color>]]></p>
             </properties>
             <flavor>
                 <p>它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的假冒伪劣产品而已。</p>
