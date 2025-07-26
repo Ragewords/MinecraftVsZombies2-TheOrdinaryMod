@@ -88,11 +88,13 @@ namespace MVZ2.GameContent.Bosses
                                     }
                                     else
                                     {
+                                        var offset = new Vector3(25, -18, 0);
+                                        offset = enemy.ModifyShotOffset(offset);
                                         var bullet = enemy.ShootProjectile(new ShootParams()
                                         {
                                             projectileID = VanillaProjectileID.bullet,
-                                            position = new Vector3(enemy.Position.x - 20, enemy.Position.y - 18, enemy.Position.z),
-                                            velocity = enemy.GetShotVelocity() * (enemy.IsFacingLeft() ? -1 : 1),
+                                            position = enemy.Position + offset,
+                                            velocity = enemy.GetShotVelocity() * enemy.GetFacingX(),
                                             damage = enemy.GetDamage() * 0.1f,
                                             faction = enemy.GetFaction(),
                                             soundID = VanillaSoundID.gunShot,
@@ -102,12 +104,14 @@ namespace MVZ2.GameContent.Bosses
                                 break;
                             case MISSILE_MODE:
                                 {
+                                    var offset = new Vector3(0, -20, 0);
+                                    offset = enemy.ModifyShotOffset(offset);
                                     var missileSpeed = enemy.GetShotVelocity();
                                     var missile = enemy.ShootProjectile(new ShootParams()
                                     {
                                         projectileID = VanillaProjectileID.missile,
-                                        position = new Vector3(enemy.Position.x, enemy.Position.y - 20, enemy.Position.z),
-                                        velocity = missileSpeed * (enemy.IsFacingLeft() ? -1 : 1),
+                                        position = enemy.Position + offset,
+                                        velocity = missileSpeed * enemy.GetFacingX(),
                                         damage = enemy.GetDamage() * 2,
                                         faction = enemy.GetFaction(),
                                         soundID = VanillaSoundID.missile
@@ -150,7 +154,7 @@ namespace MVZ2.GameContent.Bosses
             entity.SetAnimationBool("JawOpen", false);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            var headEffect = entity.Level.Spawn(VanillaEffectID.frankensteinHead, entity.Position, entity);
+            var headEffect = entity.Level.Spawn(VanillaEffectID.frankensteinHead, entity.GetCenter(), entity);
             headEffect.Velocity += new Vector3(entity.GetFacingX() * 10, 1, 0);
             headEffect.SetDisplayScale(new Vector3(-entity.GetFacingX(), 1, 1));
             FrankensteinHead.SetSteelPhase(headEffect, true);
