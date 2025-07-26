@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reflective_barrier_zombie_5
+      name: reflective_barrier_zombie_4
       rect:
         serializedVersion: 2
         x: 59
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reflective_barrier_zombie_6
+      name: reflective_barrier_zombie_5
       rect:
         serializedVersion: 2
         x: 59
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reflective_barrier_zombie_4
+      name: reflective_barrier_zombie_6
       rect:
         serializedVersion: 2
         x: 39
