@@ -365,7 +365,7 @@
                 <p>银质发射器能发射穿透<![CDATA[<tag id="mvz2:shell" enum="mvz2:flesh"/>]]>血肉之躯并导致流血的飞刀。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20，30（对肉体）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
                 <p>技能：<![CDATA[<color=red>时停至多10个敌人，以这些敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在一段时间后再次向中心飞行</color>]]></p>
             </properties>

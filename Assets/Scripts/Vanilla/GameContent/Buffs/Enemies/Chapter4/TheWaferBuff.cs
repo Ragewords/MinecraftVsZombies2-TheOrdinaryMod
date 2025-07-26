@@ -41,7 +41,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
 
             var buffs = entity.GetBuffs<TheWaferBuff>();
-            input.Multiply(Mathf.Max(1 - buffs.Count() / 10, 0));
+            input.Multiply(Mathf.Max(1 - (buffs.Count() / 10), 0));
             buff.Remove();
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)

@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Shells
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.SLICE))
             {
                 var entity = damageInfo.Entity;
-                damageInfo.Multiply(2);
+                damageInfo.Multiply(1.5f);
                 if (!entity.HasBuff<BleedingBuff>())
                     entity.AddBuff<BleedingBuff>();
             }
