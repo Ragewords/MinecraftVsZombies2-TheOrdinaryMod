@@ -1710,7 +1710,7 @@
         </enemy>
         <witherSkeleton id="brainwasher" name="洗脑者" deathMessage="你是爱迪生，你是爱迪生" unlock="mvz2:level.castle_11">
             <properties>
-                <float name="mvz2:maxHealth" value="4000"/>
+                <float name="mvz2:maxHealth" value="2000"/>
                 <float name="mvz2:range" value="800"/>
                 <vector3 name="mvz2:shotOffset" x="30" y="96" z="0"/>
                 <vector3 name="mvz2:shotVelocity" x="0" y="0" z="0"/>
