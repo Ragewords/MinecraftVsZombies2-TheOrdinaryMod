@@ -5271,6 +5271,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7830670c779e9b948a9ad6dc42466bfa
+    m_Address: mvz2:entity/enemy/reflective_barrier_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 785248f3150b5ed4d9ad34e175c4e24f
     m_Address: mvz2:pickup/artifact_pickup
     m_ReadOnly: 0
