@@ -244,6 +244,15 @@
             <key hex="#54D9D0" time="1"/>
         </colorKeys>
     </fragment>
+    <fragment name="smoker">
+        <colorKeys>
+            <key hex="#3A2F1E" time="0.2"/>
+            <key hex="#967441" time="0.6"/>
+            <key hex="#67502C" time="0.5"/>
+            <key hex="#4F4F4F" time="0.3"/>
+            <key hex="#ABABAB" time="1"/>
+        </colorKeys>
+    </fragment>
     <fragment name="infectenser">
         <colorKeys>
             <key hex="#FF0000" time="0.2"/>
