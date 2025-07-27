@@ -1,4 +1,8 @@
-﻿using MVZ2.Vanilla.Entities;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -15,11 +19,14 @@ namespace MVZ2.GameContent.Projectiles
             AddModifier(new Vector3Modifier(EngineEntityProps.DISPLAY_SCALE, NumberOperator.Multiply, PROP_SCALE));
             AddModifier(new Vector3Modifier(EngineEntityProps.SCALE, NumberOperator.Multiply, PROP_SCALE));
             AddModifier(new BooleanModifier(VanillaProjectileProps.NO_DESTROY_OUTSIDE_LAWN, PROP_NO_DESTROY_OUTSIDE_LAWN));
+            collisionDetector = new CollisionDetector()
+            {
+                mask = EntityCollisionHelper.MASK_PROJECTILE
+            };
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_PROJECTILE;
         }
         public override void Update(Entity entity)
         {
@@ -42,17 +49,15 @@ namespace MVZ2.GameContent.Projectiles
                 entity.Velocity = (targetPosition - entity.Position);
             }
             SetNoDestroyOutsideLawn(entity, entity.GetChildren().Length > 0);
-        }
-        public override void PostCollision(EntityCollision collision, int state)
-        {
-            base.PostCollision(collision, state);
-            var planet = collision.Entity;
-            var hostileProjectile = collision.Other;
-            if (!collision.OtherCollider.IsMainCollider())
-                return;
-            if (hostileProjectile.Type != EntityTypes.PROJECTILE)
-                return;
-            hostileProjectile.Die(planet);
+
+            collisionDetectBuffer.Clear();
+            collisionDetector.DetectMultiple(entity, collisionDetectBuffer);
+            foreach (var target in collisionDetectBuffer)
+            {
+                var projectile = target.Entity;
+                projectile.Die(entity);
+                entity.PlaySound(VanillaSoundID.hellPlanetDeflect);
+            }
         }
 
         public static bool NoDestroyOutsideLawn(Entity entity) => entity.GetBehaviourField<bool>(PROP_NO_DESTROY_OUTSIDE_LAWN);
@@ -70,5 +75,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly VanillaEntityPropertyMeta<float> PROP_ORBIT_SPEED = new VanillaEntityPropertyMeta<float>("orbit_speed");
         public static readonly VanillaEntityPropertyMeta<float> PROP_ORBIT_DISTANCE = new VanillaEntityPropertyMeta<float>("orbit_distance");
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_SCALE = new VanillaEntityPropertyMeta<Vector3>("scale");
+        private Detector collisionDetector;
+        private List<IEntityCollider> collisionDetectBuffer = new List<IEntityCollider>();
     }
 }

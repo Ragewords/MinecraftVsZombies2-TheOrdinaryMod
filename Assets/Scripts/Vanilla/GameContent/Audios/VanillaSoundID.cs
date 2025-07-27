@@ -95,6 +95,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID gunShot = Get("gun_shot");
         public readonly static NamespaceID harp = Get("harp");
         public readonly static NamespaceID heal = Get("heal");
+        public readonly static NamespaceID hellPlanetDeflect = Get("hell_planet_deflect");
         public readonly static NamespaceID hit = Get("hit");
         public readonly static NamespaceID holy = Get("holy");
         public readonly static NamespaceID horseAngry = Get("horse_angry");
