@@ -105,7 +105,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID impLaugh = Get("imp_laugh");
         public readonly static NamespaceID impact = Get("impact");
         public readonly static NamespaceID ironCurtain = Get("iron_curtain");
-        public readonly static NamespaceID jizo_appear = Get("jizo_appear");
+        public readonly static NamespaceID jizoAppear = Get("jizo_appear");
         public readonly static NamespaceID launch = Get("launch");
         public readonly static NamespaceID leatherHit = Get("leather_hit");
         public readonly static NamespaceID lightningAttack = Get("lightning_attack");

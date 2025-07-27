@@ -66,7 +66,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 if (entity.IsOnGround && !IsJumping(entity))
                 {
-                    entity.PlaySound(VanillaSoundID.jizo_appear);
+                    entity.PlaySound(VanillaSoundID.jizoAppear);
                     entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, jumpTarget + Vector3.up * 240, 30, entity.GetGravity());
                     SetJumping(entity, true);
                 }
