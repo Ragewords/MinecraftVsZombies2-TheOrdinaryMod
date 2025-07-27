@@ -91,6 +91,8 @@ namespace MVZ2.GameContent.Effects
         public const string vomitSplash = "vomit_splash";
 
         public const string ufoBackground = "ufo_background";
+        public const string smokerSmoke = "smoker_smoke";
+        public const string smokerFire = "smoker_fire";
     }
     public static class VanillaEffectID
     {
@@ -179,6 +181,8 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID amplifiedRoar = Get(VanillaEffectNames.amplifiedRoar);
         public static readonly NamespaceID vomitSplash = Get(VanillaEffectNames.vomitSplash);
         public static readonly NamespaceID ufoBackground = Get(VanillaEffectNames.ufoBackground);
+        public static readonly NamespaceID smokerSmoke = Get(VanillaEffectNames.smokerSmoke);
+        public static readonly NamespaceID smokerFire = Get(VanillaEffectNames.smokerFire);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

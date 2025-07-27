@@ -10087,6 +10087,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dead4194f00ec204286026914c7c6112
+    m_Address: mvz2:effect/smoker_smoke
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ded137b9dc7a3e54fae7243bc2863c71
     m_Address: mvz2:entity/contraption/drivenser
     m_ReadOnly: 0

@@ -46,11 +46,11 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.smoker,
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
-                VanillaContraptionID.beacon,
+                VanillaContraptionID.noteBlock,
                 VanillaPickupID.emerald,
                 VanillaPickupID.ruby,
                 VanillaPickupID.sapphire,
-                VanillaPickupID.diamond,
+                VanillaEnemyID.reflectiveBarrierZombie,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.cannoneerZombie,
             });
