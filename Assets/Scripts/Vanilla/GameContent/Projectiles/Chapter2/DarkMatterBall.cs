@@ -76,10 +76,7 @@ namespace MVZ2.GameContent.Projectiles
                     entity.Parent.HealEffects(50, entity);
                 }
             }
-            var param = entity.GetSpawnParams();
-            param.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
-            param.SetProperty(EngineEntityProps.TINT, Color.black);
-            entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+            Explosion.Spawn(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.explosion);
             entity.Level.ShakeScreen(10, 0, 15);
 
