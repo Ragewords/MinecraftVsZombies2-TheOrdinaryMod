@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.Effects
         public override void Update(Entity entity)
         {
             base.Update(entity);
-            bool inactive = entity.Timeout <= 100;
+            bool inactive = entity.Timeout <= 30;
             entity.SetAnimationBool("Disappear", inactive);
 
             RotateUpdate(entity, inactive);

@@ -1,5 +1,7 @@
+using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 
@@ -17,6 +19,7 @@ namespace MVZ2.GameContent.Effects
 
         public override void Update(Entity entity)
         {
+            base.Update(entity);
             entity.SetAnimationBool("Cursed", IsCursed(entity));
         }
         public static void SetCursed(Entity entity, bool value) => entity.SetProperty(PROP_CURSED, value);

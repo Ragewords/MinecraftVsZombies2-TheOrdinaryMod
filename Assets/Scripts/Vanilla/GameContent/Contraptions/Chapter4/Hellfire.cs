@@ -75,9 +75,9 @@ namespace MVZ2.GameContent.Contraptions
                 }
                 entity.PlaySound(VanillaSoundID.flame);
                 var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
-                for (var i = 0; i < Mathf.CeilToInt(border_distance / 48); i++)
+                for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
                 {
-                    var x_pos = VanillaLevelExt.LEFT_BORDER + 48 * i;
+                    var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
                     var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
                     Fireblock.SetCursed(block, IsCursed(entity));
                     if (IsCursed(entity))
