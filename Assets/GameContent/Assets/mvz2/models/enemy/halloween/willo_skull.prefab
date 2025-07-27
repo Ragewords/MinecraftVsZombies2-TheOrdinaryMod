@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c238ec0fd949e03469dee128c3a6209c, type: 3}
+    - target: {fileID: 6095790770378518465, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6688088776725628070, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -333,7 +337,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6688088776725628070, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
-      insertIndex: 1
+      insertIndex: 0
       addedObject: {fileID: 8095210331757366246}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
