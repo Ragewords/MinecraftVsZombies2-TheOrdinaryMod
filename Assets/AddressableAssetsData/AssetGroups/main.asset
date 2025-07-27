@@ -6356,6 +6356,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8af34f25dcad82e40bb7fef49d44dfe2
+    m_Address: mvz2:entity/armor/cannonball_zombie_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8af4d1f8c03b81d4e924779483536618
     m_Address: mvz2:random/glass_break3
     m_ReadOnly: 0
@@ -8869,6 +8876,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c434a2d11e63d214287893feeea5831f
+    m_Address: mvz2:hell_planet_deflect2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c4bdf350a8df52941b184c7cd8e2f543
     m_Address: mvz2:effect/cursed_fire_particles
     m_ReadOnly: 0
@@ -9396,6 +9410,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf47d35dbe85ad449b1e674c2e6c2bf9
     m_Address: mvz2:starshard_use
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf9187e5510dcc4449c847ab7b16d5e7
+    m_Address: mvz2:hell_planet_deflect1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10310,6 +10331,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5a39bb468a4cca4ab2dcad10a455c1d
+    m_Address: mvz2:hell_planet_deflect3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5e566d19ad3e024c8c3e91f928d8be1
     m_Address: mvz2:entity/effects/gas_diffusion

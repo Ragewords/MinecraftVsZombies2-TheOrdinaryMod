@@ -1425,7 +1425,6 @@
             </flavor>
         </entry>
 
-
         <entry id="mvz2:undead_flying_object" name="不死飞行物" encounterUnlock="mvz2:level.ship_2">
             <header>
                 <p>不死飞行物从空中来袭并对你进行干扰。在那之后它们就会离开。</p>
@@ -1435,7 +1434,7 @@
                 <p>红色：<![CDATA[<color=red>放出僵尸</color>]]></p>
                 <p>绿色：<![CDATA[<color=red>绑架器械</color>]]></p>
                 <p>蓝色：<![CDATA[<color=red>吸取掉落物</color>]]></p>
-                <p>彩色：<![CDATA[<color=red>变成两个随机颜色的不死飞行物</color>]]></p>
+                <p>彩色：<![CDATA[<color=red>变成红色、绿色和蓝色的不死飞行物各一个</color>]]></p>
             </properties>
             <flavor>
                 <p>如果你的农场里大面积地种植了小麦，或者圈养了很多的奶牛，那你可一定要小心这帮家伙了。</p>
@@ -1459,7 +1458,7 @@
                 <p>炮弹僵尸由炮手僵尸发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100</color>]]></p>
+                <p>生命：<![CDATA[<color=red>100+50</color>]]></p>
                 <p>移速：<![CDATA[<color=red>2</color>]]></p>
             </properties>
             <flavor>

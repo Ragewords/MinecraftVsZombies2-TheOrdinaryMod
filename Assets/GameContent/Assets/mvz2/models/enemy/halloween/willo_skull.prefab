@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 4372660881891410926}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: animators.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: renderers.Array.size
@@ -507,12 +507,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2008099773726412096}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: animators.Array.data[1]
+      value: 
+      objectReference: {fileID: 8890340634506225588}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: animators.Array.data[2]
       value: 
       objectReference: {fileID: 8890340634506225588}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: modelAnchors.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: renderers.Array.data[0]
@@ -535,29 +539,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6773206158014894119}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
-      propertyPath: modelAnchors.Array.data[4]
+      propertyPath: modelAnchors.Array.data[3]
       value: 
       objectReference: {fileID: 1608844212977481079}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
-      propertyPath: modelAnchors.Array.data[5]
+      propertyPath: modelAnchors.Array.data[4]
       value: 
       objectReference: {fileID: 5697901850307722662}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: modelAnchors.Array.data[5]
+      value: 
+      objectReference: {fileID: 5884270137243070153}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: modelAnchors.Array.data[6]
       value: 
       objectReference: {fileID: 5884270137243070153}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: subSortingGroups.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
-      propertyPath: subSortingGroups.Array.data[1]
+      propertyPath: subSortingGroups.Array.data[0]
       value: 
       objectReference: {fileID: 4609400907000658483}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
-      propertyPath: subSortingGroups.Array.data[2]
+      propertyPath: subSortingGroups.Array.data[1]
       value: 
       objectReference: {fileID: 2767604419827143782}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: subSortingGroups.Array.data[2]
+      value: 
+      objectReference: {fileID: 8064157914385170388}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: subSortingGroups.Array.data[3]
       value: 
