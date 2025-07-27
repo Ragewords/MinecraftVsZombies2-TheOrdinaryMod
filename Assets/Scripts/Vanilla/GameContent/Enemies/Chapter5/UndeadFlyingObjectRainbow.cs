@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Enemies
             timer.Run();
             if (timer.Expired)
             {
-                SpawnRandomUFOs(enemy, 2);
+                SpawnRandomUFOs(enemy, 3);
                 var effect = enemy.Spawn(VanillaEffectID.smokeCluster, enemy.GetCenter());
                 effect.SetTint(new Color(1, 0.8f, 1, 1));
                 enemy.Remove();
@@ -44,14 +44,10 @@ namespace MVZ2.GameContent.Enemies
 
             HashSet<LawnGrid> possibleGrids = new HashSet<LawnGrid>();
 
-            // 获取可以随机生成的UFO类型。
-            List<int> typePool = new List<int>();
-            UndeadFlyingObject.FillUFOVariantRandomPool(level, typePool);
-
             for (int i = 0; i < count; i++)
             {
-                // 获取一个随机的UFO类型。
-                var type = typePool.Random(rng);
+                // 按顺序获取一个UFO类型。
+                var type = i;
 
                 // 获取可以生成该UFO的网格。
                 possibleGrids.Clear();
