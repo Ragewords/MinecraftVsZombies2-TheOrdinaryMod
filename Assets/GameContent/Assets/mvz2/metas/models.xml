@@ -126,7 +126,7 @@
         </animator>    
     </model>
     <model name="cannoneer_zombie" type="entity" path="mvz2:enemy/ship/cannoneer_zombie" width="85" height="92" xOffset="22" yOffset="-41"/>
-    <model name="cannonball_zombie" type="entity" path="mvz2:enemy/ship/cannonball_zombie" width="36" height="32" xOffset="0" yOffset="-16"/>
+    <model name="cannonball_zombie" type="entity" path="mvz2:enemy/ship/cannonball_zombie" width="38" height="38" xOffset="0" yOffset="-16"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -384,6 +384,7 @@
     <model name="emperor_crown" type="armor" path="mvz2:armor/emperor_crown" width="70" height="72" xOffset="1" yOffset="18"/>
     <model name="umbrella_shield" type="armor" path="mvz2:armor/umbrella_shield" width="64" height="100" xOffset="16" yOffset="-7"/>
     <model name="cannon" type="armor" path="mvz2:armor/cannon" width="61" height="36" xOffset="5" yOffset="0"/>
+    <model name="cannonball_hat" type="armor" path="mvz2:armor/cannanball_zombie_hat" width="27" height="11" xOffset="0" yOffset="5"/>
 
     <!-- HeldItems -->
     <model name="starshard.default" type="held" path="mvz2:held/starshards/default" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>

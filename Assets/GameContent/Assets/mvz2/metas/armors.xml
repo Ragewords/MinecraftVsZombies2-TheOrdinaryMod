@@ -76,6 +76,12 @@
                 <float name="mvz2:maxHealth" value="50" />
             </props>
         </entry>
+        <entry id="cannonball_hat">
+            <props>
+                <id name="mvz2:shell" value="mvz2:leather" />
+                <float name="mvz2:maxHealth" value="60" />
+            </props>
+        </entry>
 
         <!-- Shields -->
         <entry id="reflective_barrier">

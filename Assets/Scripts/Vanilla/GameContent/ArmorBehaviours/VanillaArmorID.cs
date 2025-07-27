@@ -9,8 +9,8 @@ namespace MVZ2.GameContent.Armors
         public const string ironHelmet = "iron_helmet";
         public const string skelebombCap = "skelebomb_cap";
         public const string mesmerizerCrown = "mesmerizer_crown";
-        public const string brainwasherCrown = "brainwasher_crown";
         public const string berserkerHelmet = "berserker_helmet";
+        public const string brainwasherCrown = "brainwasher_crown";
         public const string bedserkerHelmet = "bedserker_helmet";
         public const string reflectiveBarrier = "reflective_barrier";
         public const string wickedHermitHat = "wicked_hermit_hat";
@@ -18,6 +18,7 @@ namespace MVZ2.GameContent.Armors
         public const string skeletonWarriorShield = "skeleton_warrior_shield";
         public const string emperorCrown = "emperor_crown";
         public const string umbrellaShield = "umbrella_shield";
+        public const string cannonballHat = "cannonball_hat";
     }
     public static class VanillaArmorID
     {
@@ -34,6 +35,7 @@ namespace MVZ2.GameContent.Armors
         public static readonly NamespaceID skeletonWarriorShield = Get(VanillaArmorNames.skeletonWarriorShield);
         public static readonly NamespaceID emperorCrown = Get(VanillaArmorNames.emperorCrown);
         public static readonly NamespaceID umbrellaShield = Get(VanillaArmorNames.umbrellaShield);
+        public static readonly NamespaceID cannonballHat = Get(VanillaArmorNames.cannonballHat);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);
