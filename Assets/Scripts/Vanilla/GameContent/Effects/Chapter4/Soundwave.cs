@@ -31,6 +31,7 @@ namespace MVZ2.GameContent.Effects
         }
         public override void Update(Entity entity)
         {
+            base.Update(entity);
             entity.SetAnimationBool("Loud", IsLoud(entity));
         }
         public override void PostCollision(EntityCollision collision, int state)
