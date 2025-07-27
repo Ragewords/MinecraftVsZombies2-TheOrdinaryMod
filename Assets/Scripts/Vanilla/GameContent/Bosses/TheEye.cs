@@ -156,9 +156,6 @@ namespace MVZ2.GameContent.Bosses
                                     var proj = entity.ShootProjectile(shotParams);
                                     proj.SetParent(entity);
 
-                                    var expPart = entity.Level.Spawn(VanillaEffectID.explosion, entity.GetCenter(), entity);
-                                    expPart.SetSize(Vector3.one * 100);
-                                    expPart.SetTint(Color.black);
                                     entity.Spawn(VanillaEffectID.darkMatterParticlesAbsorbing, effectPos);
                                 }
                                 SetAttackState(entity, STATE_LEVITATE);

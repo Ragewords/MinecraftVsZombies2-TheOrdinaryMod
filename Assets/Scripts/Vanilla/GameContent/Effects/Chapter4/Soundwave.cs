@@ -36,11 +36,12 @@ namespace MVZ2.GameContent.Effects
         public override void PostCollision(EntityCollision collision, int state)
         {
             base.PostCollision(collision, state);
+            if (!collision.Collider.IsMainCollider())
+                return;
             if (state != EntityCollisionHelper.STATE_ENTER)
                 return;
             var wave = collision.Entity;
-            var other = collision.Other;
-            other.TakeDamage(wave.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE), wave);
+            collision.OtherCollider.TakeDamage(wave.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE), wave);
         }
         public static void SetLoud(Entity entity, bool value) => entity.SetProperty(PROP_LOUD, value);
         public static bool IsLoud(Entity entity) => entity.GetProperty<bool>(PROP_LOUD);
