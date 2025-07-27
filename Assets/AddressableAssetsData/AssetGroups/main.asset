@@ -9408,6 +9408,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf3be980cc6f89e408988c51840f4c89
+    m_Address: mvz2:armor/cannanball_zombie_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf47d35dbe85ad449b1e674c2e6c2bf9
     m_Address: mvz2:starshard_use
     m_ReadOnly: 0
