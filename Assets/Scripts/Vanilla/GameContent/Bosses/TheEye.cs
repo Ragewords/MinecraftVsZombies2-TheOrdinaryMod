@@ -287,7 +287,7 @@ namespace MVZ2.GameContent.Bosses
                                 entity.SetAnimationInt("AttackState", 4);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_REST);
-                                transTimer.ResetTime(240);
+                                transTimer.ResetTime(210);
                                 timer.Reset();
                                 MoveLower(entity);
                             }
