@@ -3949,13 +3949,6 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 56ee7cd28506ce84d8ca1d52ef4dcf8d
-    m_Address: mvz2:enemy/halloween/willo_skull
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56f8b80b81069954a9380947b47bbe4e
     m_Address: mvz2:projectile/large_snowball
     m_ReadOnly: 0
@@ -8763,13 +8756,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c238ec0fd949e03469dee128c3a6209c
-    m_Address: mvz2:entity/enemies/willo_skull
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2578011139751f4ebed15184256f29d
     m_Address: mvz2:map/dream/apollo_meridian_blue
