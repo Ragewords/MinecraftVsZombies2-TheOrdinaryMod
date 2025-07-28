@@ -531,6 +531,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7b5b04fa7d4703a48867a2ec9b7c31f6, type: 3}
   - name: entity/armor/brainwasher_crown
     sprite: {fileID: 21300000, guid: 9715bb3348d5b30448e5b28dfde0a228, type: 3}
+  - name: entity/armor/cannonball_zombie_hat
+    sprite: {fileID: 21300000, guid: 8af34f25dcad82e40bb7fef49d44dfe2, type: 3}
   - name: entity/armor/emperor_crown
     sprite: {fileID: 21300000, guid: 58755531f1cc59b4ab7563c5bedf58b2, type: 3}
   - name: entity/armor/mesmerizer_crown
@@ -805,8 +807,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 53ae426afe3ebb8438ab6c1165ed0448, type: 3}
   - name: entity/enemies/ufo_spotlight
     sprite: {fileID: 21300000, guid: aff8b41543694e649bc9659d6b690072, type: 3}
-  - name: entity/enemies/willo_skull
-    sprite: {fileID: 21300000, guid: c238ec0fd949e03469dee128c3a6209c, type: 3}
   - name: entity/pickups/almanac_book
     sprite: {fileID: 21300000, guid: 343af9cde9d29df4eb4188060da23847, type: 3}
   - name: entity/pickups/diamond
