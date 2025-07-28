@@ -43,11 +43,11 @@ namespace MVZ2.GameContent.Enemies
 
             float arcLength = range * 3;
             float fireLength = range * 2;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var arc = entity.Spawn(VanillaEffectID.electricArc, entity.Position);
 
-                float degree = i * 45;
+                float degree = i * 36;
                 float rad = degree * Mathf.Deg2Rad;
                 Vector3 pos = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * arcLength;
                 ElectricArc.Connect(arc, pos);

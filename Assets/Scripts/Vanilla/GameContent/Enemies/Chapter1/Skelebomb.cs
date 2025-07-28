@@ -149,9 +149,7 @@ namespace MVZ2.GameContent.Enemies
             var range = entity.GetRange() * scaleX;
             entity.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
 
-            var param = entity.GetSpawnParams();
-            param.SetProperty(EngineEntityProps.SIZE, Vector3.one * (range * 2));
-            entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+            Explosion.Spawn(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));
         }
 

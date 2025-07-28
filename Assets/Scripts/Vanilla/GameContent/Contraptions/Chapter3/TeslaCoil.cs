@@ -103,10 +103,8 @@ namespace MVZ2.GameContent.Contraptions
             if (result.HasAnyFatal())
             {
                 var entity = result.Entity;
-                var param = entity.GetSpawnParams();
-                param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 160);
                 entity.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
-                entity.Spawn(VanillaEffectID.explosion, entity.GetCenter(), param);
+                Explosion.Spawn(entity, entity.GetCenter(), 80);
                 entity.PlaySound(VanillaSoundID.explosion);
                 entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
             }
