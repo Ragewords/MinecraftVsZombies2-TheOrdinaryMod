@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Contraptions
     {
         public FireChargeDispenser(string nsp, string name) : base(nsp, name)
         {
-            detector = new DispenserDetector();
+            detector = new TeslaCoilDetector(ATTACK_HEIGHT);
         }
         public override void Init(Entity entity)
         {
@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     detectBuffer.Clear();
                     detector.DetectEntities(entity, detectBuffer);
-                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(3);
+                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(2);
                     foreach (var target in targets)
                     {
                         var targetPos = target.GetCenter();
