@@ -10052,6 +10052,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de6c77a89cb8f054294cc1bbc893e26e
+    m_Address: mvz2:entity/contraption/triplenser_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: de792c288e4a5a2479cdbbca7dfb0fb5
     m_Address: mvz2:note/castle
     m_ReadOnly: 0
