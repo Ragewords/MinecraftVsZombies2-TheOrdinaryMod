@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
@@ -149,6 +150,7 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 var bomb = entity.SpawnWithParams(bombID, entity.Position);
+                bomb.AddBuff<DevourerInvincibleBuff>();
                 bomb.Velocity = new Vector3(bomb.RNG.Next(-8f, 8f), 8, 0);
                 bomb.Trigger();
             }
