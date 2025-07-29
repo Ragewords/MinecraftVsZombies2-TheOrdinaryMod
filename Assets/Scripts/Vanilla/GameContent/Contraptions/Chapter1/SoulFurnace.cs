@@ -28,7 +28,6 @@ namespace MVZ2.GameContent.Contraptions
         public SoulFurnace(string nsp, string name) : base(nsp, name)
         {
             evocationDetector = new SoulFurnaceEvocationDetector();
-            detector.canDetectInvisible = true;
         }
 
         public override void Init(Entity entity)
@@ -107,6 +106,13 @@ namespace MVZ2.GameContent.Contraptions
                     SoulfireBall.SetBlast(projectile, true);
                 }
             }
+        }
+        protected override Detector GetDetector()
+        {
+            return new DispenserDetector()
+            {
+                canDetectInvisible = true
+            };
         }
 
         public int GetFuel(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_FUEL);
