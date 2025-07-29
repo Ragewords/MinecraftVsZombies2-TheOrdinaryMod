@@ -4,6 +4,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -24,6 +25,12 @@ namespace MVZ2.GameContent.Contraptions
             InitShootTimer(entity);
             SetEvocationTimer(entity, new FrameTimer(EVOCATION_TIME));
             SetRepeatTimer(entity, new FrameTimer(REPEAT_INVERVAL));
+        }
+        public override void PostTakeDamage(DamageOutput result)
+        {
+            base.PostTakeDamage(result);
+            if (result.HasAnyFatal())
+                result.Entity.Spawn(VanillaContraptionID.repeatenser, result.Entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {
