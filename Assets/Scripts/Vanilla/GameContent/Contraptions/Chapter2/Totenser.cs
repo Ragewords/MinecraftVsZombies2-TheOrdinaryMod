@@ -89,8 +89,6 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     fireBreath = entity.Level.Spawn(VanillaEffectID.fireBreath, position, entity);
                     fireBreath.SetParent(entity);
-                    fireBreath.SetScale(entity.GetScale());
-                    fireBreath.SetDisplayScale(entity.GetDisplayScale());
                     SetFireBreath(entity, fireBreath);
                     SetShootWeb(entity, true);
                 }

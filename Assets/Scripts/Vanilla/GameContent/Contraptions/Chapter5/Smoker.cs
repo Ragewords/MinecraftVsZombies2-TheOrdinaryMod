@@ -31,13 +31,14 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             var target = smokeDetector.Detect(entity);
             var timer = GetSmokeTimer(entity);
-            timer.Run();
+            timer.Run(entity.GetAttackSpeed());
             if (timer.Expired)
             {
                 if (target != null)
                 {
                     var param = entity.GetSpawnParams();
                     param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 2);
+                    param.SetProperty(EngineEntityProps.FLIP_X, entity.IsFlipX());
                     entity.Spawn(VanillaEffectID.smokerSmoke, entity.GetCenter(), param);
                     timer.ResetTime(SMOKE_INTERVAL);
                 }
