@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 mask = EntityCollisionHelper.MASK_VULNERABLE
             };
-            jalapenoDetector = new LaneDetector(40, 40);
+            jalapenoDetector = new LaneDetector(80, 40);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -71,7 +71,7 @@ namespace MVZ2.GameContent.Contraptions
                 var damageMultipiler = IsCursed(entity) ? 2 : 1;
                 foreach (var target in jalapenoDetectBuffer)
                 {
-                    target.TakeDamage(entity.GetDamage() * 60 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                    target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
                 }
                 entity.PlaySound(VanillaSoundID.flame);
                 var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
