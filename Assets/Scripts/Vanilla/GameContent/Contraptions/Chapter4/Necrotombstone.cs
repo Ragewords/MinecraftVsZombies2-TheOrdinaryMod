@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Contraptions
             var lane = grid.Lane;
             for (int i = -1; i <= 1; i++)
             {
-                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos);
+                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos + new Vector3(80 * i, 0, 0));
                 mage.SetVariant(mageClass);
                 mage.AddBuff<NecrotombstoneRisingBuff>();
                 mage.UpdateModel();
