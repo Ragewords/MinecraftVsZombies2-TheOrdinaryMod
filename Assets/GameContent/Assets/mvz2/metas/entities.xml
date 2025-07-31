@@ -1528,7 +1528,7 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="silverfish" name="蠹虫" deathMessage="你脚下的每一块石头里都是虫……" unlock="mvz2:level.dream_11">
+        <enemy id="silverfish" name="蠹虫" deathMessage="这太吃书了。" unlock="mvz2:level.dream_11">
             <properties>
                 <float name="mvz2:maxHealth" value="100"/>
                 <float name="mvz2:maxAttackHeight" value="10"/>
