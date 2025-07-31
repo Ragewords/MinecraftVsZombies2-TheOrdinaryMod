@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
@@ -69,23 +69,15 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override bool CanTrigger(Entity entity)
         {
-            return base.CanTrigger(entity) && !entity.IsEvoked();
+            return base.CanTrigger(entity) && !entity.IsEvoked() && !IsBroken(entity);
         }
         protected override void OnTrigger(Entity entity)
         {
             base.OnTrigger(entity);
-            if (!IsBroken(entity))
-            {
-                Quake(entity);
-                SetBroken(entity, true);
-                var restoreTimer = GetRestoreTimer(entity);
-                restoreTimer.ResetTime(RESTORE_TIME);
-            }
-            else
-            {
-                WeakQuake(entity);
-                entity.TakeDamage(30, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.SELF_DAMAGE), entity);
-            }
+            Quake(entity);
+            SetBroken(entity, true);
+            var restoreTimer = GetRestoreTimer(entity);
+            restoreTimer.ResetTime(RESTORE_TIME);
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -129,6 +121,9 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     target.RandomChangeAdjacentLane(self.RNG);
                 }
+
+                if (target.CanDeactive())
+                    target.Stun(90);
                 var passenger = target.GetRideablePassenger();
                 if (passenger != null)
                 {
@@ -138,25 +133,6 @@ namespace MVZ2.GameContent.Contraptions
             }
             self.Level.ShakeScreen(15, 0, 30);
             self.PlaySound(VanillaSoundID.lightningAttack);
-        }
-        private void WeakQuake(Entity self)
-        {
-            detectBuffer.Clear();
-            self.Level.FindEntitiesNonAlloc(e => IsValidTarget(self, e), detectBuffer);
-            foreach (var target in detectBuffer)
-            {
-                if (target.Type != EntityTypes.ENEMY)
-                    continue;
-                var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
-
-                if (target.CanDeactive())
-                    target.Stun(30);
-                var vel = target.Velocity;
-                vel.x = 4 * knockbackMultiplier;
-                target.Velocity = vel;
-            }
-            self.Level.ShakeScreen(15, 0, 10);
-            self.PlaySound(VanillaSoundID.taikoDon);
         }
         private float GetChargeBlend(Entity self)
         {
