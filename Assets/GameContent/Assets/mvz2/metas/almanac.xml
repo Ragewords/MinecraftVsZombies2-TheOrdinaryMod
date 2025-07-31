@@ -567,11 +567,11 @@
         </entry>
         <entry id="mvz2:thunder_drum">
             <header>
-                <p>雷鼓在触发后会震飞所有地面上的敌人，使其后退并换行。之后进入破损状态，需要时间修复，也可以以自身耐久为代价触发，造成眩晕和击退效果。</p>
+                <p>雷鼓在触发后会震飞所有地面上的敌人，使其眩晕，后退并换行。之后进入破损状态，需要时间修复。</p>
             </header>
             <properties>
                 <p>修复时间：<![CDATA[<color=red>60秒</color>]]></p>
-                <p>眩晕时间：<![CDATA[<color=red>1秒</color>]]></p>
+                <p>眩晕时间：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>引发4秒地震，对所有地面上的敌人造成总共25%最大生命的伤害</color>]]></p>
             </properties>
             <flavor>
@@ -609,34 +609,34 @@
         </entry>
 
         <!-- Chapter 4 -->
-        <entry id="mvz2:lightning_orb">
-            <header>
-                <p>闪电之珠可以张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
-            </header>
-            <properties>
-                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
-                <p>能量护盾：<![CDATA[<color=red>覆盖半径1.5格的区域，可以抵挡500次任意形式的伤害，被击碎后需要20秒来重新展开</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久和1点能量护盾耐久</color>]]></p>
-                <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
-            </properties>
-            <flavor>
-                <p>如果能做闪电之珠的邻居，那你可有福了，你将会感受到前所未有的宁静。</p>
-            </flavor>
-        </entry>
         <entry id="mvz2:note_block">
             <header>
                 <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>5（音符），3（音浪）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>5（音符），2（音浪）</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
                 <p>音浪半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音浪范围</color>]]></p>
             </properties>
             <flavor>
-                <p>它就是闪电之珠的邻居。</p>
-                <p>天哪！还好闪电之珠能吸收掉那些噪音……</p>
+                <p>永远不要试图做唱片机的邻居，别问为什么。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:lightning_orb">
+            <header>
+                <p>闪电之珠可以张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
+            </header>
+            <properties>
+                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
+                <p>能量护盾：<![CDATA[<color=red>覆盖3×3的区域，可以抵挡500次任意形式的伤害，被击碎后需要20秒来重新展开</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久和1点能量护盾耐久</color>]]></p>
+                <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
+            </properties>
+            <flavor>
+                <p>它就是唱片机的邻居。</p>
+                <p>天哪！还好它能吸收掉那些噪音……</p>
             </flavor>
         </entry>
         <entry id="mvz2:splitenser">
@@ -681,9 +681,9 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>10</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%火焰伤害，+66%溅射伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成1800点火焰伤害</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成450点火焰伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变为诅咒火焰，×200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
             </properties>
             <flavor>
