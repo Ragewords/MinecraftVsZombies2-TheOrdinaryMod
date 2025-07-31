@@ -1043,7 +1043,7 @@
                 <color name="mvz2:lightColor" value="#FFAA00" />
                 <float name="mvz2:damage" value="15"/>
 
-                <int name="mvz2:cost" value="250" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
