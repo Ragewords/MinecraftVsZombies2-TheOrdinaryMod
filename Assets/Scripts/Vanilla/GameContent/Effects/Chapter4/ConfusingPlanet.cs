@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Effects
             }
             if (state != EntityCollisionHelper.STATE_ENTER)
                 return;
-            other.TakeDamage(self.GetDamage(), new DamageEffectList(), self);
+            collision.OtherCollider.TakeDamage(self.GetDamage(), new DamageEffectList(), self);
         }
         private void RotateUpdate(Entity entity, bool inactive)
         {
