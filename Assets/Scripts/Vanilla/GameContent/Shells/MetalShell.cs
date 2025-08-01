@@ -13,14 +13,7 @@ namespace MVZ2.GameContent.Shells
         {
             SetProperty(VanillaShellProps.HIT_SOUND, VanillaSoundID.shieldHit);
             SetProperty(VanillaShellProps.BLOCKS_SLICE, true);
-        }
-        public override void EvaluateDamage(DamageInput damageInfo)
-        {
-            base.EvaluateDamage(damageInfo);
-            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
-            {
-                damageInfo.Multiply(3);
-            }
+            SetProperty(VanillaShellProps.REFLECT_SLICE, true);
         }
     }
 }
