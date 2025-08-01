@@ -1,4 +1,5 @@
-﻿using MVZ2.Vanilla.Modifiers;
+﻿using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Modifiers;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -15,6 +16,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.Set, EntityCollisionHelper.DETECTION_IGNORE, VanillaModifierPriorities.FORCE));
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
+            AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, true));
         }
         public override void PostAdd(Buff buff)
         {

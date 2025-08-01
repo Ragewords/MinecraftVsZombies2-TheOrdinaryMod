@@ -43,7 +43,7 @@ namespace MVZ2.GameContent.Bosses
             flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
             SetProjectileRNG(entity, new RandomGenerator(entity.RNG.Next()));
             SetMoveRNG(entity, new RandomGenerator(entity.RNG.Next()));
-            entity.SetIsInvisible(true);
+            entity.SetInvisible(true);
             SetSoundPlayed(entity, false);
             SetAttackState(entity, STATE_DARK_MATTER);
         }
@@ -98,13 +98,13 @@ namespace MVZ2.GameContent.Bosses
         #region Move
         private void MoveLower(Entity entity)
         {
-            entity.SetIsInvisible(false);
+            entity.SetInvisible(false);
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 10f);
         }
         private void MoveHigher(Entity entity)
         {
-            entity.SetIsInvisible(true);
+            entity.SetInvisible(true);
             var buff = entity.GetFirstBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
         }

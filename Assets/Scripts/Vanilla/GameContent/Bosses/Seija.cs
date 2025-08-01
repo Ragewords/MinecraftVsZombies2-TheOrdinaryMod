@@ -53,7 +53,6 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.UpdateAI(entity);
             var timer = GetFabricCooldownTimer(entity);
             timer.Run();
-            entity.SetIsInvisible(entity.HasBuff<SeijaLanternBuff>());
         }
         protected override void UpdateLogic(Entity entity)
         {

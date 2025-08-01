@@ -185,7 +185,7 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity.GetProperty<bool>(INVISIBLE);
         }
-        public static void SetIsInvisible(this Entity entity, bool value)
+        public static void SetInvisible(this Entity entity, bool value)
         {
             entity.SetProperty(INVISIBLE, value);
         }

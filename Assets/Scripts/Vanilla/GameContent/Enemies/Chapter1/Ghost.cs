@@ -25,7 +25,6 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.AddBuff<GhostBuff>();
             }
-            entity.SetIsInvisible(true);
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 1f);
         }
@@ -36,14 +35,6 @@ namespace MVZ2.GameContent.Enemies
             if (!entity.HasBuff<GhostBuff>())
             {
                 entity.AddBuff<GhostBuff>();
-            }
-            if (!GhostBuff.IsIlluminated(entity))
-            {
-                entity.SetIsInvisible(false);
-            }
-            else
-            {
-                entity.SetIsInvisible(true);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
