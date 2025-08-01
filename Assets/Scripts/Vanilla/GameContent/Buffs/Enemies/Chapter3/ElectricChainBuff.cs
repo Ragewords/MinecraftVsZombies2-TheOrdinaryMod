@@ -68,7 +68,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         }
         public const float ZAP_RADIUS = 120;
         public const float MAX_TARGETS = 5;
-        public const float DMG = 10;
+        public const float DMG = 20;
         public const float DMG_REDUCTION = 0.2f;
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         private List<Entity> attackedEnemies = new List<Entity>();
