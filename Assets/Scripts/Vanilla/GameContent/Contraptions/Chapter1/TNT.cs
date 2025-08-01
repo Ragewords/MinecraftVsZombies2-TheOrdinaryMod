@@ -130,11 +130,12 @@ namespace MVZ2.GameContent.Contraptions
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
                     target.Velocity = target.Velocity + Vector3.up * speed;
                 }
-                if (entity.GetDefinitionID() == VanillaContraptionID.tnt)
+                if (entity.IsEntityOf(VanillaContraptionID.tnt))
                 {
-                    var projectile = entity.Level.Spawn(VanillaProjectileID.miniTNT, output.Entity.Position + Vector3.up * 800, entity);
-                    projectile.SetDamage(damage / 18);
-                    projectile.SetRange(range);
+                    var param = entity.GetSpawnParams();
+                    param.SetProperty(VanillaEntityProps.DAMAGE, damage / 18);
+                    param.SetProperty(VanillaEntityProps.RANGE, range);
+                    entity.Spawn(VanillaProjectileID.miniTNT, output.Entity.Position + Vector3.up * 800, param);
                 }
             }
             Explosion.Spawn(entity, entity.GetCenter(), range);
@@ -206,6 +207,13 @@ namespace MVZ2.GameContent.Contraptions
                 if (unit.IsEntityOf(VanillaBossID.frankenstein))
                 {
                     Frankenstein.Paralyze(unit, entity);
+                }
+                if (entity.IsEntityOf(VanillaContraptionID.tnt))
+                {
+                    var param = entity.GetSpawnParams();
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 18);
+                    param.SetProperty(VanillaEntityProps.RANGE, entity.GetRange());
+                    entity.Spawn(VanillaProjectileID.miniTNT, unit.Position + Vector3.up * 800, param);
                 }
             }
             entity.PlaySound(VanillaSoundID.thunder);
