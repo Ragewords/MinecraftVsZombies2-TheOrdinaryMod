@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using MVZ2.Vanilla.Entities;
+﻿using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
-using MVZ2.Vanilla.Shells;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -17,9 +15,6 @@ namespace MVZ2.GameContent.Projectiles
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damage)
         {
             base.PostHitEntity(hitResult, damage);
-            if (damage == null)
-                return;
-            var reflectSlice = damage.GetAllResults().Any(e => e?.ShellDefinition?.ReflectSlice() ?? false);
             var projectile = hitResult.Projectile;
 
             var hitCount = GetHitCount(projectile);
@@ -29,12 +24,6 @@ namespace MVZ2.GameContent.Projectiles
             {
                 hitResult.Pierce = false;
                 return;
-            }
-            if (reflectSlice)
-            {
-                hitResult.Pierce = true;
-                var entity = hitResult.Other;
-                Knife.Deflect(entity, projectile);
             }
         }
         public static int GetHitCount(Entity entity) => entity.GetBehaviourField<int>(PROP_HIT_COUNT);
