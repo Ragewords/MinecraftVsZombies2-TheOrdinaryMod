@@ -62,32 +62,28 @@ namespace MVZ2.GameContent.Stages
                 entity.AddBuff<LittleZombieBuff>();
             }
         }
-        private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
+        public void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
         {
             var entity = param.entity;
             var level = entity.Level;
             if (level.StageDefinition != this)
                 return;
             bool small = false;
-            if (level.CurrentWave > 10)
+            var smallCounter = GetSmallCounter(level);
+            if (smallCounter > MAX_SMALL_COUNTER)
             {
-                var smallCounter = GetSmallCounter(level);
-                if (smallCounter > MAX_SMALL_COUNTER)
-                {
-                    smallCounter -= MAX_SMALL_COUNTER;
-                    small = true;
-                }
-                else
-                {
-                    smallCounter++;
-                }
-                SetSmallCounter(level, smallCounter);
+                smallCounter -= MAX_SMALL_COUNTER;
+                small = true;
             }
+            else
+            {
+                smallCounter++;
+            }
+            SetSmallCounter(level, smallCounter);
             if (small)
             {
                 entity.AddBuff<LittleContraptionBuff>();
             }
-            entity.Health = entity.GetMaxHealth();
         }
         public static int GetBigCounter(LevelEngine level) => level.GetBehaviourField<int>(FIELD_BIG_COUNTER);
         public static void SetBigCounter(LevelEngine level, int value) => level.SetBehaviourField(FIELD_BIG_COUNTER, value);
