@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Properties;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -30,6 +31,7 @@ namespace MVZ2.GameContent.Contraptions
             SetEvocationTimer(entity, new FrameTimer(120));
             SetFrontRepeatTimer(entity, new FrameTimer(REPEAT_INTERVAL));
             SetRepeatTimer(entity, new FrameTimer(REPEAT_INTERVAL));
+            SetBackRepeatRNG(entity, entity.RNG);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -102,8 +104,6 @@ namespace MVZ2.GameContent.Contraptions
             offset = entity.ModifyShotOffset(offset);
             param.position = entity.Position + offset;
 
-            param.projectileID = VanillaProjectileID.knife;
-
             var vel = param.velocity;
             vel.x *= -1;
             param.velocity = vel;
@@ -133,16 +133,20 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void RepeatShootFront(Entity entity)
         {
-            SetFrontRepeatCount(entity, 2);
+            bool repeat4 = entity.RNG.Next(10) == 0;
+            int count = 1 + (repeat4 ? 3 : 0);
+            SetFrontRepeatCount(entity, count);
             var repeatTimer = GetFrontRepeatTimer(entity);
-            repeatTimer.ResetTime(REPEAT_INTERVAL);
+            repeatTimer.ResetTime(Mathf.FloorToInt(10f / count));
             repeatTimer.Frame = 0;
         }
         public void RepeatShootBack(Entity entity)
         {
-            SetRepeatCount(entity, 2);
+            bool repeat4 = GetBackRepeatRNG(entity).Next(2) == 0;
+            int count = 2 + (repeat4 ? 2 : 0);
+            SetRepeatCount(entity, count);
             var repeatTimer = GetRepeatTimer(entity);
-            repeatTimer.ResetTime(REPEAT_INTERVAL);
+            repeatTimer.ResetTime(Mathf.FloorToInt(10f / count));
             repeatTimer.Frame = 0;
         }
         protected override void OnEvoke(Entity entity)
@@ -156,12 +160,14 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
         public static FrameTimer GetFrontRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_F_REPEAT_TIMER);
         public static void SetFrontRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_F_REPEAT_TIMER, timer);
+        public static int GetFrontRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_F_REPEAT_COUNT);
+        public static void SetFrontRepeatCount(Entity entity, int timer) => entity.SetBehaviourField(PROP_F_REPEAT_COUNT, timer);
         public static FrameTimer GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_REPEAT_TIMER);
         public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_REPEAT_TIMER, timer);
         public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_REPEAT_COUNT);
         public static void SetRepeatCount(Entity entity, int timer) => entity.SetBehaviourField(PROP_REPEAT_COUNT, timer);
-        public static int GetFrontRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_F_REPEAT_COUNT);
-        public static void SetFrontRepeatCount(Entity entity, int timer) => entity.SetBehaviourField(PROP_F_REPEAT_COUNT, timer);
+        public static void SetBackRepeatRNG(Entity entity, RandomGenerator timer) => entity.SetBehaviourField(PROP_B_REPEAT_RNG, timer);
+        public static RandomGenerator GetBackRepeatRNG(Entity entity) => entity.GetBehaviourField<RandomGenerator>(PROP_B_REPEAT_RNG);
         private void EvokedUpdate(Entity entity)
         {
             var evocationTimer = GetEvocationTimer(entity);
@@ -189,5 +195,6 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_F_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("FRepeatCount");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_B_REPEAT_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("BRepeatRNG");
     }
 }

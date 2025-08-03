@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void OnShootTick(Entity entity)
         {
             int count = 0;
-            if (entity.RNG.Next(9) > 3)
+            if (entity.RNG.Next(10) < 3)
                 count = 2;
             else
                 count = 1;
