@@ -111,18 +111,11 @@ namespace MVZ2.GameContent.Contraptions
                 var entity = source.GetEntity();
                 if (entity == null)
                     return;
-                if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
+                else if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
                     return;
                 protectDetectBuffer.Clear();
                 protectDetector.DetectEntities(entity, protectDetectBuffer);
-                foreach (var id in protectDetectBuffer)
-                {
-                    if (id.HasBuff<LightningOrbEnergyShieldBuff>())
-                        continue;
-                    if (id.HasBuff<DevourerInvincibleBuff>())
-                        continue;
-                    results.Add(id);
-                }
+                results.AddRange(protectDetectBuffer);
             }
             private Detector protectDetector;
             private List<Entity> protectDetectBuffer = new List<Entity>();

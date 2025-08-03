@@ -28,12 +28,6 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             }
         }
-        public override void OnShootTick(Entity entity)
-        {
-            var projectile = Shoot(entity);
-            projectile.SetScale(entity.GetScale());
-            projectile.SetDisplayScale(entity.GetDisplayScale());
-        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
