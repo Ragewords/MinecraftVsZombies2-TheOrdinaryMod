@@ -4831,6 +4831,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 693dd41900232284cb765364ac5cec13
+    m_Address: mvz2:entity/effects/nightmare_fire_particle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6990d1364b53e3b40b784f6e3b7754e5
     m_Address: mvz2:mobile_blueprint/shikaisen_staff
     m_ReadOnly: 0
@@ -5382,6 +5389,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77b508e38513a9845ab552af495ad4f5
+    m_Address: mvz2:effect/nightmare_fire_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 77c4b1d0633cdab47b26889dfcd8d4dd
     m_Address: mvz2:random/glass4
@@ -8609,6 +8623,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd3879def88f2dd438cdb392f2058930
+    m_Address: mvz2:effect/nightmare_meteor
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bd7b2da4545106b46b4afbf8863f9926
     m_Address: mvz2:level/halloween/halloween
