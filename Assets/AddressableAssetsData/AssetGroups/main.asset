@@ -8771,6 +8771,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c27ef41cd76faac4089de0ce1a89012e
+    m_Address: mvz2:pearl_boost
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2aeb2a3155f07e428c69e806e0e4b32
     m_Address: mvz2:talk/dialog_bang
     m_ReadOnly: 0
@@ -10262,6 +10269,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2dcac54379de6944943cbd8028f4069
+    m_Address: mvz2:mobile_blueprint/explosive_pearl
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2de8f00c91d8ad498a0031ee7f96f5e
     m_Address: mvz2:phone_ring
     m_ReadOnly: 0
@@ -11345,6 +11359,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa7c46ace17629d4ca68e6fc1310e61a
+    m_Address: mvz2:options/explosive_pearl
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa819afca41cc3947a9d00a11d208a21
     m_Address: mvz2:flame
