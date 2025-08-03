@@ -416,7 +416,7 @@
         </entry>
         <entry id="mvz2:gravity_pad">
             <header>
-                <p>超重力板能够增加上方子弹的重力并能让它上面的敌人无法跳跃。</p>
+                <p>重力板能够增加上方子弹的重力并能让它上面的敌人无法跳跃。</p>
             </header>
             <properties>
                 <p>技能：<![CDATA[<color=red>铁砧从天而降，砸伤敌人并阻挡它们前进</color>]]></p>
@@ -562,7 +562,7 @@
             </properties>
             <flavor>
                 <p>转生苹果对于砸到重力方块这件事情感到很抱歉，所以它赔了重力方块自己的一块皮。</p>
-                <p>这就是为什么超重力板是一个紫色的板子。</p>
+                <p>这就是为什么重力板是一片紫色的板子。</p>
             </flavor>
         </entry>
         <entry id="mvz2:thunder_drum">

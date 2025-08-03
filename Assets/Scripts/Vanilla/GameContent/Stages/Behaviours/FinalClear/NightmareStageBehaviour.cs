@@ -1,8 +1,6 @@
 ﻿using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Pickups;
-using MVZ2.GameContent.ProgressBars;
-using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
@@ -52,17 +50,11 @@ namespace MVZ2.GameContent.Stages
             {
                 // 眼出现
                 level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
-                level.PlayMusic(VanillaMusicID.nightmareBoss3);
-                level.SetMusicVolume(1);
-                level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
                 return;
             }
-            // 音乐放缓。
-            level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
-            if (level.GetMusicVolume() <= 0)
+            if (!level.HasBuff<TheEyeTransitionBuff>())
             {
-                Vector3 pos = new Vector3(level.GetEntityColumnX(4), 800, level.GetEntityLaneZ(2));
-                var boss = level.Spawn(VanillaBossID.theEye, pos, null);
+                level.AddBuff<TheEyeTransitionBuff>();
             }
         }
         private void TheEyeUpdate(LevelEngine level)

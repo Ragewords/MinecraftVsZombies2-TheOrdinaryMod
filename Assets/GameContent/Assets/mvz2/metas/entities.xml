@@ -439,7 +439,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
-        <contraption id="gravity_pad" name="超重力板" tooltip="大幅度增强上方物体的重力" unlock="mvz2:level.dream_3">
+        <contraption id="gravity_pad" name="重力板" tooltip="增强上方物体的重力" unlock="mvz2:level.dream_3">
             <properties>
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
@@ -451,7 +451,7 @@
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
                 <string name="mvz2:sortingLayer" value="Carriers" />
 
-                <int name="mvz2:cost" value="125" />
+                <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
@@ -2870,6 +2870,20 @@
         <effect id="nightmare_watching_eye" >
             <properties>
                 <string name="mvz2:sortingLayer" value="Shadow" />
+            </properties>
+        </effect>
+        <effect id="nightmare_meteor">
+            <properties>
+                <float name="mvz2:gravity" value="5" />
+                <bool name="mvz2:decorative" value="false" />
+                <bool name="mvz2:isFire" value="true" />
+            </properties>
+        </effect>
+        <effect id="nightmare_fire_particles">
+            <properties>
+                <bool name="mvz2:decorative" value="false" />
+                <bool name="mvz2:isFire" value="true" />
+                <int name="mvz2:maxTimeout" value="45" />
             </properties>
         </effect>
         <effect id="nightmare_portal">
