@@ -22,13 +22,13 @@ namespace MVZ2.GameContent.Contraptions
             {
                 fireBreathID = VanillaEffectID.fireBreath
             };
+            webDetector = new TotenserWebDetector(280);
         }
 
         public override void Init(Entity entity)
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetShootWeb(entity, false);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -36,18 +36,6 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
-                if (GetShootWeb(entity))
-                {
-                    entity.TriggerAnimation("TopShoot");
-                    var shootParams = entity.GetShootParams();
-                    shootParams.projectileID = VanillaProjectileID.web;
-                    shootParams.velocity += Vector3.up * 5 + entity.GetFacingDirection() * 5;
-                    shootParams.position = entity.Position + new Vector3(20, 50);
-                    shootParams.soundID = VanillaSoundID.bow;
-                    shootParams.damage = 0;
-                    entity.ShootProjectile(shootParams);
-                    SetShootWeb(entity, false);
-                }
             }
             else
             {
@@ -58,6 +46,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             UpdateFireBreath(entity);
+            UpdateWeb(entity);
             entity.SetAnimationFloat("SpearSpeed", entity.IsAIFrozen() ? 0 : 1);
         }
         protected override void OnEvoke(Entity entity)
@@ -90,7 +79,6 @@ namespace MVZ2.GameContent.Contraptions
                     fireBreath = entity.Level.Spawn(VanillaEffectID.fireBreath, position, entity);
                     fireBreath.SetParent(entity);
                     SetFireBreath(entity, fireBreath);
-                    SetShootWeb(entity, true);
                 }
                 fireBreath.SetDamage(entity.GetDamage() * 2 / 3);
                 fireBreath.SetFlipX(entity.IsFlipX());
@@ -104,6 +92,24 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     fireBreath.SetParent(null);
                     SetFireBreath(entity, null);
+                }
+            }
+        }
+        private void UpdateWeb(Entity entity)
+        {
+            if (entity.IsTimeInterval(WEB_DETECT_INTERVAL))
+            {
+                var target = webDetector.Detect(entity);
+                if (target != null && !entity.IsAIFrozen())
+                {
+                    entity.TriggerAnimation("TopShoot");
+                    var shootParams = entity.GetShootParams();
+                    shootParams.projectileID = VanillaProjectileID.web;
+                    shootParams.velocity += Vector3.up * 5 + entity.GetFacingDirection() * 5;
+                    shootParams.position = entity.Position + new Vector3(20 * entity.GetFacingX(), 50);
+                    shootParams.soundID = VanillaSoundID.bow;
+                    shootParams.damage = 0;
+                    entity.ShootProjectile(shootParams);
                 }
             }
         }
@@ -135,8 +141,6 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
-        public static bool GetShootWeb(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_WEB);
-        public static void SetShootWeb(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_WEB, value);
         public static Entity GetFireBreath(Entity entity)
         {
             var entityID = entity.GetBehaviourField<EntityID>(ID, PROP_FIRE_BREATH);
@@ -151,9 +155,10 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.totenser;
         public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("EvocationTime");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_FIRE_BREATH = new VanillaEntityPropertyMeta<EntityID>("FireBreath");
-        public static readonly VanillaEntityPropertyMeta<bool> PROP_WEB = new VanillaEntityPropertyMeta<bool>("Web");
         private Detector fireBreathDetector;
+        private Detector webDetector;
         public const int FIRE_DETECT_INTERVAL = 7;
+        public const int WEB_DETECT_INTERVAL = 600;
         public const int THROW_JAVELIN_TIME = 30;
         public const int MAX_EVOCATION_TIME = 48;
         public const int HATCH_OPEN_TIME = 1;
