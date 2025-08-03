@@ -140,6 +140,7 @@ namespace MVZ2.GameContent.Buffs
         public const string projectileWait = "projectile_wait";
         public const string projectileKnockback = "projectile_knockback";
         public const string projectileGravityPad = "projectile_gravity_pad";
+        public const string explosivePearl = "explosivePearl";
         public const string invertedMirror = "inverted_mirror";
         public const string hellfireIgnited = "hellfire_ignited";
         public const string ghastFireCharge = "ghast_fire_charge";

@@ -537,6 +537,9 @@
     <sound name="pause" priority="0">
         <sample path="mvz2:pause" weight="1" />
     </sound>
+    <sound name="pearl_boost">
+        <sample path="mvz2:pearl_boost" weight="1" />
+    </sound>
     <sound name="pearl_touch">
         <sample path="mvz2:pearl_touch" weight="1" />
     </sound>

@@ -143,6 +143,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID parabotTick = Get("parabot_tick");
         public readonly static NamespaceID parasitize = Get("parasitize");
         public readonly static NamespaceID pause = Get("pause");
+        public readonly static NamespaceID pearlBoost = Get("pearl_boost");
         public readonly static NamespaceID pearlTouch = Get("pearl_touch");
         public readonly static NamespaceID pick = Get("pick");
         public readonly static NamespaceID pickaxe = Get("pickaxe");

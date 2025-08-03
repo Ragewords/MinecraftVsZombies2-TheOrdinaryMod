@@ -15,6 +15,9 @@
         <option id="add_pearl" cost="50" name="增加弹珠" >
             <icon sprite="mvz2:options/add_pearl" />
         </option>
+        <option id="explosive_pearl" cost="75" name="爆炸弹珠" >
+            <icon sprite="mvz2:options/explosive_pearl" />
+        </option>
     </options>
     <entities>
         <entity id="skeleton_mage_fire" cost="75" name="骷髅法师（火）" entity="mvz2:skeleton_mage" variant="1">

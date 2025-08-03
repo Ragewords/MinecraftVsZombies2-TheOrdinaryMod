@@ -30,12 +30,13 @@ namespace MVZ2.GameContent.Stages
         public override void OnStart(LevelEngine level)
         {
             base.OnStart(level);
-            level.SetSeedSlotCount(3);
-            level.FillSeedPacks(new NamespaceID[3]
+            level.SetSeedSlotCount(4);
+            level.FillSeedPacks(new NamespaceID[4]
             {
                 VanillaBlueprintID.returnPearl,
                 VanillaBlueprintID.lengthenBoard,
-                VanillaBlueprintID.addPearl
+                VanillaBlueprintID.addPearl,
+                VanillaBlueprintID.explosivePearl
             });
             level.SetPickaxeActive(false);
             level.SetStarshardActive(false);
