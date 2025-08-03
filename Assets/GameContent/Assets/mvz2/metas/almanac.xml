@@ -646,7 +646,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/1.5秒（前方），2发/1.5秒（后方）</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>特点：<![CDATA[<color=red>前方10%概率，后方50%概率改为连续射击4次</color>]]></p>
+                <p>特点：<![CDATA[<color=red>前方10%概率改为连续射击4次，后方50%概率改为连续射击6次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢，最后向后发射一支大箭矢</color>]]></p>
             </properties>
             <flavor>

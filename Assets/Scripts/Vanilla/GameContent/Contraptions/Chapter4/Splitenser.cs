@@ -142,8 +142,8 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void RepeatShootBack(Entity entity)
         {
-            bool repeat4 = GetBackRepeatRNG(entity).Next(2) == 0;
-            int count = 2 + (repeat4 ? 2 : 0);
+            bool repeat6 = GetBackRepeatRNG(entity).Next(2) == 0;
+            int count = 2 + (repeat6 ? 4 : 0);
             SetRepeatCount(entity, count);
             var repeatTimer = GetRepeatTimer(entity);
             repeatTimer.ResetTime(Mathf.FloorToInt(10f / count));
