@@ -209,11 +209,6 @@ namespace MVZ2.GameContent.Contraptions
                 var backProjectile = ShootBack(entity);
                 backProjectile.Velocity *= 2;
             }
-            else
-            { 
-                var backProjectile = ShootBack(entity);
-                backProjectile.Velocity *= 4f;
-            }
             if (evocationTimer.Expired)
             {
                 ShootLargeArrowBack(entity);
