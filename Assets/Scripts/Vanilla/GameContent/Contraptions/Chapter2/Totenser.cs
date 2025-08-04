@@ -100,7 +100,7 @@ namespace MVZ2.GameContent.Contraptions
             if (entity.IsTimeInterval(WEB_DETECT_INTERVAL))
             {
                 var target = webDetector.Detect(entity);
-                if (target != null && !entity.IsAIFrozen())
+                if (target != null && target.Entity.Type == EntityTypes.ENEMY && !entity.IsAIFrozen())
                 {
                     entity.TriggerAnimation("TopShoot");
                     var pos = entity.Position + new Vector3(20 * entity.GetFacingX(), 50);

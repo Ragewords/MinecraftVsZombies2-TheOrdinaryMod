@@ -29,6 +29,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (ent == null)
             {
                 buff.Remove();
+                return;
             }
             if (IsOutsideView(ent))
             {
