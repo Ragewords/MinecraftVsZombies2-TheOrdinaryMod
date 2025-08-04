@@ -182,6 +182,8 @@ namespace MVZ2.GameContent.Bosses
                                 foreach (var contraption in contraptions)
                                 {
                                     contraption.AddBuff<LevitationBuff>();
+                                    var carrier = contraption.GetGrid().GetCarrierEntity();
+                                    carrier?.Die(entity);
                                 }
                             }
 
