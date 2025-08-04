@@ -68,7 +68,7 @@ namespace MVZ2.GameContent.Bosses
             if (entity.IsDead)
             {
                 entity.Timeout--;
-                if (entity.Timeout == 50)
+                if (entity.Timeout == 60)
                 {
                     entity.SetAnimationBool("FadeOut", true);
                 }
@@ -90,10 +90,6 @@ namespace MVZ2.GameContent.Bosses
             Vector3 pos = new(level.GetEntityColumnX(4), 60, level.GetEntityLaneZ(2));
             entity.Position = pos;
             entity.Timeout = 100;
-        }
-        public static void FakeStun(Entity entity)
-        {
-            entity.TriggerAnimation("Stun");
         }
         #region Move
         private void MoveLower(Entity entity)

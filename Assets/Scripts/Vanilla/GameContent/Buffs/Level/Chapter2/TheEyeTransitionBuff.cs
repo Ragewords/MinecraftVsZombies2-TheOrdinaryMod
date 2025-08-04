@@ -20,6 +20,7 @@ namespace MVZ2.GameContent.Buffs.Level
         {
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMER, new FrameTimer(MAX_TIMEOUT));
+            buff.SetProperty(PROP_MUSIC_FADE, true);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -38,24 +39,31 @@ namespace MVZ2.GameContent.Buffs.Level
                 }
             }
             // 音乐放缓。
-            level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
-            if (timer.PassedFrame(35))
+            if (buff.GetProperty<bool>(PROP_MUSIC_FADE))
+                level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
+
+            if (timer.PassedFrame(60))
             {
                 level.ShakeScreen(30, 0, 10);
                 level.PlaySound(VanillaSoundID.explosion);
+                level.SetMusicVolume(1);
+                level.PlayMusic(VanillaMusicID.nightmareBoss3);
+                buff.SetProperty(PROP_MUSIC_FADE, false);
+            }
+            if (timer.PassedFrame(20))
+            {
+                level.PlaySound(VanillaSoundID.bombFalling);
                 Vector3 pos = new Vector3(level.GetEntityColumnX(4), 800, level.GetEntityLaneZ(2));
                 level.Spawn(VanillaEffectID.nightmareMeteor, pos, null);
-                level.PlaySound(VanillaSoundID.bombFalling);
             }
             if (timer.Expired)
             {
-                level.SetMusicVolume(1);
-                level.PlayMusic(VanillaMusicID.nightmareBoss3);
                 level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
                 buff.Remove();
             }
         }
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("Timer");
-        public const int MAX_TIMEOUT = 85;
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_MUSIC_FADE = new VanillaBuffPropertyMeta<bool>("MusicFade");
+        public const int MAX_TIMEOUT = 120;
     }
 }
