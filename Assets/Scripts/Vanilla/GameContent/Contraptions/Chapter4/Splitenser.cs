@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Contraptions
             SetEvocationTimer(entity, new FrameTimer(120));
             SetFrontRepeatTimer(entity, new FrameTimer(REPEAT_INTERVAL));
             SetRepeatTimer(entity, new FrameTimer(REPEAT_INTERVAL));
-            SetBackRepeatRNG(entity, entity.RNG);
+            SetBackRepeatRNG(entity, new RandomGenerator(entity.RNG.Next()));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -179,6 +179,11 @@ namespace MVZ2.GameContent.Contraptions
 
                 var backProjectile = ShootBack(entity);
                 backProjectile.Velocity *= 2;
+            }
+            else
+            { 
+                var backProjectile = ShootBack(entity);
+                backProjectile.Velocity *= 1.5f;
             }
             if (evocationTimer.Expired)
             {
