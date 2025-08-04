@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Buffs.Level
             var timeout = buff.GetProperty<FrameTimer>(PROP_TIMEOUT);
             timeout.Run();
             bool disable = buff.GetProperty<bool>(PROP_DISABLE);
-            if (timeout.PassedInterval(90))
+            if (timeout.PassedInterval(30))
             {
                 buff.SetProperty(PROP_DISABLE, !disable);
             }
