@@ -1,5 +1,7 @@
-﻿using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Projectiles;
+using MVZ2.GameContent.Stages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
@@ -36,6 +38,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            FeverUpdate(entity);
             if (!entity.IsEvoked())
             {
                 ShootTickSplit(entity);
@@ -68,6 +71,11 @@ namespace MVZ2.GameContent.Contraptions
             }
 
             EvokedUpdate(entity);
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            entity.SetAnimationBool("Fever", IsFever(entity));
         }
         public void ShootTickSplit(Entity entity)
         {
@@ -133,7 +141,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void RepeatShootFront(Entity entity)
         {
-            bool repeat4 = entity.RNG.Next(10) == 0;
+            bool repeat4 = entity.RNG.Next(10) == 0 || IsFever(entity);
             int count = 1 + (repeat4 ? 3 : 0);
             SetFrontRepeatCount(entity, count);
             var repeatTimer = GetFrontRepeatTimer(entity);
@@ -142,7 +150,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void RepeatShootBack(Entity entity)
         {
-            bool repeat6 = GetBackRepeatRNG(entity).Next(2) == 0;
+            bool repeat6 = GetBackRepeatRNG(entity).Next(2) == 0 || IsFever(entity);
             int count = 2 + (repeat6 ? 4 : 0);
             SetRepeatCount(entity, count);
             var repeatTimer = GetRepeatTimer(entity);
@@ -156,6 +164,23 @@ namespace MVZ2.GameContent.Contraptions
             evocationTimer.Reset();
             entity.SetEvoked(true);
         }
+        public void FeverUpdate(Entity entity)
+        {
+            SetFever(entity, WaveStageBehaviour.IsHighWave(entity.Level));
+            if (IsFever(entity))
+            {
+                if (PlaySound(entity))
+                {
+                    entity.PlaySound(VanillaSoundID.pearlBoost, volume: 5);
+                    entity.AddBuff<DesirePotHighlightBuff>();
+                    SetPlaySound(entity, false);
+                }
+            }
+            else
+            {
+                SetPlaySound(entity, true);
+            }
+        }
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_EVOCATION_TIMER);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
         public static FrameTimer GetFrontRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_F_REPEAT_TIMER);
@@ -166,8 +191,12 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_REPEAT_TIMER, timer);
         public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_REPEAT_COUNT);
         public static void SetRepeatCount(Entity entity, int timer) => entity.SetBehaviourField(PROP_REPEAT_COUNT, timer);
-        public static void SetBackRepeatRNG(Entity entity, RandomGenerator timer) => entity.SetBehaviourField(PROP_B_REPEAT_RNG, timer);
+        public static void SetBackRepeatRNG(Entity entity, RandomGenerator rng) => entity.SetBehaviourField(PROP_B_REPEAT_RNG, rng);
         public static RandomGenerator GetBackRepeatRNG(Entity entity) => entity.GetBehaviourField<RandomGenerator>(PROP_B_REPEAT_RNG);
+        public static void SetFever(Entity entity, bool value) => entity.SetBehaviourField(PROP_FEVER, value);
+        public static bool IsFever(Entity entity) => entity.GetBehaviourField<bool>(PROP_FEVER);
+        public static void SetPlaySound(Entity entity, bool value) => entity.SetBehaviourField(PROP_PLAY_SOUND, value);
+        public static bool PlaySound(Entity entity) => entity.GetBehaviourField<bool>(PROP_PLAY_SOUND);
         private void EvokedUpdate(Entity entity)
         {
             var evocationTimer = GetEvocationTimer(entity);
@@ -183,7 +212,7 @@ namespace MVZ2.GameContent.Contraptions
             else
             { 
                 var backProjectile = ShootBack(entity);
-                backProjectile.Velocity *= 1.5f;
+                backProjectile.Velocity *= 4f;
             }
             if (evocationTimer.Expired)
             {
@@ -201,5 +230,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<int> PROP_F_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("FRepeatCount");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_B_REPEAT_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("BRepeatRNG");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_FEVER = new VanillaEntityPropertyMeta<bool>("Fever");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_PLAY_SOUND = new VanillaEntityPropertyMeta<bool>("PlaySound", true);
     }
 }

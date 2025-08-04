@@ -717,7 +717,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <dispenser id="splitenser" name="双向发射器" tooltip="向前射出箭，向后射出飞刀" unlock="mvz2:level.mausoleum_3">
+        <dispenser id="splitenser" name="双向发射器" tooltip="向前后双方射出箭" unlock="mvz2:level.mausoleum_3">
             <properties>
                 <id name="mvz2:fragmentId" value="mvz2:dispenser" />
                 <int name="mvz2:cost" value="125" />
