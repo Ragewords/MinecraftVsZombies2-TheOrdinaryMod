@@ -1,6 +1,7 @@
 ﻿using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
@@ -13,31 +14,36 @@ namespace MVZ2.GameContent.Buffs.Level
     {
         public NightmareDecrepifyAlteredBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new NamespaceIDModifier(VanillaLevelProps.PICKAXE_DISABLE_ID, VanillaBlueprintErrors.decrepify));
+            AddModifier(new NamespaceIDModifier(VanillaLevelProps.PICKAXE_DISABLE_ID, PROP_DISABLE_ID));
             AddModifier(new BooleanModifier(VanillaLevelProps.PICKAXE_DISABLE_ICON, PROP_DISABLE));
 
-            AddModifier(new NamespaceIDModifier(VanillaLevelProps.STARSHARD_DISABLE_ID, VanillaBlueprintErrors.decrepify));
+            AddModifier(new NamespaceIDModifier(VanillaLevelProps.STARSHARD_DISABLE_ID, PROP_DISABLE_ID));
             AddModifier(new BooleanModifier(VanillaLevelProps.STARSHARD_DISABLE_ICON, PROP_DISABLE));
         }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMEOUT, new FrameTimer(MAX_TIMEOUT));
+            buff.SetProperty(PROP_DISABLE, true);
+            buff.SetProperty(PROP_DISABLE_ID, VanillaBlueprintErrors.decrepify);
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
             var timeout = buff.GetProperty<FrameTimer>(PROP_TIMEOUT);
             timeout.Run();
+            bool disable = buff.GetProperty<bool>(PROP_DISABLE);
             if (timeout.PassedInterval(90))
             {
-                buff.SetProperty(PROP_DISABLE, !buff.GetProperty<bool>(PROP_DISABLE));
+                buff.SetProperty(PROP_DISABLE, !disable);
             }
+            buff.SetProperty(PROP_DISABLE_ID, disable ? VanillaBlueprintErrors.decrepify : null);
             if (timeout.Expired)
             {
                 buff.Remove();
             }
         }
+        public static readonly VanillaBuffPropertyMeta<NamespaceID> PROP_DISABLE_ID = new VanillaBuffPropertyMeta<NamespaceID>("DisableID");
         public static readonly VanillaBuffPropertyMeta<bool> PROP_DISABLE = new VanillaBuffPropertyMeta<bool>("Disable");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMEOUT = new VanillaBuffPropertyMeta<FrameTimer>("Timeout");
         public const int MAX_TIMEOUT = 1800;
