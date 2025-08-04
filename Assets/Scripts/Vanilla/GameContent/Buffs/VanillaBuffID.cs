@@ -189,6 +189,7 @@ namespace MVZ2.GameContent.Buffs
             public const string swordParalyzed = "sword_paralyzed";
             public const string nightmareLevel = "nightmare_level";
             public const string nightmareDecrepify = "nightmare_decrepify";
+            public const string nightmareDecrepifyAltered = "nightmare_decrepify_altered";
             public const string nightmareaperDarkness = "nightmareaper_darkness";
             public const string reverseSatellite = "reverse_satellite";
             public const string littleZombieLevel = "little_zombie_level";

@@ -415,11 +415,7 @@ namespace MVZ2.GameContent.Bosses
         private void DecrepifyAltered(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.decrepify);
-            var nonBoss = boss.Level.FindEntities(e => e.Type == EntityTypes.PLANT);
-            foreach (var target in nonBoss)
-            {
-                target.InflictWeakness(300);
-            }
+            boss.Level.AddBuff<NightmareDecrepifyAlteredBuff>();
         }
 
         private void Insanity(Entity boss)
