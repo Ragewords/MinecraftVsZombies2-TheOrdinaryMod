@@ -28,35 +28,40 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
-            SetRepeatTimer(entity, new FrameTimer(0));
+            SetRepeatTimer(entity, new FrameTimer(30));
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
             if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
             {
+                DragEnemiesNearby(entity);
                 var repeatTimer = GetRepeatTimer(entity);
                 var dir = GetDir(entity);
-                SetDir(entity, dir + 20);
+                SetDir(entity, dir + 5);
                 repeatTimer.Run();
                 if (repeatTimer.Expired)
                 {
-                    for (int i = 0; i < 30; i++)
+                    var relativeY = entity.GetRelativeY();
+                    relativeY -= 1;
+                    entity.SetRelativeY(relativeY);
+                    if (relativeY <= -48)
                     {
-                       var direction = Quaternion.Euler(0, i * 12 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
-                        var projectile = entity.ShootProjectile(VanillaProjectileID.arrow, direction);
-                        projectile.SetDamage(entity.GetDamage());
-                        projectile.Position = new Vector3(entity.Position.x, 20f, entity.Position.z);
+                        entity.Remove();
                     }
-                    SetRepeatTimer(entity, new FrameTimer(5));
+                    return;
                 }
-                DragEnemiesNearby(entity);
-                var relativeY = entity.GetRelativeY();
-                relativeY -= 1;
-                entity.SetRelativeY(relativeY);
-                if (relativeY <= -48)
+                if (repeatTimer.PassedInterval(3))
                 {
-                    entity.Remove();
+                    for (int i = 0; i < 12; i++)
+                    {
+                        var direction = Quaternion.Euler(0, i * 30 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
+                        var shootParam = entity.GetShootParams();
+                        shootParam.projectileID = VanillaProjectileID.arrow;
+                        shootParam.position = entity.GetCenter() + direction;
+                        shootParam.velocity = direction;
+                        entity.ShootProjectile(shootParam);
+                    }
                 }
             }
         }
