@@ -10,7 +10,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
     {
         public LunaticContraptionBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.AddMultiple, -0.1f));
+            AddModifier(new FloatModifier(VanillaEntityProps.PRODUCE_SPEED, NumberOperator.Multiply, 0.75f));
+            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 0.9f));
         }
     }
 }
