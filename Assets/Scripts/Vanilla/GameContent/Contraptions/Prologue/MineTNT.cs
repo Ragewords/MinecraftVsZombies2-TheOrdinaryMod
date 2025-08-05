@@ -32,7 +32,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
 
-            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
+            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_PROJECTILE;
             var riseTimer = new FrameTimer(150);
 
             SetRiseTimer(entity, riseTimer);
@@ -111,7 +111,7 @@ namespace MVZ2.GameContent.Contraptions
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
             var other = collision.Other;
-            if (!other.IsVulnerableEntity())
+            if (!other.IsVulnerableEntity() && other.Type != EntityTypes.PROJECTILE)
                 return;
             var self = collision.Entity;
             if (!self.IsHostile(other))
