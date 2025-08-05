@@ -49,6 +49,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID dirtRise = Get("dirt_rise");
         public readonly static NamespaceID divineShield = Get("divine_shield");
         public readonly static NamespaceID divineShieldCast = Get("divine_shield_cast");
+        public readonly static NamespaceID divineShieldShatter = Get("divine_shield_shatter");
         public readonly static NamespaceID dreamAlarm = Get("dream_alarm");
         public readonly static NamespaceID earthquake = Get("earthquake");
         public readonly static NamespaceID electricSpark = Get("electric_spark");
@@ -196,7 +197,6 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID stoneHatch = Get("stone_hatch");
         public readonly static NamespaceID stunned = Get("stunned");
         public readonly static NamespaceID swing = Get("swing");
-        public readonly static NamespaceID taikoDon = Get("taiko_don");
         public readonly static NamespaceID tap = Get("tap");
         public readonly static NamespaceID teslaAttack = Get("tesla_attack");
         public readonly static NamespaceID teslaPower = Get("tesla_power");

@@ -110,7 +110,6 @@ namespace MVZ2.GameContent.Enemies
             foreach (var target in targets)
             {
                 target.AddBuff<DivineShieldBuff>();
-                entity.AddBuff<TheWaferBuff>();
             }
         }
         #region 常量

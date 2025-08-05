@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Fragments;
 using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Shells;
@@ -15,6 +16,7 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -33,6 +35,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity == null)
                 return;
+            entity.PlaySound(VanillaSoundID.holy);
             entity.PlaySound(VanillaSoundID.divineShield);
         }
         public override void PostUpdate(Buff buff)
@@ -88,6 +91,17 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             entity.PlaySound(VanillaSoundID.crystalBreak, volume: 0.5f);
             entity.CreateFragmentAndPlay(entity.GetCenter(), VanillaFragmentID.divineShield, 50);
+            Explode(entity, entity.GetMaxHealth(true), 120, entity.GetFaction());
+        }
+        public static void Explode(Entity entity, float damage, float range, int faction)
+        {
+            var scale = entity.GetFinalScale();
+            var scaleX = Mathf.Abs(scale.x);
+            range *= scaleX;
+            entity.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
+
+            DivineShieldExplosion.Spawn(entity, entity.GetCenter(), range);
+            entity.PlaySound(VanillaSoundID.divineShieldShatter, scaleX == 0 ? 1000 : 1 / (scaleX));
         }
         public const float HEALTH_SPEED = 1 / 6f;
         public const float MAX_PARASITE_HEALTH = 50;
