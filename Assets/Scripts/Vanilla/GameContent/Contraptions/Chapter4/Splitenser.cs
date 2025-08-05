@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Level;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -166,12 +167,14 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void FeverUpdate(Entity entity)
         {
+            if (!entity.Level.HasBehaviour<WaveStageBehaviour>())
+                return;
             SetFever(entity, WaveStageBehaviour.IsHighWave(entity.Level));
             if (IsFever(entity))
             {
                 if (PlaySound(entity))
                 {
-                    entity.PlaySound(VanillaSoundID.pearlBoost, volume: 5);
+                    entity.PlaySound(VanillaSoundID.pearlBoost, volume: 10f);
                     entity.AddBuff<DesirePotHighlightBuff>();
                     SetPlaySound(entity, false);
                 }
