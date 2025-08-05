@@ -6041,12 +6041,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8359c6da4c2c5cb47b836796b433cdac
-    m_Address: mvz2:taiko_don
+  - m_GUID: 835d03a384f58eb44ab9e61c86874e3e
+    m_Address: mvz2:effect/divine_shield_explosion
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
-    - Sound
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8365c8b175287344896fb550aa2212b6
     m_Address: mvz2:bones/cart
@@ -7517,6 +7517,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4480be9e5ef00549be42df6c90e3f1e
+    m_Address: mvz2:divine_shield_shatter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4fb4d341a16ba64cbad7dd992c94206
     m_Address: mvz2:products/blueprint_slot
