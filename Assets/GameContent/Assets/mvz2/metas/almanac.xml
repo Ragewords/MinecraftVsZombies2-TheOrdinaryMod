@@ -2046,7 +2046,7 @@
                 </header>
                 <properties>
                     <p>召唤间隔：<![CDATA[<color=red>40-60秒，第一次召唤敌人后20-40秒</color>]]></p>
-                    <p>弱点：<![CDATA[<color=red><tag id="mvz2:light_source"/>光源会阻止刷怪笼召唤敌人</color>]]></p>
+                    <p>弱点：<![CDATA[<color=red><tag id="mvz2:light_source"/>光源会阻止刷怪笼持续召唤敌人</color>]]></p>
                 </properties>
                 <flavor>
                     <p>我的水桶、告示牌和灵魂沙呢？</p>
