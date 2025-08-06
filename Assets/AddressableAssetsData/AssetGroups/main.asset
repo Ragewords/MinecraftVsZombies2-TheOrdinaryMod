@@ -7000,6 +7000,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98109db98da2c5547bfd55b959656e64
+    m_Address: mvz2:entity/projectiles/leaf
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 982248cc3f9823f4a9f759db1e00184f
     m_Address: mvz2:map/gensokyo/pins/kourindou
     m_ReadOnly: 0
@@ -9274,6 +9281,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc13228b6dc207d40a7f455d7af86eb7
+    m_Address: mvz2:projectile/leaf
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc1541e24a3e0114d86aa3f50856caac
     m_Address: mvz2:pickup/starshards/halloween
