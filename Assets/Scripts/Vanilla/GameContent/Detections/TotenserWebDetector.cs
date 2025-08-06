@@ -1,3 +1,4 @@
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Entities;
@@ -9,7 +10,7 @@ namespace MVZ2.GameContent.Detections
     {
         public TotenserWebDetector(float range = 0)
         {
-            mask = EntityCollisionHelper.MASK_ENEMY;
+            mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY;
             this.range = range;
         }
         protected override Bounds GetDetectionBounds(Entity self)
@@ -29,6 +30,8 @@ namespace MVZ2.GameContent.Detections
                 return false;
             var target = collider.Entity;
             if (!TargetInLawn(target))
+                return false;
+            if (target.HasBuff<TotenserWebBuff>())
                 return false;
             return true;
         }

@@ -1,5 +1,4 @@
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -17,19 +16,14 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var enemy = hitResult.Other;
-            if (enemy.Type != EntityTypes.ENEMY)
+            if (enemy.Type != EntityTypes.PLANT && enemy.Type != EntityTypes.ENEMY)
                 return;
-            if (!enemy.CanDeactive())
-            {
-                hitResult.Pierce = true;
-                return;
-            }
-            hitResult.Pierce = false;
             if (enemy.HasBuff<TotenserWebBuff>())
             {
                 hitResult.Pierce = true;
                 return;
             }
+            hitResult.Pierce = false;
             enemy.AddBuff<TotenserWebBuff>();
         }
     }
