@@ -1047,9 +1047,11 @@
         </entry>
         <entry id="mvz2:youkai_leaf">
             <header>
-                <p>妖怪树叶会模仿近战攻击自己的怪物。</p>
+                <p>妖怪树叶会发射穿透敌人的叶片，并且能够模仿近战攻击自己的怪物。</p>
             </header>
             <properties>
+                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>10</color>]]></p>
                 <p>模仿怪物生命：<![CDATA[<color=red>300</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即模仿场上的至多3个敌人，随后自身消失</color>]]></p>
             </properties>

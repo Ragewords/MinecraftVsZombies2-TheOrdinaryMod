@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4026702124537318853}
   - component: {fileID: 2573075823348253121}
   - component: {fileID: 2615432927975532173}
-  - component: {fileID: 422250007770522838}
+  - component: {fileID: 4891110747452967797}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
---- !u!114 &422250007770522838
+--- !u!114 &4891110747452967797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,13 +185,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7896892515617305305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca377810bae8aa49bb81e20fdb171a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9733804c13f33934d9d161b4c7ebce22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 1226108096, guid: 4a57ceba03f5b564f80da14a20f10f46, type: 3}
   - {fileID: 2090623636, guid: 4a57ceba03f5b564f80da14a20f10f46, type: 3}
-  propertyName: Evoked
+  - {fileID: 572809900, guid: 4a57ceba03f5b564f80da14a20f10f46, type: 3}
+  index: 0
 --- !u!1001 &2072828855051918500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 943014838420611297}
     m_Modifications:
+    - target: {fileID: 377167055183168024, guid: 01135a0e2629bc5439a4f6e0fab3977a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5884dc05163138e4e8e281eafd40d954, type: 2}
     - target: {fileID: 3749673428984715894, guid: 01135a0e2629bc5439a4f6e0fab3977a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

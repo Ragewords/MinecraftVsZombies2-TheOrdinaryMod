@@ -1,4 +1,5 @@
 using System.Linq;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
@@ -15,16 +16,29 @@ using UnityEngine;
 namespace MVZ2.GameContent.Contraptions
 {
     [EntityBehaviourDefinition(VanillaContraptionNames.youkaiLeaf)]
-    public class YoukaiLeaf : ContraptionBehaviour
+    public class YoukaiLeaf : DispenserFamily
     {
         public YoukaiLeaf(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_ENEMY_MELEE_ATTACK, PostEnemyMeleeAttackCallback);
         }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            InitShootTimer(entity);
+        }
+        protected override void UpdateAI(Entity entity)
+        {
+            base.UpdateAI(entity);
+            if (!entity.IsEvoked())
+            {
+                ShootTick(entity);
+            }
+        }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelProperty("Evoked", entity.IsEvoked());
+            entity.SetAnimationBool("Sleep", entity.HasBuff<NocturnalBuff>());
         }
         private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
         {

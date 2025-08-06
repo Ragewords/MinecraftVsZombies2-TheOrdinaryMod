@@ -3,7 +3,7 @@ guid: 4a57ceba03f5b564f80da14a20f10f46
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,7 +131,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,6 +160,27 @@ TextureImporter:
       bones: []
       spriteID: 2a1a444e13ee5e24c987ebee36c74f96
       internalID: 2090623636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youkai_leaf_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95a57cdccdfd06940a052ab5dc61a04d
+      internalID: 572809900
       vertices: []
       indices: 
       edges: []
@@ -177,6 +198,7 @@ TextureImporter:
     nameFileIdTable:
       youkai_leaf_0: 1226108096
       youkai_leaf_1: 2090623636
+      youkai_leaf_2: 572809900
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

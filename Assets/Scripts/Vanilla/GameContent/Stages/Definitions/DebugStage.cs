@@ -49,8 +49,8 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.beacon,
                 VanillaContraptionID.splitenser,
                 VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.dispenser,
-                VanillaEnemyID.skeletonHorse,
+                VanillaContraptionID.youkaiLeaf,
+                VanillaEnemyID.reflectiveBarrierZombie,
                 VanillaBossID.seija,
                 VanillaEnemyID.cannoneerZombie,
             });

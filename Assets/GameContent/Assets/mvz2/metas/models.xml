@@ -365,6 +365,7 @@
     <model name="ice_bolt" type="entity" path="mvz2:projectile/ice_bolt" width="64" height="20" xOffset="6" yOffset="0"/>
     <model name="charged_bolt" type="entity" path="mvz2:projectile/charged_bolt" width="64" height="64" xOffset="0" yOffset="0"/>
     <model name="vomit" type="entity" path="mvz2:projectile/vomit" width="49" height="25" xOffset="0" yOffset="0"/>
+    <model name="leaf" type="entity" path="mvz2:projectile/leaf" width="12" height="12" xOffset="0" yOffset="0"/>
 
     <model name="hell_planet_otherworld" type="entity" path="mvz2:projectile/hell_planet_otherworld" width="56" height="56" xOffset="0" yOffset="0"/>
     <model name="hell_planet_earth" type="entity" path="mvz2:projectile/hell_planet_earth" width="46" height="46" xOffset="0" yOffset="0"/>
