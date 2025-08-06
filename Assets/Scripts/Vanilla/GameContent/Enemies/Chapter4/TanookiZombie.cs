@@ -57,7 +57,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (entity.HasBuff<TanookiZombieStoneBuff>())
                 return;
-            var jumpTarget = entity.Level.GetEntityGridPosition(entity.GetColumn() + entity.GetFacingX(), entity.GetLane());
+            var jumpTarget = entity.Level.GetEntityGridPosition(entity.GetColumn() + 2 * entity.GetFacingX(), entity.GetLane());
 
             var jumpTimer = GetJumpTimer(entity);
             var statueTimer = GetStatueTimer(entity);
