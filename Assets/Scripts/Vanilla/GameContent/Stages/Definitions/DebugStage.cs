@@ -47,11 +47,11 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.splitenser,
-                VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.youkaiLeaf,
-                VanillaEnemyID.reflectiveBarrierZombie,
-                VanillaBossID.seija,
+                VanillaContraptionID.necrotombstone,
+                VanillaContraptionID.revivegrave,
+                VanillaEnemyID.skelebomb,
+                VanillaEnemyID.berserker,
+                VanillaEnemyID.motherTerror,
                 VanillaEnemyID.cannoneerZombie,
             });
             level.SetArtifactSlotCount(3);

@@ -1,0 +1,42 @@
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
+using PVZEngine.Entities;
+using PVZEngine.Level;
+using PVZEngine.Modifiers;
+
+namespace MVZ2.GameContent.Buffs.Enemies
+{
+    [BuffDefinition(VanillaBuffNames.revivegraveRevive)]
+    public class RevivegraveReviveBuff : BuffDefinition
+    {
+        public RevivegraveReviveBuff(string nsp, string name) : base(nsp, name)
+        {
+            AddModifier(new BooleanModifier(VanillaEnemyProps.ASSUME_ALIVE, true));
+            AddTrigger(VanillaLevelCallbacks.PRE_ENEMY_FAINT, PreEnemyFaintCallback);
+        }
+        private void PreEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)
+        {
+            var entity = param.entity;
+            Buff buff = entity.GetFirstBuff<RevivegraveReviveBuff>();
+            if (buff == null)
+                return;
+            entity.Revive();
+            entity.AddBuff<BigTroubleBuff>();
+            entity.HealEffects(entity.GetMaxHealth(), entity);
+            result.SetFinalValue(false);
+
+            var faction = GetFaction(buff);
+            entity.Charm(faction);
+            entity.PlaySound(VanillaSoundID.revived);
+            entity.PlaySound(VanillaSoundID.growBig);
+            buff.Remove();
+        }
+        public static void SetFaction(Buff buff, int faction) => buff.SetProperty<int>(PROP_FACTION, faction);
+        public static int GetFaction(Buff buff) => buff.GetProperty<int>(PROP_FACTION);
+        public static readonly VanillaBuffPropertyMeta<int> PROP_FACTION = new VanillaBuffPropertyMeta<int>("faction");
+    }
+}

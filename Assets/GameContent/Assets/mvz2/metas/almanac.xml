@@ -29,6 +29,10 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[2]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
+        <tag id="placement_revivegrave" name="升级器械：死灵墓碑" description="必须放置在死灵墓碑上" priority="0" >
+            <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[3]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
+        </tag>
         <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0" >
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
@@ -935,6 +939,23 @@
                 <p>它把木制投掷器的笑话专利买下来了，所以它可以理所应当地玩鑫鑫鑫鑫鑫鑫鑫鑫鑫鑫制投掷器的笑话了！</p>
             </flavor>
         </entry>
+        <entry id="mvz2:revivegrave">
+            <tags>
+                <tag id="mvz2:placement_revivegrave"/>
+            </tags>
+            <header>
+                <p>每当所在行有一只怪物倒下时，还魂冢将会复活这只怪物，让它为你而战。</p>
+            </header>
+            <properties>
+                <p>技能：<![CDATA[<color=red>立即击杀每行最靠左的1只怪物，将它们复活为更强大的个体</color>]]></p>
+            </properties>
+            <flavor>
+                <p>抢救？！</p>
+            </flavor>
+        </entry>
+        <entry/>
+        <entry/>
+        <entry/>
         <entry/>
         <entry/>
         <entry/>

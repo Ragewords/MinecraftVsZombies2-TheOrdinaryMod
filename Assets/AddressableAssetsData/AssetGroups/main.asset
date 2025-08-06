@@ -668,6 +668,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f3d7481f0cd9624cbde52bf4ab9dc2c
+    m_Address: mvz2:mobile_blueprint/revivegrave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f85791f4565cdd48b780ea2b27b64f5
     m_Address: mvz2:random/crystal/crystal_place1
     m_ReadOnly: 0
@@ -2674,6 +2681,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39ca426b1588ec44b8ebe1bdae2af8ea
+    m_Address: mvz2:entity/contraption/revivegrave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 39cde1f66d40cb14d8f732d41ea867f2
     m_Address: mvz2:characters/hologram
@@ -6327,6 +6341,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a1d30e11638ade42a73008d10651952
+    m_Address: mvz2:contraption/upgrade/revivegrave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a2e7dea253a9e84c910acffe8c3e79e
     m_Address: mvz2:mainmenu/view/nightmare_censored

@@ -122,6 +122,7 @@ namespace MVZ2.GameContent.Buffs
         public const string youkaiLeaf = "youkai_leaf";
         public const string youkaiLeafRegeneration = "youkai_leaf_regeneration";
         public const string tanookiZombieStone = "tanooki_zombie_stone";
+        public const string revivegraveRevive = "revivegrave_revive";
 
         public const string paratroop = "paratroop";
         public const string summonedByUFO = "summoned_by_ufo";
