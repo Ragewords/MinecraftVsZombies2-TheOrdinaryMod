@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateLogic(entity);
             var cooldown = GetReviveCooldown(entity);
             entity.SetAnimationBool("Active", cooldown.Expired);
-            entity.SetAnimationFloat("MarkBlend", cooldown.GetPassedPercentage());
+            entity.SetAnimationFloat("MarkBlend", GetMarkBlend(entity));
         }
         public override void PostTakeDamage(DamageOutput result)
         {
@@ -100,6 +100,11 @@ namespace MVZ2.GameContent.Contraptions
             if (target.IsNotActiveEnemy())
                 return false;
             return true;
+        }
+        private float GetMarkBlend(Entity self)
+        {
+            var cooldown = GetReviveCooldown(self);
+            return cooldown?.GetPassedPercentage() ?? 0;
         }
         public static FrameTimer GetReviveCooldown(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_REVIVE_COOLDOWN);
         public static void SetReviveCooldown(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_REVIVE_COOLDOWN, timer);
