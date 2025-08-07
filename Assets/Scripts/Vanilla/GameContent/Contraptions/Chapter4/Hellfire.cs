@@ -32,14 +32,9 @@ namespace MVZ2.GameContent.Contraptions
             };
             jalapenoDetector = new LaneDetector(80, 40);
         }
-        protected override void UpdateLogic(Entity entity)
+        protected override void UpdateAI(Entity entity)
         {
-            base.UpdateLogic(entity);
-
-            UpdateIgnite(entity);
-
-            entity.SetAnimationBool("Evoked", IsCursed(entity));
-            
+            base.UpdateAI(entity);
             var cooldown = GetDamageCooldown(entity);
             cooldown--;
             if (cooldown <= 0)
@@ -54,11 +49,17 @@ namespace MVZ2.GameContent.Contraptions
                         target.Spawn(VanillaEffectID.fireburn, target.GetCenter());
                     else
                         target.Spawn(VanillaEffectID.cursedFireburn, target.GetCenter());
-                    target.PlaySound(VanillaSoundID.fire, volume : 0.6f);
+                    target.PlaySound(VanillaSoundID.fire, volume: 0.6f);
                 }
                 cooldown = DAMAGE_COOLDOWN;
             }
             SetDamageCooldown(entity, cooldown);
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            UpdateIgnite(entity);
+            entity.SetAnimationBool("Evoked", IsCursed(entity));
         }
         public override void PostTakeDamage(DamageOutput result)
         {
