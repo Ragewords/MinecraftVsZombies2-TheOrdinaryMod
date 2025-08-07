@@ -3,6 +3,7 @@ using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -47,12 +48,12 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.necrotombstone,
-                VanillaContraptionID.revivegrave,
-                VanillaEnemyID.skelebomb,
-                VanillaEnemyID.berserker,
-                VanillaEnemyID.motherTerror,
+                VanillaContraptionID.gravityPad,
+                VanillaContraptionID.forcePad,
+                VanillaEnemyID.megaMutantZombie,
+                VanillaEnemyID.emperorZombie,
                 VanillaEnemyID.cannoneerZombie,
+                VanillaBlueprintID.ufoRainbow,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

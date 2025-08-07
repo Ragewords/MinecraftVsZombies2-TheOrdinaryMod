@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (HasPot(enemy) && enemy.IsDead)
             {
-                enemy.IsDead = false;
+                enemy.Revive();
                 SpawnPot(enemy);
                 SetPot(enemy, false);
                 enemy.AddBuff<ShikaisenInvincibleBuff>();

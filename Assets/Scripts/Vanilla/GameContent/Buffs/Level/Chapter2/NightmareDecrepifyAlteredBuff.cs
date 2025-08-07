@@ -26,6 +26,7 @@ namespace MVZ2.GameContent.Buffs.Level
             buff.SetProperty(PROP_TIMEOUT, new FrameTimer(MAX_TIMEOUT));
             buff.SetProperty(PROP_DISABLE, true);
             buff.SetProperty(PROP_DISABLE_ID_PICKAXE, VanillaBlueprintErrors.decrepify);
+            buff.SetProperty<NamespaceID>(PROP_DISABLE_ID_STARSHARD, null);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -38,7 +39,7 @@ namespace MVZ2.GameContent.Buffs.Level
                 buff.SetProperty(PROP_DISABLE, !disable);
             }
             buff.SetProperty(PROP_DISABLE_ID_PICKAXE, disable ? VanillaBlueprintErrors.decrepify : null);
-            buff.SetProperty(PROP_DISABLE_ID_STARSHARD, disable ? null : VanillaBlueprintErrors.decrepify);
+            buff.SetProperty(PROP_DISABLE_ID_STARSHARD, !disable ? VanillaBlueprintErrors.decrepify : null);
             if (timeout.Expired)
             {
                 buff.Remove();
