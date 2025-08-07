@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
@@ -126,6 +129,13 @@ namespace MVZ2.GameContent.Enemies
 
             if (enemy.GetRelativeY() >= LEAVE_HEIGHT)
             {
+                var entity = enemy.SpawnWithParams(VanillaEnemyID.zombie, enemy.Position);
+                entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
+                entity.AddBuff<ParatroopBuff>();
+                entity.ChangeModel(VanillaModelID.paratrooperZombie);
+                if (enemy.GetColumn() < 4 && enemy.IsHostileEntity())
+                    entity.AddBuff<WickedHermitWarppedBuff>();
+                enemy.PlaySound(VanillaSoundID.wind);
                 enemy.Remove();
             }
         }
