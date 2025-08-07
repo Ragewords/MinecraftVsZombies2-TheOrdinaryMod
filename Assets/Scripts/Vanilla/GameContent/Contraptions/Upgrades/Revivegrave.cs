@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            GetReviveCooldown(entity).Run(entity.GetProduceSpeed());
+            GetReviveCooldown(entity).Run(entity.GetAttackSpeed());
         }
         protected override void UpdateLogic(Entity entity)
         {
