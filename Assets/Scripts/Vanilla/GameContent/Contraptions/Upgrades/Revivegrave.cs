@@ -82,7 +82,8 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var e in enemy)
                 {
                     e.Die(new DamageEffectList(VanillaDamageEffects.NO_DEATH_TRIGGER), entity);
-                    var buff = e.AddBuff<RevivegraveReviveBuff>();
+                    var buff = e.NewBuff<RevivegraveReviveBuff>();
+                    e.AddBuff(buff);
                     RevivegraveReviveBuff.SetFaction(buff, entity.GetFaction());
                 }
             }
