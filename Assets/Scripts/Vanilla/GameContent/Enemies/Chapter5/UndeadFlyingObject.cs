@@ -137,6 +137,7 @@ namespace MVZ2.GameContent.Enemies
                 entity.AddBuff<ParatroopBuff>();
                 if (enemy.Position.x < VanillaLevelExt.LAWN_CENTER_X && enemy.IsHostileEntity())
                     entity.AddBuff<WickedHermitWarppedBuff>();
+                enemy.PlaySound(VanillaSoundID.wind);
                 enemy.Remove();
             }
         }
