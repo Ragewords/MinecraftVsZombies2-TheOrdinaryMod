@@ -6385,7 +6385,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8af34f25dcad82e40bb7fef49d44dfe2
-    m_Address: mvz2:entity/armor/cannonball_zombie_hat
+    m_Address: mvz2:entity/armor/cannonball_hat
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -8695,7 +8695,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be3ab774e5937604197f4900e8c76858
-    m_Address: mvz2:entity/armor/paratrooper_wig
+    m_Address: mvz2:entity/armor/kogasa_wig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9472,7 +9472,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf3be980cc6f89e408988c51840f4c89
-    m_Address: mvz2:armor/cannanball_zombie_hat
+    m_Address: mvz2:armor/cannonball_hat
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9785,6 +9785,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5cff4cb758854342a588c19b6c6e993
+    m_Address: mvz2:armor/kogasa_wig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6598510d1ea3de4aac158689e0dd22d
     m_Address: mvz2:tesla_attack
