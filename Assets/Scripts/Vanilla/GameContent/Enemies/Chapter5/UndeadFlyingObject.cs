@@ -10,6 +10,7 @@ using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -130,10 +131,11 @@ namespace MVZ2.GameContent.Enemies
             if (enemy.GetRelativeY() >= LEAVE_HEIGHT)
             {
                 var entity = enemy.SpawnWithParams(VanillaEnemyID.zombie, enemy.Position);
+                entity.EquipArmorTo(VanillaArmorSlots.main, VanillaArmorID.kogasaWig);
                 entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 entity.AddBuff<ParatroopBuff>();
                 entity.ChangeModel(VanillaModelID.paratrooperZombie);
-                if (enemy.GetColumn() < 4 && enemy.IsHostileEntity())
+                if (enemy.Position.x < VanillaLevelExt.LAWN_CENTER_X && enemy.IsHostileEntity())
                     entity.AddBuff<WickedHermitWarppedBuff>();
                 enemy.PlaySound(VanillaSoundID.wind);
                 enemy.Remove();

@@ -8694,6 +8694,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be3ab774e5937604197f4900e8c76858
+    m_Address: mvz2:entity/armor/paratrooper_wig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: beb139d5d07db39408272c27eaea0034
     m_Address: mvz2:products/obsidian_first_aid
     m_ReadOnly: 0

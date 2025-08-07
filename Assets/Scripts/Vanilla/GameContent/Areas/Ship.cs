@@ -90,6 +90,10 @@ namespace MVZ2.GameContent.Areas
         {
             var position = grid.GetEntityPosition() + Vector3.up * 600;
             var entity = level.Spawn(enemyID, position, null);
+            if (level.Content.GetArmorDefinition(enemyID) == null)
+            {
+                entity.EquipArmorTo(VanillaArmorSlots.main, VanillaArmorID.kogasaWig);
+            }
             entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
             entity.AddBuff<ParatroopBuff>();
             entity.ChangeModel(VanillaModelID.paratrooperZombie);

@@ -17,6 +17,7 @@ namespace MVZ2.GameContent.Armors
         public const string skeletonWarriorHelmet = "skeleton_warrior_helmet";
         public const string skeletonWarriorShield = "skeleton_warrior_shield";
         public const string emperorCrown = "emperor_crown";
+        public const string kogasaWig = "kogasa_wig";
         public const string umbrellaShield = "umbrella_shield";
         public const string cannonballHat = "cannonball_hat";
     }
@@ -34,6 +35,7 @@ namespace MVZ2.GameContent.Armors
         public static readonly NamespaceID skeletonWarriorHelmet = Get(VanillaArmorNames.skeletonWarriorHelmet);
         public static readonly NamespaceID skeletonWarriorShield = Get(VanillaArmorNames.skeletonWarriorShield);
         public static readonly NamespaceID emperorCrown = Get(VanillaArmorNames.emperorCrown);
+        public static readonly NamespaceID kogasaWig = Get(VanillaArmorNames.kogasaWig);
         public static readonly NamespaceID umbrellaShield = Get(VanillaArmorNames.umbrellaShield);
         public static readonly NamespaceID cannonballHat = Get(VanillaArmorNames.cannonballHat);
         private static NamespaceID Get(string name)

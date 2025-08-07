@@ -76,6 +76,12 @@
                 <float name="mvz2:maxHealth" value="50" />
             </props>
         </entry>
+        <entry id="kogasa_wig">
+            <props>
+                <id name="mvz2:shell" value="mvz2:leather" />
+                <float name="mvz2:maxHealth" value="100" />
+            </props>
+        </entry>
         <entry id="cannonball_hat">
             <props>
                 <id name="mvz2:shell" value="mvz2:leather" />
