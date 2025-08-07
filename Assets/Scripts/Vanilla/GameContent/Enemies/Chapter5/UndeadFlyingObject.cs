@@ -131,13 +131,12 @@ namespace MVZ2.GameContent.Enemies
             if (enemy.GetRelativeY() >= LEAVE_HEIGHT)
             {
                 var entity = enemy.SpawnWithParams(VanillaEnemyID.zombie, enemy.Position);
+                entity.ChangeModel(VanillaModelID.paratrooperZombie);
                 entity.EquipArmorTo(VanillaArmorSlots.main, VanillaArmorID.kogasaWig);
                 entity.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 entity.AddBuff<ParatroopBuff>();
-                entity.ChangeModel(VanillaModelID.paratrooperZombie);
                 if (enemy.Position.x < VanillaLevelExt.LAWN_CENTER_X && enemy.IsHostileEntity())
                     entity.AddBuff<WickedHermitWarppedBuff>();
-                enemy.PlaySound(VanillaSoundID.wind);
                 enemy.Remove();
             }
         }

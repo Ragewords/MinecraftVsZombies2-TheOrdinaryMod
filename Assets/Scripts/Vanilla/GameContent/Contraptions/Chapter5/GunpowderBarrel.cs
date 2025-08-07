@@ -134,7 +134,7 @@ namespace MVZ2.GameContent.Contraptions
                     var energyValue = redstoneDefinition?.GetEnergyValue() ?? 50;
                     entity.Level.AddEnergy(-energyValue);
                 }
-                productionTimer.ResetTime(1080);
+                productionTimer.ResetTime(PRODUCTION_TIME);
             }
         }
         private void ProduceBomb(Entity entity)
