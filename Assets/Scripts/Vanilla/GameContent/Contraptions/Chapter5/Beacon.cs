@@ -57,16 +57,12 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var evoTimer = GetEvocationTimer(entity);
                 evoTimer.Run();
-                if (evoTimer.PassedInterval(6))
-                {
-                    EvokedShoot(entity);
-                }
                 if (evoTimer.Expired)
                 {
                     var buff = entity.Level.NewBuff<BeaconMeteorBuff>();
                     BeaconMeteorBuff.SetFaction(buff, entity.GetFaction());
                     BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
-                    BeaconMeteorBuff.SetCount(buff, EVOCATION_METEOR_COUNT);
+                    BeaconMeteorBuff.SetCount(buff, entity.Level.GetMaxColumnCount());
                     BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
                     entity.Level.AddBuff(buff);
                     entity.SetEvoked(false);
@@ -144,7 +140,7 @@ namespace MVZ2.GameContent.Contraptions
         protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
-        public const float EVOCATION_DAMAGE_MULTIPLIER = 45;
+        public const float EVOCATION_DAMAGE_MULTIPLIER = 10;
         public const int EVOCATION_METEOR_COUNT = 10;
 
         public static Vector3[] shootDirections = new Vector3[]
@@ -189,6 +185,6 @@ namespace MVZ2.GameContent.Contraptions
             private Detector sphereDetector;
             private List<Entity> sphereDetectBuffer = new List<Entity>();
         }
-        public const float DAMAGE_MULTIPLIER = 0.1f;
+        public const float DAMAGE_MULTIPLIER = 0.05f;
     }
 }

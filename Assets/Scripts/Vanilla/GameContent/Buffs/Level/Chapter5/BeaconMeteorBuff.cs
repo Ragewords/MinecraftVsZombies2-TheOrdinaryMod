@@ -47,7 +47,10 @@ namespace MVZ2.GameContent.Buffs.Level
                         {
                             timer.Reset();
 
-                            SpawnMeteor(buff.Level, GetRNG(buff), GetFaction(buff), GetDamage(buff));
+                            for (var l = 0; l < buff.Level.GetMaxLaneCount(); l++)
+                            {
+                                SpawnMeteor(buff.Level, GetRNG(buff), GetFaction(buff), GetDamage(buff), l, buff.Level.GetMaxColumnCount() - GetCount(buff));
+                            }
 
                             var count = GetCount(buff);
                             count--;
@@ -61,10 +64,8 @@ namespace MVZ2.GameContent.Buffs.Level
                     break;
             }
         }
-        public static Entity SpawnMeteor(LevelEngine level, RandomGenerator rng, int faction, float damage)
+        public static Entity SpawnMeteor(LevelEngine level, RandomGenerator rng, int faction, float damage, int lane, int column)
         {
-            var column = rng.Next(0, level.GetMaxColumnCount());
-            var lane = rng.Next(0, level.GetMaxLaneCount());
             var x = level.GetEntityColumnX(column);
             var z = level.GetEntityLaneZ(lane);
             var y = level.GetGroundY(x, z);
