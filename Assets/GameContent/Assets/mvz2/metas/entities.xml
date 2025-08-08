@@ -1543,6 +1543,7 @@
                 <float name="mvz2:range" value="120"/>
                 <id name="mvz2:shell" value="mvz2:bone"/>
                 <id name="mvz2:crySound" value="mvz2:skeleton_cry"/>
+                <id name="mvz2:starting_armor" value="mvz2:skelebomb_cap" />
                 <id name="mvz2:deathSound" value="mvz2:skeleton_death"/>
 
                 <int name="mvz2:cost" value="125" />
@@ -1561,6 +1562,8 @@
                 <vector3 name="mvz2:size" x="59" y="17" z="17"/>
                 <id name="mvz2:crySound" value="mvz2:silverfish_cry"/>
                 <id name="mvz2:deathSound" value="mvz2:silverfish_death"/>
+                <id name="mvz2:starting_shield" value="mvz2:reflective_barrier" />
+                <id name="mvz2:shape" value="mvz2:silverfish" />
                 <idArray name="mvz2:counter_tags" value="mvz2:low_enemy"/>
 
                 <vector3 name="mvz2:shadowScale" x="1" y="1" z="1"/>
@@ -1624,11 +1627,13 @@
                 <bool name="mvz2:noReward" value="true"/>
                 <float name="mvz2:fallResistance" value="10000"/>
                 <float name="mvz2:range" value="120"/>
+                <float name="mvz2:maxHealth" value="300"/>
                 <int name="mvz2:maxTimeout" value="300"/>
                 <id name="mvz2:shell" value="mvz2:stone"/>
                 <id name="mvz2:crySound" null="true"/>
                 <id name="mvz2:deathSound" null="true"/>
-                <float name="mvz2:maxHealth" value="300"/>
+                <id name="mvz2:shape" value="mvz2:bomb" />
+                <id name="mvz2:starting_shield" value="mvz2:cannon" />
                 <vector3 name="mvz2:size" x="20" y="27" z="20"/>
 
                 <int name="mvz2:cost" value="25" />
@@ -1751,6 +1756,7 @@
                 <id name="mvz2:shell" value="mvz2:normal"/>
                 <id name="mvz2:crySound" null="true"/>
                 <id name="mvz2:deathSound" null="true"/>
+                <id name="mvz2:shape" value="mvz2:doll" />
                 <float name="mvz2:maxHealth" value="9999"/>
                 <float name="mvz2:damage" value="100"/>
                 <vector3 name="mvz2:size" x="18" y="18" z="18"/>
@@ -1764,20 +1770,21 @@
             </behaviours>
             <properties>
                 <float name="mvz2:maxHealth" value="500"/>
+                <float name="mvz2:fallResistance" value="10000"/>
                 <vector3 name="mvz2:size" x="32" y="47" z="32"/>
+                <vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
                 <bool name="mvz2:loyal" value="true"/>
                 <bool name="mvz2:harmless" value="true" />
                 <bool name="mvz2:canDeactive" value="false"/>
                 <bool name="mvz2:notActiveEnemy" value="true"/>
                 <bool name="mvz2:invisible" value="true"/>
-                <id name="mvz2:shell" value="mvz2:stone"/>
                 <bool name="mvz2:noReward" value="true"/>
+                <id name="mvz2:shell" value="mvz2:stone"/>
                 <id name="mvz2:crySound" null="true"/>
                 <id name="mvz2:deathSound" null="true"/>
-                <float name="mvz2:fallResistance" value="10000"/>
-                <int name="mvz2:maxTimeout" value="900"/>
                 <id name="mvz2:fragmentId" value="mvz2:furnace"/>
-                <vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
+                <id name="mvz2:shape" value="mvz2:doll" />
+                <int name="mvz2:maxTimeout" value="900"/>
 
                 <int name="mvz2:cost" value="25" />
             </properties>
@@ -1840,6 +1847,7 @@
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
                 <id name="mvz2:hitSound" value="mvz2:bone_hit"/>
                 <id name="mvz2:deathSound" value="mvz2:wither_skeleton_death"/>
+                <id name="mvz2:shape" value="mvz2:dullahan_head" />
                 <vector3 name="mvz2:size" x="38" y="26" z="38" />
 
                 <int name="cost" value="100" />
@@ -1852,6 +1860,7 @@
                 <id name="mvz2:shell" value="mvz2:bone"/>
                 <id name="mvz2:crySound" value="mvz2:skeleton_horse_cry"/>
                 <id name="mvz2:deathSound" value="mvz2:skeleton_horse_death"/>
+                <id name="mvz2:shape" value="mvz2:horse" />
                 <vector3 name="mvz2:size" x="56" y="50" z="40"/>
                 <vector3 name="mvz2:passengerOffset" x="10" y="20" z="-1"/>
 
@@ -1922,6 +1931,7 @@
                 <id name="mvz2:crySound" null="true" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
                 <id name="mvz2:fragmentId" value="mvz2:shikaisen_pot" />
+                <id name="mvz2:shape" value="mvz2:pot" />
                 <float name="mvz2:maxHealth" value="30" />
                 <vector3 name="mvz2:size" x="30" y="30" z="30" />
 

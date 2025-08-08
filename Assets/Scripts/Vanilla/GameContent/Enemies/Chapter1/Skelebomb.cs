@@ -31,7 +31,6 @@ namespace MVZ2.GameContent.Enemies
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
             entity.SetAnimationBool("HoldingBomb", true);
             SetExplodingRNG(entity, -150);
-            entity.EquipMainArmor(VanillaArmorID.skelebombCap);
         }
         protected override int GetActionState(Entity enemy)
         {
@@ -66,7 +65,7 @@ namespace MVZ2.GameContent.Enemies
             }
             else if (entity.State == VanillaEntityStates.ATTACK)
             {
-                if (entity.RNG.Next(1, 200) == 1)
+                if (entity.RNG.Next(200) == 0)
                 {
                     StartCasting(entity);
                 }
