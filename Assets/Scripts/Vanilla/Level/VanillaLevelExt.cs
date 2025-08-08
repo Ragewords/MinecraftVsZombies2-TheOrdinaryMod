@@ -392,10 +392,10 @@ namespace MVZ2.Vanilla.Level
             var lane = spawnDef.GetRandomSpawnLane(level);
             return level.SpawnEnemy(spawnDef, lane);
         }
-        public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane)
+        public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, bool ignoreOffset = false)
         {
             var x = level.GetEnemySpawnX();
-            return level.SpawnEnemy(spawnDef, lane, x);
+            return level.SpawnEnemy(spawnDef, lane, x, ignoreOffset);
         }
         public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, float x, bool ignoreOffset = false)
         {
