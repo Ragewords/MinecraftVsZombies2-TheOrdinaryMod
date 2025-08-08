@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Enemies
         public const string emperorZombie = "emperor_zombie";
         public const string tanookiZombie = "tanooki_zombie";
 
-        public const string paratrooperZombie = "paratrooper_zombie";
+        public const string karakasaZombie = "karakasa_zombie";
         public const string undeadFlyingObject = "undead_flying_object";
         public const string ufo = undeadFlyingObject;
         public const string cannoneerZombie = "cannoneer_zombie";
@@ -104,7 +104,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID emperorZombie = Get(VanillaEnemyNames.emperorZombie);
         public static readonly NamespaceID tanookiZombie = Get(VanillaEnemyNames.tanookiZombie);
 
-        public static readonly NamespaceID paratrooperZombie = Get(VanillaEnemyNames.paratrooperZombie);
+        public static readonly NamespaceID karakasaZombie = Get(VanillaEnemyNames.karakasaZombie);
         public static readonly NamespaceID undeadFlyingObject = Get(VanillaEnemyNames.undeadFlyingObject);
         public static readonly NamespaceID ufo = undeadFlyingObject;
         public static readonly NamespaceID cannoneerZombie = Get(VanillaEnemyNames.cannoneerZombie);

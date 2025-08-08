@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             var buff = projectile.GetFirstBuff<ExplosivePearlBuff>();
             if (buff == null)
                 return;
-            projectile.Explode(projectile.GetCenter(), 120, projectile.GetFaction(), 200, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR));
+            projectile.Explode(projectile.GetCenter(), 120, projectile.GetFaction(), 300, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR));
             Explosion.Spawn(projectile, projectile.GetCenter(), 120);
             projectile.PlaySound(VanillaSoundID.explosion);
             projectile.Level.ShakeScreen(15, 0, 10);

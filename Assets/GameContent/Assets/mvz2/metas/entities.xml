@@ -1438,9 +1438,9 @@
         </humanoid>
 
         <!-- Chapter 5 -->
-        <zombie id="paratrooper_zombie" name="唐伞僵尸" deathMessage="吓你一跳！" unlock="mvz2:level.ship_1">
+        <zombie id="karakasa_zombie" name="唐伞僵尸" deathMessage="吓你一跳！" unlock="mvz2:entered_ship">
             <properties>
-                <vector3 name="mvz2:starting_position_offset" x="0" y="600" z="0" />
+                <vector3 name="mvz2:starting_position_offset" x="0" y="800" z="0" />
                 <id name="mvz2:starting_armor" value="mvz2:kogasa_wig" />
                 <id name="mvz2:starting_shield" value="mvz2:umbrella_shield" />
                 <int name="mvz2:cost" value="150" />
@@ -1570,7 +1570,6 @@
                 <vector3 name="mvz2:size" x="59" y="17" z="17"/>
                 <id name="mvz2:crySound" value="mvz2:silverfish_cry"/>
                 <id name="mvz2:deathSound" value="mvz2:silverfish_death"/>
-                <id name="mvz2:starting_shield" value="mvz2:reflective_barrier" />
                 <id name="mvz2:shape" value="mvz2:silverfish" />
                 <idArray name="mvz2:counter_tags" value="mvz2:low_enemy"/>
 

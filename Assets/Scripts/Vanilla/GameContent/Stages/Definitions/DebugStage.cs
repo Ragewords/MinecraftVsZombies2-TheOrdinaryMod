@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.gravityPad,
                 VanillaContraptionID.forcePad,
                 VanillaEnemyID.megaMutantZombie,
-                VanillaEnemyID.paratrooperZombie,
+                VanillaEnemyID.karakasaZombie,
                 VanillaEnemyID.cannoneerZombie,
                 VanillaBlueprintID.ufoRainbow,
             });

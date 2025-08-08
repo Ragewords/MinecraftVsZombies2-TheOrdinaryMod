@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 3530131017694911457}
     - target: {fileID: 5134337979047610562, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: m_Name
-      value: paratrooper_zombie
+      value: karakasa_zombie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

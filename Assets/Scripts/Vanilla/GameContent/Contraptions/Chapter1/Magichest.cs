@@ -158,7 +158,7 @@ namespace MVZ2.GameContent.Contraptions
                             var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
                             effect.SetTint(new Color(1, 0.8f, 1, 1));
                             var id = GetEatenEntityID(entity);
-                            var enemy = entity.SpawnWithParams(id, entity.Position);
+                            var enemy = entity.SpawnWithParams(id, entity.Position + entity.Level.Content.GetEntityDefinition(id).GetStartingPositionOffset());
                         }
                         break;
                     }

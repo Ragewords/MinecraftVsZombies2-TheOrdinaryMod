@@ -14,10 +14,10 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.paratrooperZombie)]
-    public class ParatrooperZombie : MeleeEnemy
+    [EntityBehaviourDefinition(VanillaEnemyNames.karakasaZombie)]
+    public class KarakasaZombie : MeleeEnemy
     {
-        public ParatrooperZombie(string nsp, string name) : base(nsp, name)
+        public KarakasaZombie(string nsp, string name) : base(nsp, name)
         {
         }
         public override void Init(Entity entity)
@@ -30,11 +30,15 @@ namespace MVZ2.GameContent.Enemies
                 entity.AddBuff<BoatBuff>();
                 entity.SetModelProperty("HasBoat", true);
             }
+            SetTargetGridX(entity, entity.RNG.Next(3, 6));
+            if (level.IsAirLane(lane))
+            {
+                SetTargetGridX(entity, entity.RNG.Next(4, 7));
+            }
             if (!entity.IsPreviewEnemy())
             {
                 entity.AddBuff<ParatroopBuff>();
                 entity.PlaySound(VanillaSoundID.wind, volume: 0.5f);
-                SetTargetGridX(entity, entity.RNG.Next(3, 6));
             }
         }
         protected override void UpdateLogic(Entity entity)
@@ -81,6 +85,7 @@ namespace MVZ2.GameContent.Enemies
         }
         public static int GetTargetGridX(Entity entity) => entity.GetBehaviourField<int>(PROP_TARGET_GRID_X);
         public static void SetTargetGridX(Entity entity, int value) => entity.SetBehaviourField(PROP_TARGET_GRID_X, value);
+        public const float START_HEIGHT = 800;
         public const float MAX_MOVE_SPEED = 10f;
         public const float MOVE_FACTOR = 0.7f;
         public static readonly VanillaEntityPropertyMeta<int> PROP_TARGET_GRID_X = new VanillaEntityPropertyMeta<int>("target_grid_x");

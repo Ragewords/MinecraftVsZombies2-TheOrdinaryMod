@@ -397,14 +397,16 @@ namespace MVZ2.Vanilla.Level
             var x = level.GetEnemySpawnX();
             return level.SpawnEnemy(spawnDef, lane, x);
         }
-        public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, float x)
+        public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, float x, bool ignoreOffset = false)
         {
             if (spawnDef == null)
                 return null;
             var z = level.GetEntityLaneZ(lane);
             var y = level.GetGroundY(x, z);
             var pos = new Vector3(x, y, z);
-            var enemy = level.Spawn(spawnDef.GetSpawnEntityID(), pos, null);
+            var enemyID = spawnDef.GetSpawnEntityID();
+            var offset = ignoreOffset ? Vector3.zero : level.Content.GetEntityDefinition(enemyID).GetStartingPositionOffset();
+            var enemy = level.Spawn(enemyID, pos + offset, null);
             level.TriggerEnemySpawned(spawnDef.GetID(), enemy);
             return enemy;
         }
