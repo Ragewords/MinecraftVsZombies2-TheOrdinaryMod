@@ -140,7 +140,7 @@ namespace MVZ2.GameContent.Contraptions
         protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
-        public const float EVOCATION_DAMAGE_MULTIPLIER = 10;
+        public const float EVOCATION_DAMAGE_MULTIPLIER = 5;
         public const int EVOCATION_METEOR_COUNT = 10;
 
         public static Vector3[] shootDirections = new Vector3[]
