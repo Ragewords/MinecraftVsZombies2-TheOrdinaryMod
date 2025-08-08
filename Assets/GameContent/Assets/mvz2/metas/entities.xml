@@ -1438,7 +1438,7 @@
         </humanoid>
 
         <!-- Chapter 5 -->
-        <zombie id="paratrooper_zombie" name="小伞僵尸" deathMessage="吓你一跳！" unlock="mvz2:level.ship_1">
+        <zombie id="paratrooper_zombie" name="唐伞僵尸" deathMessage="吓你一跳！" unlock="mvz2:level.ship_1">
             <properties>
                 <vector3 name="mvz2:starting_position_offset" x="0" y="600" z="0" />
                 <id name="mvz2:starting_armor" value="mvz2:kogasa_wig" />

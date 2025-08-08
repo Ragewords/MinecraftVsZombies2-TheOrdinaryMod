@@ -1450,7 +1450,7 @@
 
         <entry id="mvz2:paratrooper_zombie">
             <header>
-                <p>小伞僵尸会从天而降突入你的阵型。</p>
+                <p>唐伞僵尸会从天而降突入你的阵型。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100（假发）+270（伞盾）</color>]]></p>
