@@ -98,7 +98,7 @@
     <model name="emperor_zombie" type="entity" path="mvz2:enemy/mausoleum/emperor_zombie" width="70" height="104" xOffset="1" yOffset="-47"/>
     <model name="tanooki_zombie" type="entity" path="mvz2:enemy/mausoleum/tanooki_zombie" width="76" height="104" xOffset="6" yOffset="-44"/>
     
-    <model name="paratrooper_zombie" type="entity" path="mvz2:enemy/ship/paratrooper_zombie" width="64" height="96" xOffset="10" yOffset="-44"/>
+    <model name="paratrooper_zombie" type="entity" path="mvz2:enemy/ship/paratrooper_zombie" width="90" height="96" xOffset="26" yOffset="-44"/>
     <model name="undead_flying_object_red" type="entity" path="mvz2:enemy/ship/undead_flying_object" width="80" height="56" xOffset="0" yOffset="-24">
         <animator>
             <parameters>

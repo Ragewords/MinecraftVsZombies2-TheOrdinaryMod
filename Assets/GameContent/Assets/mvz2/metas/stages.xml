@@ -1058,6 +1058,7 @@
         <spawns flags="1" firstWaveTime="1800">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
         </spawns>
     </stage>
     <stage id="ship_2" name="圣辇船" dayNumber="2" unlock="mvz2/:level.ship_1">
@@ -1071,6 +1072,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <!-- <spawn id="mvz2:undead_flying_object"/> -->
         </spawns>
     </stage>
@@ -1085,6 +1087,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:ghast"/>
         </spawns>
@@ -1100,6 +1103,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
         </spawns>
@@ -1115,6 +1119,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:reflective_barrier_zombie"/>
@@ -1142,6 +1147,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
@@ -1158,6 +1164,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
@@ -1175,6 +1182,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
@@ -1193,6 +1201,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
@@ -1245,6 +1254,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:sailor_zombie"/>
         </spawns>
@@ -1257,6 +1267,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
@@ -1272,6 +1283,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:paratrooper_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
