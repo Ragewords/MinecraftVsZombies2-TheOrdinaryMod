@@ -174,7 +174,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (PlaySound(entity))
                 {
-                    entity.PlaySound(VanillaSoundID.pearlBoost, volume: 10f);
+                    entity.PlaySound(VanillaSoundID.pearlBoost);
                     entity.AddBuff<DesirePotHighlightBuff>();
                     SetPlaySound(entity, false);
                 }
