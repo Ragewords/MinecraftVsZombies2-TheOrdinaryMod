@@ -495,6 +495,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7491970437076916283}
     m_Modifications:
+    - target: {fileID: 275196446025925932, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613554058280428718, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2236969012644218222, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
       propertyPath: m_Name
       value: umbrella_shield
@@ -537,6 +545,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4138566418369454538, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367564821639696310, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801861897371722992, guid: 082b92feb2464254caf375f0fecb451d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
