@@ -112,7 +112,7 @@ namespace MVZ2.GameContent.Contraptions
             if (productionTimer.Expired)
             {
                 var pickupID = IsFurious(entity) ? VanillaPickupID.furiousGunpowder : VanillaPickupID.gunpowder;
-                var bombProduceLimit = IsFurious(entity) ? 10 : 5;
+                var bombProduceLimit = IsFurious(entity) ? 20 : 10;
                 if (entity.IsFriendlyEntity())
                 {
                     if (entity.RNG.Next(100) < bombProduceLimit)
