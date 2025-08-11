@@ -16,7 +16,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public RevivegraveReviveBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(VanillaEnemyProps.ASSUME_ALIVE, true));
-            AddTrigger(VanillaLevelCallbacks.PRE_ENEMY_FAINT, PreEnemyFaintCallback);
+            AddTrigger(VanillaLevelCallbacks.PRE_ENEMY_FAINT, PreEnemyFaintCallback, priority: -200);
         }
         private void PreEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)
         {
@@ -25,18 +25,32 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (buff == null)
                 return;
             entity.Revive();
-            entity.AddBuff<BigTroubleBuff>();
+
+            bool stronger = IsStronger(buff);
+            if (stronger)
+                entity.AddBuff<BigTroubleBuff>();
+
             entity.HealEffects(entity.GetMaxHealth(), entity);
             result.SetFinalValue(false);
 
             var faction = GetFaction(buff);
             entity.Charm(faction);
             entity.PlaySound(VanillaSoundID.revived);
-            entity.PlaySound(VanillaSoundID.growBig);
+            if (stronger)
+                entity.PlaySound(VanillaSoundID.growBig);
             buff.Remove();
         }
-        public static void SetFaction(Buff buff, int faction) => buff.SetProperty<int>(PROP_FACTION, faction);
+        public static Buff AddToEntity(Entity entity, int faction, bool stronger)
+        {
+            var buff = entity.NewBuff<RevivegraveReviveBuff>();
+            buff.SetProperty(RevivegraveReviveBuff.PROP_FACTION, faction);
+            buff.SetProperty(RevivegraveReviveBuff.PROP_STRONGER, stronger);
+            entity.AddBuff(buff);
+            return buff;
+        }
         public static int GetFaction(Buff buff) => buff.GetProperty<int>(PROP_FACTION);
+        public static bool IsStronger(Buff buff) => buff.GetProperty<bool>(PROP_STRONGER);
         public static readonly VanillaBuffPropertyMeta<int> PROP_FACTION = new VanillaBuffPropertyMeta<int>("faction");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_STRONGER = new VanillaBuffPropertyMeta<bool>("stronger");
     }
 }

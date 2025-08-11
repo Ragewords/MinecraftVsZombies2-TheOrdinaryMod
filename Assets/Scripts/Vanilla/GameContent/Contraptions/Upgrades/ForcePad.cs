@@ -10,6 +10,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -35,6 +36,9 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.PostDeath(entity, deathInfo);
             if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            var grid = entity.GetGrid();
+            if (!grid.CanSpawnEntity(VanillaContraptionID.gravityPad))
                 return;
             entity.Spawn(VanillaContraptionID.gravityPad, entity.Position);
         }

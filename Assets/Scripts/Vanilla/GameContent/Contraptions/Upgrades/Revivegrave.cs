@@ -5,6 +5,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -45,6 +46,9 @@ namespace MVZ2.GameContent.Contraptions
             base.PostDeath(entity, deathInfo);
             if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
                 return;
+            var grid = entity.GetGrid();
+            if (!grid.CanSpawnEntity(VanillaContraptionID.necrotombstone))
+                return;
             entity.Spawn(VanillaContraptionID.necrotombstone, entity.Position);
         }
         private void PostEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)
@@ -52,24 +56,27 @@ namespace MVZ2.GameContent.Contraptions
             var entity = param.entity;
             var level = entity.Level;
             var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane() && e.IsHostile(entity));
-            foreach (var grave in graves)
+            var valid_graves = graves.Where(e => !Revivegrave.GetReviveCooldown(e).Expired);
+            var chosen_grave = valid_graves.Random(entity.RNG);
+            if (chosen_grave != null)
             {
-                ReviveEnemy(grave, entity.GetDefinitionID(), entity.GetMaxHealth());
+                ReviveEnemy(chosen_grave, entity.GetDefinitionID(), entity.GetMaxHealth());
             }
         }
         private void ReviveEnemy(Entity grave, NamespaceID id, float maxHealth)
         {
-            if (!GetReviveCooldown(grave).Expired)
+            var cooldown = GetReviveCooldown(grave);
+            if (!cooldown.Expired)
                 return;
-            var pos = grave.Position;
-            pos.y = grave.GetGroundY() - 100;
+            var level = grave.Level;
+            var pos = grave.Position + level.Content.GetEntityDefinition(id).GetStartingPositionOffset();
             var revived = grave.SpawnWithParams(id, pos);
             revived.AddBuff<NecrotombstoneRisingBuff>();
             revived.UpdateModel();
             revived.PlaySound(VanillaSoundID.dirtRise);
             revived.PlaySound(VanillaSoundID.revived);
             var newTimer = Mathf.RoundToInt(maxHealth);
-            GetReviveCooldown(grave).ResetTime(newTimer);
+            cooldown.ResetTime(newTimer);
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -83,9 +90,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var e in enemy)
                 {
                     e.Die(new DamageEffectList(VanillaDamageEffects.NO_DEATH_TRIGGER), entity);
-                    var buff = e.NewBuff<RevivegraveReviveBuff>();
-                    e.AddBuff(buff);
-                    RevivegraveReviveBuff.SetFaction(buff, entity.GetFaction());
+                    RevivegraveReviveBuff.AddToEntity(e, entity.GetFaction(), true);
                 }
             }
         }

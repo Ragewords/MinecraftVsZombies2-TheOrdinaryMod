@@ -3,6 +3,7 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Damages;
@@ -30,6 +31,9 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.PostDeath(entity, deathInfo);
             if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            var grid = entity.GetGrid();
+            if (!grid.CanSpawnEntity(VanillaContraptionID.woodenDropper))
                 return;
             entity.Spawn(VanillaContraptionID.woodenDropper, entity.Position);
         }
