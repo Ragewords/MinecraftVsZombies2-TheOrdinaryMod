@@ -41,6 +41,7 @@ namespace MVZ2.Vanilla.Entities
             projectile.Velocity = velocity;
             projectile.UpdatePointTowardsDirection();
 
+            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_SHOT, new VanillaLevelCallbacks.PostEntityShootParams(entity, projectile));
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_PROJECTILE_SHOT, new EntityCallbackParams(projectile), projectile.Definition.GetID());
             return projectile;
         }

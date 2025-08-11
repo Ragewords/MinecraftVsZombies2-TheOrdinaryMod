@@ -148,6 +148,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID pearlTouch = Get("pearl_touch");
         public readonly static NamespaceID pick = Get("pick");
         public readonly static NamespaceID pickaxe = Get("pickaxe");
+        public readonly static NamespaceID pirouette = Get("pirouette");
         public readonly static NamespaceID pistonIn = Get("piston_in");
         public readonly static NamespaceID pistonOut = Get("piston_out");
         public readonly static NamespaceID points = Get("points");

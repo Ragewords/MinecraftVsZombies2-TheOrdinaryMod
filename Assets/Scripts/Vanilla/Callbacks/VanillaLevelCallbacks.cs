@@ -187,6 +187,16 @@ namespace MVZ2.Vanilla.Callbacks
             }
         }
 
+        public struct PostEntityShootParams
+        {
+            public Entity source;
+            public Entity projectile;
+            public PostEntityShootParams(Entity source, Entity projectile)
+            {
+                this.source = source;
+                this.projectile = projectile;
+            }
+        }
         public struct PreProjectileHitParams
         {
             public ProjectileHitInput hit;
@@ -226,7 +236,7 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<ContraptionSacrificeValueParams> GET_CONTRAPTION_SACRIFICE_FUEL = new();
         public readonly static CallbackType<ContraptionSacrificeParams> PRE_CONTRAPTION_SACRIFICE = new();
         public readonly static CallbackType<ContraptionSacrificeParams> POST_CONTRAPTION_SACRIFICE = new();
-        public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_SHOT = new();
+        public readonly static CallbackType<PostEntityShootParams> POST_ENTITY_SHOT = new();
 
         public readonly static CallbackType<WaterInteractionParams> POST_WATER_INTERACTION = new();
         public readonly static CallbackType<WaterInteractionParams> POST_AIR_INTERACTION = new();

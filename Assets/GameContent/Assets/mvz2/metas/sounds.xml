@@ -555,6 +555,9 @@
     <sound name="pickaxe" priority="64">
         <sample path="mvz2:pickaxe" weight="1" />
     </sound>
+    <sound name="pirouette">
+        <sample path="mvz2:pirouette" weight="1" />
+    </sound>
     <sound name="piston_in">
         <sample path="mvz2:piston_in" weight="1" />
     </sound>

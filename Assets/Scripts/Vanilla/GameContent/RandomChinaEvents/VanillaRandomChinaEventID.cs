@@ -19,6 +19,8 @@ namespace MVZ2.GameContent.RandomChinaEvents
         public const string anvilShower = "anvil_shower";
         public const string theHangedMan = "the_hanged_man";
         public const string ancientEgypt = "ancientEgypt";
+        
+        public const string ruaWizard = "r_u_a_wizard";
     }
     public static class VanillaRandomChinaEventID
     {
