@@ -57,12 +57,12 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsUndead())
                 return;
             var level = entity.Level;
-            var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane());
+            var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane() && entity.IsHostile(e));
             var valid_graves = graves?.Where(e => Revivegrave.GetReviveCooldown(e).Expired);
-            var chosen_grave = valid_graves?.Random(entity.RNG);
-            if (chosen_grave != null)
+            var chosen_grave = valid_graves?.RandomTake(1, entity.RNG);
+            foreach (var grave in chosen_grave)
             {
-                ReviveEnemy(chosen_grave, entity.GetDefinitionID(), entity.GetMaxHealth());
+                ReviveEnemy(grave, entity.GetDefinitionID(), entity.GetMaxHealth());
             }
         }
         private void ReviveEnemy(Entity grave, NamespaceID id, float maxHealth)
