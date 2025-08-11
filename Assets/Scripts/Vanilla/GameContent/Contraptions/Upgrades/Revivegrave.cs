@@ -54,10 +54,12 @@ namespace MVZ2.GameContent.Contraptions
         private void PostEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)
         {
             var entity = param.entity;
+            if (!entity.IsUndead())
+                return;
             var level = entity.Level;
-            var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane() && e.IsHostile(entity));
-            var valid_graves = graves.Where(e => !Revivegrave.GetReviveCooldown(e).Expired);
-            var chosen_grave = valid_graves.Random(entity.RNG);
+            var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane());
+            var valid_graves = graves?.Where(e => Revivegrave.GetReviveCooldown(e).Expired);
+            var chosen_grave = valid_graves?.Random(entity.RNG);
             if (chosen_grave != null)
             {
                 ReviveEnemy(chosen_grave, entity.GetDefinitionID(), entity.GetMaxHealth());
@@ -68,8 +70,7 @@ namespace MVZ2.GameContent.Contraptions
             var cooldown = GetReviveCooldown(grave);
             if (!cooldown.Expired)
                 return;
-            var level = grave.Level;
-            var pos = grave.Position + level.Content.GetEntityDefinition(id).GetStartingPositionOffset();
+            var pos = grave.Position + Vector3.down * 100;
             var revived = grave.SpawnWithParams(id, pos);
             revived.AddBuff<NecrotombstoneRisingBuff>();
             revived.UpdateModel();
