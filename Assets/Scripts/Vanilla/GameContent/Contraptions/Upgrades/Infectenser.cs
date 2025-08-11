@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
@@ -31,11 +32,12 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             }
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
-                result.Entity.Spawn(VanillaContraptionID.smallDispenser, result.Entity.Position);
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            entity.Spawn(VanillaContraptionID.smallDispenser, entity.Position);
         }
         public override Entity Shoot(Entity entity)
         {

@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.HeldItems
         }
         protected override void UseOnEntity(Entity entity)
         {
-            var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE);
+            var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.DIG);
             entity.Die(effects);
             if (entity.Level.IsPickaxeCountLimited())
             {

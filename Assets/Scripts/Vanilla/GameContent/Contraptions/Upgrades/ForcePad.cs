@@ -2,6 +2,7 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.HeldItems;
@@ -30,11 +31,12 @@ namespace MVZ2.GameContent.Contraptions
             enemyDetector = new ForcePadDetector(EntityCollisionHelper.MASK_ENEMY, AFFECT_HEIGHT, 1);
             projectileDetector = new ForcePadDetector(EntityCollisionHelper.MASK_PROJECTILE, AFFECT_HEIGHT, 0.5f);
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
-                result.Entity.Spawn(VanillaContraptionID.gravityPad, result.Entity.Position);
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            entity.Spawn(VanillaContraptionID.gravityPad, entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {

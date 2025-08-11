@@ -97,17 +97,16 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetAnimationBool("ShowArc", entity.State != STATE_ATTACK && !entity.IsAIFrozen());
             entity.SetAnimationFloat("AttackSpeed", entity.GetAttackSpeed());
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
-            {
-                var entity = result.Entity;
-                entity.Explode(entity.Position, 80, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
-                Explosion.Spawn(entity, entity.GetCenter(), 80);
-                entity.PlaySound(VanillaSoundID.explosion);
-                entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
-            }
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            var range = entity.GetRange() * 0.4f;
+            entity.Explode(entity.Position, range, entity.GetFaction(), entity.GetDamage() * 4, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.EXPLOSION));
+            Explosion.Spawn(entity, entity.GetCenter(), range);
+            entity.PlaySound(VanillaSoundID.explosion);
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
         }
         private float GetTargetPriority(Entity self, Entity target)
         {

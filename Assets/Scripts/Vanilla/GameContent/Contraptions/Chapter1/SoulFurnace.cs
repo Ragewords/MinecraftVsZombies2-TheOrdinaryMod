@@ -92,19 +92,21 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostTakeDamage(DamageOutput damage)
         {
             base.PostTakeDamage(damage);
-            var furnace = damage.Entity;
+        }
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
+        {
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            var furnace = entity;
             var fuel = GetFuel(furnace);
-            var rng = furnace.RNG;
-            if (damage.HasAnyFatal())
+            for (int i = 1; i <= fuel; i++)
             {
-                for (int i = 1; i <= fuel; i++)
-                {
-                    var angle = i * Mathf.CeilToInt(360 / fuel);
-                    var param = furnace.GetShootParams();
-                    param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 12;
-                    var projectile = furnace.ShootProjectile(param);
-                    SoulfireBall.SetBlast(projectile, true);
-                }
+                var angle = i * Mathf.CeilToInt(360 / fuel);
+                var param = furnace.GetShootParams();
+                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 12;
+                var projectile = furnace.ShootProjectile(param);
+                SoulfireBall.SetBlast(projectile, true);
             }
         }
         protected override Detector GetDetector()

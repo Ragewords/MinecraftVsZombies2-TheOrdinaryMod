@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Projectiles;
+﻿using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
@@ -25,11 +26,12 @@ namespace MVZ2.GameContent.Contraptions
             SetRNG(entity, new RandomGenerator(entity.RNG.Next()));
             InitShootTimer(entity);
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
-                result.Entity.Spawn(VanillaContraptionID.woodenDropper, result.Entity.Position);
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            entity.Spawn(VanillaContraptionID.woodenDropper, entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {

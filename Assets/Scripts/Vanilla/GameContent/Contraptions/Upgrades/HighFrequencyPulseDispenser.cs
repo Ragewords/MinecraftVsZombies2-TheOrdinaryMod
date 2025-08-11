@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -26,11 +27,12 @@ namespace MVZ2.GameContent.Contraptions
             SetEvocationTimer(entity, new FrameTimer(EVOCATION_TIME));
             SetRepeatTimer(entity, new FrameTimer(REPEAT_INVERVAL));
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
-                result.Entity.Spawn(VanillaContraptionID.repeatenser, result.Entity.Position);
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+            entity.Spawn(VanillaContraptionID.repeatenser, entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {

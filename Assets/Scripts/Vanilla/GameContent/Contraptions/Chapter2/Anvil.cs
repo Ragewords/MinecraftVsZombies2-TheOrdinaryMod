@@ -3,7 +3,6 @@ using System.Linq;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
@@ -51,25 +50,19 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            bool hurt = false;
             foreach (var target in entity.Level.GetEntities(EntityTypes.PLANT))
             {
                 if (target.Health < target.GetMaxHealth() && target.GetDefinitionID() != VanillaContraptionID.anvil)
                 {
                     target.HealEffects(target.GetMaxHealth() / 3, entity);
-                    if (entity.RNG.Next(25) == 1)
-                        hurt = true;
+                    if (entity.RNG.Next(25) == 0)
+                    {
+                        entity.TakeDamage(entity.GetMaxHealth() / 3, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
+                        entity.PlaySound(VanillaSoundID.anvil_fix_break);
+                    }
                     else
                         entity.PlaySound(VanillaSoundID.anvil_fix);
                 }
-            }
-            if (hurt)
-            {
-                entity.TakeDamage(entity.GetMaxHealth() / 3, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
-                if (entity.Health <= entity.GetMaxHealth() / 3)
-                    entity.PlaySound(VanillaSoundID.anvil_fix_break);
-                else
-                    entity.PlaySound(VanillaSoundID.anvil_fix);
             }
         }
         public override void PostContactGround(Entity anvil, Vector3 velocity)

@@ -61,30 +61,29 @@ namespace MVZ2.GameContent.Contraptions
             UpdateIgnite(entity);
             entity.SetAnimationBool("Evoked", IsCursed(entity));
         }
-        public override void PostTakeDamage(DamageOutput result)
+        public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
-            base.PostTakeDamage(result);
-            if (result.HasAnyFatal())
+            base.PostDeath(entity, deathInfo);
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+                return;
+
+            jalapenoDetectBuffer.Clear();
+            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
+            var damageMultipiler = IsCursed(entity) ? 2 : 1;
+            foreach (var target in jalapenoDetectBuffer)
             {
-                var entity = result.Entity;
-                jalapenoDetectBuffer.Clear();
-                jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
-                var damageMultipiler = IsCursed(entity) ? 2 : 1;
-                foreach (var target in jalapenoDetectBuffer)
-                {
-                    target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
-                }
-                entity.PlaySound(VanillaSoundID.flame);
-                var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
-                for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
-                {
-                    var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
-                    var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
-                    Fireblock.SetCursed(block, IsCursed(entity));
-                    if (IsCursed(entity))
-                        block.AddBuff<HellfireCursedBuff>();
-                    block.Timeout += i * 2;
-                }
+                target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+            }
+            entity.PlaySound(VanillaSoundID.flame);
+            var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
+            for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
+            {
+                var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
+                var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
+                Fireblock.SetCursed(block, IsCursed(entity));
+                if (IsCursed(entity))
+                    block.AddBuff<HellfireCursedBuff>();
+                block.Timeout += i * 2;
             }
         }
         public override bool CanEvoke(Entity entity)
