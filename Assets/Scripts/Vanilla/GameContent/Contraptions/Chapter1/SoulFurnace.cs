@@ -104,7 +104,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var angle = entity.RNG.Next(-10f, 10f);
                 var param = furnace.GetShootParams();
-                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 15;
+                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * entity.GetFacingX() * entity.RNG.Next(15f, 18f);
                 var projectile = furnace.ShootProjectile(param);
                 SoulfireBall.SetBlast(projectile, true);
             }
