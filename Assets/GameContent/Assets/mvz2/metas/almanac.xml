@@ -385,7 +385,7 @@
                 <p>魔术箱在吞掉前面的僵尸后会召唤这只僵尸，然后变成一个星之碎片。</p>
             </header>
             <properties>
-                <p>技能：<![CDATA[<color=red>召唤一个恶魂和一个彩色不死飞行物，用以纪念我朋友的朋友之前做过的一个游戏</color>]]></p>
+                <p>技能：<![CDATA[<color=red>召唤一个地狱战车</color>]]></p>
             </properties>
             <flavor>
                 <p>它只需要挂上一个招牌，写上YMCA，僵尸们就自投罗网了。YMCA是什么意思？当然是“有馍吃啊”。</p>
@@ -1195,7 +1195,7 @@
         </entry>
         <entry id="mvz2:mummy">
             <header>
-                <p>木乃伊会在死后放出能治疗亡灵并伤害器械的毒雾以及一只僵尸。</p>
+                <p>木乃伊会在死后放出能治疗亡灵并伤害器械的毒雾和一只僵尸。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>

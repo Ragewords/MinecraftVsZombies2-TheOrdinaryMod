@@ -139,7 +139,6 @@ namespace MVZ2.GameContent.Contraptions
                         {
                             entity.State = VanillaEntityStates.MAGICHEST_SPAWN;
                             stateTimer.ResetTime(30);
-                            entity.PlaySound(VanillaSoundID.chestClose);
                         }
                         break;
                     }
@@ -212,10 +211,7 @@ namespace MVZ2.GameContent.Contraptions
                         stateTimer.Run();
                         if (stateTimer.PassedFrame(30))
                         {
-                            var ghast = entity.SpawnWithParams(VanillaEnemyID.ghast, entity.GetCenter());
-                            entity.PlaySound(VanillaSoundID.fireCharge);
-                            var ufo = entity.SpawnWithParams(VanillaEnemyID.undeadFlyingObject, entity.GetCenter());
-                            ufo.SetVariant(3);
+                            entity.SpawnWithParams(VanillaEnemyID.hellChariot, entity.GetCenter());
                         }
                         if (stateTimer.Expired)
                         {
