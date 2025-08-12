@@ -102,9 +102,9 @@ namespace MVZ2.GameContent.Contraptions
             var fuel = GetFuel(furnace);
             for (int i = 1; i <= fuel; i++)
             {
-                var angle = i * Mathf.CeilToInt(360 / fuel);
+                var angle = entity.RNG.Next(-10f, 10f);
                 var param = furnace.GetShootParams();
-                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 12;
+                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * 15;
                 var projectile = furnace.ShootProjectile(param);
                 SoulfireBall.SetBlast(projectile, true);
             }
@@ -233,7 +233,7 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.soulFurnace;
         public static readonly VanillaEntityPropertyMeta<int> PROP_FUEL = new VanillaEntityPropertyMeta<int>("Fuel");
         public static readonly VanillaEntityPropertyMeta<float> PROP_DISPLAY_FUEL = new VanillaEntityPropertyMeta<float>("DisplayFuel");
-        public const int MAX_FUEL = 120;
+        public const int MAX_FUEL = 60;
         public const int REFUEL_THRESOLD = 10;
         public const int I_ZOMBIE_FUEL = REFUEL_THRESOLD + 5;
         private Detector evocationDetector;
