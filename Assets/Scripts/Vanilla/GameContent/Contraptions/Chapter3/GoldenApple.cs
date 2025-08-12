@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
-using MVZ2.GameContent.Areas;
+﻿using System.Linq;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
@@ -9,11 +7,8 @@ using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
-using MVZ2.Vanilla.Properties;
-using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
-using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -114,8 +109,11 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.shikaisenZombie,
             VanillaEnemyID.emperorZombie,
             VanillaEnemyID.tanookiZombie,
+            VanillaEnemyID.karakasaZombie,
+            VanillaEnemyID.undeadFlyingObject,
+            VanillaEnemyID.cannoneerZombie,
         };
-        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_ENEMY_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("EnemyRNG");
+
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
     }
 }

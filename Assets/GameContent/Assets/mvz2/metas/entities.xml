@@ -1641,7 +1641,6 @@
                 <id name="mvz2:crySound" null="true"/>
                 <id name="mvz2:deathSound" null="true"/>
                 <id name="mvz2:shape" value="mvz2:bomb" />
-                <id name="mvz2:starting_shield" value="mvz2:cannon" />
                 <vector3 name="mvz2:size" x="20" y="27" z="20"/>
 
                 <int name="mvz2:cost" value="25" />
