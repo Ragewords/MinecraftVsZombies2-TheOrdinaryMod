@@ -21,8 +21,8 @@
     </fragment>
     <fragment name="obsidian_armor" blend="true">
         <colorKeys>
-            <key hex="#503833" time="0.6"/>
-            <key hex="#341810" time="1"/>
+            <key hex="#5A555A" time="0"/>
+            <key hex="#312829" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="mine_tnt">

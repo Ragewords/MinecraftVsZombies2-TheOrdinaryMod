@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Contraptions
             bool netherite = contraption.HasBuff<ObsidianArmorBuff>();
             if (netherite)
             {
-                if (contraption.Health <= maxHP * 0.5f)
+                if (contraption.Health <= maxHP * 0.4f)
                 {
                     var hp = contraption.Health;
                     contraption.RemoveBuffs<ObsidianArmorBuff>();

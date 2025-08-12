@@ -255,9 +255,9 @@
                 <bool name="mvz2:isLightSource" value="true" />
                 <bool name="mvz2:glowUnable" value="false" />
                 <vector3 name="mvz2:lightRange" x="180" y="180" z="180" />
-                <color name="mvz2:lightColor" value="#220060" />
+                <color name="mvz2:lightColor" value="#36009aff" />
 
-                <int name="mvz2:cost" value="75" />
+                <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
