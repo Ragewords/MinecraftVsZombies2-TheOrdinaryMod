@@ -88,13 +88,6 @@ namespace MVZ2.GameContent.Bosses
             {
                 damageInfo.SetAmount(300);
             }
-            if (damageInfo.Entity.State == STATE_FAINT)
-            {
-                if (damageInfo.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
-                {
-                    damageInfo.SetAmount(0);
-                }
-            }
         }
         #endregion 事件
 

@@ -221,19 +221,6 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                // 使周围的子弹偏移。
-                var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PROJECTILE && (entity.Position - e.Position).magnitude <= 120);
-                foreach (var target in targets)
-                {
-                    var vel = target.Velocity;
-                    var speed = vel.magnitude;
-                    if (target.GetLane() == entity.GetLane())
-                        vel.x -= (entity.Position.x - target.Position.x) / 4;
-                    else
-                        vel -= (entity.Position - target.Position).normalized * 2;
-                    vel = vel.normalized * speed;
-                    target.Velocity = vel;
-                }
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.Run(stateMachine.GetSpeed(entity));
                 if (substateTimer.Expired)
