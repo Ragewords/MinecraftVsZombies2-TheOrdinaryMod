@@ -9,6 +9,7 @@
 
         public const int CONTRAPTION_COOLDOWN = 101;
         public const int CONTRAPTION_SPECIAL = 102;
+        public const int CONTRAPTION_CAST = 103;
 
         public const int ENEMY_CAST = 200;
         public const int ENEMY_RUN = 201;
@@ -44,6 +45,7 @@
         public const int MAGICHEST_IDLE = IDLE;
         public const int MAGICHEST_OPEN = ATTACK;
         public const int MAGICHEST_EAT = CONTRAPTION_SPECIAL;
+        public const int MAGICHEST_SPAWN = CONTRAPTION_CAST;
         public const int MAGICHEST_LOMS = CONTRAPTION_SPECIAL;
         public const int MAGICHEST_CLOSE = CONTRAPTION_COOLDOWN;
 

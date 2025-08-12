@@ -137,6 +137,24 @@ namespace MVZ2.GameContent.Contraptions
                         stateTimer.Run();
                         if (stateTimer.Expired)
                         {
+                            entity.State = VanillaEntityStates.MAGICHEST_SPAWN;
+                            stateTimer.ResetTime(30);
+                            entity.PlaySound(VanillaSoundID.chestClose);
+                        }
+                        break;
+                    }
+
+                case VanillaEntityStates.MAGICHEST_SPAWN:
+                    {
+                        var stateTimer = GetStateTimer(entity);
+                        stateTimer.Run();
+                        if (stateTimer.PassedFrame(15))
+                        {
+                            var id = GetEatenEntityID(entity);
+                            var enemy = entity.SpawnWithParams(id, entity.Position + entity.Level.Content.GetEntityDefinition(id).GetStartingPositionOffset());
+                        }
+                        if (stateTimer.Expired)
+                        {
                             entity.State = VanillaEntityStates.MAGICHEST_CLOSE;
                             stateTimer.ResetTime(30);
                             entity.PlaySound(VanillaSoundID.chestClose);
@@ -157,8 +175,6 @@ namespace MVZ2.GameContent.Contraptions
                             entity.Remove();
                             var effect = entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity);
                             effect.SetTint(new Color(1, 0.8f, 1, 1));
-                            var id = GetEatenEntityID(entity);
-                            var enemy = entity.SpawnWithParams(id, entity.Position + entity.Level.Content.GetEntityDefinition(id).GetStartingPositionOffset());
                         }
                         break;
                     }
@@ -211,7 +227,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private bool IsOpen(Entity entity)
         {
-            return entity.State == VanillaEntityStates.MAGICHEST_OPEN || entity.State == VanillaEntityStates.MAGICHEST_EAT;
+            return entity.State == VanillaEntityStates.MAGICHEST_OPEN || entity.State == VanillaEntityStates.MAGICHEST_EAT || entity.State == VanillaEntityStates.MAGICHEST_SPAWN;
         }
         public static readonly NamespaceID ID = VanillaContraptionID.magichest;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_FLASH_VISIBLE = new VanillaEntityPropertyMeta<bool>("FlashVisible");
