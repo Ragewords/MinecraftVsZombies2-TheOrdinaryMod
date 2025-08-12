@@ -1,17 +1,12 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
-using MVZ2.GameContent.Obstacles;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -20,7 +15,6 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
-using Tools.Mathematics;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
@@ -177,7 +171,9 @@ namespace MVZ2.GameContent.Bosses
                             if (transTimer.PassedInterval(30))
                             {
                                 var level = entity.Level;
-                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(entity) && !e.HasBuff<LevitationBuff>())
+                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT
+                                 && e.IsHostile(entity) && e.GetTakingGridLayers(e.GetGrid()).Contains(VanillaGridLayers.main)
+                                  && !e.HasBuff<LevitationBuff>())
                                 .RandomTake(1, entity.RNG);
                                 foreach (var contraption in contraptions)
                                 {
