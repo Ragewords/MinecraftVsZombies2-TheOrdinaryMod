@@ -400,9 +400,7 @@ namespace MVZ2.GameContent.Bosses
                     var z = level.GetEntityLaneZ(lane);
                     var y = level.GetGroundY(x, z);
                     Vector3 pos = new Vector3(x, y, z);
-                    SpawnPortal(boss, pos, VanillaEnemyID.leatherCappedZombie);
-                    SpawnPortal(boss, pos, VanillaEnemyID.mummy);
-                    SpawnPortal(boss, pos, VanillaEnemyID.boneWall);
+                    SpawnPortal(boss, pos, VanillaEnemyID.ironHelmettedZombie);
                 }
             }
         }
