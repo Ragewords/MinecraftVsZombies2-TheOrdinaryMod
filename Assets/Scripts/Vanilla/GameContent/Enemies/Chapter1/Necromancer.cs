@@ -67,8 +67,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        var rngNum = entity.RNG.Next(9);
-                        if (rngNum == 0)
+                        if (entity.RNG.Next(10) == 0)
                             SummonWarrior(entity);
                         BuildBoneWalls(entity);
                     }
@@ -151,9 +150,23 @@ namespace MVZ2.GameContent.Enemies
             var z = entity.Position.z;
             var y = level.GetGroundY(x, z) - 100;
             Vector3 wallPos = new Vector3(x, y, z);
-            var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
-            warrior.AddBuff<NecrotombstoneRisingBuff>();
-            warrior.UpdateModel();
+            var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, wallPos);
+            mage.AddBuff<NecrotombstoneRisingBuff>();
+            mage.UpdateModel();
+
+            var lane = entity.GetLane();
+            if (lane != 0)
+            {
+                var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
+                warrior.AddBuff<NecrotombstoneRisingBuff>();
+                warrior.UpdateModel();
+            }
+            if (lane != level.GetMaxLaneCount() - 1)
+            {
+                var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
+                warrior.AddBuff<NecrotombstoneRisingBuff>();
+                warrior.UpdateModel();
+            }
         }
         #region 常量
         private const int CAST_COOLDOWN = 300;

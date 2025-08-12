@@ -1207,7 +1207,7 @@
         </entry>
         <entry id="mvz2:necromancer">
             <header>
-                <p>死灵法师会生成临时的骨墙阻挡子弹，有时还会召唤出骷髅战士。</p>
+                <p>死灵法师会生成临时的骨墙阻挡子弹，有时还会召唤出骷髅战士和骷髅法师。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
