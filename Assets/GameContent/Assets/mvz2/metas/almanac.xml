@@ -583,7 +583,7 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人，命中的敌人会产生连续攻击最多4个敌人的电流链。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人造成群体伤害，命中的敌人会产生连续攻击最多4个敌人的电流链。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>

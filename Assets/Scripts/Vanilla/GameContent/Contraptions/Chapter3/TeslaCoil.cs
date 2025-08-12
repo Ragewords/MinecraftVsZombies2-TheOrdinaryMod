@@ -146,14 +146,22 @@ namespace MVZ2.GameContent.Contraptions
                 collider.TakeDamage(damage, damageEffects, source);
                 collider.Entity.AddBuff<ElectricChainBuff>();
             }
+            source.Explode(targetPosition, SHOCK_RADIUS * 3, faction, damage / 8, damageEffects);
+            for (int i = 0; i < 4; i++)
+            {
+                float degree = i * 90;
+                float rad = degree * Mathf.Deg2Rad;
+                Vector3 pos = targetPosition + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * SHOCK_RADIUS * 3;
+                CreateArc(source, targetPosition, pos, 5, 10);
+            }
         }
-        public static void CreateArc(Entity source, Vector3 sourcePosition, Vector3 targetPosition)
+        public static void CreateArc(Entity source, Vector3 sourcePosition, Vector3 targetPosition, int point = 20, int timeout = 30)
         {
             var arc = source.Spawn(VanillaEffectID.electricArc, sourcePosition);
             ElectricArc.Connect(arc, targetPosition);
-            ElectricArc.SetPointCount(arc, 20);
+            ElectricArc.SetPointCount(arc, point);
             ElectricArc.UpdateArc(arc);
-            arc.Timeout = 30;
+            arc.Timeout = timeout;
         }
         public static FrameTimer GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_ATTACK_TIMER, timer);
