@@ -44,9 +44,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("Evoked", entity.State == STATE_EVOKED);
-            entity.SetModelProperty("Filled", GetFilledCount(entity) > 0);
             entity.SetModelProperty("DuplicatedCount", GetDuplicatedCount(entity));
-            entity.SetModelProperty("FilledCount", GetFilledCount(entity) - 1);
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -186,35 +184,14 @@ namespace MVZ2.GameContent.Contraptions
 
         public static void DuplicateStarshard(Entity pot)
         {
-            pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
-            var count = GetDuplicatedCount(pot);
-            var count_filled = GetFilledCount(pot);
-            if (count_filled > 0)
-                count_filled--;
-            else
-                count++;
-            SetDuplicatedCount(pot, count);
-            SetFilledCount(pot, count_filled);
-            if (count >= MAX_DUPLICATED_COUNT)
+            for (int i = 0; i < 2; i++)
             {
-                var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE);
-                pot.Die(effects, pot);
+                pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
             }
-        }
-        public static void DuplicateRegenerate(Entity pot)
-        {
-            pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
             var count = GetDuplicatedCount(pot);
-            var count_filled = GetFilledCount(pot);
-            if (count > 0)
-                count--;
-            else
-                count_filled++;
+            count++;
             SetDuplicatedCount(pot, count);
-            SetFilledCount(pot, count_filled);
-            pot.AddBuff<DesirePotHighlightBuff>();
-            pot.PlaySound(VanillaSoundID.heal);
-            if (count_filled > MAX_FILL_COUNT)
+            if (count >= MAX_DUPLICATED_COUNT)
             {
                 var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE);
                 pot.Die(effects, pot);
@@ -226,8 +203,6 @@ namespace MVZ2.GameContent.Contraptions
 
         public static int GetDuplicatedCount(Entity entity) => entity.GetBehaviourField<int>(PROP_DUPLICATED_COUNT);
         public static void SetDuplicatedCount(Entity entity, int value) => entity.SetBehaviourField(PROP_DUPLICATED_COUNT, value);
-        public static int GetFilledCount(Entity entity) => entity.GetBehaviourField<int>(PROP_FILLED_COUNT);
-        public static void SetFilledCount(Entity entity, int value) => entity.SetBehaviourField(PROP_FILLED_COUNT, value);
 
         public static float GetFatigueDamage(LevelEngine level) => level.GetBehaviourField<float>(PROP_FATIGUE_DAMAGE);
         public static void SetFatigueDamage(LevelEngine level, float value) => level.SetBehaviourField(PROP_FATIGUE_DAMAGE, value);

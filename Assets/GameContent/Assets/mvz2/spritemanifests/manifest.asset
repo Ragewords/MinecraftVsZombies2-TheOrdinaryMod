@@ -537,14 +537,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7b5b04fa7d4703a48867a2ec9b7c31f6, type: 3}
   - name: entity/armor/brainwasher_crown
     sprite: {fileID: 21300000, guid: 9715bb3348d5b30448e5b28dfde0a228, type: 3}
-  - name: entity/armor/cannonball_zombie_hat
+  - name: entity/armor/cannonball_hat
     sprite: {fileID: 21300000, guid: 8af34f25dcad82e40bb7fef49d44dfe2, type: 3}
   - name: entity/armor/emperor_crown
     sprite: {fileID: 21300000, guid: 58755531f1cc59b4ab7563c5bedf58b2, type: 3}
+  - name: entity/armor/kogasa_wig
+    sprite: {fileID: 21300000, guid: be3ab774e5937604197f4900e8c76858, type: 3}
   - name: entity/armor/mesmerizer_crown
     sprite: {fileID: 21300000, guid: 5a0ed5d8cf792294fb28827ccdea1c42, type: 3}
-  - name: entity/armor/paratrooper_wig
-    sprite: {fileID: 21300000, guid: be3ab774e5937604197f4900e8c76858, type: 3}
   - name: entity/armor/wicked_hermit_hat
     sprite: {fileID: 21300000, guid: 97bbf718dcb8d714cbce072750f648a2, type: 3}
   - name: entity/boss/gun_fire
@@ -1637,12 +1637,6 @@ MonoBehaviour:
     - {fileID: 353380385, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
     - {fileID: 700331148, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
     - {fileID: -1750273922, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: -385677703, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: -1582604649, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: 743247681, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: 1167850691, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: 261019040, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
-    - {fileID: 1018676185, guid: 5a0c08fed03edc745bbc7ea6e497cf14, type: 3}
   - name: entity/contraption/diamond_spikes
     spritesheet:
     - {fileID: 1691000209, guid: a3186b48658bcbe458396f03e2f38590, type: 3}

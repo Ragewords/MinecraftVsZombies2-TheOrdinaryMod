@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.gravityPad,
+                VanillaContraptionID.desirePot,
                 VanillaContraptionID.randomChina,
                 VanillaEnemyID.megaMutantZombie,
                 VanillaEnemyID.karakasaZombie,

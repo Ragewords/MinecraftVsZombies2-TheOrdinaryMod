@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
@@ -34,6 +35,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             base.PostUpdate(buff);
             UpdateColorOffset(buff);
+            UpdateDesirePot(buff);
         }
         private void UpdateDesirePot(Buff buff)
         {
@@ -43,12 +45,17 @@ namespace MVZ2.GameContent.Buffs.Enemies
 
             desirePotBuffer.Clear();
             entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot), desirePotBuffer);
-            foreach (var pot in desirePotBuffer)
+            var chosen_pot = desirePotBuffer.Take(1);
+            bool pot_found = false;
+            foreach (var pot in chosen_pot)
             {
                 var lump = pot.Spawn(VanillaEffectID.desireLump, entity.GetCenter());
                 lump.SetParent(pot);
                 pot.PlaySound(VanillaSoundID.shadowCast);
+                pot_found = true;
             }
+            if (pot_found)
+                buff.Remove();
         }
         private void UpdateColorOffset(Buff buff)
         {
