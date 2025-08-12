@@ -63,8 +63,9 @@
     </fragment>
     <fragment name="magichest">
         <colorKeys>
-            <key hex="#F800F8" time="0.7"/>
-            <key hex="#000000" time="1"/>
+            <key hex="#0000FF" time="0.3"/>
+            <key hex="#FF0000" time="0.6"/>
+            <key hex="#FFFFFF" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="poisonser">
