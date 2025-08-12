@@ -144,7 +144,7 @@ namespace MVZ2.GameContent.Bosses
             var malleable = GetMalleable(entity);
             if (malleable >= 0)
             {
-                damageInfo.Multiply(1 - malleable / MAX_MALLEABLE_DAMAGE);
+                damageInfo.Multiply(1 - malleable / (GetPhase(entity) == PHASE_1 ? MAX_MALLEABLE_DAMAGE : MAX_MALLEABLE_DAMAGE_PHASE_2_3));
             }
             if (damageInfo.Amount > 600)
             {
@@ -619,6 +619,7 @@ namespace MVZ2.GameContent.Bosses
         public const float SNAKE_MAX_EAT_COUNT = 8;
 
         public const float MAX_MALLEABLE_DAMAGE = 3000;
+        public const float MAX_MALLEABLE_DAMAGE_PHASE_2_3 = 1000;
         public const float MALLEABLE_DECAY_PHASE_3 = 10;
 
         public const int CRY_INTERVAL = 300;
