@@ -3998,6 +3998,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57ad49e030b647d4890fc0a9ae13b84b
+    m_Address: mvz2:pirouette
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 57b63ada4123c754f8f5aa463df8e857
     m_Address: mvz2:pickup/starshards/mausoleum
     m_ReadOnly: 0
