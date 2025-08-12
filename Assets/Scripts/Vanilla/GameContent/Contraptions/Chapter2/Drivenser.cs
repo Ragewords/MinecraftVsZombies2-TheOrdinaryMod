@@ -63,6 +63,14 @@ namespace MVZ2.GameContent.Contraptions
                     shootParams.velocity = shootParams.velocity.normalized;
                     entity.ShootProjectile(shootParams);
 
+                    for (var i = 0; i < 10; i++)
+                    {
+                        var burstShootParams = entity.GetShootParams();
+                        burstShootParams.soundID = null;
+                        burstShootParams.velocity = burstShootParams.velocity.normalized * (i + 1);
+                        entity.ShootProjectile(burstShootParams);
+                    }
+
                     int repeatCount = GetRepeatCount(entity);
                     repeatCount--;
                     SetRepeatCount(entity, repeatCount);

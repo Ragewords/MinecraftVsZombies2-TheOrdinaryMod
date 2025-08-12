@@ -140,6 +140,25 @@ namespace MVZ2.GameContent.Contraptions
 
             return entity.ShootProjectile(param);
         }
+        public Entity BurstShootBack(Entity entity, float multipiler)
+        {
+            entity.TriggerAnimation("ShootBack");
+
+            var param = entity.GetShootParams();
+
+            var offset = entity.GetShotOffset();
+            offset.x *= -1;
+            offset = entity.ModifyShotOffset(offset);
+            param.position = entity.Position + offset;
+
+            var vel = param.velocity;
+            vel.x *= -1;
+            param.velocity = vel.normalized * multipiler;
+
+            param.soundID = null;
+
+            return entity.ShootProjectile(param);
+        }
         public void RepeatShootFront(Entity entity)
         {
             bool repeat4 = entity.RNG.Next(10) == 0 || IsFever(entity);
@@ -215,6 +234,10 @@ namespace MVZ2.GameContent.Contraptions
             if (evocationTimer.Expired)
             {
                 ShootLargeArrowBack(entity);
+                for (var i = 0; i < 10; i++)
+                {
+                    BurstShootBack(entity, i + 1);
+                }
                 entity.SetEvoked(false);
                 var shootTimer = GetShootTimer(entity);
                 shootTimer.Reset();

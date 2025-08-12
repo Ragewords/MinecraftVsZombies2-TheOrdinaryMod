@@ -80,6 +80,11 @@ namespace MVZ2.GameContent.Contraptions
             if (evocationTimer.Expired)
             {
                 ShootLargeArrow(entity);
+                for (var i = 0; i < 10; i++)
+                {
+                    BurstShoot(entity, i + 1, new Vector3(0, 0, -8));
+                    BurstShoot(entity, i + 1, new Vector3(0, 0, 8));
+                }
                 entity.SetEvoked(false);
                 var shootTimer = GetShootTimer(entity);
                 shootTimer.Reset();
@@ -115,6 +120,21 @@ namespace MVZ2.GameContent.Contraptions
             param.projectileID = VanillaProjectileID.largeArrow;
             param.damage = entity.GetDamage() * 30;
             param.soundID = VanillaSoundID.spellCard;
+
+            return entity.ShootProjectile(param);
+        }
+        public Entity BurstShoot(Entity entity, float multipiler, Vector3 modify)
+        {
+            entity.TriggerAnimation("Shoot");
+
+            var param = entity.GetShootParams();
+
+            var offset = entity.GetShotOffset() + modify;
+            offset = entity.ModifyShotOffset(offset);
+            param.position = entity.Position + offset;
+            param.velocity = param.velocity.normalized * multipiler;
+
+            param.soundID = null;
 
             return entity.ShootProjectile(param);
         }

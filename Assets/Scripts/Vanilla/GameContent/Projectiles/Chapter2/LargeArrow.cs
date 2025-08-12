@@ -1,10 +1,7 @@
 ﻿using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
-using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using Tools;
 
 namespace MVZ2.GameContent.Projectiles
 {
@@ -13,11 +10,6 @@ namespace MVZ2.GameContent.Projectiles
     {
         public LargeArrow(string nsp, string name) : base(nsp, name)
         {
-        }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            SetRepeatTimer(entity, new FrameTimer(15));
         }
         public override void Update(Entity projectile)
         {
@@ -28,23 +20,7 @@ namespace MVZ2.GameContent.Projectiles
             rotation.x += projectile.Velocity.magnitude * 30;
             rotation.x %= 360;
             projectile.RenderRotation = rotation;
-            var shootTimer = GetRepeatTimer(projectile);
-            shootTimer.Run();
-            if (shootTimer.Expired)
-            {
-                var shootParams = projectile.GetShootParams();
-                shootParams.projectileID = VanillaProjectileID.arrow;
-                shootParams.damage = 20;
-                shootParams.soundID = null;
-                shootParams.velocity = projectile.Velocity.normalized * 10;
-                projectile.ShootProjectile(shootParams);
-                shootTimer.ResetTime(15);
-            }
         }
-        private static readonly NamespaceID ID = VanillaProjectileID.largeArrow;
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
-        public static FrameTimer GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_REPEAT_TIMER);
-        public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_REPEAT_TIMER, timer);
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damage)
         {
             base.PostHitEntity(hitResult, damage);
