@@ -382,13 +382,14 @@
         </entry>
         <entry id="mvz2:magichest">
             <header>
-                <p>魔术箱在吞掉前面的僵尸后会变成一个星之碎片，并召唤吃掉的敌人为你而战。</p>
+                <p>魔术箱在吞掉前面的僵尸后会召唤这只僵尸，然后变成一个星之碎片。</p>
             </header>
             <properties>
-                <p>技能：<![CDATA[<color=red>召唤一辆地狱战车</color>]]></p>
+                <p>技能：<![CDATA[<color=red>召唤一个恶魂和一个彩色不死飞行物，用以纪念我朋友的朋友之前做过的一个游戏</color>]]></p>
             </properties>
             <flavor>
-                <p>来我家渲染你就放心吧！</p>
+                <p>它只需要挂上一个招牌，写上YMCA，僵尸们就自投罗网了。YMCA是什么意思？当然是“有馍吃啊”。</p>
+                <p>还有，别他妈再吃骨墙了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:lily_pad">
