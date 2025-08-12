@@ -67,7 +67,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        if (entity.RNG.Next(10) == 0)
+                        if (entity.RNG.Next(5) == 0)
                             SummonWarrior(entity);
                         BuildBoneWalls(entity);
                     }
@@ -146,23 +146,23 @@ namespace MVZ2.GameContent.Enemies
         private void SummonWarrior(Entity entity)
         {
             var level = entity.Level;
-            var x = entity.Position.x + level.GetGridWidth() * 0.8f * entity.GetFacingX();
-            var z = entity.Position.z;
-            var y = level.GetGroundY(x, z) - 100;
-            Vector3 wallPos = new Vector3(x, y, z);
-            var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, wallPos);
-            mage.AddBuff<NecrotombstoneRisingBuff>();
-            mage.UpdateModel();
-
+            int startLine = -1;
+            int endLine = 1;
             var lane = entity.GetLane();
-            if (lane != 0)
+            if (lane == 0)
             {
-                var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
-                warrior.AddBuff<NecrotombstoneRisingBuff>();
-                warrior.UpdateModel();
+                endLine = 0;
             }
-            if (lane != level.GetMaxLaneCount() - 1)
+            if (lane == level.GetMaxLaneCount() - 1)
             {
+                startLine = 0;
+            }
+            for (int i = startLine; i <= endLine; i++)
+            {
+                var x = entity.Position.x + level.GetGridWidth() * 0.8f * entity.GetFacingX();
+                var z = entity.Position.z + level.GetGridHeight() * i;
+                var y = level.GetGroundY(x, z) - 100;
+                Vector3 wallPos = new Vector3(x, y, z);
                 var warrior = entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos);
                 warrior.AddBuff<NecrotombstoneRisingBuff>();
                 warrior.UpdateModel();
