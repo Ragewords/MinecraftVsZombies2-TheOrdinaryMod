@@ -67,7 +67,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        if (entity.RNG.Next(5) == 0)
+                        if (entity.RNG.Next(10) == 0)
                             SummonWarrior(entity);
                         BuildBoneWalls(entity);
                     }
