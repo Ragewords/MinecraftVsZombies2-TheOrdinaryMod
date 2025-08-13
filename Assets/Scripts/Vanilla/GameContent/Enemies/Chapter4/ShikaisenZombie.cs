@@ -49,18 +49,6 @@ namespace MVZ2.GameContent.Enemies
                 SetPot(enemy, false);
                 enemy.AddBuff<ShikaisenInvincibleBuff>();
             }
-            var children = enemy.GetChildren();
-            foreach (var child in children)
-            {
-                if (child.IsEntityOf(VanillaEnemyID.shikaisenPot))
-                {
-                    if (child.IsDead)
-                    {
-                        enemy.Die(child);
-                        enemy.RemoveBuffs<ShikaisenInvincibleBuff>();
-                    }
-                }
-            }
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -68,6 +56,22 @@ namespace MVZ2.GameContent.Enemies
             entity.SetModelDamagePercent();
             entity.SetModelProperty("NoStaff", !HasStaff(entity));
             entity.SetAnimationBool("HasPot", HasPot(entity));
+
+            if (!HasPot(entity))
+            {
+                var children = entity.GetChildren();
+                foreach (var child in children)
+                {
+                    if (child.IsEntityOf(VanillaEnemyID.shikaisenPot))
+                    {
+                        if (!child.ExistsAndAlive())
+                        {
+                            entity.Die(child);
+                            entity.RemoveBuffs<ShikaisenInvincibleBuff>();
+                        }
+                    }
+                }
+            }
         }
         public static Entity SpawnStaff(Entity entity)
         {
