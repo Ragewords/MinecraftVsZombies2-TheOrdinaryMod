@@ -69,7 +69,7 @@ namespace MVZ2.GameContent.Projectiles
                 }
                 if (entity.Parent.ExistsAndAlive())
                 {
-                    entity.Parent.HealEffects(100, entity);
+                    entity.Parent.HealEffects(50, entity);
                 }
             }
             Explosion.Spawn(entity, entity.GetCenter(), range);
