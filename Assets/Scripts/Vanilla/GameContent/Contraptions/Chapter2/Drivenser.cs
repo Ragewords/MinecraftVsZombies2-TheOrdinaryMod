@@ -37,17 +37,7 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
             if (!entity.IsEvoked())
             {
-                var shootTimer = GetShootTimer(entity);
-                shootTimer.Run(entity.GetAttackSpeed());
-                if (shootTimer.Expired)
-                {
-                    var target = detector.Detect(entity);
-                    if (target != null)
-                    {
-                        OnShootTick(entity);
-                    }
-                    shootTimer.Reset();
-                }
+                ShootTick(entity);
             }
             else
             {
