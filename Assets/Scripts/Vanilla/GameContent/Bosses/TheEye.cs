@@ -49,6 +49,21 @@ namespace MVZ2.GameContent.Bosses
                 input.SetAmount(600);
             }
         }
+        public override void PostTakeDamage(DamageOutput result)
+        {
+            base.PostTakeDamage(result);
+            if (result == null || result.BodyResult == null)
+                return;
+            var boss = result.Entity;
+            var takenDamage = GetRecentTakenDamage(boss);
+            takenDamage += result.BodyResult.SpendAmount;
+            SetRecentTakenDamage(boss, takenDamage);
+            if (takenDamage >= DAMAGE_THRESOLD && !boss.IsDead && GetAttackState(boss) == STATE_REST)
+            {
+                var actTimer = GetActionTimer(boss);
+                actTimer.Stop();
+            }
+        }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
@@ -296,6 +311,7 @@ namespace MVZ2.GameContent.Bosses
                                 entity.SetAnimationInt("AttackState", 0);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_DARK_MATTER);
+                                SetRecentTakenDamage(entity, 0);
                                 transTimer.ResetTime(60);
                                 timer.Reset();
                                 MoveHigher(entity);
@@ -326,6 +342,8 @@ namespace MVZ2.GameContent.Bosses
         public static void SetSoundPlayed(Entity boss, bool value) => boss.SetBehaviourField(ID, PROP_SOUND, value);
         public static FrameTimer GetStateTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         public static void SetStateTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(ID, PROP_STATE_TIMER, value);
+        public static float GetRecentTakenDamage(Entity boss) => boss.GetBehaviourField<float>(PROP_RECENT_TAKEN_DAMAGE);
+        public static void SetRecentTakenDamage(Entity boss, float value) => boss.SetBehaviourField(PROP_RECENT_TAKEN_DAMAGE, value);
         #endregion
 
         public const int STATE_DARK_MATTER = 0;
@@ -334,6 +352,7 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_MIND_BLAST = 3;
         public const int STATE_REST = 4;
 
+        private const float DAMAGE_THRESOLD = 1500;
         public const int MAX_MOVE_TIMEOUT = 60;
 
         public static readonly NamespaceID ID = VanillaBossID.theEye;
@@ -347,5 +366,6 @@ namespace MVZ2.GameContent.Bosses
         public static readonly VanillaEntityPropertyMeta<int> PROP_ATTACK_STATE = new VanillaEntityPropertyMeta<int>("AttackState");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_SOUND = new VanillaEntityPropertyMeta<bool>("Sound");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
+        private static readonly VanillaEntityPropertyMeta<float> PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta<float>("RecentTakenDamage");
     }
 }

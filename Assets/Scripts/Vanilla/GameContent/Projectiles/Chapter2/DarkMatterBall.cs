@@ -1,6 +1,3 @@
-using System.Linq;
-using MVZ2.GameContent.Bosses;
-using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
@@ -9,7 +6,6 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
-using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -73,7 +69,7 @@ namespace MVZ2.GameContent.Projectiles
                 }
                 if (entity.Parent.ExistsAndAlive())
                 {
-                    entity.Parent.HealEffects(50, entity);
+                    entity.Parent.HealEffects(100, entity);
                 }
             }
             Explosion.Spawn(entity, entity.GetCenter(), range);
