@@ -35,7 +35,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             base.PostUpdate(buff);
             UpdateColorOffset(buff);
-            UpdateDesirePot(buff);
         }
         private void UpdateDesirePot(Buff buff)
         {
@@ -45,9 +44,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
 
             desirePotBuffer.Clear();
             entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot), desirePotBuffer);
-            var chosen_pot = desirePotBuffer.Take(1);
             bool pot_found = false;
-            foreach (var pot in chosen_pot)
+            foreach (var pot in desirePotBuffer)
             {
                 var lump = pot.Spawn(VanillaEffectID.desireLump, entity.GetCenter());
                 lump.SetParent(pot);
