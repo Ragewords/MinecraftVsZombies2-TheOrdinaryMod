@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     detectBuffer.Clear();
                     detector.DetectEntities(entity, detectBuffer);
-                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(2);
+                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(3);
                     foreach (var target in targets)
                     {
                         var targetPos = target.GetCenter();
@@ -84,9 +84,10 @@ namespace MVZ2.GameContent.Contraptions
                 position = entity.GetShootPoint(),
                 faction = entity.GetFaction(),
                 damage = damage,
-                soundID = entity.GetShootSound(),
+                soundID = null,
                 velocity = velocity,
             });
+            entity.PlaySound(entity.GetShootSound());
             projectile.SetGravity(GRAVITY);
         }
         private void EvokedUpdate(Entity entity)
