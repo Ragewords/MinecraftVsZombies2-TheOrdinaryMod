@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Enemies
         {
             detector = new LawnDetector()
             {
-                mask = EntityCollisionHelper.MASK_ENEMY,
+                mask = EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_PLANT,
                 factionTarget = FactionTarget.Friendly
             };
         }
@@ -105,7 +105,7 @@ namespace MVZ2.GameContent.Enemies
         public static FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
 
         #region ����
-        private const int CAST_COOLDOWN = 240;
+        private const int CAST_COOLDOWN = 180;
         private const int CONTROL_DETECT_TIME = 30;
         private Detector detector;
         private List<Entity> healBuffer = new List<Entity>();

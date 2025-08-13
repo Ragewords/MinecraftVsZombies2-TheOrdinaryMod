@@ -18,8 +18,8 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
 
             AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.2f));
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1.5f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.4f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyProps.NAPSTABLOOK_PARALYSIS_TIME, NumberOperator.Multiply, 2));
             AddModifier(new FloatModifier(VanillaDifficultyProps.GHAST_DAMAGE_MULTIPLIER, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyProps.MOTHER_TERROR_EGG_COUNT, NumberOperator.Add, 1));
@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Buffs.Level
             public ContraptionAura() : base()
             {
                 BuffID = VanillaBuffID.lunaticContraption;
-                UpdateInterval = 30;
+                UpdateInterval = 4;
             }
 
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
@@ -67,7 +67,6 @@ namespace MVZ2.GameContent.Buffs.Level
             public EnemyAura() : base()
             {
                 BuffID = VanillaBuffID.lunaticEnemy;
-                UpdateInterval = 30;
             }
 
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
