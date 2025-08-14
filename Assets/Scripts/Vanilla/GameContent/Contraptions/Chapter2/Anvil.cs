@@ -19,6 +19,11 @@ namespace MVZ2.GameContent.Contraptions
         public Anvil(string nsp, string name) : base(nsp, name)
         {
             smashDetector = new CollisionDetector();
+            fixDetector = new LawnDetector()
+            {
+                factionTarget = FactionTarget.Friendly,
+                mask = EntityCollisionHelper.MASK_PLANT
+            };
         }
         public override void Init(Entity entity)
         {
@@ -50,14 +55,16 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            foreach (var target in entity.Level.GetEntities(EntityTypes.PLANT))
+            fixBuffer.Clear();
+            fixDetector.DetectEntities(entity, fixBuffer);
+            foreach (var target in fixBuffer)
             {
                 if (target.Health < target.GetMaxHealth() && target.GetDefinitionID() != VanillaContraptionID.anvil)
                 {
                     target.HealEffects(target.GetMaxHealth() / 3, entity);
                     if (entity.RNG.Next(25) == 0)
                     {
-                        entity.TakeDamage(entity.GetMaxHealth() / 3, new DamageEffectList(VanillaDamageEffects.MUTE), entity);
+                        entity.TakeDamage(entity.GetMaxHealth() / 3, new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.SELF_DAMAGE), entity);
                         entity.PlaySound(VanillaSoundID.anvil_fix_break);
                     }
                     else
@@ -133,6 +140,8 @@ namespace MVZ2.GameContent.Contraptions
             return target.GetMainCollider().CheckSphere(self.GetCenter(), 40) && self.IsHostile(target) && target.IsOnGround;
         }
         private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
+        private List<Entity> fixBuffer = new List<Entity>();
         private Detector smashDetector;
+        private Detector fixDetector;
     }
 }
