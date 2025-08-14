@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Buffs;
+﻿using System.Linq;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
@@ -11,6 +12,7 @@ using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -139,7 +141,11 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void ProduceBomb(Entity entity)
         {
-            var bombID = bombPool.Random(GetBombRNG(entity));
+            var game = Global.Game;
+            var validBombIDs = bombPool.Where(id => game.IsContraptionInAlmanac(id));
+            if (validBombIDs.Count() <= 0)
+                return;
+            var bombID = validBombIDs.Random(GetBombRNG(entity));
             if (!IsFurious(entity))
             {
                 var spawnParams = entity.GetSpawnParams();
