@@ -49,14 +49,14 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     detectBuffer.Clear();
                     detector.DetectEntities(entity, detectBuffer);
-                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(3);
+                    var targets = detectBuffer.OrderByDescending(t => GetTargetPriority(entity, t)).Take(1);
                     foreach (var target in targets)
                     {
                         var targetPos = target.GetCenter();
                         var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
                         Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
                     }
-                    shootTimer.ResetTime(ATTACK_COOLDOWN);
+                    shootTimer.Reset();
                 }
                 return;
             }
@@ -104,17 +104,17 @@ namespace MVZ2.GameContent.Contraptions
             }
             var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, 30, GRAVITY);
 
-            if (evokeTimer.PassedInterval(10))
-            {
-                Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 3, velocity);
-            }
-
             if (evokeTimer.PassedInterval(3))
             {
                 Shoot(entity, entity.GetProjectileID(), entity.GetDamage(), velocity);
             }
 
-            if (evokeTimer.PassedInterval(30))
+            if (evokeTimer.PassedInterval(10))
+            {
+                Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 3, velocity);
+            }
+
+            if (evokeTimer.PassedInterval(20))
             {
                 Shoot(entity, VanillaProjectileID.miniTNT, entity.GetDamage() * 5, velocity);
             }
@@ -144,9 +144,9 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
         public const int ATTACK_COOLDOWN = 120;
-        public const int EVOKATION_TIMER = 90;
+        public const int EVOKATION_TIMER = 60;
         public const int GRAVITY = 1;
-        public const float ATTACK_HEIGHT = 160;
+        public const float ATTACK_HEIGHT = 48;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<FrameTimer>("MissleTimeout");
 
