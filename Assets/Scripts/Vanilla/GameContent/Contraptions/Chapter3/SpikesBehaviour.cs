@@ -50,10 +50,12 @@ namespace MVZ2.GameContent.Contraptions
                         {
                             foreach (var target in detectBuffer)
                             {
-                                if (target.Entity.Type == EntityTypes.ENEMY)
+                                var enemy = target.Entity;
+                                if (enemy.Type == EntityTypes.ENEMY)
                                 {
+                                    var knockbackMultiplier = enemy.GetWeakKnockbackMultiplier();
                                     entity.PlaySound(VanillaSoundID.bonk);
-                                    target.Entity.Velocity += new Vector3(entity.GetFacingX() * 10, 5, 0);
+                                    enemy.Velocity += new Vector3(entity.GetFacingX() * 5, 5, 0) * knockbackMultiplier;
                                 }
                             }
                         }
