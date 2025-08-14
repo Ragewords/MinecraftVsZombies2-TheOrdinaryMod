@@ -22,6 +22,10 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {
             base.PostContactGround(projectile, velocity);
+            if (projectile.IsOnWater())
+                return;
+            if (projectile.IsAboveCloud())
+                return;
             projectile.Velocity = new Vector3(projectile.Velocity.x, 10f, projectile.Velocity.z);
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput damage)
@@ -33,7 +37,7 @@ namespace MVZ2.GameContent.Projectiles
             if (other.Type == EntityTypes.ENEMY)
             {
                 var vel = other.Velocity;
-                vel.x += 6 * Mathf.Sign(projectile.Velocity.x) * other.GetWeakKnockbackMultiplier();
+                vel.x += 5 * Mathf.Sign(projectile.Velocity.x) * other.GetWeakKnockbackMultiplier();
                 other.Velocity = vel;
                 projectile.PlaySound(VanillaSoundID.bash);
             }
