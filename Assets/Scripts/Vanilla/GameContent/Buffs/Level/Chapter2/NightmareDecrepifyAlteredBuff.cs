@@ -15,16 +15,17 @@ namespace MVZ2.GameContent.Buffs.Level
         public NightmareDecrepifyAlteredBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new NamespaceIDModifier(VanillaLevelProps.PICKAXE_DISABLE_ID, PROP_DISABLE_ID_PICKAXE));
-            AddModifier(new BooleanModifier(VanillaLevelProps.PICKAXE_DISABLE_ICON, PROP_DISABLE));
+            AddModifier(new BooleanModifier(VanillaLevelProps.PICKAXE_DISABLE_ICON, PROP_DISABLE_ICON_PICKAXE));
 
             AddModifier(new NamespaceIDModifier(VanillaLevelProps.STARSHARD_DISABLE_ID, PROP_DISABLE_ID_STARSHARD));
-            AddModifier(new BooleanModifier(VanillaLevelProps.STARSHARD_DISABLE_ICON, PROP_DISABLE));
+            AddModifier(new BooleanModifier(VanillaLevelProps.STARSHARD_DISABLE_ICON, PROP_DISABLE_ICON_STARSHARD));
         }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMEOUT, new FrameTimer(MAX_TIMEOUT));
-            buff.SetProperty(PROP_DISABLE, true);
+            buff.SetProperty(PROP_DISABLE_ICON_PICKAXE, true);
+            buff.SetProperty(PROP_DISABLE_ICON_STARSHARD, false);
             buff.SetProperty(PROP_DISABLE_ID_PICKAXE, VanillaBlueprintErrors.decrepify);
             buff.SetProperty<NamespaceID>(PROP_DISABLE_ID_STARSHARD, null);
         }
@@ -33,13 +34,15 @@ namespace MVZ2.GameContent.Buffs.Level
             base.PostUpdate(buff);
             var timeout = buff.GetProperty<FrameTimer>(PROP_TIMEOUT);
             timeout.Run();
-            bool disable = buff.GetProperty<bool>(PROP_DISABLE);
+            bool disablePickaxe = buff.GetProperty<bool>(PROP_DISABLE_ICON_PICKAXE);
+            bool disableShard = buff.GetProperty<bool>(PROP_DISABLE_ICON_STARSHARD);
             if (timeout.PassedInterval(15))
             {
-                buff.SetProperty(PROP_DISABLE, !disable);
+                buff.SetProperty(PROP_DISABLE_ICON_PICKAXE, !disablePickaxe);
+                buff.SetProperty(PROP_DISABLE_ICON_STARSHARD, !disableShard);
             }
-            buff.SetProperty(PROP_DISABLE_ID_PICKAXE, disable ? VanillaBlueprintErrors.decrepify : null);
-            buff.SetProperty(PROP_DISABLE_ID_STARSHARD, !disable ? VanillaBlueprintErrors.decrepify : null);
+            buff.SetProperty(PROP_DISABLE_ID_PICKAXE, disablePickaxe ? VanillaBlueprintErrors.decrepify : null);
+            buff.SetProperty(PROP_DISABLE_ID_STARSHARD, disableShard ? VanillaBlueprintErrors.decrepify : null);
             if (timeout.Expired)
             {
                 buff.Remove();
@@ -47,7 +50,8 @@ namespace MVZ2.GameContent.Buffs.Level
         }
         public static readonly VanillaBuffPropertyMeta<NamespaceID> PROP_DISABLE_ID_PICKAXE = new VanillaBuffPropertyMeta<NamespaceID>("DisableIDPickaxe");
         public static readonly VanillaBuffPropertyMeta<NamespaceID> PROP_DISABLE_ID_STARSHARD = new VanillaBuffPropertyMeta<NamespaceID>("DisableIDStarshard");
-        public static readonly VanillaBuffPropertyMeta<bool> PROP_DISABLE = new VanillaBuffPropertyMeta<bool>("Disable");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_DISABLE_ICON_PICKAXE = new VanillaBuffPropertyMeta<bool>("DisableIconPickaxe");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_DISABLE_ICON_STARSHARD = new VanillaBuffPropertyMeta<bool>("DisableIconStarshard");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMEOUT = new VanillaBuffPropertyMeta<FrameTimer>("Timeout");
         public const int MAX_TIMEOUT = 1800;
     }
