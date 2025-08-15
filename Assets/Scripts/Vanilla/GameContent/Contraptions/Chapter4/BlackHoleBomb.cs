@@ -49,6 +49,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
+            SetExplosionTimer(entity, new FrameTimer(120));
             entity.SetEvoked(true);
             Ignite(entity);
         }
@@ -111,6 +112,7 @@ namespace MVZ2.GameContent.Contraptions
             Explosion.Spawn(entity, entity.GetCenter(), range);
 
             entity.PlaySound(VanillaSoundID.explosion);
+            entity.PlaySound(VanillaSoundID.gravitation);
             entity.Level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
 
@@ -125,6 +127,7 @@ namespace MVZ2.GameContent.Contraptions
             Explosion.Spawn(entity, entity.GetCenter(), range);
 
             entity.PlaySound(VanillaSoundID.explosion);
+            entity.PlaySound(VanillaSoundID.gravitation);
             entity.Level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
 
