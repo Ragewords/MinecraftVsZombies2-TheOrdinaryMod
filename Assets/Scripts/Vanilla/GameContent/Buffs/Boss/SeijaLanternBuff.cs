@@ -17,6 +17,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.Set, EntityCollisionHelper.DETECTION_IGNORE, VanillaModifierPriorities.FORCE));
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
             AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, true));
+            AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
         }
         public override void PostAdd(Buff buff)
         {

@@ -114,7 +114,7 @@ namespace MVZ2.GameContent.Contraptions
                 Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 3, velocity);
             }
 
-            if (evokeTimer.PassedInterval(20))
+            if (evokeTimer.PassedInterval(15))
             {
                 Shoot(entity, VanillaProjectileID.miniTNT, entity.GetDamage() * 5, velocity);
             }
@@ -144,7 +144,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
         public const int ATTACK_COOLDOWN = 120;
-        public const int EVOKATION_TIMER = 60;
+        public const int EVOKATION_TIMER = 30;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 48;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");

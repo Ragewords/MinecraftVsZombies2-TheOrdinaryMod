@@ -1,5 +1,4 @@
-﻿using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
@@ -36,6 +35,7 @@ namespace MVZ2.GameContent.Bosses
             var timer = new FrameTimer(90);
             timer.Frame = 0;
             SetFabricCooldownTimer(boss, timer);
+            SetLanternCooldownTimer(boss, timer);
             SetDanmakuTimer(boss, new FrameTimer(4));
 
             var doll = boss.Spawn(VanillaEnemyID.seijaCursedDoll, boss.Position);
@@ -51,8 +51,10 @@ namespace MVZ2.GameContent.Bosses
             if (entity.IsDead)
                 return;
             stateMachine.UpdateAI(entity);
-            var timer = GetFabricCooldownTimer(entity);
-            timer.Run();
+            var fabricTimer = GetFabricCooldownTimer(entity);
+            fabricTimer.Run();
+            var lanternTimer = GetLanternCooldownTimer(entity);
+            lanternTimer.Run();
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -85,7 +87,11 @@ namespace MVZ2.GameContent.Bosses
             }
             else if (damageInfo.Amount > 600)
             {
-                if (CanUseFabric(boss))
+                if (CanUseLantern(boss))
+                {
+                    UseLantern(boss);
+                }
+                else if (CanUseFabric(boss))
                 {
                     UseFabric(boss);
                 }
@@ -111,7 +117,11 @@ namespace MVZ2.GameContent.Bosses
             SetRecentTakenDamage(boss, takenDamage);
             if (takenDamage >= FABRIC_DAMAGE_THRESOLD && !boss.IsDead)
             {
-                if (CanUseFabric(boss))
+                if (CanUseLantern(boss))
+                {
+                    UseLantern(boss);
+                }
+                else if (CanUseFabric(boss))
                 {
                     UseFabric(boss);
                 }
@@ -124,6 +134,10 @@ namespace MVZ2.GameContent.Bosses
         public static void SetFabricCount(Entity boss, int value) => boss.SetBehaviourField(PROP_FABRIC_COUNT, value);
         public static FrameTimer GetFabricCooldownTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(PROP_FABRIC_COOLDOWN_TIMER);
         public static void SetFabricCooldownTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(PROP_FABRIC_COOLDOWN_TIMER, value);
+        public static int GetLanternCount(Entity boss) => boss.GetBehaviourField<int>(PROP_LANTERN_COUNT);
+        public static void SetLanternCount(Entity boss, int value) => boss.SetBehaviourField(PROP_LANTERN_COUNT, value);
+        public static FrameTimer GetLanternCooldownTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(PROP_LANTERN_COOLDOWN_TIMER);
+        public static void SetLanternCooldownTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(PROP_LANTERN_COOLDOWN_TIMER, value);
         public static float GetRecentTakenDamage(Entity boss) => boss.GetBehaviourField<float>(PROP_RECENT_TAKEN_DAMAGE);
         public static void SetRecentTakenDamage(Entity boss, float value) => boss.SetBehaviourField(PROP_RECENT_TAKEN_DAMAGE, value);
         public static void AddRecentTakenDamage(Entity boss, float value) => SetRecentTakenDamage(boss, GetRecentTakenDamage(boss) + value);
@@ -191,6 +205,16 @@ namespace MVZ2.GameContent.Bosses
                 return false;
             return true;
         }
+        public static bool CanUseLantern(Entity boss)
+        {
+            var count = GetLanternCount(boss);
+            if (count >= MAX_LANTERN_COUNT)
+                return false;
+            var timer = GetLanternCooldownTimer(boss);
+            if (timer == null || !timer.Expired)
+                return false;
+            return true;
+        }
         public static void UseFabric(Entity boss)
         {
             stateMachine.StartState(boss, STATE_FABRIC);
@@ -202,8 +226,12 @@ namespace MVZ2.GameContent.Bosses
         }
         public static void UseLantern(Entity boss)
         {
-            var buff = boss.AddBuff<SeijaLanternBuff>();
-            buff.SetProperty(SeijaLanternBuff.PROP_TIMEOUT, 300);
+            stateMachine.StartState(boss, STATE_LANTERN);
+            SetLanternCount(boss, GetLanternCount(boss) + 1);
+            var timer = GetLanternCooldownTimer(boss);
+            timer.Reset();
+            SetRecentTakenDamage(boss, 0);
+            boss.PlaySound(VanillaSoundID.fault);
         }
         public static bool ShouldCamera(Entity boss)
         {
@@ -265,14 +293,17 @@ namespace MVZ2.GameContent.Bosses
 
         #region 常量
         private static readonly VanillaEntityPropertyMeta<int> PROP_FABRIC_COUNT = new VanillaEntityPropertyMeta<int>("FabricCount");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_LANTERN_COUNT = new VanillaEntityPropertyMeta<int>("LanternCount");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_FABRIC_COOLDOWN_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("FabricCooldownTimer");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_LANTERN_COOLDOWN_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("LanternCooldownTimer");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DANMAKU_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("DanmakuTimer");
         private static readonly VanillaEntityPropertyMeta<float> PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta<float>("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta<float> PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta<float>("BulletAngle");
         public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_JIZO = new VanillaEntityPropertyMeta<EntityID>("Jizo");
         public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
 
-        private const int MAX_FABRIC_COUNT = 6;
+        private const int MAX_FABRIC_COUNT = 2;
+        private const int MAX_LANTERN_COUNT = 1;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 

@@ -350,7 +350,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_PRE_TELEPORT:
                         if (substateTimer.Expired)
                         {
-                            substateTimer.ResetTime(15);
+                            substateTimer.ResetTime(7);
                             var posx = entity.Position.x;
                             if (posi.x <= posx)
                                 stateMachine.SetSubState(entity, SUBSTATE_FORWARD);
@@ -710,18 +710,13 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_OFF:
                         if (substateTimer.Expired)
                         {
-                            if (!entity.HasBuff<SeijaLanternBuff>())
-                                stateMachine.StartState(entity, STATE_LANTERN);
+                            if (CanBackflip(entity))
+                            {
+                                stateMachine.StartState(entity, STATE_BACKFLIP);
+                            }
                             else
                             {
-                                if (CanBackflip(entity))
-                                {
-                                    stateMachine.StartState(entity, STATE_BACKFLIP);
-                                }
-                                else
-                                {
-                                    stateMachine.StartState(entity, STATE_IDLE);
-                                }
+                                stateMachine.StartState(entity, STATE_IDLE);
                             }
                         }
                         break;
@@ -740,6 +735,9 @@ namespace MVZ2.GameContent.Bosses
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.ResetTime(35);
+                var buff = entity.NewBuff<SeijaLanternBuff>();
+                buff.SetProperty(SeijaLanternBuff.PROP_TIMEOUT, 300);
+                entity.AddBuff(buff);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -748,19 +746,10 @@ namespace MVZ2.GameContent.Bosses
                 var substate = stateMachine.GetSubState(entity);
                 switch (substate)
                 {
-                    case INTRO:
-                        if (substateTimer.Expired)
-                        {
-                            stateMachine.SetSubState(entity, SUBSTATE_USELANTERN);
-                            entity.PlaySound(VanillaSoundID.fault, volume: 0.5f);
-                            substateTimer.ResetTime(10);
-                        }
-                        break;
-                    case SUBSTATE_USELANTERN:
+                    case SUBSTATE_INTRO:
                         if (substateTimer.Expired)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_END);
-                            UseLantern(entity);
                             substateTimer.ResetTime(15);
                         }
                         break;
@@ -779,9 +768,8 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
-            public const int INTRO = 0;
-            public const int SUBSTATE_USELANTERN = 1;
-            public const int SUBSTATE_END = 2;
+            public const int SUBSTATE_INTRO = 0;
+            public const int SUBSTATE_END = 1;
         }
         private class FaintState : EntityStateMachineState
         {
