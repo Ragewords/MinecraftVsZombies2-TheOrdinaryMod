@@ -809,7 +809,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">我的回合，抽卡！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是欲望壶，它在拥有星之碎片的怪物出现时，会复制怪物身上的星之碎片！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是欲望壶，它在拥有星之碎片的怪物出现时，会吸走怪物身上的星之碎片并复制！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1" onClick="end">不过，他的兄弟差不多都已经进禁卡池了！</sentence>
       </sentences>
     </section>
