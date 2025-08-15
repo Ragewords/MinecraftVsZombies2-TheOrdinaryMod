@@ -2251,8 +2251,10 @@
                 <float name="mvz2:gravity" value="1" />
                 <float name="mvz2:damage" value="100" />
                 <float name="mvz2:range" value="120" />
-                <vector3 name="mvz2:size" x="34" y="34" z="34" />
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <vector3 name="mvz2:scale" x="0.7" y="0.7" z="0.7" />
                 <vector3 name="mvz2:shadowScale" x="0.7" y="0.7" z="0.7" />
+                <vector3 name="mvz2:displayScale" x="0.7" y="0.7" z="0.7" />
             </properties>
         </projectile>
         <projectile id="flying_tnt">
@@ -2264,7 +2266,7 @@
                 <float name="mvz2:range" value="120" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <vector3 name="mvz2:shadowScale" x="1" y="1" z="1" />
-                <id name="mvz2:modelId" value="mvz2:entity.tnt" />
+                <id name="mvz2:modelId" value="mvz2:entity.mini_tnt" />
             </properties>
         </projectile>
         <projectile id="soulfire_ball">

@@ -345,7 +345,7 @@
             <properties>
                 <p>伤害：<![CDATA[<color=red>1800，100（迷你TNT）</color>]]></p>
                 <p>半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>技能：<![CDATA[<color=red>炸出4个Etho台阶分身</color>]]></p>
+                <p>技能：<![CDATA[<color=red>炸出4个TNT分身</color>]]></p>
             </properties>
             <flavor>
                 <p>注意：并不能用于治疗设备尔的核心病、在一百年后因为能够治疗核心病而获得设备尔奖，或者是用于建筑材料。</p>
@@ -726,7 +726,7 @@
                 <p>持续时间：<![CDATA[<color=red>8秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>30/秒（小型黑洞），50（行星）</color>]]></p>
                 <p>半径：<![CDATA[<color=red>1.5格（小型黑洞），2格（行星）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>产生湮灭领域，3秒后直接消灭范围内的所有敌人和敌弹</color>]]></p>
+                <p>技能：<![CDATA[<color=red>产生湮灭领域，直接消灭范围内的所有敌人和敌弹</color>]]></p>
             </properties>
             <flavor>
                 <p>你知道的，真空不能传声，所以他其实听不到他邻居产生的噪音。</p>
