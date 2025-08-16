@@ -84,9 +84,9 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damageInfo, CallbackResult result)
         {
             base.PreTakeDamage(damageInfo, result);
-            if (damageInfo.Amount > 300)
+            if (damageInfo.Amount > 600)
             {
-                damageInfo.SetAmount(300);
+                damageInfo.SetAmount(600);
             }
         }
         #endregion 事件

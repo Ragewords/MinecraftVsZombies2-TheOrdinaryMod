@@ -2,6 +2,7 @@ using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -28,7 +29,6 @@ namespace MVZ2.GameContent.Bosses
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetStunTimer(entity, new FrameTimer(120));
             SetStateTimer(entity, new FrameTimer(240));
             SetActionTimer(entity, new FrameTimer(60));
             var flyBuff = entity.AddBuff<FlyBuff>();
@@ -36,7 +36,6 @@ namespace MVZ2.GameContent.Bosses
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED_FACTOR, 0.5f);
             flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 120f);
             SetProjectileRNG(entity, new RandomGenerator(entity.RNG.Next()));
-            SetMoveRNG(entity, new RandomGenerator(entity.RNG.Next()));
             entity.SetInvisible(true);
             SetSoundPlayed(entity, false);
             SetAttackState(entity, STATE_DARK_MATTER);
@@ -296,7 +295,7 @@ namespace MVZ2.GameContent.Bosses
                                 entity.SetAnimationInt("AttackState", 4);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_REST);
-                                transTimer.ResetTime(210);
+                                transTimer.ResetTime(60);
                                 timer.Reset();
                                 MoveLower(entity);
                             }
@@ -304,16 +303,13 @@ namespace MVZ2.GameContent.Bosses
                         break;
                     case STATE_REST:
                         {
-                            var transTimer = GetActionTimer(entity);
-                            transTimer.Run();
-                            if (transTimer.Expired)
+                            var level = entity.Level;
+                            var takenDamage = GetRecentTakenDamage(entity);
+                            if (takenDamage >= level.GetTheEyeDamageThresold() && !entity.IsDead)
                             {
                                 entity.SetAnimationInt("AttackState", 0);
-                                SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_DARK_MATTER);
                                 SetRecentTakenDamage(entity, 0);
-                                transTimer.ResetTime(60);
-                                timer.Reset();
                                 MoveHigher(entity);
                             }
                         }
@@ -324,14 +320,6 @@ namespace MVZ2.GameContent.Bosses
         #endregion
 
         #region ����
-        public static FrameTimer GetStunTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_MOVE_TIMER);
-        public static void SetStunTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(ID, PROP_MOVE_TIMER, value);
-        public static int GetMoveTimeout(Entity boss) => boss.GetBehaviourField<int>(ID, PROP_MOVE_TIMEOUT);
-        public static void SetMoveTimeout(Entity boss, int value) => boss.SetBehaviourField(ID, PROP_MOVE_TIMEOUT, value);
-        public static Vector3 GetMoveDisplacement(Entity boss) => boss.GetBehaviourField<Vector3>(ID, PROP_MOVE_DISPLACEMENT);
-        public static void SetMoveDisplacement(Entity boss, Vector3 value) => boss.SetBehaviourField(ID, PROP_MOVE_DISPLACEMENT, value);
-        public static RandomGenerator GetMoveRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_MOVE_RNG);
-        public static void SetMoveRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_MOVE_RNG, value);
         public static RandomGenerator GetProjectileRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_PROJECTILE_RNG);
         public static void SetProjectileRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_PROJECTILE_RNG, value);
         public static FrameTimer GetActionTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_Action_TIMER);
@@ -353,14 +341,9 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_REST = 4;
 
         private const float DAMAGE_THRESOLD = 1700;
-        public const int MAX_MOVE_TIMEOUT = 60;
 
         public static readonly NamespaceID ID = VanillaBossID.theEye;
 
-        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_MOVE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("MoveRNG");
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MOVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("MoveTimer");
-        public static readonly VanillaEntityPropertyMeta<int> PROP_MOVE_TIMEOUT = new VanillaEntityPropertyMeta<int>("MoveTimeout");
-        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_DISPLACEMENT = new VanillaEntityPropertyMeta<Vector3>("MoveDisplacement");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_Action_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ActionTimer");
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_PROJECTILE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("ProjectileRNG");
         public static readonly VanillaEntityPropertyMeta<int> PROP_ATTACK_STATE = new VanillaEntityPropertyMeta<int>("AttackState");

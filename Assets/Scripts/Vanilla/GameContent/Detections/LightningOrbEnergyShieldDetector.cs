@@ -12,13 +12,7 @@ namespace MVZ2.GameContent.Detections
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {
-            var sizeX = 240;
-            var sizeY = 80;
-            var sizeZ = 240;
-            var centerX = self.Position.x;
-            var centerY = self.GetGroundY() + 40;
-            var centerZ = self.Position.z;
-            return new Bounds(new Vector3(centerX, centerY, centerZ), new Vector3(sizeX, sizeY, sizeZ));
+            return self.GetBounds();
         }
         protected override bool ValidateCollider(DetectionParams self, IEntityCollider collider)
         {

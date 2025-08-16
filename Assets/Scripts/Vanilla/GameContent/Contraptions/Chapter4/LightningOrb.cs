@@ -100,7 +100,6 @@ namespace MVZ2.GameContent.Contraptions
                 BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
                 protectDetector = new LightningOrbEnergyShieldDetector()
                 {
-                    mask = EntityCollisionHelper.MASK_VULNERABLE,
                     factionTarget = FactionTarget.Friendly
                 };
             }
@@ -110,11 +109,53 @@ namespace MVZ2.GameContent.Contraptions
                 var entity = source.GetEntity();
                 if (entity == null)
                     return;
-                else if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
+                if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
                     return;
                 protectDetectBuffer.Clear();
                 protectDetector.DetectEntities(entity, protectDetectBuffer);
-                results.AddRange(protectDetectBuffer);
+                foreach (var id in protectDetectBuffer)
+                {
+                    if (!CanProtect(auraEffect, id))
+                        continue;
+                    results.Add(id);
+                }
+            }
+            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
+            {
+                base.UpdateTargetBuff(effect, target, buff);
+                var entity = effect.Source.GetEntity();
+                if (entity != null)
+                {
+                    LightningOrbEnergyShieldProtectedBuff.SetOrbID(buff, new EntityID(entity));
+                }
+            }
+            private bool CanProtect(AuraEffect effect, Entity entity)
+            {
+                var sourceEntity = effect.Source?.GetEntity();
+                if (sourceEntity != null)
+                {
+                    var entityID = sourceEntity.ID;
+                    var protectBuffs = entity.GetBuffs<LightningOrbEnergyShieldProtectedBuff>();
+                    bool protectedByThis = true;
+                    if (protectBuffs.Length > 0)
+                    {
+                        protectedByThis = false;
+                        foreach (var buff in protectBuffs)
+                        {
+                            EntityID orbID = LightningOrbEnergyShieldProtectedBuff.GetOrbID(buff);
+                            if (orbID.ID == entityID)
+                            {
+                                protectedByThis = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!protectedByThis)
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
             private Detector protectDetector;
             private List<Entity> protectDetectBuffer = new List<Entity>();

@@ -36,6 +36,7 @@ namespace MVZ2.GameContent.Difficulties
         public static readonly VanillaDifficultyPropertyMeta<bool> FRANKENSTEIN_NO_STEEL = Get<bool>("frankensteinNoSteel");
         public static readonly VanillaDifficultyPropertyMeta<bool> FRANKENSTEIN_SPLITS_HEAD = Get<bool>("frankensteinSplitsHead");
         public static readonly VanillaDifficultyPropertyMeta<float> FRANKENSTEIN_SPEED = Get<float>("frankensteinSpeed", 1f);
+        public static readonly VanillaDifficultyPropertyMeta<float> THE_EYE_DAMAGE_THRESOLD = Get<float>("theEyeDamageThresold", 1700f);
         public static readonly VanillaDifficultyPropertyMeta<bool> SLENDERMAN_MIND_SWAP_ZOMBIES = Get<bool>("slendermanMindSwapZombies");
         public static readonly VanillaDifficultyPropertyMeta<int> SLENDERMAN_FATE_CHOICE_COUNT = Get<int>("slendermanFateChoiceCount", 3);
         public static readonly VanillaDifficultyPropertyMeta<int> SLENDERMAN_MAX_FATE_TIMES = Get<int>("slendermanMaxFateTimes", 4);
@@ -51,6 +52,7 @@ namespace MVZ2.GameContent.Difficulties
         public static bool FrankensteinInstantSteelPhase(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_INSTANT_STEEL);
         public static bool FrankensteinSplitsHead(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_SPLITS_HEAD);
         public static float GetFrankensteinSpeed(this LevelEngine level) => level.GetProperty<float>(FRANKENSTEIN_SPEED);
+        public static float GetTheEyeDamageThresold(this LevelEngine level) => level.GetProperty<float>(THE_EYE_DAMAGE_THRESOLD);
         public static bool SlendermanMindSwapZombies(this LevelEngine level) => level.GetProperty<bool>(SLENDERMAN_MIND_SWAP_ZOMBIES);
         public static int GetSlendermanFateChoiceCount(this LevelEngine level) => level.GetProperty<int>(SLENDERMAN_FATE_CHOICE_COUNT);
         public static int GetSlendermanMaxFateTimes(this LevelEngine level) => level.GetProperty<int>(SLENDERMAN_MAX_FATE_TIMES);
