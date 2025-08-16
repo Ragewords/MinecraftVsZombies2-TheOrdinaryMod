@@ -67,10 +67,6 @@ namespace MVZ2.GameContent.Projectiles
                     result.ShortCircuit(90);
                     result.PlaySound(VanillaSoundID.powerOff);
                 }
-                if (entity.Parent.ExistsAndAlive())
-                {
-                    entity.Parent.HealEffects(50, entity);
-                }
             }
             Explosion.Spawn(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.explosion);
