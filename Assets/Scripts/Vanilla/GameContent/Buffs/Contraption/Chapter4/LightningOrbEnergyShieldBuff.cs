@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Fragments;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -20,11 +23,26 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 3, 5)));
-            AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Multiply, VehicleInteraction.BLOCK));
+            AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Set, VehicleInteraction.BLOCK));
+            protectDetector = new LightningOrbEnergyShieldDetector()
+            {
+                factionTarget = FactionTarget.Friendly
+            };
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
+            var entity = buff.GetEntity();
+            if (entity != null)
+            {
+                protectDetectBuffer.Clear();
+                protectDetector.DetectEntities(entity, protectDetectBuffer);
+                foreach (var target in protectDetectBuffer)
+                {
+                    target.AddBuff<LightningOrbEnergyShieldProtectedBuff>();
+                }
+            }
+
             if (GetHealth(buff) >= MAX_DAMAGE)
                 buff.Remove();
         }
@@ -62,5 +80,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public static void ResetHealth(Buff buff) => SetHealth(buff, 0);
         public const float MAX_DAMAGE = 500;
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("Health");
+        private Detector protectDetector;
+        private List<Entity> protectDetectBuffer = new List<Entity>();
     }
 }

@@ -4,6 +4,7 @@ using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
+using Tools;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
@@ -16,23 +17,20 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
             AddModifier(new BooleanModifier(VanillaEntityProps.ETHEREAL, true));
         }
+        public override void PostAdd(Buff buff)
+        {
+            base.PostAdd(buff);
+            buff.SetProperty(PROP_TIMER, new FrameTimer(3));
+        }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
-            var entity = buff.GetEntity();
-            if (entity != null)
-            {
-                var orbID = GetOrbID(buff);
-                var orb = orbID.GetEntity(buff.Level);
-                if (!orb.ExistsAndAlive())
-                {
-                    buff.Remove();
-                    return;
-                }
-            }
+            var timer = buff.GetProperty<FrameTimer>(PROP_TIMER);
+            if (timer == null || timer.Expired)
+                buff.Remove();
+            else
+                timer.Run();
         }
-        public static EntityID GetOrbID(Buff buff) => buff.GetProperty<EntityID>(PROP_ORB);
-        public static void SetOrbID(Buff buff, EntityID value) => buff.SetProperty(PROP_ORB, value);
-        public static readonly VanillaBuffPropertyMeta<EntityID> PROP_ORB = new VanillaBuffPropertyMeta<EntityID>("orb");
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
     }
 }

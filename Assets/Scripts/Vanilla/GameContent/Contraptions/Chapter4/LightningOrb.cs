@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
-using PVZEngine.Auras;
-using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -24,7 +18,6 @@ namespace MVZ2.GameContent.Contraptions
         public LightningOrb(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
-            AddAura(new EnergyShield());
         }
         public override void Init(Entity entity)
         {
@@ -92,73 +85,6 @@ namespace MVZ2.GameContent.Contraptions
             entity.AddBuff<LightningOrbEvokedBuff>();
             var timer = GetShieldRegenerateTimer(entity);
             timer.ResetTime(REGENERATE_TIME_EVOKED);
-        }
-        public class EnergyShield : AuraEffectDefinition
-        {
-            public EnergyShield()
-            {
-                BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
-                protectDetector = new LightningOrbEnergyShieldDetector()
-                {
-                    factionTarget = FactionTarget.Friendly
-                };
-            }
-            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
-            {
-                var source = auraEffect.Source;
-                var entity = source.GetEntity();
-                if (entity == null)
-                    return;
-                if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
-                    return;
-                protectDetectBuffer.Clear();
-                protectDetector.DetectEntities(entity, protectDetectBuffer);
-                foreach (var id in protectDetectBuffer)
-                {
-                    if (!CanProtect(auraEffect, id))
-                        continue;
-                    results.Add(id);
-                }
-            }
-            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
-            {
-                base.UpdateTargetBuff(effect, target, buff);
-                var entity = effect.Source.GetEntity();
-                if (entity != null)
-                {
-                    LightningOrbEnergyShieldProtectedBuff.SetOrbID(buff, new EntityID(entity));
-                }
-            }
-            private bool CanProtect(AuraEffect effect, Entity entity)
-            {
-                var sourceEntity = effect.Source?.GetEntity();
-                if (sourceEntity != null)
-                {
-                    var entityID = sourceEntity.ID;
-                    var protectBuffs = entity.GetBuffs<LightningOrbEnergyShieldProtectedBuff>();
-                    bool protectedByThis = true;
-                    if (protectBuffs.Length > 0)
-                    {
-                        protectedByThis = false;
-                        foreach (var buff in protectBuffs)
-                        {
-                            EntityID orbID = LightningOrbEnergyShieldProtectedBuff.GetOrbID(buff);
-                            if (orbID.ID == entityID)
-                            {
-                                protectedByThis = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (!protectedByThis)
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            private Detector protectDetector;
-            private List<Entity> protectDetectBuffer = new List<Entity>();
         }
         public static FrameTimer GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
