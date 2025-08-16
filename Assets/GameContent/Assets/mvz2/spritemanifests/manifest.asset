@@ -569,12 +569,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 60dba1fe463246140afed5c3c3c74079, type: 3}
   - name: entity/boss/slenderman
     sprite: {fileID: 21300000, guid: 3f675fd783eb69c4ba235b5c1f510cd8, type: 3}
-  - name: entity/boss/the_eye
-    sprite: {fileID: 21300000, guid: f3893f585b3c69048a2e5e09abd36111, type: 3}
-  - name: entity/boss/the_eye_death
-    sprite: {fileID: 21300000, guid: 46c8bbd4d5a8b69468249e5bb086ca68, type: 3}
-  - name: entity/boss/the_eye_telepathy
-    sprite: {fileID: 21300000, guid: 2ee311d16a8eadb4e8b9649175c4c7bc, type: 3}
   - name: entity/boss/the_giant_snake_tail
     sprite: {fileID: 21300000, guid: 47e358101a35f3c4eb66d746582948c4, type: 3}
   - name: entity/boss/wither
@@ -1548,6 +1542,12 @@ MonoBehaviour:
     - {fileID: 6494446197138225416, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5653982790268467409, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5039749940984752654, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
+  - name: entity/boss/the_eye
+    spritesheet:
+    - {fileID: -224624718, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 1839669874, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   - name: entity/boss/the_giant
     spritesheet:
     - {fileID: 2106222037, guid: cd590dd9f5d29994db2a5356364308e6, type: 3}

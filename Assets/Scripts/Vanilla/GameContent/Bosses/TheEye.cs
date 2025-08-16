@@ -79,7 +79,7 @@ namespace MVZ2.GameContent.Bosses
                 entity.Timeout--;
                 if (entity.Timeout == 60)
                 {
-                    entity.SetAnimationBool("FadeOut", true);
+                    entity.TriggerAnimation("FadeOut");
                 }
                 else if (entity.Timeout <= 0)
                 {

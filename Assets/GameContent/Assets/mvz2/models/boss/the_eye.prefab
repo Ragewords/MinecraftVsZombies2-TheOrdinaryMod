@@ -6422,7 +6422,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 46c8bbd4d5a8b69468249e5bb086ca68, type: 3}
+    - sprite: {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -9903,7 +9903,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f3893f585b3c69048a2e5e09abd36111, type: 3}
+  m_Sprite: {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9940,9 +9940,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: f3893f585b3c69048a2e5e09abd36111, type: 3}
-  - {fileID: 21300000, guid: 46c8bbd4d5a8b69468249e5bb086ca68, type: 3}
-  - {fileID: 21300000, guid: 2ee311d16a8eadb4e8b9649175c4c7bc, type: 3}
+  - {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+  - {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+  - {fileID: 1839669874, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   index: 0
 --- !u!1 &4369923945732418155
 GameObject:

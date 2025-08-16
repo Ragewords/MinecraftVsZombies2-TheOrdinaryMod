@@ -1,11 +1,7 @@
 using MVZ2.GameContent.Bosses;
-using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
-using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -26,7 +22,7 @@ namespace MVZ2.GameContent.Effects
         {
             base.PostContactGround(entity, velocity);
             entity.Spawn(VanillaEffectID.nightmareFireParticles, entity.GetCenter());
-            entity.Spawn(VanillaBossID.theEye, entity.GetCenter());
+            entity.Spawn(VanillaBossID.theEye, entity.Position);
 
             entity.PlaySound(VanillaSoundID.meteorLand);
             entity.Level.ShakeScreen(10, 0, 15);
