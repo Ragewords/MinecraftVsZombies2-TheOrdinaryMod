@@ -352,7 +352,7 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_MIND_BLAST = 3;
         public const int STATE_REST = 4;
 
-        private const float DAMAGE_THRESOLD = 1500;
+        private const float DAMAGE_THRESOLD = 1700;
         public const int MAX_MOVE_TIMEOUT = 60;
 
         public static readonly NamespaceID ID = VanillaBossID.theEye;
