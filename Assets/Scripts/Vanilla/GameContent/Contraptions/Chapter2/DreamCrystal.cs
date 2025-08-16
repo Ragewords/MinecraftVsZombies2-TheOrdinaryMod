@@ -29,12 +29,17 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity contraption)
         {
             base.Init(contraption);
-            SetHealingTimer(contraption, new FrameTimer(0));
+            var timer = new FrameTimer(HEALING_TIMER);
+            timer.Frame = 0;
+            SetHealingTimer(contraption, timer);
         }
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            contraption.HealEffects(SELF_HEAL_PER_FRAME, contraption);
+            var health = contraption.Health;
+            var maxHealth = contraption.GetMaxHealth();
+            var heal_multipiler = GetDividedValue3(health, maxHealth);
+            contraption.HealEffects(SELF_HEAL_PER_FRAME * heal_multipiler, contraption);
             HealingUpdate(contraption);
         }
         protected override void UpdateLogic(Entity contraption)
@@ -52,7 +57,7 @@ namespace MVZ2.GameContent.Contraptions
             if (contraption == null)
                 return;
             var healingTimer = GetHealingTimer(contraption);
-            healingTimer.ResetTime(HEALING_TIMER);
+            healingTimer.Reset();
         }
 
         protected override void OnEvoke(Entity contraption)
@@ -71,8 +76,8 @@ namespace MVZ2.GameContent.Contraptions
             var secondThird = firstThird * 2f;
             inputValue = Mathf.Clamp(inputValue, 0f, maxValue);
 
-            if (inputValue < firstThird) return 6;
-            else if (inputValue < secondThird) return 3;
+            if (inputValue < firstThird) return 3;
+            else if (inputValue < secondThird) return 2;
             else return 1;
         }
         private void HealingUpdate(Entity contraption)
@@ -84,14 +89,11 @@ namespace MVZ2.GameContent.Contraptions
             contraption.TriggerAnimation("Heal");
             healBuffer.Clear();
             healDetector.DetectEntities(contraption, healBuffer);
-            var health = contraption.Health;
-            var maxHealth = contraption.GetMaxHealth();
-            var heal_multipiler = GetDividedValue3(health, maxHealth);
             foreach (Entity target in healBuffer)
             {
                 if (target.ID == contraption.ID)
                     continue;
-                target.HealEffects(HEAL_PER_FRAME * heal_multipiler, contraption);
+                target.HealEffects(HEAL_PER_FRAME, contraption);
             }
         }
         public const float SELF_HEAL_PER_FRAME = 4 / 3;
