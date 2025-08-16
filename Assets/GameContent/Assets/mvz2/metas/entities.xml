@@ -2001,7 +2001,7 @@
         <boss id="the_eye" name="眼">
             <properties>
                 <int name="mvz2:waterInteraction" value="0"/>
-                <float name="mvz2:maxHealth" value="7500"/>
+                <float name="mvz2:maxHealth" value="8500"/>
                 <id name="mvz2:shell" value="mvz2:normal" />
                 <vector3 name="mvz2:size" x="74" y="74" z="74"/>
                 <color name="mvz2:bloodColor" value="#7F0000FF"/>
@@ -2020,7 +2020,7 @@
         <boss id="nightmareaper" name="梦魇收割者">
             <properties>
                 <int name="mvz2:waterInteraction" value="0" />
-                <float name="mvz2:maxHealth" value="5000" />
+                <float name="mvz2:maxHealth" value="4000" />
                 <id name="mvz2:shell" value="mvz2:bone" />
                 <vector3 name="mvz2:size" x="48" y="52" z="48" />
                 <color name="mvz2:bloodColor" value="#000000FF" />
