@@ -2172,13 +2172,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2ee311d16a8eadb4e8b9649175c4c7bc
-    m_Address: mvz2:entity/boss/the_eye_telepathy
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2ef60f7a077178f429877e76ff61731a
     m_Address: mvz2:mausoleum_boss
     m_ReadOnly: 0
@@ -3304,13 +3297,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 46c8bbd4d5a8b69468249e5bb086ca68
-    m_Address: mvz2:entity/boss/the_eye_death
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46e4738e7670514408193864ddcf6e34
     m_Address: mvz2:lightning_attack
@@ -5564,6 +5550,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79d80136264dd394ca7486b3349cd137
+    m_Address: mvz2:entity/boss/the_eye
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a3b8d97209e0b4429c62e23f1046a6c
     m_Address: mvz2:arcade
@@ -11090,13 +11083,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f341858279d9e0e4cadea5a1467728a1
     m_Address: mvz2:mobile_blueprint/undead_flying_object
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f3893f585b3c69048a2e5e09abd36111
-    m_Address: mvz2:entity/boss/the_eye
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
