@@ -71,7 +71,7 @@ namespace MVZ2.GameContent.Contraptions
             var priority = -distance;
             if (target.Position.y > self.Position.y + 40)
             {
-                priority += 300;
+                priority -= 300;
             }
             return priority;
         }
@@ -146,7 +146,7 @@ namespace MVZ2.GameContent.Contraptions
         public const int ATTACK_COOLDOWN = 120;
         public const int EVOKATION_TIMER = 30;
         public const int GRAVITY = 1;
-        public const float ATTACK_HEIGHT = 48;
+        public const float ATTACK_HEIGHT = 160;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_MISSLE_TIMEOUT = new VanillaEntityPropertyMeta<FrameTimer>("MissleTimeout");
 
