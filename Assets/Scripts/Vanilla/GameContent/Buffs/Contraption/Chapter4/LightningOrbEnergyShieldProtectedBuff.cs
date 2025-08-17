@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMER, new FrameTimer(3));
+            buff.SetProperty(PROP_TIMER, new FrameTimer(5));
         }
         public override void PostUpdate(Buff buff)
         {

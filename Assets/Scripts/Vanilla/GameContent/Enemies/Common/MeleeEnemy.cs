@@ -65,8 +65,7 @@ namespace MVZ2.Vanilla.Enemies
                     if (!target.HasBuff<LightningOrbEnergyShieldBuff>())
                         return false;
                 }
-                else
-                    return false;
+                return false;
             }
             if (!Detection.CanDetect(target))
                 return false;
