@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Fragments;
 using MVZ2.Vanilla.Audios;
@@ -35,12 +36,19 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var entity = buff.GetEntity();
             if (entity != null)
             {
+                if (!entity.IsEntityOf(VanillaContraptionID.lightningOrb))
+                {
+                    buff.Remove();
+                    return;
+                }
                 protectDetectBuffer.Clear();
                 protectDetector.DetectEntities(entity, protectDetectBuffer);
                 foreach (var target in protectDetectBuffer)
                 {
                     target.AddBuff<LightningOrbEnergyShieldProtectedBuff>();
                 }
+                entity.SetAnimationFloat("ShieldDamaged", GetHealth(buff) / MAX_DAMAGE);
+                entity.SetAnimationFloat("ShieldSpeed", 1 + (GetHealth(buff) / MAX_DAMAGE) * 3);
             }
 
             if (GetHealth(buff) >= MAX_DAMAGE)

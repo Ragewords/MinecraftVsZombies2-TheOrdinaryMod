@@ -60,11 +60,8 @@ namespace MVZ2.Vanilla.Enemies
                 return false;
             if (!Detection.IsInSameRow(enemy, target))
             {
-                if (target.IsEntityOf(VanillaContraptionID.lightningOrb))
-                {
-                    if (!target.HasBuff<LightningOrbEnergyShieldBuff>())
-                        return false;
-                }
+                if (target.HasBuff<LightningOrbEnergyShieldBuff>())
+                    return true;
                 return false;
             }
             if (!Detection.CanDetect(target))

@@ -4799,7 +4799,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9657,7 +9657,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -10052,6 +10052,7 @@ GameObject:
   - component: {fileID: 9078387754060522785}
   - component: {fileID: 1249807812194585105}
   - component: {fileID: 4753294883078118449}
+  - component: {fileID: 833025548886299151}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -10094,7 +10095,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d7c92befb9b92b43a7cd49aa9ad0e8d, type: 2}
+  - {fileID: 2100000, guid: 46feb92d01713ab469d33cb82d01c1e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10139,6 +10140,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
+--- !u!114 &833025548886299151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879816576340548125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7a5da3b8b3a0345bebbb77eb769241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hue: 0
+  saturation: 0
+  value: 0
 --- !u!1 &8668656683893329378
 GameObject:
   m_ObjectHideFlags: 0
