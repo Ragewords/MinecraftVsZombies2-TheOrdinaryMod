@@ -82,10 +82,23 @@ namespace MVZ2.GameContent.Contraptions
                     var ent = level.FindEntityByID(id);
                     if (!ent.ExistsAndAlive() || !ent.IsVulnerableEntity())
                         continue;
-                    if (ent.Type == EntityTypes.PLANT && ent.IsCharmed())
+                    if (ent.Type == EntityTypes.PLANT)
                     {
-                        ent.RemoveCharm();
-                        ent.PlaySound(VanillaSoundID.mindClear);
+                        bool playSound = false;
+                        if (ent.IsCharmed())
+                        {
+                            ent.RemoveCharm();
+                            playSound = true;
+                        }
+                        if (ent.IsMesmerized())
+                        {
+                            ent.RemoveMesmerize();
+                            playSound = true;
+                        }
+                        if (playSound)
+                        {
+                            ent.PlaySound(VanillaSoundID.mindClear);
+                        }
                     }
                     results.Add(ent);
                 }
