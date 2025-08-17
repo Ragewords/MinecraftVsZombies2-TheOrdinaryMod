@@ -78,22 +78,21 @@ namespace MVZ2.GameContent.Enemies
                     DropHead(enemy);
                 }
             }
-            if (enemy.State == STATE_CAST)
+        }
+        protected override void UpdateStateCast(Entity enemy)
+        {
+            base.UpdateStateCast(enemy);
+            enemy.UpdateWalkVelocity();
+            if (enemy.IsTimeInterval(10))
             {
-                var vel = enemy.Velocity;
-                vel.x = enemy.GetSpeed() * 1.5f * enemy.GetFacingX();
-                enemy.Velocity = vel;
-                if (enemy.IsTimeInterval(10))
-                {
-                    enemy.PlaySound(VanillaSoundID.swing, pitch: enemy.RNG.Next(0.8f, 1.2f));
-                }
-                spinBuffer.Clear();
-                spinDetector.DetectEntities(enemy, spinBuffer);
-                foreach (var target in spinBuffer)
-                {
-                    target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
-                    target.InflictWither(150);
-                }
+                enemy.PlaySound(VanillaSoundID.swing, pitch: enemy.RNG.Next(0.8f, 1.2f));
+            }
+            spinBuffer.Clear();
+            spinDetector.DetectEntities(enemy, spinBuffer);
+            foreach (var target in spinBuffer)
+            {
+                target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
+                target.InflictWither(150);
             }
         }
         protected override void UpdateLogic(Entity entity)
