@@ -325,7 +325,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(15);
+                substateTimer.ResetTime(10);
 
                 if (!entity.HasBuff<SeijaGapBuff>())
                 {
@@ -370,6 +370,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             var pos = entity.Position;
                             pos.x = pos.x * 0.5f + posi.x * 0.5f;
+                            pos.y = pos.y * 0.5f + posi.y * 0.5f;
                             pos.z = pos.z * 0.5f + posi.z * 0.5f;
                             entity.Position = pos;
                         }
