@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Contraptions
             var health = contraption.Health;
             var maxHealth = contraption.GetMaxHealth();
             var heal_multipiler = GetDividedValue3(health, maxHealth);
-            contraption.HealEffects(SELF_HEAL_PER_FRAME * heal_multipiler, contraption);
+            contraption.HealEffects(SELF_HEAL_PER_FRAME, contraption);
             HealingUpdate(contraption);
         }
         protected override void UpdateLogic(Entity contraption)
