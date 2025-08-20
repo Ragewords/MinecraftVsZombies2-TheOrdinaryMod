@@ -1,8 +1,10 @@
 using MVZ2.GameContent.Damages;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
@@ -30,6 +32,15 @@ namespace MVZ2.GameContent.Effects
                 return;
             var self = collision.Entity;
             collision.OtherCollider.TakeDamage(self.GetDamage(), new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE), self);
+        }
+        public override void PostRemove(Entity entity)
+        {
+            base.PostRemove(entity);
+            entity.PlaySound(VanillaSoundID.fizz);
+            var param = entity.GetSpawnParams();
+            param.SetProperty(EngineEntityProps.SIZE, entity.GetScaledSize());
+            param.SetProperty(EngineEntityProps.TINT, Color.black);
+            entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
         }
     }
 }

@@ -1494,6 +1494,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 201e5721e971a564488d089bd9d27f7b
+    m_Address: mvz2:entity/projectiles/potion_overlay
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 204fe2216f90dcb4a9e3e45c0373628b
     m_Address: mvz2:effect/mind_control_lines
     m_ReadOnly: 0
@@ -10157,6 +10164,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de92cafa97933f14ca26c5babda512d8
+    m_Address: mvz2:entity/projectiles/lingering_potion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dea58aae988949442b99a1421fddf4ac
     m_Address: mvz2:effect/zombie_block
     m_ReadOnly: 0
@@ -10492,6 +10506,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e707dc613b4589b428b1c25ba47b5258
+    m_Address: mvz2:projectile/poison_potion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e732382db38cd764888b963c49cc59c5
     m_Address: mvz2:note/dream

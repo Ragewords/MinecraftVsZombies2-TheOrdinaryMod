@@ -87,7 +87,7 @@ namespace MVZ2.GameContent.Contraptions
                     var param = entity.GetSpawnParams();
                     param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 1.25f);
                     param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 1.25f);
-                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 6);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 2);
                     param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 30);
                     var x = entity.Position.x + level.GetGridWidth() * entity.GetFacingX() * j;
                     var z = entity.Position.z + level.GetGridHeight() * i;
