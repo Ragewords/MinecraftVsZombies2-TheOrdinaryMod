@@ -2,7 +2,6 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -71,7 +70,7 @@ namespace MVZ2.GameContent.Contraptions
             foreach (Entity target in entity.Level.FindEntities(e => CanStun(entity, e)))
             {
                 target.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE), entity);
-                if (target.Type == EntityTypes.ENEMY)
+                if (target.Type == EntityTypes.ENEMY && target.IsOnGround)
                 {
                     var distance = (target.Position - entity.Position).magnitude;
                     var speed = 10;
@@ -84,11 +83,11 @@ namespace MVZ2.GameContent.Contraptions
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    var angle = i * 36 + j * 12;
+                    var angle = i * 36 + j * 18;
                     var param = entity.GetShootParams();
                     param.projectileID = VanillaProjectileID.arrowBullet;
                     param.damage = entity.GetDamage() / 3f;
-                    param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * Mathf.CeilToInt(15 / (j + 1));
+                    param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * Mathf.RoundToInt(20 / (j + 1));
                     var bullet = entity.ShootProjectile(param);
                     bullet.SetPiercing(false);
                     bullet.SetHSVToColor(new Color(1, 0.6f, 1, 1));
@@ -100,7 +99,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static bool CanStun(Entity self, Entity target)
         {
-            return target.GetMainCollider().CheckSphere(self.GetCenter(), 80) && self.IsHostile(target) && target.IsOnGround;
+            return target.GetMainCollider().CheckSphere(self.GetCenter(), 80) && self.IsHostile(target);
         }
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
@@ -109,7 +108,7 @@ namespace MVZ2.GameContent.Contraptions
         public const int START_TIME = 20;
         public const int FLING_TIME = 30;
         public const int THROW_TIME = 35;
-        public const int THROWN_TIME = 40;
+        public const int THROWN_TIME = 50;
     }
 }
 

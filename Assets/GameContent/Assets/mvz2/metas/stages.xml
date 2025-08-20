@@ -274,7 +274,7 @@
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
-            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
         </spawns>
         <properties>
             <integer name="statueCount" value="12" />
@@ -286,6 +286,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
             <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:skelebomb"/>
         </spawns>
@@ -511,7 +512,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:cave_spider"/>
+            <spawn id="mvz2:spider"/>
         </spawns>
     </stage>
     <stage id="dream_EX2" name="梦境世界" type="extra" dayNumber="13" unlock="mvz2:level.dream_EX1" music="mvz2:dream_level_extra" >
@@ -519,6 +520,7 @@
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:spider"/>
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:silverfish"/>

@@ -1013,7 +1013,8 @@
                 <id name="mvz2:fragmentId" value="mvz2:wooden_dropper"/>
                 <id name="mvz2:placeSound" value="mvz2:wood"/>
                 <id name="mvz2:deathSound" value="mvz2:wood"/>
-                <id name="mvz2:hitSound" null="true"/>
+                <id name="mvz2:hitSound" value="mvz2:wood" />
+                <id name="mvz2:placement" value="mvz2:pad" />
                 <bool name="mvz2:instantEvoke" value="false" />
                 <int name="mvz2:waterInteraction" value="0"/>
                 <int name="mvz2:airInteraction" value="0" />
