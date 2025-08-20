@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (target != null)
                 {
                     var param = entity.GetSpawnParams();
-                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 15);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 20);
                     param.SetProperty(EngineEntityProps.FLIP_X, entity.IsFlipX());
                     entity.Spawn(VanillaEffectID.smokerSmoke, entity.GetCenter(), param);
                     timer.ResetTime(SMOKE_INTERVAL);
