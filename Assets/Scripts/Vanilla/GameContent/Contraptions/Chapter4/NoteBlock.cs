@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
                 var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 0.4f);
-                param.SetProperty(EngineEntityProps.SIZE, new Vector3(240, 80, 240) * rangeMultiplier);
+                param.SetProperty(EngineEntityProps.SCALE, Vector3.one * rangeMultiplier);
                 var wave = entity.Spawn(VanillaEffectID.soundwave, entity.GetCenter(), param);
                 Soundwave.SetLoud(wave, entity.HasBuff<NoteBlockLoudBuff>());
                 waveTimer.Reset();
