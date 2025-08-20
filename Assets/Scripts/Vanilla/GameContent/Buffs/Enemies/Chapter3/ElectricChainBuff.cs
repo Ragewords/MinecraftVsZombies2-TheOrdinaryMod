@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -28,7 +26,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
             attackedEnemies.Clear();
             var entity = buff.GetEntity();
             attackedEnemies.Add(entity);
-            FindNextTarget(entity, entity.Position, entity.GetFaction(), DMG);
+            var nextDamage = buff.GetProperty<float>(PROP_DAMAGE);
+            FindNextTarget(entity, entity.Position, entity.GetFaction(), nextDamage);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -70,6 +69,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public const float MAX_TARGETS = 5;
         public const float DMG = 20;
         public const float DMG_REDUCTION = 0.2f;
+        public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         private List<Entity> attackedEnemies = new List<Entity>();
     }

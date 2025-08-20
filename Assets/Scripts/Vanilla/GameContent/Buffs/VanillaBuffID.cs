@@ -143,6 +143,7 @@ namespace MVZ2.GameContent.Buffs
         public const string projectileGravityPad = "projectile_gravity_pad";
         public const string explosivePearl = "explosivePearl";
         public const string invertedMirror = "inverted_mirror";
+        public const string teslaCoilElectrify = "tesla_coil_electrify";
         public const string hellfireIgnited = "hellfire_ignited";
         public const string ghastFireCharge = "ghast_fire_charge";
         public const string telekinesis = "telekinesis";

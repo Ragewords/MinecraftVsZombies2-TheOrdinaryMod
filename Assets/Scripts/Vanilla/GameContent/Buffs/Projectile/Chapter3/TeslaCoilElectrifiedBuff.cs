@@ -1,0 +1,93 @@
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
+using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
+using PVZEngine.Damages;
+using PVZEngine.Level;
+using PVZEngine.Modifiers;
+using UnityEngine;
+
+namespace MVZ2.GameContent.Buffs.Projectiles
+{
+    [BuffDefinition(VanillaBuffNames.teslaCoilElectrify)]
+    public class TeslaCoilElectrifiedBuff : BuffDefinition
+    {
+        public TeslaCoilElectrifiedBuff(string nsp, string name) : base(nsp, name)
+        {
+            AddModifier(new BooleanModifier(VanillaEntityProps.IS_LIGHT_SOURCE, true));
+            AddModifier(new Vector3Modifier(VanillaEntityProps.LIGHT_RANGE, NumberOperator.Add, PROP_LIGHT_RANGE_ADDITION));
+            AddModifier(ColorModifier.Override(VanillaEntityProps.LIGHT_COLOR, new Color(0, 0.7f, 1)));
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
+        }
+        public override void PostAdd(Buff buff)
+        {
+            base.PostAdd(buff);
+            UpdateArc(buff);
+            UpdateLightRange(buff);
+        }
+        public override void PostUpdate(Buff buff)
+        {
+            base.PostUpdate(buff);
+            UpdateArc(buff);
+            UpdateLightRange(buff);
+        }
+        private void UpdateArc(Buff buff)
+        {
+            var entity = buff.GetEntity();
+            if (entity != null)
+            {
+                float degree = entity.RNG.Next(360);
+                float rad = degree * Mathf.Deg2Rad;
+                if (entity.IsTimeInterval(5))
+                {
+                    var dest = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * 10;
+                    TeslaCoil.CreateArc(entity, entity.Position, dest, 5, 10);
+                }
+            }
+        }
+        private void UpdateLightRange(Buff buff)
+        {
+            var entity = buff.GetEntity();
+            float scale = 1;
+            if (entity != null)
+            {
+                var scaledSize = entity.GetScaledSize();
+                var scaleVec = scaledSize / DEFAULT_SCALE;
+                scale = Mathf.Max(scaleVec.x, scaleVec.y, scaleVec.z);
+            }
+            buff.SetProperty(PROP_LIGHT_RANGE_ADDITION, Vector3.one * 20 * scale);
+        }
+        private void PostProjectileHitCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
+        {
+            var hit = param.hit;
+            var projectile = hit.Projectile;
+            var target = hit.Other;
+            var shield = hit.Shield;
+            var armorSlot = shield != null ? shield.Slot : null;
+            float additionalDamage = projectile.GetDamage() / 3;
+            var buffs = projectile.GetBuffs(this);
+            foreach (var buff in buffs)
+            {
+                target.TakeDamage(additionalDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), projectile, armorSlot);
+                if (armorSlot == null)
+                {
+                    var eBuff = target.NewBuff<ElectricChainBuff>();
+                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, additionalDamage * 2);
+                    target.AddBuff(eBuff);
+                }
+            }
+        }
+        public static void SetLightColor(Buff buff, Color value) => buff.SetProperty(PROP_LIGHT_COLOR, value);
+        public static Color GetLightColor(Buff buff) => buff.GetProperty<Color>(PROP_LIGHT_COLOR);
+        public static void SetCursed(Buff buff, bool value) => buff.SetProperty(PROP_CURSED, value);
+        public static bool GetCursed(Buff buff) => buff.GetProperty<bool>(PROP_CURSED);
+        public static readonly VanillaBuffPropertyMeta<Color> PROP_LIGHT_COLOR = new VanillaBuffPropertyMeta<Color>("lightColor");
+        public static readonly VanillaBuffPropertyMeta<Vector3> PROP_LIGHT_RANGE_ADDITION = new VanillaBuffPropertyMeta<Vector3>("light_range_addition");
+        public static readonly VanillaBuffPropertyMeta<bool> PROP_CURSED = new VanillaBuffPropertyMeta<bool>("cursed");
+        public const float DEFAULT_SCALE = 32;
+    }
+}

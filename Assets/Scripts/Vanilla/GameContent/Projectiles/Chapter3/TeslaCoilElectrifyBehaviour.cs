@@ -1,0 +1,52 @@
+using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Entities;
+using PVZEngine.Buffs;
+using PVZEngine.Damages;
+using PVZEngine.Entities;
+using PVZEngine.Level;
+
+namespace MVZ2.GameContent.Projectiles
+{
+    [EntityBehaviourDefinition(VanillaEntityBehaviourNames.teslaCoilElectrify)]
+    public class TeslaCoilElectrifyBehaviour : ProjectileBehaviour, ITeslaCoilElectrifyBehaviour
+    {
+        public TeslaCoilElectrifyBehaviour(string nsp, string name) : base(nsp, name)
+        {
+        }
+        public override void Update(Entity projectile)
+        {
+            base.Update(projectile);
+            electrifiedBuffBuffer.Clear();
+            projectile.GetBuffs<TeslaCoilElectrifiedBuff>(electrifiedBuffBuffer);
+
+            // 在水中电击周围单位。
+            if (projectile.IsInWater() && projectile.IsTimeInterval(5))
+            {
+                shockBuffer.Clear();
+                projectile.Level.OverlapSphereNonAlloc(projectile.Position, 20, projectile.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0, shockBuffer);
+                foreach (var buff in electrifiedBuffBuffer)
+                {
+                    foreach (var collider in shockBuffer)
+                    {
+                        collider.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), projectile);
+                        projectile.PlaySound(VanillaSoundID.redLightning);
+                    }
+                }
+            }
+        }
+        public void Electrify(Entity entity, Entity coil)
+        {
+            var igniteBuff = entity.GetFirstBuff<TeslaCoilElectrifiedBuff>();
+            if (igniteBuff == null)
+            {
+                entity.AddBuff<TeslaCoilElectrifiedBuff>();
+            }
+        }
+        private List<Buff> electrifiedBuffBuffer = new List<Buff>();
+        private List<IEntityCollider> shockBuffer = new List<IEntityCollider>();
+    }
+}

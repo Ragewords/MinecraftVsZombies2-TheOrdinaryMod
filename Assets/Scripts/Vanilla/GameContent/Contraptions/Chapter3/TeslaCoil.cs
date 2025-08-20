@@ -26,6 +26,11 @@ namespace MVZ2.GameContent.Contraptions
         public TeslaCoil(string nsp, string name) : base(nsp, name)
         {
             detector = new TeslaCoilDetector(ATTACK_HEIGHT);
+            electrifyDetector = new HellfireIgniteDetector(0)
+            {
+                factionTarget = FactionTarget.Friendly,
+                mask = EntityCollisionHelper.MASK_PROJECTILE,
+            };
         }
         public override void Init(Entity entity)
         {
@@ -45,6 +50,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            UpdateElectrify(entity);
             if (entity.State == STATE_IDLE)
             {
                 var timer = GetAttackTimer(entity);
@@ -144,7 +150,10 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var collider in detectBuffer)
             {
                 collider.TakeDamage(damage, damageEffects, source);
-                collider.Entity.AddBuff<ElectricChainBuff>();
+                var entity = collider.Entity;
+                var eBuff = entity.NewBuff<ElectricChainBuff>();
+                eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, damage / 4);
+                entity.AddBuff(eBuff);
             }
             source.Explode(targetPosition, SHOCK_RADIUS * 3, faction, damage / 8, damageEffects);
             for (int i = 0; i < 4; i++)
@@ -163,6 +172,18 @@ namespace MVZ2.GameContent.Contraptions
             ElectricArc.UpdateArc(arc);
             arc.Timeout = timeout;
         }
+        private void UpdateElectrify(Entity coil)
+        {
+            electrifyBuffer.Clear();
+            electrifyDetector.DetectEntities(coil, electrifyBuffer);
+            foreach (Entity target in electrifyBuffer)
+            {
+                var behaviour = target.Definition?.GetBehaviour<ITeslaCoilElectrifyBehaviour>();
+                if (behaviour == null)
+                    return;
+                behaviour.Electrify(target, coil);
+            }
+        }
         public static FrameTimer GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_ATTACK_TIMER, timer);
 
@@ -176,9 +197,15 @@ namespace MVZ2.GameContent.Contraptions
         public const int STATE_IDLE = VanillaEntityStates.TESLA_COIL_IDLE;
         public const int STATE_ATTACK = VanillaEntityStates.TESLA_COIL_ATTACK;
 
+        private Detector electrifyDetector;
+        private List<Entity> electrifyBuffer = new List<Entity>();
         private Detector detector;
         private static List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
         private static HashSet<LawnGrid> gridDetectBuffer = new HashSet<LawnGrid>();
         private static readonly NamespaceID ID = VanillaContraptionID.teslaCoil;
+    }
+    public interface ITeslaCoilElectrifyBehaviour
+    {
+        void Electrify(Entity entity, Entity coil);
     }
 }
