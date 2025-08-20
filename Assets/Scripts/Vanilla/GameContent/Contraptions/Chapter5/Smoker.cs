@@ -8,6 +8,7 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -37,7 +38,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (target != null)
                 {
                     var param = entity.GetSpawnParams();
-                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 2);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 15);
                     param.SetProperty(EngineEntityProps.FLIP_X, entity.IsFlipX());
                     entity.Spawn(VanillaEffectID.smokerSmoke, entity.GetCenter(), param);
                     timer.ResetTime(SMOKE_INTERVAL);
@@ -60,16 +61,39 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             entity.TriggerAnimation("Burst");
             entity.PlaySound(VanillaSoundID.flame);
-            for (var i = -1; i <= 1; i++)
+            var level = entity.Level;
+            int startLine = -1;
+            int endLine = 1;
+            int startCol = 1;
+            int endCol = 3;
+            var lane = entity.GetLane();
+            var column = entity.GetColumn();
+            if (lane == 0)
             {
-                var level = entity.Level;
-                for (var j = (entity.GetLane() == 0 ? 0 : -1); j <= (entity.GetLane() == level.GetMaxLaneCount() - 1 ? 0 : 1); j++)
+                endLine = 0;
+            }
+            if (lane == level.GetMaxLaneCount() - 1)
+            {
+                startLine = 0;
+            }
+            if (column == level.GetMaxColumnCount() - 1)
+            {
+                endCol = 1;
+            }
+            for (int i = startLine; i <= endLine; i++)
+            {
+                for (int j = startCol; j <= endCol; j++)
                 {
                     var param = entity.GetSpawnParams();
-                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 3);
-                    var gridPos = level.GetEntityGridPosition(entity.GetColumn() + i + 2 * entity.GetFacingX(), entity.GetLane() + j);
-                    var fireBlock = entity.Spawn(VanillaEffectID.smokerFire, gridPos, param);
-                    fireBlock.Timeout = 360;
+                    param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 1.25f);
+                    param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 1.25f);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 6);
+                    param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 30);
+                    var x = entity.Position.x + level.GetGridWidth() * entity.GetFacingX() * j;
+                    var z = entity.Position.z + level.GetGridHeight() * i;
+                    var y = level.GetGroundY(x, z);
+                    Vector3 gridPos = new Vector3(x, y, z);
+                    entity.Spawn(VanillaEffectID.smokerFire, gridPos, param);
                 }
             }
         }

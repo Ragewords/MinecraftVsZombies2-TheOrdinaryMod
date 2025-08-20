@@ -14,6 +14,7 @@ namespace MVZ2.GameContent.Projectiles
         public const string soulfireBall = "soulfire_ball";
         public const string spiceGas = "spice_gas";
         public const string poisonBall = "poison_ball";
+        public const string poisonPotion = "poison_potion";
         public const string poisonGas = "poison_gas";
         public const string knife = "knife";
         public const string bullet = "bullet";
@@ -77,6 +78,7 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID soulfireBall = Get(VanillaProjectileNames.soulfireBall);
         public static readonly NamespaceID spiceGas = Get(VanillaProjectileNames.spiceGas);
         public static readonly NamespaceID poisonBall = Get(VanillaProjectileNames.poisonBall);
+        public static readonly NamespaceID poisonPotion = Get(VanillaProjectileNames.poisonPotion);
         public static readonly NamespaceID poisonGas = Get(VanillaProjectileNames.poisonGas);
         public static readonly NamespaceID knife = Get(VanillaProjectileNames.knife);
         public static readonly NamespaceID bullet = Get(VanillaProjectileNames.bullet);

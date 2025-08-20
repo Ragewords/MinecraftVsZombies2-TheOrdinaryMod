@@ -331,6 +331,7 @@
 	<model name="missile_fragments_2" type="entity" path="mvz2:projectile/missile_fragments_2" width="38" height="9" xOffset="0" yOffset="0"/>
 	<model name="missile_fragments_3" type="entity" path="mvz2:projectile/missile_fragments_3" width="17" height="6" xOffset="0" yOffset="0"/>
 	<model name="poison_ball" type="entity" path="mvz2:projectile/poison_ball" width="15" height="15" xOffset="0" yOffset="0"/>
+	<model name="poison_potion" type="entity" path="mvz2:projectile/poison_potion" width="18" height="20" xOffset="0" yOffset="0"/>
 
     <model name="large_arrow" type="entity" path="mvz2:projectile/large_arrow" width="64" height="20" xOffset="0" yOffset="0"/>
     <model name="spike" type="entity" path="mvz2:projectile/spike" width="20" height="11" xOffset="0" yOffset="0"/>

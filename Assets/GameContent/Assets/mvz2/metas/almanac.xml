@@ -476,7 +476,7 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>恢复速度：<![CDATA[<color=red>40-/秒（自身），30/秒（周边）</color>]]></p>
+                <p>恢复速度：<![CDATA[<color=red>40/秒（自身），30/秒（周边）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>]]></p>
             </properties>
             <flavor>
@@ -1034,7 +1034,7 @@
                 <p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>10</color>]]></p>
                 <p>特点：<![CDATA[<color=red>剧毒对蜘蛛无效</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在前方3×3的格子释放剧毒毒雾</color>]]></p>
+                <p>技能：<![CDATA[<color=red>发射一瓶药水，破碎后释放剧毒毒雾</color>]]></p>
             </properties>
             <flavor>
                 <p>俗话说良药苦口利于病。</p>

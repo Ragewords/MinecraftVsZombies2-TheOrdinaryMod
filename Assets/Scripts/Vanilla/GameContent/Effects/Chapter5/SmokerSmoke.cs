@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Effects
             base.PostCollision(collision, state);
             if (!collision.Collider.IsMainCollider())
                 return;
-            if (state != EntityCollisionHelper.STATE_ENTER)
+            if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
             var self = collision.Entity;
             var inactive = self.Timeout <= 15;

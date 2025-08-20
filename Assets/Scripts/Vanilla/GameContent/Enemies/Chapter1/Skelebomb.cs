@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Enemies
         protected override int GetActionState(Entity enemy)
         {
             var state = base.GetActionState(enemy);
-            if (IsCasting(enemy))
+            if (state != VanillaEntityStates.DEAD && IsCasting(enemy))
             {
                 return VanillaEntityStates.SKELEBOMB_EXPLODE;
             }

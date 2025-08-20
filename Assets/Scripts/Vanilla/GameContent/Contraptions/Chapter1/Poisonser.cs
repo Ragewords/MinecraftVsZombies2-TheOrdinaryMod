@@ -23,7 +23,11 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetStateTimer(entity, new FrameTimer(60));
+            var timer = new FrameTimer(60)
+            {
+                Frame = 0
+            };
+            SetStateTimer(entity, timer);
             entity.SetAnimationBool("Evoked", false);
         }
         protected override void UpdateAI(Entity entity)
@@ -34,10 +38,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 ShootTick(entity);
                 timer.Run();
-                if (timer.Expired)
-                {
-                    entity.SetAnimationBool("Evoked", false);
-                }
+                entity.SetAnimationBool("Evoked", !timer.Expired);
                 return;
             }
         }
@@ -53,40 +54,10 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             var timer = GetStateTimer(entity);
             timer.Reset();
-            entity.SetAnimationBool("Evoked", true);
-            entity.PlaySound(VanillaSoundID.poisonGas);
-            var level = entity.Level;
-            int startLine = -1;
-            int endLine = 1;
-            int startCol = 1;
-            int endCol = 3;
-            var lane = entity.GetLane();
-            var column = entity.GetColumn();
-            if (lane == 0)
-            {
-                endLine = 0;
-            }
-            if (lane == level.GetMaxLaneCount() - 1)
-            {
-                startLine = 0;
-            }
-            if (column == level.GetMaxColumnCount() - 1)
-            {
-                endCol = 1;
-            }
-
-            for (int i = startLine; i <= endLine; i++)
-            {
-                for (int j = startCol; j <= endCol; j++)
-                {
-                    var x = entity.Position.x + level.GetGridWidth() * entity.GetFacingX() * j;
-                    var z = entity.Position.z + level.GetGridHeight() * i;
-                    var y = level.GetGroundY(x, z);
-                    Vector3 gasPos = new Vector3(x, y, z);
-                    var gas = level.Spawn(VanillaProjectileID.poisonGas, gasPos, entity);
-                    gas.SetFaction(entity.GetFaction());
-                }
-            }
+            var param = entity.GetShootParams();
+            param.projectileID = VanillaProjectileID.poisonPotion;
+            param.damage = 0;
+            entity.ShootProjectile(param);
         }
         public static void SetStateTimer(Entity entity, FrameTimer timer)
         {

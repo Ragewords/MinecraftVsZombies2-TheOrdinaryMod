@@ -11,7 +11,7 @@ namespace MVZ2.GameContent.Effects
     public class PoisonGas : EffectBehaviour
     {
 
-        #region ¹«ÓÐ·½·¨
+        #region ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½
         public PoisonGas(string nsp, string name) : base(nsp, name)
         {
         }
@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Effects
                 return;
             if (other.IsSpider())
                 return;
-            other.InflictPoison(30);
+            other.InflictPoison(150);
         }
         #endregion
 
