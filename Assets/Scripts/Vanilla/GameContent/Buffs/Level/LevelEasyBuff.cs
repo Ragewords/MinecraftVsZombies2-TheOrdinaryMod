@@ -32,7 +32,7 @@ namespace MVZ2.GameContent.Buffs.Level
 
             AddModifier(new BooleanModifier(VanillaDifficultyProps.FRANKENSTEIN_NO_STEEL, true));
 
-            AddModifier(new FloatModifier(VanillaDifficultyProps.THE_EYE_DAMAGE_THRESOLD, NumberOperator.Add, 300f));
+            AddModifier(new FloatModifier(VanillaDifficultyProps.CRESCENT_DAMAGE_THRESOLD, NumberOperator.Add, 300f));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_FATE_CHOICE_COUNT, NumberOperator.Add, 1));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_MAX_FATE_TIMES, NumberOperator.Add, -1));
 

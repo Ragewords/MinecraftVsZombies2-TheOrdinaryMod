@@ -144,7 +144,8 @@
         <description>
             <p>梦魇第一阶段的音乐。</p>
             <p>是《东方绀珠传》的六面Boss——纯狐的音乐。</p>
-            <p>这一阶段最初源自以前的版本中的梦魇第二阶段，这里被复用于一阶段，音乐也是在为后续的阶段做铺垫。</p>
+            <p>这一阶段来源于以前的版本，其的名称“新月”则来源于模拟恐怖作品Local 58。</p>
+            <p>别看月亮。</p>
         </description>
     </music>
     <music id="nightmare_boss" name="Pandemonic Planet（前段）">

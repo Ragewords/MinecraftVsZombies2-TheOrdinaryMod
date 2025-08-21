@@ -283,7 +283,7 @@ namespace MVZ2.GameContent.Bosses
             var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
 
             int count = level.GetSlendermanFateChoiceCount();
-            if (level.Difficulty == VanillaDifficulties.lunatic)
+            if (count == 1)
             {
                 title = Global.Game.GetText(ACCEPT_FATE_TITLE);
                 desc = Global.Game.GetText(ACCEPT_FATE_DESCRIPTION);
@@ -335,8 +335,8 @@ namespace MVZ2.GameContent.Bosses
                 case FATE_BLACK_SUN:
                     BlackSun(boss);
                     break;
-                case FATE_ILLUSION_EYE:
-                    IllusionEye(boss);
+                case FATE_PURE_FURY:
+                    PureFury(boss);
                     break;
             }
         }
@@ -486,15 +486,15 @@ namespace MVZ2.GameContent.Bosses
                 enemy.Stun(90);
             }
         }
-        private void IllusionEye(Entity boss)
+        private void PureFury(Entity boss)
         {
-            boss.PlaySound(VanillaSoundID.reverseVampire);
+            boss.PlaySound(VanillaSoundID.growBig);
             var level = boss.Level;
             var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
             foreach (var enemy in targets_enemy)
             {
-                if (!enemy.HasBuff<IllusionEyeBuff>())
-                    enemy.AddBuff<IllusionEyeBuff>();
+                if (!enemy.HasBuff<PureFuryBuff>())
+                    enemy.AddBuff<PureFuryBuff>();
             }
         }
         private static string GetFateOptionText(int option)
@@ -576,7 +576,7 @@ namespace MVZ2.GameContent.Bosses
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_BLACK_SUN = "黑太阳";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_ILLUSION_EYE = "幻视之眼";
+        public const string FATE_TEXT_PURE_FURY = "纯粹愤怒";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -604,7 +604,7 @@ namespace MVZ2.GameContent.Bosses
         public const int FATE_COME_TRUE = 4;
         public const int FATE_THE_LURKER = 5;
         public const int FATE_BLACK_SUN = 6;
-        public const int FATE_ILLUSION_EYE = 7;
+        public const int FATE_PURE_FURY = 7;
 
         private static NamespaceID[] portalPool = new NamespaceID[]
         {
@@ -668,7 +668,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_COME_TRUE,
             FATE_THE_LURKER,
             FATE_BLACK_SUN,
-            FATE_ILLUSION_EYE,
+            FATE_PURE_FURY,
         };
         private static string[] fateTexts = new string[]
         {
@@ -679,7 +679,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_TEXT_COME_TRUE,
             FATE_TEXT_THE_LURKER,
             FATE_TEXT_BLACK_SUN,
-            FATE_TEXT_ILLUSION_EYE,
+            FATE_TEXT_PURE_FURY,
         };
         #endregion 常量
     }

@@ -5559,7 +5559,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 79d80136264dd394ca7486b3349cd137
-    m_Address: mvz2:entity/boss/the_eye
+    m_Address: mvz2:entity/boss/crescent
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -8772,7 +8772,7 @@ MonoBehaviour:
     - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c0867b3f11fa96a44b7aabf6f530c5bb
-    m_Address: mvz2:boss/the_eye
+    m_Address: mvz2:boss/crescent
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9183,6 +9183,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c96ba930496fd604681b0289aa37eec7
+    m_Address: mvz2:effect/executioner
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c97af9f0f5b17654188e82b19cc1350a
     m_Address: mvz2:gravitation_surge
@@ -10731,6 +10738,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebf61dd9f8cfe5a4b83f509bc2e41ced
+    m_Address: mvz2:entity/effects/executioner_censored
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec212abe3448fae468e8a869c194bb7c
     m_Address: mvz2:entity/contraption/totenser
     m_ReadOnly: 0
@@ -11251,6 +11265,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f70064fbad3e8e249acbd5365f606f06
     m_Address: mvz2:starshard_rings/castle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f71f44002e9c92449bdc4a2798e1d106
+    m_Address: mvz2:entity/effects/executioner
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

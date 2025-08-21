@@ -20,10 +20,10 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaBossNames.theEye)]
-    public class TheEye : BossBehaviour
+    [EntityBehaviourDefinition(VanillaBossNames.crescent)]
+    public class Crescent : BossBehaviour
     {
-        public TheEye(string nsp, string name) : base(nsp, name)
+        public Crescent(string nsp, string name) : base(nsp, name)
         {
         }
         public override void Init(Entity entity)
@@ -57,11 +57,6 @@ namespace MVZ2.GameContent.Bosses
             var takenDamage = GetRecentTakenDamage(boss);
             takenDamage += result.BodyResult.SpendAmount;
             SetRecentTakenDamage(boss, takenDamage);
-            if (takenDamage >= DAMAGE_THRESOLD && !boss.IsDead && GetAttackState(boss) == STATE_REST)
-            {
-                var actTimer = GetActionTimer(boss);
-                actTimer.Stop();
-            }
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -162,7 +157,7 @@ namespace MVZ2.GameContent.Bosses
 
                                     entity.Spawn(VanillaEffectID.darkMatterParticlesAbsorbing, effectPos);
                                 }
-                                SetAttackState(entity, STATE_LEVITATE);
+                                SetAttackState(entity, STATE_EXECUTE);
                                 SetSoundPlayed(entity, false);
                                 entity.SetAnimationInt("AttackState", 0);
                                 transTimer.ResetTime(90);
@@ -170,44 +165,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                         }
                         break;
-                    case STATE_LEVITATE:
-                        {
-                            if (!IsSoundPlayed(entity))
-                            {
-                                entity.PlaySound(VanillaSoundID.magical);
-                                SetSoundPlayed(entity, true);
-                            }
-                            entity.SetAnimationInt("AttackState", 2);
-                            
-                            var transTimer = GetActionTimer(entity);
-                            transTimer.Run();
-
-                            if (transTimer.PassedInterval(30))
-                            {
-                                var level = entity.Level;
-                                var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT
-                                 && e.IsHostile(entity) && e.GetTakingGridLayers(e.GetGrid()).Contains(VanillaGridLayers.main)
-                                  && !e.HasBuff<LevitationBuff>())
-                                .RandomTake(1, entity.RNG);
-                                foreach (var contraption in contraptions)
-                                {
-                                    contraption.AddBuff<LevitationBuff>();
-                                    var carrier = contraption.GetGrid().GetCarrierEntity();
-                                    carrier?.Die(entity);
-                                }
-                            }
-
-                            if (transTimer.Expired)
-                            {
-                                entity.SetAnimationInt("AttackState", 0);
-                                SetSoundPlayed(entity, false);
-                                SetAttackState(entity, STATE_COPY);
-                                transTimer.ResetTime(90);
-                                timer.Reset();
-                            }
-                        }
-                        break;
-                    case STATE_COPY:
+                    case STATE_EXECUTE:
                         {
                             if (!IsSoundPlayed(entity))
                             {
@@ -218,42 +176,20 @@ namespace MVZ2.GameContent.Bosses
 
                             var transTimer = GetActionTimer(entity);
                             transTimer.Run();
-                            if (transTimer.PassedInterval(30))
+                            if (transTimer.Expired)
                             {
                                 var level = entity.Level;
                                 entity.PlaySound(VanillaSoundID.odd);
 
                                 var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT
                                  && e.GetTakingGridLayers(e.GetGrid()).Contains(VanillaGridLayers.main))
-                                .OrderBy(e => e.GetMaxHealth()).RandomTake(2, entity.RNG);
+                                .OrderByDescending(e => e.GetCost()).Take(1);
 
-                                var grids = level.GetAllGrids();
                                 foreach (var contraption in contraptions)
                                 {
-                                    var ID = contraption.GetDefinitionID();
-                                    var waterInteraction = contraption.GetWaterInteraction();
-                                    var targetGrids = grids.Where(g => g.CanSpawnEntity(ID));
-                                    if (targetGrids.Count() <= 0)
-                                        continue;
-                                    var gridGroup = targetGrids.GroupBy(g => g.Column).OrderByDescending(g => g.Key).Take(3);
-                                    var selectedGrid = gridGroup.SelectMany(g => g.Shuffle(entity.RNG)).Random(GetProjectileRNG(entity));
-                                    if (selectedGrid.IsWater())
-                                    {
-                                        entity.Spawn(VanillaEffectID.nightmareaperSplash, selectedGrid.GetEntityPosition());
-                                        entity.PlaySound(VanillaSoundID.splashBig);
-                                    }
-                                    else if (selectedGrid.IsCloud())
-                                    {
-                                        entity.Spawn(VanillaEffectID.splashParticles, selectedGrid.GetEntityPosition());
-                                        entity.PlaySound(VanillaSoundID.smallExplosion);
-                                    }
-                                    else
-                                        entity.Spawn(VanillaEffectID.spawnerAppearEmbers, selectedGrid.GetEntityPosition());
-                                    entity.SpawnWithParams(ID, selectedGrid.GetEntityPosition());
+                                    entity.SpawnWithParams(VanillaEffectID.executioner, contraption.Position);
                                 }
-                            }
-                            if (transTimer.Expired)
-                            {
+
                                 entity.SetAnimationInt("AttackState", 0);
                                 SetSoundPlayed(entity, false);
                                 SetAttackState(entity, STATE_MIND_BLAST);
@@ -305,11 +241,12 @@ namespace MVZ2.GameContent.Bosses
                         {
                             var level = entity.Level;
                             var takenDamage = GetRecentTakenDamage(entity);
-                            if (takenDamage >= level.GetTheEyeDamageThresold() && !entity.IsDead)
+                            if (takenDamage >= level.GetCrescentDamageThresold() && !entity.IsDead)
                             {
                                 entity.SetAnimationInt("AttackState", 0);
                                 SetAttackState(entity, STATE_DARK_MATTER);
                                 SetRecentTakenDamage(entity, 0);
+                                timer.Reset();
                                 MoveHigher(entity);
                             }
                         }
@@ -320,29 +257,24 @@ namespace MVZ2.GameContent.Bosses
         #endregion
 
         #region ����
-        public static RandomGenerator GetProjectileRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_PROJECTILE_RNG);
-        public static void SetProjectileRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_PROJECTILE_RNG, value);
-        public static FrameTimer GetActionTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_Action_TIMER);
-        public static void SetActionTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(ID, PROP_Action_TIMER, value);
-        public static int GetAttackState(Entity boss) => boss.GetBehaviourField<int>(ID, PROP_ATTACK_STATE);
-        public static void SetAttackState(Entity boss, int value) => boss.SetBehaviourField(ID, PROP_ATTACK_STATE, value);
-        public static bool IsSoundPlayed(Entity boss) => boss.GetBehaviourField<bool>(ID, PROP_SOUND);
-        public static void SetSoundPlayed(Entity boss, bool value) => boss.SetBehaviourField(ID, PROP_SOUND, value);
-        public static FrameTimer GetStateTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
-        public static void SetStateTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(ID, PROP_STATE_TIMER, value);
+        public static RandomGenerator GetProjectileRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(PROP_PROJECTILE_RNG);
+        public static void SetProjectileRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(PROP_PROJECTILE_RNG, value);
+        public static FrameTimer GetActionTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(PROP_Action_TIMER);
+        public static void SetActionTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(PROP_Action_TIMER, value);
+        public static int GetAttackState(Entity boss) => boss.GetBehaviourField<int>(PROP_ATTACK_STATE);
+        public static void SetAttackState(Entity boss, int value) => boss.SetBehaviourField(PROP_ATTACK_STATE, value);
+        public static bool IsSoundPlayed(Entity boss) => boss.GetBehaviourField<bool>(PROP_SOUND);
+        public static void SetSoundPlayed(Entity boss, bool value) => boss.SetBehaviourField(PROP_SOUND, value);
+        public static FrameTimer GetStateTimer(Entity boss) => boss.GetBehaviourField<FrameTimer>(PROP_STATE_TIMER);
+        public static void SetStateTimer(Entity boss, FrameTimer value) => boss.SetBehaviourField(PROP_STATE_TIMER, value);
         public static float GetRecentTakenDamage(Entity boss) => boss.GetBehaviourField<float>(PROP_RECENT_TAKEN_DAMAGE);
         public static void SetRecentTakenDamage(Entity boss, float value) => boss.SetBehaviourField(PROP_RECENT_TAKEN_DAMAGE, value);
         #endregion
 
         public const int STATE_DARK_MATTER = 0;
-        public const int STATE_LEVITATE = 1;
-        public const int STATE_COPY = 2;
-        public const int STATE_MIND_BLAST = 3;
-        public const int STATE_REST = 4;
-
-        private const float DAMAGE_THRESOLD = 1700;
-
-        public static readonly NamespaceID ID = VanillaBossID.theEye;
+        public const int STATE_EXECUTE = 1;
+        public const int STATE_MIND_BLAST = 2;
+        public const int STATE_REST = 3;
 
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_Action_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ActionTimer");
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_PROJECTILE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("ProjectileRNG");

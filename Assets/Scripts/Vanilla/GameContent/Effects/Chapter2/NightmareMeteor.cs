@@ -17,16 +17,21 @@ namespace MVZ2.GameContent.Effects
         {
         }
         #endregion
-
-        public override void PostContactGround(Entity entity, Vector3 velocity)
+        public override void Update(Entity entity)
         {
-            base.PostContactGround(entity, velocity);
-            entity.Spawn(VanillaEffectID.nightmareFireParticles, entity.GetCenter());
-            entity.Spawn(VanillaBossID.theEye, entity.Position);
+            base.Update(entity);
+            if (entity.Timeout <= 0)
+            {
+                var effectPosition = entity.GetCenter() + Vector3.up * 37;
+                entity.Spawn(VanillaEffectID.nightmareFireParticles, effectPosition);
+                entity.Spawn(VanillaBossID.crescent, entity.Position);
 
-            entity.PlaySound(VanillaSoundID.meteorLand);
-            entity.Level.ShakeScreen(10, 0, 15);
-            entity.Remove();
+                entity.PlaySound(VanillaSoundID.meteorLand);
+                entity.PlaySound(VanillaSoundID.explosion);
+                Explosion.Spawn(entity, effectPosition, 120);
+                entity.Level.ShakeScreen(10, 0, 15);
+                entity.Remove();
+            }
         }
     }
 }

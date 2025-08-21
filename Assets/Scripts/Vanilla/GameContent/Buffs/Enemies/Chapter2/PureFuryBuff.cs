@@ -1,0 +1,21 @@
+using MVZ2.Vanilla.Entities;
+using PVZEngine.Buffs;
+using PVZEngine.Entities;
+using PVZEngine.Level;
+using PVZEngine.Modifiers;
+using UnityEngine;
+
+namespace MVZ2.GameContent.Buffs.Enemies
+{
+    [BuffDefinition(VanillaBuffNames.pureFury)]
+    public class PureFuryBuff : BuffDefinition
+    {
+        public PureFuryBuff(string nsp, string name) : base(nsp, name)
+        {
+            AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, new Color (1, 0, 0, 1)));
+            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 2f));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, 2f));
+            AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.Multiply, 2f));
+        }
+    }
+}

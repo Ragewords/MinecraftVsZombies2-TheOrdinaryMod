@@ -1998,14 +1998,14 @@
                 <color name="mvz2:bloodColorCensored" value="#00007FFF"/>
             </properties>
         </boss>
-        <boss id="the_eye" name="眼">
+        <boss id="crescent" name="新月">
             <properties>
                 <int name="mvz2:waterInteraction" value="0"/>
                 <float name="mvz2:maxHealth" value="8500"/>
                 <id name="mvz2:shell" value="mvz2:normal" />
                 <vector3 name="mvz2:size" x="74" y="74" z="74"/>
-                <color name="mvz2:bloodColor" value="#7F0000FF"/>
-                <color name="mvz2:bloodColorCensored" value="#00007FFF"/>
+                <color name="mvz2:bloodColor" value="#000000ff"/>
+                <color name="mvz2:bloodColorCensored" value="#000000ff"/>
             </properties>
         </boss>
         <boss id="slenderman" name="瘦长鬼影">
@@ -2933,10 +2933,11 @@
         </effect>
         <effect id="nightmare_meteor">
             <properties>
-                <float name="mvz2:gravity" value="5" />
+                <float name="mvz2:gravity" value="-3" />
                 <bool name="mvz2:decorative" value="false" />
                 <bool name="mvz2:isFire" value="true" />
-                <vector3 name="mvz2:size" x="100" y="100" z="100" />
+                <vector3 name="mvz2:size" x="80" y="80" z="80" />
+                <int name="mvz2:maxTimeout" value="30" />
             </properties>
         </effect>
         <effect id="nightmare_fire_particles">
@@ -2944,6 +2945,12 @@
                 <bool name="mvz2:decorative" value="false" />
                 <bool name="mvz2:isFire" value="true" />
                 <int name="mvz2:maxTimeout" value="45" />
+            </properties>
+        </effect>
+        <effect id="executioner">
+            <properties>
+                <int name="mvz2:maxTimeout" value="90" />
+                <vector3 name="mvz2:size" x="53" y="87" z="53" />
             </properties>
         </effect>
         <effect id="nightmare_portal">

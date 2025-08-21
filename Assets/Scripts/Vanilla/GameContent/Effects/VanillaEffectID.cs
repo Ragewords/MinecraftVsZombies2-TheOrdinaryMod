@@ -52,6 +52,7 @@ namespace MVZ2.GameContent.Effects
         public const string nightmareaperSplash = "nightmareaper_splash";
         public const string nightmareaperShadow = "nightmareaper_shadow";
         public const string sliceSpark = "slice_spark";
+        public const string executioner = "executioner";
         public const string crushingWalls = "crushing_walls";
         public const string nightmareaperTimer = "nightmareaper_timer";
         public const string nightmareDarkness = "nightmare_darkness";
@@ -146,6 +147,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID nightmareaperSplash = Get(VanillaEffectNames.nightmareaperSplash);
         public static readonly NamespaceID nightmareaperShadow = Get(VanillaEffectNames.nightmareaperShadow);
         public static readonly NamespaceID sliceSpark = Get(VanillaEffectNames.sliceSpark);
+        public static readonly NamespaceID executioner = Get(VanillaEffectNames.executioner);
         public static readonly NamespaceID crushingWalls = Get(VanillaEffectNames.crushingWalls);
         public static readonly NamespaceID nightmareaperTimer = Get(VanillaEffectNames.nightmareaperTimer);
         public static readonly NamespaceID nightmareDarkness = Get(VanillaEffectNames.nightmareDarkness);

@@ -701,6 +701,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 832e7d1ecf7d7eb42a2921e2909679f6, type: 3}
   - name: entity/effects/evocation_star
     sprite: {fileID: 21300000, guid: 8b93445b685c42440938fc5154ea419c, type: 3}
+  - name: entity/effects/executioner
+    sprite: {fileID: 21300000, guid: f71f44002e9c92449bdc4a2798e1d106, type: 3}
+  - name: entity/effects/executioner_censored
+    sprite: {fileID: 21300000, guid: ebf61dd9f8cfe5a4b83f509bc2e41ced, type: 3}
   - name: entity/effects/fire_particle
     sprite: {fileID: 21300000, guid: 4f1e8833ddcff2246a43e4d3b98c6fc4, type: 3}
   - name: entity/effects/flash
@@ -885,6 +889,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8af07b31f932791429fddf24a251679f, type: 3}
   - name: entity/projectiles/knife
     sprite: {fileID: 21300000, guid: 85842c2e1aa457b418e743fc8faeae75, type: 3}
+  - name: entity/projectiles/lingering_potion
+    sprite: {fileID: 21300000, guid: de92cafa97933f14ca26c5babda512d8, type: 3}
   - name: entity/projectiles/mine_tnt_seed
     sprite: {fileID: 21300000, guid: b71c1daafbba0124f80126366dd3a4e6, type: 3}
   - name: entity/projectiles/missile
@@ -901,6 +907,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d270746c6b1f84442af0d2614257f2e6, type: 3}
   - name: entity/projectiles/poison_ball
     sprite: {fileID: 21300000, guid: 1cbc6eb2a2eb74f4ca62cf75c6a2f1ac, type: 3}
+  - name: entity/projectiles/potion_overlay
+    sprite: {fileID: 21300000, guid: 201e5721e971a564488d089bd9d27f7b, type: 3}
   - name: entity/projectiles/reflection_bullet
     sprite: {fileID: 21300000, guid: 779caaadbdd68fb40b71d160c2305c1c, type: 3}
   - name: entity/projectiles/reflection_sonicwave
@@ -1464,6 +1472,12 @@ MonoBehaviour:
     - {fileID: -1346151238, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: 1817556834, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: -1984530239, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
+  - name: entity/boss/crescent
+    spritesheet:
+    - {fileID: -224624718, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 1839669874, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
+    - {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   - name: entity/boss/frankenstein
     spritesheet:
     - {fileID: -8387447821006724102, guid: 74da7e893d261a549a659cfaef15b372, type: 3}
@@ -1542,12 +1556,6 @@ MonoBehaviour:
     - {fileID: 6494446197138225416, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5653982790268467409, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
     - {fileID: 5039749940984752654, guid: ae1a22e91a039eb4ab8bed023d69ca2d, type: 3}
-  - name: entity/boss/the_eye
-    spritesheet:
-    - {fileID: -224624718, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 1839669874, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   - name: entity/boss/the_giant
     spritesheet:
     - {fileID: 2106222037, guid: cd590dd9f5d29994db2a5356364308e6, type: 3}

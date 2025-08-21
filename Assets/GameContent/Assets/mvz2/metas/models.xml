@@ -185,9 +185,9 @@
     <!-- Bosses -->
     <model name="frankenstein" type="entity" path="mvz2:boss/frankenstein" width="100" height="200" xOffset="24" yOffset="-96"/>
 	<model name="frankenstein_s_head" type="entity" path="mvz2:boss/frankenstein_s_head" width="51" height="42" xOffset="0" yOffset="-21"/>
+	<model name="crescent" type="entity" path="mvz2:boss/crescent" width="74" height="74" xOffset="0" yOffset="-37"/>
     <model name="slenderman" type="entity" path="mvz2:boss/slenderman" width="200" height="150" xOffset="0" yOffset="-60"/>
     <model name="nightmareaper" type="entity" path="mvz2:boss/nightmareaper" width="240" height="200" xOffset="0" yOffset="-15"/>
-	<model name="the_eye" type="entity" path="mvz2:boss/the_eye" width="74" height="74" xOffset="0" yOffset="-37"/>
     <model name="seija" type="entity" path="mvz2:boss/seija" width="30" height="88" xOffset="0" yOffset="-44"/>
     <model name="wither" type="entity" path="mvz2:boss/wither" width="112" height="168" xOffset="6" yOffset="-84"/>
     <model name="the_giant" type="entity" path="mvz2:boss/the_giant" width="256" height="332" xOffset="0" yOffset="-40"/>
@@ -274,6 +274,7 @@
     <model name="nightmareaper_splash" type="entity" path="mvz2:effect/nightmareaper_splash" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_shadow" type="entity" path="mvz2:effect/nightmareaper_shadow" width="240" height="200" xOffset="0" yOffset="-20"/>
     <model name="slice_spark" type="entity" path="mvz2:effect/slice_spark" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="executioner" type="entity" path="mvz2:effect/executioner" width="53" height="87" xOffset="0" yOffset="-43"/>
     <model name="crushing_walls" type="entity" path="mvz2:effect/crushing_walls" width="800" height="600" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_timer" type="entity" path="mvz2:effect/nightmareaper_timer" width="160" height="50" xOffset="0" yOffset="0"/>
     <model name="nightmare_darkness" type="entity" path="mvz2:effect/nightmare_darkness" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

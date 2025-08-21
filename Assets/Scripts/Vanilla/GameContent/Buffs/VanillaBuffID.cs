@@ -103,7 +103,7 @@ namespace MVZ2.GameContent.Buffs
         public const string forcePadDrag = "force_pad_frag";
         public const string redstoneCarrier = "redstone_carrier";
         public const string nightmareComeTrue = "nightmare_come_true";
-        public const string nightmareIllusionEye = "nightmare_illusion_eye";
+        public const string pureFury = "pure_fury";
         public const string soulsandSummoned = "soulsand_summoned";
         public const string soulsand = "soulsand";
         public const string littleZombie = "little_zombie";
@@ -217,7 +217,7 @@ namespace MVZ2.GameContent.Buffs
 
             // 过场
             public const string frankensteinStage = "frankenstein_stage";
-            public const string theEyeTransition = "the_eye_transition";
+            public const string crescentTransition = "crescent_transition";
             public const string slendermanTransition = "slenderman_transition";
             public const string nightmareaperTransition = "nightmareaper_transition";
             public const string nightmareCleared = "nightmare_cleared";
