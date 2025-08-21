@@ -270,7 +270,6 @@
     <model name="nightmare_fire_particles" type="entity" path="mvz2:effect/nightmare_fire_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmare_portal" type="entity" path="mvz2:effect/nightmare_portal" width="64" height="120" xOffset="0" yOffset="-50" />
     <model name="dark_matter_particles" type="entity" path="mvz2:effect/dark_matter_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
-    <model name="dark_matter_particles_absorbing" type="entity" path="mvz2:effect/dark_matter_particles_absorbing" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_splash" type="entity" path="mvz2:effect/nightmareaper_splash" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="nightmareaper_shadow" type="entity" path="mvz2:effect/nightmareaper_shadow" width="240" height="200" xOffset="0" yOffset="-20"/>
     <model name="slice_spark" type="entity" path="mvz2:effect/slice_spark" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>

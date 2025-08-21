@@ -1,4 +1,4 @@
-using MVZ2.GameContent.Bosses;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
@@ -23,12 +23,15 @@ namespace MVZ2.GameContent.Effects
             if (entity.Timeout <= 0)
             {
                 var effectPosition = entity.GetCenter() + Vector3.up * 37;
+                var matterPosition = entity.GetCenter();
+                matterPosition.y = 600;
                 entity.Spawn(VanillaEffectID.nightmareFireParticles, effectPosition);
-                entity.Spawn(VanillaBossID.crescent, entity.Position);
+                var param = entity.GetSpawnParams();
+                param.SetProperty(VanillaEntityProps.DAMAGE, 100f);
+                param.SetProperty(VanillaEntityProps.RANGE, 120f);
+                entity.Spawn(VanillaProjectileID.darkMatterBall, matterPosition, param);
 
-                entity.PlaySound(VanillaSoundID.meteorLand);
                 entity.PlaySound(VanillaSoundID.explosion);
-                Explosion.Spawn(entity, effectPosition, 120);
                 entity.Level.ShakeScreen(10, 0, 15);
                 entity.Remove();
             }

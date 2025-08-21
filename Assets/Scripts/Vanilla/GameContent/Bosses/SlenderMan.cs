@@ -15,6 +15,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic;
@@ -251,8 +252,6 @@ namespace MVZ2.GameContent.Bosses
 
             var rng = GetMindSwapRNG(entity);
             NamespaceID[] pool = level.SlendermanMindSwapZombies() ? hardMindSwapPool : mindSwapPool;
-            if (level.Difficulty == VanillaDifficulties.lunatic)
-                pool = lunaticMindSwapPool;
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
             {
                 var blueprint = level.GetConveyorSeedPackAt(i);
@@ -316,12 +315,7 @@ namespace MVZ2.GameContent.Bosses
                     Biohazard(boss);
                     break;
                 case FATE_DECREPIFY:
-                    {
-                        if (alteredFate)
-                            DecrepifyAltered(boss);
-                        else
-                            Decrepify(boss);
-                    }
+                    Decrepify(boss);
                     break;
                 case FATE_INSANITY:
                     Insanity(boss);
@@ -337,6 +331,12 @@ namespace MVZ2.GameContent.Bosses
                     break;
                 case FATE_PURE_FURY:
                     PureFury(boss);
+                    break;
+                case FATE_SENTENCED:
+                    Sentenced(boss);
+                    break;
+                case FATE_MOONRISE:
+                    Moonrise(boss);
                     break;
             }
         }
@@ -424,16 +424,9 @@ namespace MVZ2.GameContent.Bosses
             var level = boss.Level;
             var rng = GetEventRNG(boss);
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && !e.IsLoyal()).RandomTake(5, rng);
-            var targetFaction = 0;
             foreach (var target in targets)
             {
-                targetFaction = target.GetFaction();
                 target.Charm(boss.GetFaction());
-            }
-            var targets1 = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsLoyal()).RandomTake(5, rng);
-            foreach (var target in targets1)
-            {
-                target.Charm(targetFaction);
             }
         }
 
@@ -480,11 +473,6 @@ namespace MVZ2.GameContent.Bosses
             {
                 contraption.ShortCircuit(300);
             }
-            var targets_enemy = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.CanDeactive());
-            foreach (var enemy in targets_enemy)
-            {
-                enemy.Stun(90);
-            }
         }
         private void PureFury(Entity boss)
         {
@@ -496,6 +484,44 @@ namespace MVZ2.GameContent.Bosses
                 if (!enemy.HasBuff<PureFuryBuff>())
                     enemy.AddBuff<PureFuryBuff>();
             }
+        }
+        private void Sentenced(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.odd);
+            var level = boss.Level;
+            var rng = GetEventRNG(boss);
+            var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss)).RandomTake(1, rng);
+            foreach (var target in targets)
+            {
+                var col = target.GetColumn();
+                for (int i = 0; i < level.GetMaxLaneCount(); i++)
+                {
+                    var grid = level.GetGrid(col, i);
+                    if (!grid.IsWater() && !grid.IsCloud())
+                        boss.SpawnWithParams(VanillaEffectID.executioner, grid.GetEntityPosition());
+                }
+            }
+        }
+        private void Moonrise(Entity boss)
+        {
+            var level = boss.Level;
+            level.ShakeScreen(30, 0, 10);
+            level.PlaySound(VanillaSoundID.explosion);
+            Vector3 pos = new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2));
+
+            {
+                level.PlaySound(VanillaSoundID.splashBig);
+                level.Spawn(VanillaEffectID.nightmareFireParticles, pos + Vector3.up * 37, null);
+                var splash = level.Spawn(VanillaEffectID.splashParticles, pos, null);
+                splash.SetTint(level.GetWaterColor());
+                splash.SetDisplayScale(Vector3.one * 4);
+                level.Spawn(VanillaEffectID.nightmareaperSplash, pos, null);
+            }
+
+            var param = boss.GetSpawnParams();
+            param.SetProperty(VanillaEntityProps.DAMAGE, 100f);
+            param.SetProperty(VanillaEntityProps.RANGE, 120f);
+            var meteor = boss.Spawn(VanillaEffectID.nightmareMeteor, pos, param);
         }
         private static string GetFateOptionText(int option)
         {
@@ -577,6 +603,10 @@ namespace MVZ2.GameContent.Bosses
         public const string FATE_TEXT_BLACK_SUN = "黑太阳";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_PURE_FURY = "纯粹愤怒";
+        [TranslateMsg("梦魇选项")]
+        public const string FATE_TEXT_SENTENCED = "处决者";
+        [TranslateMsg("梦魇选项")]
+        public const string FATE_TEXT_MOONRISE = "月出";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -605,6 +635,8 @@ namespace MVZ2.GameContent.Bosses
         public const int FATE_THE_LURKER = 5;
         public const int FATE_BLACK_SUN = 6;
         public const int FATE_PURE_FURY = 7;
+        public const int FATE_SENTENCED = 8;
+        public const int FATE_MOONRISE = 9;
 
         private static NamespaceID[] portalPool = new NamespaceID[]
         {
@@ -642,23 +674,6 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
         };
-        private static NamespaceID[] lunaticMindSwapPool = new NamespaceID[]
-        {
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.glowstone),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.punchton),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.tnt),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.skeleton),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.ghast),
-        };
         private static int[] fateOptions = new int[]
         {
             FATE_PANDORAS_BOX,
@@ -669,6 +684,8 @@ namespace MVZ2.GameContent.Bosses
             FATE_THE_LURKER,
             FATE_BLACK_SUN,
             FATE_PURE_FURY,
+            FATE_SENTENCED,
+            FATE_MOONRISE,
         };
         private static string[] fateTexts = new string[]
         {
@@ -680,6 +697,8 @@ namespace MVZ2.GameContent.Bosses
             FATE_TEXT_THE_LURKER,
             FATE_TEXT_BLACK_SUN,
             FATE_TEXT_PURE_FURY,
+            FATE_TEXT_SENTENCED,
+            FATE_TEXT_MOONRISE,
         };
         #endregion 常量
     }

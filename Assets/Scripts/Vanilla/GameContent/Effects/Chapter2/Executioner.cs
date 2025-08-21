@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 
@@ -17,20 +20,26 @@ namespace MVZ2.GameContent.Effects
         {
             base.Init(entity);
             entity.PlaySound(VanillaSoundID.dirtRise);
-            entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT;
+            KillConflictContraptions(entity);
         }
-        public override void PostCollision(EntityCollision collision, int state)
+        private void KillConflictContraptions(Entity entity)
         {
-            base.PostCollision(collision, state);
-            var entity = collision.Entity;
-            var other = collision.Other;
-            if (state == EntityCollisionHelper.STATE_EXIT)
-                return;
-            if (other.IsDead)
-                return;
-            if (entity.GetGrid() != other.GetGrid())
-                return;
-            other.Die(entity);
+            var grids = entity.GetGridsToTake();
+            foreach (var grid in grids)
+            {
+                statueTakenLayersBuffer.Clear();
+                entity.GetTakingGridLayersNonAlloc(grid, statueTakenLayersBuffer);
+                foreach (var contraption in entity.Level.FindEntities(e => e.Type == EntityTypes.PLANT && e.GetGridsToTake().Contains(grid)))
+                {
+                    entityTakenLayersBuffer.Clear();
+                    contraption.GetTakingGridLayersNonAlloc(grid, entityTakenLayersBuffer);
+                    if (!entityTakenLayersBuffer.Any(l => statueTakenLayersBuffer.Contains(l)))
+                        continue;
+                    contraption.Die(entity);
+                }
+            }
         }
+        private List<NamespaceID> statueTakenLayersBuffer = new List<NamespaceID>();
+        private List<NamespaceID> entityTakenLayersBuffer = new List<NamespaceID>();
     }
 }

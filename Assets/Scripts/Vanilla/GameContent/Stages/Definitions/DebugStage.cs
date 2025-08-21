@@ -1,6 +1,7 @@
 ﻿using MVZ2.GameContent.Artifacts;
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
@@ -44,16 +45,16 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.silvenser,
+                VanillaContraptionID.glowstone,
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.randomChina,
-                VanillaBossID.seija,
+                VanillaBossID.slenderman,
                 VanillaEnemyID.karakasaZombie,
                 VanillaEnemyID.cannoneerZombie,
-                VanillaBlueprintID.ufoRainbow,
+                VanillaEffectID.nightmareMeteor,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
