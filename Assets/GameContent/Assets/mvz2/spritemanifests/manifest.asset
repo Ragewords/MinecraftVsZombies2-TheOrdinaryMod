@@ -1472,12 +1472,6 @@ MonoBehaviour:
     - {fileID: -1346151238, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: 1817556834, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: -1984530239, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
-  - name: entity/boss/crescent
-    spritesheet:
-    - {fileID: -224624718, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 882250665, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 1839669874, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
-    - {fileID: 589349020, guid: 79d80136264dd394ca7486b3349cd137, type: 3}
   - name: entity/boss/frankenstein
     spritesheet:
     - {fileID: -8387447821006724102, guid: 74da7e893d261a549a659cfaef15b372, type: 3}

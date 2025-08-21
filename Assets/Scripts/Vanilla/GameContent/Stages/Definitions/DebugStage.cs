@@ -54,7 +54,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaBossID.slenderman,
                 VanillaEnemyID.karakasaZombie,
                 VanillaEnemyID.cannoneerZombie,
-                VanillaEffectID.nightmareMeteor,
+                VanillaEffectID.executioner,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

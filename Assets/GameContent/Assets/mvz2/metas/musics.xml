@@ -138,16 +138,6 @@
             <p>等着吧，哆来咪，我们绝对会把你救出来的。</p>
         </description>
     </music>
-    <music id="nightmare_boss3" name="Pure Furies ～ 心之所在">
-        <track main="mvz2:nightmare_boss3"/>
-        <source>东方绀珠传</source>
-        <description>
-            <p>梦魇第一阶段的音乐。</p>
-            <p>是《东方绀珠传》的六面Boss——纯狐的音乐。</p>
-            <p>这一阶段来源于以前的版本，其的名称“新月”则来源于模拟恐怖作品Local 58。</p>
-            <p>别看月亮。</p>
-        </description>
-    </music>
     <music id="nightmare_boss" name="Pandemonic Planet（前段）">
         <track main="mvz2:nightmare_boss"/>
         <source>东方绀珠传</source>

@@ -1998,16 +1998,6 @@
                 <color name="mvz2:bloodColorCensored" value="#00007FFF"/>
             </properties>
         </boss>
-        <boss id="crescent" name="新月">
-            <properties>
-                <int name="mvz2:waterInteraction" value="0"/>
-                <float name="mvz2:maxHealth" value="8500"/>
-                <id name="mvz2:shell" value="mvz2:stone" />
-                <vector3 name="mvz2:size" x="74" y="74" z="74"/>
-                <color name="mvz2:bloodColor" value="#000000ff"/>
-                <color name="mvz2:bloodColorCensored" value="#000000ff"/>
-            </properties>
-        </boss>
         <boss id="slenderman" name="瘦长鬼影">
             <properties>
                 <int name="mvz2:waterInteraction" value="0" />
