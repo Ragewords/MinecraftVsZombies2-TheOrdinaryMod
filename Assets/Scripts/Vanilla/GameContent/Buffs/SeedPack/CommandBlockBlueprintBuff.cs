@@ -1,7 +1,9 @@
 using MVZ2.GameContent.Recharges;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
+using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Level;
@@ -21,6 +23,7 @@ namespace MVZ2.GameContent.Buffs.SeedPacks
         {
             base.PostAdd(buff);
             var game = Global.Game;
+            buff.Level.PlaySound(VanillaSoundID.dataCopy);
             var rechargeID = buff.GetSeedPack().GetRechargeID();
             var rechargeDef = game.GetRechargeDefinition(rechargeID);
             if (rechargeDef == null)

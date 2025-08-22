@@ -60,7 +60,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             entity.PlaySound(VanillaSoundID.meow);
-            entity.PlaySound(VanillaSoundID.dataCopy);
+            entity.PlaySound(VanillaSoundID.nimbleFabric);
             var enemies = entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsNotActiveEnemy() && entity.GetGrid().CanSpawnEntity(e.GetDefinitionID())).RandomTake(3, entity.RNG);
             if (enemies.Count() <= 0)
                 return;
