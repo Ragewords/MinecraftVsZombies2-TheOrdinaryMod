@@ -44,31 +44,24 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     buff.Remove();
                     return;
                 }
-                entity.SetAnimationFloat("ShieldDamaged", GetHealth(buff) / MAX_DAMAGE);
-                entity.SetAnimationFloat("ShieldSpeed", 1 + (1 - GetHealth(buff) / MAX_DAMAGE) * 3);
+                entity.SetAnimationFloat("ShieldDamaged", GetHealth(buff) / MAX_HEALTH);
+                entity.SetAnimationFloat("ShieldSpeed", 1 + (1 - GetHealth(buff) / MAX_HEALTH) * 3);
             }
 
             if (GetHealth(buff) <= 0)
-                buff.Remove();
-        }
-        public override void PostRemove(Buff buff)
-        {
-            base.PostRemove(buff);
-            var entity = buff.GetEntity();
-            if (entity != null)
             {
-                entity.PlaySound(VanillaSoundID.energyShieldBreak);
-                entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
-                entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, 100);
+                Break(buff);
+                buff.Remove();
             }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
         {
             var damage = param.input;
             var entity = damage.Entity;
+            var amount = damage.Amount;
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                Damage(buff, 1);
+                TakeDamage(buff, amount);
                 result.SetFinalValue(false);
             }
         }
@@ -80,10 +73,36 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         }
         public static float GetHealth(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetHealth(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
-        public static void Damage(Buff buff, float value) => SetHealth(buff, GetHealth(buff) - value);
-        public static void Heal(Buff buff, float value) => SetHealth(buff, Mathf.Min(MAX_DAMAGE, GetHealth(buff) + value));
-        public static void ResetHealth(Buff buff) => SetHealth(buff, MAX_DAMAGE);
-        public const float MAX_DAMAGE = 1000;
+        public static void TakeDamage(Buff buff, float value)
+        {
+            SetHealth(buff, GetHealth(buff) - Mathf.Min(value, MAX_TAKE_DAMAGE));
+            var entity = buff.GetEntity();
+            entity?.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, value);
+        }
+        public static void Heal(Buff buff, float value)
+        {
+            var entity = buff.GetEntity();
+            if (entity != null)
+            {
+                var hpBefore = GetHealth(buff);
+                SetHealth(buff, Mathf.Min(MAX_HEALTH, GetHealth(buff) + value));
+                entity.AddTickHealing(GetHealth(buff) - hpBefore);
+            }
+        }
+        public static void Break(Buff buff)
+        {
+            var entity = buff.GetEntity();
+            if (entity != null)
+            {
+                entity.PlaySound(VanillaSoundID.glassBreak);
+                entity.PlaySound(VanillaSoundID.energyShieldBreak);
+                entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
+                entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield);
+            }
+        }
+        public static void ResetHealth(Buff buff) => SetHealth(buff, MAX_HEALTH);
+        public const float MAX_HEALTH = 1000;
+        public const float MAX_TAKE_DAMAGE = 400;
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("Health");
 
         public class EnergyShieldAura : AuraEffectDefinition
