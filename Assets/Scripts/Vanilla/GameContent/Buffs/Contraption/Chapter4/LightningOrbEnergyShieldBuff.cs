@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -25,10 +26,12 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 3, 5)));
             AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Set, VehicleInteraction.BLOCK));
-            protectDetector = new LightningOrbEnergyShieldDetector()
-            {
-                factionTarget = FactionTarget.Friendly
-            };
+            AddAura(new EnergyShieldAura());
+        }
+        public override void PostAdd(Buff buff)
+        {
+            base.PostAdd(buff);
+            ResetHealth(buff);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -41,17 +44,11 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     buff.Remove();
                     return;
                 }
-                protectDetectBuffer.Clear();
-                protectDetector.DetectEntities(entity, protectDetectBuffer);
-                foreach (var target in protectDetectBuffer)
-                {
-                    target.AddBuff<LightningOrbEnergyShieldProtectedBuff>();
-                }
                 entity.SetAnimationFloat("ShieldDamaged", GetHealth(buff) / MAX_DAMAGE);
-                entity.SetAnimationFloat("ShieldSpeed", 1 + (GetHealth(buff) / MAX_DAMAGE) * 3);
+                entity.SetAnimationFloat("ShieldSpeed", 1 + (1 - GetHealth(buff) / MAX_DAMAGE) * 3);
             }
 
-            if (GetHealth(buff) >= MAX_DAMAGE)
+            if (GetHealth(buff) <= 0)
                 buff.Remove();
         }
         public override void PostRemove(Buff buff)
@@ -83,12 +80,36 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         }
         public static float GetHealth(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetHealth(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
-        public static void Damage(Buff buff, float value) => SetHealth(buff, GetHealth(buff) + value);
-        public static void Heal(Buff buff, float value) => SetHealth(buff, Mathf.Max(0, GetHealth(buff) - value));
-        public static void ResetHealth(Buff buff) => SetHealth(buff, 0);
-        public const float MAX_DAMAGE = 500;
+        public static void Damage(Buff buff, float value) => SetHealth(buff, GetHealth(buff) - value);
+        public static void Heal(Buff buff, float value) => SetHealth(buff, Mathf.Min(MAX_DAMAGE, GetHealth(buff) + value));
+        public static void ResetHealth(Buff buff) => SetHealth(buff, MAX_DAMAGE);
+        public const float MAX_DAMAGE = 1000;
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("Health");
-        private Detector protectDetector;
-        private List<Entity> protectDetectBuffer = new List<Entity>();
+
+        public class EnergyShieldAura : AuraEffectDefinition
+        {
+            public EnergyShieldAura()
+            {
+                BuffID = VanillaBuffID.lightningOrbEnergyShieldProtected;
+                UpdateInterval = 3;
+                protectDetector = new LightningOrbEnergyShieldDetector()
+                {
+                    factionTarget = FactionTarget.Friendly
+                };
+            }
+
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var source = auraEffect.Source;
+                var entity = source.GetEntity();
+                if (entity == null)
+                    return;
+                detectBuffer.Clear();
+                protectDetector.DetectEntities(entity, detectBuffer);
+                results.AddRange(detectBuffer);
+            }
+            private Detector protectDetector;
+            private List<Entity> detectBuffer = new List<Entity>();
+        }
     }
 }
