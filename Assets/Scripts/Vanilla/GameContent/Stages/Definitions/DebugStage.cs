@@ -53,8 +53,8 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.randomChina,
                 VanillaBossID.slenderman,
                 VanillaEnemyID.karakasaZombie,
-                VanillaEnemyID.cannoneerZombie,
-                VanillaEffectID.executioner,
+                VanillaEnemyID.berserker,
+                VanillaEnemyID.bedserker,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

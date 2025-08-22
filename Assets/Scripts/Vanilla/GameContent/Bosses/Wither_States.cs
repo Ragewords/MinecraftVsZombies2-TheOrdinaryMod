@@ -592,7 +592,7 @@ namespace MVZ2.GameContent.Bosses
                                 {
                                     case MAGIC_MESMERIZER:
                                         {
-                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone && !e.IsCharmed()).RandomTake(10, entity.RNG);
+                                            var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && !e.IsLoyal() && !e.IsCharmed()).RandomTake(10, entity.RNG);
                                             foreach (var target in targets)
                                             {
                                                 target.Charm(entity.GetFaction());

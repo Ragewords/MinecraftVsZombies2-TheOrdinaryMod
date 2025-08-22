@@ -314,7 +314,7 @@
         </entry>
         <entry id="mvz2:glowstone">
             <header>
-                <p>荧石发出的光芒能驱散迷雾，并发现周围的幽灵。</p>
+                <p>荧石发出的光芒能驱散迷雾，解除器械的精神控制状态，并发现周围的幽灵。</p>
             </header>
             <properties>
                 <p>照明半径：<![CDATA[<color=red>1.5格</color>]]></p>
@@ -1310,8 +1310,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>爆炸伤害：<![CDATA[<color=red>300，150（火焰），50（电弧）</color>]]></p>
-                <p>范围：<![CDATA[<color=red>1.5格，3格（火焰），4.5格（电弧）</color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red>300，150（火焰），75（闪电）</color>]]></p>
             </properties>
             <flavor>
                 <p>没人喜欢狂战士，他们就是一群到处搞破坏的疯子，追究起责任时还要倒打你一耙，穷途末路了还要拉几个人下水。</p>

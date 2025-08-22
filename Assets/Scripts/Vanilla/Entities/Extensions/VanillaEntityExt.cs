@@ -945,7 +945,7 @@ namespace MVZ2.Vanilla.Entities
         }
         public static void RemoveMesmerize(this Entity entity)
         {
-            entity.RemoveBuffs<CharmBuff>();
+            entity.RemoveBuffs<MesmerizeBuff>();
         }
         public static bool IsCharmed(this Entity entity)
         {
