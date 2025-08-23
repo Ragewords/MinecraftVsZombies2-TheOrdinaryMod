@@ -719,7 +719,6 @@
         </contraption>
         <dispenser id="splitenser" name="双向发射器" tooltip="向前后双方射出箭和飞刀" unlock="mvz2:level.mausoleum_3">
             <properties>
-                <id name="mvz2:fragmentId" value="mvz2:dispenser" />
                 <int name="mvz2:cost" value="125" />
             </properties>
         </dispenser>
@@ -821,7 +820,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="repeatenser" name="连射连射发射器" tooltip="一次射出两支箭矢" unlock="mvz2:level.ship_2">
+        <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" unlock="mvz2:level.ship_2">
             <properties>
                 <int name="mvz2:cost" value="225" />
             </properties>
@@ -927,7 +926,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </contraption>
-        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要连射发射器）\n一次射出四支箭矢" unlock="mvz2:level.ship_5">
+        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要比较发射器）\n交替射出四次箭矢" unlock="mvz2:level.ship_5">
             <properties>
                 <bool name="mvz2:upgradeBlueprint" value="true" />
                 <id name="mvz2:upgradeFrom" value="mvz2:repeatenser" />

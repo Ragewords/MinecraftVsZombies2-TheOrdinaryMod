@@ -33,7 +33,7 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[3]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
-        <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0" >
+        <tag id="placement_repeatenser" name="升级器械：比较发射器" description="必须放置在比较发射器上" priority="0" >
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
@@ -774,7 +774,7 @@
         </entry>
         <entry id="mvz2:repeatenser">
             <header>
-                <p>连射连射发射器连续射击两次，能够交替发射一或两支箭矢。</p>
+                <p>比较发射器连续射击两次，能够交替发射一或两支箭矢。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1+2支/1.5秒</color>]]></p>
@@ -782,8 +782,8 @@
                 <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢</color>]]></p>
             </properties>
             <flavor>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两两遍。</p>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两两遍。</p>
+                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
+                <p>它它没没能能有有幸幸加加入入高高频频脉脉冲冲发发射射器器的的士士兵兵队队伍伍，因因为为它它每每次次说说话话都都要要说说两两遍遍。</p>
             </flavor>
         </entry>
         <entry id="mvz2:triplenser">
@@ -979,9 +979,9 @@
                 <p>技能：<![CDATA[<color=red>一轮攻击永久改为发射七次箭矢，并<tag id="mvz2:light_source"/>发光</color>]]></p>
             </properties>
             <flavor>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四四遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四四遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
                 <p>高——闭嘴吧。</p>
             </flavor>
         </entry>
