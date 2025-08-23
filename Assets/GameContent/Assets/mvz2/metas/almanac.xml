@@ -461,9 +461,9 @@
                 <p>图腾发射器在发射飞镖的同时能够喷火烧伤近处的敌人，并发射困住敌人的捕猎网。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒（飞镖），20秒（捕猎网）</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>15（飞镖），20/秒（火焰）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害，火焰会点燃箭矢</color>]]></p>
+                <p>特点：<![CDATA[<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害；火焰会点燃箭矢</color>]]></p>
                 <p>技能：<![CDATA[<color=red>投出穿透敌人的长矛，并留下使敌人虚弱的毒雾轨迹</color>]]></p>
             </properties>
             <flavor>
@@ -472,11 +472,11 @@
         </entry>
         <entry id="mvz2:dream_crystal">
             <header>
-                <p>梦境结晶会慢慢地恢复自己的生命，在受到伤害时也会为周围的器械恢复生命。</p>
+                <p>梦境结晶会慢慢地恢复自己的生命。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>恢复速度：<![CDATA[<color=red>40/秒（自身），30/秒（周边）</color>]]></p>
+                <p>恢复速度：<![CDATA[<color=red>40-120/秒（随耐久变化）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>]]></p>
             </properties>
             <flavor>
@@ -622,8 +622,8 @@
                 <p>伤害：<![CDATA[<color=red>5（音符），2（音浪）</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
-                <p>音浪半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音浪范围</color>]]></p>
+                <p>音浪体积：<![CDATA[<color=red>3x1x3</color>]]></p>
+                <p>技能：<![CDATA[<color=red>在30秒内x500%伤害，x500%发射速度，x200%音符飞行速度，×200%音浪体积</color>]]></p>
             </properties>
             <flavor>
                 <p>永远不要试图做唱片机的邻居，别问为什么。</p>
@@ -631,12 +631,12 @@
         </entry>
         <entry id="mvz2:lightning_orb">
             <header>
-                <p>闪电之珠可以张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
+                <p>闪电之珠张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>2000/1000</color>]]></p>
-                <p>能量护盾：<![CDATA[<color=red>覆盖3×3的区域，被击碎后需要15秒恢复</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100/20耐久</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>3000/3000</color>]]></p>
+                <p>能量护盾恢复时间：<![CDATA[<color=red>15秒</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吸收敌弹，能量护盾消耗20耐久，并恢复100耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
             </properties>
             <flavor>
@@ -687,9 +687,9 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%火焰伤害，+66%溅射伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成450点火焰伤害</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成900点火焰伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变为诅咒火焰，×200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
             </properties>
             <flavor>
@@ -726,7 +726,7 @@
             <properties>
                 <p>持续时间：<![CDATA[<color=red>8秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>30/秒（小型黑洞），50（行星）</color>]]></p>
-                <p>半径：<![CDATA[<color=red>1.5格（小型黑洞），2格（行星）</color>]]></p>
+                <p>半径：<![CDATA[<color=red>1.5格（小型黑洞）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>产生湮灭领域，直接消灭范围内的所有敌人和敌弹</color>]]></p>
             </properties>
             <flavor>
@@ -737,7 +737,7 @@
         </entry>
         <entry id="desire_pot">
             <header>
-                <p>欲望壶会从敌人身上吸取其携带的星之碎片并复制，每个欲望壶最多复制三次。</p>
+                <p>欲望壶会从敌人身上吸取其携带的星之碎片并复制，同时只能由一个欲望壶进行复制，每个欲望壶最多复制三次。</p>
             </header>
             <properties>
                 <p>技能：<![CDATA[<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>]]></p>

@@ -101,7 +101,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             }
         }
         public static void ResetHealth(Buff buff) => SetHealth(buff, MAX_HEALTH);
-        public const float MAX_HEALTH = 1000;
+        public const float MAX_HEALTH = 3000;
         public const float MAX_TAKE_DAMAGE = 400;
         public static readonly VanillaBuffPropertyMeta<float> PROP_TAKEN_DAMAGE = new VanillaBuffPropertyMeta<float>("Health");
 

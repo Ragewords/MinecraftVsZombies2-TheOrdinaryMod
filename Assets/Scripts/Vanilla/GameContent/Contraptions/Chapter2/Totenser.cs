@@ -101,6 +101,7 @@ namespace MVZ2.GameContent.Contraptions
         private void UpdateWeb(Entity entity)
         {
             var timer = GetShootWebTimer(entity);
+            timer.Run(entity.GetAttackSpeed());
             if (timer.Expired)
             {
                 var target = webDetector.Detect(entity);

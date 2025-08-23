@@ -43,13 +43,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             if (time <= 0)
             {
                 buff.Remove();
-                foreach (Entity target in healBuffer)
-                {
-                    if (!target.HasBuff<DreamButterflyShieldBuff>() && target.Type == EntityTypes.PLANT)
-                    {
-                        target.AddBuff<DreamButterflyShieldBuff>();
-                    }
-                }
             }
             buff.SetProperty(PROP_TIMEOUT, time);
         }
