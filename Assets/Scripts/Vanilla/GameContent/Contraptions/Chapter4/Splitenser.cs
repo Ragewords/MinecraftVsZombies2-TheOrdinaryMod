@@ -127,10 +127,18 @@ namespace MVZ2.GameContent.Contraptions
 
             var vel = param.velocity;
             param.velocity = vel.normalized * multipiler;
+            param.projectileID = VanillaProjectileID.knife;
+            param.damage = entity.GetDamage() * 3 / 4;
 
             param.soundID = null;
+            var projectile = entity.ShootProjectile(param);
+            if (IsFever(entity))
+            {
+                var behaviour = projectile.Definition?.GetBehaviour<ITeslaCoilElectrifyBehaviour>();
+                behaviour?.Electrify(projectile, entity);
+            }
 
-            return entity.ShootProjectile(param);
+            return projectile;
         }
         public Entity ShootLargeArrowBack(Entity entity)
         {
@@ -151,7 +159,13 @@ namespace MVZ2.GameContent.Contraptions
             param.damage = entity.GetDamage() * 30;
             param.soundID = VanillaSoundID.spellCard;
 
-            return entity.ShootProjectile(param);
+            var projectile = entity.ShootProjectile(param);
+            if (IsFever(entity))
+            {
+                var behaviour = projectile.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
+                behaviour?.Ignite(projectile, entity, false);
+            }
+            return projectile;
         }
         public void RepeatShootBack(Entity entity)
         {
