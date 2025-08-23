@@ -31,7 +31,6 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new BooleanModifier(VanillaDifficultyProps.FRANKENSTEIN_SPLITS_HEAD, true));
             AddModifier(new FloatModifier(VanillaDifficultyProps.FRANKENSTEIN_SPEED, NumberOperator.Multiply, 2));
 
-            AddModifier(new FloatModifier(VanillaDifficultyProps.CRESCENT_DAMAGE_THRESOLD, NumberOperator.Add, -200f));
             AddModifier(new BooleanModifier(VanillaDifficultyProps.SLENDERMAN_MIND_SWAP_ZOMBIES, true));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_FATE_CHOICE_COUNT, NumberOperator.Add, -1));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_MAX_FATE_TIMES, NumberOperator.Add, 1));

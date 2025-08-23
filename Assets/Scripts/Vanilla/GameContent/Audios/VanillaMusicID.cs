@@ -11,9 +11,11 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID halloweenBoss = Get("halloween_boss");
         public readonly static NamespaceID dreamLevel = Get("dream_level");
         public readonly static NamespaceID nightmareLevel = Get("nightmare_level");
+        public readonly static NamespaceID dreamLevelExtra = Get("dream_level_extra");
+        public readonly static NamespaceID nightmareLevelExtra = Get("nightmare_level_extra");
         public readonly static NamespaceID nightmareBoss = Get("nightmare_boss");
         public readonly static NamespaceID nightmareBoss2 = Get("nightmare_boss2");
-        public readonly static NamespaceID nightmareBoss3 = Get("nightmare_boss3");
+        public readonly static NamespaceID junkoThemeArchived = Get("junko_theme_archived");
         public readonly static NamespaceID seija = Get("seija");
         public readonly static NamespaceID witherBoss = Get("wither_boss");
         public readonly static NamespaceID mausoleumBoss = Get("mausoleum_boss");

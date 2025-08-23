@@ -252,6 +252,10 @@ namespace MVZ2.GameContent.Bosses
 
             var rng = GetMindSwapRNG(entity);
             NamespaceID[] pool = level.SlendermanMindSwapZombies() ? hardMindSwapPool : mindSwapPool;
+            if (level.SlendermanMindSwapZombies() && level.SlendermanMindSwapError())
+            {
+                pool = lunaticMindSwapPool;
+            }
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
             {
                 var blueprint = level.GetConveyorSeedPackAt(i);
@@ -300,16 +304,10 @@ namespace MVZ2.GameContent.Bosses
         }
         private void DoFate(Entity boss, int option)
         {
-            bool alteredFate = boss.Level.GetSlendermanAlteredFate();
             switch (option)
             {
                 case FATE_PANDORAS_BOX:
-                    {
-                        if (alteredFate)
-                            PandorasBoxAltered(boss);
-                        else
-                            PandorasBox(boss);
-                    }
+                    PandorasBox(boss);
                     break;
                 case FATE_BIOHAZARD:
                     Biohazard(boss);
@@ -332,8 +330,8 @@ namespace MVZ2.GameContent.Bosses
                 case FATE_PURE_FURY:
                     PureFury(boss);
                     break;
-                case FATE_SENTENCED:
-                    Sentenced(boss);
+                case FATE_EXECUTIONERS:
+                    Executioners(boss);
                     break;
                 case FATE_MOONRISE:
                     Moonrise(boss);
@@ -485,7 +483,7 @@ namespace MVZ2.GameContent.Bosses
                     enemy.AddBuff<PureFuryBuff>();
             }
         }
-        private void Sentenced(Entity boss)
+        private void Executioners(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.odd);
             var level = boss.Level;
@@ -604,7 +602,7 @@ namespace MVZ2.GameContent.Bosses
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_PURE_FURY = "纯粹愤怒";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_SENTENCED = "处决者";
+        public const string FATE_TEXT_EXECUTIONERS = "处决者";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_MOONRISE = "月出";
 
@@ -635,7 +633,7 @@ namespace MVZ2.GameContent.Bosses
         public const int FATE_THE_LURKER = 5;
         public const int FATE_BLACK_SUN = 6;
         public const int FATE_PURE_FURY = 7;
-        public const int FATE_SENTENCED = 8;
+        public const int FATE_EXECUTIONERS = 8;
         public const int FATE_MOONRISE = 9;
 
         private static NamespaceID[] portalPool = new NamespaceID[]
@@ -674,6 +672,21 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
         };
+        private static NamespaceID[] lunaticMindSwapPool = new NamespaceID[]
+        {
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.errorBlock),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.ironHelmettedZombie)
+        };
         private static int[] fateOptions = new int[]
         {
             FATE_PANDORAS_BOX,
@@ -684,7 +697,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_THE_LURKER,
             FATE_BLACK_SUN,
             FATE_PURE_FURY,
-            FATE_SENTENCED,
+            FATE_EXECUTIONERS,
             FATE_MOONRISE,
         };
         private static string[] fateTexts = new string[]
@@ -697,7 +710,7 @@ namespace MVZ2.GameContent.Bosses
             FATE_TEXT_THE_LURKER,
             FATE_TEXT_BLACK_SUN,
             FATE_TEXT_PURE_FURY,
-            FATE_TEXT_SENTENCED,
+            FATE_TEXT_EXECUTIONERS,
             FATE_TEXT_MOONRISE,
         };
         #endregion 常量

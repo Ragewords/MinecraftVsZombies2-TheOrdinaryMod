@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -29,10 +30,13 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
+            var shootTimer = new FrameTimer(WEB_DETECT_INTERVAL);
+            SetShootWebTimer(entity, shootTimer);
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            UpdateWeb(entity);
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
@@ -46,7 +50,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             UpdateFireBreath(entity);
-            UpdateWeb(entity);
             entity.SetAnimationFloat("SpearSpeed", entity.IsAIFrozen() ? 0 : 1);
         }
         protected override void OnEvoke(Entity entity)
@@ -97,10 +100,11 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void UpdateWeb(Entity entity)
         {
-            if (entity.IsTimeInterval(WEB_DETECT_INTERVAL))
+            var timer = GetShootWebTimer(entity);
+            if (timer.Expired)
             {
                 var target = webDetector.Detect(entity);
-                if (target != null && !entity.IsAIFrozen())
+                if (target != null)
                 {
                     entity.TriggerAnimation("TopShoot");
                     var pos = entity.Position + new Vector3(20 * entity.GetFacingX(), 50);
@@ -110,11 +114,12 @@ namespace MVZ2.GameContent.Contraptions
 
                     var shootParams = entity.GetShootParams();
                     shootParams.projectileID = projectileID;
-                    shootParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(pos, target.Entity.Position, 24, projectileGravity);;
+                    shootParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(pos, target.Entity.Position, 12, projectileGravity);
                     shootParams.position = pos;
                     shootParams.soundID = VanillaSoundID.bow;
                     shootParams.damage = 0;
                     entity.ShootProjectile(shootParams);
+                    timer.Reset();
                 }
             }
         }
@@ -144,6 +149,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             SetEvocationTime(entity, evocationTime);
         }
+        public static FrameTimer GetShootWebTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_TIMER);
+        public static void SetShootWebTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_SHOOT_TIMER, timer);
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
         public static Entity GetFireBreath(Entity entity)
@@ -160,6 +167,7 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly NamespaceID ID = VanillaContraptionID.totenser;
         public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("EvocationTime");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_FIRE_BREATH = new VanillaEntityPropertyMeta<EntityID>("FireBreath");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_SHOOT_WEB_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ShootWebTimer");
         private Detector fireBreathDetector;
         private Detector webDetector;
         public const int FIRE_DETECT_INTERVAL = 7;

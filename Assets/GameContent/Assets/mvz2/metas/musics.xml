@@ -167,6 +167,26 @@
             <p>充满速度感和浪漫感的曲子，也不乏一些紧张感。</p>
         </description>
     </music>
+    <music id="nightmare_level_extra" name="故乡之星倒映之海" unlock="mvz2:level.dream_EX1">
+        <track main="mvz2:nightmare_level_extra"/>
+        <source>东方绀珠传</source>
+        <description>
+            <p>噩梦世界拓展关卡的音乐。</p>
+            <p>是《东方绀珠传》的第六关关卡音乐，纯狐战斗前的音乐。</p>
+            <p>一名丧子的母亲，一个满腔怒火的神灵。</p>
+            <p>怨恨纯化，一切缘由与目的已不再重要，惟留永恒的愤怒。</p>
+        </description>
+    </music>
+    <music id="junko_theme_archived" name="Pure Furies ～ 心之所在" unlock="mvz2:level.dream_EX3">
+        <track main="mvz2:junko_theme_archived"/>
+        <source>东方绀珠传</source>
+        <description>
+            <p>噩梦世界的一首未使用音乐。</p>
+            <p>是《东方绀珠传》的第六关Boss——纯狐的音乐。</p>
+            <p>这首音乐最初留给梦魇，然而随着梦魇设计的变更，这首曲子也最终未被使用。</p>
+            <p>不过，我仍然将这首曲子留在了这里，作为梦境世界拓展关卡完成后的一个小“奖励”。</p>
+        </description>
+    </music>
 
     <music id="gensokyo_map" name="青空之影">
         <track main="mvz2:gensokyo_map"/>

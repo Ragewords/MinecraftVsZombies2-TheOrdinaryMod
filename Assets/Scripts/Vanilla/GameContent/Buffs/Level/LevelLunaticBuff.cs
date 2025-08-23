@@ -32,15 +32,14 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new BooleanModifier(VanillaDifficultyProps.FRANKENSTEIN_SPLITS_HEAD, true));
             AddModifier(new FloatModifier(VanillaDifficultyProps.FRANKENSTEIN_SPEED, NumberOperator.Multiply, 2));
 
-            AddModifier(new FloatModifier(VanillaDifficultyProps.CRESCENT_DAMAGE_THRESOLD, NumberOperator.Add, -700f));
             AddModifier(new BooleanModifier(VanillaDifficultyProps.SLENDERMAN_MIND_SWAP_ZOMBIES, true));
-            AddModifier(new BooleanModifier(VanillaDifficultyProps.SLENDERMAN_ALTERED_FATE, true));
+            AddModifier(new BooleanModifier(VanillaDifficultyProps.SLENDERMAN_MIND_SWAP_ERROR, true));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_FATE_CHOICE_COUNT, NumberOperator.Add, -2));
             AddModifier(new IntModifier(VanillaDifficultyProps.SLENDERMAN_MAX_FATE_TIMES, NumberOperator.Add, 2));
 
             AddModifier(new FloatModifier(VanillaDifficultyProps.CRUSHING_WALLS_SPEED, NumberOperator.Add, 1f));
             AddModifier(new FloatModifier(VanillaDifficultyProps.NIGHTMAREAPER_SPIN_DAMAGE, NumberOperator.Add, 10));
-            AddModifier(new IntModifier(VanillaDifficultyProps.NIGHTMAREAPER_TIMEOUT, NumberOperator.Add, -1350));
+            AddModifier(new IntModifier(VanillaDifficultyProps.NIGHTMAREAPER_TIMEOUT, NumberOperator.Add, -1500));
 
             AddModifier(new BooleanModifier(VanillaDifficultyProps.WITHER_SKULL_WITHERS_TARGET, true));
             AddModifier(new BooleanModifier(VanillaDifficultyProps.THE_GIANT_IS_MALLEABLE, true));

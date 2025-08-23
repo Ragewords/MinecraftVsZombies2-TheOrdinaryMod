@@ -91,6 +91,14 @@ namespace MVZ2.GameContent.Areas
             {
                 level.SetPlayingMusic(VanillaMusicID.dreamLevel);
             }
+            if (level.GetMusicID() == VanillaMusicID.nightmareLevelExtra)
+            {
+                level.SetMusicID(VanillaMusicID.dreamLevelExtra);
+            }
+            if (level.IsPlayingMusic(VanillaMusicID.nightmareLevelExtra))
+            {
+                level.SetPlayingMusic(VanillaMusicID.dreamLevelExtra);
+            }
         }
         public static void SetToNightmare(LevelEngine level)
         {
@@ -106,6 +114,14 @@ namespace MVZ2.GameContent.Areas
             if (level.IsPlayingMusic(VanillaMusicID.dreamLevel))
             {
                 level.SetPlayingMusic(VanillaMusicID.nightmareLevel);
+            }
+            if (level.GetMusicID() == VanillaMusicID.dreamLevelExtra)
+            {
+                level.SetMusicID(VanillaMusicID.nightmareLevelExtra);
+            }
+            if (level.IsPlayingMusic(VanillaMusicID.dreamLevelExtra))
+            {
+                level.SetPlayingMusic(VanillaMusicID.nightmareLevelExtra);
             }
         }
         public static bool IsNightmare(LevelEngine level)

@@ -1349,7 +1349,7 @@
             <bool name="autoCollectMoney" value="true"/>
         </properties>
     </stage>
-    <stage id="puzzle_i_skeleton" name="我是骷髅" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_i_zombie;mvz2:level.halloween_EX1" >
+    <stage id="puzzle_i_skeleton" name="我是骷髅" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle" unlock="mvz2:level.puzzle_i_zombie" >
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <camera position="lawn" transition="instant"/>
         <properties>
