@@ -304,13 +304,6 @@ MonoBehaviour:
     - AreaModel
     - Main
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 074f04070c5730a468d2f7d560c39305
-    m_Address: mvz2:entity/the_eye/the_eye_roar
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0772ad3299638fa43ae91ead696caef6
     m_Address: mvz2:contraption/castle/giant_bowl
     m_ReadOnly: 0
@@ -1446,7 +1439,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e7e214a1952c304fbcf6a4c2e4515a3
-    m_Address: mvz2:nightmare_boss3
+    m_Address: mvz2:junko_theme_archived
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -2354,6 +2347,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f56633a454f694c9ff72b646022133
+    m_Address: mvz2:nightmare_level_extra
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3322237d80cabdd4cb9ca5b49b955e2e
     m_Address: mvz2:ship_level_sub
     m_ReadOnly: 0
@@ -3087,13 +3087,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 41a100848f06fed4d98c3508a294d5aa
-    m_Address: mvz2:entity/the_eye/the_eye_death
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41dcf35c43418054cb6d7b6eb542f543
     m_Address: mvz2:maps
@@ -4109,13 +4102,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Meta
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 591887ad280d6ac49b56d31e4d1c5a9b
-    m_Address: mvz2:entity/the_eye/the_eye_stretch
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59ab9a6cecef3704297679a5a4c3e342
     m_Address: mvz2:effect/smoke
@@ -9862,13 +9848,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d7e1f49e77fc973459b37c56e266be7d
-    m_Address: mvz2:entity/the_eye/the_eye_screamattack
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8130bf7140daa14a9605dddcd5bd851
     m_Address: mvz2:entity/contraptions/infectenser
