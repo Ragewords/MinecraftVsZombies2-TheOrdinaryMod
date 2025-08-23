@@ -58,6 +58,8 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+            jalapenoDetectBuffer.Clear();
+            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
             UpdateIgnite(entity);
             entity.SetAnimationBool("Evoked", IsCursed(entity));
         }
@@ -67,8 +69,6 @@ namespace MVZ2.GameContent.Contraptions
             if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
                 return;
 
-            jalapenoDetectBuffer.Clear();
-            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
             var damageMultipiler = IsCursed(entity) ? 2 : 1;
             foreach (var target in jalapenoDetectBuffer)
             {

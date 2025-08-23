@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Contraptions
             if (contraption.HasBuff<LightningOrbEnergyShieldBuff>())
                 return;
             var timer = GetShieldRegenerateTimer(contraption);
-            timer.Run();
+            timer.Run(contraption.GetProduceSpeed());
             if (timer.Expired)
             {
                 timer.ResetTime(REGENERATE_TIME);
@@ -90,7 +90,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
-        public const int REGENERATE_TIME = 600;
+        public const int REGENERATE_TIME = 450;
         public const int REGENERATE_TIME_EVOKED = 155;
     }
 }
