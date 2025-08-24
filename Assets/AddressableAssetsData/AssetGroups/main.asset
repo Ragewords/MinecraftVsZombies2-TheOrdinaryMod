@@ -10885,13 +10885,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f056300043f9b9249a118f53a5a9d094
-    m_Address: mvz2:projectile/reflection_sonicwave
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0660abadcafe994c8f35a29d7a5e0fa
     m_Address: mvz2:entity/dream_alarm
     m_ReadOnly: 0
@@ -11534,13 +11527,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fd356a2762bff554ca6c91d3b6dfa15b
-    m_Address: mvz2:entity/projectiles/reflection_sonicwave
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd39fe758a297d8448167d0de18eceff
     m_Address: mvz2:mind_control
