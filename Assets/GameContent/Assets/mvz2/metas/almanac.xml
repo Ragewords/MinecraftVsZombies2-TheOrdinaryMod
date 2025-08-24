@@ -305,7 +305,7 @@
             </header>
             <properties>
                 <p>提供能量：<![CDATA[<color=red>1点/1.6秒，而后1点/1秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>升级后立即提供75能量</color>]]></p>
+                <p>特点：<![CDATA[<color=red>升级后立即提供150能量</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即升级，发出蓝光，并使生产量变为2.5倍</color>]]></p>
             </properties>
             <flavor>
@@ -592,7 +592,6 @@
                 <p>伤害：<![CDATA[<color=red>80（电击），10（溅射），20-8（电流链）</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+33%电流伤害，并使击中的敌人带上66%伤害的电流链</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>产生一次半径1格的爆炸，造成320伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>
@@ -689,8 +688,8 @@
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%火焰伤害，+66%溅射伤害</color>]]></p>
-                <p>被摧毁：<![CDATA[<color=red>对一整条线的所有敌人造成900点火焰伤害</color>]]></p>
-                <p>技能：<![CDATA[<color=red>变为诅咒火焰，×200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
+                <p>被摧毁：<![CDATA[<color=red>爆炸，对一整条线的所有敌人造成900火焰伤害</color>]]></p>
+                <p>技能：<![CDATA[<color=red>变为诅咒火焰，x200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>烧吧！我内心中的熊熊烈火，点燃我的<![CDATA[<color=red>愤怒</color>]]>！</p>

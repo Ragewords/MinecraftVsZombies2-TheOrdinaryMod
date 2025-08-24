@@ -255,7 +255,7 @@
                 <bool name="mvz2:isLightSource" value="true" />
                 <bool name="mvz2:glowUnable" value="false" />
                 <vector3 name="mvz2:lightRange" x="180" y="180" z="180" />
-                <color name="mvz2:lightColor" value="#36009aff" />
+                <color name="mvz2:lightColor" value="#5900FF" />
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
@@ -638,7 +638,6 @@
             <properties>
                 <float name="mvz2:range" value="200" />
                 <float name="mvz2:damage" value="80" />
-                <float name="mvz2:maxHealth" value="1200"/>
                 <bool name="mvz2:blocksJump" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
                 <id name="mvz2:placeSound" value="mvz2:tesla_construction" />

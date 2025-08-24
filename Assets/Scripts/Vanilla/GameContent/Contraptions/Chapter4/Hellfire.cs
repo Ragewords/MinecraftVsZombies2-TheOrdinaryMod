@@ -13,6 +13,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using Tools;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -26,21 +27,25 @@ namespace MVZ2.GameContent.Contraptions
                 factionTarget = FactionTarget.Friendly,
                 mask = EntityCollisionHelper.MASK_PROJECTILE,
             };
-            burnDetector = new SphereDetector(BURN_RADIUS)
-            {
-                mask = EntityCollisionHelper.MASK_VULNERABLE
-            };
-            jalapenoDetector = new LaneDetector(80, 40);
+            burnDetector = new SphereDetector(BURN_RADIUS);
+            jalapenoDetector = new LaneDetector(1000, 80);
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            SetDamageCooldown(entity, new FrameTimer(DAMAGE_COOLDOWN));
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+
+            detectBuffer.Clear();
+            burnDetector.DetectEntities(entity, detectBuffer);
+
             var cooldown = GetDamageCooldown(entity);
-            cooldown--;
-            if (cooldown <= 0)
+            cooldown.Run(entity.GetAttackSpeed());
+            if (cooldown.Expired)
             {
-                detectBuffer.Clear();
-                burnDetector.DetectEntities(entity, detectBuffer);
                 var damageMultipiler = IsCursed(entity) ? 2 : 1;
                 foreach (var target in detectBuffer)
                 {
@@ -51,9 +56,8 @@ namespace MVZ2.GameContent.Contraptions
                         target.Spawn(VanillaEffectID.cursedFireburn, target.GetCenter());
                     target.PlaySound(VanillaSoundID.fire, volume: 0.6f);
                 }
-                cooldown = DAMAGE_COOLDOWN;
+                cooldown.Reset();
             }
-            SetDamageCooldown(entity, cooldown);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -72,8 +76,11 @@ namespace MVZ2.GameContent.Contraptions
             var damageMultipiler = IsCursed(entity) ? 2 : 1;
             foreach (var target in jalapenoDetectBuffer)
             {
-                target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
             }
+            entity.Level.ShakeScreen(10, 0, 15);
+            Explosion.Spawn(entity, entity.GetCenter(), BURN_RADIUS);
+            entity.PlaySound(VanillaSoundID.explosion);
             entity.PlaySound(VanillaSoundID.flame);
             var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
             for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
@@ -127,13 +134,13 @@ namespace MVZ2.GameContent.Contraptions
         public static bool IsCursed(Entity entity) => entity.GetProperty<bool>(PROP_CURSED);
         public static void SetMeteor(Entity entity, EntityID value) => entity.SetProperty(PROP_METEOR, value);
         public static EntityID GetMeteor(Entity entity) => entity.GetProperty<EntityID>(PROP_METEOR);
-        public static int GetDamageCooldown(Entity entity) => entity.GetBehaviourField<int>(PROP_DAMAGE_COOLDOWN);
-        public static void SetDamageCooldown(Entity entity, int value) => entity.SetBehaviourField(PROP_DAMAGE_COOLDOWN, value);
+        public static FrameTimer GetDamageCooldown(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_DAMAGE_COOLDOWN);
+        public static void SetDamageCooldown(Entity entity, FrameTimer value) => entity.SetBehaviourField(PROP_DAMAGE_COOLDOWN, value);
         public static readonly VanillaBuffPropertyMeta<bool> PROP_CURSED = new VanillaBuffPropertyMeta<bool>("cursed");
         public static readonly VanillaBuffPropertyMeta<EntityID> PROP_METEOR = new VanillaBuffPropertyMeta<EntityID>("meteor");
         private Detector detector;
         private List<Entity> igniteBuffer = new List<Entity>();
-        private static readonly VanillaEntityPropertyMeta<int> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<int>("DamageCooldown");
+        private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<FrameTimer>("DamageCooldown");
         private List<Entity> detectBuffer = new List<Entity>();
         private List<Entity> jalapenoDetectBuffer = new List<Entity>();
         private Detector burnDetector;
