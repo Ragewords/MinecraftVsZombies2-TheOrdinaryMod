@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
+using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -62,14 +63,18 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
+                var game = Global.Game;
                 var level = target.Level;
                 var rng = target.RNG;
                 var grid = target.GetGrid();
-                var validEnemies = enemyPool.Where(id =>
+                var unlockedEnemies = game.GetUnlockedEnemies();
+                var validEnemies = unlockedEnemies.Where(id =>
                 {
-                    if (!level.GetEnemyPool().Contains(id))
+                    if (!game.IsEnemyInAlmanac(id))
                         return false;
-                    if (enemy.GetDefinitionID() == id)
+                    if (transformFilter.Contains(id))
+                        return false;
+                    if (enemy.IsEntityOf(id))
                         return false;
                     return grid.CanSpawnEntity(id);
                 });
@@ -86,32 +91,12 @@ namespace MVZ2.GameContent.Contraptions
             }
             target.Remove();
         }
-        private static NamespaceID[] enemyPool = new NamespaceID[]
+        private static NamespaceID[] transformFilter = new NamespaceID[]
         {
-            VanillaEnemyID.zombie,
-            VanillaEnemyID.leatherCappedZombie,
-            VanillaEnemyID.ironHelmettedZombie,
-            VanillaEnemyID.skeleton,
-            VanillaEnemyID.ghost,
-            VanillaEnemyID.mummy,
-            VanillaEnemyID.necromancer,
-            VanillaEnemyID.skelebomb,
-            VanillaEnemyID.spider,
-            VanillaEnemyID.caveSpider,
-            VanillaEnemyID.ghast,
-            VanillaEnemyID.motherTerror,
-            VanillaEnemyID.silverfish,
-            VanillaEnemyID.mesmerizer,
-            VanillaEnemyID.berserker,
-            VanillaEnemyID.spellcaster,
-            VanillaEnemyID.reflectiveBarrierZombie,
-            VanillaEnemyID.wickedHermitZombie,
-            VanillaEnemyID.shikaisenZombie,
-            VanillaEnemyID.emperorZombie,
-            VanillaEnemyID.tanookiZombie,
-            VanillaEnemyID.karakasaZombie,
-            VanillaEnemyID.undeadFlyingObject,
-            VanillaEnemyID.cannoneerZombie,
+            VanillaEnemyID.dullahan,
+            VanillaEnemyID.hellChariot,
+            VanillaEnemyID.mutantZombie,
+            VanillaEnemyID.megaMutantZombie,
         };
 
         private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
