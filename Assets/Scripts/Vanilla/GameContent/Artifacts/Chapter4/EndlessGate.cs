@@ -8,10 +8,10 @@ using PVZEngine.Entities;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.infinityDoor)]
-    public class InfinityDoor : ArtifactDefinition
+    [ArtifactDefinition(VanillaArtifactNames.endlessGate)]
+    public class EndlessGate : ArtifactDefinition
     {
-        public InfinityDoor(string nsp, string name) : base(nsp, name)
+        public EndlessGate(string nsp, string name) : base(nsp, name)
         {
             AddAura(new Aura());
         }

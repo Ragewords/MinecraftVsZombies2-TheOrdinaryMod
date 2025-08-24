@@ -55,6 +55,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 41531d8ef0693fa41a5341fcbd896474, type: 3}
   - name: artifacts/almanac
     sprite: {fileID: 21300000, guid: 8a7f5424a199e2544939f0b98e1afc83, type: 3}
+  - name: artifacts/bent_spoon
+    sprite: {fileID: 21300000, guid: 1c5b7915eb7f65243b5d677f7090b26a, type: 3}
   - name: artifacts/bottled_blackhole
     sprite: {fileID: 21300000, guid: 58b4152dc1f89a4449e6487a09e19d47, type: 3}
   - name: artifacts/broken_lantern
@@ -65,14 +67,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5d23376e7a066774ab671e71271015fc, type: 3}
   - name: artifacts/dream_key
     sprite: {fileID: 21300000, guid: 34e619cc0502d6c499f470950cf5acec, type: 3}
+  - name: artifacts/endless_gate
+    sprite: {fileID: 21300000, guid: b70d83d8ee8ad814aa93f5ffd994dd35, type: 3}
   - name: artifacts/eye_of_the_giant
     sprite: {fileID: 21300000, guid: 8e09eb5034d8901409cccb88e3f86633, type: 3}
   - name: artifacts/greedy_vacuum
     sprite: {fileID: 21300000, guid: 0b687cc971691aa4786964a361a0d14c, type: 3}
   - name: artifacts/hoe
     sprite: {fileID: 21300000, guid: 3099084e873c11d4084a10707cd96120, type: 3}
-  - name: artifacts/infinity_door
-    sprite: {fileID: 21300000, guid: b70d83d8ee8ad814aa93f5ffd994dd35, type: 3}
   - name: artifacts/inverted_mirror
     sprite: {fileID: 21300000, guid: d12e7157df0411749ab53333da0a507d, type: 3}
   - name: artifacts/jack_o_lantern
@@ -91,8 +93,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5a71c983a20b667478dd88d44c1a96b3, type: 3}
   - name: artifacts/sweet_sleep_pillow
     sprite: {fileID: 21300000, guid: 6aeedebbc3d6f934c8d4f7afb3614d86, type: 3}
-  - name: artifacts/telekinesis
-    sprite: {fileID: 21300000, guid: 1c5b7915eb7f65243b5d677f7090b26a, type: 3}
   - name: artifacts/the_creatures_heart
     sprite: {fileID: 21300000, guid: 47aa6cbff8c048c40a3da0ad86fa845d, type: 3}
   - name: artifacts/ufo_toy
@@ -911,8 +911,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 201e5721e971a564488d089bd9d27f7b, type: 3}
   - name: entity/projectiles/reflection_bullet
     sprite: {fileID: 21300000, guid: 779caaadbdd68fb40b71d160c2305c1c, type: 3}
-  - name: entity/projectiles/reflection_sonicwave
-    sprite: {fileID: 21300000, guid: fd356a2762bff554ca6c91d3b6dfa15b, type: 3}
   - name: entity/projectiles/ruby_ball
     sprite: {fileID: 21300000, guid: 8c434f08261e5314fa3a343039ab48ab, type: 3}
   - name: entity/projectiles/sapphire_ball
@@ -1864,6 +1862,7 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1423534089646270007, guid: 824a13f315e37c0479a2e4a8e03f358f, type: 3}
     - {fileID: -7593323199454943232, guid: 824a13f315e37c0479a2e4a8e03f358f, type: 3}
+    - {fileID: 339384212, guid: 824a13f315e37c0479a2e4a8e03f358f, type: 3}
   - name: entity/contraption/stone_shield
     spritesheet:
     - {fileID: 1538110737, guid: 966a0e1617ca8a143ac09df2e9c328ff, type: 3}

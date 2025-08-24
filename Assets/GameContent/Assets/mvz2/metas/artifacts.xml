@@ -4,7 +4,7 @@
     <artifact id="hoe" name="锄头" tooltip="消灭每场战斗的第一个敌人" sprite="mvz2:artifacts/hoe" unlock="mvz2:artifact.hoe" />
     <artifact id="dream_key" name="梦境钥匙" tooltip="对器械使用星之碎片会恢复所有耐久，并在此期间无敌" sprite="mvz2:artifacts/dream_key" unlock="mvz2:level.halloween_11" />
     <artifact id="the_creatures_heart" name="怪物的心" tooltip="场上每有一个同类器械，该器械的能量消耗减少5" sprite="mvz2:artifacts/the_creatures_heart" unlock="mvz2:artifact.the_creatures_heart" />
-    
+
     <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，无法行动时回复量×3" sprite="mvz2:artifacts/sweet_sleep_pillow" unlock="mvz2:level.dream_2" />
     <artifact id="pagoda_branch" name="槐树树枝" tooltip="战斗开始时获得2个星之碎片，但敌人数量+200%" sprite="mvz2:artifacts/pagoda_branch" unlock="mvz2:artifact.pagoda_branch" />
     <artifact id="dream_butterfly" name="梦蝶" tooltip="刚放置的器械无敌3秒" sprite="mvz2:artifacts/dream_butterfly" unlock="mvz2:level.dream_11" />
@@ -28,7 +28,8 @@
     <artifact id="dragon_claw" name="龙爪" tooltip="生命值低于50%的敌人受到的伤害+100%" sprite="mvz2:artifacts/dragon_claw" unlock="mvz2:artifact.dragon_claw" />
 
     <artifact id="jack_o_lantern" name="南瓜灯" tooltip="非光源器械获得小范围光源" sprite="mvz2:artifacts/jack_o_lantern" unlock="mvz2:level.halloween_EX3" />
-    <artifact id="telekinesis" name="念力" tooltip="器械的射弹在命中前会跟踪附近的敌人" sprite="mvz2:artifacts/telekinesis" unlock="mvz2:level.dream_EX3" />
+    <artifact id="bent_spoon" name="掰弯的勺子" tooltip="器械的射弹在命中前会跟踪附近的敌人" sprite="mvz2:artifacts/bent_spoon" unlock="mvz2:level.dream_EX3" />
     <artifact id="wither_skeleton_skull" name="凋灵骷髅头" tooltip="×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%" sprite="mvz2:artifacts/wither_skeleton_skull" unlock="mvz2:level.castle_EX3" />
-    <artifact id="infinity_door" name="无限门扉" tooltip="子弹离开屏幕后会回到屏幕另一侧" sprite="mvz2:artifacts/infinity_door" unlock="mvz2:level.mausoleum_EX3" />
+    <artifact id="endless_gate" name="无尽门扉" tooltip="子弹离开屏幕后会回到屏幕另一侧" sprite="mvz2:artifacts/endless_gate" unlock="mvz2:level.mausoleum_EX3" />
+    <artifact id="captain_s_log" name="舰长日志" tooltip="每放置5种不同器械，生成你所携带的一张蓝图的复制" sprite="mvz2:artifacts/captain_s_log" unlock="mvz2:level.ship_EX3" />
 </artifacts>

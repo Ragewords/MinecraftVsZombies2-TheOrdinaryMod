@@ -1313,7 +1313,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c5b7915eb7f65243b5d677f7090b26a
-    m_Address: mvz2:artifacts/telekinesis
+    m_Address: mvz2:artifacts/bent_spoon
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -8373,7 +8373,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b70d83d8ee8ad814aa93f5ffd994dd35
-    m_Address: mvz2:artifacts/infinity_door
+    m_Address: mvz2:artifacts/endless_gate
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

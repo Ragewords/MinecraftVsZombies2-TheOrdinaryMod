@@ -30,9 +30,9 @@ namespace MVZ2.GameContent.Artifacts
         public const string ufoToy = "ufo_toy";
 
         public const string jackOLantern = "jack_o_lantern";
-        public const string telekinesis = "telekinesis";
+        public const string bentSpoon = "bent_spoon";
         public const string witherSkeletonSkull = "wither_skeleton_skull";
-        public const string infinityDoor = "infinity_door";
+        public const string endlessGate = "endless_gate";
     }
     public static class VanillaArtifactID
     {
@@ -61,9 +61,9 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID ufoToy = Get(VanillaArtifactNames.ufoToy);
 
         public static readonly NamespaceID jackOLantern = Get(VanillaArtifactNames.jackOLantern);
-        public static readonly NamespaceID telekinesis = Get(VanillaArtifactNames.telekinesis);
+        public static readonly NamespaceID bentSpoon = Get(VanillaArtifactNames.bentSpoon);
         public static readonly NamespaceID witherSkeletonSkull = Get(VanillaArtifactNames.witherSkeletonSkull);
-        public static readonly NamespaceID infinityDoor = Get(VanillaArtifactNames.infinityDoor);
+        public static readonly NamespaceID endlessGate = Get(VanillaArtifactNames.endlessGate);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

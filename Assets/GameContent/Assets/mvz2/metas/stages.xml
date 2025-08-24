@@ -527,7 +527,7 @@
         </spawns>
     </stage>
     <stage id="dream_EX3" name="梦境世界" type="extra" dayNumber="14" unlock="mvz2:level.dream_EX2" music="mvz2:dream_level_extra" >
-        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:telekinesis" />
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:bent_spoon" />
         <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
@@ -1028,7 +1028,7 @@
         </properties>
     </stage>
     <stage id="mausoleum_EX3" name="梦殿大祀庙" type="extra" dayNumber="14" unlock="mvz2:level.mausoleum_EX2" music="mvz2:mausoleum_level_extra" >
-        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:infinity_door" />
+        <clear pickupModel="mvz2:entity.artifact_pickup" artifact="mvz2:endless_gate" />
         <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>

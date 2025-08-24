@@ -8,10 +8,10 @@ using PVZEngine.Callbacks;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.telekinesis)]
-    public class Telekinesis : ArtifactDefinition
+    [ArtifactDefinition(VanillaArtifactNames.bentSpoon)]
+    public class BentSpoon : ArtifactDefinition
     {
-        public Telekinesis(string nsp, string name) : base(nsp, name)
+        public BentSpoon(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_SHOT, PostProjectileShotCallback);
         }
