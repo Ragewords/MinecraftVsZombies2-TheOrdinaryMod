@@ -57,7 +57,7 @@ namespace MVZ2.GameContent.Contraptions
 
             var projectile = hit.Projectile;
 
-            orb.HealEffects(100, projectile);
+            orb.HealEffects(orb.HasBuff<LightningOrbEnergyShieldBuff>() ? 0 : 100, projectile);
             foreach (var buff in orb.GetBuffs<LightningOrbEvokedBuff>())
             {
                 LightningOrbEvokedBuff.AddTakenDamage(buff, damage.Amount);

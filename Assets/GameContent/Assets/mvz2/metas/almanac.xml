@@ -587,7 +587,6 @@
                 <p>磁暴线圈会电击周围大范围内的敌人，命中的敌人会产生连续攻击最多4个敌人的电流链。为经过的金属射弹附上电流，使其额外造成电流伤害。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80（电击），10（溅射），20-8（电流链）</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+33%电流伤害，并使击中的敌人带上66%伤害的电流链</color>]]></p>
@@ -635,7 +634,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000/3000</color>]]></p>
                 <p>能量护盾恢复时间：<![CDATA[<color=red>15秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吸收敌弹，能量护盾消耗20耐久，并恢复100耐久</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久，或能量护盾消耗20耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
             </properties>
             <flavor>
@@ -1374,6 +1373,7 @@
                 <p>生命：<![CDATA[<color=red>200+1100（头盔）+600（盾牌）</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>特点：<![CDATA[<color=red>子弹击中反射壁时，产生伤害和属性相同的子弹进行回击</color>]]></p>
+                <p>弱点：<![CDATA[<color=red>音符不会产生反射弹幕</color>]]></p>
             </properties>
             <flavor>
                 <p>“我诅咒你永世不得超生！”</p>
