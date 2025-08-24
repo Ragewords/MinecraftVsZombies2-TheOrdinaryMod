@@ -753,10 +753,10 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
                     case SUBSTATE_VOMIT:
-                        if (substateTimer.PassedInterval(6))
+                        if (substateTimer.PassedInterval(3))
                         {
                             entity.PlaySound(VanillaSoundID.throwSound, 0.5f);
-                            var grid = entity.Level.GetAllGrids().Where(g => g.Column > 1 && g.Column < 7).Random(entity.RNG);
+                            var grid = entity.Level.GetAllGrids().Where(g => g.Column > 1 && g.Column < 7 && g.Lane > 0 && g.Lane < entity.Level.GetMaxLaneCount() - 1).Random(entity.RNG);
                             var targetPos = grid.GetEntityPosition();
                             var param = entity.GetShootParams();
                             var offset = MOUTH_OFFSET;
