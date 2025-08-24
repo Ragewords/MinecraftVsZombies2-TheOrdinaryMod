@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Effects
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.CollisionMaskHostile = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_OBSTACLE | EntityCollisionHelper.MASK_BOSS;
+            entity.CollisionMaskHostile = EntityCollisionHelper.MASK_VULNERABLE;
         }
         #endregion
         public override void Update(Entity entity)
@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Effects
             base.PostCollision(collision, state);
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
-            var other = collision.Other;
+            var other = collision.OtherCollider;
             var self = collision.Entity;
             other.TakeDamage(self.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE), self);
         }

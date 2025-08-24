@@ -3,8 +3,10 @@ using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -21,6 +23,8 @@ namespace MVZ2.GameContent.Contraptions
     {
         public NoteBlock(string nsp, string name) : base(nsp, name)
         {
+            playDetector = new SphereDetector(SOUND_RADIUS);
+            playNoisyDetector = new SphereDetector(SOUND_RADIUS * 2);
         }
 
         public override void Init(Entity entity)
@@ -40,6 +44,9 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetAnimationBool("Loud", entity.HasBuff<NoteBlockLoudBuff>());
+            playDetectBuffer.Clear();
+            var noteBlockDetector = entity.HasBuff<NoteBlockLoudBuff>() ? playNoisyDetector : playDetector;
+            noteBlockDetector.DetectMultiple(entity, playDetectBuffer);
         }
         public override void OnShootTick(Entity entity)
         {
@@ -119,12 +126,11 @@ namespace MVZ2.GameContent.Contraptions
             var waveTimer = GetWaveTimer(entity);
             if (waveTimer.Expired)
             {
-                var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
-                var param = entity.GetSpawnParams();
-                param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * 0.4f);
-                param.SetProperty(EngineEntityProps.SCALE, Vector3.one * rangeMultiplier);
-                var wave = entity.Spawn(VanillaEffectID.soundwave, entity.GetCenter(), param);
-                Soundwave.SetLoud(wave, entity.HasBuff<NoteBlockLoudBuff>());
+                entity.TriggerAnimation("Sound");
+                foreach (var target in playDetectBuffer)
+                {
+                    target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
+                }
                 waveTimer.Reset();
             }
         }
@@ -144,10 +150,14 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const int FIRE_INTERVAL = 45;
         public const int WAVE_INTERVAL = 5;
+        public const int SOUND_RADIUS = 120;
         public const int MAX_NOTE_COUNT = 10;
         public static FrameTimer GetWaveTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_WAVE_TIMER);
         public static void SetWaveTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_WAVE_TIMER, timer);
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_WAVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("WaveTimer");
         private static readonly VanillaEntityPropertyMeta<List<EntityID>> PROP_NOTE_CHILDREN = new VanillaEntityPropertyMeta<List<EntityID>>("NoteChildren");
+        private Detector playDetector;
+        private Detector playNoisyDetector;
+        private static List<IEntityCollider> playDetectBuffer = new List<IEntityCollider>();
     }
 }

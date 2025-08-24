@@ -12,6 +12,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public ShikaisenInvincibleBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
+            AddModifier(new BooleanModifier(VanillaEnemyProps.ASSUME_ALIVE, true));
         }
     }
 }

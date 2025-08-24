@@ -569,9 +569,9 @@ MonoBehaviour:
   explosionParticles: {fileID: 2641718724484372106}
   smokeParticles: {fileID: 4150422259696706892}
   explosionParticleCount: 5
-  smokeParticleCount: 5
+  smokeParticleCount: 2
   additionExplosionParticles: 10
-  additionSmokeParticles: 10
+  additionSmokeParticles: 2
   smokeSpeedMultiplier: 0.5
 --- !u!114 &8867971439136869194 stripped
 MonoBehaviour:
@@ -825,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836884166557527207, guid: d70d62722151087409d72ed6d98d22a8, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 836884166557527207, guid: d70d62722151087409d72ed6d98d22a8, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope

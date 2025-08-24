@@ -33,6 +33,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            jalapenoDetectBuffer.Clear();
             SetDamageCooldown(entity, new FrameTimer(DAMAGE_COOLDOWN));
         }
         protected override void UpdateAI(Entity entity)
@@ -62,8 +63,6 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            jalapenoDetectBuffer.Clear();
-            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
             UpdateIgnite(entity);
             entity.SetAnimationBool("Evoked", IsCursed(entity));
         }
@@ -74,6 +73,7 @@ namespace MVZ2.GameContent.Contraptions
                 return;
 
             var damageMultipiler = IsCursed(entity) ? 2 : 1;
+            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
             foreach (var target in jalapenoDetectBuffer)
             {
                 target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);

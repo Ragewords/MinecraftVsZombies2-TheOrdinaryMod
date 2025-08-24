@@ -3090,14 +3090,6 @@
                 <color name="mvz2:lightColor" value="#FFFFFF" />
             </properties>
         </effect>
-        <effect id="soundwave">
-            <properties>
-                <bool name="mvz2:decorative" value="false" />
-                <int name="mvz2:maxTimeout" value="30" />
-                <float name="mvz2:damage" value="3" />
-                <vector3 name="mvz2:size" x="240" y="80" z="240" />
-            </properties>
-        </effect>
         <effect id="spawner_appear_embers">
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />
@@ -3222,7 +3214,7 @@
             <properties>
                 <bool name="mvz2:decorative" value="false" />
                 <float name="mvz2:damage" value="1" />
-                <vector3 name="mvz2:size" x="80" y="5" z="80" />
+                <vector3 name="mvz2:size" x="240" y="5" z="240" />
                 <int name="mvz2:maxTimeout" value="150" />
                 <int name="mvz2:sortingOrder" value="-9999" />
             </properties>
