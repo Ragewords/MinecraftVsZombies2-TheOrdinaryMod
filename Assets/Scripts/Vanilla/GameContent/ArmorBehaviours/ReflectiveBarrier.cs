@@ -47,6 +47,8 @@ namespace MVZ2.GameContent.Armors
         {
             var hit = param.hit;
             var damage = param.damage;
+            if (hit.Projectile.IsEntityOf(VanillaProjectileID.note))
+                return;
 
             var shield = hit.Shield;
             if (shield == null)
@@ -59,15 +61,13 @@ namespace MVZ2.GameContent.Armors
 
             var owner = shield.Owner;
             var shootParams = owner.GetShootParams();
-            if (!hit.Projectile.IsEntityOf(VanillaProjectileID.note))
-            {
-                shootParams.projectileID = hit.Pierce ? VanillaProjectileID.arrowBullet : VanillaProjectileID.reflectionBullet;
-            }
+            shootParams.projectileID = hit.Pierce ? VanillaProjectileID.arrowBullet : VanillaProjectileID.reflectionBullet;
             shootParams.position = hit.Projectile.Position;
             shootParams.damage = shieldResult.Amount;
             shootParams.soundID = VanillaSoundID.reflection;
             shootParams.velocity = owner.GetFacingDirection() * 10;
             owner.ShootProjectile(shootParams);
+            
         }
     }
 }
