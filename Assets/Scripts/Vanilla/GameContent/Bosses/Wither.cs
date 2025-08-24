@@ -343,8 +343,8 @@ namespace MVZ2.GameContent.Bosses
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
             entity.PlaySound(VanillaSoundID.explosion);
-            entity.Explode(entity.GetCenter(), 240, entity.GetFaction(), entity.GetDamage() * 30, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
-            Explosion.Spawn(entity, entity.GetCenter(), 240);
+            entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage() * 18, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN));
+            Explosion.Spawn(entity, entity.GetCenter(), 120);
         }
         private void PostGlowstoneEvokeCallback(EntityCallbackParams param, CallbackResult result)
         {
