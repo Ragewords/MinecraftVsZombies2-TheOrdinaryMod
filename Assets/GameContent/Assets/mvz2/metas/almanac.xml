@@ -587,6 +587,7 @@
                 <p>磁暴线圈会电击周围大范围内的敌人，命中的敌人会产生连续攻击最多4个敌人的电流链。为经过的金属射弹附上电流，使其额外造成电流伤害。</p>
             </header>
             <properties>
+                <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>80（电击），10（溅射），20-8（电流链）</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+33%电流伤害，并使击中的敌人带上66%伤害的电流链</color>]]></p>
@@ -594,7 +595,7 @@
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
             <flavor>
-                <p>天杀的我这<![CDATA[<scale="2"><b> 特么的</b></scale>]]>到底是在玩什么游戏</p>
+                <p>天杀的我这<![CDATA[<scale="2"> 特么的</scale>]]>到底是在玩什么游戏</p>
             </flavor>
         </entry>
         <entry id="mvz2:giant_bowl">
