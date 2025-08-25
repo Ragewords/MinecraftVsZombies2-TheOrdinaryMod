@@ -304,16 +304,17 @@ namespace MVZ2.GameContent.Bosses
         }
         private void DoFate(Entity boss, int option)
         {
+            var altFate = boss.Level.SlendermanAlteredFate();
             switch (option)
             {
                 case FATE_PANDORAS_BOX:
-                    PandorasBox(boss);
+                    if (altFate) PandorasBoxAltered(boss); else PandorasBox(boss);
                     break;
                 case FATE_BIOHAZARD:
                     Biohazard(boss);
                     break;
                 case FATE_DECREPIFY:
-                    Decrepify(boss);
+                    if (altFate) DecrepifyAltered(boss); else Decrepify(boss);
                     break;
                 case FATE_INSANITY:
                     Insanity(boss);
@@ -683,9 +684,7 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.errorBlock),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie),
-            VanillaBlueprintID.FromEntity(VanillaEnemyID.ironHelmettedZombie)
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
         };
         private static int[] fateOptions = new int[]
         {

@@ -217,6 +217,7 @@ namespace MVZ2.GameContent.Buffs
 
             // 过场
             public const string frankensteinStage = "frankenstein_stage";
+            public const string crescentTransition = "crescent_transition";
             public const string slendermanTransition = "slenderman_transition";
             public const string nightmareaperTransition = "nightmareaper_transition";
             public const string nightmareCleared = "nightmare_cleared";

@@ -138,6 +138,16 @@
             <p>等着吧，哆来咪，我们绝对会把你救出来的。</p>
         </description>
     </music>
+    <music id="junko_theme_archived" name="Pure Furies ～ 心之所在">
+        <track main="mvz2:junko_theme_archived"/>
+        <source>东方绀珠传</source>
+        <description>
+            <p>梦魇第一阶段的音乐。</p>
+            <p>是《东方绀珠传》的第六关Boss——纯狐的音乐。</p>
+            <p>梦魇在这一阶段的设计曾经历过一次很大的变更，你们也许有所了解，当然，那已经不重要了。</p>
+            <p>值得一提的是，现在的设计主要取自《三角符文》中的隐藏头目：暗影斗篷。</p>
+        </description>
+    </music>
     <music id="nightmare_boss" name="Pandemonic Planet（前段）">
         <track main="mvz2:nightmare_boss"/>
         <source>东方绀珠传</source>
@@ -175,16 +185,6 @@
             <p>是《东方绀珠传》的第六关关卡音乐，纯狐战斗前的音乐。</p>
             <p>一名丧子的母亲，一个满腔怒火的神灵。</p>
             <p>怨恨纯化，一切缘由与目的已不再重要，惟留永恒的愤怒。</p>
-        </description>
-    </music>
-    <music id="junko_theme_archived" name="Pure Furies ～ 心之所在" unlock="mvz2:level.dream_EX3">
-        <track main="mvz2:junko_theme_archived"/>
-        <source>东方绀珠传</source>
-        <description>
-            <p>噩梦世界的一首未使用音乐。</p>
-            <p>是《东方绀珠传》的第六关Boss——纯狐的音乐。</p>
-            <p>这首音乐最初留给梦魇，然而随着梦魇设计的变更，这首曲子也最终未被使用。</p>
-            <p>不过，我仍然将这首曲子留在了这里，作为梦境世界拓展关卡完成后的一个小“奖励”。</p>
         </description>
     </music>
 

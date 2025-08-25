@@ -547,6 +547,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5a0ed5d8cf792294fb28827ccdea1c42, type: 3}
   - name: entity/armor/wicked_hermit_hat
     sprite: {fileID: 21300000, guid: 97bbf718dcb8d714cbce072750f648a2, type: 3}
+  - name: entity/boss/crescent_fire_trail
+    sprite: {fileID: 21300000, guid: 535430947e65ec94ea33fd3696ed9320, type: 3}
   - name: entity/boss/gun_fire
     sprite: {fileID: 21300000, guid: c6834e54b22c072438a7aa1583ebc4f5, type: 3}
   - name: entity/boss/seija_bomb
@@ -1470,6 +1472,12 @@ MonoBehaviour:
     - {fileID: -1346151238, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: 1817556834, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
     - {fileID: -1984530239, guid: 47ac2610c2e27e341820f80884cd641a, type: 3}
+  - name: entity/boss/crescent
+    spritesheet:
+    - {fileID: -1291267652, guid: 13e93dab8914179458689a8f6c940921, type: 3}
+    - {fileID: 227208113, guid: 13e93dab8914179458689a8f6c940921, type: 3}
+    - {fileID: -214643105, guid: 13e93dab8914179458689a8f6c940921, type: 3}
+    - {fileID: -257633983, guid: 13e93dab8914179458689a8f6c940921, type: 3}
   - name: entity/boss/frankenstein
     spritesheet:
     - {fileID: -8387447821006724102, guid: 74da7e893d261a549a659cfaef15b372, type: 3}

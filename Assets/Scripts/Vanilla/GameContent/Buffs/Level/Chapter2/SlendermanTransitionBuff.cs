@@ -39,14 +39,6 @@ namespace MVZ2.GameContent.Buffs.Level
             var level = buff.Level;
             if (timeout > CREATE_DARKNESS_TIMEOUT)
             {
-                // 让眼睛闭眼。
-                foreach (var eye in level.FindEntities(VanillaEffectID.nightmareWatchingEye))
-                {
-                    if (eye.Timeout <= 0)
-                    {
-                        eye.Timeout = 30;
-                    }
-                }
                 // 音乐放缓。
                 level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
             }
@@ -66,8 +58,6 @@ namespace MVZ2.GameContent.Buffs.Level
                 boss.PlaySound(VanillaSoundID.glassBreakBig);
                 level.ShakeScreen(30, 0, 30);
                 boss.Spawn(VanillaEffectID.nightmareaperSplash, pos);
-
-                level.SetProgressBarToBoss(VanillaProgressBarID.nightmare);
 
                 buff.Remove();
             }

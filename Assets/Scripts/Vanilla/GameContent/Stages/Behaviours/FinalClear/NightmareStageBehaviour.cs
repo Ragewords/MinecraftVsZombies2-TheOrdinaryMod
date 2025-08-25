@@ -19,7 +19,7 @@ namespace MVZ2.GameContent.Stages
         protected override void AfterFinalWaveUpdate(LevelEngine level)
         {
             base.AfterFinalWaveUpdate(level);
-            SlendermanTransitionUpdate(level);
+            CrescentTransitionUpdate(level);
         }
         protected override void BossFightWaveUpdate(LevelEngine level)
         {
@@ -27,6 +27,12 @@ namespace MVZ2.GameContent.Stages
             var state = GetBossState(level);
             switch (state)
             {
+                case BOSS_STATE_CRESCENT:
+                    CrescentUpdate(level);
+                    break;
+                case BOSS_STATE_SLENDERMAN_TRANSITION:
+                    SlendermanTransitionUpdate(level);
+                    break;
                 case BOSS_STATE_SLENDERMAN:
                     SlendermanUpdate(level);
                     break;
@@ -38,12 +44,49 @@ namespace MVZ2.GameContent.Stages
                     break;
             }
         }
+        private void CrescentTransitionUpdate(LevelEngine level)
+        {
+            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
+            {
+                // 新月出现
+                level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
+                return;
+            }
+            if (!level.HasBuff<CrescentTransitionBuff>())
+            {
+                level.AddBuff<CrescentTransitionBuff>();
+            }
+        }
+        private void CrescentUpdate(LevelEngine level)
+        {
+            // 新月战斗
+            // 如果不存在Boss，进入BOSS后阶段。
+            // 如果有Boss存活，不停生成怪物。
+            var targetAliveBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead);
+            var targetBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity());
+            if (targetAliveBosses.Length <= 0)
+            {
+                level.StopMusic();
+                ClearEnemies(level);
+            }
+            else
+            {
+                RunBossWave(level);
+            }
+            if (targetAliveBosses.Length <= 0 && targetBosses.Length <= 0)
+            {
+                SetBossState(level, BOSS_STATE_SLENDERMAN_TRANSITION);
+                level.AddBuff<SlendermanTransitionBuff>();
+            }
+        }
         private void SlendermanTransitionUpdate(LevelEngine level)
         {
+            ClearEnemies(level);
             if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
                 // 瘦长鬼影出现
                 level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
+                SetBossState(level, BOSS_STATE_SLENDERMAN);
                 return;
             }
             if (!level.HasBuff<SlendermanTransitionBuff>())
@@ -144,8 +187,10 @@ namespace MVZ2.GameContent.Stages
             }
         }
 
-        public const int BOSS_STATE_SLENDERMAN = 0;
-        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 1;
-        public const int BOSS_STATE_NIGHTMAREAPER = 2;
+        public const int BOSS_STATE_CRESCENT = 0;
+        public const int BOSS_STATE_SLENDERMAN_TRANSITION = 1;
+        public const int BOSS_STATE_SLENDERMAN = 2;
+        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 3;
+        public const int BOSS_STATE_NIGHTMAREAPER = 4;
     }
 }

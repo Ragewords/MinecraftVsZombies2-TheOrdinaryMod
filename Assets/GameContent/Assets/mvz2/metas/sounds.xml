@@ -102,6 +102,15 @@
     <sound name="coin" maxCount="1" priority="64">
         <sample path="mvz2:coin" weight="1" />
     </sound>
+    <sound name="crescent_dash">
+        <sample path="mvz2:entity/crescent/crescent_dash" weight="1" />
+    </sound>
+    <sound name="crescent_pre_dash">
+        <sample path="mvz2:entity/crescent/crescent_pre_dash" weight="1" />
+    </sound>
+    <sound name="crescent_shock">
+        <sample path="mvz2:entity/crescent/crescent_shock" weight="1" />
+    </sound>
     <sound name="crystal_break">
         <sample path="mvz2:random/crystal/crystal_break1" weight="1" />
         <sample path="mvz2:random/crystal/crystal_break2" weight="1" />

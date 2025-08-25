@@ -115,13 +115,13 @@ namespace MVZ2.GameContent.Contraptions
 
                     var shootParams = entity.GetShootParams();
                     shootParams.projectileID = projectileID;
-                    shootParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(pos, target.Entity.Position, 12, projectileGravity);
+                    shootParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(pos, target.Entity.GetCenter(), 12, projectileGravity);
                     shootParams.position = pos;
                     shootParams.soundID = VanillaSoundID.bow;
                     shootParams.damage = 0;
                     entity.ShootProjectile(shootParams);
-                    timer.Reset();
                 }
+                timer.Reset();
             }
         }
         private void EvokedUpdate(Entity entity)
@@ -150,8 +150,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             SetEvocationTime(entity, evocationTime);
         }
-        public static FrameTimer GetShootWebTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_TIMER);
-        public static void SetShootWebTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_SHOOT_TIMER, timer);
+        public static FrameTimer GetShootWebTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_WEB_TIMER);
+        public static void SetShootWebTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_SHOOT_WEB_TIMER, timer);
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
         public static Entity GetFireBreath(Entity entity)

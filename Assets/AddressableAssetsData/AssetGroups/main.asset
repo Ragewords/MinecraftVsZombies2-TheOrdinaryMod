@@ -934,6 +934,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13e93dab8914179458689a8f6c940921
+    m_Address: mvz2:entity/boss/crescent
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13f4669be302ba24296364d49d0b1219
     m_Address: mvz2:level/ship/sky
     m_ReadOnly: 0
@@ -1213,6 +1220,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 193e9fab55926e7449ed6a98b6126057
+    m_Address: mvz2:entity/crescent/crescent_pre_dash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1952812211a18a64789963bd0103e802
     m_Address: mvz2:icon/nocturnal
@@ -3795,6 +3809,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 535430947e65ec94ea33fd3696ed9320
+    m_Address: mvz2:entity/boss/crescent_fire_trail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5361472b4d206f44eba9f43295606ec2
     m_Address: mvz2:tesla_construction
     m_ReadOnly: 0
@@ -4046,6 +4067,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58817b657da938741add0727153093c2
+    m_Address: mvz2:entity/crescent/crescent_dash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58b00e65f2d3cf54e95b866108f55a09
     m_Address: mvz2:artifacts/nether_star
@@ -10430,6 +10458,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e650997e18b485f4688f9f64a8d18b79
+    m_Address: mvz2:boss/crescent
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e65c8602a6db8284fa1069847600d372
     m_Address: mvz2:level/dream/nightmare_ground_censored
     m_ReadOnly: 0
@@ -10562,6 +10597,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea3c2501efd2c134c8f85436b655c570
+    m_Address: mvz2:entity/crescent/crescent_shock
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea4c0b7c8c4abc444bbed3969cda9a5e
     m_Address: mvz2:projectile/arrow
