@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.beacon,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.randomChina,
-                VanillaBossID.seija,
+                VanillaBossID.crescent,
                 VanillaEnemyID.karakasaZombie,
                 VanillaEnemyID.berserker,
                 VanillaEnemyID.reflectiveBarrierZombie,

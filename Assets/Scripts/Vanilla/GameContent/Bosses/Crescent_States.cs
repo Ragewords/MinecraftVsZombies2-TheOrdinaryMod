@@ -9,6 +9,7 @@ using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
@@ -131,6 +132,7 @@ namespace MVZ2.GameContent.Bosses
                             entity.PlaySound(VanillaSoundID.crescentDash);
                             SetDashDir(entity, dir);
                             subStateTimer.ResetTime(60);
+                            ResetPosition(entity);
                             break;
                         case SUBSTATE_DASH_3:
                             SetPositionBeforeDash(entity, endGrid.GetEntityPosition() + Vector3.up * HEIGHT);
@@ -150,19 +152,6 @@ namespace MVZ2.GameContent.Bosses
                         case SUBSTATE_DASH_2:
                         case SUBSTATE_DASH_3:
                             entity.Velocity = GetDashDir(entity) * 20;
-                            var pos1 = entity.Position;
-                            if (pos1.x <= VanillaLevelExt.ENEMY_LEFT_BORDER)
-                            {
-                                entity.Velocity = Vector3.zero;
-                                pos1.x += 10;
-                                entity.Position = pos1;
-                            }
-                            else if (pos1.x >= VanillaLevelExt.ENEMY_RIGHT_BORDER)
-                            {
-                                entity.Velocity = Vector3.zero;
-                                pos1.x -= 10;
-                                entity.Position = pos1;
-                            }
                             if (subStateTimer.PassedInterval(3))
                             {
                                 var dir_vertical1 = Quaternion.Euler(Vector3.up * 90) * GetDashDir(entity);
@@ -191,6 +180,20 @@ namespace MVZ2.GameContent.Bosses
                             UpdatePosition(entity);
                             break;
                     }
+                }
+            }
+            private void ResetPosition(Entity entity)
+            {
+                var pos1 = entity.Position;
+                if (pos1.x < VanillaLevelExt.ENEMY_LEFT_BORDER)
+                {
+                    pos1.x = VanillaLevelExt.ENEMY_LEFT_BORDER;
+                    entity.Position = pos1;
+                }
+                else if (pos1.x > VanillaLevelExt.ENEMY_RIGHT_BORDER)
+                {
+                    pos1.x = VanillaLevelExt.ENEMY_RIGHT_BORDER;
+                    entity.Position = pos1;
                 }
             }
 
@@ -277,10 +280,10 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetSubStateTimer(entity);
-                stateTimer.ResetTime(15);
+                stateTimer.ResetTime(5);
                 entity.PlaySound(VanillaSoundID.crescentPreDash);
                 var grid = entity.Level.GetAllGrids().Random(entity.RNG);
-                SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 200);
+                SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
                 StopFly(entity);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
@@ -298,16 +301,17 @@ namespace MVZ2.GameContent.Bosses
                         {
                             entity.PlaySound(VanillaSoundID.crescentDash);
                             stateMachine.SetSubState(entity, SUBSTATE_DASH);
+                            entity.Velocity = Vector3.down * 40;
                         }
                         break;
                     case SUBSTATE_DASH:
                         if (entity.GetRelativeY() <= 0)
                         {
-                            entity.Velocity = Vector3.zero;
+                            entity.Velocity = Vector3.down * 40;
                             ShootDanmaku(entity, 0);
-                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 200);
+                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
                             stateMachine.SetSubState(entity, SUBSTATE_DANMAKU_1);
-                            subStateTimer.ResetTime(15);
+                            subStateTimer.ResetTime(5);
                         }
                         break;
                     case SUBSTATE_DANMAKU_1:
@@ -316,11 +320,11 @@ namespace MVZ2.GameContent.Bosses
                             UpdatePosition(entity);
                         if (entity.GetRelativeY() <= 0)
                         {
-                            entity.Velocity = Vector3.zero;
+                            entity.Velocity = Vector3.down * 40;
                             ShootDanmaku(entity, substate - 1);
-                            subStateTimer.ResetTime(15);
+                            subStateTimer.ResetTime(5);
                             stateMachine.SetSubState(entity, substate + 1);
-                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 200);
+                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
                         }
                         break;
                     case SUBSTATE_DANMAKU_3:
@@ -351,6 +355,10 @@ namespace MVZ2.GameContent.Bosses
                 entity.PlaySound(VanillaSoundID.smallExplosion);
                 entity.PlaySound(VanillaSoundID.crescentShock);
                 entity.PlaySound(VanillaSoundID.danmaku, volume: 0.5f);
+                foreach (var collider in entity.Level.OverlapSphere(entity.GetCenter(), 40, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT, 0))
+                {
+                    collider.Entity?.TakeDamage(entity.GetDamage() / 2, new DamageEffectList(), entity);
+                }
                 switch (stage)
                 {
                     case 0:
@@ -364,26 +372,11 @@ namespace MVZ2.GameContent.Bosses
                                 position = entity.GetCenter(),
                                 velocity = velocity,
                                 faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 5
+                                damage = entity.GetDamage() / 4
                             });
                         }
                         break;
                     case 1:
-                        for (int i = 0; i < 4; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 90 + 45, 0) * Vector3.right * 10;
-                            var velocity = direction;
-                            entity.ShootProjectile(new ShootParams()
-                            {
-                                projectileID = VanillaProjectileID.arrowBullet,
-                                position = entity.GetCenter(),
-                                velocity = velocity,
-                                faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 5
-                            });
-                        }
-                        break;
-                    case 2:
                         for (int i = 0; i < 8; i++)
                         {
                             var direction = Quaternion.Euler(0, i * 45, 0) * Vector3.right * 10;
@@ -394,11 +387,11 @@ namespace MVZ2.GameContent.Bosses
                                 position = entity.GetCenter(),
                                 velocity = velocity,
                                 faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 5
+                                damage = entity.GetDamage() / 4
                             });
                         }
                         break;
-                    case 3:
+                    case 2:
                         for (int i = 0; i < 10; i++)
                         {
                             var direction = Quaternion.Euler(0, i * 36, 0) * Vector3.right * 10;
@@ -409,7 +402,22 @@ namespace MVZ2.GameContent.Bosses
                                 position = entity.GetCenter(),
                                 velocity = velocity,
                                 faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 5
+                                damage = entity.GetDamage() / 4
+                            });
+                        }
+                        break;
+                    case 3:
+                        for (int i = 0; i < 12; i++)
+                        {
+                            var direction = Quaternion.Euler(0, i * 30, 0) * Vector3.right * 10;
+                            var velocity = direction;
+                            entity.ShootProjectile(new ShootParams()
+                            {
+                                projectileID = VanillaProjectileID.arrowBullet,
+                                position = entity.GetCenter(),
+                                velocity = velocity,
+                                faction = entity.GetFaction(),
+                                damage = entity.GetDamage() / 4
                             });
                         }
                         break;

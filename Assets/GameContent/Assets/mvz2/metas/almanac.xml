@@ -633,9 +633,9 @@
                 <p>闪电之珠张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>3000/3000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>3000</color>|<color=#00BBFF>3000</color>]]></p>
                 <p>能量护盾恢复时间：<![CDATA[<color=red>15秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100耐久，或能量护盾消耗20耐久</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100</color>|<color=#00BBFF>10</color><color=red>耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
             </properties>
             <flavor>
@@ -1892,7 +1892,7 @@
                     <p>梦魇是具有蒙骗感官和腐蚀能力的恐怖魔物，具有无数的化身。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>5500+2500+4000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>3500+2500+4000</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>直线冲刺，跳跃冲刺，俯冲冲刺</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>]]></p>
                     <p>阶段3：<![CDATA[<color=red>限时击杀，并且需要阻止碾压墙</color>]]></p>

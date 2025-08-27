@@ -45,8 +45,9 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateLogic(entity);
             entity.SetAnimationBool("Loud", entity.HasBuff<NoteBlockLoudBuff>());
             playDetectBuffer.Clear();
-            var noteBlockDetector = entity.HasBuff<NoteBlockLoudBuff>() ? playNoisyDetector : playDetector;
-            noteBlockDetector.DetectMultiple(entity, playDetectBuffer);
+            playDetector.DetectMultiple(entity, playDetectBuffer);
+            playNoisyDetectBuffer.Clear();
+            playNoisyDetector.DetectMultiple(entity, playNoisyDetectBuffer);
         }
         public override void OnShootTick(Entity entity)
         {
@@ -127,9 +128,19 @@ namespace MVZ2.GameContent.Contraptions
             if (waveTimer.Expired)
             {
                 entity.TriggerAnimation("Sound");
-                foreach (var target in playDetectBuffer)
+                if (entity.HasBuff<NoteBlockLoudBuff>())
                 {
-                    target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
+                    foreach (var target in playNoisyDetectBuffer)
+                    {
+                        target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
+                    }
+                }
+                else
+                {
+                    foreach (var target in playDetectBuffer)
+                    {
+                        target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
+                    }
                 }
                 waveTimer.Reset();
             }
@@ -159,5 +170,6 @@ namespace MVZ2.GameContent.Contraptions
         private Detector playDetector;
         private Detector playNoisyDetector;
         private static List<IEntityCollider> playDetectBuffer = new List<IEntityCollider>();
+        private static List<IEntityCollider> playNoisyDetectBuffer = new List<IEntityCollider>();
     }
 }

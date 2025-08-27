@@ -688,7 +688,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
-        <contraption id="lightning_orb" name="闪电之珠" tooltip="阻碍敌人前进，并吸收子弹来治疗自己"
+        <contraption id="lightning_orb" name="闪电之珠" tooltip="阻碍大范围敌人前进，并吸收子弹来治疗自己"
             unlock="mvz2:level.mausoleum_2">
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
@@ -2000,7 +2000,7 @@
         <boss id="crescent" name="新月">
             <properties>
                 <int name="mvz2:waterInteraction" value="0" />
-                <float name="mvz2:maxHealth" value="5500" />
+                <float name="mvz2:maxHealth" value="3500" />
                 <id name="mvz2:shell" value="mvz2:stone" />
                 <vector3 name="mvz2:size" x="64" y="64" z="64" />
                 <color name="mvz2:bloodColor" value="#000000FF" />
