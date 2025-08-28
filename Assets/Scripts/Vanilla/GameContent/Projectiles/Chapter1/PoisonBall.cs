@@ -15,9 +15,12 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var enemy = hitResult.Other;
+            var shield = hitResult.Shield;
             if (enemy.Type != EntityTypes.ENEMY)
                 return;
             if (enemy.IsSpider())
+                return;
+            if (shield != null)
                 return;
             enemy.InflictPoison(150);
         }
