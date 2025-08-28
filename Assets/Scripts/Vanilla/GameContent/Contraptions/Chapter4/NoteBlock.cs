@@ -44,10 +44,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetAnimationBool("Loud", entity.HasBuff<NoteBlockLoudBuff>());
-            playDetectBuffer.Clear();
-            playDetector.DetectMultiple(entity, playDetectBuffer);
-            playNoisyDetectBuffer.Clear();
-            playNoisyDetector.DetectMultiple(entity, playNoisyDetectBuffer);
         }
         public override void OnShootTick(Entity entity)
         {
@@ -125,6 +121,10 @@ namespace MVZ2.GameContent.Contraptions
         public static void SonicWave(Entity entity)
         {
             var waveTimer = GetWaveTimer(entity);
+            playDetectBuffer.Clear();
+            playDetector.DetectMultiple(entity, playDetectBuffer);
+            playNoisyDetectBuffer.Clear();
+            playNoisyDetector.DetectMultiple(entity, playNoisyDetectBuffer);
             if (waveTimer.Expired)
             {
                 entity.TriggerAnimation("Sound");
@@ -167,8 +167,8 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetWaveTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_WAVE_TIMER, timer);
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_WAVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("WaveTimer");
         private static readonly VanillaEntityPropertyMeta<List<EntityID>> PROP_NOTE_CHILDREN = new VanillaEntityPropertyMeta<List<EntityID>>("NoteChildren");
-        private Detector playDetector;
-        private Detector playNoisyDetector;
+        private static Detector playDetector;
+        private static Detector playNoisyDetector;
         private static List<IEntityCollider> playDetectBuffer = new List<IEntityCollider>();
         private static List<IEntityCollider> playNoisyDetectBuffer = new List<IEntityCollider>();
     }

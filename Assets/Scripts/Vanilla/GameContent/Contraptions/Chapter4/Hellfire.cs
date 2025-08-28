@@ -14,6 +14,8 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
 using Tools;
+using MVZ2.Vanilla.Callbacks;
+using PVZEngine.Callbacks;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -92,6 +94,7 @@ namespace MVZ2.GameContent.Contraptions
                     block.AddBuff<HellfireCursedBuff>();
                 block.Timeout += i * 2;
             }
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
         }
         public override bool CanEvoke(Entity entity)
         {
