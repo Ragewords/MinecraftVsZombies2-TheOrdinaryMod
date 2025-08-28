@@ -54,7 +54,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var xspeed = entity.GetFacingX() * rng.Next(10f, 18f);
                 var yspeed = rng.Next(30f);
-                var zspeed = rng.Next(-3f, 3f);
+                var zspeed = rng.Next(-1.5f, 1.5f);
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.boulder;
                 param.damage = entity.GetDamage() * 4;
