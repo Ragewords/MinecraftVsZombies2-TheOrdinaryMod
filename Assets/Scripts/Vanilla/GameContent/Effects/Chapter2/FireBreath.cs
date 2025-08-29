@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -20,6 +22,11 @@ namespace MVZ2.GameContent.Effects
         public FireBreath(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new Vector3Modifier(VanillaEntityProps.LIGHT_RANGE, NumberOperator.Multiply, PROP_LIGHT_RANGE_MULTIPLIER));
+            igniteDetector = new HellfireIgniteDetector(0)
+            {
+                factionTarget = FactionTarget.Friendly,
+                mask = EntityCollisionHelper.MASK_PROJECTILE,
+            };
         }
         public override void Init(Entity entity)
         {
@@ -28,20 +35,6 @@ namespace MVZ2.GameContent.Effects
             entity.CollisionMaskFriendly = EntityCollisionHelper.MASK_PROJECTILE;
             entity.Level.AddLoopSoundEntity(VanillaSoundID.fireBreath, entity.ID);
         }
-        public override void PostCollision(EntityCollision collision, int state)
-        {
-            base.PostCollision(collision, state);
-            var other = collision.Other;
-            var self = collision.Entity;
-            var parent = self.Parent;
-            bool existing = parent != null && parent.Exists();
-            if (!existing)
-                return;
-            var behaviour = other.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
-            if (behaviour == null)
-                return;
-            behaviour.Ignite(other, self, false);
-        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
@@ -49,6 +42,7 @@ namespace MVZ2.GameContent.Effects
             bool existing = parent != null && parent.Exists();
             if (existing)
             {
+                UpdateIgnite(entity);
                 entity.Timeout = MAX_TIMEOUT;
                 var cooldown = GetDamageCooldown(entity);
                 cooldown--;
@@ -70,6 +64,18 @@ namespace MVZ2.GameContent.Effects
             var lightPercentage = Mathf.Max(0, (entity.Timeout / (float)MAX_TIMEOUT) * 3 - 2);
             entity.SetProperty(PROP_LIGHT_RANGE_MULTIPLIER, Vector3.one * lightPercentage);
         }
+        private void UpdateIgnite(Entity breath)
+        {
+            igniteBuffer.Clear();
+            igniteDetector.DetectEntities(breath, igniteBuffer);
+            foreach (Entity target in igniteBuffer)
+            {
+                var behaviour = target.Definition?.GetBehaviour<IHellfireIgniteBehaviour>();
+                if (behaviour == null)
+                    return;
+                behaviour.Ignite(target, breath, false);
+            }
+        }
         public static int GetDamageCooldown(Entity entity) => entity.GetBehaviourField<int>(PROP_DAMAGE_COOLDOWN);
         public static void SetDamageCooldown(Entity entity, int value) => entity.SetBehaviourField(PROP_DAMAGE_COOLDOWN, value);
         #endregion
@@ -78,6 +84,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_LIGHT_RANGE_MULTIPLIER = new VanillaEntityPropertyMeta<Vector3>("LightRangeMultiplier");
         private static readonly VanillaEntityPropertyMeta<int> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<int>("DamageCooldown");
         private List<EntityCollision> collisionBuffer = new List<EntityCollision>();
-        private List<EntityCollision> projectileCollisionBuffer = new List<EntityCollision>();
+        private Detector igniteDetector;
+        private List<Entity> igniteBuffer = new List<Entity>();
     }
 }

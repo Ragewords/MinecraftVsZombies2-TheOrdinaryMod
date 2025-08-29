@@ -147,6 +147,7 @@ namespace MVZ2.GameContent.Effects
                     {
                         other.Stun(STUN_DURATION);
                         other.PlaySound(VanillaSoundID.punch);
+                        other.Velocity += 10 * other.GetWeakKnockbackMultiplier() * block.Velocity.normalized;
                     }
                     break;
             }

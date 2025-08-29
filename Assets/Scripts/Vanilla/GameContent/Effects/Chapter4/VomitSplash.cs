@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -18,22 +21,25 @@ namespace MVZ2.GameContent.Effects
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.CollisionMaskHostile = EntityCollisionHelper.MASK_VULNERABLE;
         }
         #endregion
         public override void Update(Entity entity)
         {
             base.Update(entity);
             entity.SetTint(new Color(1, 1, 1, Mathf.Clamp01(entity.Timeout / 15f)));
+
+            collideBuffer.Clear();
+            collideDetector.DetectMultiple(entity, collideBuffer);
+            foreach (var collider in collideBuffer)
+            {
+                var other = collider.Entity;
+                if (entity.IsHostile(other))
+                {
+                    collider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE), entity);
+                }
+            }
         }
-        public override void PostCollision(EntityCollision collision, int state)
-        {
-            base.PostCollision(collision, state);
-            if (state == EntityCollisionHelper.STATE_EXIT)
-                return;
-            var other = collision.OtherCollider;
-            var self = collision.Entity;
-            other.TakeDamage(self.GetDamage(), new DamageEffectList(VanillaDamageEffects.MUTE), self);
-        }
+        private Detector collideDetector = new CollisionDetector();
+        private List<IEntityCollider> collideBuffer = new List<IEntityCollider>();
     }
 }
