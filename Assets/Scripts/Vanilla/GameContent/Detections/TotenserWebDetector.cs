@@ -10,7 +10,7 @@ namespace MVZ2.GameContent.Detections
     {
         public TotenserWebDetector(float range = 0)
         {
-            mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY;
+            mask = EntityCollisionHelper.MASK_ENEMY;
             this.range = range;
         }
         protected override Bounds GetDetectionBounds(Entity self)

@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.AddBuff<ParatroopBuff>();
                 entity.PlaySound(VanillaSoundID.wind, volume: 0.5f);
-                FindTargetGridAndSetSpeed(entity, entity.GetColumn() - targetCol);
+                FindTargetGridAndSetSpeed(entity, (targetCol - entity.GetColumn()) * entity.GetFacingX());
             }
         }
         protected override void UpdateLogic(Entity entity)
@@ -46,6 +46,14 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
             entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
+        }
+        protected override void UpdateActionState(Entity enemy, int state)
+        {
+            base.UpdateActionState(enemy, state);
+            if (state == VanillaEntityStates.ENEMY_PARACHUTE && enemy.HasBuff<KarakasaSpeedBuff>())
+            {
+                enemy.UpdateWalkVelocity();
+            }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
@@ -65,7 +73,9 @@ namespace MVZ2.GameContent.Enemies
             if (columnDistance < 0)
                 return;
 
-            entity.Velocity += 30 * columnDistance * entity.GetFacingDirection();
+            var buff = entity.NewBuff<KarakasaSpeedBuff>();
+            KarakasaSpeedBuff.SetSpeed(buff, columnDistance * 1.8f);
+            entity.AddBuff(buff);
         }
     }
 }

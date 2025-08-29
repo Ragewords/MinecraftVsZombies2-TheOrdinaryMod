@@ -125,6 +125,7 @@ namespace MVZ2.GameContent.Buffs
         public const string revivegraveRevive = "revivegrave_revive";
 
         public const string paratroop = "paratroop";
+        public const string karakasaSpeed = "karakasa_speed";
         public const string summonedByUFO = "summoned_by_ufo";
         public const string ufoBlueAbsorb = "ufo_blue_absorb";
         public const string heavyCannon = "heavy_cannon";

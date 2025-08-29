@@ -16,8 +16,11 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var enemy = hitResult.Other;
-            if (enemy.Type != EntityTypes.PLANT && enemy.Type != EntityTypes.ENEMY)
+            if (enemy.Type != EntityTypes.ENEMY)
+            {
+                hitResult.Pierce = true;
                 return;
+            }
             if (enemy.HasBuff<TotenserWebBuff>())
             {
                 hitResult.Pierce = true;

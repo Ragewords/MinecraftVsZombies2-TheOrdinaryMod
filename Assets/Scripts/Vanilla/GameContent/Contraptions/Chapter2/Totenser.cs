@@ -36,10 +36,10 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            UpdateWeb(entity);
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
+                WebTick(entity);
             }
             else
             {
@@ -98,7 +98,7 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
         }
-        private void UpdateWeb(Entity entity)
+        private void WebTick(Entity entity)
         {
             var timer = GetShootWebTimer(entity);
             timer.Run(entity.GetAttackSpeed());

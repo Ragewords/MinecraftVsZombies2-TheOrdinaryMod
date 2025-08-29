@@ -23,8 +23,6 @@ namespace MVZ2.GameContent.Contraptions
     {
         public NoteBlock(string nsp, string name) : base(nsp, name)
         {
-            playDetector = new SphereDetector(SOUND_RADIUS);
-            playNoisyDetector = new SphereDetector(SOUND_RADIUS * 2);
         }
 
         public override void Init(Entity entity)
@@ -121,27 +119,11 @@ namespace MVZ2.GameContent.Contraptions
         public static void SonicWave(Entity entity)
         {
             var waveTimer = GetWaveTimer(entity);
-            playDetectBuffer.Clear();
-            playDetector.DetectMultiple(entity, playDetectBuffer);
-            playNoisyDetectBuffer.Clear();
-            playNoisyDetector.DetectMultiple(entity, playNoisyDetectBuffer);
             if (waveTimer.Expired)
             {
                 entity.TriggerAnimation("Sound");
-                if (entity.HasBuff<NoteBlockLoudBuff>())
-                {
-                    foreach (var target in playNoisyDetectBuffer)
-                    {
-                        target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
-                    }
-                }
-                else
-                {
-                    foreach (var target in playDetectBuffer)
-                    {
-                        target.TakeDamage(entity.GetDamage() * 0.4f, new DamageEffectList(), entity);
-                    }
-                }
+                var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
+                entity.Explode(entity.GetCenter(), SOUND_RADIUS * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * SOUND_DAMAGE_MULTIPLIER, new DamageEffectList(VanillaDamageEffects.MUTE));
                 waveTimer.Reset();
             }
         }
@@ -162,14 +144,11 @@ namespace MVZ2.GameContent.Contraptions
         public const int FIRE_INTERVAL = 45;
         public const int WAVE_INTERVAL = 5;
         public const int SOUND_RADIUS = 120;
+        public const float SOUND_DAMAGE_MULTIPLIER = 0.4f;
         public const int MAX_NOTE_COUNT = 10;
         public static FrameTimer GetWaveTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_WAVE_TIMER);
         public static void SetWaveTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_WAVE_TIMER, timer);
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_WAVE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("WaveTimer");
         private static readonly VanillaEntityPropertyMeta<List<EntityID>> PROP_NOTE_CHILDREN = new VanillaEntityPropertyMeta<List<EntityID>>("NoteChildren");
-        private static Detector playDetector;
-        private static Detector playNoisyDetector;
-        private static List<IEntityCollider> playDetectBuffer = new List<IEntityCollider>();
-        private static List<IEntityCollider> playNoisyDetectBuffer = new List<IEntityCollider>();
     }
 }

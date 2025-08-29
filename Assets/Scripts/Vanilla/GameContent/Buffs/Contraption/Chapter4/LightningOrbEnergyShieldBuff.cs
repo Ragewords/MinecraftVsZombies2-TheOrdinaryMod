@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
-            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 3, 5)));
+            AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5, 5 / 2, 5)));
             AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, NumberOperator.Set, VehicleInteraction.BLOCK));
             AddAura(new EnergyShieldAura());
         }

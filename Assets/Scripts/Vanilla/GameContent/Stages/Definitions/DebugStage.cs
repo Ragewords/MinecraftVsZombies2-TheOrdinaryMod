@@ -45,12 +45,12 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.poisonser,
+                VanillaContraptionID.drivenser,
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.teslaCoil,
-                VanillaContraptionID.randomChina,
+                VanillaContraptionID.lightningOrb,
+                VanillaContraptionID.hfpd,
                 VanillaContraptionID.punchton,
                 VanillaEnemyID.karakasaZombie,
                 VanillaEnemyID.berserker,

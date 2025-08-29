@@ -30,12 +30,10 @@ namespace MVZ2.GameContent.Contraptions
                 mask = EntityCollisionHelper.MASK_PROJECTILE,
             };
             burnDetector = new SphereDetector(BURN_RADIUS);
-            jalapenoDetector = new LaneDetector(1000, 80);
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            jalapenoDetectBuffer.Clear();
             SetDamageCooldown(entity, new FrameTimer(DAMAGE_COOLDOWN));
         }
         protected override void UpdateAI(Entity entity)
@@ -75,26 +73,7 @@ namespace MVZ2.GameContent.Contraptions
                 return;
 
             var damageMultipiler = IsCursed(entity) ? 2 : 1;
-            jalapenoDetector.DetectEntities(entity, jalapenoDetectBuffer);
-            foreach (var target in jalapenoDetectBuffer)
-            {
-                target.TakeDamage(entity.GetDamage() * 45 * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
-            }
-            entity.Level.ShakeScreen(10, 0, 15);
-            Explosion.Spawn(entity, entity.GetCenter(), BURN_RADIUS);
-            entity.PlaySound(VanillaSoundID.explosion);
-            entity.PlaySound(VanillaSoundID.flame);
-            var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
-            for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
-            {
-                var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
-                var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
-                Fireblock.SetCursed(block, IsCursed(entity));
-                if (IsCursed(entity))
-                    block.AddBuff<HellfireCursedBuff>();
-                block.Timeout += i * 2;
-            }
-            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
+            Explode(entity, entity.GetDamage() * 45 * damageMultipiler);
         }
         public override bool CanEvoke(Entity entity)
         {
@@ -133,6 +112,39 @@ namespace MVZ2.GameContent.Contraptions
             SetCursed(entity, true);
             entity.AddBuff<HellfireCursedBuff>();
         }
+        public static DamageOutput[] Explode(Entity entity, float damage)
+        {
+            var level = entity.Level;
+            List<DamageOutput> damageOutputs = new List<DamageOutput>();
+            var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
+
+            foreach (var entityCollider in level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0))
+            {
+                var damageEffects = new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
+                var damageOutput = entityCollider.TakeDamage(damage, damageEffects, entity);
+                if (damageOutput != null)
+                {
+                    damageOutputs.Add(damageOutput);
+                }
+            }
+
+            entity.Level.ShakeScreen(10, 0, 15);
+            Explosion.Spawn(entity, entity.GetCenter(), BURN_RADIUS);
+            entity.PlaySound(VanillaSoundID.explosion);
+            entity.PlaySound(VanillaSoundID.flame);
+            for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
+            {
+                var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
+                var block = entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z));
+                Fireblock.SetCursed(block, IsCursed(entity));
+                if (IsCursed(entity))
+                    block.AddBuff<HellfireCursedBuff>();
+                block.Timeout += i * 2;
+            }
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
+
+            return damageOutputs.ToArray();
+        }
         public static void SetCursed(Entity entity, bool value) => entity.SetProperty(PROP_CURSED, value);
         public static bool IsCursed(Entity entity) => entity.GetProperty<bool>(PROP_CURSED);
         public static void SetMeteor(Entity entity, EntityID value) => entity.SetProperty(PROP_METEOR, value);
@@ -144,10 +156,9 @@ namespace MVZ2.GameContent.Contraptions
         private Detector detector;
         private List<Entity> igniteBuffer = new List<Entity>();
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<FrameTimer>("DamageCooldown");
-        private List<Entity> detectBuffer = new List<Entity>();
-        private List<Entity> jalapenoDetectBuffer = new List<Entity>();
         private Detector burnDetector;
-        private Detector jalapenoDetector;
+        private List<Entity> detectBuffer = new List<Entity>();
+
         public const float BURN_RADIUS = 40;
         public const int DAMAGE_COOLDOWN = 30;
     }
