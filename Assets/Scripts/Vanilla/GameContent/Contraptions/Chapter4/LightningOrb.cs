@@ -9,6 +9,7 @@ using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -22,8 +23,17 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.AddBuff<LightningOrbEnergyShieldBuff>();
-            SetShieldRegenerateTimer(entity, new FrameTimer(REGENERATE_TIME));
+            var timer = new FrameTimer(REGENERATE_TIME);
+            var shieldActiveOrbs = FindShieldedOrbs(entity);
+            if (shieldActiveOrbs.Length <= 0)
+            {
+                entity.AddBuff<LightningOrbEnergyShieldBuff>();
+            }
+            else
+            {
+                timer.Frame = 5;
+            }
+            SetShieldRegenerateTimer(entity, timer);
         }
         protected override void UpdateAI(Entity contraption)
         {
@@ -32,10 +42,14 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             var timer = GetShieldRegenerateTimer(contraption);
             timer.Run(contraption.GetProduceSpeed());
+            var shieldActiveOrbs = FindShieldedOrbs(contraption);
             if (timer.Expired)
             {
-                timer.ResetTime(REGENERATE_TIME);
-                contraption.AddBuff<LightningOrbEnergyShieldBuff>();
+                if (shieldActiveOrbs.Length <= 0)
+                {
+                    timer.ResetTime(REGENERATE_TIME);
+                    contraption.AddBuff<LightningOrbEnergyShieldBuff>();
+                }
             }
         }
         protected override void UpdateLogic(Entity contraption)
@@ -80,17 +94,21 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             entity.PlaySound(VanillaSoundID.lightningAttack);
-            if (entity.HasBuff<LightningOrbEnergyShieldBuff>())
-                entity.RemoveBuffs<LightningOrbEnergyShieldBuff>();
+            entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
+            entity.RemoveBuffs<LightningOrbEnergyShieldBuff>();
             entity.AddBuff<LightningOrbEvokedBuff>();
             var timer = GetShieldRegenerateTimer(entity);
             timer.ResetTime(REGENERATE_TIME_EVOKED);
+        }
+        public static Entity[] FindShieldedOrbs(Entity entity)
+        {
+            return entity.Level.FindEntities(e => e.IsFriendly(entity) && e.HasBuff<LightningOrbEnergyShieldBuff>() && Mathf.Abs(e.GetLane() - entity.GetLane()) <= 1 && Mathf.Abs(e.GetColumn() - entity.GetColumn()) <= 1);
         }
         public static FrameTimer GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
-        public const int REGENERATE_TIME = 450;
+        public const int REGENERATE_TIME = 600;
         public const int REGENERATE_TIME_EVOKED = 155;
     }
 }

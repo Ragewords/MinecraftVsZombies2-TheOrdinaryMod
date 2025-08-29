@@ -753,24 +753,27 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
                     case SUBSTATE_VOMIT:
-                        if (substateTimer.PassedInterval(3))
+                        if (substateTimer.PassedInterval(2))
                         {
                             entity.PlaySound(VanillaSoundID.throwSound, 0.5f);
-                            var grid = entity.Level.GetAllGrids().Where(g => g.Column > 1 && g.Column < 7 && g.Lane > 0 && g.Lane < entity.Level.GetMaxLaneCount() - 1).Random(entity.RNG);
-                            var targetPos = grid.GetEntityPosition();
-                            var param = entity.GetShootParams();
-                            var offset = MOUTH_OFFSET;
-                            offset = entity.ModifyShotOffset(offset);
-                            param.position = entity.Position + offset;
-                            param.soundID = null;
-                            param.damage = 0;
-                            param.projectileID = VanillaProjectileID.vomit;
-                            param.velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position + offset, targetPos, 45, 1);
-                            var spawnParam = entity.GetSpawnParams();
-                            spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 3f);
-                            spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 3f);
-                            param.spawnParam = spawnParam;
-                            entity.ShootProjectile(param);
+                            for (var i = 0; i < 2; i++)
+                            {
+                                var grid = entity.Level.GetAllGrids().Where(g => g.Column > 0 && g.Column < 7).Random(entity.RNG);
+                                var targetPos = grid.GetEntityPosition();
+                                var param = entity.GetShootParams();
+                                var offset = MOUTH_OFFSET;
+                                offset = entity.ModifyShotOffset(offset);
+                                param.position = entity.Position + offset;
+                                param.soundID = null;
+                                param.damage = 0;
+                                param.projectileID = VanillaProjectileID.vomit;
+                                param.velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position + offset, targetPos, 30, 1);
+                                var spawnParam = entity.GetSpawnParams();
+                                spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2f);
+                                spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2f);
+                                param.spawnParam = spawnParam;
+                                entity.ShootProjectile(param);
+                            }
                         }
                         if (substateTimer.Expired)
                         {
