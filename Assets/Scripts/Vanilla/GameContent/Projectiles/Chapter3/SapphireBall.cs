@@ -16,7 +16,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.PostHitEntity(hitResult, damage);
             var projectile = hitResult.Projectile;
-            if (projectile.RNG.Next(100) < 25)
+            if (projectile.RNG.Next(100) < 5)
             {
                 projectile.Produce(VanillaPickupID.sapphire);
             }
