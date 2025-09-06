@@ -1,0 +1,16 @@
+using MVZ2.Vanilla.Level;
+using PVZEngine.Buffs;
+using PVZEngine.Level;
+using PVZEngine.Modifiers;
+
+namespace MVZ2.GameContent.Buffs.Enemies
+{
+    [BuffDefinition(VanillaBuffNames.Level.lostDeathPunish)]
+    public class LostDeathPunishBuff : BuffDefinition
+    {
+        public LostDeathPunishBuff(string nsp, string name) : base(nsp, name)
+        {
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_MUTLIPLIER, NumberOperator.Add, 1));
+        }
+    }
+}

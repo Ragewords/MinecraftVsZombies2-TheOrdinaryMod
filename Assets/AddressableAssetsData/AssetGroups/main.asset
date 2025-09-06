@@ -297,6 +297,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0743427d49824c944958ce613ed1fe3e
+    m_Address: mvz2:entity/lost/isaac_dies1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 07439dae4c9a57f46940ad9c4fb79aa1
     m_Address: mvz2:mausoleum
     m_ReadOnly: 0
@@ -1970,6 +1977,13 @@ MonoBehaviour:
     - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b3320004ce1fe949893fb7720a9ccb8
+    m_Address: mvz2:entity/lost/isaac_dies2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2b4a63ffd329fbf43a452a8934978807
     m_Address: mvz2:ui/musicroom/pause_button
     m_ReadOnly: 0
@@ -2747,6 +2761,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3a34c7d7f5c53ba409dc7c851fd09788
     m_Address: mvz2:soul_sand1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a4ba313a1932214595c9f70b7abd8a5
+    m_Address: mvz2:thumbs_down
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -3801,6 +3822,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52e3e673e312e1341b86c788bb286309
+    m_Address: mvz2:enemy/halloween/lost
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53000fe10b2b2114a9d2a2a204f7c143
     m_Address: mvz2:ui/level/pause_image_loss
@@ -5222,6 +5250,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72865cd3550a1924c92acbd9cdac08cc
+    m_Address: mvz2:entity/lost/isaac_dies3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 729f6cb40a51da2449f5a7e7b4ead347
     m_Address: mvz2:enemy/mausoleum/shikaisen_zombie
@@ -8197,6 +8232,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3815b8f8d118f045915891e43b7a559
+    m_Address: mvz2:entity/enemies/lost_tail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b39e207ee049fea4d943f067087b44b5
     m_Address: mvz2:icon/poison_particles
     m_ReadOnly: 0
@@ -8749,6 +8791,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfccc90305ba6dc4890f1cfd4b0aef3a
+    m_Address: mvz2:entity/enemies/lost
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfce65959617bce4ab0ffb4a5d19df4c
     m_Address: mvz2:level/dream/pool_sparkle

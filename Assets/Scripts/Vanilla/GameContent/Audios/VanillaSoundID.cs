@@ -204,6 +204,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID tap = Get("tap");
         public readonly static NamespaceID teslaAttack = Get("tesla_attack");
         public readonly static NamespaceID teslaPower = Get("tesla_power");
+        public readonly static NamespaceID thumbsDown = Get("thumbs_down");
         public readonly static NamespaceID thump = Get("thump");
         public readonly static NamespaceID thunder = Get("thunder");
         public readonly static NamespaceID throwSound = Get("throw");

@@ -383,6 +383,25 @@
             </slot>
         </armors>
     </shape>
+    <shape id="lost">
+        <armors>
+            <slot id="mvz2:main">
+                <default>
+                    <position x="0" y="30" z="0"/>
+                </default>
+            </slot>
+            <slot id="mvz2:shield">
+                <default>
+                    <position x="-24" y="18" z="0"/>
+                </default>
+                <custom id="mvz2:umbrella_shield">
+                    <model>
+                        <anchor value="shield_hands"/>
+                    </model>
+                </custom>
+            </slot>
+        </armors>
+    </shape>
     <shape id="satellite">
         <armors>
             <slot id="mvz2:main">

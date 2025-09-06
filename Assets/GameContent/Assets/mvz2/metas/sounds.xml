@@ -425,6 +425,11 @@
     <sound name="iron_curtain">
         <sample path="mvz2:iron_curtain" weight="1" />
     </sound>
+    <sound name="issac_dies">
+        <sample path="mvz2:entity/lost/isaac_dies1" weight="1" />
+        <sample path="mvz2:entity/lost/isaac_dies2" weight="1" />
+        <sample path="mvz2:entity/lost/isaac_dies3" weight="1" />
+    </sound>
     <sound name="large_explosion">
         <sample path="mvz2:large_explosion" weight="1" />
     </sound>
@@ -842,6 +847,9 @@
     </sound>
     <sound name="throw">
         <sample path="mvz2:throw" weight="1" />
+    </sound>
+    <sound name="thumbs_down">
+        <sample path="mvz2:thumbs_down" weight="1" />
     </sound>
     <sound name="thump">
         <sample path="mvz2:thump" weight="1" />

@@ -189,6 +189,7 @@ namespace MVZ2.GameContent.Buffs
             public const string tutorialPickaxeDisable = "tutorial_pickaxe_disable";
             public const string tutorialTriggerDisable = "tutorial_trigger_disable";
             public const string thunder = "thunder";
+            public const string lostDeathPunish = "lost_death_punish";
             public const string swordParalyzed = "sword_paralyzed";
             public const string nightmareLevel = "nightmare_level";
             public const string nightmareDecrepify = "nightmare_decrepify";

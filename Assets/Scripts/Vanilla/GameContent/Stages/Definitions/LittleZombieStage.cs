@@ -68,18 +68,10 @@ namespace MVZ2.GameContent.Stages
             var level = entity.Level;
             if (level.StageDefinition != this)
                 return;
-            bool small = false;
-            var smallCounter = GetSmallCounter(level);
-            if (smallCounter > MAX_SMALL_COUNTER)
-            {
-                smallCounter -= MAX_SMALL_COUNTER;
-                small = true;
-            }
-            else
-            {
-                smallCounter++;
-            }
-            SetSmallCounter(level, smallCounter);
+            int smallLimit = 1;
+            if (level.CurrentWave > 10)
+                smallLimit = 3;
+            bool small = entity.RNG.Next(4) < smallLimit;
             if (small)
             {
                 entity.AddBuff<LittleContraptionBuff>();

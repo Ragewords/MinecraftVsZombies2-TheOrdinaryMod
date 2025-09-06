@@ -54,7 +54,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaBossID.crescent,
                 VanillaEnemyID.zombie,
                 VanillaEnemyID.mesmerizer,
-                VanillaEnemyID.caveSpider,
+                VanillaEnemyID.lost,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

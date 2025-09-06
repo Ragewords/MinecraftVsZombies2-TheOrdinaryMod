@@ -623,6 +623,7 @@
             <entry id="mvz2:wooden_dropper" count="20"/>
             <entry id="mvz2:obsidian" count="5"/>
             <entry id="mvz2:tnt" count="5"/>
+            <entry id="mvz2:magichest" count="1"/>
         </conveyor>
         <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:golden_apple"/>
         <spawns flags="2" firstWaveTime="30" pointsMultiplier="4" pointsAddition="3">
@@ -1324,6 +1325,7 @@
             <entry id="mvz2:pistenser" count="5"/>
             <entry id="mvz2:obsidian" count="5"/>
             <entry id="mvz2:tnt" count="3"/>
+            <entry id="mvz2:magichest" count="1"/>
         </conveyor>
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <spawns flags="2" firstWaveTime="30" pointsMultiplier="4" pointsAddition="3">

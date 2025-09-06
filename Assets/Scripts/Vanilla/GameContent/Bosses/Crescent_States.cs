@@ -216,7 +216,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                var targets = entity.Level.FindEntities(e => e.IsVulnerableEntity() && e.IsHostile(entity) && e.ExistsAndAlive());
+                var targets = entity.Level.FindEntities(e => e.IsVulnerableEntity() && e.IsHostile(entity) && e.ExistsAndAlive() && TargetInLawn(e.Position.x));
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.Run(stateMachine.GetSpeed(entity));
                 var substate = stateMachine.GetSubState(entity);
@@ -267,11 +267,15 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
-
             public const int SUBSTATE_PREPARE = 0;
             public const int SUBSTATE_DASH = 1;
             public const int SUBSTATE_END = 2;
+            private bool TargetInLawn(float x)
+            {
+                return x > VanillaLevelExt.GetAttackBorderX(false) && x < VanillaLevelExt.GetAttackBorderX(true);
+            }
         }
+
         private class DiveState : EntityStateMachineState
         {
             public DiveState() : base(STATE_DIVE) { }

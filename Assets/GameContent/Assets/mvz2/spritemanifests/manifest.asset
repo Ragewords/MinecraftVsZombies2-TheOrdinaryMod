@@ -803,6 +803,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 33cac88b1977c434fb547ae7a0e7c3bb, type: 3}
   - name: entity/enemies/jackdullahan_jackolantern
     sprite: {fileID: 21300000, guid: 9e74a7a12d5351549a77cabbe4735460, type: 3}
+  - name: entity/enemies/lost
+    sprite: {fileID: 21300000, guid: bfccc90305ba6dc4890f1cfd4b0aef3a, type: 3}
+  - name: entity/enemies/lost_tail
+    sprite: {fileID: 21300000, guid: b3815b8f8d118f045915891e43b7a559, type: 3}
   - name: entity/enemies/mesmerizer_head
     sprite: {fileID: 21300000, guid: 580a757d547930b41a026df31631b7c9, type: 3}
   - name: entity/enemies/mesmerizer_rod

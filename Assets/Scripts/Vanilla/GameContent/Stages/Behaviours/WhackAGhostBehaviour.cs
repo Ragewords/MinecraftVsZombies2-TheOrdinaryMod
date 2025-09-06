@@ -61,6 +61,21 @@ namespace MVZ2.GameContent.Stages
                 var napstablook = level.Spawn(VanillaEnemyID.napstablook, new Vector3(x, y, z), null, spawnParam);
                 AddSpeedBuff(napstablook);
             }
+
+            var lostPoints = (wave - 10) / 3f;
+            var lostCount = Mathf.Min(1, Mathf.CeilToInt(lostPoints));
+            for (int i = 0; i < lostCount; i++)
+            {
+                var lane = level.GetRandomEnemySpawnLane();
+                var column = level.GetSpawnRNG().Next(0, 5);
+                var x = level.GetColumnX(column);
+                var z = level.GetEntityLaneZ(lane);
+                var y = level.GetGroundY(x, z);
+                var spawnParam = new SpawnParams();
+                spawnParam.SetProperty(EngineEntityProps.FACTION, level.Option.LeftFaction);
+                var lost = level.Spawn(VanillaEnemyID.lost, new Vector3(x, y, z), null, spawnParam);
+                AddSpeedBuff(lost);
+            }
         }
         public override void PostEnemySpawned(PVZEngine.Entities.Entity entity)
         {
@@ -71,6 +86,19 @@ namespace MVZ2.GameContent.Stages
                 entity.Position += Vector3.left * advanceDistance;
             }
             AddSpeedBuff(entity);
+        }
+        public override void PostHugeWaveEvent(LevelEngine level)
+        {
+            base.PostHugeWaveEvent(level);
+            var lane = level.GetRandomEnemySpawnLane();
+            var column = level.GetSpawnRNG().Next(0, 5);
+            var x = level.GetColumnX(column);
+            var z = level.GetEntityLaneZ(lane);
+            var y = level.GetGroundY(x, z);
+            var spawnParam = new SpawnParams();
+            spawnParam.SetProperty(EngineEntityProps.FACTION, level.Option.LeftFaction);
+            var lost = level.Spawn(VanillaEnemyID.lost, new Vector3(x, y, z), null, spawnParam);
+            AddSpeedBuff(lost);
         }
 
         private void AddSpeedBuff(Entity entity)

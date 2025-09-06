@@ -47,7 +47,7 @@ namespace MVZ2.GameContent.HeldItems
                         switch (entity.Type)
                         {
                             case EntityTypes.ENEMY:
-                                return entity.IsHostileEntity() || entity.IsEntityOf(VanillaEnemyID.napstablook);
+                                return entity.IsHostileEntity() || entity.IsEntityOf(VanillaEnemyID.napstablook) || entity.IsEntityOf(VanillaEnemyID.lost);
                         }
                         return false;
                     }
@@ -89,7 +89,10 @@ namespace MVZ2.GameContent.HeldItems
                         if (IsParalyzed(entity.Level))
                             break;
                         var effects = new DamageEffectList(VanillaDamageEffects.WHACK, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER);
-                        entity.TakeDamageNoSource(750, effects);
+                        if (entity.IsEntityOf(VanillaEnemyID.lost))
+                            entity.Die(entity);
+                        else
+                            entity.TakeDamageNoSource(750, effects);
                         if (entity.IsDead)
                         {
                             var screenPos = Global.GetPointerScreenPosition();
