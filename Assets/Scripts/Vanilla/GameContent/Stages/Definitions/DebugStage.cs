@@ -49,12 +49,12 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.repeatenser,
                 VanillaContraptionID.triplenser,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.lightningOrb,
+                VanillaContraptionID.goldenApple,
                 VanillaContraptionID.hfpd,
-                VanillaBossID.theGiant,
-                VanillaEnemyID.karakasaZombie,
-                VanillaEnemyID.berserker,
-                VanillaEnemyID.reflectiveBarrierZombie,
+                VanillaBossID.crescent,
+                VanillaEnemyID.zombie,
+                VanillaEnemyID.mesmerizer,
+                VanillaEnemyID.caveSpider,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

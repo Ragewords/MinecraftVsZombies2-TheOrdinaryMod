@@ -1,10 +1,7 @@
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Models;
 using MVZ2.Vanilla.Properties;
-using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -35,10 +32,11 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             if (entity.GetShellID() != VanillaShellID.flesh)
                 return;
-            
+
             if (timeout.PassedInterval(5))
             {
-                entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.SLICE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                entity.EmitBlood();
             }
 
             buff.SetProperty(PROP_TIMEOUT, timeout);

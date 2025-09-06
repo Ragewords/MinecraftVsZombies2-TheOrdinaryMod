@@ -316,6 +316,10 @@ namespace MVZ2.Vanilla.Entities
         {
             entity.SetProperty(IS_SPIDER, value);
         }
+        public static bool IsSpider(this EntityDefinition definition)
+        {
+            return definition.GetProperty<bool>(IS_SPIDER);
+        }
         public static bool IsSpider(this Entity entity)
         {
             return entity.GetProperty<bool>(IS_SPIDER);

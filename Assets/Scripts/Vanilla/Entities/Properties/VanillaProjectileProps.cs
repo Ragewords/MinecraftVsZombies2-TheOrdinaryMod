@@ -41,6 +41,11 @@ namespace MVZ2.Vanilla.Entities
         {
             return projectile.GetProperty<bool>(NO_HIT_ENTITIES);
         }
+        public static readonly PropertyMeta<bool> CAN_HIT_FRIENDLY = new PropertyMeta<bool>("canHitFriendly");
+        public static bool CanHitFriendy(this Entity projectile)
+        {
+            return projectile.GetProperty<bool>(CAN_HIT_FRIENDLY);
+        }
         public static readonly PropertyMeta<List<EntityColliderReference>> IGNORED_COLLIDERS = new PropertyMeta<List<EntityColliderReference>>("ignoredColliders");
         public static void AddIgnoredProjectileCollider(this Entity projectile, IEntityCollider other)
         {

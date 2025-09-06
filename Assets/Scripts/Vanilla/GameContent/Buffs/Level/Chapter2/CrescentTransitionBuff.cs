@@ -46,21 +46,16 @@ namespace MVZ2.GameContent.Buffs.Level
                 // 音乐放缓。
                 level.SetMusicVolume(Mathf.Clamp01(level.GetMusicVolume() - (1 / 30f)));
             }
-            if (timeout < CREATE_DARKNESS_TIMEOUT && timeout > SPLASH_TIMEOUT)
-            {
-                if (level.IsTimeInterval(30))
-                {
-                    Vector3 pos = new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2));
-                    var splash = level.Spawn(VanillaEffectID.splashParticles, pos, null);
-                    splash.SetDisplayScale(Vector3.one * 3);
-                    splash.SetTint(level.GetWaterColor());
-                    level.PlaySound(VanillaSoundID.splash);
-                }
-            }
-            if (timeout == CREATE_DARKNESS_TIMEOUT)
+            if (timeout == CREATE_DARKNESS_TIMEOUT || timeout == SPLASH_TIMEOUT_0 || timeout == SPLASH_TIMEOUT_1 || timeout == SPLASH_TIMEOUT_2
+             || timeout == SPLASH_TIMEOUT_3 || timeout == SPLASH_TIMEOUT_4)
             {
                 level.PlaySound(VanillaSoundID.thump);
                 level.ShakeScreen(10, 0, 10);
+                Vector3 pos = new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2));
+                var splash = level.Spawn(VanillaEffectID.splashParticles, pos, null);
+                splash.SetDisplayScale(Vector3.one * 3);
+                splash.SetTint(level.GetWaterColor());
+                level.PlaySound(VanillaSoundID.splash);
             }
             else if (timeout <= 0)
             {
@@ -82,7 +77,11 @@ namespace MVZ2.GameContent.Buffs.Level
         }
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         public const int MAX_TIMEOUT = CREATE_DARKNESS_TIMEOUT + 60;
-        public const int SPLASH_TIMEOUT = FADEOUT_TIMEOUT + 30;
+        public const int SPLASH_TIMEOUT_0 = FADEOUT_TIMEOUT;
+        public const int SPLASH_TIMEOUT_1 = FADEOUT_TIMEOUT + 5;
+        public const int SPLASH_TIMEOUT_2 = FADEOUT_TIMEOUT + 30;
+        public const int SPLASH_TIMEOUT_3 = FADEOUT_TIMEOUT + 45;
+        public const int SPLASH_TIMEOUT_4 = FADEOUT_TIMEOUT + 90;
         public const int CREATE_DARKNESS_TIMEOUT = FADEOUT_TIMEOUT + 150;
         public const int FADEOUT_TIMEOUT = 0;
     }

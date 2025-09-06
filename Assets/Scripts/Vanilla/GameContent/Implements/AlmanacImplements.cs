@@ -151,6 +151,11 @@ namespace MVZ2.GameContent.Implements
             {
                 tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.notUndead));
             }
+            // 蜘蛛
+            if (entityDef.IsSpider())
+            {
+                tags.Add(new AlmanacEntryTagInfo(VanillaAlmanacTagID.spider));
+            }
             // 漂浮
             var waterInteraction = entityDef.GetWaterInteraction();
             if (waterInteraction == WaterInteraction.NONE || waterInteraction == WaterInteraction.FLOAT)

@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
-using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
@@ -25,8 +24,8 @@ namespace MVZ2.GameContent.Bosses
             {
                 AddState(new AppearState());
                 AddState(new IdleState());
-                AddState(new LineDashState());
-                AddState(new SpaceState());
+                AddState(new DashState());
+                AddState(new JumpState());
                 AddState(new DiveState());
                 AddState(new DeadState());
             }
@@ -101,9 +100,9 @@ namespace MVZ2.GameContent.Bosses
                 stateMachine.SetPreviousState(entity, lastState);
             }
         }
-        private class LineDashState : EntityStateMachineState
+        private class DashState : EntityStateMachineState
         {
-            public LineDashState() : base(STATE_LINE_DASH) { }
+            public DashState() : base(STATE_LINE_DASH) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -203,9 +202,9 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_DASH_3 = 3;
             public const int SUBSTATE_END = 4;
         }
-        private class SpaceState : EntityStateMachineState
+        private class JumpState : EntityStateMachineState
         {
-            public SpaceState() : base(STATE_SPACE) { }
+            public JumpState() : base(STATE_SPACE) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -235,9 +234,8 @@ namespace MVZ2.GameContent.Bosses
                                 var target = targets.Random(entity.RNG);
                                 entity.PlaySound(VanillaSoundID.crescentDash);
                                 var maxy = entity.GetCenter().y + 80f;
-                                var pos = target.GetGrid().GetEntityPosition();
+                                var pos = target.Position;
                                 entity.Velocity = VanillaProjectileExt.GetLobVelocity(entity.Position, pos + Vector3.up * 32, maxy, entity.GetGravity());
-                                SetPositionBeforeDash(entity, pos);
                                 stateMachine.SetSubState(entity, SUBSTATE_DASH);
                             }
                             else
@@ -250,10 +248,11 @@ namespace MVZ2.GameContent.Bosses
                             entity.Velocity = Vector3.zero;
                             entity.PlaySound(VanillaSoundID.smallExplosion);
                             entity.PlaySound(VanillaSoundID.crescentShock);
-                            foreach (var collider in entity.Level.OverlapSphere(entity.GetCenter(), 60, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT, 0))
+                            foreach (var collider in entity.Level.OverlapSphere(entity.GetCenter(), 80, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY, 0))
                             {
                                 collider.Entity?.AddBuff<LevitationBuff>();
                             }
+                            SetPositionBeforeDash(entity, entity.GetGrid().GetEntityPosition());
                             stateMachine.SetSubState(entity, SUBSTATE_END);
                             subStateTimer.ResetTime(15);
                         }
@@ -280,10 +279,10 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetSubStateTimer(entity);
-                stateTimer.ResetTime(5);
+                stateTimer.ResetTime(10);
                 entity.PlaySound(VanillaSoundID.crescentPreDash);
                 var grid = entity.Level.GetAllGrids().Random(entity.RNG);
-                SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
+                SetPositionBeforeDash(entity, grid.GetEntityPosition());
                 StopFly(entity);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
@@ -299,49 +298,49 @@ namespace MVZ2.GameContent.Bosses
                         UpdatePosition(entity);
                         if (subStateTimer.Expired)
                         {
-                            entity.PlaySound(VanillaSoundID.crescentDash);
+                            entity.PlaySound(VanillaSoundID.explosion);
+                            entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.EXPLOSION));
+                            Explosion.Spawn(entity, entity.GetCenter(), 120);
+                            entity.Level.ShakeScreen(10, 0, 10);
                             stateMachine.SetSubState(entity, SUBSTATE_DASH);
-                            entity.Velocity = Vector3.down * 40;
+                            entity.Velocity = Vector3.up * 80;
+                            subStateTimer.ResetTime(8);
                         }
                         break;
                     case SUBSTATE_DASH:
-                        if (entity.GetRelativeY() <= 0)
+                        if (subStateTimer.Expired)
                         {
-                            entity.Velocity = Vector3.down * 40;
-                            ShootDanmaku(entity, 0);
-                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
-                            stateMachine.SetSubState(entity, SUBSTATE_DANMAKU_1);
-                            subStateTimer.ResetTime(5);
+                            var pos = entity.Position;
+                            pos.x = grid.GetEntityPosition().x;
+                            pos.z = grid.GetEntityPosition().z;
+                            entity.Position = pos;
+                            stateMachine.SetSubState(entity, SUBSTATE_WAIT);
+                            subStateTimer.ResetTime(30);
                         }
                         break;
-                    case SUBSTATE_DANMAKU_1:
-                    case SUBSTATE_DANMAKU_2:
-                        if (!subStateTimer.Expired)
-                            UpdatePosition(entity);
-                        if (entity.GetRelativeY() <= 0)
+                    case SUBSTATE_WAIT:
+                        entity.Velocity = Vector3.zero;
+                        if (subStateTimer.Expired)
                         {
-                            entity.Velocity = Vector3.down * 40;
-                            ShootDanmaku(entity, substate - 1);
-                            subStateTimer.ResetTime(5);
-                            stateMachine.SetSubState(entity, substate + 1);
-                            SetPositionBeforeDash(entity, grid.GetEntityPosition() + Vector3.up * 400);
+                            stateMachine.SetSubState(entity, SUBSTATE_DIVE);
+                            entity.Velocity = Vector3.down * 80;
+                            var param = entity.GetSpawnParams();
+                            param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 2);
+                            var ball = entity.Spawn(VanillaProjectileID.darkMatterBall, entity.GetCenter(), param);
+                            DarkMatterBall.SetHitCount(ball, 5);
                         }
                         break;
-                    case SUBSTATE_DANMAKU_3:
-                        if (!subStateTimer.Expired)
-                            UpdatePosition(entity);
+                    case SUBSTATE_DIVE:
                         if (entity.GetRelativeY() <= 0)
                         {
-                            entity.Velocity = Vector3.zero;
-                            ShootDanmaku(entity, 3);
-                            Fly(entity);
-                            SetPositionBeforeDash(entity, grid.GetEntityPosition());
+                            entity.PlaySound(VanillaSoundID.smallExplosion);
+                            entity.PlaySound(VanillaSoundID.crescentShock);
                             subStateTimer.ResetTime(15);
                             stateMachine.SetSubState(entity, SUBSTATE_END);
+                            Fly(entity);
                         }
                         break;
                     case SUBSTATE_END:
-                        UpdatePosition(entity);
                         if (subStateTimer.Expired)
                         {
                             entity.Velocity = Vector3.zero;
@@ -350,86 +349,12 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
-            private void ShootDanmaku(Entity entity, int stage)
-            {
-                entity.PlaySound(VanillaSoundID.smallExplosion);
-                entity.PlaySound(VanillaSoundID.crescentShock);
-                entity.PlaySound(VanillaSoundID.danmaku, volume: 0.5f);
-                foreach (var collider in entity.Level.OverlapSphere(entity.GetCenter(), 40, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT, 0))
-                {
-                    collider.Entity?.TakeDamage(entity.GetDamage() / 2, new DamageEffectList(), entity);
-                }
-                switch (stage)
-                {
-                    case 0:
-                        for (int i = 0; i < 4; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 90, 0) * Vector3.right * 10;
-                            var velocity = direction;
-                            entity.ShootProjectile(new ShootParams()
-                            {
-                                projectileID = VanillaProjectileID.arrowBullet,
-                                position = entity.GetCenter(),
-                                velocity = velocity,
-                                faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 4
-                            });
-                        }
-                        break;
-                    case 1:
-                        for (int i = 0; i < 8; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 45, 0) * Vector3.right * 10;
-                            var velocity = direction;
-                            entity.ShootProjectile(new ShootParams()
-                            {
-                                projectileID = VanillaProjectileID.arrowBullet,
-                                position = entity.GetCenter(),
-                                velocity = velocity,
-                                faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 4
-                            });
-                        }
-                        break;
-                    case 2:
-                        for (int i = 0; i < 10; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 36, 0) * Vector3.right * 10;
-                            var velocity = direction;
-                            entity.ShootProjectile(new ShootParams()
-                            {
-                                projectileID = VanillaProjectileID.arrowBullet,
-                                position = entity.GetCenter(),
-                                velocity = velocity,
-                                faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 4
-                            });
-                        }
-                        break;
-                    case 3:
-                        for (int i = 0; i < 12; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 30, 0) * Vector3.right * 10;
-                            var velocity = direction;
-                            entity.ShootProjectile(new ShootParams()
-                            {
-                                projectileID = VanillaProjectileID.arrowBullet,
-                                position = entity.GetCenter(),
-                                velocity = velocity,
-                                faction = entity.GetFaction(),
-                                damage = entity.GetDamage() / 4
-                            });
-                        }
-                        break;
-                }
-            }
 
             public const int SUBSTATE_PREPARE = 0;
             public const int SUBSTATE_DASH = 1;
-            public const int SUBSTATE_DANMAKU_1 = 2;
-            public const int SUBSTATE_DANMAKU_2 = 3;
-            public const int SUBSTATE_DANMAKU_3 = 4;
-            public const int SUBSTATE_END = 5;
+            public const int SUBSTATE_WAIT = 2;
+            public const int SUBSTATE_DIVE = 3;
+            public const int SUBSTATE_END = 4;
         }
         private class DeadState : EntityStateMachineState
         {

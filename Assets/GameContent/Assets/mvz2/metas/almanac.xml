@@ -173,6 +173,10 @@
             <icon sprite="mvz2:ui/almanac/attribute_tags[15]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#1fa067" />
         </tag>
+        <tag id="spider" name="蜘蛛" description="免疫中毒" priority="4000" >
+            <icon sprite="mvz2:ui/almanac/attribute_tags[16]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#407512" />
+        </tag>
 
 
 
@@ -1033,7 +1037,7 @@
             <properties>
                 <p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>10</color>]]></p>
-                <p>特点：<![CDATA[<color=red>剧毒对蜘蛛无效</color>]]></p>
+                <p>特点：<![CDATA[<color=red>剧毒对<tag id="mvz2:spider"/>蜘蛛无效</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射一瓶药水，破碎后释放剧毒毒雾</color>]]></p>
             </properties>
             <flavor>
@@ -1235,11 +1239,12 @@
         </entry>
         <entry id="mvz2:cave_spider">
             <header>
-                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中。</p>
+                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中，攻击到的敌怪会中毒。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>120</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>特点：<![CDATA[<color=red>剧毒对<tag id="mvz2:spider"/>蜘蛛无效</color>]]></p>
             </properties>
             <flavor>
                 <p>曾蝉联多次“蜘蛛网上冲浪比赛”冠军，只是因为那时候其他蜘蛛还不会游泳。</p>
@@ -1290,7 +1295,7 @@
 
         <entry id="mvz2:mesmerizer">
             <header>
-                <p>催眠者能够精神控制你的器械使其倒戈。杀死催眠者可以解除精神控制。</p>
+                <p>催眠者能够精神控制你的器械使其倒戈，或是催眠敌人令其行动速度变快。杀死催眠者可以解除精神控制。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>

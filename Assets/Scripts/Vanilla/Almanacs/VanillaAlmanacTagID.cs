@@ -22,6 +22,7 @@ namespace MVZ2.Vanilla.Almanacs
         public static readonly NamespaceID drownproof = Get("drownproof");
         public static readonly NamespaceID controlImmunity = Get("control_immunity");
         public static readonly NamespaceID notUndead = Get("not_undead");
+        public static readonly NamespaceID spider = Get("spider");
         public static readonly NamespaceID conductor = Get("conductor");
         public static readonly NamespaceID block = Get("block");
 

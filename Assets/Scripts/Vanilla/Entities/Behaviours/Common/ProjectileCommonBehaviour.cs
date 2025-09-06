@@ -124,8 +124,8 @@ namespace MVZ2.Vanilla.Entities
             if (projectile.IsProjectileColliderIgnored(otherCollider))
                 return;
 
-            // 不是敌方
-            if (!projectile.IsHostile(other))
+            // 不是敌方，且不允许击中友方
+            if (!projectile.IsHostile(other) && !projectile.CanHitFriendy())
                 return;
 
 
