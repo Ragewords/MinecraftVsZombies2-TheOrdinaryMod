@@ -2,6 +2,7 @@
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -20,8 +21,6 @@ namespace MVZ2.GameContent.Obstacles
             entity.AddBuff<TemporaryUpdateBeforeGameBuff>();
             entity.TriggerAnimation("Rise");
             entity.PlaySound(VanillaSoundID.dirtRise);
-
-            KillConflictContraptions(entity);
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {

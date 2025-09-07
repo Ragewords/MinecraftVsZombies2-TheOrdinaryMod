@@ -5,11 +5,13 @@ using MukioI18n;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.Logic.Level;
 using MVZ2.Managers;
+using MVZ2.Saves;
 using MVZ2.Scenes;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Saves;
 using MVZ2.Vanilla.Stats;
+using MVZ2Logic.Difficulties;
 using MVZ2Logic.Level;
 using PVZEngine;
 using UnityEngine;
@@ -121,25 +123,26 @@ namespace MVZ2.Arcade
         {
             var meta = Main.ResourceManager.GetArcadeMeta(id);
             var stageID = meta?.StageID;
-            var stageMeta = Main.ResourceManager.GetStageMeta(stageID);
-            if (stageMeta == null)
+            var stageDef = Main.Game.GetStageDefinition(stageID);
+            if (stageDef == null)
             {
                 return ArcadeItemViewData.Empty;
             }
-            bool unlocked = Main.SaveManager.IsAllInvalidOrUnlocked(stageMeta.Unlocks);
+            var conditions = stageDef.GetUnlockConditions();
+            bool unlocked = conditions.IsNullOrMeetsConditions(Main.SaveManager);
             string name;
             if (unlocked)
             {
-                name = GetTranslatedStringParticular(VanillaStrings.CONTEXT_LEVEL_NAME, stageMeta.Name);
+                name = GetTranslatedStringParticular(VanillaStrings.CONTEXT_LEVEL_NAME, stageDef.Name);
             }
             else
             {
                 name = GetTranslatedString(LEVEL_NAME_NOT_UNLOCKED);
             }
             var hint = string.Empty;
-            if (unlocked && stageMeta.Type == StageTypes.TYPE_PUZZLE_ENDLESS)
+            if (unlocked && stageDef.GetStageType() == StageTypes.TYPE_PUZZLE_ENDLESS)
             {
-                var flags = Main.SaveManager.GetSaveStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
+                var flags = Main.SaveManager.GetStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
                 hint = GetTranslatedString(ENDLESS_MAX_STREAKS, flags);
             }
             var icon = Main.GetFinalSprite(meta.Icon);
@@ -147,15 +150,16 @@ namespace MVZ2.Arcade
             Sprite clearSprite = null;
             if (Main.SaveManager.IsLevelCleared(stageID))
             {
+                var game = Main.Game;
                 var difficulty = Main.SaveManager.GetLevelDifficulty(stageID);
-                var difficultyMeta = Main.ResourceManager.GetDifficultyMeta(difficulty);
-                if (difficultyMeta == null)
+                var def = game.GetDifficultyDefinition(difficulty);
+                if (def == null)
                 {
-                    difficultyMeta = Main.ResourceManager.GetDifficultyMeta(VanillaDifficulties.normal);
+                    def = game.GetDifficultyDefinition(VanillaDifficulties.normal);
                 }
-                if (difficultyMeta != null)
+                if (def != null)
                 {
-                    var clearSpriteID = difficultyMeta.ArcadeIcon;
+                    var clearSpriteID = def.GetArcadeIcon();
                     clearSprite = Main.GetFinalSprite(clearSpriteID);
                 }
             }
@@ -177,7 +181,7 @@ namespace MVZ2.Arcade
                 var meta = Main.ResourceManager.GetArcadeMeta(id);
                 if (meta == null)
                     return false;
-                var stage = Main.ResourceManager.GetStageMeta(meta.StageID);
+                var stage = Main.Game.GetStageDefinition(meta.StageID);
                 if (stage == null)
                     return false;
                 return Main.SaveManager.IsAllInvalidOrUnlocked(meta.HiddenUntil);

@@ -3,6 +3,7 @@ using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
@@ -36,9 +37,9 @@ namespace MVZ2.GameContent.Effects
             var type = param.type;
             var phase = param.phase;
             var screenPosition = param.screenPos;
-            if (!Global.Game.IsInLevel())
+            if (!Global.Level.IsInLevel())
                 return;
-            var level = Global.Game.GetLevel();
+            var level = Global.Level.GetLevel();
             if (!level.IsGameRunning())
                 return;
             foreach (var wall in level.FindEntities(VanillaEffectID.crushingWalls))
@@ -122,7 +123,14 @@ namespace MVZ2.GameContent.Effects
 
             if (progress >= 1)
             {
-                entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
+                if (entity.Level.IsGodMode())
+                {
+                    SetProgress(entity, 0f);
+                }
+                else
+                {
+                    entity.Level.GameOver(GameOverTypes.NO_ENEMY, entity, VanillaStrings.DEATH_MESSAGE_CRUSHING_WALLS);
+                }
             }
         }
         private void UpdateShake(Entity entity)

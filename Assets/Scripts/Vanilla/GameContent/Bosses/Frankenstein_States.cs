@@ -5,9 +5,9 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -679,7 +679,7 @@ namespace MVZ2.GameContent.Bosses
                     }
                     else if (contraption.IsEntityOf(contrapId))
                     {
-                        contraption.ShortCircuit(150);
+                        contraption.ShortCircuit(150, new EntitySourceReference(boss));
                         if (!soundPlayed)
                         {
                             contraption.PlaySound(VanillaSoundID.powerOff);

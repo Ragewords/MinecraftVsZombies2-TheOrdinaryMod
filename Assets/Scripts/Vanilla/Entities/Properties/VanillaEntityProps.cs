@@ -343,6 +343,23 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
+        #region 冰霜
+
+        public static readonly PropertyMeta<bool> IS_FROST = Get<bool>("is_frost");
+        public static void SetIsFrost(this Entity entity, bool value)
+        {
+            entity.SetProperty(IS_FROST, value);
+        }
+        public static bool IsFrost(this EntityDefinition definition)
+        {
+            return definition.GetProperty<bool>(IS_FROST);
+        }
+        public static bool IsFrost(this Entity entity)
+        {
+            return entity.GetProperty<bool>(IS_FROST);
+        }
+        #endregion
+
         #region 光照
         public static readonly PropertyMeta<bool> IS_LIGHT_SOURCE = Get<bool>("isLightSource");
         public static readonly PropertyMeta<bool> RECEIVES_LIGHT = Get<bool>("receivesLight");
@@ -404,7 +421,7 @@ namespace MVZ2.Vanilla.Entities
         }
         public static Color GetBloodColor(this Entity entity)
         {
-            return Global.HasBloodAndGore() ? entity.GetBloodColorNormal() : entity.GetBloodColorCensored();
+            return Global.Options.HasBloodAndGore() ? entity.GetBloodColorNormal() : entity.GetBloodColorCensored();
         }
         #endregion
 

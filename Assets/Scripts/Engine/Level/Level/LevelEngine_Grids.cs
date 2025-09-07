@@ -1,6 +1,4 @@
-using System;
 using System.Linq;
-using PVZEngine.Buffs;
 using PVZEngine.Definitions;
 using PVZEngine.Grids;
 using UnityEngine;
@@ -39,9 +37,13 @@ namespace PVZEngine.Level
         {
             level.grids = grids.Select(g => g.Serialize()).ToArray();
         }
-        private void CreateGridsFromSerializable(SerializableLevel seri)
+        private void LoadGridsFromSerializable(SerializableLevel seri)
         {
-            grids = seri.grids.Select(g => LawnGrid.Deserialize(g, this)).ToArray();
+            var count = Mathf.Min(grids.Length, seri.grids.Length);
+            for (int i = 0; i < count; i++)
+            {
+                grids[i].LoadFromSerializable(seri.grids[i], this);
+            }
         }
         private void ReadGridsFromSerializable(SerializableLevel seri)
         {
@@ -49,7 +51,7 @@ namespace PVZEngine.Level
             {
                 var grid = grids[i];
                 var seriGrid = seri.grids[i];
-                grid.LoadFromSerializable(seriGrid, this);
+                grid.LoadAuras(seriGrid);
             }
         }
         #endregion
@@ -73,9 +75,15 @@ namespace PVZEngine.Level
         {
             return GetLane(z - entityLaneZOffset + GetGridHeight() * 0.5f);
         }
-        public float GetEntityLaneZ(int row)
+        public float GetEntityLaneZ(int lane) => GetEntityLaneZFloat(lane);
+        public float GetLaneZ(int lane) => GetLaneZFloat(lane);
+        public float GetEntityLaneZFloat(float lane)
         {
-            return GetLaneZ(row) + entityLaneZOffset;
+            return GetLaneZFloat(lane) + entityLaneZOffset;
+        }
+        public float GetLaneZFloat(float lane)
+        {
+            return GetGridTopZ() - (lane + 1) * GetGridHeight();
         }
         public int GetGridLaneByIndex(int index)
         {
@@ -101,11 +109,13 @@ namespace PVZEngine.Level
         {
             return Mathf.FloorToInt((x - GetGridLeftX()) / GetGridWidth());
         }
-        public float GetEntityColumnX(int column)
+        public float GetEntityColumnX(int column) => GetEntityColumnXFloat(column);
+        public float GetColumnX(int column) => GetColumnXFloat(column);
+        public float GetEntityColumnXFloat(float column)
         {
-            return GetColumnX(column) + GetGridWidth() * 0.5f;
+            return GetColumnXFloat(column) + GetGridWidth() * 0.5f;
         }
-        public float GetColumnX(int column)
+        public float GetColumnXFloat(float column)
         {
             return GetGridLeftX() + column * GetGridWidth();
         }
@@ -122,10 +132,6 @@ namespace PVZEngine.Level
             var lane = GetGridLaneByIndex(index);
             return GetEntityGridPosition(column, lane);
         }
-        public float GetLaneZ(int lane)
-        {
-            return GetGridTopZ() - (lane + 1) * GetGridHeight();
-        }
         public float GetGroundY(Vector3 pos)
         {
             return GetGroundY(pos.x, pos.z);
@@ -135,6 +141,15 @@ namespace PVZEngine.Level
             return AreaDefinition.GetGroundY(this, x, z);
         }
         #endregion
+
+        public void UpdateGrids()
+        {
+            for (int i = 0; i < grids.Length; i++)
+            {
+                var grid = grids[i];
+                grid.Update();
+            }
+        }
 
         #region Íø¸ñ
         public LawnGrid GetGrid(int index)

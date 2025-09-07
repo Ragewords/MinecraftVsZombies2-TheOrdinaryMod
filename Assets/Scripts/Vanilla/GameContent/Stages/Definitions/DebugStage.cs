@@ -1,10 +1,7 @@
 ﻿using MVZ2.GameContent.Artifacts;
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
-using MVZ2.GameContent.Pickups;
-using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -25,18 +22,16 @@ namespace MVZ2.GameContent.Stages
             base.OnStart(level);
             ClassicStart(level);
             //ConveyorStart(level);
-            level.LevelProgressVisible = true;
+            //level.LevelProgressVisible = true;
             //level.SetProgressBarToBoss(VanillaProgressBarID.theGiant);
             level.SetTriggerActive(true);
+            level.SetStarshardSlotCount(5);
             var cartRef = level.GetCartReference();
             level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);
         }
         public override void OnUpdate(LevelEngine level)
         {
             base.OnUpdate(level);
-            level.SetEnergy(9990);
-            level.SetStarshardSlotCount(5);
-            level.SetStarshardCount(3);
             level.CheckGameOver();
         }
         private void ClassicStart(LevelEngine level)
@@ -45,25 +40,24 @@ namespace MVZ2.GameContent.Stages
             level.SetSeedSlotCount(10);
             level.FillSeedPacks(new NamespaceID[]
             {
-                VanillaContraptionID.punchton,
-                VanillaContraptionID.repeatenser,
-                VanillaContraptionID.triplenser,
+                VanillaContraptionID.desirePot,
                 VanillaContraptionID.beacon,
-                VanillaContraptionID.goldenApple,
-                VanillaContraptionID.hfpd,
-                VanillaBossID.crescent,
+                VanillaContraptionID.thunderDrum,
+                VanillaContraptionID.lightningOrb,
+                VanillaContraptionID.fireworkDispenser,
+                VanillaEnemyID.ghast,
+                VanillaEnemyID.dullahanHead,
+                VanillaEnemyID.anubisand,
+                VanillaEnemyID.ufo,
                 VanillaEnemyID.zombie,
-                VanillaEnemyID.mesmerizer,
-                VanillaEnemyID.lost,
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]
             {
                 VanillaArtifactID.ufoToy,
                 VanillaArtifactID.almanac,
-                VanillaArtifactID.dreamKey,
+                VanillaArtifactID.theCreaturesHeart,
             });
-            level.SetRechargeSpeed(9999999);
         }
         private void ConveyorStart(LevelEngine level)
         {

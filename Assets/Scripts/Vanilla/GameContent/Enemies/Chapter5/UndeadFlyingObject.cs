@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
@@ -42,6 +43,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.PlaySound(VanillaSoundID.ufo, volume: 0.5f);
             }
+            entity.SetAnimationInt("Variant", entity.GetVariant());
         }
         protected override void UpdateLogic(Entity entity)
         {

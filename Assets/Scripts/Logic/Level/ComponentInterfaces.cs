@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MVZ2.HeldItems;
 using MVZ2Logic.Artifacts;
 using PVZEngine;
@@ -35,6 +36,7 @@ namespace MVZ2Logic.Level.Components
         void BeginLevel();
         void StopLevel();
         void SaveStateData();
+        Task ReloadLevel();
         bool IsGamePaused();
         bool IsGameStarted();
         bool IsGameOver();
@@ -165,9 +167,12 @@ namespace MVZ2Logic.Level.Components
         void SetSlotCount(int count);
         int GetSlotCount();
         void ReplaceArtifacts(ArtifactDefinition[] definitions);
+        void ReplaceArtifact(int slot, ArtifactDefinition definition);
+        void SetArtifact(int slot, Artifact artifact);
         Artifact[] GetArtifacts();
         bool HasArtifact(NamespaceID artifactID);
         int GetArtifactIndex(NamespaceID artifactID);
+        int GetArtifactIndex(Artifact artifact);
         Artifact GetArtifactAt(int index);
     }
 }

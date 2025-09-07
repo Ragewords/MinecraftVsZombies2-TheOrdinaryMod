@@ -23,7 +23,9 @@ namespace PVZEngine.Entities
         public SerializableRNG dropRng;
         public NamespaceID definitionID;
         public NamespaceID modelID;
-        public EntityReferenceChain spawnerReference;
+        [Obsolete]
+        public EntitySourceReference spawnerReference;
+        public ILevelSourceReference spawnerSource;
         public Vector3 previousPosition;
         public Vector3 position;
         public Vector3 velocity;
@@ -47,15 +49,19 @@ namespace PVZEngine.Entities
         public bool isDead;
         public float health;
         public bool isOnGround;
+        [Obsolete]
         public long currentBuffID;
         public SerializablePropertyBlock properties;
         public SerializableBuffList buffs;
         public List<long> children;
+        [Obsolete]
         public List<TakenGridInfo> takenGrids;
+        public List<int> takenGridIndexes;
 
         public SerializableAuraEffect[] auras;
 
         [Serializable]
+        [Obsolete]
         public class TakenGridInfo
         {
             public int grid;

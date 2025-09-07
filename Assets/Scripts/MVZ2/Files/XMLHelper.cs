@@ -6,6 +6,7 @@ using System.Xml;
 using MVZ2.Metas;
 using MVZ2Logic;
 using PVZEngine;
+using PVZEngine.Definitions;
 using UnityEngine;
 
 namespace MVZ2.IO
@@ -180,45 +181,64 @@ namespace MVZ2.IO
             var time = node.GetAttributeFloat("time") ?? 0;
             return new GradientAlphaKey(alpha, time);
         }
-        public static void ModifyEntityBehaviours(this XmlNode node, List<NamespaceID> behaviours, string defaultNsp)
+        public static void ModifyEntityBehaviours(this XmlNode node, List<NamespaceID> behaviours, Dictionary<string, object> properties, string defaultNsp)
         {
             if (node == null)
                 return;
             for (int i = 0; i < node.ChildNodes.Count; i++)
             {
-                var behaviourNode = node.ChildNodes[i];
-                if (behaviourNode.Name == "behaviour")
+                var childNode = node.ChildNodes[i];
+                if (childNode.Name == "behaviour")
                 {
-                    var item = EntityBehaviourItem.FromXmlNode(behaviourNode, defaultNsp);
-                    switch (item.Operator)
-                    {
-                        case BehaviourOperator.Add:
-                            behaviours.Add(item.ID);
-                            break;
-                        case BehaviourOperator.Remove:
-                            behaviours.Remove(item.ID);
-                            break;
-                    }
+                    childNode.OperateBehaviourList(behaviours, defaultNsp);
                 }
+                else if (childNode.Name == "properties")
+                {
+                    childNode.FillBehaviourProperties(properties, defaultNsp);
+                }
+            }
+        }
+        public static void OperateBehaviourList(this XmlNode node, List<NamespaceID> behaviours, string defaultNsp)
+        {
+            var item = EntityBehaviourItem.FromXmlNode(node, defaultNsp);
+            switch (item.Operator)
+            {
+                case BehaviourOperator.Add:
+                    behaviours.Add(item.ID);
+                    break;
+                case BehaviourOperator.Remove:
+                    behaviours.Remove(item.ID);
+                    break;
+            }
+        }
+        public static void FillBehaviourProperties(this XmlNode node, Dictionary<string, object> properties, string defaultNsp)
+        {
+            var propertyTargetBehaviourID = node.GetAttributeNamespaceID("behaviour", defaultNsp);
+            if (!NamespaceID.IsValid(propertyTargetBehaviourID))
+                return;
+            var propDict = node.ToPropertyDictionary(defaultNsp);
+            foreach (var pair in propDict)
+            {
+                var fullName = PropertyKeyHelper.CombineFullName(propertyTargetBehaviourID.SpaceName, EngineDefinitionTypes.ENTITY_BEHAVIOUR, propertyTargetBehaviourID.Path, pair.Key);
+                properties.Add(fullName, pair.Value);
             }
         }
         public static Dictionary<string, object> ToPropertyDictionary(this XmlNode node, string defaultNsp)
         {
             var properties = new Dictionary<string, object>();
-            if (node != null)
+            if (node == null)
+                return properties;
+            for (int i = 0; i < node.ChildNodes.Count; i++)
             {
-                for (int i = 0; i < node.ChildNodes.Count; i++)
+                var propNode = node.ChildNodes[i];
+                var propKey = propNode.GetAttribute("name");
+                if (propNode.TryToProperty(defaultNsp, out var propValue))
                 {
-                    var propNode = node.ChildNodes[i];
-                    var propKey = propNode.GetAttribute("name");
-                    if (propNode.TryToProperty(defaultNsp, out var propValue))
-                    {
-                        properties.Add(propKey, propValue);
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Cannot create property \"{propKey}\" of type \"{propNode.Name}\" from xml node.");
-                    }
+                    properties.Add(propKey, propValue);
+                }
+                else
+                {
+                    Debug.LogWarning($"Cannot create property \"{propKey}\" of type \"{propNode.Name}\" from xml node.");
                 }
             }
             return properties;

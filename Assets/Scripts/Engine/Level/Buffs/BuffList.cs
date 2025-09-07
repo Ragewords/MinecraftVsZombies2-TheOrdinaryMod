@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using PVZEngine.Level;
@@ -6,10 +7,10 @@ using PVZEngine.Modifiers;
 
 namespace PVZEngine.Buffs
 {
-    public class BuffList
+    public class BuffList : IEnumerable<Buff>
     {
         #region 增益操作
-        public bool AddBuff(Buff buff)
+        public bool AddBuff(Buff buff, IBuffTarget target)
         {
             changedPropertiesBuffer.Clear();
             if (AddBuffImplement(buff))
@@ -18,6 +19,7 @@ namespace PVZEngine.Buffs
                 {
                     OnPropertyChangedCallback(prop);
                 }
+                buff.AddToTarget(target);
                 return true;
             }
             return false;
@@ -77,6 +79,26 @@ namespace PVZEngine.Buffs
             }
             return count;
         }
+        public int RemoveBuffs(NamespaceID id)
+        {
+            if (!NamespaceID.IsValid(id))
+                return 0;
+
+            changedPropertiesBuffer.Clear();
+            int count = 0;
+            for (int i = buffs.Count - 1; i >= 0; i--)
+            {
+                var buff = buffs[i];
+                if (buff.Definition.GetID() != id)
+                    continue;
+                count += RemoveBuffImplement(buff) ? 1 : 0;
+            }
+            foreach (var prop in changedPropertiesBuffer)
+            {
+                OnPropertyChangedCallback(prop);
+            }
+            return count;
+        }
         public int RemoveBuffs<T>() where T : BuffDefinition
         {
             changedPropertiesBuffer.Clear();
@@ -102,6 +124,15 @@ namespace PVZEngine.Buffs
             foreach (var buff in buffs)
             {
                 if (buff.Definition is T)
+                    return true;
+            }
+            return false;
+        }
+        public bool HasBuff(NamespaceID id)
+        {
+            foreach (var buff in buffs)
+            {
+                if (buff.Definition.GetID() == id)
                     return true;
             }
             return false;
@@ -136,6 +167,28 @@ namespace PVZEngine.Buffs
             foreach (var buff in buffs)
             {
                 if (buff.Definition is T)
+                {
+                    return buff;
+                }
+            }
+            return null;
+        }
+        public Buff GetFirstBuff(BuffDefinition definition)
+        {
+            foreach (var buff in buffs)
+            {
+                if (buff.Definition == definition)
+                {
+                    return buff;
+                }
+            }
+            return null;
+        }
+        public Buff GetFirstBuff(NamespaceID id)
+        {
+            foreach (var buff in buffs)
+            {
+                if (buff.Definition.GetID() == id)
                 {
                     return buff;
                 }
@@ -201,7 +254,7 @@ namespace PVZEngine.Buffs
                 return false;
             buffs.Add(buff);
             AddModifierCaches(buff);
-            UpdateModelInsertions();
+            OnBuffAdded?.Invoke(buff);
             buff.OnPropertyChanged += OnPropertyChangedCallback;
             return true;
         }
@@ -213,7 +266,7 @@ namespace PVZEngine.Buffs
             {
                 buff.RemoveFromTarget();
                 RemoveModifierCaches(buff);
-                UpdateModelInsertions();
+                OnBuffRemoved?.Invoke(buff);
                 buff.OnPropertyChanged -= OnPropertyChangedCallback;
                 return true;
             }
@@ -238,32 +291,6 @@ namespace PVZEngine.Buffs
         public IPropertyKey[] GetModifierPropertyNames()
         {
             return modifierCaches.Keys.ToArray();
-        }
-        #endregion
-
-        #region 模型
-        public void UpdateModelInsertions()
-        {
-            HashSet<NamespaceID> retainModels = new HashSet<NamespaceID>();
-            foreach (var buff in buffs)
-            {
-                foreach (var insertion in buff.GetModelInsertions())
-                {
-                    retainModels.Add(insertion.key);
-                    if (createdModelInsertions.Contains(insertion.key))
-                        continue;
-                    OnModelInsertionAdded?.Invoke(insertion.anchorName, insertion.key, insertion.modelID);
-                    createdModelInsertions.Add(insertion.key);
-                }
-            }
-            for (int i = createdModelInsertions.Count - 1; i >= 0; i--)
-            {
-                var key = createdModelInsertions[i];
-                if (retainModels.Contains(key))
-                    continue;
-                OnModelInsertionRemoved?.Invoke(key);
-                createdModelInsertions.RemoveAt(i);
-            }
         }
         #endregion
 
@@ -315,26 +342,21 @@ namespace PVZEngine.Buffs
         {
             return new SerializableBuffList()
             {
-                buffs = buffs.ConvertAll(b => b.Serialize())
+                buffs = buffs.ConvertAll(b => b.Serialize()),
+                currentBuffID = currentBuffID,
             };
         }
         public static BuffList FromSerializable(SerializableBuffList serializable, LevelEngine level, IBuffTarget target)
         {
             var buffList = new BuffList();
+
             foreach (var seriBuff in serializable.buffs)
             {
                 var buff = Buff.Deserialize(seriBuff, level, target);
                 buff.OnPropertyChanged += buffList.OnPropertyChangedCallback;
                 buffList.buffs.Add(buff);
-
-                foreach (var insertion in buff.GetModelInsertions())
-                {
-                    if (!buffList.createdModelInsertions.Contains(insertion.key))
-                    {
-                        buffList.createdModelInsertions.Add(insertion.key);
-                    }
-                }
             }
+            buffList.currentBuffID = serializable.currentBuffID;
             buffList.UpdateModifierCaches();
             return buffList;
         }
@@ -352,12 +374,27 @@ namespace PVZEngine.Buffs
         }
         #endregion
 
-        public event Action<string, NamespaceID, NamespaceID> OnModelInsertionAdded;
-        public event Action<NamespaceID> OnModelInsertionRemoved;
+        public long AllocBuffID()
+        {
+            return currentBuffID++;
+        }
+        IEnumerator<Buff> IEnumerable<Buff>.GetEnumerator()
+        {
+            return buffs.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return buffs.GetEnumerator();
+        }
+
+        public event Action<Buff> OnBuffAdded;
+        public event Action<Buff> OnBuffRemoved;
         public event Action<IPropertyKey> OnPropertyChanged;
+
+        private long currentBuffID = 1;
         private List<Buff> updateBuffer = new List<Buff>();
         private List<Buff> buffs = new List<Buff>();
-        private List<NamespaceID> createdModelInsertions = new List<NamespaceID>();
         private HashSet<IPropertyKey> changedPropertiesBuffer = new HashSet<IPropertyKey>();
         private Dictionary<IPropertyKey, List<ModifierContainerItem>> modifierCaches = new Dictionary<IPropertyKey, List<ModifierContainerItem>>(new PropertyKeyComparer());
         private List<ModifierContainerItem> modifierItemBuffer = new List<ModifierContainerItem>();

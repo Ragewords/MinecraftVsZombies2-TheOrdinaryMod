@@ -7,6 +7,7 @@ using PVZEngine.Damages;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
+using PVZEngine.Level;
 using PVZEngine.SeedPacks;
 
 namespace MVZ2.Vanilla.Callbacks
@@ -119,28 +120,59 @@ namespace MVZ2.Vanilla.Callbacks
                 this.heldData = heldData;
             }
         }
-        public struct PostEntityCharmParams
+        public struct PreApplyStatusEffectParams
+        {
+            public Entity entity;
+            public BuffDefinition buffDefinition;
+            public ILevelSourceReference source;
+
+            public PreApplyStatusEffectParams(Entity entity, BuffDefinition definition, ILevelSourceReference source)
+            {
+                this.entity = entity;
+                this.buffDefinition = definition;
+                this.source = source;
+            }
+        }
+        public struct PostApplyStatusEffectParams
         {
             public Entity entity;
             public Buff buff;
+            public ILevelSourceReference source;
 
-            public PostEntityCharmParams(Entity entity, Buff buff)
+            public PostApplyStatusEffectParams(Entity entity, Buff buff, ILevelSourceReference source)
             {
                 this.entity = entity;
                 this.buff = buff;
+                this.source = source;
             }
         }
-        public struct PostEntityMesmerizeParams
+        public struct PreRemoveStatusEffectParams
         {
             public Entity entity;
-            public Buff buff;
+            public BuffDefinition buffDefinition;
+            public ILevelSourceReference source;
 
-            public PostEntityMesmerizeParams(Entity entity, Buff buff)
+            public PreRemoveStatusEffectParams(Entity entity, BuffDefinition definition, ILevelSourceReference source)
             {
                 this.entity = entity;
-                this.buff = buff;
+                this.buffDefinition = definition;
+                this.source = source;
             }
         }
+        public struct PostRemoveStatusEffectParams
+        {
+            public Entity entity;
+            public BuffDefinition buffDefinition;
+            public ILevelSourceReference source;
+
+            public PostRemoveStatusEffectParams(Entity entity, BuffDefinition definition, ILevelSourceReference source)
+            {
+                this.entity = entity;
+                this.buffDefinition = definition;
+                this.source = source;
+            }
+        }
+
 
         public struct ContraptionSacrificeValueParams
         {
@@ -218,13 +250,17 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostBodyTakeDamageParams> POST_BODY_TAKE_DAMAGE = new();
         public readonly static CallbackType<PreArmorTakeDamageParams> PRE_ARMOR_TAKE_DAMAGE = new();
         public readonly static CallbackType<PostArmorTakeDamageParams> POST_ARMOR_TAKE_DAMAGE = new();
+        public readonly static CallbackType<PostTakeDamageParams> APPLY_DAMAGE_SPECIAL_EFFECTS = new();
         public readonly static CallbackType<PreHealParams> PRE_ENTITY_HEAL = new();
         public readonly static CallbackType<PostHealParams> POST_ENTITY_HEAL = new();
 
         public readonly static CallbackType<PlaceEntityParams> PRE_PLACE_ENTITY = new();
         public readonly static CallbackType<PostPlaceEntityParams> POST_PLACE_ENTITY = new();
         public readonly static CallbackType<PostUseEntityBlueprintParams> POST_USE_ENTITY_BLUEPRINT = new();
-        public readonly static CallbackType<PostEntityCharmParams> POST_ENTITY_CHARM = new();
+        public readonly static CallbackType<PreApplyStatusEffectParams> PRE_APPLY_STATUS_EFFECT = new();
+        public readonly static CallbackType<PostApplyStatusEffectParams> POST_APPLY_STATUS_EFFECT = new();
+        public readonly static CallbackType<PreRemoveStatusEffectParams> PRE_REMOVE_STATUS_EFFECT = new();
+        public readonly static CallbackType<PostRemoveStatusEffectParams> POST_REMOVE_STATUS_EFFECT = new();
         public readonly static CallbackType<PostEntityMesmerizeParams> POST_ENTITY_MESMERIZE = new();
         public readonly static CallbackType<EntityCallbackParams> POST_ENTITY_REINCARNATE = new();
 

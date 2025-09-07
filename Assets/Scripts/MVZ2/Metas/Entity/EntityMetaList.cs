@@ -9,7 +9,7 @@ namespace MVZ2.Metas
     {
         public EntityCounterMeta[] counters;
         public EntityMeta[] metas;
-        public static EntityMetaList FromXmlNode(XmlNode node, string defaultNsp)
+        public static EntityMetaList FromXmlNode(string nsp, XmlNode node, string defaultNsp)
         {
             var countersNode = node["counters"];
             var counters = new List<EntityCounterMeta>();
@@ -31,7 +31,7 @@ namespace MVZ2.Metas
             {
                 for (int i = 0; i < entriesNode.ChildNodes.Count; i++)
                 {
-                    var meta = EntityMeta.FromXmlNode(entriesNode.ChildNodes[i], defaultNsp, metaTemplates, i);
+                    var meta = EntityMeta.FromXmlNode(nsp, entriesNode.ChildNodes[i], defaultNsp, metaTemplates, i);
                     entries.Add(meta);
                 }
             }
@@ -76,13 +76,14 @@ namespace MVZ2.Metas
                 }
             }
             var behavioursNode = node["behaviours"];
-            behavioursNode.ModifyEntityBehaviours(behaviours, defaultNsp);
+            behavioursNode.ModifyEntityBehaviours(behaviours, properties, defaultNsp);
 
             var propsNode = node["properties"];
             var props = propsNode.ToPropertyDictionary(defaultNsp);
             foreach (var prop in props)
             {
-                properties[prop.Key] = prop.Value;
+                var fullName = PropertyKeyHelper.ParsePropertyFullName(prop.Key, defaultNsp, PropertyRegions.entity);
+                properties[fullName] = prop.Value;
             }
         }
         public static EntityMetaTemplate[] LoadTemplates(XmlNode node, string defaultNsp)

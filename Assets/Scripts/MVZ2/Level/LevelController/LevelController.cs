@@ -2,7 +2,7 @@
 using System.Linq;
 using MVZ2.Audios;
 using MVZ2.Cameras;
-using MVZ2.Games;
+using MVZ2.GlobalGames;
 using MVZ2.Level.Components;
 using MVZ2.Localization;
 using MVZ2.Managers;
@@ -31,6 +31,7 @@ namespace MVZ2.Level
             Awake_Entities();
             Awake_Talk();
             Awake_Camera();
+            Awake_UI(); // Awake_UI 要放在其他使用UIPreset的前面，防止获取到错误的Preset。
             Awake_HeldItem();
             Awake_ProgressBar();
             Awake_Tooltip();
@@ -38,7 +39,6 @@ namespace MVZ2.Level
             Awake_Tools();
             Awake_Artifacts();
             Awake_Blueprints();
-            Awake_UI();
             foreach (var controller in parts)
             {
                 controller.Init(this);
@@ -82,7 +82,7 @@ namespace MVZ2.Level
                 level.StopAllLoopSounds();
                 level.Dispose();
             }
-            Game.SetLevel(null);
+            LevelManager.SetLevelController(null);
             isDisposed = true;
         }
         public void UpdateDifficulty()
@@ -107,7 +107,7 @@ namespace MVZ2.Level
         }
 
         #region 属性字段
-        public Game Game => Main.Game;
+        public GlobalGame Game => Main.Game;
         private MainManager Main => MainManager.Instance;
         private SaveManager Saves => Main.SaveManager;
         private MusicManager Music => Main.MusicManager;

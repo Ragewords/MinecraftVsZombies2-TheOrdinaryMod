@@ -9,7 +9,7 @@ using MVZ2.Audios;
 using MVZ2.Cameras;
 using MVZ2.Collisions;
 using MVZ2.Cursors;
-using MVZ2.Games;
+using MVZ2.GlobalGames;
 using MVZ2.IO;
 using MVZ2.Level;
 using MVZ2.Level.Components;
@@ -21,14 +21,13 @@ using MVZ2.Saves;
 using MVZ2.Scenes;
 using MVZ2.Supporters;
 using MVZ2Logic;
-using MVZ2Logic.Games;
 using PVZEngine;
 using UnityEditor;
 using UnityEngine;
 
 namespace MVZ2.Managers
 {
-    public class MainManager : MonoBehaviour, IMainManager
+    public class MainManager : MonoBehaviour
     {
         public async Task Initialize()
         {
@@ -174,14 +173,44 @@ namespace MVZ2.Managers
                 throw new DuplicateInstanceException(name);
             }
         }
+#if UNITY_ANDROID
+        private void OnApplicationFocus(bool focus)
+        {
+            // 安卓切换到其他应用时，可能会在后台被系统释放，而不调用OnApplicationQuit.
+            if (!focus)
+            {
+                SaveManager.SaveToFile(); // 安卓切换后台后，保存。
+            }
+        }
+#endif
+
+        private void OnApplicationQuit()
+        {
+            SaveManager.SaveToFile(); // 退出游戏后，保存。
+        }
+
         private void InitGameSettings()
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
             Application.targetFrameRate = 60;
+            Game = new GlobalGame(this);
 
-            Global.Init(this);
-            Game = new Game(BuiltinNamespace, LanguageManager, SaveManager, ResourceManager);
+            Global.Init(new GlobalParams()
+            {
+                models = new GlobalModels(this),
+                almanac = new GlobalAlmanac(this),
+                saveData = SaveManager,
+                options = OptionsManager,
+                input = InputManager,
+                level = LevelManager,
+                music = MusicManager,
+                gui = new GlobalGUI(this),
+                scene = Scene,
+                game = Game,
+                localization = LanguageManager,
+                debug = DebugManager
+            });
         }
         private void InitSerializable()
         {
@@ -255,6 +284,7 @@ namespace MVZ2.Managers
 
             // 在MOD逻辑加载之后
             SaveManager.Load();
+            DebugManager.LoadCommandParameterSuggestions();
         }
         private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
@@ -279,8 +309,6 @@ namespace MVZ2.Managers
             Debug.LogError(e.Exception);
         }
 
-        IGame IMainManager.Game => Game;
-
         [TranslateMsg("初始化任务名称")]
         public const string TASK_LOAD_RESOURCES = "加载中……";
         [TranslateMsg("初始化任务名称")]
@@ -288,7 +316,7 @@ namespace MVZ2.Managers
         [TranslateMsg("值，{0}为百分数")]
         public const string VALUE_PERCENT = "{0}%";
         public static MainManager Instance { get; private set; }
-        public Game Game { get; private set; }
+        public GlobalGame Game { get; private set; }
         public string BuiltinNamespace => builtinNamespace;
         public CoroutineManager CoroutineManager => coroutine;
         public ResourceManager ResourceManager => resource;
@@ -314,12 +342,6 @@ namespace MVZ2.Managers
         public DebugManager DebugManager => debugManager;
         public MainSceneController Scene => scene;
         public PerformanceManager PerformanceManager => performanceManager;
-        ISceneController IMainManager.Scene => scene;
-        IMusicManager IMainManager.Music => music;
-        ILevelManager IMainManager.Level => level;
-        IOptionsManager IMainManager.Options => options;
-        IGlobalSave IMainManager.Saves => save;
-        IInputManager IMainManager.Input => inputManager;
 
         private Task initTask;
         private TaskPipeline loadPipeline;

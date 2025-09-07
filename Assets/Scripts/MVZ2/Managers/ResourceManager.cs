@@ -8,12 +8,6 @@ using MVZ2.IO;
 using MVZ2.Metas;
 using MVZ2.Modding;
 using MVZ2.TalkData;
-using MVZ2Logic.Entities;
-using MVZ2Logic.Games;
-using MVZ2Logic.Level;
-using MVZ2Logic.Models;
-using MVZ2Logic.SeedPacks;
-using MVZ2Logic.Spawns;
 using PVZEngine;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -22,7 +16,7 @@ using UnityEngine.ResourceManagement.ResourceLocations;
 
 namespace MVZ2.Managers
 {
-    public partial class ResourceManager : MonoBehaviour, IGameMetas
+    public partial class ResourceManager : MonoBehaviour
     {
         #region 公有方法
 
@@ -31,13 +25,10 @@ namespace MVZ2.Managers
         {
             modResources.Clear();
             spriteReferenceCacheDict.Clear();
-            entitiesCacheDict.Clear();
             talksCacheDict.Clear();
             achievementCacheDict.Clear();
             mainmenuViewCacheDict.Clear();
-            artifactsCacheDict.Clear();
             ClearResources_Store();
-            difficultyCache.Clear();
             noteCache.Clear();
         }
         public async Task Init()
@@ -125,10 +116,6 @@ namespace MVZ2.Managers
             {
                 armorsCacheDict.Add(new NamespaceID(modNamespace, meta.ID), meta);
             }
-            foreach (var meta in modResource.EntityMetaList.metas)
-            {
-                entitiesCacheDict.Add(new NamespaceID(modNamespace, meta.ID), meta);
-            }
             foreach (var meta in modResource.AchievementMetaList.metas)
             {
                 achievementCacheDict.Add(new NamespaceID(modNamespace, meta.ID), meta);
@@ -137,15 +124,7 @@ namespace MVZ2.Managers
             {
                 mainmenuViewCacheDict.Add(new NamespaceID(modNamespace, meta.ID), meta);
             }
-            foreach (var meta in modResource.ArtifactMetaList.metas)
-            {
-                artifactsCacheDict.Add(new NamespaceID(modNamespace, meta.ID), meta);
-            }
             PostLoadMod_Store(modNamespace, modResource);
-            foreach (var meta in modResource.DifficultyMetaList.metas)
-            {
-                difficultyCache.Add(new NamespaceID(modNamespace, meta.ID));
-            }
             foreach (var meta in modResource.NoteMetaList.metas)
             {
                 noteCache.Add(new NamespaceID(modNamespace, meta.id));
@@ -422,51 +401,6 @@ namespace MVZ2.Managers
                 return default;
             return await Addressables.LoadAssetAsync<T>(loc).Task;
         }
-        #region 接口实现
-        IStageMeta IGameMetas.GetStageMeta(NamespaceID id) => GetStageMeta(id);
-
-        IStageMeta[] IGameMetas.GetModStageMetas(string spaceName) => GetModStageMetas(spaceName);
-        IDifficultyMeta IGameMetas.GetDifficultyMeta(NamespaceID id) => GetDifficultyMeta(id);
-        IAreaMeta IGameMetas.GetAreaMeta(NamespaceID id) => GetAreaMeta(id);
-
-        IAreaMeta[] IGameMetas.GetModAreaMetas(string spaceName) => GetModAreaMetas(spaceName);
-
-        IEntityMeta IGameMetas.GetEntityMeta(NamespaceID id) => GetEntityMeta(id);
-        IEntityMeta[] IGameMetas.GetModEntityMetas(string spaceName) => GetModEntityMetas(spaceName);
-
-        IShapeMeta IGameMetas.GetShapeMeta(NamespaceID id) => GetShapeMeta(id);
-        IShapeMeta[] IGameMetas.GetModShapeMetas(string spaceName) => GetModShapeMetas(spaceName);
-
-        IEntityCounterMeta IGameMetas.GetEntityCounterMeta(NamespaceID id) => GetEntityCounterMeta(id);
-
-        IArmorSlotMeta IGameMetas.GetArmorSlotMeta(NamespaceID id) => GetArmorSlotMeta(id);
-
-        IArmorMeta IGameMetas.GetArmorMeta(NamespaceID id) => GetArmorMeta(id);
-        IArmorMeta[] IGameMetas.GetModArmorMetas(string spaceName) => GetModArmorMetas(spaceName);
-
-        IArtifactMeta[] IGameMetas.GetModArtifactMetas(string spaceName) => GetModArtifactMetas(spaceName);
-
-        IModelMeta IGameMetas.GetModelMeta(NamespaceID id) => GetModelMeta(id);
-
-        IModelMeta[] IGameMetas.GetModModelMetas(string spaceName) => GetModModelMetas(spaceName);
-
-        ISeedOptionMeta IGameMetas.GetSeedOptionMeta(NamespaceID id) => GetBlueprintOptionMeta(id);
-        ISeedOptionMeta[] IGameMetas.GetModSeedOptionMetas(string spaceName) => GetModBlueprintOptionMetas(spaceName);
-
-        IEntitySeedMeta IGameMetas.GetEntitySeedMeta(NamespaceID id) => GetEntityBlueprintMeta(id);
-        IEntitySeedMeta[] IGameMetas.GetModEntitySeedMetas(string spaceName) => GetModEntityBlueprintMetas(spaceName);
-
-        ISpawnMeta IGameMetas.GetSpawnMeta(NamespaceID id) => GetSpawnMeta(id);
-
-        ISpawnMeta[] IGameMetas.GetModSpawnMetas(string spaceName) => GetModSpawnMetas(spaceName);
-
-
-        IGridLayerMeta IGameMetas.GetGridLayerMeta(NamespaceID id) => GetGridLayerMeta(id);
-        IGridErrorMeta IGameMetas.GetGridErrorMeta(NamespaceID id) => GetGridErrorMeta(id);
-
-        IBlueprintErrorMeta IGameMetas.GetBlueprintErrorMeta(NamespaceID id) => GetBlueprintErrorMeta(id);
-        #endregion
-
         #endregion
         public MainManager Main => main;
         [SerializeField]

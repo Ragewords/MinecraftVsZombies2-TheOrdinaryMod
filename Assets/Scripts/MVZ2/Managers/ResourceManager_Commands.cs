@@ -1,0 +1,18 @@
+﻿using System;
+using System.Linq;
+using MVZ2.Metas;
+using UnityEngine;
+
+namespace MVZ2.Managers
+{
+    public partial class ResourceManager : MonoBehaviour
+    {
+        public CommandMeta[] GetModCommandMetas(string nsp)
+        {
+            var modResource = main.ResourceManager.GetModResource(nsp);
+            if (modResource == null)
+                return Array.Empty<CommandMeta>();
+            return modResource.CommandMetaList.metas.ToArray();
+        }
+    }
+}

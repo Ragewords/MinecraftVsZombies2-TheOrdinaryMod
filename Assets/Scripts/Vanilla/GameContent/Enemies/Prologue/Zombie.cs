@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -53,8 +54,8 @@ namespace MVZ2.GameContent.Enemies
             {
                 if (info.Effects.HasEffect(VanillaDamageEffects.DROWN) && !entity.Level.IsIZombie())
                 {
-                    Global.Game.Unlock(VanillaUnlockID.rickrollDrown);
-                    Global.Game.SaveToFile(); // 完成成就后保存游戏。
+                    Global.Saves.Unlock(VanillaUnlockID.rickrollDrown);
+                    Global.Saves.SaveToFile(); // 完成成就后保存游戏。
                 }
             }
         }

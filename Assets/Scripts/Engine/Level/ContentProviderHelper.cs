@@ -28,6 +28,10 @@ namespace PVZEngine
         {
             return provider.GetDefinition<EntityDefinition>(EngineDefinitionTypes.ENTITY, defRef);
         }
+        public static EntityDefinition[] GetAllEntityDefinitions(this IGameContent provider)
+        {
+            return provider.GetDefinitions<EntityDefinition>(EngineDefinitionTypes.ENTITY);
+        }
         public static EntityBehaviourDefinition GetEntityBehaviourDefinition(this IGameContent provider, NamespaceID defRef)
         {
             return provider.GetDefinition<EntityBehaviourDefinition>(EngineDefinitionTypes.ENTITY_BEHAVIOUR, defRef);
@@ -75,6 +79,14 @@ namespace PVZEngine
         public static SpawnDefinition GetSpawnDefinition(this IGameContent provider, NamespaceID defRef)
         {
             return provider.GetDefinition<SpawnDefinition>(EngineDefinitionTypes.SPAWN, defRef);
+        }
+        public static DifficultyDefinition GetDifficultyDefinition(this IGameContent provider, NamespaceID defRef)
+        {
+            return provider.GetDefinition<DifficultyDefinition>(EngineDefinitionTypes.DIFFICULTY, defRef);
+        }
+        public static DifficultyDefinition[] GetAllDifficultyDefinitions(this IGameContent provider)
+        {
+            return provider.GetDefinitions<DifficultyDefinition>(EngineDefinitionTypes.DIFFICULTY);
         }
     }
 }

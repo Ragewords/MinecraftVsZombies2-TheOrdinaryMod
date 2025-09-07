@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Grids;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -41,10 +42,10 @@ namespace MVZ2.GameContent.Contraptions
             var level = entity.Level;
             var rng = entity.RNG;
             entity.ClearTakenGrids();
-            var unlockedContraptions = game.GetUnlockedContraptions();
+            var unlockedContraptions = Global.Saves.GetUnlockedContraptions();
             var validContraptions = unlockedContraptions.Where(id =>
             {
-                if (!game.IsContraptionInAlmanac(id))
+                if (!Global.Almanac.IsContraptionInAlmanac(id))
                     return false;
                 var def = game.GetEntityDefinition(id);
                 if (def.IsUpgradeBlueprint())

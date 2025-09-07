@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
@@ -58,8 +58,7 @@ namespace MVZ2.GameContent.Contraptions
             evocationTimer.Reset();
             
             entity.State = STATE_EVOKED;
-
-            entity.AddBuff<DesirePotHighlightBuff>();
+            WhiteFlashBuff.AddToEntity(entity, 30);
             entity.PlaySound(VanillaSoundID.arcaneIntellect);
             entity.PlaySound(VanillaSoundID.desirePotEvocation);
         }
@@ -69,7 +68,7 @@ namespace MVZ2.GameContent.Contraptions
             evocationTimer.Run();
             if (evocationTimer.Expired)
             {
-                entity.AddBuff<DesirePotHighlightBuff>();
+                WhiteFlashBuff.AddToEntity(entity, 30);
                 entity.State = STATE_IDLE;
             }
         }
@@ -97,7 +96,7 @@ namespace MVZ2.GameContent.Contraptions
                     continue;
                 }
                 var spawnParams = entity.GetSpawnParams();
-                spawnParams.SetProperty(BlueprintPickup.PROP_BLUEPRINT_ID, blueprintID);
+                spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, blueprintID);
                 spawnParams.SetProperty(BlueprintPickup.PROP_COMMAND_BLOCK, seed.IsCommandBlock());
                 var pickup = entity.Spawn(VanillaPickupID.blueprintPickup, entity.GetCenter(), spawnParams);
 
@@ -144,8 +143,8 @@ namespace MVZ2.GameContent.Contraptions
 
             if (drawnDesirePots >= 2)
             {
-                Global.Game.Unlock(VanillaUnlockID.overdraw);
-                Global.Game.SaveToFile(); // 完成成就后保存游戏。
+                Global.Saves.Unlock(VanillaUnlockID.overdraw);
+                Global.Saves.SaveToFile(); // 完成成就后保存游戏。
             }
         }
         private SeedPack[] GetBlueprintsToCopy(Entity entity, int number)
@@ -214,14 +213,12 @@ namespace MVZ2.GameContent.Contraptions
         public const int FATIGUE_INCREAMENT = 25;
         public const int DETECT_INTERVAL = 10;
         public const int MAX_DUPLICATED_COUNT = 3;
-        public const int MAX_FILL_COUNT = 3;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
         public const int STATE_EVOKED = VanillaEntityStates.CONTRAPTION_SPECIAL;
         public const string PROP_REGION = VanillaContraptionNames.desirePot;
         [LevelPropertyRegistry(PROP_REGION)]
         private static readonly VanillaLevelPropertyMeta<float> PROP_FATIGUE_DAMAGE = new VanillaLevelPropertyMeta<float>("FatigueDamage");
         private static readonly VanillaEntityPropertyMeta<int> PROP_DUPLICATED_COUNT = new VanillaEntityPropertyMeta<int>("duplicated_count");
-        private static readonly VanillaEntityPropertyMeta<int> PROP_FILLED_COUNT = new VanillaEntityPropertyMeta<int>("filled_count");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
     }
 }

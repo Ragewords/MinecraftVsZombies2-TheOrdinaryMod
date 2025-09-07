@@ -70,6 +70,10 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID fatigue = Get("fatigue");
         public readonly static NamespaceID fault = Get("fault");
         public readonly static NamespaceID fire = Get("fire");
+        public readonly static NamespaceID fireworkBlast = Get("firework_blast");
+        public readonly static NamespaceID fireworkLargeBlast = Get("firework_large_blast");
+        public readonly static NamespaceID fireworkLaunch = Get("firework_launch");
+        public readonly static NamespaceID fireworkTwinkle = Get("firework_twinkle");
         public readonly static NamespaceID fireBreath = Get("fire_breath");
         public readonly static NamespaceID fireCharge = Get("fire_charge");
         public readonly static NamespaceID finalWave = Get("final_wave");

@@ -8,6 +8,10 @@ using MVZ2.OldSave;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Saves;
 using MVZ2Logic;
+using MVZ2Logic.Artifacts;
+using MVZ2Logic.Callbacks;
+using MVZ2Logic.Difficulties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Games;
 using MVZ2Logic.Saves;
 using PVZEngine;
@@ -16,29 +20,32 @@ using UnityEngine;
 
 namespace MVZ2.Saves
 {
-    public partial class SaveManager : MonoBehaviour, IGameSaveData, IGlobalSave
+    public partial class SaveManager : MonoBehaviour, IGlobalSaveData
     {
         #region 保存
         public void SaveToFile()
         {
+            var playTime = GetPlayTimeDeltaMilliseconds();
+            UpdatePlayTimeDelta();
             foreach (var mod in Main.ModManager.GetAllModInfos())
             {
-                SaveCurrentModData(mod.Namespace);
+                SaveCurrentModData(mod.Namespace, playTime);
             }
         }
-        public void SaveCurrentModData(string spaceName)
+        public void SaveCurrentModData(string spaceName, long playTimeDelta)
         {
             if (userDataList == null)
                 return;
-            SaveModData(userDataList.CurrentUserIndex, spaceName);
+            SaveModData(userDataList.CurrentUserIndex, spaceName, playTimeDelta);
         }
-        public void SaveModData(int userIndex, string spaceName)
+        public void SaveModData(int userIndex, string spaceName, long playTimeDelta)
         {
             var path = GetUserModSaveDataPath(userIndex, spaceName);
             FileHelper.ValidateDirectory(path);
             var modSaveData = GetModSaveData(spaceName);
             if (modSaveData == null)
                 return;
+            UpdatePlayTime(modSaveData, playTimeDelta);
             var serializable = modSaveData.ToSerializable();
             var metaJson = serializable.ToBson();
             Main.FileManager.WriteStringFile(path, metaJson);
@@ -73,6 +80,15 @@ namespace MVZ2.Saves
             }
             EvaluateUnlocks(true);
             CheckUserDataFix();
+
+            var userName = GetUserName(index);
+            var param = new LogicCallbacks.PostUserLoadParams()
+            {
+                userIndex = index,
+                userName = userName
+            };
+            OnUserLoad?.Invoke(index, userName);
+            Main.Game.RunCallback(LogicCallbacks.POST_USER_LOAD, param);
         }
         public SaveDataStatus GetSaveDataStatus()
         {
@@ -179,10 +195,10 @@ namespace MVZ2.Saves
             var records = Main.SaveManager.GetLevelDifficultyRecords(stageID);
             return records.OrderByDescending(r =>
             {
-                var meta = Main.ResourceManager.GetDifficultyMeta(r);
+                var meta = Main.Game.GetDifficultyDefinition(r);
                 if (meta == null)
                     return int.MinValue;
-                return meta.Value;
+                return meta.GetValue();
             }).FirstOrDefault();
         }
         public bool HasLevelDifficultyRecords(NamespaceID stageID, NamespaceID difficulty)
@@ -293,6 +309,41 @@ namespace MVZ2.Saves
         }
         #endregion
 
+        #region 游玩时长
+        public void UpdatePlayTime()
+        {
+            var playTime = GetPlayTimeDeltaMilliseconds();
+            UpdatePlayTimeDelta();
+            foreach (var mod in Main.ModManager.GetAllModInfos())
+            {
+                UpdatePlayTime(mod.Namespace, playTime);
+            }
+        }
+        private void UpdatePlayTime(string spaceName, long time)
+        {
+            var modSaveData = GetModSaveData(spaceName);
+            UpdatePlayTime(modSaveData, time);
+        }
+        private void UpdatePlayTime(ModSaveData modSaveData, long time)
+        {
+            if (modSaveData == null)
+                return;
+            modSaveData.AddPlayTimeMilliseconds(time);
+        }
+        private long GetPlayTimeDeltaMilliseconds()
+        {
+            return (long)(GetPlayTimeDelta() * 1000);
+        }
+        private float GetPlayTimeDelta()
+        {
+            return Time.realtimeSinceStartup - lastPlayTime;
+        }
+        private void UpdatePlayTimeDelta()
+        {
+            lastPlayTime = Time.realtimeSinceStartup;
+        }
+        #endregion
+
         public int GetCurrentEndlessFlag(NamespaceID stageID)
         {
             if (!NamespaceID.IsValid(stageID))
@@ -320,14 +371,14 @@ namespace MVZ2.Saves
                 return null;
             return saveData.GetAllStats();
         }
-        public long GetSaveStat(NamespaceID category, NamespaceID entry)
+        public long GetStat(NamespaceID category, NamespaceID entry)
         {
             var saveData = GetModSaveData(category.SpaceName);
             if (saveData == null)
                 return 0;
             return saveData.GetStat(category.Path, entry);
         }
-        public void SetSaveStat(NamespaceID category, NamespaceID entry, long value)
+        public void SetStat(NamespaceID category, NamespaceID entry, long value)
         {
             var saveData = GetModSaveData(category.SpaceName);
             if (saveData == null)
@@ -358,16 +409,16 @@ namespace MVZ2.Saves
         private void EvaluateUnlockedArtifacts()
         {
             unlockedArtifactsCache.Clear();
-            var resourceManager = Main.ResourceManager;
-            var artifactsID = resourceManager.GetAllArtifactsID();
-            foreach (var id in artifactsID)
+            var game = Main.Game;
+            var artifacts = game.GetAllArtifactDefinitions();
+            foreach (var def in artifacts)
             {
-                var meta = resourceManager.GetArtifactMeta(id);
-                if (meta == null)
+                var unlockConditions = def?.GetUnlockConditions();
+                if (unlockConditions == null)
                     continue;
-                if (this.IsValidAndLocked(meta.Unlock))
+                if (!unlockConditions.IsNullOrMeetsConditions(this))
                     continue;
-                unlockedArtifactsCache.Add(id);
+                unlockedArtifactsCache.Add(def.GetID());
             }
         }
         private void EvaluateUnlockedProducts()
@@ -390,19 +441,19 @@ namespace MVZ2.Saves
             unlockedContraptionsCache.Clear();
             unlockedEnemiesCache.Clear();
             var resourceManager = Main.ResourceManager;
-            var entitiesID = resourceManager.GetAllEntitiesID();
-            foreach (var id in entitiesID)
+            var entities = Main.Game.GetAllEntityDefinitions();
+            foreach (var def in entities)
             {
-                var meta = resourceManager.GetEntityMeta(id);
-                if (meta == null)
+                if (def == null)
                     continue;
-                if (this.IsValidAndLocked(meta.Unlock))
+                if (this.IsValidAndLocked(def.GetEntityUnlock()))
                     continue;
-                if (meta.Type == EntityTypes.PLANT)
+                var id = def.GetID();
+                if (def.Type == EntityTypes.PLANT)
                 {
                     unlockedContraptionsCache.Add(id);
                 }
-                else if (meta.Type == EntityTypes.ENEMY)
+                else if (def.Type == EntityTypes.ENEMY)
                 {
                     unlockedEnemiesCache.Add(id);
                 }
@@ -430,6 +481,8 @@ namespace MVZ2.Saves
         }
         #endregion
 
+        public event Action<int, string> OnUserLoad;
+
         #region 属性字段
         public MainManager Main => MainManager.Instance;
         private SaveDataStatus status = new SaveDataStatus();
@@ -439,6 +492,7 @@ namespace MVZ2.Saves
         private List<NamespaceID> unlockedArtifactsCache = new List<NamespaceID>();
         private List<NamespaceID> unlockedProductsCache = new List<NamespaceID>();
         private List<NamespaceID> unlockedAchievementsCache = new List<NamespaceID>();
+        private float lastPlayTime = 0;
         #endregion
     }
     public class SaveDataStatus

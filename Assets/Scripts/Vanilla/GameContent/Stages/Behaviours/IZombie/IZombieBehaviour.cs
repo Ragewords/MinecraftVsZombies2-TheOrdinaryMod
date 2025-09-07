@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Stats;
 using MVZ2Logic;
+using MVZ2Logic.Difficulties;
 using MVZ2Logic.Games;
 using MVZ2Logic.IZombie;
 using MVZ2Logic.Level;
@@ -87,10 +88,10 @@ namespace MVZ2.GameContent.Stages
                         {
                             int money = 250;
                             var difficulty = level.Difficulty;
-                            var difficultyMeta = Global.Game.GetDifficultyMeta(difficulty);
+                            var difficultyMeta = level.Content.GetDifficultyDefinition(difficulty);
                             if (difficultyMeta != null)
                             {
-                                money = difficultyMeta.PuzzleMoney;
+                                money = difficultyMeta.GetPuzzleMoney();
                             }
                             var x = level.GetLawnCenterX();
                             var z = level.GetLawnCenterZ();
@@ -131,8 +132,9 @@ namespace MVZ2.GameContent.Stages
             {
                 ent.Remove();
             }
-            Global.SetScreenCoverColor(Color.white);
-            Global.FadeScreenCoverColor(new Color(1, 1, 1, 0), 0.25f);
+            var scene = Global.Scene;
+            scene.SetScreenCoverColor(Color.white);
+            scene.FadeScreenCoverColor(new Color(1, 1, 1, 0), 0.25f);
             level.PlaySound(VanillaSoundID.hugeWave);
             var layoutID = GetNewLayout(level.CurrentFlag, level.GetRoundRNG());
             SetCurrentLayout(level, layoutID);
@@ -143,9 +145,9 @@ namespace MVZ2.GameContent.Stages
 
             if (level.IsEndless())
             {
-                if (Global.GetSaveStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, level.StageID) < level.CurrentFlag)
+                if (Global.Saves.GetStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, level.StageID) < level.CurrentFlag)
                 {
-                    Global.SetSaveStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, level.StageID, level.CurrentFlag);
+                    Global.Saves.SetStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, level.StageID, level.CurrentFlag);
                 }
             }
         }
@@ -189,6 +191,9 @@ namespace MVZ2.GameContent.Stages
             }
             if (cannotAfford)
             {
+                // 上帝模式
+                if (level.IsGodMode())
+                    return;
                 // 存在有效怪物
                 if (level.EntityExists(e => e.Type == EntityTypes.ENEMY && e.IsHostileEntity() && !e.IsNotActiveEnemy()))
                     return;

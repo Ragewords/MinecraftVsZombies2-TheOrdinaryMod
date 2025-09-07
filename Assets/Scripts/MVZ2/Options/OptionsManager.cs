@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using MVZ2.IO;
 using MVZ2.Localization;
 using MVZ2.Managers;
 using MVZ2Logic;
+using MVZ2Logic.Games;
 using PVZEngine;
 using UnityEngine;
 
 namespace MVZ2.Options
 {
-    public partial class OptionsManager : MonoBehaviour, IOptionsManager
+    public partial class OptionsManager : MonoBehaviour, IGlobalOptions
     {
         public void InitOptions()
         {
@@ -108,7 +110,7 @@ namespace MVZ2.Options
         }
         public void CycleDifficulty()
         {
-            var difficulties = Main.ResourceManager.GetAllDifficulties();
+            var difficulties = Main.Game.GetAllDifficultyDefinitions().Select(d => d.GetID()).ToArray();
             var index = Array.IndexOf(difficulties, GetDifficulty());
             index++;
             index %= difficulties.Length;
@@ -337,6 +339,22 @@ namespace MVZ2.Options
         public void SwitchShowHotkeyIndicators()
         {
             SetShowHotkeyIndicators(!ShowHotkeyIndicators());
+        }
+        #endregion
+
+        #region 高度指示器
+        public bool IsHeightIndicatorEnabled()
+        {
+            return options.heightIndicatorEnabled;
+        }
+        public void SetHeightIndicatorEnabled(bool value)
+        {
+            options.heightIndicatorEnabled = value;
+            SaveOptionsToFile();
+        }
+        public void SwitchHeightIndicatorEnabled()
+        {
+            SetHeightIndicatorEnabled(!IsHeightIndicatorEnabled());
         }
         #endregion
 

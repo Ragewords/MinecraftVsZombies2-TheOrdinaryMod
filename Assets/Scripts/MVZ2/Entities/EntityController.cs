@@ -4,17 +4,19 @@ using MVZ2.Cursors;
 using MVZ2.GameContent.Armors;
 using MVZ2.HeldItems;
 using MVZ2.Level;
-using MVZ2.Level.UI;
 using MVZ2.Managers;
 using MVZ2.Models;
+using MVZ2.UI;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic;
 using MVZ2Logic.Entities;
+using MVZ2Logic.Games;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Armors;
+using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Models;
@@ -41,9 +43,12 @@ namespace MVZ2.Entities
             entity.PostInit += PostInitCallback;
             entity.PostPropertyChanged += PostPropertyChangedCallback;
             entity.OnChangeModel += OnChangeModelCallback;
+            entity.OnModelInsertionAdded += OnModelInsertionAddedCallback;
+            entity.OnModelInsertionRemoved += OnModelInsertionRemovedCallback;
 
             entity.OnEquipArmor += OnArmorEquipCallback;
             entity.OnRemoveArmor += OnArmorRemoveCallback;
+
 
             holdStreakHandler.ResetData();
             RemoveCursorSource();
@@ -63,9 +68,12 @@ namespace MVZ2.Entities
             Entity.PostInit -= PostInitCallback;
             Entity.PostPropertyChanged -= PostPropertyChangedCallback;
             Entity.OnChangeModel -= OnChangeModelCallback;
+            Entity.OnModelInsertionAdded -= OnModelInsertionAddedCallback;
+            Entity.OnModelInsertionRemoved -= OnModelInsertionRemovedCallback;
 
             Entity.OnEquipArmor -= OnArmorEquipCallback;
             Entity.OnRemoveArmor -= OnArmorRemoveCallback;
+            Entity.SetModelInterface(null);
         }
 
         #region 模型
@@ -77,7 +85,8 @@ namespace MVZ2.Entities
                 Model.OnUpdateFrame -= OnModelUpdateFrameCallback;
                 Model = null;
             }
-            var model = Models.Model.Create(modelId, transform, Level.GetCamera(), Entity.InitSeed);
+            var builder = new ModelBuilder(modelId, Level.GetCamera(), Entity.InitSeed);
+            var model = builder.Build(transform);
             Model = model as EntityModel;
             if (!Model)
                 return;
@@ -85,6 +94,7 @@ namespace MVZ2.Entities
             modelPropertyCache.UpdateAll(this);
             Model.UpdateFrame(0);
             Model.UpdateAnimators(0);
+            UpdateModelInsertions();
 
             // 重新创建护甲模型
             foreach (var slot in Entity.GetActiveArmorSlots())
@@ -122,6 +132,7 @@ namespace MVZ2.Entities
             var currentTransPos = Level.LawnToTrans(pos);
             transform.position = Vector3.Lerp(lastPosition, currentTransPos + posOffset, 0.5f);
             UpdateShadow();
+            UpdateHeightIndicator();
             lastPosition = transform.position;
 
             var shouldTwinkle = ShouldTwinkle();
@@ -218,6 +229,7 @@ namespace MVZ2.Entities
             if (Model && serializable.model != null)
             {
                 Model.LoadFromSerializable(serializable.model);
+                UpdateModelInsertions();
             }
         }
         #endregion
@@ -259,6 +271,16 @@ namespace MVZ2.Entities
         {
             SetModel(modelID);
         }
+        private void OnModelInsertionAddedCallback(ModelInsertion insertion)
+        {
+            if (Model)
+                Model.AddModelInsertion(insertion);
+        }
+        private void OnModelInsertionRemovedCallback(ModelInsertion insertion)
+        {
+            if (Model)
+                Model.RemoveModelInsertion(insertion.key);
+        }
         private void OnArmorEquipCallback(NamespaceID slot, Armor armor)
         {
             CreateArmorModel(slot, armor);
@@ -298,7 +320,7 @@ namespace MVZ2.Entities
         #endregion
 
         #region 位置
-        protected void UpdateShadow()
+        private Vector3 GetGroundLocalPosition()
         {
             var pos = Entity.Position;
             var groundY = Entity.GetGroundY();
@@ -309,9 +331,11 @@ namespace MVZ2.Entities
             worldPosition.x = transform.position.x;
             worldPosition.z = transform.position.z;
             worldPosition += Level.LawnToTransDistance(modelPropertyCache.ShadowOffset);
-            var position = transform.InverseTransformPoint(worldPosition);
-
-            var relativeY = pos.y - groundY;
+            return transform.InverseTransformPoint(worldPosition);
+        }
+        protected void UpdateShadow()
+        {
+            var relativeY = Entity.GetRelativeY();
             var scale = Mathf.Max(0, 1 + relativeY / 300) * modelPropertyCache.ShadowScale;
 
             var alpha = Mathf.Clamp01(1 - relativeY / 300) * modelPropertyCache.ShadowAlpha;
@@ -319,10 +343,27 @@ namespace MVZ2.Entities
             var hidden = modelPropertyCache.ShadowHidden;
 
             var shadowTransform = Shadow.transform;
-            shadowTransform.localPosition = position;
+            shadowTransform.localPosition = GetGroundLocalPosition();
             shadowTransform.localScale = scale;
             Shadow.gameObject.SetActive(!hidden);
             Shadow.SetAlpha(alpha);
+        }
+        private void UpdateHeightIndicator()
+        {
+            var relativeY = Entity.GetRelativeY();
+            bool active = Main.OptionsManager.IsHeightIndicatorEnabled() && Entity.IsVulnerableEntity() && relativeY >= HEIGHT_INDICATOR_MIN_HEIGHT;
+            if (heightIndicator.gameObject.activeSelf != active)
+            {
+                heightIndicator.gameObject.SetActive(active);
+            }
+            if (active)
+            {
+                heightIndicator.transform.localPosition = GetGroundLocalPosition();
+                heightIndicator.SetHeight(relativeY * Level.LawnToTransScale);
+                var t = (relativeY - HEIGHT_INDICATOR_FADE_MIN_HEIGHT) / (HEIGHT_INDICATOR_FADE_MAX_HEIGHT - HEIGHT_INDICATOR_FADE_MIN_HEIGHT);
+                var indicatorColor = Color.Lerp(HEIGHT_INDICATOR_COLOR_MIN, HEIGHT_INDICATOR_COLOR_MAX, t);
+                heightIndicator.SetColor(indicatorColor);
+            }
         }
         protected float GetZOffset()
         {
@@ -363,10 +404,10 @@ namespace MVZ2.Entities
         }
         public Vector3 GetArmorModelOffset(NamespaceID slotID, NamespaceID armorID)
         {
-            var shapeMeta = Main.ResourceManager.GetShapeMeta(Entity.GetShapeID());
-            if (shapeMeta != null)
+            var shapeDef = Main.Game.GetShapeDefinition(Entity.GetShapeID());
+            if (shapeDef != null)
             {
-                var offset = shapeMeta.GetArmorModelOffset(slotID, armorID);
+                var offset = shapeDef.GetArmorModelOffset(slotID, armorID);
                 offset *= Level.LawnToTransScale;
                 return offset;
             }
@@ -374,17 +415,18 @@ namespace MVZ2.Entities
         }
         public string GetArmorModelAnchor(NamespaceID slotID, NamespaceID armorID)
         {
-            var shapeMeta = Main.ResourceManager.GetShapeMeta(Entity.GetShapeID());
-            if (shapeMeta != null)
+            var game = Main.Game;
+            var shapeDef = Main.Game.GetShapeDefinition(Entity.GetShapeID());
+            if (shapeDef != null)
             {
-                var anchor = shapeMeta.GetArmorModelAnchor(slotID, armorID);
+                var anchor = shapeDef.GetArmorModelAnchor(slotID, armorID);
                 if (!string.IsNullOrEmpty(anchor))
                 {
                     return anchor;
                 }
             }
 
-            var slotMeta = Main.ResourceManager.GetArmorSlotMeta(slotID);
+            var slotMeta = game.GetArmorSlotDefinition(slotID);
             if (slotMeta != null)
                 return slotMeta.Anchor;
             return null;
@@ -426,18 +468,18 @@ namespace MVZ2.Entities
         }
         public void ClearAllArmorModels()
         {
-            var slotsID = Main.ResourceManager.GetAllArmorSlots();
-            foreach (var slotID in slotsID)
+            var game = Main.Game;
+            var slots = game.GetAllArmorSlotDefinitions();
+            foreach (var def in slots)
             {
-                var meta = Main.ResourceManager.GetArmorSlotMeta(slotID);
-                if (meta == null)
+                if (def == null)
                     continue;
-                Model.ClearModelAnchor(meta.Anchor);
+                Model.ClearModelAnchor(def.Anchor);
             }
-            var shapeMeta = Main.ResourceManager.GetShapeMeta(Entity.GetShapeID());
-            if (shapeMeta != null)
+            var shapeDef = Main.Game.GetShapeDefinition(Entity.GetShapeID());
+            if (shapeDef != null)
             {
-                var anchors = shapeMeta.GetAllArmorModelAnchors();
+                var anchors = shapeDef.GetAllArmorModelAnchors();
                 foreach (var anchor in anchors)
                 {
                     Model.ClearModelAnchor(anchor);
@@ -466,6 +508,10 @@ namespace MVZ2.Entities
             {
                 modelPropertyCache.Update(this);
             }
+        }
+        private void UpdateModelInsertions()
+        {
+            Model.UpdateModelInsertions(Entity.GetModelInsertions());
         }
         #endregion
 
@@ -539,6 +585,12 @@ namespace MVZ2.Entities
         #endregion
 
         #region 属性字段
+        public const float HEIGHT_INDICATOR_MIN_HEIGHT = 40;
+        public const float HEIGHT_INDICATOR_FADE_MIN_HEIGHT = 300;
+        public const float HEIGHT_INDICATOR_FADE_MAX_HEIGHT = 500;
+        public static readonly Color HEIGHT_INDICATOR_COLOR_MIN = Color.white;
+        public static readonly Color HEIGHT_INDICATOR_COLOR_MAX = new Color(1, 1, 1, 0);
+
         public static readonly Dictionary<int, float> zOffsetDict = new Dictionary<int, float>()
         {
             { EntityTypes.PLANT, 0 },
@@ -565,11 +617,13 @@ namespace MVZ2.Entities
         [SerializeField]
         private ShadowController shadow;
         [SerializeField]
+        private HeightIndicatorController heightIndicator;
+        [SerializeField]
         private TooltipAnchor tooltipAnchor;
         [SerializeField]
         private LevelPointerInteractionHandler holdStreakHandler;
 
-        TooltipAnchor ITooltipTarget.Anchor => tooltipAnchor;
+        ITooltipAnchor ITooltipTarget.Anchor => tooltipAnchor;
 
         #endregion
 

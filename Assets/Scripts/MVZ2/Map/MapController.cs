@@ -18,10 +18,12 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Saves;
 using MVZ2.Vanilla.Stats;
 using MVZ2Logic;
+using MVZ2Logic.Difficulties;
 using MVZ2Logic.Level;
 using MVZ2Logic.Maps;
 using MVZ2Logic.Talk;
 using PVZEngine;
+using PVZEngine.Definitions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -83,7 +85,7 @@ namespace MVZ2.Map
                 ui.SetButtonActive(MapUI.ButtonType.Map, false);
                 ui.SetHintText(null);
             }
-            Global.Game.SaveToFile(); // 进入地图时保存游戏
+            Global.Saves.SaveToFile(); // 进入地图时保存游戏
 
             // 对话
             HideUIArrows();
@@ -113,7 +115,7 @@ namespace MVZ2.Map
             }
             UpdateUIArrows();
             Main.SaveManager.SetMapTalk(null);
-            Global.Game.SaveToFile(); // 完成进入地图对话时保存游戏
+            Global.Saves.SaveToFile(); // 完成进入地图对话时保存游戏
         }
         public void SetMapPreset(MapPreset mapPreset)
         {
@@ -203,7 +205,7 @@ namespace MVZ2.Map
                 case MapUI.ButtonType.Setting:
                     ui.SetOptionsDialogActive(true);
                     ui.OptionsDialog.ResetPosition();
-                    optionsLogic = new OptionsLogicMap(ui.OptionsDialog);
+                    optionsLogic = new OptionsLogicMap(this, ui.OptionsDialog);
                     optionsLogic.InitDialog();
                     optionsLogic.OnClose += OnOptionsDialogCloseCallback;
                     break;
@@ -351,30 +353,31 @@ namespace MVZ2.Map
                 return null;
             return meta.area;
         }
-        private StageMeta GetStageMeta(NamespaceID stageID)
+        private StageDefinition GetStageDefinition(NamespaceID stageID)
         {
             if (stageID == null)
                 return null;
-            return Main.ResourceManager.GetStageMeta(stageID);
+            return Main.Game.GetStageDefinition(stageID);
         }
-        private StageMeta GetStageMeta(int index)
+        private StageDefinition GetStageDefinition(int index)
         {
             var stageID = GetStageID(index);
-            return GetStageMeta(stageID);
+            return GetStageDefinition(stageID);
         }
         private string GetStageType(int index)
         {
-            var stageMeta = GetStageMeta(index);
-            if (stageMeta == null)
+            var stageDef = GetStageDefinition(index);
+            if (stageDef == null)
                 return string.Empty;
-            return stageMeta.Type;
+            return stageDef.GetStageType();
         }
         private bool IsLevelUnlocked(NamespaceID stageID)
         {
-            var stageMeta = GetStageMeta(stageID);
-            if (stageMeta == null)
+            var stageDef = GetStageDefinition(stageID);
+            if (stageDef == null)
                 return false;
-            if (!Main.SaveManager.IsAllInvalidOrUnlocked(stageMeta.Unlocks))
+            var conditions = stageDef.GetUnlockConditions();
+            if (!conditions.IsNullOrMeetsConditions(Main.SaveManager))
                 return false;
             return true;
         }
@@ -389,12 +392,13 @@ namespace MVZ2.Map
             var difficulty = Main.SaveManager.GetLevelDifficulty(stageID);
             if (NamespaceID.IsValid(difficulty))
             {
-                var difficultyMeta = Main.ResourceManager.GetDifficultyMeta(difficulty);
+                var game = Main.Game;
+                var difficultyMeta = game.GetDifficultyDefinition(difficulty);
                 if (difficultyMeta != null)
                 {
-                    var back = Main.GetFinalSprite(difficultyMeta.MapButtonBorderBack);
-                    var bottom = Main.GetFinalSprite(difficultyMeta.MapButtonBorderBottom);
-                    var overlay = Main.GetFinalSprite(difficultyMeta.MapButtonBorderOverlay);
+                    var back = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBack());
+                    var bottom = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBottom());
+                    var overlay = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderOverlay());
                     model.SetMapButtonBorder(index, back, bottom, overlay);
                     return;
                 }
@@ -583,6 +587,21 @@ namespace MVZ2.Map
 
         private IEnumerator EnterLevel(NamespaceID areaID, NamespaceID stageID)
         {
+            if (Global.Game.GetAreaDefinition(areaID) == null)
+            {
+                var title = Main.LanguageManager._(VanillaStrings.ERROR);
+                var desc = Main.LanguageManager._(ERROR_AREA_NOT_EXISTS, areaID);
+                Main.Scene.ShowDialogMessage(title, desc);
+                yield break;
+            }
+            if (Global.Game.GetStageDefinition(stageID) == null)
+            {
+                var title = Main.LanguageManager._(VanillaStrings.ERROR);
+                var desc = Main.LanguageManager._(ERROR_STAGE_NOT_EXISTS, stageID);
+                Main.Scene.ShowDialogMessage(title, desc);
+                yield break;
+            }
+
             ui.SetHintText(Main.LanguageManager._(HINT_TEXT_ENTERING_LEVEL));
             ui.SetRaycastBlockerActive(true);
             Main.MusicManager.Stop();
@@ -719,7 +738,7 @@ namespace MVZ2.Map
             var stageID = mapMeta.endlessStage;
             if (!NamespaceID.IsValid(stageID))
                 return 0;
-            return (int)Main.SaveManager.GetSaveStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
+            return (int)Main.SaveManager.GetStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
         }
         private void ReloadMap()
         {
@@ -736,6 +755,10 @@ namespace MVZ2.Map
         public const string HINT_TEXT_ENTERING_LEVEL = "正在进入关卡……";
         [TranslateMsg("地图的无尽模式提示文本，{0}为当前轮数，{1}为历史最高")]
         public const string ENDLESS_FLAGS_TEMPLATE = "轮数\n{0}/{1}";
+        [TranslateMsg("进入关卡的错误信息，{0}为地点ID")]
+        public const string ERROR_AREA_NOT_EXISTS = "目标地点{0}不存在。";
+        [TranslateMsg("进入关卡的错误信息，{0}为关卡ID")]
+        public const string ERROR_STAGE_NOT_EXISTS = "目标关卡{0}不存在。";
         private MainManager Main => MainManager.Instance;
         private MapModel model;
         private MapMeta mapMeta;

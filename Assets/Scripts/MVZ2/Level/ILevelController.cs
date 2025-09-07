@@ -1,5 +1,6 @@
 ﻿using System.Collections;
-using MVZ2.Games;
+using MVZ2.GlobalGames;
+using MVZ2.UI;
 using PVZEngine.Level;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace MVZ2.Level
 {
     public interface ILevelController : ILevelUIController, ILevelTransitionController
     {
-        Game Game { get; }
+        GlobalGame Game { get; }
         ILevelUI GetUI();
         LevelEngine GetEngine();
         Camera GetCamera();

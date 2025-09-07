@@ -7,6 +7,7 @@ using MVZ2.Almanacs;
 using MVZ2.Arcade;
 using MVZ2.Archives;
 using MVZ2.ChapterTransition;
+using MVZ2.Debugs;
 using MVZ2.GameContent.Stages;
 using MVZ2.Mainmenu;
 using MVZ2.Mainmenu.UI;
@@ -14,21 +15,23 @@ using MVZ2.Managers;
 using MVZ2.Map;
 using MVZ2.MusicRoom;
 using MVZ2.Note;
+using MVZ2.Options;
 using MVZ2.Saves;
 using MVZ2.Store;
 using MVZ2.Titlescreen;
 using MVZ2.UI;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Game;
 using MVZ2.Vanilla.Saves;
-using MVZ2Logic;
+using MVZ2Logic.Games;
 using MVZ2Logic.Scenes;
 using PVZEngine;
 using UnityEngine;
 
 namespace MVZ2.Scenes
 {
-    public class MainSceneController : MonoBehaviour, ISceneController
+    public class MainSceneController : MonoBehaviour, IGlobalScene
     {
         public void Init()
         {
@@ -148,6 +151,7 @@ namespace MVZ2.Scenes
                 else
                     pair.Value.Hide();
             }
+            currentPage = type;
         }
         public void HidePages()
         {
@@ -155,6 +159,7 @@ namespace MVZ2.Scenes
             {
                 pair.Value.Hide();
             }
+            currentPage = MainScenePageType.None;
         }
         public void DisplayTitlescreen()
         {
@@ -267,6 +272,77 @@ namespace MVZ2.Scenes
         }
         #endregion
 
+        #region 控制台
+        public void DisplayConsole()
+        {
+            debugConsole.Show();
+        }
+        public void HideConsole()
+        {
+            debugConsole.Hide();
+        }
+        public bool IsConsoleActive()
+        {
+            return debugConsole.IsActive();
+        }
+        public string[] GetCommandHistory()
+        {
+            return debugConsole.GetCommandHistory();
+        }
+        public void ClearConsole()
+        {
+            debugConsole.ClearConsole();
+        }
+        public void Print(string text)
+        {
+            debugConsole.Print(text);
+        }
+        #endregion
+
+        #region 工具提示
+        public void ShowTooltip(ITooltipSource source)
+        {
+            tooltipSource = source;
+            if (tooltipSource == null)
+                return;
+            var target = tooltipSource.GetTarget();
+            var anchor = target.Anchor;
+            if (anchor == null || anchor.IsDisabled)
+                return;
+            UpdateTooltip();
+            ui.ShowTooltip();
+        }
+        public void UpdateTooltip()
+        {
+            var target = tooltipSource?.GetTarget();
+            if (target == null || target.Anchor == null || target.Anchor.IsDisabled)
+            {
+                ui.HideTooltip();
+                return;
+            }
+            var anchor = target.Anchor;
+            var content = tooltipSource.GetContent();
+            var camera = tooltipSource.GetCamera();
+            Vector3 tooltipPosition = anchor.Position;
+            if (camera != null)
+            {
+                var screenPosition = camera.WorldToScreenPoint(anchor.Position);
+                tooltipPosition = uiCamera.ScreenToWorldPoint(screenPosition);
+            }
+            var position = new TooltipPosition()
+            {
+                position = tooltipPosition,
+                pivot = anchor.Pivot,
+            };
+            ui.SetTooltipContent(content);
+            ui.SetTooltipPosition(position);
+        }
+        public void HideTooltip()
+        {
+            tooltipSource = null;
+        }
+        #endregion
+
         public void ShowKeybinding()
         {
             keybinding.Display();
@@ -301,7 +377,30 @@ namespace MVZ2.Scenes
             }
         }
 
-        Coroutine ISceneController.DisplayChapterTransitionCoroutine(NamespaceID chapterID, bool end)
+        #region 关卡
+        private async Task GotoLevelSceneAsync()
+        {
+            await main.LevelManager.GotoLevelSceneAsync();
+            HidePages();
+        }
+        private Task ExitLevelSceneAsync()
+        {
+            return main.LevelManager.ExitLevelSceneAsync();
+        }
+        #endregion
+        void IGlobalScene.GotoMainmenu()
+        {
+            DisplayMainmenu();
+        }
+        void IGlobalScene.GotoMap(NamespaceID mapID)
+        {
+            DisplayMap(mapID);
+        }
+        Coroutine IGlobalScene.GotoLevelCoroutine()
+        {
+            return main.CoroutineManager.ToCoroutine(GotoLevelSceneAsync());
+        }
+        Coroutine IGlobalScene.GotoChapterTransitionCoroutine(NamespaceID chapterID, bool end)
         {
             return main.CoroutineManager.ToCoroutine(DisplayChapterTransitionAsync(chapterID, end));
         }
@@ -321,12 +420,42 @@ namespace MVZ2.Scenes
             pages.Add(MainScenePageType.MusicRoom, musicRoom);
             pages.Add(MainScenePageType.Arcade, arcade);
         }
+        private void Update()
+        {
+            UpdateTooltip();
+            var userName = main.SaveManager.GetCurrentUserName();
+            bool debugPage = CanPageUseDebugConsole();
+            bool canUse = CanUseDebugConsole(userName);
+            bool consoleOpen = !debugConsole.IsActive();
+            if (Input.GetKeyDown(main.OptionsManager.GetKeyBinding(HotKeys.console)) && debugPage && canUse && consoleOpen)
+            {
+                DisplayConsole();
+            }
+            ui.SetDebugIconActive(debugPage && canUse && consoleOpen);
+        }
         #endregion
+
+        private bool CanUseDebugConsole(string username)
+        {
+            if (!CanPageUseDebugConsole())
+                return false;
+            return Application.isEditor || main.SaveManager.IsDebugUserName(username);
+        }
+        private bool CanPageUseDebugConsole()
+        {
+            return currentPage != MainScenePageType.None &&
+                currentPage != MainScenePageType.Splash &&
+                currentPage != MainScenePageType.Titlescreen;
+        }
 
         #region 属性字段
         private MainManager main => MainManager.Instance;
         private Dictionary<MainScenePageType, ScenePage> pages = new Dictionary<MainScenePageType, ScenePage>();
+        private MainScenePageType currentPage = MainScenePageType.None;
+        private ITooltipSource tooltipSource;
 
+        [SerializeField]
+        private Camera uiCamera;
         [SerializeField]
         private MainSceneUI ui;
         [SerializeField]
@@ -365,6 +494,8 @@ namespace MVZ2.Scenes
         private PopupController popup;
         [SerializeField]
         private FPSDisplayer fpsDisplayer;
+        [SerializeField]
+        private DebugConsoleController debugConsole;
         [SerializeField]
         private InputNameDialogController inputNameDialog;
         [SerializeField]

@@ -1,5 +1,6 @@
 ﻿using MVZ2.HeldItems;
 using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Level;
 using PVZEngine.Models;
@@ -15,8 +16,7 @@ namespace MVZ2.Level
         }
         private void InitLevelEngine_Model(LevelEngine level, NamespaceID areaID, NamespaceID stageID)
         {
-            CreateLevelModel(areaID);
-            InitLevelModel(stageID);
+            CreateLevelModel(areaID, stageID);
         }
         private void WriteToSerializable_Model(SerializableLevelController seri)
         {
@@ -28,7 +28,7 @@ namespace MVZ2.Level
         }
 
         #region 初始化模型
-        private void CreateLevelModel(NamespaceID areaId)
+        private void CreateLevelModel(NamespaceID areaId, NamespaceID stageID)
         {
             var areaDef = Game.GetAreaDefinition(areaId);
             if (areaDef == null)
@@ -40,14 +40,15 @@ namespace MVZ2.Level
             if (modelPrefab == null)
                 return;
             model = Instantiate(modelPrefab.gameObject, modelRoot).GetComponent<AreaModel>();
-        }
-        private void InitLevelModel(NamespaceID stageId)
-        {
-            model.Init(GetCamera());
-            var stageMeta = Resources.GetStageMeta(stageId);
-            if (stageMeta == null)
-                return;
-            SetModelPreset(stageMeta.ModelPreset);
+            if (model)
+            {
+                model.Init(modelID, GetCamera());
+                var stageDef = Game.GetStageDefinition(stageID);
+                if (stageDef != null)
+                {
+                    SetModelPreset(stageDef.GetModelPreset());
+                }
+            }
         }
         #endregion
 

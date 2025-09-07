@@ -10,6 +10,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -95,7 +96,7 @@ namespace MVZ2.GameContent.HeldItems
                             entity.TakeDamageNoSource(750, effects);
                         if (entity.IsDead)
                         {
-                            var screenPos = Global.GetPointerScreenPosition();
+                            var screenPos = Global.Input.GetPointerScreenPosition();
                             var pos = entity.Level.ScreenToLawnPositionByZ(screenPos, entity.Position.z);
                             entity.Level.Spawn(VanillaEffectID.pow, pos, null);
                         }

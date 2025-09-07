@@ -48,12 +48,12 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             var pos = entity.Position + Vector3.up * 600;
             var level = entity.Level;
-            if (level.AreaID == VanillaAreaID.castle && !Global.Game.IsUnlocked(VanillaUnlockID.brokenLantern))
+            if (level.AreaID == VanillaAreaID.castle && !Global.Saves.IsUnlocked(VanillaUnlockID.brokenLantern))
             {
-                if (!level.EntityExists(e => e.IsEntityOf(VanillaPickupID.artifactPickup) && ArtifactPickup.GetArtifactID(e) == VanillaArtifactID.brokenLantern))
+                if (!level.EntityExists(e => e.IsEntityOf(VanillaPickupID.artifactPickup) && e.GetPickupContentID() == VanillaArtifactID.brokenLantern))
                 {
                     var lantern = level.Spawn(VanillaPickupID.artifactPickup, pos + Vector3.up * 100, entity);
-                    ArtifactPickup.SetArtifactID(lantern, VanillaArtifactID.brokenLantern);
+                    lantern.SetPickupContentID(VanillaArtifactID.brokenLantern);
                 }
             }
             var anvil = entity.SpawnWithParams(VanillaContraptionID.anvil, pos);

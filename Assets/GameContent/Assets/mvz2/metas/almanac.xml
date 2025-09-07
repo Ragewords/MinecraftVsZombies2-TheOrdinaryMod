@@ -199,7 +199,8 @@
             <value value="mvz2:diamond" name="钻石" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[8]" backgroundColor="#417368"/>
             <value value="mvz2:sand" name="沙子" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590"/>
             <value value="mvz2:netherrack" name="下界岩" description="免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#36131d"/>
-            <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#5aaa43"/>
+            <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#5AAA43"/>
+            <value value="mvz2:cloud" name="云" description="受到0.5x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[12]" backgroundColor="#b67ba6"/>
         </enum>
     </tags>
     <contraptions>
@@ -357,7 +358,7 @@
         </entry>
         <entry id="mvz2:soul_furnace">
             <header>
-                <p>灵魂熔炉发射恐怖的分裂灵魂火，但需要烧毁前方的器械。</p>
+                <p><![CDATA[灵魂熔炉发射恐怖的<tag id="mvz2:fire"/>分裂灵魂火，但需要烧毁前方的器械来补充燃料。]]></p>
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>80，20（分裂后）</color>]]></p>
@@ -462,7 +463,7 @@
         </entry>
         <entry id="mvz2:totenser">
             <header>
-                <p>图腾发射器在发射飞镖的同时能够喷火烧伤近处的敌人，并发射困住敌人的捕猎网。</p>
+                <p><![CDATA[图腾发射器在发射飞镖的同时还会<tag id="mvz2:fire"/>喷火烧伤近处的敌人，并发射困住敌人的捕猎网。]]></p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒（飞镖），20秒（捕猎网）</color>]]></p>
@@ -818,7 +819,20 @@
                 <p>它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的高仿产品而已。</p>
             </flavor>
         </entry>
-        <entry/>
+        <entry id="mvz2:firework_dispenser">
+            <header>
+                <p>烟花发射器会自动轰击上方高空中的敌人。</p>
+            </header>
+            <properties>
+                <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
+                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
+            </properties>
+            <flavor>
+                <p>烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好的放个够了。</p>
+            </flavor>
+        </entry>
         <entry/>
         <entry/>
         <entry/>
@@ -1273,7 +1287,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>，而后<color=red>0.6</color>（产卵后）]]></p>
-                <p>特点：<![CDATA[<color=red>碰到的血肉之躯会被寄生</color>]]></p>
+                <p>特点：<![CDATA[<color=red>碰到的<tag id="mvz2:shell" enum="mvz2:flesh"/>血肉之躯会被寄生</color>]]></p>
             </properties>
             <flavor>
                 <p>擅长在网络文件中捆绑流氓软件和BUG。</p>
@@ -1506,6 +1520,17 @@
             <flavor>
                 <p>没错，炮弹也是一只僵尸！</p>
                 <p>而且特别害怕被脚踩！</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:zombie_cloud">
+            <header>
+                <p>僵尸云飞在空中，向下降雨形成水迹，踩到水迹的敌怪会向前滑动。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+            </properties>
+            <flavor>
+                <p>至少这朵云没有对你竖中指。</p>
             </flavor>
         </entry>
         <entry id="mvz2:skelebomb">

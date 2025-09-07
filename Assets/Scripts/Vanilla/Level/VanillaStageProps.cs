@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using MVZ2.Vanilla.Audios;
+﻿using MVZ2.Vanilla.Audios;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Definitions;
@@ -17,8 +16,8 @@ namespace MVZ2.Vanilla.Level
         public static readonly PropertyMeta<string> LEVEL_NAME = Get<string>("levelName");
         public static readonly PropertyMeta<int> DAY_NUMBER = Get<int>("dayNumber");
 
-        public static readonly PropertyMeta<int> WAVE_MAX_TIME = Get<int>("waveMaxTime");
-        public static readonly PropertyMeta<int> WAVE_ADVANCE_TIME = Get<int>("waveAdvanceTime");
+        public static readonly PropertyMeta<float> WAVE_MAX_TIME = Get<float>("waveMaxTime");
+        public static readonly PropertyMeta<float> WAVE_ADVANCE_TIME = Get<float>("waveAdvanceTime");
         public static readonly PropertyMeta<float> WAVE_ADVANCE_HEALTH_PERCENT = Get<float>("waveAdvanceHealthPercent");
 
         public static readonly PropertyMeta<bool> NO_ENERGY = Get<bool>("noEnergy");
@@ -28,11 +27,9 @@ namespace MVZ2.Vanilla.Level
         public static readonly PropertyMeta<bool> AUTO_COLLECT_STARSHARD = Get<bool>("autoCollectStarshard");
 
         public static readonly PropertyMeta<bool> NO_START_TALK_MUSIC = Get<bool>("noStartTalkMusic");
-        public static readonly PropertyMeta<IStageTalkMeta[]> TALKS = Get<IStageTalkMeta[]>("talks");
 
         public static readonly PropertyMeta<NamespaceID> CLEAR_PICKUP_MODEL = Get<NamespaceID>("clearPickupModel");
-        public static readonly PropertyMeta<NamespaceID> CLEAR_PICKUP_BLUEPRINT = Get<NamespaceID>("clearPickupBlueprint");
-        public static readonly PropertyMeta<NamespaceID> CLEAR_PICKUP_ARTIFACT = Get<NamespaceID>("clearPickupArtifact");
+        public static readonly PropertyMeta<NamespaceID> CLEAR_PICKUP_CONTENT_ID = Get<NamespaceID>("clear_pickup_content_id");
         public static readonly PropertyMeta<bool> DROPS_TROPHY = Get<bool>("dropsTrophy");
         public static readonly PropertyMeta<NamespaceID> END_NOTE_ID = Get<NamespaceID>("endNoteId");
 
@@ -44,20 +41,16 @@ namespace MVZ2.Vanilla.Level
 
         public static readonly PropertyMeta<bool> ENDLESS = Get<bool>("endless");
 
-        public static int GetWaveMaxTime(this LevelEngine level) => level.GetProperty<int>(VanillaStageProps.WAVE_MAX_TIME);
-        public static int GetWaveAdvanceTime(this LevelEngine level) => level.GetProperty<int>(VanillaStageProps.WAVE_ADVANCE_TIME);
+        public static float GetWaveMaxTime(this LevelEngine level) => level.GetProperty<float>(VanillaStageProps.WAVE_MAX_TIME);
+        public static float GetWaveAdvanceTime(this LevelEngine level) => level.GetProperty<float>(VanillaStageProps.WAVE_ADVANCE_TIME);
         public static float GetWaveAdvanceHealthPercent(this LevelEngine level) => level.GetProperty<float>(VanillaStageProps.WAVE_ADVANCE_HEALTH_PERCENT);
         public static NamespaceID GetClearPickupModel(this LevelEngine level)
         {
             return level.GetProperty<NamespaceID>(CLEAR_PICKUP_MODEL);
         }
-        public static NamespaceID GetClearPickupBlueprint(this LevelEngine level)
+        public static NamespaceID GetClearPickupContentID(this LevelEngine level)
         {
-            return level.GetProperty<NamespaceID>(CLEAR_PICKUP_BLUEPRINT);
-        }
-        public static NamespaceID GetClearPickupArtifact(this LevelEngine level)
-        {
-            return level.GetProperty<NamespaceID>(CLEAR_PICKUP_ARTIFACT);
+            return level.GetProperty<NamespaceID>(CLEAR_PICKUP_CONTENT_ID);
         }
         public static bool DropsTrophy(this LevelEngine level)
         {
@@ -114,17 +107,6 @@ namespace MVZ2.Vanilla.Level
         public static bool NoStartTalkMusic(this LevelEngine game)
         {
             return game.GetProperty<bool>(NO_START_TALK_MUSIC);
-        }
-        public static IStageTalkMeta[] GetTalks(this LevelEngine game)
-        {
-            return game.GetProperty<IStageTalkMeta[]>(TALKS);
-        }
-        public static IStageTalkMeta[] GetTalksOfType(this LevelEngine game, string type)
-        {
-            var talks = game.GetTalks();
-            if (talks == null)
-                return null;
-            return talks.Where(t => t.Type == type).ToArray();
         }
         public static NamespaceID GetEndNoteID(this LevelEngine game)
         {

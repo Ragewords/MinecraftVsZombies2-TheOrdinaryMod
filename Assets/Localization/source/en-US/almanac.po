@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2025-07-12 06:29+0800\n"
-"PO-Revision-Date: 2025-07-12 19:24+0800\n"
+"POT-Creation-Date: 2025-08-28 10:32+0800\n"
+"PO-Revision-Date: 2025-08-28 22:42+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -557,6 +557,18 @@ msgctxt "almanac_tag_enum.description"
 msgid "免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害"
 msgstr "Immune to fire damage, stops piercing attacks and fire splashes, but takes 20x impact damage"
 
+#. Name for almanac tag enum value mvz2:cloud of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.name"
+msgid "云"
+msgstr "Cloud"
+
+#. Description for almanac tag enum value mvz2:cloud of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.description"
+msgid "受到0.5x冲击伤害"
+msgstr "Takes 0.5x impact damage"
+
 #. Header for contraptions mvz2:dispenser
 #: Almanac meta file
 msgctxt "contraptions.description"
@@ -847,8 +859,8 @@ msgstr ""
 #. Header for contraptions mvz2:soul_furnace
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "灵魂熔炉发射恐怖的灵魂火，但需要烧毁前方的器械。"
-msgstr "Soul Furnaces shoot terrifying soulfires, but will burn the contraption in the front as its fuel."
+msgid "灵魂熔炉发射恐怖的<tag id=\"mvz2:fire\"/>灵魂火，但需要烧毁前方的器械来补充燃料。"
+msgstr "Soul Furnaces shoot terrifying <tag id=\"mvz2:fire\"/>soulfires, but will burn the contraption in the front as its fuel."
 
 #. Properties for contraptions mvz2:soul_furnace
 #: Almanac meta file
@@ -1039,8 +1051,8 @@ msgstr "\"It's over zombies, I have the high ground!\" Those were his last words
 #. Header for contraptions mvz2:totenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "图腾发射器在发射飞镖的同时还会喷火烧伤近处的敌人。"
-msgstr "Totensers shoot poisonous darts and burn nearby enemies with fire."
+msgid "图腾发射器在发射飞镖的同时还会<tag id=\"mvz2:fire\"/>喷火烧伤近处的敌人。"
+msgstr "Totensers shoot poisonous darts and burn nearby enemies with <tag id=\"mvz2:fire\"/>fire."
 
 #. Properties for contraptions mvz2:totenser
 #: Almanac meta file
@@ -1710,6 +1722,37 @@ msgctxt "contraptions.description"
 msgid "它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的假冒伪劣产品而已。"
 msgstr "It's not made with the Nether Star, just a counterfeit product made from a dispenser that can shoot shurikens."
 
+#. Header for contraptions mvz2:firework_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid "烟花发射器会自动轰击上方高空中的敌人。"
+msgstr "Firework Dispensers will blow up nearby enemies in the sky."
+
+#. Properties for contraptions mvz2:firework_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"发射速度：<color=red>1发/3秒</color>\n"
+"伤害：<color=red>200，只能伤害高空中的敌人</color>\n"
+"爆炸半径：<color=red>1.5格</color>\n"
+"技能：<color=red>爆炸半径永久+1格</color>"
+msgstr ""
+"Fire rate: <color=red>1 shot/3 seconds</color>\n"
+"Damage: <color=red>200, only damage flying enemies</color>\n"
+"Explosion Radius: <color=red>1.5 grids</color>\n"
+"Evocation: <color=red>Permanently +1 grid explosion radius</color>"
+
+#. Flavor for contraptions mvz2:firework_dispenser
+#: Almanac meta file
+msgctxt "contraptions.description"
+msgid ""
+"烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好"
+"的放个够了。"
+msgstr ""
+"Firework Dispenser is quite fond of festivals, especially grand ones. Due to previous noise complaints involving some contraptions, it "
+"is prohibited from setting off fireworks on ordinary days. But when major holidays arrive—it’s time to let loose and set off fireworks "
+"to its heart’s content."
+
 #. Header for contraptions mvz2:infectenser
 #: Almanac meta file
 msgctxt "contraptions.description"
@@ -2201,11 +2244,11 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red>200</color>\n"
 "速度：<color=red>2</color>，而后<color=red>0.6</color>（产卵后）\n"
-"特点：<color=red>碰到的血肉之躯会被寄生</color>"
+"特点：<color=red>碰到的<tag id=\"mvz2:shell\" enum=\"mvz2:flesh\"/>血肉之躯会被寄生</color>"
 msgstr ""
 "Toughness: <color=red>200</color>\n"
 "Speed: <color=red>2</color>, then <color=red>0.6</color> (After laying eggs)\n"
-"Special: <color=red>Flesh bodies will get parasitized upon contact</color>"
+"Special: <color=red><tag id=\"mvz2:shell\" enum=\"mvz2:flesh\"/>Flesh bodies will get parasitized upon contact</color>"
 
 #. Flavor for enemies mvz2:mother_terror
 #: Almanac meta file
@@ -2575,7 +2618,7 @@ msgstr "Watch out for these if you have large patches of wheat planted in your f
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "炮手僵尸的重型铁炮可以帮他阻挡子弹，并且每隔一段时间便会发射一只炮弹僵尸。"
-msgstr "The heavy cannons of Cannoneer Zombies can help them block bullets and fire a Cannonball Zombie every once in a while."
+msgstr "The heavy cannons of Cannoneer Zombies can help them block bullets and fire a Zombie Cannonball every once in a while."
 
 #. Properties for enemies mvz2:cannoneer_zombie
 #: Almanac meta file
@@ -2602,7 +2645,7 @@ msgstr ""
 msgctxt "enemies.description"
 msgid "炮弹僵尸由炮手僵尸发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。"
 msgstr ""
-"Cannonball Zombies are launched into the battlefield by Cannoneer Zombies. They levitate in the air and attack like regular zombies."
+"Zombie Cannonballs are launched into the battlefield by Cannoneer Zombies. They levitate in the air and attack like regular zombies."
 
 #. Properties for enemies mvz2:cannonball_zombie
 #: Almanac meta file
@@ -2623,6 +2666,26 @@ msgid ""
 msgstr ""
 "Yes, indeed! This cannonball is also a ZOMBIE!\n"
 "And it's especially afraid of being stomped on!"
+
+#. Header for enemies mvz2:zombie_cloud
+#: Almanac meta file
+msgctxt "enemies.description"
+msgid "僵尸云飞在空中，向下降雨形成水迹，踩到水迹的敌怪会向前滑动。"
+msgstr ""
+"Zombie Cloud floats in the sky, releasing rain that creates puddles on the ground. Enemies stepping on these puddles will slide "
+"forward."
+
+#. Properties for enemies mvz2:zombie_cloud
+#: Almanac meta file
+msgctxt "enemies.description"
+msgid "生命：<color=red>200</color>"
+msgstr "Toughness: <color=red>200</color>"
+
+#. Flavor for enemies mvz2:zombie_cloud
+#: Almanac meta file
+msgctxt "enemies.description"
+msgid "至少这朵云没有对你竖中指。"
+msgstr "At least this cloud doesn’t flip you off."
 
 #. Header for artifacts mvz2:almanac
 #: Almanac meta file
@@ -4897,6 +4960,18 @@ msgctxt "entity.tooltip"
 msgid "向五个方向发射手里剑"
 msgstr "Shoot shurikens in 5 directions"
 
+#. Name for entity mvz2:firework_dispenser
+#: Entity meta file
+msgctxt "entity.name"
+msgid "烟花发射器"
+msgstr "Firework Dispenser"
+
+#. Tooltip for entity mvz2:firework_dispenser
+#: Entity meta file
+msgctxt "entity.tooltip"
+msgid "轰击周围高空的敌人"
+msgstr "Blow up nearby flying enemies"
+
 #. Name for entity mvz2:infectenser
 #: Entity meta file
 msgctxt "entity.name"
@@ -5327,13 +5402,25 @@ msgstr "Cannon execution!"
 #: Entity meta file
 msgctxt "entity.name"
 msgid "炮弹僵尸"
-msgstr "Cannonball Zombie"
+msgstr "Zombie Cannonball"
 
 #. Death message for entity mvz2:cannonball_zombie
 #: Entity meta file
 msgctxt "death_message"
 msgid "-1up"
 msgstr "-1up"
+
+#. Name for entity mvz2:zombie_cloud
+#: Entity meta file
+msgctxt "entity.name"
+msgid "僵尸云"
+msgstr "Zombie Cloud"
+
+#. Death message for entity mvz2:zombie_cloud
+#: Entity meta file
+msgctxt "death_message"
+msgid "你就云吧"
+msgstr "Head in the clouds"
 
 #. Name for entity mvz2:mutant_zombie
 #: Entity meta file
@@ -6088,10 +6175,6 @@ msgstr "Undead Flying Object (Rainbow)"
 #~ msgctxt "contraptions.description"
 #~ msgid "有人闲得慌在它下面安装了一个连着矿场的投掷器。哦，这个矿场是靠地热能的。"
 #~ msgstr "Someone was so lazy that they installed a dropper attached to the mine under it. Oh and that mine uses geothermal energy."
-
-#~ msgctxt "misc.description"
-#~ msgid "生产速度：<color=red>10秒</color>"
-#~ msgstr "Produce time: <color=red>10 seconds</color>"
 
 #~ msgctxt "misc.description"
 #~ msgid "画师：<color=red>小幽喜欢口乙烯 & 三花花</color>"

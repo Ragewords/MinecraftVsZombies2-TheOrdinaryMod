@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 using MVZ2.IO;
 using MVZ2Logic.Level;
@@ -6,13 +7,15 @@ using PVZEngine;
 
 namespace MVZ2.Metas
 {
-    public class StageMeta : IStageMeta
+    public class StageMeta
     {
         public string ID { get; private set; }
         public string Name { get; private set; }
         public int DayNumber { get; private set; }
         public string Type { get; private set; }
+        [Obsolete]
         public NamespaceID[] Unlocks { get; private set; }
+        public XMLConditionList UnlockConditions { get; private set; }
         public float StartEnergy { get; private set; }
 
         public NamespaceID MusicID { get; private set; }
@@ -23,8 +26,7 @@ namespace MVZ2.Metas
         public string ModelPreset { get; private set; }
 
         public NamespaceID ClearPickupModel { get; private set; }
-        public NamespaceID ClearPickupBlueprint { get; private set; }
-        public NamespaceID ClearPickupArtifact { get; private set; }
+        public NamespaceID ClearPickupContentID { get; private set; }
         public bool DropsTrophy { get; private set; }
         public NamespaceID EndNote { get; private set; }
 
@@ -37,14 +39,16 @@ namespace MVZ2.Metas
         public float SpawnPointsAddition { get; private set; }
         public NamespaceID[] Spawns { get; private set; }
         public ConveyorPoolEntry[] ConveyorPool { get; private set; }
-        public int FirstWaveTime { get; private set; }
+
+        public float FirstWaveTime { get; private set; }
+        public float EndlessFirstWaveTime { get; private set; }
+        public float MaxWaveTime { get; private set; }
+        public float AdvanceWaveTime { get; private set; }
+        public float AdvanceHealthPercent { get; private set; }
+
         public bool NeedBlueprints { get; private set; }
 
         public Dictionary<string, object> Properties { get; private set; }
-
-        IStageTalkMeta[] IStageMeta.Talks => Talks;
-        NamespaceID[] IStageMeta.Spawns => Spawns;
-        IConveyorPoolEntry[] IStageMeta.ConveyorPool => ConveyorPool;
         public static StageMeta FromXmlNode(XmlNode node, string defaultNsp)
         {
             var id = node.GetAttribute("id");
@@ -52,9 +56,24 @@ namespace MVZ2.Metas
             var type = node.GetAttribute("type") ?? StageTypes.TYPE_NORMAL;
             var dayNumber = node.GetAttributeInt("dayNumber") ?? 0;
             var startEnergy = node.GetAttributeFloat("startEnergy") ?? 50;
-            var unlocks = node.GetAttributeNamespaceIDArray("unlock", defaultNsp);
             var musicID = node.GetAttributeNamespaceID("music", defaultNsp);
             var needBlueprints = node.GetAttributeBool("needBlueprints") ?? true;
+
+            var unlockNode = node["unlock"];
+            XMLConditionList unlockConditions = null;
+            if (unlockNode != null)
+            {
+                unlockConditions = XMLConditionList.FromXmlNode(unlockNode, defaultNsp);
+            }
+            else
+            {
+                var unlocks = node.GetAttributeNamespaceIDArray("unlock", defaultNsp);
+                var condition = new XMLCondition()
+                {
+                    Required = unlocks
+                };
+                unlockConditions = new XMLConditionList(condition);
+            }
 
             var modelNode = node["model"];
             var preset = modelNode?.GetAttribute("preset") ?? "default";
@@ -77,8 +96,7 @@ namespace MVZ2.Metas
 
             var clearNode = node["clear"];
             var clearPickupModel = clearNode?.GetAttributeNamespaceID("pickupModel", defaultNsp);
-            var clearPickupBlueprint = clearNode?.GetAttributeNamespaceID("blueprint", defaultNsp);
-            var clearPickupArtifact = clearNode?.GetAttributeNamespaceID("artifact", defaultNsp);
+            var clearPickupContentID = clearNode?.GetAttributeNamespaceID("pickupContentID", defaultNsp) ?? clearNode?.GetAttributeNamespaceID("blueprint", defaultNsp);
             var dropsTrophy = clearNode?.GetAttributeBool("trophy") ?? false;
             var endNote = clearNode?.GetAttributeNamespaceID("note", defaultNsp);
 
@@ -96,7 +114,6 @@ namespace MVZ2.Metas
 
             var spawnNode = node["spawns"];
             var flags = spawnNode?.GetAttributeInt("flags") ?? 1;
-            var firstWaveTime = spawnNode?.GetAttributeInt("firstWaveTime") ?? 540;
             var spawnPointsPower = spawnNode?.GetAttributeFloat("pointsPower") ?? 1;
             var spawnPointsMultiplier = spawnNode?.GetAttributeFloat("pointsMultiplier") ?? 1;
             var spawnPointsAddition = spawnNode?.GetAttributeFloat("pointsAddition") ?? 0;
@@ -107,8 +124,22 @@ namespace MVZ2.Metas
                 spawns[i] = childNode.GetAttributeNamespaceID("id", defaultNsp);
             }
 
+            var timeNode = node["time"];
+            var firstWaveTime = timeNode?.GetAttributeFloat("firstWave") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
+            var endlessFirstWaveTime = timeNode?.GetAttributeFloat("endlessFirstWave") ?? 6f;
+            var maxWaveTime = timeNode?.GetAttributeFloat("waveMax") ?? 30;
+            var advanceWaveTime = timeNode?.GetAttributeFloat("waveAdvance") ?? 10;
+            var advanceHealthPercent = timeNode?.GetAttributeFloat("waveAdvanceHealthPercent") ?? 0.6f;
+
             var propertiesNode = node["properties"];
-            var properties = propertiesNode.ToPropertyDictionary(defaultNsp);
+            Dictionary<string, object> props = propertiesNode.ToPropertyDictionary(defaultNsp);
+            Dictionary<string, object> properties = new Dictionary<string, object>();
+            foreach (var prop in props)
+            {
+                var fullName = PropertyKeyHelper.ParsePropertyFullName(prop.Key, defaultNsp, PropertyRegions.level);
+                properties.Add(fullName, prop.Value);
+            }
+
             return new StageMeta()
             {
                 ID = id,
@@ -116,7 +147,7 @@ namespace MVZ2.Metas
                 DayNumber = dayNumber,
                 Type = type,
                 StartEnergy = startEnergy,
-                Unlocks = unlocks,
+                UnlockConditions = unlockConditions,
                 MusicID = musicID,
 
                 ModelPreset = preset,
@@ -125,8 +156,7 @@ namespace MVZ2.Metas
                 Talks = talks.ToArray(),
 
                 ClearPickupModel = clearPickupModel,
-                ClearPickupBlueprint = clearPickupBlueprint,
-                ClearPickupArtifact = clearPickupArtifact,
+                ClearPickupContentID = clearPickupContentID,
                 DropsTrophy = dropsTrophy,
                 EndNote = endNote,
 
@@ -136,8 +166,13 @@ namespace MVZ2.Metas
                 ConveyorPool = conveyorPool,
 
                 TotalFlags = flags,
-                FirstWaveTime = firstWaveTime,
                 Spawns = spawns,
+
+                FirstWaveTime = firstWaveTime,
+                EndlessFirstWaveTime = endlessFirstWaveTime,
+                MaxWaveTime = maxWaveTime,
+                AdvanceWaveTime = advanceWaveTime,
+                AdvanceHealthPercent = advanceHealthPercent,
 
                 SpawnPointsPower = spawnPointsPower,
                 SpawnPointsMultiplier = spawnPointsMultiplier,

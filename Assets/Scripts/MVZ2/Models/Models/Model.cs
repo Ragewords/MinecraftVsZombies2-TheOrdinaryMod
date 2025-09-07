@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MVZ2.Managers;
 using MVZ2Logic.Models;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Models;
 using Tools;
 using UnityEngine;
@@ -27,8 +27,9 @@ namespace MVZ2.Models
         }
 
         #region 生命周期
-        public virtual void Init(Camera camera, int seed = 0)
+        public virtual void Init(NamespaceID id, Camera camera, int seed = 0)
         {
+            this.id = id;
             if (seed == 0)
             {
                 seed = Guid.NewGuid().GetHashCode();
@@ -161,6 +162,7 @@ namespace MVZ2.Models
             serializable.childModels = childModels.Select(c => c.ToSerializable()).ToArray();
             serializable.destroyTimeout = destroyTimeout;
             serializable.graphicGroup = GraphicGroup.ToSerializable();
+            serializable.insertions = insertions.ToArray();
             return serializable;
         }
         public void LoadFromSerializable(SerializableModelData serializable)
@@ -184,6 +186,15 @@ namespace MVZ2.Models
             LoadSerializable(serializable);
             // 最后再加载GraphicGroup，防止Animator在加载数据前尚未启用。
             GraphicGroup.FromSerializable(serializable.graphicGroup);
+
+            insertions.Clear();
+            if (serializable.insertions != null)
+            {
+                foreach (var key in serializable.insertions)
+                {
+                    insertions.Add(key);
+                }
+            }
         }
         protected abstract SerializableModelData CreateSerializable();
         protected virtual void LoadSerializable(SerializableModelData serializable)
@@ -201,7 +212,8 @@ namespace MVZ2.Models
             var anchor = GetAnchor(anchorName);
             if (!anchor)
                 return null;
-            var child = Model.Create(modelID, anchor.transform, eventCamera, 0);
+            var builder = new ModelBuilder(modelID, eventCamera, 0);
+            var child = builder.Build(anchor.transform);
             if (!child)
                 return null;
             child.transform.localPosition = Vector3.zero;
@@ -318,35 +330,6 @@ namespace MVZ2.Models
         }
         #endregion
 
-        #region 创建
-        public static Model Create(ModelViewData viewData, Transform parent)
-        {
-            return Create(viewData.id, parent, viewData.camera, viewData.seed);
-        }
-        public static Model Create(NamespaceID modelID, Transform parent, Camera camera, int seed = 0)
-        {
-            var main = MainManager.Instance;
-            var res = main.ResourceManager;
-            var modelMeta = res.GetModelMeta(modelID);
-            if (modelMeta == null)
-                return null;
-            var prefab = res.GetModel(modelMeta.Path);
-            if (prefab == null)
-                return null;
-            var model = Instantiate(prefab, parent).GetComponent<Model>();
-            if (model)
-            {
-                model.id = modelID;
-                foreach (var parameter in modelMeta.AnimatorParameters)
-                {
-                    parameter.Apply(model);
-                }
-                model.Init(camera, seed);
-            }
-            return model;
-        }
-        #endregion
-
         #region 模型单元
         #endregion
 
@@ -373,6 +356,41 @@ namespace MVZ2.Models
         }
         #endregion
 
+        #region 插入模型
+        public void AddModelInsertion(ModelInsertion insertion)
+        {
+            if (!insertions.Contains(insertion.key))
+            {
+                CreateChildModel(insertion.anchorName, insertion.key, insertion.modelID);
+                insertions.Add(insertion.key);
+            }
+        }
+        public void RemoveModelInsertion(NamespaceID key)
+        {
+            if (insertions.Contains(key))
+            {
+                RemoveChildModel(key);
+                insertions.Remove(key);
+            }
+        }
+        public void UpdateModelInsertions(IEnumerable<ModelInsertion> target)
+        {
+            HashSet<NamespaceID> removeModels = new HashSet<NamespaceID>(insertions);
+            foreach (var insertion in target)
+            {
+                removeModels.Remove(insertion.key);
+                if (!insertions.Contains(insertion.key))
+                {
+                    AddModelInsertion(insertion);
+                }
+            }
+            foreach (var key in removeModels)
+            {
+                RemoveModelInsertion(key);
+            }
+        }
+        #endregion
+
         public event Action<float> OnUpdateFrame;
 
         #region 属性字段
@@ -388,6 +406,7 @@ namespace MVZ2.Models
         private RandomGenerator rng;
         private PropertyDictionaryString propertyDict = new PropertyDictionaryString();
         private List<ModelComponent> modelComponents = new List<ModelComponent>();
+        private HashSet<NamespaceID> insertions = new HashSet<NamespaceID>();
 
         // 嵌套
         private Model parent;
@@ -410,6 +429,7 @@ namespace MVZ2.Models
         public SerializableModelGroup graphicGroup;
         public SerializablePropertyDictionaryString propertyDict;
         public SerializableModelData[] childModels;
+        public NamespaceID[] insertions;
         public int destroyTimeout;
     }
     public class SerializableAnimator

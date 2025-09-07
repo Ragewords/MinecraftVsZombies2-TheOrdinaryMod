@@ -35,19 +35,6 @@ namespace MVZ2.Vanilla.Level
         }
         #endregion
 
-        #region 传送带
-        public static readonly PropertyMeta<IConveyorPoolEntry[]> CONVEYOR_POOL = Get<IConveyorPoolEntry[]>("conveyorPool");
-        public static readonly PropertyMeta<float> CONVEY_SPEED = Get<float>("conveySpeed");
-        public static IConveyorPoolEntry[] GetConveyorPool(this LevelEngine game)
-        {
-            return game.GetProperty<IConveyorPoolEntry[]>(CONVEYOR_POOL);
-        }
-        public static float GetConveySpeed(this LevelEngine game)
-        {
-            return game.GetProperty<float>(CONVEY_SPEED);
-        }
-        #endregion
-
         #region 星之碎片
         public static readonly PropertyMeta<int> STARSHARD_COUNT = Get<int>("starshardCount");
         public static readonly PropertyMeta<int> STARSHARD_SLOT_COUNT = Get<int>("starshardSlotCount");
@@ -284,6 +271,18 @@ namespace MVZ2.Vanilla.Level
         public static void SetNoCarts(this LevelEngine level, bool value)
         {
             level.SetProperty(NO_CARTS, value);
+        }
+        #endregion
+
+        #region 上帝模式
+        public static readonly PropertyMeta<bool> GODMODE = Get<bool>("godmode");
+        public static bool IsGodMode(this LevelEngine level)
+        {
+            return level.GetProperty<bool>(GODMODE);
+        }
+        public static void SetGodMode(this LevelEngine level, bool value)
+        {
+            level.SetProperty(GODMODE, value);
         }
         #endregion
     }

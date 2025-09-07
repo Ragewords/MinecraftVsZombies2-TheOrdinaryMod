@@ -38,6 +38,11 @@ namespace MVZ2.Vanilla.Entities
         {
             return pickup.GetProperty<bool>(NO_AUTO_COLLECT);
         }
+        public static readonly PropertyMeta<bool> NO_PICKUP_STOLEN = Get<bool>("no_pickup_stolen");
+        public static bool NoPickupStolen(this Entity pickup)
+        {
+            return pickup.GetProperty<bool>(NO_PICKUP_STOLEN);
+        }
         public static NamespaceID GetDropSound(this Entity entity)
         {
             return entity.GetProperty<NamespaceID>(DROP_SOUND);
@@ -70,6 +75,20 @@ namespace MVZ2.Vanilla.Entities
         public static bool NoCollect(this Entity pickup)
         {
             return pickup.GetProperty<bool>(NO_COLLECT);
+        }
+        public static readonly PropertyMeta<NamespaceID> CONTENT_ID = Get<NamespaceID>("content_id");
+        public static NamespaceID GetPickupContentID(this Entity pickup)
+        {
+            return pickup.GetProperty<NamespaceID>(CONTENT_ID);
+        }
+        public static void SetPickupContentID(this Entity pickup, NamespaceID value)
+        {
+            pickup.SetProperty<NamespaceID>(CONTENT_ID, value);
+        }
+        public static readonly PropertyMeta<bool> PLAY_RANDOM_PITCH_ON_COLLECT = Get<bool>("play_random_pitch_on_collect");
+        public static bool PlayRandomPitchOnCollect(this Entity pickup)
+        {
+            return pickup.GetProperty<bool>(PLAY_RANDOM_PITCH_ON_COLLECT);
         }
     }
 }

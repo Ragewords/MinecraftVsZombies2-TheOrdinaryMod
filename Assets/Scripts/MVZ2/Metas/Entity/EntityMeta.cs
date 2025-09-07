@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Xml;
 using MVZ2.IO;
-using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Entities;
 
 namespace MVZ2.Metas
 {
-    public class EntityMeta : IEntityMeta
+    public class EntityMeta
     {
         public int Type { get; private set; }
         public string ID { get; private set; }
@@ -19,7 +18,7 @@ namespace MVZ2.Metas
         public int Order { get; private set; }
         public NamespaceID[] Behaviours { get; private set; }
         public Dictionary<string, object> Properties { get; private set; }
-        public static EntityMeta FromXmlNode(XmlNode node, string defaultNsp, IEnumerable<EntityMetaTemplate> templates, int order)
+        public static EntityMeta FromXmlNode(string nsp, XmlNode node, string defaultNsp, IEnumerable<EntityMetaTemplate> templates, int order)
         {
             var type = EntityTypes.EFFECT;
             var template = templates.FirstOrDefault(t => t.name == node.Name);
@@ -31,14 +30,27 @@ namespace MVZ2.Metas
 
             var behaviours = new List<NamespaceID>();
             var behavioursNode = node["behaviours"];
+            bool includeSelfBehaviour = behavioursNode?.GetAttributeBool("includeSelf") ?? true;
+            if (includeSelfBehaviour)
+            {
+                behaviours.Add(new NamespaceID(nsp, id));
+            }
+
+
             var propertyNode = node["properties"];
-            Dictionary<string, object> properties = propertyNode.ToPropertyDictionary(defaultNsp);
+            var entityProps = propertyNode.ToPropertyDictionary(defaultNsp);
+            Dictionary<string, object> properties = new Dictionary<string, object>();
+            foreach (var prop in entityProps)
+            {
+                var fullName = PropertyKeyHelper.ParsePropertyFullName(prop.Key, defaultNsp, PropertyRegions.entity);
+                properties.Add(fullName, prop.Value);
+            }
+
             if (template != null)
             {
                 type = template.id;
 
                 behaviours.AddRange(template.behaviours);
-                behavioursNode.ModifyEntityBehaviours(behaviours, defaultNsp);
 
                 foreach (var prop in template.properties)
                 {
@@ -47,6 +59,9 @@ namespace MVZ2.Metas
                     properties.Add(prop.Key, prop.Value);
                 }
             }
+            behavioursNode?.ModifyEntityBehaviours(behaviours, properties, defaultNsp);
+
+
             return new EntityMeta()
             {
                 Type = type,

@@ -12,7 +12,6 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
@@ -282,8 +281,8 @@ namespace MVZ2.GameContent.Bosses
         {
             var level = entity.Level;
             level.PauseGame(100);
-            var title = Global.Game.GetText(CHOOSE_FATE_TITLE);
-            var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
+            var title = Global.Localization.GetText(CHOOSE_FATE_TITLE);
+            var desc = Global.Localization.GetText(CHOOSE_FATE_DESCRIPTION);
 
             int count = level.GetSlendermanFateChoiceCount();
             if (count == 1)
@@ -425,7 +424,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && !e.IsLoyal()).RandomTake(5, rng);
             foreach (var target in targets)
             {
-                target.Charm(boss.GetFaction());
+                target.CharmPermanent(boss.GetFaction(), new EntitySourceReference(boss));
             }
         }
 
@@ -470,7 +469,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.CanDeactive());
             foreach (var contraption in targets)
             {
-                contraption.ShortCircuit(300);
+                contraption.ShortCircuit(300, new EntitySourceReference(boss));
             }
         }
         private void PureFury(Entity boss)
@@ -526,7 +525,7 @@ namespace MVZ2.GameContent.Bosses
         {
             var index = Array.IndexOf(fateOptions, option);
             var text = fateTexts[index];
-            return Global.Game.GetText(text);
+            return Global.Localization.GetText(text);
         }
         #endregion
 

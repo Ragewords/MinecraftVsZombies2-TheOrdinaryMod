@@ -59,8 +59,8 @@ namespace MVZ2.GameContent.Projectiles
                 hitResult.Pierce = true;
                 return;
             }
-            target.CharmWithSource(mesmerizer);
-            target.MesmerizeWithSource(mesmerizer);
+            target.CharmWithController(mesmerizer, new EntitySourceReference(projectile));
+            target.MesmerizeWithController(mesmerizer, new EntitySourceReference(projectile));
             target.PlaySound(VanillaSoundID.mindControl);
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)

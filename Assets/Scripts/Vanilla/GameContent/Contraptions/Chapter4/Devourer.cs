@@ -13,6 +13,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -197,7 +198,7 @@ namespace MVZ2.GameContent.Contraptions
                 var spawnParams = devourer.GetSpawnParams();
                 var entityID = target.GetDefinitionID();
                 var blueprintID = VanillaBlueprintID.FromEntity(entityID);
-                spawnParams.SetProperty(BlueprintPickup.PROP_BLUEPRINT_ID, blueprintID);
+                spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, blueprintID);
                 devourer.Produce(VanillaPickupID.blueprintPickup, spawnParams);
             }
         }

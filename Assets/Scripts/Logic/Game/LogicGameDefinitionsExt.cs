@@ -1,4 +1,7 @@
-﻿using MVZ2Logic.Artifacts;
+﻿using MVZ2Logic.Armors;
+using MVZ2Logic.Artifacts;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Errors;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.IZombie;
 using MVZ2Logic.Notes;
@@ -21,6 +24,10 @@ namespace MVZ2Logic.Games
         {
             return provider.GetDefinition<ArtifactDefinition>(LogicDefinitionTypes.ARTIFACT, defRef);
         }
+        public static ArtifactDefinition[] GetAllArtifactDefinitions(this IGameContent provider)
+        {
+            return provider.GetDefinitions<ArtifactDefinition>(LogicDefinitionTypes.ARTIFACT);
+        }
         public static SeedOptionDefinition GetSeedOptionDefinition(this IGameContent provider, NamespaceID id)
         {
             return provider.GetDefinition<SeedOptionDefinition>(LogicDefinitionTypes.SEED_OPTION, id);
@@ -32,6 +39,46 @@ namespace MVZ2Logic.Games
         public static IZombieLayoutDefinition GetIZombieLayoutDefinition(this IGameContent provider, NamespaceID id)
         {
             return provider.GetDefinition<IZombieLayoutDefinition>(LogicDefinitionTypes.I_ZOMBIE_LAYOUT, id);
+        }
+        public static ArmorSlotDefinition GetArmorSlotDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<ArmorSlotDefinition>(LogicDefinitionTypes.ARMOR_SLOT, id);
+        }
+        public static ArmorSlotDefinition[] GetAllArmorSlotDefinitions(this IGameContent provider)
+        {
+            return provider.GetDefinitions<ArmorSlotDefinition>(LogicDefinitionTypes.ARMOR_SLOT);
+        }
+        public static ErrorMessageDefinition GetSeedErrorDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<ErrorMessageDefinition>(LogicDefinitionTypes.SEED_ERROR, id);
+        }
+        public static ErrorMessageDefinition GetGridErrorDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<ErrorMessageDefinition>(LogicDefinitionTypes.GRID_ERROR, id);
+        }
+        public static GridLayerDefinition GetGridLayerDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<GridLayerDefinition>(LogicDefinitionTypes.GRID_LAYER, id);
+        }
+        public static EntityCounterDefinition GetEntityCounterDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<EntityCounterDefinition>(LogicDefinitionTypes.ENTITY_COUNTER, id);
+        }
+        public static CommandDefinition GetCommandDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<CommandDefinition>(LogicDefinitionTypes.COMMAND, id);
+        }
+        public static CommandDefinition[] GetAllCommandDefinitions(this IGameContent provider)
+        {
+            return provider.GetDefinitions<CommandDefinition>(LogicDefinitionTypes.COMMAND);
+        }
+        public static EntitySeedDefinition GetEntitySeedDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<EntitySeedDefinition>(LogicDefinitionTypes.ENTITY_SEED, id);
+        }
+        public static ShapeDefinition GetShapeDefinition(this IGameContent provider, NamespaceID id)
+        {
+            return provider.GetDefinition<ShapeDefinition>(LogicDefinitionTypes.SHAPE, id);
         }
     }
 }

@@ -6,7 +6,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
-using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -40,8 +40,9 @@ namespace MVZ2.GameContent.Contraptions
             var lane = grid.Lane;
             for (int i = -1; i <= 1; i++)
             {
-                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos + new Vector3(80 * i, 0, 0));
-                mage.SetVariant(mageClass);
+                var param = entity.GetSpawnParams();
+                param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
+                var mage = entity.Spawn(VanillaEnemyID.skeletonMage, pos, param);
                 mage.AddBuff<NecrotombstoneRisingBuff>();
                 mage.UpdateModel();
 
@@ -50,13 +51,17 @@ namespace MVZ2.GameContent.Contraptions
             }
             if (lane != 0)
             {
-                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos + new Vector3(0, 0, 80));
-                MageUpdate(mage, mageClass);
+                var param = entity.GetSpawnParams();
+                param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
+                var mage = entity.Spawn(VanillaEnemyID.skeletonMage, pos + new Vector3(0, 0, 80), param);
+                MageUpdate(mage);
             }
             if (lane != entity.Level.GetMaxLaneCount() - 1)
             {
-                var mage = entity.SpawnWithParams(VanillaEnemyID.skeletonMage, pos - new Vector3(0, 0, 80));
-                MageUpdate(mage, mageClass);
+                var param = entity.GetSpawnParams();
+                param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
+                var mage = entity.Spawn(VanillaEnemyID.skeletonMage, pos - new Vector3(0, 0, 80), param);
+                MageUpdate(mage);
             }
         }
         public static FrameTimer GetProductionTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_PRODUCTION_TIMER);
@@ -99,9 +104,8 @@ namespace MVZ2.GameContent.Contraptions
             
             return warrior_count + skeleton_count + ghost_count + necromancer_count + bomb_count >= SKELETON_LIMIT;
         }
-        private void MageUpdate(Entity mage, int mageClass)
+        private void MageUpdate(Entity mage)
         {
-            mage.SetVariant(mageClass);
             mage.AddBuff<NecrotombstoneRisingBuff>();
             mage.UpdateModel();
 

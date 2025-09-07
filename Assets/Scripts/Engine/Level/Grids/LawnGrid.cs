@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using PVZEngine.Models;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace PVZEngine.Grids
 {
-    public class LawnGrid : IPropertyModifyTarget
+    public class LawnGrid : IPropertyModifyTarget, IBuffTarget
     {
         #region 公有事件
         public LawnGrid(LevelEngine level, GridDefinition definition, int lane, int column)
@@ -18,6 +20,18 @@ namespace PVZEngine.Grids
             Column = column;
             Definition = definition;
             properties = new PropertyBlock(this);
+            InitBuffList();
+        }
+        public void Update()
+        {
+            try
+            {
+                buffs.Update();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"更新地格时出现错误：{ex}");
+            }
         }
         public int GetIndex()
         {
@@ -36,29 +50,112 @@ namespace PVZEngine.Grids
             var z = Level.GetEntityLaneZ(Lane);
             return Level.GetGroundY(x, z);
         }
+        #region 添加占据实体
+        private HashSet<Entity> GetOrCreateLayerEntityHashSet(NamespaceID layer)
+        {
+            if (!layerEntities.TryGetValue(layer, out var hashSet))
+            {
+                hashSet = new HashSet<Entity>();
+                layerEntities.Add(layer, hashSet);
+            }
+            return hashSet;
+        }
+        private void AddReversedLayerEntity(NamespaceID layer, Entity entity)
+        {
+            if (reverseLayerEntities.TryGetValue(entity, out var layerHashSet))
+            {
+                layerHashSet.Add(layer);
+            }
+            else
+            {
+                layerHashSet = new HashSet<NamespaceID>() { layer };
+                reverseLayerEntities.Add(entity, layerHashSet);
+            }
+        }
         public void AddLayerEntity(NamespaceID layer, Entity entity)
         {
-            layerEntities[layer] = entity;
+            var hashSet = GetOrCreateLayerEntityHashSet(layer);
+            hashSet.Add(entity);
+            AddReversedLayerEntity(layer, entity);
         }
-        public bool RemoveLayerEntity(NamespaceID layer)
+        #endregion
+
+        #region 移除占据实体
+        public void RemoveLayerEntity(NamespaceID layer, Entity entity)
         {
-            return layerEntities.Remove(layer);
-        }
-        public bool RemoveLayerEntity(NamespaceID layer, Entity entity)
-        {
-            if (layerEntities.TryGetValue(layer, out var ent) && ent == entity)
+            if (layerEntities.TryGetValue(layer, out var hashSet))
             {
-                return RemoveLayerEntity(layer);
+                hashSet.Remove(entity);
+                if (hashSet.Count <= 0)
+                {
+                    layerEntities.Remove(layer);
+                }
+            }
+            if (reverseLayerEntities.TryGetValue(entity, out var reverseHashSet))
+            {
+                reverseHashSet.Remove(layer);
+                if (reverseHashSet.Count <= 0)
+                {
+                    reverseLayerEntities.Remove(entity);
+                }
+            }
+        }
+        public void RemoveGridEntity(Entity entity)
+        {
+            if (reverseLayerEntities.TryGetValue(entity, out var reversedHashSet))
+            {
+                foreach (var layer in reversedHashSet)
+                {
+                    if (layerEntities.TryGetValue(layer, out var hashSet))
+                    {
+                        hashSet.Remove(entity);
+                        if (hashSet.Count <= 0)
+                        {
+                            layerEntities.Remove(layer);
+                        }
+                    }
+                }
+                reversedHashSet.Clear();
+                reverseLayerEntities.Remove(entity);
+            }
+        }
+        #endregion
+
+        #region 获取占据实体
+        public Entity GetLayerEntity(NamespaceID layer)
+        {
+            if (layerEntities.TryGetValue(layer, out var hashSet))
+            {
+                return hashSet.FirstOrDefault();
+            }
+            return null;
+        }
+        public Entity[] GetLayerEntities(NamespaceID layer)
+        {
+            if (layerEntities.TryGetValue(layer, out var hashSet))
+            {
+                return hashSet.ToArray();
+            }
+            return null;
+        }
+        public void GetLayerEntities(NamespaceID layer, List<Entity> results)
+        {
+            if (layerEntities.TryGetValue(layer, out var hashSet))
+            {
+                results.AddRange(hashSet);
+            }
+        }
+        public bool IsEntityOnLayer(Entity entity, NamespaceID layer)
+        {
+            if (layerEntities.TryGetValue(layer, out var hashSet))
+            {
+                return hashSet.Contains(entity);
             }
             return false;
         }
-        public Entity GetLayerEntity(NamespaceID layer)
+        public bool HasEntity(Entity entity)
         {
-            if (layerEntities.TryGetValue(layer, out var entity))
-            {
-                return entity;
-            }
-            return null;
+            return reverseLayerEntities.ContainsKey(entity);
         }
         public bool IsEmpty()
         {
@@ -66,12 +163,54 @@ namespace PVZEngine.Grids
         }
         public Entity[] GetEntities()
         {
-            return layerEntities.Values.ToArray();
+            return reverseLayerEntities.Keys.ToArray();
         }
         public NamespaceID[] GetLayers()
         {
             return layerEntities.Keys.ToArray();
         }
+        #endregion
+
+        #region 获取实体占据层
+        public NamespaceID[] GetEntityLayers(Entity entity)
+        {
+            if (reverseLayerEntities.TryGetValue(entity, out var reverseHashSet))
+            {
+                return reverseHashSet.ToArray();
+            }
+            return Array.Empty<NamespaceID>();
+        }
+        public void GetEntityLayersNonAlloc(Entity entity, List<NamespaceID> results)
+        {
+            if (reverseLayerEntities.TryGetValue(entity, out var reverseHashSet))
+            {
+                results.AddRange(reverseHashSet);
+            }
+        }
+        #endregion
+
+        #region 增益
+        public BuffReference GetBuffReference(Buff buff)
+        {
+            return new BuffReferenceLawnGrid(GetIndex(), buff.ID);
+        }
+        private void InitBuffList()
+        {
+            buffs.OnPropertyChanged += OnBuffPropertyChangedCallback;
+            buffs.OnBuffAdded += OnBuffAddedCallback;
+            buffs.OnBuffRemoved += OnBuffRemovedCallback;
+        }
+        private void OnBuffPropertyChangedCallback(IPropertyKey name)
+        {
+            properties.UpdateModifiedProperty(name);
+        }
+        private void OnBuffAddedCallback(Buff buff)
+        {
+        }
+        private void OnBuffRemovedCallback(Buff buff)
+        {
+        }
+        #endregion
         public SerializableGrid Serialize()
         {
             return new SerializableGrid()
@@ -79,8 +218,9 @@ namespace PVZEngine.Grids
                 lane = Lane,
                 column = Column,
                 definitionID = Definition.GetID(),
-                layerEntities = layerEntities.ToDictionary(p => p.Key.ToString(), p => p.Value.ID),
+                layerEntityLists = layerEntities.ToDictionary(p => p.Key.ToString(), p => p.Value.Select(e => e.ID).ToArray()),
                 properties = properties.ToSerializable(),
+                buffs = buffs.ToSerializable()
             };
         }
         public static LawnGrid Deserialize(SerializableGrid seri, LevelEngine level)
@@ -92,7 +232,47 @@ namespace PVZEngine.Grids
         public void LoadFromSerializable(SerializableGrid seri, LevelEngine level)
         {
             properties = PropertyBlock.FromSerializable(seri.properties, this);
-            layerEntities = seri.layerEntities.ToDictionary(p => NamespaceID.ParseStrict(p.Key), p => level.FindEntityByID(p.Value));
+            buffs = BuffList.FromSerializable(seri.buffs, level, this);
+            InitBuffList();
+            layerEntities.Clear();
+            reverseLayerEntities.Clear();
+            if (seri.layerEntityLists != null)
+            {
+                foreach (var pair in seri.layerEntityLists)
+                {
+                    var layer = NamespaceID.ParseStrict(pair.Key);
+                    var entityHashSet = new HashSet<Entity>();
+                    foreach (var entityID in pair.Value)
+                    {
+                        var entity = level.FindEntityByID(entityID);
+                        if (entity == null)
+                            continue;
+
+                        entityHashSet.Add(entity);
+                        AddReversedLayerEntity(layer, entity);
+                    }
+                    layerEntities.Add(layer, entityHashSet);
+                }
+            }
+            else if (seri.layerEntities != null)
+            {
+                foreach (var pair in seri.layerEntities)
+                {
+                    var layer = NamespaceID.ParseStrict(pair.Key);
+                    var entity = level.FindEntityByID(pair.Value);
+                    if (entity == null)
+                        continue;
+
+                    var layerHashSet = new HashSet<NamespaceID>() { layer };
+                    var entityHashSet = new HashSet<Entity>() { entity };
+                    layerEntities.Add(layer, entityHashSet);
+                    reverseLayerEntities.Add(entity, layerHashSet);
+                }
+            }
+        }
+        public void LoadAuras(SerializableGrid seri)
+        {
+            buffs.LoadAuras(seri.buffs, Level);
         }
         #endregion 方法
 
@@ -111,7 +291,14 @@ namespace PVZEngine.Grids
         }
         #endregion
 
-        #region 接口实现
+        #region IBuffTarget实现
+        IModelInterface IBuffTarget.GetInsertedModel(NamespaceID key) => null;
+        LevelEngine IBuffTarget.GetLevel() => Level;
+        Entity IBuffTarget.GetEntity() => null;
+        bool IBuffTarget.Exists() => true;
+        #endregion
+
+        #region IPropertyModifyTarget实现
         bool IPropertyModifyTarget.GetFallbackProperty(IPropertyKey name, out object value)
         {
             if (Definition == null)
@@ -123,14 +310,15 @@ namespace PVZEngine.Grids
         }
         IEnumerable<IPropertyKey> IPropertyModifyTarget.GetModifiedProperties()
         {
-            yield break;
+            return buffs.GetModifierPropertyNames();
         }
         PropertyModifier[] IPropertyModifyTarget.GetModifiersUsingProperty(IPropertyKey name)
         {
-            return Array.Empty<PropertyModifier>();
+            return null;
         }
         void IPropertyModifyTarget.GetModifierItems(IPropertyKey name, List<ModifierContainerItem> results)
         {
+            buffs.GetModifierItems(name, results);
         }
         void IPropertyModifyTarget.UpdateModifiedProperty(IPropertyKey name, object beforeValue, object afterValue, bool triggersEvaluation)
         {
@@ -142,7 +330,10 @@ namespace PVZEngine.Grids
         public int Lane { get; set; }
         public int Column { get; set; }
         public GridDefinition Definition { get; set; }
-        private Dictionary<NamespaceID, Entity> layerEntities = new Dictionary<NamespaceID, Entity>();
+        BuffList IBuffTarget.Buffs => buffs;
+        private BuffList buffs = new BuffList();
+        private Dictionary<NamespaceID, HashSet<Entity>> layerEntities = new Dictionary<NamespaceID, HashSet<Entity>>();
+        private Dictionary<Entity, HashSet<NamespaceID>> reverseLayerEntities = new Dictionary<Entity, HashSet<NamespaceID>>();
         private PropertyBlock properties;
         #endregion 属性
     }

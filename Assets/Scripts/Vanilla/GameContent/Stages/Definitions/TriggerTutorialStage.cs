@@ -11,6 +11,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -258,8 +259,8 @@ namespace MVZ2.GameContent.Stages
                     level.SetPickaxeActive(true);
                     level.SetStarshardActive(true);
                     level.SetTriggerActive(true);
-                    Global.Game.Unlock(VanillaUnlockID.trigger);
-                    Global.Game.SaveToFile(); // 解锁触发器后保存游戏。
+                    Global.Saves.Unlock(VanillaUnlockID.trigger);
+                    Global.Saves.SaveToFile(); // 解锁触发器后保存游戏。
                     level.SimpleStartTalk(VanillaTalkID.halloween7, 0, 2, onEnd: () => level.BeginLevel());
                     break;
             }

@@ -13,6 +13,7 @@ using MVZ2.Vanilla;
 using MVZ2.Vanilla.Saves;
 using MVZ2.Vanilla.Stats;
 using MVZ2Logic;
+using MVZ2Logic.Games;
 using MVZ2Logic.Saves;
 using PVZEngine;
 using UnityEngine;
@@ -30,6 +31,7 @@ namespace MVZ2.Saves
                 meta = userDataList.Create(index);
             }
             meta.Username = name;
+            OnUserNameChanged?.Invoke(index, name);
         }
         public void SetCurrentUserIndex(int index)
         {
@@ -69,11 +71,15 @@ namespace MVZ2.Saves
         }
         public string GetCurrentUserName()
         {
+            if (userDataList == null)
+                return null;
             var index = userDataList.CurrentUserIndex;
             return GetUserName(index);
         }
         public string GetUserName(int index)
         {
+            if (userDataList == null)
+                return null;
             var meta = userDataList.Get(index);
             if (meta == null)
                 return null;
@@ -480,6 +486,8 @@ namespace MVZ2.Saves
             }
         }
         #endregion
+
+        public event Action<int, string> OnUserNameChanged;
 
         #region 属性字段
         public const string USER_DATA_PACK_METADATA_ENTRY_NAME = "metadata.json";

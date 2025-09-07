@@ -5,6 +5,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Saves;
 using MVZ2Logic;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -33,7 +34,7 @@ namespace MVZ2.GameContent.Stages
         public override void PostEnemySpawned(Entity entity)
         {
             base.PostEnemySpawned(entity);
-            if (!Global.Game.IsStarshardUnlocked())
+            if (!Global.Saves.IsStarshardUnlocked())
                 return;
             if (entity.HasNoReward())
                 return;

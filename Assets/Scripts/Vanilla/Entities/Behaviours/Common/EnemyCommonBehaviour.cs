@@ -3,6 +3,7 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -48,7 +49,7 @@ namespace MVZ2.Vanilla.Entities
             {
                 remove = true;
             }
-            else if (entity.Level.IsIZombie() && IsOutsideLeft(entity))
+            else if ((entity.Level.IsIZombie() || entity.Level.IsCleared || entity.Level.IsGodMode()) && IsOutsideLeft(entity))
             {
                 remove = true;
             }

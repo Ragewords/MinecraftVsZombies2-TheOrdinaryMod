@@ -33,7 +33,7 @@ namespace MVZ2.Level
         }
         private bool IsInputDisabled()
         {
-            return level == null || level.IsCleared || isOpeningAlmanac || isOpeningStore || inputAndUIDisabled;
+            return level == null || level.IsCleared || isOpeningAlmanac || isOpeningStore || inputAndUIDisabled || IsConsoleActive();
         }
 
         #region 指针输入
@@ -207,10 +207,6 @@ namespace MVZ2.Level
             {
                 OnCommandBlockTestKey();
             }
-            if (Input.GetKeyDown(KeyCode.F7))
-            {
-                OnMaxEnergyKey();
-            }
         }
         private void OnFastKillKey()
         {
@@ -263,10 +259,6 @@ namespace MVZ2.Level
                 var spawnParams = CommandBlock.GetImitateSpawnParams(contraption);
                 var command = grid.SpawnPlacedEntity(VanillaContraptionID.commandBlock, spawnParams);
             }
-        }
-        private void OnMaxEnergyKey()
-        {
-            level.AddEnergy(9990);
         }
         #endregion
     }

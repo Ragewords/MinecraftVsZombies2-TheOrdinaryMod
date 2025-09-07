@@ -16,11 +16,11 @@ using UnityEngine;
 
 namespace PVZEngine.Entities
 {
-    public sealed class Entity : IBuffTarget, IAuraSource, IModifierContainer, IPropertyModifyTarget
+    public sealed class Entity : IBuffTarget, IAuraSource, IModifierContainer, IPropertyModifyTarget, ILevelSourceTarget
     {
         #region 公有方法
 
-        public Entity(LevelEngine level, long id, EntityReferenceChain spawnerReference, EntityDefinition definition, int seed) : this(level, definition.Type, id, spawnerReference)
+        public Entity(LevelEngine level, long id, ILevelSourceReference spawnerSource, EntityDefinition definition, int seed) : this(level, definition.Type, id, spawnerSource)
         {
             Definition = definition;
             ModelID = definition.GetModelID();
@@ -30,16 +30,14 @@ namespace PVZEngine.Entities
             CreateAuraEffects();
             UpdateModifierCaches();
         }
-        private Entity(LevelEngine level, int type, long id, EntityReferenceChain spawnerReference)
+        private Entity(LevelEngine level, int type, long id, ILevelSourceReference spawnerSource)
         {
             Level = level;
             Type = type;
             TypeCollisionFlag = EntityCollisionHelper.GetTypeMask(type);
             ID = id;
-            SpawnerReference = spawnerReference;
-            buffs.OnPropertyChanged += UpdateModifiedProperty;
-            buffs.OnModelInsertionAdded += OnBuffModelAddCallback;
-            buffs.OnModelInsertionRemoved += OnBuffModelRemoveCallback;
+            SpawnerReference = spawnerSource;
+            InitBuffList();
             Cache = new EntityCache();
             properties = new PropertyBlock(this);
         }
@@ -131,13 +129,13 @@ namespace PVZEngine.Entities
 
         public void Die(Entity source = null, BodyDamageResult damage = null)
         {
-            Die(new DamageEffectList(), new EntityReferenceChain(source), damage);
+            Die(new DamageEffectList(), new EntitySourceReference(source), damage);
         }
         public void Die(DamageEffectList effects, Entity source = null, BodyDamageResult damage = null)
         {
-            Die(effects, new EntityReferenceChain(source), damage);
+            Die(effects, new EntitySourceReference(source), damage);
         }
-        public void Die(DamageEffectList effects, EntityReferenceChain source, BodyDamageResult damage = null)
+        public void Die(DamageEffectList effects, ILevelSourceReference source, BodyDamageResult damage = null)
         {
             Die(new DeathInfo(this, effects, source, damage));
         }
@@ -145,7 +143,7 @@ namespace PVZEngine.Entities
         {
             if (IsDead)
                 return;
-            info = info ?? new DeathInfo(this, new DamageEffectList(), new EntityReferenceChain(null), null);
+            info = info ?? new DeathInfo(this, new DamageEffectList(), new EntitySourceReference(null), null);
             IsDead = true;
             Definition.PostDeath(this, info);
             var param = new LevelCallbacks.PostEntityDeathParams()
@@ -280,49 +278,7 @@ namespace PVZEngine.Entities
         #endregion
 
         #region 增益
-        public Buff NewBuff<T>() where T : BuffDefinition
-        {
-            return Level.CreateBuff<T>(AllocBuffID());
-        }
-        public Buff NewBuff(BuffDefinition buffDefinition)
-        {
-            return Level.CreateBuff(buffDefinition, AllocBuffID());
-        }
-        public Buff NewBuff(NamespaceID id)
-        {
-            return Level.CreateBuff(id, AllocBuffID());
-        }
-        public bool AddBuff(Buff buff)
-        {
-            if (buffs.AddBuff(buff))
-            {
-                buff.AddToTarget(this);
-                return true;
-            }
-            return false;
-        }
-        public Buff AddBuff<T>() where T : BuffDefinition
-        {
-            var buff = NewBuff<T>();
-            AddBuff(buff);
-            return buff;
-        }
-        public bool RemoveBuff(Buff buff) => buffs.RemoveBuff(buff);
-        public int RemoveBuffs(IEnumerable<Buff> buffs) => this.buffs.RemoveBuffs(buffs);
-        public int RemoveBuffs<T>() where T : BuffDefinition => buffs.RemoveBuffs<T>();
-        public bool HasBuff<T>() where T : BuffDefinition => buffs.HasBuff<T>();
-        public bool HasBuff(BuffDefinition buff) => buffs.HasBuff(buff);
-        public bool HasBuff(Buff buff) => buffs.HasBuff(buff);
-        public Buff GetFirstBuff<T>() where T : BuffDefinition => buffs.GetFirstBuff<T>();
-        public Buff[] GetBuffs<T>() where T : BuffDefinition => buffs.GetBuffs<T>();
-        public Buff[] GetBuffs(BuffDefinition definition) => buffs.GetBuffs(definition);
-        public void GetBuffs<T>(List<Buff> results) where T : BuffDefinition => buffs.GetBuffsNonAlloc<T>(results);
-        public void GetAllBuffs(List<Buff> results) => buffs.GetAllBuffs(results);
         public BuffReference GetBuffReference(Buff buff) => new BuffReferenceEntity(ID, buff.ID);
-        private long AllocBuffID()
-        {
-            return currentBuffID++;
-        }
         #endregion
 
         #region 光环
@@ -442,7 +398,7 @@ namespace PVZEngine.Entities
         }
         #endregion
 
-        #region 网格
+        #region 网格位置
         public int GetColumn()
         {
             var gridPivotOffset = Cache.GridPivotOffset;
@@ -452,63 +408,6 @@ namespace PVZEngine.Entities
         {
             var gridPivotOffset = Cache.GridPivotOffset;
             return Level.GetLane(Position.z + gridPivotOffset.y);
-        }
-        public NamespaceID[] GetTakingGridLayers(LawnGrid grid)
-        {
-            var hashSet = GetTakenGridLayerHashSet(grid);
-            if (hashSet == null)
-                return Array.Empty<NamespaceID>();
-            return hashSet.ToArray();
-        }
-        public void GetTakingGridLayersNonAlloc(LawnGrid grid, List<NamespaceID> results)
-        {
-            var hashSet = GetTakenGridLayerHashSet(grid);
-            if (hashSet == null)
-                return;
-            results.AddRange(hashSet);
-        }
-        public bool IsTakingGridLayer(LawnGrid grid, NamespaceID layer)
-        {
-            var hashSet = GetTakenGridLayerHashSet(grid);
-            if (hashSet == null)
-                return false;
-            return hashSet.Contains(layer);
-        }
-        public void TakeGrid(LawnGrid grid, NamespaceID layer)
-        {
-            var hashSet = GetOrCreateTakenGridHashSet(grid);
-            hashSet.Add(layer);
-            grid.AddLayerEntity(layer, this);
-        }
-        public bool ReleaseGrid(LawnGrid grid, NamespaceID layer)
-        {
-            var hashSet = GetTakenGridLayerHashSet(grid);
-            if (hashSet == null)
-                return false;
-            if (hashSet.Remove(layer))
-            {
-                grid.RemoveLayerEntity(layer, this);
-                return true;
-            }
-            return false;
-        }
-        public void ClearTakenGrids()
-        {
-            foreach (var pair in takenGrids)
-            {
-                foreach (var layer in pair.Value)
-                {
-                    pair.Key.RemoveLayerEntity(layer, this);
-                }
-            }
-            takenGrids.Clear();
-        }
-        public void GetTakenGrids(List<LawnGrid> results)
-        {
-            foreach (var pair in takenGrids)
-            {
-                results.Add(pair.Key);
-            }
         }
         public int GetGridIndex()
         {
@@ -522,21 +421,52 @@ namespace PVZEngine.Entities
         {
             return new Vector2Int(GetColumn(), GetLane());
         }
-        private HashSet<NamespaceID> GetOrCreateTakenGridHashSet(LawnGrid grid)
+        #endregion
+
+        #region 占据网格
+        public LawnGrid[] GetTakenGrids()
         {
-            var hashSet = GetTakenGridLayerHashSet(grid);
-            if (hashSet == null)
-            {
-                hashSet = new HashSet<NamespaceID>();
-                takenGrids.Add(grid, hashSet);
-            }
-            return hashSet;
+            return takenGrids.ToArray();
         }
-        private HashSet<NamespaceID> GetTakenGridLayerHashSet(LawnGrid grid)
+        public void GetTakenGridsNonAlloc(List<LawnGrid> results)
         {
-            if (takenGrids.TryGetValue(grid, out var set))
-                return set;
-            return null;
+            results.AddRange(takenGrids);
+        }
+        public NamespaceID[] GetTakingGridLayers(LawnGrid grid)
+        {
+            return grid.GetEntityLayers(this);
+        }
+        public void GetTakingGridLayersNonAlloc(LawnGrid grid, List<NamespaceID> results)
+        {
+            grid.GetEntityLayersNonAlloc(this, results);
+        }
+        public bool IsTakingGridLayer(LawnGrid grid, NamespaceID layer)
+        {
+            return grid.IsEntityOnLayer(this, layer);
+        }
+        public void TakeGrid(LawnGrid grid, NamespaceID layer)
+        {
+            grid.AddLayerEntity(layer, this);
+            if (!takenGrids.Contains(grid))
+            {
+                takenGrids.Add(grid);
+            }
+        }
+        public void ReleaseGrid(LawnGrid grid, NamespaceID layer)
+        {
+            grid.RemoveLayerEntity(layer, this);
+            if (!grid.HasEntity(this))
+            {
+                takenGrids.Remove(grid);
+            }
+        }
+        public void ClearTakenGrids()
+        {
+            foreach (var grid in takenGrids)
+            {
+                grid.RemoveGridEntity(this);
+            }
+            takenGrids.Clear();
         }
         #endregion
 
@@ -776,55 +706,62 @@ namespace PVZEngine.Entities
         }
         public void SetModelProperty(string name, object value)
         {
-            modelInterface.SetModelProperty(name, value);
+            modelInterface?.SetModelProperty(name, value);
         }
         public void TriggerModel(string name)
         {
-            modelInterface.TriggerModel(name);
+            modelInterface?.TriggerModel(name);
         }
         public void SetShaderInt(string name, int value)
         {
-            modelInterface.SetShaderInt(name, value);
+            modelInterface?.SetShaderInt(name, value);
         }
         public void SetShaderFloat(string name, float value)
         {
-            modelInterface.SetShaderFloat(name, value);
+            modelInterface?.SetShaderFloat(name, value);
         }
         public void SetShaderColor(string name, Color value)
         {
-            modelInterface.SetShaderColor(name, value);
+            modelInterface?.SetShaderColor(name, value);
         }
         public IModelInterface CreateChildModel(string anchorName, NamespaceID key, NamespaceID modelID)
         {
-            return modelInterface.CreateChildModel(anchorName, key, modelID);
+            return modelInterface?.CreateChildModel(anchorName, key, modelID);
         }
         public bool RemoveChildModel(NamespaceID key)
         {
-            return modelInterface.RemoveChildModel(key);
+            return modelInterface?.RemoveChildModel(key) ?? false;
         }
         public IModelInterface GetChildModel(NamespaceID key)
         {
-            return modelInterface.GetChildModel(key);
+            return modelInterface?.GetChildModel(key);
         }
         public void UpdateModel()
         {
-            modelInterface.UpdateModel();
+            modelInterface?.UpdateModel();
         }
         public void TriggerAnimation(string name)
         {
-            modelInterface.TriggerAnimation(name);
+            modelInterface?.TriggerAnimation(name);
         }
         public void SetAnimationBool(string name, bool value)
         {
-            modelInterface.SetAnimationBool(name, value);
+            modelInterface?.SetAnimationBool(name, value);
         }
         public void SetAnimationInt(string name, int value)
         {
-            modelInterface.SetAnimationInt(name, value);
+            modelInterface?.SetAnimationInt(name, value);
         }
         public void SetAnimationFloat(string name, float value)
         {
-            modelInterface.SetAnimationFloat(name, value);
+            modelInterface?.SetAnimationFloat(name, value);
+        }
+        #endregion
+
+        #region 模型插入
+        public ModelInsertion[] GetModelInsertions()
+        {
+            return buffs.SelectMany(b => b.GetModelInsertions()).ToArray();
         }
         #endregion
 
@@ -862,7 +799,7 @@ namespace PVZEngine.Entities
             seri.id = ID;
             seri.time = time;
             seri.initSeed = InitSeed;
-            seri.spawnerReference = SpawnerReference;
+            seri.spawnerSource = SpawnerReference;
             seri.type = Type;
             seri.state = State;
             seri.rng = RNG.ToSerializable();
@@ -893,19 +830,13 @@ namespace PVZEngine.Entities
             seri.isDead = IsDead;
             seri.health = Health;
             seri.isOnGround = IsOnGround;
-            seri.currentBuffID = currentBuffID;
             seri.properties = properties.ToSerializable();
             seri.buffs = buffs.ToSerializable();
             seri.children = children.ConvertAll(e => e?.ID ?? 0);
-            seri.takenGrids = new List<SerializableEntity.TakenGridInfo>();
-            foreach (var pair in takenGrids)
+            seri.takenGridIndexes = new List<int>();
+            foreach (var grid in takenGrids)
             {
-                var info = new SerializableEntity.TakenGridInfo()
-                {
-                    grid = pair.Key.GetIndex(),
-                    layers = pair.Value.ToArray()
-                };
-                seri.takenGrids.Add(info);
+                seri.takenGridIndexes.Add(grid.GetIndex());
             }
 
             seri.auras = auras.GetAll().Select(a => a.ToSerializable()).ToArray();
@@ -951,20 +882,29 @@ namespace PVZEngine.Entities
             IsDead = seri.isDead;
             Health = seri.health;
             IsOnGround = seri.isOnGround;
-            currentBuffID = seri.currentBuffID;
             properties = PropertyBlock.FromSerializable(seri.properties, this);
 
             children = seri.children.ConvertAll(e => Level.FindEntityByID(e));
-            if (seri.takenGrids != null)
+            if (seri.takenGridIndexes != null)
             {
-                foreach (var takenGrid in seri.takenGrids)
+                foreach (var index in seri.takenGridIndexes)
                 {
-                    if (takenGrid == null || takenGrid.layers == null)
-                        continue;
-                    var grid = Level.GetGrid(takenGrid.grid);
+                    var grid = Level.GetGrid(index);
                     if (grid == null)
                         continue;
-                    takenGrids.Add(grid, takenGrid.layers.ToHashSet());
+                    takenGrids.Add(grid);
+                }
+            }
+            else if (seri.takenGrids != null)
+            {
+                foreach (var info in seri.takenGrids)
+                {
+                    if (info == null || info.layers == null)
+                        continue;
+                    var grid = Level.GetGrid(info.grid);
+                    if (grid == null)
+                        continue;
+                    takenGrids.Add(grid);
                 }
             }
             LoadAuras(seri);
@@ -975,14 +915,12 @@ namespace PVZEngine.Entities
         }
         public static Entity CreateDeserializingEntity(SerializableEntity seri, LevelEngine level)
         {
-            var entity = new Entity(level, seri.type, seri.id, seri.spawnerReference);
+            var entity = new Entity(level, seri.type, seri.id, seri.spawnerSource);
             entity.Definition = level.Content.GetEntityDefinition(seri.definitionID);
 
             // 先于光环加载，不然找不到Buff
             entity.buffs = BuffList.FromSerializable(seri.buffs, level, entity);
-            entity.buffs.OnPropertyChanged += entity.UpdateModifiedProperty;
-            entity.buffs.OnModelInsertionAdded += entity.OnBuffModelAddCallback;
-            entity.buffs.OnModelInsertionRemoved += entity.OnBuffModelRemoveCallback;
+            entity.InitBuffList();
             return entity;
         }
         public void LoadAuras(SerializableEntity seri)
@@ -1043,15 +981,20 @@ namespace PVZEngine.Entities
             };
             Level.Triggers.RunCallback(LevelCallbacks.POST_ENTITY_LEAVE_GROUND, param);
         }
-        private void OnBuffModelAddCallback(string anchorName, NamespaceID key, NamespaceID modelID)
+        private void OnBuffAddedCallback(Buff buff)
         {
-            CreateChildModel(anchorName, key, modelID);
+            foreach (var insertion in buff.GetModelInsertions())
+            {
+                OnModelInsertionAdded?.Invoke(insertion);
+            }
         }
-        private void OnBuffModelRemoveCallback(NamespaceID key)
+        private void OnBuffRemovedCallback(Buff buff)
         {
-            RemoveChildModel(key);
+            foreach (var insertion in buff.GetModelInsertions())
+            {
+                OnModelInsertionRemoved?.Invoke(insertion);
+            }
         }
-
         private void CreateAuraEffects()
         {
             var auraDefs = Definition.GetAuras();
@@ -1074,11 +1017,15 @@ namespace PVZEngine.Entities
                 list.Add(new ModifierContainerItem(this, modifier));
             }
         }
+        private void InitBuffList()
+        {
+            buffs.OnPropertyChanged += UpdateModifiedProperty;
+            buffs.OnBuffAdded += OnBuffAddedCallback;
+            buffs.OnBuffRemoved += OnBuffRemovedCallback;
+        }
         IModelInterface IBuffTarget.GetInsertedModel(NamespaceID key) => GetChildModel(key);
+        LevelEngine IBuffTarget.GetLevel() => Level;
         Entity IBuffTarget.GetEntity() => this;
-        Armor IBuffTarget.GetArmor() => null;
-        void IBuffTarget.GetBuffs(List<Buff> results) => buffs.GetAllBuffs(results);
-        Buff IBuffTarget.GetBuff(long id) => buffs.GetBuff(id);
         Entity IAuraSource.GetEntity() => this;
         LevelEngine IAuraSource.GetLevel() => Level;
         bool IAuraSource.IsValid() => Exists();
@@ -1091,6 +1038,8 @@ namespace PVZEngine.Entities
         public event Action<NamespaceID> OnChangeModel;
         public event Action<NamespaceID, Armor> OnEquipArmor;
         public event Action<NamespaceID, Armor> OnRemoveArmor;
+        public event Action<ModelInsertion> OnModelInsertionAdded;
+        public event Action<ModelInsertion> OnModelInsertionRemoved;
         #endregion
 
         #region 属性字段
@@ -1101,7 +1050,7 @@ namespace PVZEngine.Entities
         public bool Removed { get; private set; }
         public EntityDefinition Definition { get; private set; }
         public NamespaceID ModelID { get; private set; }
-        public EntityReferenceChain SpawnerReference { get; private set; }
+        public ILevelSourceReference SpawnerReference { get; private set; }
         public Entity Parent { get; private set; }
         public LevelEngine Level { get; private set; }
         public Vector3 PreviousPosition { get; private set; }
@@ -1135,6 +1084,7 @@ namespace PVZEngine.Entities
         public bool IsOnGround { get; private set; } = true;
         internal int TypeCollisionFlag { get; }
         internal EntityCache Cache { get; }
+        BuffList IBuffTarget.Buffs => buffs;
 
         private PropertyBlock properties;
         private Vector3 _position;
@@ -1144,10 +1094,9 @@ namespace PVZEngine.Entities
         #endregion
 
         private long time = 0;
-        private long currentBuffID = 1;
         private BuffList buffs = new BuffList();
         private AuraEffectList auras = new AuraEffectList();
-        private Dictionary<LawnGrid, HashSet<NamespaceID>> takenGrids = new Dictionary<LawnGrid, HashSet<NamespaceID>>();
+        private List<LawnGrid> takenGrids = new List<LawnGrid>();
         private List<Entity> children = new List<Entity>();
         private Dictionary<NamespaceID, int> takenConveyorSeeds = new Dictionary<NamespaceID, int>();
         private Dictionary<IPropertyKey, List<ModifierContainerItem>> modifierCaches = new Dictionary<IPropertyKey, List<ModifierContainerItem>>(new PropertyKeyComparer());

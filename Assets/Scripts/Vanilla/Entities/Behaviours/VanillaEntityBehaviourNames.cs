@@ -2,12 +2,22 @@
 {
     public static class VanillaEntityBehaviourNames
     {
+        #region Contraptions
         public const string contraptionCommon = "contraption_common";
+        public const string contraptionShooterFireworkDispenser = "contraption_shooter_firework_dispenser";
+        public const string contraptionEvokeFireworkDispenser = "contraption_evoke_firework_dispenser";
+        #endregion
+
+        #region Enemies
         public const string enemyCommon = "enemy_common";
+        #endregion
+
+        #region Obstacles
         public const string obstacleCommon = "obstacle_common";
+        public const string obstacleDestroyContraption = "obstacle_destroy_contraption";
+        #endregion
+
         public const string bossCommon = "boss_common";
-        public const string pickupCommon = "pickup_common";
-        public const string projectileCommon = "projectile_common";
         public const string cartCommon = "cart_common";
         public const string effectCommon = "effect_common";
 
@@ -20,5 +30,31 @@
         public const string energyPickup = "energy_pickup";
         public const string hellPlanet = "hell_planet";
 
+
+        #region Pickups
+        public const string pickupTiming = "pickup_timing";
+        public const string pickupAutoCollect = "pickup_auto_collect";
+        public const string pickupLimitPosition = "pickup_limit_position";
+        public const string pickupCollectArtifact = "pickup_collect_artifact";
+        public const string pickupCollectBlueprint = "pickup_collect_blueprint";
+        public const string pickupCollectClear = "pickup_collect_clear";
+        public const string pickupCollectStarshard = "pickup_collect_starshard";
+        public const string pickupCollectValue = "pickup_collect_value";
+        public const string pickupMotion = "pickup_motion";
+        public const string pickupVanish = "pickup_vanish";
+        public const string pickupStopOnLand = "pickup_stop_on_land";
+        public const string pickupWithContent = "pickup_with_content";
+
+        public const string gem = "gem";
+        public const string gunpowderTwinkle = "gunpowder_twinkle";
+        public const string mergePickup = "merge_pickup";
+        #endregion
+
+        #region Projectiles
+        public const string projectileCommon = "projectile_common";
+        public const string projectileExplode = "projectile_explode";
+        public const string projectileExplodeMeteor = "projectile_explode_meteor";
+        public const string projectileExplodeFirework = "projectile_explode_firework";
+        #endregion
     }
 }

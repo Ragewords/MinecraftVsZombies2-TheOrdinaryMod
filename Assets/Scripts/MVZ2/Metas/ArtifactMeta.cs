@@ -1,17 +1,19 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using MVZ2.IO;
 using MVZ2Logic;
-using MVZ2Logic.Entities;
 using PVZEngine;
 
 namespace MVZ2.Metas
 {
-    public class ArtifactMeta : IArtifactMeta
+    public class ArtifactMeta
     {
         public string ID { get; private set; }
         public string Name { get; private set; }
         public string Tooltip { get; private set; }
+        [Obsolete]
         public NamespaceID Unlock { get; private set; }
+        public XMLConditionList UnlockConditions { get; private set; }
         public SpriteReference Sprite { get; private set; }
         public int Order { get; private set; }
         public static ArtifactMeta FromXmlNode(XmlNode node, string defaultNsp, int order)
@@ -19,14 +21,25 @@ namespace MVZ2.Metas
             var id = node.GetAttribute("id");
             var name = node.GetAttribute("name");
             var tooltip = node.GetAttribute("tooltip");
-            var unlock = node.GetAttributeNamespaceID("unlock", defaultNsp);
+            var conditions = XMLConditionList.FromXmlNode(node["unlock"], defaultNsp);
+            if (conditions == null)
+            {
+                var unlock = node.GetAttributeNamespaceID("unlock", defaultNsp);
+                if (NamespaceID.IsValid(unlock))
+                {
+                    conditions = new XMLConditionList(new XMLCondition()
+                    {
+                        Required = new NamespaceID[] { unlock }
+                    });
+                }
+            }
             var sprite = node.GetAttributeSpriteReference("sprite", defaultNsp);
             return new ArtifactMeta()
             {
                 ID = id,
                 Name = name,
                 Tooltip = tooltip,
-                Unlock = unlock,
+                UnlockConditions = conditions,
                 Order = order,
                 Sprite = sprite,
             };

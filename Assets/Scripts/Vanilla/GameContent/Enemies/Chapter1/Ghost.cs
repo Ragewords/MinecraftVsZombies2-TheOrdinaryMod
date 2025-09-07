@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -42,8 +43,8 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (!GhostBuff.IsEverIlluminated(entity) && !info.Effects.HasEffect(VanillaDamageEffects.WHACK) && !entity.Level.IsIZombie())
             {
-                Global.Game.Unlock(VanillaUnlockID.ghostBuster);
-                Global.Game.SaveToFile(); // 完成成就后保存游戏。
+                Global.Saves.Unlock(VanillaUnlockID.ghostBuster);
+                Global.Saves.SaveToFile(); // 完成成就后保存游戏。
             }
         }
         public static readonly NamespaceID ID = VanillaEnemyID.ghost;

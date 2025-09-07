@@ -5,6 +5,7 @@ using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Carts;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
@@ -21,6 +22,8 @@ using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Armors;
+using PVZEngine.Base;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -29,6 +32,7 @@ using PVZEngine.Level;
 using Tools;
 using UnityEditor;
 using UnityEngine;
+using GridLayerData = System.Tuple<PVZEngine.Grids.LawnGrid, PVZEngine.NamespaceID>;
 
 namespace MVZ2.Vanilla.Entities
 {
@@ -68,13 +72,13 @@ namespace MVZ2.Vanilla.Entities
         }
         public static DamageOutput TakeDamageNoSource(this Entity entity, float amount, DamageEffectList effects, NamespaceID armorSlot = null)
         {
-            return entity.TakeDamage(amount, effects, new EntityReferenceChain(null), armorSlot);
+            return entity.TakeDamage(amount, effects, new EntitySourceReference(null), armorSlot);
         }
         public static DamageOutput TakeDamage(this Entity entity, float amount, DamageEffectList effects, Entity source, NamespaceID armorSlot = null)
         {
-            return entity.TakeDamage(amount, effects, new EntityReferenceChain(source), armorSlot);
+            return entity.TakeDamage(amount, effects, new EntitySourceReference(source), armorSlot);
         }
-        public static DamageOutput TakeDamage(this Entity entity, float amount, DamageEffectList effects, EntityReferenceChain source, NamespaceID armorSlot = null)
+        public static DamageOutput TakeDamage(this Entity entity, float amount, DamageEffectList effects, ILevelSourceReference source, NamespaceID armorSlot = null)
         {
             return TakeDamage(new DamageInput(amount, effects, entity, source, armorSlot));
         }
@@ -89,8 +93,6 @@ namespace MVZ2.Vanilla.Entities
             if (input.Entity.IsInvincible() || input.Entity.IsDead)
                 return result;
             if (!PreTakeDamage(input, result))
-                return result;
-            if (input.Amount <= 0)
                 return result;
             if (!NamespaceID.IsValid(input.ShieldTarget))
             {
@@ -113,7 +115,11 @@ namespace MVZ2.Vanilla.Entities
                     result.ShieldTarget = input.ShieldTarget;
                 }
             }
-            PostTakeDamage(result);
+            ApplyDamageSpecialEffects(result);
+            if (result.IsValid())
+            {
+                PostTakeDamage(result);
+            }
             return result;
         }
 
@@ -131,6 +137,14 @@ namespace MVZ2.Vanilla.Entities
                 damageInfo.Entity.Level.Triggers.RunCallbackWithResultFiltered(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, param, result, entity.Type);
             }
             return result.GetValue<bool>();
+        }
+        private static void ApplyDamageSpecialEffects(DamageOutput output)
+        {
+            Entity entity = output.Entity;
+            if (entity == null)
+                return;
+            var param = new VanillaLevelCallbacks.PostTakeDamageParams(output);
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.APPLY_DAMAGE_SPECIAL_EFFECTS, param, entity.Type);
         }
         private static void PostTakeDamage(DamageOutput output)
         {
@@ -212,24 +226,26 @@ namespace MVZ2.Vanilla.Entities
             }
 
             // Apply Damage
-            float hpBefore = armor.Health;
             var amount = info.Amount;
             if (amount > 0)
             {
+                float hpBefore = armor.Health;
                 armor.Health -= amount;
+
+                result.Amount = amount;
+                result.SpendAmount = Mathf.Min(hpBefore, amount);
+                result.Fatal = hpBefore > 0 && armor.Health <= 0;
+                if (result.Fatal)
+                {
+                    var destroyInfo = new ArmorDestroyInfo(entity, armor, armor.Slot, info.Effects, info.Source, result);
+                    armor.Destroy(destroyInfo);
+                }
             }
-            bool fatal = hpBefore > 0 && armor.Health <= 0;
 
-            result.Amount = amount;
-            result.SpendAmount = Mathf.Min(hpBefore, amount);
-            result.Fatal = fatal;
-
-            if (fatal)
+            if (result.IsValid())
             {
-                var destroyInfo = new ArmorDestroyInfo(entity, armor, armor.Slot, info.Effects, info.Source, result);
-                armor.Destroy(destroyInfo);
+                PostArmorTakeDamage(armor, result);
             }
-            PostArmorTakeDamage(armor, result);
 
             return result;
         }
@@ -273,23 +289,25 @@ namespace MVZ2.Vanilla.Entities
             shell?.EvaluateDamage(info);
 
             // Apply Damage.
-            float hpBefore = entity.Health;
             var amount = info.Amount;
             if (amount > 0)
             {
+                float hpBefore = entity.Health;
                 entity.Health -= amount;
-            }
-            bool fatal = hpBefore > 0 && entity.Health <= 0;
 
-            result.Amount = amount;
-            result.SpendAmount = Mathf.Min(hpBefore, amount);
-            result.Fatal = fatal;
+                result.Amount = amount;
+                result.SpendAmount = Mathf.Min(hpBefore, amount);
+                result.Fatal = hpBefore > 0 && entity.Health <= 0;
+            }
 
             if (entity.Health <= 0)
             {
                 entity.Die(info.Effects, info.Source, result);
             }
-            PostBodyTakeDamage(entity, result);
+            if (result.IsValid())
+            {
+                PostBodyTakeDamage(entity, result);
+            }
 
             return result;
         }
@@ -347,9 +365,9 @@ namespace MVZ2.Vanilla.Entities
         #endregion
 
         #region 爆炸和溅射
-        public static DamageOutput[] Explode(this Entity entity, Vector3 center, float radius, int faction, float amount, DamageEffectList effects)
+        public static DamageOutput[] Explode(this Entity entity, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Predicate<IEntityCollider> filter = null)
         {
-            return entity.Level.Explode(center, radius, faction, amount, effects, entity);
+            return entity.Level.Explode(center, radius, faction, amount, effects, entity, filter);
         }
         public static DamageOutput[] ExplodeAgainstFriendly(this Entity entity, Vector3 center, float radius, int faction, float amount, DamageEffectList effects)
         {
@@ -602,62 +620,48 @@ namespace MVZ2.Vanilla.Entities
         #region 网格
         public static void UpdateTakenGrids(this Entity entity)
         {
-            // 将所有合法的网格添加到待添加列表中。
-            entityGridToAddBuffer.Clear();
-            if (entity.ExistsAndAlive())
-            {
-                var grids = entity.GetGridsToTake();
-                foreach (var grid in grids)
-                {
-                    if (CanTakeGrid(entity, grid))
-                    {
-                        entityGridToAddBuffer.Add(grid);
-                    }
-                }
-            }
+            targetGridLayerDataBuffer.Clear();
+            takenGridLayerDataBuffer.Clear();
+            GetTargetGridLayersToTakeNonAlloc(entity, targetGridLayerDataBuffer);
+            GetCurrentGridLayersToTakeNonAlloc(entity, takenGridLayerDataBuffer);
+            entityGridUpdater.Update(targetGridLayerDataBuffer, takenGridLayerDataBuffer, g => entity.TakeGrid(g.Item1, g.Item2), g => entity.ReleaseGrid(g.Item1, g.Item2));
+        }
+        private static void GetTargetGridLayersToTakeNonAlloc(Entity entity, List<GridLayerData> buffer)
+        {
+            if (!entity.ExistsAndAlive())
+                return;
 
-            // 获取目前占用的网格列表。
-            entityGridBuffer.Clear();
-            entity.GetTakenGrids(entityGridBuffer);
+            var grids = entity.GetGridsToTake();
+            if (grids == null)
+                return;
 
-            // 检查目前占用的网格，将不符合条件的网格加到移除列表中，将符合条件的网格保留，剩下的就是需要新增的网格。
-            entityGridToRemoveBuffer.Clear();
-            foreach (var key in entityGridBuffer)
+            var layers = entity.GetGridLayersToTake();
+            if (layers == null)
+                return;
+
+            foreach (var grid in grids)
             {
-                if (entityGridToAddBuffer.Contains(key))
+                if (!CanTakeGrid(entity, grid))
+                    continue;
+                foreach (var layer in layers)
                 {
-                    // 符合条件并且目前在表中。
-                    // 保留而非新添加到表中。
-                    entityGridToAddBuffer.Remove(key);
-                }
-                else
-                {
-                    // 不符合条件。
-                    entityGridToRemoveBuffer.Add(key);
+                    buffer.Add(new GridLayerData(grid, layer));
                 }
             }
-            // 移除不符合条件的网格。
-            foreach (var grid in entityGridToRemoveBuffer)
+        }
+        private static void GetCurrentGridLayersToTakeNonAlloc(Entity entity, List<GridLayerData> buffer)
+        {
+            takenGridBuffer.Clear();
+            entity.GetTakenGridsNonAlloc(takenGridBuffer);
+
+            foreach (var grid in takenGridBuffer)
             {
-                entityGridLayerBuffer.Clear();
-                entity.GetTakingGridLayersNonAlloc(grid, entityGridLayerBuffer);
-                foreach (var layer in entityGridLayerBuffer)
+                takenGridLayersBuffer.Clear();
+                entity.GetTakingGridLayersNonAlloc(grid, takenGridLayersBuffer);
+
+                foreach (var layer in takenGridLayersBuffer)
                 {
-                    if (!HasGridLayerToTake(entity, layer))
-                    {
-                        entity.ReleaseGrid(grid, layer);
-                    }
-                }
-            }
-            // 添加新的符合条件的网格。
-            foreach (var grid in entityGridToAddBuffer)
-            {
-                foreach (var layer in entity.GetGridLayersToTake())
-                {
-                    if (HasGridLayerToTake(entity, layer))
-                    {
-                        entity.TakeGrid(grid, layer);
-                    }
+                    buffer.Add(new GridLayerData(grid, layer));
                 }
             }
         }
@@ -671,18 +675,12 @@ namespace MVZ2.Vanilla.Entities
                 return false;
             return true;
         }
-        private static bool HasGridLayerToTake(this Entity entity, NamespaceID layer)
-        {
-            var layersToTake = entity.GetGridLayersToTake();
-            if (layersToTake == null)
-                return false;
-            return layersToTake.Contains(layer);
-        }
         private const float leaveGridHeight = 64;
-        private static List<LawnGrid> entityGridToAddBuffer = new List<LawnGrid>();
-        private static List<LawnGrid> entityGridToRemoveBuffer = new List<LawnGrid>();
-        private static List<LawnGrid> entityGridBuffer = new List<LawnGrid>();
-        private static List<NamespaceID> entityGridLayerBuffer = new List<NamespaceID>();
+        private static ListUpdater<GridLayerData> entityGridUpdater = new ListUpdater<GridLayerData>();
+        private static List<GridLayerData> targetGridLayerDataBuffer = new List<GridLayerData>();
+        private static List<GridLayerData> takenGridLayerDataBuffer = new List<GridLayerData>();
+        private static List<LawnGrid> takenGridBuffer = new List<LawnGrid>();
+        private static List<NamespaceID> takenGridLayersBuffer = new List<NamespaceID>();
         #endregion
 
 
@@ -700,9 +698,9 @@ namespace MVZ2.Vanilla.Entities
         }
         public static HealOutput Heal(this Entity entity, float amount, Entity source)
         {
-            return entity.Heal(amount, new EntityReferenceChain(source));
+            return entity.Heal(amount, new EntitySourceReference(source));
         }
-        public static HealOutput Heal(this Entity entity, float amount, EntityReferenceChain source)
+        public static HealOutput Heal(this Entity entity, float amount, ILevelSourceReference source)
         {
             return Heal(new HealInput(amount, entity, source));
         }
@@ -892,71 +890,6 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
-        #region 阵营
-        public static void Charm(this Entity entity, int faction)
-        {
-            var buff = entity.GetFirstBuff<CharmBuff>();
-            if (buff == null)
-            {
-                buff = entity.AddBuff<CharmBuff>();
-            }
-            CharmBuff.SetPermanent(buff, faction);
-            buff.Update();
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, new VanillaLevelCallbacks.PostEntityCharmParams(entity, buff));
-        }
-        public static void CharmWithSource(this Entity entity, Entity source)
-        {
-            var buff = entity.GetFirstBuff<CharmBuff>();
-            if (buff == null)
-            {
-                buff = entity.AddBuff<CharmBuff>();
-            }
-            CharmBuff.SetSource(buff, source);
-            buff.Update();
-            var param = new VanillaLevelCallbacks.PostEntityCharmParams(entity, buff);
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_CHARM, param);
-        }
-        public static void Mesmerize(this Entity entity)
-        {
-            var buff = entity.GetFirstBuff<MesmerizeBuff>();
-            if (buff == null)
-            {
-                buff = entity.AddBuff<MesmerizeBuff>();
-            }
-            MesmerizeBuff.SetPermanent(buff);
-            buff.Update();
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, new VanillaLevelCallbacks.PostEntityMesmerizeParams(entity, buff));
-        }
-        public static void MesmerizeWithSource(this Entity entity, Entity source)
-        {
-            var buff = entity.GetFirstBuff<MesmerizeBuff>();
-            if (buff == null)
-            {
-                buff = entity.AddBuff<MesmerizeBuff>();
-            }
-            MesmerizeBuff.SetSource(buff, source);
-            buff.Update();
-            var param = new VanillaLevelCallbacks.PostEntityMesmerizeParams(entity, buff);
-            entity.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, param);
-        }
-        public static void RemoveCharm(this Entity entity)
-        {
-            entity.RemoveBuffs<CharmBuff>();
-        }
-        public static void RemoveMesmerize(this Entity entity)
-        {
-            entity.RemoveBuffs<MesmerizeBuff>();
-        }
-        public static bool IsCharmed(this Entity entity)
-        {
-            return entity.HasBuff<CharmBuff>();
-        }
-        public static bool IsMesmerized(this Entity entity)
-        {
-            return entity.HasBuff<MesmerizeBuff>();
-        }
-        #endregion
-
         #region 护甲
         public static Armor GetMainArmor(this Entity entity)
         {
@@ -1068,6 +1001,201 @@ namespace MVZ2.Vanilla.Entities
         {
             return entity != null && entity.IsEntityOf(VanillaPickupID.blueprintPickup);
         }
+        #endregion
+
+        #region 状态效果
+        public static bool PreApplyStatusEffect(this Entity entity, BuffDefinition buff, ILevelSourceReference source)
+        {
+            var param = new VanillaLevelCallbacks.PreApplyStatusEffectParams(entity, buff, source);
+            var result = new CallbackResult(true);
+            entity.Level.Triggers.RunCallbackWithResultFiltered(VanillaLevelCallbacks.PRE_APPLY_STATUS_EFFECT, param, result, buff.GetID());
+            return result.GetValue<bool>();
+        }
+        public static void PostApplyStatusEffect(this Entity entity, Buff buff, ILevelSourceReference source)
+        {
+            var param = new VanillaLevelCallbacks.PostApplyStatusEffectParams(entity, buff, source);
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_APPLY_STATUS_EFFECT, param, buff.Definition.GetID());
+        }
+        public static bool PreRemoveStatusEffect(this Entity entity, BuffDefinition definition, ILevelSourceReference source)
+        {
+            var param = new VanillaLevelCallbacks.PreRemoveStatusEffectParams(entity, definition, source);
+            var result = new CallbackResult(true);
+            entity.Level.Triggers.RunCallbackWithResultFiltered(VanillaLevelCallbacks.PRE_REMOVE_STATUS_EFFECT, param, result, definition.GetID());
+            return result.GetValue<bool>();
+        }
+        public static void PostRemoveStatusEffect(this Entity entity, BuffDefinition definition, ILevelSourceReference source)
+        {
+            var param = new VanillaLevelCallbacks.PostRemoveStatusEffectParams(entity, definition, source);
+            entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_REMOVE_STATUS_EFFECT, param, definition.GetID());
+        }
+        public static void InflictWither(this Entity entity, int time, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.withered);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            Buff buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            buff.SetProperty(WitheredBuff.PROP_TIMEOUT, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void InflictWeakness(this Entity entity, int time, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.enemyWeakness);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            Buff buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            buff.SetProperty(EnemyWeaknessBuff.PROP_TIMEOUT, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void InflictPoison(this Entity entity, int time, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.poisoned);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            Buff buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            buff.SetProperty(EnemyWeaknessBuff.PROP_TIMEOUT, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void ShortCircuit(this Entity entity, int time, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Contraption.frankensteinShocked);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            buff.SetProperty(FrankensteinShockedBuff.PROP_TIMEOUT, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void InflictSlow(this Entity entity, int time, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.slow);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                entity.PlaySound(VanillaSoundID.freeze);
+                buff = entity.AddBuff(buffDefinition);
+            }
+            SlowBuff.SetTimeout(buff, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void Unfreeze(this Entity entity, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.slow);
+            if (!PreRemoveStatusEffect(entity, buffDefinition, source))
+                return;
+            entity.RemoveBuffs(buffDefinition);
+            PostRemoveStatusEffect(entity, buffDefinition, source);
+        }
+        #region 魅惑
+        public static void CharmPermanent(this Entity entity, int faction, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.charm);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            CharmBuff.SetPermanent(buff, faction);
+            buff.Update();
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void CharmWithController(this Entity entity, Entity controller, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.charm);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            CharmBuff.SetController(buff, controller);
+            buff.Update();
+            PostApplyStatusEffect(entity, buff, source);
+        }
+        public static void RemoveCharm(this Entity entity, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.charm);
+            if (!PreRemoveStatusEffect(entity, buffDefinition, source))
+                return;
+            entity.RemoveBuffs(buffDefinition);
+            PostRemoveStatusEffect(entity, buffDefinition, source);
+        }
+        public static bool IsCharmed(this Entity entity)
+        {
+            return entity.HasBuff<CharmBuff>();
+        }
+        #endregion
+
+
+        #region 催眠
+        public static void MesmerizePermanent(this Entity entity, int faction, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            MesmerizeBuff.SetPermanent(buff, faction);
+            buff.Update();
+            PostApplyStatusEffect(entity, buff, source);
+        }
+
+        public static void MesmerizeWithController(this Entity entity, Entity controller, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
+            if (!PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            MesmerizeBuff.SetController(buff, controller);
+            buff.Update();
+            PostApplyStatusEffect(entity, buff, source);
+        }
+        public static void RemoveMesmerize(this Entity entity, ILevelSourceReference source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
+            if (!PreRemoveStatusEffect(entity, buffDefinition, source))
+                return;
+            entity.RemoveBuffs(buffDefinition);
+            PostRemoveStatusEffect(entity, buffDefinition, source);
+        }
+        public static bool IsMesmerized(this Entity entity)
+        {
+            return entity.HasBuff<MesmerizeBuff>();
+        }
+        #endregion
+
         #endregion
 
         public static float GetRealGroundLimitY(this Entity entity)

@@ -31,7 +31,7 @@ namespace MVZ2.Metas
                     resource.ArmorMetaList = ArmorMetaList.FromXmlNode(document["armors"], defaultNsp);
                     break;
                 case "entities":
-                    resource.EntityMetaList = EntityMetaList.FromXmlNode(document["entities"], defaultNsp);
+                    resource.EntityMetaList = EntityMetaList.FromXmlNode(resource.Namespace, document["entities"], defaultNsp);
                     break;
                 case "shapes":
                     resource.ShapeMetaList = ShapeMetaList.FromXmlNode(document["shapes"], defaultNsp);
@@ -50,6 +50,9 @@ namespace MVZ2.Metas
                     break;
                 case "maps":
                     resource.MapMetaList = MapMetaList.FromXmlNode(document["maps"], defaultNsp);
+                    break;
+                case "commands":
+                    resource.CommandMetaList = CommandMetaList.FromXmlNode(document["commands"], defaultNsp);
                     break;
                 case "areas":
                     resource.AreaMetaList = AreaMetaList.FromXmlNode(document["areas"], defaultNsp);
@@ -76,7 +79,7 @@ namespace MVZ2.Metas
                     resource.ProgressBarMetaList = ProgressBarMetaList.FromXmlNode(document["bars"], defaultNsp);
                     break;
                 case "blueprints":
-                    resource.BlueprintMetaList = BlueprintMetaList.FromXmlNode(document["blueprints"], defaultNsp);
+                    resource.BlueprintMetaList = BlueprintMetaList.FromXmlNode(resource.Namespace, document["blueprints"], defaultNsp);
                     break;
                 case "spawns":
                     resource.SpawnMetaList = SpawnMetaList.FromXmlNode(document["spawns"], defaultNsp);

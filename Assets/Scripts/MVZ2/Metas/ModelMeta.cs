@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Xml;
 using MVZ2.IO;
 using MVZ2.Models;
-using MVZ2Logic.Models;
 using PVZEngine;
 using UnityEngine;
 
 namespace MVZ2.Metas
 {
-    public class ModelMeta : IModelMeta
+    public class ModelMeta
     {
         public string Name { get; private set; }
         public string Type { get; private set; }
@@ -20,6 +19,7 @@ namespace MVZ2.Metas
         public float XOffset { get; private set; }
         public float YOffset { get; private set; }
         public AnimatorParameter[] AnimatorParameters { get; private set; }
+        public Dictionary<string, object> ModelProperties { get; private set; }
         public static ModelMeta FromXmlNode(XmlNode node, string defaultNsp)
         {
             var name = node.GetAttribute("name");
@@ -44,6 +44,7 @@ namespace MVZ2.Metas
                     }
                 }
             }
+            var modelProperties = node["properties"].ToPropertyDictionary(defaultNsp);
             return new ModelMeta()
             {
                 Name = name,
@@ -54,7 +55,8 @@ namespace MVZ2.Metas
                 Height = height,
                 XOffset = xOffset,
                 YOffset = yOffset,
-                AnimatorParameters = animatorParameters.ToArray()
+                AnimatorParameters = animatorParameters.ToArray(),
+                ModelProperties = modelProperties,
             };
         }
         public override string ToString()

@@ -50,7 +50,8 @@ namespace MVZ2Logic
             RegisterClass<SerializablePropertyDictionaryString>();
 
             // PVZEngine.Level
-            RegisterClass<EntityReferenceChain>();
+            RegisterClass<EntitySourceReference>();
+            RegisterClass<ArtifactSourceReference>();
             RegisterClass<EntityID>();
             RegisterClass<SerializableEntityCollider>();
             RegisterClass<SerializableBuiltinCollisionSystem>();
@@ -62,6 +63,7 @@ namespace MVZ2Logic
             RegisterClass<BuffReferenceLevel>();
             RegisterClass<BuffReferenceClassicSeedPack>();
             RegisterClass<BuffReferenceConveyorSeedPack>();
+            RegisterClass<BuffReferenceLawnGrid>();
 
             RegisterClass<SerializableEntity>();
             RegisterClass<SerializableArmor>();
@@ -210,6 +212,15 @@ namespace MVZ2Logic
             if (!BsonClassMap.IsClassMapRegistered(typeof(T)))
                 BsonClassMap.RegisterClassMap<T>();
         }
+        public static void RegisterClass(Type t)
+        {
+            if (!BsonClassMap.IsClassMapRegistered(t))
+            {
+                var map = new BsonClassMap(t);
+                map.AutoMap();
+                BsonClassMap.RegisterClassMap(map);
+            }
+        }
         public static bool isInited { get; private set; } = false;
         public static JsonWriterSettings readFriendlyWriterSettings = new JsonWriterSettings()
         {
@@ -263,4 +274,6 @@ namespace MVZ2Logic
             }
         }
     }
+
+    public delegate void SerializableRegister<T>();
 }

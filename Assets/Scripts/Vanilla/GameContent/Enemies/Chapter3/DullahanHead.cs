@@ -4,6 +4,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -16,8 +17,8 @@ namespace MVZ2.GameContent.Enemies
     {
         public DullahanHead(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.POST_ENTITY_CHARM, PostEntityCharmCallback);
-            AddTrigger(VanillaLevelCallbacks.POST_ENTITY_MESMERIZE, PostEntityMesmerizeCallback);
+            AddTrigger(VanillaLevelCallbacks.POST_APPLY_STATUS_EFFECT, PostEntityCharmCallback, filter: VanillaBuffID.Entity.charm);
+            AddTrigger(VanillaLevelCallbacks.POST_APPLY_STATUS_EFFECT, PostEntityMesmerizeCallback, filter: VanillaBuffID.Entity.mesmerize);
             AddTrigger(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, PostEntityReincarnateCallback);
         }
         public override void Init(Entity entity)
@@ -34,7 +35,7 @@ namespace MVZ2.GameContent.Enemies
                 input.Multiply(3);
             }
         }
-        private void PostEntityCharmCallback(VanillaLevelCallbacks.PostEntityCharmParams param, CallbackResult result)
+        private void PostEntityCharmCallback(VanillaLevelCallbacks.PostApplyStatusEffectParams param, CallbackResult result)
         {
             var entity = param.entity;
             var buff = param.buff;
@@ -45,7 +46,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             CharmBuff.CloneCharm(buff, body);
         }
-        private void PostEntityMesmerizeCallback(VanillaLevelCallbacks.PostEntityMesmerizeParams param, CallbackResult result)
+        private void PostEntityMesmerizeCallback(VanillaLevelCallbacks.PostApplyStatusEffectParams param, CallbackResult result)
         {
             var entity = param.entity;
             var buff = param.buff;

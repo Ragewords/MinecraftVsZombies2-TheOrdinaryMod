@@ -45,10 +45,8 @@ namespace MVZ2.GameContent.Contraptions
                 }
                 else if (target.Type == EntityTypes.PLANT)
                 {
-                    if (target.IsCharmed())
-                        target.RemoveCharm();
-                    if (target.IsMesmerized())
-                        target.RemoveMesmerize();
+                    target.RemoveCharm(new EntitySourceReference(entity));
+                    target.RemoveMesmerize(new EntitySourceReference(entity));
                     target.PlaySound(VanillaSoundID.mindClear);
                 }
                 else if (target.Type == EntityTypes.PROJECTILE && target.IsHostile(entity))
@@ -87,12 +85,12 @@ namespace MVZ2.GameContent.Contraptions
                         bool playSound = false;
                         if (ent.IsCharmed())
                         {
-                            ent.RemoveCharm();
+                            ent.RemoveCharm(new EntitySourceReference(entity));
                             playSound = true;
                         }
                         if (ent.IsMesmerized())
                         {
-                            ent.RemoveMesmerize();
+                            ent.RemoveMesmerize(new EntitySourceReference(entity));
                             playSound = true;
                         }
                         if (playSound)

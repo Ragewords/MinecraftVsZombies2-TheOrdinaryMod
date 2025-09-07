@@ -1,5 +1,4 @@
-﻿using MVZ2.Level.UI;
-using MVZ2.Managers;
+﻿using MVZ2.Managers;
 using MVZ2.Models;
 using MVZ2.SeedPacks;
 using MVZ2.UI;
@@ -8,6 +7,7 @@ using MVZ2Logic;
 using PVZEngine.Definitions;
 using PVZEngine.Level;
 using PVZEngine.Models;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace MVZ2.Level
@@ -30,7 +30,7 @@ namespace MVZ2.Level
             var model = GetModel();
             if (model != null)
             {
-                model.Init(Controller.GetCamera());
+                model.Init(null, Controller.GetCamera());
             }
             AddCallbacks();
         }
@@ -56,9 +56,9 @@ namespace MVZ2.Level
         {
             return Main.ResourceManager.GetBlueprintViewData(GetSeedDefinition(), Level.IsEndless(), IsCommandBlock());
         }
-        public virtual TooltipViewData GetTooltipViewData()
+        public virtual TooltipContent GetTooltipViewData()
         {
-            return new TooltipViewData()
+            return new TooltipContent()
             {
                 name = GetName(),
                 error = string.Empty,
@@ -97,7 +97,7 @@ namespace MVZ2.Level
         protected abstract void OnDestroy();
         private string GetName()
         {
-            return Controller.BlueprintChoosePart.GetBlueprintName(GetSeedDefinition()?.GetID(), IsCommandBlock());
+            return Main.ResourceManager.GetBlueprintName(GetSeedDefinition()?.GetID(), IsCommandBlock());
         }
         #endregion
 
@@ -116,11 +116,15 @@ namespace MVZ2.Level
             {
                 this.blueprintController = blueprintController;
             }
-            public ITooltipTarget GetTarget(LevelController level)
+            public Camera GetCamera()
+            {
+                return blueprintController.Controller.GetCamera();
+            }
+            public ITooltipTarget GetTarget()
             {
                 return blueprintController.ui;
             }
-            public TooltipViewData GetViewData(LevelController level)
+            public TooltipContent GetContent()
             {
                 return blueprintController.GetTooltipViewData();
             }

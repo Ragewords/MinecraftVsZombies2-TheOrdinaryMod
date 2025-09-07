@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
@@ -19,7 +18,7 @@ namespace MVZ2.Vanilla.Contraptions
     {
         public static bool CanEvoke(this Entity contraption)
         {
-            var evokable = contraption.Definition.GetBehaviour<IEvokableContraption>();
+            var evokable = contraption.Definition.GetBehaviour<IContraptionEvokeBehaviour>();
             if (evokable == null)
                 return false;
             return evokable.CanEvoke(contraption);
@@ -27,7 +26,7 @@ namespace MVZ2.Vanilla.Contraptions
         public static void Evoke(this Entity contraption)
         {
             contraption.Spawn(VanillaEffectID.evocationStar, contraption.GetCenter());
-            foreach (var evokable in contraption.Definition.GetBehaviours<IEvokableContraption>())
+            foreach (var evokable in contraption.Definition.GetBehaviours<IContraptionEvokeBehaviour>())
             {
                 evokable.Evoke(contraption);
             }
@@ -162,23 +161,5 @@ namespace MVZ2.Vanilla.Contraptions
             return contraption;
         }
 
-        public static void ShortCircuit(this Entity contraption, int time)
-        {
-            var buff = contraption.GetFirstBuff<FrankensteinShockedBuff>();
-            if (buff == null)
-            {
-                buff = contraption.AddBuff<FrankensteinShockedBuff>();
-            }
-            buff.SetProperty(FrankensteinShockedBuff.PROP_TIMEOUT, time);
-        }
-        public static void InflictWither(this Entity enemy, int time)
-        {
-            Buff buff = enemy.GetFirstBuff<WitheredBuff>();
-            if (buff == null)
-            {
-                buff = enemy.AddBuff<WitheredBuff>();
-            }
-            buff.SetProperty(WitheredBuff.PROP_TIMEOUT, time);
-        }
     }
 }

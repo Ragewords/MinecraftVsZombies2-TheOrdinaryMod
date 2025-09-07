@@ -14,6 +14,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -161,8 +162,8 @@ namespace MVZ2.GameContent.Stages
                         level.SetBlueprintsActive(true);
                         level.SetPickaxeActive(true);
                         level.SetStarshardActive(true);
-                        Global.Game.Unlock(VanillaUnlockID.starshard);
-                        Global.Game.SaveToFile(); // 解锁星之碎片后保存游戏。
+                        Global.Saves.Unlock(VanillaUnlockID.starshard);
+                        Global.Saves.SaveToFile(); // 解锁星之碎片后保存游戏。
                         level.SimpleStartTalk(VanillaTalkID.starshardTutorial, 1, 2, onEnd: () => level.BeginLevel());
                     }
                     break;

@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Buffs
             buff.SetProperty(PROP_MODE, MesmerizeModes.PERMANENT);
             buff.SetProperty(PROP_SPEED, 2f);
         }
-        public static void SetSource(Buff buff, Entity source)
+        public static void SetController(Buff buff, Entity source)
         {
             buff.SetProperty(PROP_MODE, MesmerizeModes.SOURCE);
             buff.SetProperty(PROP_SOURCE, new EntityID(source));

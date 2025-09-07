@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Reflection;
+using System.Collections.Generic;
 using MVZ2Logic.Games;
 using MVZ2Logic.Saves;
 using PVZEngine;
@@ -13,18 +13,18 @@ namespace MVZ2Logic.Modding
         public Mod(string nsp)
         {
             Namespace = nsp;
-            triggers = new CallbackRegistry(Global.Game);
         }
-        public virtual void Init(IGame game, Assembly[] assemblies)
-        {
 
+        #region 初始化
+        public virtual void Init(IGlobalGame game)
+        {
         }
-        public virtual void LateInit(IGame game)
+        public virtual void LateInit(IGlobalGame game)
         {
 
         }
         public virtual void PostGameInit() { }
-        public virtual void PostReloadMods(IGame game)
+        public virtual void PostReloadMods(IGlobalGame game)
         {
             foreach (var definition in definitionGroup.GetDefinitions())
             {
@@ -35,22 +35,20 @@ namespace MVZ2Logic.Modding
                 }
             }
         }
-        public void Load()
-        {
-            ApplyCallbacks();
-        }
-        public void Unload()
-        {
-            RevertCallbacks();
-        }
+        #endregion
+
+        #region 保存&读取数据
         public abstract ModSaveData CreateSaveData();
         public abstract ModSaveData LoadSaveData(string json);
-        protected void AddDefinition(Definition def)
+        #endregion
+
+        #region 定义
+        public void AddDefinition(Definition def)
         {
             definitionGroup.Add(def);
             foreach (var trigger in def.GetTriggers())
             {
-                triggers.AddTrigger(trigger);
+                triggers.Add(trigger);
             }
         }
         public T GetDefinition<T>(string type, NamespaceID defRef) where T : Definition
@@ -65,20 +63,43 @@ namespace MVZ2Logic.Modding
         {
             return definitionGroup.GetDefinitions();
         }
-        private void ApplyCallbacks()
+        #endregion
+
+        #region 全局回调
+        public void ApplyGlobalCallbacks(IGlobalCallbacks implements)
         {
-            triggers.ApplyCallbacks();
+            implements.Apply(this);
         }
-        private void RevertCallbacks()
-        {
-            triggers.RevertCallbacks();
-        }
+        #endregion
+
+        #region 触发器
         public void AddTrigger<TArgs>(CallbackType<TArgs> callbackID, Action<TArgs, CallbackResult> action, int priority = 0, object filter = null)
         {
-            triggers.AddTrigger(new Trigger<TArgs>(callbackID, action, priority, filter));
+            triggers.Add(new Trigger<TArgs>(callbackID, action, priority, filter));
         }
+        public ITrigger[] GetTriggers()
+        {
+            return triggers.ToArray();
+        }
+        #endregion
+
+        #region 序列化
+        protected void RegisterSerializableType<T>()
+        {
+            SerializeHelper.RegisterClass<T>();
+        }
+        protected string Serialize(object obj)
+        {
+            return SerializeHelper.ToBson(obj);
+        }
+        protected T Deserialize<T>(string json)
+        {
+            return SerializeHelper.FromBson<T>(json);
+        }
+        #endregion
+
         public string Namespace { get; }
         private DefinitionGroup definitionGroup = new DefinitionGroup();
-        protected CallbackRegistry triggers;
+        protected List<ITrigger> triggers = new List<ITrigger>();
     }
 }

@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Saves;
 using MVZ2Logic;
+using MVZ2Logic.Games;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -22,13 +23,13 @@ namespace MVZ2.Level
         {
             ui.OnExitLevelToNoteCalled += OnUIExitLevelToNoteCalledCallback;
             ui.OnStartGameCalled += StartGame;
+            ui.SetMobile(Main.IsMobile());
 
             var uiPreset = GetUIPreset();
             uiPreset.OnRaycastReceiverPointerInteraction += UI_OnRaycastReceiverPointerInteractionCallback;
             uiPreset.OnMenuButtonClick += UI_OnMenuButtonClickCallback;
             uiPreset.OnSpeedUpButtonClick += UI_OnSpeedUpButtonClickCallback;
 
-            ui.SetMobile(Main.IsMobile());
             uiPreset.HideMoney();
             SetUIVisibleState(VisibleState.Nothing);
         }
@@ -115,7 +116,7 @@ namespace MVZ2.Level
         #region 难度
         private void UpdateDifficultyName()
         {
-            var difficultyName = Resources.GetDifficultyName(level.Difficulty);
+            var difficultyName = Game.GetDifficultyName(level.Difficulty);
             var levelUI = GetUIPreset();
             levelUI.SetDifficulty(difficultyName);
         }
@@ -163,7 +164,7 @@ namespace MVZ2.Level
         }
         private string GetHotkeyName(NamespaceID keyID)
         {
-            if (Global.IsMobile() || !Main.OptionsManager.ShowHotkeyIndicators())
+            if (Global.Game.IsMobile() || !Main.OptionsManager.ShowHotkeyIndicators())
                 return string.Empty;
             var keycode = Main.OptionsManager.GetKeyBinding(keyID);
             return keycode != KeyCode.None ? Main.InputManager.GetKeyCodeName(keycode) : string.Empty;

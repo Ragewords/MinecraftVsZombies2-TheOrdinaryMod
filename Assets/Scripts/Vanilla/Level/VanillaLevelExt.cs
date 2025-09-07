@@ -21,6 +21,7 @@ using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Definitions;
@@ -53,21 +54,27 @@ namespace MVZ2.Vanilla.Level
         }
         public static void CheckGameOver(this LevelEngine level)
         {
-            var gameOverEnemies = level.FindEntities(e => e.Position.x < GetBorderX(false) && e.CanEntityEnterHouse());
-            if (gameOverEnemies.Length > 0)
+            if (level.IsCleared) // 关卡通关后不能再死亡
+                return;
+            if (level.IsGodMode()) // 上帝模式
+                return;
+            var gameOverEnemy = level.FindFirstEntity(e => e.Position.x < GetBorderX(false) && e.CanEntityEnterHouse());
+            if (gameOverEnemy != null)
             {
-                level.GameOver(GameOverTypes.ENEMY, gameOverEnemies.FirstOrDefault(), null);
+                level.GameOver(GameOverTypes.ENEMY, gameOverEnemy, null);
             }
         }
-        public static DamageOutput[] Explode(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source)
+        public static DamageOutput[] Explode(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source, Predicate<IEntityCollider> filter = null)
         {
-            return level.Explode(center, radius, faction, amount, effects, new EntityReferenceChain(source));
+            return level.Explode(center, radius, faction, amount, effects, new EntitySourceReference(source), filter);
         }
-        public static DamageOutput[] Explode(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, EntityReferenceChain source)
+        public static DamageOutput[] Explode(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, ILevelSourceReference source, Predicate<IEntityCollider> filter = null)
         {
             List<DamageOutput> damageOutputs = new List<DamageOutput>();
             foreach (IEntityCollider entityCollider in level.OverlapSphere(center, radius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0))
             {
+                if (filter != null && !filter(entityCollider))
+                    continue;
                 var damageOutput = entityCollider.TakeDamage(amount, effects, source);
                 if (damageOutput != null)
                 {
@@ -78,9 +85,9 @@ namespace MVZ2.Vanilla.Level
         }
         public static DamageOutput[] ExplodeAgainstFriendly(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source)
         {
-            return level.ExplodeAgainstFriendly(center, radius, faction, amount, effects, new EntityReferenceChain(source));
+            return level.ExplodeAgainstFriendly(center, radius, faction, amount, effects, new EntitySourceReference(source));
         }
-        public static DamageOutput[] ExplodeAgainstFriendly(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, EntityReferenceChain source)
+        public static DamageOutput[] ExplodeAgainstFriendly(this LevelEngine level, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, ILevelSourceReference source)
         {
             List<DamageOutput> damageOutputs = new List<DamageOutput>();
             foreach (IEntityCollider entityCollider in level.OverlapSphere(center, radius, faction, 0, EntityCollisionHelper.MASK_VULNERABLE))
@@ -95,9 +102,9 @@ namespace MVZ2.Vanilla.Level
         }
         public static DamageOutput[] SplashDamage(this LevelEngine level, IEntityCollider excludeCollider, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, Entity source)
         {
-            return level.SplashDamage(excludeCollider, center, radius, faction, amount, effects, new EntityReferenceChain(source));
+            return level.SplashDamage(excludeCollider, center, radius, faction, amount, effects, new EntitySourceReference(source));
         }
-        public static DamageOutput[] SplashDamage(this LevelEngine level, IEntityCollider excludeCollider, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, EntityReferenceChain source)
+        public static DamageOutput[] SplashDamage(this LevelEngine level, IEntityCollider excludeCollider, Vector3 center, float radius, int faction, float amount, DamageEffectList effects, ILevelSourceReference source)
         {
             List<DamageOutput> damageOutputs = new List<DamageOutput>();
             foreach (IEntityCollider entityCollider in level.OverlapSphere(center, radius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0))
@@ -233,8 +240,11 @@ namespace MVZ2.Vanilla.Level
 
                     var param = new SpawnParams();
                     param.SetProperty(VanillaEnemyProps.PREVIEW_ENEMY, true);
-                    Entity enm = level.Spawn(spawnDef.GetPreviewEntityID(), pos, null, param);
-                    createdEnemies.Add(enm);
+                    var enm = spawnDef.SpawnPreviewEntity(level, pos, param);
+                    if (enm != null)
+                    {
+                        createdEnemies.Add(enm);
+                    }
 
                     spawnToCreate.Remove(spawnDef);
                 }
@@ -452,7 +462,7 @@ namespace MVZ2.Vanilla.Level
 
         public static float GetLeftUIBorderX(this LevelEngine level)
         {
-            if (Global.IsMobile())
+            if (Global.Game.IsMobile())
             {
                 return 160;
             }
@@ -733,13 +743,26 @@ namespace MVZ2.Vanilla.Level
             var lane = level.GetLane(z);
             return level.IsWaterGrid(column, lane);
         }
-        public static void GetConnectedWaterGrids(this LevelEngine level, Vector3 pos, int xExpand, int yExpand, HashSet<LawnGrid> results)
+        public static bool IsConductiveGrid(this LevelEngine level, int column, int lane)
+        {
+            var grid = level.GetGrid(column, lane);
+            if (grid == null)
+                return false;
+            return grid.IsConductive();
+        }
+        public static bool IsConductiveAt(this LevelEngine level, float x, float z)
+        {
+            var column = level.GetColumn(x);
+            var lane = level.GetLane(z);
+            return level.IsConductiveGrid(column, lane);
+        }
+        public static void GetConnectedConductiveGrids(this LevelEngine level, Vector3 pos, int xExpand, int yExpand, HashSet<LawnGrid> results)
         {
             var column = level.GetColumn(pos.x);
             var lane = level.GetLane(pos.z);
-            level.GetConnectedWaterGrids(column, lane, xExpand, yExpand, results);
+            level.GetConnectedConductiveGrids(column, lane, xExpand, yExpand, results);
         }
-        public static void GetConnectedWaterGrids(this LevelEngine level, int column, int lane, int xExpand, int yExpand, HashSet<LawnGrid> results)
+        public static void GetConnectedConductiveGrids(this LevelEngine level, int column, int lane, int xExpand, int yExpand, HashSet<LawnGrid> results)
         {
             for (int xOff = -xExpand; xOff <= xExpand; xOff++)
             {
@@ -748,7 +771,9 @@ namespace MVZ2.Vanilla.Level
                     var col = column + xOff;
                     var lan = lane + yOff;
                     var grid = level.GetGrid(col, lan);
-                    if (grid != null && grid.IsWater())
+                    if (grid == null)
+                        continue;
+                    if (grid.IsConductive())
                     {
                         results.Add(grid);
                     }
@@ -805,10 +830,10 @@ namespace MVZ2.Vanilla.Level
         }
         public static void UpdatePersistentLevelUnlocks(this LevelEngine level)
         {
-            var game = Global.Game;
-            level.SetSeedSlotCount(game.GetBlueprintSlots());
-            level.SetStarshardSlotCount(game.GetStarshardSlots());
-            level.SetArtifactSlotCount(game.GetArtifactSlots());
+            var saves = Global.Saves;
+            level.SetSeedSlotCount(saves.GetBlueprintSlots());
+            level.SetStarshardSlotCount(saves.GetStarshardSlots());
+            level.SetArtifactSlotCount(saves.GetArtifactSlots());
         }
         public static bool ValidateGridOutOfBounds(this LevelEngine level, Vector2Int position)
         {
@@ -818,78 +843,73 @@ namespace MVZ2.Vanilla.Level
                 return false;
             return true;
         }
-        #region 连接的格子
-        public static void GetConnectedLaneGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
+
+        #region 障碍物生成
+        public static LawnGrid[] FindObstacleSpawnGrids(this LevelEngine level, NamespaceID[] layersToTake, RandomGenerator rng, int count, int minColumn, Func<LawnGrid, float> weightGetter)
         {
-            var col1 = level.GetColumn(pos1.x);
-            var col2 = level.GetColumn(pos2.x);
-            var lan1 = level.GetLane(pos1.z);
-            var lan2 = level.GetLane(pos2.z);
-            level.GetConnectedLaneGrids(col1, col2, lan1, lan2, results);
+            if (count <= 0 || rng == null || weightGetter == null)
+                return Array.Empty<LawnGrid>();
+            var allPossible = new HashSet<LawnGrid>();
+            var allPreferred = new HashSet<LawnGrid>();
+            level.FindAllObstacleSpawnGrids(layersToTake, minColumn, allPossible, allPreferred);
+
+            var preferredCount = Mathf.Min(allPreferred.Count, count);
+            var possibleCount = Mathf.Min(allPossible.Count, count - preferredCount);
+
+            List<LawnGrid> results = new List<LawnGrid>();
+            if (preferredCount > 0)
+            {
+                var weights = allPreferred.Select(g => weightGetter(g)).ToArray();
+                results.AddRange(allPreferred.WeightedRandomTake(weights, preferredCount, rng));
+            }
+            if (possibleCount > 0)
+            {
+                var weights = allPossible.Select(g => weightGetter(g)).ToArray();
+                results.AddRange(allPossible.WeightedRandomTake(weights, possibleCount, rng));
+            }
+            return results.ToArray();
         }
-        public static void GetConnectedLaneGrids(this LevelEngine level, int col1, int col2, int lan1, int lan2, HashSet<LawnGrid> results)
+        private static void FindAllObstacleSpawnGrids(this LevelEngine level, NamespaceID[] layersToTake, int minColumn, HashSet<LawnGrid> possible, HashSet<LawnGrid> preferred)
         {
-            if (lan1 != lan2)
-                return;
-            if (col1 < col2)
+            for (int col = minColumn; col < level.GetMaxColumnCount(); col++)
             {
-                for (int xOff = col1; xOff <= col2; xOff++)
+                for (int lane = 0; lane < level.GetMaxLaneCount(); lane++)
                 {
-                    var grid = level.GetGrid(xOff, lan1);
-                    if (grid != null)
+                    var grid = level.GetGrid(col, lane);
+
+                    bool isPossible = true;
+                    bool isPrefered = true;
+                    foreach (var layer in layersToTake)
                     {
-                        results.Add(grid);
+                        var layerEntity = grid.GetLayerEntity(layer);
+                        if (layerEntity != null)
+                        {
+                            isPrefered = false;
+                            if (layerEntity.Type != EntityTypes.PLANT)
+                            {
+                                isPossible = false;
+                            }
+                        }
                     }
-                }
-            }
-            else
-            {
-                for (int xOff = col2; xOff <= col1; xOff++)
-                {
-                    var grid = level.GetGrid(xOff, lan1);
-                    if (grid != null)
+                    if (isPossible)
                     {
-                        results.Add(grid);
+                        possible.Add(grid);
+                    }
+                    if (isPrefered)
+                    {
+                        preferred.Add(grid);
                     }
                 }
             }
         }
-        public static void GetConnectedColumnGrids(this LevelEngine level, Vector3 pos1, Vector3 pos2, HashSet<LawnGrid> results)
+        public static bool IsPossibleGridForObstacleSpawn(this LawnGrid grid, NamespaceID[] layersToTake)
         {
-            var col1 = level.GetColumn(pos1.x);
-            var col2 = level.GetColumn(pos2.x);
-            var lan1 = level.GetLane(pos1.z);
-            var lan2 = level.GetLane(pos2.z);
-            level.GetConnectedColumnGrids(col1, col2, lan1, lan2, results);
+            return !layersToTake.Any(l => grid.GetLayerEntity(l) is Entity ent && ent.Type != EntityTypes.PLANT);
         }
-        public static void GetConnectedColumnGrids(this LevelEngine level, int col1, int col2, int lan1, int lan2, HashSet<LawnGrid> results)
+        public static bool IsPreferredGridForObstacleSpawn(this LawnGrid grid, NamespaceID[] layersToTake)
         {
-            if (col1 != col2)
-                return;
-            if (lan1 < lan2)
-            {
-                for (int zOff = lan1; zOff <= lan2; zOff++)
-                {
-                    var grid = level.GetGrid(col1, zOff);
-                    if (grid != null)
-                    {
-                        results.Add(grid);
-                    }
-                }
-            }
-            else
-            {
-                for (int zOff = lan2; zOff <= lan1; zOff++)
-                {
-                    var grid = level.GetGrid(col1, zOff);
-                    if (grid != null)
-                    {
-                        results.Add(grid);
-                    }
-                }
-            }
+            return !layersToTake.Any(l => grid.GetLayerEntity(l) is Entity ent);
         }
         #endregion
-
     }
 }

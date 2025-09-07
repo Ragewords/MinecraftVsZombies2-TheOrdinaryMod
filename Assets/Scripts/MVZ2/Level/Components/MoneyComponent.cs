@@ -18,7 +18,7 @@ namespace MVZ2.Level.Components
         }
         public void SetMoney(int value)
         {
-            Global.Game.SetMoney(value);
+            Global.Saves.SetMoney(value);
         }
         public void AddMoney(int value)
         {
@@ -26,7 +26,7 @@ namespace MVZ2.Level.Components
         }
         public int GetMoney()
         {
-            return Global.Game.GetMoney();
+            return Global.Saves.GetMoney();
         }
         public int GetDelayedMoney()
         {
@@ -34,6 +34,8 @@ namespace MVZ2.Level.Components
         }
         public void AddDelayedMoney(Entity entity, int value)
         {
+            if (value == 0)
+                return;
             var before = GetMoney();
             AddMoney(value);
             var added = GetMoney() - before;

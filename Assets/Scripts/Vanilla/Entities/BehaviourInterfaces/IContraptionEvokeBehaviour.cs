@@ -1,0 +1,10 @@
+﻿using PVZEngine.Entities;
+
+namespace MVZ2.Vanilla.Entities
+{
+    public interface IContraptionEvokeBehaviour
+    {
+        bool CanEvoke(Entity contraption);
+        void Evoke(Entity contraption);
+    }
+}

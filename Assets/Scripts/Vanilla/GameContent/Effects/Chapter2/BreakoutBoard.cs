@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -103,9 +104,9 @@ namespace MVZ2.GameContent.Effects
             var screenPosition = param.screenPos;
             var button = param.button;
             var delta = param.delta;
-            if (!Global.Game.IsInLevel())
+            if (!Global.Level.IsInLevel())
                 return;
-            var level = Global.Game.GetLevel();
+            var level = Global.Level.GetLevel();
             if (!level.IsGameRunning())
                 return;
             boardsBuffer.Clear();

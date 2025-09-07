@@ -68,7 +68,6 @@ namespace MVZ2.GameContent.Buffs
         public const string lightningOrbEvoked = "lightning_orb_evoked";
         public const string devourerInvincible = "devourer_invincible";
         public const string hellfireCursed = "hellfire_cursed";
-        public const string desirePotHighlight = "desire_pot_highlight";
         public const string imitated = "imitated";
         public const string noteBlockCharged = "note_block_charged";
         public const string hfpdUpgraded = "hfpd_upgraded";
@@ -132,7 +131,6 @@ namespace MVZ2.GameContent.Buffs
 
         public const string beingRiden = "being_riden";
         public const string ridingPassenger = "riding_passenger";
-        public const string passengerEnterHouse = "passenger_enter_house";
         // Obstacle
         public const string temporaryUpdateBeforeGame = "temporary_update_before_game";
         public const string lightFadeout = "light_fadeout";
@@ -170,6 +168,7 @@ namespace MVZ2.GameContent.Buffs
         {
             public const string breakoutBoardUpgrade = "breakout_board_upgrade";
             public const string timeoutLightShrink = "timeout_light_shrink";
+            public const string waterStainFrozen = "water_stain_frozen";
         }
 
         public static class SeedPack
@@ -230,6 +229,16 @@ namespace MVZ2.GameContent.Buffs
 
             public const string theGiantTransition = "the_giant_transition";
             public const string theGiantCleared = "the_giant_cleared";
+
+
+            public const string debugGodmode = "debug_godmode";
+            public const string debugNoRecharge = "debug_no_recharge";
+            public const string debugStarshard = "debug_starshard";
+            public const string debugEnergy = "debug_energy";
+        }
+        public static class Grid
+        {
+            public const string waterStainWet = "water_stain_wet";
         }
         public static class Boss
         {
@@ -245,6 +254,14 @@ namespace MVZ2.GameContent.Buffs
             public const string theGiantPacmanKilled = "the_giant_pacman_killed";
             public const string theGiantSnake = "the_giant_snake";
             public const string theGiantPhase3 = "the_giant_phase3";
+        }
+        public static class Contraption
+        {
+            public const string fireworkDispenserEvoked = "firework_dispenser_evoked";
+        }
+        public static class Enemy
+        {
+            public const string waterStainSlide = "water_stain_slide";
         }
         public static class Pickup
         {
@@ -287,8 +304,6 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID infinityDoor = Get(VanillaBuffNames.infinityDoor);
         public static readonly NamespaceID heavyCannon = Get(VanillaBuffNames.heavyCannon);
         public static readonly NamespaceID beaconDamage = Get(VanillaBuffNames.beaconDamage);
-
-        public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);
@@ -303,9 +318,30 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID witherSkeletonSkullReduceCost = Get(VanillaBuffNames.SeedPack.witherSkeletonSkullReduceCost);
             public static readonly NamespaceID commandBlockBlueprint = Get(VanillaBuffNames.SeedPack.commandBlockBlueprint);
         }
+        public static class Entity
+        {
+            public static readonly NamespaceID withered = Get(VanillaBuffNames.withered);
+            public static readonly NamespaceID slow = Get(VanillaBuffNames.slow);
+            public static readonly NamespaceID charm = Get(VanillaBuffNames.charm);
+            public static readonly NamespaceID mesmerize = Get(VanillaBuffNames.mesmerize);
+        }
+        public static class Contraption
+        {
+            public static readonly NamespaceID frankensteinShocked = Get(VanillaBuffNames.frankensteinShocked);
+            public static readonly NamespaceID fireworkDispenserEvoked = Get(VanillaBuffNames.Contraption.fireworkDispenserEvoked);
+        }
+        public static class Enemy
+        {
+            public static readonly NamespaceID enemyWeakness = Get(VanillaBuffNames.enemyWeakness);
+            public static readonly NamespaceID waterStainSlide = Get(VanillaBuffNames.Enemy.waterStainSlide);
+        }
         public static class Pickup
         {
             public static readonly NamespaceID absorbedByUFO = Get(VanillaBuffNames.Pickup.absorbedByUFO);
+        }
+        public static class Effect
+        {
+            public static readonly NamespaceID waterStainFrozen = Get(VanillaBuffNames.Effect.waterStainFrozen);
         }
         public static class Level
         {
@@ -317,6 +353,10 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID pagodaBranchLevel = Get(VanillaBuffNames.Level.pagodaBranchLevel);
             public static readonly NamespaceID greedyVacuum = Get(VanillaBuffNames.Level.greedyVacuum);
             public static readonly NamespaceID spiritUniverseNight = Get(VanillaBuffNames.Level.spiritUniverseNight);
+        }
+        public static class Grid
+        {
+            public static readonly NamespaceID waterStainWet = Get(VanillaBuffNames.Grid.waterStainWet);
         }
     }
 }

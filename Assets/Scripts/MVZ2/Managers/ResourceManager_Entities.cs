@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using MVZ2.Metas;
-using MVZ2.Vanilla;
+using MVZ2Logic.Games;
 using PVZEngine;
 using UnityEngine;
 
@@ -25,29 +24,12 @@ namespace MVZ2.Managers
                 return Array.Empty<EntityMeta>();
             return metaList.metas.ToArray();
         }
-        public NamespaceID[] GetAllEntitiesID()
-        {
-            return entitiesCacheDict.Keys.ToArray();
-        }
         #endregion
 
         #region 元数据
-        public EntityMeta GetEntityMeta(NamespaceID entityID)
-        {
-            return entitiesCacheDict.TryGetValue(entityID, out var meta) ? meta : null;
-        }
         public string GetEntityDeathMessage(NamespaceID entityID)
         {
-            string key = VanillaStrings.DEATH_MESSAGE_UNKNOWN;
-            if (entityID != null)
-            {
-                var meta = GetEntityMeta(entityID);
-                if (meta != null && meta.DeathMessage != null)
-                {
-                    key = meta.DeathMessage;
-                }
-            }
-            return Main.LanguageManager._p(VanillaStrings.CONTEXT_DEATH_MESSAGE, key);
+            return Main.Game.GetEntityDeathMessage(entityID);
         }
         public string GetEntityName(NamespaceID entityID)
         {
@@ -55,31 +37,18 @@ namespace MVZ2.Managers
         }
         public string GetEntityTooltip(NamespaceID entityID)
         {
-            if (entityID == null)
-                return "null";
-            var meta = GetEntityMeta(entityID);
-            if (meta == null)
-                return entityID.ToString();
-            var tooltip = meta.Tooltip ?? VanillaStrings.UNKNOWN_ENTITY_TOOLTIP;
-            return Main.LanguageManager._p(VanillaStrings.CONTEXT_ENTITY_TOOLTIP, tooltip);
+            return Main.Game.GetEntityTooltip(entityID);
         }
         #endregion
 
         #region 元数据
-        public EntityCounterMeta GetEntityCounterMeta(NamespaceID counterID)
+        public EntityCounterMeta[] GetModEntityCounterMetas(string nsp)
         {
-            if (!NamespaceID.IsValid(counterID))
-                return null;
-            var modResource = GetModResource(counterID.SpaceName);
+            var modResource = GetModResource(nsp);
             if (modResource == null)
                 return null;
-            var list = modResource.EntityMetaList;
-            if (list == null)
-                return null;
-            return list.counters.FirstOrDefault(m => m.ID == counterID.Path);
+            return modResource.EntityMetaList.counters;
         }
         #endregion
-
-        private Dictionary<NamespaceID, EntityMeta> entitiesCacheDict = new Dictionary<NamespaceID, EntityMeta>();
     }
 }

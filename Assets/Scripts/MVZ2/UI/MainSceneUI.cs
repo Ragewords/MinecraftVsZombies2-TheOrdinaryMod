@@ -1,4 +1,5 @@
 ﻿using System;
+using MVZ2.Debugs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,31 @@ namespace MVZ2.UI
         {
             return dialog.gameObject.activeSelf;
         }
+
+        #region 工具提示
+        public void ShowTooltip()
+        {
+            tooltip.Show();
+        }
+        public void HideTooltip()
+        {
+            tooltip.Hide();
+        }
+        public void SetTooltipPosition(TooltipPosition viewData)
+        {
+            tooltip.SetPosition(viewData);
+        }
+        public void SetTooltipContent(TooltipContent viewData)
+        {
+            tooltip.SetContent(viewData);
+        }
+        #endregion
+
+        public void SetDebugIconActive(bool active)
+        {
+            if (debugConsoleIcon.gameObject.activeSelf != active)
+                debugConsoleIcon.gameObject.SetActive(active);
+        }
         private void Awake()
         {
             screenCoverFader.OnValueChanged += OnBlackscreenFaderValueChangedCallback;
@@ -38,10 +64,14 @@ namespace MVZ2.UI
             blackscreenImage.raycastTarget = value.a > 0;
         }
         [SerializeField]
+        private Tooltip tooltip;
+        [SerializeField]
         private CustomDialog dialog;
         [SerializeField]
         private Image blackscreenImage;
         [SerializeField]
         private ColorFader screenCoverFader;
+        [SerializeField]
+        private DebugConsoleIcon debugConsoleIcon;
     }
 }
