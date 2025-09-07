@@ -20,6 +20,7 @@ namespace MVZ2.GameContent.Artifacts
         public const string invertedMirror = "inverted_mirror";
         public const string miracleMalletReplica = "miracle_mallet_replica";
         public const string netherStar = "nether_star";
+        public const string witherSkeletonSkull = "wither_skeleton_skull";
         public const string brokenLantern = "broken_lantern";
 
         public const string manipulativeTalismans = "manipulative_talismans";
@@ -31,7 +32,7 @@ namespace MVZ2.GameContent.Artifacts
 
         public const string jackOLantern = "jack_o_lantern";
         public const string bentSpoon = "bent_spoon";
-        public const string witherSkeletonSkull = "wither_skeleton_skull";
+        public const string heavyBassDrum = "heavy_bass_drum";
         public const string endlessGate = "endless_gate";
     }
     public static class VanillaArtifactID
@@ -50,6 +51,7 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID smartPhone = Get(VanillaArtifactNames.smartPhone);
         public static readonly NamespaceID invertedMirror = Get(VanillaArtifactNames.invertedMirror);
         public static readonly NamespaceID miracleMalletReplica = Get(VanillaArtifactNames.miracleMalletReplica);
+        public static readonly NamespaceID witherSkeletonSkull = Get(VanillaArtifactNames.witherSkeletonSkull);
         public static readonly NamespaceID netherStar = Get(VanillaArtifactNames.netherStar);
         public static readonly NamespaceID brokenLantern = Get(VanillaArtifactNames.brokenLantern);
 
@@ -62,7 +64,7 @@ namespace MVZ2.GameContent.Artifacts
 
         public static readonly NamespaceID jackOLantern = Get(VanillaArtifactNames.jackOLantern);
         public static readonly NamespaceID bentSpoon = Get(VanillaArtifactNames.bentSpoon);
-        public static readonly NamespaceID witherSkeletonSkull = Get(VanillaArtifactNames.witherSkeletonSkull);
+        public static readonly NamespaceID heavyBassDrum = Get(VanillaArtifactNames.heavyBassDrum);
         public static readonly NamespaceID endlessGate = Get(VanillaArtifactNames.endlessGate);
         private static NamespaceID Get(string name)
         {

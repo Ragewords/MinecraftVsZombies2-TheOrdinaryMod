@@ -73,6 +73,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8e09eb5034d8901409cccb88e3f86633, type: 3}
   - name: artifacts/greedy_vacuum
     sprite: {fileID: 21300000, guid: 0b687cc971691aa4786964a361a0d14c, type: 3}
+  - name: artifacts/heavy_bass_drum
+    sprite: {fileID: 21300000, guid: 022f549e8abae444080c27463da40bb0, type: 3}
   - name: artifacts/hoe
     sprite: {fileID: 21300000, guid: 3099084e873c11d4084a10707cd96120, type: 3}
   - name: artifacts/inverted_mirror
