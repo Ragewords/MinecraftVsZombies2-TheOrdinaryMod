@@ -56,6 +56,8 @@ namespace MVZ2.GameContent.Contraptions
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
             base.PreTakeDamage(input, result);
+            if (input.Entity == null)
+                return;
             if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
             {
                 Ignite(input.Entity);

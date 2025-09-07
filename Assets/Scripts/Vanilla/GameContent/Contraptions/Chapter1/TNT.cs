@@ -44,15 +44,16 @@ namespace MVZ2.GameContent.Contraptions
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
             base.PreTakeDamage(input, result);
+            if (input.Entity == null)
+                return;
+            if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
+            {
+                Charge(input.Entity);
+            }
             if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
             {
                 Ignite(input.Entity);
                 result.SetFinalValue(false);
-            }
-            if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
-            {
-                if (!input.Entity.HasBuff<TNTChargedBuff>())
-                    input.Entity.AddBuff<TNTChargedBuff>();
             }
         }
         public override bool CanTrigger(Entity entity)
