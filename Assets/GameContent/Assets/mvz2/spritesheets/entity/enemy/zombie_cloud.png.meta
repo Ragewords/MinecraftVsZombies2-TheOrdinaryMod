@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
+        y: 135
         width: 86
         height: 44
       alignment: 0
@@ -135,7 +135,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 45
+        y: 90
         width: 86
         height: 44
       alignment: 0
@@ -156,7 +156,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 45
         width: 86
         height: 44
       alignment: 0
@@ -168,6 +168,27 @@ TextureImporter:
       bones: []
       spriteID: 5cf3bd2882851a146a2d7cda7536d5af
       internalID: 1926641344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_cloud_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 86
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91103404668bd8a428461a0b10967583
+      internalID: 365029120
       vertices: []
       indices: 
       edges: []
@@ -186,6 +207,7 @@ TextureImporter:
       zombie_cloud_0: -721226712
       zombie_cloud_1: -883932845
       zombie_cloud_2: 1926641344
+      zombie_cloud_3: 365029120
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

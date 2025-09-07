@@ -329,6 +329,7 @@
     <model name="firework_blast" type="entity" path="mvz2:effect/firework_blast" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
     <model name="zombie_cloud_raindrop" type="entity" path="mvz2:effect/zombie_cloud_raindrop" width="5" height="32" xOffset="0" yOffset="-16"/>
     <model name="zombie_cloud_snowflake" type="entity" path="mvz2:effect/zombie_cloud_snowflake" width="7" height="7" xOffset="0" yOffset="0"/>
+    <model name="zombie_cloud_ember" type="entity" path="mvz2:effect/zombie_cloud_ember" width="2" height="4" xOffset="0" yOffset="0"/>
     <model name="water_stain" type="entity" path="mvz2:effect/water_stain" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
     <model name="smoker_smoke" type="entity" path="mvz2:effect/smoker_smoke" width="64" height="64" xOffset="0" yOffset="0"/>
 

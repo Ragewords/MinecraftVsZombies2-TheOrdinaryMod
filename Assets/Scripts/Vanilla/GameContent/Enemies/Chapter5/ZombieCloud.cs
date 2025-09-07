@@ -63,6 +63,15 @@ namespace MVZ2.GameContent.Enemies
                     entity.Spawn(VanillaEffectID.zombieCloudSnowflake, pos);
                 }
             }
+            if (variant == ZombieCloud.VARIANT_FIRE)
+            {
+                if (entity.IsSecondsInterval(0.25f))
+                {
+                    var x = entity.RNG.NextFloat() * 32f - 16f;
+                    var pos = entity.Position + new Vector3(x, 0, 0);
+                    entity.Spawn(VanillaEffectID.zombieCloudEmber, pos);
+                }
+            }
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -82,6 +91,13 @@ namespace MVZ2.GameContent.Enemies
             if (input.HasEffect(VanillaDamageEffects.ICE))
             {
                 ChangeVariant(input.Entity, VARIANT_SNOW);
+                input.Multiply(0);
+                result.Break();
+                return;
+            }
+            if (input.HasEffect(VanillaDamageEffects.FIRE))
+            {
+                ChangeVariant(input.Entity, VARIANT_FIRE);
                 input.Multiply(0);
                 result.Break();
                 return;
@@ -112,6 +128,8 @@ namespace MVZ2.GameContent.Enemies
                     return SMOKE_COLOR_THUNDER;
                 case VARIANT_SNOW:
                     return SMOKE_COLOR_SNOW;
+                case VARIANT_FIRE:
+                    return SMOKE_COLOR_FIRE;
             }
             return SMOKE_COLOR_NORMAL;
         }
@@ -126,11 +144,13 @@ namespace MVZ2.GameContent.Enemies
         public const int VARIANT_NORMAL = 0;
         public const int VARIANT_THUNDER = 1;
         public const int VARIANT_SNOW = 2;
+        public const int VARIANT_FIRE = 3;
 
         public const float THUNDER_DAMAGE_MULTIPLIER = 1f;
         public const float THUNDER_SHOCK_RADIUS = 20f;
         public static readonly Color SMOKE_COLOR_NORMAL = new Color32(241, 191, 227, 255);
         public static readonly Color SMOKE_COLOR_THUNDER = new Color32(54, 54, 54, 255);
         public static readonly Color SMOKE_COLOR_SNOW = new Color32(191, 228, 241, 255);
+        public static readonly Color SMOKE_COLOR_FIRE = new Color32(232, 185, 51, 255);
     }
 }
