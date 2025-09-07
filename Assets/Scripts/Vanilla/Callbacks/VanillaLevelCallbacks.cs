@@ -261,7 +261,6 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostApplyStatusEffectParams> POST_APPLY_STATUS_EFFECT = new();
         public readonly static CallbackType<PreRemoveStatusEffectParams> PRE_REMOVE_STATUS_EFFECT = new();
         public readonly static CallbackType<PostRemoveStatusEffectParams> POST_REMOVE_STATUS_EFFECT = new();
-        public readonly static CallbackType<PostEntityMesmerizeParams> POST_ENTITY_MESMERIZE = new();
         public readonly static CallbackType<EntityCallbackParams> POST_ENTITY_REINCARNATE = new();
 
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_TRIGGER = new();

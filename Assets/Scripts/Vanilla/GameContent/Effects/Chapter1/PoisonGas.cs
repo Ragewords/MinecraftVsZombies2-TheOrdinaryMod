@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Effects
                 return;
             if (other.IsSpider())
                 return;
-            other.InflictPoison(150);
+            other.InflictPoison(150, new EntitySourceReference(entity));
         }
         #endregion
 

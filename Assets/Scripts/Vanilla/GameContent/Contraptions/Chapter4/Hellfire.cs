@@ -16,6 +16,7 @@ using UnityEngine;
 using Tools;
 using MVZ2.Vanilla.Callbacks;
 using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 
 namespace MVZ2.GameContent.Contraptions
 {

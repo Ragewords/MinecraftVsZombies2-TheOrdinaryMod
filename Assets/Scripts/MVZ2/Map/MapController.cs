@@ -411,12 +411,13 @@ namespace MVZ2.Map
             var difficulty = Main.SaveManager.GetLevelDifficulty(stageID);
             if (NamespaceID.IsValid(difficulty))
             {
-                var difficultyMeta = Main.ResourceManager.GetDifficultyMeta(difficulty);
+                var game = Main.Game;
+                var difficultyMeta = game.GetDifficultyDefinition(difficulty);
                 if (difficultyMeta != null)
                 {
-                    var back = Main.GetFinalSprite(difficultyMeta.MapButtonBorderBack);
-                    var bottom = Main.GetFinalSprite(difficultyMeta.MapButtonBorderBottom);
-                    var overlay = Main.GetFinalSprite(difficultyMeta.MapButtonBorderOverlay);
+                    var back = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBack());
+                    var bottom = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBottom());
+                    var overlay = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderOverlay());
                     model.SetExtraMapButtonBorder(index, back, bottom, overlay);
                     return;
                 }
@@ -657,7 +658,6 @@ namespace MVZ2.Map
                 var unlocked = IsLevelUnlocked(j);
                 var cleared = IsLevelCleared(j);
                 var stageType = GetStageType(j);
-                var stageID = GetStageID(j);
 
                 var color = buttonColorClearedExtra;
                 if (!unlocked)

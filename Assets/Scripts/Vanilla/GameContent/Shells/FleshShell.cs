@@ -2,6 +2,7 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Shells;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Level;
 

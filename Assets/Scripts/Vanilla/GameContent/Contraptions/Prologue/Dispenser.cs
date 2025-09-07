@@ -48,11 +48,9 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override void OnShootTick(Entity entity)
         {
-            int count = 0;
+            int count = 1;
             if (entity.RNG.Next(10) < 3)
                 count = 2;
-            else
-                count = 1;
             SetRepeatCount(entity, count);
             var repeatTimer = GetRepeatTimer(entity);
             repeatTimer.ResetTime(5);

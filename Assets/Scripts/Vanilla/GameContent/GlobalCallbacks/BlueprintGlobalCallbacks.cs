@@ -5,6 +5,7 @@ using MVZ2.Vanilla.Level;
 using MVZ2Logic.Modding;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 

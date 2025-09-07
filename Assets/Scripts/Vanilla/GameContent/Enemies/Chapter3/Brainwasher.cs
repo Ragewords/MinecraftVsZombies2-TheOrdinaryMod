@@ -25,13 +25,13 @@ namespace MVZ2.GameContent.Enemies
             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && e.GetDefinitionID() != VanillaContraptionID.glowstone).RandomTake(5, entity.RNG);
             foreach (var target in targets)
             {
-                target.Charm(entity.GetFaction());
+                target.CharmPermanent(entity.GetFaction(), new EntitySourceReference(entity));
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
             var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY).RandomTake(10, entity.RNG);
             foreach (var target in targets_enemy)
             {
-                target.Mesmerize();
+                target.MesmerizePermanent(new EntitySourceReference(entity));
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
         }

@@ -85,12 +85,12 @@ namespace MVZ2.GameContent.Contraptions
                         bool playSound = false;
                         if (ent.IsCharmed())
                         {
-                            ent.RemoveCharm(new EntitySourceReference(entity));
+                            ent.RemoveCharm(new EntitySourceReference(source));
                             playSound = true;
                         }
                         if (ent.IsMesmerized())
                         {
-                            ent.RemoveMesmerize(new EntitySourceReference(entity));
+                            ent.RemoveMesmerize(new EntitySourceReference(source));
                             playSound = true;
                         }
                         if (playSound)

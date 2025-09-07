@@ -27,17 +27,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
             entity.Revive();
 
             bool stronger = IsStronger(buff);
-            if (stronger)
-                entity.AddBuff<BigTroubleBuff>();
+            entity.AddBuff<BigTroubleBuff>();
 
             entity.HealEffects(entity.GetMaxHealth(), entity);
             result.SetFinalValue(false);
 
             var faction = GetFaction(buff);
-            entity.Charm(faction);
+            entity.CharmPermanent(faction, new EntitySourceReference(entity));
             entity.PlaySound(VanillaSoundID.revived);
-            if (stronger)
-                entity.PlaySound(VanillaSoundID.growBig);
+            entity.PlaySound(VanillaSoundID.growBig);
             buff.Remove();
         }
         public static Buff AddToEntity(Entity entity, int faction, bool stronger)

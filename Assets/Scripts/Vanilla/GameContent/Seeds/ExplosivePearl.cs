@@ -4,6 +4,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
 using MVZ2Logic.SeedPacks;
+using PVZEngine.Buffs;
 using PVZEngine.Definitions;
 using PVZEngine.Level;
 using PVZEngine.SeedPacks;

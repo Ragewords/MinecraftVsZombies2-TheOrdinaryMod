@@ -1,5 +1,5 @@
 ﻿using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Entities;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (!target.IsHostile(enemy))
                 return;
-            target.InflictWither(30);
+            target.InflictWither(30, new EntitySourceReference(enemy));
         }
     }
 }

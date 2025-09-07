@@ -22,7 +22,7 @@ namespace MVZ2.GameContent.Projectiles
                 return;
             if (shield != null)
                 return;
-            enemy.InflictPoison(150);
+            enemy.InflictPoison(150, new EntitySourceReference(hitResult.Projectile));
         }
     }
 }

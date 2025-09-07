@@ -287,8 +287,8 @@ namespace MVZ2.GameContent.Bosses
             int count = level.GetSlendermanFateChoiceCount();
             if (count == 1)
             {
-                title = Global.Game.GetText(ACCEPT_FATE_TITLE);
-                desc = Global.Game.GetText(ACCEPT_FATE_DESCRIPTION);
+                title = Global.Localization.GetText(ACCEPT_FATE_TITLE);
+                desc = Global.Localization.GetText(ACCEPT_FATE_DESCRIPTION);
             }
             var rng = GetFateOptionRNG(entity);
             var selected = fateOptions.RandomTake(count, rng).ToArray();

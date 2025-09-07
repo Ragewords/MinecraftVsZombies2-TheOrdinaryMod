@@ -15,6 +15,7 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -141,15 +142,14 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void ProduceBomb(Entity entity)
         {
-            var game = Global.Game;
-            var validBombIDs = bombPool.Where(id => game.IsContraptionInAlmanac(id));
+            var validBombIDs = bombPool.Where(id => Global.Almanac.IsContraptionInAlmanac(id));
             if (validBombIDs.Count() <= 0)
                 return;
             var bombID = validBombIDs.Random(GetBombRNG(entity));
             if (!IsFurious(entity))
             {
                 var spawnParams = entity.GetSpawnParams();
-                spawnParams.SetProperty(BlueprintPickup.PROP_BLUEPRINT_ID, VanillaBlueprintID.FromEntity(bombID));
+                spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, VanillaBlueprintID.FromEntity(bombID));
                 entity.Produce(VanillaPickupID.blueprintPickup, spawnParams);
                 entity.PlaySound(VanillaSoundID.throwSound);
             }

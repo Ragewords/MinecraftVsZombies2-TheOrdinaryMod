@@ -237,7 +237,7 @@ namespace MVZ2.GameContent.Bosses
                         foreach (Entity contraption in shockables)
                         {
                             if (contraption.CanDeactive())
-                                contraption.ShortCircuit(150);
+                                contraption.ShortCircuit(150, new EntitySourceReference(entity));
                             if (!soundPlayed)
                             {
                                 contraption.PlaySound(VanillaSoundID.powerOff);

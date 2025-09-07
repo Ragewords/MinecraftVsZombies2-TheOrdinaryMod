@@ -92,7 +92,7 @@ namespace MVZ2.GameContent.Enemies
             foreach (var target in spinBuffer)
             {
                 target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
-                target.InflictWither(150);
+                target.InflictWither(150, new EntitySourceReference(enemy));
             }
         }
         protected override void UpdateLogic(Entity entity)

@@ -333,6 +333,7 @@ namespace MVZ2.GameContent.Buffs
         public static class Enemy
         {
             public static readonly NamespaceID enemyWeakness = Get(VanillaBuffNames.enemyWeakness);
+            public static readonly NamespaceID poisoned = Get(VanillaBuffNames.poisoned);
             public static readonly NamespaceID waterStainSlide = Get(VanillaBuffNames.Enemy.waterStainSlide);
         }
         public static class Pickup

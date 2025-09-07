@@ -704,14 +704,6 @@ namespace MVZ2.Vanilla.Entities
         {
             return Heal(new HealInput(amount, entity, source));
         }
-        public static HealOutput HealMainArmor(this Entity entity, float amount, Entity source)
-        {
-            return entity.HealMainArmor(amount, new EntityReferenceChain(source));
-        }
-        public static HealOutput HealMainArmor(this Entity entity, float amount, EntityReferenceChain source)
-        {
-            return Heal(new HealInput(amount, entity, entity.GetMainArmor(), source));
-        }
         public static HealOutput Heal(HealInput info)
         {
             if (info.Entity.IsDead)
@@ -1153,7 +1145,7 @@ namespace MVZ2.Vanilla.Entities
 
 
         #region 催眠
-        public static void MesmerizePermanent(this Entity entity, int faction, ILevelSourceReference source)
+        public static void MesmerizePermanent(this Entity entity, ILevelSourceReference source)
         {
             var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
             if (!PreApplyStatusEffect(entity, buffDefinition, source))
@@ -1163,7 +1155,7 @@ namespace MVZ2.Vanilla.Entities
             {
                 buff = entity.AddBuff(buffDefinition);
             }
-            MesmerizeBuff.SetPermanent(buff, faction);
+            MesmerizeBuff.SetPermanent(buff);
             buff.Update();
             PostApplyStatusEffect(entity, buff, source);
         }

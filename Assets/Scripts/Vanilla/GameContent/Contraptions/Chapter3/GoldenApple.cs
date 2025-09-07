@@ -63,15 +63,13 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                enemy.CharmPermanent(target.GetFaction(), new EntitySourceReference(target));
-                var game = Global.Game;
                 var level = target.Level;
                 var rng = target.RNG;
                 var grid = target.GetGrid();
-                var unlockedEnemies = game.GetUnlockedEnemies();
+                var unlockedEnemies = Global.Saves.GetUnlockedEnemies();
                 var validEnemies = unlockedEnemies.Where(id =>
                 {
-                    if (!game.IsEnemyInAlmanac(id))
+                    if (!Global.Almanac.IsEnemyInAlmanac(id))
                         return false;
                     if (transformFilter.Contains(id))
                         return false;
@@ -83,7 +81,7 @@ namespace MVZ2.GameContent.Contraptions
                     return;
                 var enemyID = validEnemies.Random(rng);
                 var random = target.SpawnWithParams(enemyID, enemy.Position);
-                random.Charm(target.GetFaction());
+                random.CharmPermanent(target.GetFaction(), new EntitySourceReference(target));
                 enemy.Spawn(VanillaEffectID.mindControlLines, enemy.GetCenter());
                 enemy.Neutralize();
                 enemy.Remove();

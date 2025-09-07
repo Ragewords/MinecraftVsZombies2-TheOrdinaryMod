@@ -12,7 +12,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public CaveSpider(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.POST_ENTITY_TAKE_DAMAGE, DamageEffectCallback);
+            AddTrigger(VanillaLevelCallbacks.APPLY_DAMAGE_SPECIAL_EFFECTS, ApplyDamageEffectsCallback);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Enemies
             // 设置血量状态。
             entity.SetModelDamagePercent();
         }
-        private void DamageEffectCallback(VanillaLevelCallbacks.PostTakeDamageParams param, CallbackResult callbackResult)
+        private void ApplyDamageEffectsCallback(VanillaLevelCallbacks.PostTakeDamageParams param, CallbackResult callbackResult)
         {
             var output = param.output;
             var entity = output.Entity;
@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Enemies
             }
             if (poison)
             {
-                entity.InflictPoison(150);
+                entity.InflictPoison(150, bodyResult.Source);
             }
         }
     }

@@ -11,6 +11,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
@@ -595,7 +596,7 @@ namespace MVZ2.GameContent.Bosses
                                             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && !e.IsLoyal() && !e.IsCharmed()).RandomTake(10, entity.RNG);
                                             foreach (var target in targets)
                                             {
-                                                target.Charm(entity.GetFaction());
+                                                target.CharmPermanent(entity.GetFaction(), new EntitySourceReference(entity));
                                             }
                                             SetMagicType(entity, MAGIC_BERSERKER);
                                         }
