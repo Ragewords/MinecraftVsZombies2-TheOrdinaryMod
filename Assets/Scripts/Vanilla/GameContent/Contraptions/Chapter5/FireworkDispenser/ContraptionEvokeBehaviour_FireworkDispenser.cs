@@ -28,6 +28,8 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.fireworkLargeBlast);
             entity.PlaySound(VanillaSoundID.fireworkTwinkle);
             entity.PlaySound(VanillaSoundID.fireworkLaunch);
+            if (entity.RNG.Next(100) == 0)
+                entity.PlaySound(VanillaSoundID.yourTakingTooLong);
         }
     }
 }

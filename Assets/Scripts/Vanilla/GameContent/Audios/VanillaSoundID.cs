@@ -234,6 +234,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID wheelOfDeathLoop = Get("wheel_of_death_loop");
         public readonly static NamespaceID winMusic = Get("win_music");
         public readonly static NamespaceID wood = Get("wood");
+        public readonly static NamespaceID yourTakingTooLong = Get("your_taking_too_long");
         public readonly static NamespaceID zap = Get("zap");
         public readonly static NamespaceID zombieCry = Get("zombie_cry");
         public readonly static NamespaceID zombieHurt = Get("zombie_hurt");

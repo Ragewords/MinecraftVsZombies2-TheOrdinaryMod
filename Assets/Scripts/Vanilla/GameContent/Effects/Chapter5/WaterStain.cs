@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Effects
             var collisionMask = EntityCollisionHelper.MASK_ALL;
             entity.CollisionMaskFriendly = collisionMask;
             entity.CollisionMaskHostile = collisionMask;
-            entity.SetProperty(PROP_ATTACK_INTERVAL, new FrameTimer(6));
+            entity.SetProperty(PROP_ATTACK_INTERVAL, new FrameTimer(60));
         }
         public override void Update(Entity entity)
         {

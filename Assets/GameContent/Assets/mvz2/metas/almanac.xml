@@ -1102,7 +1102,7 @@
         </entry>
         <entry id="mvz2:smoker">
             <header>
-                <p>烟熏炉会对前方近距离的敌人喷射烟熏火焰。</p>
+                <p>烟熏炉会对前方近距离的敌人喷射浓烟。</p>
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
@@ -1161,12 +1161,12 @@
         </entry>
         <entry id="mvz2:flag_zombie">
             <header>
-                <p>旗帜僵尸的出现标志着一大波怪物的到来。</p>
+                <p>旗帜僵尸能够激励敌人，它的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>使所有敌人速度×2</color>]]></p>
+                <p>特点：<![CDATA[<color=red>存活时，使所有敌人速度×200%</color>]]></p>
             </properties>
             <flavor>
                 <p>当他被授予旗帜时，他感到无比的荣幸和骄傲。他觉得自己作为僵尸的领导拥有至高无上的地位，便无时无刻不飘飘然。然而他不知道他的背后有多少人在嘲笑他是个肉盾。</p>
@@ -1524,10 +1524,11 @@
         </entry>
         <entry id="mvz2:zombie_cloud">
             <header>
-                <p>僵尸云飞在空中，向下降雨形成水迹，踩到水迹的敌怪会向前滑动。</p>
+                <p>僵尸云飞在空中，向下降雨形成水迹，水迹会对接触到的器械造成伤害，同时踩到水迹的敌怪会向前滑动。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>水迹伤害：<![CDATA[<color=red>5/秒</color>]]></p>
             </properties>
             <flavor>
                 <p>至少这朵云没有对你竖中指。</p>

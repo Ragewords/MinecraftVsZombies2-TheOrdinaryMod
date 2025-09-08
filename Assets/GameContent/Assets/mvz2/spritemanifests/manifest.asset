@@ -359,6 +359,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: bf91b1cffcf2bb948bcdb815c1916e71, type: 3}
   - name: mobile_blueprint/silvenser
     sprite: {fileID: 21300000, guid: 3c7cacc742c9f154e80d19b1b5b133c2, type: 3}
+  - name: mobile_blueprint/silverfish
+    sprite: {fileID: 21300000, guid: 14302d4d1bd318549b679de00df8cce5, type: 3}
   - name: mobile_blueprint/skelebomb
     sprite: {fileID: 21300000, guid: b8321930289bd154e81ced75ecdf9157, type: 3}
   - name: mobile_blueprint/skeleton
@@ -385,6 +387,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: ee236b9bf29256844b94ea76798c4239, type: 3}
   - name: mobile_blueprint/soul_furnace
     sprite: {fileID: 21300000, guid: 11ac6f32e59e29e4aa1067a79c215185, type: 3}
+  - name: mobile_blueprint/spellcaster
+    sprite: {fileID: 21300000, guid: 5a08aae7fe4db534183aa6af66b3a8f4, type: 3}
   - name: mobile_blueprint/spider
     sprite: {fileID: 21300000, guid: a11a5b163ead6624ea57a93be24665a2, type: 3}
   - name: mobile_blueprint/spike_block
@@ -397,6 +401,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a001063ac6b540b42a716f3b66388328, type: 3}
   - name: mobile_blueprint/talisman_zombie
     sprite: {fileID: 21300000, guid: 70bd3779c2eea2b4fb4e071481e6acb1, type: 3}
+  - name: mobile_blueprint/tanooki_zombie
+    sprite: {fileID: 21300000, guid: 7d4c7c61cabd05e45a2e630f36eb98c2, type: 3}
   - name: mobile_blueprint/tesla_coil
     sprite: {fileID: 21300000, guid: d8b4a6fef193f41428666f3177af2af7, type: 3}
   - name: mobile_blueprint/the_giant

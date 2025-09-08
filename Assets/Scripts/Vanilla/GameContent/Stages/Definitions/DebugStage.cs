@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.lightningOrb,
                 VanillaContraptionID.fireworkDispenser,
                 VanillaEnemyID.ghast,
-                VanillaEnemyID.dullahanHead,
+                VanillaEnemyID.zombieCloud,
                 VanillaEnemyID.anubisand,
                 VanillaEnemyID.ufo,
                 VanillaEnemyID.zombie,

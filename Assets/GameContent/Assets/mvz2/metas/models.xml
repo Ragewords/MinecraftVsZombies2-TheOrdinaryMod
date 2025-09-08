@@ -157,7 +157,7 @@
 	<model name="lost" type="entity" path="mvz2:enemy/halloween/lost" width="32" height="36" xOffset="0" yOffset="-18"/>
     <model name="reverse_satellite" type="entity" path="mvz2:enemy/castle/reverse_satellite" width="64" height="80" xOffset="0" yOffset="-40"/>
     <model name="skeleton_horse" type="entity" path="mvz2:enemy/castle/skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>
-    <model name="dullahan_head" type="entity" path="mvz2:enemy/castle/dullahan_head" width="44" height="32" xOffset="0" yOffset="-17"/>
+    <model name="dullahan_head" type="entity" path="mvz2:enemy/castle/dullahan_head" width="44" height="32" xOffset="0" yOffset="-20"/>
     <model name="dullahan_main" type="entity" path="mvz2:enemy/castle/dullahan_main" width="77" height="120" xOffset="12" yOffset="-55"/>
     <model name="soulsand" type="entity" path="mvz2:enemy/castle/soulsand" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="seija_cursed_doll" type="entity" path="mvz2:enemy/castle/seija_cursed_doll"  width="32" height="32" xOffset="0" yOffset="-16"/>
