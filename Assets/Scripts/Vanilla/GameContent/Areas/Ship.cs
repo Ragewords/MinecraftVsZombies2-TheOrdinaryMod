@@ -58,7 +58,7 @@ namespace MVZ2.GameContent.Areas
             level.SetModelAnimatorFloat("SkyOffsetSpeed", skyOffsetSpeed);
 
             var breezeSpeed = GetBreezeSpeed(level);
-            var nextSpeed = GetNextBreezeSpeed(level);
+            var nextSpeed = GetNextBreezeSpeed(level) * BREEZE_OFFSET_MULTIPILER * (level.IsDuringHugeWave() ? 2 : 1);
             var breezeAccel = (nextSpeed - breezeSpeed) * BREEZE_OFFSET_ACCELERATION;
             if (skyOffsetSpeed != targetSpeed)
             {
@@ -72,8 +72,8 @@ namespace MVZ2.GameContent.Areas
                 }
             }
             SetBreezeSpeed(level, breezeSpeed);
-            BlowEntities(level, breezeSpeed * BREEZE_OFFSET_MULTIPILER);
-            level.SetModelAnimatorFloat("BreezeOffsetSpeed", breezeSpeed * BREEZE_OFFSET_MULTIPILER);
+            BlowEntities(level, breezeSpeed);
+            level.SetModelAnimatorFloat("BreezeOffsetSpeed", breezeSpeed);
         }
         public override void PostHugeWaveEvent(LevelEngine level)
         {
@@ -130,11 +130,7 @@ namespace MVZ2.GameContent.Areas
             if (level.AreaDefinition != this)
                 return;
             var rng = GetBreezeRNG(level);
-            SetNextBreezeSpeed(level, rng.Next(-0.3f, 0.3f));
-            if (level.IsHugeWave(wave))
-            {
-                SetNextBreezeSpeed(level, rng.Next(-0.5f, 0.5f));
-            }
+            SetNextBreezeSpeed(level, rng.Next(-0.3f, 0.2f));
         }
         private void BlowEntities(LevelEngine level, float speed)
         {
@@ -169,8 +165,8 @@ namespace MVZ2.GameContent.Areas
         public const float SKY_OFFSET_SPEED_NORMAL = 1;
         public const float SKY_OFFSET_SPEED_FAST = 10;
         public const float SKY_OFFSET_ACCELERATION = 0.1f;
-        public const float ENEMY_BLOW_MULTIPILER = 0.1f;
-        public const float PROJECTILE_BLOW_MULTIPILER = 0.05f;
+        public const float ENEMY_BLOW_MULTIPILER = 0.05f;
+        public const float PROJECTILE_BLOW_MULTIPILER = 0.025f;
         public const float BREEZE_OFFSET_ACCELERATION = 0.01f;
         public const float BREEZE_OFFSET_MULTIPILER = 10f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
