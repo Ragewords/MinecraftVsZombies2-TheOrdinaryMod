@@ -141,7 +141,8 @@ namespace MVZ2.GameContent.Areas
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
-                projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * Vector3.left;
+                if (projectile.Velocity.magnitude < 30)
+                    projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * Vector3.left;
             }
         }
         public static float GetSkyOffsetSpeed(LevelEngine level) => level.GetProperty<float>(PROP_SKY_OFFSET_SPEED);
