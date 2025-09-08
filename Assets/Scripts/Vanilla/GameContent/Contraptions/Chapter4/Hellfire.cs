@@ -119,7 +119,9 @@ namespace MVZ2.GameContent.Contraptions
             List<DamageOutput> damageOutputs = new List<DamageOutput>();
             var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
 
-            foreach (var entityCollider in level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0))
+            var center = entity.GetCenter();
+            center.x = border_distance / 2;
+            foreach (var entityCollider in level.OverlapBox(center, new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0))
             {
                 var damageEffects = new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
                 var damageOutput = entityCollider.TakeDamage(damage, damageEffects, entity);

@@ -282,6 +282,7 @@ namespace MVZ2.Modding
                 switch (meta.Type)
                 {
                     case StageTypes.TYPE_NORMAL:
+                    case StageTypes.TYPE_EXTRA:
                         {
                             stageDef = new ClassicStage(nsp, meta.ID);
                         }
