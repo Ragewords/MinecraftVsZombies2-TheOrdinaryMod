@@ -1,4 +1,5 @@
-﻿using MVZ2.GameContent.Buffs;
+﻿using System.Collections.Generic;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
@@ -7,6 +8,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
@@ -40,7 +42,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     var x = entity.RNG.NextFloat() * 32f - 16f;
                     var pos = entity.Position + new Vector3(x, 0, 0);
-                    entity.Spawn(VanillaEffectID.zombieCloudRaindrop, pos);
+                    entity.SpawnWithParams(VanillaEffectID.zombieCloudRaindrop, pos);
                 }
             }
             if (variant == ZombieCloud.VARIANT_THUNDER)
@@ -60,8 +62,11 @@ namespace MVZ2.GameContent.Enemies
                 {
                     var x = entity.RNG.NextFloat() * 32f - 16f;
                     var pos = entity.Position + new Vector3(x, 0, 0);
-                    entity.Spawn(VanillaEffectID.zombieCloudSnowflake, pos);
+                    entity.SpawnWithParams(VanillaEffectID.zombieCloudSnowflake, pos);
                 }
+                var center = entity.Position;
+                center.y = entity.GetRelativeY() / 2;
+                SlowEnemiesBelow(entity, center);
             }
             if (variant == ZombieCloud.VARIANT_FIRE)
             {
@@ -69,7 +74,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     var x = entity.RNG.NextFloat() * 32f - 16f;
                     var pos = entity.Position + new Vector3(x, 0, 0);
-                    entity.Spawn(VanillaEffectID.zombieCloudEmber, pos);
+                    entity.SpawnWithParams(VanillaEffectID.zombieCloudEmber, pos);
                 }
             }
         }
@@ -141,6 +146,27 @@ namespace MVZ2.GameContent.Enemies
             ChangeVariant(entity, VARIANT_SNOW);
             result.SetFinalValue(false);
         }
+        private static Bounds GetDetectionBounds(Entity entity, Vector3 position)
+        {
+            var center = position;
+            var def = Global.Game.GetEntityDefinition(VanillaEnemyID.zombieCloud);
+            var size = def.GetSize() * 0.5f;
+            size.y = entity.GetRelativeY();
+            return new Bounds(center, size);
+        }
+        public static void SlowEnemiesBelow(Entity entity, Vector3 position)
+        {
+            var bounds = GetDetectionBounds(entity, position);
+
+            var mask = EntityCollisionHelper.MASK_ENEMY;
+            resultsBuffer.Clear();
+            entity.Level.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, mask, mask, resultsBuffer);
+            foreach (var collider in resultsBuffer)
+            {
+                collider.Entity?.InflictSlow(150, new EntitySourceReference(entity));
+            }
+        }
+        private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
         public const int VARIANT_NORMAL = 0;
         public const int VARIANT_THUNDER = 1;
         public const int VARIANT_SNOW = 2;

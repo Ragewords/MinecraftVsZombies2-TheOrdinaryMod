@@ -49,5 +49,8 @@
         <entity id="zombie_cloud_snow" cost="125" name="僵尸云（雪）" entity="mvz2:zombie_cloud" variant="2">
             <icon model="mvz2:entity.zombie_cloud_snow" mobile="mvz2:mobile_blueprint/zombie_cloud_snow" />
         </entity>
+        <entity id="zombie_cloud_fire" cost="125" name="僵尸云（火）" entity="mvz2:zombie_cloud" variant="3">
+            <icon model="mvz2:entity.zombie_cloud_fire" mobile="mvz2:mobile_blueprint/zombie_cloud_fire" />
+        </entity>
     </entities>
 </blueprints>

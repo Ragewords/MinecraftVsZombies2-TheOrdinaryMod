@@ -96,6 +96,7 @@ namespace MVZ2.GameContent.Effects
         public const string ufoBackground = "ufo_background";
         public const string fireworkBlast = "firework_blast";
         public const string waterStain = "water_stain";
+        public const string tinyBlaze = "tiny_blaze";
         public const string zombieCloudRaindrop = "zombie_cloud_raindrop";
         public const string zombieCloudSnowflake = "zombie_cloud_snowflake";
         public const string zombieCloudEmber = "zombie_cloud_ember";
@@ -194,6 +195,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID ufoBackground = Get(VanillaEffectNames.ufoBackground);
         public static readonly NamespaceID fireworkBlast = Get(VanillaEffectNames.fireworkBlast);
         public static readonly NamespaceID waterStain = Get(VanillaEffectNames.waterStain);
+        public static readonly NamespaceID tinyBlaze = Get(VanillaEffectNames.tinyBlaze);
         public static readonly NamespaceID zombieCloudRaindrop = Get(VanillaEffectNames.zombieCloudRaindrop);
         public static readonly NamespaceID zombieCloudSnowflake = Get(VanillaEffectNames.zombieCloudSnowflake);
         public static readonly NamespaceID zombieCloudEmber = Get(VanillaEffectNames.zombieCloudEmber);

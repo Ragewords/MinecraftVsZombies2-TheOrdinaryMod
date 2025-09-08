@@ -141,6 +141,11 @@
             <int name="Variant" value="2" />
         </properties>
     </model>
+    <model name="zombie_cloud_fire" type="entity" path="mvz2:enemy/ship/zombie_cloud" width="86" height="44" xOffset="0" yOffset="-22">
+        <properties>
+            <int name="Variant" value="3" />
+        </properties>
+    </model>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -329,8 +334,9 @@
     <model name="firework_blast" type="entity" path="mvz2:effect/firework_blast" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
     <model name="zombie_cloud_raindrop" type="entity" path="mvz2:effect/zombie_cloud_raindrop" width="5" height="32" xOffset="0" yOffset="-16"/>
     <model name="zombie_cloud_snowflake" type="entity" path="mvz2:effect/zombie_cloud_snowflake" width="7" height="7" xOffset="0" yOffset="0"/>
-    <model name="zombie_cloud_ember" type="entity" path="mvz2:effect/zombie_cloud_ember" width="2" height="4" xOffset="0" yOffset="0"/>
+    <model name="zombie_cloud_ember" type="entity" path="mvz2:effect/zombie_cloud_ember" width="4" height="8" xOffset="0" yOffset="0"/>
     <model name="water_stain" type="entity" path="mvz2:effect/water_stain" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
+    <model name="tiny_blaze" type="entity" path="mvz2:effect/tiny_blaze" shot="false" width="24" height="32" xOffset="0" yOffset="0"/>
     <model name="smoker_smoke" type="entity" path="mvz2:effect/smoker_smoke" width="64" height="64" xOffset="0" yOffset="0"/>
 
     <!-- Projectiles -->

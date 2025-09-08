@@ -1,4 +1,5 @@
-﻿using MVZ2.Vanilla.Level;
+﻿using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace MVZ2.GameContent.Effects
             position.y = entity.Level.GetGroundY(position.x, position.y);
             if (!entity.Level.IsAirAt(position.x, position.z) && !entity.Level.IsWaterAt(position.x, position.z))
             {
-                var stain = WaterStain.UpdateStain(entity.Level, position, entity);
+                var stain = WaterStain.UpdateStain(entity.Level, position, entity, entity.GetSpawnParams());
                 WaterStain.FreezeStain(stain);
             }
             entity.Remove();

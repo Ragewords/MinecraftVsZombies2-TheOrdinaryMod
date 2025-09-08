@@ -2,15 +2,20 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Effects;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
@@ -31,6 +36,7 @@ namespace MVZ2.GameContent.Effects
             var collisionMask = EntityCollisionHelper.MASK_ALL;
             entity.CollisionMaskFriendly = collisionMask;
             entity.CollisionMaskHostile = collisionMask;
+            entity.SetProperty(PROP_ATTACK_INTERVAL, new FrameTimer(6));
         }
         public override void Update(Entity entity)
         {
@@ -41,6 +47,27 @@ namespace MVZ2.GameContent.Effects
             entity.SetProperty(PROP_TINT_MULTIPLIER, colorMulti);
             entity.SetProperty(PROP_DISPLAY_SCALE_MULTIPLIER, scaleMulti);
             entity.SetModelProperty("Frozen", IsStainFrozen(entity));
+
+            if (IsDisappearing(entity))
+                return;
+            var timer = entity.GetProperty<FrameTimer>(PROP_ATTACK_INTERVAL);
+            var interval = IsStainFrozen(entity) ? SPEED_FROZEN : SPEED;
+            var effects = IsStainFrozen(entity) ? new DamageEffectList(VanillaDamageEffects.ICE, VanillaDamageEffects.SLOW , VanillaDamageEffects.MUTE) : new DamageEffectList(VanillaDamageEffects.MUTE);
+            timer.Run(interval);
+            if (timer.Expired)
+            {
+                collideBuffer.Clear();
+                collideDetector.DetectMultiple(entity, collideBuffer);
+                foreach (var collider in collideBuffer)
+                {
+                    var other = collider.Entity;
+                    if (entity.IsHostile(other))
+                    {
+                        collider.TakeDamage(5, effects, entity);
+                    }
+                }
+                timer.Reset();
+            }
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -78,7 +105,7 @@ namespace MVZ2.GameContent.Effects
         {
             return stain.HasBuff(VanillaBuffID.Effect.waterStainFrozen);
         }
-        public static Entity UpdateStain(LevelEngine level, Vector3 position, Entity spawner)
+        public static Entity UpdateStain(LevelEngine level, Vector3 position, Entity spawner, SpawnParams param)
         {
             var foundStain = FindStainAtPosition(level, position);
             if (foundStain.ExistsAndAlive())
@@ -88,7 +115,7 @@ namespace MVZ2.GameContent.Effects
             }
             else
             {
-                return level.Spawn(VanillaEffectID.waterStain, position, spawner);
+                return level.Spawn(VanillaEffectID.waterStain, position, spawner, param);
             }
         }
         public static Entity FindStainAtPosition(LevelEngine level, Vector3 position)
@@ -117,9 +144,14 @@ namespace MVZ2.GameContent.Effects
             return new Bounds(center, size);
         }
         public const float MAX_FADE_SECONDS = 0.5f;
+        public const float SPEED = 2;
+        public const float SPEED_FROZEN = 1;
         private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
+        private Detector collideDetector = new CollisionDetector();
+        private List<IEntityCollider> collideBuffer = new List<IEntityCollider>();
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_DISPLAY_SCALE_MULTIPLIER = new VanillaEntityPropertyMeta<Vector3>("scale_multiplier");
         public static readonly VanillaEntityPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaEntityPropertyMeta<Color>("tint_multiplier");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_INTERVAL = new VanillaEntityPropertyMeta<FrameTimer>("attack_interval");
         public class SlideAura : AuraEffectDefinition
         {
             public SlideAura() : base(VanillaBuffID.Enemy.waterStainSlide, 4)
