@@ -289,6 +289,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7ad59fee145905345a3241aca0804d48, type: 3}
   - name: mobile_blueprint/iron_helmetted_zombie
     sprite: {fileID: 21300000, guid: a2c663f155f7ff44eb88ea0b4b0a285e, type: 3}
+  - name: mobile_blueprint/karakasa_zombie
+    sprite: {fileID: 21300000, guid: 4fcbdbde928e2c441ae94601bb0841b6, type: 3}
   - name: mobile_blueprint/leather_capped_zombie
     sprite: {fileID: 21300000, guid: 682a1f5ec6af4b54d81d95c0fcf56384, type: 3}
   - name: mobile_blueprint/lengthen_board

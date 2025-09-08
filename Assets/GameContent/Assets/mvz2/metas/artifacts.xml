@@ -1,5 +1,5 @@
 <artifacts>
-    <artifact id="almanac" name="图鉴" tooltip="本场战斗每出现2种怪物，开始战斗时+25能量" sprite="mvz2:artifacts/almanac" >
+    <artifact id="almanac" name="图鉴" tooltip="本场战斗每出现1种怪物，开始战斗时+15能量" sprite="mvz2:artifacts/almanac" >
         <unlock>
             <condition required="mvz2:level.halloween_5"/>
         </unlock>
@@ -20,7 +20,7 @@
         </unlock>
     </artifact>
     
-    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久" sprite="mvz2:artifacts/sweet_sleep_pillow" >
+    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，处于被控制的状态下恢复量×3" sprite="mvz2:artifacts/sweet_sleep_pillow" >
         <unlock>
             <condition required="mvz2:level.dream_2"/>
         </unlock>
@@ -56,7 +56,7 @@
             <condition required="mvz2:artifact.inverted_mirror"/>
         </unlock>
     </artifact>
-    <artifact id="miracle_mallet_replica" name="万宝槌仿制品" tooltip="+15%器械伤害" sprite="mvz2:artifacts/miracle_mallet_replica" >
+    <artifact id="miracle_mallet_replica" name="万宝槌仿制品" tooltip="+15%器械伤害，对近距离攻击敌人的器械则+30%伤害" sprite="mvz2:artifacts/miracle_mallet_replica" >
         <unlock>
             <condition required="mvz2:level.castle_11"/>
         </unlock>

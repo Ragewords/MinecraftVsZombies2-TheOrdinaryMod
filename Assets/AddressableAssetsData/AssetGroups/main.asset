@@ -983,6 +983,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14302d4d1bd318549b679de00df8cce5
+    m_Address: mvz2:mobile_blueprint/silverfish
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1432552aec5d22d4896ea621c722f5b7
     m_Address: mvz2:effect/bone_particles
     m_ReadOnly: 0
@@ -1473,6 +1480,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e41aca59671caf45abfae99227c04b5
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_grouped
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e61769d70b3e5d4eb4a6eddeb6ebdb9
     m_Address: mvz2:entity/effects/blackhole_ring
     m_ReadOnly: 0
@@ -1521,6 +1535,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f85302741fe3204d8499472882e309f
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1fa7f21a7f8675f47a19b64ae5086153
     m_Address: mvz2:mainmenu/mainmenu
@@ -1913,6 +1934,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27e34115defaab8419d3558436e8c270
+    m_Address: mvz2:entity/effect/tiny_blaze
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2844d55fd599f0348a29e3ba6776c932
     m_Address: mvz2:mainmenu/almanac
@@ -3060,6 +3088,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f734f82032f7e449aad781544f1c246
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_polite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3fb9e3cc152d92149914e1b4e20ea5f1
     m_Address: mvz2:entity/enemy/zombie_cloud_particle
     m_ReadOnly: 0
@@ -3318,6 +3353,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - MapModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 459e4bb2bd39a48468e3594c0073372d
+    m_Address: mvz2:effect/tiny_blaze
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 45bd5e18c8a90ab47ab4eb0c7f131186
     m_Address: mvz2:entity/zombie/zombie_cry1
@@ -3731,6 +3773,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fcbdbde928e2c441ae94601bb0841b6
+    m_Address: mvz2:mobile_blueprint/karakasa_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4ffd669e6a8191a468f39575216ef435
     m_Address: mvz2:ui/level/progress_bar/seija
@@ -4242,6 +4291,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a08aae7fe4db534183aa6af66b3a8f4
+    m_Address: mvz2:mobile_blueprint/spellcaster
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5a0c08fed03edc745bbc7ea6e497cf14
     m_Address: mvz2:entity/contraption/desire_pot
@@ -5887,6 +5943,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d4c7c61cabd05e45a2e630f36eb98c2
+    m_Address: mvz2:mobile_blueprint/tanooki_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d587f3c033da1846a38537e4e37d193
     m_Address: mvz2:entity/pickup/sapphire
     m_ReadOnly: 0
@@ -7161,6 +7224,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96f29eaef6c7610449f09c195cd898ff
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_long
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9715bb3348d5b30448e5b28dfde0a228
     m_Address: mvz2:entity/armor/brainwasher_crown
     m_ReadOnly: 0
@@ -7693,6 +7763,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2f11679ad5ba02428258742b249d2c3
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_double
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3186b48658bcbe458396f03e2f38590
     m_Address: mvz2:entity/contraption/diamond_spikes
     m_ReadOnly: 0
@@ -8021,6 +8098,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9ae2aeb5b09a154582c6d3ca7ff0a7c
+    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_tutu
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9d9e0468df93c84ea575c28aa3d81ac
     m_Address: mvz2:random/wood4
@@ -9008,6 +9092,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c24a174b11411724a8a2060ae4d7b4e1
+    m_Address: mvz2:mobile_blueprint/zombie_cloud_fire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2578011139751f4ebed15184256f29d
     m_Address: mvz2:map/dream/apollo_meridian_blue

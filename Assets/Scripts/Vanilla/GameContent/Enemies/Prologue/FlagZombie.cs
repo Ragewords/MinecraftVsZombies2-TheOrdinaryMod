@@ -63,7 +63,7 @@ namespace MVZ2.GameContent.Enemies
                 if (entity.IsDead)
                     return;
                 detectBuffer.Clear();
-                level.FindEntitiesNonAlloc(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY, detectBuffer);
+                level.FindEntitiesNonAlloc(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY && e.State != VanillaEntityStates.ENEMY_PARACHUTE, detectBuffer);
                 foreach (var cherish in detectBuffer)
                 {
                     results.Add(cherish);
