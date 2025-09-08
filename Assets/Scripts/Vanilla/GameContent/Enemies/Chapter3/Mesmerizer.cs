@@ -24,7 +24,6 @@ namespace MVZ2.GameContent.Enemies
                 ignoreBoss = true,
                 ignoreHighEnemy = false,
                 ignoreLowEnemy = false,
-                factionTarget = FactionTarget.Any,
                 colliderFilter = (p, c) => ColliderFilter(p.entity, c)
             };
         }

@@ -22,7 +22,6 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(30));
-            entity.CollisionMaskFriendly |= EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_PLANT;
         }
         public override void Update(Entity projectile)
         {
@@ -56,7 +55,7 @@ namespace MVZ2.GameContent.Projectiles
             var mesmerizer = projectile.Parent;
             if (!CanControl(mesmerizer, target))
             {
-                hitResult.Pierce = true;
+                target.PlaySound(VanillaSoundID.mindClear);
                 return;
             }
             target.CharmWithController(mesmerizer, new EntitySourceReference(projectile));

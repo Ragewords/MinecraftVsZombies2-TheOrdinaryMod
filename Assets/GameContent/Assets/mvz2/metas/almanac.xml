@@ -1309,7 +1309,7 @@
 
         <entry id="mvz2:mesmerizer">
             <header>
-                <p>催眠者能够精神控制你的器械使其倒戈，或是催眠敌人令其行动速度变快。杀死催眠者可以解除精神控制。</p>
+                <p>催眠者能够精神控制你的器械使其倒戈。杀死催眠者可以解除精神控制。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
