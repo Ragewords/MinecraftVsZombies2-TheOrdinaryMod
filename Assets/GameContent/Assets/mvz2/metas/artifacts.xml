@@ -129,7 +129,7 @@
             <condition required="mvz2:level.dream_EX3"/>
         </unlock>
     </artifact>
-    <artifact id="heavy_bass_drum" name="重低音鼓" tooltip="敌人在每2秒的节拍下受到伤害时会被眩晕1秒" sprite="mvz2:artifacts/heavy_bass_drum" >
+    <artifact id="heavy_bass_drum" name="重低音鼓" tooltip="友方子弹命中后，造成一次5%的小范围溅射伤害" sprite="mvz2:artifacts/heavy_bass_drum" >
         <unlock>
             <condition required="mvz2:level.castle_EX3"/>
         </unlock>

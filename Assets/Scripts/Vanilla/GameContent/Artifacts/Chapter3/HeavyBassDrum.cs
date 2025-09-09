@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Artifacts
             }
             if (valid)
             {
-                projectile.SplashDamage(excludeCollider, projectile.GetCenter(), 20, projectile.GetFaction(), projectile.GetDamage() * 0.2f, new DamageEffectList(VanillaDamageEffects.MUTE));
+                projectile.SplashDamage(excludeCollider, projectile.GetCenter(), 20, projectile.GetFaction(), projectile.GetDamage() * 0.05f, new DamageEffectList(VanillaDamageEffects.MUTE));
             }
         }
     }
