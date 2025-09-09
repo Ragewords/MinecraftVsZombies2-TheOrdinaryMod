@@ -79,7 +79,7 @@ namespace MVZ2.GameContent.Areas
         public override void PostHugeWaveEvent(LevelEngine level)
         {
             base.PostHugeWaveEvent(level);
-            SpawnParatroops(level, 3);
+            SpawnParatroops(level, GetRNG(level).Next(3, 6));
         }
         public static void SpawnParatroops(LevelEngine level, int count)
         {
