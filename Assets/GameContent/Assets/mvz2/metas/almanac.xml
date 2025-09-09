@@ -1892,10 +1892,11 @@
                 <p>蕴含音乐魔力的鼓。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>当敌人在每2秒的节拍下受到伤害时，眩晕这个敌人1秒</color>]]></p>
+                <p>效果：<![CDATA[<color=red>友方子弹命中后，造成一次20%的小范围溅射伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>锁屏可打。</p>
+                <p>这个鼓看上去躁动不安，就像是你玩某些节奏游戏的样子。</p>
+                <p>总之锁屏可打。</p>
             </flavor>
         </entry>
         <entry id="mvz2:endless_gate">
