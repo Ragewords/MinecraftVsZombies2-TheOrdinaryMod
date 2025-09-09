@@ -1073,7 +1073,6 @@
                 <float name="mvz2:damage" value="100"/>
                 <id name="mvz2:projectileId" value="mvz2:fire_charge"/>
                 <id name="mvz2:shootSound" value="mvz2:fire_charge"/>
-                <id name="mvz2:fragmentId" value="mvz2:furnace"/>
                 <vector3 name="mvz2:shotOffset" x="0" y="50" z="0"/>
                 <vector3 name="mvz2:size" x="48" y="48" z="48"/>
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy mvz2:flying_enemy" />
