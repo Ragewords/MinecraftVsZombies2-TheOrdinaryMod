@@ -405,6 +405,9 @@ namespace MVZ2.Vanilla.Level
         public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, bool ignoreOffset = false)
         {
             var x = level.GetEnemySpawnX();
+            var enemyID = spawnDef.GetSpawnEntityID();
+            if (enemyID == VanillaEnemyID.karakasaZombie)
+                x = level.GetEntityColumnX(level.GetMaxColumnCount());
             return level.SpawnEnemy(spawnDef, lane, x, ignoreOffset);
         }
         public static Entity SpawnEnemy(this LevelEngine level, SpawnDefinition spawnDef, int lane, float x, bool ignoreOffset = false)

@@ -11,7 +11,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
     {
         public KarakasaSpeedBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Set, PROP_SPEED, -10000));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Set, PROP_SPEED, 10000));
         }
         public static void SetSpeed(Buff buff, float value)
         {
