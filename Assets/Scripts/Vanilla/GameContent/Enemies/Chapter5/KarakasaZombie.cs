@@ -75,7 +75,8 @@ namespace MVZ2.GameContent.Enemies
                 return;
 
             var buff = entity.NewBuff<KarakasaSpeedBuff>();
-            KarakasaSpeedBuff.SetSpeed(buff, columnDistance * 1.8f);
+            var increment = 1 + columnDistance * 0.2f;
+            KarakasaSpeedBuff.SetSpeed(buff, columnDistance * increment);
             entity.AddBuff(buff);
         }
     }

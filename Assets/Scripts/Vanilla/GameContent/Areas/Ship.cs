@@ -58,9 +58,10 @@ namespace MVZ2.GameContent.Areas
             level.SetModelAnimatorFloat("SkyOffsetSpeed", skyOffsetSpeed);
 
             var breezeSpeed = GetBreezeSpeed(level);
-            var nextSpeed = GetNextBreezeSpeed(level) * (level.IsDuringHugeWave() ? BREEZE_OFFSET_MULTIPILER : 1);
+            var nextSpeed = GetNextBreezeSpeed(level);
+            var multipiler = level.IsDuringHugeWave() ? BREEZE_OFFSET_MULTIPILER : 1;
             var breezeAccel = (nextSpeed - breezeSpeed) * BREEZE_OFFSET_ACCELERATION;
-            if (skyOffsetSpeed != targetSpeed)
+            if (breezeSpeed != nextSpeed)
             {
                 if (breezeSpeed < nextSpeed == breezeSpeed + breezeAccel > nextSpeed)
                 {
@@ -72,8 +73,8 @@ namespace MVZ2.GameContent.Areas
                 }
             }
             SetBreezeSpeed(level, breezeSpeed);
-            BlowEntities(level, breezeSpeed);
-            level.SetModelAnimatorFloat("BreezeOffsetSpeed", breezeSpeed);
+            BlowEntities(level, breezeSpeed, multipiler);
+            level.SetModelAnimatorFloat("BreezeOffsetSpeed", breezeSpeed * multipiler);
         }
         public override void PostHugeWaveEvent(LevelEngine level)
         {
@@ -129,19 +130,19 @@ namespace MVZ2.GameContent.Areas
             if (level.AreaDefinition != this)
                 return;
             var rng = GetBreezeRNG(level);
-            SetNextBreezeSpeed(level, rng.Next(-3, 1));
+            SetNextBreezeSpeed(level, rng.Next(-2, 4));
         }
-        private void BlowEntities(LevelEngine level, float speed)
+        private void BlowEntities(LevelEngine level, float speed, float multipiler)
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
                 if (enemy.State != VanillaEntityStates.ATTACK && enemy.State != VanillaEntityStates.ENEMY_PARACHUTE)
-                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * Vector3.left;
+                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
-                if (projectile.Velocity.magnitude < 30)
-                    projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * Vector3.left;
+                if (projectile.Velocity.magnitude < 20)
+                    projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
             }
         }
         public static float GetSkyOffsetSpeed(LevelEngine level) => level.GetProperty<float>(PROP_SKY_OFFSET_SPEED);
@@ -167,8 +168,8 @@ namespace MVZ2.GameContent.Areas
         public const float SKY_OFFSET_ACCELERATION = 0.1f;
         public const float ENEMY_BLOW_MULTIPILER = 0.05f;
         public const float PROJECTILE_BLOW_MULTIPILER = 0.025f;
-        public const float BREEZE_OFFSET_ACCELERATION = 0.05f;
-        public const float BREEZE_OFFSET_MULTIPILER = 2;
+        public const float BREEZE_OFFSET_ACCELERATION = 0.01f;
+        public const float BREEZE_OFFSET_MULTIPILER = 1.5f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
         public static readonly VanillaLevelPropertyMeta<float> PROP_SKY_OFFSET_SPEED = new VanillaLevelPropertyMeta<float>("sky_offset_speed");
         public static readonly VanillaLevelPropertyMeta<float> PROP_BREEZE_SPEED = new VanillaLevelPropertyMeta<float>("breeze_speed");
