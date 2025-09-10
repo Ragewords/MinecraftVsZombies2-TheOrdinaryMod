@@ -1,5 +1,4 @@
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
@@ -61,9 +60,8 @@ namespace MVZ2.Vanilla.Enemies
                 return false;
             if (!Detection.IsInSameRow(enemy, target))
             {
-                if (target.HasBuff<LightningOrbEnergyShieldBuff>())
-                    return true;
-                return false;
+                if (!target.HasBuff<LightningOrbEnergyShieldBuff>())
+                    return false;
             }
             if (!Detection.CanDetect(target))
                 return false;
