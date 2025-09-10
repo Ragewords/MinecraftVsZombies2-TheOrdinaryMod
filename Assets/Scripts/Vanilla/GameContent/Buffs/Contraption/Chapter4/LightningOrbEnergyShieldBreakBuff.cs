@@ -14,11 +14,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         {
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
         }
-        public override void PostAdd(Buff buff)
-        {
-            base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMER, new FrameTimer(5));
-        }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
@@ -28,6 +23,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             else
                 timer.Run();
         }
-        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer", new FrameTimer(5));
     }
 }

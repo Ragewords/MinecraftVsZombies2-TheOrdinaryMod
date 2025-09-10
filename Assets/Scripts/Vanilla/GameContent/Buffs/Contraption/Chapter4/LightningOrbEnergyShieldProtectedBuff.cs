@@ -2,7 +2,6 @@ using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
-using Tools;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
