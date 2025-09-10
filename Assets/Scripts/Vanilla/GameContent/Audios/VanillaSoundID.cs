@@ -193,6 +193,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID smallHit = Get("small_hit");
         public readonly static NamespaceID smash = Get("smash");
         public readonly static NamespaceID snow = Get("snow");
+        public readonly static NamespaceID songFoDeniseSample = Get("song_for_denise_sample");
         public readonly static NamespaceID sparkle = Get("sparkle");
         public readonly static NamespaceID spellCard = Get("spell_card");
         public readonly static NamespaceID splash = Get("splash");
@@ -234,7 +235,6 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID wheelOfDeathLoop = Get("wheel_of_death_loop");
         public readonly static NamespaceID winMusic = Get("win_music");
         public readonly static NamespaceID wood = Get("wood");
-        public readonly static NamespaceID yourTakingTooLong = Get("your_taking_too_long");
         public readonly static NamespaceID zap = Get("zap");
         public readonly static NamespaceID zombieCry = Get("zombie_cry");
         public readonly static NamespaceID zombieHurt = Get("zombie_hurt");

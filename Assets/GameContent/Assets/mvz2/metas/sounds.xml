@@ -752,6 +752,9 @@
     <sound name="snow">
         <sample path="mvz2:snow" weight="1" />
     </sound>
+    <sound name="song_for_denise_sample">
+        <sample path="mvz2:song_for_denise_sample" weight="1" />
+    </sound>
     <sound name="soul_sand">
         <sample path="mvz2:soul_sand1" weight="1" />
         <sample path="mvz2:soul_sand2" weight="1" />
@@ -1001,14 +1004,6 @@
         <sample path="mvz2:random/cloth/cloth2" weight="1" />
         <sample path="mvz2:random/cloth/cloth3" weight="1" />
         <sample path="mvz2:random/cloth/cloth4" weight="1" />
-    </sound>
-    <sound name="your_taking_too_long">
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_long" weight="1" />
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long" weight="1" />
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_double" weight="1" />
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_grouped" weight="1" />
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_polite" weight="1" />
-        <sample path="mvz2:entity/firework_dispenser_easter_egg/your_taking_tutu" weight="1" />
     </sound>
     <sound name="zap">
         <sample path="mvz2:zap1" weight="1" />
