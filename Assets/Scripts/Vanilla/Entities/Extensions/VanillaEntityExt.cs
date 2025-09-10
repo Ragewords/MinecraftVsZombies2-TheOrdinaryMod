@@ -1058,7 +1058,7 @@ namespace MVZ2.Vanilla.Entities
             {
                 buff = entity.AddBuff(buffDefinition);
             }
-            buff.SetProperty(EnemyWeaknessBuff.PROP_TIMEOUT, time);
+            buff.SetProperty(PoisonedBuff.PROP_TIMEOUT, time);
             PostApplyStatusEffect(entity, buff, source);
         }
 
