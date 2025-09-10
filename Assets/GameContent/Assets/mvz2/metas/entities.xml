@@ -955,7 +955,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </dispenser>
-        <contraption id="revivegrave" name="还魂冢" tooltip="复活并友好化倒下的敌人"
+        <contraption id="revivegrave" name="还魂冢" tooltip="复活并友好化倒下的亡灵类敌人"
             unlock="mvz2:contraption.revivegrave">
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
