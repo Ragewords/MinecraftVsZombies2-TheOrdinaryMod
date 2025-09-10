@@ -1480,13 +1480,6 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1e41aca59671caf45abfae99227c04b5
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_grouped
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e61769d70b3e5d4eb4a6eddeb6ebdb9
     m_Address: mvz2:entity/effects/blackhole_ring
     m_ReadOnly: 0
@@ -1535,13 +1528,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f85302741fe3204d8499472882e309f
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1fa7f21a7f8675f47a19b64ae5086153
     m_Address: mvz2:mainmenu/mainmenu
@@ -3087,13 +3073,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3f734f82032f7e449aad781544f1c246
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_polite
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3fb9e3cc152d92149914e1b4e20ea5f1
     m_Address: mvz2:entity/enemy/zombie_cloud_particle
@@ -7224,13 +7203,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 96f29eaef6c7610449f09c195cd898ff
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_long
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9715bb3348d5b30448e5b28dfde0a228
     m_Address: mvz2:entity/armor/brainwasher_crown
     m_ReadOnly: 0
@@ -7763,13 +7735,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a2f11679ad5ba02428258742b249d2c3
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_too_long_double
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3186b48658bcbe458396f03e2f38590
     m_Address: mvz2:entity/contraption/diamond_spikes
     m_ReadOnly: 0
@@ -8098,13 +8063,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a9ae2aeb5b09a154582c6d3ca7ff0a7c
-    m_Address: mvz2:entity/firework_dispenser_easter_egg/your_taking_tutu
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9d9e0468df93c84ea575c28aa3d81ac
     m_Address: mvz2:random/wood4
@@ -10835,6 +10793,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e76a6ceb15cbfc44c81b40f83245a9b2
+    m_Address: mvz2:song_for_denise_sample
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e815fc79b6c003e4788c0027be0a82e6
     m_Address: mvz2:ui/level/progress_bar/wither
