@@ -75,12 +75,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         }
         public static float GetHealth(Buff buff) => buff.GetProperty<float>(PROP_TAKEN_DAMAGE);
         public static void SetHealth(Buff buff, float value) => buff.SetProperty(PROP_TAKEN_DAMAGE, value);
-        public static void TakeDamage(Buff buff, float value)
-        {
-            SetHealth(buff, GetHealth(buff) - Mathf.Min(value, MAX_TAKE_DAMAGE));
-            var entity = buff.GetEntity();
-            entity?.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield, value);
-        }
+        public static void TakeDamage(Buff buff, float value) => SetHealth(buff, GetHealth(buff) - Mathf.Min(value, MAX_TAKE_DAMAGE));
         public static void Heal(Buff buff, float value)
         {
             var entity = buff.GetEntity();
