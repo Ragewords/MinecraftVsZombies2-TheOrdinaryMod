@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1914097810400504425}
   - component: {fileID: 5891898121410918821}
   m_Layer: 0
-  m_Name: Skirt
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909896315467256440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.08000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3323599524130386937}
+  m_Father: {fileID: 3463283640725848210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8497833698444762999
 SpriteRenderer:
@@ -114,6 +114,38 @@ MonoBehaviour:
   sprites:
   - {fileID: -348838480, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
   - {fileID: 1874139909, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
+--- !u!1 &7230953626495085327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3463283640725848210}
+  m_Layer: 0
+  m_Name: Skirt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3463283640725848210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230953626495085327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6839191944519468391}
+  m_Father: {fileID: 3323599524130386937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4582759621960982009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,7 +340,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8698303746586872305, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 6839191944519468391}
+      addedObject: {fileID: 3463283640725848210}
     - targetCorrespondingSourceObject: {fileID: 8130184350635454342, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4538799738526583854}

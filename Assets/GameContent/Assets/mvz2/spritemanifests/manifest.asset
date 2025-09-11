@@ -199,6 +199,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: cb2161762d5c5c54f989ec0a1e6d85e9, type: 3}
   - name: mobile_blueprint/add_pearl
     sprite: {fileID: 21300000, guid: db41f5cca7edeb34a8465f62eae3d2c3, type: 3}
+  - name: mobile_blueprint/admiral_zombie
+    sprite: {fileID: 21300000, guid: 3e1266cfed353164c9c16d8a71a40961, type: 3}
   - name: mobile_blueprint/anubisand
     sprite: {fileID: 21300000, guid: 2d37eb66e5d769343ab9e6ee42496b68, type: 3}
   - name: mobile_blueprint/anvil
@@ -555,6 +557,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 92e692ae88b62a541bef812a89e2bac3, type: 3}
   - name: ui/sword
     sprite: {fileID: 21300000, guid: 6bfc7d9706121e5458ed36aa87ece92c, type: 3}
+  - name: entity/armor/admiral_zombie_hat
+    sprite: {fileID: 21300000, guid: fa230e263448a0b4996964440be4db5b, type: 3}
   - name: entity/armor/bedserker_helmet
     sprite: {fileID: 21300000, guid: e44b0e9757080bf4dbf0ae5b2420e15c, type: 3}
   - name: entity/armor/berserker_helmet
@@ -823,6 +827,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7667a381c5230374d9c5b5a7bf629dd9, type: 3}
   - name: entity/enemies/ghost_tail
     sprite: {fileID: 21300000, guid: 8b9310b7e61da30448b5d9b66c4cf9f3, type: 3}
+  - name: entity/enemies/goat_horn
+    sprite: {fileID: 21300000, guid: 9483870a6599eab4aa5b51df4481eb8d, type: 3}
   - name: entity/enemies/golden_axe
     sprite: {fileID: 21300000, guid: ffc82409076aa3e4481bb54a1438d1db, type: 3}
   - name: entity/enemies/holy_sword
@@ -2089,6 +2095,18 @@ MonoBehaviour:
     - {fileID: 1815208976, guid: 93e2f9e0bfa5b694baa6f369a01161b8, type: 3}
     - {fileID: 894312570, guid: 93e2f9e0bfa5b694baa6f369a01161b8, type: 3}
     - {fileID: 1446467554, guid: 93e2f9e0bfa5b694baa6f369a01161b8, type: 3}
+  - name: entity/enemy/admiral_zombie
+    spritesheet:
+    - {fileID: -314672780, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: 835357274, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: 1673116062, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: -1367390205, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: 1723199386, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: -1909751086, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: -52183707, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: -1826730717, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: 257460887, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
+    - {fileID: -827796216, guid: 0db84a5df49b66849b35ab6cd7904705, type: 3}
   - name: entity/enemy/anubisand
     spritesheet:
     - {fileID: 728664072, guid: bb9cb8c96cd65034d97163c167129eb9, type: 3}

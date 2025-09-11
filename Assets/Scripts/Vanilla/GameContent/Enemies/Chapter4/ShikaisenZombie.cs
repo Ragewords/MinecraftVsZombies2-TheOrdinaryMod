@@ -55,7 +55,7 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
             entity.SetModelProperty("NoStaff", !HasStaff(entity));
-            entity.SetAnimationBool("HasPot", HasPot(entity));
+            entity.SetModelProperty("NoPot", !HasPot(entity));
 
             if (!HasPot(entity))
             {

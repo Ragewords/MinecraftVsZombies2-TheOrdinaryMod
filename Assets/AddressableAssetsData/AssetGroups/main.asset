@@ -633,6 +633,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0db84a5df49b66849b35ab6cd7904705
+    m_Address: mvz2:entity/enemy/admiral_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0deb751d188532a459548c9e64ada4b5
     m_Address: mvz2:damage/bone/bone_hit2
     m_ReadOnly: 0
@@ -3018,6 +3025,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e1266cfed353164c9c16d8a71a40961
+    m_Address: mvz2:mobile_blueprint/admiral_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3e1edcf7a9565ee499ab80e9958f04f2
     m_Address: mvz2:damage/splat/splat3
     m_ReadOnly: 0
@@ -3052,6 +3066,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f4e5a2503d87634daa75c4ca19ce237
+    m_Address: mvz2:armor/admiral_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3f506694625dacb4c929261f901c2f2b
     m_Address: mvz2:entity/wither_skeleton/wither_skeleton1
@@ -7105,6 +7126,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9483870a6599eab4aa5b51df4481eb8d
+    m_Address: mvz2:entity/enemies/goat_horn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94f2e4ecd6b77ab49ba575570f0518d5
     m_Address: mvz2:gensokyo
     m_ReadOnly: 0
@@ -8175,6 +8203,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acfd4c2c789dc77419afaf6a4a236ba8
+    m_Address: mvz2:enemy/ship/admiral_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acfe49e4096d3e242bf14e1ee6fc70eb
     m_Address: mvz2:trident_thunder2
@@ -11751,6 +11786,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa230e263448a0b4996964440be4db5b
+    m_Address: mvz2:entity/armor/admiral_zombie_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa76cf42a679f124aa9398ad07610f68
     m_Address: mvz2:missile

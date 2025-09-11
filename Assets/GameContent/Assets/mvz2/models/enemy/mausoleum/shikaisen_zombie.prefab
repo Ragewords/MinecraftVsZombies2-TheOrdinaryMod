@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350112746156868419}
   - component: {fileID: 2391911428204431058}
-  - component: {fileID: 1340733154710390520}
+  - component: {fileID: 2850386559280542704}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -94,27 +94,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
---- !u!95 &1340733154710390520
-Animator:
-  serializedVersion: 5
+--- !u!114 &2850386559280542704
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4817253397834033859}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e1c181c4960639446be77e08fa4d50bf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a287da23b59d7e42be6baeb5ac11e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenFalse: 1
+  propertyName: NoPot
 --- !u!1 &5634816706924157170
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 2426369337882559767}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: animators.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: particles.Array.size
@@ -593,10 +586,6 @@ PrefabInstance:
       propertyPath: animators.Array.data[0]
       value: 
       objectReference: {fileID: 5510551699930845145}
-    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
-      propertyPath: animators.Array.data[1]
-      value: 
-      objectReference: {fileID: 1340733154710390520}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: modelAnchors.Array.size
       value: 6
