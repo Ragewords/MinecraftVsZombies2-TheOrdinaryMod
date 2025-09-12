@@ -10682,6 +10682,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2fa180996375304bbc8f4733242a2d5
+    m_Address: mvz2:admiral_call1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e331ed1f540bbb04db318b073f0720ac
     m_Address: mvz2:talk/dialog_faint
     m_ReadOnly: 0
@@ -10747,6 +10754,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5a39bb468a4cca4ab2dcad10a455c1d
     m_Address: mvz2:hell_planet_deflect3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5b281ffc0f8d89409e5496ccba5e5bc
+    m_Address: mvz2:admiral_call0
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
