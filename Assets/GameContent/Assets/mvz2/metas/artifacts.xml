@@ -141,7 +141,7 @@
     </artifact>
     <artifact id="captain_s_log" name="舰长日志" tooltip="每放置5种不同器械，生成你所携带的一张蓝图的复制" sprite="mvz2:artifacts/captain_s_log" >
         <unlock>
-            <condition required="mvz2:level.ship_EX3"/>
+            <condition required="mvz2:level.ship_EX4"/>
         </unlock>
     </artifact>
 </artifacts>
