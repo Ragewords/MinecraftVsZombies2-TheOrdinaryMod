@@ -133,9 +133,13 @@ namespace MVZ2.GameContent.Enemies
             List<int> weights = new List<int>();
             var actualCount = Mathf.Max(Mathf.Min(MAX_PARATROOPERS_COUNT - GetAliveParatroopCount(entity), count), 1);
 
-            for (int col = entity.GetColumn() - 1; col <= entity.GetColumn() + 1; col++)
+            var smallestColumn = Mathf.Max(entity.GetColumn() - 1, 0);
+            var largestColumn = Mathf.Min(entity.GetColumn() + 1, entity.Level.GetMaxColumnCount() - 1);
+            var smallestLane = Mathf.Max(entity.GetLane() - 1, 0);
+            var largestLane = Mathf.Min(entity.GetLane() + 1, entity.Level.GetMaxLaneCount() - 1);
+            for (int col = smallestColumn; col <= largestColumn; col++)
             {
-                for (int lane = entity.GetLane() - 1; lane <= entity.GetLane() + 1; lane++)
+                for (int lane = smallestLane; lane <= largestLane; lane++)
                 {
                     var grid = entity.Level.GetGrid(col, lane);
                     valid.Add(grid);

@@ -1665,7 +1665,7 @@
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
             </properties>
         </humanoid>
-        <zombie id="admiral_zombie" name="航海家僵尸" deathMessage="奉行飞翔的正义！" unlock="mvz2:level.ship_EX1">
+        <zombie id="admiral_zombie" name="航海者僵尸" deathMessage="奉行飞翔的正义！" unlock="mvz2:level.ship_EX1">
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:admiral_hat" />
                 <int name="mvz2:cost" value="200" />
