@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6453406061027855204, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6453406061027855204, guid: bded572031703084ca75d3a1a2cc8785, type: 3}
       propertyPath: m_LocalPosition.y
@@ -429,6 +429,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7364040190415194331}
     m_Modifications:
+    - target: {fileID: 4378528124005132667, guid: cf3be980cc6f89e408988c51840f4c89, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4850803454635085492, guid: cf3be980cc6f89e408988c51840f4c89, type: 3}
       propertyPath: m_Name
       value: cannanball_zombie_hat

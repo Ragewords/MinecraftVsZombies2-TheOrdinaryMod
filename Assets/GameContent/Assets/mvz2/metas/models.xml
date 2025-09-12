@@ -146,6 +146,7 @@
             <int name="Variant" value="3" />
         </properties>
     </model>
+    <model name="admiral_zombie" type="entity" path="mvz2:enemy/ship/admiral_zombie" width="86" height="108" xOffset="6" yOffset="-44"/>
 
     <model name="mutant_zombie" type="entity" path="mvz2:enemy/shrine/mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
     <model name="mega_mutant_zombie" type="entity" path="mvz2:enemy/shrine/mega_mutant_zombie" width="200" height="180" xOffset="0" yOffset="-90"/>
@@ -417,6 +418,7 @@
     <model name="umbrella_shield" type="armor" path="mvz2:armor/umbrella_shield" width="64" height="100" xOffset="16" yOffset="-7"/>
     <model name="cannon" type="armor" path="mvz2:armor/cannon" width="61" height="36" xOffset="5" yOffset="0"/>
     <model name="cannonball_hat" type="armor" path="mvz2:armor/cannonball_hat" width="27" height="11" xOffset="0" yOffset="5"/>
+    <model name="admiral_hat" type="armor" path="mvz2:armor/admiral_hat" width="38" height="11" xOffset="0" yOffset="5"/>
 
     <!-- HeldItems -->
     <model name="starshard.default" type="held" path="mvz2:held/starshards/default" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>

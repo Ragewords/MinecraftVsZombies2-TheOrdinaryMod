@@ -1609,7 +1609,7 @@
         </enemy>
 
         <!-- Extra Enemies -->
-        <humanoid id="skelebomb" name="爆破骨兵" deathMessage="送你个惊喜！" unlock="mvz2:level.halloween_11">
+        <humanoid id="skelebomb" name="爆破骨兵" deathMessage="送你个惊喜！" unlock="mvz2:level.halloween_EX1">
             <properties>
                 <float name="mvz2:speed" value="2"/>
                 <float name="mvz2:range" value="120"/>
@@ -1623,7 +1623,7 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </humanoid>
-        <enemy id="silverfish" name="蠹虫" deathMessage="这太吃书了。" unlock="mvz2:level.dream_11">
+        <enemy id="silverfish" name="蠹虫" deathMessage="这太吃书了。" unlock="mvz2:level.dream_EX1">
             <properties>
                 <float name="mvz2:maxHealth" value="100"/>
                 <float name="mvz2:maxAttackHeight" value="10"/>
@@ -1647,27 +1647,30 @@
                 <int name="mvz2:airInteraction" value="2" />
             </properties>
         </enemy>
-        <witherSkeleton id="spellcaster" name="咒术师" deathMessage="画个圈圈诅咒你！" unlock="mvz2:level.castle_11">
+        <witherSkeleton id="spellcaster" name="咒术师" deathMessage="画个圈圈诅咒你！" unlock="mvz2:level.castle_EX1">
             <properties>
                 <float name="mvz2:maxHealth" value="300"/>
                 <id name="mvz2:shell" value="mvz2:nether"/>
                 <id name="mvz2:crySound" value="mvz2:wither_skeleton_cry"/>
                 <id name="mvz2:hitSound" value="mvz2:bone_hit"/>
                 <id name="mvz2:deathSound" value="mvz2:wither_skeleton_death"/>
+                <vector3 name="mvz2:size" x="38" y="103" z="38" />
 
                 <int name="mvz2:cost" value="200" />
-                <int name="mvz2:waterInteraction" value="2"/>
-                <int name="mvz2:airInteraction" value="2" />
             </properties>
         </witherSkeleton>
-        <humanoid id="tanooki_zombie" name="妖怪狸僵尸" deathMessage="让我先喘口气吧" unlock="mvz2:level.mausoleum_11">
+        <humanoid id="tanooki_zombie" name="妖怪狸僵尸" deathMessage="让我先喘口气吧" unlock="mvz2:level.mausoleum_EX1">
             <properties>
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
-                <int name="mvz2:waterInteraction" value="2"/>
-                <int name="mvz2:airInteraction" value="2" />
             </properties>
         </humanoid>
+        <zombie id="admiral_zombie" name="航海家僵尸" deathMessage="奉行飞翔的正义！" unlock="mvz2:level.ship_EX1">
+            <properties>
+                <id name="mvz2:starting_armor" value="mvz2:admiral_hat" />
+                <int name="mvz2:cost" value="200" />
+            </properties>
+        </zombie>
         
         <!-- Token Enemies-->
         <enemy id="bone_wall" name="骨墙" deathMessage="你是怎么做到的？" unlock="mvz2:level.halloween_8">

@@ -3,6 +3,10 @@
     <sound name="achievement">
         <sample path="mvz2:achievement" weight="1" />
     </sound>
+    <sound name="admiral_call">
+        <sample path="mvz2:admiral_call0" weight="1" />
+        <sample path="mvz2:admiral_call1" weight="1" />
+    </sound>
     <sound name="annihilation_field">
         <sample path="mvz2:annihilation_field" weight="1" />
     </sound>

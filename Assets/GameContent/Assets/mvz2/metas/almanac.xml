@@ -1593,6 +1593,20 @@
                 <p>他喜欢打扮成动物，那套衣服是他在一个到处是浮空砖块的地方找到的，至少他是这么认为。</p>
             </flavor>
         </entry>
+        <entry id="mvz2:admiral_zombie">
+            <header>
+                <p>航海家僵尸会吹响手中的号角来呼叫支援。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200+200</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤数个伞兵作为支援</color>]]></p>
+            </properties>
+            <flavor>
+                <p>航海家僵尸有着丰富的作战经验和航海知识，是这艘船上最具领导能力的核心人物。</p>
+                <p>……但是他为什么穿得像是个海军？</p>
+            </flavor>
+        </entry>
     </enemies>
     <artifacts>
         <entry id="mvz2:almanac">

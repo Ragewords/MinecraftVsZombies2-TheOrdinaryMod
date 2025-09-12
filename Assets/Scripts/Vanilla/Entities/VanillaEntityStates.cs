@@ -76,6 +76,8 @@
         public const int SKELETON_HORSE_LAND = ENEMY_SPECIAL;
 
         public const int EMPEROR_ZOMBIE_CAST = ENEMY_CAST;
+        
+        public const int ADMIRAL_ZOMBIE_CALL = ENEMY_CAST;
 
         public const int MUTANT_ZOMBIE_IDLE = IDLE;
         public const int MUTANT_ZOMBIE_WALK = WALK;
