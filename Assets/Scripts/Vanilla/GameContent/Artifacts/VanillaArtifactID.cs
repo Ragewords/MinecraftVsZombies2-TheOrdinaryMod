@@ -34,6 +34,7 @@ namespace MVZ2.GameContent.Artifacts
         public const string bentSpoon = "bent_spoon";
         public const string heavyBassDrum = "heavy_bass_drum";
         public const string endlessGate = "endless_gate";
+        public const string shipsLog = "ship_s_log";
     }
     public static class VanillaArtifactID
     {
@@ -66,6 +67,7 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID bentSpoon = Get(VanillaArtifactNames.bentSpoon);
         public static readonly NamespaceID heavyBassDrum = Get(VanillaArtifactNames.heavyBassDrum);
         public static readonly NamespaceID endlessGate = Get(VanillaArtifactNames.endlessGate);
+        public static readonly NamespaceID shipsLog = Get(VanillaArtifactNames.shipsLog);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

@@ -4,8 +4,8 @@
         <sample path="mvz2:achievement" weight="1" />
     </sound>
     <sound name="admiral_call">
-        <sample path="mvz2:admiral_call0" weight="1" />
         <sample path="mvz2:admiral_call1" weight="1" />
+        <sample path="mvz2:admiral_call2" weight="1" />
     </sound>
     <sound name="annihilation_field">
         <sample path="mvz2:annihilation_field" weight="1" />
@@ -542,6 +542,11 @@
     </sound>
     <sound name="odd">
         <sample path="mvz2:odd" weight="1" />
+    </sound>
+    <sound name="open_flip">
+        <sample path="mvz2:open_flip1" weight="1" />
+        <sample path="mvz2:open_flip2" weight="1" />
+        <sample path="mvz2:open_flip3" weight="1" />
     </sound>
     <sound name="pacman_start" maxCount="1" priority="64">
         <sample path="mvz2:pacman_start" weight="1" />

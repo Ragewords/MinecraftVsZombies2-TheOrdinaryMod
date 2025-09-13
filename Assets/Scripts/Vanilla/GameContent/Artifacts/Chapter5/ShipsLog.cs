@@ -1,0 +1,80 @@
+using System.Collections.Generic;
+using System.Linq;
+using MVZ2.GameContent.Pickups;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.SeedPacks;
+using MVZ2Logic;
+using MVZ2Logic.Artifacts;
+using MVZ2Logic.Level;
+using PVZEngine;
+using PVZEngine.Callbacks;
+using PVZEngine.Level;
+using PVZEngine.SeedPacks;
+using Tools;
+using UnityEngine;
+
+namespace MVZ2.GameContent.Artifacts
+{
+    [ArtifactDefinition(VanillaArtifactNames.shipsLog)]
+    public class ShipsLog : ArtifactDefinition
+    {
+        public ShipsLog(string nsp, string name) : base(nsp, name)
+        {
+            AddTrigger(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
+        }
+        public override void PostUpdate(Artifact artifact)
+        {
+            base.PostUpdate(artifact);
+            artifact.SetNumber(recordList.Count);
+        }
+        private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
+        {
+            var entity = param.entity;
+            var level = entity.Level;
+            var definition = param.definition;
+            var id = definition.GetID();
+            var artifacts = level.GetArtifacts();
+            foreach (var artifact in artifacts)
+            {
+                if (artifact == null)
+                    continue;
+                if (artifact.Definition != this)
+                    continue;
+                if (recordList.Contains(id))
+                    continue;
+                recordList.Add(id);
+                if (recordList.Count >= MAX_NUMBER)
+                {
+                    artifact.Highlight();
+                    SeedPack blueprint;
+                    if (level.IsConveyorMode())
+                    {
+                        blueprint = level.GetAllConveyorSeedPacks().Random(artifact.RNG);
+                    }
+                    else
+                    {
+                        blueprint = level.GetAllSeedPacks().Where(e => e != null).Random(artifact.RNG);
+                    }
+                    if (blueprint == null)
+                        continue;
+                    var blueprintID = blueprint.GetDefinitionID();
+                    if (!NamespaceID.IsValid(blueprintID))
+                        continue;
+                    var spawnParams = new SpawnParams();
+                    spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, blueprint.GetDefinitionID());
+                    spawnParams.SetProperty(BlueprintPickup.PROP_COMMAND_BLOCK, blueprint.IsCommandBlock());
+                    var pickup = level.Spawn(VanillaPickupID.blueprintPickup, entity.Position, null, spawnParams);
+                    pickup.Velocity = new Vector3(0, 7, 0);
+                    level.PlaySound(VanillaSoundID.openFlip);
+                    recordList.Clear();
+                }
+            }
+        }
+        private List<NamespaceID> recordList = new List<NamespaceID>();
+        private const int MAX_NUMBER = 5;
+        public static readonly NamespaceID ID = VanillaArtifactID.almanac;
+    }
+}

@@ -96,6 +96,7 @@ namespace MVZ2.GameContent.Enemies
             if (entity.State == STATE_CAST)
             {
                 EndCasting(entity);
+                SummonParatroopers(entity, 3);
             }
             if (entity.HasBuff<BoatBuff>())
             {
@@ -106,6 +107,14 @@ namespace MVZ2.GameContent.Enemies
                 effect.ChangeModel(VanillaModelID.boatItem);
                 effect.SetDisplayScale(entity.GetDisplayScale());
             }
+        }
+        protected override bool ValidateMeleeTarget(Entity enemy, Entity target)
+        {
+            if (!base.ValidateMeleeTarget(enemy, target))
+                return false;
+            if (enemy.State == STATE_CAST)
+                return false;
+            return true;
         }
         public static void SetCasting(Entity entity, bool timer) => entity.SetBehaviourField(ID, PROP_CASTING, timer);
         public static bool IsCasting(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_CASTING);

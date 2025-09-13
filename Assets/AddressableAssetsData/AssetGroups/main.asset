@@ -59,6 +59,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0173a223e04ed4f408326de2f8ec2acc
+    m_Address: mvz2:open_flip1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 01a6d95d6ca2e274e9579d9781bf522e
     m_Address: mvz2:enemy/prologue/zombie
     m_ReadOnly: 0
@@ -1454,6 +1461,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1db907c0dfce1124da1e280880b01651
     m_Address: mvz2:low_quality_egypt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dbeb9538a4a7594ebdccf5250ae9e14
+    m_Address: mvz2:open_flip3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6405,6 +6419,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86438a17b1cc9a347b2e66dbbd718b83
+    m_Address: mvz2:artifacts/ship_s_log
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86a0b0aabb4ceca42a409ee8c656695a
     m_Address: mvz2:entity/contraption/obsidian
     m_ReadOnly: 0
@@ -8168,6 +8189,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc6c61b881d6294393b56c8fcabe0f5
+    m_Address: mvz2:open_flip2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abe1b195af5098c42b830d8fb53dd263
     m_Address: mvz2:bones/ui
@@ -10683,7 +10711,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2fa180996375304bbc8f4733242a2d5
-    m_Address: mvz2:admiral_call1
+    m_Address: mvz2:admiral_call2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10760,7 +10788,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5b281ffc0f8d89409e5496ccba5e5bc
-    m_Address: mvz2:admiral_call0
+    m_Address: mvz2:admiral_call1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

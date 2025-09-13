@@ -482,7 +482,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
                 <p>恢复速度：<![CDATA[<color=red>40-160/秒（随耐久变化）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久，并在结束时提供3秒无敌效果</color>]]></p>
+                <p>技能：<![CDATA[<color=red>进入无敌状态，为周围的器械恢复耐久</color>]]></p>
             </properties>
             <flavor>
                 <p>化学课就像是：</p>
@@ -1923,6 +1923,17 @@
             <flavor>
                 <p>使用说明：</p>
                 <p>请勿将两个传送门通道叠在一起，由此带来的任何损失概不负责。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:ship_s_log">
+            <header>
+                <p>某个航海家用来记录航海生活的日记。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>每使用5种不同蓝图，生成你所携带的一张蓝图的复制</color>]]></p>
+            </properties>
+            <flavor>
+                <p>快写不动了……头好晕啊……</p>
             </flavor>
         </entry>
     </artifacts>
