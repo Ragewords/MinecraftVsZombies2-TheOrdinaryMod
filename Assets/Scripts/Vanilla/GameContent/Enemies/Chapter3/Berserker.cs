@@ -35,8 +35,8 @@ namespace MVZ2.GameContent.Enemies
             var scale = entity.GetFinalScale();
             var scaleX = Mathf.Abs(scale.x);
             var range = entity.GetRange() * scaleX;
-            var fireRange = range * 2;
-            var ligntningRange = range * 3;
+            var fireRange = range * 1.5f;
+            var ligntningRange = range * 2.5f;
             entity.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
             entity.Explode(entity.GetCenter(), fireRange, faction, damage / 2, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.FIRE, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
             entity.Explode(entity.GetCenter(), ligntningRange, faction, damage / 4, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));

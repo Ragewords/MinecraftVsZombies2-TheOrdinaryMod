@@ -30,18 +30,26 @@ namespace MVZ2.GameContent.Enemies
             {
                 RandomEnemySpeedBuff.SetSpeed(speedBuff, 2);
             }
+            SummonHorde(entity, true);
+        }
+        public static void SummonHorde(Entity entity, bool IZombieOnly)
+        {
             var level = entity.Level;
-            if (level.IsIZombie())
+            bool allowSummon = (IZombieOnly && level.IsIZombie()) || !IZombieOnly;
+            if (allowSummon)
             {
-                level.PlaySound(VanillaSoundID.siren);
+                if (IZombieOnly)
+                {
+                    level.PlaySound(VanillaSoundID.siren);
+                }
                 var regular = level.Content.GetSpawnDefinition(VanillaSpawnID.zombie);
                 var leather = level.Content.GetSpawnDefinition(VanillaSpawnID.leatherCappedZombie);
                 var iron = level.Content.GetSpawnDefinition(VanillaSpawnID.ironHelmettedZombie);
                 for (var lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                 {
-                    entity.Level.SpawnEnemy(regular, lane);
-                    entity.Level.SpawnEnemy(leather, lane);
-                    entity.Level.SpawnEnemy(iron, lane);
+                    entity.Level.SpawnEnemy(regular, lane, true);
+                    entity.Level.SpawnEnemy(leather, lane, true);
+                    entity.Level.SpawnEnemy(iron, lane, true);
                 }
             }
         }
