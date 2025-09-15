@@ -11,7 +11,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public LunaticEnemyBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 1.5f));
-            AddModifier(new MaxHealthModifier(NumberOperator.Multiply, 1.25f));
+            AddModifier(new MaxHealthModifier(NumberOperator.Multiply, 1.5f));
         }
     }
 }
