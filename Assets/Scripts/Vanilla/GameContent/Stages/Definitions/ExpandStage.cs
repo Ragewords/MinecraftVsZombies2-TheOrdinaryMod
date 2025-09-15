@@ -1,0 +1,19 @@
+using PVZEngine.Definitions;
+
+namespace MVZ2.GameContent.Stages
+{
+    public partial class ExpandStage : StageDefinition
+    {
+        public ExpandStage(string nsp, string name) : base(nsp, name)
+        {
+            var waveStageBehaviour = new WaveStageBehaviour(this)
+            {
+                SpawnRallyZombie = true
+            };
+            AddBehaviour(waveStageBehaviour);
+            AddBehaviour(new FinalWaveClearBehaviour(this));
+            AddBehaviour(new GemStageBehaviour(this));
+            AddBehaviour(new StarshardStageBehaviour(this));
+        }
+    }
+}

@@ -339,6 +339,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7ca7d6aca46eb6546b58639d1e1559b5, type: 3}
   - name: mobile_blueprint/punchton
     sprite: {fileID: 21300000, guid: 1d8a7cdd4327da14ea5a749df090984d, type: 3}
+  - name: mobile_blueprint/rally_zombie
+    sprite: {fileID: 21300000, guid: c6e95e2d981f3c448b3c6188c4b02ff4, type: 3}
   - name: mobile_blueprint/random_china
     sprite: {fileID: 21300000, guid: 739dc404e782a0c4dae8390f142f0cc5, type: 3}
   - name: mobile_blueprint/reflective_barrier_zombie
@@ -1492,6 +1494,10 @@ MonoBehaviour:
     - {fileID: -528585260921630623, guid: 03832b8b573fa884993ba7232246622f, type: 3}
     - {fileID: 658849057890657363, guid: 03832b8b573fa884993ba7232246622f, type: 3}
     - {fileID: 5196036857812072691, guid: 03832b8b573fa884993ba7232246622f, type: 3}
+  - name: entity/armor/rally
+    spritesheet:
+    - {fileID: -1942617489, guid: 94efe3e3664c2d0429ff0c415e0a9599, type: 3}
+    - {fileID: 151079894, guid: 94efe3e3664c2d0429ff0c415e0a9599, type: 3}
   - name: entity/armor/reflective_barrier
     spritesheet:
     - {fileID: 2038617381, guid: 5fd5dd6553755524490a5b49f96a2b43, type: 3}

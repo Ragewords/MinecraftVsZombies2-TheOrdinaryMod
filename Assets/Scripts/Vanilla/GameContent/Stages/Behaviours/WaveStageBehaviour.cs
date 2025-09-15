@@ -192,7 +192,7 @@ namespace MVZ2.GameContent.Stages
                 NextWave(level);
                 if (SpawnFlagZombie)
                 {
-                    level.SpawnFlagZombie();
+                    level.SpawnFlagZombie(SpawnRallyZombie);
                 }
                 level.RunHugeWaveEvent();
             }
@@ -261,6 +261,7 @@ namespace MVZ2.GameContent.Stages
         #region 属性字段
         private const string PROP_REGION = "wave_stage";
         public bool SpawnFlagZombie { get; set; } = true;
+        public bool SpawnRallyZombie { get; set; } = false;
         public bool HasFinalWave { get; set; } = true;
         [LevelPropertyRegistry(PROP_REGION)]
         public static readonly VanillaLevelPropertyMeta<FrameTimer> PROP_WAVE_TIMER = new VanillaLevelPropertyMeta<FrameTimer>("WaveTimer");

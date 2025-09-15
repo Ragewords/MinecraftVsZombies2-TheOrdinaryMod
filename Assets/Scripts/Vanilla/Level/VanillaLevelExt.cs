@@ -429,18 +429,19 @@ namespace MVZ2.Vanilla.Level
             level.StageDefinition.PostEnemySpawned(enemy);
             level.Triggers.RunCallback(LevelCallbacks.POST_ENEMY_SPAWNED, new EntityCallbackParams(enemy));
         }
-        public static Entity SpawnFlagZombie(this LevelEngine level)
+        public static Entity SpawnFlagZombie(this LevelEngine level, bool isRally = false)
         {
             var lane = level.GetRandomEnemySpawnLane();
-            return level.SpawnFlagZombie(lane);
+            return level.SpawnFlagZombie(lane, isRally);
         }
-        public static Entity SpawnFlagZombie(this LevelEngine level, int lane)
+        public static Entity SpawnFlagZombie(this LevelEngine level, int lane, bool isRally)
         {
             var x = level.GetEnemySpawnX();
             var z = level.GetEntityLaneZ(lane);
             var y = level.GetGroundY(x, z);
             var pos = new Vector3(x, y, z);
-            var enemy = level.Spawn(VanillaEnemyID.flagZombie, pos, null);
+            var id = isRally ? VanillaEnemyID.rallyZombie : VanillaEnemyID.flagZombie;
+            var enemy = level.Spawn(id, pos, null);
             return enemy;
         }
         #endregion

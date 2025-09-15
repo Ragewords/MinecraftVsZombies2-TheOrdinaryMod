@@ -1609,6 +1609,11 @@
         </enemy>
 
         <!-- Extra Enemies -->
+        <zombie id="rally_zombie" name="集结旗帜僵尸" deathMessage="脑子是好的，但不是每个人都有" unlock="mvz2:level.halloween_11">
+            <properties>
+                <int name="mvz2:cost" value="300" />
+            </properties>
+        </zombie>
         <humanoid id="skelebomb" name="爆破骨兵" deathMessage="送你个惊喜！" unlock="mvz2:level.halloween_EX1">
             <properties>
                 <float name="mvz2:speed" value="2"/>

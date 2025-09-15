@@ -6993,6 +6993,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 920d5da15708d8e4595e243c5bc9af58
+    m_Address: mvz2:enemy/prologue/rally_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9222fc6f5b9c17644bccc4f2a2e8f0eb
     m_Address: mvz2:projectile/firework_big
     m_ReadOnly: 0
@@ -7153,6 +7160,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94efe3e3664c2d0429ff0c415e0a9599
+    m_Address: mvz2:entity/armor/rally
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94f2e4ecd6b77ab49ba575570f0518d5
     m_Address: mvz2:gensokyo
@@ -9361,6 +9375,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6834e54b22c072438a7aa1583ebc4f5
     m_Address: mvz2:entity/boss/gun_fire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6e95e2d981f3c448b3c6188c4b02ff4
+    m_Address: mvz2:mobile_blueprint/rally_zombie
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
