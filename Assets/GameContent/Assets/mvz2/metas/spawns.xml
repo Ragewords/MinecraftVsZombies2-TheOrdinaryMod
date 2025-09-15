@@ -154,7 +154,7 @@
     <!-- Mausoleum -->
     <entry id="karakasa_zombie" >
         <entity id="mvz2:karakasa_zombie"/>
-        <spawn level="3" minWave="3" />
+        <spawn level="3" />
         <terrain water="true" air="true"/>
         <weight base="2000" />
     </entry>
