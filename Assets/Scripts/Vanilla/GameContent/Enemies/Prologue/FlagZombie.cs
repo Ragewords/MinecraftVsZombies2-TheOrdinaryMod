@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Enemies
             {
                 RandomEnemySpeedBuff.SetSpeed(speedBuff, 2);
             }
-            SummonHorde(entity, true);
+            SummonHorde(entity, IZombieOnly);
         }
         public static void SummonHorde(Entity entity, bool IZombieOnly)
         {
@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Enemies
             bool allowSummon = (IZombieOnly && level.IsIZombie()) || !IZombieOnly;
             if (allowSummon)
             {
-                if (IZombieOnly)
+                if (level.IsIZombie())
                 {
                     level.PlaySound(VanillaSoundID.siren);
                 }
@@ -79,5 +79,6 @@ namespace MVZ2.GameContent.Enemies
             }
             private List<Entity> detectBuffer = new List<Entity>();
         }
+        public bool IZombieOnly { get; set; } = true;
     }
 }

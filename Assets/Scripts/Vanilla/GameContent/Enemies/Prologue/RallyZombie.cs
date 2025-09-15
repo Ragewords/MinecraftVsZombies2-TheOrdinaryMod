@@ -8,11 +8,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public RallyZombie(string nsp, string name) : base(nsp, name)
         {
-        }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            SummonHorde(entity, false);
+            IZombieOnly = false;
         }
     }
 }
