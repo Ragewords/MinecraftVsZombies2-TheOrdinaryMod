@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Enemies
             var jumpTimer = GetJumpTimer(enemy);
             if (state == VanillaEntityStates.WALK && IsJumping(enemy))
             {
-                return STATE_CAST;
+                return STATE_JUMP;
             }
             return state;
         }
@@ -118,7 +118,7 @@ namespace MVZ2.GameContent.Enemies
         }
 
         public static readonly NamespaceID ID = VanillaEnemyID.tanookiZombie;
-        public const int STATE_CAST = VanillaEntityStates.TANOOKI_ZOMBIE_JUMP;
+        public const int STATE_JUMP = VanillaEntityStates.TANOOKI_ZOMBIE_JUMP;
         public static void SetJumping(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_JUMPING, value);
         public static bool IsJumping(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_JUMPING);
         public static void SetJumpTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_JUMP_TIMER, timer);

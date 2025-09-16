@@ -19,8 +19,6 @@ namespace MVZ2.GameContent.Enemies
         {
             var output = param.output;
             var entity = output.Entity;
-            if (entity.Type != EntityTypes.ENEMY)
-                return;
             var bodyResult = output.BodyResult;
             var armorResult = output.ArmorResult;
             bool wither = false;

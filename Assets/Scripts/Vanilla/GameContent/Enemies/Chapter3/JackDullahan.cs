@@ -61,7 +61,7 @@ namespace MVZ2.GameContent.Enemies
                 }
                 else
                 {
-                    return STATE_CAST;
+                    return STATE_SWING;
                 }
             }
             return baseState;
@@ -82,9 +82,9 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        protected override void UpdateStateCast(Entity enemy)
+        protected override void UpdateStateSpecial(Entity enemy)
         {
-            base.UpdateStateCast(enemy);
+            base.UpdateStateSpecial(enemy);
             enemy.UpdateWalkVelocity();
             if (enemy.IsTimeInterval(10))
             {
@@ -106,6 +106,7 @@ namespace MVZ2.GameContent.Enemies
             var hasHorse = horse.ExistsAndAlive();
             entity.SetAnimationBool("Sitting", hasHorse);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
+            entity.SetAnimationFloat("SpecialSpeed", entity.IsAIFrozen() ? 0 : 1);
             entity.SetModelDamagePercent();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
@@ -130,7 +131,7 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_CAST = VanillaEntityStates.ENEMY_CAST;
+        public const int STATE_SWING = VanillaEntityStates.ENEMY_SPECIAL;
         private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
         private Detector spinDetector;
         private List<Entity> spinBuffer = new List<Entity>();

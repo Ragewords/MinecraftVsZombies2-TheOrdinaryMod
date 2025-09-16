@@ -86,6 +86,9 @@ namespace MVZ2.Vanilla.Enemies
                 case VanillaEntityStates.IDLE:
                     UpdateStateIdle(enemy);
                     break;
+                case VanillaEntityStates.ENEMY_SPECIAL:
+                    UpdateStateSpecial(enemy);
+                    break;
             }
         }
         protected virtual void WalkUpdate(Entity enemy)
@@ -117,6 +120,9 @@ namespace MVZ2.Vanilla.Enemies
         {
         }
         protected virtual void UpdateStateIdle(Entity enemy)
+        {
+        }
+        protected virtual void UpdateStateSpecial(Entity enemy)
         {
         }
         private const string PROP_REGION = "state_enemy";

@@ -1187,7 +1187,7 @@
                 <int name="mvz2:cost" value="75" />
             </properties>
         </humanoid>
-        <humanoid id="gargoyle" name="深渊石像鬼" deathMessage="亲爱的日记：今天我死了。">
+        <humanoid id="gargoyle" name="堕化石像鬼" deathMessage="亲爱的日记：今天我死了。">
             <behaviours>
                 <behaviour operator="add" id="mvz2:fragmented"/>
             </behaviours>

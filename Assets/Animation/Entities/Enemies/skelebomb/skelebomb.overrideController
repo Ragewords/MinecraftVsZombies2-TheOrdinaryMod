@@ -9,7 +9,7 @@ AnimatorOverrideController:
   m_Name: skelebomb
   m_Controller: {fileID: 9100000, guid: 892e4149fd693fe46b55bb7bc3236fe8, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: cfb65a4dd3d782f4faf213897e7b3cd8, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: d94b0959ba3f0f34198d8e8dd9d4ec27, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 17d2130bd10576f4ab5abd6884e7589c, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: b34d6fc4e00d6084f90bf5bf9d5af33e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8b723067cfb85c04498f6316a94af0a6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d94b0959ba3f0f34198d8e8dd9d4ec27, type: 2}
