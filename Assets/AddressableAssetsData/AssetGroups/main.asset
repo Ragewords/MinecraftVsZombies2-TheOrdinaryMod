@@ -9548,6 +9548,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca16cff8842786b4aaeaa7bc6d92b003
+    m_Address: mvz2:buffs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Meta
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca265e909bf4be248a09b0469868acf7
     m_Address: mvz2:progressbars
     m_ReadOnly: 0
