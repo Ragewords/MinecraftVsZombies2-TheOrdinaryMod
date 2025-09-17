@@ -11,8 +11,8 @@
     <buff id="lunatic_blueprint" polarity="negative" level="5000" target="blueprint" />
     <buff id="lunatic_contraption" polarity="negative" level="5000" target="contraption" />
     <buff id="lunatic_enemy" polarity="positive" level="5000" target="enemy" />
-    <buff id="lunatic_contraption" polarity="negative" level="5" target="contraption" />
-    <buff id="lunatic_enemy" polarity="positive" level="5" target="enemy" />
+    <buff id="lunatic_contraption" polarity="negative" level="5000" target="contraption" />
+    <buff id="lunatic_enemy" polarity="positive" level="5000" target="enemy" />
 
     <!-- Debug -->
     <buff id="debug_energy" polarity="none" level="5000" target="level" />
@@ -51,7 +51,7 @@
     <buff id="mine_tnt_invincible" polarity="positive" level="4000" target="contraption" />
     <buff id="obsidian_armor" polarity="positive" level="1000" target="contraption" />
     <buff id="cart_fade_in" polarity="none" level="4000" target="cart" />
-    <buff id="flag_zombie_speed" polarity="positive" level="2" target="enemy" />
+    <buff id="flag_zombie_speed" polarity="positive" level="2000" target="enemy" />
 
     <!-- Chapter 1 -->
     <buff id="thunder" polarity="none" level="3000" target="level" />
@@ -79,12 +79,12 @@
     <buff id="frankenstein_transforming" polarity="none" level="5000" target="boss" />
     <buff id="frankenstein_shocked" polarity="negative" level="0" target="contraption" />
     <buff id="frankenstein_steel" polarity="positive" level="4000" target="boss" />
-    <buff id="abyss" polarity="negative" level="2" target="contraption" />
+    <buff id="abyss" polarity="negative" level="2000" target="contraption" />
     <buff id="jack_o_lantern" polarity="positive" level="2000" target="contraption" />
     <buff id="conductor" polarity="positive" level="4000" target="contraption" />
-    <buff id="bleeding" polarity="negative" level="2" target="enemy" />
-    <buff id="time_stop" polarity="negative" level="3" target="enemy" />
-    <buff id="poisoned" polarity="negative" level="1" target="enemy" />
+    <buff id="bleeding" polarity="negative" level="2000" target="enemy" />
+    <buff id="time_stop" polarity="negative" level="3000" target="enemy" />
+    <buff id="poisoned" polarity="negative" level="1000" target="enemy" />
     <buff id="skelebomb_punched" polarity="mixed" level="4000" target="enemy" />
     <buff id="lost_death_punish" polarity="negative" level="5000" target="level" />
 
@@ -130,13 +130,13 @@
     <buff id="nightmareaper_enraged" polarity="positive" level="5000" target="boss" />
     <buff id="nightmareaper_fall" polarity="none" level="5000" target="boss" />
     <buff id="nightmare_cleared" polarity="none" level="5000" target="level" />
-    <buff id="drivenser_upgrade" polarity="positive" level="5" target="contraption" />
+    <buff id="drivenser_upgrade" polarity="positive" level="5000" target="contraption" />
     <buff id="totenser_web" polarity="negative" level="0" target="enemy" />
     <buff id="terror_nest" polarity="mixed" level="0" target="enemy" />
-    <buff id="pure_fury" polarity="positive" level="1" target="enemy" />
-    <buff id="crescent_anti_gravity" polarity="negative" level="1" target="entity" />
-    <buff id="explosive_pearl" polarity="mixed" level="1" target="projectile" />
-    <buff id="bent_spoon" polarity="positive" level="1" target="projectile" />
+    <buff id="pure_fury" polarity="positive" level="1000" target="enemy" />
+    <buff id="crescent_anti_gravity" polarity="negative" level="1000" target="entity" />
+    <buff id="explosive_pearl" polarity="mixed" level="1000" target="projectile" />
+    <buff id="bent_spoon" polarity="positive" level="1000" target="projectile" />
 
     <!-- Chapter 3 -->
     <buff id="seija_auto_collect" polarity="none" level="5000" target="level" />
@@ -157,13 +157,13 @@
     <buff id="seija_fabric" polarity="positive" level="5000" target="boss" />
     <buff id="seija_gap" polarity="positive" level="5000" target="boss" />
     <buff id="seija_lantern" polarity="positive" level="5000" target="boss" />
-    <buff id="electric_chain" polarity="negative" level="2" target="entity" />
+    <buff id="electric_chain" polarity="negative" level="2000" target="entity" />
     <buff id="wither_transition" polarity="none" level="5000" target="level" />
     <buff id="wither_cleared" polarity="none" level="5000" target="level" />
     <buff id="withered" polarity="negative" level="0" target="entity" />
-    <buff id="detonated" polarity="negative" level="1" target="contraption" />
-    <buff id="soulsand_slow" polarity="negative" level="5" target="enemy" />
-    <buff id="tesla_coil_electrify" polarity="positive" level="1" target="projectile" />
+    <buff id="detonated" polarity="negative" level="1000" target="contraption" />
+    <buff id="soulsand_slow" polarity="negative" level="5000" target="enemy" />
+    <buff id="tesla_coil_electrify" polarity="positive" level="1000" target="projectile" />
 
     <!-- Chapter 4 -->
     <buff id="delayed_spawner_trigger" polarity="none" level="4000" target="level" />
@@ -195,12 +195,12 @@
     <buff id="the_giant_snake" polarity="none" level="5000" target="boss" />
     <buff id="the_giant_phase3" polarity="negative" level="2000" target="boss" />
     <buff id="the_giant_cleared" polarity="none" level="5000" target="level" />
-    <buff id="youkai_leaf" polarity="mixed" level="5" target="enemy" />
-    <buff id="tanooki_zombie_stone" polarity="mixed" level="5" target="enemy" />
-    <buff id="revivegrave_revive" polarity="positive" level="3" target="enemy" />
-    <buff id="command_block_blueprint_check" polarity="none" level="5" target="level" />
-    <buff id="endless_gate" polarity="positive" level="3" target="projectile" />
-    <buff id="command_block_blueprint" polarity="mixed" level="5" target="blueprint" />
+    <buff id="youkai_leaf" polarity="mixed" level="5000" target="enemy" />
+    <buff id="tanooki_zombie_stone" polarity="mixed" level="5000" target="enemy" />
+    <buff id="revivegrave_revive" polarity="positive" level="3000" target="enemy" />
+    <buff id="command_block_blueprint_check" polarity="none" level="5000" target="level" />
+    <buff id="endless_gate" polarity="positive" level="3000" target="projectile" />
+    <buff id="command_block_blueprint" polarity="mixed" level="5000" target="blueprint" />
 
     <!-- Chapter 5 -->
     <buff id="ufo_spawn" polarity="negative" level="5000" target="level" />
@@ -224,5 +224,5 @@
     <buff id="super_recharge" polarity="positive" level="0" target="blueprint" />
     <buff id="worldwide_celebration" polarity="positive" level="2000" target="entity" />
     <buff id="ancient_egypt" polarity="negative" level="0" target="level" />
-    <buff id="r_u_a_wizard" polarity="negative" level="2" target="contraption" />
+    <buff id="r_u_a_wizard" polarity="negative" level="2000" target="contraption" />
 </buffs>
