@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Bosses
             var self = collision.Entity;
             if (!other.Exists() || !other.IsHostile(self))
                 return;
-            if (self.State == STATE_LINE_DASH && stateMachine.GetSubState(self) > 0 && stateMachine.GetSubState(self) < 4)
+            if (self.State == STATE_DASH && stateMachine.GetSubState(self) > 0 && stateMachine.GetSubState(self) < 4)
             {
                 collision.OtherCollider.TakeDamage(self.GetDamage() * 0.05f, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), self);
             }
@@ -105,9 +105,9 @@ namespace MVZ2.GameContent.Bosses
 
         public const int STATE_APPEAR = VanillaEntityStates.BOSS_APPEAR;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_LINE_DASH = VanillaEntityStates.ATTACK;
+        public const int STATE_DASH = VanillaEntityStates.ATTACK;
         public const int STATE_SPACE = VanillaEntityStates.BOSS_ATTACK_2;
-        public const int STATE_DIVE = VanillaEntityStates.BOSS_ATTACK_3;
+        public const int STATE_THROW = VanillaEntityStates.BOSS_ATTACK_3;
         public const int STATE_REST = VanillaEntityStates.BOSS_SPECIAL;
         public const int STATE_DEAD = VanillaEntityStates.DEAD;
         public const float HEIGHT = 30;

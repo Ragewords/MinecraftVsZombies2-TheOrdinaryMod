@@ -581,6 +581,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 97bbf718dcb8d714cbce072750f648a2, type: 3}
   - name: entity/boss/crescent_fire_trail
     sprite: {fileID: 21300000, guid: 535430947e65ec94ea33fd3696ed9320, type: 3}
+  - name: entity/boss/crescent_force
+    sprite: {fileID: 21300000, guid: 29feb2ef388572d489e753602e666f4b, type: 3}
   - name: entity/boss/gun_fire
     sprite: {fileID: 21300000, guid: c6834e54b22c072438a7aa1583ebc4f5, type: 3}
   - name: entity/boss/seija_bomb

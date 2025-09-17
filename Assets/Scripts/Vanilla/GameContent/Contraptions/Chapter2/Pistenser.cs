@@ -75,9 +75,8 @@ namespace MVZ2.GameContent.Contraptions
             if (pistenser.IsTimeInterval(DETECT_INTERVAL))
             {
                 var collider = detector.DetectWithTheMost(pistenser, e => e.Entity.GetRelativeY());
-                var collider1 = detector.DetectWithTheLeast(pistenser, e => e.Entity.GetRelativeY() + e.Entity.GetScaledSize().y);
-                SetExtendTarget(pistenser, collider?.Entity);
-                SetSubtractTarget(pistenser, collider1?.Entity);
+                var colliderSubtract = detector.DetectWithTheLeast(pistenser, e => e.Entity.GetRelativeY() + e.Entity.GetScaledSize().y);
+                SetExtendAndSubtractTarget(pistenser, collider?.Entity, colliderSubtract?.Entity);
             }
 
             var target = GetExtendTarget(pistenser);
@@ -239,7 +238,7 @@ namespace MVZ2.GameContent.Contraptions
             var projectileID = VanillaProjectileID.spikeBall;
             var projectileDefinition = entity.Level.Content.GetEntityDefinition(projectileID);
             var projectileGravity = projectileDefinition?.GetGravity() ?? 0;
-            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY()).Take(20);
+            var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).OrderByDescending(e => e.GetRelativeY()).Take(MAX_EVOCATION_TARGET);
             foreach (var target in targets)
             {
                 if (!soundPlayed)
@@ -281,9 +280,10 @@ namespace MVZ2.GameContent.Contraptions
                 return null;
             return id.GetEntity(entity.Level);
         }
-        public static void SetExtendTarget(Entity entity, Entity? value)
+        public static void SetExtendAndSubtractTarget(Entity entity, Entity? valueE, Entity? valueS)
         {
-            entity.SetBehaviourField(PROP_EXTEND_TARGET, new EntityID(value));
+            entity.SetBehaviourField(PROP_EXTEND_TARGET, new EntityID(valueE));
+            entity.SetBehaviourField(PROP_SUBTRACT_TARGET, new EntityID(valueS));
         }
         public static Entity? GetSubtractTarget(Entity entity)
         {
@@ -291,10 +291,6 @@ namespace MVZ2.GameContent.Contraptions
             if (id == null)
                 return null;
             return id.GetEntity(entity.Level);
-        }
-        public static void SetSubtractTarget(Entity entity, Entity? value)
-        {
-            entity.SetBehaviourField(PROP_SUBTRACT_TARGET, new EntityID(value));
         }
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetOrCreateTimerProperty(PROP_EVOCATION_TIMER, EVOCATION_TIME);
         public static void SetEvocationTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, value);
@@ -314,6 +310,6 @@ namespace MVZ2.GameContent.Contraptions
         public const float SUBTRACT_SPEED = 2;
         public const int EVOCATION_TIME = 30;
         public const int DETECT_INTERVAL = 8;
-        public const int MAX_EVOCATION_TARGET = 10;
+        public const int MAX_EVOCATION_TARGET = 20;
     }
 }

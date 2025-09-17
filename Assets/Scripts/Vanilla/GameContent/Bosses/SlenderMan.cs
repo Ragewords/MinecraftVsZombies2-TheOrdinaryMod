@@ -341,9 +341,6 @@ namespace MVZ2.GameContent.Bosses
                 case FATE_EXECUTIONERS:
                     Executioners(boss);
                     break;
-                case FATE_MOONRISE:
-                    Moonrise(boss);
-                    break;
             }
         }
 
@@ -627,8 +624,6 @@ namespace MVZ2.GameContent.Bosses
         public const string FATE_TEXT_PURE_FURY = "纯粹愤怒";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_EXECUTIONERS = "处决者";
-        [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_MOONRISE = "月出";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -658,7 +653,6 @@ namespace MVZ2.GameContent.Bosses
         public const int FATE_BLACK_SUN = 6;
         public const int FATE_PURE_FURY = 7;
         public const int FATE_EXECUTIONERS = 8;
-        public const int FATE_MOONRISE = 9;
 
         private static NamespaceID[] portalPool = new NamespaceID[]
         {
@@ -720,7 +714,6 @@ namespace MVZ2.GameContent.Bosses
             FATE_BLACK_SUN,
             FATE_PURE_FURY,
             FATE_EXECUTIONERS,
-            FATE_MOONRISE,
         };
         private static string[] fateTexts = new string[]
         {
@@ -733,7 +726,6 @@ namespace MVZ2.GameContent.Bosses
             FATE_TEXT_BLACK_SUN,
             FATE_TEXT_PURE_FURY,
             FATE_TEXT_EXECUTIONERS,
-            FATE_TEXT_MOONRISE,
         };
         #endregion 常量
     }

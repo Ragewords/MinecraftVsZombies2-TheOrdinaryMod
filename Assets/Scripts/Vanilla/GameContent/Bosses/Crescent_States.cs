@@ -28,8 +28,8 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new AppearState());
                 AddState(new IdleState());
                 AddState(new DashState());
-                AddState(new JumpState());
-                AddState(new DiveState());
+                AddState(new SpaceState());
+                AddState(new ThrowState());
                 AddState(new DeadState());
             }
         }
@@ -87,17 +87,13 @@ namespace MVZ2.GameContent.Bosses
 
                 var lastState = stateMachine.GetPreviousState(entity);
 
-                if (lastState == STATE_LINE_DASH)
+                if (lastState == STATE_DASH)
                 {
-                    lastState = STATE_SPACE;
-                }
-                else if (lastState == STATE_SPACE)
-                {
-                    lastState = STATE_DIVE;
+                    lastState = STATE_THROW;
                 }
                 else
                 {
-                    lastState = STATE_LINE_DASH;
+                    lastState = STATE_DASH;
                 }
                 stateMachine.StartState(entity, lastState);
                 stateMachine.SetPreviousState(entity, lastState);
@@ -105,7 +101,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class DashState : EntityStateMachineState
         {
-            public DashState() : base(STATE_LINE_DASH) { }
+            public DashState() : base(STATE_DASH) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -118,7 +114,6 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnUpdateAI(stateMachine, entity);
                 var grid = entity.Level.GetAllGrids().Where(g => g.Column == (entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0)).Random(entity.RNG);
-                var endGrid = entity.Level.GetAllGrids().Where(g => g.Column >= 2 && g.Column <= 6).Random(entity.RNG);
                 var dir = (grid.GetEntityPosition() - new Vector3(entity.Position.x, entity.GetGroundY(), entity.Position.z)).normalized;
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.Run(stateMachine.GetSpeed(entity));
@@ -137,12 +132,13 @@ namespace MVZ2.GameContent.Bosses
                             ResetPosition(entity);
                             break;
                         case SUBSTATE_DASH_3:
-                            SetPositionBeforeDash(entity, endGrid.GetEntityPosition() + Vector3.up * HEIGHT);
                             stateMachine.SetSubState(entity, SUBSTATE_END);
                             subStateTimer.ResetTime(15);
                             break;
                         case SUBSTATE_END:
-                            stateMachine.StartState(entity, STATE_IDLE);
+                            SetDashDir(entity, dir);
+                            entity.Velocity = GetDashDir(entity) * 22;
+                            stateMachine.StartState(entity, STATE_SPACE);
                             break;
                     }
                 }
@@ -177,7 +173,6 @@ namespace MVZ2.GameContent.Bosses
                             }
                             break;
                         case SUBSTATE_PREPARE:
-                        case SUBSTATE_END:
                             entity.Velocity = Vector3.zero;
                             UpdatePosition(entity);
                             break;
@@ -205,93 +200,62 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_DASH_3 = 3;
             public const int SUBSTATE_END = 4;
         }
-        private class JumpState : EntityStateMachineState
+        private class SpaceState : EntityStateMachineState
         {
-            public JumpState() : base(STATE_SPACE) { }
+            public SpaceState() : base(STATE_SPACE) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetSubStateTimer(entity);
-                stateTimer.ResetTime(15);
-                entity.PlaySound(VanillaSoundID.crescentPreDash);
-                SetPositionBeforeDash(entity, entity.Position + Vector3.down * 30);
+                stateTimer.ResetTime(150);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                var targets = entity.Level.FindEntities(e => e.IsVulnerableEntity() && e.IsHostile(entity) && e.ExistsAndAlive() && TargetInLawn(e));
+                var endGrid = entity.Level.GetAllGrids().Where(g => g.Column >= 2 && g.Column <= 6).Random(entity.RNG);
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.Run(stateMachine.GetSpeed(entity));
                 var substate = stateMachine.GetSubState(entity);
                 switch (substate)
                 {
-                    case SUBSTATE_PREPARE:
-                        entity.Velocity = Vector3.zero;
-                        UpdatePosition(entity);
+                    case SUBSTATE_STAY:
+                        entity.Velocity -= entity.Velocity * 0.01f;
+                        foreach (var collider in entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 80, 80), entity.GetFaction(), EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY, 0))
+                        {
+                            collider.Entity.AddBuff<CrescentAntiGravityBuff>();
+                        }
+                        foreach (var collider in entity.Level.OverlapBox(entity.GetCenter(), new Vector3(200, 200, 200), entity.GetFaction(), EntityCollisionHelper.MASK_PROJECTILE, 0))
+                        {
+                            collider.Entity.AddBuff<CrescentAntiGravityBuff>();
+                        }
                         if (subStateTimer.Expired)
                         {
-                            StopFly(entity);
-
-                            if (targets.Length > 0)
-                            {
-                                var target = targets.Random(entity.RNG);
-                                entity.PlaySound(VanillaSoundID.crescentDash);
-                                var maxy = entity.GetCenter().y + 80f;
-                                var pos = target.Position;
-                                entity.Velocity = VanillaProjectileExt.GetLobVelocity(entity.Position, pos + Vector3.up * 32, maxy, entity.GetGravity());
-                                stateMachine.SetSubState(entity, SUBSTATE_DASH);
-                            }
-                            else
-                                stateMachine.SetSubState(entity, SUBSTATE_END);
-                        }
-                        break;
-                    case SUBSTATE_DASH:
-                        if (entity.GetRelativeY() <= 0)
-                        {
-                            entity.Velocity = Vector3.zero;
-                            entity.PlaySound(VanillaSoundID.smallExplosion);
-                            entity.PlaySound(VanillaSoundID.crescentShock);
-                            foreach (var collider in entity.Level.OverlapSphere(entity.GetCenter(), 80, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY, 0))
-                            {
-                                collider.Entity?.AddBuff<CrescentAntiGravityBuff>();
-                            }
-                            Vector3 pos = new Vector3(entity.Level.GetEntityColumnX(entity.GetColumn()), 0, entity.Level.GetEntityLaneZ(entity.GetLane()));
-                            SetPositionBeforeDash(entity, pos);
                             stateMachine.SetSubState(entity, SUBSTATE_END);
+                            SetPositionBeforeDash(entity, endGrid.GetEntityPosition() + Vector3.up * HEIGHT);
                             subStateTimer.ResetTime(15);
                         }
                         break;
                     case SUBSTATE_END:
-                        UpdatePosition(entity);
                         if (subStateTimer.Expired)
                         {
-                            Fly(entity);
                             stateMachine.StartState(entity, STATE_IDLE);
                         }
                         break;
                 }
             }
-            public const int SUBSTATE_PREPARE = 0;
-            public const int SUBSTATE_DASH = 1;
-            public const int SUBSTATE_END = 2;
-            private bool TargetInLawn(Entity entity)
-            {
-                return entity.GetGrid() != null;
-            }
+            public const int SUBSTATE_STAY = 0;
+            public const int SUBSTATE_END = 1;
         }
 
-        private class DiveState : EntityStateMachineState
+        private class ThrowState : EntityStateMachineState
         {
-            public DiveState() : base(STATE_DIVE) { }
+            public ThrowState() : base(STATE_THROW) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetSubStateTimer(entity);
-                stateTimer.ResetTime(10);
-                entity.PlaySound(VanillaSoundID.crescentPreDash);
-                var grid = entity.Level.GetAllGrids().Random(entity.RNG);
-                SetPositionBeforeDash(entity, grid.GetEntityPosition());
-                StopFly(entity);
+                stateTimer.ResetTime(35);
+                entity.PlaySound(VanillaSoundID.throwSound);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -302,69 +266,40 @@ namespace MVZ2.GameContent.Bosses
                 var substate = stateMachine.GetSubState(entity);
                 switch (substate)
                 {
-                    case SUBSTATE_PREPARE:
-                        UpdatePosition(entity);
-                        if (subStateTimer.Expired)
+                    case SUBSTATE_THROW:
+                        if (subStateTimer.PassedFrame(18))
                         {
+                            var vector = new Vector3(0, 80, 0);
                             entity.PlaySound(VanillaSoundID.explosion);
-                            entity.Explode(entity.GetCenter(), 120, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.EXPLOSION));
-                            Explosion.Spawn(entity, entity.GetCenter(), 120);
+                            entity.PlaySound(VanillaSoundID.reflection);
+                            entity.Explode(entity.GetCenter() + vector, 120, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.EXPLOSION));
+                            Explosion.Spawn(entity, entity.GetCenter() + vector, 120);
                             entity.Level.ShakeScreen(10, 0, 10);
-                            stateMachine.SetSubState(entity, SUBSTATE_DASH);
-                            entity.Velocity = Vector3.up * 80;
-                            subStateTimer.ResetTime(8);
-                        }
-                        break;
-                    case SUBSTATE_DASH:
-                        if (subStateTimer.Expired)
-                        {
-                            var pos = entity.Position;
-                            pos.x = grid.GetEntityPosition().x;
-                            pos.z = grid.GetEntityPosition().z;
-                            entity.Position = pos;
-                            stateMachine.SetSubState(entity, SUBSTATE_WAIT);
-                            subStateTimer.ResetTime(30);
-                        }
-                        break;
-                    case SUBSTATE_WAIT:
-                        entity.Velocity = Vector3.zero;
-                        if (subStateTimer.Expired)
-                        {
-                            stateMachine.SetSubState(entity, SUBSTATE_DIVE);
-                            entity.Velocity = Vector3.down * 80;
                             var param = entity.GetSpawnParams();
                             param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 2);
-                            entity.Spawn(VanillaProjectileID.darkMatterBall, entity.GetCenter(), param)?.Let(e =>
+                            entity.Spawn(VanillaProjectileID.darkMatterBall, entity.GetCenter() + vector, param)?.Let(e =>
                             {
-                                DarkMatterBall.SetHitCount(e, 5);
+                                e.Velocity = Vector3.up * 20;
+                                DarkMatterBall.SetHitCount(e, 1);
                             });
                         }
-                        break;
-                    case SUBSTATE_DIVE:
-                        if (entity.GetRelativeY() <= 0)
+                        if (subStateTimer.Expired)
                         {
-                            entity.PlaySound(VanillaSoundID.smallExplosion);
-                            entity.PlaySound(VanillaSoundID.crescentShock);
-                            subStateTimer.ResetTime(15);
                             stateMachine.SetSubState(entity, SUBSTATE_END);
-                            Fly(entity);
+                            subStateTimer.ResetTime(10);
                         }
                         break;
                     case SUBSTATE_END:
                         if (subStateTimer.Expired)
                         {
-                            entity.Velocity = Vector3.zero;
                             stateMachine.StartState(entity, STATE_IDLE);
                         }
                         break;
                 }
             }
 
-            public const int SUBSTATE_PREPARE = 0;
-            public const int SUBSTATE_DASH = 1;
-            public const int SUBSTATE_WAIT = 2;
-            public const int SUBSTATE_DIVE = 3;
-            public const int SUBSTATE_END = 4;
+            public const int SUBSTATE_THROW = 0;
+            public const int SUBSTATE_END = 1;
         }
         private class DeadState : EntityStateMachineState
         {
