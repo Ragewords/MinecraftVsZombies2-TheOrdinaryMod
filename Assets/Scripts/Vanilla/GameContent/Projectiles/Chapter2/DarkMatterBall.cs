@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.Update(projectile);
             var hitCount = GetHitCount(projectile);
-            if (hitCount >= 10)
+            if (hitCount >= 5)
             {
                 projectile.Remove();
             }

@@ -26,7 +26,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public TerrorNestBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(VanillaEntityProps.AI_FROZEN, true));
-            AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.terrorParasitized, VanillaModelID.terrorParasitized);
             AddModifier(new ColorModifier(EngineEntityProps.COLOR_OFFSET, new Color(1, 1, 1, 0.5f)));
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
         }
@@ -42,11 +41,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity == null)
                 return;
             var timer = buff.GetProperty<FrameTimer>(PROP_SPAWN_TIMER);
-            var iconModel = buff.GetInsertedModel(VanillaModelKeys.terrorParasitized);
-            if (iconModel != null)
-            {
-                iconModel.SetAnimationBool("Awake", timer?.Frame < 15);
-            }
             if (timer.RunToExpiredAndNotNull())
             {
                 var parasite = entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
