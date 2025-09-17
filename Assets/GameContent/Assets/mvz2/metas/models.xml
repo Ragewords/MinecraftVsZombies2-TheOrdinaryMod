@@ -167,6 +167,7 @@
     <model name="bedserker" type="entity" path="mvz2:enemy/castle/bedserker" width="86" height="120" xOffset="0" yOffset="-57"/>
 	<model name="jackdullahan" type="entity" path="mvz2:enemy/castle/jackdullahan" width="94" height="160" xOffset="9" yOffset="-63"/>
 	<model name="jackdullahan_head" type="entity" path="mvz2:enemy/castle/jackdullahan_head" width="38" height="27" xOffset="0" yOffset="-14"/>
+	<model name="jackdullahan_main" type="entity" path="mvz2:enemy/castle/jackdullahan_main" width="94" height="120" xOffset="10" yOffset="-56"/>
 	<model name="soul_skeleton_horse" type="entity" path="mvz2:enemy/castle/soul_skeleton_horse" width="94" height="80" xOffset="9" yOffset="-33"/>
     <model name="skeleton_warrior" type="entity" path="mvz2:enemy/mausoleum/skeleton_warrior" width="66" height="96" xOffset="16" yOffset="-44"/>
     <model name="skeleton_mage" type="entity" path="mvz2:enemy/mausoleum/skeleton_mage" width="64" height="96" xOffset="10" yOffset="-44"/>

@@ -47,12 +47,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
-        }
-        protected override void UpdateAI(Entity entity)
-        {
-            base.UpdateAI(entity);
-            if (entity.IsDead)
-                return;
             var stateTimer = GetStateTimer(entity);
             if (entity.State == VanillaEntityStates.SKELEBOMB_EXPLODE)
             {
@@ -64,7 +58,14 @@ namespace MVZ2.GameContent.Enemies
                     entity.Level.ShakeScreen(5, 0, 20);
                 }
             }
-            else if (entity.State == VanillaEntityStates.ATTACK)
+        }
+        protected override void UpdateAI(Entity entity)
+        {
+            base.UpdateAI(entity);
+            if (entity.IsDead)
+                return;
+            var stateTimer = GetStateTimer(entity);
+            if (entity.State == VanillaEntityStates.ATTACK)
             {
                 if (entity.RNG.Next(200) == 0)
                 {
