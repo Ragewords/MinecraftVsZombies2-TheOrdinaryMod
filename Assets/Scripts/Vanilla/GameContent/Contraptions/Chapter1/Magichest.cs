@@ -85,6 +85,7 @@ namespace MVZ2.GameContent.Contraptions
             var effects = new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER);
             target.Die(effects, entity);
             SetFlashVisible(entity, true);
+            SetEatenEntityID(entity, target.GetDefinitionID());
             entity.AddBuff<MagichestInvincibleBuff>();
             entity.PlaySound(VanillaSoundID.magical);
         }
@@ -244,7 +245,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private bool IsOpen(Entity entity)
         {
-            return entity.State == VanillaEntityStates.MAGICHEST_OPEN || entity.State == VanillaEntityStates.MAGICHEST_EAT || entity.State == VanillaEntityStates.MAGICHEST_SPAWN;
+            return entity.State == VanillaEntityStates.MAGICHEST_OPEN || entity.State == VanillaEntityStates.MAGICHEST_EAT || entity.State == VanillaEntityStates.MAGICHEST_SPAWN || entity.State == VanillaEntityStates.MAGICHEST_DELAY;
         }
         public static readonly NamespaceID ID = VanillaContraptionID.magichest;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_FLASH_VISIBLE = new VanillaEntityPropertyMeta<bool>("FlashVisible");
