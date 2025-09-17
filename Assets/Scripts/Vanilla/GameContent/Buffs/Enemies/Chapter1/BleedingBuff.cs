@@ -44,8 +44,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 timeout.Run();
                 if (timeout.PassedInterval(5))
                 {
-                    entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
-                    entity.EmitBlood();
+                    var output = entity.TakeDamage(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), entity);
+                    if (output.BodyResult != null)
+                        entity.EmitBlood();
                 }
             }
         }
