@@ -94,8 +94,11 @@ namespace MVZ2.GameContent.Enemies
             spinDetector.DetectEntities(enemy, spinBuffer);
             foreach (var target in spinBuffer)
             {
-                target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
-                target.InflictWither(150, new EntitySourceReference(enemy));
+                var output = target.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.MUTE), enemy);
+                if (output.BodyResult != null || output.ArmorResult != null)
+                {
+                    target.InflictWither(150, new EntitySourceReference(enemy));
+                }
             }
         }
         protected override void UpdateLogic(Entity entity)
