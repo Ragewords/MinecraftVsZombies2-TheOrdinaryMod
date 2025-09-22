@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             bool evoked = IsEvoked(buff);
             var level = sourceEntity.Level;
 
-            // ´µ¸ÉË®¼£
+            // ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
             var det = evoked ? evokedDetector : detector;
             List<Entity> results = new List<Entity>();
             det.DetectEntities(sourceEntity, results);
@@ -51,6 +51,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 {
                     behaviour.BeBlown(ent, sourceEntity);
                 }
+                if (ent.Type == EntityTypes.ENEMY)
+                    ent.InflictSlow(300, new EntitySourceReference(sourceEntity));
             }
         }
         public static bool IsInRange(Entity entity, Entity source, bool evoked)

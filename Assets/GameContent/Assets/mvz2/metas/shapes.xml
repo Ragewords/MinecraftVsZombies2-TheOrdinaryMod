@@ -118,6 +118,7 @@
             </armor>
             <armor slot="mvz2:shield" type="mvz2:handheld">
                 <position x="-21" y="15" z="0"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
                 <model>
                     <anchor value="shield_hands"/>
                 </model>
@@ -288,26 +289,6 @@
             </armor>
         </armors>
     </shape>
-    <shape id="ufo">
-        <armors>
-            <armor slot="mvz2:main">
-                <position x="0" y="16" z="0"/>
-            </armor>
-            <armor slot="mvz2:shield">
-                <position x="-40" y="24" z="0"/>
-            </armor>
-        </armors>
-    </shape>
-    <shape id="cannonball">
-        <armors>
-            <armor slot="mvz2:main">
-                <position x="0" y="16" z="0"/>
-            </armor>
-            <armor slot="mvz2:shield">
-                <position x="-20" y="16" z="0"/>
-            </armor>
-        </armors>
-    </shape>
     <shape id="pot">
         <armors>
             <armor slot="mvz2:main">
@@ -326,6 +307,26 @@
                 <model>
                     <anchor value="shield_hands"/>
                 </model>
+            </armor>
+        </armors>
+    </shape>
+    <shape id="ufo">
+        <armors>
+            <armor slot="mvz2:main">
+                <position x="0" y="16" z="0"/>
+            </armor>
+            <armor slot="mvz2:shield">
+                <position x="-40" y="24" z="0"/>
+            </armor>
+        </armors>
+    </shape>
+    <shape id="cannonball">
+        <armors>
+            <armor slot="mvz2:main">
+                <position x="0" y="16" z="0"/>
+            </armor>
+            <armor slot="mvz2:shield">
+                <position x="-20" y="16" z="0"/>
             </armor>
         </armors>
     </shape>

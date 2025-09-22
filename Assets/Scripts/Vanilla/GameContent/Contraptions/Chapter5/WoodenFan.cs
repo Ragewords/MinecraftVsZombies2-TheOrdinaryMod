@@ -89,6 +89,7 @@ namespace MVZ2.GameContent.Contraptions
                     speedline.SetParent(entity);
                     speedline.Timeout = Ticks.FromSeconds(BLOW_SECONDS);
                 });
+
             }
         }
         private void UpdateStateBlow(Entity entity)
@@ -97,6 +98,25 @@ namespace MVZ2.GameContent.Contraptions
             if (timer.RunToExpiredOrNull())
             {
                 entity.Remove();
+            }
+
+            if (entity.Level.AreaID == VanillaAreaID.ship)
+            {
+                var breezeSpeed = Ship.GetBreezeSpeed(entity.Level);
+                var nextSpeed = entity.GetFacingX() * -5;
+                var breezeAccel = (nextSpeed - breezeSpeed) * BREEZE_ACCELERATION;
+                if (breezeSpeed != nextSpeed)
+                {
+                    if (breezeSpeed < nextSpeed == breezeSpeed + breezeAccel > nextSpeed)
+                    {
+                        breezeSpeed = nextSpeed;
+                    }
+                    else
+                    {
+                        breezeSpeed += breezeAccel;
+                    }
+                }
+                Ship.SetBreezeSpeed(entity.Level, breezeSpeed);
             }
         }
         public override bool CanTrigger(Entity entity)
@@ -141,7 +161,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             if (entity.Level.AreaID == VanillaAreaID.ship)
             {
-                return 1;
+                return Ship.GetBreezeSpeed(entity.Level) * -1;
             }
             return 0;
         }
@@ -157,5 +177,6 @@ namespace MVZ2.GameContent.Contraptions
         public const int FAN_STATE_BLOW = 2;
         public const float READY_TIME_SECONDS = 0.33333333f;
         public const float BLOW_SECONDS = 3;
+        public const float BREEZE_ACCELERATION = 0.1f;
     }
 }

@@ -108,7 +108,9 @@
     <model name="flag_zombie" type="entity" path="mvz2:enemy/prologue/flag_zombie" width="64" height="96" xOffset="10" yOffset="-44">
         <armorconfig>mvz2:humanoid</armorconfig>
     </model>
-    <model name="rally_zombie" type="entity" path="mvz2:enemy/prologue/rally_zombie" width="64" height="126" xOffset="10" yOffset="-54"/>
+    <model name="rally_zombie" type="entity" path="mvz2:enemy/prologue/rally_zombie" width="64" height="126" xOffset="10" yOffset="-54">
+        <armorconfig>mvz2:humanoid</armorconfig>
+    </model>
 
     <model name="skeleton" type="entity" path="mvz2:enemy/halloween/skeleton" width="64" height="96" xOffset="10" yOffset="-44">
         <armorconfig>mvz2:humanoid</armorconfig>

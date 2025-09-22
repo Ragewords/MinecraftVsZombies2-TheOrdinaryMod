@@ -894,7 +894,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="wooden_fan" name="木风扇" tooltip="吹动一整行的敌人" unlock="mvz2:level.ship_7">
+        <dispenser id="wooden_fan" name="木风扇" tooltip="吹动一整行的敌人，使其减速" unlock="mvz2:level.ship_7">
             <properties>
                 <id name="mvz2:shell" value="mvz2:wood" />
                 <id name="mvz2:placeSound" value="mvz2:wood" />

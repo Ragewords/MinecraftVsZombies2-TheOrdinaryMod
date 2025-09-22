@@ -181,7 +181,7 @@ TextureImporter:
         width: 4
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,6 +189,27 @@ TextureImporter:
       bones: []
       spriteID: 5bdf8b2398e48fe4d804d2cfc7b3f40c
       internalID: 1690076077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wooden_fan_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f42b818dc42e946bdacf2e566a8f15
+      internalID: -1424897560
       vertices: []
       indices: 
       edges: []
@@ -208,6 +229,7 @@ TextureImporter:
       wooden_fan_1: 964146282
       wooden_fan_2: -62277771
       wooden_fan_3: 1690076077
+      wooden_fan_4: -1424897560
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
