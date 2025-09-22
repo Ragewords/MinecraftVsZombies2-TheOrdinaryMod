@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 {
                     behaviour.BeBlown(ent, sourceEntity);
                 }
-                if (ent.Type == EntityTypes.ENEMY)
+                if (ent.Type == EntityTypes.ENEMY && sourceEntity.IsHostile(ent))
                     ent.InflictSlow(300, new EntitySourceReference(sourceEntity));
             }
         }
