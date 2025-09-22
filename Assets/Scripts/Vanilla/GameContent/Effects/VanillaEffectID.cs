@@ -102,6 +102,7 @@ namespace MVZ2.GameContent.Effects
         public const string zombieCloudRaindrop = "zombie_cloud_raindrop";
         public const string zombieCloudSnowflake = "zombie_cloud_snowflake";
         public const string zombieCloudEmber = "zombie_cloud_ember";
+        public const string windSpeedline = "wind_speedline";
         public const string smokerSmoke = "smoker_smoke";
         public const string smokerFire = "smoker_fire";
     }
@@ -201,6 +202,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID zombieCloudRaindrop = Get(VanillaEffectNames.zombieCloudRaindrop);
         public static readonly NamespaceID zombieCloudSnowflake = Get(VanillaEffectNames.zombieCloudSnowflake);
         public static readonly NamespaceID zombieCloudEmber = Get(VanillaEffectNames.zombieCloudEmber);
+        public static readonly NamespaceID windSpeedline = Get(VanillaEffectNames.windSpeedline);
         public static readonly NamespaceID smokerSmoke = Get(VanillaEffectNames.smokerSmoke);
         public static readonly NamespaceID smokerFire = Get(VanillaEffectNames.smokerFire);
         private static NamespaceID Get(string name)
