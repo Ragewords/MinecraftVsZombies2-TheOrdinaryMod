@@ -1345,6 +1345,7 @@
         <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
             <spawn id="mvz2:undead_flying_object_blitz"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
         </spawns>
         <time firstWave="1" waveMax="15" waveAdvance="5"/>
         <properties>
