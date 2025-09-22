@@ -1,5 +1,6 @@
 <buffs>
     <!-- Difficulties -->
+    <buff id="level_lunatic" polarity="negative" level="5000" target="level" />
     <buff id="level_hard" polarity="negative" level="5000" target="level" />
     <buff id="level_easy" polarity="positive" level="5000" target="level" />
     <buff id="i_zombie_hard" polarity="negative" level="5000" target="level" />

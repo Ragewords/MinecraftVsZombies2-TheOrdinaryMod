@@ -158,11 +158,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             public BeaconAura() : base(VanillaBuffID.Contraption.beaconDamage)
             {
-                sphereDetector = new SphereDetector(100)
-                {
-                    mask = EntityCollisionHelper.MASK_PLANT,
-                    factionTarget = FactionTarget.Friendly,
-                };
+                sphereDetector = new BeaconBoostDetector();
             }
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
             {
@@ -181,10 +177,12 @@ namespace MVZ2.GameContent.Contraptions
                 sphereDetector.DetectEntities(entity, sphereDetectBuffer);
                 var count = sphereDetectBuffer.Count;
                 BeaconDamageBuff.SetDamageMultiplier(buff, count * DAMAGE_MULTIPLIER);
+                BeaconDamageBuff.SetLightRangeAddtion(buff, count * LIGHT_MULTIPLIER);
             }
             private Detector sphereDetector;
             private List<Entity> sphereDetectBuffer = new List<Entity>();
         }
         public const float DAMAGE_MULTIPLIER = 0.05f;
+        public static readonly Vector3 LIGHT_MULTIPLIER = Vector3.one * 5;
     }
 }

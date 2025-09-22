@@ -26,7 +26,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Evoke(entity);
             var buff = entity.NewBuff(VanillaBuffID.Contraption.fireworkDispenserEvoked);
-            if (entity.RNG.Next(20) == 0)
+            if (entity.RNG.Next(10) == 0)
             {
                 buff.SetProperty(Buffs.Contraptions.FireworkDispenserEvokedBuff.PROP_TIMER, new Tools.FrameTimer(Buffs.Contraptions.FireworkDispenserEvokedBuff.TIMEOUT));
             }

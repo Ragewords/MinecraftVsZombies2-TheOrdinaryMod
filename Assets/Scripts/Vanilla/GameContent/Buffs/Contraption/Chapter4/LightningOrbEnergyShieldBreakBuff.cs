@@ -15,6 +15,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public LightningOrbEnergyShieldBreakBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, NumberOperator.Set, EntityCollisionHelper.DETECTION_IGNORE));
         }
         public override void PostUpdate(Buff buff)
         {
