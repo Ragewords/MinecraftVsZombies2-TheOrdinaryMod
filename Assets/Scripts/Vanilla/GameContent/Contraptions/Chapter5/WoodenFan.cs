@@ -7,6 +7,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -102,8 +103,9 @@ namespace MVZ2.GameContent.Contraptions
 
             if (entity.Level.AreaID == VanillaAreaID.ship)
             {
+                var evokeMultiplier = entity.IsEvoked() ? 2 : 1;
                 var breezeSpeed = Ship.GetBreezeSpeed(entity.Level);
-                var nextSpeed = entity.GetFacingX() * -5;
+                var nextSpeed = entity.GetFacingX() * -5 * evokeMultiplier;
                 var breezeAccel = (nextSpeed - breezeSpeed) * BREEZE_ACCELERATION;
                 if (breezeSpeed != nextSpeed)
                 {
@@ -161,7 +163,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             if (entity.Level.AreaID == VanillaAreaID.ship)
             {
-                return Ship.GetBreezeSpeed(entity.Level) * -1;
+                var multipiler = entity.Level.IsDuringHugeWave() ? 4 : 2;
+                return Ship.GetBreezeSpeed(entity.Level) * -1 * multipiler;
             }
             return 0;
         }
@@ -177,6 +180,6 @@ namespace MVZ2.GameContent.Contraptions
         public const int FAN_STATE_BLOW = 2;
         public const float READY_TIME_SECONDS = 0.33333333f;
         public const float BLOW_SECONDS = 3;
-        public const float BREEZE_ACCELERATION = 0.1f;
+        public const float BREEZE_ACCELERATION = 0.3f;
     }
 }
