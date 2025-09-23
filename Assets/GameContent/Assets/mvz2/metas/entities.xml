@@ -1115,7 +1115,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </dispenser>
-        <contraption id="smoker" name="烟熏炉" tooltip="喷射高温烟雾，对一定区域敌人造成伤害" unlock="mvz2:level.ship_EX1">
+        <contraption id="smoker" name="烟熏炉" tooltip="喷出浓烟，对一定区域敌人造成伤害" unlock="mvz2:level.ship_EX1">
             <properties>
                 <vector3 name="mvz2:size" x="32" y="48" z="32" />
                 <bool name="mvz2:isFire" value="true" />
