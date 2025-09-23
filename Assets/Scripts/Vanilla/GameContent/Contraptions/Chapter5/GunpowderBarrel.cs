@@ -2,7 +2,6 @@
 
 using System.Linq;
 using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
@@ -10,14 +9,12 @@ using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
-using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -151,22 +148,10 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             var rng = GetBombRNG(entity);
             var bombID = rng == null ? VanillaContraptionID.mineTNT : validBombIDs.Random(rng);
-            if (!IsFurious(entity))
-            {
-                var spawnParams = entity.GetSpawnParams();
-                spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, VanillaBlueprintID.FromEntity(bombID));
-                entity.Produce(VanillaPickupID.blueprintPickup, spawnParams);
-                entity.PlaySound(VanillaSoundID.throwSound);
-            }
-            else
-            {
-                entity.SpawnWithParams(bombID, entity.Position)?.Let(e =>
-                {
-                    e.AddBuff<DevourerInvincibleBuff>();
-                    e.Velocity = new Vector3(e.RNG.Next(-8f, 8f), 8, 0);
-                    e.Trigger();
-                });
-            }
+            var spawnParams = entity.GetSpawnParams();
+            spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, VanillaBlueprintID.FromEntity(bombID));
+            entity.Produce(VanillaPickupID.blueprintPickup, spawnParams);
+            entity.PlaySound(VanillaSoundID.throwSound);
         }
         private static NamespaceID[] bombPool = new NamespaceID[]
         {
