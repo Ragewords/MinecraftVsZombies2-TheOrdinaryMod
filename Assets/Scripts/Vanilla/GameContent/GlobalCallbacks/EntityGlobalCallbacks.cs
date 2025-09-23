@@ -69,8 +69,10 @@ namespace MVZ2.GameContent.GlobalCallbacks
             var armorResult = output.ArmorResult;
             ILevelSourceReference? slowSource = null;
             ILevelSourceReference? unfreezeSource = null;
+            ILevelSourceReference? bleedSource = null;
             bool slow = false;
             bool unfreeze = false;
+            bool bleed = false;
             if (bodyResult != null)
             {
                 if (bodyResult.HasEffect(VanillaDamageEffects.SLOW))
@@ -82,6 +84,12 @@ namespace MVZ2.GameContent.GlobalCallbacks
                 {
                     unfreeze = true;
                     unfreezeSource = bodyResult.Source;
+                }
+                var shellDefinition = bodyResult.ShellDefinition;
+                if (bodyResult.Effects.HasEffect(VanillaDamageEffects.SLICE) && shellDefinition != null && shellDefinition.IsSliceCritical())
+                {
+                    bleed = true;
+                    bleedSource = bodyResult.Source;
                 }
             }
             if (armorResult != null)
@@ -104,6 +112,11 @@ namespace MVZ2.GameContent.GlobalCallbacks
             else if (slow)
             {
                 entity.InflictSlow(300, slowSource);
+            }
+
+            if (bleed)
+            {
+                entity.Bleed(bleedSource);
             }
         }
         private void PostDamageCallback(VanillaLevelCallbacks.PostTakeDamageParams param, CallbackResult callbackResult)

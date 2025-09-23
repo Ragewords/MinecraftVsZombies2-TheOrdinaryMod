@@ -1084,6 +1084,18 @@ namespace MVZ2.Vanilla.Entities
             buff.SetProperty(FrankensteinShockedBuff.PROP_TIMEOUT, time);
             PostApplyStatusEffect(entity, buff, source);
         }
+        public static void Bleed(this Entity entity, ILevelSourceReference? source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.bleeding);
+            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            PostApplyStatusEffect(entity, buff, source);
+        }
 
         public static void InflictSlow(this Entity entity, int time, ILevelSourceReference? source)
         {

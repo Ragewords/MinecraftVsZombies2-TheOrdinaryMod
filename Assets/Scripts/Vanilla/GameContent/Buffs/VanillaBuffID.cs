@@ -550,6 +550,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID stun = Get(VanillaBuffNames.Enemy.stun);
             public static readonly NamespaceID minigameEnemySpeed = Get(VanillaBuffNames.Enemy.minigameEnemySpeed);
             public static readonly NamespaceID napstablookAngry = Get(VanillaBuffNames.Enemy.napstablookAngry);
+            public static readonly NamespaceID bleeding = Get(VanillaBuffNames.Enemy.bleeding);
             public static readonly NamespaceID frankensteinTransformer = Get(VanillaBuffNames.Enemy.frankensteinTransformer);
             public static readonly NamespaceID poisoned = Get(VanillaBuffNames.Enemy.poisoned);
 
