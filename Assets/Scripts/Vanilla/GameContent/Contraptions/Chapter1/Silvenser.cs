@@ -120,7 +120,7 @@ namespace MVZ2.GameContent.Contraptions
                                 {
                                     entity.Spawn(projectileID, knifePos, param)?.Let(e =>
                                     {
-                                        e.Velocity = direction * -10;
+                                        e.Velocity = direction * -20;
                                         var buff = e.AddBuff<ProjectileWaitBuff>();
                                         buff.SetProperty(ProjectileWaitBuff.PROP_TIMEOUT, 90);
                                         Knife.SetNoDelay(e, false);

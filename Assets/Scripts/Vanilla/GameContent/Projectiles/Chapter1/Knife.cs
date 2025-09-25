@@ -32,8 +32,8 @@ namespace MVZ2.GameContent.Projectiles
             base.Update(projectile);
             var timer = GetWaitTimer(projectile);
             var shootPoint = projectile.Position;
-            if (!projectile.HasBuff<ProjectileWaitBuff>())
-                timer?.Run();
+            if (projectile.HasBuff<ProjectileWaitBuff>())
+                return;
 
             if (!IsNoDelay(projectile))
             {
@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Projectiles
                         SetNoDelay(projectile, true);
                     }
                 }
-                else if (!projectile.HasBuff<ProjectileWaitBuff>())
+                else
                 {
                     projectile.Velocity -= projectile.Velocity / 10;
                 }
