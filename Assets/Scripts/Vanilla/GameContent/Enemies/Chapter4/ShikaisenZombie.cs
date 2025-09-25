@@ -81,7 +81,7 @@ namespace MVZ2.GameContent.Enemies
         public static Entity? SpawnStaff(Entity entity)
         {
             var pos = entity.Position + entity.GetFacingDirection() * 30;
-            return entity.Spawn(VanillaEnemyID.shikaisenStaff, pos)?.Let(e =>
+            return entity.SpawnWithParams(VanillaEnemyID.shikaisenStaff, pos)?.Let(e =>
             {
                 e.PlaySound(VanillaSoundID.wood);
             });
@@ -89,7 +89,7 @@ namespace MVZ2.GameContent.Enemies
         public static Entity? SpawnPot(Entity entity)
         {
             var pos = entity.Position + new Vector3(-20 * entity.GetFacingX(), 44);
-            return entity.Spawn(VanillaEnemyID.shikaisenPot, pos)?.Let(e =>
+            return entity.SpawnWithParams(VanillaEnemyID.shikaisenPot, pos)?.Let(e =>
             {
                 e.SetParent(entity);
             });
