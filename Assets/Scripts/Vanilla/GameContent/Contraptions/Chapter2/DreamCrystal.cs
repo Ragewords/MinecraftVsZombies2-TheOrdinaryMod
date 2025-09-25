@@ -48,10 +48,10 @@ namespace MVZ2.GameContent.Contraptions
             var secondThird = firstThird * 2f;
             inputValue = Mathf.Clamp(inputValue, 0f, maxValue);
 
-            if (inputValue < firstThird) return 4;
+            if (inputValue < firstThird) return 3;
             else if (inputValue < secondThird) return 2;
             else return 1;
         }
-        public const float HEAL_PER_FRAME = 4 / 3;
+        public const float HEAL_PER_FRAME = 1;
     }
 }
