@@ -117,16 +117,11 @@ namespace MVZ2.GameContent.Contraptions
             var volume = entity.HasBuff<NoteBlockLoudBuff>() ? 5 : 1;
             entity.PlaySound(VanillaSoundID.harp, pitch, volume);
         }
-        public static void SonicWave(Entity entity)
+        public static void SoundWave(Entity entity)
         {
-            var waveTimer = GetWaveTimer(entity);
-            if (waveTimer != null && waveTimer.Expired)
-            {
-                entity.TriggerAnimation("Sound");
-                var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
-                entity.Explode(entity.GetCenter(), SOUND_RADIUS * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * SOUND_DAMAGE_MULTIPLIER, new DamageEffectList(VanillaDamageEffects.MUTE));
-                waveTimer.Reset();
-            }
+            entity.TriggerAnimation("Sound");
+            var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
+            entity.Explode(entity.GetCenter(), SOUND_RADIUS * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * SOUND_DAMAGE_MULTIPLIER, new DamageEffectList(VanillaDamageEffects.MUTE));
         }
         public static List<EntityID>? GetNoteChildren(Entity entity)
         {

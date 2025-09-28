@@ -32,10 +32,10 @@ namespace MVZ2.GameContent.Enemies
                 entity.AddBuff<BoatBuff>();
                 entity.SetModelProperty("HasBoat", true);
             }
-            var targetCol = entity.RNG.Next(3, 6);
+            var targetCol = 4;
             if (level.IsAirLane(lane))
             {
-                targetCol = entity.RNG.Next(4, 7);
+                targetCol = 6;
             }
             if (!entity.IsPreviewEnemy())
             {

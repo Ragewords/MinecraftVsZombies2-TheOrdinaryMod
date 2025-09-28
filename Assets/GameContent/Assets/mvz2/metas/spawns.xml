@@ -156,7 +156,7 @@
         <entity id="mvz2:karakasa_zombie"/>
         <spawn level="3" />
         <terrain water="true" air="true"/>
-        <weight base="2000" />
+        <weight base="1000" />
     </entry>
     <entry id="undead_flying_object" type="custom" >
         <preview variant="3" />
