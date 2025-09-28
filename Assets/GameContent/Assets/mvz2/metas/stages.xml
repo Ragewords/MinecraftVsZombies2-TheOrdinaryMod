@@ -1281,9 +1281,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:ghast"/>
+            <spawn id="mvz2:karakasa_zombie"/>
         </spawns>
     </stage>
     <stage id="ship_4" name="圣辇船" dayNumber="4" >
@@ -1300,8 +1299,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
         </spawns>
     </stage>
@@ -1319,8 +1318,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:reflective_barrier_zombie"/>
         </spawns>
@@ -1364,8 +1363,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
         </spawns>
@@ -1384,8 +1383,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:mummy"/>
@@ -1405,8 +1404,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>
@@ -1427,8 +1426,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>
@@ -1490,7 +1489,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:undead_flying_object"/>
         </spawns>
     </stage>
     <stage id="ship_EX2" name="圣辇船" dayNumber="13" type="extra" >
@@ -1502,8 +1501,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:admiral_zombie"/>
         </spawns>
     </stage>
@@ -1516,8 +1515,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:admiral_zombie"/>
@@ -1535,8 +1534,8 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
+            <spawn id="mvz2:karakasa_zombie"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>
