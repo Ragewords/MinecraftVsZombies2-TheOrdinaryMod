@@ -766,8 +766,8 @@
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>生产时间：<![CDATA[<color=red>36秒</color>]]></p>
                 <p>提供能量：<![CDATA[<color=red>50</color>]]></p>
-                <p>炸弹：<![CDATA[<color=red>累计8-12次生产提供</color>]]></p>
-                <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供125能量，但是会更快爆炸；同时累计6-8次生产便会提供炸弹</color>]]></p>
+                <p>炸弹：<![CDATA[<color=red>累计6-10次生产提供</color>]]></p>
+                <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供125能量，但是会更快爆炸；同时累计3-5次生产便会提供炸弹</color>]]></p>
             </properties>
             <flavor>
                 <p>众所周知，最早的黑火药由三种材料制作：</p>
@@ -803,7 +803,6 @@
             <flavor>
                 <p>它喜欢看的典故有很多：三打白骨精、三顾茅庐、三打祝家庄……</p>
                 <p>……确定它喜欢看的是典故的内容吗？</p>
-                <p>还是说仅仅是因为有……三？</p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">

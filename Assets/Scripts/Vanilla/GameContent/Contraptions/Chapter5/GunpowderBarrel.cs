@@ -177,7 +177,8 @@ namespace MVZ2.GameContent.Contraptions
         private void ResetProductionCount(Entity entity)
         {
             entity.SetProperty(PROP_PRODUCTION_COUNT, 0);
-            entity.SetProperty(PROP_LIMIT_ADDTION, entity.RNG.Next(IsFurious(entity) ? 3 : 5));
+            int top = IsFurious(entity) ? 3 : 5;
+            entity.SetProperty(PROP_LIMIT_ADDTION, entity.RNG.Next(top));
         }
         public int GetDividedValue(float inputValue, float maxValue)
         {
@@ -190,7 +191,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public int GetLimit(int addtion, bool furious)
         {
-            return (furious ? 6 : 8) + addtion;
+            return (furious ? 3 : 6) + addtion;
         }
 
         public const int PRODUCTION_TIME_START_MIN = 90;
