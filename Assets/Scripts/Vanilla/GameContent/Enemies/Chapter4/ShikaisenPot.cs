@@ -36,6 +36,10 @@ namespace MVZ2.GameContent.Enemies
             {
                 input.SetAmount(1);
             }
+            if (input.HasEffect(VanillaDamageEffects.CART))
+            {
+                input.Multiply(300);
+            }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
