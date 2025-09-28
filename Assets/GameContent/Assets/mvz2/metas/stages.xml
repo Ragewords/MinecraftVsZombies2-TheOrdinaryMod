@@ -1247,7 +1247,6 @@
         <spawns flags="1">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
         </spawns>
         <time firstWave="60"/>
     </stage>
@@ -1265,8 +1264,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
-            <spawn id="mvz2:karakasa_zombie"/>
-            <!-- <spawn id="mvz2:undead_flying_object"/> -->
+            <spawn id="mvz2:undead_flying_object"/>
         </spawns>
     </stage>
     <stage id="ship_3" name="圣辇船" dayNumber="3" >

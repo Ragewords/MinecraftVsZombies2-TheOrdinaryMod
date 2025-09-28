@@ -38,6 +38,7 @@ namespace MVZ2.GameContent.Contraptions
             SetBombRNG(entity, new RandomGenerator(entity.RNG.Next()));
             var productionTimer = new FrameTimer(entity.RNG.Next(PRODUCTION_TIME_START_MIN, PRODUCTION_TIME_START_MAX));
             SetProductionTimer(entity, productionTimer);
+            entity.SetModelProperty("NotPreview", true);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -50,7 +51,10 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+            var bombProduceLimit = GetLimit(IsFurious(entity));
+            var count = entity.GetProperty<int>(PROP_PRODUCTION_COUNT);
             entity.SetModelProperty("Furious", IsFurious(entity));
+            entity.SetModelProperty("DangerState", GetDividedValue(count, bombProduceLimit));
         }
         public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
@@ -79,6 +83,7 @@ namespace MVZ2.GameContent.Contraptions
             SetFurious(entity, true);
             WhiteFlashBuff.AddToEntity(entity, 15);
             entity.PlaySound(VanillaSoundID.fuse);
+            ResetProductionCount(entity);
         }
         public static FrameTimer? GetProductionTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_PRODUCTION_TIMER);
         public static void SetProductionTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_PRODUCTION_TIMER, timer);
@@ -116,12 +121,14 @@ namespace MVZ2.GameContent.Contraptions
             if (productionTimer.Expired)
             {
                 var pickupID = IsFurious(entity) ? VanillaPickupID.furiousGunpowder : VanillaPickupID.gunpowder;
-                var bombProduceLimit = IsFurious(entity) ? 20 : 10;
+                var bombProduceLimit = GetLimit(IsFurious(entity));
                 if (entity.IsFriendlyEntity())
                 {
-                    if (entity.RNG.Next(100) < bombProduceLimit)
+                    var count = entity.GetProperty<int>(PROP_PRODUCTION_COUNT);
+                    if (count >= bombProduceLimit && entity.RNG.Next(5) == 0)
                     {
                         ProduceBomb(entity);
+                        ResetProductionCount(entity);
                     }
                     else
                     {
@@ -130,6 +137,7 @@ namespace MVZ2.GameContent.Contraptions
                         spawnParams.SetProperty(VanillaEntityProps.RANGE, entity.GetRange());
                         entity.Produce(pickupID);
                         entity.PlaySound(VanillaSoundID.throwSound);
+                        AddProductionCount(entity);
                     }
                 }
                 else
@@ -158,11 +166,34 @@ namespace MVZ2.GameContent.Contraptions
             VanillaContraptionID.tnt,
             VanillaContraptionID.blackHoleBomb
         };
+        private void AddProductionCount(Entity entity)
+        {
+            var count = entity.GetProperty<int>(PROP_PRODUCTION_COUNT);
+            entity.SetProperty(PROP_PRODUCTION_COUNT, count + 1);
+        }
+        private void ResetProductionCount(Entity entity)
+        {
+            entity.SetProperty(PROP_PRODUCTION_COUNT, 0);
+        }
+        public int GetDividedValue(float inputValue, float maxValue)
+        {
+            var div = maxValue / 2f;
+            inputValue = Mathf.Clamp(inputValue, 0f, maxValue);
+
+            if (inputValue < div) return 0;
+            else if (inputValue >= div && inputValue < maxValue) return 1;
+            else return 2;
+        }
+        public int GetLimit(bool furious)
+        {
+            return furious ? 6 : 10;
+        }
 
         public const int PRODUCTION_TIME_START_MIN = 90;
         public const int PRODUCTION_TIME_START_MAX = 360;
         public const int PRODUCTION_TIME = 1080;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_PRODUCTION_COUNT = new VanillaEntityPropertyMeta<int>("Production_count");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_FURIOUS = new VanillaEntityPropertyMeta<bool>("fury");
         private static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("color_offset");
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");

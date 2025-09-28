@@ -152,12 +152,6 @@
     </entry>
 
     <!-- Mausoleum -->
-    <entry id="karakasa_zombie" >
-        <entity id="mvz2:karakasa_zombie"/>
-        <spawn level="3" />
-        <terrain water="true" air="true"/>
-        <weight base="1000" />
-    </entry>
     <entry id="undead_flying_object" type="custom" >
         <preview variant="3" />
         <entity id="mvz2:undead_flying_object" variant="-1"/>
@@ -167,6 +161,12 @@
         <entity id="mvz2:undead_flying_object" variant="0"/>
         <preview count="5" />
         <spawn level="1" />
+    </entry>
+    <entry id="karakasa_zombie" >
+        <entity id="mvz2:karakasa_zombie"/>
+        <spawn level="3" />
+        <terrain water="true" air="true"/>
+        <weight base="1000" />
     </entry>
     <entry id="cannoneer_zombie" >
         <entity id="mvz2:cannoneer_zombie"/>
