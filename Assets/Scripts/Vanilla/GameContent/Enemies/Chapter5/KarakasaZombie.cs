@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Enemies
             var targetCol = 4;
             if (level.IsAirLane(lane))
             {
-                targetCol = 6;
+                targetCol = 5;
             }
             if (!entity.IsPreviewEnemy())
             {
