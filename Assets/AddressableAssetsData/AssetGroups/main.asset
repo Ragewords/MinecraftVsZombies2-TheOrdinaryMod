@@ -809,7 +809,7 @@ MonoBehaviour:
     - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 10f08d4f73398434eb4f788df4881010
-    m_Address: mvz2:entity/projectiles/bounceboulder
+    m_Address: mvz2:entity/projectiles/bounce_boulder
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6565,6 +6565,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 892a13fb55b4ef34db50d5282dfdcff8
+    m_Address: mvz2:entity/contraption/gunpowder_barrel_danger_icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 895d4ade70a0800439a9fed95fe162a9
     m_Address: mvz2:enemy/ship/karakasa_zombie
