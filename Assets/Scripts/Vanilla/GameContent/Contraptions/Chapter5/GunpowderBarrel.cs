@@ -199,7 +199,7 @@ namespace MVZ2.GameContent.Contraptions
         public const int PRODUCTION_TIME = 1080;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
         private static readonly VanillaEntityPropertyMeta<int> PROP_PRODUCTION_COUNT = new VanillaEntityPropertyMeta<int>("Production_count");
-        private static readonly VanillaEntityPropertyMeta<int> PROP_LIMIT_ADDTION = new VanillaEntityPropertyMeta<int>("Production_count");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_LIMIT_ADDTION = new VanillaEntityPropertyMeta<int>("limit_addtion");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_FURIOUS = new VanillaEntityPropertyMeta<bool>("fury");
         private static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("color_offset");
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");

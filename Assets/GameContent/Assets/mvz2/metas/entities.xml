@@ -846,15 +846,25 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" unlock="mvz2:level.ship_2">
+        <dispenser id="wooden_fan" name="木风扇" tooltip="吹动一整行的敌人，使其减速" unlock="mvz2:level.ship_2">
             <properties>
-                <int name="mvz2:cost" value="225" />
+                <id name="mvz2:shell" value="mvz2:wood" />
+                <id name="mvz2:placeSound" value="mvz2:wood" />
+                <id name="mvz2:deathSound" value="mvz2:wood" />
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
+                <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
+                <bool name="mvz2:triggerActive" value="true" />
+                <bool name="mvz2:instantTrigger" value="true" />
+                <bool name="mvz2:canDeactive" value="false" />
+
+                <int name="mvz2:cost" value="100" />
+                <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
-        <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" unlock="mvz2:level.ship_3">
+        <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" unlock="mvz2:level.ship_3">
             <properties>
-                <id name="mvz2:fragmentId" value="mvz2:dispenser" />
-                <int name="mvz2:cost" value="300" />
+                <int name="mvz2:cost" value="225" />
             </properties>
         </dispenser>
         <dispenser id="beacon" name="信标" tooltip="向五个方向发射手里剑" unlock="mvz2:level.ship_4">
@@ -894,20 +904,10 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="wooden_fan" name="木风扇" tooltip="吹动一整行的敌人，使其减速" unlock="mvz2:level.ship_7">
+        <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" unlock="mvz2:level.ship_7">
             <properties>
-                <id name="mvz2:shell" value="mvz2:wood" />
-                <id name="mvz2:placeSound" value="mvz2:wood" />
-                <id name="mvz2:deathSound" value="mvz2:wood" />
-                <vector3 name="mvz2:size" x="48" y="48" z="48" />
-                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
-                <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
-                <bool name="mvz2:triggerActive" value="true" />
-                <bool name="mvz2:instantTrigger" value="true" />
-                <bool name="mvz2:canDeactive" value="false" />
-
-                <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:fragmentId" value="mvz2:dispenser" />
+                <int name="mvz2:cost" value="300" />
             </properties>
         </dispenser>
 
