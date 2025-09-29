@@ -5,6 +5,7 @@ using System.Linq;
 using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -122,6 +123,7 @@ namespace MVZ2.GameContent.Areas
             var position = grid.GetEntityPosition() + Vector3.up * 600;
             var entity = level.Spawn(enemyID, position, null)?.Let(e =>
             {
+                e.ChangeModel(VanillaModelID.karakasaZombie);
                 e.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 e.AddBuff<ParatroopBuff>();
             });

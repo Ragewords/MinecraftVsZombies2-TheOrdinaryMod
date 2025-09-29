@@ -416,7 +416,7 @@ namespace MVZ2.Vanilla.Level
         {
             var x = level.GetEnemySpawnX();
             var enemyID = spawnDef.GetSpawnEntityID();
-            if (enemyID == VanillaEnemyID.karakasaZombie)
+            if (enemyID == VanillaEnemyID.flyingPirate)
                 x = level.GetEntityColumnX(level.GetMaxColumnCount());
             return level.SpawnEnemy(spawnDef, lane, x, ignoreOffset);
         }

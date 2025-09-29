@@ -255,6 +255,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 6ee512fd77a0dc8459eaf2d3c9cc39a6, type: 3}
   - name: mobile_blueprint/flag_zombie
     sprite: {fileID: 21300000, guid: 4756509eba10d744bb3323a794303f92, type: 3}
+  - name: mobile_blueprint/flying_pirate
+    sprite: {fileID: 21300000, guid: 8eb4a12f752f3c74e8686dc09fc91f68, type: 3}
   - name: mobile_blueprint/force_pad
     sprite: {fileID: 21300000, guid: f25d2b94a621a1e4d8cd823493b4a29f, type: 3}
   - name: mobile_blueprint/funnelenser
@@ -575,6 +577,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8af34f25dcad82e40bb7fef49d44dfe2, type: 3}
   - name: entity/armor/emperor_crown
     sprite: {fileID: 21300000, guid: 58755531f1cc59b4ab7563c5bedf58b2, type: 3}
+  - name: entity/armor/flying_pirate_hat
+    sprite: {fileID: 21300000, guid: dcf98e882d10faa409874c20f6534d4c, type: 3}
   - name: entity/armor/kogasa_wig
     sprite: {fileID: 21300000, guid: be3ab774e5937604197f4900e8c76858, type: 3}
   - name: entity/armor/mesmerizer_crown
@@ -827,10 +831,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 90a02dbfbce08a84ba0c99cd8c5903bb, type: 3}
   - name: entity/enemies/cannonball_zombie
     sprite: {fileID: 21300000, guid: b11db4b170db8634b901f6162c53376e, type: 3}
+  - name: entity/enemies/cutlass
+    sprite: {fileID: 21300000, guid: 2703045087e324348847495d14c370bc, type: 3}
   - name: entity/enemies/dullahan_bended_arm
     sprite: {fileID: 21300000, guid: c9bb0408ef5a7624eb4980e99c0c4888, type: 3}
   - name: entity/enemies/dullahan_head
     sprite: {fileID: 21300000, guid: c5e542b668451eb45987e6cfc2d49ead, type: 3}
+  - name: entity/enemies/flying_pirate_paraglider
+    sprite: {fileID: 21300000, guid: 200e22937113f7346be48edde1538288, type: 3}
   - name: entity/enemies/ghost_headwear
     sprite: {fileID: 21300000, guid: 7667a381c5230374d9c5b5a7bf629dd9, type: 3}
   - name: entity/enemies/ghost_tail
@@ -2189,6 +2197,16 @@ MonoBehaviour:
     - {fileID: 21769090, guid: a9654ff76c5f31a4d87e757c55e35a6d, type: 3}
     - {fileID: -1155102574, guid: a9654ff76c5f31a4d87e757c55e35a6d, type: 3}
     - {fileID: -1727391113, guid: a9654ff76c5f31a4d87e757c55e35a6d, type: 3}
+  - name: entity/enemy/flying_pirate
+    spritesheet:
+    - {fileID: -1378033234, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: 1523178624, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: 977277113, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: 264743052, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: -547922825, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: -1965034896, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: -1427727109, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
+    - {fileID: 682324004, guid: 6762f4febf03913439fadf19dc8d53af, type: 3}
   - name: entity/enemy/gargoyle
     spritesheet:
     - {fileID: 21300000, guid: 7379af57c598c9a438cfd765804f71e3, type: 3}

@@ -1282,7 +1282,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:mummy"/>
         </spawns>
     </stage>
@@ -1301,7 +1301,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
         </spawns>
     </stage>
@@ -1320,7 +1320,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:reflective_barrier_zombie"/>
         </spawns>
@@ -1343,7 +1343,6 @@
         <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
             <spawn id="mvz2:undead_flying_object_blitz"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
         </spawns>
         <time firstWave="1" waveMax="15" waveAdvance="5"/>
         <properties>
@@ -1365,7 +1364,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
         </spawns>
@@ -1385,7 +1384,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:ghast"/>
@@ -1406,7 +1405,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>
@@ -1428,7 +1427,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>
@@ -1503,7 +1502,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:admiral_zombie"/>
         </spawns>
     </stage>
@@ -1517,7 +1516,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:admiral_zombie"/>
@@ -1536,7 +1535,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:karakasa_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:pop_captain"/>

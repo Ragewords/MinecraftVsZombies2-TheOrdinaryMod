@@ -162,11 +162,11 @@
         <preview count="5" />
         <spawn level="1" />
     </entry>
-    <entry id="karakasa_zombie" >
-        <entity id="mvz2:karakasa_zombie"/>
+    <entry id="flying_pirate" >
+        <entity id="mvz2:flying_pirate"/>
         <spawn level="3" />
         <terrain water="true" air="true"/>
-        <weight base="1000" />
+        <weight base="1500" />
     </entry>
     <entry id="cannoneer_zombie" >
         <entity id="mvz2:cannoneer_zombie"/>

@@ -8,19 +8,22 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.karakasaZombie)]
-    public class KarakasaZombie : MeleeEnemy
+    [EntityBehaviourDefinition(VanillaEnemyNames.flyingPirate)]
+    public class FlyingPirate : MeleeEnemy
     {
-        public KarakasaZombie(string nsp, string name) : base(nsp, name)
+        public FlyingPirate(string nsp, string name) : base(nsp, name)
         {
+            AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.Multiply, 2f));
         }
         public override void Init(Entity entity)
         {
@@ -32,10 +35,10 @@ namespace MVZ2.GameContent.Enemies
                 entity.AddBuff<BoatBuff>();
                 entity.SetModelProperty("HasBoat", true);
             }
-            var targetCol = 4;
+            var targetCol = entity.RNG.Next(3, 6);
             if (level.IsAirLane(lane))
             {
-                targetCol = 5;
+                targetCol = 4;
             }
             if (!entity.IsPreviewEnemy())
             {
@@ -49,13 +52,25 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
             entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
-        }
-        protected override void UpdateActionState(Entity enemy, int state)
-        {
-            base.UpdateActionState(enemy, state);
-            if (state == VanillaEntityStates.ENEMY_PARACHUTE && enemy.HasBuff<KarakasaSpeedBuff>())
+            bool parachute = entity.State == VanillaEntityStates.ENEMY_PARACHUTE;
+            entity.SetModelProperty("Parachute", parachute);
+            if (parachute && entity.HasBuff<KarakasaSpeedBuff>())
             {
-                enemy.UpdateWalkVelocity();
+                entity.UpdateWalkVelocity();
+            }
+            else if (!parachute)
+            {
+                bool paragliderDiscard = entity.GetProperty<bool>(PROP_PARAGLIDER_DISCARDED);
+                if (!paragliderDiscard)
+                {
+                    entity.SetProperty(PROP_PARAGLIDER_DISCARDED, true);
+                    entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter() + Vector3.up * 60, entity)?.Let(e =>
+                    {
+                        e.Velocity = entity.GetFacingDirection() * 10;
+                        e.ChangeModel(VanillaModelID.flyingPirateParaglider);
+                        e.SetDisplayScale(entity.GetDisplayScale());
+                    });
+                }
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
@@ -83,5 +98,6 @@ namespace MVZ2.GameContent.Enemies
             KarakasaSpeedBuff.SetSpeed(buff, columnDistance * increment);
             entity.AddBuff(buff);
         }
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_PARAGLIDER_DISCARDED = new VanillaEntityPropertyMeta<bool>("paraglider_discarded");
     }
 }

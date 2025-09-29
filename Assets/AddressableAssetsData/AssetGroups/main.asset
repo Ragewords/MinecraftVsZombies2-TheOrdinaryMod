@@ -1564,6 +1564,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 200e22937113f7346be48edde1538288
+    m_Address: mvz2:entity/enemies/flying_pirate_paraglider
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 201e5721e971a564488d089bd9d27f7b
     m_Address: mvz2:entity/projectiles/potion_overlay
     m_ReadOnly: 0
@@ -1937,6 +1944,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26dc0bfdc50bd814f9f2c3f60f62e366
     m_Address: mvz2:ui/effect/crushing_wall_right_censored
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2703045087e324348847495d14c370bc
+    m_Address: mvz2:entity/enemies/cutlass
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -2619,6 +2633,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3604ff565a8f03445a58e0a0b7f53934
+    m_Address: mvz2:armor/flying_pirate_hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3609f311f920abd4aaedc3504de8b41e
     m_Address: mvz2:launch
     m_ReadOnly: 0
@@ -3248,6 +3269,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 427132f277923fe4e90fa8bcff30ce04
+    m_Address: mvz2:effect/flying_priate_paraglider
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 42aed5a151c953c4aa6add38a42869c2
     m_Address: mvz2:held/starshards/ship
@@ -4984,6 +5012,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6762f4febf03913439fadf19dc8d53af
+    m_Address: mvz2:entity/enemy/flying_pirate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6794bb31d9d949f4398a80691187140f
     m_Address: mvz2:entity/contraptions/golden_apple_halo
@@ -6811,6 +6846,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8eb4a12f752f3c74e8686dc09fc91f68
+    m_Address: mvz2:mobile_blueprint/flying_pirate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ec55301558bfc54c9d94f7065fda760
     m_Address: mvz2:enemy/castle/dullahan_main
     m_ReadOnly: 0
@@ -7268,6 +7310,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95ec175e5a3358a4db63386c7aad21ab
     m_Address: mvz2:contraption/mausoleum/devourer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 962f530ce2d126549a85773138c6cb13
+    m_Address: mvz2:enemy/ship/flying_pirate
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10488,6 +10537,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dc3f43337866cef4c94af92af1159b8f
     m_Address: mvz2:mobile_blueprint/drivenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcf98e882d10faa409874c20f6534d4c
+    m_Address: mvz2:entity/armor/flying_pirate_hat
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
