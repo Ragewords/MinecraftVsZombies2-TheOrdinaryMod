@@ -5510,6 +5510,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7258f9cd357c48b49bd358d57e87de0f
+    m_Address: mvz2:level/grids/emerald_grid_slope
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7265f8a33ab317f44ba9a985f1f557ff
     m_Address: mvz2:bones/nyan_cat
     m_ReadOnly: 0
@@ -5663,6 +5670,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75bca03108292134fa04155c18a6c040
+    m_Address: mvz2:level/grids/emerald_grid
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75e0ba3997470f34ab558f8f2ea6c6d2
     m_Address: mvz2:effect/thunder_cloud
@@ -9912,6 +9926,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd12f06e32e21d349a889954e489c59b
+    m_Address: mvz2:level/grids/emerald_grid_water
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd470ecea0f6f7549b3e393689f0d7c5
     m_Address: mvz2:effect/ufo_background
     m_ReadOnly: 0
@@ -10590,6 +10611,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - MapModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dadb93bef9995364dbe69b94fd6b09e8
+    m_Address: mvz2:level/grids/emerald_grid_cloud
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db0ccfdb5599c9940881a8ab026c2277
     m_Address: mvz2:effect/magic_stars
@@ -11787,6 +11815,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f45b4aa9f4d42294a925776f4c75ab7a
+    m_Address: mvz2:grid/emerald
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f4743b7a556142b4db02b61d15e9da06
     m_Address: mvz2:ui/almanac/grid_layer_tags
