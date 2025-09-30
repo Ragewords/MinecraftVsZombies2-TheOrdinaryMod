@@ -35,6 +35,7 @@ namespace MVZ2.GameContent.Areas
             base.Setup(level);
             SetSkyOffsetSpeed(level, SKY_OFFSET_SPEED_NORMAL);
             SetRNG(level, level.CreateRNG());
+            SetCostumeRNG(level, level.CreateRNG());
             SetBreezeRNG(level, level.CreateRNG());
         }
         public override void Update(LevelEngine level)
@@ -123,7 +124,11 @@ namespace MVZ2.GameContent.Areas
             var position = grid.GetEntityPosition() + Vector3.up * 600;
             var entity = level.Spawn(enemyID, position, null)?.Let(e =>
             {
-                e.ChangeModel(VanillaModelID.karakasaZombie);
+                var rng = GetCostumeRNG(level);
+                if (rng != null && rng.Next(20) == 0)
+                {
+                    e.ChangeModel(VanillaModelID.karakasaZombie);
+                }
                 e.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 e.AddBuff<ParatroopBuff>();
             });
@@ -165,6 +170,8 @@ namespace MVZ2.GameContent.Areas
         public static void SetSkyOffsetSpeed(LevelEngine level, float value) => level.SetProperty<float>(PROP_SKY_OFFSET_SPEED, value);
         public static RandomGenerator? GetRNG(LevelEngine level) => level.GetBehaviourField<RandomGenerator>(PROP_RNG);
         public static void SetRNG(LevelEngine level, RandomGenerator rng) => level.SetBehaviourField(PROP_RNG, rng);
+        public static RandomGenerator? GetCostumeRNG(LevelEngine level) => level.GetBehaviourField<RandomGenerator>(PROP_COSTUME_RNG);
+        public static void SetCostumeRNG(LevelEngine level, RandomGenerator rng) => level.SetBehaviourField(PROP_COSTUME_RNG, rng);
         public static RandomGenerator? GetBreezeRNG(LevelEngine level) => level.GetBehaviourField<RandomGenerator>(PROP_BREEZE_RNG);
         public static void SetBreezeRNG(LevelEngine level, RandomGenerator rng) => level.SetBehaviourField(PROP_BREEZE_RNG, rng);
         public static float GetBreezeSpeed(LevelEngine level) => level.GetProperty<float>(PROP_BREEZE_SPEED);
@@ -187,6 +194,7 @@ namespace MVZ2.GameContent.Areas
         public const float BREEZE_OFFSET_ACCELERATION = 0.01f;
         public const float BREEZE_OFFSET_MULTIPILER = 1.5f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
+        public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_COSTUME_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("CostumeRNG");
         public static readonly VanillaLevelPropertyMeta<float> PROP_SKY_OFFSET_SPEED = new VanillaLevelPropertyMeta<float>("sky_offset_speed");
         public static readonly VanillaLevelPropertyMeta<float> PROP_BREEZE_SPEED = new VanillaLevelPropertyMeta<float>("breeze_speed");
         public static readonly VanillaLevelPropertyMeta<float> PROP_NEXT_BREEZE_SPEED = new VanillaLevelPropertyMeta<float>("next_breeze_speed");
