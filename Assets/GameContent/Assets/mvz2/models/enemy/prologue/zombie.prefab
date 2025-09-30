@@ -183,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 4966536675280526664, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: renderers.Array.data[11]
       value: 
-      objectReference: {fileID: 2874238695325951918}
+      objectReference: {fileID: 2777193640446195595}
     - target: {fileID: 5119668504025542221, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: m_Name
       value: zombie
@@ -258,6 +258,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 6244620233931258376}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2777193640446195595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8080526330840780163, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+  m_PrefabInstance: {fileID: 6244620233931258376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555110454614643617}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}

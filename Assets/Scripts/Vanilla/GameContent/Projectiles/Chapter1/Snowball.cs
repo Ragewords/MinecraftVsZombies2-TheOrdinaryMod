@@ -16,7 +16,7 @@ namespace MVZ2.GameContent.Projectiles
     {
         public Snowball(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new NamespaceIDArrayModifier(VanillaProjectileProps.DAMAGE_EFFECTS, DMG_EFFECT));
+            AddModifier(new NamespaceIDArrayModifier(VanillaProjectileProps.DAMAGE_EFFECTS, SetOperator.Set, DMG_EFFECT));
         }
         public override void Init(Entity entity)
         {

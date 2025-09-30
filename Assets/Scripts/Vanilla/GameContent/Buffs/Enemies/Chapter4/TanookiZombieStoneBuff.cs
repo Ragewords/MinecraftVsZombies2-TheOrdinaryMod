@@ -25,9 +25,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback, filter: VanillaProjectileID.knife);
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
-            AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, VanillaShellID.stone));
+            AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, SetOperator.Set, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
-            AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, NumberOperator.Set, VanillaEntityStates.IDLE));
+            AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, IntegerOperator.Set, VanillaEntityStates.IDLE));
         }
         public override void PostAdd(Buff buff)
         {

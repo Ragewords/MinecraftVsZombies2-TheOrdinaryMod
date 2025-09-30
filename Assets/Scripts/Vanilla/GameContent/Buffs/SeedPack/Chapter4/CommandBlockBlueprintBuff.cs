@@ -19,7 +19,7 @@ namespace MVZ2.GameContent.Buffs.SeedPacks
         public CommandBlockBlueprintBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(EngineSeedProps.COST, NumberOperator.Set, 100));
-            AddModifier(new NamespaceIDModifier(EngineSeedProps.RECHARGE_ID, NEXT_RECHARGE_ID));
+            AddModifier(new NamespaceIDModifier(EngineSeedProps.RECHARGE_ID, SetOperator.Set, NEXT_RECHARGE_ID));
         }
         public override void PostAdd(Buff buff)
         {
