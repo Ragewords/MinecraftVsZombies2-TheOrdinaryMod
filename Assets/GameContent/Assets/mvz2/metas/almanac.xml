@@ -1499,15 +1499,15 @@
         </entry>
         <entry id="mvz2:flying_pirate">
             <header>
-                <p>飞天海盗会从天而降突入你的阵型，手中的弯刀使得其具有更强的破坏力。</p>
+                <p>飞天海盗僵尸会从天而降突入你的阵型，手中的弯刀使得其能够造成更高的伤害。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>760</color>]]></p>
+                <p>生命：<![CDATA[<color=red>800</color>]]></p>
                 <p>移速：<![CDATA[<color=red>0.8</color>]]></p>
                 <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域</color>]]></p>
             </properties>
             <flavor>
-                <p>他是个船长，曾在一场船只离奇失踪案件中奇迹般地生还。现在改行提供海盗船娱乐设施服务，生意兴隆。</p>
+                <p>他是荷兰人。</p>
             </flavor>
         </entry>
         <entry id="mvz2:cannoneer_zombie">
