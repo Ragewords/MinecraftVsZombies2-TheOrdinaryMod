@@ -50,7 +50,6 @@ namespace MVZ2.GameContent.Enemies
             var ghsat = entity.GetRidingEntity();
             var hasGhast = ghsat.ExistsAndAlive();
             entity.SetAnimationBool("Sitting", hasGhast);
-            entity.SetModelDamagePercent();
         }
         protected override void UpdateAI(Entity entity)
         {

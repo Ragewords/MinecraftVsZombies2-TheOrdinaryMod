@@ -43,6 +43,9 @@
     <sound name="biohazard">
         <sample path="mvz2:biohazard" weight="1" />
     </sound>
+    <sound name="boing">
+        <sample path="mvz2:boing" weight="1" />
+    </sound>
     <sound name="bomb_falling">
         <sample path="mvz2:bomb_falling" weight="1" />
     </sound>
@@ -369,6 +372,9 @@
     </sound>
     <sound name="glowstone">
         <sample path="mvz2:glowstone" weight="1" />
+    </sound>
+    <sound name="gold">
+        <sample path="mvz2:gold" weight="1" />
     </sound>
     <sound name="gnawedleaf_stone">
         <sample path="mvz2:gnawedleaf_stone" weight="1" />
@@ -839,6 +845,9 @@
     </sound>
     <sound name="stunned">
         <sample path="mvz2:stunned" weight="1" />
+    </sound>
+    <sound name="sweeping_beam">
+        <sample path="mvz2:sweeping_beam" weight="1" />
     </sound>
     <sound name="swing">
         <sample path="mvz2:swing" weight="1" />

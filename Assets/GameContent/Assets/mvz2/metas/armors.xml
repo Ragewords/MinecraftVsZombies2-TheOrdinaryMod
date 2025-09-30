@@ -76,22 +76,34 @@
                 <float name="mvz2:maxHealth" value="50" />
             </props>
         </entry>
-        <entry id="kogasa_wig" type="mvz2:helmet">
-            <props>
-                <id name="mvz2:shell" value="mvz2:leather" />
-                <float name="mvz2:maxHealth" value="100" />
-            </props>
-        </entry>
         <entry id="cannonball_hat" type="mvz2:helmet">
             <props>
                 <id name="mvz2:shell" value="mvz2:leather" />
                 <float name="mvz2:maxHealth" value="60" />
             </props>
         </entry>
+        <entry id="pop_captain_cap" type="mvz2:helmet" ignored="true">
+            <behaviours>
+                <behaviour id="mvz2:destroy_after_half_hp"/>
+            </behaviours>
+            <props>
+                <id name="mvz2:shell" value="mvz2:leather" />
+                <float name="mvz2:maxHealth" value="50" />
+            </props>
+        </entry>
         <entry id="admiral_hat" type="mvz2:helmet">
             <props>
                 <id name="mvz2:shell" value="mvz2:leather" />
                 <float name="mvz2:maxHealth" value="200" />
+            </props>
+        </entry>
+        <entry id="kogasa_wig" type="mvz2:helmet" ignored="true">
+            <behaviours>
+                <behaviour id="mvz2:destroy_after_half_hp"/>
+            </behaviours>
+            <props>
+                <id name="mvz2:shell" value="mvz2:leather" />
+                <float name="mvz2:maxHealth" value="100" />
             </props>
         </entry>
 

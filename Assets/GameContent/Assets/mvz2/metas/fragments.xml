@@ -262,6 +262,11 @@
             <key hex="#FFFFFF" time="1"/>
         </colorKeys>
     </fragment>
+    <fragment name="elastic_cloud">
+        <colorKeys>
+            <key hex="#C881C9" time="1"/>
+        </colorKeys>
+    </fragment>
     <fragment name="smoker">
         <colorKeys>
             <key hex="#3A2F1E" time="0.2"/>

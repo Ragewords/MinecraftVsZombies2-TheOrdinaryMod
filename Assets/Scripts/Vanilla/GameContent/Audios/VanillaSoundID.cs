@@ -20,6 +20,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID biohazard = Get("biohazard");
         public readonly static NamespaceID bloody = Get("bloody");
         public readonly static NamespaceID blow = Get("blow");
+        public readonly static NamespaceID boing = Get("boing");
         public readonly static NamespaceID bombFalling = Get("bomb_falling");
         public readonly static NamespaceID boneHit = Get("bone_hit");
         public readonly static NamespaceID boneWallBuild = Get("bone_wall_build");
@@ -96,6 +97,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID glowstone = Get("glowstone");
         public readonly static NamespaceID glassBreak = Get("glass_break");
         public readonly static NamespaceID glassBreakBig = Get("glass_break_big");
+        public readonly static NamespaceID gold = Get("gold");
         public readonly static NamespaceID gnawedLeafStone = Get("gnawedleaf_stone");
         public readonly static NamespaceID grass = Get("grass");
         public readonly static NamespaceID gravitation = Get("gravitation");
@@ -210,6 +212,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID stone = Get("stone");
         public readonly static NamespaceID stoneHatch = Get("stone_hatch");
         public readonly static NamespaceID stunned = Get("stunned");
+        public readonly static NamespaceID sweepingBeam = Get("sweeping_beam");
         public readonly static NamespaceID swing = Get("swing");
         public readonly static NamespaceID tap = Get("tap");
         public readonly static NamespaceID teslaAttack = Get("tesla_attack");

@@ -2,7 +2,6 @@
 
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Enemies;
-using MVZ2.Vanilla.Entities;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -15,12 +14,6 @@ namespace MVZ2.GameContent.Enemies
         public CaveSpider(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.APPLY_DAMAGE_SPECIAL_EFFECTS, ApplyDamageEffectsCallback);
-        }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            // 设置血量状态。
-            entity.SetModelDamagePercent();
         }
         private void ApplyDamageEffectsCallback(VanillaLevelCallbacks.PostTakeDamageParams param, CallbackResult callbackResult)
         {

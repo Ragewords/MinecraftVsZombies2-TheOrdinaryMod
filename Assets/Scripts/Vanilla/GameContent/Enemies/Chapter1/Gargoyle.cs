@@ -3,7 +3,6 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Enemies;
-using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -16,11 +15,6 @@ namespace MVZ2.GameContent.Enemies
     {
         public Gargoyle(string nsp, string name) : base(nsp, name)
         {
-        }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            entity.SetModelDamagePercent();
         }
         public override void PostCollision(EntityCollision collision, int state)
         {

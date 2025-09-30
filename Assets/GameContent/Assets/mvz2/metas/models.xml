@@ -29,6 +29,8 @@
         </armor>
     </armorconfig>
 
+    <model name="grid_placeholder" type="grid" path="mvz2:grid/placeholder" width="80" height="80" xOffset="0" yOffset="0"/>
+    <model name="golden_grid" type="grid" path="mvz2:grid/golden" width="80" height="80" xOffset="0" yOffset="0"/>
     <!-- Contraptions -->
     <model name="dispenser" type="entity" path="mvz2:contraption/prologue/dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="furnace" type="entity" path="mvz2:contraption/prologue/furnace" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -81,6 +83,8 @@
     <model name="beacon" type="entity" path="mvz2:contraption/ship/beacon" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="firework_dispenser" type="entity" path="mvz2:contraption/ship/firework_dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="wooden_fan" type="entity" path="mvz2:contraption/ship/wooden_fan" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="elastic_cloud" type="entity" path="mvz2:contraption/ship/elastic_cloud" width="64" height="64" xOffset="0" yOffset="-28"/>
+    <model name="jeweled_pagoda" type="entity" path="mvz2:contraption/ship/jeweled_pagoda" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="smoker" type="entity" path="mvz2:contraption/ship/smoker" width="64" height="64" xOffset="0" yOffset="-28"/>
 
     <model name="infectenser" type="entity" path="mvz2:contraption/upgrade/infectenser" width="64" height="64" xOffset="0" yOffset="-28"/>
@@ -94,6 +98,7 @@
     <model name="anvil" type="entity" path="mvz2:contraption/dream/anvil" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="random_china" type="entity" path="mvz2:contraption/prologue/random_china" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="error_block" type="entity" path="mvz2:contraption/upgrade/error_block" width="64" height="64" xOffset="0" yOffset="-28"/>
+
 
     <!-- Enemies -->
     <model name="zombie" type="entity" path="mvz2:enemy/prologue/zombie" width="64" height="96" xOffset="10" yOffset="-44">
@@ -225,6 +230,9 @@
         <properties>
             <int name="Variant" value="3" />
         </properties>
+    </model>
+    <model name="pop_captain" type="entity" path="mvz2:enemy/ship/pop_captain" width="76" height="132" xOffset="8" yOffset="-60">
+        <animator updateOnShot="true" />  
     </model>
     <model name="admiral_zombie" type="entity" path="mvz2:enemy/ship/admiral_zombie" width="86" height="108" xOffset="6" yOffset="-44">
         <armorconfig>mvz2:humanoid</armorconfig>
@@ -450,6 +458,7 @@
     <model name="water_stain" type="entity" path="mvz2:effect/water_stain" shot="false" width="160" height="160" xOffset="0" yOffset="0"/>
     <model name="tiny_blaze" type="entity" path="mvz2:effect/tiny_blaze" shot="false" width="24" height="32" xOffset="0" yOffset="0"/>
     <model name="wind_speedline" type="entity" path="mvz2:effect/wind_speedline" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
+    <model name="pagoda_laser" type="entity" path="mvz2:effect/pagoda_laser" shot="false" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="smoker_smoke" type="entity" path="mvz2:effect/smoker_smoke" width="64" height="64" xOffset="0" yOffset="0"/>
 
     <!-- Projectiles -->
@@ -531,7 +540,7 @@
     <model name="flying_pirate_hat" type="armor" path="mvz2:armor/flying_pirate_hat" width="36" height="19" xOffset="0" yOffset="2"/>
     <model name="cannon" type="armor" path="mvz2:armor/cannon" width="61" height="36" xOffset="5" yOffset="7"/>
     <model name="cannonball_hat" type="armor" path="mvz2:armor/cannonball_hat" width="27" height="11" xOffset="0" yOffset="5"/>
-    <model name="admiral_hat" type="armor" path="mvz2:armor/admiral_hat" width="38" height="11" xOffset="0" yOffset="5"/>
+    <model name="pop_captain_cap" type="armor" path="mvz2:armor/pop_captain_cap" width="40" height="12" xOffset="0" yOffset="-6"/>
 
     <!-- HeldItems -->
     <model name="starshard.default" type="held" path="mvz2:held/starshards/default" shot="false" width="32" height="32" xOffset="0" yOffset="-28"/>

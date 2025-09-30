@@ -8,11 +8,11 @@ namespace MVZ2.GameContent.Sprites
 {
     public static class VanillaSprites
     {
+        public static readonly SpriteReference starshardDefault = Get("starshards/default");
         private static SpriteReference Get(string name)
         {
             var id = new NamespaceID(VanillaMod.spaceName, name);
             return new SpriteReference(id);
         }
-        public static readonly SpriteReference starshardDefault = Get("starshards/default");
     }
 }

@@ -8,6 +8,7 @@ namespace MVZ2.Vanilla.Entities
         public const int WALK = 1;
         public const int ATTACK = 2;
         public const int DEAD = 3;
+        public const int DISAPPEAR = 4;
 
         public const int CONTRAPTION_COOLDOWN = 101;
         public const int CONTRAPTION_SPECIAL = 102;
@@ -20,6 +21,7 @@ namespace MVZ2.Vanilla.Entities
         public const int ENEMY_SIT = 203;
         public const int ENEMY_PARACHUTE = 204;
         public const int ENEMY_LEAVE = 205;
+        public const int ENEMY_SPECIAL_2 = 206;
 
         public const int BOSS_APPEAR = 300;
         public const int BOSS_ATTACK_2 = 301;
@@ -62,6 +64,10 @@ namespace MVZ2.Vanilla.Entities
         public const int TESLA_COIL_IDLE = IDLE;
         public const int TESLA_COIL_ATTACK = ATTACK;
 
+        public const int JEWELED_PAGODA_ASCENT = IDLE;
+        public const int JEWELED_PAGODA_LASER = ATTACK;
+        public const int JEWELED_PAGODA_DISAPPEAR = DISAPPEAR;
+
         // Enemies
         public const int NECROMANCER_CAST = ENEMY_CAST;
 
@@ -88,6 +94,13 @@ namespace MVZ2.Vanilla.Entities
         public const int MUTANT_ZOMBIE_ATTACK = ATTACK;
         public const int MUTANT_ZOMBIE_THROW = ENEMY_CAST;
         public const int MUTANT_ZOMBIE_DEATH = DEAD;
+
+        public const int POP_CAPTAIN_IDLE = IDLE;
+        public const int POP_CAPTAIN_WALK = WALK;
+        public const int POP_CAPTAIN_ATTACK = ATTACK;
+        public const int POP_CAPTAIN_SMASH_DOWN = ENEMY_SPECIAL;
+        public const int POP_CAPTAIN_SMASH_UP = ENEMY_SPECIAL_2;
+        public const int POP_CAPTAIN_DEATH = DEAD;
 
         // Bosses
         public const int FRANKENSTEIN_IDLE = IDLE;
@@ -163,5 +176,9 @@ namespace MVZ2.Vanilla.Entities
         public const int CRUSHING_WALLS_ENRAGED = WALK;
         public const int CRUSHING_WALLS_CLOSED = ATTACK;
         public const int CRUSHING_WALLS_STOPPED = DEAD;
+
+        public const int PAGODA_LASER_EXPAND = IDLE;
+        public const int PAGODA_LASER_SWIPE = ATTACK;
+        public const int PAGODA_LASER_SUBTRACT = DISAPPEAR;
     }
 }

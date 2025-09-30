@@ -29,7 +29,6 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.AddFragmentTickDamage(Mathf.Abs(entity.Velocity.y));
             }
-            entity.SetModelDamagePercent();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {

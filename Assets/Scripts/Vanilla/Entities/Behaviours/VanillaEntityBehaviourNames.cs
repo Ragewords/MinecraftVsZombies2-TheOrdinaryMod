@@ -6,15 +6,19 @@ namespace MVZ2.Vanilla.Entities
     {
         public const string timeoutDeath = "timeout_death";
         public const string timeoutRemove = "timeout_remove";
+        public const string modelDamagePercent = "model_damage_percent";
 
         #region Contraptions
         public const string contraptionCommon = "contraption_common";
         public const string contraptionShooterFireworkDispenser = "contraption_shooter_firework_dispenser";
         public const string contraptionEvokeFireworkDispenser = "contraption_evoke_firework_dispenser";
+        public const string elasticCloud_Projectile = "elastic_cloud/projectile";
+        public const string elasticCloud_Evocation = "elastic_cloud/evocation";
         #endregion
 
         #region Enemies
         public const string enemyCommon = "enemy_common";
+        public const string enemyMelee = "enemy_melee";
         #endregion
 
         #region Obstacles
