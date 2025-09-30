@@ -166,7 +166,7 @@
         <entity id="mvz2:flying_pirate"/>
         <spawn level="3" />
         <terrain water="true" air="true"/>
-        <weight base="1500" />
+        <weight base="2000" />
     </entry>
     <entry id="cannoneer_zombie" >
         <entity id="mvz2:cannoneer_zombie"/>
