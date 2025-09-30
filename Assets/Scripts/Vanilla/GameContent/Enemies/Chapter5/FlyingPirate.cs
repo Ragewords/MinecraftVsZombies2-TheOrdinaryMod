@@ -52,13 +52,17 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelDamagePercent();
             entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
-            bool parachute = entity.State == VanillaEntityStates.ENEMY_PARACHUTE;
-            entity.SetModelProperty("Parachute", parachute);
-            if (parachute && entity.HasBuff<KarakasaSpeedBuff>())
+            if (entity.State == VanillaEntityStates.ENEMY_PARACHUTE)
             {
                 entity.UpdateWalkVelocity();
             }
-            else if (!parachute)
+        }
+        protected override void UpdateAI(Entity entity)
+        {
+            base.UpdateAI(entity);
+            bool parachute = entity.State == VanillaEntityStates.ENEMY_PARACHUTE;
+            entity.SetModelProperty("Parachute", parachute);
+            if (!parachute)
             {
                 bool paragliderDiscard = entity.GetProperty<bool>(PROP_PARAGLIDER_DISCARDED);
                 if (!paragliderDiscard)
