@@ -6,12 +6,14 @@ using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -25,6 +27,8 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
+            SetKnockBackMultipiler(entity, 1f);
+            SetHealthCostMultipiler(entity, 1f);
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -36,6 +40,20 @@ namespace MVZ2.GameContent.Contraptions
             if (other.Type != EntityTypes.ENEMY || !cloud.IsHostile(other))
                 return;
             TryBounceEnemy(cloud, other);
+        }
+        protected override void UpdateAI(Entity entity)
+        {
+            base.UpdateAI(entity);
+            var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 1.5f, 0.005f);
+            SetKnockBackMultipiler(entity, push);
+            var cost = Mathf.Lerp(GetHealthCostMultipiler(entity), 0.5f, 0.005f);
+            SetHealthCostMultipiler(entity, cost);
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            entity.SetAnimationFloat("Multiplier", GetKnockBackMultipiler(entity));
+            entity.SetAnimationBool("Charge", GetKnockBackMultipiler(entity) >= 1.1f);
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -58,17 +76,25 @@ namespace MVZ2.GameContent.Contraptions
                 return false;
             if (!ignoreCooldown && HasEnemyKnockbackCooldown(self, enemy))
                 return false;
+            var push = GetKnockBackMultipiler(self);
+            var cost = GetHealthCostMultipiler(self);
             var knockbackMultiplier = enemy.GetStrongKnockbackMultiplier();
-            enemy.Velocity += knockbackMultiplier * KNOCKBACK_DISTANCE * self.GetFacingDirection();
-            self.TakeDamage(BOUNCE_DAMAGE, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), self);
+            enemy.Velocity += knockbackMultiplier * KNOCKBACK_DISTANCE * push * self.GetFacingDirection();
+            self.TakeDamage(BOUNCE_DAMAGE * cost, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), self);
             AddEnemyKnockbackCooldown(self, enemy, Ticks.FromSeconds(KNOCKBACK_COOLDOWN_SECONDS));
             PlayBounceEffect(self);
+            ResetMultipliers(self);
             return true;
         }
         public static void PlayBounceEffect(Entity entity)
         {
             entity.TriggerAnimation("Bounce");
             entity.PlaySound(VanillaSoundID.boing);
+        }
+        public static void ResetMultipliers(Entity entity)
+        {
+            SetKnockBackMultipiler(entity, 1f);
+            SetHealthCostMultipiler(entity, 1f);
         }
         public static void AddEnemyKnockbackCooldown(Entity self, Entity enemy, int cooldown)
         {
@@ -93,8 +119,14 @@ namespace MVZ2.GameContent.Contraptions
         {
             return GetEnemyKnockbackCooldownBuff(self, enemy) != null;
         }
+        public static float GetKnockBackMultipiler(Entity entity) => entity.GetProperty<float>(KNOCKBACK_MULTIPLIER);
+        public static void SetKnockBackMultipiler(Entity entity, float value) => entity.SetProperty(KNOCKBACK_MULTIPLIER, value);
+        public static float GetHealthCostMultipiler(Entity entity) => entity.GetProperty<float>(HEALTH_COST_MULTIPLIER);
+        public static void SetHealthCostMultipiler(Entity entity, float value) => entity.SetProperty(HEALTH_COST_MULTIPLIER, value);
         public const float KNOCKBACK_DISTANCE = 20f;
         public const float BOUNCE_DAMAGE = 150f;
         public const float KNOCKBACK_COOLDOWN_SECONDS = 1f;
+        public static readonly VanillaEntityPropertyMeta<float> KNOCKBACK_MULTIPLIER = new VanillaEntityPropertyMeta<float>("KnockBackMultipiler");
+        public static readonly VanillaEntityPropertyMeta<float> HEALTH_COST_MULTIPLIER = new VanillaEntityPropertyMeta<float>("HealthCostMultipiler");
     }
 }

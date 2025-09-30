@@ -45,7 +45,6 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelDamagePercent();
             entity.SetModelProperty("NotHoldingBomb", GetExplode(entity));
             var stateTimer = GetStateTimer(entity);
             if (entity.State == VanillaEntityStates.SKELEBOMB_EXPLODE)

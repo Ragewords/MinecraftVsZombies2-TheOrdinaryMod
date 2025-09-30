@@ -110,7 +110,6 @@ namespace MVZ2.GameContent.Enemies
             entity.SetAnimationBool("Sitting", hasHorse);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
             entity.SetAnimationFloat("SpecialSpeed", entity.IsAIFrozen() ? 0 : 1);
-            entity.SetModelDamagePercent();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {

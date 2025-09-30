@@ -50,7 +50,6 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelDamagePercent();
             entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
             if (entity.State == VanillaEntityStates.ENEMY_PARACHUTE && entity.HasBuff<KarakasaSpeedBuff>())
             {

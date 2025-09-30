@@ -76,6 +76,12 @@
                 <float name="mvz2:maxHealth" value="50" />
             </props>
         </entry>
+        <entry id="flying_pirate_hat" type="mvz2:helmet" ignored="true">
+            <props>
+                <id name="mvz2:shell" value="mvz2:leather" />
+                <float name="mvz2:maxHealth" value="50" />
+            </props>
+        </entry>
         <entry id="cannonball_hat" type="mvz2:helmet">
             <props>
                 <id name="mvz2:shell" value="mvz2:leather" />

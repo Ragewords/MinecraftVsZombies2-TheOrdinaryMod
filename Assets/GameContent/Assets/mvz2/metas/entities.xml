@@ -1787,6 +1787,7 @@
                 <condition required="mvz2:level.ship_2"/>
             </unlock>
             <properties>
+                <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
                 <float name="mvz2:maxHealth" value="800" />
                 <float name="mvz2:speed" value="0.8" />
                 <vector3 name="mvz2:starting_position_offset" x="0" y="800" z="0" />
@@ -2255,6 +2256,7 @@
 
                 <int name="mvz2:cost" value="25" />
             </properties>
+        </enemy>
         <witherSkeleton id="brainwasher" name="洗脑者" deathMessage="你是爱迪生，你是爱迪生">
             <unlock>
                 <condition required="mvz2:level.castle_11"/>

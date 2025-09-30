@@ -92,7 +92,6 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelDamagePercent();
             entity.SetAnimationBool("Stone", entity.HasBuff<TanookiZombieStoneBuff>());
         }
         public override void PostContactGround(Entity anvil, Vector3 velocity)
