@@ -859,7 +859,7 @@
                 <bool name="mvz2:canDeactive" value="false" />
 
                 <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:rechargeId" value="mvz2:medium" />
             </properties>
         </dispenser>
         <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" unlock="mvz2:level.ship_3">

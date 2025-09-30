@@ -5,6 +5,7 @@ using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -52,7 +53,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     behaviour.BeBlown(ent, sourceEntity);
                 }
                 if (ent.Type == EntityTypes.ENEMY && sourceEntity.IsHostile(ent))
-                    ent.InflictSlow(300, new EntitySourceReference(sourceEntity));
+                    ent.InflictSlow(Ticks.FromSeconds(8), new EntitySourceReference(sourceEntity));
             }
         }
         public static bool IsInRange(Entity entity, Entity source, bool evoked)
