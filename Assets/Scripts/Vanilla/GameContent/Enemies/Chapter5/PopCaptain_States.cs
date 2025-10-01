@@ -207,7 +207,10 @@ namespace MVZ2.Vanilla.Enemies
                 var knockbackMultiplier = target.GetStrongKnockbackMultiplier();
 
                 var vel = target.Velocity;
-                vel.x = GetSmashSpeed(target.GetMass()) * knockbackMultiplier * entity.GetFacingX();
+                var xSpeed = GetSmashSpeed(target.GetMass());
+                if (ySpeed <= 0)
+                    xSpeed += 3;
+                vel.x = xSpeed * knockbackMultiplier * entity.GetFacingX();
                 vel.y = ySpeed * knockbackMultiplier;
                 target.Velocity = vel;
             }

@@ -51,6 +51,17 @@ namespace MVZ2.GameContent.Buffs.Grids
                 buff.Remove();
             }
         }
+        public override void PostRemove(Buff buff)
+        {
+            base.PostRemove(buff);
+            var grid = buff.Target as LawnGrid;
+            if (grid == null)
+                return;
+            foreach (var entity in grid.GetEntities())
+            {
+                entity.RemoveBuffs(VanillaBuffID.Contraption.emeraldRestrict);
+            }
+        }
         public void UpdateModel(Buff buff)
         {
             var grid = buff.Target as LawnGrid;

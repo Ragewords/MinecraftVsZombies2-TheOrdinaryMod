@@ -204,7 +204,7 @@ namespace MVZ2.GameContent.Contraptions
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
-                entity.PlaySound(VanillaSoundID.witherMagicCast, volume: 0.5f);
+                entity.PlaySound(VanillaSoundID.witherMagicCast, volume: 0.75f);
                 int jewelCount = GetRestrictedGridCount(entity);
                 if (jewelCount == 4)
                 {

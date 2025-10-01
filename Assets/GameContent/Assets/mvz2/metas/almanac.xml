@@ -866,7 +866,7 @@
             <properties>
                 <p>禁用时长：<![CDATA[<color=red>3分钟</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
-                <p>宝石效果：<![CDATA[<color=red>\n4颗：产生半径1.5格，伤害为300的爆炸\n5颗：对整行及整列的怪物造成500闪电伤害\n6颗以上：对所有怪物造成100伤害，每多1宝石额外造成50伤害</color>]]></p>
+                <p>宝石效果：<![CDATA[<color=red><br>4颗：产生半径1.5格，伤害为300的爆炸<br>5颗：对整行及整列的怪物造成500闪电伤害<br>6颗以上：对所有怪物造成100伤害，每多1宝石额外造成50伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
