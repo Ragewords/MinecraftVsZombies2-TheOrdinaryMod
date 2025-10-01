@@ -157,8 +157,9 @@ namespace MVZ2.GameContent.Areas
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
+                var baseMultiplier = enemy.GetStrongKnockbackMultiplier();
                 if (enemy.State != VanillaEntityStates.ATTACK && enemy.State != VanillaEntityStates.ENEMY_PARACHUTE)
-                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
+                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * baseMultiplier * multipiler * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
@@ -190,7 +191,7 @@ namespace MVZ2.GameContent.Areas
         public const float SKY_OFFSET_SPEED_FAST = 10;
         public const float SKY_OFFSET_ACCELERATION = 0.1f;
         public const float ENEMY_BLOW_MULTIPILER = 0.05f;
-        public const float PROJECTILE_BLOW_MULTIPILER = 0.025f;
+        public const float PROJECTILE_BLOW_MULTIPILER = 0.03f;
         public const float BREEZE_OFFSET_ACCELERATION = 0.01f;
         public const float BREEZE_OFFSET_MULTIPILER = 1.5f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
