@@ -1575,7 +1575,7 @@
         </entry>
         <entry id="mvz2:pop_captain">
             <header>
-                <p>大力船长僵尸会使用铁锚将遇到的器械打飞到上方或下方的一行。</p>
+                <p>大力船长僵尸会使用铁锚将遇到的器械打飞到上方或下方的一行，或者将友方怪物向前方打飞。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>1100</color>]]></p>

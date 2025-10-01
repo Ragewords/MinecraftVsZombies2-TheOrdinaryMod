@@ -25,7 +25,6 @@ namespace MVZ2.GameContent.Contraptions
         public JeweledPagoda(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Set, PROP_GRAVITY));
-            AddModifier(new Vector3Modifier(VanillaEntityProps.LIGHT_RANGE, NumberOperator.Add, PROP_LIGHT_RANGE_ADDTION));
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
             AddModifier(ColorModifier.Override(VanillaEntityProps.LIGHT_COLOR, PROP_LIGHT_COLOR));
             AddModifier(ColorModifier.Multiply(VanillaEntityProps.LIGHT_COLOR, PROP_TINT_MULTIPLIER));
@@ -53,6 +52,49 @@ namespace MVZ2.GameContent.Contraptions
                 SetLaser(pagoda, new EntityID(laser));
             });
         }
+        public static void ApplyJewelEffect(Entity entity)
+        {
+            entity.PlaySound(VanillaSoundID.witherMagicEnd, volume: 0.5f);
+            int jewelCount = GetRestrictedGridCount(entity);
+            if (jewelCount == 4)
+            {
+                TNT.Explode(entity, 120, 300);
+            }
+            else if (jewelCount == 5)
+            {
+                entity.PlaySound(VanillaSoundID.tridentThunder);
+                entity.Level.Thunder();
+                var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
+                var horizonalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
+                var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 600), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
+                var finalColliders = horizonalCollider.Union(verticalCollider);
+                foreach (var entityCollider in finalColliders)
+                {
+                    var damageEffects = new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
+                    entityCollider.TakeDamage(500, damageEffects, entity);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    entity.Spawn(VanillaEffectID.electricArc, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
+                    {
+                        float degree = i * 90;
+                        float rad = degree * Mathf.Deg2Rad;
+                        Vector3 pos = entity.Position + PagodaLaser.POSITION_OFFSET + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * 800;
+                        ElectricArc.Connect(e, pos);
+                        ElectricArc.UpdateArc(e);
+                    });
+                }
+            }
+            else if (jewelCount >= 6)
+            {
+                lawnDetector.DetectEntities(entity, lawnBuffer);
+                foreach (var entityCollider in lawnBuffer)
+                {
+                    var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
+                    entityCollider.TakeDamage(100 + 50 * (jewelCount - 6), damageEffects, entity);
+                }
+            }
+        }
         public static void SetLaser(Entity pagoda, EntityID laser) => pagoda.SetProperty(PROP_LASER, laser);
         public static EntityID? GetLaser(Entity pagoda) => pagoda.GetProperty<EntityID>(PROP_LASER);
         public static void AddDisabledGridCount(Entity pagoda, int value) => SetDisabledGridCount(pagoda, GetDisabledGridCount(pagoda) + value);
@@ -71,9 +113,10 @@ namespace MVZ2.GameContent.Contraptions
         public static Color BLAST_JEWEL = new Color(255, 158, 0);
         public static Color LIGHTNING_JEWEL = new Color(0, 231, 255);
         public static Color CHAOS_JEWEL = new Color(255, 0, 150);
+        private static Detector lawnDetector = new LawnDetector();
+        private static List<Entity> lawnBuffer = new List<Entity>();
         public EntityStateMachine stateMachine = new PagodaStateMachine();
         public static readonly VanillaEntityPropertyMeta<float> PROP_GRAVITY = new VanillaEntityPropertyMeta<float>("gravity");
-        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_LIGHT_RANGE_ADDTION = new VanillaEntityPropertyMeta<Vector3>("light_range_addtion");
         public static readonly VanillaEntityPropertyMeta<int> PROP_DISABLED_GRID_COUNT = new VanillaEntityPropertyMeta<int>("disabled_grid_count");
         public static readonly VanillaEntityPropertyMeta<int> PROP_STRICTED_GRID_COUNT = new VanillaEntityPropertyMeta<int>("stricted_grid_count");
         public static readonly VanillaEntityPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaEntityPropertyMeta<Color>("tint_multiplier", Color.white);
@@ -161,9 +204,7 @@ namespace MVZ2.GameContent.Contraptions
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
-                var timer = machine.GetStateTimer(entity);
-                timer.ResetTime(30);
-                entity.PlaySound(VanillaSoundID.witherMagicCast);
+                entity.PlaySound(VanillaSoundID.witherMagicCast, volume: 0.5f);
                 int jewelCount = GetRestrictedGridCount(entity);
                 if (jewelCount == 4)
                 {
@@ -182,56 +223,9 @@ namespace MVZ2.GameContent.Contraptions
             public override void OnUpdateAI(EntityStateMachine machine, Entity entity)
             {
                 base.OnUpdateAI(machine, entity);
-                var timer = machine.GetStateTimer(entity);
-                timer.Run(machine.GetSpeed(entity));
-                entity.SetProperty(PROP_LIGHT_RANGE_ADDTION, Vector3.one * 120 * (1 - timer.GetTimeoutPercentage()));
-                if (timer.Expired)
-                {
-                    entity.PlaySound(VanillaSoundID.witherMagicEnd);
-                    int jewelCount = GetRestrictedGridCount(entity);
-                    if (jewelCount == 4)
-                    {
-                        TNT.Explode(entity, 120, 300);
-                    }
-                    else if (jewelCount == 5)
-                    {
-                        entity.PlaySound(VanillaSoundID.tridentThunder);
-                        entity.Level.Thunder();
-                        var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
-                        var horizonalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
-                        var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 600), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
-                        var finalColliders = horizonalCollider.Union(verticalCollider);
-                        foreach (var entityCollider in finalColliders)
-                        {
-                            var damageEffects = new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
-                            entityCollider.TakeDamage(500, damageEffects, entity);
-                        }
-                        for (int i = 0; i < 4; i++)
-                        {
-                            entity.Spawn(VanillaEffectID.electricArc, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
-                            {
-                                float degree = i * 90;
-                                float rad = degree * Mathf.Deg2Rad;
-                                Vector3 pos = entity.Position + PagodaLaser.POSITION_OFFSET + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * 800;
-                                ElectricArc.Connect(e, pos);
-                                ElectricArc.UpdateArc(e);
-                            });
-                        }
-                    }
-                    else if (jewelCount >= 6)
-                    {
-                        lawnDetector.DetectEntities(entity, lawnBuffer);
-                        foreach (var entityCollider in lawnBuffer)
-                        {
-                            var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
-                            entityCollider.TakeDamage(100 + 50 * (jewelCount - 6), damageEffects, entity);
-                        }
-                    }
-                    machine.StartState(entity, STATE_DISAPPEAR);
-                }
+                ApplyJewelEffect(entity);
+                machine.StartState(entity, STATE_DISAPPEAR);
             }
-            private Detector lawnDetector = new LawnDetector();
-            private List<Entity> lawnBuffer = new List<Entity>();
         }
         public class DisappearState : EntityStateMachineState
         {

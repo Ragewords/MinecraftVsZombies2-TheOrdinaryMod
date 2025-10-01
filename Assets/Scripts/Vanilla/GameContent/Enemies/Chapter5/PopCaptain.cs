@@ -64,8 +64,10 @@ namespace MVZ2.Vanilla.Enemies
         public static readonly VanillaEntityPropertyMeta<bool> PROP_SMASH_UPWARDS = new VanillaEntityPropertyMeta<bool>("smash_upwards");
         public const float STUN_SECONDS = 3;
         private static EntityStateMachine stateMachine = new MutantZombieStateMachine();
-        private static Detector smashDetector = new PopCaptainDetector(0);
-        private static Detector damageDetector = new PopCaptainDetector(60);
+        private static Detector smashDetector = new PopCaptainDetector(0, false);
+        private static Detector smashDetectorFriendly = new PopCaptainDetector(0, true);
+        private static Detector damageDetector = new PopCaptainDetector(60, false);
+        private static Detector damageDetectorFriendly = new PopCaptainDetector(60, true);
     }
 
 }
