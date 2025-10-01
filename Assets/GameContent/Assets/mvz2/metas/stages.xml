@@ -1539,10 +1539,7 @@
         <unlock>
             <condition required="mvz2:level.ship_EX3"/>
         </unlock>
-        <talks>
-            <talk type="end" value="mvz2:ship_11_over"/>
-        </talks>
-        <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:captain_s_log" />
+        <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:ship_s_log" />
         <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>

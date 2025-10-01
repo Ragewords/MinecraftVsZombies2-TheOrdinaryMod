@@ -948,7 +948,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <dispenser id="wooden_fan" name="木风扇" tooltip="吹动一整行的怪物并使其减速" >
+        <contraption id="wooden_fan" name="木风扇" tooltip="吹动一整行的怪物并使其减速" >
             <unlock>
                 <condition required="mvz2:level.ship_2"/>
             </unlock>
@@ -962,12 +962,13 @@
                 <bool name="mvz2:triggerActive" value="true" />
                 <bool name="mvz2:instantTrigger" value="true" />
                 <bool name="mvz2:canDeactive" value="false" />
+                <bool name="mvz2:block" value="false" />
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:medium" />
             </properties>
-        </dispenser>
-        <contraption id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" >
+        </contraption>
+        <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" >
             <unlock>
                 <condition required="mvz2:level.ship_3"/>
             </unlock>
@@ -975,7 +976,7 @@
                 <id name="mvz2:fragmentId" value="mvz2:dispenser" />
                 <int name="mvz2:cost" value="300" />
             </properties>
-        </contraption>
+        </dispenser>
         <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" >
             <unlock>
                 <condition required="mvz2:level.ship_4"/>
@@ -1048,7 +1049,7 @@
                 <int name="mvz2:airInteraction" value="0" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
-                <int name="mvz2:cost" value="75" />
+                <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </contraption>
@@ -1064,6 +1065,7 @@
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:instantEvoke" value="false" />
                 <bool name="mvz2:no_evoke" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <int name="mvz2:waterInteraction" value="0" />
                 <int name="mvz2:airInteraction" value="0" />
                 <float name="mvz2:gravity" value="0" />
@@ -1815,7 +1817,6 @@
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
                 <float name="mvz2:maxHealth" value="800" />
-                <float name="mvz2:speed" value="0.8" />
                 <vector3 name="mvz2:starting_position_offset" x="0" y="800" z="0" />
                 <int name="mvz2:cost" value="175" />
             </properties>

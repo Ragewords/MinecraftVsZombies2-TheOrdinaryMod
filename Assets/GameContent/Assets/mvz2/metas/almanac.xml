@@ -790,20 +790,6 @@
                 <p>这东西哪有那么重量级，都被你们吹到天上去了！</p>
             </flavor>
         </entry>
-        <entry id="mvz2:repeatenser">
-            <header>
-                <p>比较发射器连续射击两次，能够交替发射一或两支箭矢。</p>
-            </header>
-            <properties>
-                <p>发射速度：<![CDATA[<color=red>1+2支/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢</color>]]></p>
-            </properties>
-            <flavor>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍！因为它每次说话都要说两遍！</p>
-            </flavor>
-        </entry>
         <entry id="mvz2:triplenser">
             <header>
                 <p>三头发射器一次能发射三行的箭矢。如果它位于最外侧的行，则改为向它自己所在的一行额外发射箭矢。</p>
@@ -818,18 +804,18 @@
                 <p>……确定它喜欢看的是典故的内容吗？</p>
             </flavor>
         </entry>
-        <entry id="mvz2:firework_dispenser">
+        <entry id="mvz2:repeatenser">
             <header>
-                <p>烟花发射器会自动轰击上方高空中的敌人。</p>
+                <p>比较发射器连续射击两次，能够交替发射一或两支箭矢。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
-                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1+2支/1.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢</color>]]></p>
             </properties>
             <flavor>
-                <p>烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好的放个够了。</p>
+                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
+                <p>它没能有幸加入高频脉冲发射器的士兵队伍！因为它每次说话都要说两遍！</p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">
@@ -844,6 +830,20 @@
             </properties>
             <flavor>
                 <p>它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的高仿产品而已。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:firework_dispenser">
+            <header>
+                <p>烟花发射器会自动轰击上方高空中的敌人。</p>
+            </header>
+            <properties>
+                <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
+                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
+            </properties>
+            <flavor>
+                <p>烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好的放个够了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:elastic_cloud">
@@ -861,11 +861,12 @@
         </entry>
         <entry id="mvz2:jeweled_pagoda">
             <header>
-                <p>珠光宝塔会暂时禁用一整行内的所有空地格，并在立即生产星之碎片后消失。</p>
+                <p>珠光宝塔会暂时禁用一整行内的所有空地格和限制非空地格的操作，并在立即生产星之碎片和产生宝石效果后消失。</p>
             </header>
             <properties>
                 <p>禁用时长：<![CDATA[<color=red>3分钟</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
+                <p>宝石效果：<![CDATA[<color=red>\n4颗：产生半径1.5格，伤害为300的爆炸\n5颗：对整行及整列的怪物造成500闪电伤害\n6颗以上：对所有怪物造成100伤害，每多1宝石额外造成50伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
@@ -1291,7 +1292,7 @@
         </entry>
         <entry id="mvz2:cave_spider">
             <header>
-                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中，攻击到的敌怪会中毒。</p>
+                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中，同时攻击到的怪物会中毒。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>120</color>]]></p>
@@ -1554,7 +1555,6 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>800</color>]]></p>
-                <p>移速：<![CDATA[<color=red>0.8</color>]]></p>
                 <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域</color>]]></p>
             </properties>
             <flavor>

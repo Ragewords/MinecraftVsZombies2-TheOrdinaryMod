@@ -66,6 +66,7 @@ namespace MVZ2.Vanilla.Entities
 
         public const int JEWELED_PAGODA_ASCENT = IDLE;
         public const int JEWELED_PAGODA_LASER = ATTACK;
+        public const int JEWELED_PAGODA_JEWEL = CONTRAPTION_CAST;
         public const int JEWELED_PAGODA_DISAPPEAR = DISAPPEAR;
 
         // Enemies

@@ -130,6 +130,10 @@
             <stage id="mvz2:ship_9"/>
             <stage id="mvz2:ship_10"/>
             <stage id="mvz2:ship_11"/>
+            <stage id="mvz2:ship_EX1"/>
+            <stage id="mvz2:ship_EX2"/>
+            <stage id="mvz2:ship_EX3"/>
+            <stage id="mvz2:ship_EX4"/>
         </stages>
     </map>
 </maps>

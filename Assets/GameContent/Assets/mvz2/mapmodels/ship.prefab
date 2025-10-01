@@ -578,13 +578,14 @@ MonoBehaviour:
   - {fileID: 396709424945173548}
   mapElements:
   - {fileID: 6179707511574374083}
-  - {fileID: 9074591006820265562}
+  - {fileID: 1504830326656556148}
   - {fileID: 3921413409267925584}
+  - {fileID: 9074591006820265562}
   - {fileID: 3223153795900176798}
   - {fileID: 4169874174032060022}
-  - {fileID: 1504830326656556148}
   - {fileID: 4583705897740820794}
   - {fileID: 8090141963741810658}
+  - {fileID: 2561615630591743491}
   mapExtraButtons:
   - {fileID: 7931175195782087857}
   - {fileID: 7740051895075437473}
@@ -1597,6 +1598,17 @@ PrefabInstance:
       addedObject: {fileID: 6964729928824559642}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
+--- !u!114 &2561615630591743491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
+  m_PrefabInstance: {fileID: 3587845044663678813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26acd6faf848d24587466a3c571a0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4939968697086913023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8450122154962902690, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}

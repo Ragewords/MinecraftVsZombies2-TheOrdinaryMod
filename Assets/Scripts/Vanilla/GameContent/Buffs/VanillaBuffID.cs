@@ -74,6 +74,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 5
             public const string waterStainWet = "water_stain_wet";
             public const string goldenGrid = "golden_grid";
+            public const string emeraldGrid = "emerald_grid";
         }
         public static class Entity
         {
@@ -193,6 +194,7 @@ namespace MVZ2.GameContent.Buffs
             public const string woodenFanBlow = "wooden_fan_blow";
             public const string elasticCloudBounceCooldown = "elastic_cloud_bounce_cooldown";
             public const string elasticCloudEvocation = "elastic_cloud_evocation";
+            public const string emeraldRestrict = "emerald_restrict";
 
             // Random China
             public const string ruaWizard = "r_u_a_wizard";
@@ -426,6 +428,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 5
             public static readonly NamespaceID waterStainWet = Get(VanillaBuffNames.Grid.waterStainWet);
             public static readonly NamespaceID goldenGrid = Get(VanillaBuffNames.Grid.goldenGrid);
+            public static readonly NamespaceID emeraldGrid = Get(VanillaBuffNames.Grid.emeraldGrid);
         }
         public static class Entity
         {
@@ -535,6 +538,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID woodenFanBlow = Get(VanillaBuffNames.Contraption.woodenFanBlow);
             public static readonly NamespaceID elasticCloudBounceCooldown = Get(VanillaBuffNames.Contraption.elasticCloudBounceCooldown);
             public static readonly NamespaceID elasticCloudEvocation = Get(VanillaBuffNames.Contraption.elasticCloudEvocation);
+            public static readonly NamespaceID emeraldRestrict = Get(VanillaBuffNames.Contraption.emeraldRestrict);
         }
         public static class Enemy
         {

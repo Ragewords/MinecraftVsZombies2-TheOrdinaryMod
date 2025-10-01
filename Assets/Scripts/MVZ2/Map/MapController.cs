@@ -254,7 +254,10 @@ namespace MVZ2.Map
         private void OnExtraMapButtonClickCallback(int index)
         {
             var stageID = GetStageID(index + 11);
-            StartCoroutine(EnterLevel(mapMeta.area, stageID));
+            if (stageID == null)
+                return;
+            var area = GetStageArea(index) ?? mapMeta.area;
+            StartCoroutine(EnterLevel(area, stageID));
         }
         private void OnEndlessButtonClickCallback()
         {

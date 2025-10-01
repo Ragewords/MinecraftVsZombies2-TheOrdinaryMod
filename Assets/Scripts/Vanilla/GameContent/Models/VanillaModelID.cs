@@ -15,6 +15,7 @@ namespace MVZ2.GameContent.Models
 
         public static readonly NamespaceID gridPlaceHolder = Get("grid_placeholder", TYPE_GRID);
         public static readonly NamespaceID goldenGrid = Get("golden_grid", TYPE_GRID);
+        public static readonly NamespaceID emeraldGrid = Get("emerald_grid", TYPE_GRID);
 
         public static readonly NamespaceID zombie = Get("zombie", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID moneyChest = Get("money_chest", EngineModelID.TYPE_ENTITY);

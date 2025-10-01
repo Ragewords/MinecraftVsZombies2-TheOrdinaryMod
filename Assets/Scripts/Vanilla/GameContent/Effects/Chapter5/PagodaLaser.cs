@@ -58,9 +58,21 @@ namespace MVZ2.GameContent.Effects
                 return false;
             return true;
         }
+        public static bool CanStrictGrid(LawnGrid grid)
+        {
+            if (grid.IsEmpty())
+                return false;
+            if (grid.HasBuff(VanillaBuffID.Grid.emeraldGrid))
+                return false;
+            return true;
+        }
         public static void DisableGrid(LawnGrid grid)
         {
             grid.AddBuff(VanillaBuffID.Grid.goldenGrid);
+        }
+        public static void StrictGrid(LawnGrid grid)
+        {
+            grid.AddBuff(VanillaBuffID.Grid.emeraldGrid);
         }
         public static void SetDestination(Entity entity, Vector3 value) => entity.SetProperty(PROP_DESTINATION, value);
         public static Vector3 GetDestination(Entity entity) => entity.GetProperty<Vector3>(PROP_DESTINATION);
@@ -130,7 +142,7 @@ namespace MVZ2.GameContent.Effects
 
                 var level = entity.Level;
 
-                // ÒÆ¶¯¼¤¹âÕÕÉäÇøÓò¡£
+                // ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 var speed = Mathf.Lerp(10, 40, timer.GetPassedPercentage());
                 var startDestination = GetDestination(entity);
                 var destination = startDestination;
@@ -140,7 +152,7 @@ namespace MVZ2.GameContent.Effects
                 destination.y = level.GetGroundY(destination.x, destination.z);
                 SetDestination(entity, destination);
 
-                // µã½ðµØ¸ñ¡£
+                // ï¿½ï¿½ï¿½Ø¸ï¿½
                 var column = level.GetColumn(destination.x);
                 var lane = level.GetLane(destination.z);
                 var grid = level.GetGrid(column, lane);
@@ -154,6 +166,16 @@ namespace MVZ2.GameContent.Effects
                         if (parent.ExistsAndAlive())
                         {
                             JeweledPagoda.AddDisabledGridCount(parent, 1);
+                        }
+                    }
+                    if (CanStrictGrid(grid))
+                    {
+                        StrictGrid(grid);
+                        entity.Level.PlaySound(VanillaSoundID.gold, grid.GetEntityPosition(), grid.Column / 9f * 0.5f + 1);
+                        var parent = entity.Parent;
+                        if (parent.ExistsAndAlive())
+                        {
+                            JeweledPagoda.AddRestrictedGridCount(parent, 1);
                         }
                     }
                 }
