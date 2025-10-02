@@ -54,7 +54,6 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void ApplyJewelEffect(Entity entity)
         {
-            entity.PlaySound(VanillaSoundID.witherMagicEnd, volume: 0.5f);
             int jewelCount = GetRestrictedGridCount(entity);
             if (jewelCount == 4)
             {
@@ -90,7 +89,7 @@ namespace MVZ2.GameContent.Contraptions
                 lawnDetector.DetectEntities(entity, lawnBuffer);
                 foreach (var entityCollider in lawnBuffer)
                 {
-                    var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
+                    var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
                     entityCollider.TakeDamage(100 + 50 * (jewelCount - 6), damageEffects, entity);
                 }
             }
@@ -204,7 +203,8 @@ namespace MVZ2.GameContent.Contraptions
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
-                entity.PlaySound(VanillaSoundID.witherMagicCast, volume: 0.75f);
+                entity.PlaySound(VanillaSoundID.goldenBomb);
+                entity.PlaySound(VanillaSoundID.coinDestroy);
                 int jewelCount = GetRestrictedGridCount(entity);
                 if (jewelCount == 4)
                 {

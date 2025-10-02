@@ -909,7 +909,7 @@
 			</characters>
 			<sentences>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是次元锤！</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够重击地面，对敌人造成大量伤害，并击晕它们！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它能够重击地面，对怪物造成大量伤害，并击晕它们！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">锤击地面还会生成弹幕！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">这样一把武器，简直是天赐良击！</sentence>
 			</sentences>

@@ -37,6 +37,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID chime = Get("chime");
         public readonly static NamespaceID cloth = Get("cloth");
         public readonly static NamespaceID coin = Get("coin");
+        public readonly static NamespaceID coinDestroy = Get("coin_destroy");
         public readonly static NamespaceID confuse = Get("confuse");
         public readonly static NamespaceID crystal = Get("crystal");
         public readonly static NamespaceID crescentDash = Get("crescent_dash");
@@ -98,6 +99,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID glassBreak = Get("glass_break");
         public readonly static NamespaceID glassBreakBig = Get("glass_break_big");
         public readonly static NamespaceID gold = Get("gold");
+        public readonly static NamespaceID goldenBomb = Get("golden_bomb");
         public readonly static NamespaceID gnawedLeafStone = Get("gnawedleaf_stone");
         public readonly static NamespaceID grass = Get("grass");
         public readonly static NamespaceID gravitation = Get("gravitation");

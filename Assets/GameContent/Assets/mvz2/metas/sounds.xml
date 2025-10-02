@@ -112,6 +112,9 @@
     <sound name="coin" maxCount="1" priority="64">
         <sample path="mvz2:coin" weight="1" />
     </sound>
+    <sound name="coin_destroy" maxCount="1">
+        <sample path="mvz2:coin_destroy" weight="1" />
+    </sound>
     <sound name="crescent_dash">
         <sample path="mvz2:entity/crescent/crescent_dash" weight="1" />
     </sound>
@@ -375,6 +378,9 @@
     </sound>
     <sound name="gold">
         <sample path="mvz2:gold" weight="1" />
+    </sound>
+    <sound name="golden_bomb">
+        <sample path="mvz2:golden_bomb" weight="1" />
     </sound>
     <sound name="gnawedleaf_stone">
         <sample path="mvz2:gnawedleaf_stone" weight="1" />
