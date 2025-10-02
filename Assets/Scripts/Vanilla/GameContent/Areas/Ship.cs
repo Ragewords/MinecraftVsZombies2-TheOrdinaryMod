@@ -6,6 +6,7 @@ using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -157,13 +158,14 @@ namespace MVZ2.GameContent.Areas
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
-                var baseMultiplier = enemy.GetStrongKnockbackMultiplier();
                 if (enemy.State != VanillaEntityStates.ATTACK && enemy.State != VanillaEntityStates.ENEMY_PARACHUTE)
-                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * baseMultiplier * multipiler * Vector3.left;
+                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
-                if (projectile.Velocity.magnitude < 20)
+                if (projectile.Definition.HasBehaviour<HellPlanet>())
+                    continue;
+                if (projectile.Velocity.magnitude < 30)
                     projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
             }
         }

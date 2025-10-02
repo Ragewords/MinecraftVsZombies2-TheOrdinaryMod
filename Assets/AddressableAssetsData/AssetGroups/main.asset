@@ -2682,6 +2682,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 361fe93dbf5debb45bb4d35a0cb0a967
+    m_Address: mvz2:coin_destroy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36332af6995990b49b730c71f67e0878
     m_Address: mvz2:enemy/dream/ghast
     m_ReadOnly: 0
@@ -4168,6 +4175,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 557650a8124565f438c2ed2e391e0a0b
     m_Address: mvz2:coin
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 557f6e296ca9fc242989d04bf8fcb806
+    m_Address: mvz2:golden_bomb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

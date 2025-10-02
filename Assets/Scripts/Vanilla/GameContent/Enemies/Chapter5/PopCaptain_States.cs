@@ -208,8 +208,8 @@ namespace MVZ2.Vanilla.Enemies
 
                 var vel = target.Velocity;
                 var xSpeed = GetSmashSpeed(target.GetMass());
-                if (ySpeed <= 0)
-                    xSpeed += 3;
+                if (ySpeed <= 0 && target.GetRelativeY() <= 40)
+                    xSpeed += 6;
                 vel.x = xSpeed * knockbackMultiplier * entity.GetFacingX();
                 vel.y = ySpeed * knockbackMultiplier;
                 target.Velocity = vel;
@@ -217,7 +217,7 @@ namespace MVZ2.Vanilla.Enemies
             // 将目标眩晕，略过爆破骨兵。
             if (target.CanDeactive() && !target.IsEntityOf(VanillaEnemyID.skelebomb))
             {
-                target.Stun(Ticks.FromSeconds(STUN_SECONDS / 3));
+                target.Stun(Ticks.FromSeconds(STUN_SECONDS / 6));
             }
         }
         public static float GetSmashSpeed(float mass)

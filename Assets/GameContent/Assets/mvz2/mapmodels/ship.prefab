@@ -114,11 +114,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3657028170510260543}
-  - {fileID: 8349919685217690504}
   - {fileID: 5866303807309626796}
+  - {fileID: 6835543894439616906}
   - {fileID: 1940357588714623398}
   - {fileID: 5456134930230445666}
-  - {fileID: 6835543894439616906}
+  - {fileID: 8349919685217690504}
   - {fileID: 6385678456513633990}
   - {fileID: 1677328919271288862}
   - {fileID: 4939968697086913023}
@@ -664,7 +664,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: unlock.path
-      value: level.ship_2
+      value: level.ship_7
       objectReference: {fileID: 0}
     - target: {fileID: 1741428518060487703, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_Name
@@ -1153,7 +1153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: unlock.path
-      value: level.ship_3
+      value: level.ship_2
       objectReference: {fileID: 0}
     - target: {fileID: 1741428518060487703, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_Name
@@ -1237,7 +1237,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: unlock.path
-      value: level.ship_7
+      value: level.ship_3
       objectReference: {fileID: 0}
     - target: {fileID: 1741428518060487703, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_Name

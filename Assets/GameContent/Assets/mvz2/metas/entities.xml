@@ -948,35 +948,37 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </contraption>
-        <contraption id="wooden_fan" name="木风扇" tooltip="吹动一整行的怪物并使其减速" >
-            <unlock>
-                <condition required="mvz2:level.ship_2"/>
-            </unlock>
-            <properties>
-                <id name="mvz2:shell" value="mvz2:wood" />
-                <id name="mvz2:placeSound" value="mvz2:wood" />
-                <id name="mvz2:deathSound" value="mvz2:wood" />
-                <vector3 name="mvz2:size" x="48" y="48" z="48" />
-                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
-                <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
-                <bool name="mvz2:triggerActive" value="true" />
-                <bool name="mvz2:instantTrigger" value="true" />
-                <bool name="mvz2:canDeactive" value="false" />
-                <bool name="mvz2:block" value="false" />
-
-                <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:medium" />
-            </properties>
-        </contraption>
         <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" >
             <unlock>
-                <condition required="mvz2:level.ship_3"/>
+                <condition required="mvz2:level.ship_2"/>
             </unlock>
             <properties>
                 <id name="mvz2:fragmentId" value="mvz2:dispenser" />
                 <int name="mvz2:cost" value="300" />
             </properties>
         </dispenser>
+        <contraption id="firework_dispenser" name="烟花发射器" tooltip="轰击周围高空的敌人" >
+            <unlock>
+                <condition required="mvz2:level.ship_3"/>
+            </unlock>
+            <behaviours>
+                <behaviour id="mvz2:contraption_shooter_firework_dispenser" />
+                <behaviour id="mvz2:contraption_evoke_firework_dispenser" />
+            </behaviours>
+            <properties>
+                <float name="mvz2:damage" value="200" />
+                <float name="mvz2:range" value="120" />
+                <vector3 name="mvz2:shotVelocity" x="0" y="5" z="0" />
+                <vector3 name="mvz2:shotOffset" x="0" y="48" z="0" />
+                <id name="mvz2:shootSound" value="mvz2:firework_launch" />
+                <id name="mvz2:projectileId" value="mvz2:firework" />
+                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
+
+                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <int name="mvz2:cost" value="100" />
+                <id name="mvz2:rechargeId" value="mvz2:short" />
+            </properties>
+        </contraption>
         <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" >
             <unlock>
                 <condition required="mvz2:level.ship_4"/>
@@ -1006,26 +1008,24 @@
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
-        <contraption id="firework_dispenser" name="烟花发射器" tooltip="轰击周围高空的敌人" >
+        <contraption id="wooden_fan" name="木风扇" tooltip="吹动一整行的怪物并使其减速" >
             <unlock>
                 <condition required="mvz2:level.ship_7"/>
             </unlock>
-            <behaviours>
-                <behaviour id="mvz2:contraption_shooter_firework_dispenser" />
-                <behaviour id="mvz2:contraption_evoke_firework_dispenser" />
-            </behaviours>
             <properties>
-                <float name="mvz2:damage" value="200" />
-                <float name="mvz2:range" value="120" />
-                <vector3 name="mvz2:shotVelocity" x="0" y="5" z="0" />
-                <vector3 name="mvz2:shotOffset" x="0" y="48" z="0" />
-                <id name="mvz2:shootSound" value="mvz2:firework_launch" />
-                <id name="mvz2:projectileId" value="mvz2:firework" />
-                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
-
+                <id name="mvz2:shell" value="mvz2:wood" />
+                <id name="mvz2:placeSound" value="mvz2:wood" />
+                <id name="mvz2:deathSound" value="mvz2:wood" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <idArray name="mvz2:counter_for" value="mvz2:flying_enemy" />
+                <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
+                <bool name="mvz2:triggerActive" value="true" />
+                <bool name="mvz2:instantTrigger" value="true" />
+                <bool name="mvz2:canDeactive" value="false" />
+                <bool name="mvz2:block" value="false" />
+
                 <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:rechargeId" value="mvz2:medium" />
             </properties>
         </contraption>
         <contraption id="elastic_cloud" name="弹性云" tooltip="弹走接触到的怪物">
@@ -1784,49 +1784,10 @@
                 <int name="mvz2:cost" value="150" />
             </properties>
         </enemy>
-        <zombie id="cannoneer_zombie" name="炮手僵尸" deathMessage="炮决！" >
+        <enemy id="zombie_cloud" name="僵尸云:(" deathMessage="你就云吧" >
             <unlock>
                 <condition required="mvz2:level.ship_3"/>
             </unlock>
-            <properties>
-                <id name="mvz2:starting_shield" value="mvz2:cannon" />
-                <int name="mvz2:cost" value="150" />
-            </properties>
-        </zombie>
-        <zombie id="cannonball_zombie" name="炮弹僵尸" deathMessage="-1up" >
-            <unlock>
-                <condition required="mvz2:level.ship_4"/>
-            </unlock>
-            <properties>
-                <id name="mvz2:starting_armor" value="mvz2:cannonball_hat" />
-                <float name="mvz2:maxHealth" value="100" />
-                <float name="mvz2:mass" value="-1" />
-                <float name="mvz2:speed" value="2" />
-                <bool name="mvz2:noReward" value="true" />
-                <id name="mvz2:shell" value="mvz2:metal" />
-                <id name="mvz2:shape" value="mvz2:cannonball" />
-                <vector3 name="mvz2:size" x="38" y="26" z="38" />
-
-                <int name="mvz2:cost" value="150" />
-            </properties>
-        </zombie>
-        <zombie id="flying_pirate" name="飞天海盗僵尸" deathMessage="海盗登船了！">
-            <unlock>
-                <condition required="mvz2:level.ship_6"/>
-            </unlock>
-            <properties>
-                <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
-                <float name="mvz2:maxHealth" value="800" />
-                <vector3 name="mvz2:starting_position_offset" x="0" y="800" z="0" />
-                <int name="mvz2:cost" value="175" />
-            </properties>
-        </zombie>
-        <enemy id="zombie_cloud" name="僵尸云:(" deathMessage="你就云吧" >
-            <unlock>
-                <condition required="mvz2:level.ship_7"/>
-            </unlock>
-            <behaviours>
-            </behaviours>
             <properties>
                 <float name="mvz2:mass" value="-2" />
                 <float name="mvz2:gravity" value="0" />
@@ -1844,6 +1805,43 @@
                 <int name="mvz2:cost" value="100" />
             </properties>
         </enemy>
+        <zombie id="cannoneer_zombie" name="炮手僵尸" deathMessage="炮决！" >
+            <unlock>
+                <condition required="mvz2:level.ship_6"/>
+            </unlock>
+            <properties>
+                <id name="mvz2:starting_shield" value="mvz2:cannon" />
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </zombie>
+        <zombie id="cannonball_zombie" name="炮弹僵尸" deathMessage="-1up" >
+            <unlock>
+                <condition required="mvz2:level.ship_7"/>
+            </unlock>
+            <properties>
+                <id name="mvz2:starting_armor" value="mvz2:cannonball_hat" />
+                <float name="mvz2:maxHealth" value="100" />
+                <float name="mvz2:mass" value="-1" />
+                <float name="mvz2:speed" value="2" />
+                <bool name="mvz2:noReward" value="true" />
+                <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:shape" value="mvz2:cannonball" />
+                <vector3 name="mvz2:size" x="38" y="26" z="38" />
+
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </zombie>
+        <zombie id="flying_pirate" name="飞天海盗僵尸" deathMessage="海盗登船了！">
+            <unlock>
+                <condition required="mvz2:level.ship_7"/>
+            </unlock>
+            <properties>
+                <vector3 name="mvz2:starting_position_offset" x="0" y="60" z="0" />
+                <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
+                <float name="mvz2:maxHealth" value="800" />
+                <int name="mvz2:cost" value="175" />
+            </properties>
+        </zombie>
         <enemy id="pop_captain" name="大力船长僵尸" deathMessage="永久停泊" >
             <unlock>
                 <condition required="mvz2:level.ship_8"/>

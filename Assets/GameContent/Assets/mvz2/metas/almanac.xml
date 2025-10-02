@@ -764,7 +764,7 @@
             <properties>
                 <p>爆炸伤害：<![CDATA[<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>生产时间：<![CDATA[<color=red>36秒</color>]]></p>
+                <p>生产时间：<![CDATA[<color=red>36秒，场上每个额外的火药桶-1秒，最低24秒</color>]]></p>
                 <p>提供能量：<![CDATA[<color=red>50</color>]]></p>
                 <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供100能量，但是会更快爆炸</color>]]></p>
             </properties>
@@ -774,20 +774,6 @@
                 <p>硝石（被埋葬的尸体旁一般会产生结晶）</p>
                 <p>木炭（燃烧木头的产物）</p>
                 <p>那么——等等，我为什么要告诉你这些？</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:wooden_fan">
-            <header>
-                <p>木风扇在触发后会吹出冷风将一整行内的敌方怪物吹回原地。如果怪物较轻，还会直接将其吹出战场。</p>
-            </header>
-            <properties>
-                <p>特点：<![CDATA[<color=red>使怪物减速；可以直接吹飞空中或者较轻的怪物，但对地面上较重的怪物没有效果</color>]]></p>
-                <p>减速时间：<![CDATA[<color=red>8秒</color>]]></p>
-                <p>范围：<![CDATA[<color=red>一整行</color>]]></p>
-                <p>技能：<![CDATA[<color=red>改为吹动整个战场的怪物</color>]]></p>
-            </properties>
-            <flavor>
-                <p>这东西哪有那么重量级，都被你们吹到天上去了！</p>
             </flavor>
         </entry>
         <entry id="mvz2:triplenser">
@@ -802,6 +788,20 @@
             <flavor>
                 <p>它喜欢看的典故有很多：三打白骨精、三顾茅庐、三打祝家庄……</p>
                 <p>……确定它喜欢看的是典故的内容吗？</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:firework_dispenser">
+            <header>
+                <p>烟花发射器会自动轰击上方高空中的敌人。</p>
+            </header>
+            <properties>
+                <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
+                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
+            </properties>
+            <flavor>
+                <p>烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好的放个够了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:repeatenser">
@@ -832,18 +832,18 @@
                 <p>它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的高仿产品而已。</p>
             </flavor>
         </entry>
-        <entry id="mvz2:firework_dispenser">
+        <entry id="mvz2:wooden_fan">
             <header>
-                <p>烟花发射器会自动轰击上方高空中的敌人。</p>
+                <p>木风扇在触发后会吹出冷风将一整行内的敌方怪物吹回原地。如果怪物较轻，还会直接将其吹出战场。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
-                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
+                <p>特点：<![CDATA[<color=red>使怪物减速；可以直接吹飞空中或者较轻的怪物，但对地面上较重的怪物没有效果</color>]]></p>
+                <p>减速时间：<![CDATA[<color=red>8秒</color>]]></p>
+                <p>范围：<![CDATA[<color=red>一整行</color>]]></p>
+                <p>技能：<![CDATA[<color=red>改为吹动整个战场的怪物</color>]]></p>
             </properties>
             <flavor>
-                <p>烟花发射器很喜欢过节，尤其是那种盛大的节日——由于之前的器械扰民事件，它被禁止在平常的日子里放烟花。但是当盛大的节日到来之际，它可要好好的放个够了。</p>
+                <p>这东西哪有那么重量级，都被你们吹到天上去了！</p>
             </flavor>
         </entry>
         <entry id="mvz2:elastic_cloud">

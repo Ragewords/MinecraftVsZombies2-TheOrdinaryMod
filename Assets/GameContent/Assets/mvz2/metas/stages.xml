@@ -1276,7 +1276,7 @@
             <talk type="end" value="mvz2:ship_2_over"/>
             <talk type="map" value="mvz2:ship_2_map"/>
         </talks>
-        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:wooden_fan"/>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:triplenser"/>
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
@@ -1293,13 +1293,12 @@
             <talk type="end" value="mvz2:ship_3_over"/>
             <talk type="map" value="mvz2:ship_3_map"/>
         </talks>
-        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:triplenser"/>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:firework_dispenser"/>
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:mummy"/>
         </spawns>
     </stage>
     <stage id="ship_4" name="圣辇船" dayNumber="4" >
@@ -1317,7 +1316,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:zombie_cloud"/>
         </spawns>
     </stage>
     <stage id="ship_5" name="圣辇船" dayNumber="5" >
@@ -1335,8 +1334,8 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:cannoneer_zombie"/>
-            <spawn id="mvz2:shikaisen_zombie"/>
+            <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:ghast"/>
         </spawns>
     </stage>
     <stage id="ship_6" name="圣辇船" dayNumber="6" needBlueprints="false" type="minigame" music="mvz2:minigame">
@@ -1372,13 +1371,13 @@
             <talk type="end" value="mvz2:ship_7_over"/>
             <talk type="map" value="mvz2:ship_7_map"/>
         </talks>
-        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:firework_dispenser"/>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:wooden_fan"/>
         <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:flying_pirate"/>
+            <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:cannoneer_zombie"/>
         </spawns>
     </stage>
@@ -1397,10 +1396,9 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:flying_pirate"/>
-            <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
-            <spawn id="mvz2:ghast"/>
+            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
         </spawns>
     </stage>
     <stage id="ship_9" name="圣辇船" dayNumber="9" >
@@ -1418,9 +1416,9 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:flying_pirate"/>
-            <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:pop_captain"/>
             <spawn id="mvz2:skeleton"/>
         </spawns>
