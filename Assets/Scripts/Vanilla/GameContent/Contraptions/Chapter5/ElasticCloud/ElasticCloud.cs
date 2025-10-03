@@ -13,6 +13,7 @@ using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -29,6 +30,8 @@ namespace MVZ2.GameContent.Contraptions
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
             SetKnockBackMultipiler(entity, 1f);
             SetHealthCostMultipiler(entity, 1f);
+            SetAnimationSpeedMultipiler(entity, 1f);
+            SetChargeCooldownTimer(entity, new FrameTimer(Ticks.FromSeconds(KNOCKBACK_COOLDOWN_SECONDS)));
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -44,16 +47,21 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
+            var timer = GetChargeCooldownTimer(entity);
+            if (!timer.RunToExpiredAndNotNull())
+                return;
             var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 1.5f, 0.005f);
             SetKnockBackMultipiler(entity, push);
             var cost = Mathf.Lerp(GetHealthCostMultipiler(entity), 0.5f, 0.005f);
             SetHealthCostMultipiler(entity, cost);
+            var speed = Mathf.Lerp(GetAnimationSpeedMultipiler(entity), 2f, 0.01f);
+            SetAnimationSpeedMultipiler(entity, speed);
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationFloat("Multiplier", GetKnockBackMultipiler(entity));
-            entity.SetAnimationBool("Charge", GetKnockBackMultipiler(entity) >= 1.1f);
+            entity.SetAnimationFloat("Multiplier", GetAnimationSpeedMultipiler(entity));
+            entity.SetAnimationBool("Charge", GetKnockBackMultipiler(entity) > 1f);
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -78,12 +86,14 @@ namespace MVZ2.GameContent.Contraptions
                 return false;
             var push = GetKnockBackMultipiler(self);
             var cost = GetHealthCostMultipiler(self);
+            var timer = GetChargeCooldownTimer(self);
             var knockbackMultiplier = enemy.GetStrongKnockbackMultiplier();
             enemy.Velocity += knockbackMultiplier * KNOCKBACK_DISTANCE * push * self.GetFacingDirection();
             self.TakeDamage(BOUNCE_DAMAGE * cost, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), self);
             AddEnemyKnockbackCooldown(self, enemy, Ticks.FromSeconds(KNOCKBACK_COOLDOWN_SECONDS));
             PlayBounceEffect(self);
             ResetMultipliers(self);
+            timer?.Reset();
             return true;
         }
         public static void PlayBounceEffect(Entity entity)
@@ -95,6 +105,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             SetKnockBackMultipiler(entity, 1f);
             SetHealthCostMultipiler(entity, 1f);
+            SetAnimationSpeedMultipiler(entity, 1f);
         }
         public static void AddEnemyKnockbackCooldown(Entity self, Entity enemy, int cooldown)
         {
@@ -123,10 +134,16 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetKnockBackMultipiler(Entity entity, float value) => entity.SetProperty(KNOCKBACK_MULTIPLIER, value);
         public static float GetHealthCostMultipiler(Entity entity) => entity.GetProperty<float>(HEALTH_COST_MULTIPLIER);
         public static void SetHealthCostMultipiler(Entity entity, float value) => entity.SetProperty(HEALTH_COST_MULTIPLIER, value);
+        public static float GetAnimationSpeedMultipiler(Entity entity) => entity.GetProperty<float>(ANIMATION_SPEED_MULTIPLIER);
+        public static void SetAnimationSpeedMultipiler(Entity entity, float value) => entity.SetProperty(ANIMATION_SPEED_MULTIPLIER, value);
+        public static FrameTimer? GetChargeCooldownTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(CHARGE_COOLDOWN_TIMER);
+        public static void SetChargeCooldownTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(CHARGE_COOLDOWN_TIMER, timer);
         public const float KNOCKBACK_DISTANCE = 20f;
         public const float BOUNCE_DAMAGE = 150f;
         public const float KNOCKBACK_COOLDOWN_SECONDS = 1f;
         public static readonly VanillaEntityPropertyMeta<float> KNOCKBACK_MULTIPLIER = new VanillaEntityPropertyMeta<float>("KnockBackMultipiler");
         public static readonly VanillaEntityPropertyMeta<float> HEALTH_COST_MULTIPLIER = new VanillaEntityPropertyMeta<float>("HealthCostMultipiler");
+        public static readonly VanillaEntityPropertyMeta<float> ANIMATION_SPEED_MULTIPLIER = new VanillaEntityPropertyMeta<float>("AnimationSpeedMultipiler");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> CHARGE_COOLDOWN_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("charge_cooldown_timer");
     }
 }
