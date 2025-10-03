@@ -68,14 +68,6 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        protected override void UpdateActionState(Entity enemy, int state)
-        {
-            base.UpdateActionState(enemy, state);
-            if (state == VanillaEntityStates.ENEMY_PARACHUTE && enemy.HasBuff<FlyingPirateGlideBuff>())
-            {
-                enemy.UpdateWalkVelocity();
-            }
-        }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);

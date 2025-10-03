@@ -853,6 +853,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
                 <p>耐久消耗：<![CDATA[<color=red>150（怪物），20（子弹）</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最大150%击退力度和50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
                 <p>技能：<![CDATA[<color=red>击退并弹飞半径2.5格内的所有敌方怪物</color>]]></p>
             </properties>
             <flavor>
@@ -866,7 +867,7 @@
             <properties>
                 <p>禁用时长：<![CDATA[<color=red>3分钟</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
-                <p>宝石效果：<![CDATA[<color=red><br>4颗：产生半径1.5格，伤害为300的爆炸<br>5颗：对整行及整列的怪物造成500闪电伤害<br>6颗以上：对所有怪物无视护甲造成100伤害，每多1宝石额外造成50伤害</color>]]></p>
+                <p>宝石效果：<![CDATA[<color=red><br>4颗：产生半径1.5格，伤害为300的爆炸<br>5颗：对整行及整列的怪物造成500闪电伤害<br>6颗以上：对所有怪物无视护甲造成100伤害，每多1宝石额外造成200伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
@@ -1523,6 +1524,18 @@
                 <p>如果你的农场里大面积地种植了小麦，或者圈养了很多的奶牛，那你可一定要小心这帮家伙了。</p>
             </flavor>
         </entry>
+        <entry id="mvz2:zombie_cloud">
+            <header>
+                <p>僵尸云飞在空中，向下降雨形成水迹，水迹会对接触到的器械造成伤害，同时踩到水迹的怪物会向前滑动。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>水迹伤害：<![CDATA[<color=red>5/秒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>至少这朵云没有对你竖中指。</p>
+            </flavor>
+        </entry>
         <entry id="mvz2:cannoneer_zombie">
             <header>
                 <p>炮手僵尸的重型铁炮可以帮他阻挡子弹，并且每隔一段时间便会发射一只炮弹僵尸。</p>
@@ -1551,7 +1564,7 @@
         </entry>
         <entry id="mvz2:flying_pirate">
             <header>
-                <p>飞天海盗僵尸会从天而降突入你的阵型，手中的弯刀使得其能够造成更高的伤害。</p>
+                <p>飞天海盗僵尸会快速突入你的阵型，手中的弯刀使得其能够造成更高的伤害。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>800</color>]]></p>
@@ -1559,18 +1572,6 @@
             </properties>
             <flavor>
                 <p>他是荷兰人。</p>
-            </flavor>
-        </entry>
-        <entry id="mvz2:zombie_cloud">
-            <header>
-                <p>僵尸云飞在空中，向下降雨形成水迹，水迹会对接触到的器械造成伤害，同时踩到水迹的怪物会向前滑动。</p>
-            </header>
-            <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>水迹伤害：<![CDATA[<color=red>5/秒</color>]]></p>
-            </properties>
-            <flavor>
-                <p>至少这朵云没有对你竖中指。</p>
             </flavor>
         </entry>
         <entry id="mvz2:pop_captain">

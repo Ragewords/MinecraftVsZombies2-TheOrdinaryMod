@@ -37,7 +37,7 @@ namespace MVZ2.GameContent.Detections
         {
             if (target.IsFloor())
                 return false;
-            if (friendlyChecker && (target.IsNotActiveEnemy() || target.GetMass() == VanillaMass.VERY_HEAVY || target.IsEntityOf(VanillaEnemyID.popCaptain)))
+            if (friendlyChecker && (target.IsNotActiveEnemy() || target.IsHarmless() || target.GetMass() == VanillaMass.VERY_HEAVY || target.IsEntityOf(VanillaEnemyID.popCaptain) || target.GetRelativeY() > (self.entity.GetMaxAttackHeight() / 2)))
                 return false;
             return base.ValidateTarget(self, target);
         }

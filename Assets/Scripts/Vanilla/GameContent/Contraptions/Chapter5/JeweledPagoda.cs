@@ -90,7 +90,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var entityCollider in lawnBuffer)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    entityCollider.TakeDamage(100 + 50 * (jewelCount - 6), damageEffects, entity);
+                    entityCollider.TakeDamage(100 + 200 * (jewelCount - 6), damageEffects, entity);
                 }
             }
         }

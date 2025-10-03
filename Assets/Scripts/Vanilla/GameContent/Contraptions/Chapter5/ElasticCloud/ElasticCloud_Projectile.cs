@@ -34,7 +34,6 @@ namespace MVZ2.GameContent.Contraptions
             proj.SetFaction(target.GetFaction());
             target.TakeDamage(BOUNCE_DAMAGE * cost, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), target);
             ElasticCloud.PlayBounceEffect(target);
-            ElasticCloud.ResetMultipliers(target);
             result.SetFinalValue(false);
         }
         public const float BOUNCE_DAMAGE = 20f;
