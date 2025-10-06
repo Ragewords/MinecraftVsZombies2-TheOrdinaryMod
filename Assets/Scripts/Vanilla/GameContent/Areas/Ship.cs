@@ -159,7 +159,7 @@ namespace MVZ2.GameContent.Areas
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
                 if (enemy.State != VanillaEntityStates.ATTACK && enemy.State != VanillaEntityStates.ENEMY_PARACHUTE)
-                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
+                    enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * enemy.GetStrongKnockbackMultiplier() * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
