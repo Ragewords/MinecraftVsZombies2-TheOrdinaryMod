@@ -38,6 +38,7 @@ namespace MVZ2.GameContent.Bosses
             timer.Frame = 0;
             SetFabricCooldownTimer(boss, timer);
             SetLanternCooldownTimer(boss, timer);
+            SetFabricCount(boss, MAX_FABRIC_COUNT);
             SetDanmakuTimer(boss, new FrameTimer(4));
 
             boss.Spawn(VanillaEnemyID.seijaCursedDoll, boss.Position)?.Let(e =>
@@ -95,13 +96,13 @@ namespace MVZ2.GameContent.Bosses
             }
             else if (damageInfo.Amount > 600)
             {
-                if (CanUseLantern(boss))
-                {
-                    UseLantern(boss);
-                }
-                else if (CanUseFabric(boss))
+                if (CanUseFabric(boss))
                 {
                     UseFabric(boss);
+                }
+                else if (CanUseLantern(boss))
+                {
+                    UseLantern(boss);
                 }
             }
             if (boss.State == STATE_FABRIC || boss.State == STATE_LANTERN)
@@ -236,6 +237,7 @@ namespace MVZ2.GameContent.Bosses
         {
             stateMachine.StartState(boss, STATE_LANTERN);
             SetLanternCount(boss, GetLanternCount(boss) + 1);
+            SetFabricCount(boss, 0);
             var timer = GetLanternCooldownTimer(boss);
             timer?.Reset();
             SetRecentTakenDamage(boss, 0);
@@ -311,7 +313,7 @@ namespace MVZ2.GameContent.Bosses
         public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");
 
         private const int MAX_FABRIC_COUNT = 2;
-        private const int MAX_LANTERN_COUNT = 1;
+        private const int MAX_LANTERN_COUNT = 3;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
