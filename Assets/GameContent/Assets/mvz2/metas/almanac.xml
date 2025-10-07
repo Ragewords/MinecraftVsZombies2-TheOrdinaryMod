@@ -418,7 +418,7 @@
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>特点：<![CDATA[<color=red>每次升级×160%发射速度，×125%子弹飞行速度</color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
-                <p>技能：<![CDATA[<color=red>发射五支大箭矢</color>]]></p>
+                <p>技能：<![CDATA[<color=red>发射五支大箭矢及50支箭矢</color>]]></p>
             </properties>
             <flavor>
                 <p>驱动发射器是个技术宅，同时它还懂得电脑驱动的装配、各种软件、硬件的性能以及编程语言等信息技术。最近他想自己编程一个游戏来还原这场与僵尸之间的战争，但有人已经抢先了。</p>
@@ -657,7 +657,7 @@
                 <p>发射速度：<![CDATA[<color=red>1发/1.5秒（前方），2发/1.5秒（后方）</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20（前方），15（后方）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>当场上存在大量敌人时进入狂热状态，获得元素属性加成</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢和飞刀，最后向前后分别发射一连串飞刀和一支大箭矢</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢和飞刀，最后向前后分别发射10把飞刀和一支大箭矢</color>]]></p>
             </properties>
             <flavor>
                 <p>“别射了，你把我晃得头晕！”后面的发射器很不爽。</p>
@@ -811,7 +811,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1+2支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢和20支箭矢</color>]]></p>
             </properties>
             <flavor>
                 <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
@@ -825,7 +825,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>5发/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:grid_layer_main"/>主要位和<tag id="mvz2:grid_layer_protector"/>保护位器械为自己+5%攻击力</color>]]></p>
+                <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:block"/>方块器械为自己+5%攻击力</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤陨石，对场地进行地毯式轰炸</color>]]></p>
             </properties>
             <flavor>
@@ -1142,13 +1142,13 @@
         </entry>
         <entry id="mvz2:smoker">
             <header>
-                <p>烟熏炉会对前方近距离的敌人喷射浓烟。</p>
+                <p>烟熏炉会对前方近距离的怪物喷射浓烟。</p>
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>45/秒</color>]]></p>
                 <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
-                <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下灼烧敌人的火焰</color>]]></p>
+                <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下燃烧怪物的火焰</color>]]></p>
             </properties>
             <flavor>
                 <p>烟熏炉因为不能烧炼矿物而选择了转行，他已经准备好把怪物们全部烤熟了。</p>
@@ -1623,7 +1623,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone"/>石头造成5倍伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone"/><tag id="mvz2:shell" enum="mvz2:netherrack"/>石头造成5倍伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>它每周花5天时间来申请挖掘石头的许可证。</p>
@@ -1669,8 +1669,7 @@
                 <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤数个伞兵作为支援</color>]]></p>
             </properties>
             <flavor>
-                <p>航海者僵尸有着丰富的作战经验和航海知识，是这艘船上最具领导能力的核心人物。</p>
-                <p>……但是他为什么穿得像是个海军？</p>
+                <p>航海者僵尸有着丰富的作战经验和航海知识，是这艘船上的核心人物之一。他将自己的航海故事写成了一本书，名为“航僵王”。</p>
             </flavor>
         </entry>
     </enemies>

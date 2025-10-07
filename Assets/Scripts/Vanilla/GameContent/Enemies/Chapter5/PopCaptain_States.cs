@@ -253,8 +253,10 @@ namespace MVZ2.Vanilla.Enemies
                         if (subStateTimer.Expired)
                         {
                             entity.PlaySound(VanillaSoundID.fling);
-                            Smash(entity, 1);
-                            SmashFriendly(entity, -4);
+                            if (smashDetector.DetectExists(entity))
+                                Smash(entity, 1);
+                            else
+                                SmashFriendly(entity, -4);
 
                             subStateTimer.ResetSeconds(SUBSTATE_RESTORE_SECONDS);
                             stateMachine.SetSubState(entity, SUBSTATE_RESTORE);
@@ -296,8 +298,10 @@ namespace MVZ2.Vanilla.Enemies
                         if (subStateTimer.Expired)
                         {
                             entity.PlaySound(VanillaSoundID.fling);
-                            Smash(entity, -1);
-                            SmashFriendly(entity, 8);
+                            if (smashDetector.DetectExists(entity))
+                                Smash(entity, -1);
+                            else
+                                SmashFriendly(entity, 8);
 
                             subStateTimer.ResetSeconds(SUBSTATE_RESTORE_SECONDS);
                             stateMachine.SetSubState(entity, SUBSTATE_RESTORE);

@@ -2,6 +2,7 @@
 
 using System.Linq;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
@@ -33,8 +34,7 @@ namespace MVZ2.GameContent.Detections
             if (entity.IsEntityOf(VanillaContraptionID.beacon))
                 return false;
             var def = entity.Definition;
-            var layers = def.GetGridLayersToTake();
-            if (!(layers.Contains(VanillaGridLayers.main) || layers.Contains(VanillaGridLayers.protector)))
+            if (def.IsBlock())
                 return false;
             var self = param.entity;
             var center = self.GetCenter();

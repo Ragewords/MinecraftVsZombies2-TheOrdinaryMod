@@ -433,4 +433,16 @@
             <p>=====乐评施工中=====</p>
         </description>
     </music>
+    <music id="ship_level_extra" name="春之港湾" unlock="mvz2:level.mausoleum_EX1">
+        <unlock>
+            <condition required="mvz2:level.ship_1"/>
+        </unlock>
+        <track main="mvz2:ship_level_extra"/>
+        <source>东方兽王园</source>
+        <description>
+            <p>星莲船拓展关卡的音乐。</p>
+            <p>为《东方兽王园》中娜兹玲的主题曲，原曲则是《东方星莲船》的一面主题曲。</p>
+            <p>=====乐评施工中=====</p>
+        </description>
+    </music>
 </musics>

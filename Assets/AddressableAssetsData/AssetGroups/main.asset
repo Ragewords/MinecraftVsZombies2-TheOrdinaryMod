@@ -10220,6 +10220,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d16124d44c28f8c42a34ecc894049175
+    m_Address: mvz2:ship_level_extra
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1792fc8e74e78044ba9bd1d4212f8f7
     m_Address: mvz2:entity/contraption/random_china
     m_ReadOnly: 0

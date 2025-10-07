@@ -742,6 +742,7 @@
                 <float name="mvz2:damage" value="80" />
                 <float name="mvz2:maxHealth" value="1200" />
                 <bool name="mvz2:blocksJump" value="true" />
+                <bool name="mvz2:block" value="false" />
                 <id name="mvz2:shell" value="mvz2:metal" />
                 <id name="mvz2:placeSound" value="mvz2:tesla_construction" />
                 <id name="mvz2:deathSound" value="mvz2:tesla_destroy" />
@@ -1314,7 +1315,7 @@
                 <id name="mvz2:rechargeId" value="mvz2:long" />
             </properties>
         </dispenser>
-        <contraption id="smoker" name="烟熏炉" tooltip="喷出浓烟，对一定区域敌人造成伤害">
+        <contraption id="smoker" name="烟熏炉" tooltip="喷出浓烟，对一定区域的怪物造成伤害">
             <unlock>
                 <condition required="mvz2:level.ship_EX1"/>
             </unlock>
@@ -1784,7 +1785,7 @@
                 <int name="mvz2:cost" value="150" />
             </properties>
         </enemy>
-        <enemy id="zombie_cloud" name="僵尸云:(" deathMessage="你就云吧" >
+        <enemy id="zombie_cloud" name="僵尸云" deathMessage="你就云吧" >
             <unlock>
                 <condition required="mvz2:level.ship_3"/>
             </unlock>
@@ -3926,7 +3927,7 @@
                 <bool name="mvz2:decorative" value="false" />
                 <int name="mvz2:maxTimeout" value="35" />
                 <vector3 name="mvz2:boundsPivot" x="0" y="0" z="0.5" />
-                <vector3 name="mvz2:size" x="200" y="80" z="200" />
+                <vector3 name="mvz2:size" x="200" y="40" z="200" />
             </properties>
         </effect>
         <effect id="smoker_fire">

@@ -1488,7 +1488,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
         </spawns>
     </stage>
-    <stage id="ship_EX1" name="圣辇船" dayNumber="12" type="extra" >
+    <stage id="ship_EX1" name="圣辇船" dayNumber="12" type="extra" music="mvz2:ship_level_extra">
         <unlock>
             <condition required="mvz2:level.ship_11 mvz2:level.mausoleum_EX3"/>
         </unlock>
@@ -1503,37 +1503,37 @@
             <spawn id="mvz2:undead_flying_object"/>
         </spawns>
     </stage>
-    <stage id="ship_EX2" name="圣辇船" dayNumber="13" type="extra" >
+    <stage id="ship_EX2" name="圣辇船" dayNumber="13" type="extra" music="mvz2:ship_level_extra">
         <unlock>
             <condition required="mvz2:level.ship_EX1"/>
         </unlock>
         <clear pickupModel="mvz2:entity.money_chest"/>
-        <spawns flags="3" >
+        <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:flying_pirate"/>
+            <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:pop_captain"/>
             <spawn id="mvz2:admiral_zombie"/>
         </spawns>
     </stage>
-    <stage id="ship_EX3" name="圣辇船" dayNumber="14" type="extra" >
+    <stage id="ship_EX3" name="圣辇船" dayNumber="14" type="extra" music="mvz2:ship_level_extra">
         <unlock>
             <condition required="mvz2:level.ship_EX2"/>
         </unlock>
         <clear pickupModel="mvz2:entity.money_chest"/>
-        <spawns flags="3" >
+        <spawns flags="2" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
             <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:cannoneer_zombie"/>
-            <spawn id="mvz2:zombie_cloud"/>
             <spawn id="mvz2:admiral_zombie"/>
         </spawns>
     </stage>
-    <stage id="ship_EX4" name="圣辇船" dayNumber="15" type="extra" >
+    <stage id="ship_EX4" name="圣辇船" dayNumber="15" type="extra" music="mvz2:ship_level_extra">
         <unlock>
             <condition required="mvz2:level.ship_EX3"/>
         </unlock>
