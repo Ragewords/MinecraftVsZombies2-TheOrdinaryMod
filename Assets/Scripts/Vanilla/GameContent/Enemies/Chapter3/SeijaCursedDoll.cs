@@ -62,12 +62,12 @@ namespace MVZ2.GameContent.Enemies
         private void PostProjectileHitCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
             var hit = param.hit;
+            if (!hit.Other.Definition.HasBehaviour(this))
+                return;
             var projectile = hit.Projectile;
             if (projectile == null)
                 return;
-            var other = hit.Other;
-            if (other.GetDefinitionID() == VanillaEnemyID.seijaCursedDoll)
-                projectile.Die();
+            projectile.Die();
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
