@@ -1170,7 +1170,7 @@
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>45/秒</color>]]></p>
                 <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
-                <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下燃烧怪物的火焰</color>]]></p>
+                <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下燃烧怪物的火焰，每团火焰造成总计1800伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>烟熏炉因为不能烧炼矿物而选择了转行，他已经准备好把怪物们全部烤熟了。</p>
