@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
+            if (entity.State == STATE_SPIN)
             {
                 DragEnemiesNearby(entity);
                 var repeatTimer = GetRepeatTimer(entity);
@@ -73,7 +73,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationBool("Spinning", entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN);
+            entity.SetAnimationBool("Spinning", entity.State == STATE_SPIN);
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.Contraptions
             if (!collision.Collider.IsForMain())
                 return;
             var hopper = collision.Entity;
-            if (hopper.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
+            if (hopper.State == STATE_SPIN)
                 return;
             var other = collision.Other;
             if (other.Type != EntityTypes.ENEMY)
@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override bool CanEvoke(Entity entity)
         {
-            if (entity.State == VanillaEntityStates.VORTEX_HOPPER_SPIN)
+            if (entity.State == STATE_SPIN)
             {
                 return false;
             }
@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
 
         private static void StartSpin(Entity hopper)
         {
-            hopper.State = VanillaEntityStates.VORTEX_HOPPER_SPIN;
+            hopper.State = STATE_SPIN;
             hopper.AddBuff<VortexHopperSpinBuff>();
             hopper.PlaySound(VanillaSoundID.vortex);
             DragEnemiesNearby(hopper);
@@ -168,13 +168,15 @@ namespace MVZ2.GameContent.Contraptions
             var distance = Vector2.Distance(hopperPos, targetPos);
             return distance < hopper.GetRange();
         }
+        public const int STATE_IDLE = VanillaContraptionStates.IDLE;
+        public const int STATE_SPIN = VanillaContraptionStates.VORTEX_HOPPER_SPIN;
+
         public static FrameTimer? GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_REPEAT_TIMER);
         public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_REPEAT_TIMER, timer);
         public static int GetDir(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_DIR);
         public static void SetDir(Entity entity, int timer) => entity.SetBehaviourField(ID, PROP_DIR, timer);
 
-        private static readonly NamespaceID ID = VanillaContraptionID.vortexHopper;
-        public const float EVOKED_SPIN_RADIUS = 120;
+        private static readonly NamespaceID ID = VanillaContraptionID.vortexHopper;        public const float EVOKED_SPIN_RADIUS = 120;
         public const float SPIN_RADIUS = 40;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_DIR = new VanillaEntityPropertyMeta<int>("Dir");

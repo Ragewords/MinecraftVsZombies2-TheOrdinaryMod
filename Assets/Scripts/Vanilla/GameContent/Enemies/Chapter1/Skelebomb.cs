@@ -21,7 +21,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.skelebomb)]
-    public class Skelebomb : MeleeEnemy
+    public class Skelebomb : AIEntityBehaviour
     {
         public Skelebomb(string nsp, string name) : base(nsp, name)
         {
@@ -33,21 +33,12 @@ namespace MVZ2.GameContent.Enemies
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
             SetExplode(entity, true);
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var state = base.GetActionState(enemy);
-            if (state != VanillaEntityStates.DEAD && IsCasting(enemy))
-            {
-                return VanillaEntityStates.SKELEBOMB_EXPLODE;
-            }
-            return state;
-        }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("NotHoldingBomb", !GetExplode(entity));
             var stateTimer = GetStateTimer(entity);
-            if (entity.State == VanillaEntityStates.SKELEBOMB_EXPLODE)
+            if (entity.State == VanillaEnemyStates.SPECIAL_MOVE)
             {
                 if (stateTimer.RunToExpiredOrNull())
                 {
@@ -63,7 +54,7 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEntityStates.ATTACK && GetExplode(entity))
+            if (entity.State == VanillaEnemyStates.MELEE_ATTACK && GetExplode(entity))
             {
                 if (entity.RNG.Next(200) == 0)
                 {
@@ -75,7 +66,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.PreTakeDamage(input, result);
             var self = input.Entity;
-            if (input.Effects.HasEffect(VanillaDamageEffects.PUNCH))
+            if (input.Effects.HasEffect(VanillaDamageEffects.IMPACT))
             {
                 self.AddBuff<SkelebombPunchedBuff>();
                 StartCasting(self);
@@ -89,7 +80,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (!GetExplode(entity))
                 return;
-            if (IsCasting(entity))
+            if (entity.IsPerformingSpecialMove())
             {
                 EndCasting(entity);
                 SetExplode(entity, false);
@@ -106,14 +97,6 @@ namespace MVZ2.GameContent.Enemies
                 });
                 SetExplode(entity, false);
             }
-        }
-        public static void SetCasting(Entity entity, bool timer)
-        {
-            entity.SetBehaviourField(ID, PROP_CASTING, timer);
-        }
-        public static bool IsCasting(Entity entity)
-        {
-            return entity.GetBehaviourField<bool>(ID, PROP_CASTING);
         }
         public static void SetStateTimer(Entity entity, FrameTimer timer)
         {
@@ -134,14 +117,14 @@ namespace MVZ2.GameContent.Enemies
 
         public static void StartCasting(Entity entity)
         {
-            SetCasting(entity, true);
+            entity.SetPerformingSpecialMove(true);
             entity.PlaySound(VanillaSoundID.fuse);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_TIME);
         }
         private void EndCasting(Entity entity)
         {
-            SetCasting(entity, false);
+            entity.SetPerformingSpecialMove(false);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_COOLDOWN);
         }

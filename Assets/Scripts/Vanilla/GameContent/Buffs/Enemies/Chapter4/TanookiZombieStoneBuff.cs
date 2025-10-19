@@ -6,6 +6,7 @@ using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -27,7 +28,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
             AddModifier(new NamespaceIDModifier(EngineEntityProps.SHELL, SetOperator.Set, VanillaShellID.stone));
             AddModifier(new FloatModifier(VanillaEntityProps.MASS, NumberOperator.Add, 1));
-            AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, IntegerOperator.Set, VanillaEntityStates.IDLE));
+            AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, IntegerOperator.Set, VanillaEnemyStates.IDLE));
         }
         public override void PostAdd(Buff buff)
         {

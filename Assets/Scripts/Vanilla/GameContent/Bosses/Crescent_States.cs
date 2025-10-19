@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class AppearState : EntityStateMachineState
         {
-            public AppearState() : base(STATE_APPEAR) { }
+            public AppearState() : base(STATE_APPEAR, ANIMATION_STATE_APPEAR) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -65,7 +65,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class IdleState : EntityStateMachineState
         {
-            public IdleState() : base(STATE_IDLE) { }
+            public IdleState() : base(STATE_IDLE, ANIMATION_STATE_IDLE) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -101,7 +101,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class DashState : EntityStateMachineState
         {
-            public DashState() : base(STATE_DASH) { }
+            public DashState() : base(STATE_DASH, ANIMATION_STATE_DASH) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -137,7 +137,7 @@ namespace MVZ2.GameContent.Bosses
                             break;
                         case SUBSTATE_END:
                             SetDashDir(entity, dir);
-                            entity.Velocity = GetDashDir(entity) * 22;
+                            entity.Velocity = GetDashDir(entity) * 20;
                             stateMachine.StartState(entity, STATE_SPACE);
                             break;
                     }
@@ -202,7 +202,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class SpaceState : EntityStateMachineState
         {
-            public SpaceState() : base(STATE_SPACE) { }
+            public SpaceState() : base(STATE_SPACE, ANIMATION_STATE_SPACE) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -249,7 +249,7 @@ namespace MVZ2.GameContent.Bosses
 
         private class ThrowState : EntityStateMachineState
         {
-            public ThrowState() : base(STATE_THROW) { }
+            public ThrowState() : base(STATE_THROW, ANIMATION_STATE_THROW) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -303,7 +303,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class DeadState : EntityStateMachineState
         {
-            public DeadState() : base(STATE_DEAD) { }
+            public DeadState() : base(STATE_DEAD, ANIMATION_STATE_DEATH) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -373,5 +373,11 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_END = 5;
         }
         #endregion
+        public const int ANIMATION_STATE_IDLE = 0;
+        public const int ANIMATION_STATE_APPEAR = 1;
+        public const int ANIMATION_STATE_DASH = 2;
+        public const int ANIMATION_STATE_SPACE = 3;
+        public const int ANIMATION_STATE_THROW = 4;
+        public const int ANIMATION_STATE_DEATH = 5;
     }
 }

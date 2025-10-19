@@ -18,7 +18,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.flyingPirate)]
-    public class FlyingPirate : MeleeEnemy
+    public class FlyingPirate : AIEntityBehaviour
     {
         public FlyingPirate(string nsp, string name) : base(nsp, name)
         {
@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            bool parachute = entity.State == VanillaEntityStates.ENEMY_PARACHUTE;
+            bool parachute = FlyingPirateGlideBuff.IsParachuting(entity);
             entity.SetModelProperty("Parachute", parachute);
             if (!parachute)
             {

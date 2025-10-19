@@ -25,7 +25,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.admiralZombie)]
-    public class AdmiralZombie : MeleeEnemy
+    public class AdmiralZombie : AIEntityBehaviour
     {
         public AdmiralZombie(string nsp, string name) : base(nsp, name)
         {
@@ -43,15 +43,6 @@ namespace MVZ2.GameContent.Enemies
                 entity.SetModelProperty("HasBoat", true);
             }
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var state = base.GetActionState(enemy);
-            if (state == VanillaEntityStates.WALK && IsCasting(enemy))
-            {
-                return STATE_CAST;
-            }
-            return state;
-        }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
@@ -63,7 +54,7 @@ namespace MVZ2.GameContent.Enemies
 
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEntityStates.ATTACK)
+            if (entity.State == STATE_MELEE_ATTACK)
                 return;
             var stateTimer = GetStateTimer(entity);
             if (entity.State == STATE_CAST)
@@ -71,7 +62,6 @@ namespace MVZ2.GameContent.Enemies
                 if (stateTimer.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
                 {
                     EndCasting(entity);
-                    SummonParatroopers(entity, 3);
                 }
             }
             else
@@ -93,10 +83,9 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (entity.State == STATE_CAST)
+            if (entity.IsCasting())
             {
                 EndCasting(entity);
-                SummonParatroopers(entity, 3);
             }
             if (entity.HasBuff<BoatBuff>())
             {
@@ -110,23 +99,13 @@ namespace MVZ2.GameContent.Enemies
                 });
             }
         }
-        protected override bool ValidateMeleeTarget(Entity enemy, Entity? target)
-        {
-            if (!base.ValidateMeleeTarget(enemy, target))
-                return false;
-            if (enemy.State == STATE_CAST)
-                return false;
-            return true;
-        }
-        public static void SetCasting(Entity entity, bool timer) => entity.SetBehaviourField(ID, PROP_CASTING, timer);
-        public static bool IsCasting(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_CASTING);
         public static void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
         public static FrameTimer? GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         public static RandomGenerator? GetRNG(Entity entity) => entity.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
         public static void SetRNG(Entity entity, RandomGenerator rng) => entity.SetBehaviourField(ID, PROP_RNG, rng);
         private void StartCasting(Entity entity)
         {
-            SetCasting(entity, true);
+            entity.SetCasting(true);
             entity.PlaySound(VanillaSoundID.admiralCall);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_TIME);
@@ -134,9 +113,10 @@ namespace MVZ2.GameContent.Enemies
 
         private void EndCasting(Entity entity)
         {
-            SetCasting(entity, false);
+            entity.SetCasting(false);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_COOLDOWN);
+            SummonParatroopers(entity, 2);
         }
         private void SummonParatroopers(Entity entity, int count)
         {
@@ -198,7 +178,8 @@ namespace MVZ2.GameContent.Enemies
             return childrenCount;
         }
         #region 常量
-        public const int STATE_CAST = VanillaEntityStates.ADMIRAL_ZOMBIE_CALL;
+        public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
+        public const int STATE_CAST = VanillaEnemyStates.CAST;
         public const int CAST_COOLDOWN = 300;
         public const int CAST_TIME = 75;
         public const int CALL_DETECT_TIME = 60;
@@ -211,7 +192,6 @@ namespace MVZ2.GameContent.Enemies
         };
         public static readonly NamespaceID ID = VanillaEnemyID.admiralZombie;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
-        public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
         #endregion 常量
     }

@@ -194,14 +194,35 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce479c693573c442ba1e0636d446229
+      internalID: 971253235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: placement_tags_upgrade_new_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 690dce34980e1804ea5e44bbd6440cc2
-      internalID: 477194668
+      spriteID: fbb147642ad478d4f88884eefb75b91e
+      internalID: 1411643029
       vertices: []
       indices: 
       edges: []
@@ -220,7 +241,8 @@ TextureImporter:
       placement_tags_upgrade_new_0: -1064595
       placement_tags_upgrade_new_1: -1490742438
       placement_tags_upgrade_new_2: -273142422
-      placement_tags_upgrade_new_3: 477194668
+      placement_tags_upgrade_new_3: 971253235
+      placement_tags_upgrade_new_4: 1411643029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -3,7 +3,6 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Stages;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -15,7 +14,7 @@ using PVZEngine.Level;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.lost)]
-    public class Lost : StateEnemy
+    public class Lost : AIEntityBehaviour
     {
         public Lost(string nsp, string name) : base(nsp, name)
         {

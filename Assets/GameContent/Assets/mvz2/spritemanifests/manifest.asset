@@ -21,8 +21,12 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: cd6294e0e010f934b90fb1f9ca35e623, type: 3}
   - name: achievements/mesmerised_matchup
     sprite: {fileID: 21300000, guid: 1f79614fcb97c93488cfbb1f01cd6ec4, type: 3}
+  - name: achievements/midas_touchdown
+    sprite: {fileID: 21300000, guid: cd013cb802051944b8075dab86de61d0, type: 3}
   - name: achievements/overdraw
     sprite: {fileID: 21300000, guid: 5ddce6aa3c01acf40aa89b5845c9d961, type: 3}
+  - name: achievements/railgun
+    sprite: {fileID: 21300000, guid: 26cdc94fcf90e7d41b47a89f4fc2c7f8, type: 3}
   - name: achievements/reforged
     sprite: {fileID: 21300000, guid: 7b5ab4ce3e848bf4f95807e6a0a2cc4d, type: 3}
   - name: achievements/return_to_sender
@@ -63,6 +67,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 2e2acf8f4e91cab468eae2cf860e025a, type: 3}
   - name: artifacts/dark_matter
     sprite: {fileID: 21300000, guid: 1a62ec6260923674096be59047f89949, type: 3}
+  - name: artifacts/dowsing_rods
+    sprite: {fileID: 21300000, guid: bb0351b5a0eaaf74487e8b755535e76a, type: 3}
+  - name: artifacts/dragon_tooth
+    sprite: {fileID: 21300000, guid: 54ecd9cd84713b046b9df22f056c36c9, type: 3}
   - name: artifacts/dream_butterfly
     sprite: {fileID: 21300000, guid: 5d23376e7a066774ab671e71271015fc, type: 3}
   - name: artifacts/dream_key
@@ -95,6 +103,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 86438a17b1cc9a347b2e66dbbd718b83, type: 3}
   - name: artifacts/smart_phone
     sprite: {fileID: 21300000, guid: 5a71c983a20b667478dd88d44c1a96b3, type: 3}
+  - name: artifacts/sorcerers_scroll
+    sprite: {fileID: 21300000, guid: 4512afe926ba882489e16c87aa81a65e, type: 3}
   - name: artifacts/sweet_sleep_pillow
     sprite: {fileID: 21300000, guid: 6aeedebbc3d6f934c8d4f7afb3614d86, type: 3}
   - name: artifacts/the_creatures_heart
@@ -117,6 +127,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: aa82843b9b0ef4c43a15446e94370464, type: 3}
   - name: chapter_transition/title_mausoleum
     sprite: {fileID: 21300000, guid: e67606b0e90b7e940844495857add1f7, type: 3}
+  - name: chapter_transition/title_ship
+    sprite: {fileID: 21300000, guid: 6b2ac3f4f375c3e4c9ae0837f95feb18, type: 3}
   - name: characters/armor_stand
     sprite: {fileID: 21300000, guid: 79a357758cd7dff4d83ebc2928ce0812, type: 3}
   - name: characters/hologram
@@ -393,6 +405,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c58e2047282dbf342864f9b099d799c4, type: 3}
   - name: mobile_blueprint/skeleton_warrior
     sprite: {fileID: 21300000, guid: de2f50015df9b2341aa191a0813d294f, type: 3}
+  - name: mobile_blueprint/skyward_beacon
+    sprite: {fileID: 21300000, guid: 36364eaf3189ea241a7fe1ef5b5027fb, type: 3}
   - name: mobile_blueprint/slenderman
     sprite: {fileID: 21300000, guid: 9c37df297dc5c5a47a8448c48eba0204, type: 3}
   - name: mobile_blueprint/small_dispenser
@@ -561,6 +575,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 43fcd92f2a72ca443ab18701d0b8563c, type: 3}
   - name: ui/close
     sprite: {fileID: 21300000, guid: ecbd7380d218ae0499f9db9112f463a4, type: 3}
+  - name: ui/combat
+    sprite: {fileID: 21300000, guid: 2e64b12488b10c340838892bf9f9db3e, type: 3}
   - name: ui/debug_console_icon
     sprite: {fileID: 21300000, guid: c853afac5f602874e877872193826015, type: 3}
   - name: ui/gear
@@ -741,6 +757,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a6f5c16aaaa862f4a8000dbbb824d5a0, type: 3}
   - name: entity/effects/camera_frame
     sprite: {fileID: 21300000, guid: 5005e9bfb3edbd84082f1c1dbc01250b, type: 3}
+  - name: entity/effects/combat_trail_punch
+    sprite: {fileID: 21300000, guid: 56d9698bb3001c84ca50c3f36113cb5d, type: 3}
+  - name: entity/effects/combat_trail_smash
+    sprite: {fileID: 21300000, guid: 68f28b4944673ed47805d4d9455edb75, type: 3}
+  - name: entity/effects/combat_trail_uppercut
+    sprite: {fileID: 21300000, guid: 4de17fa916d0f324b8a0e7936a1cc303, type: 3}
+  - name: entity/effects/combat_trail_wave
+    sprite: {fileID: 21300000, guid: 727d9b6ad4e6962458354304fc84ccbc, type: 3}
   - name: entity/effects/confusing_planet
     sprite: {fileID: 21300000, guid: 10d298fcc56ec124795e678e16230d79, type: 3}
   - name: entity/effects/cursed_fire_particle
@@ -799,6 +823,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 3e0db9919161e1f4d8204af2dba2d3d6, type: 3}
   - name: entity/effects/shine_ring
     sprite: {fileID: 21300000, guid: 0fd484fcbd2c9ed4dbad79aa98011525, type: 3}
+  - name: entity/effects/skyward_beacon_target
+    sprite: {fileID: 21300000, guid: 0121fc9dc727c4e42bcbcaf151c5a077, type: 3}
+  - name: entity/effects/skyward_beam
+    sprite: {fileID: 21300000, guid: 1e506edb309b8d746a23a81efefd33c2, type: 3}
   - name: entity/effects/snowflake
     sprite: {fileID: 21300000, guid: 9584835b8a325b742a157b068f72ad5d, type: 3}
   - name: entity/effects/sonic_wave
@@ -817,6 +845,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 498cfe5e32569bc43ae84fc47f7622ce, type: 3}
   - name: entity/effects/vortex
     sprite: {fileID: 21300000, guid: 57a43fd6f9e8d124fb3ac37bc690d4aa, type: 3}
+  - name: entity/effects/vulnerable_particle
+    sprite: {fileID: 21300000, guid: ca6d456fa79f841498d3f9ba6f35e9db, type: 3}
   - name: entity/effects/water_splash
     sprite: {fileID: 21300000, guid: 9d730e080bace4646938c15cdabc88d0, type: 3}
   - name: entity/effects/water_stain
@@ -937,6 +967,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9d0c0895ff7e6b84d93c8f9bd1c03466, type: 3}
   - name: entity/projectiles/emerald_ball
     sprite: {fileID: 21300000, guid: 8f2895aa1fd1fee4096c0efd25f8d7d6, type: 3}
+  - name: entity/projectiles/falling_star
+    sprite: {fileID: 21300000, guid: a01552dca04bda94385d92805ccac257, type: 3}
   - name: entity/projectiles/fireball
     sprite: {fileID: 21300000, guid: c8fd47e22cd27394895621742e549446, type: 3}
   - name: entity/projectiles/firework
@@ -1966,6 +1998,12 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1795380811, guid: 4b61b6a8f9cd754419a8862656f249c1, type: 3}
     - {fileID: 1116002968, guid: 4b61b6a8f9cd754419a8862656f249c1, type: 3}
+  - name: entity/contraption/skyward_beacon
+    spritesheet:
+    - {fileID: 2146546806, guid: b18e3e85e3d64b14d9e17ae88b752b33, type: 3}
+    - {fileID: -998674976, guid: b18e3e85e3d64b14d9e17ae88b752b33, type: 3}
+    - {fileID: -130671910, guid: b18e3e85e3d64b14d9e17ae88b752b33, type: 3}
+    - {fileID: 888369719, guid: b18e3e85e3d64b14d9e17ae88b752b33, type: 3}
   - name: entity/contraption/smoker
     spritesheet:
     - {fileID: -231942391, guid: 003a58f863ec748479ce625f218544cc, type: 3}
@@ -2700,7 +2738,8 @@ MonoBehaviour:
     - {fileID: -1064595, guid: c88dad8213774ad48b823b141be673dc, type: 3}
     - {fileID: -1490742438, guid: c88dad8213774ad48b823b141be673dc, type: 3}
     - {fileID: -273142422, guid: c88dad8213774ad48b823b141be673dc, type: 3}
-    - {fileID: 477194668, guid: c88dad8213774ad48b823b141be673dc, type: 3}
+    - {fileID: 971253235, guid: c88dad8213774ad48b823b141be673dc, type: 3}
+    - {fileID: 1411643029, guid: c88dad8213774ad48b823b141be673dc, type: 3}
   - name: ui/almanac/placement_tags_upgrade_origin
     spritesheet:
     - {fileID: 690988992, guid: cab57ed8db44e444f856b2a84c122438, type: 3}

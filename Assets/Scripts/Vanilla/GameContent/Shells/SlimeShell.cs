@@ -22,7 +22,7 @@ namespace MVZ2.GameContent.Shells
             {
                 damageInfo.Multiply(2);
             }
-            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.PUNCH))
+            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.IMPACT))
             {
                 damageInfo.Multiply(0.5f);
             }

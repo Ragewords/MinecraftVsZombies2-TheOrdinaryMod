@@ -34,12 +34,12 @@ AnimatorStateMachine:
   - {fileID: -2054563904045231396}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -6906876613434488904}
-    second:
-    - {fileID: 171235364825732161}
   - first: {fileID: 8114661719501461501}
     second:
     - {fileID: 1720016541506286791}
+  - first: {fileID: -6906876613434488904}
+    second:
+    - {fileID: 171235364825732161}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 110, y: 30, z: 0}
   m_EntryPosition: {x: 110, y: 120, z: 0}
@@ -147,7 +147,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.1
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -162,8 +162,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: State
-    m_EventTreshold: 301
+    m_ConditionEvent: AnimationState
+    m_EventTreshold: 3
   - m_ConditionMode: 6
     m_ConditionEvent: SubState
     m_EventTreshold: 0
@@ -271,7 +271,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: State
+    m_ConditionEvent: AnimationState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5378449199411901440}
@@ -352,7 +352,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: State
+  - m_Name: AnimationState
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -580,8 +580,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: State
-    m_EventTreshold: 300
+    m_ConditionEvent: AnimationState
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7225716887946873414}
   m_Solo: 0
@@ -730,8 +730,8 @@ AnimatorStateTransition:
     m_ConditionEvent: Shock
     m_EventTreshold: 0
   - m_ConditionMode: 6
-    m_ConditionEvent: State
-    m_EventTreshold: 3
+    m_ConditionEvent: AnimationState
+    m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6107936602273902187}
   m_Solo: 0
@@ -755,8 +755,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: State
-    m_EventTreshold: 302
+    m_ConditionEvent: AnimationState
+    m_EventTreshold: 4
   - m_ConditionMode: 6
     m_ConditionEvent: SubState
     m_EventTreshold: 0
@@ -783,7 +783,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: State
+    m_ConditionEvent: AnimationState
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6063881156918009589}

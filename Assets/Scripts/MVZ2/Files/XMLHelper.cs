@@ -206,10 +206,38 @@ namespace MVZ2.IO
             switch (item.Operator)
             {
                 case BehaviourOperator.Add:
-                    behaviours.Add(item.ID);
+                    if (behaviours.Contains(item.ID))
+                    {
+                        Log.LogWarning($"Trying to add behaviour {item.ID} to the list which already has this.");
+                    }
+                    else
+                    {
+                        behaviours.Add(item.ID);
+                    }
                     break;
                 case BehaviourOperator.Remove:
-                    behaviours.Remove(item.ID);
+                    if (!behaviours.Remove(item.ID))
+                    {
+                        Log.LogWarning($"Cannot find behaviour {item.ID} to remove.");
+                    }
+                    break;
+                case BehaviourOperator.Replace:
+                    if (NamespaceID.IsValid(item.SourceID))
+                    {
+                        var index = behaviours.IndexOf(item.SourceID);
+                        if (index >= 0)
+                        {
+                            behaviours[index] = item.ID;
+                        }
+                        else
+                        {
+                            Log.LogWarning($"Failed to replace behaviour {item.SourceID} to {item.ID}, cannot find the behaviour to replace.");
+                        }
+                    }
+                    else
+                    {
+                        Log.LogWarning($"Failed to replace behaviour to {item.ID}, the behaviour id to replace is invalid.");
+                    }
                     break;
             }
         }

@@ -1349,8 +1349,9 @@
         </talks>
         <conveyor>
             <entry id="mvz2:punchton" count="20"/>
-            <entry id="mvz2:stone_shield" count="5"/>
+            <entry id="mvz2:stone_shield" count="20"/>
             <entry id="mvz2:tnt" count="3" minCount="0"/>
+            <entry id="mvz2:magichest" count="1" minCount="0"/>
         </conveyor>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:beacon"/>
         <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
@@ -1438,9 +1439,9 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:undead_flying_object"/>
-            <spawn id="mvz2:flying_pirate"/>
-            <spawn id="mvz2:cannoneer_zombie"/>
             <spawn id="mvz2:zombie_cloud"/>
+            <spawn id="mvz2:cannoneer_zombie"/>
+            <spawn id="mvz2:flying_pirate"/>
             <spawn id="mvz2:pop_captain"/>
         </spawns>
     </stage>

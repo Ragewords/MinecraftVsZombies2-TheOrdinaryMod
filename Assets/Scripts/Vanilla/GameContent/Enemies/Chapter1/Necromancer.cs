@@ -16,7 +16,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.necromancer)]
-    public class Necromancer : MeleeEnemy
+    public class Necromancer : AIEntityBehaviour
     {
         public Necromancer(string nsp, string name) : base(nsp, name)
         {
@@ -27,25 +27,16 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var state = base.GetActionState(enemy);
-            if (state == VanillaEntityStates.WALK && IsCasting(enemy))
-            {
-                return VanillaEntityStates.NECROMANCER_CAST;
-            }
-            return state;
-        }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
 
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEntityStates.ATTACK)
+            if (entity.State == STATE_MELEE_ATTACK)
                 return;
             var stateTimer = GetStateTimer(entity);
-            if (entity.State == VanillaEntityStates.NECROMANCER_CAST)
+            if (entity.State == STATE_CAST)
             {
                 if (stateTimer.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
                 {
@@ -73,18 +64,10 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (entity.State == VanillaEntityStates.NECROMANCER_CAST)
+            if (entity.IsCasting())
             {
                 EndCasting(entity);
             }
-        }
-        public static void SetCasting(Entity entity, bool timer)
-        {
-            entity.SetBehaviourField(ID, PROP_CASTING, timer);
-        }
-        public static bool IsCasting(Entity entity)
-        {
-            return entity.GetBehaviourField<bool>(ID, PROP_CASTING);
         }
         public static void SetStateTimer(Entity entity, FrameTimer timer)
         {
@@ -97,7 +80,7 @@ namespace MVZ2.GameContent.Enemies
 
         private void StartCasting(Entity entity)
         {
-            SetCasting(entity, true);
+            entity.SetCasting(true);
             entity.PlaySound(VanillaSoundID.reviveCast);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_TIME);
@@ -105,7 +88,7 @@ namespace MVZ2.GameContent.Enemies
 
         private void EndCasting(Entity entity)
         {
-            SetCasting(entity, false);
+            entity.SetCasting(false);
             var stateTimer = GetStateTimer(entity);
             stateTimer?.ResetTime(CAST_COOLDOWN);
         }
@@ -171,9 +154,10 @@ namespace MVZ2.GameContent.Enemies
         private const int CAST_TIME = 30;
         private const int BUILD_DETECT_TIME = 30;
         private const int MAX_BONE_WALL_COUNT = 15;
+        public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
+        public const int STATE_CAST = VanillaEnemyStates.CAST;
         public static readonly NamespaceID ID = VanillaEnemyID.necromancer;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
-        public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         #endregion 常量
     }
 }

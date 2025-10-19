@@ -14,6 +14,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Auras;
@@ -59,7 +60,7 @@ namespace MVZ2.GameContent.Contraptions
                 EvokedUpdate(entity);
             }
             entity.SetAnimationBool("IsOn", !entity.IsAIFrozen());
-            entity.SetAnimationInt("State", GetAnimationState(entity));
+            entity.SetAnimationInt("ForceState", GetAnimationState(entity));
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -86,7 +87,11 @@ namespace MVZ2.GameContent.Contraptions
                 SetDraggingEntities(entity, targets.Select(e => new EntityID(e)).ToArray());
                 SetDragTimeout(entity, MAX_DRAG_TIMEOUT);
                 entity.SetEvoked(true);
-                entity.Level.SetHeldItem(VanillaHeldTypes.forcePad, entity.ID, 100, true);
+
+                var builder = new HeldItemBuilder(VanillaHeldTypes.forcePad, 100);
+                builder.SetEntityID(entity.ID);
+                builder.SetCannotCancel(true);
+                entity.Level.SetHeldItem(builder);
             }
             else
             {
@@ -254,7 +259,8 @@ namespace MVZ2.GameContent.Contraptions
             // 倒计时结束，或者没有在手持该器械，或者已经没有有效的实体了
             // 结束大招。
             var level = pad.Level;
-            bool holdingThis = level.GetHeldItemType() == VanillaHeldTypes.forcePad && level.GetHeldItemID() == pad.ID;
+            var heldItemData = level.GetHeldItemData();
+            bool holdingThis = heldItemData != null && heldItemData.Type == VanillaHeldTypes.forcePad && heldItemData.GetEntityID() == pad.ID;
             if (dragTimeout <= 0 || (!holdingThis && !locked) || !hasValidEntity)
             {
                 if (holdingThis)

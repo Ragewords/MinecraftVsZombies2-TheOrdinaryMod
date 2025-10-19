@@ -3,7 +3,6 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -14,7 +13,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.shikaisenZombie)]
-    public class ShikaisenZombie : MeleeEnemy
+    public class ShikaisenZombie : AIEntityBehaviour
     {
         public ShikaisenZombie(string nsp, string name) : base(nsp, name)
         {

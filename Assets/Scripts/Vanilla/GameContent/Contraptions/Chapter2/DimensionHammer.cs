@@ -68,7 +68,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void Smash(Entity entity, float damage, int faction)
         {
             var range = entity.GetRange();
-            var outputs = entity.Explode(entity.Position, 80, faction, damage, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
+            var outputs = entity.Explode(entity.Position, 80, faction, damage, new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
             foreach (var target in outputs)
             {
                 var ent = target.Entity;

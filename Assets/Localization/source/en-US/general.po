@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2025-09-24 08:11+0800\n"
-"PO-Revision-Date: 2025-09-24 20:21+0800\n"
+"POT-Creation-Date: 2025-10-13 11:56+0800\n"
+"PO-Revision-Date: 2025-10-13 11:59+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -683,57 +683,57 @@ msgctxt "advice.starshard_tutorial.5"
 msgid "现在干掉铁盔僵尸！"
 msgstr "Now defeat the Iron Helmet Zombie!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:310
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:311
 msgctxt "advice.trigger_tutorial.0"
 msgid "放置TNT！"
 msgstr "Click and place TNT!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:312
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:313
 msgctxt "advice.trigger_tutorial.1"
 msgid "点击选中触发器！"
 msgstr "Select the Trigger!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:314
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:315
 msgctxt "advice.trigger_tutorial.2"
 msgid "点击以触发TNT！"
 msgstr "Click to trigger the TNT!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:316
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:317
 msgctxt "advice.trigger_tutorial.3"
 msgid "干得漂亮！"
 msgstr "Excellent job!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:318
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:319
 msgctxt "advice.trigger_tutorial.4"
 msgid "选中触发器！"
 msgstr "Select the Trigger!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:320
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:321
 msgctxt "advice.trigger_tutorial.5"
 msgid "点击TNT蓝图！"
 msgstr "Click the TNT blueprint!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:322
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:323
 msgctxt "advice.trigger_tutorial.6"
 msgid "放置TNT，它会立即被触发！"
 msgstr "Place TNT, then it will be instantly triggered!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:324
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:325
 msgctxt "advice.trigger_tutorial.7"
 msgid "干得好！"
 msgstr "Good job!"
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:326
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:327
 msgctxt "advice.trigger_tutorial.8"
 msgid "立即触发只限于一次性消耗类型的器械。"
 msgstr "Instant triggering can only be used on single-use contraptions."
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:328
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:329
 msgctxt "advice.trigger_tutorial.9"
 msgid "如果你想交换这两个动作的效果，你可以在设置中更改。"
 msgstr "You can swap these two actions in Settings."
 
-#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:330
+#: Scripts\Vanilla\GameContent\Stages\Definitions\TriggerTutorialStage.cs:331
 msgctxt "advice.trigger_tutorial.10"
 msgid "祝你好运！"
 msgstr "Good luck!"
@@ -1221,100 +1221,124 @@ msgctxt "command.output"
 msgid "已保存关卡状态"
 msgstr "Level state has been successfully saved"
 
+# 命令输出-unlock，{0}为游戏状态名
 #: Scripts\Vanilla\VanillaStrings.cs:168
+msgctxt "command.output"
+msgid "已解锁游戏状态{0}"
+msgstr "Unlocked game state {0}"
+
+# 命令输出-unlock，{0}为游戏状态名
+#: Scripts\Vanilla\VanillaStrings.cs:170
+msgctxt "command.output"
+msgid "无法解锁游戏状态{0}：该状态已被解锁"
+msgstr "Cannot unlock game state {0}: This state is already unlocked"
+
+# 命令输出-unlock，{0}为游戏状态名
+#: Scripts\Vanilla\VanillaStrings.cs:172
+msgctxt "command.output"
+msgid "已重新锁定游戏状态{0}"
+msgstr "Relocked game state {0}"
+
+# 命令输出-unlock，{0}为游戏状态名
+#: Scripts\Vanilla\VanillaStrings.cs:174
+msgctxt "command.output"
+msgid "无法重新锁定游戏状态{0}：该状态未被解锁"
+msgstr "Cannot relock game state {0}: This state is not unlocked"
+
+#: Scripts\Vanilla\VanillaStrings.cs:176
 msgctxt "command.output"
 msgid "命令格式错误"
 msgstr "Wrong command format"
 
 # 命令输出
-#: Scripts\Vanilla\VanillaStrings.cs:170
+#: Scripts\Vanilla\VanillaStrings.cs:178
 msgctxt "command.output"
 msgid "该命令只能在关卡中被调用"
 msgstr "This command can only be called in a level."
 
-#: Scripts\Vanilla\VanillaStrings.cs:172
+#: Scripts\Vanilla\VanillaStrings.cs:180
 msgctxt "command.output"
 msgid "参数{0}格式错误"
 msgstr "Incorrect format of parameter {0}"
 
 # 命令输出
-#: Scripts\Vanilla\VanillaStrings.cs:174
+#: Scripts\Vanilla\VanillaStrings.cs:182
 msgctxt "command.output"
 msgid "参数数量错误"
 msgstr "Incorrect parameter count"
 
 # 命令输出，{0}为参数名
-#: Scripts\Vanilla\VanillaStrings.cs:176
+#: Scripts\Vanilla\VanillaStrings.cs:184
 msgctxt "command.output"
 msgid "参数{0}丢失"
 msgstr "Missing parameter {0}"
 
 # 命令输出，{0}为有效参数列表
-#: Scripts\Vanilla\VanillaStrings.cs:178
+#: Scripts\Vanilla\VanillaStrings.cs:186
 msgctxt "command.output"
 msgid "参数错误，有效值为{0}"
 msgstr "Incorrect parameter, valid values are {0}"
 
 # 命令输出，{0}为参数名
-#: Scripts\Vanilla\VanillaStrings.cs:180
+#: Scripts\Vanilla\VanillaStrings.cs:188
 msgctxt "command.output"
 msgid "参数丢失，有效值为{0}"
 msgstr "Missing parameter, valid values are {0}"
 
 # 作弊命令名称
-#: Scripts\Vanilla\VanillaStrings.cs:183
+#: Scripts\Vanilla\VanillaStrings.cs:191
 msgctxt "command.cheat_name"
 msgid "上帝模式"
 msgstr "Godmode"
 
 # 作弊命令名称
-#: Scripts\Vanilla\VanillaStrings.cs:185
+#: Scripts\Vanilla\VanillaStrings.cs:193
 msgctxt "command.cheat_name"
 msgid "无限能量"
 msgstr "Infinite Energy"
 
 # 作弊命令名称
-#: Scripts\Vanilla\VanillaStrings.cs:187
+#: Scripts\Vanilla\VanillaStrings.cs:195
 msgctxt "command.cheat_name"
 msgid "立即充能"
 msgstr "Instant Recharge"
 
-#: Scripts\Vanilla\VanillaStrings.cs:189
+#: Scripts\Vanilla\VanillaStrings.cs:197
 msgctxt "command.cheat_name"
 msgid "无限星之碎片"
 msgstr "Infinite Starshards"
 
 # 命令参数类型
-#: Scripts\Vanilla\VanillaStrings.cs:192
+#: Scripts\Vanilla\VanillaStrings.cs:200
 msgctxt "command_parameter.type"
 msgid "真值"
 msgstr "Boolean"
 
 # 命令参数类型
-#: Scripts\Vanilla\VanillaStrings.cs:194
+#: Scripts\Vanilla\VanillaStrings.cs:202
 msgctxt "command_parameter.type"
 msgid "整数"
 msgstr "Integer"
 
 # 命令参数类型
-#: Scripts\Vanilla\VanillaStrings.cs:196
+#: Scripts\Vanilla\VanillaStrings.cs:204
 msgctxt "command_parameter.type"
 msgid "实数"
 msgstr "Real"
 
 # 按键名
-#: Scripts\Vanilla\VanillaStrings.cs:198
+#: Scripts\Vanilla\VanillaStrings.cs:206
 msgctxt "command_parameter.type"
 msgid "ID"
 msgstr "ID"
 
 # 命令参数类型
-#: Scripts\Vanilla\VanillaStrings.cs:200
+#: Scripts\Vanilla\VanillaStrings.cs:208
 msgctxt "command_parameter.type"
 msgid "命令"
 msgstr "Command"
 
-#: Scripts\Vanilla\VanillaStrings.cs:202
+#: Scripts\Vanilla\VanillaStrings.cs:210
 msgctxt "command_parameter.type"
 msgid "未知"
 msgstr "Unknown"
@@ -2683,7 +2707,7 @@ msgstr ""
 "Excess mods:\n"
 "{0}"
 
-#: Scripts\MVZ2\Level\LevelController\LevelController_Entities.cs:240
+#: Scripts\MVZ2\Level\LevelController\LevelController_Entities.cs:215
 msgctxt "entity.tooltip"
 msgid "在图鉴中查看"
 msgstr "View in Almanac"
@@ -3140,6 +3164,30 @@ msgstr "Overdraw"
 msgctxt "achievement"
 msgid "使用欲望壶的技能抽到两张欲望壶。"
 msgstr "Evoke a Desire Pot to draw 2 Desire Pot blueprints."
+
+#. Name for achievement mvz2:railgun
+#: Achievements meta file
+msgctxt "achievement"
+msgid "电磁炮"
+msgstr "Railgun"
+
+#. Description for achievement mvz2:railgun
+#: Achievements meta file
+msgctxt "achievement"
+msgid "使用被闪电充能的TNT杀死一只炮手僵尸。"
+msgstr "Kill a Cannoneer Zombie with charged TNT."
+
+#. Name for achievement mvz2:midas_touchdown
+#: Achievements meta file
+msgctxt "achievement"
+msgid "金无足赤"
+msgstr "Midas Touchdown"
+
+#. Description for achievement mvz2:midas_touchdown
+#: Achievements meta file
+msgctxt "achievement"
+msgid "在不使用重力的情况下，使一只无头骑士被地板杀死。"
+msgstr "Kill a Dullahan using the floor but without using gravity."
 
 #. Name for music mvz2:mainmenu
 #: Music meta file
@@ -4410,6 +4458,22 @@ msgstr ""
 "Golden Dropper can be upgraded from a Wooden Dropper, it fires bouncing "
 "golden balls that can make money!"
 
+#. Store item description of mvz2:skyward_beacon by character mvz2:crazy_villager
+#: Store meta file
+msgctxt "store_talk"
+msgid "把御天信标放在信标上，让它发射从天而降的致命光束，打击你所指定的位置！"
+msgstr ""
+"Place Skyward Beacons on your Beacons. They can strike certain spots set by "
+"you, with their deadly light beams!"
+
+#. Store item description of mvz2:skyward_beacon by character mvz2:tokiko
+#: Store meta file
+msgctxt "store_talk"
+msgid "御天信标能升级信标，发射从天而降的光束，打击你想要的任意位置！"
+msgstr ""
+"Skyward Beacon can be upgraded from a Beacon, it fires light beams, to "
+"strike any certain spot as you wish!"
+
 #. Store item description of mvz2:hoe by character mvz2:crazy_villager
 #: Store meta file
 msgctxt "store_talk"
@@ -4545,6 +4609,35 @@ msgid "有点吓人的大眼睛……它能让你的器械造成巨额伤害，�
 msgstr ""
 "A big scary eye...It can make your contraptions deal massive damage, but "
 "attack much more slowly!"
+
+#. Store item description of mvz2:dowsing_rods by character mvz2:crazy_villager
+#: Store meta file
+msgctxt "store_talk"
+msgid "探宝棒！可以让你从怪物身上搜刮出一些战利品！"
+msgstr "Dowsing Rods! Makes you can scrape some loot from monsters!"
+
+#. Store item description of mvz2:dowsing_rods by character mvz2:tokiko
+#: Store meta file
+msgctxt "store_talk"
+msgid "老鼠的探宝棒！可以让你从怪物们身上得到一些额外的东西！"
+msgstr ""
+"The mouse's Dowsing Rods! You can get some extra things from the monsters!"
+
+#. Store item description of mvz2:dragon_tooth by character mvz2:crazy_villager
+#: Store meta file
+msgctxt "store_talk"
+msgid "红龙的牙齿！受重伤的敌人会受到两倍伤害！"
+msgstr ""
+"The red dragon's tooth! Enemies who are seriously damaged will receive twice "
+"the damage!"
+
+#. Store item description of mvz2:dragon_tooth by character mvz2:tokiko
+#: Store meta file
+msgctxt "store_talk"
+msgid "红龙掉下来的牙齿！如果一个敌人受了重伤，它会受到更多的伤害！"
+msgstr ""
+"The red dragon's fallen tooth! If an enemy is seriously damaged, it will "
+"suffer even more damage!"
 
 #. Name for credits category 内容设计
 #: Credits meta file
@@ -4769,15 +4862,15 @@ msgctxt "command_parameter.description"
 msgid "可选。要生成的实体位置的Z值。"
 msgstr "Optional. The Z position where the entity is spawned at."
 
-#. Description for command variant "mvz2:spawn grid"
+#. Description for command variant "mvz2:spawn tile"
 #: Commands meta file
 msgctxt "command_variant.description"
 msgid "在指定的地格位置生成实体。默认位置为场地中心。"
 msgstr ""
-"Spawns an entity on a certain grid. The default location is the center of "
+"Spawns an entity on a certain tile. The default location is the center of "
 "the battlefield."
 
-#. Description for parameter column of command "mvz2:spawn grid"
+#. Description for parameter column of command "mvz2:spawn tile"
 #: Commands meta file
 msgctxt "command_parameter.description"
 msgid "可选。实体所在列。0代表最左侧一列，向右递增。"
@@ -4785,7 +4878,7 @@ msgstr ""
 "Optional. The column where the entity is spawned at. 0 represents the "
 "leftmost column, increasing to the right."
 
-#. Description for parameter lane of command "mvz2:spawn grid"
+#. Description for parameter lane of command "mvz2:spawn tile"
 #: Commands meta file
 msgctxt "command_parameter.description"
 msgid "可选。实体所在行。0代表最上方一行，向下递增。"
@@ -5057,15 +5150,15 @@ msgctxt "command_parameter.description"
 msgid "可选。要生成的掉落物位置的Z值。"
 msgstr "Optional. The Z position where the pickup is spawned at."
 
-#. Description for command variant "mvz2:spawnblueprint grid"
+#. Description for command variant "mvz2:spawnblueprint tile"
 #: Commands meta file
 msgctxt "command_variant.description"
 msgid "在指定的地格位置生成指定蓝图掉落物。默认位置为场地中心。"
 msgstr ""
-"Spawns a blueprint pickup on a certain grid. The default location is the "
+"Spawns a blueprint pickup on a certain tile. The default location is the "
 "center of the battlefield."
 
-#. Description for parameter column of command "mvz2:spawnblueprint grid"
+#. Description for parameter column of command "mvz2:spawnblueprint tile"
 #: Commands meta file
 msgctxt "command_parameter.description"
 msgid "可选。掉落物所在列。0代表最左侧一列，向右递增。"
@@ -5073,7 +5166,7 @@ msgstr ""
 "Optional. The column where the pickup is spawned at. 0 represents the "
 "leftmost column, increasing to the right."
 
-#. Description for parameter lane of command "mvz2:spawnblueprint grid"
+#. Description for parameter lane of command "mvz2:spawnblueprint tile"
 #: Commands meta file
 msgctxt "command_parameter.description"
 msgid "可选。掉落物所在行。0代表最上方一行，向下递增。"
@@ -5114,6 +5207,30 @@ msgctxt "command_variant.description"
 msgid "移除指定槽位的制品。"
 msgstr "Removes the artifact of a certain slot."
 
+#. Description for command "mvz2:unlock"
+#: Commands meta file
+msgctxt "command.description"
+msgid "解锁或重新锁定某些游戏状态。"
+msgstr "Unlocks or relocks some game state."
+
+#. Description for command variant "mvz2:unlock add"
+#: Commands meta file
+msgctxt "command_variant.description"
+msgid "解锁游戏状态。"
+msgstr "Unlocks a game state."
+
+#. Description for parameter id of command "mvz2:unlock add"
+#: Commands meta file
+msgctxt "command_parameter.description"
+msgid "状态ID。"
+msgstr "State ID."
+
+#. Description for command variant "mvz2:unlock remove"
+#: Commands meta file
+msgctxt "command_variant.description"
+msgid "重新锁定游戏状态。"
+msgstr "Relocks a game state."
+
 #. Description for command "mvz2:test"
 #: Commands meta file
 msgctxt "command.description"
@@ -5137,6 +5254,12 @@ msgstr "Armor ID."
 msgctxt "command_variant.description"
 msgid "生成一排带有特定盾牌的不同怪物。"
 msgstr "Spawns a group of monsters with specific shields."
+
+#. Description for command variant "mvz2:test paratroops"
+#: Commands meta file
+msgctxt "command_variant.description"
+msgid "生成一队伞兵僵尸。"
+msgstr "Spawns a group of Paratroop Zombies."
 
 #. Name for difficulty 简单
 #: Difficulty meta file

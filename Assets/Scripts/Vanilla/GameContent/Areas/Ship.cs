@@ -8,6 +8,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
@@ -158,7 +159,7 @@ namespace MVZ2.GameContent.Areas
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
-                if (enemy.State != VanillaEntityStates.ATTACK && enemy.State != VanillaEntityStates.ENEMY_PARACHUTE)
+                if (enemy.State != VanillaEnemyStates.MELEE_ATTACK && enemy.State != VanillaEnemyStates.RANGED_ATTACK)
                     enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * enemy.GetStrongKnockbackMultiplier() * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))

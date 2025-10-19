@@ -4,6 +4,7 @@ using MVZ2.GameContent.Buffs.Level;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
 using MVZ2Logic.Modding;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
@@ -35,11 +36,11 @@ namespace MVZ2.GameContent.GlobalCallbacks
             var heldData = param.heldData;
             if (entity == null)
                 return;
-            if (heldData.InstantTrigger && entity.CanTrigger())
+            if (heldData.IsInstantTrigger() && entity.CanTrigger())
             {
                 entity.Trigger();
             }
-            if (heldData.InstantEvoke && entity.CanEvoke() && entity.Level.GetStarshardCount() > 0 && !entity.Level.IsStarshardDisabled())
+            if (heldData.IsInstantEvoke() && entity.CanEvoke() && entity.Level.GetStarshardCount() > 0 && !entity.Level.IsStarshardDisabled())
             {
                 entity.Level.AddStarshardCount(-1);
                 entity.Evoke();

@@ -31,9 +31,9 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new FrontflipState());
                 AddState(new DanmakuState());
                 AddState(new HammerState());
-                AddState(new GapMoveState());
+                AddState(new GapTeleportState());
                 AddState(new GapBombState());
-                AddState(new TeleportState());
+                AddState(new OrbTeleportState());
                 AddState(new CameraState());
                 AddState(new FabricState());
                 AddState(new LanternState());
@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Bosses
         #region 状态
         private class AppearState : EntityStateMachineState
         {
-            public AppearState() : base(STATE_APPEAR) { }
+            public AppearState() : base(STATE_APPEAR, ANIMATION_STATE_APPEAR) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -63,7 +63,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class IdleState : EntityStateMachineState
         {
-            public IdleState() : base(STATE_IDLE) { }
+            public IdleState() : base(STATE_IDLE, ANIMATION_STATE_IDLE) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -95,7 +95,7 @@ namespace MVZ2.GameContent.Bosses
             private int GetNextState(EntityStateMachine stateMachine, Entity entity)
             {
                 var lastState = stateMachine.GetPreviousState(entity);
-                if (lastState == STATE_IDLE || lastState == STATE_TELEPORT)
+                if (lastState == STATE_IDLE || lastState == STATE_ORB_TELEPORT)
                 {
                     lastState = STATE_DANMAKU;
                     return lastState;
@@ -147,7 +147,7 @@ namespace MVZ2.GameContent.Bosses
                 }
                 if (lastState == STATE_BACKFLIP)
                 {
-                    lastState = STATE_TELEPORT;
+                    lastState = STATE_ORB_TELEPORT;
                     if (ShouldYinyangOrb(entity))
                     {
                         return lastState;
@@ -159,7 +159,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class DanmakuState : EntityStateMachineState
         {
-            public DanmakuState() : base(STATE_DANMAKU)
+            public DanmakuState() : base(STATE_DANMAKU, ANIMATION_STATE_DANMAKU)
             {
             }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
@@ -243,7 +243,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class HammerState : EntityStateMachineState
         {
-            public HammerState() : base(STATE_HAMMER) { }
+            public HammerState() : base(STATE_HAMMER, ANIMATION_STATE_HAMMER) { }
 
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
@@ -283,7 +283,7 @@ namespace MVZ2.GameContent.Bosses
                             foreach (var collider in smashDetectBuffer)
                             {
                                 var target = collider.Entity;
-                                var damageResult = collider.TakeDamage(target.GetTakenCrushDamage(), new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
+                                var damageResult = collider.TakeDamage(target.GetTakenCrushDamage(), new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), entity);
                                 if (damageResult != null && damageResult.BodyResult != null && damageResult.BodyResult.Fatal && damageResult.BodyResult.Entity.Type == EntityTypes.PLANT)
                                 {
                                     damageResult.Entity.PlaySound(VanillaSoundID.smash);
@@ -313,7 +313,7 @@ namespace MVZ2.GameContent.Bosses
                                     LeaveJizo(entity);
                                 }
                                 else
-                                    stateMachine.StartState(entity, STATE_GAP_MOVE);
+                                    stateMachine.StartState(entity, STATE_GAP_TELEPORT);
                             }
                         }
                         break;
@@ -334,9 +334,9 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_RAISE = 0;
             public const int SUBSTATE_HAMMERED = 1;
         }
-        private class TeleportState : EntityStateMachineState
+        private class OrbTeleportState : EntityStateMachineState
         {
-            public TeleportState() : base(STATE_TELEPORT) { }
+            public OrbTeleportState() : base(STATE_ORB_TELEPORT, ANIMATION_STATE_ORB_TELEPORT) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -403,9 +403,9 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_FORWARD = 1;
             public const int SUBSTATE_BACKWARD = 2;
         }
-        private class GapMoveState : EntityStateMachineState
+        private class GapTeleportState : EntityStateMachineState
         {
-            public GapMoveState() : base(STATE_GAP_MOVE) { }
+            public GapTeleportState() : base(STATE_GAP_TELEPORT, ANIMATION_STATE_GAP_TELEPORT) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -470,7 +470,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class GapBombState : EntityStateMachineState
         {
-            public GapBombState() : base(STATE_GAP_BOMB) { }
+            public GapBombState() : base(STATE_GAP_BOMB, ANIMATION_STATE_GAP_BOMB) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -571,7 +571,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class CameraState : EntityStateMachineState
         {
-            public CameraState() : base(STATE_CAMERA) { }
+            public CameraState() : base(STATE_CAMERA, ANIMATION_STATE_CAMERA) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -630,7 +630,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class BackflipState : EntityStateMachineState
         {
-            public BackflipState() : base(STATE_BACKFLIP) { }
+            public BackflipState() : base(STATE_BACKFLIP, ANIMATION_STATE_BACKFLIP) { }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -666,7 +666,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class FrontflipState : EntityStateMachineState
         {
-            public FrontflipState() : base(STATE_FRONTFLIP) { }
+            public FrontflipState() : base(STATE_FRONTFLIP, ANIMATION_STATE_FRONTFLIP) { }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -702,7 +702,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class FabricState : EntityStateMachineState
         {
-            public FabricState() : base(STATE_FABRIC) { }
+            public FabricState() : base(STATE_FABRIC, ANIMATION_STATE_FABRIC) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -757,7 +757,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class LanternState : EntityStateMachineState
         {
-            public LanternState() : base(STATE_LANTERN) { }
+            public LanternState() : base(STATE_LANTERN, ANIMATION_STATE_LANTERN) { }
 
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
@@ -802,7 +802,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class FaintState : EntityStateMachineState
         {
-            public FaintState() : base(STATE_FAINT) { }
+            public FaintState() : base(STATE_FAINT, ANIMATION_STATE_FAINT) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
@@ -814,5 +814,19 @@ namespace MVZ2.GameContent.Bosses
         }
         #endregion
 
+
+        public const int ANIMATION_STATE_IDLE = 0;
+        public const int ANIMATION_STATE_APPEAR = 1;
+        public const int ANIMATION_STATE_DANMAKU = 2;
+        public const int ANIMATION_STATE_FAINT = 3;
+        public const int ANIMATION_STATE_HAMMER = 4;
+        public const int ANIMATION_STATE_GAP_BOMB = 5;
+        public const int ANIMATION_STATE_CAMERA = 6;
+        public const int ANIMATION_STATE_BACKFLIP = 7;
+        public const int ANIMATION_STATE_FRONTFLIP = 8;
+        public const int ANIMATION_STATE_FABRIC = 9;
+        public const int ANIMATION_STATE_LANTERN = 10;
+        public const int ANIMATION_STATE_ORB_TELEPORT = 11;
+        public const int ANIMATION_STATE_GAP_TELEPORT = 12;
     }
 }

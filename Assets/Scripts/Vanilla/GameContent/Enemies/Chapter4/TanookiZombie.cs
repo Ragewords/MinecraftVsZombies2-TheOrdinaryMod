@@ -21,7 +21,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.tanookiZombie)]
-    public class TanookiZombie : MeleeEnemy
+    public class TanookiZombie : AIEntityBehaviour
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
@@ -33,30 +33,13 @@ namespace MVZ2.GameContent.Enemies
             SetJumpTimer(entity, new FrameTimer(210));
             SetStatueTimer(entity, new FrameTimer(30));
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var state = base.GetActionState(enemy);
-            var jumpTimer = GetJumpTimer(enemy);
-            if (state == VanillaEntityStates.WALK && IsJumping(enemy))
-            {
-                return STATE_JUMP;
-            }
-            return state;
-        }
-        protected override void WalkUpdate(Entity enemy)
-        {
-            var jumpTimer = GetJumpTimer(enemy);
-            if (jumpTimer != null && jumpTimer.Expired)
-                return;
-            base.WalkUpdate(enemy);
-        }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
 
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEntityStates.ATTACK)
+            if (entity.State == VanillaEnemyStates.MELEE_ATTACK)
                 return;
             if (entity.HasBuff<TanookiZombieStoneBuff>())
                 return;
@@ -71,6 +54,7 @@ namespace MVZ2.GameContent.Enemies
                     entity.PlaySound(VanillaSoundID.jizoAppear);
                     entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, jumpTarget + Vector3.up * 240, 30, entity.GetGravity());
                     SetJumping(entity, true);
+                    entity.SetPerformingSpecialMove(true);
                 }
                 else if (IsJumping(entity))
                 {
@@ -83,6 +67,7 @@ namespace MVZ2.GameContent.Enemies
                             e.SetSize(entity.GetSize() * 2);
                         });
                         SetJumping(entity, false);
+                        entity.SetPerformingSpecialMove(false);
                         statueTimer.Reset();
                         jumpTimer.Reset();
                     }
@@ -110,14 +95,13 @@ namespace MVZ2.GameContent.Enemies
                     if (anvil.IsHostile(other))
                     {
                         float damageModifier = Mathf.Clamp(velocity.magnitude, 0, 1);
-                        target.TakeDamage(300 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
+                        target.TakeDamage(300 * damageModifier, new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.MUTE), anvil);
                     }
                 }
             }
         }
 
         public static readonly NamespaceID ID = VanillaEnemyID.tanookiZombie;
-        public const int STATE_JUMP = VanillaEntityStates.TANOOKI_ZOMBIE_JUMP;
         public static void SetJumping(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_JUMPING, value);
         public static bool IsJumping(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_JUMPING);
         public static void SetJumpTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_JUMP_TIMER, timer);

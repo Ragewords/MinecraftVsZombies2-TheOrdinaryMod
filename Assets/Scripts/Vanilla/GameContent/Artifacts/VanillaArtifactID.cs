@@ -31,6 +31,9 @@ namespace MVZ2.GameContent.Artifacts
         public const string eyeOfTheGiant = "eye_of_the_giant";
 
         public const string ufoToy = "ufo_toy";
+        public const string dowsingRods = "dowsing_rods";
+        public const string sorcerersScroll = "sorcerers_scroll";
+        public const string dragonTooth = "dragon_tooth";
 
         public const string jackOLantern = "jack_o_lantern";
         public const string bentSpoon = "bent_spoon";
@@ -64,6 +67,9 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaArtifactNames.eyeOfTheGiant);
 
         public static readonly NamespaceID ufoToy = Get(VanillaArtifactNames.ufoToy);
+        public static readonly NamespaceID dowsingRods = Get(VanillaArtifactNames.dowsingRods);
+        public static readonly NamespaceID sorcerersScroll = Get(VanillaArtifactNames.sorcerersScroll);
+        public static readonly NamespaceID dragonTooth = Get(VanillaArtifactNames.dragonTooth);
 
         public static readonly NamespaceID jackOLantern = Get(VanillaArtifactNames.jackOLantern);
         public static readonly NamespaceID bentSpoon = Get(VanillaArtifactNames.bentSpoon);

@@ -288,16 +288,12 @@ PrefabInstance:
       objectReference: {fileID: 2020207070, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
     - target: {fileID: 4966536675280526664, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: renderers.Array.size
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4966536675280526664, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: renderers.Array.data[11]
       value: 
       objectReference: {fileID: 1914097810400504425}
-    - target: {fileID: 4966536675280526664, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
-      propertyPath: renderers.Array.data[12]
-      value: 
-      objectReference: {fileID: 2777193640446195595}
     - target: {fileID: 5119668504025542221, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: m_Name
       value: reflective_barrier_zombie
@@ -340,6 +336,7 @@ PrefabInstance:
       objectReference: {fileID: -1932637021, guid: 7830670c779e9b948a9ad6dc42466bfa, type: 3}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 8080526330840780163, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8698303746586872305, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
@@ -358,17 +355,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8130184350635454342, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
   m_PrefabInstance: {fileID: 6244620233931258376}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2777193640446195595 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8080526330840780163, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
-  m_PrefabInstance: {fileID: 6244620233931258376}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &2958400017207654754 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 9198320902467191658, guid: a2a566a7ce07850428f426c3406edea6, type: 3}

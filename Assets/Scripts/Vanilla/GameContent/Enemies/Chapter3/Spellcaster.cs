@@ -17,7 +17,7 @@ using Tools;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.spellcaster)]
-    public class Spellcaster : MeleeEnemy
+    public class Spellcaster : AIEntityBehaviour
     {
         public Spellcaster(string nsp, string name) : base(nsp, name)
         {
@@ -32,15 +32,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
-        }
-        protected override int GetActionState(Entity enemy)
-        {
-            var state = base.GetActionState(enemy);
-            if (state == STATE_WALK && IsCasting(enemy))
-            {
-                return STATE_CAST;
-            }
-            return state;
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -64,7 +55,7 @@ namespace MVZ2.GameContent.Enemies
                         {
                             target.HealEffects(entity.GetDamage() * 2, entity);
                             entity.PlaySound(VanillaSoundID.heal);
-                            SetCasting(entity, true);
+                            entity.SetCasting(true);
                         }
                         stateTimer.Frame = CONTROL_DETECT_TIME;
                     }
@@ -82,7 +73,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (entity.State == STATE_CAST)
+            if (entity.IsCasting())
             {
                 EndCasting(entity);
             }
@@ -91,23 +82,20 @@ namespace MVZ2.GameContent.Enemies
         {
             var stateTimer = GetStateTimer(entity);
             stateTimer?.Reset();
-            SetCasting(entity, false);
+            entity.SetCasting(false);
         }
 
-        public static void SetCasting(Entity entity, bool timer) => entity.SetBehaviourField(ID, PROP_CASTING, timer);
-        public static bool IsCasting(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_CASTING);
         public static void SetStateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_STATE_TIMER, timer);
         public static FrameTimer? GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
 
         #region ����
         private const int CAST_COOLDOWN = 180;
         private const int CONTROL_DETECT_TIME = 30;
+        public const int STATE_WALK = VanillaEnemyStates.WALK;
+        public const int STATE_CAST = VanillaEnemyStates.CAST;
         private Detector detector;
         private List<Entity> healBuffer = new List<Entity>();
 
-        public const int STATE_WALK = VanillaEntityStates.WALK;
-        public const int STATE_ATTACK = VanillaEntityStates.ATTACK;
-        public const int STATE_CAST = VanillaEntityStates.MESMERIZER_CAST;
         public static readonly NamespaceID ID = VanillaEnemyID.spellcaster;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_ORB = new VanillaEntityPropertyMeta<EntityID>("Orb");

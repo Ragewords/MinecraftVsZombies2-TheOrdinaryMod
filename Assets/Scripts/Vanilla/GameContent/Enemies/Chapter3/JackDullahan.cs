@@ -6,7 +6,6 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
@@ -18,7 +17,7 @@ using PVZEngine.Level;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.jackDullahan)]
-    public class JackDullahan : StateEnemy
+    public class JackDullahan : AIEntityBehaviour
     {
         public JackDullahan(string nsp, string name) : base(nsp, name)
         {
@@ -48,24 +47,6 @@ namespace MVZ2.GameContent.Enemies
                 input.Multiply(3);
             }
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var baseState = base.GetActionState(enemy);
-            if (baseState == VanillaEntityStates.WALK)
-            {
-                var horse = enemy.GetRidingEntity();
-                var hasHorse = horse.ExistsAndAlive();
-                if (hasHorse)
-                {
-                    return STATE_IDLE;
-                }
-                else
-                {
-                    return STATE_SWING;
-                }
-            }
-            return baseState;
-        }
         protected override void UpdateAI(Entity enemy)
         {
             base.UpdateAI(enemy);
@@ -73,6 +54,8 @@ namespace MVZ2.GameContent.Enemies
             if (horse == null)
             {
                 DropHead(enemy);
+                if (!enemy.IsDead)
+                    Swing(enemy);
             }
             else if (horse.IsEntityOf(VanillaEnemyID.soulSkeletonHorse))
             {
@@ -82,10 +65,8 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        protected override void UpdateStateSpecial(Entity enemy)
+        public void Swing(Entity enemy)
         {
-            base.UpdateStateSpecial(enemy);
-            enemy.UpdateWalkVelocity();
             if (enemy.IsTimeInterval(10))
             {
                 enemy.PlaySound(VanillaSoundID.swing, pitch: enemy.RNG.Next(0.8f, 1.2f));
@@ -132,8 +113,6 @@ namespace MVZ2.GameContent.Enemies
         public static void SetHeadDropped(Entity entity, bool value) => entity.SetBehaviourField(ID, FIELD_HEAD_DROPPED, value);
 
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
-        public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_SWING = VanillaEntityStates.ENEMY_SPECIAL;
         private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
         private Detector spinDetector;
         private List<Entity> spinBuffer = new List<Entity>();

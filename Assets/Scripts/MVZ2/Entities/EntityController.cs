@@ -10,6 +10,7 @@ using MVZ2.Managers;
 using MVZ2.Metas;
 using MVZ2.Models;
 using MVZ2.UI;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic;
@@ -522,9 +523,13 @@ namespace MVZ2.Entities
             if (!Model.Exists())
                 return;
 
-            if (Level.IsGameOver() && (Entity.Type == EntityTypes.ENEMY || Entity.Type == EntityTypes.BOSS))
+            if (Level.IsGameOver() && Entity == Entity.Level.KillerEnemy)
             {
-                Model.SetAnimatorInt("State", VanillaEntityStates.WALK);
+                var behaviour = Entity.Definition.GetBehaviour<IEnemyStateBehaviour>();
+                if (behaviour != null)
+                {
+                    Model.SetAnimatorInt("AnimationState", behaviour.GetAnimationState(VanillaEnemyStates.WALK));
+                }
             }
             var groundPos = Entity.Position;
             groundPos.y = Entity.GetGroundY();
@@ -689,6 +694,7 @@ namespace MVZ2.Entities
                 ShadowAlpha = entity.GetShadowAlpha();
                 ShadowOffset = entity.GetShadowOffset();
                 ShadowScale = entity.GetShadowScale();
+                entityCtrl.UpdateShadow();
 
                 dirtyProperties.Clear();
             }
@@ -751,16 +757,28 @@ namespace MVZ2.Entities
                             break;
 
                         case PropertyName.ShadowHidden:
-                            ShadowHidden = entity.IsShadowHidden();
+                            {
+                                ShadowHidden = entity.IsShadowHidden();
+                                entityCtrl.UpdateShadow();
+                            }
                             break;
                         case PropertyName.ShadowAlpha:
-                            ShadowAlpha = entity.GetShadowAlpha();
+                            {
+                                ShadowAlpha = entity.GetShadowAlpha();
+                                entityCtrl.UpdateShadow();
+                            }
                             break;
                         case PropertyName.ShadowOffset:
-                            ShadowOffset = entity.GetShadowOffset();
+                            {
+                                ShadowOffset = entity.GetShadowOffset();
+                                entityCtrl.UpdateShadow();
+                            }
                             break;
                         case PropertyName.ShadowScale:
-                            ShadowScale = entity.GetShadowScale();
+                            {
+                                ShadowScale = entity.GetShadowScale();
+                                entityCtrl.UpdateShadow();
+                            }
                             break;
 
                         case PropertyName.LightSource:

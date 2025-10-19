@@ -3,6 +3,7 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
@@ -103,13 +104,12 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta<Vector3> PROP_DASH_DIRECTION = new VanillaEntityPropertyMeta<Vector3>("DashDirection");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_ALTER_JUMP = new VanillaEntityPropertyMeta<bool>("alterJump");
 
-        public const int STATE_APPEAR = VanillaEntityStates.BOSS_APPEAR;
-        public const int STATE_IDLE = VanillaEntityStates.IDLE;
-        public const int STATE_DASH = VanillaEntityStates.ATTACK;
-        public const int STATE_SPACE = VanillaEntityStates.BOSS_ATTACK_2;
-        public const int STATE_THROW = VanillaEntityStates.BOSS_ATTACK_3;
-        public const int STATE_REST = VanillaEntityStates.BOSS_SPECIAL;
-        public const int STATE_DEAD = VanillaEntityStates.DEAD;
+        public const int STATE_APPEAR = VanillaBossStates.APPEAR;
+        public const int STATE_IDLE = VanillaBossStates.IDLE;
+        public const int STATE_DASH = VanillaBossStates.CRESCENT_DASH;
+        public const int STATE_SPACE = VanillaBossStates.CRESCENT_SPACE;
+        public const int STATE_THROW = VanillaBossStates.CRESCENT_THROW;
+        public const int STATE_DEAD = VanillaBossStates.DEATH;
         public const float HEIGHT = 30;
         private static CrescentStateMachine stateMachine = new CrescentStateMachine();
     }

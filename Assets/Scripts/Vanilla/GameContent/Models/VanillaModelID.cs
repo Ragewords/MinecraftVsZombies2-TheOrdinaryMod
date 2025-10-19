@@ -39,6 +39,7 @@ namespace MVZ2.GameContent.Models
         public static readonly NamespaceID swordHeldItem = Get("sword", TYPE_HELD_ITEM);
         public static readonly NamespaceID defaultStartShardHeldItem = Get("starshard.default", TYPE_HELD_ITEM);
         public static readonly NamespaceID targetHeldItem = Get("target", TYPE_HELD_ITEM);
+        public static readonly NamespaceID combat = Get("combat", TYPE_HELD_ITEM);
 
         public static readonly NamespaceID timeStop = Get("time_stop", TYPE_ICON);
         public static readonly NamespaceID shortCircuit = Get("short_circuit", TYPE_ICON);
@@ -56,6 +57,7 @@ namespace MVZ2.GameContent.Models
         public static readonly NamespaceID parabotInsected = Get("parabot_insected", TYPE_ICON);
         public static readonly NamespaceID knockbackWave = Get("knockback_wave", TYPE_ICON);
         public static readonly NamespaceID divineShield = Get("divine_shield", TYPE_ICON);
+        public static readonly NamespaceID vulnerable = Get("vulnerable", TYPE_ICON);
 
         public static readonly NamespaceID mindSwap = Get("mind_swap", TYPE_UI);
         public static NamespaceID GetStarshardHeldItem(NamespaceID areaID)

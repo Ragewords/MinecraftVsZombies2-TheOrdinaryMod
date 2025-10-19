@@ -3,10 +3,11 @@
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Models;
+using MVZ2.Vanilla;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
@@ -16,7 +17,7 @@ using PVZEngine.Level;
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.dullahan)]
-    public class Dullahan : MeleeEnemy
+    public class Dullahan : AIEntityBehaviour
     {
         public Dullahan(string nsp, string name) : base(nsp, name)
         {
@@ -39,14 +40,6 @@ namespace MVZ2.GameContent.Enemies
             });
             entity.SetAnimationBool("Sitting", true);
             entity.SetAnimationBool("HoldingHead", !IsHeadDropped(entity));
-        }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
-        {
-            base.PreTakeDamage(input, result);
-            if (input.Effects.HasEffect(VanillaDamageEffects.GOLD))
-            {
-                input.Multiply(3);
-            }
         }
         private void PostEntityCharmCallback(VanillaLevelCallbacks.PostApplyStatusEffectParams param, CallbackResult result)
         {
@@ -80,20 +73,6 @@ namespace MVZ2.GameContent.Enemies
                 return;
             head.Die();
         }
-        protected override int GetActionState(Entity enemy)
-        {
-            var baseState = base.GetActionState(enemy);
-            if (baseState == VanillaEntityStates.WALK)
-            {
-                var horse = enemy.GetRidingEntity();
-                var hasHorse = horse.ExistsAndAlive();
-                if (hasHorse)
-                {
-                    return STATE_IDLE;
-                }
-            }
-            return baseState;
-        }
         protected override void UpdateAI(Entity enemy)
         {
             base.UpdateAI(enemy);
@@ -122,9 +101,14 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (info.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
-                return;
-            DropHead(entity);
+            if (!info.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            {
+                DropHead(entity);
+            }
+            if (info.Source is GridSourceReference gridSource && !info.HasEffect(VanillaDamageEffects.FALL_DAMAGE))
+            {
+                Global.Saves.Unlock(VanillaUnlockID.midasTouchdown);
+            }
         }
         public static Entity? DropHead(Entity entity)
         {
@@ -153,7 +137,6 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly VanillaEntityPropertyMeta<EntityID> FIELD_HEAD = new VanillaEntityPropertyMeta<EntityID>("Head");
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
-        public const int STATE_IDLE = VanillaEntityStates.IDLE;
         private static readonly NamespaceID ID = VanillaEnemyID.dullahan;
     }
 }

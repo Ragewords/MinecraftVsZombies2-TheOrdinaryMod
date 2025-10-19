@@ -7,6 +7,7 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
@@ -33,6 +34,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             stateMachine.Init(entity);
+            stateMachine.StartState(entity, STATE_ASCENT);
         }
         protected override void UpdateAI(Entity pagoda)
         {
@@ -102,10 +104,10 @@ namespace MVZ2.GameContent.Contraptions
         public static void AddRestrictedGridCount(Entity pagoda, int value) => SetRestrictedGridCount(pagoda, GetRestrictedGridCount(pagoda) + value);
         public static void SetRestrictedGridCount(Entity pagoda, int value) => pagoda.SetProperty(PROP_STRICTED_GRID_COUNT, value);
         public static int GetRestrictedGridCount(Entity pagoda) => pagoda.GetProperty<int>(PROP_STRICTED_GRID_COUNT);
-        public const int STATE_ASCENT = VanillaEntityStates.JEWELED_PAGODA_ASCENT;
-        public const int STATE_LASER = VanillaEntityStates.JEWELED_PAGODA_LASER;
-        public const int STATE_JEWEL = VanillaEntityStates.JEWELED_PAGODA_JEWEL;
-        public const int STATE_DISAPPEAR = VanillaEntityStates.JEWELED_PAGODA_DISAPPEAR;
+        public const int STATE_ASCENT = VanillaContraptionStates.JEWELED_PAGODA_ASCENT;
+        public const int STATE_LASER = VanillaContraptionStates.JEWELED_PAGODA_LASER;
+        public const int STATE_JEWEL = VanillaContraptionStates.JEWELED_PAGODA_JEWEL;
+        public const int STATE_DISAPPEAR = VanillaContraptionStates.JEWELED_PAGODA_DISAPPEAR;
         public const float TARGET_RELATIVE_Y = 64;
         public const int GRIDS_PER_STARSHARD = 3;
         public const int LEAST_JEWELS = 4;

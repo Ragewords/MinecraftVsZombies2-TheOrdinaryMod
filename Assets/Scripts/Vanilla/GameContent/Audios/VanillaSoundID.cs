@@ -124,6 +124,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID jizoAppear = Get("jizo_appear");
         public readonly static NamespaceID launch = Get("launch");
         public readonly static NamespaceID leatherHit = Get("leather_hit");
+        public readonly static NamespaceID lightbeam = Get("lightbeam");
         public readonly static NamespaceID lightningAttack = Get("lightning_attack");
         public readonly static NamespaceID loseMusic = Get("lose_music");
         public readonly static NamespaceID lowQualityEgypt = Get("low_quality_egypt");
@@ -209,8 +210,10 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID splashBig = Get("splash_big");
         public readonly static NamespaceID splat = Get("splat");
         public readonly static NamespaceID spring = Get("spring");
+        public readonly static NamespaceID star = Get("star");
         public readonly static NamespaceID starshardAppear = Get("starshard_appear");
         public readonly static NamespaceID starshardUse = Get("starshard_use");
+        public readonly static NamespaceID steveRoar = Get("steve_roar");
         public readonly static NamespaceID stone = Get("stone");
         public readonly static NamespaceID stoneHatch = Get("stone_hatch");
         public readonly static NamespaceID stunned = Get("stunned");
@@ -230,6 +233,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID travel = Get("travel");
         public readonly static NamespaceID tridentThunder = Get("trident_thunder");
         public readonly static NamespaceID ufo = Get("ufo");
+        public readonly static NamespaceID ufoAlert = Get("ufo_alert");
         public readonly static NamespaceID vortex = Get("vortex");
         public readonly static NamespaceID wakeup = Get("wakeup");
         public readonly static NamespaceID water = Get("water");
