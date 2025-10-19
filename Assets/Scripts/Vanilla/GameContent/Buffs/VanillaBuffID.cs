@@ -105,6 +105,7 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public const string divineShield = "divine_shield";
+            public const string divineShieldCooldown = "divine_shield_cooldown";
 
             // Chapter 5
             public const string aboveCloud = "above_cloud";
@@ -458,6 +459,7 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public static readonly NamespaceID divineShield = Get(VanillaBuffNames.Entity.divineShield);
+            public static readonly NamespaceID divineShieldCooldown = Get(VanillaBuffNames.Entity.divineShieldCooldown);
 
             // Chapter 5
             public static readonly NamespaceID aboveCloud = Get(VanillaBuffNames.Entity.aboveCloud);

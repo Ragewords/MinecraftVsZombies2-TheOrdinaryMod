@@ -1470,7 +1470,7 @@
                 <p>灵符僵尸跳跃前进，并能够在攻击的同时恢复生命值。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>350</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>特点：<![CDATA[<color=red>攻击时恢复等量生命值</color>]]></p>
             </properties>
@@ -2274,6 +2274,7 @@
                 <tags>
                     <tag id="mvz2:shell" value="mvz2:metal"/>
                     <tag id="mvz2:flying"/>
+                    <tag id="mvz2:not_undead"/>
                 </tags>
                 <header>
                     <p>反则卫星是在一大波僵尸出现后，在辉针城中出现的可疑飞行物，会将你的视野180度旋转。</p>

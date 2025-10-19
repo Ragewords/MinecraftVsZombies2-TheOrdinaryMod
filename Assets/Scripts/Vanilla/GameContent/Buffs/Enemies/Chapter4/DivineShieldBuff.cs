@@ -40,6 +40,11 @@ namespace MVZ2.GameContent.Buffs.Enemies
             entity.PlaySound(VanillaSoundID.holy);
             entity.PlaySound(VanillaSoundID.divineShield);
         }
+        public override void PostRemove(Buff buff)
+        {
+            base.PostRemove(buff);
+            buff.Target?.AddBuff(VanillaBuffID.Entity.divineShieldCooldown);
+        }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);

@@ -1816,6 +1816,7 @@
                 <behaviour operator="remove" id="mvz2:enemy_walk"/>
             </behaviours>
             <properties>
+                <float name="mvz2:maxHealth" value="350" />
                 <int name="mvz2:cost" value="75" />
             </properties>
         </humanoid>
@@ -1881,7 +1882,7 @@
         </enemy>
         <enemy id="zombie_cloud" name="僵尸云" deathMessage="你就云吧" >
             <unlock>
-                <condition required="mvz2:level.ship_6"/>
+                <condition required="mvz2:level.ship_3"/>
             </unlock>
             <behaviours>
                 <behaviour operator="remove" id="mvz2:enemy_melee"/>
@@ -1905,7 +1906,7 @@
         </enemy>
         <zombie id="cannoneer_zombie" name="炮手僵尸" deathMessage="炮决！" >
             <unlock>
-                <condition required="mvz2:level.ship_3"/>
+                <condition required="mvz2:level.ship_6"/>
             </unlock>
             <properties>
                 <id name="mvz2:starting_shield" value="mvz2:cannon" />
@@ -2184,6 +2185,7 @@
             <properties>
                 <bool name="mvz2:harmless" value="true" />
                 <bool name="mvz2:notActiveEnemy" value="true" />
+                <bool name="mvz2:undead" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
                 <id name="mvz2:crySound" null="true" />
@@ -2786,6 +2788,7 @@
             <behaviours>
                 <behaviour operator="add" id="mvz2:pickup_collect_clear"/>
                 <behaviour operator="add" id="mvz2:pickup_stop_on_land"/>
+                <behaviour operator="add" id="mvz2:pickup_with_content"/>
             </behaviours>
             <properties>
                 <bool name="mvz2:important" value="true" />
