@@ -7,13 +7,13 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -82,7 +82,8 @@ namespace MVZ2.GameContent.Contraptions
                 if (validEnemies.Count() <= 0)
                     return;
                 var enemyID = validEnemies.Random(rng);
-                var random = target.SpawnWithParams(enemyID, enemy.Position)?.Let(e =>
+                var offset = higherSpawnPositionFilter.Contains(enemyID) ? SPAWN_POSITION_ADDTION : Vector3.zero;
+                var random = target.Spawn(enemyID, enemy.Position + offset)?.Let(e =>
                 {
                     e.CharmPermanent(target.GetFaction(), new EntitySourceReference(target));
                 });
@@ -100,8 +101,14 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.hellChariot,
             VanillaEnemyID.mutantZombie,
             VanillaEnemyID.megaMutantZombie,
+            VanillaEnemyID.rallyZombie,
+        };
+        public static NamespaceID[] higherSpawnPositionFilter = new NamespaceID[]
+        {
+            VanillaEnemyID.undeadFlyingObject,
+            VanillaEnemyID.flyingPirate,
         };
 
-        private static readonly NamespaceID ID = VanillaContraptionID.goldenApple;
+        private static readonly Vector3 SPAWN_POSITION_ADDTION = new Vector3(0, 20, 0);
     }
 }

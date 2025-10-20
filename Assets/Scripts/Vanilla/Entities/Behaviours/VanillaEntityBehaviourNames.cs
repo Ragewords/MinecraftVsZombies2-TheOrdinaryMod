@@ -30,6 +30,7 @@ namespace MVZ2.Vanilla.Entities
         public const string enemyDeathDisappear = "enemy_death_disappear";
 
         public const string skeleton_State = "skeleton/state";
+        public const string gargoyle_Melee = "gargoyle/melee";
         public const string napstablook_State = "napstablook/state";
 
         public const string spider_State = "spider/state";

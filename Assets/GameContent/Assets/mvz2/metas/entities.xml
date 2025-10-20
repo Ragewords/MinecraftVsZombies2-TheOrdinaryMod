@@ -1490,6 +1490,7 @@
         <humanoid id="gargoyle" name="堕化石像鬼" deathMessage="亲爱的日记：今天我死了。">
             <behaviours>
                 <behaviour operator="add" id="mvz2:fragmented"/>
+                <behaviour operator="replace" source="mvz2:enemy_melee" id="mvz2:gargoyle/melee"/>
             </behaviours>
             <properties>
                 <float name="mvz2:mass" value="1" />
