@@ -2515,6 +2515,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:fragmented"/>
+                <behaviour operator="remove" id="mvz2:enemy_melee"/>
             </behaviours>
             <properties>
                 <bool name="mvz2:noReward" value="true" />
