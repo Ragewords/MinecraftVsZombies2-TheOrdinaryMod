@@ -15,7 +15,6 @@ Material:
   - LIT
   m_InvalidKeywords:
   - BURN_ON
-  - _BACKGROUNDLIT_ON
   - _CIRCLESTART_RIGHT
   - _SPOTLIT_ON
   m_LightmapFlags: 4
@@ -34,6 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BackgroundLit: 0
     - _Burn: 1
     m_Colors:
     - _BurnEdgeColor: {r: 0.10980393, g: 0.59607846, b: 0.16078432, a: 1}

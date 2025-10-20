@@ -10,6 +10,7 @@ using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
@@ -28,8 +29,19 @@ namespace MVZ2.GameContent.Effects
             {
                 var rng = entity.RNG;
                 var level = entity.Level;
+                var hostileMob = level.FindEntities(e => e.IsHostileEntity() && e.IsVulnerableEntity()).RandomTake(1, rng);
                 var targetColumn = rng.Next(level.GetMaxColumnCount());
                 var targetLane = rng.Next(level.GetMaxLaneCount());
+
+                if (rng.Next(3) == 0)
+                {
+                    foreach (var mob in hostileMob)
+                    {
+                        targetColumn = mob.GetColumn();
+                        targetLane = mob.GetLane();
+                    }
+                }
+
                 var targetPos = level.GetEntityGridPosition(targetColumn, targetLane);
                 var flyTime = Ticks.FromSeconds(STAR_FLY_SECONDS);
 

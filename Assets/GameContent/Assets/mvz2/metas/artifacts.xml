@@ -87,7 +87,7 @@
             <condition required="mvz2:artifact.greedy_vacuum"/>
         </unlock>
     </artifact>
-    <artifact id="lightbomb" name="圣光炸弹" tooltip="器械自爆时还会额外对所有敌人造成等同于其能量消耗的伤害，并眩晕它们1秒" sprite="mvz2:artifacts/lightbomb" >
+    <artifact id="lightbomb" name="圣光炸弹" tooltip="器械自爆时还会额外对所有敌人造成等同于其能量消耗的伤害，并眩晕它们2秒" sprite="mvz2:artifacts/lightbomb" >
         <unlock>
             <condition required="mvz2:level.mausoleum_11"/>
         </unlock>

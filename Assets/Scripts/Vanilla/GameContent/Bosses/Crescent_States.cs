@@ -137,7 +137,7 @@ namespace MVZ2.GameContent.Bosses
                             break;
                         case SUBSTATE_END:
                             SetDashDir(entity, dir);
-                            entity.Velocity = GetDashDir(entity) * 20;
+                            entity.Velocity = GetDashDir(entity) * 30;
                             stateMachine.StartState(entity, STATE_SPACE);
                             break;
                     }
@@ -236,6 +236,8 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
                     case SUBSTATE_END:
+                        entity.Velocity = Vector3.zero;
+                        UpdatePosition(entity);
                         if (subStateTimer.Expired)
                         {
                             stateMachine.StartState(entity, STATE_IDLE);
