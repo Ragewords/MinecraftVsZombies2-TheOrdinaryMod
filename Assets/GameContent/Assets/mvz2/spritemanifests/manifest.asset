@@ -577,6 +577,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: ecbd7380d218ae0499f9db9112f463a4, type: 3}
   - name: ui/combat
     sprite: {fileID: 21300000, guid: 2e64b12488b10c340838892bf9f9db3e, type: 3}
+  - name: ui/combat_legs
+    sprite: {fileID: 21300000, guid: c9bb54c2aabb3db45940dcc86b7d5b8c, type: 3}
   - name: ui/debug_console_icon
     sprite: {fileID: 21300000, guid: c853afac5f602874e877872193826015, type: 3}
   - name: ui/gear
@@ -757,6 +759,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a6f5c16aaaa862f4a8000dbbb824d5a0, type: 3}
   - name: entity/effects/camera_frame
     sprite: {fileID: 21300000, guid: 5005e9bfb3edbd84082f1c1dbc01250b, type: 3}
+  - name: entity/effects/combat_flykick
+    sprite: {fileID: 21300000, guid: 859658d686a432a45b348bdc28a026fc, type: 3}
+  - name: entity/effects/combat_slide
+    sprite: {fileID: 21300000, guid: 0f8038ac8fbb1f44193adf72f4eeaa3a, type: 3}
   - name: entity/effects/combat_trail_punch
     sprite: {fileID: 21300000, guid: 56d9698bb3001c84ca50c3f36113cb5d, type: 3}
   - name: entity/effects/combat_trail_smash

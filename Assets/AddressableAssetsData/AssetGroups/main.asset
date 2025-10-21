@@ -752,6 +752,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f8038ac8fbb1f44193adf72f4eeaa3a
+    m_Address: mvz2:entity/effects/combat_slide
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f85791f4565cdd48b780ea2b27b64f5
     m_Address: mvz2:random/crystal/crystal_place1
     m_ReadOnly: 0
@@ -3823,6 +3830,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a42ce0aa050ff34d88e20fc341fbe13
+    m_Address: mvz2:effect/combat_flykick
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4a57ceba03f5b564f80da14a20f10f46
     m_Address: mvz2:entity/contraption/youkai_leaf
     m_ReadOnly: 0
@@ -4957,6 +4971,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60854d6479d77ed4080df1ace66097c4
+    m_Address: mvz2:entity/effect/roundkick_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6095a96fe9b0021419be1746f4e90d1d
     m_Address: mvz2:power_on
     m_ReadOnly: 0
@@ -5803,6 +5824,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7460848cff625724193439e69ee352c1
+    m_Address: mvz2:effect/combat_sliding_trail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 747f04ce764c03f44840559471f77b42
     m_Address: mvz2:effect/blackhole
@@ -6722,6 +6750,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85842c2e1aa457b418e743fc8faeae75
     m_Address: mvz2:entity/projectiles/knife
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 859658d686a432a45b348bdc28a026fc
+    m_Address: mvz2:entity/effects/combat_flykick
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -8589,6 +8624,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa492905dd9833b47bdced93b21ae5a6
+    m_Address: mvz2:effect/combat_roundkick_trail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa82843b9b0ef4c43a15446e94370464
     m_Address: mvz2:chapter_transition/title_halloween
     m_ReadOnly: 0
@@ -9982,6 +10024,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c91eb70c1d19fdb49a884274fb048b69
+    m_Address: mvz2:undertale_damage
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c95e7586c1c2bff4ea296c7b7e85e482
     m_Address: mvz2:entity/silverfish/silverfish_cry1
     m_ReadOnly: 0
@@ -10012,6 +10061,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9bb0408ef5a7624eb4980e99c0c4888
     m_Address: mvz2:entity/enemies/dullahan_bended_arm
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9bb54c2aabb3db45940dcc86b7d5b8c
+    m_Address: mvz2:ui/combat_legs
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -10191,6 +10247,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd1da552736c70240a3e070c35d968af
+    m_Address: mvz2:effect/combat_flykick_trail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd470ecea0f6f7549b3e393689f0d7c5
     m_Address: mvz2:effect/ufo_background
@@ -11290,6 +11353,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2fa014dd8351a846a99629463a899e9
+    m_Address: mvz2:effect/combat_sliding
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2fa180996375304bbc8f4733242a2d5
     m_Address: mvz2:admiral_call2

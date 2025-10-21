@@ -57,9 +57,10 @@ namespace MVZ2.GameContent.Contraptions
         public static void ApplyJewelEffect(Entity entity)
         {
             int jewelCount = GetRestrictedGridCount(entity);
+            var damage = entity.GetDamage();
             if (jewelCount == 4)
             {
-                TNT.Explode(entity, 120, 300);
+                TNT.Explode(entity, 120, damage * 3);
             }
             else if (jewelCount == 5)
             {
@@ -72,7 +73,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var entityCollider in finalColliders)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
-                    entityCollider.TakeDamage(500, damageEffects, entity);
+                    entityCollider.TakeDamage(damage * 5, damageEffects, entity);
                 }
                 for (int i = 0; i < 4; i++)
                 {
@@ -92,7 +93,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var entityCollider in lawnBuffer)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    entityCollider.TakeDamage(100 + 200 * (jewelCount - 6), damageEffects, entity);
+                    entityCollider.TakeDamage(damage * 2  * (jewelCount - 5), damageEffects, entity);
                 }
             }
         }

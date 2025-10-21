@@ -56,7 +56,7 @@
             <condition required="mvz2:artifact.inverted_mirror"/>
         </unlock>
     </artifact>
-    <artifact id="miracle_mallet_replica" name="万宝槌仿制品" tooltip="+15%器械伤害，对近距离攻击敌人的器械则+30%伤害" sprite="mvz2:artifacts/miracle_mallet_replica" >
+    <artifact id="miracle_mallet_replica" name="万宝槌仿制品" tooltip="+15%器械伤害，对近距离攻击敌人的器械则额外+15%伤害" sprite="mvz2:artifacts/miracle_mallet_replica" >
         <unlock>
             <condition required="mvz2:level.castle_11"/>
         </unlock>

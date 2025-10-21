@@ -45,6 +45,7 @@ namespace MVZ2.GameContent.HeldItems
                     var startLawnPos = level.ScreenToLawnPositionByY(startPosition, 0);
                     modelInterface.SetModelProperty("Dest", startLawnPos);
                 }
+                modelInterface.SetModelProperty("UseLeg", IsUsingLeg(level, data));
             }
             if (!IsValid(level, data))
             {
@@ -73,6 +74,7 @@ namespace MVZ2.GameContent.HeldItems
                     switch (artType)
                     {
                         case CombatType.Smash:
+                        case CombatType.Roundkick:
                             for (int x = -1; x <= 1; x++)
                             {
                                 for (int y = -1; y <= 1; y++)
@@ -98,6 +100,14 @@ namespace MVZ2.GameContent.HeldItems
                             for (int x = 0; x < level.GetMaxColumnCount(); x++)
                             {
                                 var g = level.GetGrid(x, grid.Lane);
+                                if (g != null)
+                                    grids.Add(g);
+                            }
+                            break;
+                        case CombatType.Sliding:
+                            for (int x = 0; x < 4; x++)
+                            {
+                                var g = level.GetGrid(grid.Column + x, grid.Lane);
                                 if (g != null)
                                     grids.Add(g);
                             }
@@ -179,17 +189,25 @@ namespace MVZ2.GameContent.HeldItems
             var direction = level.ScreenToLawnPositionByY(dragPosition, 0) - level.ScreenToLawnPositionByY(dragStartPosition, 0);
             var angle = Vector2.Angle(Vector2.down, new Vector2(direction.x, direction.z));
             var castPosition = level.ScreenToLawnPositionByRelativeY(dragStartPosition, 0);
-            if (direction.sqrMagnitude <= SQR_THRESOLD || angle < 45 || angle >= 315)
+            if (direction.sqrMagnitude <= SQR_THRESOLD || angle < 22.5 || angle >= 337.5)
             {
                 return CombatType.Smash;
             }
-            else if (angle > 135 && angle <= 225)
+            else if (angle > 157.5 && angle <= 202.5)
             {
                 return CombatType.Uppercut;
             }
-            else
+            else if ((angle > 67.5 && angle <= 112.5) || (angle > 247.5 && angle <= 292.5))
             {
                 return CombatType.Punch;
+            }
+            else if ((angle > 112.5 && angle <= 157.5) || (angle > 202.5 && angle <= 247.5))
+            {
+                return CombatType.Sliding;
+            }
+            else
+            {
+                return CombatType.Roundkick;
             }
         }
         private void CastCombat(LevelEngine level, IHeldItemData data)
@@ -205,9 +223,17 @@ namespace MVZ2.GameContent.HeldItems
             {
                 CastCombatUppercut(level, castPosition);
             }
-            else
+            else if (artType == CombatType.Smash)
             {
                 CastCombatSmash(level, castPosition);
+            }
+            else if (artType == CombatType.Sliding)
+            {
+                CastCombatSliding(level, castPosition);
+            }
+            else if (artType == CombatType.Roundkick)
+            {
+                CastCombatRoundkick(level, castPosition);
             }
             level.PlaySound(VanillaSoundID.evocation, castPosition);
             level.PlaySound(VanillaSoundID.steveRoar, castPosition);
@@ -254,11 +280,42 @@ namespace MVZ2.GameContent.HeldItems
             param.SetProperty(VanillaEntityProps.DAMAGE, 1200f);
             level.Spawn(VanillaEffectID.combatPunch, pos, null, param);
         }
+        private void CastCombatSliding(LevelEngine level, Vector3 position)
+        {
+            var column = level.GetColumn(position.x);
+            var lane = level.GetLane(position.z);
+            var x = level.GetEntityColumnX(column);
+            var z = level.GetEntityLaneZ(lane);
+            var y = level.GetGroundY(x, z);
+            var pos = new Vector3(x, y, z);
+            var param = new SpawnParams();
+            param.SetProperty(EngineEntityProps.FACTION, level.Option.LeftFaction);
+            param.SetProperty(VanillaEntityProps.DAMAGE, 200f);
+            level.Spawn(VanillaEffectID.combatSliding, pos, null, param);
+        }
+        private void CastCombatRoundkick(LevelEngine level, Vector3 position)
+        {
+            var column = level.GetColumn(position.x);
+            var lane = level.GetLane(position.z);
+            var x = level.GetEntityColumnX(column);
+            var z = level.GetEntityLaneZ(lane);
+            var y = level.GetGroundY(x, z);
+            var pos = new Vector3(x, y, z);
+            var param = new SpawnParams();
+            param.SetProperty(EngineEntityProps.FACTION, level.Option.LeftFaction);
+            param.SetProperty(VanillaEntityProps.DAMAGE, 500f);
+            param.SetProperty(VanillaEntityProps.RANGE, 120f);
+            level.Spawn(VanillaEffectID.combatRoundkick, pos, null, param);
+        }
         private bool IsDragging(IHeldItemData data)
         {
             var dragStartPosition = GetDragStartPosition(data);
             var dragPosition = GetDragPosition(data);
             return Vector2.SqrMagnitude(dragPosition - dragStartPosition) > 1;
+        }
+        private bool IsUsingLeg(LevelEngine level, IHeldItemData data)
+        {
+            return GetCombatType(level, data) == CombatType.Sliding || GetCombatType(level, data) == CombatType.Roundkick;
         }
         public override void GetModelID(LevelEngine level, IHeldItemData data, CallbackResult result)
         {
@@ -288,7 +345,9 @@ namespace MVZ2.GameContent.HeldItems
         {
             Smash,
             Punch,
-            Uppercut
+            Uppercut,
+            Sliding,
+            Roundkick
         }
     }
 }
