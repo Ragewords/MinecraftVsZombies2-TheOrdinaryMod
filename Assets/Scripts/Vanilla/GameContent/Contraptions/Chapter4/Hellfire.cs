@@ -45,15 +45,16 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateAI(entity);
 
             detectBuffer.Clear();
-            burnDetector.DetectEntities(entity, detectBuffer);
+            burnDetector.DetectMultiple(entity, detectBuffer);
 
             var cooldown = GetDamageCooldown(entity);
             if (cooldown.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
             {
                 var damageMultipiler = IsCursed(entity) ? 2 : 1;
-                foreach (var target in detectBuffer)
+                foreach (var targetCollider in detectBuffer)
                 {
-                    target.TakeDamage(entity.GetDamage() * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE), entity);
+                    targetCollider.TakeDamage(entity.GetDamage() * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE), entity);
+                    var target = targetCollider.Entity;
                     if (!IsCursed(entity))
                         target.Spawn(VanillaEffectID.fireburn, target.GetCenter());
                     else
@@ -165,7 +166,7 @@ namespace MVZ2.GameContent.Contraptions
         private List<Entity> igniteBuffer = new List<Entity>();
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DAMAGE_COOLDOWN = new VanillaEntityPropertyMeta<FrameTimer>("DamageCooldown");
         private Detector burnDetector;
-        private List<Entity> detectBuffer = new List<Entity>();
+        private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
 
         public const float BURN_RADIUS = 40;
         public const int DAMAGE_COOLDOWN = 30;

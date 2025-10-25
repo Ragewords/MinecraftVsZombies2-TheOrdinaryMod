@@ -116,12 +116,14 @@ namespace MVZ2.GameContent.Buffs.Contraptions
 
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
             {
-                var source = auraEffect.Source;
-                var entity = source.GetEntity();
-                if (entity == null)
+                var sourceBuff = auraEffect.Source as Buff;
+                if (sourceBuff == null)
+                    return;
+                var sourceEntity = sourceBuff.GetEntity();
+                if (sourceEntity == null)
                     return;
                 detectBuffer.Clear();
-                protectDetector.DetectEntities(entity, detectBuffer);
+                protectDetector.DetectEntities(sourceEntity, detectBuffer);
                 results.AddRange(detectBuffer);
             }
             private Detector protectDetector;

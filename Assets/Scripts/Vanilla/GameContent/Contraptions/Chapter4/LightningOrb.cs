@@ -22,6 +22,7 @@ namespace MVZ2.GameContent.Contraptions
         public LightningOrb(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
+            AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_HEAL, PreHealCallback);
         }
         public override void Init(Entity entity)
         {
@@ -73,18 +74,27 @@ namespace MVZ2.GameContent.Contraptions
 
             var projectile = hit.Projectile;
 
-            orb.HealEffects(orb.HasBuff<LightningOrbEnergyShieldBuff>() ? 0 : 100, projectile);
+            orb.HealEffects(100, projectile);
             foreach (var buff in orb.GetBuffs<LightningOrbEvokedBuff>())
             {
                 LightningOrbEvokedBuff.AddTakenDamage(buff, damage.Amount);
             }
-            foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
-            {
-                LightningOrbEnergyShieldBuff.Heal(buff, 10);
-            }
             projectile.Remove();
             result.SetFinalValue(false);
             orb.PlaySound(VanillaSoundID.energyShieldHit);
+        }
+        private void PreHealCallback(VanillaLevelCallbacks.PreHealParams param, CallbackResult result)
+        {
+            var input = param.input;
+            var orb = input.Entity;
+            if (!orb.Definition.HasBehaviour(this))
+                return;
+            var healAmount = input.Amount;
+            foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
+            {
+                LightningOrbEnergyShieldBuff.Heal(buff, healAmount / 10);
+                result.SetFinalValue(false);
+            }
         }
         public override bool CanEvoke(Entity entity)
         {

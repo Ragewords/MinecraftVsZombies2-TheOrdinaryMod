@@ -532,6 +532,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 4
             public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.Contraption.eyeOfTheGiant);
             public static readonly NamespaceID noteBlockLoud = Get(VanillaBuffNames.Contraption.noteBlockLoud);
+            public static readonly NamespaceID lightningOrbEnergyShield = Get(VanillaBuffNames.Contraption.lightningOrbEnergyShield);
             public static readonly NamespaceID lightningOrbEnergyShieldProtected = Get(VanillaBuffNames.Contraption.lightningOrbEnergyShieldProtected);
             public static readonly NamespaceID lightningOrbEvoked = Get(VanillaBuffNames.Contraption.lightningOrbEvoked);
             public static readonly NamespaceID devourerInvincible = Get(VanillaBuffNames.Contraption.devourerInvincible);
