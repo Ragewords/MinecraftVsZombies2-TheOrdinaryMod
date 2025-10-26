@@ -9268,6 +9268,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7fc128f694875b4ba7bbeb8bd111ccb
+    m_Address: mvz2:entity/armor/sarcophagus
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b8020c439faa36e4a93b2a903db60899
     m_Address: mvz2:mobile_blueprint/splitenser
     m_ReadOnly: 0
@@ -12601,6 +12608,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb8d1a996398fc349b3d0ef7daaba903
     m_Address: mvz2:projectile/seija_magic_bomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc1881f740b6b954ea64a5e7abcc23f2
+    m_Address: mvz2:armor/sarcophagus
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

@@ -542,6 +542,7 @@
     <!-- Armors -->
     <model name="leather_cap" type="armor" path="mvz2:armor/leather_cap" width="33" height="14" xOffset="0" yOffset="0"/>
     <model name="iron_helmet" type="armor" path="mvz2:armor/iron_helmet" width="33" height="14" xOffset="0" yOffset="0"/>
+    <model name="sarcophagus" type="armor" path="mvz2:armor/sarcophagus" width="38" height="94" xOffset="0" yOffset="0"/>
 	<model name="skelebomb_cap" type="armor" path="mvz2:armor/skelebomb_cap" width="33" height="14" xOffset="0" yOffset="-4"/>
     <model name="boat_item" type="armor" path="mvz2:armor/boat_item" width="32" height="32" xOffset="0" yOffset="0"/>
     <model name="mesmerizer_crown" type="armor" path="mvz2:armor/mesmerizer_crown" width="34" height="40" xOffset="0" yOffset="-21"/>

@@ -1533,10 +1533,12 @@
                 <id name="mvz2:hitSound" value="mvz2:splat" />
                 <id name="mvz2:crySound" value="mvz2:mummy_cry" />
                 <id name="mvz2:deathSound" value="mvz2:mummy_death" />
+                <id name="mvz2:starting_armor" value="mvz2:sarcophagus" />
                 <color name="mvz2:bloodColor" value="#7F000F00" />
                 <color name="mvz2:bloodColorCensored" value="#00007F00" />
+                <float name="mvz2:speed" value="2" />
 
-                <int name="mvz2:cost" value="75" />
+                <int name="mvz2:cost" value="150" />
             </properties>
         </humanoid>
         <humanoid id="necromancer" name="死灵法师" deathMessage="你挂了\n死亡带走了12450金币和经验值">

@@ -1278,10 +1278,11 @@
         </entry>
         <entry id="mvz2:mummy">
             <header>
-                <p>木乃伊会在死后放出能治疗亡灵并伤害器械的毒雾和一只僵尸。</p>
+                <p>木乃伊带着沉重的石棺，并且会在死后放出能治疗亡灵并伤害器械的毒雾和一只僵尸。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>200+1200（石棺）</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1，2（失去石棺后）</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>毒雾可以被<tag id="mvz2:fire"/>火烧掉</color>]]></p>
             </properties>
             <flavor>

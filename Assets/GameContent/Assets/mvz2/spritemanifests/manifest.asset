@@ -1581,6 +1581,11 @@ MonoBehaviour:
     - {fileID: 2038617381, guid: 5fd5dd6553755524490a5b49f96a2b43, type: 3}
     - {fileID: 41696649, guid: 5fd5dd6553755524490a5b49f96a2b43, type: 3}
     - {fileID: -1495750782, guid: 5fd5dd6553755524490a5b49f96a2b43, type: 3}
+  - name: entity/armor/sarcophagus
+    spritesheet:
+    - {fileID: -1390497695, guid: b7fc128f694875b4ba7bbeb8bd111ccb, type: 3}
+    - {fileID: -378997661, guid: b7fc128f694875b4ba7bbeb8bd111ccb, type: 3}
+    - {fileID: 1624755944, guid: b7fc128f694875b4ba7bbeb8bd111ccb, type: 3}
   - name: entity/armor/skelebomb_cap
     spritesheet:
     - {fileID: -1081992669, guid: 781511a9b17cfc748a32dddab7543d91, type: 3}
@@ -2173,6 +2178,13 @@ MonoBehaviour:
     - {fileID: 7916453395666619620, guid: aa0f21a4d0383d14187681560eb75815, type: 3}
     - {fileID: -5368731407951122825, guid: aa0f21a4d0383d14187681560eb75815, type: 3}
     - {fileID: 1220999004488155858, guid: aa0f21a4d0383d14187681560eb75815, type: 3}
+  - name: entity/effect/roundkick_particles
+    spritesheet:
+    - {fileID: 492733064, guid: 60854d6479d77ed4080df1ace66097c4, type: 3}
+    - {fileID: -1613863044, guid: 60854d6479d77ed4080df1ace66097c4, type: 3}
+    - {fileID: 1207537180, guid: 60854d6479d77ed4080df1ace66097c4, type: 3}
+    - {fileID: -846662206, guid: 60854d6479d77ed4080df1ace66097c4, type: 3}
+    - {fileID: -818661132, guid: 60854d6479d77ed4080df1ace66097c4, type: 3}
   - name: entity/effect/smoke
     spritesheet:
     - {fileID: 21300000, guid: ef0c4e33486bc0b44bd32da3f6b7c34f, type: 3}

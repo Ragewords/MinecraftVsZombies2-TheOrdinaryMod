@@ -8,6 +8,7 @@ namespace MVZ2.GameContent.Armors
     public static class VanillaArmorBehaviourNames
     {
         public const string damageState3 = "damage_state_3";
+        public const string sarcophagus = "sarcophagus";
         public const string reflectiveBarrier = "reflective_barrier";
         public const string umbrellaShield = "umbrella_shield";
         public const string cannon = "cannon";
@@ -16,6 +17,7 @@ namespace MVZ2.GameContent.Armors
     public static class VanillaArmorBehaviourID
     {
         public static readonly NamespaceID damageState3 = Get(VanillaArmorBehaviourNames.damageState3);
+        public static readonly NamespaceID sarcophagus = Get(VanillaArmorBehaviourNames.sarcophagus);
         public static readonly NamespaceID reflectiveBarrier = Get(VanillaArmorBehaviourNames.reflectiveBarrier);
         public static readonly NamespaceID umbrellaShield = Get(VanillaArmorBehaviourNames.umbrellaShield);
         public static readonly NamespaceID cannon = Get(VanillaArmorBehaviourNames.cannon);
