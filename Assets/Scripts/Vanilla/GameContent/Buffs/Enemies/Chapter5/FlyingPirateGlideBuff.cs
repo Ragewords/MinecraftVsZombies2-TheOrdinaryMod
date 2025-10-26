@@ -55,7 +55,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             }
 
-            entity.UpdateWalkVelocity();
             var col = buff.GetProperty<int>(PROP_TARGET_COLUMN);
             if (entity.IsTimeInterval(10, 3) && ((entity.GetColumn() - col) * entity.GetFacingX() >= 0 || entity.IsOnGround || entity.IsAIFrozen()))
             {

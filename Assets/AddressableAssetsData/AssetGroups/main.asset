@@ -5783,6 +5783,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7385601a3ad01bd419899a6ba9d0a5f5
+    m_Address: mvz2:entity/projectiles/arrow_bullet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 738c71df1b11df04a9eab6ed55a9c919
     m_Address: mvz2:day_horde
     m_ReadOnly: 0

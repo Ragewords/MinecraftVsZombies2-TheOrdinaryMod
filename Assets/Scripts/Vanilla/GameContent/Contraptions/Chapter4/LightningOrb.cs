@@ -12,7 +12,6 @@ using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -23,21 +22,14 @@ namespace MVZ2.GameContent.Contraptions
         {
             AddTrigger(VanillaLevelCallbacks.PRE_PROJECTILE_HIT, PreProjectileHitCallback);
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_HEAL, PreHealCallback);
+            AddTrigger(VanillaLevelCallbacks.POST_OBSIDIAN_FIRST_AID, PostObsidianFirstAidCallback);
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
             var timer = new FrameTimer(REGENERATE_TIME);
-            var shieldActiveOrbs = FindShieldedOrbs(entity);
-            if (shieldActiveOrbs.Length <= 0)
-            {
-                entity.AddBuff<LightningOrbEnergyShieldBuff>();
-            }
-            else
-            {
-                timer.Frame = 5;
-            }
             SetShieldRegenerateTimer(entity, timer);
+            entity.AddBuff<LightningOrbEnergyShieldBuff>();
         }
         protected override void UpdateAI(Entity contraption)
         {
@@ -45,14 +37,10 @@ namespace MVZ2.GameContent.Contraptions
             if (contraption.HasBuff<LightningOrbEnergyShieldBuff>())
                 return;
             var timer = GetShieldRegenerateTimer(contraption);
-            var shieldActiveOrbs = FindShieldedOrbs(contraption);
             if (timer.RunToExpiredAndNotNull(contraption.GetProduceSpeed()))
             {
-                if (shieldActiveOrbs.Length <= 0)
-                {
-                    timer.ResetTime(REGENERATE_TIME);
-                    contraption.AddBuff<LightningOrbEnergyShieldBuff>();
-                }
+                timer.ResetTime(REGENERATE_TIME);
+                contraption.AddBuff<LightningOrbEnergyShieldBuff>();
             }
         }
         protected override void UpdateLogic(Entity contraption)
@@ -93,7 +81,22 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
                 LightningOrbEnergyShieldBuff.Heal(buff, healAmount / 10);
-                result.SetFinalValue(false);
+            }
+        }
+        private void PostObsidianFirstAidCallback(EntityCallbackParams param, CallbackResult result)
+        {
+            var orb = param.entity;
+            if (!orb.Definition.HasBehaviour(this))
+                return;
+            if (!orb.HasBuff<LightningOrbEnergyShieldBuff>())
+            {
+                var timer = GetShieldRegenerateTimer(orb);
+                timer?.ResetTime(REGENERATE_TIME_FIRST_AID);
+                return;
+            }
+            foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
+            {
+                LightningOrbEnergyShieldBuff.Heal(buff, LightningOrbEnergyShieldBuff.MAX_HEALTH);
             }
         }
         public override bool CanEvoke(Entity entity)
@@ -112,15 +115,12 @@ namespace MVZ2.GameContent.Contraptions
             var timer = GetShieldRegenerateTimer(entity);
             timer?.ResetTime(REGENERATE_TIME_EVOKED);
         }
-        public static Entity[] FindShieldedOrbs(Entity entity)
-        {
-            return entity.Level.FindEntities(e => e.IsFriendly(entity) && e.HasBuff<LightningOrbEnergyShieldBuff>() && Mathf.Abs(e.GetLane() - entity.GetLane()) <= 1 && Mathf.Abs(e.GetColumn() - entity.GetColumn()) <= 1);
-        }
         public static FrameTimer? GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
         public const int REGENERATE_TIME = 600;
         public const int REGENERATE_TIME_EVOKED = 155;
+        public const int REGENERATE_TIME_FIRST_AID = 30;
     }
 }

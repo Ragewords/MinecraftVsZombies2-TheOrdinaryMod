@@ -97,6 +97,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static NamespaceID[] transformFilter = new NamespaceID[]
         {
+            VanillaEnemyID.flagZombie,
             VanillaEnemyID.dullahan,
             VanillaEnemyID.hellChariot,
             VanillaEnemyID.mutantZombie,

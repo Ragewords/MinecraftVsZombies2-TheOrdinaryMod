@@ -1937,6 +1937,9 @@
             <unlock>
                 <condition required="mvz2:level.ship_7"/>
             </unlock>
+            <behaviours>
+                <behaviour operator="replace" source="mvz2:enemy_walk" id="mvz2:flying_pirate/move"/>
+            </behaviours>
             <properties>
                 <vector3 name="mvz2:starting_position_offset" x="0" y="60" z="0" />
                 <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />

@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Armors
             if (!armor.Definition.HasBehaviour(this))
                 return;
             var pos = entity.Position;
-            entity.CreateFragmentAndPlay(pos, VanillaFragmentID.mummy, emitSpeed: 500);
+            entity.CreateFragmentAndPlay(pos, VanillaFragmentID.sarcophagus, emitSpeed: 500);
             var gasParam = entity.GetSpawnParams();
             entity.Spawn(VanillaEffectID.mummyGas, entity.Position, gasParam);
             entity.PlaySound(VanillaSoundID.poisonCast);

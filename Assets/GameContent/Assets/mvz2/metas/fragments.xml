@@ -344,9 +344,17 @@
     </fragment>
     <fragment name="mummy">
         <colorKeys>
-            <key hex="#736d31" time="0.5"/>
-            <key hex="#9e964c" time="0.25"/>
-            <key hex="#c4bd7b" time="1"/>
+            <key hex="#736D31" time="0.5"/>
+            <key hex="#9E964C" time="0.25"/>
+            <key hex="#C4BD7B" time="1"/>
+        </colorKeys>
+    </fragment>
+    <fragment name="sarcophagus">
+        <colorKeys>
+            <key hex="#D97B30" time="0.2"/>
+            <key hex="#2389C7" time="0.3"/>
+            <key hex="#DAD2A3" time="0.5"/>
+            <key hex="#EDEBCB" time="1"/>
         </colorKeys>
     </fragment>
     <fragment name="hell_chariot">

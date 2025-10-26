@@ -50,6 +50,7 @@ namespace MVZ2.Vanilla.Entities
         public const string wickedHermitZombie_State = "wicked_hermit_zombie/state";
 
         public const string undeadFlyingObject_State = "undead_flying_object/state";
+        public const string flyingPirate_Move = "flying_pirate/move";
         public const string admiralZombie_Melee = "admiral_zombie/melee";
         #endregion
 

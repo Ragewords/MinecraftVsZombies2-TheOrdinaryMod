@@ -8,7 +8,7 @@ namespace MVZ2.GameContent.Fragments
     public static class VanillaFragmentNames
     {
         public const string obsidianArmor = "obsidian_armor";
-        public const string mummy = "mummy";
+        public const string sarcophagus = "sarcophagus";
         public const string lightningOrbEnergyShield = "lightning_orb_energy_shield";
         public const string reflectiveBarrier = "reflective_barrier";
         public const string hellfireCursed = "hellfire_cursed";
@@ -19,7 +19,7 @@ namespace MVZ2.GameContent.Fragments
     public static class VanillaFragmentID
     {
         public static readonly NamespaceID obsidianArmor = Get(VanillaFragmentNames.obsidianArmor);
-        public static readonly NamespaceID mummy = Get(VanillaFragmentNames.mummy);
+        public static readonly NamespaceID sarcophagus = Get(VanillaFragmentNames.sarcophagus);
         public static readonly NamespaceID lightningOrbEnergyShield = Get(VanillaFragmentNames.lightningOrbEnergyShield);
         public static readonly NamespaceID reflectiveBarrier = Get(VanillaFragmentNames.reflectiveBarrier);
         public static readonly NamespaceID hellfireCursed = Get(VanillaFragmentNames.hellfireCursed);

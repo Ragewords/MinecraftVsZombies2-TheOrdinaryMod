@@ -23,7 +23,7 @@ namespace MVZ2.GameContent.Enemies
             var curseTarget = targetID?.GetEntity(entity.Level);
             if (curseTarget != null)
             {
-                bool stoneShell = curseTarget.GetShellDefinition()?.GetID() != VanillaShellID.stone || curseTarget.GetShellDefinition()?.GetID() != VanillaShellID.netherrack;
+                bool stoneShell = curseTarget.GetShellDefinition()?.GetID() == VanillaShellID.stone || curseTarget.GetShellDefinition()?.GetID() == VanillaShellID.netherrack;
                 if (curseTarget.Type == EntityTypes.PLANT && stoneShell)
                 {
                     if (!curseTarget.HasBuff<AbyssBuff>())
