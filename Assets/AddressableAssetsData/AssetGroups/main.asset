@@ -1459,6 +1459,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c80efe9d7e39d246b6118f244a7e8dd
+    m_Address: mvz2:pickup/vault
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1ca1d7816d59cbe48bf40c774794bc5e
     m_Address: mvz2:entity/ghost/ghost_cry3
     m_ReadOnly: 0
@@ -8329,6 +8336,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4d179e0a44337c458ded435fdf965c7
+    m_Address: mvz2:entity/pickups/vault
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4fb4d341a16ba64cbad7dd992c94206
     m_Address: mvz2:products/blueprint_slot

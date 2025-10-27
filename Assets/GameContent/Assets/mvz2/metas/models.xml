@@ -342,6 +342,7 @@
     <model name="diamond" type="entity" path="mvz2:pickup/diamond" width="96" height="96" xOffset="0" yOffset="-32"/>
     <model name="map_pickup" type="entity" path="mvz2:pickup/map_pickup" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="money_chest" type="entity" path="mvz2:pickup/money_chest" width="96" height="96" xOffset="0" yOffset="-32"/>
+    <model name="vault" type="entity" path="mvz2:pickup/vault" width="96" height="96" xOffset="0" yOffset="-32"/>
     <model name="blueprint_pickup" type="entity" path="mvz2:pickup/blueprint_pickup" width="64" height="80" xOffset="0" yOffset="-32"/>
     <model name="almanac_pickup" type="entity" path="mvz2:pickup/almanac_pickup" width="64" height="64" xOffset="0" yOffset="-16"/>
     <model name="dream_key" type="entity" path="mvz2:pickup/dream_key" width="64" height="64" xOffset="0" yOffset="-24"/>
