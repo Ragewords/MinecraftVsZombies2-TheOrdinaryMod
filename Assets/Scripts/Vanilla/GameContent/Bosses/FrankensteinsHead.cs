@@ -29,7 +29,7 @@ namespace MVZ2.GameContent.Bosses
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(SHOOT_COOLDOWN));
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60f);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 40f);
             entity.AddBuff<FrankensteinSteelBuff>();
             SetFireTimer(entity, new FrameTimer(45));
             SetMode(entity, GUN_MODE);
@@ -89,7 +89,7 @@ namespace MVZ2.GameContent.Bosses
                                     }
                                     else
                                     {
-                                        var offset = new Vector3(25, -18, 0);
+                                        var offset = new Vector3(25, 2, 0);
                                         offset = enemy.ModifyShotOffset(offset);
                                         var bullet = enemy.ShootProjectile(new ShootParams()
                                         {
@@ -105,13 +105,11 @@ namespace MVZ2.GameContent.Bosses
                                 break;
                             case MISSILE_MODE:
                                 {
-                                    var offset = new Vector3(0, -20, 0);
-                                    offset = enemy.ModifyShotOffset(offset);
                                     var missileSpeed = enemy.GetShotVelocity();
                                     var missile = enemy.ShootProjectile(new ShootParams()
                                     {
                                         projectileID = VanillaProjectileID.missile,
-                                        position = enemy.Position + offset,
+                                        position = enemy.Position,
                                         velocity = missileSpeed * enemy.GetFacingX(),
                                         damage = enemy.GetDamage() * 2,
                                         faction = enemy.GetFaction(),
@@ -143,9 +141,9 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damageInfo, CallbackResult result)
         {
             base.PreTakeDamage(damageInfo, result);
-            if (damageInfo.Amount > 300)
+            if (damageInfo.Amount > 600)
             {
-                damageInfo.SetAmount(300);
+                damageInfo.SetAmount(600);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
