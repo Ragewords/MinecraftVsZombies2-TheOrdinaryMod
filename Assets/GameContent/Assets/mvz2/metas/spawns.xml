@@ -40,8 +40,8 @@
     </entry>
     <entry id="mummy" >
         <entity id="mvz2:mummy"/>
-        <spawn level="2" />
-        <weight base="2000" />
+        <spawn level="2" minWave="10" />
+        <weight base="1500" />
     </entry>
     <entry id="necromancer" >
         <entity id="mvz2:necromancer"/>
@@ -50,8 +50,8 @@
     </entry>
     <entry id="skelebomb" >
         <entity id="mvz2:skelebomb"/>
-        <spawn level="3" />
-        <weight base="4000" />
+        <spawn level="3" minWave="10" />
+        <weight base="3000" />
     </entry>
 
     <!-- Dream -->
@@ -121,7 +121,7 @@
     </entry>
     <entry id="spellcaster" >
         <entity id="mvz2:spellcaster"/>
-        <spawn level="3" />
+        <spawn level="3" minWave="5" />
         <weight base="2500" />
     </entry>
 
