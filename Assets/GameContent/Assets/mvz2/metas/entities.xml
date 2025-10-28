@@ -2393,6 +2393,7 @@
                 <condition required="mvz2:level.castle_11"/>
             </unlock>
             <behaviours>
+                <behaviour operator="add" id="mvz2:damage_by_gold"/>
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:jackdullahan/state"/>
                 <behaviour operator="replace" source="mvz2:enemy_walk" id="mvz2:jackdullahan/move"/>
                 <behaviour operator="remove" id="mvz2:enemy_melee"/>
@@ -2415,6 +2416,9 @@
             <unlock>
                 <condition required="mvz2:level.castle_11"/>
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:damage_by_gold"/>
+            </behaviours>
             <properties>
                 <float name="mvz2:maxHealth" value="600"/>
                 <float name="mvz2:mass" value="-1" />

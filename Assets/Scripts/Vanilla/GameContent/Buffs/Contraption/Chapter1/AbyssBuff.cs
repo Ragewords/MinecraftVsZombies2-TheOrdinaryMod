@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMEOUT, 5);
+            buff.SetProperty(PROP_TIMEOUT, 2);
         }
         public override void PostUpdate(Buff buff)
         {

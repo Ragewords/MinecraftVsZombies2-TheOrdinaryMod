@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         var buff = curseTarget.GetFirstBuff<AbyssBuff>();
-                        buff?.SetProperty(AbyssBuff.PROP_TIMEOUT, 5);
+                        buff?.SetProperty(AbyssBuff.PROP_TIMEOUT, 2);
                     }
                 }
             }
