@@ -2606,13 +2606,6 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 337e2372809060d428808d449ec64bad
-    m_Address: mvz2:armor/skelebomb_cap
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3384110aaaae15847b5653001ee976b2
     m_Address: mvz2:spell_card
     m_ReadOnly: 0
@@ -6145,6 +6138,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Meta
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a669d539de189a42bd736f4db4cdc24
+    m_Address: mvz2:armor/skelebomb_cap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a7c01cb6b083d741bd5ee8351facda9
     m_Address: mvz2:effect/hoe
