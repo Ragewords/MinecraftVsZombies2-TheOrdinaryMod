@@ -52,7 +52,6 @@ namespace MVZ2.GameContent.Contraptions
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            SetExplosionTimer(entity, new FrameTimer(120));
             entity.SetEvoked(true);
             Ignite(entity);
         }

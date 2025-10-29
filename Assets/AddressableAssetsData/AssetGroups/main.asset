@@ -2738,13 +2738,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 35febccb99a461c42b2c89105b4ac89c
-    m_Address: mvz2:projectile/mini_tnt
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3604ff565a8f03445a58e0a0b7f53934
     m_Address: mvz2:armor/flying_pirate_hat
     m_ReadOnly: 0
@@ -3503,6 +3496,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44cdfd7f2b25992498a3440f8b99e6da
     m_Address: mvz2:contraption/prologue/dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44e159e9c23662040886d995629761f5
+    m_Address: mvz2:contraption/halloween/tnt_unedited
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
