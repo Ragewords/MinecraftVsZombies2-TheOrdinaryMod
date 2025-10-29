@@ -56,15 +56,14 @@ namespace MVZ2.GameContent.Contraptions
             entity.SetEvoked(true);
             Ignite(entity);
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        public override void PostTakeDamage(DamageOutput result)
         {
-            base.PreTakeDamage(input, result);
-            if (input.Entity == null)
+            base.PostTakeDamage(result);
+            if (result.BodyResult == null)
                 return;
-            if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
+            if (result.BodyResult.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || result.BodyResult.Effects.HasEffect(VanillaDamageEffects.FIRE))
             {
-                Ignite(input.Entity);
-                result.SetFinalValue(false);
+                Ignite(result.Entity);
             }
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)

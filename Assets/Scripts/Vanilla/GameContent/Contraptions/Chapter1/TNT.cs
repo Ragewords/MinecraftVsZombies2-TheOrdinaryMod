@@ -44,19 +44,18 @@ namespace MVZ2.GameContent.Contraptions
                 IgnitedUpdate(entity);
             }
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        public override void PostTakeDamage(DamageOutput result)
         {
-            base.PreTakeDamage(input, result);
-            if (input.Entity == null)
+            base.PostTakeDamage(result);
+            if (result.BodyResult == null)
                 return;
-            if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
+            if (result.BodyResult.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
             {
-                Charge(input.Entity);
+                Charge(result.Entity);
             }
-            if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || input.Effects.HasEffect(VanillaDamageEffects.FIRE))
+            if (result.BodyResult.Effects.HasEffect(VanillaDamageEffects.EXPLOSION) || result.BodyResult.Effects.HasEffect(VanillaDamageEffects.FIRE))
             {
-                Ignite(input.Entity);
-                result.SetFinalValue(false);
+                Ignite(result.Entity);
             }
         }
         public override bool CanTrigger(Entity entity)
