@@ -32,6 +32,7 @@ namespace MVZ2.GameContent.Projectiles
             base.Update(projectile);
             var timer = GetWaitTimer(projectile);
             var shootPoint = projectile.Position;
+            SetNoDeflect(projectile, false);
             if (projectile.HasBuff<ProjectileWaitBuff>())
                 return;
 
@@ -66,8 +67,11 @@ namespace MVZ2.GameContent.Projectiles
             {
                 hitResult.Pierce = true;
                 var projectile = hitResult.Projectile;
-                var entity = hitResult.Other;
-                Deflect(entity, projectile);
+                var otherCollider = hitResult.Collider;
+                if (IsNoDeflect(projectile))
+                    return;
+                Deflect(projectile, otherCollider);
+                SetNoDeflect(projectile, true);
             }
         }
         public static Vector3 GetDestination(Entity entity)
@@ -86,6 +90,14 @@ namespace MVZ2.GameContent.Projectiles
         {
             entity.SetBehaviourField(ID, PROP_NO_DELAY, value);
         }
+        public static bool IsNoDeflect(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(ID, PROP_NO_DEFLECT);
+        }
+        public static void SetNoDeflect(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(ID, PROP_NO_DEFLECT, value);
+        }
         public static FrameTimer? GetWaitTimer(Entity entity)
         {
             return entity.GetBehaviourField<FrameTimer>(ID, PROP_WAIT_TIMER);
@@ -97,15 +109,16 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID ID = VanillaProjectileID.knife;
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_DESTINATION = new VanillaEntityPropertyMeta<Vector3>("Destination");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_NO_DELAY = new VanillaEntityPropertyMeta<bool>("NoDelay");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_NO_DEFLECT = new VanillaEntityPropertyMeta<bool>("no_deflect");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_WAIT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("WaitTimer");
-        public static void Deflect(Entity self, Entity knife)
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_DEFLECT_COOLDOWN = new VanillaEntityPropertyMeta<FrameTimer>("deflect_cooldown");
+        public static void Deflect(Entity knife, IEntityCollider other)
         {
-            float thisX = self.Position.x;
-            float thisZ = self.Position.z;
-            float knifeX = knife.Position.x;
-            float knifeZ = knife.Position.z;
-
-            knife.Velocity = Vector3.Reflect(knife.Velocity, new Vector3(thisX - knifeX, 0, thisZ - knifeZ).normalized);
+            var knifePos = knife.GetBounds().center;
+            var otherPos = other.GetBoundingBox().center;
+            var baseVector = otherPos - knifePos;
+            baseVector.y = 0;
+            knife.Velocity = Vector3.Reflect(knife.Velocity, baseVector.normalized);
         }
     }
 }

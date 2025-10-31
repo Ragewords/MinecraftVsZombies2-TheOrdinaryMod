@@ -2,6 +2,7 @@
 
 using System.Linq;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Shells;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -20,6 +21,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             base.Update(entity);
             entity.RenderRotation += Vector3.back * 30f;
+            SetNoDeflect(entity, false);
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damageOutput)
         {
@@ -31,9 +33,21 @@ namespace MVZ2.GameContent.Projectiles
             {
                 hitResult.Pierce = true;
                 var projectile = hitResult.Projectile;
-                var entity = hitResult.Other;
-                Knife.Deflect(entity, projectile);
+                var otherCollider = hitResult.Collider;
+                if (IsNoDeflect(projectile))
+                    return;
+                Knife.Deflect(projectile, otherCollider);
+                SetNoDeflect(projectile, true);
             }
         }
+        public static bool IsNoDeflect(Entity entity)
+        {
+            return entity.GetBehaviourField<bool>(PROP_NO_DEFLECT);
+        }
+        public static void SetNoDeflect(Entity entity, bool value)
+        {
+            entity.SetBehaviourField(PROP_NO_DEFLECT, value);
+        }
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_NO_DEFLECT = new VanillaEntityPropertyMeta<bool>("no_deflect");
     }
 }
