@@ -69,7 +69,7 @@ namespace MVZ2.GameContent.Enemies
         private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
         {
             var entity = param.entity;
-            if (entity.IsOnWater())
+            if (entity.IsOnWater() || entity.IsAboveCloud())
                 return;
             foreach (Entity orb in entity.Level.FindEntities(VanillaEnemyID.seijaYinyangOrb))
             {

@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Contraptions
 
             var count = Mathf.Min(entity.Level.GetEntityCount(VanillaContraptionID.gunpowderBarrel) - 1, MAX_COUNT);
             var startTime = entity.RNG.Next(PRODUCTION_TIME_START_MIN, PRODUCTION_TIME_START_MAX);
-            var productionTimer = new FrameTimer(Mathf.Max(startTime - (PRODUCTION_TIME_REDUCE * count), PRODUCTION_TIME_REDUCE));
+            var productionTimer = new FrameTimer(Mathf.Max(startTime - (PRODUCTION_TIME_REDUCTION * count), PRODUCTION_TIME_REDUCTION));
             SetProductionTimer(entity, productionTimer);
         }
         protected override void UpdateAI(Entity entity)
@@ -130,7 +130,7 @@ namespace MVZ2.GameContent.Contraptions
                     entity.Level.AddEnergy(-energyValue);
                 }
                 var count = Mathf.Min(entity.Level.GetEntityCount(VanillaContraptionID.gunpowderBarrel) - 1, MAX_COUNT);
-                productionTimer.ResetTime(PRODUCTION_TIME - (PRODUCTION_TIME_REDUCE * count));
+                productionTimer.ResetTime(PRODUCTION_TIME - (PRODUCTION_TIME_REDUCTION * count));
                 entity.SetModelProperty("SignIndex", GetDividedValue3(count, MAX_COUNT));
             }
         }
@@ -147,8 +147,9 @@ namespace MVZ2.GameContent.Contraptions
         public const int PRODUCTION_TIME_START_MIN = 90;
         public const int PRODUCTION_TIME_START_MAX = 360;
         public const int PRODUCTION_TIME = 1080;
-        public const int PRODUCTION_TIME_REDUCE = 30;
-        public const int MAX_COUNT = 12;
+        public const int PRODUCTION_TIME_REDUCE_MIN = 720;
+        public const int PRODUCTION_TIME_REDUCTION = 30;
+        public const int MAX_COUNT = (PRODUCTION_TIME - PRODUCTION_TIME_REDUCE_MIN) / PRODUCTION_TIME_REDUCTION;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");
         private static readonly VanillaEntityPropertyMeta<bool> PROP_FURIOUS = new VanillaEntityPropertyMeta<bool>("fury");
         private static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("color_offset");
