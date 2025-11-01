@@ -6,6 +6,7 @@ using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Effects;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Placements;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -67,6 +68,8 @@ namespace MVZ2.GameContent.Effects
                 foreach (var collider in collideBuffer)
                 {
                     var other = collider.Entity;
+                    if (other.Definition.GetPlacementID() == VanillaPlacementID.suspension)
+                        continue;
                     if (entity.IsHostile(other))
                     {
                         collider.TakeDamage(5, effects, entity);
@@ -154,7 +157,7 @@ namespace MVZ2.GameContent.Effects
         public const float SPEED = 2;
         public const float SPEED_FROZEN = 1;
         private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
-        private Detector collideDetector = new CollisionDetector();
+        private Detector collideDetector = new CollisionDetector() { canDetectInvisible = true };
         private List<IEntityCollider> collideBuffer = new List<IEntityCollider>();
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_DISPLAY_SCALE_MULTIPLIER = new VanillaEntityPropertyMeta<Vector3>("scale_multiplier");
         public static readonly VanillaEntityPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaEntityPropertyMeta<Color>("tint_multiplier");
