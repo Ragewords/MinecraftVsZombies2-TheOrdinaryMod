@@ -282,7 +282,6 @@ namespace MVZ2.GameContent.Bosses
                             entity.Spawn(VanillaProjectileID.darkMatterBall, entity.GetCenter() + vector, param)?.Let(e =>
                             {
                                 e.Velocity = Vector3.up * 20;
-                                DarkMatterBall.SetHitCount(e, 1);
                             });
                         }
                         if (subStateTimer.Expired)
