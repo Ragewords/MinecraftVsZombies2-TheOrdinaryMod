@@ -91,7 +91,8 @@ namespace MVZ2.GameContent.Contraptions
             if (!orb.HasBuff<LightningOrbEnergyShieldBuff>())
             {
                 var timer = GetShieldRegenerateTimer(orb);
-                timer?.ResetTime(REGENERATE_TIME_FIRST_AID);
+                timer?.ResetTime(REGENERATE_TIME);
+                orb.AddBuff<LightningOrbEnergyShieldBuff>();
                 return;
             }
             foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
@@ -121,6 +122,5 @@ namespace MVZ2.GameContent.Contraptions
         public const float HEAL_AMOUNT = 100;
         public const int REGENERATE_TIME = 600;
         public const int REGENERATE_TIME_EVOKED = 155;
-        public const int REGENERATE_TIME_FIRST_AID = 30;
     }
 }
