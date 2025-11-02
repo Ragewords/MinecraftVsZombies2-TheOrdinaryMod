@@ -60,6 +60,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                         entity.PlaySound(VanillaSoundID.thunder);
                         entity.PlaySound(VanillaSoundID.tridentThunder);
                         entity.PlaySound(VanillaSoundID.teslaAttack);
+                        entity.AddBuff<LightningOrbEnergyShieldBuff>();
                     }
                 }
                 buff.Remove();

@@ -3,6 +3,7 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -34,12 +35,12 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            if (contraption.HasBuff<LightningOrbEnergyShieldBuff>())
+            if (contraption.HasBuff<LightningOrbEnergyShieldBuff>() || contraption.IsEvoked())
                 return;
             var timer = GetShieldRegenerateTimer(contraption);
             if (timer.RunToExpiredAndNotNull(contraption.GetProduceSpeed()))
             {
-                timer.ResetTime(REGENERATE_TIME);
+                timer.Reset();
                 contraption.AddBuff<LightningOrbEnergyShieldBuff>();
             }
         }
@@ -113,14 +114,11 @@ namespace MVZ2.GameContent.Contraptions
             entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
             entity.RemoveBuffs<LightningOrbEnergyShieldBuff>();
             entity.AddBuff<LightningOrbEvokedBuff>();
-            var timer = GetShieldRegenerateTimer(entity);
-            timer?.ResetTime(REGENERATE_TIME_EVOKED);
         }
         public static FrameTimer? GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public const float HEAL_AMOUNT = 100;
         public const int REGENERATE_TIME = 600;
-        public const int REGENERATE_TIME_EVOKED = 155;
     }
 }
