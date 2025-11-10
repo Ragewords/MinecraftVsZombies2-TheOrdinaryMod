@@ -12,6 +12,7 @@ namespace MVZ2.Models
         {
             costText.text = viewData.cost;
             triggerCostRoot.SetActive(viewData.triggerActive);
+            functionTagRenderer.sprite = viewData.functionTagSprite;
 
             // Styles
             if (standaloneBackground) standaloneBackground.sprite = viewData.standaloneBackground;
@@ -57,6 +58,11 @@ namespace MVZ2.Models
 
         [SerializeField]
         protected Vector2 iconSpriteSize;
+
+
+        [Header("Function Tags")]
+        [SerializeField]
+        private SpriteRenderer functionTagRenderer = null!;
 
         [Header("Styles (Standalone)")]
         [SerializeField]

@@ -115,6 +115,8 @@ namespace MVZ2.GameContent.Contraptions
                 return false;
             if (target.IsNotActiveEnemy())
                 return false;
+            if (!target.IsUndead())
+                return false;
             return true;
         }
         private float GetMarkBlend(Entity self)

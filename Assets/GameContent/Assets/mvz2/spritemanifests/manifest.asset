@@ -2832,6 +2832,24 @@ MonoBehaviour:
     - {fileID: 5404499671542490641, guid: a2cfaa6b4cafa4e4cb84af18ad63d07f, type: 3}
     - {fileID: 2914410065991313758, guid: a2cfaa6b4cafa4e4cb84af18ad63d07f, type: 3}
     - {fileID: 6656791130363650158, guid: a2cfaa6b4cafa4e4cb84af18ad63d07f, type: 3}
+  - name: ui/level/contraption_function_tag
+    spritesheet:
+    - {fileID: -1779215277, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -1018101932, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -2054337474, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 1537697257, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 1812950368, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 2009568430, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 318035043, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 1751193901, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 2077275615, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -1526567999, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 884720526, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -721585861, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 1385793848, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -382571705, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: 1651672215, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
+    - {fileID: -546256058, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
   - name: ui/level/nightmare_broken_glasses
     spritesheet:
     - {fileID: -496670632954994581, guid: 211657565d216cd4a9fb3b2c489ff0af, type: 3}

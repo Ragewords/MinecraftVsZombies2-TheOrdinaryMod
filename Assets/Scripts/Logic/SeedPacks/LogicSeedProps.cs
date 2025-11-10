@@ -72,6 +72,7 @@ namespace MVZ2Logic.SeedPacks
 
         public static readonly PropertyMeta<NamespaceID> SEED_ENTITY_ID = Get<NamespaceID>("seedEntityId");
         public static readonly PropertyMeta<NamespaceID> SEED_OPTION_ID = Get<NamespaceID>("seedOptionId");
+        public static readonly PropertyMeta<NamespaceID> FUNCTION = Get<NamespaceID>("function");
         public static readonly PropertyMeta<int> SEED_TYPE = Get<int>("seedType");
         public static readonly PropertyMeta<bool> TWINKLING = Get<bool>("twinkling");
         public static readonly PropertyMeta<bool> TRIGGER_ACTIVE = Get<bool>("triggerActive");
@@ -98,6 +99,10 @@ namespace MVZ2Logic.SeedPacks
         public static NamespaceID? GetSeedOptionID(this SeedDefinition definition)
         {
             return definition.GetProperty<NamespaceID>(SEED_OPTION_ID);
+        }
+        public static NamespaceID? GetFunction(this SeedDefinition definition)
+        {
+            return definition.GetProperty<NamespaceID>(FUNCTION);
         }
         public static bool IsTriggerActive(this SeedDefinition definition)
         {

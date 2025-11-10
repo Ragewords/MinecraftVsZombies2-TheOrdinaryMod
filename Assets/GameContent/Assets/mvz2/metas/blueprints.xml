@@ -28,6 +28,56 @@
                 frameTop="mvz2:ui/level/card_upgrade_mobile[2]"/>
         </style>
     </styles>
+    <functions>
+        <function id="none">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[0]"/>
+        </function>
+        <function id="shooter">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[1]"/>
+        </function>
+        <function id="producer">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[2]"/>
+        </function>
+        <function id="defender">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[3]"/>
+        </function>
+        <function id="trap">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[4]"/>
+        </function>
+        <function id="icicle">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[5]"/>
+        </function>
+        <function id="container">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[6]"/>
+        </function>
+        <function id="melee">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[7]"/>
+        </function>
+        <function id="bomb">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[8]"/>
+        </function>
+        <function id="combustor">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[9]"/>
+        </function>
+        <function id="piercer">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[10]"/>
+        </function>
+        <function id="magician">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[11]"/>
+        </function>
+        <function id="potion">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[12]"/>
+        </function>
+        <function id="armed">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[13]"/>
+        </function>
+        <function id="electrian">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[14]"/>
+        </function>
+        <function id="monster">
+            <icon sprite="mvz2:ui/level/contraption_function_tag[15]"/>
+        </function>
+    </functions>
     <options>
         <option id="return_pearl" cost="25" name="返回弹珠" >
             <icon sprite="mvz2:options/return_pearl" />

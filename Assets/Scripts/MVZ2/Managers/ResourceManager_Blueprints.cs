@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Text;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Seeds;
 using MVZ2.Metas;
 using MVZ2.UI;
 using MVZ2.Vanilla;
@@ -70,6 +71,18 @@ namespace MVZ2.Managers
         }
         #endregion
 
+        #region 功能
+
+        public BlueprintFunctionMeta? GetBlueprintFunctionMeta(NamespaceID id)
+        {
+            if (!NamespaceID.IsValid(id))
+                return null;
+            var metalist = GetBlueprintMetaList(id.SpaceName);
+            if (metalist == null)
+                return null;
+            return metalist.Functions.FirstOrDefault(s => s.ID == id.Path);
+        }
+        #endregion
         public BlueprintViewData GetBlueprintViewData(SeedPack seed)
         {
             if (seed == null)
@@ -106,6 +119,9 @@ namespace MVZ2.Managers
             var styleID = GetBlueprintStyleID(seedDef, isCommandBlock);
             var styleMeta = GetBlueprintStyleMeta(styleID);
             SetBlueprintViewDataStyle(ref viewData, styleMeta);
+            var functionID = GetBlueprintFunctionID(seedDef);
+            var functionMeta = GetBlueprintFunctionMeta(functionID);
+            SetBlueprintViewFunctionTag(ref viewData, functionMeta);
             return viewData;
         }
         public BlueprintViewData GetBlueprintViewData(NamespaceID? seedID, bool isEndless, bool isCommandBlock = false)
@@ -132,6 +148,9 @@ namespace MVZ2.Managers
             var styleID = isCommandBlock ? LogicBlueprintStyles.normal : LogicBlueprintStyles.commandBlock;
             var styleMeta = GetBlueprintStyleMeta(styleID);
             SetBlueprintViewDataStyle(ref viewData, styleMeta);
+            var functionID = LogicBlueprintFunctions.none;
+            var functionMeta = GetBlueprintFunctionMeta(functionID);
+            SetBlueprintViewFunctionTag(ref viewData, functionMeta);
             return viewData;
         }
         public string GetBlueprintName(NamespaceID blueprintID, bool commandBlock)
@@ -193,6 +212,16 @@ namespace MVZ2.Managers
 
             return result.GetValue<NamespaceID>() ?? defaultValue;
         }
+        private NamespaceID GetBlueprintFunctionID(SeedDefinition seedDef)
+        {
+            var defaultValue = LogicBlueprintFunctions.none;
+            var result = new CallbackResult();
+            result.SetValue(defaultValue);
+            var args = new LogicCallbacks.GetBlueprintFunctionParams(seedDef);
+            Global.Game.RunCallbackWithResultFiltered(LogicCallbacks.GET_BLUEPRINT_FUNCTION, args, result, seedDef);
+
+            return result.GetValue<NamespaceID>() ?? defaultValue;
+        }
         private void SetBlueprintViewDataStyle(ref BlueprintViewData viewData, BlueprintStyleMeta? styleMeta)
         {
             var main = Main;
@@ -200,6 +229,11 @@ namespace MVZ2.Managers
             viewData.mobileBackground = main.GetFinalSprite(styleMeta?.MobileBackground);
             viewData.mobileFrameTop = main.GetFinalSprite(styleMeta?.MobileFrameTop);
             viewData.mobileFrameBottom = main.GetFinalSprite(styleMeta?.MobileFrameBottom);
+        }
+        private void SetBlueprintViewFunctionTag(ref BlueprintViewData viewData, BlueprintFunctionMeta? functionMeta)
+        {
+            var main = Main;
+            viewData.functionTagSprite = main.GetFinalSprite(functionMeta?.Tag);
         }
     }
 }

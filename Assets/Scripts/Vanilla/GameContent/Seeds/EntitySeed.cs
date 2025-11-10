@@ -27,6 +27,7 @@ namespace MVZ2.GameContent.Seeds
             SetProperty(LogicSeedProps.TRIGGER_ACTIVE, info.triggerActive);
             SetProperty(LogicSeedProps.CAN_INSTANT_EVOKE, info.canInstantEvoke);
             SetProperty(LogicSeedProps.CAN_INSTANT_TRIGGER, info.canInstantTrigger);
+            SetProperty(LogicSeedProps.FUNCTION, info.function);
             SetProperty(LogicSeedProps.VARIANT, info.variant);
             SetProperty(LogicSeedProps.ICON, info.icon);
             SetProperty(LogicSeedProps.MOBILE_ICON, info.mobileIcon);
@@ -77,6 +78,7 @@ namespace MVZ2.GameContent.Seeds
         public NamespaceID? rechargeID;
         public bool triggerActive;
         public bool canInstantTrigger;
+        public NamespaceID? function;
         public bool upgrade;
         public bool canInstantEvoke;
         public int variant;

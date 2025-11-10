@@ -7,24 +7,27 @@ namespace MVZ2.Metas
 {
     public class BlueprintMetaList
     {
-        public BlueprintMetaList(BlueprintOptionMeta[] options, BlueprintEntityMeta[] entities, BlueprintErrorMeta[] errors, BlueprintStyleMeta[] styles)
+        public BlueprintMetaList(BlueprintOptionMeta[] options, BlueprintEntityMeta[] entities, BlueprintErrorMeta[] errors, BlueprintStyleMeta[] styles, BlueprintFunctionMeta[] functions)
         {
             Options = options;
             Entities = entities;
             Errors = errors;
             Styles = styles;
+            Functions = functions;
         }
 
         public BlueprintOptionMeta[] Options { get; private set; }
         public BlueprintEntityMeta[] Entities { get; private set; }
         public BlueprintErrorMeta[] Errors { get; private set; }
         public BlueprintStyleMeta[] Styles { get; private set; }
+        public BlueprintFunctionMeta[] Functions { get; private set; }
         public static BlueprintMetaList FromXmlNode(string nsp, XmlNode node, string defaultNsp)
         {
             var options = new List<BlueprintOptionMeta>();
             var errors = new List<BlueprintErrorMeta>();
             var entities = new List<BlueprintEntityMeta>();
             var styles = new List<BlueprintStyleMeta>();
+            var functions = new List<BlueprintFunctionMeta>();
             for (var i = 0; i < node.ChildNodes.Count; i++)
             {
                 var child = node.ChildNodes[i];
@@ -44,8 +47,12 @@ namespace MVZ2.Metas
                 {
                     LoadStyles(nsp, styles, child, defaultNsp);
                 }
+                else if (child.Name == "functions")
+                {
+                    LoadFunctions(nsp, functions, child, defaultNsp);
+                }
             }
-            return new BlueprintMetaList(options.ToArray(), entities.ToArray(), errors.ToArray(), styles.ToArray());
+            return new BlueprintMetaList(options.ToArray(), entities.ToArray(), errors.ToArray(), styles.ToArray(), functions.ToArray());
         }
         private static void LoadEntities(string nsp, List<BlueprintEntityMeta> entities, XmlNode node, string defaultNsp)
         {
@@ -103,6 +110,21 @@ namespace MVZ2.Metas
                     if (meta != null)
                     {
                         styles.Add(meta);
+                    }
+                }
+            }
+        }
+        private static void LoadFunctions(string nsp, List<BlueprintFunctionMeta> functions, XmlNode node, string defaultNsp)
+        {
+            for (var i = 0; i < node.ChildNodes.Count; i++)
+            {
+                var child = node.ChildNodes[i];
+                if (child.Name == "function")
+                {
+                    var meta = BlueprintFunctionMeta.FromXmlNode(child, defaultNsp);
+                    if (meta != null)
+                    {
+                        functions.Add(meta);
                     }
                 }
             }

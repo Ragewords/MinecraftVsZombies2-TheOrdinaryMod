@@ -47,11 +47,21 @@ namespace MVZ2Logic.Callbacks
                 this.isCommandBlock = isCommandBlock;
             }
         }
+        public struct GetBlueprintFunctionParams
+        {
+            public SeedDefinition blueprintDefinition;
+
+            public GetBlueprintFunctionParams(SeedDefinition blueprintID)
+            {
+                this.blueprintDefinition = blueprintID;
+            }
+        }
         public readonly static CallbackType<GetAlmanacEntryTagsParams> GET_ALMANAC_ENTRY_TAGS = new();
         public readonly static CallbackType<GetInnateBlueprintsParams> GET_INNATE_BLUEPRINTS = new();
         public readonly static CallbackType<GetInnateArtifactsParams> GET_INNATE_ARTIFACTS = new();
         public readonly static CallbackType<EmptyCallbackParams> GET_BLUEPRINT_SLOT_COUNT = new();
         public readonly static CallbackType<GetBlueprintStyleParams> GET_BLUEPRINT_STYLE = new();
+        public readonly static CallbackType<GetBlueprintFunctionParams> GET_BLUEPRINT_FUNCTION = new();
 
         public readonly static CallbackType<StringCallbackParams> IS_SPECIAL_USER_NAME = new();
         public readonly static CallbackType<PostUserLoadParams> POST_USER_LOAD = new();

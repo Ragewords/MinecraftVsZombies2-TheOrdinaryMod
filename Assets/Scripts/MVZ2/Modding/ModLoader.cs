@@ -167,6 +167,7 @@ namespace MVZ2.Modding
                     rechargeID = def.GetRechargeID(),
                     triggerActive = def.IsTriggerActive(),
                     canInstantTrigger = def.CanInstantTrigger(),
+                    function = def.GetFunction(),
                     upgrade = def.IsUpgradeBlueprint(),
                     canInstantEvoke = def.CanInstantEvoke(),
                     model = def.GetModelID(),

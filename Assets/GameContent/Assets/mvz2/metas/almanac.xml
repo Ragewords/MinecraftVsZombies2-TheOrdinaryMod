@@ -1014,7 +1014,7 @@
             </header>
             <properties>
                 <p>特点：<![CDATA[<color=red>无法复活<tag id="mvz2:not_undead"/>非亡灵</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即击杀每行最靠左的1只怪物，将它们复活为更强大的个体</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即击杀每行最靠左的1只亡灵怪物，将它们复活为更强大的个体</color>]]></p>
             </properties>
             <flavor>
                 <p>抢救？！</p>
@@ -1158,7 +1158,7 @@
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>10</color>]]></p>
                 <p>模仿怪物生命：<![CDATA[<color=red>300</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即模仿场上的至多3个敌人，随后自身消失</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即模仿场上的至多3个怪物，随后自身消失</color>]]></p>
             </properties>
             <flavor>
                 <p>妖怪树叶仰慕着一个擅长变化姿态的大妖怪，并向她拜师，当然，主要是为了在那个大妖怪的头上躺着。</p>

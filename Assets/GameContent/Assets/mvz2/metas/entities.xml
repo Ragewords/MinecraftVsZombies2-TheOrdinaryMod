@@ -21,6 +21,7 @@
                 <float name="mvz2:cryPitch" value="1" />
                 <int name="mvz2:faction" value="0" />
                 <string name="mvz2:sortingLayer" value="Default" />
+                <id name="mvz2:function" value="mvz2:none" />
 
                 <int name="mvz2:cost" value="0" />
                 <id name="mvz2:rechargeId" value="mvz2:none" />
@@ -91,6 +92,7 @@
                 <color name="mvz2:bloodColor" value="#7F0000FF" />
                 <color name="mvz2:bloodColorCensored" value="#00007FFF" />
                 <int name="mvz2:faction" value="1" />
+                <id name="mvz2:function" value="mvz2:monster" />
 
                 <int name="mvz2:waterInteraction" value="1" />
                 <int name="mvz2:airInteraction" value="2" />
@@ -196,6 +198,7 @@
                 <vector3 name="mvz2:size" x="32" y="48" z="32" />
                 <id name="mvz2:shootSound" value="mvz2:shot" />
                 <id name="mvz2:projectileId" value="mvz2:arrow" />
+                <id name="mvz2:function" value="mvz2:shooter" />
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
@@ -311,6 +314,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:producer" />
             </properties>
         </contraption>
         <contraption id="obsidian" name="哭泣的黑曜石" tooltip="阻碍怪物的前进，保护背后的其他器械，并照亮周围区域" >
@@ -326,6 +330,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="mine_tnt" name="地雷TNT" tooltip="接触时爆炸，但需要时间准备">
@@ -344,6 +349,7 @@
 
                 <int name="mvz2:cost" value="25" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:trap" />
             </properties>
         </contraption>
 
@@ -364,6 +370,7 @@
 
                 <int name="mvz2:cost" value="0" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:icicle" />
             </properties>
         </dispenser>
         <contraption id="moonlight_sensor" name="月光传感器" tooltip="自动提供能量，一段时间后提升生产量">
@@ -380,6 +387,7 @@
 
                 <int name="mvz2:cost" value="25" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:producer" />
             </properties>
         </contraption>
         <contraption id="glowstone" name="荧石" tooltip="照亮周围范围" >
@@ -399,6 +407,7 @@
 
                 <int name="mvz2:cost" value="25" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="punchton" name="冲击活塞" tooltip="蓄力冲击前方敌人，需要时间再次准备">
@@ -414,6 +423,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
         <contraption id="tnt" name="Etho台阶" tooltip="触发后炸飞周围敌人，并在他们的头顶生成小炸药" >
@@ -434,6 +444,7 @@
 
                 <int name="mvz2:cost" value="175" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:bomb" />
             </properties>
         </contraption>
         <contraption id="soul_furnace" name="灵魂熔炉" tooltip="发射分裂火球，但需要献祭前方的器械作为燃料">
@@ -460,6 +471,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:combustor" />
             </properties>
         </contraption>
         <dispenser id="silvenser" name="银质发射器" tooltip="射出穿透肉体的飞刀" >
@@ -474,6 +486,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:piercer" />
             </properties>
         </dispenser>
         <contraption id="magichest" name="魔术箱" tooltip="将一个怪物变为星之碎片" >
@@ -490,6 +503,7 @@
 
                 <int name="mvz2:cost" value="250" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
 
@@ -520,6 +534,7 @@
 
                 <int name="mvz2:cost" value="25" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后发射速度增加">
@@ -551,6 +566,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="vortex_hopper" name="漩涡漏斗" tooltip="把附近的僵尸拉入水底" >
@@ -571,6 +587,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:trap" />
             </properties>
         </contraption>
         <dispenser id="pistenser" name="活塞发射器" tooltip="能够伸缩自己来攻击空中或低矮敌人" >
@@ -585,6 +602,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:piercer" />
             </properties>
         </dispenser>
         <dispenser id="totenser" name="图腾发射器" tooltip="发射虚弱的飞镖并灼烧前方的僵尸" >
@@ -600,6 +618,7 @@
 
                 <int name="mvz2:cost" value="225" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:potion" />
             </properties>
         </dispenser>
         <contraption id="dream_crystal" name="梦境结晶" tooltip="能够自我修复的障碍墙" >
@@ -620,6 +639,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="dream_silk" name="美梦丝" tooltip="让一个器械睡着，醒来后生成一个星之碎片">
@@ -651,6 +671,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
 
@@ -672,6 +693,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </dispenser>
         <contraption id="spike_block" name="尖刺方块" tooltip="扎伤上面的敌人" >
@@ -696,6 +718,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:piercer" />
             </properties>
         </contraption>
         <dispenser id="stone_dropper" name="石制投掷器" tooltip="投出石子，巨石或弹力巨石" >
@@ -735,6 +758,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="golden_apple" name="转生苹果" tooltip="转生攻击它的怪物" >
@@ -751,6 +775,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
         <contraption id="thunder_drum" name="雷鼓" tooltip="触发后震退怪物" >
@@ -769,6 +794,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="tesla_coil" name="磁暴线圈" tooltip="电击大范围内的敌人，为穿过的金属射弹附上电流" >
@@ -795,6 +821,7 @@
 
                 <int name="mvz2:cost" value="350" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:electrian" />
             </properties>
         </contraption>
         <contraption id="giant_bowl" name="巨碗" tooltip="生产并储存星之碎片" >
@@ -810,6 +837,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
 
@@ -833,6 +861,7 @@
 
                 <int name="mvz2:cost" value="175" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:shooter" />
             </properties>
         </contraption>
         <contraption id="lightning_orb" name="闪电之珠" tooltip="阻碍大范围怪物前进，并吸收子弹来治疗自己">
@@ -863,6 +892,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <dispenser id="splitenser" name="双向发射器" tooltip="向前后双方射出箭和飞刀" >
@@ -891,6 +921,7 @@
 
                 <int name="mvz2:cost" value="0" />
                 <id name="mvz2:rechargeId" value="mvz2:medium" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="hellfire" name="地狱火" tooltip="点燃穿过的箭矢" >
@@ -915,6 +946,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:shooter" />
             </properties>
         </contraption>
         <contraption id="necrotombstone" name="死灵墓碑" tooltip="召唤友方骷髅战士">
@@ -931,6 +963,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
         <contraption id="black_hole_bomb" name="行星炸弹" tooltip="触发后产生星系" >
@@ -949,6 +982,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:bomb" />
             </properties>
         </contraption>
         <contraption id="desire_pot" name="欲望壶" tooltip="复制怪物身上的星之碎片" >
@@ -964,6 +998,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
         
@@ -985,6 +1020,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:producer" />
             </properties>
         </contraption>
         <dispenser id="triplenser" name="三头发射器" tooltip="一次射出三行的箭矢" >
@@ -1016,6 +1052,7 @@
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
         <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢" >
@@ -1065,6 +1102,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="elastic_cloud" name="弹性云" tooltip="弹走接触到的怪物">
@@ -1090,6 +1128,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="jeweled_pagoda" name="珠光宝塔" tooltip="禁用一整行地格并生成星之碎片">
@@ -1117,6 +1156,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
 
@@ -1139,6 +1179,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:potion" />
             </properties>
         </dispenser>
         <contraption id="force_pad" name="传动力板" tooltip="（需要重力板）\n改变上方物体的力">
@@ -1162,6 +1203,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <dispenser id="golden_dropper" name="珠宝投掷器" tooltip="（需要木制投掷器）\n投出反弹的金球及产生宝石的宝石球">
@@ -1184,6 +1226,7 @@
 
                 <int name="mvz2:cost" value="275" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </dispenser>
         <contraption id="revivegrave" name="还魂冢" tooltip="复活并友好化倒下的亡灵类敌人">
@@ -1202,6 +1245,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
         <contraption id="skyward_beacon" name="御天信标" tooltip="（需要信标）\n使用光柱定点打击位置">
@@ -1227,6 +1271,7 @@
 
                 <int name="mvz2:cost" value="175" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:piercer" />
             </properties>
         </contraption>
         <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要比较发射器）\n交替射出四次箭矢" >
@@ -1274,6 +1319,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:piercer" />
             </properties>
         </contraption>
         <contraption id="command_block" name="命令方块" tooltip="模仿一个器械" >
@@ -1288,6 +1334,7 @@
 
                 <int name="mvz2:cost" value="0" />
                 <id name="mvz2:rechargeId" value="mvz2:none" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
 
@@ -1309,6 +1356,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:potion" />
             </properties>
         </dispenser>
         <contraption id="dimension_hammer" name="次元锤" tooltip="锤击地面，震晕怪物并发射弹幕">
@@ -1338,6 +1386,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
         <contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的怪物投掷火焰弹">
@@ -1355,6 +1404,7 @@
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
         <dispenser id="youkai_leaf" name="妖怪树叶" tooltip="发射穿透叶片，能够模仿攻击自己的怪物">
@@ -1376,6 +1426,7 @@
                 <int name="mvz2:airInteraction" value="0" />
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </dispenser>
         <contraption id="smoker" name="烟熏炉" tooltip="喷出浓烟，对一定区域的怪物造成伤害">
@@ -1392,6 +1443,7 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:combustor" />
             </properties>
         </contraption>
 
@@ -1412,6 +1464,7 @@
 
                 <int name="mvz2:cost" value="25" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="random_china" name="随机瓷器" tooltip="被摧毁后生成随机器械">
@@ -1427,6 +1480,7 @@
 
                 <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
         <contraption id="error_block" name="错误方块" tooltip="出错了！">

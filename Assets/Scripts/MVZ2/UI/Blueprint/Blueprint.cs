@@ -22,6 +22,7 @@ namespace MVZ2.UI
             SetEmpty(viewData.empty);
             SetCost(viewData.cost);
             SetTriggerActive(viewData.triggerActive);
+            functionTagRenderer.sprite = viewData.functionTagSprite;
 
             // Styles.
             if (standaloneBackground) standaloneBackground.sprite = viewData.standaloneBackground;
@@ -141,6 +142,10 @@ namespace MVZ2.UI
         [SerializeField]
         private GameObject rootObj = null!;
 
+        [Header("Function Tags")]
+        [SerializeField]
+        private Image functionTagRenderer = null!;
+
         [Header("Styles (Standalone)")]
         [SerializeField]
         private Image standaloneBackground = null!;
@@ -191,6 +196,7 @@ namespace MVZ2.UI
         public bool empty;
         public string cost;
         public Sprite? icon;
+        public Sprite? functionTagSprite;
         public bool triggerActive;
         public bool iconGrayscale;
 
