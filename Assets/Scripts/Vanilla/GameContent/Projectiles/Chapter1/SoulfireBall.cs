@@ -41,12 +41,12 @@ namespace MVZ2.GameContent.Projectiles
             {
                 entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
             }
-            if (!IsSplit(entity) && !blast)
+            if (!IsSplited(entity))
             {
                 for (int i = 0; i < 4; i++)
                 {
                     var direction = Quaternion.Euler(0, 45 - i * 30, 0) * entity.Velocity.normalized;
-                    var velocity = direction * 15;
+                    var velocity = direction * entity.Velocity.magnitude;
                     var projectile = other.ShootProjectile(new ShootParams()
                     {
                         projectileID = VanillaProjectileID.soulfireBall,
@@ -60,7 +60,7 @@ namespace MVZ2.GameContent.Projectiles
                         projectile.SetScale(new Vector3(0.5f, 0.5f, 0.5f));
                         projectile.SetDisplayScale(new Vector3(0.5f, 0.5f, 0.5f));
                         projectile.SetShadowScale(new Vector3(0.5f, 0.5f, 0.5f));
-                        SetSplit(projectile, true);
+                        SetSplited(projectile, true);
                     }
                 }
             }
@@ -78,7 +78,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             entity.SetBehaviourField(PROP_BLAST, value);
         }
-        public static void SetSplit(Entity entity, bool value)
+        public static void SetSplited(Entity entity, bool value)
         {
             entity.SetBehaviourField(PROP_SPLIT, value);
         }
@@ -87,7 +87,7 @@ namespace MVZ2.GameContent.Projectiles
             return entity.GetBehaviourField<bool>(PROP_BLAST);
         }
 
-        public static bool IsSplit(Entity entity)
+        public static bool IsSplited(Entity entity)
         {
             return entity.GetBehaviourField<bool>(PROP_SPLIT);
         }

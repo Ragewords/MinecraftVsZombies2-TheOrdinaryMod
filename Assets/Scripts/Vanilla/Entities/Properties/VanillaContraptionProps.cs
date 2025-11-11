@@ -216,6 +216,10 @@ namespace MVZ2.Vanilla.Contraptions
 
         #region 功能分类
         public static readonly PropertyMeta<NamespaceID> FUNCTION = Get<NamespaceID>("function");
+        public static NamespaceID? GetFunction(this Entity definition)
+        {
+            return definition.GetProperty<NamespaceID>(FUNCTION);
+        }
         public static NamespaceID? GetFunction(this EntityDefinition definition)
         {
             return definition.GetProperty<NamespaceID>(FUNCTION);

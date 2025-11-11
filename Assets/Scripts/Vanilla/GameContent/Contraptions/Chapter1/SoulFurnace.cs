@@ -5,6 +5,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
+using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
@@ -107,7 +108,7 @@ namespace MVZ2.GameContent.Contraptions
                 var angle = entity.RNG.Next(-10f, 10f);
                 var param = furnace.GetShootParams();
                 param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * entity.GetFacingX() * entity.RNG.Next(15f, 18f);
-                furnace.ShootProjectile(param)?.Let(e => SoulfireBall.SetBlast(e, true));
+                furnace.ShootProjectile(param)?.Let(e => { SoulfireBall.SetBlast(e, true); SoulfireBall.SetSplited(e, true); });
             }
         }
         protected override Detector GetDetector()
@@ -152,6 +153,7 @@ namespace MVZ2.GameContent.Contraptions
             float fuelMultiplier = 1;
 
             int cost = entity.GetCost();
+            if (entity.GetFunction() == VanillaBlueprintFunctions.producer) cost *= 2;
             var rechargeID = entity.GetRechargeID();
             if (rechargeID != null)
             {
@@ -159,10 +161,12 @@ namespace MVZ2.GameContent.Contraptions
                 if (rechargeDef != null)
                 {
                     fuelMultiplier = rechargeDef.GetQuality();
+                    if (entity.GetFunction() == VanillaBlueprintFunctions.container) fuelMultiplier += 1;
                 }
             }
 
             fuel = Mathf.CeilToInt((fuel + cost / 6f) * fuelMultiplier);
+            if (entity.GetFunction() == VanillaBlueprintFunctions.combustor) fuel = Mathf.CeilToInt(fuel * 2 / 3);
             var result = new CallbackResult(fuel);
             entity.Level.Triggers.RunCallbackWithResult(VanillaLevelCallbacks.GET_CONTRAPTION_SACRIFICE_FUEL, new VanillaLevelCallbacks.ContraptionSacrificeValueParams(entity, soulFurnace), result);
             return result.GetValue<int>();
@@ -177,6 +181,7 @@ namespace MVZ2.GameContent.Contraptions
             var effects = new DamageEffectList(VanillaDamageEffects.SACRIFICE, VanillaDamageEffects.SELF_DAMAGE);
             entity.Die(effects, soulFurnace);
             AddFuel(soulFurnace, fuel);
+            SacrificeInteractions(entity, soulFurnace);
             entity.Level.Spawn(VanillaEffectID.soulfireBurn, entity.GetCenter(), soulFurnace);
             entity.PlaySound(VanillaSoundID.refuel);
 
@@ -203,6 +208,42 @@ namespace MVZ2.GameContent.Contraptions
                 break;
             }
         }
+        private void SacrificeInteractions(Entity entity, Entity soulFurnace)
+        {
+            if (entity.GetFunction() == VanillaBlueprintFunctions.combustor)
+            {
+                for (int i = entity.GetColumn(); i < entity.GetColumn() + 5; i++)
+                {
+                    var param = soulFurnace.GetSpawnParams();
+                    param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 1.25f);
+                    param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 1.25f);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, soulFurnace.GetDamage() / 2);
+                    param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 15);
+                    entity.PlaySound(VanillaSoundID.flame);
+                    var x = entity.Position.x + entity.Level.GetGridWidth() * soulFurnace.GetFacingX() * i;
+                    var z = entity.Position.z;
+                    var y = entity.Level.GetGroundY(x, z);
+                    Vector3 gridPos = new Vector3(x, y, z);
+                    entity.Spawn(VanillaEffectID.smokerFire, gridPos, param);
+                }
+            }
+            if (entity.GetFunction() == VanillaBlueprintFunctions.bomb)
+            {
+                for (int i = 0; i < 30; i++)
+                {
+                    var direction = Quaternion.Euler(0, i * 12, 0) * Vector3.right;
+                    var velocity = direction * soulFurnace.GetShotVelocity().magnitude;
+                    entity.ShootProjectile(new ShootParams()
+                    {
+                        projectileID = VanillaProjectileID.soulfireBall,
+                        position = entity.GetCenter(),
+                        velocity = velocity,
+                        faction = soulFurnace.GetFaction(),
+                        damage = soulFurnace.GetDamage()
+                    });
+                }
+            }
+        }
         private void EvokedUpdate(Entity entity)
         {
             detectBuffer.Clear();
@@ -227,6 +268,7 @@ namespace MVZ2.GameContent.Contraptions
             if (projectile != null)
             {
                 SoulfireBall.SetBlast(projectile, true);
+                SoulfireBall.SetSplited(projectile, true);
                 entity.PlaySound(VanillaSoundID.darkSkiesCast);
             }
 
