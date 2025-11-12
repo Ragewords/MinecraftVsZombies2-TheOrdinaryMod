@@ -175,6 +175,7 @@ namespace MVZ2.GameContent.Contraptions
             fuel = Mathf.CeilToInt((fuel + cost / 6f) * fuelMultiplier);
             if (entity.GetFunction() == VanillaBlueprintFunctions.combustor) fuel = Mathf.CeilToInt(fuel * 2 / 3);
             if (entity.GetFunction() == VanillaBlueprintFunctions.piercer) fuel = Mathf.CeilToInt(fuel / 3);
+            if (entity.GetFunction() == VanillaBlueprintFunctions.electrian) fuel = Mathf.CeilToInt(fuel / 2);
             if (entity.GetFunction() == VanillaBlueprintFunctions.defender) fuel += Mathf.CeilToInt(entity.GetMaxHealth() * 0.01f);
             var result = new CallbackResult(fuel);
             entity.Level.Triggers.RunCallbackWithResult(VanillaLevelCallbacks.GET_CONTRAPTION_SACRIFICE_FUEL, new VanillaLevelCallbacks.ContraptionSacrificeValueParams(entity, soulFurnace), result);
@@ -343,7 +344,7 @@ namespace MVZ2.GameContent.Contraptions
                         projectileID = VanillaProjectileID.iceBall;
                         break;
                     case SACRIFICE_INTERACTION_LIGNTNING:
-                        attackSpeedMultiplier = 0.5f;
+                        attackSpeedMultiplier = 0.667f;
                         projectileID = VanillaProjectileID.lightningBall;
                         break;
                 }

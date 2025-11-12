@@ -7,7 +7,6 @@ using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -25,26 +24,23 @@ namespace MVZ2.GameContent.Projectiles
                 canDetectInvisible = true
             };
         }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            entity.CollisionMaskHostile = 0;
-            entity.CollisionMaskFriendly = 0;
-        }
         public override void Update(Entity entity)
         {
             base.Update(entity);
-            if (entity.IsTimeInterval(10))
+            if (entity.IsTimeInterval(5))
             {
                 zapDetectBuffer.Clear();
                 zapDetector.DetectMultiple(entity, zapDetectBuffer);
                 var results = zapDetectBuffer.RandomTake(3, entity.RNG);
+                bool playSound = false;
                 foreach (var target in results)
                 {
-                    target.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
+                    target.TakeDamage(entity.GetDamage() / 4, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
                     TeslaCoil.CreateArc(entity, entity.GetCenter(), target.Entity.Position, 10, 15);
-                    entity.PlaySound(VanillaSoundID.redLightning);
+                    playSound = true;
                 }
+                if (playSound)
+                    entity.PlaySound(VanillaSoundID.redLightning);
             }
         }
         private Detector zapDetector;
