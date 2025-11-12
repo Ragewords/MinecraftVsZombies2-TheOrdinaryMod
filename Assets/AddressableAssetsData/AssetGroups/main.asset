@@ -8757,6 +8757,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac73f37a7b47cb84db4e4a971dec06bf
+    m_Address: mvz2:entity/projectiles/ice_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acc2e6159831cab4bb25141293768c3c
     m_Address: mvz2:mobile_blueprint/furnace
     m_ReadOnly: 0
@@ -9316,6 +9323,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b86ef66d94a94004b94462463348e7d1
+    m_Address: mvz2:projectile/ice_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b8b94582569820d4ea902e962c410bd0
     m_Address: mvz2:archive/halloween_note
@@ -10640,6 +10654,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2942d45e742fcd46962d384ec537d7a
+    m_Address: mvz2:entity/projectiles/lightning_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2e26713f91070d419b5930613a248fb
     m_Address: mvz2:effect/floating_text
     m_ReadOnly: 0
@@ -11333,12 +11354,26 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e26fb2160b2a6fd4582f4e9eaaec81b4
+    m_Address: mvz2:entity/projectiles/soulfire_saw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2706efed3170484cb03bec469ea14aa
     m_Address: mvz2:smash
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e27387bba124a9a4cb9d177d07e6513c
+    m_Address: mvz2:projectile/lightning_ball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e29b6159be764bc429a4bcd284f22a68
     m_Address: mvz2:icon/totenser_web
@@ -12752,6 +12787,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: feacf1a64113a6d49a3091fce2a296b2
+    m_Address: mvz2:projectile/soulfire_saw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fef0213e3bb1cb94bb894f0e99399ef4
     m_Address: mvz2:pickup/almanac_pickup

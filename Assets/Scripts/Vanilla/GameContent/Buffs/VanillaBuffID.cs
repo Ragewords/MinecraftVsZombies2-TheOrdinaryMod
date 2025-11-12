@@ -148,6 +148,7 @@ namespace MVZ2.GameContent.Buffs
             public const string tntIgnited = "tnt_ignited";
             public const string tntCharged = "tnt_charged";
             public const string sacrificed = "sacrificed";
+            public const string soulFurnaceSacrificeInteraction = "soul_furnace_sacrifice_interaction";
             public const string conductor = "conductor";
             public const string magichestInvincible = "magichest_invincible";
             public const string frankensteinShocked = "frankenstein_shocked";
@@ -501,6 +502,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID tntIgnited = Get(VanillaBuffNames.Contraption.tntIgnited);
             public static readonly NamespaceID tntCharged = Get(VanillaBuffNames.Contraption.tntCharged);
             public static readonly NamespaceID sacrificed = Get(VanillaBuffNames.Contraption.sacrificed);
+            public static readonly NamespaceID soulFurnaceSacrificeInteraction = Get(VanillaBuffNames.Contraption.soulFurnaceSacrificeInteraction);
             public static readonly NamespaceID magichestInvincible = Get(VanillaBuffNames.Contraption.magichestInvincible);
             public static readonly NamespaceID frankensteinShocked = Get(VanillaBuffNames.Contraption.frankensteinShocked);
             public static readonly NamespaceID dreamKeyShield = Get(VanillaBuffNames.Contraption.dreamKeyShield);

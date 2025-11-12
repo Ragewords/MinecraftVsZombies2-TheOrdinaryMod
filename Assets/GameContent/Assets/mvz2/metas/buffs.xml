@@ -72,6 +72,7 @@
     <buff id="tnt_ignited" polarity="none" level="3000" target="contraption" />
     <buff id="tnt_charged" polarity="positive" level="1000" target="contraption" />
     <buff id="sacrificed" polarity="none" level="5000" target="contraption" />
+    <buff id="soul_furnace_sacrifice_interaction" polarity="mixed" level="5000" target="contraption" />
     <buff id="projectile_wait" polarity="none" level="1000" target="projectile" />
     <buff id="magichest_invincible" polarity="positive" level="3000" target="contraption" />
     <buff id="ghost" polarity="none" level="3000" target="enemy" />

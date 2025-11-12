@@ -14,6 +14,9 @@ namespace MVZ2.GameContent.Projectiles
         public const string miniTNT = "mini_tnt";
         public const string flyingTNT = "flying_tnt";
         public const string soulfireBall = "soulfire_ball";
+        public const string soulfireSaw = "soulfire_saw";
+        public const string iceBall = "ice_ball";
+        public const string lightningBall = "lightning_ball";
         public const string spiceGas = "spice_gas";
         public const string poisonBall = "poison_ball";
         public const string poisonPotion = "poison_potion";
@@ -80,6 +83,9 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID miniTNT = Get(VanillaProjectileNames.miniTNT);
         public static readonly NamespaceID flyingTNT = Get(VanillaProjectileNames.flyingTNT);
         public static readonly NamespaceID soulfireBall = Get(VanillaProjectileNames.soulfireBall);
+        public static readonly NamespaceID soulfireSaw = Get(VanillaProjectileNames.soulfireSaw);
+        public static readonly NamespaceID iceBall = Get(VanillaProjectileNames.iceBall);
+        public static readonly NamespaceID lightningBall = Get(VanillaProjectileNames.lightningBall);
         public static readonly NamespaceID spiceGas = Get(VanillaProjectileNames.spiceGas);
         public static readonly NamespaceID poisonBall = Get(VanillaProjectileNames.poisonBall);
         public static readonly NamespaceID poisonPotion = Get(VanillaProjectileNames.poisonPotion);

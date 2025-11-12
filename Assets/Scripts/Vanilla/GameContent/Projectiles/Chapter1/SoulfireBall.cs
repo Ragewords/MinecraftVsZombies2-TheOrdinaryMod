@@ -41,7 +41,7 @@ namespace MVZ2.GameContent.Projectiles
             {
                 entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
             }
-            if (!IsSplited(entity))
+            if (!IsSplited(entity) && !hitResult.Pierce)
             {
                 for (int i = 0; i < 4; i++)
                 {
@@ -64,9 +64,6 @@ namespace MVZ2.GameContent.Projectiles
                     }
                 }
             }
-            {
-                entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
-            }
 
             if (!blocksFire || blast)
             {
@@ -86,7 +83,6 @@ namespace MVZ2.GameContent.Projectiles
         {
             return entity.GetBehaviourField<bool>(PROP_BLAST);
         }
-
         public static bool IsSplited(Entity entity)
         {
             return entity.GetBehaviourField<bool>(PROP_SPLIT);

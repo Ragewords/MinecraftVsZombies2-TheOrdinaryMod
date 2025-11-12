@@ -993,6 +993,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4d88a598c5aab984891215c1f4414390, type: 3}
   - name: entity/projectiles/golden_ball
     sprite: {fileID: 21300000, guid: 77e47ba4e4bc65a46bf4e84b41c40576, type: 3}
+  - name: entity/projectiles/ice_ball
+    sprite: {fileID: 21300000, guid: ac73f37a7b47cb84db4e4a971dec06bf, type: 3}
   - name: entity/projectiles/ice_bolt
     sprite: {fileID: 21300000, guid: 74521e763130e2249885ce873fba23f2, type: 3}
   - name: entity/projectiles/ignited_wooden_ball
@@ -1003,6 +1005,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8af07b31f932791429fddf24a251679f, type: 3}
   - name: entity/projectiles/knife
     sprite: {fileID: 21300000, guid: 85842c2e1aa457b418e743fc8faeae75, type: 3}
+  - name: entity/projectiles/lightning_ball
+    sprite: {fileID: 21300000, guid: d2942d45e742fcd46962d384ec537d7a, type: 3}
   - name: entity/projectiles/lingering_potion
     sprite: {fileID: 21300000, guid: de92cafa97933f14ca26c5babda512d8, type: 3}
   - name: entity/projectiles/mine_tnt_seed
@@ -1041,6 +1045,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a84ced210884b2b4cac4a4b7d7f4f6a6, type: 3}
   - name: entity/projectiles/soulfire_ball_trail
     sprite: {fileID: 21300000, guid: 3e623a643b588284a9d22ed7fc755230, type: 3}
+  - name: entity/projectiles/soulfire_saw
+    sprite: {fileID: 21300000, guid: e26fb2160b2a6fd4582f4e9eaaec81b4, type: 3}
   - name: entity/projectiles/spike
     sprite: {fileID: 21300000, guid: 62ae9a026747aea4f83506787af8d75a, type: 3}
   - name: entity/projectiles/spike_ball
