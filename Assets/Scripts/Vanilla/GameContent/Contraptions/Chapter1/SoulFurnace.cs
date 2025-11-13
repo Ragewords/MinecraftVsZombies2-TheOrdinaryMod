@@ -176,7 +176,7 @@ namespace MVZ2.GameContent.Contraptions
             if (entity.GetFunction() == VanillaBlueprintFunctions.combustor) fuel = Mathf.CeilToInt(fuel * 2 / 3);
             if (entity.GetFunction() == VanillaBlueprintFunctions.piercer) fuel = Mathf.CeilToInt(fuel / 3);
             if (entity.GetFunction() == VanillaBlueprintFunctions.electrian) fuel = Mathf.CeilToInt(fuel / 2);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.defender) fuel += Mathf.CeilToInt(entity.GetMaxHealth() * 0.01f);
+            if (entity.GetFunction() == VanillaBlueprintFunctions.defender) fuel += Mathf.CeilToInt(entity.GetMaxHealth() * 0.005f);
             var result = new CallbackResult(fuel);
             entity.Level.Triggers.RunCallbackWithResult(VanillaLevelCallbacks.GET_CONTRAPTION_SACRIFICE_FUEL, new VanillaLevelCallbacks.ContraptionSacrificeValueParams(entity, soulFurnace), result);
             return result.GetValue<int>();

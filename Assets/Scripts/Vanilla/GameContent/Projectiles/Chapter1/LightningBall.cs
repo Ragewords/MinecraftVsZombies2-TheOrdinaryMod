@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Projectiles
                 foreach (var target in results)
                 {
                     target.TakeDamage(entity.GetDamage() / 4, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
-                    TeslaCoil.CreateArc(entity, entity.GetCenter(), target.Entity.Position, 10, 15);
+                    TeslaCoil.CreateArc(entity, entity.Position, target.Entity.Position, 10, 15);
                     playSound = true;
                 }
                 if (playSound)
