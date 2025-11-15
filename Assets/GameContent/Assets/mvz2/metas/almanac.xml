@@ -769,7 +769,7 @@
             <properties>
                 <p>爆炸伤害：<![CDATA[<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>生产时间：<![CDATA[<color=red>36-</color><color=orange>24</color><color=red>秒（场上每个额外的火药桶-1秒）</color>]]></p>
+                <p>生产时间：<![CDATA[<color=red>36-</color><color=orange>30</color><color=red>秒（场上每个额外的火药桶-1.5秒）</color>]]></p>
                 <p>提供能量：<![CDATA[<color=red>50</color>]]></p>
                 <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供100能量，但是会更快爆炸</color>]]></p>
             </properties>
