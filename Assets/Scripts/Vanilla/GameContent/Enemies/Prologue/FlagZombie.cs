@@ -31,18 +31,10 @@ namespace MVZ2.GameContent.Enemies
             {
                 RandomEnemySpeedBuff.SetSpeed(speedBuff, 2);
             }
-            SummonHorde(entity, IZombieOnly);
-        }
-        public static void SummonHorde(Entity entity, bool IZombieOnly)
-        {
             var level = entity.Level;
-            bool allowSummon = (IZombieOnly && level.IsIZombie()) || !IZombieOnly;
-            if (allowSummon)
+            if (level.IsIZombie())
             {
-                if (level.IsIZombie())
-                {
-                    level.PlaySound(VanillaSoundID.siren);
-                }
+                level.PlaySound(VanillaSoundID.siren);
                 for (var lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                 {
                     entity.Level.SpawnEnemy(VanillaSpawnID.zombie, lane);
@@ -75,6 +67,5 @@ namespace MVZ2.GameContent.Enemies
             }
             private List<Entity> detectBuffer = new List<Entity>();
         }
-        public bool IZombieOnly { get; set; } = true;
     }
 }

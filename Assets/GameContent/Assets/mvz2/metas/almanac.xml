@@ -37,7 +37,7 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[4]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
-        <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0" >
+        <tag id="placement_repeatenser" name="升级器械：比较发射器" description="必须放置在比较发射器上" priority="0" >
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
@@ -1614,15 +1614,15 @@
         </entry>
         <entry id="mvz2:rally_zombie">
             <header>
-                <p>集结旗帜僵尸能够召唤额外的威胁，它的出现标志着一大波怪物的到来。</p>
+                <p>集结旗帜僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>300</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
                 <p>特点：<![CDATA[<color=red>存活时，使所有敌人速度×200%</color>]]></p>
             </properties>
             <flavor>
-                <p>他其实不是很喜欢这个旗帜，它太大了，有点妨碍到他行动了。</p>
+                <p>尽管作为怪物的领衔人物，但他其实不是很喜欢这个旗帜，它太大了，有点妨碍到他行动了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:skelebomb">

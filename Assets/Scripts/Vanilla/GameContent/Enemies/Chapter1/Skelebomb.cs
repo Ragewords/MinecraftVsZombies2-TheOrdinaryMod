@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelProperty("NotHoldingBomb", !GetExplode(entity));
             var stateTimer = GetStateTimer(entity);
-            if (entity.State == VanillaEnemyStates.SPECIAL_MOVE)
+            if (entity.State == STATE_SPECIAL_MOVE)
             {
                 if (stateTimer.RunToExpiredOrNull())
                 {
@@ -62,15 +62,20 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        public override void PostTakeDamage(DamageOutput output)
         {
-            base.PreTakeDamage(input, result);
-            var self = input.Entity;
-            if (input.Effects.HasEffect(VanillaDamageEffects.IMPACT))
+            base.PostTakeDamage(output);
+            if (output.BodyResult == null)
+                return;
+            var self = output.Entity;
+            if (output.BodyResult.HasEffect(VanillaDamageEffects.IMPACT))
             {
-                self.AddBuff<SkelebombPunchedBuff>();
-                StartCasting(self);
-                result.SetFinalValue(false);
+                if (GetExplode(self))
+                {
+                    self.AddBuff<SkelebombPunchedBuff>();
+                    if (self.State != STATE_SPECIAL_MOVE)
+                        StartCasting(self);
+                }
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
@@ -142,6 +147,7 @@ namespace MVZ2.GameContent.Enemies
         #region ����
         private const int CAST_COOLDOWN = 300;
         private const int CAST_TIME = 30;
+        private const int STATE_SPECIAL_MOVE = VanillaEnemyStates.SPECIAL_MOVE;
         private Vector3 BOMB_OFFSET = new Vector3(32, 40, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.skelebomb;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

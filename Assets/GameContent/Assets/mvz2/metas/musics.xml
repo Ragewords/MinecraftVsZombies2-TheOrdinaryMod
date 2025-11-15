@@ -71,7 +71,10 @@
             <p>呵呵，你可否想到自己？史蒂夫？</p>
         </description>
     </music>
-    <music id="halloween_level_extra" name="潮湿沼泽-关卡" unlock="mvz2:level.halloween_EX1">
+    <music id="halloween_level_extra" name="潮湿沼泽-关卡">
+        <unlock>
+            <condition required="mvz2:level.halloween_EX1"/>
+        </unlock>
         <track main="mvz2:halloween_level_extra"/>
         <source>我的世界：地下城</source>
         <description>
@@ -168,7 +171,10 @@
             <p>梦魇收割者的一部分设计来源于《以撒的结合：忏悔》中的教条。</p>
         </description>
     </music>
-    <music id="dream_level_extra" name="遥遥38万公里的航程" unlock="mvz2:level.dream_EX1">
+    <music id="dream_level_extra" name="遥遥38万公里的航程">
+        <unlock>
+            <condition required="mvz2:level.dream_EX1"/>
+        </unlock>
         <track main="mvz2:dream_level_extra"/>
         <source>东方绀珠传</source>
         <description>
@@ -177,7 +183,10 @@
             <p>充满速度感和浪漫感的曲子，也不乏一些紧张感。</p>
         </description>
     </music>
-    <music id="nightmare_level_extra" name="故乡之星倒映之海" unlock="mvz2:level.dream_EX1">
+    <music id="nightmare_level_extra" name="故乡之星倒映之海">
+        <unlock>
+            <condition required="mvz2:level.dream_EX1"/>
+        </unlock>
         <track main="mvz2:nightmare_level_extra"/>
         <source>东方绀珠传</source>
         <description>
@@ -304,7 +313,10 @@
             <p>因为老大哥在看着我。</p>
         </description>
     </music>
-    <music id="castle_level_extra" name="幻想净琉璃" unlock="mvz2:level.castle_EX1">
+    <music id="castle_level_extra" name="幻想净琉璃">
+        <unlock>
+            <condition required="mvz2:level.castle_EX1"/>
+        </unlock>
         <track main="mvz2:castle_level_extra"/>
         <source>东方辉针城</source>
         <description>
@@ -402,7 +414,10 @@
             <p>而最后，这压迫感会将你推向深渊。</p>
         </description>
     </music>
-    <music id="mausoleum_level_extra" name="后院的妖怪参拜道" unlock="mvz2:level.mausoleum_EX1">
+    <music id="mausoleum_level_extra" name="后院的妖怪参拜道">
+        <unlock>
+            <condition required="mvz2:level.mausoleum_EX1"/>
+        </unlock>
         <track main="mvz2:mausoleum_level_extra"/>
         <source>东方神灵庙</source>
         <description>
@@ -433,16 +448,17 @@
             <p>=====乐评施工中=====</p>
         </description>
     </music>
-    <music id="ship_level_extra" name="春之港湾" unlock="mvz2:level.mausoleum_EX1">
+    <music id="ship_level_extra" name="春之港湾">
         <unlock>
-            <condition required="mvz2:level.ship_1"/>
+            <condition required="mvz2:level.ship_EX1"/>
         </unlock>
         <track main="mvz2:ship_level_extra"/>
         <source>东方兽王园</source>
         <description>
             <p>星莲船拓展关卡的音乐。</p>
-            <p>为《东方兽王园》中娜兹玲的主题曲，原曲则是《东方星莲船》的一面主题曲。</p>
-            <p>=====乐评施工中=====</p>
+            <p>为《东方兽王园》中娜兹玲的主题曲，原曲则是《东方星莲船》的第一关主题曲。</p>
+            <p>空中的船仍然在航行，什么时候能到达远方的港湾呢？</p>
+            <p>不过在这之前，好好享受拂面而来的微风吧。</p>
         </description>
     </music>
 </musics>

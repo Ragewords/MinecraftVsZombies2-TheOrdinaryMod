@@ -103,10 +103,10 @@ namespace MVZ2.GameContent.Contraptions
             var planetParam = entity.GetSpawnParams();
             planetParam.SetProperty(VanillaEntityProps.DAMAGE, damage * 50);
             planetParam.SetProperty(VanillaEntityProps.RANGE, range);
-            entity.Spawn(VanillaEffectID.confusingPlanet, entity.GetCenter(), planetParam)?.Let(e =>
+            entity.Spawn(VanillaEffectID.confusingPlanet, entity.Position, planetParam)?.Let(e =>
             {
                 e.Velocity = new Vector3(entity.GetFacingX(), 0, 0);
-                ConfusingPlanet.SetRotateCenter(e, entity.GetCenter());
+                ConfusingPlanet.SetRotateCenter(e, entity.Position);
             });
 
             var blackholeParam = entity.GetSpawnParams();

@@ -110,7 +110,7 @@ namespace MVZ2.GameContent.Contraptions
             var fuel = GetFuel(furnace);
             for (int i = 1; i <= fuel; i++)
             {
-                var angle = entity.RNG.Next(-10f, 10f);
+                var angle = entity.RNG.Next(-30, 31);
                 var param = furnace.GetShootParams();
                 param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * entity.GetFacingX() * entity.RNG.Next(15f, 18f);
                 furnace.ShootProjectile(param)?.Let(e => { SoulfireBall.SetBlast(e, true); SoulfireBall.SetSplited(e, true); });

@@ -10,7 +10,6 @@ namespace MVZ2.GameContent.Enemies
     {
         public RallyZombie(string nsp, string name) : base(nsp, name)
         {
-            IZombieOnly = false;
         }
     }
 }
