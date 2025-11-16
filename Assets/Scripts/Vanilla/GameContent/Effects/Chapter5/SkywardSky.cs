@@ -56,20 +56,6 @@ namespace MVZ2.GameContent.Effects
                 {
                     projectile?.PlaySound(VanillaSoundID.star);
                 }
-                if (entity.IsTimeInterval(30))
-                {
-                    var spawnParamBig = entity.GetSpawnParams();
-                    spawnParamBig.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
-                    spawnParamBig.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
-                    spawnParamBig.SetProperty(VanillaEntityProps.SHADOW_SCALE, Vector3.one * 2);
-                    var paramBig = entity.GetShootParams();
-                    paramBig.projectileID = VanillaProjectileID.fallingStar;
-                    paramBig.damage *= 10;
-                    paramBig.position = sourcePosition;
-                    paramBig.velocity = velocity;
-                    paramBig.spawnParam = spawnParamBig;
-                    entity.ShootProjectile(paramBig);
-                }
             }
         }
         public const float STAR_FLY_SECONDS = 1f;
