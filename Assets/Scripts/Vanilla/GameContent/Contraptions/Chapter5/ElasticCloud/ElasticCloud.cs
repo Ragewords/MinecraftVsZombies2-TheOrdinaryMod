@@ -4,6 +4,7 @@ using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -89,7 +90,9 @@ namespace MVZ2.GameContent.Contraptions
             var timer = GetChargeCooldownTimer(self);
             var knockbackMultiplier = enemy.GetStrongKnockbackMultiplier();
             enemy.Velocity += knockbackMultiplier * KNOCKBACK_DISTANCE * push * self.GetFacingDirection();
-            self.TakeDamage(BOUNCE_DAMAGE * cost, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), self);
+
+            var bounceDamage = BOUNCE_DAMAGE * self.Level.GetElasticCloudBounceDamageMultiplier() * cost;
+            self.TakeDamage(bounceDamage, new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), self);
             AddEnemyKnockbackCooldown(self, enemy, Ticks.FromSeconds(KNOCKBACK_COOLDOWN_SECONDS));
             PlayBounceEffect(self);
             ResetMultipliers(self);
@@ -139,7 +142,7 @@ namespace MVZ2.GameContent.Contraptions
         public static FrameTimer? GetChargeCooldownTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(CHARGE_COOLDOWN_TIMER);
         public static void SetChargeCooldownTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(CHARGE_COOLDOWN_TIMER, timer);
         public const float KNOCKBACK_DISTANCE = 20f;
-        public const float BOUNCE_DAMAGE = 150f;
+        public const float BOUNCE_DAMAGE = 300f;
         public const float KNOCKBACK_COOLDOWN_SECONDS = 1f;
         public static readonly VanillaEntityPropertyMeta<float> KNOCKBACK_MULTIPLIER = new VanillaEntityPropertyMeta<float>("KnockBackMultipiler");
         public static readonly VanillaEntityPropertyMeta<float> HEALTH_COST_MULTIPLIER = new VanillaEntityPropertyMeta<float>("HealthCostMultipiler");

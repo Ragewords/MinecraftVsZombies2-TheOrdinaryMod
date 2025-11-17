@@ -3970,6 +3970,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d5d2493e2334f04eaa30e9109e8abad
+    m_Address: mvz2:ship_final
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d88a598c5aab984891215c1f4414390
     m_Address: mvz2:entity/projectiles/giant_spike
     m_ReadOnly: 0
@@ -6054,6 +6061,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78ada02b958a3804fac1e795d393ee64
+    m_Address: mvz2:products/cake
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78bc18d9bcc5d3e4dad53d303451348e
     m_Address: mvz2:icon/knockback_wave
@@ -9002,6 +9016,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b33024c345002ad49ae6387d3b1fc9de
+    m_Address: mvz2:note/background_ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b34bc915055138f4b98fddeb34062934
     m_Address: mvz2:ui/level/progress_bar/level_progress_flag_pole
     m_ReadOnly: 0
@@ -11235,6 +11256,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df7c136338ab89e43af4d789fbcbfa52
+    m_Address: mvz2:note/ship
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df8b1133d31b7b94da945857e4484f4d
     m_Address: mvz2:enemy/castle/bedserker
     m_ReadOnly: 0
@@ -11605,6 +11633,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e779343a9de67c347bd835c88e914d14
+    m_Address: mvz2:level/ship/cloudy_noise
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e815fc79b6c003e4788c0027be0a82e6
     m_Address: mvz2:ui/level/progress_bar/wither
