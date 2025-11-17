@@ -3424,6 +3424,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42921189b60e5be45b159ffabaedec65
+    m_Address: mvz2:projectile/delicious_troll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 42aed5a151c953c4aa6add38a42869c2
     m_Address: mvz2:held/starshards/ship
     m_ReadOnly: 0
@@ -6783,6 +6790,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 857634c955af22b48917648e7b04321f
+    m_Address: mvz2:entity/projectiles/antigravity_device
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85842c2e1aa457b418e743fc8faeae75
     m_Address: mvz2:entity/projectiles/knife
     m_ReadOnly: 0
@@ -7384,6 +7398,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90e0ac34e9e91fc42b9af80122510f5d
+    m_Address: mvz2:projectile/terror_cocoon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 90e0bafc1bfaa944e927f5dc979efe41
     m_Address: mvz2:bow
@@ -10563,6 +10584,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d062afaff4776ff409fec750fe591d05
+    m_Address: mvz2:arcade/ufo_blitz
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d088b4d6b29224e428f22c0184a33dc4
     m_Address: mvz2:nightmare_boss
     m_ReadOnly: 0
@@ -11297,6 +11325,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e069cfa2229df844da2746efe98322c9
+    m_Address: mvz2:projectile/antigravity_device
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e0c7697228ff843469a11a3a633766bb
     m_Address: mvz2:ui/gear
@@ -12271,6 +12306,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f43093ae6d1624c449dd489718db9d28
+    m_Address: mvz2:entity/projectiles/terror_cocoon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f45a057d7f3b72d4883d7d18d28ea03a
     m_Address: mvz2:ui/level/card_command_block_mobile
     m_ReadOnly: 0
@@ -12578,6 +12620,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9c5c4b90118c4d489c85c0dcee84a97
+    m_Address: mvz2:entity/projectiles/delicious_troll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f9d57c38d8200e6419e44a8abaf48c88
     m_Address: mvz2:enemy/castle/seija_cursed_doll

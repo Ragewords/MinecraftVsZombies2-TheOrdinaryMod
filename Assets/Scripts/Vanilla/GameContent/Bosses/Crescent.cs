@@ -66,18 +66,6 @@ namespace MVZ2.GameContent.Bosses
                 input.SetAmount(600);
             }
         }
-        public override void PostCollision(EntityCollision collision, int state)
-        {
-            base.PostCollision(collision, state);
-            var other = collision.Other;
-            var self = collision.Entity;
-            if (!other.Exists() || !other.IsHostile(self))
-                return;
-            if (self.State == STATE_DASH && stateMachine.GetSubState(self) > 0 && stateMachine.GetSubState(self) < 4)
-            {
-                collision.OtherCollider.TakeDamage(self.GetDamage() * 0.05f, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), self);
-            }
-        }
         public static void Appear(Entity entity)
         {
             stateMachine.StartState(entity, STATE_APPEAR);
@@ -107,7 +95,7 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_APPEAR = VanillaBossStates.APPEAR;
         public const int STATE_IDLE = VanillaBossStates.IDLE;
         public const int STATE_DASH = VanillaBossStates.CRESCENT_DASH;
-        public const int STATE_SPACE = VanillaBossStates.CRESCENT_SPACE;
+        public const int STATE_COCOON = VanillaBossStates.CRESCENT_COCOON;
         public const int STATE_THROW = VanillaBossStates.CRESCENT_THROW;
         public const int STATE_DEAD = VanillaBossStates.DEATH;
         public const float HEIGHT = 30;

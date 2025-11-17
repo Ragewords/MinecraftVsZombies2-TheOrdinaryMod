@@ -16,7 +16,7 @@ namespace MVZ2.Vanilla.Bosses
         public const int FRANKENSTEIN_SHOCK = PRIVATE_NUMBER + 4;
 
         public const int CRESCENT_DASH = PRIVATE_NUMBER + 0;
-        public const int CRESCENT_SPACE = PRIVATE_NUMBER + 1;
+        public const int CRESCENT_COCOON = PRIVATE_NUMBER + 1;
         public const int CRESCENT_THROW = PRIVATE_NUMBER + 2;
 
         public const int NIGHTMAREAPER_JAB = PRIVATE_NUMBER + 0;

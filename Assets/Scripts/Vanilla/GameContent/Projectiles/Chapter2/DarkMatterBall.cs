@@ -7,7 +7,6 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
-using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -21,6 +20,12 @@ namespace MVZ2.GameContent.Projectiles
         public DarkMatterBall(string nsp, string name) : base(nsp, name)
         {
         }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.CollisionMaskHostile = 0;
+            entity.CollisionMaskFriendly = 0;
+        }
         public override void Update(Entity projectile)
         {
             base.Update(projectile);
@@ -29,22 +34,6 @@ namespace MVZ2.GameContent.Projectiles
             {
                 projectile.Remove();
             }
-        }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damage)
-        {
-            base.PostHitEntity(hitResult, damage);
-            var projectile = hitResult.Projectile;
-            bool fromParent = hitResult.Other == projectile.Parent;
-            hitResult.Pierce = true;
-            if (fromParent)
-            {
-                return;
-            }
-            Explode(projectile, projectile.GetRange());
-            Deflect(projectile);
-            var hitCount = GetHitCount(projectile);
-            hitCount++;
-            SetHitCount(projectile, hitCount);
         }
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {

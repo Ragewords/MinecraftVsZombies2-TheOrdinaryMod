@@ -39,6 +39,9 @@ namespace MVZ2.GameContent.Projectiles
         public const string poisonJavelin = "poison_javelin";
         public const string weaknessGas = "weakness_gas";
         public const string darkMatterBall = "dark_matter_ball";
+        public const string terrorCocoon = "terror_cocoon";
+        public const string deliciousTroll = "delicious_troll";
+        public const string antigravityDevice = "antigravity_device";
         public const string arrowBullet = "arrow_bullet";
 
         public const string woodenBall = "wooden_ball";
@@ -108,6 +111,9 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID poisonJavelin = Get(VanillaProjectileNames.poisonJavelin);
         public static readonly NamespaceID weaknessGas = Get(VanillaProjectileNames.weaknessGas);
         public static readonly NamespaceID darkMatterBall = Get(VanillaProjectileNames.darkMatterBall);
+        public static readonly NamespaceID terrorCocoon = Get(VanillaProjectileNames.terrorCocoon);
+        public static readonly NamespaceID deliciousTroll = Get(VanillaProjectileNames.deliciousTroll);
+        public static readonly NamespaceID antigravityDevice = Get(VanillaProjectileNames.antigravityDevice);
         public static readonly NamespaceID arrowBullet = Get(VanillaProjectileNames.arrowBullet);
 
         public static readonly NamespaceID woodenBall = Get(VanillaProjectileNames.woodenBall);
