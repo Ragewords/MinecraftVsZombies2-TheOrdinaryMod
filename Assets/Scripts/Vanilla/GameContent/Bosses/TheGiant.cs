@@ -561,7 +561,7 @@ namespace MVZ2.GameContent.Bosses
 
         private static readonly Vector3 OUTER_EYE_BULLET_OFFSET = new Vector3(70, 140, 0);
         private static readonly Vector3 INNER_EYE_BULLET_OFFSET = new Vector3(140, 140, 0);
-        private static readonly Vector3 MOUTH_OFFSET = new Vector3(90, 160, 0);
+        private static readonly Vector3 MOUTH_OFFSET = new Vector3(90, 150, 0);
 
         public const int STATE_IDLE = VanillaBossStates.IDLE;
         public const int STATE_APPEAR = VanillaBossStates.APPEAR;

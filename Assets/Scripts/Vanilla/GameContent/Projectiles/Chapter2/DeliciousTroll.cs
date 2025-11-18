@@ -17,6 +17,12 @@ namespace MVZ2.GameContent.Projectiles
         public DeliciousTroll(string nsp, string name) : base(nsp, name)
         {
         }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.CollisionMaskHostile = 0;
+            entity.CollisionMaskFriendly = 0;
+        }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);

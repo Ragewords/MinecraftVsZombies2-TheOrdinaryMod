@@ -16,12 +16,18 @@ namespace MVZ2.GameContent.Projectiles
         public Vomit(string nsp, string name) : base(nsp, name)
         {
         }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            entity.CollisionMaskHostile = 0;
+            entity.CollisionMaskFriendly = 0;
+        }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            entity.SpawnWithParams(VanillaEffectID.vomitSplash, entity.GetCenter());
+            entity.SpawnWithParams(VanillaEffectID.vomitSplash, entity.Position);
             entity.PlaySound(VanillaSoundID.splat);
         }
     }
