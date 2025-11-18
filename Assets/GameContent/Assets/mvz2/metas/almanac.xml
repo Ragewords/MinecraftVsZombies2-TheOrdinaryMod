@@ -341,6 +341,7 @@
             <properties>
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最大300%击退力度，击退敌方怪物后重置蓄力进度，修复期间无法蓄力</color>]]></p>
                 <p>蓄力时间：<![CDATA[<color=red>66.7秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
@@ -857,8 +858,9 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
-                <p>耐久消耗：<![CDATA[<color=red>300（怪物），450（怪物，困难难度），20（子弹）</color>]]></p>
+                <p>耐久消耗：<![CDATA[<color=red>300（怪物），450（怪物，困难/月狂难度），20（子弹）</color>]]></p>
                 <p>蓄力：<![CDATA[<color=red>最大150%击退力度和50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>3.33秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>击退并弹飞半径2.5格内的所有敌方怪物</color>]]></p>
             </properties>
             <flavor>
@@ -1593,7 +1595,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>800</color>]]></p>
-                <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域</color>]]></p>
+                <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域；手持弯刀时伤害×200%</color>]]></p>
             </properties>
             <flavor>
                 <p>他是荷兰人。</p>

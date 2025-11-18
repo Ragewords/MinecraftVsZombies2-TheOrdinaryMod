@@ -2,7 +2,6 @@
 
 using System.Linq;
 using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
@@ -120,8 +119,19 @@ namespace MVZ2.GameContent.Bosses
                 base.OnUpdateAI(stateMachine, entity);
                 var grid = entity.Level.GetAllGrids().Where(g => g.Column == (entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0)).Random(entity.RNG);
                 var endGrid = entity.Level.GetAllGrids().Where(g => g.Column >= 2 && g.Column <= 6).Random(entity.RNG);
-                var trollGrids = entity.Level.GetAllGrids().Where(g => g.GetEntities().Any(e => !e.HasBuff(VanillaBuffID.Entity.trollHide)));
+
+                var trollLanes = entity.Level.GetAllLanes().Where(l => 
+                {
+                    bool noGas = true;
+                    foreach (var item in entity.Level.FindEntities(VanillaEffectID.trollGas))
+                    {
+                        if (item.GetLane() == l)
+                            noGas = false;
+                    }
+                    return noGas;
+                });
                 var deviceGrids = entity.Level.GetAllGrids().Where(g => g.GetEntities().Any(e => !e.HasBuff(VanillaBuffID.Entity.crescentAntiGravity)));
+
                 var dir = (grid.GetEntityPosition() - new Vector3(entity.Position.x, entity.GetGroundY(), entity.Position.z)).normalized;
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.Run(stateMachine.GetSpeed(entity));
@@ -137,7 +147,7 @@ namespace MVZ2.GameContent.Bosses
                             stateMachine.SetSubState(entity, substate + 1);
                             entity.PlaySound(VanillaSoundID.crescentDash);
                             SetDashDir(entity, dir);
-                            subStateTimer.ResetTime(60);
+                            subStateTimer.ResetTime(40);
                             ResetPosition(entity);
                             break;
                         case SUBSTATE_DASH_4:
@@ -159,24 +169,27 @@ namespace MVZ2.GameContent.Bosses
                         case SUBSTATE_DASH_3:
                         case SUBSTATE_DASH_4:
                             entity.Velocity = GetDashDir(entity) * 30;
-                            if (subStateTimer.PassedFrame(15))
+                            if (subStateTimer.PassedFrame(20))
                             {
                                 var trollGrid = entity.Level.GetAllGrids().Random(entity.RNG);
-                                if (trollGrids.Count() > 0)
+                                if (trollLanes.Count() > 0)
                                 {
-                                    trollGrid = trollGrids.Random(entity.RNG);
+                                    var trollLane = trollLanes.Random(entity.RNG);
+                                    trollGrid = entity.Level.GetAllGrids().Where(g => g.Lane == trollLane).Random(entity.RNG);
                                 }
                                 entity.SpawnWithParams(VanillaProjectileID.deliciousTroll, entity.GetCenter())?.Let(e =>
                                 {
                                     e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), trollGrid.GetEntityPosition(), 30, e.GetGravity());
                                 });
-
+                            }
+                            if (subStateTimer.PassedInterval(20))
+                            {
                                 if (deviceGrids.Count() > 0)
                                 {
                                     var deviceGrid = deviceGrids.Random(entity.RNG);
                                     entity.SpawnWithParams(VanillaProjectileID.antigravityDevice, entity.GetCenter())?.Let(e =>
                                     {
-                                        e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), deviceGrid.GetEntityPosition(), 30, e.GetGravity());
+                                        e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), deviceGrid.GetEntityPosition(), 15, e.GetGravity());
                                     });
                                 }
                             }
