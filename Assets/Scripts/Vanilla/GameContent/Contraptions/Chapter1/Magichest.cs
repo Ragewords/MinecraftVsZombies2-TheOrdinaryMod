@@ -206,7 +206,8 @@ namespace MVZ2.GameContent.Contraptions
                             stateTimer.Run();
                             if (stateTimer.PassedFrame(30))
                             {
-                                var ghast = entity.SpawnWithParams(VanillaEnemyID.hellChariot, entity.GetCenter());
+                                var ghast = entity.SpawnWithParams(VanillaEnemyID.ghast, entity.GetCenter());
+                                entity.PlaySound(VanillaSoundID.fireCharge);
                             }
                             if (stateTimer.Expired)
                             {

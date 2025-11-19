@@ -62,7 +62,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetAnimationFloat("Multiplier", GetAnimationSpeedMultipiler(entity));
-            entity.SetAnimationBool("Charge", GetKnockBackMultipiler(entity) > 1f);
+            entity.SetAnimationBool("Charge", GetAnimationSpeedMultipiler(entity) > 1f);
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
