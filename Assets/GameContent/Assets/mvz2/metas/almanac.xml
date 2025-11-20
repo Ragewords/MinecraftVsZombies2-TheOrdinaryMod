@@ -396,7 +396,7 @@
                 <p>魔术箱在吞掉前面的僵尸后会召唤这只僵尸，然后变成一个星之碎片。</p>
             </header>
             <properties>
-                <p>技能：<![CDATA[<color=red>召唤一个恶魂，用以纪念我好朋友之前做过的一个游戏</color>]]></p>
+                <p>技能：<![CDATA[<color=red>召唤一个地狱战车</color>]]></p>
             </properties>
             <flavor>
                 <p>它只需要挂上一个招牌，写上YMCA，僵尸们就自投罗网了。YMCA是什么意思？当然是“有馍吃啊”。</p>
@@ -1440,7 +1440,7 @@
         </entry>
         <entry id="mvz2:anubisand">
             <header>
-                <p>灵魂沙王飞在空中，不时向下方召唤阻挡子弹并减速敌人的灵魂沙。</p>
+                <p>灵魂沙王飞在空中，不时向下方召唤阻挡子弹并减速怪物的灵魂沙。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
