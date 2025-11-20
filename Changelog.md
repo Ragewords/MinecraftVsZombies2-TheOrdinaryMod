@@ -1,3 +1,4 @@
+**This is the Changelog of the original game and has nothing to do with this mod.**
 ## Fixed
 - Contraptions can be placed on a command block that transforming into a lily pad.
 - Instant evoke function now no longer can be used on nocturnal contraptions during day.

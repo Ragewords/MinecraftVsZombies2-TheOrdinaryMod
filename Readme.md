@@ -1,4 +1,5 @@
 Language: English | [简体中文](Readme-ZH.md)
+**This is the Readme of the original game and has nothing to do with this mod.**
 
 - [Overview](#overview)
 - [Features](#features)
