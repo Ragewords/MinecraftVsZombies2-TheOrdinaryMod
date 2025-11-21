@@ -25,6 +25,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
+            SetRepeatTimer(entity, new FrameTimer(15));
         }
         protected override void UpdateAI(Entity entity)
         {
