@@ -1089,6 +1089,8 @@ namespace MVZ2.Vanilla.Entities
             {
                 buff = entity.AddBuff(buffDefinition);
             }
+            var timer = buff.GetProperty<FrameTimer>(BleedingBuff.PROP_TIMEOUT);
+            timer?.Reset();
             PostApplyStatusEffect(entity, buff, source);
         }
 

@@ -11,10 +11,11 @@ namespace MVZ2.GameContent.Seeds
 {
     public class OptionSeed : SeedDefinition
     {
-        public OptionSeed(string nsp, string name, int cost) : base(nsp, name)
+        public OptionSeed(string nsp, string name, int cost, NamespaceID? function) : base(nsp, name)
         {
             SetProperty(LogicSeedProps.SEED_TYPE, SeedTypes.OPTION);
             SetProperty(LogicSeedProps.SEED_OPTION_ID, new NamespaceID(nsp, name));
+            SetProperty(LogicSeedProps.FUNCTION, function);
             SetProperty(EngineSeedProps.COST, (float)cost);
         }
         public override void Update(SeedPack seedPack, float rechargeSpeed)

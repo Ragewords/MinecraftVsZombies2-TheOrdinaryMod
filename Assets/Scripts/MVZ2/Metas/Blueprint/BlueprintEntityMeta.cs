@@ -19,6 +19,7 @@ namespace MVZ2.Metas
 
         public int Cost { get; private set; }
         public NamespaceID? RechargeID { get; private set; }
+        public NamespaceID? Function { get; private set; }
         public string Name { get; private set; } = string.Empty;
         public string Tooltip { get; private set; } = string.Empty;
         public NamespaceID EntityID { get; private set; }
@@ -41,6 +42,7 @@ namespace MVZ2.Metas
             var blueprintID = new NamespaceID(nsp, id);
             var cost = node.GetAttributeInt("cost") ?? 0;
             var recharge = node.GetAttributeNamespaceID("recharge", defaultNsp);
+            var function = node.GetAttributeNamespaceID("function", defaultNsp);
             var name = node.GetAttribute("name") ?? string.Empty;
             var tooltip = node.GetAttribute("tooltip") ?? string.Empty;
             var variant = node.GetAttributeInt("variant") ?? 0;
@@ -55,6 +57,7 @@ namespace MVZ2.Metas
             {
                 Cost = cost,
                 RechargeID = recharge,
+                Function = function,
                 Name = name,
                 Tooltip = tooltip,
                 Variant = variant,

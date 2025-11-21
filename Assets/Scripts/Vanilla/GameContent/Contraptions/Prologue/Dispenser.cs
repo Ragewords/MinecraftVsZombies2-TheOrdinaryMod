@@ -60,8 +60,6 @@ namespace MVZ2.GameContent.Contraptions
                 repeatTimer.Frame = 0;
             }
         }
-
-
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);

@@ -141,7 +141,7 @@ namespace MVZ2.GameContent.Effects
         public static Entity? SpawnPearl(Entity board)
         {
             var level = board.Level;
-            var pearl = level.Spawn(VanillaProjectileID.breakoutPearl, board.Position + Vector3.right * 40, board)?.Let(e =>
+            var pearl = level.Spawn(VanillaProjectileID.breakoutPearl, board.Position + Vector3.left * 40, board)?.Let(e =>
             {
                 e.SetParent(board);
             });

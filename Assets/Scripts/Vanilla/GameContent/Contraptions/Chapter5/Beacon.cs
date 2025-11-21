@@ -183,6 +183,6 @@ namespace MVZ2.GameContent.Contraptions
             private List<Entity> sphereDetectBuffer = new List<Entity>();
         }
         public const float DAMAGE_MULTIPLIER = 0.05f;
-        public static readonly Vector3 LIGHT_MULTIPLIER = Vector3.one * 5;
+        public static readonly Vector3 LIGHT_MULTIPLIER = Vector3.one * 10;
     }
 }

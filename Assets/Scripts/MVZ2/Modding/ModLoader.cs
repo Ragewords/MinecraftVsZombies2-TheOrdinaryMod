@@ -390,6 +390,7 @@ namespace MVZ2.Modding
                     triggerActive = meta.IsTriggerActive(),
                     canInstantTrigger = meta.CanInstantTrigger(),
                     upgrade = meta.IsUpgradeBlueprint(),
+                    function = meta.Function,
                     canInstantEvoke = meta.CanInstantEvoke(),
                     variant = meta.Variant,
                     icon = meta.GetIcon(),
@@ -486,11 +487,12 @@ namespace MVZ2.Modding
                     continue;
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.COST, meta.Cost);
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.NAME, meta.Name);
+                seedOptionDefinition.SetProperty(LogicSeedOptionProps.FUNCTION, meta.Function);
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.ICON, meta.GetIcon());
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.MOBILE_ICON, meta.GetMobileIcon());
                 seedOptionDefinition.SetProperty(LogicSeedOptionProps.MODEL_ID, meta.GetModelID());
 
-                var seedDef = new OptionSeed(nsp, seedOptionDefinition.Name, seedOptionDefinition.GetCost());
+                var seedDef = new OptionSeed(nsp, seedOptionDefinition.Name, seedOptionDefinition.GetCost(), seedOptionDefinition.GetFunction());
                 seedDef.SetIcon(seedOptionDefinition.GetIcon());
                 seedDef.SetMobileIcon(seedOptionDefinition.GetMobileIcon());
                 seedDef.SetModelID(seedOptionDefinition.GetModelID());

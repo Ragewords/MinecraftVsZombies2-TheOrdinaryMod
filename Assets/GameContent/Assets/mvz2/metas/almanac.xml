@@ -286,6 +286,7 @@
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
                 <p>准备时间：<![CDATA[<color=red>5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>2400</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>必须和敌方怪物接触才能进行准备</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即准备完毕，并向最前方投掷两个新的地雷TNT</color>]]></p>
             </properties>
             <flavor>
@@ -298,15 +299,16 @@
         <entry />
         <entry id="mvz2:small_dispenser">
             <header>
-                <p>小型发射器能发射使敌人减速的短距离雪球。</p>
+                <p>小型发射器能发射短距离的雪球。</p>
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>特点：<![CDATA[<color=red>有30%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>射出一个越滚越大的雪球</color>]]></p>
             </properties>
             <flavor>
-                <p>雪是冷的，那么雪球能减速是合理的。但是为什么雪球有伤害呢？因为里面包着石头呢。</p>
+                <p>雪球里面包着石头，别问了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:moonlight_sensor">
@@ -315,7 +317,7 @@
             </header>
             <properties>
                 <p>提供能量：<![CDATA[<color=red>1点/1.6秒，而后1点/1秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>升级后立即提供150能量</color>]]></p>
+                <p>特点：<![CDATA[<color=red>升级后立即提供75能量</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即升级，发出蓝光，并使生产量变为2.5倍</color>]]></p>
             </properties>
             <flavor>
@@ -1032,6 +1034,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>147</color>]]></p>
+                <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:block" />方块器械为自己+5%攻击力</color>]]></p>
                 <p>技能：<![CDATA[<color=red>展开一片星空，将场地临时变为黑夜，空中会掉落总共300颗星星子弹，每颗星星造成55点伤害，同时每秒会额外落下1颗10倍伤害的大星星子弹，持续30秒。</color>]]></p>
             </properties>
             <flavor>
