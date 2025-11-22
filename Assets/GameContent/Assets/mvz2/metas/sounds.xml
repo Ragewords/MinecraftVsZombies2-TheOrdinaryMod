@@ -678,6 +678,9 @@
     <sound name="reverse_vampire">
         <sample path="mvz2:reverse_vampire" weight="1" />
     </sound>
+    <sound name="revert_warp">
+        <sample path="mvz2:revert_warp" weight="1" />
+    </sound>
     <sound name="revive_cast">
         <sample path="mvz2:revive_cast" weight="1" />
     </sound>

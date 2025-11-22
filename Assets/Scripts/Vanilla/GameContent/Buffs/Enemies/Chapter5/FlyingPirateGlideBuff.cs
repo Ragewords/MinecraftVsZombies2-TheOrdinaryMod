@@ -11,7 +11,7 @@ using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.karakasaSpeed)]
+    [BuffDefinition(VanillaBuffNames.Enemy.flyingPirateGlide)]
     public class FlyingPirateGlideBuff : BuffDefinition
     {
         public FlyingPirateGlideBuff(string nsp, string name) : base(nsp, name)

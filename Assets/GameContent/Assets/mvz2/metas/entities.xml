@@ -2393,7 +2393,7 @@
                 <bool name="mvz2:noReward" value="true" />
                 <id name="mvz2:shell" value="mvz2:stone" />
                 <id name="mvz2:crySound" null="true" />
-                <id name="mvz2:deathSound" null="true" />
+                <id name="mvz2:deathSound" value="mvz2:stone" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
                 <id name="mvz2:shape" value="mvz2:doll" />
                 <int name="mvz2:maxTimeout" value="900" />

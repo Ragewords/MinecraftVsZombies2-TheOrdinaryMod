@@ -271,10 +271,11 @@ namespace MVZ2.GameContent.Buffs
             public const string youkaiLeaf = "youkai_leaf";
             public const string tanookiZombieStone = "tanooki_zombie_stone";
             public const string revivegraveRevive = "revivegrave_revive";
+            public const string endlessGate = "endless_gate";
 
             // Chapter 5
             public const string paratroop = "paratroop";
-            public const string karakasaSpeed = "karakasa_speed";
+            public const string flyingPirateGlide = "flying_pirate_glide";
             public const string summonedByUFO = "summoned_by_ufo";
             public const string ufoBlueAbsorb = "ufo_blue_absorb";
             public const string heavyCannon = "heavy_cannon";
@@ -333,7 +334,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public const string hellfireIgnited = "hellfire_ignited";
-            public const string endlessGate = "hellfire_ignited";
         }
         public static class Effect
         {
@@ -611,6 +611,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID iZombieImp = Get(VanillaBuffNames.Enemy.iZombieImp);
             public static readonly NamespaceID iZombieSkeletonWarrior = Get(VanillaBuffNames.Enemy.iZombieSkeletonWarrior);
             public static readonly NamespaceID shikaisenRevive = Get(VanillaBuffNames.Enemy.shikaisenRevive);
+            public static readonly NamespaceID endlessGate = Get(VanillaBuffNames.Enemy.endlessGate);
 
             // Chapter 5
             public static readonly NamespaceID paratroop = Get(VanillaBuffNames.Enemy.paratroop);
@@ -619,6 +620,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID heavyCannon = Get(VanillaBuffNames.Enemy.heavyCannon);
             public static readonly NamespaceID waterStainSlide = Get(VanillaBuffNames.Enemy.waterStainSlide);
             public static readonly NamespaceID blownByWoodenFan = Get(VanillaBuffNames.Enemy.blownByWoodenFan);
+            public static readonly NamespaceID flyingPirateGlide = Get(VanillaBuffNames.Enemy.flyingPirateGlide);
         }
         public static class Obstacle
         {
@@ -668,7 +670,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public static readonly NamespaceID hellfireIgnited = Get(VanillaBuffNames.Projectile.hellfireIgnited);
-            public static readonly NamespaceID endlessGate = Get(VanillaBuffNames.Projectile.endlessGate);
         }
         public static class Effect
         {

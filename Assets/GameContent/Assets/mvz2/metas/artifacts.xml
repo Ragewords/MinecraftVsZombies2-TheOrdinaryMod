@@ -134,7 +134,7 @@
             <condition required="mvz2:level.castle_EX3" />
         </unlock>
     </artifact>
-    <artifact id="endless_gate" name="无尽门扉" tooltip="子弹离开屏幕后会回到屏幕另一侧" sprite="mvz2:artifacts/endless_gate">
+    <artifact id="endless_gate" name="无尽门扉" tooltip="每40秒一次，将一个接近最终防线的敌方怪物传送至战场最右侧" sprite="mvz2:artifacts/endless_gate">
         <unlock>
             <condition required="mvz2:level.mausoleum_EX3" />
         </unlock>

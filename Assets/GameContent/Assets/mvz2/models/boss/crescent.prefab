@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8775906052758287252}
-  - component: {fileID: 6860015846904131614}
+  - component: {fileID: 2114369782115968052}
+  - component: {fileID: 7121046456544461777}
   - component: {fileID: 8387586004613061941}
   m_Layer: 0
   m_Name: Trail
@@ -33,9 +34,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1895750320677441373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &6860015846904131614
-TrailRenderer:
-  serializedVersion: 3
+--- !u!120 &2114369782115968052
+LineRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -75,8 +76,17 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
-  m_PreviewTimeScale: 1
+  m_Positions:
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
+  - {x: 0, y: 0.32, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.64
@@ -132,11 +142,25 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
-  m_Autodestruct: 0
-  m_Emitting: 1
+  m_UseWorldSpace: 1
+  m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7121046456544461777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427396614363396619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c0c3147367b6c4ba96c3909349cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 2114369782115968052}
+  velocity: {x: 0, y: 0, z: 0}
+  scaleWithHierarchy: 0
 --- !u!114 &8387586004613061941
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2064,10 +2064,10 @@
         </entry>
         <entry id="mvz2:endless_gate">
             <header>
-                <p>一种能够传送实体的特殊通道。</p>
+                <p>一组能够传送实体的传送门通道。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>子弹离开屏幕后会回到屏幕另一侧</color>]]></p>
+                <p>效果：<![CDATA[<color=red>将一个接近最终防线的敌方怪物传送至战场最右侧，每40秒最多触发一次</color>]]></p>
             </properties>
             <flavor>
                 <p>使用说明：</p>

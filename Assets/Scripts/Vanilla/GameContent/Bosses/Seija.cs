@@ -127,13 +127,13 @@ namespace MVZ2.GameContent.Bosses
             SetRecentTakenDamage(boss, takenDamage);
             if (takenDamage >= FABRIC_DAMAGE_THRESOLD && !boss.IsDead)
             {
-                if (CanUseLantern(boss))
-                {
-                    UseLantern(boss);
-                }
-                else if (CanUseFabric(boss))
+                if (CanUseFabric(boss))
                 {
                     UseFabric(boss);
+                }
+                else if (CanUseLantern(boss))
+                {
+                    UseLantern(boss);
                 }
             }
         }
@@ -265,6 +265,9 @@ namespace MVZ2.GameContent.Bosses
         public static bool ShouldYinyangOrb(Entity boss)
         {
             var orb = GetOrb(boss);
+            if (!orb.ExistsAndAlive())
+                return false;
+
             var grid = orb?.GetGrid();
             var main = grid?.GetMainEntity();
             var carrier = grid?.GetCarrierEntity();

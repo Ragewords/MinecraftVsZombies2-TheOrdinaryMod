@@ -204,7 +204,7 @@
     <buff id="tanooki_zombie_stone" polarity="mixed" level="5000" target="enemy" />
     <buff id="revivegrave_revive" polarity="positive" level="3000" target="enemy" />
     <buff id="command_block_blueprint_check" polarity="none" level="5000" target="level" />
-    <buff id="endless_gate" polarity="positive" level="3000" target="projectile" />
+    <buff id="endless_gate" polarity="negative" level="3000" target="enemy" />
     <buff id="command_block_blueprint" polarity="mixed" level="5000" target="blueprint" />
 
     <!-- Chapter 5 -->
@@ -214,7 +214,7 @@
     <buff id="beacon_meteor" polarity="positive" level="1000" target="level" />
     <buff id="firework_dispenser_evoked" polarity="positive" level="1000" target="contraption" />
     <buff id="hfpd_upgraded" polarity="positive" level="1000" target="contraption" />
-    <buff id="karakasa_speed" polarity="positive" level="3000" target="enemy" />
+    <buff id="flying_pirate_glide" polarity="positive" level="3000" target="enemy" />
     <buff id="paratroop" polarity="positive" level="3000" target="enemy" />
     <buff id="stolen_by_ufo" polarity="negative" level="5000" target="contraption" />
     <buff id="summoned_by_ufo" polarity="none" level="5000" target="enemy" />
