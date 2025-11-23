@@ -77,6 +77,7 @@ namespace MVZ2.GameContent.Contraptions
         public const string anvil = "anvil";
         public const string randomChina = "random_china";
         public const string errorBlock = "error_block";
+        public const string miniSkyward = "mini_skyward";
     }
     public static class VanillaContraptionID
     {
@@ -150,6 +151,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly NamespaceID anvil = Get(VanillaContraptionNames.anvil);
         public static readonly NamespaceID randomChina = Get(VanillaContraptionNames.randomChina);
         public static readonly NamespaceID errorBlock = Get(VanillaContraptionNames.errorBlock);
+        public static readonly NamespaceID miniSkyward = Get(VanillaContraptionNames.miniSkyward);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

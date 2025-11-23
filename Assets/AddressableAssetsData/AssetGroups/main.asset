@@ -3641,6 +3641,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 469ec7babeac1f344aa30fd089f390f2
+    m_Address: mvz2:entity/contraptions/mini_skyward_model
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46e4738e7670514408193864ddcf6e34
     m_Address: mvz2:lightning_attack
     m_ReadOnly: 0
@@ -12488,6 +12495,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7376806d664f6140a56685972faf8a1
+    m_Address: mvz2:contraption/upgrade/mini_skyward
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f74aabbf5c6403f4b908c053d7ecc630
     m_Address: mvz2:starshard_rings/mausoleum
     m_ReadOnly: 0
@@ -12752,6 +12766,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb75656443365494392db283de4c6e1b
+    m_Address: mvz2:entity/contraptions/mini_skyward_back_model
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb77e4a8870433548a8bc1c9cf6f25c3
     m_Address: mvz2:enemy/mausoleum/talisman_zombie

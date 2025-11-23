@@ -342,6 +342,14 @@
             <key hex="#FF0000" time="1" />
         </colorKeys>
     </fragment>
+    <fragment name="mini_skyward">
+        <colorKeys>
+            <key hex="#FFD400" time="0.5" />
+            <key hex="#FFA900" time="1" />
+            <key hex="#000000" time="0.2" />
+            <key hex="#FFFFFF" time="0.2" />
+        </colorKeys>
+    </fragment>
     <fragment name="mummy">
         <colorKeys>
             <key hex="#736D31" time="0.5" />

@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Artifacts
 
             if (active)
             {
-                var xOrderedMobsTake1 = artifact.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsDead && e.IsHostileEntity()).OrderBy(e => e.Position.x).Take(1);
+                var xOrderedMobsTake1 = artifact.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsDead && e.IsHostileEntity() && !e.IsNotActiveEnemy()).OrderBy(e => e.Position.x).Take(1);
                 foreach (var enemy in xOrderedMobsTake1)
                 {
                     var bound = enemy.GetBounds();

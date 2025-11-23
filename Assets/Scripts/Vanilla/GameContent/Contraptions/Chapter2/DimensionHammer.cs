@@ -86,13 +86,15 @@ namespace MVZ2.GameContent.Contraptions
                 for (int j = 0; j < 6; j++)
                 {
                     var angle = i * 36 + j * 18;
+                    var spawnParam = entity.GetSpawnParams();
+                    spawnParam.SetProperty(VanillaProjectileProps.PIERCING, false);
                     var param = entity.GetShootParams();
                     param.projectileID = VanillaProjectileID.arrowBullet;
                     param.damage = entity.GetDamage() / 3f;
                     param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * Mathf.RoundToInt(20 / (j + 1));
+                    param.spawnParam = spawnParam;
                     entity.ShootProjectile(param)?.Let(e =>
                     {
-                        e.SetPiercing(false);
                         e.SetHSVToColor(new Color(1, 0.6f, 1, 1));
                     });
                 }
