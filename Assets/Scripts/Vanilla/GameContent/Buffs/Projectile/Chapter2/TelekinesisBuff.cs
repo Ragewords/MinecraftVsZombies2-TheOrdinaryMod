@@ -28,13 +28,14 @@ namespace MVZ2.GameContent.Buffs.Projectiles
                 return;
 
             detectBuffer.Clear();
-            var target = absorbDetector.DetectEntityWithTheLeast(entity, e => Mathf.Abs(e.Position.magnitude - entity.Position.magnitude));
+            var target = absorbDetector.DetectEntityWithTheLeast(entity, e => Mathf.Abs((e.Position - entity.Position).magnitude));
             if (target != null)
             {
                 var vel = entity.Velocity;
-                var speed = Mathf.Min(vel.magnitude + ABSORB_SPEED, ABSORB_MAX_SPEED);
-                vel += (target.GetCenter() - entity.GetCenter()).normalized * ABSORB_SPEED;
-                vel = vel.normalized * speed;
+                var magnitude = vel.magnitude;
+                var normalize = (target.GetCenter() - entity.GetCenter()).normalized;
+                vel += normalize * magnitude;
+                vel = vel.normalized * magnitude;
                 entity.Velocity = vel;
             }
         }
