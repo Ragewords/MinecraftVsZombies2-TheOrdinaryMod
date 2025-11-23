@@ -69,7 +69,10 @@ namespace MVZ2.Vanilla.Enemies
             var protector = target.GetProtector();
             if (protector != null && protector.Exists() && !protector.IsFriendly(enemy))
             {
-                target = protector;
+                if (!target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShield))
+                {
+                    target = protector;
+                }
             }
             if (ValidateMeleeTarget(enemy, target))
             {
@@ -94,7 +97,10 @@ namespace MVZ2.Vanilla.Enemies
             if (!enemy.IsHostile(target))
                 return false;
             if (!Detection.IsInSameRow(enemy, target))
-                return target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShield);
+            {
+                if (!target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShield))
+                    return false;
+            }
             if (!Detection.CanDetect(target))
                 return false;
             if (target.Position.y > enemy.Position.y + enemy.GetMaxAttackHeight())
@@ -105,8 +111,13 @@ namespace MVZ2.Vanilla.Enemies
                     return false;
                 var protector = target.GetProtector();
                 if (protector != null && protector.Exists() && !protector.IsFriendly(enemy))
-                    return false;
+                {
+                    if (!target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShield))
+                        return false;
+                }
             }
+            if (target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShieldProtected))
+                return false;
             return true;
         }
         #endregion

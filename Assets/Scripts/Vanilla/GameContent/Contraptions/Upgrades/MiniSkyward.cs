@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Contraptions
 
             var magnitude = STAR_VELOCITY.magnitude;
             var range = entity.GetRange();
-            var endRangePoint = (entity.Position.x + range) * entity.GetFacingX();
+            var endRangePoint = entity.Position.x + range * entity.GetFacingX();
             Vector3 endPoint = new Vector3 (endRangePoint, entity.GetGroundY(), entity.Position.z);
             var angle = (endPoint - entity.Position).normalized;
             param.velocity = angle * magnitude;

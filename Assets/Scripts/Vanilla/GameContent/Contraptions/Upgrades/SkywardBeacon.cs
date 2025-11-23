@@ -129,11 +129,15 @@ namespace MVZ2.GameContent.Contraptions
             var familiar = familiarID?.GetEntity(level);
             if (!familiar.ExistsAndAlive())
             {
-                familiar = entity.Spawn(VanillaContraptionID.miniSkyward, entity.Position)?.Let(e =>
+                familiar = entity.SpawnWithParams(VanillaContraptionID.miniSkyward, entity.Position)?.Let(e =>
                 {
                     e.SetParent(entity);
                 });
                 SetFamiliarEntity(entity, new EntityID(familiar));
+            }
+            else
+            {
+                familiar.SetFaction(entity.GetFaction());
             }
         }
         public void OnShootTick(Entity entity)

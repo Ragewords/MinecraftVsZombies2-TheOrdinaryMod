@@ -1249,7 +1249,7 @@
                 <id name="mvz2:function" value="mvz2:magician" />
             </properties>
         </contraption>
-        <contraption id="skyward_beacon" name="御天信标" tooltip="（需要信标）\n使用光柱并指挥子机定点打击位置">
+        <contraption id="skyward_beacon" name="御天信标" tooltip="（需要信标）\n使用光柱并操纵子机定点打击位置">
             <unlock>
                 <condition required="mvz2:contraption.skyward_beacon" />
             </unlock>
@@ -1497,6 +1497,9 @@
             </properties>
         </contraption>
         <dispenser id="mini_skyward" name="御天信标子机" tooltip="向怪物发射星星">
+            <unlock>
+                <condition required="mvz2:contraption.skyward_beacon" />
+            </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:remove_without_parent" />
             </behaviours>
