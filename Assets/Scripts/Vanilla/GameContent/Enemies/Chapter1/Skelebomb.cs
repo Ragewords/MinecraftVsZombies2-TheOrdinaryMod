@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     SetExplode(entity, false);
                     Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
-                    entity.Die(entity);
+                    entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), entity);
                     entity.Level.ShakeScreen(5, 0, 20);
                 }
             }

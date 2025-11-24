@@ -114,11 +114,10 @@ namespace MVZ2.GameContent.Contraptions
         {
             var warrior_count = entity.Level.GetEntityCount(VanillaEnemyID.skeletonWarrior);
             var skeleton_count = entity.Level.GetEntityCount(VanillaEnemyID.skeleton);
-            var ghost_count = entity.Level.GetEntityCount(VanillaEnemyID.ghost);
             var necromancer_count = entity.Level.GetEntityCount(VanillaEnemyID.necromancer);
             var bomb_count = entity.Level.GetEntityCount(VanillaEnemyID.skelebomb);
             
-            return warrior_count + skeleton_count + ghost_count + necromancer_count + bomb_count >= SKELETON_LIMIT;
+            return warrior_count + skeleton_count + necromancer_count + bomb_count >= SKELETON_LIMIT;
         }
 
         private NamespaceID GetRandomProductionEnemyID(RandomGenerator rng)
@@ -129,7 +128,6 @@ namespace MVZ2.GameContent.Contraptions
         private static NamespaceID[] productionPool = new NamespaceID[]
         {
             VanillaEnemyID.skeleton,
-            VanillaEnemyID.ghost,
             VanillaEnemyID.necromancer,
             VanillaEnemyID.skelebomb,
             VanillaEnemyID.skeletonWarrior
@@ -137,10 +135,9 @@ namespace MVZ2.GameContent.Contraptions
         private static int[] productionPoolWeights = new int[]
         {
             2,
-            2,
             1,
             3,
-            12
+            14
         };
         public const int SKELETON_LIMIT = 30;
         public const int SPAWN_INTERVAL = 450;

@@ -25,12 +25,11 @@ namespace MVZ2.GameContent.Contraptions
         public override void Evoke(Entity entity)
         {
             base.Evoke(entity);
-            var buff = entity.NewBuff(VanillaBuffID.Contraption.fireworkDispenserEvoked);
+            entity.AddBuff(VanillaBuffID.Contraption.fireworkDispenserEvoked);
             if (entity.RNG.Next(10) == 0)
             {
-                buff.SetProperty(Buffs.Contraptions.FireworkDispenserEvokedBuff.PROP_TIMER, new Tools.FrameTimer(Buffs.Contraptions.FireworkDispenserEvokedBuff.TIMEOUT));
+                entity.AddBuff(VanillaBuffID.Contraption.fireworkDispenserEasterEgg);
             }
-            entity.AddBuff(buff);
             FireworkBlast.SpawnFireworkBlast(entity, entity.GetCenter(), entity.GetRange(), entity.RNG);
             entity.PlaySound(VanillaSoundID.fireworkLargeBlast);
             entity.PlaySound(VanillaSoundID.fireworkTwinkle);

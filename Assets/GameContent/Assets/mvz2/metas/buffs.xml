@@ -213,6 +213,7 @@
     <buff id="beacon_damage" polarity="positive" level="3000" target="contraption" />
     <buff id="beacon_meteor" polarity="positive" level="1000" target="level" />
     <buff id="firework_dispenser_evoked" polarity="positive" level="1000" target="contraption" />
+    <buff id="firework_dispenser_easter_egg" polarity="none" level="5000" target="contraption" />
     <buff id="hfpd_upgraded" polarity="positive" level="1000" target="contraption" />
     <buff id="flying_pirate_glide" polarity="positive" level="3000" target="enemy" />
     <buff id="paratroop" polarity="positive" level="3000" target="enemy" />

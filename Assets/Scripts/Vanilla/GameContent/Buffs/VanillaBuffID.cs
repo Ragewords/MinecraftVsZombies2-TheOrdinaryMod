@@ -196,6 +196,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 5
             public const string beaconDamage = "beacon_damage";
             public const string fireworkDispenserEvoked = "firework_dispenser_evoked";
+            public const string fireworkDispenserEasterEgg = "firework_dispenser_easter_egg";
             public const string hfpdUpgraded = "hfpd_upgraded";
             public const string stolenByUFO = "stolen_by_ufo";
             public const string woodenFanBlow = "wooden_fan_blow";
@@ -548,6 +549,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 5
             public static readonly NamespaceID beaconDamage = Get(VanillaBuffNames.Contraption.beaconDamage);
             public static readonly NamespaceID fireworkDispenserEvoked = Get(VanillaBuffNames.Contraption.fireworkDispenserEvoked);
+            public static readonly NamespaceID fireworkDispenserEasterEgg = Get(VanillaBuffNames.Contraption.fireworkDispenserEasterEgg);
             public static readonly NamespaceID hfpdUpgraded = Get(VanillaBuffNames.Contraption.hfpdUpgraded);
             public static readonly NamespaceID stolenByUFO = Get(VanillaBuffNames.Contraption.stolenByUFO);
             public static readonly NamespaceID woodenFanBlow = Get(VanillaBuffNames.Contraption.woodenFanBlow);
