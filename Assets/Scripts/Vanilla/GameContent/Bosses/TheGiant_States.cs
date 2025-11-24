@@ -227,6 +227,11 @@ namespace MVZ2.GameContent.Bosses
                     {
                         if (phase2)
                         {
+                            lastState = STATE_VOMIT;
+                            return lastState;
+                        }
+                        else
+                        {
                             lastState = STATE_EYES;
                             var innerTarget = FindEyeBulletTarget(entity, false);
                             var outerTarget = FindEyeBulletTarget(entity, true);
@@ -234,11 +239,6 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 return lastState;
                             }
-                        }
-                        else
-                        {
-                            lastState = STATE_VOMIT;
-                            return lastState;
                         }
                     }
                 }

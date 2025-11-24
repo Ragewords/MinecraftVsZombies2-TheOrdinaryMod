@@ -983,7 +983,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
-                <id name="mvz2:function" value="mvz2:bomb" />
+                <id name="mvz2:function" value="mvz2:container" />
             </properties>
         </contraption>
         <contraption id="desire_pot" name="欲望壶" tooltip="复制怪物身上的星之碎片">

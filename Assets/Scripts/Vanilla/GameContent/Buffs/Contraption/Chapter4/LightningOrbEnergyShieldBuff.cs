@@ -48,6 +48,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                     buff.Remove();
                     return;
                 }
+                entity.SetAnimationBool("HidingTop", entity.GetLane() == 0);
+                entity.SetAnimationBool("HidingBottom", entity.GetLane() == entity.Level.GetMaxLaneCount() - 1);
                 entity.SetAnimationFloat("ShieldDamaged", GetHealth(buff) / MAX_HEALTH);
                 entity.SetAnimationFloat("ShieldSpeed", 1 + (1 - GetHealth(buff) / MAX_HEALTH) * 3);
             }
