@@ -27,6 +27,6 @@ namespace MVZ2.GameContent.RandomChinaEvents
             contraption.PlaySound(VanillaSoundID.pirouette);
         }
         [TranslateMsg("随机瓷器事件名称", VanillaStrings.CONTEXT_RANDOM_CHINA_EVENT_NAME)]
-        public const string NAME = "你是巫师吗";
+        public const string NAME = "你是巫师吗？";
     }
 }

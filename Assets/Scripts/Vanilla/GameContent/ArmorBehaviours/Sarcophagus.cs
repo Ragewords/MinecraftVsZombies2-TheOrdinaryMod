@@ -44,12 +44,12 @@ namespace MVZ2.GameContent.Armors
             var info = param.deathInfo;
             if (info.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            var shield = entity.GetArmorAtSlot(VanillaArmorSlots.main);
-            if (shield == null)
+            var armor = entity.GetMainArmor();
+            if (armor == null)
                 return;
-            if (!shield.Definition.HasBehaviour(this))
+            if (!armor.Definition.HasBehaviour(this))
                 return;
-            shield.Destroy();
+            armor.Destroy();
         }
         public class HeavyAura : AuraEffectDefinition
         {
