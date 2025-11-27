@@ -5,7 +5,6 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Contraptions;
-using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -46,19 +45,6 @@ namespace MVZ2.GameContent.Contraptions
                         foreach (var target in detectBuffer)
                         {
                             target.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.GROUND_SPIKES), entity);
-                        }
-                        if (entity.RNG.Next(100) < 5)
-                        {
-                            foreach (var target in detectBuffer)
-                            {
-                                var enemy = target.Entity;
-                                if (enemy.Type == EntityTypes.ENEMY)
-                                {
-                                    var knockbackMultiplier = enemy.GetWeakKnockbackMultiplier();
-                                    entity.PlaySound(VanillaSoundID.bonk);
-                                    enemy.Velocity += new Vector3(entity.GetFacingX() * 5, 5, 0) * knockbackMultiplier;
-                                }
-                            }
                         }
                         entity.TriggerAnimation("Attack");
                         damaged = true;

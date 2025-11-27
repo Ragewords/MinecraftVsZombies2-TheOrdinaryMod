@@ -527,12 +527,11 @@
         </entry>
         <entry id="mvz2:spike_block">
             <header>
-                <p>尖刺方块会对走在上面的敌人造成伤害，并有概率产生击退效果。</p>
+                <p>尖刺方块会对走在上面的敌人造成伤害。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>900</color>]]></p>
                 <p>攻击频率：<![CDATA[<color=red>1秒</color>]]></p>
-                <p>击退概率：<![CDATA[<color=red>5%</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对一整行地面上的敌人快速造成伤害，并将它们拉向自身</color>]]></p>
             </properties>
@@ -597,7 +596,7 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人，命中的敌人会产生连续攻击最多4个敌人的电流链。为经过的金属射弹附上电流，使其额外造成电流伤害。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人，命中的敌人会产生连续攻击附近最多4个敌人的电流链。为经过的金属射弹附上电流，使其额外造成闪电伤害。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
@@ -1082,12 +1081,11 @@
                 <tag id="mvz2:placement_diamond_spikes" />
             </tags>
             <header>
-                <p>钻石尖刺会对走在上面的敌人造成双重伤害，每次造成伤害都有概率产生击退效果，并具有更高的耐久。</p>
+                <p>钻石尖刺会对走在上面的敌人造成双重伤害，并具有更高的耐久。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>5400</color>]]></p>
                 <p>攻击频率：<![CDATA[<color=red>0.5秒</color>]]></p>
-                <p>击退概率：<![CDATA[<color=red>5%</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对一整行地面上的敌人快速造成伤害，并将它们拉向自身；向周围扔出30个钻石蒺藜，对踩到的敌人造成100伤害</color>]]></p>
             </properties>
