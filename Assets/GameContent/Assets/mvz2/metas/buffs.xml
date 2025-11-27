@@ -138,7 +138,7 @@
     <buff id="terror_nest" polarity="mixed" level="0" target="enemy" />
     <buff id="pure_fury" polarity="positive" level="1000" target="enemy" />
     <buff id="crescent_anti_gravity" polarity="negative" level="1000" target="entity" />
-    <buff id="troll_hide" polarity="negative" level="1000" target="entity" />
+    <buff id="concealed" polarity="negative" level="1000" target="entity" />
     <buff id="explosive_pearl" polarity="mixed" level="1000" target="projectile" />
     <buff id="bent_spoon" polarity="positive" level="1000" target="projectile" />
 

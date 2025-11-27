@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Buffs
             public const string whiteFlash = "white_flash";
             public const string parabot = "parabot";
             public const string crescentAntiGravity = "crescent_anti_gravity";
-            public const string trollHide = "troll_hide";
+            public const string concealed = "concealed";
 
             // Chapter 3
             public const string charm = "charm";
@@ -455,7 +455,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID whiteFlash = Get(VanillaBuffNames.Entity.whiteFlash);
             public static readonly NamespaceID parabot = Get(VanillaBuffNames.Entity.parabot);
             public static readonly NamespaceID crescentAntiGravity = Get(VanillaBuffNames.Entity.crescentAntiGravity);
-            public static readonly NamespaceID trollHide = Get(VanillaBuffNames.Entity.trollHide);
+            public static readonly NamespaceID concealed = Get(VanillaBuffNames.Entity.concealed);
 
             // Chapter 3
             public static readonly NamespaceID charm = Get(VanillaBuffNames.Entity.charm);

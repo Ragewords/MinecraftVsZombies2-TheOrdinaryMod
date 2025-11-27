@@ -120,10 +120,10 @@ namespace MVZ2.GameContent.Bosses
                 var grid = entity.Level.GetAllGrids().Where(g => g.Column == (entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0)).Random(entity.RNG);
                 var endGrid = entity.Level.GetAllGrids().Where(g => g.Column >= 2 && g.Column <= 6).Random(entity.RNG);
 
-                var trollLanes = entity.Level.GetAllLanes().Where(l => 
+                var concealLanes = entity.Level.GetAllLanes().Where(l => 
                 {
                     bool noGas = true;
-                    foreach (var item in entity.Level.FindEntities(VanillaEffectID.trollGas))
+                    foreach (var item in entity.Level.FindEntities(VanillaEffectID.concealingSmoke))
                     {
                         if (item.GetLane() == l)
                             noGas = false;
@@ -171,15 +171,15 @@ namespace MVZ2.GameContent.Bosses
                             entity.Velocity = GetDashDir(entity) * 30;
                             if (subStateTimer.PassedFrame(20))
                             {
-                                var trollGrid = entity.Level.GetAllGrids().Random(entity.RNG);
-                                if (trollLanes.Count() > 0)
+                                var concealGrid = entity.Level.GetAllGrids().Random(entity.RNG);
+                                if (concealLanes.Count() > 0)
                                 {
-                                    var trollLane = trollLanes.Random(entity.RNG);
-                                    trollGrid = entity.Level.GetAllGrids().Where(g => g.Lane == trollLane).Random(entity.RNG);
+                                    var concealLane = concealLanes.Random(entity.RNG);
+                                    concealGrid = entity.Level.GetAllGrids().Where(g => g.Lane == concealLane).Random(entity.RNG);
                                 }
                                 entity.SpawnWithParams(VanillaProjectileID.deliciousTroll, entity.GetCenter())?.Let(e =>
                                 {
-                                    e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), trollGrid.GetEntityPosition(), 30, e.GetGravity());
+                                    e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), concealGrid.GetEntityPosition(), 30, e.GetGravity());
                                 });
                             }
                             if (subStateTimer.PassedInterval(20))

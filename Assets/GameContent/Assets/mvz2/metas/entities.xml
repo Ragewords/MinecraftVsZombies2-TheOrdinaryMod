@@ -3788,7 +3788,7 @@
                 <string name="mvz2:sortingLayer" value="Shadow" />
             </properties>
         </effect>
-        <effect id="troll_gas">
+        <effect id="concealing_smoke">
             <behaviours>
                 <behaviour operator="add" id="mvz2:gas" />
                 <behaviour operator="add" id="mvz2:gas_blown" />

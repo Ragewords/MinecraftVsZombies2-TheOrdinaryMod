@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Effects
         public const string magneticLine = "magnetic_line";
         public const string hoe = "hoe";
         public const string breakoutBoard = "breakout_board";
-        public const string trollGas = "troll_gas";
+        public const string concealingSmoke = "concealing_smoke";
         public const string nightmareWatchingEye = "nightmare_watching_eye";
         public const string nightmareMeteor = "nightmare_meteor";
         public const string nightmareFireParticles = "nightmare_fire_particles";
@@ -162,7 +162,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID magneticLine = Get(VanillaEffectNames.magneticLine);
         public static readonly NamespaceID hoe = Get(VanillaEffectNames.hoe);
         public static readonly NamespaceID breakoutBoard = Get(VanillaEffectNames.breakoutBoard);
-        public static readonly NamespaceID trollGas = Get(VanillaEffectNames.trollGas);
+        public static readonly NamespaceID concealingSmoke = Get(VanillaEffectNames.concealingSmoke);
         public static readonly NamespaceID nightmareWatchingEye = Get(VanillaEffectNames.nightmareWatchingEye);
         public static readonly NamespaceID nightmareMeteor = Get(VanillaEffectNames.nightmareMeteor);
         public static readonly NamespaceID nightmareFireParticles = Get(VanillaEffectNames.nightmareFireParticles);

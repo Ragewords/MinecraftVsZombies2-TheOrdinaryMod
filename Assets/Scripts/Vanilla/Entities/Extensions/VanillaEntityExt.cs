@@ -1039,19 +1039,6 @@ namespace MVZ2.Vanilla.Entities
             buff.SetProperty(EnemyWeaknessBuff.PROP_TIMEOUT, time);
             PostApplyStatusEffect(entity, buff, source);
         }
-        public static void InflictTrolled(this Entity entity, int time, ILevelSourceReference? source)
-        {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.trollHide);
-            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
-                return;
-            Buff? buff = entity.GetFirstBuff(buffDefinition);
-            if (buff == null)
-            {
-                buff = entity.AddBuff(buffDefinition);
-            }
-            buff.SetProperty(TrollHideBuff.PROP_TIMEOUT, time);
-            PostApplyStatusEffect(entity, buff, source);
-        }
 
         public static void InflictPoison(this Entity entity, int time, ILevelSourceReference? source)
         {

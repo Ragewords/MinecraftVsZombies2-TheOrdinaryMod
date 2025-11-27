@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Projectiles
             var x = entity.Level.GetColumnX(4);
             var y = entity.GetGroundY();
             var z = entity.Level.GetEntityLaneZ(lane);
-            entity.SpawnWithParams(VanillaEffectID.trollGas, new Vector3(x, y, z));
+            entity.SpawnWithParams(VanillaEffectID.concealingSmoke, new Vector3(x, y, z));
         }
     }
 }
