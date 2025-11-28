@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             attackedEnemies.Add(entity);
             var nextDamage = buff.GetProperty<float>(PROP_DAMAGE);
-            FindNextTarget(entity, entity.Position, entity.GetFaction(), nextDamage);
+            FindNextTarget(buff, entity, entity.Position, entity.GetFaction(), nextDamage);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -39,22 +39,23 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (attackedEnemies.Count >= MAX_TARGETS)
                 buff.Remove();
         }
-        private void FindNextTarget(Entity entity, Vector3 origin, int faction, float nextDamage)
+        private void FindNextTarget(Buff buff, Entity entity, Vector3 origin, int faction, float nextDamage)
         {
+            var ignored = buff.GetProperty<IEntityCollider[]>(PROP_IGNORED_ENTITY);
             IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, 0, EntityCollisionHelper.MASK_VULNERABLE);
 
             var validTargets = hitColliders
-                .Where(c => !attackedEnemies.Contains(c.Entity))
+                .Where(c => !attackedEnemies.Contains(c.Entity) && !ignored.Contains(c))
                 .OrderBy(c => Vector3.Distance(origin, c.Entity.Position))
                 .ToArray();
 
             if (validTargets.Length > 0)
             {
                 entity.PlaySound(VanillaSoundID.redLightning);
-                AttackTarget(entity, validTargets[0].Entity, nextDamage);
+                AttackTarget(buff, entity, validTargets[0].Entity, nextDamage);
             }
         }
-        private void AttackTarget(Entity entity, Entity target, float currentDamage)
+        private void AttackTarget(Buff buff, Entity entity, Entity target, float currentDamage)
         {
             if (attackedEnemies.Count >= MAX_TARGETS || target == null || target.IsDead)
                 return;
@@ -69,7 +70,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             });
             
             attackedEnemies.Add(target);
-            FindNextTarget(target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_REDUCTION));
+            FindNextTarget(buff, target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_REDUCTION));
         }
         public const float ZAP_RADIUS = 120;
         public const float MAX_TARGETS = 5;
@@ -77,6 +78,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public const float DMG_REDUCTION = 0.2f;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
+        public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity");
         private List<Entity> attackedEnemies = new List<Entity>();
     }
 }

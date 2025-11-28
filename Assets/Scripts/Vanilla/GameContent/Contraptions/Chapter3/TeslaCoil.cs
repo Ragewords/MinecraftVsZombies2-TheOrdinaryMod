@@ -86,7 +86,7 @@ namespace MVZ2.GameContent.Contraptions
                         {
                             targetPosition.y = groundY;
                         }
-                        Shock(entity, damage, faction, SHOCK_RADIUS, targetPosition);
+                        Shock(entity, damage, faction, SHOCK_RADIUS, targetPosition, noChain: false);
                         CreateArc(entity, sourcePosition, targetPosition);
                         entity.PlaySound(VanillaSoundID.teslaAttack);
                     }
@@ -114,7 +114,7 @@ namespace MVZ2.GameContent.Contraptions
             }
             return priority;
         }
-        public static void Shock(Entity source, float damage, int faction, float shockRadius, Vector3 targetPosition, DamageEffectList? damageEffects = null)
+        public static void Shock(Entity source, float damage, int faction, float shockRadius, Vector3 targetPosition, DamageEffectList? damageEffects = null, bool noChain = true)
         {
             damageEffects = damageEffects ?? new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE);
             var level = source.Level;
@@ -138,10 +138,14 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var collider in detectBuffer)
             {
                 collider.TakeDamage(damage, damageEffects, source);
-                var entity = collider.Entity;
-                var eBuff = entity.NewBuff<ElectricChainBuff>();
-                eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, damage / 2);
-                entity.AddBuff(eBuff);
+                if (!noChain)
+                {
+                    var entity = collider.Entity;
+                    var eBuff = entity.NewBuff<ElectricChainBuff>();
+                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, damage / 2);
+                    eBuff.SetProperty(ElectricChainBuff.PROP_IGNORED_ENTITY, detectBuffer.ToArray());
+                    entity.AddBuff(eBuff);
+                }
             }
         }
         public static void CreateArc(Entity source, Vector3 sourcePosition, Vector3 targetPosition, int point = 20, int timeout = 30)
