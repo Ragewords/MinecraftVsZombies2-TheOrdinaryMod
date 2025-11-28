@@ -2,7 +2,6 @@
 
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
@@ -15,7 +14,6 @@ using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -206,7 +204,8 @@ namespace MVZ2.GameContent.Contraptions
                             stateTimer.Run();
                             if (stateTimer.PassedFrame(30))
                             {
-                                var ghast = entity.SpawnWithParams(VanillaEnemyID.hellChariot, entity.GetCenter());
+                                var ghast = entity.SpawnWithParams(VanillaEnemyID.ghast, entity.GetCenter());
+                                entity.PlaySound(VanillaSoundID.fireCharge);
                             }
                             if (stateTimer.Expired)
                             {

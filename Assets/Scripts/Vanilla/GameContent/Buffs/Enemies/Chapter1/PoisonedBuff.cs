@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Models;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
+using PVZEngine.Armors;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Level;
@@ -17,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
     {
         public PoisonedBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.witherParticles, VanillaModelID.witherParticles);
+            AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.poisonParticles, VanillaModelID.poisonParticles);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -26,8 +27,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity != null)
             {
-                if (entity.Health > 20)
-                    entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
+                var armor = entity.GetMainArmor();
+                if (Armor.Exists(armor) && !armor.IsIgnored())
+                {
+                    entity.TakeDamageNoSource(WITHER_DAMAGE_ARMOR, new DamageEffectList(VanillaDamageEffects.MUTE));
+                }
+                else if (entity.Health > 20)
+                {
+                    entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.MUTE));
+                }
             }
 
             var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
@@ -39,6 +47,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
         }
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        public const float WITHER_DAMAGE = 2 / 3f;
+        public const float WITHER_DAMAGE = 1f;
+        public const float WITHER_DAMAGE_ARMOR = 3f;
     }
 }

@@ -312,6 +312,6 @@ namespace MVZ2.GameContent.Contraptions
         public const float SUBTRACT_SPEED = 2;
         public const int EVOCATION_TIME = 30;
         public const int DETECT_INTERVAL = 8;
-        public const int MAX_EVOCATION_TARGET = 20;
+        public const int MAX_EVOCATION_TARGET = 10;
     }
 }

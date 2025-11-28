@@ -415,6 +415,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">我会夺取你的灵魂！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后会焚烧一群敌人，还能分裂！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">但代价是什么？它需要牺牲前方的器械来当作它的燃料！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">幸运的是，特定的器械会与灵魂熔炉产生协同效应！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">让怪物们下地狱吧！</sentence>
       </sentences>
     </section>
@@ -660,8 +661,8 @@
 				<character id="mvz2:crazy_villager" side="left" />
 			</characters>
 			<sentences>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是淬毒发射器！能够在较远的一段距离发射毒球！</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">毒球击中的怪物会中毒，持续受到伤害！也能腐蚀它们的盔甲！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是淬毒发射器！能够在较远的一段距离发射毒液球！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">毒液球击中的怪物会中毒，持续受到伤害！并且能快速腐蚀它们的盔甲！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2" onClick="end">也许是女巫制造的机械？谁知道呢！</sentence>
 			</sentences>
 		</section>
