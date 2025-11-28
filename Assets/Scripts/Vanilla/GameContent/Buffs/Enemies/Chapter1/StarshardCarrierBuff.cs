@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
 
             desirePotBuffer.Clear();
-            entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot), desirePotBuffer);
+            entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot) && e.GetChildren().Count() <= DesirePot.MAX_DUPLICATED_COUNT, desirePotBuffer);
             var chosen_pot = desirePotBuffer.Take(1);
             bool pot_found = false;
             foreach (var pot in chosen_pot)
