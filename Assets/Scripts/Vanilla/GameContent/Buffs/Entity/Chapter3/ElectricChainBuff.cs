@@ -78,7 +78,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public const float DMG_REDUCTION = 0.2f;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity");
+        public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity", new List<IEntityCollider>().ToArray());
         private List<Entity> attackedEnemies = new List<Entity>();
     }
 }

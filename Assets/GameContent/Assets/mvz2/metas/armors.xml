@@ -27,13 +27,6 @@
                 <behaviour id="mvz2:damage_state_3" />
                 <behaviour id="mvz2:sarcophagus" />
             </behaviours>
-            <colliders>
-                <collider name="main">
-                    <offset x="0" y="-30" z="0" />
-                    <size x="40" y="90" z="40" />
-                    <pivot x="0.5" y="0.5" z="0.5" />
-                </collider>
-            </colliders>
             <props>
                 <bool name="mvz2:noDiscard" value="true" />
                 <id name="mvz2:shell" value="mvz2:stone" />
