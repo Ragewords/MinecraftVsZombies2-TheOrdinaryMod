@@ -12,7 +12,10 @@ using MVZ2.Talk;
 using MVZ2.Talks;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Saves;
+using MVZ2Logic;
+using MVZ2Logic.Talk;
 using PVZEngine;
 using Tools;
 using UnityEngine;
@@ -58,6 +61,10 @@ namespace MVZ2.Store
                     continue;
                 ui.SetStoreUIVisible(false);
                 await talkController.SimpleStartTalkAsync(talk, 0, 1);
+
+                // 如果对话去了其他页面，那就不触发之后的对话。
+                if (!gameObject.activeInHierarchy)
+                    break;
             }
             ui.SetStoreUIVisible(true);
         }
@@ -88,6 +95,9 @@ namespace MVZ2.Store
             ui.OnProductClick += OnProductClickCallback;
 
             chatRNG = new RandomGenerator(new Guid().GetHashCode());
+            talkSystem = new DefaultTalkSystem(talkController);
+
+            talkController.OnTalkAction += OnTalkActionCallback;
         }
         private void Update()
         {
@@ -113,8 +123,7 @@ namespace MVZ2.Store
         #region UI 事件回调
         private void OnReturnClickCallback()
         {
-            Hide();
-            OnReturnClick?.Invoke();
+            Return();
         }
         private void OnPageButtonClickCallback(bool next)
         {
@@ -204,7 +213,7 @@ namespace MVZ2.Store
                     {
                         return;
                     }
-                     Main.SaveManager.AddMoney(-price);
+                    Main.SaveManager.AddMoney(-price);
                     Main.SoundManager.Play2D(VanillaSoundID.cashRegister);
                     Main.SaveManager.SaveToFile(); // 购买物品后保存游戏
                     UpdateMoney();
@@ -217,6 +226,10 @@ namespace MVZ2.Store
                 var desc = Main.LanguageManager._(INSUFFICIENT_MONEY_DESCRIPTION);
                 Main.Scene.ShowDialogMessage(title, desc);
             }
+        }
+        private void OnTalkActionCallback(string cmd, string[] parameters)
+        {
+            Global.Game.RunCallbackFiltered(VanillaCallbacks.TALK_ACTION, new VanillaCallbacks.TalkActionParams(talkSystem, cmd, parameters), cmd);
         }
         #endregion
         private void UpdateProducts()
@@ -272,7 +285,6 @@ namespace MVZ2.Store
                 return string.Empty;
             return Main.LanguageManager._p(context, text, args);
         }
-        public event Action? OnReturnClick;
 
         [TranslateMsg("商店对话框标题")]
         public const string PURCHASE = "购买物品";
@@ -294,6 +306,7 @@ namespace MVZ2.Store
         private bool pointingProduct;
         private int page;
         private RandomGenerator chatRNG = null!;
+        private ITalkSystem talkSystem = null!;
 
 
         [SerializeField]

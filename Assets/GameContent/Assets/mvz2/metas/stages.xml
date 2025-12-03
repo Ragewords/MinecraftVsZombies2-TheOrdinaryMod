@@ -303,6 +303,7 @@
         <properties>
             <bool name="noEnergy" value="true" />
             <integer name="statueCount" value="10" />
+            <bool name="mvz2:adventure" value="true"/>
         </properties>
     </stage>
     <stage id="halloween_endless" name="万圣夜无尽" type="endless">
@@ -590,6 +591,7 @@
         <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
+            <bool name="mvz2:adventure" value="true"/>
         </properties>
     </stage>
     <stage id="dream_endless" name="梦境世界无尽" type="endless">
@@ -881,6 +883,7 @@
         <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
+            <bool name="mvz2:adventure" value="true"/>
         </properties>
     </stage>
     <stage id="castle_endless" name="辉针城无尽" type="endless">
@@ -1180,6 +1183,7 @@
         <properties>
             <bool name="noEnergy" value="true" />
             <integer name="spawnerCount" value="8" />
+            <bool name="mvz2:adventure" value="true"/>
         </properties>
     </stage>
     <stage id="mausoleum_endless" name="梦殿大祀庙无尽" type="endless">
@@ -1366,7 +1370,7 @@
     </stage>
     <stage id="ship_7" name="圣辇船" dayNumber="7">
         <unlock>
-            <condition required="mvz2:level.ship_6" />
+            <condition required="mvz2:kourindou_visited_ship_2" />
         </unlock>
         <talks>
             <talk type="start" value="mvz2:ship_7" />
@@ -1452,7 +1456,7 @@
             <condition required="mvz2:level.ship_10" />
         </unlock>
         <model preset="cloudy" />
-        <talks>
+        <talks noStartMusic="true">
             <talk type="start" value="mvz2:ship_11" />
             <talk type="end" value="mvz2:ship_11_over" />
             <talk type="map" value="mvz2:ship_11_map" />
@@ -1480,8 +1484,8 @@
         <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
+            <bool name="mvz2:adventure" value="true"/>
             <id name="clearSound" value="mvz2:final_item" />
-            <float name="conveySpeed" value="0.75" />
         </properties>
     </stage>
     <stage id="ship_endless" name="圣辇船无尽" type="endless">
@@ -1638,6 +1642,94 @@
             <bool name="noEnergy" value="true" />
         </properties>
     </stage>
+
+    <!-- Bosses' Revenge -->
+    <stage id="frankensteins_revenge" name="科学怪人的复仇" type="minigame" music="mvz2:ultimate_battle" >
+        <model preset="cloudy" />
+        <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
+        <spawns flags="2" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
+            <spawn id="mvz2:ghost"/>
+            <spawn id="mvz2:mummy"/>
+            <spawn id="mvz2:necromancer"/>
+        </spawns>
+        <properties>
+            <integer name="statueCount" value="10" />
+            <bool name="mvz2:boss_revenge" value="true"/>
+        </properties>
+    </stage>
+    <stage id="nightmares_revenge" name="梦魇的复仇" type="minigame" music="mvz2:nightmare_final" >
+        <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
+        <spawns flags="2" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:spider"/>
+            <spawn id="mvz2:cave_spider"/>
+            <spawn id="mvz2:ghast"/>
+            <spawn id="mvz2:mother_terror"/>
+        </spawns>
+        <properties>
+            <bool name="mvz2:boss_revenge" value="true"/>
+        </properties>
+    </stage>
+    <stage id="withers_revenge" name="凋灵的复仇" type="minigame" music="mvz2:castle_final" >
+        <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
+        <spawns flags="2" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:mesmerizer"/>
+            <spawn id="mvz2:berserker"/>
+            <spawn id="mvz2:dullahan"/>
+            <spawn id="mvz2:hell_chariot"/>
+        </spawns>
+        <properties>
+            <bool name="mvz2:boss_revenge" value="true"/>
+        </properties>
+    </stage>
+    <stage id="the_giants_revenge" name="巨人的复仇" type="minigame" music="mvz2:mausoleum_final" >
+        <unlock>
+            <condition required="mvz2:level.mausoleum_11"/>
+        </unlock>
+        <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
+        <spawns flags="2" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:reflective_barrier_zombie"/>
+            <spawn id="mvz2:wicked_hermit_zombie"/>
+            <spawn id="mvz2:shikaisen_zombie"/>
+            <spawn id="mvz2:emperor_zombie"/>
+        </spawns>
+        <properties>
+            <integer name="spawnerCount" value="8" />
+            <bool name="mvz2:boss_revenge" value="true"/>
+        </properties>
+    </stage>
+    <stage id="red_dragons_revenge" name="红龙的复仇" type="minigame" music="mvz2:ship_final" >
+        <unlock>
+            <condition required="mvz2:level.ship_11"/>
+        </unlock>
+        <model preset="cloudy" />
+        <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
+        <spawns flags="2" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:undead_flying_object" />
+            <spawn id="mvz2:zombie_cloud" />
+            <spawn id="mvz2:cannoneer_zombie" />
+            <spawn id="mvz2:pop_captain" />
+        </spawns>
+        <properties>
+            <bool name="mvz2:boss_revenge" value="true"/>
+        </properties>
+    </stage>
+
 
     <!-- Puzzles -->
     <stage id="puzzle_i_zombie" name="我是僵尸" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle">

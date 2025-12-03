@@ -336,10 +336,6 @@ namespace MVZ2.Vanilla.Entities
 
         #region 蜘蛛
         public static readonly PropertyMeta<bool> IS_SPIDER = Get<bool>("spider");
-        public static void SetIsSpider(this Entity entity, bool value)
-        {
-            entity.SetProperty(IS_SPIDER, value);
-        }
         public static bool IsSpider(this EntityDefinition definition)
         {
             return definition.GetProperty<bool>(IS_SPIDER);
@@ -347,6 +343,18 @@ namespace MVZ2.Vanilla.Entities
         public static bool IsSpider(this Entity entity)
         {
             return entity.GetProperty<bool>(IS_SPIDER);
+        }
+        #endregion
+
+        #region 炸药
+        public static readonly PropertyMeta<bool> DYNAMITE = Get<bool>("dynamite");
+        public static bool IsDynamite(this EntityDefinition definition)
+        {
+            return definition.GetProperty<bool>(DYNAMITE);
+        }
+        public static bool IsDynamite(this Entity entity)
+        {
+            return entity.GetProperty<bool>(DYNAMITE);
         }
         #endregion
 

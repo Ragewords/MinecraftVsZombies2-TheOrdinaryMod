@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
@@ -39,16 +38,8 @@ namespace MVZ2.GameContent.Buffs.Level
                 var filteredGrids = UndeadFlyingObject.FilterConflictSpawnGrids(level, possibleGrids);
 
                 var grid = filteredGrids.Random(rng);
-                var column = grid.Column;
-                var lane = grid.Lane;
-                var pos = grid.GetEntityPosition();
-                pos.y += UndeadFlyingObject.START_HEIGHT;
-
-                level.Spawn(VanillaEnemyID.ufo, pos, null)?.Let(e =>
+                UndeadFlyingObject.SpawnAtGrid(grid, type)?.Let(e =>
                 {
-                    e.SetVariant(type);
-                    UndeadFlyingObject.SetTargetGridX(e, column);
-                    UndeadFlyingObject.SetTargetGridY(e, lane);
                     level.TriggerEnemySpawned(VanillaSpawnID.GetFromEntity(VanillaEnemyID.ufo), e);
                 });
                 totalPoints -= spawnLevel;

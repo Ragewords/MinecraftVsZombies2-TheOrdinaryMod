@@ -58,14 +58,6 @@ namespace MVZ2.GameContent.Bosses
 
             stateMachine.StartState(entity, STATE_DEAD);
         }
-        public override void PreTakeDamage(DamageInput input, CallbackResult result)
-        {
-            base.PreTakeDamage(input, result);
-            if (input.Amount > 600)
-            {
-                input.SetAmount(600);
-            }
-        }
         public static void Appear(Entity entity)
         {
             stateMachine.StartState(entity, STATE_APPEAR);

@@ -3,11 +3,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
@@ -77,21 +77,7 @@ namespace MVZ2.GameContent.Bosses
         private static void RoarLoop(Entity entity)
         {
             entity.Level.ShakeScreen(15, 0, 5);
-            foreach (var ent in entity.Level.FindEntities(e => CanRoarStun(entity, e)))
-            {
-                if (ent.IsEntityOf(VanillaContraptionID.lightningOrb))
-                    continue;
-                if (ent.IsEntityOf(VanillaContraptionID.noteBlock))
-                {
-                    if (!ent.HasBuff<NoteBlockChargedBuff>())
-                    {
-                        ent.AddBuff<NoteBlockChargedBuff>();
-                        ent.PlaySound(VanillaSoundID.growBig);
-                    }
-                    continue;
-                }
-                ent.Stun(ROAR_STUN_TIME);
-            }
+            entity.BossRoar(ROAR_STUN_TIME);
         }
         private static bool CanCrawl(Entity entity)
         {
@@ -113,7 +99,7 @@ namespace MVZ2.GameContent.Bosses
         private static void ReformToIdle(Entity entity)
         {
             stateMachine.StartState(entity, STATE_IDLE);
-            stateMachine.SetSubState(entity, IdleState.SUBSTATE_REFORMED);
+            stateMachine.StartSubState(entity, IdleState.SUBSTATE_REFORMED);
             ResetMalleable(entity);
         }
 
@@ -252,7 +238,7 @@ namespace MVZ2.GameContent.Bosses
                         if (!phase2)
                         {
                             lastState = STATE_ROAR;
-                            if (entity.Level.EntityExists(e => CanRoarStun(entity, e)))
+                            if (entity.Level.EntityExists(e => entity.CanBossRoarStun(e)))
                             {
                                 return lastState;
                             }
@@ -309,6 +295,15 @@ namespace MVZ2.GameContent.Bosses
         private class DisassemblyState : EntityStateMachineState
         {
             public DisassemblyState() : base(STATE_DISASSEMBLY, ANIMATION_STATE_DISASSEMBLY) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_RESTORE:
+                        return ANIMATION_SUBSTATE_RESTORE;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -331,7 +326,7 @@ namespace MVZ2.GameContent.Bosses
                             // 分离。
                             bool atLeft = AtLeft(entity);
                             var targetState = atLeft ? SUBSTATE_TO_RIGHT : SUBSTATE_TO_LEFT;
-                            stateMachine.SetSubState(entity, targetState);
+                            stateMachine.StartSubState(entity, targetState);
                             substateTimer.ResetTime(30);
 
                             var level = entity.Level;
@@ -383,7 +378,7 @@ namespace MVZ2.GameContent.Bosses
                                 substateTimer.Reset();
                                 break;
                             }
-                            stateMachine.SetSubState(entity, SUBSTATE_COMBINE);
+                            stateMachine.StartSubState(entity, SUBSTATE_COMBINE);
                             substateTimer.ResetTime(15);
                             if (blocks != null)
                             {
@@ -413,8 +408,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                             else
                             {
-                                stateMachine.SetSubState(entity, SUBSTATE_RESTORE);
-                                stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_RESTORE);
+                                stateMachine.StartSubState(entity, SUBSTATE_RESTORE);
                                 substateTimer.ResetTime(30);
                             }
                         }
@@ -451,6 +445,15 @@ namespace MVZ2.GameContent.Bosses
         private class EyeState : EntityStateMachineState
         {
             public EyeState() : base(STATE_EYES, ANIMATION_STATE_EYES) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_CLOSE:
+                        return ANIMATION_SUBSTATE_CLOSE;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -469,7 +472,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_OPEN:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_FIRE);
+                            stateMachine.StartSubState(entity, SUBSTATE_FIRE);
                             substateTimer.ResetTime(EYE_BULLET_INTERVAL * EYE_BULLET_COUNT);
                         }
                         break;
@@ -494,8 +497,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_CLOSE);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_CLOSE);
+                            stateMachine.StartSubState(entity, SUBSTATE_CLOSE);
                             substateTimer.ResetTime(30);
                         }
                         break;
@@ -542,6 +544,23 @@ namespace MVZ2.GameContent.Bosses
         private class ArmsState : EntityStateMachineState
         {
             public ArmsState() : base(STATE_ARMS, ANIMATION_STATE_ARMS) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_OUTER_LIFT:
+                        return ANIMATION_SUBSTATE_OUTER_LIFT;
+                    case SUBSTATE_OUTER_SMASH:
+                    case SUBSTATE_OUTER_SMASHED:
+                        return ANIMATION_SUBSTATE_OUTER_SMASH;
+                    case SUBSTATE_INNER_LIFT:
+                        return ANIMATION_SUBSTATE_INNER_LIFT;
+                    case SUBSTATE_INNER_SMASH:
+                    case SUBSTATE_INNER_SMASHED:
+                        return ANIMATION_SUBSTATE_INNER_SMASH;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -560,8 +579,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_OUTER_LIFT:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_OUTER_SMASH);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_OUTER_SMASH);
+                            stateMachine.StartSubState(entity, SUBSTATE_OUTER_SMASH);
                             substateTimer.ResetTime(5);
                         }
                         break;
@@ -569,23 +587,21 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             Smash(entity, true);
-                            stateMachine.SetSubState(entity, SUBSTATE_OUTER_SMASHED);
+                            stateMachine.StartSubState(entity, SUBSTATE_OUTER_SMASHED);
                             substateTimer.ResetTime(25);
                         }
                         break;
                     case SUBSTATE_OUTER_SMASHED:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_INNER_LIFT);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_INNER_LIFT);
+                            stateMachine.StartSubState(entity, SUBSTATE_INNER_LIFT);
                             substateTimer.ResetTime(30);
                         }
                         break;
                     case SUBSTATE_INNER_LIFT:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_INNER_SMASH);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_INNER_SMASH);
+                            stateMachine.StartSubState(entity, SUBSTATE_INNER_SMASH);
                             substateTimer.ResetTime(5);
                         }
                         break;
@@ -593,7 +609,7 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             Smash(entity, false);
-                            stateMachine.SetSubState(entity, SUBSTATE_INNER_SMASHED);
+                            stateMachine.StartSubState(entity, SUBSTATE_INNER_SMASHED);
                             substateTimer.ResetTime(25);
                         }
                         break;
@@ -646,6 +662,17 @@ namespace MVZ2.GameContent.Bosses
         private class RoarState : EntityStateMachineState
         {
             public RoarState() : base(STATE_ROAR, ANIMATION_STATE_ROAR) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_LOOP:
+                        return ANIMATION_SUBSTATE_LOOP;
+                    case SUBSTATE_END:
+                        return ANIMATION_SUBSTATE_END;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -664,8 +691,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_START:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_LOOP);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_LOOP);
+                            stateMachine.StartSubState(entity, SUBSTATE_LOOP);
                             substateTimer.ResetTime(90);
                             entity.PlaySound(VanillaSoundID.giantRoar);
                         }
@@ -674,8 +700,7 @@ namespace MVZ2.GameContent.Bosses
                         RoarLoop(entity);
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             substateTimer.ResetTime(15);
                         }
                         break;
@@ -720,7 +745,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_START:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_BREATH);
+                            stateMachine.StartSubState(entity, SUBSTATE_BREATH);
                             substateTimer.ResetTime(45);
                             entity.PlaySound(VanillaSoundID.poisonCast);
                             for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
@@ -739,7 +764,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_BREATH:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             substateTimer.ResetTime(15);
                         }
                         break;
@@ -781,7 +806,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_START:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_VOMIT);
+                            stateMachine.StartSubState(entity, SUBSTATE_VOMIT);
                             substateTimer.ResetTime(18);
                         }
                         break;
@@ -812,7 +837,7 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             lawnGrids.Clear();
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             substateTimer.ResetTime(5);
                         }
                         break;
@@ -855,7 +880,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_START:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_SNEEZE);
+                            stateMachine.StartSubState(entity, SUBSTATE_SNEEZE);
                             substateTimer.ResetTime(5);
                         }
                         break;
@@ -878,7 +903,7 @@ namespace MVZ2.GameContent.Bosses
                                     });
                                 }
                             }
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             substateTimer.ResetTime(5);
                         }
                         break;
@@ -902,6 +927,19 @@ namespace MVZ2.GameContent.Bosses
         private class PacmanState : EntityStateMachineState
         {
             public PacmanState() : base(STATE_PACMAN, ANIMATION_STATE_PACMAN) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_REFORMED:
+                        return ANIMATION_SUBSTATE_REFROMED;
+                    case SUBSTATE_PACMAN:
+                    case SUBSTATE_PACMAN_DEATH:
+                    case SUBSTATE_PACMAN_END:
+                        return ANIMATION_SUBSTATE_PACMAN;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -924,7 +962,7 @@ namespace MVZ2.GameContent.Bosses
                             // 分离。
                             bool atLeft = false;
                             var targetState = SUBSTATE_FORM;
-                            stateMachine.SetSubState(entity, targetState);
+                            stateMachine.StartSubState(entity, targetState);
                             substateTimer.ResetTime(30);
 
                             var level = entity.Level;
@@ -963,8 +1001,7 @@ namespace MVZ2.GameContent.Bosses
                             SetFlipX(entity, atLeft);
                             ResetMalleable(entity);
 
-                            stateMachine.SetSubState(entity, SUBSTATE_PACMAN);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_PACMAN);
+                            stateMachine.StartSubState(entity, SUBSTATE_PACMAN);
                             substateTimer.ResetTime(PACMAN_DURATION);
                             entity.PlaySound(VanillaSoundID.pacmanStart, 0.75f);
                             entity.AddBuff<TheGiantPacmanBuff>();
@@ -994,7 +1031,7 @@ namespace MVZ2.GameContent.Bosses
                                 substateTimer.Reset();
                                 break;
                             }
-                            stateMachine.SetSubState(entity, SUBSTATE_COMBINE);
+                            stateMachine.StartSubState(entity, SUBSTATE_COMBINE);
                             substateTimer.ResetTime(15);
                             var blocks = GetZombieBlocks(entity);
                             if (blocks != null)
@@ -1025,8 +1062,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                             else
                             {
-                                stateMachine.SetSubState(entity, SUBSTATE_REFORMED);
-                                stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_REFROMED);
+                                stateMachine.StartSubState(entity, SUBSTATE_REFORMED);
                                 substateTimer.ResetTime(30);
                             }
                         }
@@ -1070,7 +1106,7 @@ namespace MVZ2.GameContent.Bosses
                 SetInactive(entity, true);
                 entity.RemoveBuffs<TheGiantPacmanBuff>();
                 entity.RemoveBuffs<TheGiantPacmanKilledBuff>();
-                stateMachine.SetSubState(entity, SUBSTATE_PACMAN_END);
+                stateMachine.StartSubState(entity, SUBSTATE_PACMAN_END);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.ResetTime(30);
                 entity.Position = GetCombinePosition(entity, true);
@@ -1127,6 +1163,19 @@ namespace MVZ2.GameContent.Bosses
         private class SnakeState : EntityStateMachineState
         {
             public SnakeState() : base(STATE_SNAKE, ANIMATION_STATE_SNAKE) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_REFORMED:
+                        return ANIMATION_SUBSTATE_REFROMED;
+                    case SUBSTATE_SNAKE:
+                    case SUBSTATE_SNAKE_DEATH:
+                    case SUBSTATE_SNAKE_END:
+                        return ANIMATION_SUBSTATE_SNAKE;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -1149,7 +1198,7 @@ namespace MVZ2.GameContent.Bosses
                             // 分离。
                             bool atLeft = AtLeft(entity);
                             var targetState = SUBSTATE_FORM;
-                            stateMachine.SetSubState(entity, targetState);
+                            stateMachine.StartSubState(entity, targetState);
                             substateTimer.ResetTime(30);
 
                             var level = entity.Level;
@@ -1210,8 +1259,7 @@ namespace MVZ2.GameContent.Bosses
                             SetFlipX(entity, false);
                             ResetMalleable(entity);
 
-                            stateMachine.SetSubState(entity, SUBSTATE_SNAKE);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_SNAKE);
+                            stateMachine.StartSubState(entity, SUBSTATE_SNAKE);
                             entity.AddBuff<TheGiantSnakeBuff>();
 
                             SetTargetGridIndex(entity, entity.GetGridIndex());
@@ -1241,7 +1289,7 @@ namespace MVZ2.GameContent.Bosses
                                 substateTimer.Reset();
                                 break;
                             }
-                            stateMachine.SetSubState(entity, SUBSTATE_COMBINE);
+                            stateMachine.StartSubState(entity, SUBSTATE_COMBINE);
                             substateTimer.ResetTime(15);
                             var blocks = GetZombieBlocks(entity);
                             if (blocks != null)
@@ -1272,8 +1320,7 @@ namespace MVZ2.GameContent.Bosses
                             }
                             else
                             {
-                                stateMachine.SetSubState(entity, SUBSTATE_REFORMED);
-                                stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_REFROMED);
+                                stateMachine.StartSubState(entity, SUBSTATE_REFORMED);
                                 substateTimer.ResetTime(30);
                             }
                         }
@@ -1321,7 +1368,7 @@ namespace MVZ2.GameContent.Bosses
                 SpawnDarkHole(entity);
                 SetInactive(entity, true);
                 entity.RemoveBuffs<TheGiantSnakeBuff>();
-                stateMachine.SetSubState(entity, SUBSTATE_SNAKE_END);
+                stateMachine.StartSubState(entity, SUBSTATE_SNAKE_END);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.ResetTime(30);
                 entity.Position = GetCombinePosition(entity, atLeft);
@@ -1441,6 +1488,15 @@ namespace MVZ2.GameContent.Bosses
         private class StunState : EntityStateMachineState
         {
             public StunState() : base(STATE_STUNNED, ANIMATION_STATE_STUNNED) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_RESTORE:
+                        return ANIMATION_SUBSTATE_RESTORE;
+                }
+                return 0;
+            }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
@@ -1458,8 +1514,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_RESTORE);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_RESTORE);
+                            stateMachine.StartSubState(entity, SUBSTATE_RESTORE);
                             substateTimer.ResetTime(30);
                         }
                         break;
@@ -1487,6 +1542,17 @@ namespace MVZ2.GameContent.Bosses
         private class FaintState : EntityStateMachineState
         {
             public FaintState() : base(STATE_FAINT, ANIMATION_STATE_FAINT) { }
+            public override int GetAnimationSubstate(int substate)
+            {
+                switch (substate)
+                {
+                    case SUBSTATE_ROAR:
+                        return ANIMATION_SUBSTATE_ROAR;
+                    case SUBSTATE_ROAR_END:
+                        return ANIMATION_SUBSTATE_ROAR_END;
+                }
+                return 0;
+            }
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
@@ -1510,7 +1576,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_HEAL);
+                            stateMachine.StartSubState(entity, SUBSTATE_HEAL);
                             substateTimer.ResetTime(30);
                             entity.AddBuff<TheGiantPhase3Buff>();
                         }
@@ -1524,8 +1590,7 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.Revive();
                             }
-                            stateMachine.SetSubState(entity, SUBSTATE_ROAR);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_ROAR);
+                            stateMachine.StartSubState(entity, SUBSTATE_ROAR);
                             substateTimer.ResetTime(90);
                             entity.PlaySound(VanillaSoundID.giantRoar);
                         }
@@ -1534,8 +1599,7 @@ namespace MVZ2.GameContent.Bosses
                         RoarLoop(entity);
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_ROAR_END);
-                            stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_ROAR_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_ROAR_END);
                             substateTimer.ResetTime(30);
                         }
                         break;
@@ -1582,7 +1646,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_CRAWL_START:
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_CRAWL);
+                            stateMachine.StartSubState(entity, SUBSTATE_CRAWL);
                             substateTimer.ResetTime(10);
                             entity.Level.ShakeScreen(5, 0, 10);
                             entity.PlaySound(VanillaSoundID.thump);
@@ -1592,7 +1656,7 @@ namespace MVZ2.GameContent.Bosses
                         entity.Velocity = entity.GetFacingDirection() * 1;
                         if (substateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_CRAWL_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_CRAWL_END);
                             substateTimer.ResetTime(10);
                         }
                         break;
@@ -1611,7 +1675,7 @@ namespace MVZ2.GameContent.Bosses
                                 }
                                 else
                                 {
-                                    stateMachine.SetSubState(entity, SUBSTATE_CRAWL_START);
+                                    stateMachine.StartSubState(entity, SUBSTATE_CRAWL_START);
                                     substateTimer.ResetTime(10);
                                 }
                             }

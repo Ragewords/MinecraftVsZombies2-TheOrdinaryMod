@@ -144,14 +144,14 @@ namespace MVZ2.GameContent.Bosses
                         case SUBSTATE_DASH_1:
                         case SUBSTATE_DASH_2:
                         case SUBSTATE_DASH_3:
-                            stateMachine.SetSubState(entity, substate + 1);
+                            stateMachine.StartSubState(entity, substate + 1);
                             entity.PlaySound(VanillaSoundID.crescentDash);
                             SetDashDir(entity, dir);
                             subStateTimer.ResetTime(40);
                             ResetPosition(entity);
                             break;
                         case SUBSTATE_DASH_4:
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             SetPositionBeforeDash(entity, endGrid.GetEntityPosition() + Vector3.up * HEIGHT);
                             subStateTimer.ResetTime(15);
                             break;
@@ -247,7 +247,7 @@ namespace MVZ2.GameContent.Bosses
                         UpdatePosition(entity);
                         if (subStateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_STAY);
+                            stateMachine.StartSubState(entity, SUBSTATE_STAY);
                             subStateTimer.ResetTime(150);
                         }
                         break;
@@ -262,7 +262,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (subStateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             subStateTimer.ResetTime(15);
                         }
                         break;
@@ -318,7 +318,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (subStateTimer.Expired)
                         {
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             subStateTimer.ResetTime(10);
                         }
                         break;
@@ -370,7 +370,7 @@ namespace MVZ2.GameContent.Bosses
                         if (subStateTimer.Expired)
                         {
                             entity.TriggerAnimation("Shock");
-                            stateMachine.SetSubState(entity, substate + 1);
+                            stateMachine.StartSubState(entity, substate + 1);
                             entity.PlaySound(VanillaSoundID.crescentShock);
                             subStateTimer.ResetTime(60 - substate * 18);
                         }
@@ -380,7 +380,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             Explosion.Spawn(entity, entity.GetCenter(), 120);
                             entity.PlaySound(VanillaSoundID.explosion);
-                            stateMachine.SetSubState(entity, SUBSTATE_END);
+                            stateMachine.StartSubState(entity, SUBSTATE_END);
                             subStateTimer.ResetTime(45);
                         }
                         break;

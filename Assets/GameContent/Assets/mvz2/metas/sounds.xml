@@ -34,6 +34,9 @@
     <sound name="bash">
         <sample path="mvz2:bash" weight="1" />
     </sound>
+    <sound name="big_chomp">
+        <sample path="mvz2:bigchomp" weight="1" />
+    </sound>
     <sound name="bloody">
         <sample path="mvz2:bloody" weight="1" />
     </sound>
@@ -214,6 +217,30 @@
     <sound name="divine_shield_shatter">
         <sample path="mvz2:divine_shield_shatter" weight="1" />
     </sound>
+    <sound name="dragon_breath">
+        <sample path="mvz2:dragon_breath" weight="1" />
+    </sound>
+    <sound name="dragon_end">
+        <sample path="mvz2:dragon/end" weight="1" />
+    </sound>
+    <sound name="dragon_growl">
+        <sample path="mvz2:dragon/growl1" weight="1" />
+        <sample path="mvz2:dragon/growl2" weight="1" />
+        <sample path="mvz2:dragon/growl3" weight="1" />
+        <sample path="mvz2:dragon/growl4" weight="1" />
+    </sound>
+    <sound name="dragon_hit">
+        <sample path="mvz2:dragon/hit1" weight="1" />
+        <sample path="mvz2:dragon/hit2" weight="1" />
+        <sample path="mvz2:dragon/hit3" weight="1" />
+        <sample path="mvz2:dragon/hit4" weight="1" />
+    </sound>
+    <sound name="dragon_wings">
+        <sample path="mvz2:dragon/wings1" weight="1" />
+        <sample path="mvz2:dragon/wings2" weight="1" />
+        <sample path="mvz2:dragon/wings3" weight="1" />
+        <sample path="mvz2:dragon/wings4" weight="1" />
+    </sound>
     <sound name="dream_alarm">
         <sample path="mvz2:entity/dream_alarm" weight="1" />
     </sound>
@@ -273,6 +300,9 @@
     </sound>
     <sound name="fire_breath">
         <sample path="mvz2:fire_breath" weight="1" />
+    </sound>
+    <sound name="fire_breath_big">
+        <sample path="mvz2:fire_breath_big" weight="1" />
     </sound>
     <sound name="fire_charge">
         <sample path="mvz2:fire_charge" weight="1" />
@@ -916,6 +946,12 @@
         <sample path="mvz2:random/thunder1" weight="1" />
         <sample path="mvz2:random/thunder2" weight="1" />
         <sample path="mvz2:random/thunder3" weight="1" />
+    </sound>
+    <sound name="time_warp">
+        <sample path="mvz2:time_warp" weight="1" />
+    </sound>
+    <sound name="tornado" loopFadeInSpeed="2" loopFadeOutSpeed="2">
+        <sample path="mvz2:tornado" weight="1" />
     </sound>
     <sound name="touhou_death">
         <sample path="mvz2:touhou_death" weight="1" />

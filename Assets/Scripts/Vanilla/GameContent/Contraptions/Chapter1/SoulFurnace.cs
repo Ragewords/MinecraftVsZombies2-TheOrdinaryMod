@@ -153,7 +153,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static int GetSacrificeFuel(Entity entity, Entity soulFurnace)
         {
-            int fuel = 5;
+            int fuel = 10;
 
             var game = Global.Game;
 
@@ -172,7 +172,7 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
 
-            fuel = Mathf.CeilToInt((fuel + cost / 6f) * fuelMultiplier);
+            fuel = Mathf.CeilToInt((fuel + cost / 3f) * fuelMultiplier);
             if (entity.GetFunction() == VanillaBlueprintFunctions.combustor) fuel = Mathf.CeilToInt(fuel * 2 / 3);
             if (entity.GetFunction() == VanillaBlueprintFunctions.piercer) fuel = Mathf.CeilToInt(fuel / 3);
             if (entity.GetFunction() == VanillaBlueprintFunctions.electrian) fuel = Mathf.CeilToInt(fuel / 2);
@@ -360,7 +360,7 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<int> PROP_SACRIFICE_INTERACTION = new VanillaEntityPropertyMeta<int>("sacrifice_interaction");
         public static readonly VanillaEntityPropertyMeta<float> PROP_DISPLAY_FUEL = new VanillaEntityPropertyMeta<float>("DisplayFuel");
         public const int MAX_FUEL = 120;
-        public const int REFUEL_THRESOLD = 10;
+        public const int REFUEL_THRESOLD = 20;
         public const int I_ZOMBIE_FUEL = REFUEL_THRESOLD + 5;
         public const int SACRIFICE_INTERACTION_FIRE = 0;
         public const int SACRIFICE_INTERACTION_PIERCE = 1;

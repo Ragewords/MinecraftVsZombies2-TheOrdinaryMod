@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Effects;
+using MVZ2.Vanilla;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
@@ -182,6 +183,8 @@ namespace MVZ2.GameContent.Effects
                     if (other.Type != EntityTypes.ENEMY)
                         continue;
                     if (other.GetGravity() <= 0 || !other.IsOnGround)
+                        continue;
+                    if (other.GetMass() >= VanillaMass.VERY_HEAVY) // 不影响极重敌人。
                         continue;
                     results.Add(other);
                 }

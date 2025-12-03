@@ -136,6 +136,22 @@ namespace MVZ2.GameContent.Enemies
             return new Vector3(x, y, z);
         }
 
+        public static Entity? SpawnAtGrid(LawnGrid grid, int variant)
+        {
+            var column = grid.Column;
+            var lane = grid.Lane;
+            var pos = grid.GetEntityPosition();
+            pos.y += UndeadFlyingObject.START_HEIGHT;
+
+            var level = grid.Level;
+            return level.Spawn(VanillaEnemyID.ufo, pos, null)?.Let(e =>
+            {
+                e.SetVariant(variant);
+                UndeadFlyingObject.SetTargetGridX(e, column);
+                UndeadFlyingObject.SetTargetGridY(e, lane);
+            });
+        }
+
         #region 属性
         public static FrameTimer? GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_STATE_TIMER);
         public static void SetStateTimer(Entity entity, FrameTimer value) => entity.SetBehaviourField(PROP_STATE_TIMER, value);

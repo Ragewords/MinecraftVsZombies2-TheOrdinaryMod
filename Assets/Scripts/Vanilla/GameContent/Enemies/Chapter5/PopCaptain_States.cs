@@ -50,7 +50,7 @@ namespace MVZ2.Vanilla.Enemies
             {
                 targetState = STATE_MELEE_ATTACK;
             }
-            if (stateMachine.GetEntityState(zombie) != targetState || restart)
+            if (stateMachine.GetStateNumber(zombie) != targetState || restart)
             {
                 stateMachine.StartState(zombie, targetState);
             }
@@ -118,6 +118,7 @@ namespace MVZ2.Vanilla.Enemies
                 return;
             var damage = entity.GetDamage();
             var damageEffects = new DamageEffectList(VanillaDamageEffects.IMPACT);
+            var outOfBoundDamageEffects = new DamageEffectList(VanillaDamageEffects.OUT_OF_BOUND);
             var damageOutput = targetCollider.TakeDamage(damage, damageEffects, entity);
             // 如果伤害有效：
             if (!damageOutput.IsValid())
@@ -157,7 +158,7 @@ namespace MVZ2.Vanilla.Enemies
                 if (targetGrid == null)
                 {
                     // 如果目标地格不存在，直接秒杀器械。
-                    target.Die(damageEffects, entity, damageOutput.BodyResult);
+                    target.Die(outOfBoundDamageEffects, entity, damageOutput.BodyResult);
                 }
                 else
                 {
@@ -258,7 +259,7 @@ namespace MVZ2.Vanilla.Enemies
                                 SmashFriendly(entity, -4);
 
                             subStateTimer.ResetSeconds(SUBSTATE_RESTORE_SECONDS);
-                            stateMachine.SetSubState(entity, SUBSTATE_RESTORE);
+                            stateMachine.StartSubState(entity, SUBSTATE_RESTORE);
                         }
                         break;
                     case SUBSTATE_RESTORE:
@@ -303,7 +304,7 @@ namespace MVZ2.Vanilla.Enemies
                                 SmashFriendly(entity, 8);
 
                             subStateTimer.ResetSeconds(SUBSTATE_RESTORE_SECONDS);
-                            stateMachine.SetSubState(entity, SUBSTATE_RESTORE);
+                            stateMachine.StartSubState(entity, SUBSTATE_RESTORE);
                         }
                         break;
                     case SUBSTATE_RESTORE:

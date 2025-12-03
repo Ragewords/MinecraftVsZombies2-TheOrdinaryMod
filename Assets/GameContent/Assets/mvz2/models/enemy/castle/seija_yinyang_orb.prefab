@@ -4870,6 +4870,7 @@ GameObject:
   - component: {fileID: 310550327008309423}
   - component: {fileID: 3321201312968495587}
   - component: {fileID: 4658302177004595228}
+  - component: {fileID: 13862573671151123}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -5023,6 +5024,19 @@ MonoBehaviour:
   trail: {fileID: 3321201312968495587}
   velocity: {x: 0, y: 0, z: 0}
   scaleWithHierarchy: 0
+--- !u!114 &13862573671151123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4157428810902843550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
 --- !u!1 &5392220524539204710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5510,6 +5524,10 @@ PrefabInstance:
       propertyPath: renderers.Array.data[1]
       value: 
       objectReference: {fileID: 3817837542648703400}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: renderers.Array.data[2]
+      value: 
+      objectReference: {fileID: 13862573671151123}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: renderers.Array.data[3]
       value: 

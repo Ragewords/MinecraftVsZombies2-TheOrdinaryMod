@@ -41,14 +41,24 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0966a8cb4bb36ec4f8354fc756227214, type: 3}
   - name: arcade/breakout
     sprite: {fileID: 21300000, guid: b0de64e2af2016c45ae16c1d0b361591, type: 3}
+  - name: arcade/frankensteins_revenge
+    sprite: {fileID: 21300000, guid: 47bb6e3e6595451449c147cdca10b84c, type: 3}
   - name: arcade/i_zombie
     sprite: {fileID: 21300000, guid: 954f4a9aadd5d0141a70086f5aaedcc5, type: 3}
   - name: arcade/locked
     sprite: {fileID: 21300000, guid: 2f65e88c41fd23d4987bba1066e05ba3, type: 3}
+  - name: arcade/nightmares_revenge
+    sprite: {fileID: 21300000, guid: eb0eb64f7392deb41831563ed71fa81a, type: 3}
+  - name: arcade/red_dragons_revenge
+    sprite: {fileID: 21300000, guid: d48244988b1911e418e1b2b636f88599, type: 3}
+  - name: arcade/the_giants_revenge
+    sprite: {fileID: 21300000, guid: 0d4b43785901a8f4390699a767958f94, type: 3}
   - name: arcade/ufo_blitz
     sprite: {fileID: 21300000, guid: d062afaff4776ff409fec750fe591d05, type: 3}
   - name: arcade/whack_a_ghost
     sprite: {fileID: 21300000, guid: ba09814b17fbf24438727f22089f7192, type: 3}
+  - name: arcade/withers_revenge
+    sprite: {fileID: 21300000, guid: cf276e1f4880f4c40b8cd6fdc9e9640e, type: 3}
   - name: archive/castle_note
     sprite: {fileID: 21300000, guid: b43c7c77cd3ff54418daebbaccf227db, type: 3}
   - name: archive/dream_note
@@ -59,6 +69,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 3cc2a4067785bbb479556fa02098483e, type: 3}
   - name: archive/prologue_note
     sprite: {fileID: 21300000, guid: 41531d8ef0693fa41a5341fcbd896474, type: 3}
+  - name: archive/ship_note
+    sprite: {fileID: 21300000, guid: ae189aa75b161e44f93053f5011c464e, type: 3}
   - name: artifacts/almanac
     sprite: {fileID: 21300000, guid: 8a7f5424a199e2544939f0b98e1afc83, type: 3}
   - name: artifacts/bent_spoon
@@ -173,20 +185,32 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0fbbba219c45ca74497d29cf6fea2c5e, type: 3}
   - name: mainmenu/submenu_background
     sprite: {fileID: 21300000, guid: 0bad8dd7ca96eb047840a09bdbdcc162, type: 3}
+  - name: misc/abandoned_house
+    sprite: {fileID: 21300000, guid: 50bf732bad4c58e4594fe0d57da0eeff, type: 3}
   - name: misc/castle
     sprite: {fileID: 21300000, guid: 25c22dffe2340ef439d6ebbc3478357e, type: 3}
+  - name: misc/dead_red_dragon
+    sprite: {fileID: 21300000, guid: 0da8ea7b3ec83e94793e912ac5ea6c81, type: 3}
+  - name: misc/dragon_fallen_place
+    sprite: {fileID: 21300000, guid: 4793d226f42daea46946880a3e168402, type: 3}
   - name: misc/dream
     sprite: {fileID: 21300000, guid: 8826f776dff1c6a4d8d72030535a150e, type: 3}
+  - name: misc/end_ship
+    sprite: {fileID: 21300000, guid: 7e371a692db43054c88eb8560c9ebd74, type: 3}
   - name: misc/eternal_night_swamp
     sprite: {fileID: 21300000, guid: 95c5376f1e749954692fa0c793e7dafb, type: 3}
   - name: misc/explosion_before_3_years
     sprite: {fileID: 21300000, guid: 831f7ad8d2311d448970951982d07ad8, type: 3}
+  - name: misc/fall_from_ship
+    sprite: {fileID: 21300000, guid: a81e7ee6085bf10488c8ac5cec8948f8, type: 3}
   - name: misc/frankenstein
     sprite: {fileID: 21300000, guid: c52ffe26b09fa8d43bfa1881edcd3b04, type: 3}
   - name: misc/graveyard
     sprite: {fileID: 21300000, guid: 6661be6b03238a2409e5b705222184e0, type: 3}
   - name: misc/grave_in_dream
     sprite: {fileID: 21300000, guid: 7aa4f566f4d21f94ab8a60d2c9dac47c, type: 3}
+  - name: misc/human_village
+    sprite: {fileID: 21300000, guid: 1a6935911a14b294597e34fb03cfb049, type: 3}
   - name: misc/kourindou_front
     sprite: {fileID: 21300000, guid: 1d01c78f7d98df044b653eab390c102e, type: 3}
   - name: misc/letter_for_help
@@ -205,12 +229,18 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 80c498f2605fad848859bce97a8c16ed, type: 3}
   - name: misc/nightmare_censored
     sprite: {fileID: 21300000, guid: 7a8db72eb32f2374786990b1c3e9de7a, type: 3}
+  - name: misc/red_dragon
+    sprite: {fileID: 21300000, guid: 0fc841fb9e17aad4eb59243fd0144927, type: 3}
+  - name: misc/ship
+    sprite: {fileID: 21300000, guid: 8e2855d040c62c5448c709e7cd230d01, type: 3}
   - name: misc/steves_house
     sprite: {fileID: 21300000, guid: b54bd6db18c4f8d418444457577bbd31, type: 3}
   - name: misc/surrounded_kourindou
     sprite: {fileID: 21300000, guid: f27fff12ebffcfe4cb3a825f5f701c61, type: 3}
   - name: misc/two_travelers
     sprite: {fileID: 21300000, guid: f0f2c4189e67b6e42987f8f1b3af835d, type: 3}
+  - name: misc/visitor_which_finding_child
+    sprite: {fileID: 21300000, guid: b522d5e4d42cf19448322c74ae697a63, type: 3}
   - name: misc/wither
     sprite: {fileID: 21300000, guid: cb2161762d5c5c54f989ec0a1e6d85e9, type: 3}
   - name: mobile_blueprint/add_pearl
@@ -365,6 +395,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c6e95e2d981f3c448b3c6188c4b02ff4, type: 3}
   - name: mobile_blueprint/random_china
     sprite: {fileID: 21300000, guid: 739dc404e782a0c4dae8390f142f0cc5, type: 3}
+  - name: mobile_blueprint/red_dragon
+    sprite: {fileID: 21300000, guid: 61de7625116ab1d499a71a5aaff6ec07, type: 3}
   - name: mobile_blueprint/reflective_barrier_zombie
     sprite: {fileID: 21300000, guid: 61e062545e6a32f479757806ec86d744, type: 3}
   - name: mobile_blueprint/repeatenser
@@ -785,8 +817,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 727d9b6ad4e6962458354304fc84ccbc, type: 3}
   - name: entity/effects/confusing_planet
     sprite: {fileID: 21300000, guid: 10d298fcc56ec124795e678e16230d79, type: 3}
-  - name: entity/effects/cursed_fire_particle
-    sprite: {fileID: 21300000, guid: e2f7e29ca0c62d5468d4cab32fae9562, type: 3}
   - name: entity/effects/dark_hole_circle
     sprite: {fileID: 21300000, guid: d019990e5b66306429a8c40bebc19912, type: 3}
   - name: entity/effects/desire_lump
@@ -861,6 +891,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9274a6de61534f940b4da30c3fffcb67, type: 3}
   - name: entity/effects/thunder_bolt
     sprite: {fileID: 21300000, guid: 498cfe5e32569bc43ae84fc47f7622ce, type: 3}
+  - name: entity/effects/tornado_model
+    sprite: {fileID: 21300000, guid: caca3af0af5361a46ab0d57829875c5c, type: 3}
+  - name: entity/effects/tornado_model_burning
+    sprite: {fileID: 21300000, guid: 164a1955926ffd74f91690054fa78281, type: 3}
   - name: entity/effects/vortex
     sprite: {fileID: 21300000, guid: 57a43fd6f9e8d124fb3ac37bc690d4aa, type: 3}
   - name: entity/effects/vulnerable_particle
@@ -979,8 +1013,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 838820327528a4d439a51f03582183f9, type: 3}
   - name: entity/projectiles/cursed_fireball
     sprite: {fileID: 21300000, guid: 0d1eecefbebaead49b85fb2324fde531, type: 3}
-  - name: entity/projectiles/cursed_fire_trail
-    sprite: {fileID: 21300000, guid: 5087351033f1d0d4ab74797ba2defe46, type: 3}
   - name: entity/projectiles/dark_matter_ball
     sprite: {fileID: 21300000, guid: f66bbbc22a26f8c4db9cf5a41f9f3a06, type: 3}
   - name: entity/projectiles/dart
@@ -1021,6 +1053,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8af07b31f932791429fddf24a251679f, type: 3}
   - name: entity/projectiles/knife
     sprite: {fileID: 21300000, guid: 85842c2e1aa457b418e743fc8faeae75, type: 3}
+  - name: entity/projectiles/large_fireball
+    sprite: {fileID: 21300000, guid: 5d32c904c5a41ec4a98e3a8b28e408fa, type: 3}
   - name: entity/projectiles/lightning_ball
     sprite: {fileID: 21300000, guid: d2942d45e742fcd46962d384ec537d7a, type: 3}
   - name: entity/projectiles/lingering_potion
@@ -1143,10 +1177,16 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a536357a72bfdb04184c7a08c9a9d57d, type: 3}
   - name: level/mausoleum/pillbox
     sprite: {fileID: 21300000, guid: 7513cd2470186434dac756e22275249b, type: 3}
+  - name: level/ship/deck
+    sprite: {fileID: 21300000, guid: e80ea5436acf0b544906c4d53a5919e4, type: 3}
+  - name: level/ship/end_ship
+    sprite: {fileID: 21300000, guid: 1af0b1831d8e64641ad5caca61364c6c, type: 3}
   - name: level/ship/ship_back
     sprite: {fileID: 21300000, guid: 0d763afc8cc9cb644953bb63087e098a, type: 3}
   - name: level/ship/ship_depth
     sprite: {fileID: 21300000, guid: 7bf9c6f0c642bdd42af1ea3a5cb5bdbc, type: 3}
+  - name: level/ship/ship_depth_2
+    sprite: {fileID: 21300000, guid: 3197d6937f6ec6b489717190a1a006f8, type: 3}
   - name: level/ship/sky
     sprite: {fileID: 21300000, guid: 13f4669be302ba24296364d49d0b1219, type: 3}
   - name: map/castle/map
@@ -1325,6 +1365,12 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: b63bdd3991537ac4f9fd0e050c80fa41, type: 3}
   - name: ui/level/progress_bar/nightmare_foreground
     sprite: {fileID: 21300000, guid: f8aa3c3a44b8f774e9b5441b1cb9f0e6, type: 3}
+  - name: ui/level/progress_bar/red_dragon_background
+    sprite: {fileID: 21300000, guid: 9b6b62c26c46a2540b6df22f5c17fee6, type: 3}
+  - name: ui/level/progress_bar/red_dragon_fill
+    sprite: {fileID: 21300000, guid: 10ab12937d2381c4a837d26087f00bbe, type: 3}
+  - name: ui/level/progress_bar/red_dragon_foreground
+    sprite: {fileID: 21300000, guid: 7f0e9cb01345db444817411ea1b5b4c1, type: 3}
   - name: ui/level/progress_bar/seija
     sprite: {fileID: 21300000, guid: 4ffd669e6a8191a468f39575216ef435, type: 3}
   - name: ui/level/progress_bar/seija_background
@@ -1394,6 +1440,12 @@ MonoBehaviour:
     - {fileID: -843921380, guid: 164c517f4b3a40f49a48c0f998d7fd7e, type: 3}
     - {fileID: 230410696, guid: 164c517f4b3a40f49a48c0f998d7fd7e, type: 3}
     - {fileID: 888572761, guid: 164c517f4b3a40f49a48c0f998d7fd7e, type: 3}
+  - name: characters/byakuren
+    spritesheet:
+    - {fileID: -1145510905, guid: 4dce52e9fb4e43b4a9bf9a9af890bcf9, type: 3}
+    - {fileID: 1138428065, guid: 4dce52e9fb4e43b4a9bf9a9af890bcf9, type: 3}
+    - {fileID: -731492466, guid: 4dce52e9fb4e43b4a9bf9a9af890bcf9, type: 3}
+    - {fileID: 1416557461, guid: 4dce52e9fb4e43b4a9bf9a9af890bcf9, type: 3}
   - name: characters/crazy_villager
     spritesheet:
     - {fileID: 21300000, guid: c321612661c274844b82586aba232f9f, type: 3}
@@ -1445,6 +1497,10 @@ MonoBehaviour:
     - {fileID: -353247052, guid: 2ed94ca4477dddd4d8e58ecc9da541c5, type: 3}
     - {fileID: -1472680690, guid: 2ed94ca4477dddd4d8e58ecc9da541c5, type: 3}
     - {fileID: 1527462565, guid: 2ed94ca4477dddd4d8e58ecc9da541c5, type: 3}
+  - name: characters/nue
+    spritesheet:
+    - {fileID: -363754419, guid: ea907a3e2eaa545429191634d8af4841, type: 3}
+    - {fileID: 1797197900, guid: ea907a3e2eaa545429191634d8af4841, type: 3}
   - name: characters/orant
     spritesheet:
     - {fileID: -337755752, guid: 403593c82a7adb74b8cc7ce5e0a7e925, type: 3}
@@ -1468,6 +1524,11 @@ MonoBehaviour:
     - {fileID: 1063143524, guid: 1723b13d8d44a654a8424dc59197b0aa, type: 3}
     - {fileID: -409706261, guid: 1723b13d8d44a654a8424dc59197b0aa, type: 3}
     - {fileID: 1360310571, guid: 1723b13d8d44a654a8424dc59197b0aa, type: 3}
+  - name: characters/sekibanki
+    spritesheet:
+    - {fileID: 479599236, guid: 5e391a23c6381c14c9f44d8b0da02c2b, type: 3}
+    - {fileID: 176700473, guid: 5e391a23c6381c14c9f44d8b0da02c2b, type: 3}
+    - {fileID: 408445904, guid: 5e391a23c6381c14c9f44d8b0da02c2b, type: 3}
   - name: characters/shinmyoumaru
     spritesheet:
     - {fileID: 1774088793, guid: d0159b237963ff745a734fae1c80132f, type: 3}
@@ -1492,6 +1553,15 @@ MonoBehaviour:
     - {fileID: 333754236, guid: c2e6ace3e57f0964eb3d1cfe1113a3cd, type: 3}
     - {fileID: -622170376, guid: c2e6ace3e57f0964eb3d1cfe1113a3cd, type: 3}
     - {fileID: -43281677, guid: c2e6ace3e57f0964eb3d1cfe1113a3cd, type: 3}
+  - name: characters/shou
+    spritesheet:
+    - {fileID: 587364902, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: 1917327756, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: 1880934132, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: -220064195, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: -632824485, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: 1405602645, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
+    - {fileID: 1387713995, guid: 160f9fc9ad1c8524f8dc892654dc1557, type: 3}
   - name: characters/tokiko
     spritesheet:
     - {fileID: 1468632406, guid: b2bf598c00945bb44bb3ca45c9a2a9f6, type: 3}
@@ -1500,6 +1570,7 @@ MonoBehaviour:
     - {fileID: -377323089, guid: b2bf598c00945bb44bb3ca45c9a2a9f6, type: 3}
     - {fileID: -79018707, guid: b2bf598c00945bb44bb3ca45c9a2a9f6, type: 3}
     - {fileID: -2106919776, guid: b2bf598c00945bb44bb3ca45c9a2a9f6, type: 3}
+    - {fileID: -900475582, guid: b2bf598c00945bb44bb3ca45c9a2a9f6, type: 3}
   - name: mainmenu/achievement
     spritesheet:
     - {fileID: 8313590956605005368, guid: d5a796bc539a0c245afcb4ad033aef4f, type: 3}
@@ -1575,6 +1646,82 @@ MonoBehaviour:
     - {fileID: 678876980, guid: 7891ad9049ccbeb45810adbce12d4cfa, type: 3}
     - {fileID: 1861134033, guid: 7891ad9049ccbeb45810adbce12d4cfa, type: 3}
     - {fileID: 1080469031, guid: 7891ad9049ccbeb45810adbce12d4cfa, type: 3}
+  - name: misc/red_dragon_and_byakuren
+    spritesheet:
+    - {fileID: -907083140, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+    - {fileID: -209213463, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+    - {fileID: 1281296700, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+    - {fileID: -769793748, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+    - {fileID: 70954157, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+    - {fileID: 396635967, guid: 53824a27cae636544b1d80094c86f879, type: 3}
+  - name: shading/fire_block_0
+    spritesheet:
+    - {fileID: 1207791398, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1830623111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1449591853, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -419614916, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -124614949, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -394312034, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1717160111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1541653399, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 839574434, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1257788782, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 756090429, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1990259013, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -935902216, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -334583671, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1884019170, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1126959436, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -261593633, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -372336306, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -565950146, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1109377378, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1944033859, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 463741166, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1113352045, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 978203428, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1648629952, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 199228465, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1212163043, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1522878427, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -2019328204, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: 1575206864, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -1715633496, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+    - {fileID: -554341111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
+  - name: shading/fire_block_1
+    spritesheet:
+    - {fileID: 431551590, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1407088032, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 383519602, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 1812729753, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -726971378, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -765954762, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1063766817, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 1215615035, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1703096560, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1048653725, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 1518477984, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -749763606, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 77571776, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -122504419, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 534436495, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 532893016, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 1599300792, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1934472254, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 2104372039, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 2123769530, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -249733014, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -2079959310, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 886789698, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -700776416, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 233844921, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1289015144, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 686562584, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -2055894059, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -1133305082, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -858319120, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: 1288100966, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+    - {fileID: -220271953, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
   - name: ui/zoom
     spritesheet:
     - {fileID: 2118295651, guid: 6d34689b106ed35498dffaa3069fa3f5, type: 3}
@@ -1845,74 +1992,6 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1738491610, guid: 4fa4eb018eeee64479e6ea997fc1968a, type: 3}
     - {fileID: 1815303640, guid: 4fa4eb018eeee64479e6ea997fc1968a, type: 3}
-  - name: entity/contraption/fire_block_0
-    spritesheet:
-    - {fileID: 1207791398, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1830623111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1449591853, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -419614916, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -124614949, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -394312034, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1717160111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1541653399, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 839574434, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1257788782, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 756090429, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1990259013, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -935902216, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -334583671, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1884019170, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1126959436, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -261593633, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -372336306, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -565950146, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1109377378, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1944033859, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 463741166, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1113352045, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 978203428, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1648629952, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 199228465, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1212163043, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1522878427, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -2019328204, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: 1575206864, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -1715633496, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-    - {fileID: -554341111, guid: 1143ec22777085e4da98117d2864f022, type: 3}
-  - name: entity/contraption/fire_block_1
-    spritesheet:
-    - {fileID: 431551590, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1407088032, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 383519602, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 1812729753, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -726971378, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -765954762, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1063766817, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 1215615035, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1703096560, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1048653725, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 1518477984, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -749763606, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 77571776, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -122504419, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 534436495, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 532893016, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 1599300792, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1934472254, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 2104372039, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 2123769530, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -249733014, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -2079959310, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 886789698, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -700776416, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 233844921, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1289015144, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 686562584, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -2055894059, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -1133305082, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -858319120, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: 1288100966, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
-    - {fileID: -220271953, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
   - name: entity/contraption/force_pad
     spritesheet:
     - {fileID: 1391612616, guid: 9b59635ff8434c74fa29b53b688e15fb, type: 3}
