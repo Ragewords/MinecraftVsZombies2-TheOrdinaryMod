@@ -284,9 +284,8 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
-                <p>准备时间：<![CDATA[<color=red>4秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>2400</color>]]></p>
-                <p>特殊：<![CDATA[<color=red>必须和敌方怪物接触才能进行准备</color>]]></p>
+                <p>准备时间：<![CDATA[<color=red>15秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>1800</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即准备完毕，并向最前方投掷两个新的地雷TNT</color>]]></p>
             </properties>
             <flavor>
@@ -1064,7 +1063,7 @@
             </properties>
             <flavor>
                 <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
-                <p>高频脉冲发射器的队伍！是一支！训练有素的队伍！它们的入队要求！十分严格！包括！！每句话！都要说四遍！</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍！它们的入队要求十分严格！包括！！每句话都要说四遍！</p>
                 <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
                 <p>高——你闭嘴！</p>
             </flavor>

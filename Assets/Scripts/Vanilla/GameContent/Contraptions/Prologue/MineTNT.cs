@@ -35,9 +35,9 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
 
-            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_PROJECTILE;
-            var riseTimer = new FrameTimer(120);
+            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
 
+            var riseTimer = new FrameTimer(450);
             SetRiseTimer(entity, riseTimer);
             if (entity.Level.IsIZombie())
             {
@@ -87,20 +87,12 @@ namespace MVZ2.GameContent.Contraptions
         {
             entity.SetBehaviourField(ID, PROP_RISE_TIMER, timer);
         }
-        public static int GetTotalMass(Entity entity)
-        {
-            return entity.GetBehaviourField<int>(ID, PROP_TOTAL_MASS);
-        }
-        public static void SetTotalMass(Entity entity, int mass)
-        {
-            entity.SetBehaviourField(ID, PROP_TOTAL_MASS, mass);
-        }
         private void RiseUpdate(Entity entity)
         {
             var riseTimer = GetRiseTimer(entity);
             if (riseTimer == null)
                 return;
-            riseTimer.Run(entity.GetAttackSpeed() * GetTotalMass(entity));
+            riseTimer.Run(entity.GetAttackSpeed());
 
             if (riseTimer.Frame == 30)
             {
@@ -113,7 +105,6 @@ namespace MVZ2.GameContent.Contraptions
             }
             else
             {
-                SetTotalMass(entity, 0);
                 if (entity.HasBuff<MineTNTInvincibleBuff>())
                     entity.RemoveBuffs<MineTNTInvincibleBuff>();
             }
@@ -125,9 +116,7 @@ namespace MVZ2.GameContent.Contraptions
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
             var other = collision.Other;
-            if (!other.IsVulnerableEntity())
-                return;
-            if (other.IsDead)
+            if (!other.IsVulnerableEntity() || !other.ExistsAndAlive())
                 return;
             var self = collision.Entity;
             if (!self.IsHostile(other))
@@ -135,8 +124,6 @@ namespace MVZ2.GameContent.Contraptions
             var otherCollider = collision.OtherCollider;
             if (!otherCollider.IsForMain())
                 return;
-
-            SetTotalMass(self, 1);
             var riseTimer = GetRiseTimer(self);
             if (riseTimer == null || !riseTimer.Expired)
                 return;
@@ -167,6 +154,5 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static readonly NamespaceID ID = VanillaContraptionID.mineTNT;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_RISE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RiseTimer");
-        private static readonly VanillaEntityPropertyMeta<int> PROP_TOTAL_MASS = new VanillaEntityPropertyMeta<int>("total_mass");
     }
 }

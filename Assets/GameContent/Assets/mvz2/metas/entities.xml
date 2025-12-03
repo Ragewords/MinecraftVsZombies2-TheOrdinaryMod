@@ -340,8 +340,7 @@
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:dynamite" value="true" />
                 <bool name="mvz2:block" value="false" />
-                <bool name="mvz2:isFloor" value="true" />
-                <float name="mvz2:damage" value="2400" />
+                <float name="mvz2:damage" value="1800" />
                 <float name="mvz2:range" value="40" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
                 <id name="mvz2:shell" value="mvz2:grass" />
