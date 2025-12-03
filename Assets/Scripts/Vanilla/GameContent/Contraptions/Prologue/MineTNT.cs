@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Contraptions
             base.Init(entity);
 
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_PROJECTILE;
-            var riseTimer = new FrameTimer(150);
+            var riseTimer = new FrameTimer(120);
 
             SetRiseTimer(entity, riseTimer);
             if (entity.Level.IsIZombie())

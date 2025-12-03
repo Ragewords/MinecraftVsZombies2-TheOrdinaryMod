@@ -156,9 +156,10 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:steve" sounds="mvz2:talk">这里的风可真大啊……</sentence>
-        <sentence speaker="mvz2:shou" sounds="mvz2:talk">是的。不知为何，这段时间的风力变得异常，这也成了行船的一大阻碍。</sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:talk"><![CDATA[<color=blue>（那还真是不容易啊。）</color>]]></sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">这里的风可真大，我都快站不住脚了。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">是的。不知为何，最近的风力开始出现异常的变化，这也成了行船的一大阻碍。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">风可能会让那些僵尸走得更快，你可要小心。</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">嗯。</sentence>
         <sentence speaker="mvz2:shou" sounds="mvz2:talk">它们来了！那艘船出现了！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">怎么回事？对方是——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird">……末地船？</sentence>
