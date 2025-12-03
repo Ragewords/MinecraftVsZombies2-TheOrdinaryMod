@@ -703,6 +703,7 @@ namespace MVZ2.GameContent.Bosses
                         if (grid == null)
                             continue;
                         grid.RemoveBuffs(VanillaBuffID.Grid.goldenGrid);
+                        grid.RemoveBuffs(VanillaBuffID.Grid.emeraldGrid);
                         grid.AddBuff(VanillaBuffID.Grid.shipBrokenGrid);
                     }
                 }
@@ -1054,6 +1055,7 @@ namespace MVZ2.GameContent.Bosses
                 {
                     variant = Tornado.VARIANT_FIRE;
                     speed = 4;
+                    count = level.GetRedDragonFireTornadoCount();
                 }
                 else
                 {

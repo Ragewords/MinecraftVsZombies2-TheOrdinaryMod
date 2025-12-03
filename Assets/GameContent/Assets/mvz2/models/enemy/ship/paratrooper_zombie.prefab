@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2032583007545426858, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -224541695, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
     - target: {fileID: 3138126465319318176, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
       propertyPath: m_Name
       value: iron
@@ -130,6 +134,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: paratrooper_zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 5449253582177849332, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -616295559, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - target: {fileID: 6198475333505180476, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1122587241, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - target: {fileID: 6661205224612282001, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1122587241, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - target: {fileID: 8365785606802476641, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -616295559, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
+    - target: {fileID: 8996217967525711044, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -518517166, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
     m_RemovedComponents:
     - {fileID: 6785545812457648638, guid: a2a566a7ce07850428f426c3406edea6, type: 3}
     - {fileID: 8080526330840780163, guid: a2a566a7ce07850428f426c3406edea6, type: 3}

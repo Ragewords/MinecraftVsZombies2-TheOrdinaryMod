@@ -61,11 +61,16 @@ namespace MVZ2.GameContent.Stages
             if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
                 RunBossWave(level);
+                if (!level.HasBuff<SpawnUFOAndParatrooperBuff>())
+                {
+                    level.AddBuff<SpawnUFOAndParatrooperBuff>();
+                }
             }
             else
             {
                 level.WaveState = VanillaLevelStates.STATE_AFTER_BOSS;
                 level.StopMusic();
+                level.RemoveBuffs<SpawnUFOAndParatrooperBuff>();
                 if (!level.IsRerun && level.IsAdventure())
                 {
                     // 隐藏UI，关闭输入

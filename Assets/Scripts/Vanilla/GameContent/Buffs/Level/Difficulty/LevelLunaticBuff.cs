@@ -48,6 +48,11 @@ namespace MVZ2.GameContent.Buffs.Level
 
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.WITHER_SKULL_WITHERS_TARGET, true));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.THE_GIANT_IS_MALLEABLE, true));
+
+            AddModifier(new FloatModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_EXPLOSION_RADIUS, NumberOperator.Multiply, 3f));
+            AddModifier(new FloatModifier(VanillaDifficultyLevelProps.RED_DRAGON_GIANT_FIREBALL_SPEED, NumberOperator.Multiply, 3f));
+            AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_TORNADO_COUNT, IntegerOperator.Set, 5));
+            AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_TORNADO_COUNT, IntegerOperator.Set, 3));
             AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());

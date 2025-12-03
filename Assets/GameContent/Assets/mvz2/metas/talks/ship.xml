@@ -156,6 +156,9 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">这里的风可真大啊……</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">是的。不知为何，这段时间的风力变得异常，这也成了行船的一大阻碍。</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk"><![CDATA[<color=blue>（那还真是不容易啊。）</color>]]></sentence>
         <sentence speaker="mvz2:shou" sounds="mvz2:talk">它们来了！那艘船出现了！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">怎么回事？对方是——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird">……末地船？</sentence>
@@ -428,9 +431,9 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">连射发射器！连射发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它一次会发射两支箭矢！它一次会发射两支箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">尽情重复吧！尽情重复吧！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">比较发射器！比较发射器！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它一次会交替发射一或两支箭矢！它一次会交替发射一或两支箭矢！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">尽情比较吧！尽情比较吧！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">……？</sentence>
       </sentences>
     </section>
@@ -487,8 +490,8 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从连射发射器升级！需要——</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">一次发射八支箭矢！一次发射八支箭矢！一次发射八支箭矢！一次发射八支箭矢！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从比较发射器升级！需要——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_explosive" onStart="shake" onClick="end">好了！够了！</sentence>
       </sentences>
     </section>
@@ -555,7 +558,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">啊哈！信标！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">不过这个不是真的信标，只是一个会发光的手里剑发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它会向五个不同的方向发射手里剑！非常适合跨行攻击！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它会向五个不同的方向发射手里剑！非常适合跨行攻击！而且周围的器械还能为它提供伤害加成！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让战场上布满星星吧！</sentence>
       </sentences>
     </section>
@@ -709,7 +712,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">吹吹风吧！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是木风扇，它在被触发后会立即吹动一整行的怪物！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这是木风扇，它在被触发后会立即减速并吹动一整行的怪物，还可以改变战场的风力！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">如果怪物特别轻或者在空中，它们会立即被吹飞！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">反之，如果怪物比较重并且在地面上，它们就只是会被击退，或者不会受到影响！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">它就是那即将到来的风暴！</sentence>
@@ -1042,7 +1045,9 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">啊，您就是——白莲大人吗？</sentence>
         <sentence speaker="mvz2:byakuren" sounds="mvz2:talk">正是。您可是星口中的史蒂夫？</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">是的。</sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">不过，那艘末地船又出现了，等我把它们击退再说！</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">不过，那艘末地船又出现了，等我把它们击退再说！</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk"><![CDATA[<color=blue>（这次对面又多了一种看上去像是海盗的僵尸，手里还拿着弯刀。）</color>]]></sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end"><![CDATA[<color=blue>（看来是个不好对付的家伙啊。）</color>]]></sentence>
       </sentences>
     </section>
   </group>
@@ -1233,7 +1238,9 @@
         <sentence speaker="mvz2:shou" sounds="mvz2:talk" variant="mvz2:normal">先不管那些了，该战斗了。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">前面好像出现了一种很壮的僵尸，还拿着锈蚀船锚。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">他不会用那个玩意砸我的器械吧？</sentence>
-        <sentence speaker="mvz2:shou" sounds="mvz2:talk" onClick="end">……那应该就是了。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">……可能更糟。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">他能把其他的僵尸往前打飞，这些家伙有好几回都是靠这种方式偷袭我们的。</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_cut" onStart="shake" onClick="end">啊？</sentence>
       </sentences>
     </section>
   </group>
@@ -1254,8 +1261,10 @@
         <sentence speaker="mvz2:shou" sounds="mvz2:dialog_weird">这东西怎么长得好像……我师傅的宝塔？</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">当然，这是个仿制品！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能把一整行的空地禁用并变为黄金，暂时无法在上面放置器械！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械做任何事！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">但是，每禁用一定数量的空地，它就会生成一个星之碎片！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">把一切都点成黄金吧！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">同时还可以利用绿宝石格子来攻击怪物！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">把一切都点成黄金和宝石吧！</sentence>
       </sentences>
     </section>
   </group>
@@ -1570,6 +1579,24 @@
             <script>end</script>
           </click>
         </sentence>
+      </sentences>
+    </section>
+  </group>
+  <!-- Day EX1 -->
+  <group id="ship_EX1_over" tags="mvz2:ship;mvz2:over">
+    <archive name="圣辇船拓展第1天结束" background="mvz2:misc/ship">
+      <unlock>
+        <condition required="mvz2:level.ship_EX1" />
+      </unlock>
+    </archive>
+    <section>
+      <characters>
+          <character id="mvz2:crazy_villager" side="left" />
+      </characters>
+      <sentences>
+          <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy">烧烤时间到！</sentence>
+          <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是烟熏炉！它可以喷出浓烟，对前方一定范围的所有怪物造成伤害！</sentence>
+          <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream2" onClick="end">有烟无伤定律在它这儿可是无效的！</sentence>
       </sentences>
     </section>
   </group>

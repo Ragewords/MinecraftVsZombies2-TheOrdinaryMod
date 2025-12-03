@@ -74,6 +74,10 @@ namespace MVZ2.GameContent.Buffs.Level
         public static Entity? SpawnMeteor(LevelEngine level, RandomGenerator rng, int faction, float damage, int lane, int column, Vector3 hsvOffset)
         {
             var x = level.GetEntityColumnX(column);
+            if (faction == level.Option.RightFaction)
+            {
+                x = level.GetEntityColumnX(level.GetMaxColumnCount() - 1 - column);
+            }
             var z = level.GetEntityLaneZ(lane);
             var y = level.GetGroundY(x, z);
             var landPos = new Vector3(x, y, z);

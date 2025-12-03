@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -25,7 +26,7 @@ namespace MVZ2.GameContent.Effects
         {
             base.Init(entity);
             entity.Level.AddLoopSoundEntity(VanillaSoundID.tornado, entity.ID);
-            var mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_EFFECT;
+            var mask = EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_EFFECT | EntityCollisionHelper.MASK_PROJECTILE;
             entity.CollisionMaskHostile |= mask;
             entity.CollisionMaskFriendly |= mask;
             UpdateVariant(entity);
@@ -69,6 +70,13 @@ namespace MVZ2.GameContent.Effects
             else if (self.GetVariant() == VARIANT_NORMAL && other.IsEntityOf(VanillaEffectID.dragonFireBreath))
             {
                 self.SetVariant(VARIANT_FIRE);
+            }
+
+            if (other.Type == EntityTypes.PROJECTILE)
+            {
+                if (other.Definition.HasBehaviour<HellPlanet>() || other.IsEntityOf(VanillaProjectileID.explosiveLargeFireball))
+                    return;
+                other.Velocity += Vector3.left;
             }
         }
         public void BeBlown(Entity entity, Entity source)

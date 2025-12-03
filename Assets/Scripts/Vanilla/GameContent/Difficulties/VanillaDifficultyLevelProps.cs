@@ -54,6 +54,7 @@ namespace MVZ2.GameContent.Difficulties
         public static readonly VanillaDifficultyPropertyMeta<float> RED_DRAGON_FIRE_EXPLOSION_RADIUS = Get<float>("red_dragon_fire_explosion_radius", 32f);
         public static readonly VanillaDifficultyPropertyMeta<float> RED_DRAGON_GIANT_FIREBALL_SPEED = Get<float>("red_dragon_giant_fireball_speed", 1f);
         public static readonly VanillaDifficultyPropertyMeta<int> RED_DRAGON_TORNADO_COUNT = Get<int>("red_dragon_tornado_count", 3);
+        public static readonly VanillaDifficultyPropertyMeta<int> RED_DRAGON_FIRE_TORNADO_COUNT = Get<int>("red_dragon_fire_tornado_count", 1);
 
         public static bool FrankensteinNoSteelPhase(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_NO_STEEL);
         public static bool FrankensteinInstantSteelPhase(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_INSTANT_STEEL);
@@ -73,6 +74,7 @@ namespace MVZ2.GameContent.Difficulties
         public static float GetRedDragonFireExplosionRadius(this LevelEngine level) => level.GetProperty<float>(RED_DRAGON_FIRE_EXPLOSION_RADIUS);
         public static float GetRedDragonGiantFireballSpeed(this LevelEngine level) => level.GetProperty<float>(RED_DRAGON_GIANT_FIREBALL_SPEED);
         public static int GetRedDragonTornadoCount(this LevelEngine level) => level.GetProperty<int>(RED_DRAGON_TORNADO_COUNT);
+        public static int GetRedDragonFireTornadoCount(this LevelEngine level) => level.GetProperty<int>(RED_DRAGON_FIRE_TORNADO_COUNT);
 
         // Level
         public static readonly VanillaDifficultyPropertyMeta<float> STARSHARD_CARRIER_COUNTER_INCREAMENT = Get<float>("starshardCarrierCounterIncreament", 1f);

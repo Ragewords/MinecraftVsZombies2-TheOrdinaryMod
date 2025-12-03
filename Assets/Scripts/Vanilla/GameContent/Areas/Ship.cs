@@ -159,7 +159,7 @@ namespace MVZ2.GameContent.Areas
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
-                if (projectile.Definition.HasBehaviour<HellPlanet>())
+                if (projectile.Definition.HasBehaviour<HellPlanet>() || projectile.IsEntityOf(VanillaProjectileID.explosiveLargeFireball))
                     continue;
                 if (projectile.Velocity.magnitude < 30)
                     projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * multipiler * Vector3.left;

@@ -1092,14 +1092,18 @@
   </group>
 
   <group id="castle_EX1_over" tags="mvz2:castle;mvz2:over">
-    <archive name="辉针城拓展第1天结束" background="mvz2:misc/castle" unlock="mvz2:level.castle_EX1" />
+    <archive name="辉针城拓展第1天结束" background="mvz2:misc/castle">
+      <unlock>
+        <condition required="mvz2:level.castle_EX1" />
+      </unlock>
+    </archive>
     <section>
       <characters>
         <character id="mvz2:crazy_villager" side="left" />
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">这是火焰弹发射器！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是火焰弹发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能够向周围的怪物投掷火焰弹，造成群体伤害！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">是时候给怪物们一点火力威慑了！</sentence>
       </sentences>

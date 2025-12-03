@@ -139,9 +139,9 @@ namespace MVZ2.GameContent.Contraptions
             Explosion.Spawn(entity, entity.GetCenter(), BURN_RADIUS);
             entity.PlaySound(VanillaSoundID.explosion);
             entity.PlaySound(VanillaSoundID.flame);
-            for (var i = 0; i < Mathf.CeilToInt(border_distance / 64); i++)
+            for (var i = 0; i < Mathf.CeilToInt(border_distance / 80); i++)
             {
-                var x_pos = VanillaLevelExt.LEFT_BORDER + 64 * i;
+                var x_pos = VanillaLevelExt.LEFT_BORDER + 80 * i;
                 entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z))?.Let(e =>
                 {
                     Fireblock.SetCursed(e, IsCursed(entity));

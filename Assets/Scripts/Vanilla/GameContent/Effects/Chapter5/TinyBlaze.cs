@@ -2,14 +2,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
 using PVZEngine;
-using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -17,7 +13,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Effects
 {
     [EntityBehaviourDefinition(VanillaEffectNames.tinyBlaze)]
-    public class TinyBlaze : EffectBehaviour
+    public class TinyBlaze : EntityBehaviourDefinition, IBeBlownBehaviour
     {
         public TinyBlaze(string nsp, string name) : base(nsp, name)
         {
@@ -28,20 +24,6 @@ namespace MVZ2.GameContent.Effects
             var collisionMask = EntityCollisionHelper.MASK_ALL;
             entity.CollisionMaskFriendly = collisionMask;
             entity.CollisionMaskHostile = collisionMask;
-        }
-        public override void Update(Entity entity)
-        {
-            base.Update(entity);
-            collideBuffer.Clear();
-            collideDetector.DetectMultiple(entity, collideBuffer);
-            foreach (var collider in collideBuffer)
-            {
-                var other = collider.Entity;
-                if (entity.IsHostile(other))
-                {
-                    collider.TakeDamage(DAMAGE, new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE), entity);
-                }
-            }
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -90,10 +72,11 @@ namespace MVZ2.GameContent.Effects
             size.y = 800;
             return new Bounds(center, size);
         }
+        public void BeBlown(Entity entity, Entity source)
+        {
+            entity.Timeout = Mathf.Min(Ticks.FromSeconds(MAX_FADE_SECONDS), entity.Timeout);
+        }
         public const float MAX_FADE_SECONDS = 0.5f;
-        public const float DAMAGE = 4 / 3;
         private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
-        private Detector collideDetector = new CollisionDetector();
-        private List<IEntityCollider> collideBuffer = new List<IEntityCollider>();
     }
 }

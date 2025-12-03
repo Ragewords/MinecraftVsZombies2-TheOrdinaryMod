@@ -18,9 +18,10 @@ namespace MVZ2.GameContent.Bosses
         {
             var entity = damageInfo.Entity;
             var malleable = TheGiant.GetMalleable(entity);
+            bool phase1 = TheGiant.GetPhase(entity) == TheGiant.PHASE_1;
             if (malleable >= 0)
             {
-                damageInfo.Multiply(1 - malleable / TheGiant.MAX_MALLEABLE_DAMAGE);
+                damageInfo.Multiply(1 - malleable / (phase1 ? TheGiant.MAX_MALLEABLE_DAMAGE : TheGiant.MAX_MALLEABLE_DAMAGE_PHASE_2_3));
             }
             base.PreTakeDamage(damageInfo, result);
         }
