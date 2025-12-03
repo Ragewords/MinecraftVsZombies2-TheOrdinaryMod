@@ -148,7 +148,7 @@ namespace MVZ2.Managers
             var styleID = isCommandBlock ? LogicBlueprintStyles.normal : LogicBlueprintStyles.commandBlock;
             var styleMeta = GetBlueprintStyleMeta(styleID);
             SetBlueprintViewDataStyle(ref viewData, styleMeta);
-            var functionID = LogicBlueprintFunctions.none;
+            var functionID = LogicBlueprintFunctions.undefined;
             var functionMeta = GetBlueprintFunctionMeta(functionID);
             SetBlueprintViewFunctionTag(ref viewData, functionMeta);
             return viewData;
@@ -214,7 +214,7 @@ namespace MVZ2.Managers
         }
         private NamespaceID GetBlueprintFunctionID(SeedDefinition seedDef)
         {
-            var defaultValue = LogicBlueprintFunctions.none;
+            var defaultValue = LogicBlueprintFunctions.undefined;
             var result = new CallbackResult();
             result.SetValue(defaultValue);
             var args = new LogicCallbacks.GetBlueprintFunctionParams(seedDef);

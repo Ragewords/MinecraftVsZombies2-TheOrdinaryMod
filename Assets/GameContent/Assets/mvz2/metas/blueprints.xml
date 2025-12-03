@@ -29,7 +29,7 @@
         </style>
     </styles>
     <functions>
-        <function id="none">
+        <function id="undefined">
             <icon sprite="mvz2:ui/level/contraption_function_tag[0]" />
         </function>
         <function id="shooter">
@@ -41,37 +41,37 @@
         <function id="defender">
             <icon sprite="mvz2:ui/level/contraption_function_tag[3]" />
         </function>
-        <function id="trap">
+        <function id="assistance">
             <icon sprite="mvz2:ui/level/contraption_function_tag[4]" />
         </function>
-        <function id="icicle">
+        <function id="melee">
             <icon sprite="mvz2:ui/level/contraption_function_tag[5]" />
         </function>
-        <function id="container">
+        <function id="bomb">
             <icon sprite="mvz2:ui/level/contraption_function_tag[6]" />
         </function>
-        <function id="melee">
+        <function id="combustor">
             <icon sprite="mvz2:ui/level/contraption_function_tag[7]" />
         </function>
-        <function id="bomb">
+        <function id="sharpener">
             <icon sprite="mvz2:ui/level/contraption_function_tag[8]" />
         </function>
-        <function id="combustor">
+        <function id="enchanted">
             <icon sprite="mvz2:ui/level/contraption_function_tag[9]" />
         </function>
-        <function id="piercer">
+        <function id="potion">
             <icon sprite="mvz2:ui/level/contraption_function_tag[10]" />
         </function>
-        <function id="magician">
+        <function id="armed">
             <icon sprite="mvz2:ui/level/contraption_function_tag[11]" />
         </function>
-        <function id="potion">
+        <function id="buzzer">
             <icon sprite="mvz2:ui/level/contraption_function_tag[12]" />
         </function>
-        <function id="armed">
+        <function id="frosty">
             <icon sprite="mvz2:ui/level/contraption_function_tag[13]" />
         </function>
-        <function id="electrian">
+        <function id="flourish">
             <icon sprite="mvz2:ui/level/contraption_function_tag[14]" />
         </function>
         <function id="monster">

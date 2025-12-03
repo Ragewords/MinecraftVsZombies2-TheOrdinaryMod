@@ -81,19 +81,19 @@ namespace MVZ2.GameContent.GlobalCallbacks
             if (function == VanillaBlueprintFunctions.shooter) result.SetValue(LogicBlueprintFunctions.shooter);
             else if (function == VanillaBlueprintFunctions.producer) result.SetValue(LogicBlueprintFunctions.producer);
             else if (function == VanillaBlueprintFunctions.defender) result.SetValue(LogicBlueprintFunctions.defender);
-            else if (function == VanillaBlueprintFunctions.trap) result.SetValue(LogicBlueprintFunctions.trap);
-            else if (function == VanillaBlueprintFunctions.icicle) result.SetValue(LogicBlueprintFunctions.icicle);
-            else if (function == VanillaBlueprintFunctions.container) result.SetValue(LogicBlueprintFunctions.container);
+            else if (function == VanillaBlueprintFunctions.assistance) result.SetValue(LogicBlueprintFunctions.assistance);
             else if (function == VanillaBlueprintFunctions.melee) result.SetValue(LogicBlueprintFunctions.melee);
             else if (function == VanillaBlueprintFunctions.bomb) result.SetValue(LogicBlueprintFunctions.bomb);
             else if (function == VanillaBlueprintFunctions.combustor) result.SetValue(LogicBlueprintFunctions.combustor);
-            else if (function == VanillaBlueprintFunctions.piercer) result.SetValue(LogicBlueprintFunctions.piercer);
-            else if (function == VanillaBlueprintFunctions.magician) result.SetValue(LogicBlueprintFunctions.magician);
+            else if (function == VanillaBlueprintFunctions.sharpener) result.SetValue(LogicBlueprintFunctions.sharpener);
+            else if (function == VanillaBlueprintFunctions.enchanted) result.SetValue(LogicBlueprintFunctions.enchanted);
             else if (function == VanillaBlueprintFunctions.potion) result.SetValue(LogicBlueprintFunctions.potion);
             else if (function == VanillaBlueprintFunctions.armed) result.SetValue(LogicBlueprintFunctions.armed);
-            else if (function == VanillaBlueprintFunctions.electrian) result.SetValue(LogicBlueprintFunctions.electrian);
+            else if (function == VanillaBlueprintFunctions.buzzer) result.SetValue(LogicBlueprintFunctions.buzzer);
+            else if (function == VanillaBlueprintFunctions.frosty) result.SetValue(LogicBlueprintFunctions.frosty);
+            else if (function == VanillaBlueprintFunctions.flourish) result.SetValue(LogicBlueprintFunctions.flourish);
             else if (function == VanillaBlueprintFunctions.monster) result.SetValue(LogicBlueprintFunctions.monster);
-            else result.SetValue(LogicBlueprintFunctions.none);
+            else result.SetValue(LogicBlueprintFunctions.undefined);
         }
     }
 }

@@ -7,21 +7,21 @@ namespace MVZ2.GameContent.Seeds
 {
     public static class LogicBlueprintFunctions
     {
-        public static readonly NamespaceID none = Get("none");
+        public static readonly NamespaceID undefined = Get("undefined");
         public static readonly NamespaceID shooter = Get("shooter");
         public static readonly NamespaceID producer = Get("producer");
         public static readonly NamespaceID defender = Get("defender");
-        public static readonly NamespaceID trap = Get("trap");
-        public static readonly NamespaceID icicle = Get("icicle");
-        public static readonly NamespaceID container = Get("container");
+        public static readonly NamespaceID assistance = Get("assistance");
         public static readonly NamespaceID melee = Get("melee");
         public static readonly NamespaceID bomb = Get("bomb");
         public static readonly NamespaceID combustor = Get("combustor");
-        public static readonly NamespaceID piercer = Get("piercer");
-        public static readonly NamespaceID magician = Get("magician");
+        public static readonly NamespaceID sharpener = Get("sharpener");
+        public static readonly NamespaceID enchanted = Get("enchanted");
         public static readonly NamespaceID potion = Get("potion");
         public static readonly NamespaceID armed = Get("armed");
-        public static readonly NamespaceID electrian = Get("electrian");
+        public static readonly NamespaceID buzzer = Get("buzzer");
+        public static readonly NamespaceID frosty = Get("frosty");
+        public static readonly NamespaceID flourish = Get("flourish");
         public static readonly NamespaceID monster = Get("monster");
         public static NamespaceID Get(string name)
         {
