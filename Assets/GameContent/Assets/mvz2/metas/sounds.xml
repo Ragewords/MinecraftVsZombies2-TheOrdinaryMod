@@ -19,12 +19,12 @@
     <sound name="arcane_intellect">
         <sample path="mvz2:arcane_intellect" weight="1" />
     </sound>
-	<sound name="anvil_fix">
-		<sample path="mvz2:entity/anvil/anvil_fix" weight="1" />
-	</sound>
-	<sound name="anvil_fix_break">
-		<sample path="mvz2:entity/anvil/anvil_fix_break" weight="1" />
-	</sound>
+    <sound name="anvil_fix">
+        <sample path="mvz2:entity/anvil/anvil_fix" weight="1" />
+    </sound>
+    <sound name="anvil_fix_break">
+        <sample path="mvz2:entity/anvil/anvil_fix_break" weight="1" />
+    </sound>
     <sound name="armor_up">
         <sample path="mvz2:armor_up" weight="1" />
     </sound>
@@ -286,9 +286,9 @@
     <sound name="fatigue">
         <sample path="mvz2:fatigue" weight="1" />
     </sound>
-	<sound name="fault" maxCount="1">
-		<sample path="mvz2:entity/seija/fault" weight="1" />
-	</sound>
+    <sound name="fault" maxCount="1">
+        <sample path="mvz2:entity/seija/fault" weight="1" />
+    </sound>
     <sound name="final_item" priority="0">
         <sample path="mvz2:final_item" weight="1" />
     </sound>
@@ -450,17 +450,17 @@
         <sample path="mvz2:damage/hit2" weight="1" />
         <sample path="mvz2:damage/hit3" weight="1" />
     </sound>
-	<sound name="heal">
-		<sample path="mvz2:heal" weight="1" />
-	</sound>
+    <sound name="heal">
+        <sample path="mvz2:heal" weight="1" />
+    </sound>
     <sound name="hell_planet_deflect">
         <sample path="mvz2:hell_planet_deflect1" weight="1" />
         <sample path="mvz2:hell_planet_deflect2" weight="1" />
         <sample path="mvz2:hell_planet_deflect3" weight="1" />
     </sound>
-	<sound name="holy">
-		<sample path="mvz2:holy" weight="1" />
-	</sound>
+    <sound name="holy">
+        <sample path="mvz2:holy" weight="1" />
+    </sound>
     <sound name="horse_angry" priority="64">
         <sample path="mvz2:horse_angry" weight="1" />
     </sound>
@@ -473,9 +473,9 @@
     <sound name="huge_wave" priority="64">
         <sample path="mvz2:huge_wave" weight="1" />
     </sound>
-	<sound name="immortal_totem">
-		<sample path="mvz2:entity/totenser/immortal_totem" weight="1" />
-	</sound>
+    <sound name="immortal_totem">
+        <sample path="mvz2:entity/totenser/immortal_totem" weight="1" />
+    </sound>
     <sound name="imp_laugh">
         <sample path="mvz2:entity/imp/imp_laugh1" weight="1" />
         <sample path="mvz2:entity/imp/imp_laugh2" weight="1" />
@@ -684,9 +684,9 @@
         <sample path="mvz2:punch1" weight="1" />
         <sample path="mvz2:punch2" weight="1" />
     </sound>
-	<sound name="jizo_appear">
-		<sample path="mvz2:entity/seija/jizo_appear" weight="1" />
-	</sound>
+    <sound name="jizo_appear">
+        <sample path="mvz2:entity/seija/jizo_appear" weight="1" />
+    </sound>
     <sound name="rain">
         <sample path="mvz2:rain" weight="1" />
     </sound>
@@ -748,12 +748,12 @@
     <sound name="siren" maxCount="1" priority="64">
         <sample path="mvz2:siren" weight="1" />
     </sound>
-	<sound name="slime">
-		<sample path="mvz2:random/slime1" weight="1" />
-		<sample path="mvz2:random/slime2" weight="1" />
-		<sample path="mvz2:random/slime3" weight="1" />
-		<sample path="mvz2:random/slime4" weight="1" />
-	</sound>
+    <sound name="slime">
+        <sample path="mvz2:random/slime1" weight="1" />
+        <sample path="mvz2:random/slime2" weight="1" />
+        <sample path="mvz2:random/slime3" weight="1" />
+        <sample path="mvz2:random/slime4" weight="1" />
+    </sound>
     <sound name="skeleton_cry">
         <sample path="mvz2:entity/skeleton/skeleton_cry1" weight="1" />
         <sample path="mvz2:entity/skeleton/skeleton_cry2" weight="1" />
@@ -782,15 +782,15 @@
         <sample path="mvz2:sand_dig3" weight="1" />
         <sample path="mvz2:sand_dig4" weight="1" />
     </sound>
-	<sound name="silverfish_cry">
-		<sample path="mvz2:entity/silverfish/silverfish_cry1" weight="1" />
-		<sample path="mvz2:entity/silverfish/silverfish_cry2" weight="1" />
-		<sample path="mvz2:entity/silverfish/silverfish_cry3" weight="1" />
-		<sample path="mvz2:entity/silverfish/silverfish_cry4" weight="1" />
-	</sound>
-	<sound name="silverfish_death">
-		<sample path="mvz2:entity/silverfish/silverfish_death" weight="1" />
-	</sound>
+    <sound name="silverfish_cry">
+        <sample path="mvz2:entity/silverfish/silverfish_cry1" weight="1" />
+        <sample path="mvz2:entity/silverfish/silverfish_cry2" weight="1" />
+        <sample path="mvz2:entity/silverfish/silverfish_cry3" weight="1" />
+        <sample path="mvz2:entity/silverfish/silverfish_cry4" weight="1" />
+    </sound>
+    <sound name="silverfish_death">
+        <sample path="mvz2:entity/silverfish/silverfish_death" weight="1" />
+    </sound>
     <sound name="slice">
         <sample path="mvz2:damage/slice/slice1" weight="1" />
         <sample path="mvz2:damage/slice/slice2" weight="1" />

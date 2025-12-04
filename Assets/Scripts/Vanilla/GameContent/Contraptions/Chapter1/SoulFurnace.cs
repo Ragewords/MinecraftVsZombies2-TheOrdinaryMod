@@ -225,8 +225,6 @@ namespace MVZ2.GameContent.Contraptions
                 for (int i = 0; i < 5; i++)
                 {
                     var param = soulFurnace.GetSpawnParams();
-                    param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 1.25f);
-                    param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 1.25f);
                     param.SetProperty(VanillaEntityProps.DAMAGE, soulFurnace.GetDamage() / 2);
                     param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 15);
                     entity.PlaySound(VanillaSoundID.flame);

@@ -15,9 +15,9 @@
             <stage id="mvz2:halloween_9" />
             <stage id="mvz2:halloween_10" />
             <stage id="mvz2:halloween_11" />
-			<stage id="mvz2:halloween_EX1" />
-			<stage id="mvz2:halloween_EX2" />
-			<stage id="mvz2:halloween_EX3" />
+            <stage id="mvz2:halloween_EX1" />
+            <stage id="mvz2:halloween_EX2" />
+            <stage id="mvz2:halloween_EX3" />
         </stages>
     </map>
     <map id="dream" area="mvz2:dream">
@@ -45,9 +45,9 @@
             <stage id="mvz2:dream_9" />
             <stage id="mvz2:dream_10" />
             <stage id="mvz2:dream_11" />
-			<stage id="mvz2:dream_EX1" />
-			<stage id="mvz2:dream_EX2" />
-			<stage id="mvz2:dream_EX3" />
+            <stage id="mvz2:dream_EX1" />
+            <stage id="mvz2:dream_EX2" />
+            <stage id="mvz2:dream_EX3" />
         </stages>
     </map>
     <map id="gensokyo" width="1020" height="600">
@@ -88,9 +88,9 @@
             <stage id="mvz2:castle_9" />
             <stage id="mvz2:castle_10" />
             <stage id="mvz2:castle_11" />
-			<stage id="mvz2:castle_EX1" />
-			<stage id="mvz2:castle_EX2" />
-			<stage id="mvz2:castle_EX3" />
+            <stage id="mvz2:castle_EX1" />
+            <stage id="mvz2:castle_EX2" />
+            <stage id="mvz2:castle_EX3" />
         </stages>
     </map>
     <map id="mausoleum" area="mvz2:mausoleum" width="3200" height="2400">
@@ -109,9 +109,9 @@
             <stage id="mvz2:mausoleum_9" />
             <stage id="mvz2:mausoleum_10" />
             <stage id="mvz2:mausoleum_11" />
-			<stage id="mvz2:mausoleum_EX1" />
-			<stage id="mvz2:mausoleum_EX2" />
-			<stage id="mvz2:mausoleum_EX3" />
+            <stage id="mvz2:mausoleum_EX1" />
+            <stage id="mvz2:mausoleum_EX2" />
+            <stage id="mvz2:mausoleum_EX3" />
         </stages>
     </map>
     <map id="ship" area="mvz2:ship" width="4200" height="3600">

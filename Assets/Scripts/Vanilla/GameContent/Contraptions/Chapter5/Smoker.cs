@@ -38,7 +38,19 @@ namespace MVZ2.GameContent.Contraptions
                     var param = entity.GetSpawnParams();
                     param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 20);
                     param.SetProperty(EngineEntityProps.FLIP_X, entity.IsFlipX());
-                    entity.Spawn(VanillaEffectID.smokerSmoke, entity.GetCenter(), param);
+                    entity.Spawn(VanillaEffectID.smokerSmoke, entity.GetCenter(), param)?.Let(e =>
+                    {
+                        int hideSection = 0;
+                        if (entity.GetLane() == 0)
+                        {
+                            hideSection = -1;
+                        }
+                        if (entity.GetLane() == entity.Level.GetMaxLaneCount() - 1)
+                        {
+                            hideSection = 1;
+                        }
+                        e.SetAnimationInt("HideSection", hideSection);
+                    });
                     timer.ResetTime(SMOKE_INTERVAL);
                 }
                 else

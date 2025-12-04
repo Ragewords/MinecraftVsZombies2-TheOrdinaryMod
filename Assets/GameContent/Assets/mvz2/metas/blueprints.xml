@@ -79,10 +79,10 @@
         </function>
     </functions>
     <options>
-        <option id="return_pearl" cost="25" function="container" name="返回弹珠">
+        <option id="return_pearl" cost="25" function="assistance" name="返回弹珠">
             <icon sprite="mvz2:options/return_pearl" />
         </option>
-        <option id="lengthen_board" cost="125" function="container" name="增长挡板">
+        <option id="lengthen_board" cost="125" function="assistance" name="增长挡板">
             <icon sprite="mvz2:options/lengthen_board" />
         </option>
         <option id="add_pearl" cost="50" function="shooter" name="增加弹珠">
