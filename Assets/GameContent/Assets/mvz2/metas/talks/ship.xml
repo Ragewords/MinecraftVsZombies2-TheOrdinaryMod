@@ -1048,7 +1048,7 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">是的。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">不过，那艘末地船又出现了，等我把它们击退再说！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk"><![CDATA[<color=blue>（这次对面又多了一种看上去像是海盗的僵尸，手里还拿着弯刀。）</color>]]></sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end"><![CDATA[<color=blue>（看来是个不好对付的家伙啊。）</color>]]></sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end"><![CDATA[<color=blue>（感觉会是个不好对付的家伙啊。）</color>]]></sentence>
       </sentences>
     </section>
   </group>
