@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paratroop_zombie_0
+      name: paratrooper_zombie_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paratroop_zombie_1
+      name: paratrooper_zombie_1
       rect:
         serializedVersion: 2
         x: 33
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paratroop_zombie_2
+      name: paratrooper_zombie_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paratroop_zombie_3
+      name: paratrooper_zombie_3
       rect:
         serializedVersion: 2
         x: 19
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paratroop_zombie_4
+      name: paratrooper_zombie_4
       rect:
         serializedVersion: 2
         x: 39

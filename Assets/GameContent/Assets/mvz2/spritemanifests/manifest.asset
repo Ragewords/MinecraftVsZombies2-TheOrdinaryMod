@@ -2511,7 +2511,7 @@ MonoBehaviour:
     - {fileID: -938367861, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
     - {fileID: 516429795, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
     - {fileID: -1181326684, guid: 7f65243c614e7c64abc683911c4ad91c, type: 3}
-  - name: entity/enemy/paratroop_zombie
+  - name: entity/enemy/paratrooper_zombie
     spritesheet:
     - {fileID: -224541695, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
     - {fileID: -616295559, guid: 59bf449666ab22446af83c2e53c155f5, type: 3}
