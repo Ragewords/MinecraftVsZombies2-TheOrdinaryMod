@@ -76,7 +76,7 @@ namespace MVZ2.GameContent.Effects
             {
                 if (other.Definition.HasBehaviour<HellPlanet>() || other.IsEntityOf(VanillaProjectileID.explosiveLargeFireball))
                     return;
-                other.Velocity += self.IsFacingLeft() ? Vector3.left : Vector3.right;
+                other.Velocity += self.Velocity.normalized * 2;
             }
         }
         public void BeBlown(Entity entity, Entity source)
