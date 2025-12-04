@@ -23,6 +23,8 @@ namespace MVZ2.GameContent.Artifacts
             var projectile = param.entity;
             if (projectile.IsHostileEntity())
                 return;
+            if (projectile.DontHitEntities())
+                return;
             var level = projectile.Level;
             var artifacts = level.GetArtifacts();
             bool valid = false;
