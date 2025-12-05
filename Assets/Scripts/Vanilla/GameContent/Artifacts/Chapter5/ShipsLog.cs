@@ -71,7 +71,7 @@ namespace MVZ2.GameContent.Artifacts
                     {
                         e.Velocity = new Vector3(0, 7, 0);
                     });
-                    level.PlaySound(VanillaSoundID.openFlip);
+                    level.PlaySound(VanillaSoundID.pageFlip);
                     recordList.Clear();
                 }
             }
