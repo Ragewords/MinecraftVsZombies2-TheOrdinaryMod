@@ -181,9 +181,7 @@ namespace MVZ2.GameContent.Bosses
                                 {
                                     e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), concealGrid.GetEntityPosition(), 30, e.GetGravity());
                                 });
-                            }
-                            if (subStateTimer.PassedInterval(20))
-                            {
+
                                 if (deviceGrids.Count() > 0)
                                 {
                                     var deviceGrid = deviceGrids.Random(entity.RNG);

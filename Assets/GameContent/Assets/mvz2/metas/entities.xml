@@ -535,7 +535,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </contraption>
-        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后子弹数量增加">
+        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后发射速度增加">
             <unlock>
                 <condition required="mvz2:level.dream_2" />
             </unlock>
@@ -567,7 +567,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </contraption>
-        <contraption id="vortex_hopper" name="漩涡漏斗" tooltip="把附近的僵尸拉入水底">
+        <contraption id="vortex_hopper" name="漩涡漏斗" tooltip="把附近的僵尸拉入水底并甩出大量箭矢">
             <unlock>
                 <condition required="mvz2:level.dream_4" />
             </unlock>
@@ -575,6 +575,7 @@
                 <bool name="mvz2:isFloor" value="true" />
                 <bool name="mvz2:loyal" value="true" />
                 <float name="mvz2:range" value="40" />
+                <float name="mvz2:damage" value="30" />
                 <id name="mvz2:shell" value="mvz2:metal" />
                 <id name="mvz2:placement" value="mvz2:aquatic" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
@@ -582,7 +583,7 @@
                 <id name="mvz2:fragmentId" value="mvz2:anvil" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
 
-                <int name="mvz2:cost" value="25" />
+                <int name="mvz2:cost" value="50" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
                 <id name="mvz2:function" value="mvz2:melee" />
             </properties>
