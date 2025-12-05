@@ -160,7 +160,6 @@ namespace MVZ2.GameContent.Contraptions
             float fuelMultiplier = 1;
 
             int cost = entity.GetCost();
-            if (entity.GetFunction() == VanillaBlueprintFunctions.producer) cost *= 2;
             var rechargeID = entity.GetRechargeID();
             if (rechargeID != null)
             {
@@ -168,15 +167,10 @@ namespace MVZ2.GameContent.Contraptions
                 if (rechargeDef != null)
                 {
                     fuelMultiplier = rechargeDef.GetQuality();
-                    if (entity.GetFunction() == VanillaBlueprintFunctions.assistance) fuelMultiplier += 1;
                 }
             }
 
             fuel = Mathf.CeilToInt((fuel + cost / 3f) * fuelMultiplier);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.combustor) fuel = Mathf.CeilToInt(fuel * 2 / 3);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.sharpener) fuel = Mathf.CeilToInt(fuel / 3);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.buzzer) fuel = Mathf.CeilToInt(fuel / 2);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.defender) fuel += Mathf.CeilToInt(entity.GetMaxHealth() * 0.005f);
             var result = new CallbackResult(fuel);
             entity.Level.Triggers.RunCallbackWithResult(VanillaLevelCallbacks.GET_CONTRAPTION_SACRIFICE_FUEL, new VanillaLevelCallbacks.ContraptionSacrificeValueParams(entity, soulFurnace), result);
             return result.GetValue<int>();
@@ -220,6 +214,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void SacrificeInteractions(Entity entity, Entity soulFurnace)
         {
+            int interaction = GetSacrificeInteraction(entity);
             if (entity.GetFunction() == VanillaBlueprintFunctions.combustor)
             {
                 for (int i = 0; i < 5; i++)
@@ -234,8 +229,11 @@ namespace MVZ2.GameContent.Contraptions
                     Vector3 gridPos = new Vector3(x, y, z);
                     entity.Spawn(VanillaEffectID.smokerFire, gridPos, param);
                 }
-                SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_FIRE);
-                WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                if (interaction != SACRIFICE_INTERACTION_FIRE)
+                {
+                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_FIRE);
+                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                }
             }
             if (entity.GetFunction() == VanillaBlueprintFunctions.bomb)
             {
@@ -245,7 +243,7 @@ namespace MVZ2.GameContent.Contraptions
                     var velocity = direction * soulFurnace.GetShotVelocity().magnitude;
                     entity.ShootProjectile(new ShootParams()
                     {
-                        projectileID = VanillaProjectileID.soulfireBall,
+                        projectileID = entity.GetProjectileID(),
                         position = entity.GetCenter(),
                         velocity = velocity,
                         faction = soulFurnace.GetFaction(),
@@ -255,18 +253,27 @@ namespace MVZ2.GameContent.Contraptions
             }
             if (entity.GetFunction() == VanillaBlueprintFunctions.sharpener)
             {
-                SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_PIERCE);
-                WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                if (interaction != SACRIFICE_INTERACTION_PIERCE)
+                {
+                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_PIERCE);
+                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                }
             }
             if (entity.GetFunction() == VanillaBlueprintFunctions.frosty)
             {
-                SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_ICE);
-                WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                if (interaction != SACRIFICE_INTERACTION_ICE)
+                {
+                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_ICE);
+                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                }
             }
             if (entity.GetFunction() == VanillaBlueprintFunctions.buzzer)
             {
-                SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_LIGNTNING);
-                WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                if (interaction != SACRIFICE_INTERACTION_LIGNTNING)
+                {
+                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_LIGNTNING);
+                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
+                }
             }
         }
         private void EvokedUpdate(Entity entity)

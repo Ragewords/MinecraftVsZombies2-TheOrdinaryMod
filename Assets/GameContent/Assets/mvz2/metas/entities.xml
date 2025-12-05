@@ -1622,9 +1622,6 @@
             <unlock>
                 <condition required="mvz2:level.halloween_6" />
             </unlock>
-            <behaviours>
-                <behaviour operator="add" id="mvz2:fragmented" />
-            </behaviours>
             <properties>
                 <id name="mvz2:shell" value="mvz2:grass" />
                 <id name="mvz2:hitSound" value="mvz2:splat" />

@@ -373,6 +373,7 @@ namespace MVZ2.GameContent.Bosses
                             stateMachine.StartSubState(entity, substate + 1);
                             entity.PlaySound(VanillaSoundID.crescentShock);
                             subStateTimer.ResetTime(60 - substate * 18);
+                            entity.Spawn(VanillaEffectID.nightmareFireParticles, entity.GetCenter());
                         }
                         break;
                     case SUBSTATE_SHOCK_3:

@@ -218,7 +218,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     Frankenstein.Paralyze(unit, entity);
                 }
-                if (entity.IsEntityOf(VanillaContraptionID.tnt))
+                if (entity.IsEntityOf(VanillaContraptionID.tnt) && unit.IsVulnerableEntity())
                 {
                     var param = entity.GetSpawnParams();
                     param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 18);
