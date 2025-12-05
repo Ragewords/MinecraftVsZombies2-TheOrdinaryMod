@@ -36,7 +36,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
-            if (attackedEnemies.Count >= MAX_TARGETS)
+            var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
+            timeout--;
+            buff.SetProperty(PROP_TIMEOUT, timeout);
+            if (attackedEnemies.Count >= MAX_TARGETS || timeout <= 0)
                 buff.Remove();
         }
         private void FindNextTarget(Buff buff, Entity entity, Vector3 origin, int faction, float nextDamage)
@@ -70,12 +73,12 @@ namespace MVZ2.GameContent.Buffs.Enemies
             });
             
             attackedEnemies.Add(target);
-            FindNextTarget(buff, target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_REDUCTION));
+            FindNextTarget(buff, target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_DECAY));
         }
         public const float ZAP_RADIUS = 120;
         public const float MAX_TARGETS = 5;
         public const float DMG = 20;
-        public const float DMG_REDUCTION = 0.2f;
+        public const float DMG_DECAY = 0.2f;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity", new List<IEntityCollider>().ToArray());

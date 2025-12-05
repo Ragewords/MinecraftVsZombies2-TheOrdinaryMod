@@ -17,11 +17,12 @@ namespace MVZ2.GameContent.Buffs.Level
     {
         public LevelLunaticBuff(string nsp, string name) : base(nsp, name)
         {
+            AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
             AddModifier(new FloatModifier(LogicStageProps.CONVEY_SPEED, NumberOperator.Multiply, 0.8f));
+
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.ELASTIC_CLOUD_BOUNCE_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 1.5f));
 
-            AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
             AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.2f));
             AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.NAPSTABLOOK_PARALYSIS_TIME, IntegerOperator.Multiply, 2));

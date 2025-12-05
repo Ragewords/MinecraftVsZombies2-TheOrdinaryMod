@@ -74,11 +74,11 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             var buffs = projectile.GetBuffs(this);
             foreach (var buff in buffs)
             {
-                target.TakeDamage(additionalDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), projectile, armorSlot);
+                target.TakeDamage(additionalDamage * 2, new DamageEffectList(VanillaDamageEffects.LIGHTNING), projectile, armorSlot);
                 if (armorSlot == null)
                 {
                     var eBuff = target.NewBuff<ElectricChainBuff>();
-                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, additionalDamage * 2);
+                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, projectile.GetDamage());
                     target.AddBuff(eBuff);
                 }
             }

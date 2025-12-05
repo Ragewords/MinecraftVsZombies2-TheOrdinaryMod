@@ -142,7 +142,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     var entity = collider.Entity;
                     var eBuff = entity.NewBuff<ElectricChainBuff>();
-                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, damage / 2);
+                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, damage * (1 - ElectricChainBuff.DMG_DECAY));
                     eBuff.SetProperty(ElectricChainBuff.PROP_IGNORED_ENTITY, detectBuffer.ToArray());
                     entity.AddBuff(eBuff);
                 }
