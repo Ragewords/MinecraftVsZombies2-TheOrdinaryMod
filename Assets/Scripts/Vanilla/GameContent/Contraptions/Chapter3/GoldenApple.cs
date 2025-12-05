@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.Contraptions
                     return;
                 var enemyID = validEnemies.Random(rng);
                 var offset = higherSpawnPositionFilter.Contains(enemyID) ? SPAWN_POSITION_ADDTION : Vector3.zero;
-                var random = target.Spawn(enemyID, enemy.Position + offset)?.Let(e =>
+                var random = target.SpawnWithParams(enemyID, enemy.Position + offset)?.Let(e =>
                 {
                     e.CharmPermanent(target.GetFaction(), new EntitySourceReference(target));
                 });
