@@ -37,6 +37,7 @@ namespace MVZ2.GameContent.Artifacts
             var timer = artifact.GetProperty<FrameTimer>(PROP_ACTIVE_COOLDOWN);
             bool active = timer.RunToExpiredAndNotNull();
             artifact.SetGlowing(active);
+            artifact.SetInactive(!active);
             if (timer != null)
             {
                 artifact.SetDisplayText(Mathf.FloorToInt(Ticks.ToSeconds(timer.Frame)).ToString() + "s");
@@ -52,7 +53,7 @@ namespace MVZ2.GameContent.Artifacts
                 foreach (var enemy in xOrderedMobsTake1)
                 {
                     var bound = enemy.GetBounds();
-                    if (bound.min.x < TRIGGER_X)
+                    if (bound.min.x <= TRIGGER_X)
                     {
                         enemy.PlaySound(VanillaSoundID.revertWarp);
                         enemy.AddBuff(VanillaBuffID.Enemy.endlessGate);

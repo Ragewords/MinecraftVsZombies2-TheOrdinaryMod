@@ -67,7 +67,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0173a223e04ed4f408326de2f8ec2acc
-    m_Address: mvz2:open_flip1
+    m_Address: mvz2:page_flip1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -1600,7 +1600,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dbeb9538a4a7594ebdccf5250ae9e14
-    m_Address: mvz2:open_flip3
+    m_Address: mvz2:page_flip3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -4762,7 +4762,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59bf449666ab22446af83c2e53c155f5
-    m_Address: mvz2:entity/enemy/paratroop_zombie
+    m_Address: mvz2:entity/enemy/paratrooper_zombie
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9066,7 +9066,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abc6c61b881d6294393b56c8fcabe0f5
-    m_Address: mvz2:open_flip2
+    m_Address: mvz2:page_flip2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
