@@ -13,24 +13,16 @@ namespace MVZ2.GameContent.Buffs.Contraptions
     {
         public ConductorBuff(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback, priority: -100);
-            AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
+            AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
         {
             var input = param.input;
             var entity = input.Entity;
-            var buff = entity.GetFirstBuff<ConductorBuff>();
-            if (buff == null)
+            if (!entity.HasBuff(this))
                 return;
             if (input.Effects.HasEffect(VanillaDamageEffects.LIGHTNING))
                 result.SetFinalValue(false);
-        }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            foreach (var buff in entity.GetBuffs<ConductorBuff>())
-                buff.Remove();
         }
     }
 }
