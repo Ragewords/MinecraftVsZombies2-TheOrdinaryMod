@@ -243,7 +243,7 @@ namespace MVZ2.GameContent.Contraptions
                     var velocity = direction * soulFurnace.GetShotVelocity().magnitude;
                     entity.ShootProjectile(new ShootParams()
                     {
-                        projectileID = entity.GetProjectileID(),
+                        projectileID = soulFurnace.GetProjectileID(),
                         position = entity.GetCenter(),
                         velocity = velocity,
                         faction = soulFurnace.GetFaction(),
