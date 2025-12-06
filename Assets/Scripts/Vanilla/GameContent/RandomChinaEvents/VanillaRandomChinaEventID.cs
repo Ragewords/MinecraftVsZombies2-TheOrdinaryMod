@@ -31,7 +31,8 @@ namespace MVZ2.GameContent.RandomChinaEvents
         public const string anvilShower = "anvil_shower";
         public const string ancientEgypt = "ancientEgypt";
         public const string independenceDay = "independence_day";
-        public const string ruaWizard = "r_u_a_wizard";    }
+        public const string ruaWizard = "r_u_a_wizard";
+    }
     public static class VanillaRandomChinaEventID
     {
         public static readonly NamespaceID obsidianPrison = Get(VanillaRandomChinaEventNames.obsidianPrison);
