@@ -24,9 +24,7 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {
             base.PostContactGround(projectile, velocity);
-            if (projectile.IsOnWater())
-                return;
-            if (projectile.IsAboveCloud())
+            if (!projectile.IsAboveLand())
                 return;
             projectile.Velocity = new Vector3(projectile.Velocity.x, 10f, projectile.Velocity.z);
         }

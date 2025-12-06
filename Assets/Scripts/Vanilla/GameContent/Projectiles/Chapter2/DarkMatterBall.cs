@@ -38,8 +38,16 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {
             base.PostContactGround(projectile, velocity);
-            Deflect(projectile);
             Explode(projectile, projectile.GetRange());
+            if (!projectile.IsAboveLand())
+            {
+                if (projectile.IsOnWater())
+                {
+                    projectile.Spawn(VanillaEffectID.nightmareaperSplash, projectile.Position);
+                }
+                return;
+            }
+            Deflect(projectile);
             var hitCount = GetHitCount(projectile);
             hitCount++;
             SetHitCount(projectile, hitCount);

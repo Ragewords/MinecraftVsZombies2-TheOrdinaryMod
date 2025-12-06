@@ -3,7 +3,6 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -11,7 +10,6 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
 using UnityEngine;
@@ -304,14 +302,13 @@ namespace MVZ2.GameContent.Bosses
                             var vector = new Vector3(0, 40, 0);
                             entity.PlaySound(VanillaSoundID.explosion);
                             entity.PlaySound(VanillaSoundID.reflection);
-                            entity.Explode(entity.GetCenter() + vector, 120, entity.GetFaction(), entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.EXPLOSION));
-                            Explosion.Spawn(entity, entity.GetCenter() + vector, 120);
                             entity.Level.ShakeScreen(10, 0, 10);
                             var param = entity.GetSpawnParams();
-                            param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 2);
                             entity.Spawn(VanillaProjectileID.darkMatterBall, entity.GetCenter() + vector, param)?.Let(e =>
                             {
                                 e.Velocity = Vector3.up * 20;
+                                DarkMatterBall.Explode(e, e.GetRange());
+                                Explosion.Spawn(e, e.GetCenter(), e.GetRange());
                             });
                         }
                         if (subStateTimer.Expired)
