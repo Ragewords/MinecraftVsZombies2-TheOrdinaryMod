@@ -50,10 +50,9 @@ namespace MVZ2.GameContent.Contraptions
             var cooldown = GetDamageCooldown(entity);
             if (cooldown.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
             {
-                var damageMultipiler = IsCursed(entity) ? 2 : 1;
                 foreach (var targetCollider in detectBuffer)
                 {
-                    targetCollider.TakeDamage(entity.GetDamage() * damageMultipiler, new DamageEffectList(VanillaDamageEffects.FIRE), entity);
+                    targetCollider.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.FIRE), entity);
                     var target = targetCollider.Entity;
                     if (!IsCursed(entity))
                         target.Spawn(VanillaEffectID.fireburn, target.GetCenter());
@@ -76,8 +75,7 @@ namespace MVZ2.GameContent.Contraptions
             if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
                 return;
 
-            var damageMultipiler = IsCursed(entity) ? 2 : 1;
-            Explode(entity, entity.GetDamage() * 45 * damageMultipiler);
+            Explode(entity, entity.GetDamage() * 45);
         }
         public override bool CanEvoke(Entity entity)
         {
