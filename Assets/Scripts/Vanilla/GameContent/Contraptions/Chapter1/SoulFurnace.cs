@@ -214,28 +214,10 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void SacrificeInteractions(Entity entity, Entity soulFurnace)
         {
-            int interaction = GetSacrificeInteraction(entity);
-            if (entity.GetFunction() == VanillaBlueprintFunctions.combustor)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    var param = soulFurnace.GetSpawnParams();
-                    param.SetProperty(VanillaEntityProps.DAMAGE, soulFurnace.GetDamage() / 2);
-                    param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 15);
-                    entity.PlaySound(VanillaSoundID.flame);
-                    var x = entity.Position.x + entity.Level.GetGridWidth() * soulFurnace.GetFacingX() * i;
-                    var z = entity.Position.z;
-                    var y = entity.Level.GetGroundY(x, z);
-                    Vector3 gridPos = new Vector3(x, y, z);
-                    entity.Spawn(VanillaEffectID.smokerFire, gridPos, param);
-                }
-                if (interaction != SACRIFICE_INTERACTION_FIRE)
-                {
-                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_FIRE);
-                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
-                }
-            }
-            if (entity.GetFunction() == VanillaBlueprintFunctions.bomb)
+            NamespaceID? function = entity.GetFunction();
+            if (function == null)
+                return;
+            if (function == VanillaBlueprintFunctions.bomb)
             {
                 for (int i = 0; i < 30; i++)
                 {
@@ -251,29 +233,9 @@ namespace MVZ2.GameContent.Contraptions
                     });
                 }
             }
-            if (entity.GetFunction() == VanillaBlueprintFunctions.sharpener)
+            if (interactionDict.TryGetValue(function, out var type))
             {
-                if (interaction != SACRIFICE_INTERACTION_PIERCE)
-                {
-                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_PIERCE);
-                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
-                }
-            }
-            if (entity.GetFunction() == VanillaBlueprintFunctions.frosty)
-            {
-                if (interaction != SACRIFICE_INTERACTION_ICE)
-                {
-                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_ICE);
-                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
-                }
-            }
-            if (entity.GetFunction() == VanillaBlueprintFunctions.buzzer)
-            {
-                if (interaction != SACRIFICE_INTERACTION_LIGNTNING)
-                {
-                    SetSacrificeInteraction(soulFurnace, SACRIFICE_INTERACTION_LIGNTNING);
-                    WhiteFlashBuff.AddToEntity(soulFurnace, 30);
-                }
+                SwitchInteraction(soulFurnace, type);
             }
         }
         private void EvokedUpdate(Entity entity)
@@ -313,7 +275,16 @@ namespace MVZ2.GameContent.Contraptions
         }
 
         public static int GetSacrificeInteraction(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_SACRIFICE_INTERACTION);
-        public static void SetSacrificeInteraction(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_SACRIFICE_INTERACTION, Mathf.Clamp(value, 0, MAX_FUEL));
+        public static void SetSacrificeInteraction(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_SACRIFICE_INTERACTION, value);
+        private void SwitchInteraction(Entity furnace, int interaction)
+        {
+            int interactionBefore = GetSacrificeInteraction(furnace);
+            SetSacrificeInteraction(furnace, interaction);
+            if (interaction != interactionBefore)
+            {
+                WhiteFlashBuff.AddToEntity(furnace, 30);
+            }
+        }
         public class SacrificeAura : AuraEffectDefinition
         {
             public SacrificeAura() : base(VanillaBuffID.Contraption.soulFurnaceSacrificeInteraction)
@@ -324,7 +295,7 @@ namespace MVZ2.GameContent.Contraptions
                 var entity = auraEffect.Source.GetEntity();
                 if (entity == null)
                     return;
-                if (entity.IsEvoked())
+                if (entity.IsEvoked() || entity.IsDead || GetSacrificeInteraction(entity) == SACRIFICE_INTERACTION_FIRE)
                     return;
                 results.Add(entity);
             }
@@ -364,13 +335,22 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<int> PROP_FUEL = new VanillaEntityPropertyMeta<int>("Fuel");
         public static readonly VanillaEntityPropertyMeta<int> PROP_SACRIFICE_INTERACTION = new VanillaEntityPropertyMeta<int>("sacrifice_interaction");
         public static readonly VanillaEntityPropertyMeta<float> PROP_DISPLAY_FUEL = new VanillaEntityPropertyMeta<float>("DisplayFuel");
+        public static Dictionary<NamespaceID, int> interactionDict = new Dictionary<NamespaceID, int>()
+        {
+            { VanillaBlueprintFunctions.combustor, SACRIFICE_INTERACTION_FIRE },
+            { VanillaBlueprintFunctions.sharpener, SACRIFICE_INTERACTION_PIERCE },
+            { VanillaBlueprintFunctions.frosty, SACRIFICE_INTERACTION_ICE },
+            { VanillaBlueprintFunctions.buzzer, SACRIFICE_INTERACTION_LIGNTNING },
+        };
         public const int MAX_FUEL = 120;
         public const int REFUEL_THRESOLD = 20;
         public const int I_ZOMBIE_FUEL = REFUEL_THRESOLD + 5;
+        #region Synergies
         public const int SACRIFICE_INTERACTION_FIRE = 0;
         public const int SACRIFICE_INTERACTION_PIERCE = 1;
         public const int SACRIFICE_INTERACTION_ICE = 2;
         public const int SACRIFICE_INTERACTION_LIGNTNING = 3;
+        #endregion
         private Detector evocationDetector;
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
     }
