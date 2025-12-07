@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.Vanilla.Level;
-using MVZ2Logic.Level;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -18,7 +17,6 @@ namespace MVZ2.GameContent.Buffs.Level
         public LevelLunaticBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
-            AddModifier(new FloatModifier(LogicStageProps.CONVEY_SPEED, NumberOperator.Multiply, 0.8f));
 
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.ELASTIC_CLOUD_BOUNCE_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 1.5f));
