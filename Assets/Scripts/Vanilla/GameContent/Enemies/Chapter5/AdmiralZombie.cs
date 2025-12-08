@@ -121,7 +121,6 @@ namespace MVZ2.GameContent.Enemies
         private void SummonParatroopers(Entity entity, int count)
         {
             List<LawnGrid> valid = new List<LawnGrid>();
-            List<int> weights = new List<int>();
             var actualCount = Mathf.Max(Mathf.Min(MAX_PARATROOPERS_COUNT - GetAliveParatroopCount(entity), count), 1);
 
             var smallestColumn = Mathf.Max(entity.GetColumn() - 1, 0);
@@ -134,7 +133,6 @@ namespace MVZ2.GameContent.Enemies
                 {
                     var grid = entity.Level.GetGrid(col, lane)!;
                     valid.Add(grid);
-                    weights.Add(Mathf.Abs(col - entity.GetColumn()) + 1);
                 }
             }
             count = Mathf.Clamp(count, 0, Mathf.Min(valid.Count, actualCount));
@@ -142,8 +140,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
 
             var rng = GetRNG(entity);
-            var weightArray = weights.ToArray();
-            var grids = rng != null ? valid.WeightedRandomTake(weightArray, count, rng) : valid.Take(count);
+            var grids = rng != null ? valid.WeightedRandomTake(paratroopersWeight, count, rng) : valid.Take(count);
             foreach (var grid in grids)
             {
                 var entityToSpawn = rng != null ? paratroopsToSpawn.Random(rng) : VanillaEnemyID.zombie;
@@ -159,6 +156,7 @@ namespace MVZ2.GameContent.Enemies
             var position = grid.GetEntityPosition() + Vector3.up * 600;
             var paratrooper = entity.SpawnWithParams(enemyID, position)?.Let(e =>
             {
+                e.ChangeModel(VanillaModelID.karakasaZombie);
                 e.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 e.AddBuff<ParatroopBuff>();
             });
@@ -189,6 +187,12 @@ namespace MVZ2.GameContent.Enemies
             VanillaEnemyID.zombie,
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie
+        };
+        public static readonly int[] paratroopersWeight = new int[]
+        {
+            7,
+            2,
+            1
         };
         public static readonly NamespaceID ID = VanillaEnemyID.admiralZombie;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

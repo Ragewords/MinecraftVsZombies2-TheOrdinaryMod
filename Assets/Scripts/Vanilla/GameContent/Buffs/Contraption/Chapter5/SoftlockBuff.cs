@@ -7,10 +7,10 @@ using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.emeraldRestrict)]
-    public class EmeraldRestrictBuff : BuffDefinition
+    [BuffDefinition(VanillaBuffNames.Contraption.softlock)]
+    public class SoftlockBuff : BuffDefinition
     {
-        public EmeraldRestrictBuff(string nsp, string name) : base(nsp, name)
+        public SoftlockBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(VanillaEntityProps.NO_HELD_TARGET, true));
         }

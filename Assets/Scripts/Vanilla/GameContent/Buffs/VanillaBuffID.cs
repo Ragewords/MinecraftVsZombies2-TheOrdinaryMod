@@ -206,7 +206,7 @@ namespace MVZ2.GameContent.Buffs
             public const string woodenFanBlow = "wooden_fan_blow";
             public const string elasticCloudBounceCooldown = "elastic_cloud_bounce_cooldown";
             public const string elasticCloudEvocation = "elastic_cloud_evocation";
-            public const string emeraldRestrict = "emerald_restrict";
+            public const string softlock = "softlock";
             public const string skywardBeaconNight = "skyward_beacon_night";
 
             // Random China
@@ -564,7 +564,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID woodenFanBlow = Get(VanillaBuffNames.Contraption.woodenFanBlow);
             public static readonly NamespaceID elasticCloudBounceCooldown = Get(VanillaBuffNames.Contraption.elasticCloudBounceCooldown);
             public static readonly NamespaceID elasticCloudEvocation = Get(VanillaBuffNames.Contraption.elasticCloudEvocation);
-            public static readonly NamespaceID emeraldRestrict = Get(VanillaBuffNames.Contraption.emeraldRestrict);
+            public static readonly NamespaceID softlock = Get(VanillaBuffNames.Contraption.softlock);
             public static readonly NamespaceID skywardBeaconNight = Get(VanillaBuffNames.Contraption.skywardBeaconNight);
         }
         public static class Enemy

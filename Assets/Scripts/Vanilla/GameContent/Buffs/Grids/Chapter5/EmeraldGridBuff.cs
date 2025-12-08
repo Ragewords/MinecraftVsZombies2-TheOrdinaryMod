@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Buffs.Grids
                 return;
             foreach (var entity in grid.GetEntities())
             {
-                entity.RemoveBuffs(VanillaBuffID.Contraption.emeraldRestrict);
+                entity.RemoveBuffs(VanillaBuffID.Contraption.softlock);
             }
         }
         public void UpdateModel(Buff buff)
@@ -80,6 +80,13 @@ namespace MVZ2.GameContent.Buffs.Grids
                 model.SetShaderFloat("_BurnValue", buff.GetProperty<float>(PROP_DISAPPEAR_VALUE));
                 model.SetColorOffset(colorOffset);
             }
+        }
+        public static void Flash(Buff buff)
+        {
+            var flashTimer = buff.GetProperty<FrameTimer>(PROP_FLASH_TIMER);
+            flashTimer?.Reset();
+            var timeoutTimer = buff.GetProperty<FrameTimer>(PROP_TIMEOUT_TIMER);
+            timeoutTimer?.ResetSeconds(FLASH_SECONDS);
         }
         public int GetGridType(LawnGrid grid)
         {
@@ -102,14 +109,14 @@ namespace MVZ2.GameContent.Buffs.Grids
         public const int TYPE_CLOUD = 2;
         public const int TYPE_SLOPE = 3;
         public const float FLASH_SECONDS = 1;
-        public const float MAX_TIMEOUT_SECONDS = 240;
+        public const float MAX_TIMEOUT_SECONDS = 120;
         public static readonly NamespaceID MODEL_KEY = VanillaModelKeys.emeraldGrid;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DISAPPEAR_VALUE = new VanillaBuffPropertyMeta<float>("disappear_value");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_FLASH_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("flash_timer");
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMEOUT_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timeout_timer");
         public class RestrictAura : AuraEffectDefinition
         {
-            public RestrictAura() : base(VanillaBuffID.Contraption.emeraldRestrict)
+            public RestrictAura() : base(VanillaBuffID.Contraption.softlock)
             {
             }
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)

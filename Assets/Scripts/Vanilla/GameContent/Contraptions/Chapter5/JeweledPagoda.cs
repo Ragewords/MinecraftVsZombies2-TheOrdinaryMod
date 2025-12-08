@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Buffs.Grids;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -12,6 +14,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -58,11 +61,11 @@ namespace MVZ2.GameContent.Contraptions
         {
             int jewelCount = GetRestrictedGridCount(entity);
             var damage = entity.GetDamage();
-            if (jewelCount == 4)
+            if (jewelCount == BLAST)
             {
-                TNT.Explode(entity, 120, damage * 3);
+                TNT.Explode(entity, 120, damage * 9);
             }
-            else if (jewelCount == 5)
+            else if (jewelCount == LIGHTNING)
             {
                 entity.PlaySound(VanillaSoundID.tridentThunder);
                 entity.Level.Thunder();
@@ -73,7 +76,7 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var entityCollider in finalColliders)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
-                    entityCollider.TakeDamage(damage * 5, damageEffects, entity);
+                    entityCollider.TakeDamage(damage * 12, damageEffects, entity);
                 }
                 for (int i = 0; i < 4; i++)
                 {
@@ -87,13 +90,24 @@ namespace MVZ2.GameContent.Contraptions
                     });
                 }
             }
-            else if (jewelCount >= 6)
+            else if (jewelCount >= CHAOS)
             {
                 lawnDetector.DetectEntities(entity, lawnBuffer);
                 foreach (var entityCollider in lawnBuffer)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    entityCollider.TakeDamage(damage * 2  * (jewelCount - 5), damageEffects, entity);
+                    entityCollider.TakeDamage(damage * 3  * (jewelCount - 5), damageEffects, entity);
+                }
+            }
+            else
+            {
+                var laneGrids = entity.Level.GetAllGrids().Where(g => g.Lane == entity.GetLane());
+                foreach (var grid in laneGrids)
+                {
+                    foreach (var buff in grid.GetBuffs(VanillaBuffID.Grid.emeraldGrid))
+                    {
+                        EmeraldGridBuff.Flash(buff);
+                    }
                 }
             }
         }
@@ -112,6 +126,9 @@ namespace MVZ2.GameContent.Contraptions
         public const float TARGET_RELATIVE_Y = 64;
         public const int GRIDS_PER_STARSHARD = 3;
         public const int LEAST_JEWELS = 4;
+        public const int BLAST = 4;
+        public const int LIGHTNING = 5;
+        public const int CHAOS = 6;
         public static Color BLAST_JEWEL = new Color(255, 158, 0);
         public static Color LIGHTNING_JEWEL = new Color(0, 231, 255);
         public static Color CHAOS_JEWEL = new Color(255, 0, 150);
@@ -189,11 +206,7 @@ namespace MVZ2.GameContent.Contraptions
                     {
                         entity.Spawn(VanillaPickupID.starshard, entity.GetCenter());
                     }
-                    int jewelCount = GetRestrictedGridCount(entity);
-                    if (jewelCount >= LEAST_JEWELS)
-                        machine.StartState(entity, STATE_JEWEL);
-                    else
-                        machine.StartState(entity, STATE_DISAPPEAR);
+                    machine.StartState(entity, STATE_JEWEL);
                 }
             }
         }
@@ -209,15 +222,15 @@ namespace MVZ2.GameContent.Contraptions
                 entity.PlaySound(VanillaSoundID.goldenBomb);
                 entity.PlaySound(VanillaSoundID.coinDestroy);
                 int jewelCount = GetRestrictedGridCount(entity);
-                if (jewelCount == 4)
+                if (jewelCount == BLAST)
                 {
                     entity.SetProperty(PROP_LIGHT_COLOR, BLAST_JEWEL);
                 }
-                else if (jewelCount == 5)
+                else if (jewelCount == LIGHTNING)
                 {
                     entity.SetProperty(PROP_LIGHT_COLOR, LIGHTNING_JEWEL);
                 }
-                else if (jewelCount >= 6)
+                else if (jewelCount >= CHAOS)
                 {
                     entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
                 }

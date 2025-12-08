@@ -869,14 +869,14 @@
         </entry>
         <entry id="mvz2:jeweled_pagoda">
             <header>
-                <p>珠光宝塔会暂时禁用一整行内的所有空地格并仅允许非空地格的放置操作，根据作用的地格数量生产星之碎片和制造宝石，随后消失。</p>
+                <p>取决于地格是否被占用，珠光宝塔会暂时禁用或软锁一整行内的所有地格，随后根据作用的地格数量生产星之碎片和制造宝石并消失。</p>
             </header>
             <properties>
-                <p>禁用时长：<![CDATA[<color=red>4分钟</color>]]></p>
+                <p>作用时长：<![CDATA[<color=red>4分钟（禁用）/2分钟（软锁）</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
-                <p>4限制地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，伤害为300的爆炸</color>]]></p>
-                <p>5限制地格：<![CDATA[<color=red>闪电宝石，对整行及整列的怪物造成500闪电伤害</color>]]></p>
-                <p>6+限制地格：<![CDATA[<color=red>混沌宝石，对所有怪物无视护甲造成200伤害，每多1地格额外造成200伤害</color>]]></p>
+                <p>4软锁地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，伤害为900的爆炸</color>]]></p>
+                <p>5软锁地格：<![CDATA[<color=red>闪电宝石，对整行及整列的怪物造成1200闪电伤害</color>]]></p>
+                <p>6+软锁地格：<![CDATA[<color=red>混沌宝石，对所有怪物无视护甲造成300伤害，每多1地格额外造成300伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
@@ -1694,7 +1694,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤数个伞兵作为支援</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤数个伞兵僵尸作为支援</color>]]></p>
             </properties>
             <flavor>
                 <p>航海者僵尸有着丰富的航海经验，在因故离开航海事业后，他将自己的航海故事写成了一本书，名为“航僵王”。</p>
