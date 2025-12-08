@@ -307,6 +307,7 @@ namespace MVZ2.GameContent.Bosses
             level.Spawn(VanillaBossID.frankensteinsHead, headPos, boss)?.Let(e =>
             {
                 e.SetParent(boss);
+                e.ApplyBuffForBossRevenge();
                 FrankensteinsHead.SetMoveTarget(e, new Vector3(headPos.x, 60, headPos.z));
             });
             boss.PlaySound(VanillaSoundID.explosion);
