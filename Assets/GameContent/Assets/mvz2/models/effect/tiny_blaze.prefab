@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8339000464293083950}
   - component: {fileID: 5155464061740242844}
   - component: {fileID: 8641614215262516047}
-  - component: {fileID: 7690639896394691521}
   m_Layer: 0
   m_Name: FireFront
   m_TagString: Untagged
@@ -122,21 +121,6 @@ MonoBehaviour:
   - {fileID: -31944382, guid: 27e34115defaab8419d3558436e8c270, type: 3}
   - {fileID: -90579196, guid: 27e34115defaab8419d3558436e8c270, type: 3}
   index: 0
---- !u!114 &7690639896394691521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260621894595954949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7a5da3b8b3a0345bebbb77eb769241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hue: 0
-  saturation: 0
-  value: 0
 --- !u!1 &5547459910292280074
 GameObject:
   m_ObjectHideFlags: 0

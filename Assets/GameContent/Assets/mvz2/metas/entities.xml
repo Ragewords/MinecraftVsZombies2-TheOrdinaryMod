@@ -3013,6 +3013,9 @@
             </properties>
         </projectile>
         <projectile id="mini_tnt">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:flying_tnt" />
+            </behaviours>
             <properties>
                 <bool name="mvz2:noHitEntities" value="true" />
                 <bool name="mvz2:noDestroyOutsideLawn" value="true" />
@@ -4053,6 +4056,9 @@
             </properties>
         </effect>
         <effect id="brainwasher_explosion">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:explosion" />
+            </behaviours>
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />
                 <color name="mvz2:tint" value="#ff00ff" />
@@ -4093,7 +4099,7 @@
             </properties>
         </effect>
         <effect id="fireblock">
-            <behaviours>
+            <behaviours includeSelf="false">
                 <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
             </behaviours>
             <properties>
@@ -4103,6 +4109,7 @@
                 <vector3 name="mvz2:lightRange" x="160" y="160" z="160" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
                 <int name="mvz2:maxTimeout" value="30" />
+                <id name="mvz2:modelId" value="mvz2:entity.grid_fire" />
             </properties>
         </effect>
         <effect id="cursed_fireburn">
@@ -4158,6 +4165,9 @@
             </properties>
         </effect>
         <effect id="divine_shield_explosion">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:explosion" />
+            </behaviours>
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />
                 <color name="mvz2:tint" value="#ffee0070" />

@@ -106,7 +106,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             range *= scaleX;
             entity.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
 
-            DivineShieldExplosion.Spawn(entity, entity.GetCenter(), range);
+            DivineShieldExplosion.SpawnDivineShatter(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.divineShieldShatter);
         }
         public const float HEALTH_SPEED = 1 / 6f;

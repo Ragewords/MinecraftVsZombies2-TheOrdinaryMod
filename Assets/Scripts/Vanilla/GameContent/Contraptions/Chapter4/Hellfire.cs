@@ -139,12 +139,12 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.flame);
             for (var i = 0; i < Mathf.CeilToInt(border_distance / 80); i++)
             {
+                var param = new SpawnParams();
+                param.SetProperty(VanillaEntityProps.HSV, IsCursed(entity) ? Vector3.right * 90 : Vector3.zero);
+                param.SetProperty(VanillaEntityProps.LIGHT_COLOR, entity.GetLightColor());
                 var x_pos = VanillaLevelExt.LEFT_BORDER + 80 * i;
-                entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z))?.Let(e =>
+                entity.Spawn(VanillaEffectID.fireblock, new Vector3(x_pos, entity.Level.GetGroundY(x_pos, entity.Position.z), entity.Position.z), param)?.Let(e =>
                 {
-                    Fireblock.SetCursed(e, IsCursed(entity));
-                    if (IsCursed(entity))
-                        e.AddBuff<HellfireCursedBuff>();
                     e.Timeout += i * 2;
                 });
             }

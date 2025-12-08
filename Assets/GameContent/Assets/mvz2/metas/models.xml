@@ -441,7 +441,6 @@
     <model name="spawner_appear_embers" type="entity" path="mvz2:effect/spawner_appear_embers" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
     <model name="ember_particles" type="entity" path="mvz2:effect/ember_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
     <model name="fireburn" type="entity" path="mvz2:effect/fireburn" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
-    <model name="fireblock" type="entity" path="mvz2:effect/fireblock" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
     <model name="cursed_fireburn" type="entity" path="mvz2:effect/cursed_fireburn" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
     <model name="cursed_meteor" type="entity" path="mvz2:effect/cursed_meteor" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
     <model name="cursed_fire_particles" type="entity" path="mvz2:effect/cursed_fire_particles" shot="false" width="32" height="32" xOffset="0" yOffset="0" />
