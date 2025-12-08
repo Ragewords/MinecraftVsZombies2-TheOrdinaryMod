@@ -3606,13 +3606,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 442b01c6fc9cfe2419ee21ce2b5382ae
-    m_Address: mvz2:effect/fireblock
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44bd337d7a161b2498137668fbec6e35
     m_Address: mvz2:entity/contraptions/spike_block
     m_ReadOnly: 0

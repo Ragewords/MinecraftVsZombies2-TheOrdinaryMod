@@ -26,6 +26,11 @@ namespace MVZ2.GameContent.Artifacts
         {
             AddTrigger(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
         }
+        public override void PostAdd(Artifact artifact)
+        {
+            base.PostAdd(artifact);
+            recordList.Clear();
+        }
         public override void PostUpdate(Artifact artifact)
         {
             base.PostUpdate(artifact);
