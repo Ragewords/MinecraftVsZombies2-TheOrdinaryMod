@@ -4,6 +4,7 @@ using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
@@ -73,6 +74,7 @@ namespace MVZ2.GameContent.Buffs.Level
                     e.Velocity = Vector3.up * 30;
                     e.PlaySound(VanillaSoundID.splashBig);
                     e.Spawn(VanillaEffectID.nightmareaperSplash, pos);
+                    e.ApplyBuffForBossRevenge();
                     Crescent.Appear(e);
                 });
 
