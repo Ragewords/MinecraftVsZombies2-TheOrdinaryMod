@@ -1736,6 +1736,7 @@
             <spawn id="mvz2:undead_flying_object" />
             <spawn id="mvz2:zombie_cloud" />
             <spawn id="mvz2:cannoneer_zombie" />
+            <spawn id="mvz2:flying_pirate" />
             <spawn id="mvz2:pop_captain" />
             <spawn id="mvz2:admiral_zombie" />
         </spawns>
