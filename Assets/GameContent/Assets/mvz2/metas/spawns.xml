@@ -121,7 +121,7 @@
     </entry>
     <entry id="spellcaster">
         <entity id="mvz2:spellcaster" />
-        <spawn level="3" minWave="5" />
+        <spawn level="4" minWave="5" />
         <weight base="2500" />
     </entry>
 
