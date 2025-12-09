@@ -69,9 +69,9 @@ namespace MVZ2.GameContent.Contraptions
             {
                 entity.PlaySound(VanillaSoundID.tridentThunder);
                 entity.Level.Thunder();
-                var border_distance = VanillaLevelExt.RIGHT_BORDER - VanillaLevelExt.LEFT_BORDER;
+                var border_distance = 1600f;
                 var horizonalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
-                var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 600), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
+                var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 1200), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
                 var finalColliders = horizonalCollider.Union(verticalCollider);
                 foreach (var entityCollider in finalColliders)
                 {

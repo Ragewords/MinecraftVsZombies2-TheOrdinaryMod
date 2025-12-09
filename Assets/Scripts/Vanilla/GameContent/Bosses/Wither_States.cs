@@ -773,6 +773,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
+                int magic = GetMagicType(entity);
                 var substate = stateMachine.GetSubState(entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.Run(stateMachine.GetSpeed(entity));
@@ -801,7 +802,7 @@ namespace MVZ2.GameContent.Bosses
                                 stateMachine.StartSubState(entity, SUBSTATE_ROAR);
                                 entity.PlaySound(VanillaSoundID.witherCry);
                                 entity.SetAnimationBool("Shaking", true);
-                                entity.SetAnimationInt("LightColor", 3);
+                                entity.SetAnimationInt("LightColor", MAGIC_SUMMON);
                             }
                         }
                         break;
@@ -822,22 +823,16 @@ namespace MVZ2.GameContent.Bosses
 
                                 entity.PlaySound(VanillaSoundID.witherSpawn);
 
-                                entity.SpawnWithParams(VanillaEnemyID.brainwasher, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, 80))?.Let(e =>
+                                if (entity.IsBossRevengeVersion())
                                 {
-                                    entity.Spawn(VanillaEffectID.smokeCluster, e.GetCenter())?.Let(s =>
-                                    {
-                                        s.SetSize(Vector3.one * 120);
-                                        s.SetTint(Color.magenta);
-                                    });
-                                });
-                                entity.SpawnWithParams(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80)?.Let(e =>
+                                    SpawnHarbinger(entity, magic, middleLaneOffset);
+                                }
+                                else
                                 {
-                                    Explosion.Spawn(entity, e.GetCenter(), 60);
-                                });
-                                entity.SpawnWithParams(VanillaEnemyID.jackDullahan, entity.Position + entity.GetFacingDirection() * 80 + new Vector3(0, 0, -80))?.Let(e =>
-                                {
-                                    entity.Spawn(VanillaEffectID.soulfireBurn, e.GetCenter());
-                                });
+                                    SpawnHarbinger(entity, MAGIC_MESMERIZER, upperLaneOffset);
+                                    SpawnHarbinger(entity, MAGIC_BERSERKER, middleLaneOffset);
+                                    SpawnHarbinger(entity, MAGIC_DULLAHAN, lowerLaneOffset);
+                                }
                                 entity.PlaySound(VanillaSoundID.explosion);
                             }
                         }
@@ -856,9 +851,40 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
+            private void SpawnHarbinger(Entity entity, int harbingerType, Vector3 offset)
+            {
+                switch (harbingerType)
+                {
+                    case MAGIC_MESMERIZER:
+                        entity.SpawnWithParams(VanillaEnemyID.brainwasher, entity.Position + entity.GetFacingDirection() * 80 + offset)?.Let(e =>
+                        {
+                            entity.Spawn(VanillaEffectID.smokeCluster, e.GetCenter())?.Let(s =>
+                            {
+                                s.SetSize(Vector3.one * 120);
+                                s.SetTint(Color.magenta);
+                            });
+                        });
+                        break;
+                    case MAGIC_BERSERKER:
+                        entity.SpawnWithParams(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80 + offset)?.Let(e =>
+                        {
+                            Explosion.Spawn(entity, e.GetCenter(), 60);
+                        });
+                        break;
+                    case MAGIC_DULLAHAN:
+                        entity.SpawnWithParams(VanillaEnemyID.jackDullahan, entity.Position + entity.GetFacingDirection() * 80 + offset)?.Let(e =>
+                        {
+                            entity.Spawn(VanillaEffectID.soulfireBurn, e.GetCenter());
+                        });
+                        break;
+                }
+            }
             public const int SUBSTATE_MOVE = 0;
             public const int SUBSTATE_ROAR = 1;
             public const int SUBSTATE_SUMMONED = 2;
+            public static readonly Vector3 upperLaneOffset = Vector3.forward * 80;
+            public static readonly Vector3 middleLaneOffset = Vector3.zero;
+            public static readonly Vector3 lowerLaneOffset = Vector3.back * 80;
         }
         private class StunState : EntityStateMachineState
         {

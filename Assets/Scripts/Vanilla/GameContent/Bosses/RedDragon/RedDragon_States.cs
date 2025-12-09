@@ -1051,11 +1051,15 @@ namespace MVZ2.GameContent.Bosses
                 var speed = 2;
                 int count = 1;
                 bool phase2 = GetPhase(entity) == PHASE_2;
+                bool revenge = entity.IsBossRevengeVersion();
                 if (phase2)
                 {
                     variant = Tornado.VARIANT_FIRE;
                     speed = 4;
-                    count = level.GetRedDragonFireTornadoCount();
+                    if (!revenge)
+                    {
+                        count = level.GetRedDragonFireTornadoCount();
+                    }
                 }
                 else
                 {
