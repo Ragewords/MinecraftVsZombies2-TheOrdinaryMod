@@ -1398,7 +1398,7 @@
             </unlock>
             <properties>
                 <float name="mvz2:range" value="200" />
-                <float name="mvz2:damage" value="150" />
+                <float name="mvz2:damage" value="100" />
                 <id name="mvz2:projectileId" value="mvz2:fire_charge" />
                 <id name="mvz2:shootSound" value="mvz2:fire_charge" />
                 <vector3 name="mvz2:shotOffset" x="0" y="50" z="0" />

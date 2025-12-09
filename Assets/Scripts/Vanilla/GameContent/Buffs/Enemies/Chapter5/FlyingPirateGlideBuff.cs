@@ -35,6 +35,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity == null)
                 return;
             entity.SetAnimationBool("Parachuting", IsParachuting(entity));
+            entity.RemoveBuffs<FlyBuff>();
         }
         public override void PostUpdate(Buff buff)
         {
@@ -49,7 +50,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
 
             bool paragliderDiscard = entity.GetProperty<bool>(FlyingPirate.PROP_PARAGLIDER_DISCARDED);
-            if (paragliderDiscard)
+            if (paragliderDiscard || entity.IsDead)
             {
                 buff.Remove();
                 return;
@@ -59,7 +60,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity.IsTimeInterval(5, 3) && ((entity.GetColumn() - col) * entity.GetFacingX() >= 0 || entity.IsOnGround || entity.IsAIFrozen()))
             {
                 buff.Remove();
-                entity.RemoveBuffs<FlyBuff>();
             }
         }
         public static bool IsParachuting(Entity entity)

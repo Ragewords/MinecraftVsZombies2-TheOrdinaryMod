@@ -41,7 +41,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationBool("Sleep", entity.HasBuff<NocturnalBuff>());
+            entity.SetAnimationBool("Sleep", entity.HasBuff<NocturnalBuff>() || entity.HasBuff<DreamSilkBuff>());
         }
         private void PostEnemyMeleeAttackCallback(VanillaLevelCallbacks.EnemyMeleeAttackParams param, CallbackResult result)
         {

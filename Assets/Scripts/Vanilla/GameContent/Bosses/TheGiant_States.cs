@@ -888,9 +888,10 @@ namespace MVZ2.GameContent.Bosses
                         if (substateTimer.Expired)
                         {
                             entity.PlaySound(VanillaSoundID.zombieHurt, 0.5f);
+                            int count = entity.IsBossRevengeVersion() ? 1 : 5;
                             for (int lane = 0; lane < entity.Level.GetMaxLaneCount(); lane++)
                             {
-                                for (int i = 0; i < 5; i++)
+                                for (int i = 0; i < count; i++)
                                 {
                                     var x = entity.Position.x + 80 * entity.GetFacingX();
                                     var z = entity.Level.GetEntityLaneZ(lane);
