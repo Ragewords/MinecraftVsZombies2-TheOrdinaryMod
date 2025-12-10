@@ -1223,6 +1223,7 @@
                 <id name="mvz2:upgradeFrom" value="mvz2:wooden_dropper" />
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
+                <id name="mvz2:hitSound" value="mvz2:stone" />
 
                 <vector3 name="mvz2:shotOffset" x="25" y="3" z="0" />
                 <vector3 name="mvz2:size" x="32" y="32" z="32" />
@@ -1232,7 +1233,7 @@
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </dispenser>
-        <contraption id="revivegrave" name="还魂冢" tooltip="复活并友好化倒下的亡灵类敌人">
+        <contraption id="revivegrave" name="还魂冢" tooltip="（需要死灵墓碑）\n复活并友好化倒下的亡灵类敌人">
             <unlock>
                 <condition required="mvz2:contraption.revivegrave" />
             </unlock>
@@ -1525,9 +1526,10 @@
                 <vector3 name="mvz2:shadowScale" x="0.6" y="0.6" z="0.6" />
                 <float name="mvz2:damage" value="55" />
                 <float name="mvz2:range" value="160" />
+                <float name="mvz2:gravity" value="0" />
                 <int name="mvz2:waterInteraction" value="0" />
                 <int name="mvz2:airInteraction" value="0" />
-                <float name="mvz2:gravity" value="0" />
+                <int name="mvz2:collisionDetection" value="2" />
                 <id name="mvz2:projectileId" value="mvz2:falling_star" />
                 <id name="mvz2:shootSound" value="mvz2:star" />
                 <id name="mvz2:placement" value="mvz2:suspension" />
