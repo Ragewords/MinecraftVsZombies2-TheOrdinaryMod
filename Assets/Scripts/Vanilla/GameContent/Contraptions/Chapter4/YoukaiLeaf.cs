@@ -8,7 +8,6 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Grids;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
