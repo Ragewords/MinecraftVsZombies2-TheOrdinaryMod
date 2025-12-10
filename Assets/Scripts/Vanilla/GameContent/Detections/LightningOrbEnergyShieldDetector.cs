@@ -22,6 +22,12 @@ namespace MVZ2.GameContent.Detections
             var target = collider.Entity;
             if (target.HasBuff<LightningOrbEnergyShieldBuff>())
                 return false;
+            var selfBounds = self.entity.GetBounds();
+            var bounds = collider.GetBoundingBox();
+            if (bounds.center.x < selfBounds.min.x || bounds.center.x > selfBounds.max.x)
+                return false;
+            if (bounds.center.z < selfBounds.min.z || bounds.center.z > selfBounds.max.z)
+                return false;
             return base.ValidateCollider(self, collider);
         }
     }
