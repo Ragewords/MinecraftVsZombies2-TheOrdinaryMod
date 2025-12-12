@@ -90,7 +90,7 @@
             <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
             <mark sprite="mvz2:ui/almanac/special_marks[5]" />
         </tag>
-        <tag id="shell_statue" name="石像材质" enum="mvz2:shell" priority="2000">
+        <tag id="shell_bomb" name="炸弹材质" enum="mvz2:shell" priority="2000">
             <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
             <mark sprite="mvz2:ui/almanac/special_marks[6]" />
         </tag>
@@ -109,10 +109,6 @@
         <tag id="mass_pot" name="壶质量" enum="mvz2:mass" priority="3000">
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]" />
             <mark sprite="mvz2:ui/almanac/special_marks[5]" />
-        </tag>
-        <tag id="mass_statue" name="石像质量" enum="mvz2:mass" priority="3000">
-            <background sprite="mvz2:ui/almanac/tag_backgrounds[4]" />
-            <mark sprite="mvz2:ui/almanac/special_marks[6]" />
         </tag>
 
 
@@ -1629,19 +1625,22 @@
             </flavor>
         </entry>
         <entry id="mvz2:skelebomb">
+            <tags>
+                <tag id="mvz2:shell_bomb" value="mvz2:metal" />
+            </tags>
             <header>
-                <p>爆破骨兵抱着一个随时都会爆炸的炸弹，并在死亡时将炸弹留下。</p>
+                <p>爆破骨兵抱着一个随时都会爆炸的炸弹，死亡时手中的炸弹会掉落。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+270</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>炸弹耐久：<![CDATA[<color=red>300</color>]]></p>
                 <p>爆炸伤害：<![CDATA[<color=red>300</color>]]></p>
-                <p>范围：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>特点：<![CDATA[<color=red>受到冲击时会被立即引爆，造成无差别伤害</color>]]></p>
+                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>特点：<![CDATA[<color=red>受到冲击伤害时会被立即引爆，并转而对友方单位造成伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>当他抱起那颗炸弹时，他的心中便有了一股信念：用自己生命最后的火花，创造出最为绚烂的爆炸。</p>
-                <p>“艺术即是爆炸，而我，生来就是艺术家。”</p>
+                <p>爆破骨兵十分崇尚爆破并将其认定为是一种艺术，他宣扬爆破中可能蕴含的艺术感，可惜没有人敢认同他的观点。</p>
             </flavor>
         </entry>
         <entry id="mvz2:silverfish">
@@ -1651,10 +1650,10 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone" /><tag id="mvz2:shell" enum="mvz2:netherrack" />石头造成5倍伤害</color>]]></p>
+                <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone" />石头造成5倍伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>它每周花5天时间来申请挖掘石头的许可证。</p>
+                <p>众所周知，石头是蠹虫的天然栖息地。很明显石头做成的器械不是。</p>
             </flavor>
         </entry>
         <entry id="mvz2:spellcaster">
@@ -1671,10 +1670,6 @@
             </flavor>
         </entry>
         <entry id="mvz2:tanooki_zombie">
-            <tags>
-                <tag id="mvz2:shell_statue" value="mvz2:stone" />
-                <tag id="mvz2:mass_statue" value="1" />
-            </tags>
             <header>
                 <p>妖怪狸僵尸会跳起来变成地藏雕像，然后砸扁你的器械。</p>
             </header>

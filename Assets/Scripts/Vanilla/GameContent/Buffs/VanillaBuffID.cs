@@ -509,6 +509,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID mineTNTInvincible = Get(VanillaBuffNames.Contraption.mineTNTInvincible);
 
             // Chapter 1
+            public static readonly NamespaceID abyss = Get(VanillaBuffNames.Contraption.abyss);
             public static readonly NamespaceID moonlightSensorLaunching = Get(VanillaBuffNames.Contraption.moonlightSensorLaunching);
             public static readonly NamespaceID moonlightSensorEvoked = Get(VanillaBuffNames.Contraption.moonlightSensorEvoked);
             public static readonly NamespaceID glowstoneEvoke = Get(VanillaBuffNames.Contraption.glowstoneEvoke);

@@ -215,7 +215,7 @@ namespace MVZ2.Vanilla.Enemies
                 target.Velocity = vel;
             }
             // 将目标眩晕，略过爆破骨兵。
-            if (target.CanDeactive() && !target.IsEntityOf(VanillaEnemyID.skelebomb))
+            if (target.CanDeactive())
             {
                 target.Stun(Ticks.FromSeconds(STUN_SECONDS / 3));
             }

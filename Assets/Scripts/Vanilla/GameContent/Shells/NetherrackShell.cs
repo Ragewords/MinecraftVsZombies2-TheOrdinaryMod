@@ -29,10 +29,6 @@ namespace MVZ2.GameContent.Shells
             {
                 damageInfo.Multiply(20);
             }
-            if (damageInfo.Source?.DefinitionID == VanillaEnemyID.silverfish)
-            {
-                damageInfo.Multiply(5);
-            }
         }
     }
 }

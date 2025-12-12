@@ -11,7 +11,6 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
-using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -138,7 +137,16 @@ namespace MVZ2.GameContent.Enemies
             var scale = entity.GetFinalScale();
             var scaleX = Mathf.Abs(scale.x);
             var range = entity.GetRange() * scaleX;
-            entity.Explode(entity.GetCenter(), range, faction, damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE));
+
+            DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE);
+            if (entity.HasBuff<SkelebombPunchedBuff>())
+            {
+                entity.ExplodeAgainstFriendly(entity.GetCenter(), range, faction, damage, damageEffectList);
+            }
+            else
+            {
+                entity.Explode(entity.GetCenter(), range, faction, damage, damageEffectList);
+            }
 
             Explosion.Spawn(entity, entity.GetCenter(), range);
             entity.PlaySound(VanillaSoundID.explosion, scaleX == 0 ? 1000 : 1 / (scaleX));

@@ -22,22 +22,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.curseOfTheAbyss, VanillaModelID.curseOfTheAbyss);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback, filter: EntityTypes.PLANT);
         }
-        public override void PostAdd(Buff buff)
-        {
-            base.PostAdd(buff);
-            buff.SetProperty(PROP_TIMEOUT, 2);
-        }
-        public override void PostUpdate(Buff buff)
-        {
-            base.PostUpdate(buff);
-            var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
-            timeout--;
-            buff.SetProperty(PROP_TIMEOUT, timeout);
-            if (timeout <= 0)
-            {
-                buff.Remove();
-            }
-        }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
@@ -56,7 +40,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         {
             buff.SetProperty(PROP_FACTION, value);
         }
-        public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         public static readonly VanillaBuffPropertyMeta<int> PROP_FACTION = new VanillaBuffPropertyMeta<int>("Faction");
     }
 }

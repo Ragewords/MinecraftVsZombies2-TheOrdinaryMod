@@ -31,6 +31,33 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.UpdateShineRing();
+
+            illuminateBuffer.Clear();
+            entity.Level.GetIlluminatiingEntities(entity, illuminateBuffer);
+            foreach (var id in illuminateBuffer)
+            {
+                var ent = entity.Level.FindEntityByID(id);
+                if (!ent.ExistsAndAlive())
+                    continue;
+                if (ent.Type == EntityTypes.PLANT)
+                {
+                    bool playSound = false;
+                    if (ent.IsCharmed())
+                    {
+                        ent.RemoveCharm(new EntitySourceReference(entity));
+                        playSound = true;
+                    }
+                    if (ent.IsMesmerized())
+                    {
+                        ent.RemoveMesmerize(new EntitySourceReference(entity));
+                        playSound = true;
+                    }
+                    if (playSound)
+                    {
+                        ent.PlaySound(VanillaSoundID.mindClear);
+                    }
+                }
+            }
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -80,28 +107,11 @@ namespace MVZ2.GameContent.Contraptions
                     var ent = level.FindEntityByID(id);
                     if (!ent.ExistsAndAlive() || !ent.IsVulnerableEntity())
                         continue;
-                    if (ent.Type == EntityTypes.PLANT)
-                    {
-                        bool playSound = false;
-                        if (ent.IsCharmed())
-                        {
-                            ent.RemoveCharm(new EntitySourceReference(source));
-                            playSound = true;
-                        }
-                        if (ent.IsMesmerized())
-                        {
-                            ent.RemoveMesmerize(new EntitySourceReference(source));
-                            playSound = true;
-                        }
-                        if (playSound)
-                        {
-                            ent.PlaySound(VanillaSoundID.mindClear);
-                        }
-                    }
                     results.Add(ent);
                 }
             }
             private HashSet<long> detectBuffer = new HashSet<long>();
         }
+        private HashSet<long> illuminateBuffer = new HashSet<long>();
     }
 }
