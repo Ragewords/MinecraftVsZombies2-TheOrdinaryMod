@@ -82,8 +82,11 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f;
                 SetArmExtension(entity, extension);
                 
-                var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 3f, 0.001f);
-                SetKnockBackMultipiler(entity, push);
+                if (!entity.Level.IsIZombie())
+                {
+                    var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 3f, 0.001f);
+                    SetKnockBackMultipiler(entity, push);
+                }
 
                 if (detector.DetectExists(entity))
                 {

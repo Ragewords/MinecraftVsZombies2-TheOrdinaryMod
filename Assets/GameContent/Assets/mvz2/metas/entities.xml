@@ -1930,7 +1930,7 @@
             </behaviours>
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:wicked_hermit_hat" />
-                <int name="mvz2:cost" value="175" />
+                <int name="mvz2:cost" value="150" />
             </properties>
         </humanoid>
         <humanoid id="shikaisen_zombie" name="尸解仙僵尸" deathMessage="那我怎么没复活？">

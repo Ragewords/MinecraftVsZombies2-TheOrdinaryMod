@@ -154,12 +154,12 @@ namespace MVZ2.GameContent.Contraptions
                             if (!entity.Level.IsIZombie())
                             {
                                 entity.Level.Spawn(VanillaPickupID.starshard, entity.Position, entity);
-                            }
-                            var id = GetEatenEntityID(entity);
-                            if (id != null)
-                            {
-                                var offset = GoldenApple.higherSpawnPositionFilter.Contains(id) ? new Vector3(0, 20, 0) : Vector3.zero;
-                                var enemy = entity.SpawnWithParams(id, entity.Position + offset);
+                                var id = GetEatenEntityID(entity);
+                                if (id != null)
+                                {
+                                    var offset = GoldenApple.higherSpawnPositionFilter.Contains(id) ? new Vector3(0, 20, 0) : Vector3.zero;
+                                    var enemy = entity.SpawnWithParams(id, entity.Position + offset);
+                                }
                             }
                             entity.Remove();
                             entity.Level.Spawn(VanillaEffectID.smokeCluster, entity.GetCenter(), entity)?.Let(e =>
