@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.Bosses
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetStateTimer(entity, new FrameTimer(SHOOT_COOLDOWN));
+            SetStateTimer(entity, new FrameTimer(TRANSITION_COOLDOWN));
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 40f);
             entity.AddBuff<FrankensteinSteelBuff>();
@@ -37,7 +37,7 @@ namespace MVZ2.GameContent.Bosses
         }
         protected override void UpdateAI(Entity enemy)
         {
-            var shootTimer = GetStateTimer(enemy);
+            var transitionTimer = GetStateTimer(enemy);
             var state = GetState(enemy);
             var mode = GetMode(enemy);
             Vector3 target = GetMoveTarget(enemy);
@@ -45,14 +45,15 @@ namespace MVZ2.GameContent.Bosses
             posi.x = posi.x * 0.8f + target.x * 0.2f;
             posi.z = posi.z * 0.8f + target.z * 0.2f;
             enemy.Position = posi;
+            var speed = Frankenstein.GetFrankensteinActionSpeed(enemy);
 
             switch (state)
             {
                 case SUBSTATE_GUN_READY:
-                    if (shootTimer.RunToExpiredAndNotNull(enemy.GetAttackSpeed()))
+                    if (transitionTimer.RunToExpiredAndNotNull(speed))
                     {
                         enemy.SetAnimationBool("JawOpen", true);
-                        shootTimer.ResetTime(SHOOT_DURATION);
+                        transitionTimer.ResetTime(TRANSITION_INTERVAL);
                         var pos = enemy.Position;
                         var level = enemy.Level;
                         pos.x = level.GetEntityColumnX(enemy.IsFacingLeft() ? enemy.RNG.Next(level.GetMaxColumnCount() - 4, level.GetMaxColumnCount() - 1) : enemy.RNG.Next(0, 3));
@@ -64,25 +65,25 @@ namespace MVZ2.GameContent.Bosses
                     }
                     break;
                 case SUBSTATE_PRE_FIRE:
-                    if (shootTimer.RunToExpiredAndNotNull(enemy.GetAttackSpeed()))
+                    if (transitionTimer.RunToExpiredAndNotNull(speed))
                     {
                         enemy.SetAnimationBool("JawOpen", true);
-                        shootTimer.ResetTime(SHOOT_DURATION / 2);
+                        transitionTimer.ResetTime(TRANSITION_INTERVAL / 2);
                         SetState(enemy, SUBSTATE_GUN_FIRE);
                     }
                     break;
                 case SUBSTATE_GUN_FIRE:
-                    if (shootTimer.RunToExpiredAndNotNull(enemy.GetAttackSpeed()))
+                    if (transitionTimer.RunToExpiredAndNotNull())
                     {
                         switch (mode)
                         {
                             case GUN_MODE:
                                 {
                                     var fireTimer = GetFireTimer(enemy);
-                                    if (fireTimer.RunToExpiredAndNotNull(enemy.GetAttackSpeed()))
+                                    if (fireTimer.RunToExpiredAndNotNull())
                                     {
                                         enemy.SetAnimationBool("JawOpen", false);
-                                        shootTimer.ResetTime(SHOOT_COOLDOWN);
+                                        transitionTimer.ResetTime(TRANSITION_COOLDOWN);
                                         fireTimer.Reset();
                                         SetState(enemy, SUBSTATE_GUN_READY);
                                         SetMode(enemy, MISSILE_MODE);
@@ -120,7 +121,7 @@ namespace MVZ2.GameContent.Bosses
                                     SetMoveTarget(enemy, pos);
                                     SetMode(enemy, GUN_MODE);
                                     enemy.SetAnimationBool("JawOpen", false);
-                                    shootTimer.ResetTime(SHOOT_COOLDOWN);
+                                    transitionTimer.ResetTime(TRANSITION_COOLDOWN);
                                     SetState(enemy, SUBSTATE_GUN_READY);
                                 }
                                 break;
@@ -205,8 +206,8 @@ namespace MVZ2.GameContent.Bosses
             boss.SetBehaviourField(ID, PROP_MOVE_TARGET, target);
         }
         public static readonly NamespaceID ID = VanillaBossID.frankensteinsHead;
-        public const int SHOOT_COOLDOWN = 300;
-        public const int SHOOT_DURATION = 20;
+        public const int TRANSITION_COOLDOWN = 180;
+        public const int TRANSITION_INTERVAL = 20;
         private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MoveTarget");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_FIRE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("FireTimer");
