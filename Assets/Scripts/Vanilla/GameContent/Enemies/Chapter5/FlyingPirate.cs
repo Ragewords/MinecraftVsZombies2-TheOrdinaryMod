@@ -54,22 +54,13 @@ namespace MVZ2.GameContent.Enemies
             entity.SetModelProperty("Parachute", parachute);
             if (!parachute)
             {
-                bool paragliderDiscard = entity.GetProperty<bool>(PROP_PARAGLIDER_DISCARDED);
-                if (!paragliderDiscard)
-                {
-                    entity.SetProperty(PROP_PARAGLIDER_DISCARDED, true);
-                    entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter() + Vector3.up * 60, entity)?.Let(e =>
-                    {
-                        e.Velocity = entity.GetFacingDirection() * 10;
-                        e.ChangeModel(VanillaModelID.flyingPirateParaglider);
-                        e.SetDisplayScale(entity.GetDisplayScale());
-                    });
-                }
+                DiscardParaglider(entity);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
+            entity.RemoveBuffs<FlyingPirateGlideBuff>();
             if (entity.HasBuff<BoatBuff>())
             {
                 entity.RemoveBuffs<BoatBuff>();
@@ -81,6 +72,20 @@ namespace MVZ2.GameContent.Enemies
                     e.SetDisplayScale(entity.GetDisplayScale());
                 });
             }
+        }
+        private void DiscardParaglider(Entity entity)
+        {
+            bool paragliderDiscard = entity.GetProperty<bool>(PROP_PARAGLIDER_DISCARDED);
+            if (!paragliderDiscard)
+            {
+                entity.SetProperty(PROP_PARAGLIDER_DISCARDED, true);
+                entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter() + Vector3.up * 60, entity)?.Let(e =>
+                {
+                    e.Velocity = entity.GetFacingDirection() * 10;
+                    e.ChangeModel(VanillaModelID.flyingPirateParaglider);
+                    e.SetDisplayScale(entity.GetDisplayScale());
+                });
+            }  
         }
         public const int TARGET_COLUMN = 4;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_PARAGLIDER_DISCARDED = new VanillaEntityPropertyMeta<bool>("paraglider_discarded");

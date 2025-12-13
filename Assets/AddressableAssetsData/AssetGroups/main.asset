@@ -11536,6 +11536,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcc13b93d1db2914c9a0269539c373ae
+    m_Address: mvz2:arcade/blueprint_crisis
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dcf98e882d10faa409874c20f6534d4c
     m_Address: mvz2:entity/armor/flying_pirate_hat
     m_ReadOnly: 0

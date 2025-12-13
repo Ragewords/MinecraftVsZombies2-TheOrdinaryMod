@@ -17,6 +17,8 @@ namespace MVZ2.GameContent.Carts
         public override void PostCrush(Entity entity, Entity other)
         {
             base.PostCrush(entity, other);
+            if (!other.IsVulnerableEntity())
+                return;
             entity.PlaySound(VanillaSoundID.punch);
             other.Velocity += entity.GetFacingDirection() * 40f + Vector3.up * 20f;
         }

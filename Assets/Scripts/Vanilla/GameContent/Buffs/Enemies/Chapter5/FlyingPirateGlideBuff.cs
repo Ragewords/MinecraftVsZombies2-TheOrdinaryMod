@@ -50,7 +50,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
 
             bool paragliderDiscard = entity.GetProperty<bool>(FlyingPirate.PROP_PARAGLIDER_DISCARDED);
-            if (paragliderDiscard || entity.IsDead)
+            if (paragliderDiscard)
             {
                 buff.Remove();
                 return;

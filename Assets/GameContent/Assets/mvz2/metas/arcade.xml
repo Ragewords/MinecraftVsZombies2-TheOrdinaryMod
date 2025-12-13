@@ -21,5 +21,5 @@
     <puzzle id="puzzle_all_your_observes_are_belong_to_us" stage="mvz2:puzzle_all_your_observes_are_belong_to_us" area="mvz2:mausoleum_minigame" icon="mvz2:arcade/i_zombie" hiddenUntil="mvz2:level.puzzle_mineclear" />
     <puzzle id="puzzle_i_zombie_endless" stage="mvz2:puzzle_i_zombie_endless" area="mvz2:mausoleum_minigame" icon="mvz2:arcade/i_zombie" hiddenUntil="mvz2:level.puzzle_fire_in_the_hole" />
 
-    <puzzle id="pushing_box" stage="mvz2:pushing_box" area="mvz2:halloween" icon="mvz2:arcade/i_zombie" />
+    <puzzle id="pushing_box" stage="mvz2:pushing_box" area="mvz2:halloween" icon="mvz2:arcade/blueprint_crisis" />
 </arcade>
