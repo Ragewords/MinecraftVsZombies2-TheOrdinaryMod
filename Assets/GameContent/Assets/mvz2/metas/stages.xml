@@ -1854,4 +1854,24 @@
             <bool name="autoCollectMoney" value="true" />
         </properties>
     </stage>
+
+    <!-- Blueprint Crisis -->
+    <stage id="pushing_box" name="推箱子" needBlueprints="false" type="puzzle" startEnergy="100">
+        <unlock>
+            <condition required="mvz2:level.halloween_EX2" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.trophy" trophy="true" />
+        <blueprints>
+            <blueprint id="mvz2:moonlight_sensor" />
+            <blueprint id="mvz2:punchton" />
+            <blueprint id="mvz2:obsidian" />
+        </blueprints>
+        <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
+            <spawn id="mvz2:skelebomb" />
+        </spawns>
+        <properties>
+            <integer name="statueCount" value="5" />
+        </properties>
+        <time firstWave="30" />
+    </stage>
 </stages>

@@ -32,7 +32,9 @@ namespace MVZ2.GameContent.GlobalCallbacks
         {
             var level = param.level;
             if (!level.HasBuff<CommandBlockSeedPackCheckBuff>())
+            {   
                 level.AddBuff<CommandBlockSeedPackCheckBuff>();
+            }
         }
         private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {

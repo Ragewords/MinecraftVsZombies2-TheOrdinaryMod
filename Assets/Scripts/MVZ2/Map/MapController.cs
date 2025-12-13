@@ -690,7 +690,7 @@ namespace MVZ2.Map
 
             for (int i = 0; i < model.GetExtraMapButtonCount(); i++)
             {
-                var j = i + 11;
+                var j = i + model.GetMapButtonCount();
                 var unlocked = IsLevelUnlocked(j);
                 var cleared = IsLevelCleared(j);
                 var stageType = GetStageType(j);
@@ -698,7 +698,7 @@ namespace MVZ2.Map
                 var color = buttonColorClearedExtra;
                 if (!unlocked)
                     color = buttonColorLocked;
-                else if (stageType == StageTypes.TYPE_MINIGAME)
+                else if (stageType == StageTypes.TYPE_MINIGAME || stageType == StageTypes.TYPE_PUZZLE)
                     color = buttonColorMinigame;
                 else if (stageType == StageTypes.TYPE_BOSS)
                     color = buttonColorBoss;

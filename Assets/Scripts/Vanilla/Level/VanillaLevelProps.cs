@@ -25,6 +25,15 @@ namespace MVZ2.Vanilla.Level
         }
         #endregion
 
+        #region 给定蓝图
+
+        public static readonly PropertyMeta<NamespaceID[]> BLUEPRINT_SET = Get<NamespaceID[]>("blueprintSet");
+        public static NamespaceID[]? GetBlueprintSet(this LevelEngine game)
+        {
+            return game.GetProperty<NamespaceID[]>(BLUEPRINT_SET);
+        }
+        #endregion
+
         #region 出怪池
 
         public static readonly PropertyMeta<NamespaceID[]> ENEMY_POOL = Get<NamespaceID[]>("enemyPool");

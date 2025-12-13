@@ -46,6 +46,7 @@ namespace MVZ2.Metas
         public float SpawnPointsMultiplier { get; private set; }
         public float SpawnPointsAddition { get; private set; }
         public NamespaceID[]? Spawns { get; private set; }
+        public NamespaceID[]? Blueprints { get; private set; }
         public ConveyorPoolEntry[]? ConveyorPool { get; private set; }
 
         public float FirstWaveTime { get; private set; }
@@ -139,6 +140,21 @@ namespace MVZ2.Metas
                 }
             }
 
+            var blueprintNode = node["blueprints"];
+            NamespaceID[]? blueprints = null;
+            if (blueprintNode != null)
+            {
+                blueprints = new NamespaceID[blueprintNode.ChildNodes.Count];
+                for (int i = 0; i < blueprints.Length; i++)
+                {
+                    var childNode = blueprintNode.ChildNodes[i];
+                    var item = childNode.GetAttributeNamespaceID("id", defaultNsp);
+                    if (item == null)
+                        continue;
+                    blueprints[i] = item;
+                }
+            }
+
             var timeNode = node["time"];
             var firstWaveTime = timeNode?.GetAttributeFloat("firstWave") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
             var endlessFirstWaveTime = timeNode?.GetAttributeFloat("endlessFirstWave") ?? 6f;
@@ -178,6 +194,7 @@ namespace MVZ2.Metas
                 StartTransition = transition,
 
                 ConveyorPool = conveyorPool,
+                Blueprints = blueprints,
 
                 TotalFlags = flags,
                 Spawns = spawns,

@@ -37,10 +37,13 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             entity.SetModelProperty("NotHoldingBomb", !GetExplode(entity));
             var stateTimer = GetStateTimer(entity);
+            if (!GetExplode(entity))
+                return;
             if (entity.State == STATE_SPECIAL_MOVE)
             {
                 if (stateTimer.RunToExpiredOrNull())
                 {
+                    EndCasting(entity);
                     SetExplode(entity, false);
                     Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
                     entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), entity);

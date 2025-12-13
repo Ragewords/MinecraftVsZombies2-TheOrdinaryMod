@@ -120,6 +120,9 @@ namespace MVZ2.GameContent.Stages
         public const string puzzleAllYourObservesAreBelongToUs = "puzzle_all_your_observes_are_belong_to_us";
         public const string puzzleIZombieEndless = "puzzle_i_zombie_endless";
 
+        // Blueprint Crisis
+        public const string pushingBox = "pushing_box";
+
         public const string iZombieDebug = "i_zombie_debug";
     }
     public static class VanillaStageID

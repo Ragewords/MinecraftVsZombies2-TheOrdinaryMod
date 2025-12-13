@@ -554,6 +554,7 @@ namespace MVZ2.Modding
                 stageDef.SetProperty(VanillaStageProps.WAVE_ADVANCE_HEALTH_PERCENT, meta.AdvanceHealthPercent);
 
                 stageDef.SetProperty(VanillaLevelProps.ENEMY_POOL, meta.Spawns);
+                stageDef.SetProperty(VanillaLevelProps.BLUEPRINT_SET, meta.Blueprints);
                 stageDef.SetProperty<IStageTalkMeta[]>(LogicStageProps.TALKS, meta.Talks);
                 stageDef.SetProperty<IConveyorPoolEntry[]>(LogicStageProps.CONVEYOR_POOL, meta.ConveyorPool);
 
