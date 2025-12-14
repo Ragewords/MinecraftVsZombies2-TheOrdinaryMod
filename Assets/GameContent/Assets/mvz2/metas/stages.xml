@@ -45,7 +45,7 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
         </spawns>
-        <time firstWave="60" />
+        <time firstWave="60" firstWaveLunatic="90" />
     </stage>
     <stage id="starshard_tutorial" name="教程关" type="special">
         <camera transition="to_lawn" />

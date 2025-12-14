@@ -27,6 +27,11 @@ namespace PVZEngine.Level
         {
             return level.GetProperty<float>(FIRST_WAVE_TIME);
         }
+        public static readonly PropertyMeta<float> LUNATIC_FIRST_WAVE_TIME = Get<float>("lunaticFirstWaveTime");
+        public static float GetLunaticFirstWaveTime(this LevelEngine level)
+        {
+            return level.GetProperty<float>(LUNATIC_FIRST_WAVE_TIME);
+        }
 
         public static readonly PropertyMeta<float> CONTINUED_FIRST_WAVE_TIME = Get<float>("continuedFirstWaveTime");
         public static float GetContinutedFirstWaveTime(this LevelEngine level)

@@ -50,6 +50,7 @@ namespace MVZ2.Metas
         public ConveyorPoolEntry[]? ConveyorPool { get; private set; }
 
         public float FirstWaveTime { get; private set; }
+        public float FirstWaveTimeInLunatic { get; private set; }
         public float EndlessFirstWaveTime { get; private set; }
         public float MaxWaveTime { get; private set; }
         public float AdvanceWaveTime { get; private set; }
@@ -157,6 +158,7 @@ namespace MVZ2.Metas
 
             var timeNode = node["time"];
             var firstWaveTime = timeNode?.GetAttributeFloat("firstWave") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
+            var firstWaveTimeinLunatic = timeNode?.GetAttributeFloat("firstWaveLunatic") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
             var endlessFirstWaveTime = timeNode?.GetAttributeFloat("endlessFirstWave") ?? 6f;
             var maxWaveTime = timeNode?.GetAttributeFloat("waveMax") ?? 30;
             var advanceWaveTime = timeNode?.GetAttributeFloat("waveAdvance") ?? 10;
@@ -200,6 +202,7 @@ namespace MVZ2.Metas
                 Spawns = spawns,
 
                 FirstWaveTime = firstWaveTime,
+                FirstWaveTimeInLunatic = firstWaveTimeinLunatic,
                 EndlessFirstWaveTime = endlessFirstWaveTime,
                 MaxWaveTime = maxWaveTime,
                 AdvanceWaveTime = advanceWaveTime,
