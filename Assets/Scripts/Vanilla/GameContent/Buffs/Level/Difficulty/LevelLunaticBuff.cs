@@ -23,6 +23,7 @@ namespace MVZ2.GameContent.Buffs.Level
 
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.USE_LUNATIC_PROPERTY, true));
             AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.NAPSTABLOOK_PARALYSIS_TIME, IntegerOperator.Multiply, 2));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GHAST_DAMAGE_MULTIPLIER, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.MOTHER_TERROR_EGG_COUNT, IntegerOperator.Add, 1));
