@@ -2108,6 +2108,7 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1355251931, guid: e45d0cf1efcdf424ca5b2b1bbc8b18a8, type: 3}
     - {fileID: 1296306111, guid: e45d0cf1efcdf424ca5b2b1bbc8b18a8, type: 3}
+    - {fileID: -1253465293, guid: e45d0cf1efcdf424ca5b2b1bbc8b18a8, type: 3}
   - name: entity/contraption/revivegrave
     spritesheet:
     - {fileID: -1745854922, guid: 39ca426b1588ec44b8ebe1bdae2af8ea, type: 3}

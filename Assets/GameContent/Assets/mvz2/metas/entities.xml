@@ -1057,7 +1057,7 @@
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
-        <dispenser id="repeatenser" name="比较发射器" tooltip="交替射出一或两支箭矢">
+        <dispenser id="repeatenser" name="连射发射器" tooltip="交替射出两次箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_4" />
             </unlock>

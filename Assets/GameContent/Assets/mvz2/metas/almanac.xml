@@ -41,7 +41,7 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[4]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
-        <tag id="placement_repeatenser" name="升级器械：比较发射器" description="必须放置在比较发射器上" priority="0">
+        <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0">
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
@@ -811,7 +811,7 @@
         </entry>
         <entry id="mvz2:repeatenser">
             <header>
-                <p>比较发射器连续射击两次，能够交替发射一或两支箭矢。</p>
+                <p>连射发射器能够交替发射一或两支箭矢两次。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1+2支/1.5秒</color>]]></p>
@@ -820,7 +820,7 @@
             </properties>
             <flavor>
                 <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
-                <p>它没能有幸加入！高频脉冲发射器的！士兵队伍！因为它！每次说话！都要说两遍！而且！第二遍！一定要用！感叹号！断句！</p>
+                <p>它没能有幸加入高频脉冲发射器的士兵队伍！因为它每次说话都要说两遍！</p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">

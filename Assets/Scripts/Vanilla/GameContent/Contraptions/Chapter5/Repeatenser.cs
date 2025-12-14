@@ -53,6 +53,11 @@ namespace MVZ2.GameContent.Contraptions
                 EvokedUpdate(entity);
             }
         }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            entity.SetModelProperty("DoubleShooter", DoubleShoot(entity));
+        }
         public override void OnShootTick(Entity entity)
         {
             int count = REPEAT_COUNT;
