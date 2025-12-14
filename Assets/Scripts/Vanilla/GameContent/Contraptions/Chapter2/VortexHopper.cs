@@ -4,19 +4,15 @@ using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
-using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -31,7 +27,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
-            SetRepeatTimer(entity, new FrameTimer(30));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -39,37 +34,19 @@ namespace MVZ2.GameContent.Contraptions
             if (entity.State == STATE_SPIN)
             {
                 DragEnemiesNearby(entity);
-                var repeatTimer = GetRepeatTimer(entity);
-                var dir = GetDir(entity);
-                SetDir(entity, dir + 5);
-                if (repeatTimer == null || repeatTimer.Expired)
+                int sinkSpeed = 1;
+                int sinkBottom = -48;
+                if (entity.IsAboveCloud())
                 {
-                    var relativeY = entity.GetRelativeY();
-                    relativeY -= 1;
-                    entity.SetRelativeY(relativeY);
-                    if (relativeY <= -48)
-                    {
-                        entity.Remove();
-                    }
+                    sinkSpeed = 10;
+                    sinkBottom = -480;
                 }
-                else
+                var relativeY = entity.GetRelativeY();
+                relativeY -= sinkSpeed;
+                entity.SetRelativeY(relativeY);
+                if (relativeY <= sinkBottom)
                 {
-                    repeatTimer.Run();
-                    if (repeatTimer.PassedInterval(3))
-                    {
-                        for (int i = 0; i < 12; i++)
-                        {
-                            var direction = Quaternion.Euler(0, i * 30 + dir, 0) * new Vector3(1f, 0f, 0f) * 12;
-                            var shootParam = entity.GetShootParams();
-                            shootParam.projectileID = VanillaProjectileID.arrowBullet;
-                            shootParam.position = entity.GetCenter() + direction;
-                            shootParam.velocity = direction;
-                            entity.ShootProjectile(shootParam)?.Let(e =>
-                            {
-                                e.SetHSVToColor(Color.blue);
-                            });
-                        }
-                    }
+                    entity.Remove();
                 }
             }
         }
@@ -77,6 +54,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateLogic(entity);
             entity.SetAnimationBool("Spinning", entity.State == STATE_SPIN);
+            entity.SetModelProperty("InWater", entity.IsInWater());
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -118,7 +96,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             if (target.IsDead || !hopper.IsHostile(target) || !Detection.CanDetect(target))
                 return false;
-            if (!target.IsInWater())
+            if (!target.IsInWater() && !target.IsInCloud())
                 return false;
             return true;
         }
@@ -173,17 +151,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const int STATE_IDLE = VanillaContraptionStates.IDLE;
         public const int STATE_SPIN = VanillaContraptionStates.VORTEX_HOPPER_SPIN;
-
-        public static FrameTimer? GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_REPEAT_TIMER);
-        public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_REPEAT_TIMER, timer);
-        public static int GetDir(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_DIR);
-        public static void SetDir(Entity entity, int timer) => entity.SetBehaviourField(ID, PROP_DIR, timer);
-
-        private static readonly NamespaceID ID = VanillaContraptionID.vortexHopper;
-        public static readonly Vector3 BULLET_HSV_OFFSET = new Vector3(225, 100, 100);
         public const float EVOKED_SPIN_RADIUS = 120;
         public const float SPIN_RADIUS = 40;
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
-        public static readonly VanillaEntityPropertyMeta<int> PROP_DIR = new VanillaEntityPropertyMeta<int>("Dir");
     }
 }

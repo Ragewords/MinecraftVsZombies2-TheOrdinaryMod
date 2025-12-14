@@ -16,6 +16,10 @@
             <icon sprite="mvz2:ui/almanac/placement_tags[3]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#4587a6" />
         </tag>
+        <tag id="placement_unsodded" name="非陆生器械" description="不能放置在地面上" priority="0">
+            <icon sprite="mvz2:ui/almanac/placement_tags[4]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#57433c" />
+        </tag>
 
         <tag id="placement_infectenser" name="升级器械：小型发射器" description="必须放置在小型发射器上" priority="0">
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[0]" />
@@ -276,7 +280,7 @@
         </entry>
         <entry id="mvz2:mine_tnt">
             <header>
-                <p>地雷TNT在一定时间的准备后能够炸飞接近的敌方怪物。</p>
+                <p>地雷TNT在一定时间的准备后能够炸飞接近的敌方怪物。放下后，地雷TNT会向所在列的随机一个空位投掷新的地雷TNT。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
@@ -439,14 +443,13 @@
         </entry>
         <entry id="mvz2:vortex_hopper">
             <header>
-                <p>漩涡漏斗在旋转时会把接近它的所有僵尸拖入水底，同时射出大量穿透箭头弹。</p>
+                <p>漩涡漏斗在旋转时会把接近它的所有僵尸拖入水底。</p>
             </header>
             <properties>
-                <p>弹幕伤害：<![CDATA[<color=red>30</color>]]></p>
                 <p>技能：<![CDATA[<color=red>将更大范围的敌方怪物拉入水底</color>]]></p>
             </properties>
             <flavor>
-                <p>他无聊的时候经常一边把自己当陀螺抽一边唱：“Well I talk about it talk about it talk about it talk about it”</p>
+                <p>它无聊的时候经常把自己当陀螺抽，或者按它的说法是在“模仿某种金字塔物体”。</p>
             </flavor>
         </entry>
         <entry id="mvz2:pistenser">
@@ -1109,16 +1112,16 @@
         </entry>
         <entry id="mvz2:dimension_hammer">
             <header>
-                <p>次元锤锤击地面，击晕地面上的怪物并发射弹幕。</p>
+                <p>次元锤会猛击地面上的敌怪，把它们砸晕，同时迸发出大量穿透的箭头弹幕。</p>
             </header>
             <properties>
-                <p>范围：<![CDATA[<color=red>1格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>150（锤击），50（弹幕）</color>]]></p>
+                <p>砸击半径：<![CDATA[<color=red>0.5格</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>300（砸击），50（弹幕）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>一次性使用</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
-                <p>次元锤是个物理发烧友，它致力于探索多元宇宙的无限可能性。它的家里摆着一本笑话书，里面夹着一本量子物理学书，再里面夹着一本笑话书，再再里面还夹着……</p>
+                <p>次元锤是个致力于探索多元宇宙无限可能性的物理迷。它的家里摆着一本笑话书，里面有无数本量子物理学书和笑话书互相夹在一起。</p>
             </flavor>
         </entry>
         <entry id="mvz2:fire_charge_dispenser">

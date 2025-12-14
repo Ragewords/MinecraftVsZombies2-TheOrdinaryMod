@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7010453786866649100}
   - component: {fileID: 1112074177820151150}
+  - component: {fileID: 6624215099869114221}
   m_Layer: 0
   m_Name: GroundMask
   m_TagString: Untagged
@@ -262,6 +263,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockToGround: 1
+--- !u!114 &6624215099869114221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551686599154844299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a287da23b59d7e42be6baeb5ac11e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenFalse: 0
+  propertyName: InWater
 --- !u!1 &7669157021908023082
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace MVZ2.GameContent.Areas
         public static readonly NamespaceID night = Get("night");
         public static readonly NamespaceID water = Get("water");
         public static readonly NamespaceID noWater = Get("no_water");
+        public static readonly NamespaceID landOnly = Get("land_only");
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

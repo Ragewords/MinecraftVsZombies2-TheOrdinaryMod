@@ -60,13 +60,29 @@ namespace MVZ2.GameContent.Contraptions
         public static void ApplyJewelEffect(Entity entity)
         {
             int jewelCount = GetRestrictedGridCount(entity);
+            if (jewelCount >= LEAST_JEWELS)
+            {
+                entity.PlaySound(VanillaSoundID.goldenBomb);
+                entity.PlaySound(VanillaSoundID.coinDestroy);
+                var laneGrids = entity.Level.GetAllGrids().Where(g => g.Lane == entity.GetLane());
+                foreach (var grid in laneGrids)
+                {
+                    foreach (var buff in grid.GetBuffs(VanillaBuffID.Grid.emeraldGrid))
+                    {
+                        EmeraldGridBuff.Flash(buff);
+                    }
+                }
+            }
+
             var damage = entity.GetDamage();
             if (jewelCount == BLAST)
             {
+                entity.SetProperty(PROP_LIGHT_COLOR, BLAST_JEWEL);
                 TNT.Explode(entity, 120, damage * 9);
             }
             else if (jewelCount == LIGHTNING)
             {
+                entity.SetProperty(PROP_LIGHT_COLOR, LIGHTNING_JEWEL);
                 entity.PlaySound(VanillaSoundID.tridentThunder);
                 entity.Level.Thunder();
                 var border_distance = 1600f;
@@ -92,22 +108,12 @@ namespace MVZ2.GameContent.Contraptions
             }
             else if (jewelCount >= CHAOS)
             {
+                entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
                 lawnDetector.DetectEntities(entity, lawnBuffer);
                 foreach (var entityCollider in lawnBuffer)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
                     entityCollider.TakeDamage(damage * 3  * (jewelCount - 5), damageEffects, entity);
-                }
-            }
-            else
-            {
-                var laneGrids = entity.Level.GetAllGrids().Where(g => g.Lane == entity.GetLane());
-                foreach (var grid in laneGrids)
-                {
-                    foreach (var buff in grid.GetBuffs(VanillaBuffID.Grid.emeraldGrid))
-                    {
-                        EmeraldGridBuff.Flash(buff);
-                    }
                 }
             }
         }
@@ -148,7 +154,6 @@ namespace MVZ2.GameContent.Contraptions
             {
                 AddState(new AscentState());
                 AddState(new LaserState());
-                AddState(new JewelState());
                 AddState(new DisappearState());
             }
         }
@@ -206,41 +211,9 @@ namespace MVZ2.GameContent.Contraptions
                     {
                         entity.Spawn(VanillaPickupID.starshard, entity.GetCenter());
                     }
-                    machine.StartState(entity, STATE_JEWEL);
+                    ApplyJewelEffect(entity);
+                    machine.StartState(entity, STATE_DISAPPEAR);
                 }
-            }
-        }
-        public class JewelState : EntityStateMachineState
-        {
-            public JewelState() : base(STATE_JEWEL)
-            {
-            }
-
-            public override void OnEnter(EntityStateMachine machine, Entity entity)
-            {
-                base.OnEnter(machine, entity);
-                entity.PlaySound(VanillaSoundID.goldenBomb);
-                entity.PlaySound(VanillaSoundID.coinDestroy);
-                int jewelCount = GetRestrictedGridCount(entity);
-                if (jewelCount == BLAST)
-                {
-                    entity.SetProperty(PROP_LIGHT_COLOR, BLAST_JEWEL);
-                }
-                else if (jewelCount == LIGHTNING)
-                {
-                    entity.SetProperty(PROP_LIGHT_COLOR, LIGHTNING_JEWEL);
-                }
-                else if (jewelCount >= CHAOS)
-                {
-                    entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
-                }
-            }
-
-            public override void OnUpdateAI(EntityStateMachine machine, Entity entity)
-            {
-                base.OnUpdateAI(machine, entity);
-                ApplyJewelEffect(entity);
-                machine.StartState(entity, STATE_DISAPPEAR);
             }
         }
         public class DisappearState : EntityStateMachineState

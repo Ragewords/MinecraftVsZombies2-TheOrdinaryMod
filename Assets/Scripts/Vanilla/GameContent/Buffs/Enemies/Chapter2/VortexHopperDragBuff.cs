@@ -32,11 +32,11 @@ namespace MVZ2.GameContent.Buffs.Enemies
             float z = center.z + Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
 
             var level = entity.Level;
-            if (level.IsWaterAt(x, entity.Position.z))
+            if (level.IsWaterAt(x, entity.Position.z) || level.IsAirAt(x, entity.Position.z))
             {
                 pos.x = x;
             }
-            if (level.IsWaterAt(entity.Position.x, z))
+            if (level.IsWaterAt(entity.Position.x, z) || level.IsAirAt(entity.Position.x, z))
             {
                 pos.z = z;
             }

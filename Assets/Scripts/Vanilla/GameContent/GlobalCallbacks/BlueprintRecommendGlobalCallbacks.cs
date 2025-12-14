@@ -78,6 +78,15 @@ namespace MVZ2.GameContent.GlobalCallbacks
                             return;
                         }
                     }
+                    if (areaTags.Contains(VanillaAreaTags.landOnly))
+                    {
+                        // 无水地形的水生器械
+                        if (entityDef.GetPlacementID() == VanillaPlacementID.unsodded)
+                        {
+                            callbackResult.SetFinalValue(true);
+                            return;
+                        }
+                    }
                 }
             }
         }

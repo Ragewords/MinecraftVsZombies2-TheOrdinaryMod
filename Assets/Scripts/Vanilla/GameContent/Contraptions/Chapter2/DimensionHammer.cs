@@ -20,45 +20,37 @@ namespace MVZ2.GameContent.Contraptions
         public DimensionHammer(string nsp, string name) : base(nsp, name)
         {
         }
-        public override void Init(Entity hammer)
+        protected override void UpdateAI(Entity hammer)
         {
-            base.Init(hammer);
-            hammer.Timeout = hammer.GetMaxTimeout();
-        }
-        protected override void UpdateLogic(Entity hammer)
-        {
-            base.UpdateLogic(hammer);
-            var evocationTime = GetEvocationTime(hammer);
-            evocationTime++;
-            if (evocationTime == START_TIME)
+            base.UpdateAI(hammer);
+            var frame = GetFrame(hammer);
+            frame++;
+            if (frame == START_FRAME)
             {
                 hammer.TriggerAnimation("Attack");
             }
-            if (evocationTime == FLING_TIME)
+            if (frame == FLING_FRAME)
             {
                 hammer.PlaySound(VanillaSoundID.fling);
             }
-            if (evocationTime == THROW_TIME)
+            if (frame == SMASH_FRAME)
             {
                 hammer.PlaySound(VanillaSoundID.thump);
                 Smash(hammer, hammer.GetDamage(), hammer.GetFaction());
             }
-            if (evocationTime == THROWN_TIME)
+            if (frame == SMASHED_FRAME)
             {
                 hammer.SetAnimationBool("Attacked", true);
             }
-            if (evocationTime > THROWN_TIME)
+            SetFrame(hammer, frame);
+        }
+        protected override void UpdateLogic(Entity hammer)
+        {
+            base.UpdateLogic(hammer);
+            var frame = GetFrame(hammer);
+            if (frame <= SMASHED_FRAME)
             {
-                hammer.Timeout--;
-            }
-            SetEvocationTime(hammer, evocationTime);
-
-            var tint = hammer.GetTint();
-            tint.a = hammer.Timeout / (float)hammer.GetMaxTimeout();
-            hammer.SetTint(tint);
-            if (hammer.Timeout <= 0)
-            {
-                hammer.Remove();
+                hammer.Timeout = hammer.GetMaxTimeout();
             }
         }
         public override bool CanEvoke(Entity entity)
@@ -67,18 +59,21 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void Smash(Entity entity, float damage, int faction)
         {
-            var range = entity.GetRange();
-            var outputs = entity.Explode(entity.Position, 80, faction, damage, new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
-            foreach (var target in outputs)
+            DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE);
+            var groundEntities = entity.Level.OverlapSphere(entity.Position, entity.GetRange(), faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
+            foreach (var target in groundEntities)
             {
                 var ent = target.Entity;
-                if (ent.Type == EntityTypes.ENEMY && ent.IsOnGround)
+                if (!ent.IsOnGround && !ent.IsAboveLand())
+                    continue;
+                target.TakeDamage(damage, damageEffectList, entity);
+                if (ent.Type == EntityTypes.ENEMY)
                 {
-                    var distance = (ent.Position - entity.Position).magnitude;
-                    var speed = 10;
-                    ent.Velocity += Vector3.up * speed;
                     if (ent.CanDeactive())
-                        ent.Stun(60);
+                    {
+                        ent.Velocity += Vector3.up * 10;
+                        ent.Stun(Ticks.FromSeconds(5));
+                    }
                 }
             }
             for (int i = 0; i < 10; i++)
@@ -86,13 +81,10 @@ namespace MVZ2.GameContent.Contraptions
                 for (int j = 0; j < 6; j++)
                 {
                     var angle = i * 36 + j * 18;
-                    var spawnParam = entity.GetSpawnParams();
-                    spawnParam.SetProperty(VanillaProjectileProps.PIERCING, false);
                     var param = entity.GetShootParams();
                     param.projectileID = VanillaProjectileID.arrowBullet;
-                    param.damage = entity.GetDamage() / 3f;
+                    param.damage = entity.GetDamage() / 6f;
                     param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * Mathf.RoundToInt(20 / (j + 1));
-                    param.spawnParam = spawnParam;
                     entity.ShootProjectile(param)?.Let(e =>
                     {
                         e.SetHSVToColor(new Color(1, 0.6f, 1, 1));
@@ -100,14 +92,15 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
         }
-        public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
-        public static void SetEvocationTime(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
+        public static int GetFrame(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
+        public static void SetFrame(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
         private static readonly NamespaceID ID = VanillaContraptionID.dimensionHammer;
-        public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("EvocationTime");
-        public const int START_TIME = 20;
-        public const int FLING_TIME = 30;
-        public const int THROW_TIME = 35;
-        public const int THROWN_TIME = 50;
+        public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("frame");
+        public const float RADIUS = 40;
+        public const int START_FRAME = 20;
+        public const int FLING_FRAME = 30;
+        public const int SMASH_FRAME = 35;
+        public const int SMASHED_FRAME = 50;
     }
 }
 

@@ -11,6 +11,7 @@ namespace MVZ2.GameContent.Placements
         public const string normal = "normal";
         public const string buried = "buried";
         public const string aquatic = "aquatic";
+        public const string unsodded = "unsodded";
         public const string pad = "pad";
         public const string dreamSilk = "dream_silk";
         public const string devourer = "devourer";
@@ -26,6 +27,7 @@ namespace MVZ2.GameContent.Placements
         public static readonly NamespaceID normal = Get(VanillaPlacementNames.normal);
         public static readonly NamespaceID buried = Get(VanillaPlacementNames.buried);
         public static readonly NamespaceID aquatic = Get(VanillaPlacementNames.aquatic);
+        public static readonly NamespaceID unsodded = Get(VanillaPlacementNames.unsodded);
         public static readonly NamespaceID pad = Get(VanillaPlacementNames.pad);
         public static readonly NamespaceID dreamSilk = Get(VanillaPlacementNames.dreamSilk);
         public static readonly NamespaceID devourer = Get(VanillaPlacementNames.devourer);

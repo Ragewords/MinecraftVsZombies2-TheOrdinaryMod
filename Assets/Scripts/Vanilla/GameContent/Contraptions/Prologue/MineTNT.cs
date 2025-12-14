@@ -50,6 +50,33 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateAI(entity);
             RiseUpdate(entity);
+            if (!entity.Level.IsIZombie())
+            {
+                bool no_duplicate = entity.GetProperty<bool>(PROP_NO_DUPLICATE);
+                if (!no_duplicate)
+                {
+                    entity.SetProperty(PROP_NO_DUPLICATE, true);
+                    LaneShuffle(entity);
+                }
+            }
+        }
+        private void LaneShuffle(Entity entity)
+        {
+            List<LawnGrid> grids = new List<LawnGrid>();
+            for (int y = 0; y < entity.Level.GetMaxLaneCount(); y++)
+            {
+                var grid = entity.Level.GetGrid(entity.GetColumn(), y);
+                if (grid != null && grid.CanSpawnEntity(VanillaContraptionID.mineTNT))
+                {
+                    grids.Add(grid);
+                }
+            }
+            var groups = grids.GroupBy(g => g.Column).OrderByDescending(g => g.Key).Take(1);
+            var selectedGrids = groups.SelectMany(g => g.Shuffle(entity.RNG)).Take(1);
+            foreach (var grid in selectedGrids)
+            {
+                FireSeed(entity, grid, VARIANT_DELAY);
+            }
         }
 
         protected override void OnEvoke(Entity entity)
@@ -135,7 +162,7 @@ namespace MVZ2.GameContent.Contraptions
             self.Level.ShakeScreen(10, 0, 15);
             self.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(self), self.GetDefinitionID());
         }
-        private static Entity? FireSeed(Entity contraption, LawnGrid grid)
+        private static Entity? FireSeed(Entity contraption, LawnGrid grid, int variant = 0)
         {
             var level = contraption.Level;
 
@@ -146,13 +173,17 @@ namespace MVZ2.GameContent.Contraptions
                 var y = level.GetGroundY(x, z);
                 var target = new Vector3(x, y, z);
                 var maxY = Mathf.Max(contraption.Position.y, y) + 32;
+                e.SetVariant(variant);
                 e.Velocity = VanillaProjectileExt.GetLobVelocity(contraption.Position, target, maxY, e.GetGravity());
             });
 
 
             return seed;
         }
+        public const int VARIANT_INSTANT = 0;
+        public const int VARIANT_DELAY = 1;
         private static readonly NamespaceID ID = VanillaContraptionID.mineTNT;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_RISE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RiseTimer");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_NO_DUPLICATE = new VanillaEntityPropertyMeta<bool>("no_duplicate");
     }
 }

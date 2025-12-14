@@ -35,7 +35,15 @@ namespace MVZ2.GameContent.Projectiles
                 var y = level.GetGroundY(x, z);
                 level.Spawn(VanillaContraptionID.mineTNT, new Vector3(x, y, z), entity)?.Let(e =>
                 {
-                    MineTNT.GetRiseTimer(e)?.Let(timer => { timer.Frame = 31; });
+                    e.SetProperty(MineTNT.PROP_NO_DUPLICATE, true);
+                    if (entity.GetVariant() == MineTNT.VARIANT_INSTANT)
+                    {
+                        MineTNT.GetRiseTimer(e)?.Let(timer => { timer.Frame = 31; });
+                    }
+                    else
+                    {
+                        e.PlaySoundIfNotNull(e.GetPlaceSound());
+                    }
                 });
             }
             entity.Remove();

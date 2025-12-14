@@ -85,8 +85,6 @@ namespace MVZ2.GameContent.Buffs.Grids
         {
             var flashTimer = buff.GetProperty<FrameTimer>(PROP_FLASH_TIMER);
             flashTimer?.Reset();
-            var timeoutTimer = buff.GetProperty<FrameTimer>(PROP_TIMEOUT_TIMER);
-            timeoutTimer?.ResetSeconds(FLASH_SECONDS);
         }
         public int GetGridType(LawnGrid grid)
         {
