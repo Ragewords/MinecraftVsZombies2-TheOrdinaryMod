@@ -210,7 +210,7 @@ namespace MVZ2.Vanilla.Enemies
                 if (ySpeed <= 0)
                     xSpeed += 6;
                 var vel = new Vector3(xSpeed * knockbackMultiplier * entity.GetFacingX(), ySpeed * knockbackMultiplier);
-                target.Velocity += vel;
+                target.Velocity = vel;
             }
             // 将目标眩晕，略过爆破骨兵。
             if (target.CanDeactive())
