@@ -35,6 +35,7 @@ namespace MVZ2.GameContent.Armors
             var pos = entity.Position;
             entity.CreateFragmentAndPlay(pos, VanillaFragmentID.sarcophagus, emitSpeed: 500);
             var gasParam = entity.GetSpawnParams();
+            gasParam.SetProperty(EngineEntityProps.SCALE, entity.GetScale());
             entity.Spawn(VanillaEffectID.mummyGas, entity.Position, gasParam);
             entity.PlaySound(VanillaSoundID.poisonCast);
         }

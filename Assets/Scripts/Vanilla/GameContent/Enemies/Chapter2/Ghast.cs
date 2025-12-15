@@ -18,6 +18,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -130,7 +131,7 @@ namespace MVZ2.GameContent.Enemies
                 GhastFireChargeBuff.SetRangeMultiplier(buff, scale.x);
                 GhastFireChargeBuff.SetDamageMultiplier(buff, scale.x);
             });
-            self.PlaySound(VanillaSoundID.fireCharge, scale.x);
+            self.PlaySound(VanillaSoundID.fireCharge, scale.x == 0 ? 1000 : 1 / Mathf.Abs(scale.x));
         }
         private Detector detector;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

@@ -36,11 +36,8 @@ namespace MVZ2.GameContent.Projectiles
             var dmg = projectile.GetDamage();
             dmg -= 10f;
             projectile.SetDamage(dmg);
-
-            var hitCount = GetHitCount(projectile);
-            hitCount++;
-            SetHitCount(projectile, hitCount);
-            if (hitCount >= MAX_HIT_COUNT)
+            var dmgDecreased = projectile.GetDamage();
+            if (dmgDecreased <= 0)
             {
                 hitResult.Pierce = false;
                 return;
