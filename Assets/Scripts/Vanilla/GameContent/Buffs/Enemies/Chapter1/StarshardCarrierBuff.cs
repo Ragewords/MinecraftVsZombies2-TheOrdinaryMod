@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
 
             desirePotBuffer.Clear();
-            entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot) && e.GetChildren().Count() <= DesirePot.MAX_DUPLICATED_COUNT, desirePotBuffer);
+            entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaContraptionID.desirePot) && LumpsCount(e) < DesirePot.MAX_DUPLICATED_COUNT, desirePotBuffer);
             var chosen_pot = desirePotBuffer.Take(1);
             bool pot_found = false;
             foreach (var pot in chosen_pot)
@@ -80,6 +80,18 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 enemy.Level.Spawn(VanillaPickupID.starshard, enemy.Position, enemy);
                 buff.Remove();
             }
+        }
+        private static int LumpsCount(Entity pot)
+        {
+            int count = 0;
+            foreach (var child in pot.GetChildren())
+            {
+                if (child.IsEntityOf(VanillaEffectID.desireLump))
+                {
+                    count++;
+                }
+            }
+            return count;
         }
         public const int MAX_TIME = 60;
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIME = new VanillaBuffPropertyMeta<int>("Time");
