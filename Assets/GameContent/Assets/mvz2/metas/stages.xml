@@ -1869,9 +1869,9 @@
         <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
             <spawn id="mvz2:skelebomb" />
         </spawns>
+        <time firstWave="30" firstWaveLunatic="30" />
         <properties>
             <integer name="statueCount" value="5" />
         </properties>
-        <time firstWave="30" firstWaveLunatic="30" />
     </stage>
 </stages>
