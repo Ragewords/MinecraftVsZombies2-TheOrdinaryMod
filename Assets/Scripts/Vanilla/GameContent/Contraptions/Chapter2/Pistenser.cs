@@ -81,11 +81,12 @@ namespace MVZ2.GameContent.Contraptions
 
             var target = GetExtendTarget(pistenser);
             var target_s = GetSubtractTarget(pistenser);
+            var offset = pistenser.GetScale().y;
             // 存在目标，并且目标的最底部大于活塞发射器的基础子弹高度，则延长。
-            if (target != null && target.Position.y > pistenser.Position.y + BASE_SHOT_HEIGHT)
+            if (target != null && target.Position.y > pistenser.Position.y + BASE_SHOT_HEIGHT * offset)
             {
                 // 目标延长高度为目标的中心点减去活塞发射器的基础子弹高度。
-                float targetExtend = target.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT);
+                float targetExtend = (target.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT * offset)) / offset;
                 var extend = GetExtend(pistenser);
 
                 // 目标延长高度和当前高度的差值必须大于或等于10。
@@ -95,10 +96,10 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
             // 存在目标，并且目标的最顶部小于活塞发射器的基础子弹高度，则缩短。
-            else if (target_s != null && target_s.Position.y + target_s.GetScaledSize().y < pistenser.Position.y + BASE_SHOT_HEIGHT)
+            else if (target_s != null && target_s.Position.y + target_s.GetScaledSize().y < pistenser.Position.y + BASE_SHOT_HEIGHT * offset)
             {
                 // 目标缩短高度为目标的中心点减去活塞发射器的基础子弹高度。
-                float targetSubtract = target_s.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT);
+                float targetSubtract = target_s.GetCenter().y - (pistenser.Position.y + BASE_SHOT_HEIGHT * offset);
                 var subtract = GetExtend(pistenser);
 
                 // 目标缩短高度和当前高度的差值必须大于或等于2。
