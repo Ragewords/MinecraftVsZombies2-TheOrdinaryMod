@@ -154,7 +154,7 @@ namespace MVZ2.GameContent.Areas
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
-                if (enemy.State != VanillaEnemyStates.MELEE_ATTACK && enemy.State != VanillaEnemyStates.RANGED_ATTACK)
+                if (enemy.State != VanillaEnemyStates.MELEE_ATTACK)
                     enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * enemy.GetStrongKnockbackMultiplier() * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
