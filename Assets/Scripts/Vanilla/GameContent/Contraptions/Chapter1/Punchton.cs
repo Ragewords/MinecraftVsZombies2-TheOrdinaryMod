@@ -32,12 +32,12 @@ namespace MVZ2.GameContent.Contraptions
             detector = new PunchtonDetector(false);
             punchDetector = new PunchtonDetector(true)
             {
-                canDetectInvisible = true
+                canDetectSpectral = true
             };
             evokedDetector = new PunchtonDetector(true)
             {
                 infiniteRange = true,
-                canDetectInvisible = true
+                canDetectSpectral = true
             };
         }
 

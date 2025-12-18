@@ -148,6 +148,8 @@ namespace MVZ2.Vanilla.Detections
                 return false;
             if (!target.IsFactionTarget(self.faction, factionTarget))
                 return false;
+            if (!canDetectSpectral && target.IsSpectral())
+                return false;
             if (!canDetectInvisible && target.IsInvisible())
                 return false;
             return true;
@@ -203,6 +205,7 @@ namespace MVZ2.Vanilla.Detections
         public int mask = EntityCollisionHelper.MASK_VULNERABLE;
         public FactionTarget factionTarget = FactionTarget.Hostile;
         public bool canDetectInvisible;
+        public bool canDetectSpectral;
         public bool ignoreBoss;
         public bool includeSelf;
         private List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();

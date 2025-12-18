@@ -120,7 +120,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             return new DispenserDetector()
             {
-                canDetectInvisible = true,
+                canDetectSpectral = true,
                 ignoreHighEnemy = true
             };
         }

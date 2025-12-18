@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Projectiles
         {
             zapDetector = new SphereDetector(120)
             {
-                canDetectInvisible = true
+                canDetectSpectral = true
             };
         }
         public override void Update(Entity entity)
