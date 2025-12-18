@@ -496,7 +496,7 @@ namespace MVZ2.GameContent.Bosses
             var rng = GetEventRNG(boss);
             if (rng == null)
                 return;
-            var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss)).RandomTake(1, rng);
+            var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && e.IsAboveLand()).RandomTake(1, rng);
             foreach (var target in targets)
             {
                 var col = target.GetColumn();
@@ -505,33 +505,10 @@ namespace MVZ2.GameContent.Bosses
                     var grid = level.GetGrid(col, i);
                     if (grid == null)
                         continue;
-                    if (!grid.IsWater() && !grid.IsCloud())
+                    if (grid.IsLand())
                         boss.SpawnWithParams(VanillaEffectID.executioner, grid.GetEntityPosition());
                 }
             }
-        }
-        private void Moonrise(Entity boss)
-        {
-            var level = boss.Level;
-            level.ShakeScreen(30, 0, 10);
-            level.PlaySound(VanillaSoundID.explosion);
-            Vector3 pos = new Vector3(level.GetEntityColumnX(4), 0, level.GetEntityLaneZ(2));
-
-            {
-                level.PlaySound(VanillaSoundID.splashBig);
-                level.Spawn(VanillaEffectID.nightmareFireParticles, pos + Vector3.up * 37, null);
-                level.Spawn(VanillaEffectID.splashParticles, pos, null)?.Let(e =>
-                {
-                    e.SetTint(level.GetWaterColor());
-                    e.SetDisplayScale(Vector3.one * 4);
-                });
-                level.Spawn(VanillaEffectID.nightmareaperSplash, pos, null);
-            }
-
-            var param = boss.GetSpawnParams();
-            param.SetProperty(VanillaEntityProps.DAMAGE, 100f);
-            param.SetProperty(VanillaEntityProps.RANGE, 120f);
-            var meteor = boss.Spawn(VanillaEffectID.nightmareMeteor, pos, param);
         }
         private static string GetFateOptionText(int option)
         {

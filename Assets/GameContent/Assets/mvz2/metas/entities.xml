@@ -3895,11 +3895,13 @@
         <effect id="executioner">
             <behaviours>
                 <behaviour operator="add" id="mvz2:take_grid" />
+                <behaviour operator="add" id="mvz2:obstacle_destroy_contraption" />
             </behaviours>
             <properties>
                 <int name="mvz2:maxTimeout" value="90" />
                 <vector3 name="mvz2:size" x="53" y="87" z="53" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier mvz2:protector mvz2:tool" />
+                <id name="mvz2:placement" value="mvz2:pad" />
             </properties>
         </effect>
         <effect id="nightmare_portal">
