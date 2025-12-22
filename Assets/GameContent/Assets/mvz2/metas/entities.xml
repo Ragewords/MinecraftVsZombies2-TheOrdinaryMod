@@ -717,7 +717,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
-                <id name="mvz2:function" value="mvz2:sharpener" />
+                <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
         <dispenser id="stone_dropper" name="石制投掷器" tooltip="投出石子，巨石或弹力巨石">
@@ -1224,7 +1224,9 @@
                 <id name="mvz2:upgradeFrom" value="mvz2:wooden_dropper" />
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
-                <id name="mvz2:hitSound" value="mvz2:stone" />
+                <id name="mvz2:placeSound" value="mvz2:crystal_place" />
+                <id name="mvz2:deathSound" value="mvz2:crystal_break" />
+                <id name="mvz2:hitSound" value="mvz2:crystal" />
 
                 <vector3 name="mvz2:shotOffset" x="25" y="3" z="0" />
                 <vector3 name="mvz2:size" x="32" y="32" z="32" />
@@ -1324,7 +1326,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
-                <id name="mvz2:function" value="mvz2:sharpener" />
+                <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
         <contraption id="command_block" name="命令方块" tooltip="模仿一个器械">

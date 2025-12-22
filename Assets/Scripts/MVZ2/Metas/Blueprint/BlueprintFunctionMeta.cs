@@ -23,9 +23,8 @@ namespace MVZ2.Metas
                 Log.LogError("The ID of a BlueprintFunctionMeta is invalid.");
                 return null;
             }
-            var iconNode = node["icon"];
-            var icon = iconNode?.GetAttributeSpriteReference("sprite", defaultNsp);
 
+            var icon = node?.GetAttributeSpriteReference("icon", defaultNsp);
             return new BlueprintFunctionMeta(id)
             {
                 Tag = icon,

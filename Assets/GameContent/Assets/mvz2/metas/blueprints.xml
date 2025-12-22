@@ -29,54 +29,22 @@
         </style>
     </styles>
     <functions>
-        <function id="undefined">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[0]" />
-        </function>
-        <function id="shooter">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[1]" />
-        </function>
-        <function id="producer">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[2]" />
-        </function>
-        <function id="defender">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[3]" />
-        </function>
-        <function id="assistance">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[4]" />
-        </function>
-        <function id="melee">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[5]" />
-        </function>
-        <function id="bomb">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[6]" />
-        </function>
-        <function id="combustor">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[7]" />
-        </function>
-        <function id="sharpener">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[8]" />
-        </function>
-        <function id="enchanted">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[9]" />
-        </function>
-        <function id="potion">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[10]" />
-        </function>
-        <function id="armed">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[11]" />
-        </function>
-        <function id="buzzer">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[12]" />
-        </function>
-        <function id="frosty">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[13]" />
-        </function>
-        <function id="flourish">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[14]" />
-        </function>
-        <function id="monster">
-            <icon sprite="mvz2:ui/level/contraption_function_tag[15]" />
-        </function>
+        <function id="undefined" icon="mvz2:ui/level/contraption_function_tag[0]" />
+        <function id="shooter" icon="mvz2:ui/level/contraption_function_tag[1]" />
+        <function id="producer" icon="mvz2:ui/level/contraption_function_tag[2]" />
+        <function id="defender" icon="mvz2:ui/level/contraption_function_tag[3]" />
+        <function id="assistance" icon="mvz2:ui/level/contraption_function_tag[4]" />
+        <function id="melee" icon="mvz2:ui/level/contraption_function_tag[5]" />
+        <function id="bomb" icon="mvz2:ui/level/contraption_function_tag[6]" />
+        <function id="combustor" icon="mvz2:ui/level/contraption_function_tag[7]" />
+        <function id="sharpener" icon="mvz2:ui/level/contraption_function_tag[8]" />
+        <function id="enchanted" icon="mvz2:ui/level/contraption_function_tag[9]" />
+        <function id="potion" icon="mvz2:ui/level/contraption_function_tag[10]" />
+        <function id="armed" icon="mvz2:ui/level/contraption_function_tag[11]" />
+        <function id="buzzer" icon="mvz2:ui/level/contraption_function_tag[12]" />
+        <function id="frosty" icon="mvz2:ui/level/contraption_function_tag[13]" />
+        <function id="flourish" icon="mvz2:ui/level/contraption_function_tag[14]" />
+        <function id="monster" icon="mvz2:ui/level/contraption_function_tag[15]" />
     </functions>
     <options>
         <option id="return_pearl" cost="25" function="assistance" name="返回弹珠">
@@ -85,10 +53,10 @@
         <option id="lengthen_board" cost="125" function="assistance" name="增长挡板">
             <icon sprite="mvz2:options/lengthen_board" />
         </option>
-        <option id="add_pearl" cost="50" function="shooter" name="增加弹珠">
+        <option id="add_pearl" cost="50" function="assistance" name="增加弹珠">
             <icon sprite="mvz2:options/add_pearl" />
         </option>
-        <option id="explosive_pearl" cost="75" function="bomb" name="爆炸弹珠">
+        <option id="explosive_pearl" cost="75" function="assistance" name="爆炸弹珠">
             <icon sprite="mvz2:options/explosive_pearl" />
         </option>
     </options>
