@@ -472,7 +472,7 @@
                 <id name="mvz2:function" value="mvz2:combustor" />
             </properties>
         </contraption>
-        <dispenser id="silvenser" name="银质发射器" tooltip="射出穿透肉体的飞刀">
+        <dispenser id="silvenser" name="银制发射器" tooltip="射出穿透肉体的飞刀">
             <unlock>
                 <condition required="mvz2:level.halloween_8" />
             </unlock>
@@ -480,6 +480,7 @@
                 <float name="mvz2:damage" value="15" />
                 <id name="mvz2:projectileId" value="mvz2:knife" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <bool name="mvz2:conductor" value="true" />
 
                 <int name="mvz2:cost" value="150" />
@@ -556,6 +557,7 @@
                 <bool name="mvz2:isFloor" value="true" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <id name="mvz2:placement" value="mvz2:pad" />
                 <vector3 name="mvz2:size" x="64" y="2" z="64" />
                 <idArray name="mvz2:gridLayers" value="mvz2:carrier" />
@@ -577,6 +579,7 @@
                 <float name="mvz2:range" value="40" />
                 <float name="mvz2:damage" value="30" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <id name="mvz2:placement" value="mvz2:unsodded" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <int name="mvz2:waterInteraction" value="3" />
@@ -708,6 +711,7 @@
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <id name="mvz2:placement" value="mvz2:pad" />
                 <vector3 name="mvz2:size" x="64" y="16" z="64" />
                 <idArray name="mvz2:gridLayers" value="mvz2:carrier mvz2:main" />
@@ -771,6 +775,7 @@
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
                 <int name="mvz2:cost" value="75" />
@@ -998,7 +1003,7 @@
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
                 <int name="mvz2:cost" value="100" />
-                <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:rechargeId" value="mvz2:long" />
                 <id name="mvz2:function" value="mvz2:enchanted" />
             </properties>
         </contraption>
@@ -1200,6 +1205,7 @@
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <id name="mvz2:placement" value="mvz2:force_pad" />
                 <vector3 name="mvz2:size" x="64" y="2" z="64" />
                 <idArray name="mvz2:gridLayers" value="mvz2:carrier" />
@@ -1218,6 +1224,7 @@
                 <id name="mvz2:projectileId" value="mvz2:golden_ball" />
                 <id name="mvz2:shootSound" value="mvz2:click" />
                 <id name="mvz2:shell" value="mvz2:diamond" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
 
                 <float name="mvz2:damage" value="60" />
                 <bool name="mvz2:upgradeBlueprint" value="true" />
@@ -2680,6 +2687,7 @@
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <bool name="mvz2:invincible" value="true" />
                 <bool name="mvz2:invisible" value="true" />
             </properties>
