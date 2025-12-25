@@ -209,8 +209,8 @@ namespace MVZ2.Vanilla.Enemies
                 var xSpeed = GetSmashSpeed(target.GetMass());
                 if (ySpeed <= 0)
                     xSpeed += 6;
-                if (target.Velocity.x > 10)
-                    ySpeed *= 0.6f;
+                if (target.Velocity.x * entity.GetFacingX() > 6)
+                    xSpeed *= 0.2f;
                 if (target.Velocity.y > 0)
                     ySpeed *= 0.3f;
                 var vel = new Vector3(xSpeed * entity.GetFacingX(), ySpeed);
