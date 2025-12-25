@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Effects
             var parent = entity.Parent;
             if (parent.ExistsAndAlive())
             {
-                entity.Position = parent.Position;
+                entity.Position = parent.Position + PagodaLaser.POSITION_OFFSET;
             }
             var timer = entity.GetProperty<FrameTimer>(PROP_TIMER);
             if (timer == null || timer.Expired)

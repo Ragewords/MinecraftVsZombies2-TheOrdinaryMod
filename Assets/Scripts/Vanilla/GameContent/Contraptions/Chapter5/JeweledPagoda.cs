@@ -111,7 +111,8 @@ namespace MVZ2.GameContent.Contraptions
             {
                 entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
                 lawnDetector.DetectEntities(entity, lawnBuffer);
-                foreach (var entityCollider in lawnBuffer.RandomTake(9, entity.RNG))
+                var finalList = lawnBuffer.Where(e => e.ExistsAndAlive()).RandomTake(9, entity.RNG);
+                foreach (var entityCollider in finalList)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
                     entityCollider.TakeDamage(damage * 3, damageEffects, entity);
