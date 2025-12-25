@@ -116,8 +116,6 @@ namespace MVZ2.Vanilla.Enemies
                         return false;
                 }
             }
-            if (target.HasBuff(VanillaBuffID.Contraption.lightningOrbEnergyShieldProtected))
-                return false;
             return true;
         }
         #endregion

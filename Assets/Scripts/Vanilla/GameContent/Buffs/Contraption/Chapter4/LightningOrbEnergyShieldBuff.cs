@@ -30,6 +30,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModifier(new Vector3Modifier(EngineEntityProps.SIZE, NumberOperator.Multiply, new Vector3(5f, 1.66f, 5f)));
             AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, IntegerOperator.Set, VehicleInteraction.BLOCK));
             AddModifier(new BooleanModifier(VanillaContraptionProps.BLOCKS_JUMP, true));
+            AddModifier(new BooleanModifier(VanillaContraptionProps.NO_CLIMB, false));
+            AddModifier(new BooleanModifier(VanillaContraptionProps.BLOCK, true));
             AddAura(new EnergyShieldAura());
         }
         public override void PostAdd(Buff buff)
@@ -112,7 +114,8 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             {
                 protectDetector = new LightningOrbEnergyShieldDetector()
                 {
-                    factionTarget = FactionTarget.Friendly
+                    factionTarget = FactionTarget.Friendly,
+                    canDetectSpectral = true
                 };
             }
 
