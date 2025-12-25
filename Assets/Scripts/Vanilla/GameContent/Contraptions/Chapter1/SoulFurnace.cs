@@ -101,21 +101,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.PostTakeDamage(damage);
         }
-        public override void PostDeath(Entity entity, DeathInfo deathInfo)
-        {
-            base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
-                return;
-            var furnace = entity;
-            var fuel = GetFuel(furnace);
-            for (int i = 1; i <= fuel; i++)
-            {
-                var angle = entity.RNG.Next(-30, 31);
-                var param = furnace.GetShootParams();
-                param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * entity.GetFacingX() * entity.RNG.Next(15f, 18f);
-                furnace.ShootProjectile(param);
-            }
-        }
         protected override Detector GetDetector()
         {
             return new DispenserDetector()
