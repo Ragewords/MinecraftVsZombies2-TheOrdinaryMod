@@ -4357,6 +4357,15 @@
             </properties>
         </effect>
         <effect id="pagoda_laser" />
+        <effect id="pagoda_laser_chaos">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
+            </behaviours>
+            <properties>
+                <int name="mvz2:maxTimeout" value="15" />
+                <id name="mvz2:modelId" value="mvz2:entity.pagoda_laser" />
+            </properties>
+        </effect>
         <effect id="combat_punch_trail">
             <behaviours includeSelf="false">
                 <behaviour operator="replace" source="mvz2:timeout_remove" id="mvz2:timeout_remove_without_parent" />

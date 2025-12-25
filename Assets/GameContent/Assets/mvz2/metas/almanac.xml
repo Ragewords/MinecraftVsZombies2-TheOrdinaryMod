@@ -873,9 +873,9 @@
             <properties>
                 <p>作用时长：<![CDATA[<color=red>4分钟（禁用）/2分钟（软锁）</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
-                <p>4软锁地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，伤害为900的爆炸</color>]]></p>
-                <p>5软锁地格：<![CDATA[<color=red>闪电宝石，对整行及整列的怪物造成1200闪电伤害</color>]]></p>
-                <p>6+软锁地格：<![CDATA[<color=red>混沌宝石，对所有怪物无视护甲造成300伤害，每多1地格额外造成300伤害</color>]]></p>
+                <p>4软锁地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，900点伤害的爆炸</color>]]></p>
+                <p>5软锁地格：<![CDATA[<color=red>闪电宝石，对整行及整列的怪物造成1200点闪电伤害</color>]]></p>
+                <p>6+软锁地格：<![CDATA[<color=red>混沌宝石，每1地格对所有怪物无视护甲造成50点伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>

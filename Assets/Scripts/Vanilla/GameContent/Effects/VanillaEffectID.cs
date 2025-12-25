@@ -105,6 +105,7 @@ namespace MVZ2.GameContent.Effects
         public const string zombieCloudEmber = "zombie_cloud_ember";
         public const string windSpeedline = "wind_speedline";
         public const string pagodaLaser = "pagoda_laser";
+        public const string pagodaLaserChaos = "pagoda_laser_chaos";
         public const string combatPunch = "combat_punch";
         public const string combatPunchTrail = "combat_punch_trail";
         public const string combatSmash = "combat_smash";
@@ -226,6 +227,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID zombieCloudEmber = Get(VanillaEffectNames.zombieCloudEmber);
         public static readonly NamespaceID windSpeedline = Get(VanillaEffectNames.windSpeedline);
         public static readonly NamespaceID pagodaLaser = Get(VanillaEffectNames.pagodaLaser);
+        public static readonly NamespaceID pagodaLaserChaos = Get(VanillaEffectNames.pagodaLaserChaos);
         public static readonly NamespaceID combatPunch = Get(VanillaEffectNames.combatPunch);
         public static readonly NamespaceID combatPunchTrail = Get(VanillaEffectNames.combatPunchTrail);
         public static readonly NamespaceID combatSmash = Get(VanillaEffectNames.combatSmash);

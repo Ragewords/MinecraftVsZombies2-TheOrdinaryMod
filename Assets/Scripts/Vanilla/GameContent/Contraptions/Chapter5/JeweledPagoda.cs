@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void ApplyJewelEffect(Entity entity)
         {
-            int jewelCount = GetRestrictedGridCount(entity);
+            int jewelCount = GetSoftlockedGridCount(entity);
             if (jewelCount >= LEAST_JEWELS)
             {
                 entity.PlaySound(VanillaSoundID.goldenBomb);
@@ -113,7 +113,12 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (var entityCollider in lawnBuffer)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    entityCollider.TakeDamage(damage * 3  * (jewelCount - 5), damageEffects, entity);
+                    float finalDamage = (damage / 2) * jewelCount;
+                    entityCollider.TakeDamage(finalDamage, damageEffects, entity);
+                    entityCollider.Spawn(VanillaEffectID.pagodaLaserChaos, entityCollider.GetCenter())?.Let(e =>
+                    {
+                        e.SetParent(entity);
+                    });
                 }
             }
         }
@@ -122,9 +127,9 @@ namespace MVZ2.GameContent.Contraptions
         public static void AddDisabledGridCount(Entity pagoda, int value) => SetDisabledGridCount(pagoda, GetDisabledGridCount(pagoda) + value);
         public static void SetDisabledGridCount(Entity pagoda, int value) => pagoda.SetProperty(PROP_DISABLED_GRID_COUNT, value);
         public static int GetDisabledGridCount(Entity pagoda) => pagoda.GetProperty<int>(PROP_DISABLED_GRID_COUNT);
-        public static void AddRestrictedGridCount(Entity pagoda, int value) => SetRestrictedGridCount(pagoda, GetRestrictedGridCount(pagoda) + value);
-        public static void SetRestrictedGridCount(Entity pagoda, int value) => pagoda.SetProperty(PROP_STRICTED_GRID_COUNT, value);
-        public static int GetRestrictedGridCount(Entity pagoda) => pagoda.GetProperty<int>(PROP_STRICTED_GRID_COUNT);
+        public static void AddSoftlockedGridCount(Entity pagoda, int value) => SetSoftlockedGridCount(pagoda, GetSoftlockedGridCount(pagoda) + value);
+        public static void SetSoftlockedGridCount(Entity pagoda, int value) => pagoda.SetProperty(PROP_STRICTED_GRID_COUNT, value);
+        public static int GetSoftlockedGridCount(Entity pagoda) => pagoda.GetProperty<int>(PROP_STRICTED_GRID_COUNT);
         public const int STATE_ASCENT = VanillaContraptionStates.JEWELED_PAGODA_ASCENT;
         public const int STATE_LASER = VanillaContraptionStates.JEWELED_PAGODA_LASER;
         public const int STATE_JEWEL = VanillaContraptionStates.JEWELED_PAGODA_JEWEL;

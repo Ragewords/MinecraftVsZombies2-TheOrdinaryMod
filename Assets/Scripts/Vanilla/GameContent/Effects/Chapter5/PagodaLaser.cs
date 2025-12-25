@@ -62,7 +62,7 @@ namespace MVZ2.GameContent.Effects
                 return false;
             return true;
         }
-        public static bool CanRestrictGrid(LawnGrid grid)
+        public static bool CanSoftlockGrid(LawnGrid grid)
         {
             if (grid.IsEmpty())
                 return false;
@@ -76,7 +76,7 @@ namespace MVZ2.GameContent.Effects
         {
             grid.AddBuff(VanillaBuffID.Grid.goldenGrid);
         }
-        public static void RestrictGrid(LawnGrid grid)
+        public static void SoftlockGrid(LawnGrid grid)
         {
             grid.AddBuff(VanillaBuffID.Grid.emeraldGrid);
         }
@@ -174,14 +174,14 @@ namespace MVZ2.GameContent.Effects
                             JeweledPagoda.AddDisabledGridCount(parent, 1);
                         }
                     }
-                    if (CanRestrictGrid(grid))
+                    if (CanSoftlockGrid(grid))
                     {
-                        RestrictGrid(grid);
+                        SoftlockGrid(grid);
                         entity.Level.PlaySound(VanillaSoundID.gold, grid.GetEntityPosition(), grid.Column / 9f * 0.5f + 1);
                         var parent = entity.Parent;
                         if (parent.ExistsAndAlive())
                         {
-                            JeweledPagoda.AddRestrictedGridCount(parent, 1);
+                            JeweledPagoda.AddSoftlockedGridCount(parent, 1);
                         }
                     }
                 }
