@@ -18,14 +18,16 @@ namespace MVZ2.GameContent.IZombie
             Blueprints = new NamespaceID[]
             {
                 VanillaEnemyID.skeleton,
-                VanillaEnemyID.skelebomb,
+                VanillaEnemyID.ghost,
+                VanillaEnemyID.necromancer
             };
         }
         public override void Fill(IIZombieMap map, RandomGenerator rng)
         {
+            Insert(map, 2, 2, VanillaContraptionID.glowstone);
             RandomFill(map, VanillaContraptionID.punchton, 5, rng);
             RandomFill(map, VanillaContraptionID.silvenser, 3, rng);
-            RandomFill(map, VanillaContraptionID.dispenser, 4, rng);
+            RandomFill(map, VanillaContraptionID.dispenser, 3, rng);
             RandomFill(map, VanillaContraptionID.furnace, 8, rng);
         }
     }
