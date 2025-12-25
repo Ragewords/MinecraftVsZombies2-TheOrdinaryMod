@@ -64,10 +64,7 @@ namespace MVZ2.GameContent.Enemies
             var hit = param.hit;
             if (!hit.Other.Definition.HasBehaviour(this))
                 return;
-            var projectile = hit.Projectile;
-            if (projectile == null)
-                return;
-            projectile.Die();
+            hit.Pierce = false;
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
