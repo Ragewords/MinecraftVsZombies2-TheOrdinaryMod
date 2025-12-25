@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Projectiles
                 hitResult.Pierce = true;
                 return;
             }
-            if (enemy.HasBuff<TotenserWebBuff>())
+            if (enemy.HasBuff<TotenserWebBuff>() || enemy.CanDeactive())
             {
                 hitResult.Pierce = true;
                 return;
