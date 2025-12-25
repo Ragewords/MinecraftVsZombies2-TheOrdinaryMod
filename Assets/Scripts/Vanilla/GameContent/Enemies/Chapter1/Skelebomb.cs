@@ -14,6 +14,7 @@ using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
 
@@ -24,27 +25,28 @@ namespace MVZ2.GameContent.Enemies
     {
         public Skelebomb(string nsp, string name) : base(nsp, name)
         {
+            AddModifier(new BooleanModifier(VanillaEntityProps.DYNAMITE, PROP_HAS_BOMB));
         }
 
         public override void Init(Entity entity)
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
-            SetExplode(entity, true);
+            SetHoldingBomb(entity, true);
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelProperty("NotHoldingBomb", !GetExplode(entity));
+            entity.SetModelProperty("NotHoldingBomb", !IsHoldingBomb(entity));
             var stateTimer = GetStateTimer(entity);
-            if (!GetExplode(entity))
+            if (!IsHoldingBomb(entity))
                 return;
             if (entity.State == STATE_SPECIAL_MOVE)
             {
                 if (stateTimer.RunToExpiredOrNull())
                 {
                     EndCasting(entity);
-                    SetExplode(entity, false);
+                    SetHoldingBomb(entity, false);
                     Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
                     entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), entity);
                     entity.Level.ShakeScreen(5, 0, 20);
@@ -56,7 +58,7 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEnemyStates.MELEE_ATTACK && GetExplode(entity))
+            if (entity.State == VanillaEnemyStates.MELEE_ATTACK && IsHoldingBomb(entity))
             {
                 if (entity.RNG.Next(200) == 0)
                 {
@@ -72,7 +74,7 @@ namespace MVZ2.GameContent.Enemies
             var self = output.Entity;
             if (output.BodyResult.HasEffect(VanillaDamageEffects.IMPACT))
             {
-                if (GetExplode(self))
+                if (IsHoldingBomb(self))
                 {
                     self.AddBuff<SkelebombPunchedBuff>();
                     if (self.State != STATE_SPECIAL_MOVE)
@@ -85,12 +87,12 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
                 return;
-            if (!GetExplode(entity))
+            if (!IsHoldingBomb(entity))
                 return;
             if (entity.IsPerformingSpecialMove())
             {
                 EndCasting(entity);
-                SetExplode(entity, false);
+                SetHoldingBomb(entity, false);
                 Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
                 entity.Level.ShakeScreen(5, 0, 20);
             }
@@ -102,7 +104,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     e.Velocity = entity.Velocity;
                 });
-                SetExplode(entity, false);
+                SetHoldingBomb(entity, false);
             }
         }
         public static void SetStateTimer(Entity entity, FrameTimer timer)
@@ -113,11 +115,11 @@ namespace MVZ2.GameContent.Enemies
         {
             return entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
         }
-        public static void SetExplode(Entity entity, bool timer)
+        public static void SetHoldingBomb(Entity entity, bool timer)
         {
             entity.SetBehaviourField(ID, PROP_HAS_BOMB, timer);
         }
-        public static bool GetExplode(Entity entity)
+        public static bool IsHoldingBomb(Entity entity)
         {
             return entity.GetBehaviourField<bool>(ID, PROP_HAS_BOMB);
         }
