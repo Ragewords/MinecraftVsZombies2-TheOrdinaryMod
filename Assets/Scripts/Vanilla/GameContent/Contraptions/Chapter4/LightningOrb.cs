@@ -3,7 +3,6 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
@@ -35,7 +34,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            if (contraption.HasBuff<LightningOrbEnergyShieldBuff>() || contraption.IsEvoked())
+            if (contraption.HasBuff<LightningOrbEnergyShieldBuff>() || contraption.HasBuff<LightningOrbEvokedBuff>())
                 return;
             var timer = GetShieldRegenerateTimer(contraption);
             if (timer.RunToExpiredAndNotNull(contraption.GetProduceSpeed()))
@@ -111,8 +110,10 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             entity.PlaySound(VanillaSoundID.lightningAttack);
-            entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
-            entity.RemoveBuffs<LightningOrbEnergyShieldBuff>();
+            foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
+            {
+                LightningOrbEnergyShieldBuff.Break(buff, false);
+            }
             entity.AddBuff<LightningOrbEvokedBuff>();
         }
         public static FrameTimer? GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
