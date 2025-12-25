@@ -339,7 +339,7 @@
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:dynamite" value="true" />
-                <bool name="mvz2:block" value="false" />
+                <bool name="mvz2:noClimb" value="true" />
                 <float name="mvz2:damage" value="900" />
                 <float name="mvz2:range" value="40" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
@@ -615,7 +615,6 @@
                 <float name="mvz2:damage" value="15" />
                 <id name="mvz2:projectileId" value="mvz2:dart" />
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
-                <bool name="mvz2:blocksJump" value="true" />
                 <vector3 name="mvz2:size" x="32" y="64" z="32" />
 
                 <int name="mvz2:cost" value="225" />

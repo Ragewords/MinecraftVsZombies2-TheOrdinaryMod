@@ -121,7 +121,7 @@ namespace MVZ2.GameContent.Contraptions
             timer?.Reset();
 
 
-            // ×ª»¯ËùÓÐµÐ¶ÔµÄÔÉÊ¯Buff¡£
+            // ×ªï¿½ï¿½ï¿½ï¿½ï¿½ÐµÐ¶Ôµï¿½ï¿½ï¿½Ê¯Buffï¿½ï¿½
             var faction = entity.GetFaction();
             foreach (var enemyBuff in entity.Level.GetBuffs<BeaconMeteorBuff>())
             {
@@ -132,12 +132,14 @@ namespace MVZ2.GameContent.Contraptions
                 BeaconMeteorBuff.SetHSVOffset(enemyBuff, Vector3.zero);
             }
 
-            // Ìí¼ÓÔÉÊ¯BUFF¡£
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¯BUFFï¿½ï¿½
             var buff = entity.Level.NewBuff<BeaconMeteorBuff>();
             BeaconMeteorBuff.SetFaction(buff, faction);
             BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
             BeaconMeteorBuff.SetCount(buff, entity.Level.GetMaxColumnCount());
             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
+            BeaconMeteorBuff.SetVariant(buff, BeaconMeteorBuff.VARIANT_CARPET);
+            BeaconMeteorBuff.SetCarpetLane(buff, entity.RNG.Next(entity.Level.GetMaxLaneCount()));
             entity.Level.AddBuff(buff);
         }
         public static FrameTimer? GetShootTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_TIMER);
@@ -155,7 +157,7 @@ namespace MVZ2.GameContent.Contraptions
         protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
-        public const float EVOCATION_DAMAGE_MULTIPLIER = 5;
+        public const float EVOCATION_DAMAGE_MULTIPLIER = 10;
         public const int EVOCATION_METEOR_COUNT = 10;
 
         public static Vector3[] shootDirections = new Vector3[]
