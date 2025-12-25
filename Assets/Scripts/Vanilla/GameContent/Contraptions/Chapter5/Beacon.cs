@@ -127,15 +127,17 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (!EngineEntityExt.IsHostile(faction, BeaconMeteorBuff.GetFaction(enemyBuff)))
                     continue;
+                int variant = BeaconMeteorBuff.GetVariant(enemyBuff);
+                float multiplier = variant == BeaconMeteorBuff.VARIANT_CARPET ? EVOCATION_DAMAGE_MULTIPLIER_CARPET : EVOCATION_DAMAGE_MULTIPLIER_RANDOM;
                 BeaconMeteorBuff.SetFaction(enemyBuff, faction);
-                BeaconMeteorBuff.SetDamage(enemyBuff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
+                BeaconMeteorBuff.SetDamage(enemyBuff, entity.GetDamage() * multiplier);
                 BeaconMeteorBuff.SetHSVOffset(enemyBuff, Vector3.zero);
             }
 
             // ������ʯBUFF��
             var buff = entity.Level.NewBuff<BeaconMeteorBuff>();
             BeaconMeteorBuff.SetFaction(buff, faction);
-            BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
+            BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER_CARPET);
             BeaconMeteorBuff.SetCount(buff, entity.Level.GetMaxColumnCount());
             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
             BeaconMeteorBuff.SetVariant(buff, BeaconMeteorBuff.VARIANT_CARPET);
@@ -157,7 +159,8 @@ namespace MVZ2.GameContent.Contraptions
         protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
-        public const float EVOCATION_DAMAGE_MULTIPLIER = 15;
+        public const float EVOCATION_DAMAGE_MULTIPLIER_CARPET = 15;
+        public const float EVOCATION_DAMAGE_MULTIPLIER_RANDOM = 45;
         public const int EVOCATION_METEOR_COUNT = 10;
 
         public static Vector3[] shootDirections = new Vector3[]
