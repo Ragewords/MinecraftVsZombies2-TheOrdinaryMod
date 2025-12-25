@@ -1296,6 +1296,10 @@ namespace MVZ2.GameContent.Bosses
             {
                 damage = 1800;
             }
+            else if (entity.Level.UseLunaticProperty())
+            {
+                damage = entity.GetMaxHealth() * 0.25f;
+            }
             else
             {
                 damage = entity.GetMaxHealth() * 0.5f;
