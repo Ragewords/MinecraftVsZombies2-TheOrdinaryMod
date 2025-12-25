@@ -4357,11 +4357,7 @@
         </effect>
         <effect id="pagoda_laser" />
         <effect id="pagoda_laser_chaos">
-            <behaviours>
-                <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
-            </behaviours>
             <properties>
-                <int name="mvz2:maxTimeout" value="15" />
                 <id name="mvz2:modelId" value="mvz2:entity.pagoda_laser" />
             </properties>
         </effect>

@@ -19,6 +19,7 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
+using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -110,14 +111,14 @@ namespace MVZ2.GameContent.Contraptions
             {
                 entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
                 lawnDetector.DetectEntities(entity, lawnBuffer);
-                foreach (var entityCollider in lawnBuffer)
+                foreach (var entityCollider in lawnBuffer.RandomTake(9, entity.RNG))
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    float finalDamage = (damage / 2) * jewelCount;
-                    entityCollider.TakeDamage(finalDamage, damageEffects, entity);
-                    entityCollider.Spawn(VanillaEffectID.pagodaLaserChaos, entityCollider.GetCenter())?.Let(e =>
+                    entityCollider.TakeDamage(damage * 3, damageEffects, entity);
+                    entity.Spawn(VanillaEffectID.pagodaLaserChaos, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
                     {
                         e.SetParent(entity);
+                        e.SetModelProperty("Dest", entityCollider.GetCenter());
                     });
                 }
             }
@@ -143,7 +144,10 @@ namespace MVZ2.GameContent.Contraptions
         public static Color BLAST_JEWEL = new Color(255, 158, 0);
         public static Color LIGHTNING_JEWEL = new Color(0, 231, 255);
         public static Color CHAOS_JEWEL = new Color(255, 0, 150);
-        private static Detector lawnDetector = new LawnDetector();
+        private static Detector lawnDetector = new LawnDetector()
+        {
+            mask = EntityCollisionHelper.MASK_VULNERABLE
+        };
         private static List<Entity> lawnBuffer = new List<Entity>();
         public EntityStateMachine stateMachine = new PagodaStateMachine();
         public static readonly VanillaEntityPropertyMeta<float> PROP_GRAVITY = new VanillaEntityPropertyMeta<float>("gravity");
