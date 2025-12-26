@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Effects
         public void BeBlown(Entity entity, Entity source)
         {
             var newVelocity = source.IsFacingLeft() ? Vector3.left : Vector3.right;
-            entity.Position += newVelocity * 2;
+            entity.Position += newVelocity * 3;
         }
     }
 }
