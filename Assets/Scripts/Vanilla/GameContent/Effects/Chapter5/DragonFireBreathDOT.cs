@@ -27,16 +27,6 @@ namespace MVZ2.GameContent.Effects
             var self = collision.Entity;
             if (!other.IsVulnerableEntity())
                 return;
-            var source = other.SpawnerReference;
-            if (source != null)
-            {
-                bool fromSource = source.IsEntitySpawnedByEntity(self.Level, (s, def) =>
-                {
-                    return self.IsEntityOf(def.GetID());
-                });
-                if (fromSource)
-                    return;
-            }
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
 
