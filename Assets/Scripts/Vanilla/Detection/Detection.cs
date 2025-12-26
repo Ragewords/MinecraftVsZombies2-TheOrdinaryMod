@@ -23,8 +23,10 @@ namespace MVZ2.Vanilla.Detections
             var bounds2 = new Bounds(center2, size2);
             return bounds1.IntersectsOptimized(bounds2);
         }
-        public static bool CanDetect(Entity entity)
+        public static bool CanDetect(Entity entity, bool rough = true)
         {
+            if (rough)
+                return !entity.IsInvisible() && !entity.IsSpectral();
             return !entity.IsInvisible();
         }
 

@@ -103,8 +103,6 @@ namespace MVZ2.Vanilla.Enemies
             }
             if (!Detection.CanDetect(target))
                 return false;
-            if (target.IsSpectral())
-                return false;
             if (target.Position.y > enemy.Position.y + enemy.GetMaxAttackHeight())
                 return false;
             if (target.Type == EntityTypes.PLANT || target.Type == EntityTypes.OBSTACLE)
