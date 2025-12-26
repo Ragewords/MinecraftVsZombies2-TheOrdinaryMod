@@ -480,6 +480,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bow
       objectReference: {fileID: 0}
+    - target: {fileID: 2313598282151251661, guid: 32162e4052e1e7445af16d420281eebd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998648733224871394, guid: 32162e4052e1e7445af16d420281eebd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366297011335576966, guid: 32162e4052e1e7445af16d420281eebd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8522974599317828118, guid: 32162e4052e1e7445af16d420281eebd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.32
