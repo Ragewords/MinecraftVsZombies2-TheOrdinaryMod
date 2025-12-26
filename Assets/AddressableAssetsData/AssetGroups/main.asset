@@ -409,6 +409,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 079b33efac6158d4b9fd2d1fd02883e2
+    m_Address: mvz2:entity/effects/zombreath_face
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 07a88248ffda4ee4f9e109e8e44ab62e
     m_Address: mvz2:entity/boss/red_dragon
     m_ReadOnly: 0
@@ -4588,6 +4595,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5653e7c891ed7234693909cfe1f682f3
     m_Address: mvz2:cart/pumpkin_carriage
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56558453f929cb648b3ca3874f06e43f
+    m_Address: mvz2:effect/zombreath
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

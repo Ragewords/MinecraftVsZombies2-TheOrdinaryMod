@@ -122,8 +122,11 @@ namespace MVZ2.GameContent.Effects
         public const string skywardBeaconTarget = "skyward_beacon_target";
         public const string skywardSky = "skyward_sky";
         public const string tornado = "tornado";
+        public const string zombreath = "zombreath";
         public const string dragonFireBreath = "dragon_fire_breath";
+        public const string dragonFireBreathDOT = "dragon_fire_breath_dot";
         public const string gridFire = "grid_fire";
+        public const string fireWall = "fire_wall";
         public const string fallenEndShip = "fallen_end_ship";
         public const string smokerSmoke = "smoker_smoke";
         public const string smokerFire = "smoker_fire";
@@ -244,8 +247,11 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID skywardBeaconTarget = Get(VanillaEffectNames.skywardBeaconTarget);
         public static readonly NamespaceID skywardSky = Get(VanillaEffectNames.skywardSky);
         public static readonly NamespaceID tornado = Get(VanillaEffectNames.tornado);
+        public static readonly NamespaceID zombreath = Get(VanillaEffectNames.zombreath);
         public static readonly NamespaceID dragonFireBreath = Get(VanillaEffectNames.dragonFireBreath);
+        public static readonly NamespaceID dragonFireBreathDOT = Get(VanillaEffectNames.dragonFireBreathDOT);
         public static readonly NamespaceID gridFire = Get(VanillaEffectNames.gridFire);
+        public static readonly NamespaceID fireWall = Get(VanillaEffectNames.fireWall);
         public static readonly NamespaceID fallenEndShip = Get(VanillaEffectNames.fallenEndShip);
         public static readonly NamespaceID smokerSmoke = Get(VanillaEffectNames.smokerSmoke);
         public static readonly NamespaceID smokerFire = Get(VanillaEffectNames.smokerFire);

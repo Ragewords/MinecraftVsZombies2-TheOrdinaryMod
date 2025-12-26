@@ -52,6 +52,8 @@ namespace MVZ2.GameContent.Contraptions
             var level = source.Level;
             if (level.EntityExists(e => e.IsEntityOf(VanillaEffectID.gridFire) && e.GetGrid() == grid))
                 return null;
+            if (level.EntityExists(e => e.IsEntityOf(VanillaEffectID.fireWall) && e.GetGrid() == grid))
+                return null;
             var position = grid.GetEntityPosition();
 
             return source.Spawn(VanillaEffectID.gridFire, position, spawnParam);

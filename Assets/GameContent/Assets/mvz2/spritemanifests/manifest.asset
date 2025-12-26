@@ -911,6 +911,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0ffb8f5c07b9abc459cc588c2b0efab6, type: 3}
   - name: entity/effects/zombie_block
     sprite: {fileID: 21300000, guid: dd81e2f5e01461d4c9186fe9648f2c1f, type: 3}
+  - name: entity/effects/zombreath_face
+    sprite: {fileID: 21300000, guid: 079b33efac6158d4b9fd2d1fd02883e2, type: 3}
   - name: entity/enemies/bedserker_bed
     sprite: {fileID: 21300000, guid: 4ac894cccf343c44e81c86c063ac4d75, type: 3}
   - name: entity/enemies/bedserker_head

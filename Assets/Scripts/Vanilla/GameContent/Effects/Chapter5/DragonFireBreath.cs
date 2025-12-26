@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Effects
         }
         private void UpdateGridFire(Entity entity)
         {
-            if (entity.GetRelativeY() > 20) // ¾àÀëµØÃæ¹ý¸ß
+            if (entity.GetRelativeY() > 20) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 return;
             var grid = entity.GetGrid();
             if (grid == null)

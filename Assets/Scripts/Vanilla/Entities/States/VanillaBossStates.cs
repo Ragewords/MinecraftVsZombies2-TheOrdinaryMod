@@ -66,6 +66,9 @@ namespace MVZ2.Vanilla.Bosses
         public const int RED_DRAGON_TAIL_SWIPE = PRIVATE_NUMBER + 9;
         public const int RED_DRAGON_DEATH_ROAR = PRIVATE_NUMBER + 10;
         public const int RED_DRAGON_DEATH_FLY = PRIVATE_NUMBER + 11;
+        public const int RED_DRAGON_ZOMBREATH = PRIVATE_NUMBER + 12;
+        public const int RED_DRAGON_FIRE_BREATH_PLUS = PRIVATE_NUMBER + 13;
+        public const int RED_DRAGON_FIRE_WALL = PRIVATE_NUMBER + 14;
 
 
         private const int PRIVATE_NUMBER = 10000;

@@ -81,9 +81,9 @@ namespace MVZ2.GameContent.Bosses
         public static int GetFireVariant(Entity entity)
         {
             var eatenFlags = GetEatenFlags(entity);
-            if ((eatenFlags & EATEN_FLAG_CORPSE) != 0)
+            if ((eatenFlags & EATEN_FLAG_CORPSE) != 0 || stateMachine.GetStateNumber(entity) == STATE_ZOMBREATH)
                 return DragonFireBreath.VARIANT_CYAN;
-            if ((eatenFlags & EATEN_FLAG_CHARCOAL) != 0)
+            if ((eatenFlags & EATEN_FLAG_CHARCOAL) != 0 || stateMachine.GetStateNumber(entity) == STATE_FIRE_BREATH_PLUS)
                 return DragonFireBreath.VARIANT_RED;
             return DragonFireBreath.VARIANT_ORANGE;
         }
@@ -166,6 +166,9 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_TAIL_SWIPE = VanillaBossStates.RED_DRAGON_TAIL_SWIPE;
         public const int STATE_DEATH_ROAR = VanillaBossStates.RED_DRAGON_DEATH_ROAR;
         public const int STATE_DEATH_FLY = VanillaBossStates.RED_DRAGON_DEATH_FLY;
+        public const int STATE_ZOMBREATH = VanillaBossStates.RED_DRAGON_ZOMBREATH;
+        public const int STATE_FIRE_BREATH_PLUS = VanillaBossStates.RED_DRAGON_FIRE_BREATH_PLUS;
+        public const int STATE_FIRE_WALL = VanillaBossStates.RED_DRAGON_FIRE_WALL;
 
         public const int ANIMATION_STATE_IDLE = 0;
         public const int ANIMATION_STATE_APPEAR = 1;
@@ -201,6 +204,7 @@ namespace MVZ2.GameContent.Bosses
         public const float SELF_EXPLODE_STUN_SECONDS = 2f;
 
         public const float FIRE_BREATH_DAMAGE_MULTIPLIER = 0.01f;
+        public const float FIRE_BREATH_PLUS_DAMAGE_MULTIPLIER = 0.3f;
         public const float FIRE_BREATH_SPEED = 20f;
 
         public const float METEOR_DAMAGE_MULTIPLIER = 3f;
