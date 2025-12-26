@@ -4575,7 +4575,7 @@
                 <behaviour operator="add" id="mvz2:dot_collision_damage"/>
             </behaviours>
             <properties>
-                <int name="mvz2:maxTimeout" value="300"/>
+                <int name="mvz2:maxTimeout" value="600"/>
                 <float name="mvz2:damage" value="1"/>
                 <idArray name="mvz2:damageEffects" value="mvz2:mute mvz2:fire"/>
                 <vector3 name="mvz2:size" x="80" y="160" z="80" />
