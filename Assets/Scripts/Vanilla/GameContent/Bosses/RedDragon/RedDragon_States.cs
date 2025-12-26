@@ -220,7 +220,6 @@ namespace MVZ2.GameContent.Bosses
                 case STATE_SPIT:
                 case STATE_FLAP_WINGS:
                 case STATE_LARGE_FIREBALL:
-                case STATE_FIRE_BREATH_PLUS:
                     if (HasEnemiesInTheLane(entity))
                     {
                         stateMachine.StartState(entity, state);
@@ -229,6 +228,19 @@ namespace MVZ2.GameContent.Bosses
                     {
                         var jumpTarget = FindEnemyJumpTargetPosition(entity);
                         JumpTo(entity, jumpTarget, state);
+                    }
+                    break;
+                case STATE_FIRE_BREATH_PLUS:
+                    {
+                        var jumpTarget = FindEnemyJumpTargetPosition(entity);
+                        if (entity.Level.GetLane(jumpTarget.z) == entity.GetLane())
+                        {
+                            stateMachine.StartState(entity, state);
+                        }
+                        else
+                        {
+                            JumpTo(entity, jumpTarget, state);
+                        }
                     }
                     break;
                 case STATE_EAT:
