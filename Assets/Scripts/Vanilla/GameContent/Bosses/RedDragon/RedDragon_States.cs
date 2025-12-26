@@ -21,7 +21,6 @@ using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
-using PVZEngine.Grids;
 using Tools;
 using UnityEngine;
 
@@ -286,7 +285,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
-                var seconds = GetPhase(entity) == PHASE_1 ? 3f : 1f; // 一阶段行动更慢
+                var seconds = GetPhase(entity) == PHASE_1 ? 3f : 2f; // 一阶段行动更慢
                 var stateTimer = stateMachine.GetStateTimer(entity);
                 stateTimer.ResetSeconds(seconds);
                 SetInvincible(entity, false);
