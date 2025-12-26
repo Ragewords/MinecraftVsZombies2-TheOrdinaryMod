@@ -194,14 +194,14 @@ namespace MVZ2.GameContent.Contraptions
                     return;
                 sphereDetectBuffer.Clear();
                 sphereDetector.DetectEntities(entity, sphereDetectBuffer);
-                var count = sphereDetectBuffer.Count;
+                var count = Mathf.Min(sphereDetectBuffer.Count, 10);
                 BeaconDamageBuff.SetDamageMultiplier(buff, count * DAMAGE_MULTIPLIER);
                 BeaconDamageBuff.SetLightRangeAddtion(buff, count * LIGHT_MULTIPLIER);
             }
             private Detector sphereDetector;
             private List<Entity> sphereDetectBuffer = new List<Entity>();
         }
-        public const float DAMAGE_MULTIPLIER = 0.05f;
+        public const float DAMAGE_MULTIPLIER = 0.1f;
         public static readonly Vector3 LIGHT_MULTIPLIER = Vector3.one * 5;
     }
 }

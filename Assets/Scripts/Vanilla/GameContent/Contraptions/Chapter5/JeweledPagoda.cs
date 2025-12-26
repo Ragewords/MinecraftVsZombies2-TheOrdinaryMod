@@ -110,8 +110,7 @@ namespace MVZ2.GameContent.Contraptions
             else if (jewelCount >= CHAOS)
             {
                 entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
-                lawnDetector.DetectEntities(entity, lawnBuffer);
-                var finalList = lawnBuffer.Where(e => e.ExistsAndAlive()).RandomTake(9, entity.RNG);
+                var finalList = entity.Level.FindEntities(e => IsChaosTarget(entity, e)).RandomTake(jewelCount, entity.RNG);
                 foreach (var entityCollider in finalList)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
@@ -123,6 +122,20 @@ namespace MVZ2.GameContent.Contraptions
                     });
                 }
             }
+        }
+        private static bool IsChaosTarget(Entity self, Entity target)
+        {
+            if (target == null)
+                return false;
+            if (target.IsDead)
+                return false;
+            if (!target.IsVulnerableEntity())
+                return false;
+            if (!self.IsHostile(target))
+                return false;
+            if (!Detection.CanDetect(target, false))
+                return false;
+            return true;
         }
         public static void SetLaser(Entity pagoda, EntityID laser) => pagoda.SetProperty(PROP_LASER, laser);
         public static EntityID? GetLaser(Entity pagoda) => pagoda.GetProperty<EntityID>(PROP_LASER);
