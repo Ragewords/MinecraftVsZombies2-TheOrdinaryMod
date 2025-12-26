@@ -45,6 +45,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00b7f0ed3d05b944c86a775eaecb997c
+    m_Address: mvz2:effect/fire_wall
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 01135a0e2629bc5439a4f6e0fab3977a
     m_Address: mvz2:bones/contraption
     m_ReadOnly: 0
