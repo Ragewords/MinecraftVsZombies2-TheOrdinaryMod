@@ -1691,7 +1691,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red>200+200</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤数个伞兵僵尸作为支援</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤2个伞兵僵尸作为支援。最多召唤5个伞兵僵尸。</color>]]></p>
             </properties>
             <flavor>
                 <p>航海者僵尸有着丰富的航海经验，在因故离开航海事业后，他将自己的航海故事写成了一本书，名为“航僵王”。</p>

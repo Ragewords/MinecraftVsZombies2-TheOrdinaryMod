@@ -189,8 +189,8 @@
     </entry>
     <entry id="admiral_zombie">
         <entity id="mvz2:admiral_zombie" />
-        <spawn level="4" minWave="10" />
-        <weight base="1000" />
+        <spawn level="4" minWave="5" />
+        <weight base="1500" />
     </entry>
     
     <entry id="mutant_zombie">

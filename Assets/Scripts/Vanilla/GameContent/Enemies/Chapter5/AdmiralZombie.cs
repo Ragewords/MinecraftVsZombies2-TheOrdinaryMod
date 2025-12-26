@@ -140,10 +140,10 @@ namespace MVZ2.GameContent.Enemies
                 return;
 
             var rng = GetRNG(entity);
-            var grids = rng != null ? valid.WeightedRandomTake(paratroopersWeight, count, rng) : valid.Take(count);
+            var grids = rng != null ? valid.RandomTake(count, rng) : valid.Take(count);
             foreach (var grid in grids)
             {
-                var entityToSpawn = rng != null ? paratroopsToSpawn.Random(rng) : VanillaEnemyID.zombie;
+                var entityToSpawn = rng != null ? paratroopsToSpawn[rng.WeightedRandom(paratroopersWeight)] : VanillaEnemyID.zombie;
                 SpawnParatroopOnGrid(entity, entityToSpawn, grid)?.Let(e =>
                 {
                     e.SetParent(entity);
@@ -168,7 +168,7 @@ namespace MVZ2.GameContent.Enemies
             int childrenCount = 0;
             foreach (var child in children)
             {
-                if (child.ExistsAndAlive())
+                if (child.ExistsAndAlive() && child.IsVulnerableEntity())
                 {
                     childrenCount++;
                 }

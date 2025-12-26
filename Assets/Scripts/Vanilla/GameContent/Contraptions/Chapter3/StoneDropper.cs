@@ -89,8 +89,8 @@ namespace MVZ2.GameContent.Contraptions
         };
         private static int[] projectilePoolWeights = new int[]
         {
-            20,
-            5
+            4,
+            1
         };
         public static RandomGenerator? GetRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
         public static void SetRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_RNG, value);
