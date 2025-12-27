@@ -10,7 +10,7 @@ namespace MVZ2.GameContent.Stages
     {
         public WithersRevenge(string nsp, string name) : base(nsp, name)
         {
-            AddBehaviour(new WaveStageBehaviour(this));
+            AddBehaviour(new WaveStageBehaviour(this){SpawnRallyZombie = true});
             AddBehaviour(new WitherStageBehaviour(this));
             AddBehaviour(new GemStageBehaviour(this));
             AddBehaviour(new StarshardStageBehaviour(this));

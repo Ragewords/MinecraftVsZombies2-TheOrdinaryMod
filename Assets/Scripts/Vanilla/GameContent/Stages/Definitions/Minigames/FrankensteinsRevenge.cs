@@ -10,7 +10,7 @@ namespace MVZ2.GameContent.Stages
     {
         public FrankensteinsRevenge(string nsp, string name) : base(nsp, name)
         {
-            AddBehaviour(new WaveStageBehaviour(this));
+            AddBehaviour(new WaveStageBehaviour(this){SpawnRallyZombie = true});
             AddBehaviour(new FrankensteinStageBehaviour(this));
             AddBehaviour(new GemStageBehaviour(this));
             AddBehaviour(new StarshardStageBehaviour(this));
