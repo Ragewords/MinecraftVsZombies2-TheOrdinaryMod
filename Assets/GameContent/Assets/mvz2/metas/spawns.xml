@@ -25,6 +25,12 @@
         <terrain water="true" air="true" />
         <weight base="0" />
     </entry>
+    <entry id="rally_zombie" noEndless="true">
+        <entity id="mvz2:rally_zombie" />
+        <spawn level="0" />
+        <terrain water="true" air="true" />
+        <weight base="0" />
+    </entry>
 
     <!-- Halloween -->
     <entry id="skeleton">
@@ -189,7 +195,7 @@
     </entry>
     <entry id="admiral_zombie">
         <entity id="mvz2:admiral_zombie" />
-        <spawn level="4" minWave="5" />
+        <spawn level="3" minWave="5" />
         <weight base="1500" />
     </entry>
     
