@@ -865,7 +865,7 @@
 
                 <int name="mvz2:cost" value="175" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
-                <id name="mvz2:function" value="mvz2:shooter" />
+                <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
         <contraption id="lightning_orb" name="闪电之珠" tooltip="阻碍大范围怪物前进，并吸收子弹来治疗自己">
