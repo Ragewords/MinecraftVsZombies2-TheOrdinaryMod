@@ -59,7 +59,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             if (GetHealth(buff) <= 0)
             {
                 Break(buff);
-                buff.Remove();
             }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
@@ -92,20 +91,22 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 entity.AddTickHealing(GetHealth(buff) - hpBefore);
             }
         }
-        public static void Break(Buff buff, bool playBreakEffect = true)
+        public static void Break(Buff buff, bool evoked = false)
         {
             var entity = buff.GetEntity();
             if (entity != null)
             {
-                if (playBreakEffect)
+                if (!evoked)
                 {
                     entity.PlaySound(VanillaSoundID.glassBreak);
-                    entity.PlaySound(VanillaSoundID.energyShieldBreak);
                     entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield);
                 }
-                entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
+                entity.PlaySound(VanillaSoundID.energyShieldBreak);
+                var breakBuff = entity.AddBuff<LightningOrbEnergyShieldBreakBuff>();
+                breakBuff.SetProperty(LightningOrbEnergyShieldBreakBuff.PROP_EVOKED, evoked);
                 LightningOrb.GetShieldRegenerateTimer(entity)?.Reset();
             }
+            buff.Remove();
         }
         public static void ResetHealth(Buff buff) => SetHealth(buff, MAX_HEALTH);
         public const float MAX_HEALTH = 3000;

@@ -112,8 +112,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.lightningAttack);
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                LightningOrbEnergyShieldBuff.Break(buff, false);
-                buff.Remove();
+                LightningOrbEnergyShieldBuff.Break(buff, true);
             }
             entity.AddBuff<LightningOrbEvokedBuff>();
         }
