@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
@@ -64,6 +65,10 @@ namespace MVZ2.GameContent.Contraptions
                         repeatTimer.Reset();
                     }
                 }
+                else
+                {
+                    SetDoubleShoot(entity, false);
+                }
             }
             else
             {
@@ -91,6 +96,14 @@ namespace MVZ2.GameContent.Contraptions
         {
             SetGatlinAlt(entity, !IsGatlinAlt(entity));
             return base.Shoot(entity);
+        }
+        protected override int GetTimerTime(Entity entity)
+        {
+            if (entity.Level.IsIZombie())
+            {
+                return ATTACK_INTERVAL_MAX;
+            }
+            return entity.RNG.Next(ATTACK_INTERVAL_MIN, ATTACK_INTERVAL_MAX + 1);
         }
 
         public override bool CanEvoke(Entity entity)
@@ -132,8 +145,8 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void ShootDouble(Entity entity)
         {
-            ModifiedShoot(entity, new Vector3(0, 0, -8));
-            ModifiedShoot(entity, new Vector3(0, 0, 8));
+            ModifiedShoot(entity, new Vector3(0, 0, -4));
+            ModifiedShoot(entity, new Vector3(0, 0, 4));
         }
         public Entity? ModifiedShoot(Entity entity, Vector3 modify)
         {
@@ -180,6 +193,8 @@ namespace MVZ2.GameContent.Contraptions
         public const int EVOCATION_TIME = 60;
         public const int REPEAT_COUNT = 4;
         public const int REPEAT_COUNT_UPGRADED = 7;
+        private const int ATTACK_INTERVAL_MIN = 55;
+        private const int ATTACK_INTERVAL_MAX = 60;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
