@@ -129,7 +129,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 64
-        height: 70
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
         x: 65
         y: 0
         width: 64
-        height: 70
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,7 +171,7 @@ TextureImporter:
         x: 130
         y: 0
         width: 64
-        height: 70
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,6 @@ TextureImporter:
       dream_crystal_0: 1713955589
       dream_crystal_1: -1975716995
       dream_crystal_2: 1993147586
-      dream_crystal_3: 1138926398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
