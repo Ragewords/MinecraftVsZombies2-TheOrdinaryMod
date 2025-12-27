@@ -113,6 +113,7 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
                 LightningOrbEnergyShieldBuff.Break(buff, false);
+                buff.Remove();
             }
             entity.AddBuff<LightningOrbEvokedBuff>();
         }
