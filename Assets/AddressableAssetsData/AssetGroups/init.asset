@@ -53,6 +53,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4378b7cd4f329b24fbe94157af0972c8
+    m_Address: mvz2:init/sublogo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Init
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4df3315370b3ba445855264afd0238ac
     m_Address: mvz2:click
     m_ReadOnly: 0
