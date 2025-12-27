@@ -188,7 +188,7 @@ namespace MVZ2.GameContent.Areas
         public const float SKY_OFFSET_ACCELERATION = 0.1f;
         public const float ENEMY_BLOW_MULTIPILER = 0.05f;
         public const float PROJECTILE_BLOW_MULTIPILER = 0.03f;
-        public const float BREEZE_OFFSET_ACCELERATION = 0.01f;
+        public const float BREEZE_OFFSET_ACCELERATION = 0.1f;
         public const float BREEZE_OFFSET_MULTIPILER = 1.5f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
         public static readonly VanillaLevelPropertyMeta<float> PROP_SKY_OFFSET_SPEED = new VanillaLevelPropertyMeta<float>("sky_offset_speed");
