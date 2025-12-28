@@ -1061,12 +1061,12 @@
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
-        <dispenser id="repeatenser" name="连射发射器" tooltip="交替射出两次箭矢">
+        <dispenser id="repeatenser" name="连射发射器" tooltip="一次射出三支箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_4" />
             </unlock>
             <properties>
-                <int name="mvz2:cost" value="250" />
+                <int name="mvz2:cost" value="200" />
             </properties>
         </dispenser>
         <dispenser id="beacon" name="信标" tooltip="向五个方向发射手里剑">
@@ -1286,7 +1286,7 @@
                 <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </contraption>
-        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要比较发射器）\n交替射出四次箭矢">
+        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要比较发射器）\n一次射出六支箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_5" />
             </unlock>
