@@ -1296,7 +1296,7 @@
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
 
-                <int name="mvz2:cost" value="350" />
+                <int name="mvz2:cost" value="400" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </dispenser>
