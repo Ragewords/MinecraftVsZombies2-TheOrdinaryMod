@@ -80,7 +80,7 @@ namespace MVZ2.GameContent.Contraptions
             var healAmount = output.Amount;
             foreach (var buff in orb.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                LightningOrbEnergyShieldBuff.Heal(buff, healAmount / 10);
+                LightningOrbEnergyShieldBuff.Heal(buff, healAmount / 2);
             }
         }
         private void PostObsidianFirstAidCallback(EntityCallbackParams param, CallbackResult result)
@@ -112,9 +112,18 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.lightningAttack);
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                LightningOrbEnergyShieldBuff.Break(buff, true);
+                LightningOrbEnergyShieldBuff.Break(buff, false, true);
             }
-            entity.AddBuff<LightningOrbEvokedBuff>();
+        }
+        public static bool NegateInstantKill(Entity entity)
+        {
+            bool negate = false;
+            foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
+            {
+                LightningOrbEnergyShieldBuff.Break(buff, false);
+                negate = true;
+            }
+            return negate;
         }
         public static FrameTimer? GetShieldRegenerateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_TIMER);
         public static void SetShieldRegenerateTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_TIMER, timer);

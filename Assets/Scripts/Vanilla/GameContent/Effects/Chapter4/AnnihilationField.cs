@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Artifacts;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Obstacles;
 using MVZ2.GameContent.Pickups;
@@ -61,7 +62,10 @@ namespace MVZ2.GameContent.Effects
             entity.Level.FindEntitiesNonAlloc(e => e.IsEntityOf(VanillaObstacleID.monsterSpawner) && e.IsHostile(entity) && (e.GetCenter() - entity.GetCenter()).sqrMagnitude <= sqrRange, detectBuffer);
             foreach (var target in detectBuffer)
             {
-                target.RemoveDie();
+                if (!LightningOrb.NegateInstantKill(target))
+                {
+                    target.RemoveDie();
+                }
             }
         }
         public override void PostRemove(Entity entity)

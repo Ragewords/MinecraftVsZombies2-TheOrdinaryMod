@@ -1262,7 +1262,10 @@ namespace MVZ2.GameContent.Bosses
                         {
                             target.PlayDeathSound();
                         }
-                        target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER), entity);
+                        if (!LightningOrb.NegateInstantKill(target))
+                        {
+                            target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER), entity);
+                        }
                         EatEntity(entity, target);
                     }
                     else
@@ -2274,7 +2277,7 @@ namespace MVZ2.GameContent.Bosses
                     case SUBSTATE_START:
                         {
                             var headRotation = GetHeadRotation(entity);
-                            headRotation = Ticks.SmoothDamp(headRotation, FIRE_BREATH_ANGLE_START, 0.2f);
+                            headRotation = Ticks.SmoothDamp(headRotation, FIRE_WALL_ANGLE_START, 0.2f);
                             SetHeadRotation(entity, headRotation);
                             if (timer.Expired)
                             {
@@ -2286,14 +2289,14 @@ namespace MVZ2.GameContent.Bosses
                                 else
                                 {
                                     stateMachine.StartSubState(entity, SUBSTATE_LOOP);
-                                    timer.ResetSeconds(1f);
+                                    timer.ResetSeconds(1.5f);
                                 }
                             }
                         }
                         break;
                     case SUBSTATE_LOOP:
                         {
-                            SetHeadRotation(entity, Mathf.Lerp(FIRE_BREATH_ANGLE_START, FIRE_BREATH_ANGLE_END, timer.GetPassedPercentage()));
+                            SetHeadRotation(entity, Mathf.Lerp(FIRE_WALL_ANGLE_START, FIRE_WALL_ANGLE_END, timer.GetPassedPercentage()));
 
                             if (timer.PassedIntervalSeconds(0.2f))
                             {
@@ -2351,6 +2354,8 @@ namespace MVZ2.GameContent.Bosses
 
         public const float FIRE_BREATH_ANGLE_START = -30;
         public const float FIRE_BREATH_ANGLE_END = 30;
+        public const float FIRE_WALL_ANGLE_START = -30;
+        public const float FIRE_WALL_ANGLE_END = 30;
         private static RedDragonStateMachine stateMachine = new RedDragonStateMachine();
         private static RedDragonEatDetector eatDetector = new RedDragonEatDetector();
         private static int[] statePoolPhase1 = new int[]

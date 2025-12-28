@@ -91,12 +91,12 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 entity.AddTickHealing(GetHealth(buff) - hpBefore);
             }
         }
-        public static void Break(Buff buff, bool evoked = false)
+        public static void Break(Buff buff, bool playEffect = true, bool evoked = false)
         {
             var entity = buff.GetEntity();
             if (entity != null)
             {
-                if (!evoked)
+                if (playEffect)
                 {
                     entity.PlaySound(VanillaSoundID.glassBreak);
                     entity.CreateFragmentAndPlay(VanillaFragmentID.lightningOrbEnergyShield);
