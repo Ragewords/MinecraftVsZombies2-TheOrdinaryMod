@@ -30,14 +30,10 @@ namespace MVZ2.GameContent.Contraptions
         public Punchton(string nsp, string name) : base(nsp, name)
         {
             detector = new PunchtonDetector(false);
-            punchDetector = new PunchtonDetector(true)
-            {
-                canDetectSpectral = true
-            };
+            punchDetector = new PunchtonDetector(true);
             evokedDetector = new PunchtonDetector(true)
             {
-                infiniteRange = true,
-                canDetectSpectral = true
+                infiniteRange = true
             };
         }
 

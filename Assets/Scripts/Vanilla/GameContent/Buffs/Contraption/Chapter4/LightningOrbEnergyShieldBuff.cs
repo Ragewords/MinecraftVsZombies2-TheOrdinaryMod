@@ -120,7 +120,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 protectDetector = new LightningOrbEnergyShieldDetector()
                 {
                     factionTarget = FactionTarget.Friendly,
-                    canDetectSpectral = true
+                    canDetectInvisible = true
                 };
             }
 

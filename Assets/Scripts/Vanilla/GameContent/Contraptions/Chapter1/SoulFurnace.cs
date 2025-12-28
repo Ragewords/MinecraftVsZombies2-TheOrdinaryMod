@@ -101,14 +101,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.PostTakeDamage(damage);
         }
-        protected override Detector GetDetector()
-        {
-            return new DispenserDetector()
-            {
-                canDetectSpectral = true,
-                ignoreHighEnemy = true
-            };
-        }
 
         public int GetFuel(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_FUEL);
         public void SetFuel(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_FUEL, Mathf.Clamp(value, 0, MAX_FUEL));

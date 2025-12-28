@@ -196,14 +196,8 @@ namespace MVZ2.Vanilla.Entities
         #endregion
 
         #region 索敌
-        public static readonly PropertyMeta<bool> SPECTRAL = Get<bool>("spectral");
         public static readonly PropertyMeta<bool> INVISIBLE = Get<bool>("invisible");
         public static readonly PropertyMeta<bool> AI_FROZEN = Get<bool>("aiFrozen");
-
-        public static bool IsSpectral(this Entity entity)
-        {
-            return entity.GetProperty<bool>(SPECTRAL);
-        }
         public static bool IsInvisible(this Entity entity)
         {
             return entity.GetProperty<bool>(INVISIBLE);

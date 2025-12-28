@@ -12,7 +12,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
     {
         public LightningOrbEnergyShieldProtectedBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new BooleanModifier(VanillaEntityProps.SPECTRAL, true));
+            AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, true));
         }
     }
 }

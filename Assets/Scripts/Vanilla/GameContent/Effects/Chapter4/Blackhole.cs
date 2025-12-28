@@ -27,7 +27,6 @@ namespace MVZ2.GameContent.Effects
             {
                 mask = EntityCollisionHelper.MASK_VULNERABLE | EntityCollisionHelper.MASK_PROJECTILE,
                 canDetectInvisible = true,
-                canDetectSpectral = true,
                 factionTarget = FactionTarget.Any
             };
         }

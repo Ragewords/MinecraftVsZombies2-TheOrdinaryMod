@@ -133,7 +133,7 @@ namespace MVZ2.GameContent.Contraptions
                 return false;
             if (!self.IsHostile(target))
                 return false;
-            if (!Detection.CanDetect(target, false))
+            if (!Detection.CanDetect(target))
                 return false;
             return true;
         }

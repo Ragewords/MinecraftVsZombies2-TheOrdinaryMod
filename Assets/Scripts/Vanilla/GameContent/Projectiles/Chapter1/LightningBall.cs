@@ -19,10 +19,7 @@ namespace MVZ2.GameContent.Projectiles
     {
         public LightningBall(string nsp, string name) : base(nsp, name)
         {
-            zapDetector = new SphereDetector(120)
-            {
-                canDetectSpectral = true
-            };
+            zapDetector = new SphereDetector(120);
         }
         public override void Update(Entity entity)
         {

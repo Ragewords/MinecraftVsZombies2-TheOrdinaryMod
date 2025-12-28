@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Detections
         }
         protected override bool ValidateCollider(DetectionParams param, IEntityCollider collider)
         {
-            // Ä¿±êµÄZÖÐÐÄ±ØÐë±»´µµ½¡£
+            // Ä¿ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Ä±ï¿½ï¿½ë±»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var self = param.entity;
             float minZ, maxZ;
             if (evoked)
