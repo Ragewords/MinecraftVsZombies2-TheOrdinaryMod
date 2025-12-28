@@ -163,7 +163,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             if (entity.Level.AreaID == VanillaAreaID.ship)
             {
-                var multipiler = entity.Level.IsDuringHugeWave() ? 2f : 1.2f;
+                var multipiler = entity.Level.IsDuringHugeWave() ? 1.5f : 1f;
                 return Ship.GetBreezeSpeed(entity.Level) * -1 * multipiler;
             }
             return 0;

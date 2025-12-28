@@ -2354,8 +2354,8 @@ namespace MVZ2.GameContent.Bosses
 
         public const float FIRE_BREATH_ANGLE_START = -30;
         public const float FIRE_BREATH_ANGLE_END = 30;
-        public const float FIRE_WALL_ANGLE_START = -30;
-        public const float FIRE_WALL_ANGLE_END = 30;
+        public const float FIRE_WALL_ANGLE_START = -60;
+        public const float FIRE_WALL_ANGLE_END = 60;
         private static RedDragonStateMachine stateMachine = new RedDragonStateMachine();
         private static RedDragonEatDetector eatDetector = new RedDragonEatDetector();
         private static int[] statePoolPhase1 = new int[]

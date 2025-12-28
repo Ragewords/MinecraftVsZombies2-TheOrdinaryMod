@@ -147,7 +147,7 @@ namespace MVZ2.GameContent.Areas
             var rng = GetBreezeRNG(level);
             if (rng != null)
             {
-                SetNextBreezeSpeed(level, rng.Next(-2, 4));
+                SetNextBreezeSpeed(level, possibleWindSpeed.Where(i => GetBreezeSpeed(level) != i).Random(rng));
             }
         }
         private void BlowEntities(LevelEngine level, float speed, float multipiler)
@@ -182,13 +182,17 @@ namespace MVZ2.GameContent.Areas
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie
         };
+        public static readonly float[] possibleWindSpeed = new float[]
+        {
+            -2, 1, 0, 1, 2, 3
+        };
         public const int SPAWNER_MIN_COLUMN = 5;
         public const float SKY_OFFSET_SPEED_NORMAL = 1;
         public const float SKY_OFFSET_SPEED_FAST = 10;
         public const float SKY_OFFSET_ACCELERATION = 0.1f;
         public const float ENEMY_BLOW_MULTIPILER = 0.05f;
         public const float PROJECTILE_BLOW_MULTIPILER = 0.03f;
-        public const float BREEZE_OFFSET_ACCELERATION = 0.1f;
+        public const float BREEZE_OFFSET_ACCELERATION = 0.05f;
         public const float BREEZE_OFFSET_MULTIPILER = 1.5f;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("SpawnerRNG");
         public static readonly VanillaLevelPropertyMeta<float> PROP_SKY_OFFSET_SPEED = new VanillaLevelPropertyMeta<float>("sky_offset_speed");
