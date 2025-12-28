@@ -544,7 +544,7 @@
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
                 <id name="mvz2:placement" value="mvz2:drivenser" />
 
-                <int name="mvz2:cost" value="125" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
@@ -1296,7 +1296,7 @@
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
 
-                <int name="mvz2:cost" value="400" />
+                <int name="mvz2:cost" value="350" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
             </properties>
         </dispenser>

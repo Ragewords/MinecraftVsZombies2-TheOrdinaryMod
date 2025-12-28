@@ -145,6 +145,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void ShootDouble(Entity entity)
         {
+            SetGatlinAlt(entity, !IsGatlinAlt(entity));
             ModifiedShoot(entity, new Vector3(0, 0, -4));
             ModifiedShoot(entity, new Vector3(0, 0, 4));
         }
