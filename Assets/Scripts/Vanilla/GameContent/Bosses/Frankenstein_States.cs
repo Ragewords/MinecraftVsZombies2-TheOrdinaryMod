@@ -209,6 +209,7 @@ namespace MVZ2.GameContent.Bosses
                 });}
 
                 level.ShakeScreen(5, 0, 15);
+                boss.SetAnimationBool("HeadMissing", true);
                 boss.PlaySound(VanillaSoundID.explosion);
                 boss.PlaySound(VanillaSoundID.powerOff);
 
