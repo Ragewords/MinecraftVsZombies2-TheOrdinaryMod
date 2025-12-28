@@ -1066,7 +1066,7 @@
                 <condition required="mvz2:level.ship_4" />
             </unlock>
             <properties>
-                <int name="mvz2:cost" value="200" />
+                <int name="mvz2:cost" value="250" />
             </properties>
         </dispenser>
         <dispenser id="beacon" name="信标" tooltip="向五个方向发射手里剑">

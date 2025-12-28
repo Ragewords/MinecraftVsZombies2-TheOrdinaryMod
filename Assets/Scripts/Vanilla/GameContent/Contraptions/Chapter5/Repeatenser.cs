@@ -4,7 +4,6 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -69,14 +68,6 @@ namespace MVZ2.GameContent.Contraptions
                 repeatTimer.ResetTime(Mathf.FloorToInt(15f / count));
                 repeatTimer.Frame = 0;
             }
-        }
-        protected override int GetTimerTime(Entity entity)
-        {
-            if (entity.Level.IsIZombie())
-            {
-                return ATTACK_INTERVAL_MAX;
-            }
-            return entity.RNG.Next(ATTACK_INTERVAL_MIN, ATTACK_INTERVAL_MAX + 1);
         }
 
         protected override void OnEvoke(Entity entity)
@@ -170,8 +161,6 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetDoubleShoot(Entity entity, bool value) => entity.SetBehaviourField(PROP_DOUBLE_SHOOT, value);
 
         public const int REPEAT_COUNT = 2;
-        private const int ATTACK_INTERVAL_MIN = 55;
-        private const int ATTACK_INTERVAL_MAX = 60;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_DOUBLE_SHOOT = new VanillaEntityPropertyMeta<bool>("DoubleShoot");
