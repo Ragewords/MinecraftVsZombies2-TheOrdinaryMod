@@ -1057,7 +1057,7 @@
                 <p>高频脉冲发射器一次能发射六支箭矢，先发射一支，再发射两支，如此循环。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>6支/1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>6支/1秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>技能：<![CDATA[<color=red>永久改为发射十支或十一支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
