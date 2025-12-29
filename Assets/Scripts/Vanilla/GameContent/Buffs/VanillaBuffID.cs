@@ -343,6 +343,7 @@ namespace MVZ2.GameContent.Buffs
             public const string hellfireIgnited = "hellfire_ignited";
 
             // Chapter 5
+            public const string blownProjectile = "blown_projectile";
             public const string beaconMeteorNoDestroy = "beacon_meteor_no_destroy";
         }
         public static class Effect
@@ -685,6 +686,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID hellfireIgnited = Get(VanillaBuffNames.Projectile.hellfireIgnited);
 
             // Chapter 5
+            public static readonly NamespaceID blownProjectile = Get(VanillaBuffNames.Projectile.blownProjectile);
             public static readonly NamespaceID beaconMeteorNoDestroy = Get(VanillaBuffNames.Projectile.beaconMeteorNoDestroy);
         }
         public static class Effect

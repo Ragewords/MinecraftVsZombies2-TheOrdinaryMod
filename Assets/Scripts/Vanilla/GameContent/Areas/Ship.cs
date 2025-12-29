@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
@@ -154,15 +155,23 @@ namespace MVZ2.GameContent.Areas
         {
             foreach (var enemy in level.FindEntities(e => e.Type == EntityTypes.ENEMY))
             {
+                if (enemy == null)
+                    continue;
                 if (enemy.State != VanillaEnemyStates.MELEE_ATTACK)
                     enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * enemy.GetStrongKnockbackMultiplier() * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
             {
+                if (projectile == null)
+                    continue;
                 if (projectile.Definition.HasBehaviour<HellPlanet>() || projectile.IsEntityOf(VanillaProjectileID.explosiveLargeFireball))
                     continue;
                 if (projectile.Velocity.magnitude < 30)
                     projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
+                if (projectile.Velocity.magnitude <= 1 && !projectile.HasBuff(VanillaBuffID.Projectile.blownProjectile))
+                {
+                    projectile.AddBuff(VanillaBuffID.Projectile.blownProjectile);
+                }
             }
         }
         public static float GetSkyOffsetSpeed(LevelEngine level) => level.GetProperty<float>(PROP_SKY_OFFSET_SPEED);

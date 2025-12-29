@@ -208,6 +208,7 @@
     <buff id="command_block_blueprint" polarity="mixed" level="5000" target="blueprint" />
 
     <!-- Chapter 5 -->
+    <buff id="blown_projectile" polarity="none" level="5000" target="projectile" />
     <buff id="ufo_spawn" polarity="negative" level="5000" target="level" />
     <buff id="above_cloud" polarity="none" level="5000" target="entity" />
     <buff id="beacon_damage" polarity="positive" level="3000" target="contraption" />

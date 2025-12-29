@@ -178,9 +178,9 @@
     </entry>
     <entry id="flying_pirate">
         <entity id="mvz2:flying_pirate" />
-        <spawn level="3" minWave="10" />
+        <spawn level="3" minWave="5" />
         <terrain water="true" air="true" />
-        <weight base="1500" />
+        <weight base="2000" />
     </entry>
     <entry id="zombie_cloud">
         <entity id="mvz2:zombie_cloud" />
@@ -195,8 +195,8 @@
     </entry>
     <entry id="admiral_zombie">
         <entity id="mvz2:admiral_zombie" />
-        <spawn level="3" minWave="5" />
-        <weight base="1500" />
+        <spawn level="3" minWave="10" />
+        <weight base="2500" />
     </entry>
     
     <entry id="mutant_zombie">
