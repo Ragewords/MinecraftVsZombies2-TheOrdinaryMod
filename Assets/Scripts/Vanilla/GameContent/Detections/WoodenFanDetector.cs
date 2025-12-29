@@ -13,7 +13,6 @@ namespace MVZ2.GameContent.Detections
         public WoodenFanDetector(bool evoked)
         {
             this.evoked = evoked;
-            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

@@ -11,7 +11,6 @@ namespace MVZ2.GameContent.Detections
     {
         public DevourerEvokedDetector()
         {
-            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

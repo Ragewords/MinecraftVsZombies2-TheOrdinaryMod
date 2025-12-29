@@ -15,7 +15,6 @@ namespace MVZ2.GameContent.Detections
             factionTarget = FactionTarget.Any;
             this.affectHeight = affectHeight;
             this.sizeMultiplier = sizeMultiplier;
-            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

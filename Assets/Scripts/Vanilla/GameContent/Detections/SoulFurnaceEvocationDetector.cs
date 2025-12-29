@@ -9,10 +9,6 @@ namespace MVZ2.GameContent.Detections
 {
     public class SoulFurnaceEvocationDetector : Detector
     {
-        public SoulFurnaceEvocationDetector()
-        {
-            hawkeye = true;
-        }
         protected override Bounds GetDetectionBounds(Entity self)
         {
             var sizeX = 800;

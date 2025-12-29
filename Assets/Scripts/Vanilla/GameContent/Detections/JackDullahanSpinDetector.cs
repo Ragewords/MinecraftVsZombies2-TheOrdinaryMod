@@ -11,7 +11,6 @@ namespace MVZ2.GameContent.Detections
         public JackDullahanSpinDetector(float radius)
         {
             this.radius = radius;
-            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

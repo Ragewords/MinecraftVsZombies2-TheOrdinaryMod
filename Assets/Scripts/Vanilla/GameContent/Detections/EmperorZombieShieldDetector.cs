@@ -16,7 +16,6 @@ namespace MVZ2.GameContent.Detections
         {
             this.radius = radius;
             factionTarget = FactionTarget.Friendly;
-            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

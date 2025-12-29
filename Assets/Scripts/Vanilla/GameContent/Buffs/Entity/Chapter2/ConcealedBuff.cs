@@ -13,7 +13,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public ConcealedBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, true));
-            AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DETECT_WHILE_INVISIBLE, true));
         }
     }
 }

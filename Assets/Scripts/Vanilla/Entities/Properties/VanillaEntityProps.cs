@@ -197,7 +197,6 @@ namespace MVZ2.Vanilla.Entities
 
         #region 索敌
         public static readonly PropertyMeta<bool> INVISIBLE = Get<bool>("invisible");
-        public static readonly PropertyMeta<bool> CAN_DETECT_WHILE_INVISIBLE = Get<bool>("canDetectWhileInvisible");
         public static readonly PropertyMeta<bool> AI_FROZEN = Get<bool>("aiFrozen");
         public static bool IsInvisible(this Entity entity)
         {
@@ -206,10 +205,6 @@ namespace MVZ2.Vanilla.Entities
         public static void SetInvisible(this Entity entity, bool value)
         {
             entity.SetProperty(INVISIBLE, value);
-        }
-        public static bool CanDetectWhileInvisible(this Entity entity)
-        {
-            return entity.GetProperty<bool>(CAN_DETECT_WHILE_INVISIBLE);
         }
         public static bool IsAIFrozen(this Entity entity)
         {

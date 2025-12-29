@@ -149,10 +149,7 @@ namespace MVZ2.Vanilla.Detections
             if (!target.IsFactionTarget(self.faction, factionTarget))
                 return false;
             if (!canDetectInvisible && target.IsInvisible())
-            {
-                if (!(hawkeye && target.CanDetectWhileInvisible()))
-                    return false;
-            }
+                return false;
             return true;
         }
         protected abstract Bounds GetDetectionBounds(Entity self);
@@ -206,7 +203,6 @@ namespace MVZ2.Vanilla.Detections
         public int mask = EntityCollisionHelper.MASK_VULNERABLE;
         public FactionTarget factionTarget = FactionTarget.Hostile;
         public bool canDetectInvisible;
-        public bool hawkeye;
         public bool ignoreBoss;
         public bool includeSelf;
         private List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();

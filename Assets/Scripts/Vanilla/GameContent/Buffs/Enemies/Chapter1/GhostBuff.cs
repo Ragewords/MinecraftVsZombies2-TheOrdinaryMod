@@ -24,8 +24,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
             AddModifier(new BooleanModifier(VanillaEntityProps.ETHEREAL, PROP_ETHEREAL));
-            AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, PROP_INVISIBLE));
-            AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DETECT_WHILE_INVISIBLE, PROP_INVISIBLE));
             AddModifier(new FloatModifier(VanillaEntityProps.SHADOW_ALPHA, NumberOperator.Multiply, PROP_SHADOW_ALPHA));
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback, priority: VanillaCallbackPriorities.MULTIPLY);
         }
@@ -34,7 +32,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             base.PostAdd(buff);
             buff.SetProperty(PROP_TINT_MULTIPLIER, new Color(1, 1, 1, GetMinAlpha(buff)));
             buff.SetProperty(PROP_ETHEREAL, true);
-            buff.SetProperty(PROP_INVISIBLE, true);
             buff.SetProperty(PROP_SHADOW_ALPHA, SHADOW_ALPHA_MIN);
             UpdateIllumination(buff);
         }
@@ -78,8 +75,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity == null)
                 return;
             bool illuminated = entity.Level.IsDay() || entity.IsIlluminated() || entity.IsAIFrozen();
-            if (!IgnoreIlluminated(buff))
-                SetIlluminated(buff, illuminated);
+            SetIlluminated(buff, illuminated);
         }
         public static void SetIlluminated(Buff buff, bool illuminated)
         {
@@ -93,7 +89,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             float tintSpeed = illuminated ? TINT_SPEED : -TINT_SPEED;
             float shadowSpeed = illuminated ? SHADOW_ALPHA_SPEED : -SHADOW_ALPHA_SPEED;
             bool ethereal = illuminated ? false : true;
-            bool invisible = illuminated ? false : true;
 
             var tint = buff.GetProperty<Color>(PROP_TINT_MULTIPLIER);
             tint.a = Mathf.Clamp(tint.a + tintSpeed, GetMinAlpha(buff), TINT_ALPHA_MAX);
@@ -104,14 +99,12 @@ namespace MVZ2.GameContent.Buffs.Enemies
             buff.SetProperty(PROP_TINT_MULTIPLIER, tint);
             buff.SetProperty(PROP_SHADOW_ALPHA, shadowAlpha);
             buff.SetProperty(PROP_ETHEREAL, ethereal);
-            buff.SetProperty(PROP_INVISIBLE, invisible);
         }
         public static void Illuminate(Buff buff)
         {
             buff.SetProperty(PROP_TINT_MULTIPLIER, Color.white);
             buff.SetProperty(PROP_SHADOW_ALPHA, SHADOW_ALPHA_MAX);
             buff.SetProperty(PROP_ETHEREAL, false);
-            buff.SetProperty(PROP_INVISIBLE, false);
         }
         private static float GetMinAlpha(Buff buff)
         {
@@ -142,16 +135,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             }
             return false;
         }
-        public static bool IgnoreIlluminated(Buff buff)
-        {
-            return buff.GetProperty<bool>(PROP_IGNORE_ILLUMINATED);
-        }
         public static readonly VanillaBuffPropertyMeta<bool> PROP_EVER_ILLUMINATED = new VanillaBuffPropertyMeta<bool>("EverIlluminated");
         public static readonly VanillaBuffPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaBuffPropertyMeta<Color>("TintMultiplier");
         public static readonly VanillaBuffPropertyMeta<float> PROP_SHADOW_ALPHA = new VanillaBuffPropertyMeta<float>("ShadowAlpha");
         public static readonly VanillaBuffPropertyMeta<bool> PROP_ETHEREAL = new VanillaBuffPropertyMeta<bool>("Ethereal");
-        public static readonly VanillaBuffPropertyMeta<bool> PROP_INVISIBLE = new VanillaBuffPropertyMeta<bool>("Invisible");
-        public static readonly VanillaBuffPropertyMeta<bool> PROP_IGNORE_ILLUMINATED = new VanillaBuffPropertyMeta<bool>("IgnoreIlluminated");
         public const float TINT_ALPHA_MIN = 0.5f;
         public const float TINT_ALPHA_MAX = 1;
         public const float TINT_SPEED = 0.02f;

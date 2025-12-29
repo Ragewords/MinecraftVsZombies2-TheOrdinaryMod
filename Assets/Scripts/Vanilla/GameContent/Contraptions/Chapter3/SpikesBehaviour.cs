@@ -21,8 +21,7 @@ namespace MVZ2.GameContent.Contraptions
         public SpikesBehaviour(string nsp, string name) : base(nsp, name)
         {
             detector = new SpikeBlockDetector();
-            attackDetector = new SpikeBlockDetector(){ hawkeye = true };
-            detectorEvoked = new SpikeBlockDetector(true){ hawkeye = true };
+            detectorEvoked = new SpikeBlockDetector(true);
         }
         public override void Init(Entity entity)
         {
@@ -43,9 +42,7 @@ namespace MVZ2.GameContent.Contraptions
                     bool damaged = false;
                     if (detectBuffer.Count > 0)
                     {
-                        attackDetectBuffer.Clear();
-                        attackDetector.DetectMultiple(entity, attackDetectBuffer);
-                        foreach (var target in attackDetectBuffer)
+                        foreach (var target in detectBuffer)
                         {
                             target.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.GROUND_SPIKES), entity);
                         }
@@ -134,9 +131,7 @@ namespace MVZ2.GameContent.Contraptions
         public virtual int DetectInterval => 4;
         public virtual NamespaceID SpikeParticleID => VanillaEffectID.spikeParticles;
         private Detector detector;
-        private Detector attackDetector;
         private Detector detectorEvoked;
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
-        private List<IEntityCollider> attackDetectBuffer = new List<IEntityCollider>();
     }
 }

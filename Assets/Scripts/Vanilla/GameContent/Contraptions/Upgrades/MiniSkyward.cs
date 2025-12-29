@@ -47,14 +47,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             return FIRE_INTERVAL;
         }
-        protected override Detector GetDetector()
-        {
-            return new DispenserDetector()
-            {
-                hawkeye = true,
-                ignoreHighEnemy = true
-            };
-        }
         public void UpdatePosition(Entity entity)
         {
             var parent = entity.Parent;
