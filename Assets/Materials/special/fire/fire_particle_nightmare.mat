@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: nightmare_fire_particle
+  m_Name: fire_particle_nightmare
   m_Shader: {fileID: 4800000, guid: f05b1fdfdcfeeab408e87e0972298476, type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 3a8506ba686632e45a2c236f7ad864d3, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - ETC1_EXTERNAL_ALPHA
+  - DEPTH_TEST
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -28,17 +28,8 @@ Material:
         m_Texture: {fileID: 2800000, guid: 693dd41900232284cb765364ac5cec13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: e336ff858b2a96e4588529934206cbad, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _ClipThresold: 0.564
-    - _FireTime: 0
-    - _LifeTime: 0
-    - _Threshold: 0
+    m_Floats: []
     m_Colors:
-    - _EdgeColor: {r: 0, g: 0, b: 0, a: 0.5019608}
-    - _LocalRect: {r: 0, g: 0, b: 1, a: 1}
+    - _EdgeColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

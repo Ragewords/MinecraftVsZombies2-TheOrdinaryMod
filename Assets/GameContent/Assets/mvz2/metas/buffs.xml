@@ -76,6 +76,7 @@
     <buff id="projectile_wait" polarity="none" level="1000" target="projectile" />
     <buff id="magichest_invincible" polarity="positive" level="3000" target="contraption" />
     <buff id="ghost" polarity="none" level="3000" target="enemy" />
+    <buff id="ghost_possessing" polarity="none" level="3000" target="enemy" />
     <buff id="napstablook_angry" polarity="none" level="3000" target="enemy" />
     <buff id="sword_paralyzed" polarity="negative" level="0" target="level" />
     <buff id="frankenstein_stage" polarity="none" level="4000" target="level" />

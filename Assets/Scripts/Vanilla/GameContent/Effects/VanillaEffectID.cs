@@ -20,6 +20,7 @@ namespace MVZ2.GameContent.Effects
         public const string shineRing = "shine_ring";
         public const string stunStars = "stun_stars";
         public const string stunningFlash = "stunning_flash";
+        public const string ghostChain = "ghost_chain";
         public const string explosion = "explosion";
         public const string soulfire = "soulfire";
         public const string soulfireBurn = "soulfire_burn";
@@ -147,6 +148,7 @@ namespace MVZ2.GameContent.Effects
         public static readonly NamespaceID shineRing = Get(VanillaEffectNames.shineRing);
         public static readonly NamespaceID stunStars = Get(VanillaEffectNames.stunStars);
         public static readonly NamespaceID stunningFlash = Get(VanillaEffectNames.stunningFlash);
+        public static readonly NamespaceID ghostChain = Get(VanillaEffectNames.ghostChain);
         public static readonly NamespaceID soulfire = Get(VanillaEffectNames.soulfire);
         public static readonly NamespaceID soulfireBurn = Get(VanillaEffectNames.soulfireBurn);
         public static readonly NamespaceID soulfireBlast = Get(VanillaEffectNames.soulfireBlast);

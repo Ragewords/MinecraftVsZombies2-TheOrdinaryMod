@@ -3025,6 +3025,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 387bc483587834448b1ea23cf9e3e10e
+    m_Address: mvz2:effect/ghost_chain
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 388a6266b2292d34ea34eb9864284d7b
     m_Address: mvz2:dark_skies_cast
     m_ReadOnly: 0
@@ -5978,6 +5985,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70da83ed2932be14ab6082a66966ff52
+    m_Address: mvz2:chains_break
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70de6ddff3a791547a9503617054e1c9
     m_Address: mvz2:arcade/arcade_category_minigame
@@ -10913,6 +10927,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cef18dd08d16ee84db436a6e82b9467c
+    m_Address: mvz2:chains_trap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf24da752685af14884a57dca2f36d08
     m_Address: mvz2:enemy/halloween/skeleton
     m_ReadOnly: 0
@@ -11367,6 +11388,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d836b4531b636ae4485642e1a9c68317
+    m_Address: mvz2:chains_rattle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d89d131147847e74f971f991d5baa0ab
     m_Address: mvz2:enemy/castle/reverse_satellite
@@ -13047,6 +13075,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Music
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7ef7b7e55a1ae74296cbaf429fbbf72
+    m_Address: mvz2:entity/effects/ghost_chain
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f80ba0ace60a8e14da852702aca7fd6e
     m_Address: mvz2:contraption/mausoleum/hellfire

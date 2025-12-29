@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Stages;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
@@ -108,7 +109,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         }
         private static float GetMinAlpha(Buff buff)
         {
-            if (buff.Level.StageDefinition.HasBehaviour<WhackAGhostBehaviour>())
+            if (buff.Level.StageDefinition.HasBehaviour<WhackAGhostBehaviour>() || Ghost.IsPossessingEntity(buff.GetEntity()))
             {
                 return 0;
             }

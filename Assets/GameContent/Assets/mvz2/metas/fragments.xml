@@ -350,6 +350,18 @@
             <key hex="#FFFFFF" time="0.2" />
         </colorKeys>
     </fragment>
+    <fragment name="ghost_chain">
+        <colorKeys>
+            <key hex="#B0D7FF" time="0.5" />
+            <key hex="#5DADFF" time="0.25" />
+            <key hex="#2A71BA" time="1" />
+        </colorKeys>
+        <alphaKeys>
+            <key alpha="0.5" time="0.5" />
+            <key alpha="0.5" time="0.5" />
+            <key alpha="0.5" time="0.5" />
+        </alphaKeys>
+    </fragment>
     <fragment name="mummy">
         <colorKeys>
             <key hex="#736D31" time="0.5" />

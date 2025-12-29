@@ -230,6 +230,7 @@ namespace MVZ2.GameContent.Buffs
             public const string starshardCarrier = "starshard_carrier";
             public const string redstoneCarrier = "redstone_carrier";
             public const string ghost = "ghost";
+            public const string ghostPossessing = "ghost_possessing";
             public const string stun = "stun";
             public const string minigameEnemySpeed = "minigame_enemy_speed";
             public const string napstablookAngry = "napstablook_angry";

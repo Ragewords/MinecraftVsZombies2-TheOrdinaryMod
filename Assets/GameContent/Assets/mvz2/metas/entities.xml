@@ -3670,6 +3670,7 @@
                 <int name="mvz2:maxTimeout" value="15" />
             </properties>
         </effect>
+        <effect id="ghost_chain" />
         <effect id="explosion">
             <properties>
                 <int name="mvz2:maxTimeout" value="30" />

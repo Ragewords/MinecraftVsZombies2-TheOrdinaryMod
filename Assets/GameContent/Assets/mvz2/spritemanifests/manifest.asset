@@ -841,6 +841,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7fb8f9b8ab883a64887b34f86731c9b9, type: 3}
   - name: entity/effects/gas_diffusion
     sprite: {fileID: 21300000, guid: e5e566d19ad3e024c8c3e91f928d8be1, type: 3}
+  - name: entity/effects/ghost_chain
+    sprite: {fileID: 21300000, guid: f7ef7b7e55a1ae74296cbaf429fbbf72, type: 3}
   - name: entity/effects/magic_star
     sprite: {fileID: 21300000, guid: 6a6baf812492dec40ba2154d360755bb, type: 3}
   - name: entity/effects/mind_control_line

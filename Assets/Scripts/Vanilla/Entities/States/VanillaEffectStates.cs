@@ -6,6 +6,10 @@ namespace MVZ2.Vanilla.Effects
     {
         public const int IDLE = 0;
 
+        public const int GHOST_CHAIN_EXPAND = PRIVATE_NUMBER + 0;
+        public const int GHOST_CHAIN_TRAP = PRIVATE_NUMBER + 1;
+        public const int GHOST_CHAIN_SUBTRACT = PRIVATE_NUMBER + 2;
+
         public const int BREAKOUT_BOARD_RETURN = PRIVATE_NUMBER + 0;
         public const int BREAKOUT_BOARD_FIRED = PRIVATE_NUMBER + 1;
 

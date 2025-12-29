@@ -103,6 +103,15 @@
     <sound name="chest_close">
         <sample path="mvz2:chest_close" weight="1" />
     </sound>
+    <sound name="chains_break" maxCount="1">
+        <sample path="mvz2:chains_break" weight="1" />
+    </sound>
+    <sound name="chains_rattle" maxCount="1">
+        <sample path="mvz2:chains_rattle" weight="1" />
+    </sound>
+    <sound name="chains_trap" maxCount="1">
+        <sample path="mvz2:chains_trap" weight="1" />
+    </sound>
     <sound name="chime" maxCount="1" priority="64">
         <sample path="mvz2:chime" weight="1" />
     </sound>

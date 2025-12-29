@@ -36,6 +36,9 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID chestOpen = Get("chest_open");
         public readonly static NamespaceID chestClose = Get("chest_close");
         public readonly static NamespaceID chime = Get("chime");
+        public readonly static NamespaceID chainsBreak = Get("chains_break");
+        public readonly static NamespaceID chainsRattle = Get("chains_rattle");
+        public readonly static NamespaceID chainsTrap = Get("chains_trap");
         public readonly static NamespaceID cloth = Get("cloth");
         public readonly static NamespaceID coin = Get("coin");
         public readonly static NamespaceID coinDestroy = Get("coin_destroy");
