@@ -26,7 +26,10 @@ namespace MVZ2.GameContent.Contraptions
     {
         public SkywardBeacon(string nsp, string name) : base(nsp, name)
         {
-            detector = new SkywardBeaconDetector();
+            detector = new SkywardBeaconDetector()
+            {
+                hawkeye = true
+            };
         }
 
         public override void Init(Entity entity)

@@ -14,6 +14,7 @@ namespace MVZ2.GameContent.Detections
         {
             mask = EntityCollisionHelper.MASK_ENEMY;
             factionTarget = FactionTarget.Any;
+            hawkeye = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {

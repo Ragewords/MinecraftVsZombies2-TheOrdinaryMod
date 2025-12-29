@@ -25,6 +25,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
             AddModifier(new BooleanModifier(VanillaEntityProps.ETHEREAL, PROP_ETHEREAL));
             AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, PROP_INVISIBLE));
+            AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DETECT_WHILE_INVISIBLE, PROP_INVISIBLE));
             AddModifier(new FloatModifier(VanillaEntityProps.SHADOW_ALPHA, NumberOperator.Multiply, PROP_SHADOW_ALPHA));
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback, priority: VanillaCallbackPriorities.MULTIPLY);
         }

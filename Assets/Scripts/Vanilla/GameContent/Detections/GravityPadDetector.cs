@@ -15,6 +15,7 @@ namespace MVZ2.GameContent.Detections
             {
                 mask = EntityCollisionHelper.MASK_ENEMY;
                 factionTarget = FactionTarget.Hostile;
+                hawkeye = true;
             }
             else
             {

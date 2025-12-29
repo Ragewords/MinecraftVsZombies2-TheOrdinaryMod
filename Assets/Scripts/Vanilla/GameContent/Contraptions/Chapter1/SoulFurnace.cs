@@ -97,9 +97,13 @@ namespace MVZ2.GameContent.Contraptions
             SetFuel(entity, fuel);
             entity.SetEvoked(true);
         }
-        public override void PostTakeDamage(DamageOutput damage)
+        protected override Detector GetDetector()
         {
-            base.PostTakeDamage(damage);
+            return new DispenserDetector()
+            {
+                hawkeye = true,
+                ignoreHighEnemy = true
+            };
         }
 
         public int GetFuel(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_FUEL);

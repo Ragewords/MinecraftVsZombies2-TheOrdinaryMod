@@ -13,7 +13,6 @@ namespace MVZ2.GameContent.Detections
         {
             mask = EntityCollisionHelper.MASK_PLANT;
             factionTarget = FactionTarget.Friendly;
-            canDetectInvisible = true;
         }
         protected override Bounds GetDetectionBounds(Entity self)
         {
