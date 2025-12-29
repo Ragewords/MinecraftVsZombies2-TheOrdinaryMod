@@ -37,8 +37,23 @@ namespace MVZ2.GameContent.Detections
         {
             if (target.IsFloor())
                 return false;
-            if (friendlyChecker && (!Detection.IsInFrontOf(self.entity, target) || target.IsNotActiveEnemy() || target.IsHarmless() || target.GetMass() == VanillaMass.VERY_HEAVY || target.IsEntityOf(VanillaEnemyID.popCaptain) || target.GetRelativeY() > (self.entity.GetMaxAttackHeight() / 2) || target.Health <= self.entity.GetDamage()))
-                return false;
+            if (friendlyChecker)
+            {
+                if (!Detection.IsInFrontOf(self.entity, target))
+                    return false;
+                if (target.IsNotActiveEnemy())
+                    return false;
+                if (target.IsHarmless())
+                    return false;
+                if (target.GetMass() == VanillaMass.VERY_HEAVY)
+                    return false;
+                if (target.IsEntityOf(self.entity.GetDefinitionID()))
+                    return false;
+                if (target.GetRelativeY() > (self.entity.GetMaxAttackHeight() / 2))
+                    return false;
+                if (target.Health <= self.entity.GetDamage())
+                    return false;
+            }
             return base.ValidateTarget(self, target);
         }
         private float rangeAddition;

@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Contraptions
                     if (detectBuffer.Count > 0)
                     {
                         attackDetectBuffer.Clear();
-                        attackDetector.DetectMultiple(entity, detectBuffer);
+                        attackDetector.DetectMultiple(entity, attackDetectBuffer);
                         foreach (var target in attackDetectBuffer)
                         {
                             target.TakeDamage(entity.GetDamage(), new DamageEffectList(VanillaDamageEffects.GROUND_SPIKES), entity);
