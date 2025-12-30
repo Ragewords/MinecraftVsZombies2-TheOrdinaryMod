@@ -500,7 +500,7 @@
                 <id name="mvz2:deathSound" value="mvz2:wood" />
                 <vector3 name="mvz2:size" x="32" y="48" z="32" />
 
-                <int name="mvz2:cost" value="250" />
+                <int name="mvz2:cost" value="225" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
                 <id name="mvz2:function" value="mvz2:enchanted" />
             </properties>
