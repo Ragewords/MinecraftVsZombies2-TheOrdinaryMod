@@ -111,8 +111,6 @@ namespace MVZ2.GameContent.Bosses
                         {
                             Stun(self);
                             self.TakeDamage(GOLDEN_APPLE_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), other);
-                            if (other.IsEvoked())
-                                self.TakeDamage(GOLDEN_APPLE_DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR), other);
                         }
                         else
                         {
