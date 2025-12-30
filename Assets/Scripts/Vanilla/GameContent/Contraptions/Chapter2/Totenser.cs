@@ -111,7 +111,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (target != null)
                 {
                     entity.TriggerAnimation("TopShoot");
-                    var pos = entity.Position + new Vector3(20 * entity.GetFacingX(), 50);
+                    var pos = entity.Position + new Vector3(20 * entity.GetFacingX(), 42);
                     var projectileID = VanillaProjectileID.web;
                     var projectileDefinition = entity.Level.Content.GetEntityDefinition(projectileID);
                     var projectileGravity = projectileDefinition?.GetGravity() ?? 0;

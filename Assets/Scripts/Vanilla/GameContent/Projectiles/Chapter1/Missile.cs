@@ -35,7 +35,7 @@ namespace MVZ2.GameContent.Projectiles
 
             var shootParams = entity.GetShootParams();
             shootParams.projectileID = projectileID;
-            shootParams.position = entity.GetCenter();
+            shootParams.position = entity.Position;
             shootParams.velocity = velocity;
             shootParams.damage = damage;
             entity.ShootProjectile(shootParams);

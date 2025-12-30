@@ -1362,7 +1362,7 @@
                 <float name="mvz2:damage" value="10" />
                 <id name="mvz2:projectileId" value="mvz2:poison_ball" />
                 <id name="mvz2:shootSound" value="mvz2:bow" />
-                <vector3 name="mvz2:shotOffset" x="25" y="10" z="0" />
+                <vector3 name="mvz2:shotOffset" x="25" y="2" z="0" />
                 <vector3 name="mvz2:size" x="32" y="32" z="32" />
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy" />
 
