@@ -39,7 +39,6 @@ namespace MVZ2.GameContent.Effects
             var collisionMask = EntityCollisionHelper.MASK_ALL;
             entity.CollisionMaskFriendly = collisionMask;
             entity.CollisionMaskHostile = collisionMask;
-            entity.SetProperty(PROP_ATTACK_INTERVAL, new FrameTimer(60));
         }
         public override void Update(Entity entity)
         {
@@ -55,26 +54,6 @@ namespace MVZ2.GameContent.Effects
             entity.SetProperty(PROP_TINT_MULTIPLIER, colorMulti);
             entity.SetProperty(PROP_DISPLAY_SCALE_MULTIPLIER, scaleMulti);
             entity.SetModelProperty("Frozen", IsStainFrozen(entity));
-
-            if (IsDisappearing(entity))
-                return;
-            var timer = entity.GetProperty<FrameTimer>(PROP_ATTACK_INTERVAL);
-            var interval = IsStainFrozen(entity) ? SPEED_FROZEN : SPEED;
-            var effects = IsStainFrozen(entity) ? new DamageEffectList(VanillaDamageEffects.ICE, VanillaDamageEffects.SLOW , VanillaDamageEffects.MUTE) : new DamageEffectList(VanillaDamageEffects.MUTE);
-            if (timer.RunToExpiredAndNotNull(interval))
-            {
-                collideBuffer.Clear();
-                collideDetector.DetectMultiple(entity, collideBuffer);
-                foreach (var collider in collideBuffer)
-                {
-                    var other = collider.Entity;
-                    if (entity.IsHostile(other))
-                    {
-                        collider.TakeDamage(5, effects, entity);
-                    }
-                }
-                timer.Reset();
-            }
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -91,6 +70,25 @@ namespace MVZ2.GameContent.Effects
                 var stain = collision.Entity;
                 MeltStain(stain);
                 Disappear(stain);
+            }
+
+            var other = collision.Other;
+            var self = collision.Entity;
+            if (IsDisappearing(self))
+                return;
+            if (!other.IsVulnerableEntity())
+                return;
+            if (!self.IsHostile(other))
+                return;
+            var effects = new NamespaceID[]{ VanillaDamageEffects.MUTE };
+            if (IsStainFrozen(self))
+            {
+                effects.Union(new NamespaceID[]{ VanillaDamageEffects.ICE, VanillaDamageEffects.SLOW });
+            }
+            var damageEffectList = new DamageEffectList(effects.ToArray());
+            if (self.IsTimeInterval(Ticks.FromSeconds(INTERVAL)))
+            {
+                collision.OtherCollider.TakeDamage(5, damageEffectList, self);
             }
         }
         public static void FreezeStain(Entity stain)
@@ -152,14 +150,10 @@ namespace MVZ2.GameContent.Effects
             return new Bounds(center, size);
         }
         public const float MAX_FADE_SECONDS = 0.5f;
-        public const float SPEED = 2;
-        public const float SPEED_FROZEN = 1;
+        public const float INTERVAL = 1;
         private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
-        private Detector collideDetector = new CollisionDetector();
-        private List<IEntityCollider> collideBuffer = new List<IEntityCollider>();
         public static readonly VanillaEntityPropertyMeta<Vector3> PROP_DISPLAY_SCALE_MULTIPLIER = new VanillaEntityPropertyMeta<Vector3>("scale_multiplier");
         public static readonly VanillaEntityPropertyMeta<Color> PROP_TINT_MULTIPLIER = new VanillaEntityPropertyMeta<Color>("tint_multiplier");
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_INTERVAL = new VanillaEntityPropertyMeta<FrameTimer>("attack_interval");
         public class SlideAura : AuraEffectDefinition
         {
             public SlideAura() : base(VanillaBuffID.Enemy.waterStainSlide, 4)
@@ -184,7 +178,7 @@ namespace MVZ2.GameContent.Effects
                         continue;
                     if (other.GetGravity() <= 0 || !other.IsOnGround)
                         continue;
-                    if (other.GetMass() >= VanillaMass.VERY_HEAVY) // ²»Ó°Ïì¼«ÖØµÐÈË¡£
+                    if (other.GetMass() >= VanillaMass.VERY_HEAVY) // ï¿½ï¿½Ó°ï¿½ì¼«ï¿½Øµï¿½ï¿½Ë¡ï¿½
                         continue;
                     results.Add(other);
                 }
