@@ -51,6 +51,8 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (entity.State == STATE_MELEE_ATTACK)
                 return;
+            if (GetPossessingEntity(entity) != null)
+                return;
             if (IsPossessingEntity(entity))
                 return;
             var stateTimer = GetStateTimer(entity);
@@ -91,11 +93,11 @@ namespace MVZ2.GameContent.Enemies
                     {
                         entity.AddBuff<GhostPossessingBuff>();
                     }
-                }
-                // 如果该单位被照亮则解除附身
-                if (ShouldExitPossess(entity, target))
-                {
-                    SetPossessingEntity(entity, null);
+                    // 解除附身的条件
+                    if (ShouldExitPossess(entity, target, false))
+                    {
+                        SetPossessingEntity(entity, null);
+                    }
                 }
             }
             else if (entity.HasBuff<GhostPossessingBuff>())
@@ -144,10 +146,13 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             return true;
         }
-        public static bool ShouldExitPossess(Entity self, Entity target)
+        public static bool ShouldExitPossess(Entity self, Entity target, bool chain)
         {
             // 白天
             if (self.Level.IsDay())
+                return true;
+            // 自己被照亮，对于锁链而言无视此条件
+            if (self.IsIlluminated() && !chain)
                 return true;
             if (target == null)
                 return true;
@@ -162,7 +167,7 @@ namespace MVZ2.GameContent.Enemies
             // 其他幽灵
             if (target.IsEntityOf(self.GetDefinitionID()))
                 return true;
-            // 被照亮的怪物
+            // 附身对象被照亮
             if (target.IsIlluminated())
                 return true;
             return false;

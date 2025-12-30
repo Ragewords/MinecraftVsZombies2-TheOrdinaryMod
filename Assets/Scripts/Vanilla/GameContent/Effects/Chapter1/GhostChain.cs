@@ -61,7 +61,7 @@ namespace MVZ2.GameContent.Effects
                 entity.PlaySound(VanillaSoundID.chainsBreak);
                 entity.Remove();
             }
-            else if (Ghost.ShouldExitPossess(parent, target))
+            else if (Ghost.ShouldExitPossess(parent, target, true))
             {
                 entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
                 entity.PlaySound(VanillaSoundID.chainsBreak);
@@ -169,7 +169,7 @@ namespace MVZ2.GameContent.Effects
             {
                 base.OnEnter(machine, entity);
                 var timer = machine.GetStateTimer(entity);
-                timer.ResetTime(5);
+                timer.ResetTime(10);
             }
             public override void OnExit(EntityStateMachine machine, Entity entity)
             {
@@ -182,14 +182,23 @@ namespace MVZ2.GameContent.Effects
                 var timer = machine.GetStateTimer(entity);
                 timer.Run(machine.GetSpeed(entity));
 
+                var parent = entity.Parent;
                 var targetID = GetPossessingEntity(entity);
                 var target = targetID?.GetEntity(entity.Level);
                 if (target.ExistsAndAlive())
                 {
                     SetDistance(entity, Vector3.Distance(entity.Position, target.GetCenter()));
                 }
+                if (parent.ExistsAndAlive() && target.ExistsAndAlive())
+                {
+                    var pos = parent.Position;
+                    var targetPos = target.GetCenter() - entity.GetCenter() + pos;
+                    pos.x = pos.x * 0.5f + targetPos.x * 0.5f;
+                    pos.y = pos.y * 0.5f + targetPos.y * 0.5f;
+                    pos.z = pos.z * 0.5f + targetPos.z * 0.5f;
+                    parent.Position = pos;
+                }
 
-                var parent = entity.Parent;
                 if (timer.Expired)
                 {
                     entity.Remove();
