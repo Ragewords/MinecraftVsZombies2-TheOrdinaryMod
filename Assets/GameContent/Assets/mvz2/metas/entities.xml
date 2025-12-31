@@ -1419,7 +1419,7 @@
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy mvz2:flying_enemy" />
 
                 <int name="mvz2:cost" value="150" />
-                <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:rechargeId" value="mvz2:medium" />
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
