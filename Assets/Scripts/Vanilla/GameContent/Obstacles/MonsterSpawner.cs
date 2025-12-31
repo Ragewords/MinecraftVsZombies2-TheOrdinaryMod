@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Obstacles
                 mainCollider.SetEnabled(false);
             }
             SetEntityToSpawn(entity, VanillaEnemyID.zombie);
-            SetTimer(entity, new FrameTimer(entity.RNG.Next(1800, 2400)));
+            SetTimer(entity, new FrameTimer(entity.RNG.Next(Ticks.FromSeconds(120), Ticks.FromSeconds(180) + 1)));
         }
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Obstacles
                 var timer = GetTimer(entity);
                 if (timer.RunToExpiredAndNotNull())
                 {
-                    timer.ResetTime(entity.RNG.Next(600, 1200));
+                    timer.ResetTime(entity.RNG.Next(Ticks.FromSeconds(60), Ticks.FromSeconds(80) + 1));
                     if (entity.Level.IsAllEnemiesCleared())
                         return;
                     if (entity.IsIlluminated())
