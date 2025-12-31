@@ -327,7 +327,7 @@
             <talk type="end" value="mvz2:halloween_EX1_over" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:poisonser" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:skeleton" />
@@ -341,10 +341,9 @@
             <condition required="mvz2:level.halloween_EX1" />
         </unlock>
         <clear pickupModel="mvz2:entity.vault" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:ghost" />
             <spawn id="mvz2:skelebomb" />
@@ -362,7 +361,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:ghost" />
             <spawn id="mvz2:mummy" />
             <spawn id="mvz2:necromancer" />
@@ -612,7 +610,7 @@
             <talk type="end" value="mvz2:dream_EX1_over" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:dimension_hammer" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
@@ -624,7 +622,7 @@
             <condition required="mvz2:level.dream_EX1" />
         </unlock>
         <clear pickupModel="mvz2:entity.vault" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
@@ -638,11 +636,9 @@
             <condition required="mvz2:level.dream_EX2" />
         </unlock>
         <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:bent_spoon" />
-        <spawns flags="3">
+        <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:spider" />
             <spawn id="mvz2:cave_spider" />
             <spawn id="mvz2:ghast" />
             <spawn id="mvz2:mother_terror" />
@@ -904,7 +900,7 @@
             <talk type="end" value="mvz2:castle_EX1_over" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:fire_charge_dispenser" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
@@ -916,12 +912,11 @@
             <condition required="mvz2:level.castle_EX1" />
         </unlock>
         <clear pickupModel="mvz2:entity.vault" />
-        <spawns flags="3">
+        <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
+            <spawn id="mvz2:dullahan" />
             <spawn id="mvz2:spellcaster" />
         </spawns>
     </stage>
@@ -930,13 +925,11 @@
             <condition required="mvz2:level.castle_EX2" />
         </unlock>
         <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:heavy_bass_drum" />
-        <spawns flags="3">
+        <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
-            <spawn id="mvz2:dullahan" />
             <spawn id="mvz2:hell_chariot" />
             <spawn id="mvz2:spellcaster" />
         </spawns>
@@ -1207,10 +1200,9 @@
             <talk type="end" value="mvz2:mausoleum_EX1_over" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:youkai_leaf" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:reflective_barrier_zombie" />
         </spawns>
         <properties>
@@ -1225,7 +1217,6 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:shikaisen_zombie" />
             <spawn id="mvz2:tanooki_zombie" />
@@ -1239,13 +1230,11 @@
             <condition required="mvz2:level.mausoleum_EX2" />
         </unlock>
         <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:endless_gate" />
-        <spawns flags="3">
+        <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
-            <spawn id="mvz2:shikaisen_zombie" />
             <spawn id="mvz2:emperor_zombie" />
             <spawn id="mvz2:tanooki_zombie" />
         </spawns>
@@ -1506,7 +1495,7 @@
             <talk type="end" value="mvz2:ship_EX1_over" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:smoker" />
-        <spawns flags="3">
+        <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
@@ -1523,7 +1512,6 @@
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:undead_flying_object" />
-            <spawn id="mvz2:zombie_cloud" />
             <spawn id="mvz2:pop_captain" />
             <spawn id="mvz2:admiral_zombie" />
         </spawns>
@@ -1536,10 +1524,10 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:undead_flying_object" />
-            <spawn id="mvz2:flying_pirate" />
+            <spawn id="mvz2:zombie_cloud" />
             <spawn id="mvz2:cannoneer_zombie" />
+            <spawn id="mvz2:flying_pirate" />
             <spawn id="mvz2:admiral_zombie" />
         </spawns>
     </stage>
