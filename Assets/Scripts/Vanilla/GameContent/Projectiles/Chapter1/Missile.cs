@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Projectiles
             var rng = entity.RNG;
             var xspeed = rng.Next(-8f, 8f);
             var zspeed = rng.Next(-8f, 8f);
-            var yspeed = rng.Next(10f);
+            var yspeed = rng.Next(1f, 11f);
             var velocity = new Vector3(xspeed, yspeed, zspeed);
 
             var shootParams = entity.GetShootParams();

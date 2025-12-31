@@ -174,7 +174,7 @@ namespace MVZ2.GameContent.Enemies
         }
         private bool ExistPossessingGhost(Entity self, Entity target)
         {
-            foreach (var entity in self.Level.FindEntities(e => e.IsEntityOf(VanillaEnemyID.ghost)))
+            foreach (var entity in self.Level.FindEntities(e => e.IsEntityOf(VanillaEnemyID.ghost) && e.ExistsAndAlive() && e.IsFriendly(self)))
             {
                 if (GetPossessingEntity(entity)?.GetEntity(entity.Level) == target && entity != self)
                 {
