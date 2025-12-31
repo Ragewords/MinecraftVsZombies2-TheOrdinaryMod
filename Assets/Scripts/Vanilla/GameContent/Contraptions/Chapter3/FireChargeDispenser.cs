@@ -142,7 +142,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
         public const int ATTACK_INTERVAL = 60;
-        public const int EVOKATION_TIMER = 30;
+        public const int EVOKATION_TIMER = 60;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 160;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");
