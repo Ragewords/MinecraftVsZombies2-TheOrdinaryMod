@@ -106,10 +106,9 @@
             <talk type="map" value="mvz2:halloween_4_map" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:punchton" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:ghost" />
         </spawns>
         <properties>
@@ -181,10 +180,9 @@
             <talk type="map" value="mvz2:halloween_7_map" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:soul_furnace" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:ghost" />
             <spawn id="mvz2:mummy" />
         </spawns>
@@ -216,7 +214,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:ghost" />
             <spawn id="mvz2:mummy" />
         </spawns>
@@ -234,12 +231,10 @@
             <talk type="map" value="mvz2:halloween_9_map" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:magichest" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:skeleton" />
-            <spawn id="mvz2:ghost" />
             <spawn id="mvz2:mummy" />
             <spawn id="mvz2:necromancer" />
         </spawns>
@@ -430,10 +425,9 @@
             <talk type="map" value="mvz2:dream_4_map" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:vortex_hopper" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:spider" />
             <spawn id="mvz2:cave_spider" />
         </spawns>
@@ -452,7 +446,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:spider" />
             <spawn id="mvz2:cave_spider" />
         </spawns>
     </stage>
@@ -492,9 +485,7 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:spider" />
-            <spawn id="mvz2:cave_spider" />
             <spawn id="mvz2:ghast" />
         </spawns>
     </stage>
@@ -511,8 +502,7 @@
         <spawns flags="3">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:spider" />
+            <spawn id="mvz2:mummy" />
             <spawn id="mvz2:cave_spider" />
             <spawn id="mvz2:ghast" />
         </spawns>
@@ -531,9 +521,8 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:spider" />
+            <spawn id="mvz2:skeleton" />
             <spawn id="mvz2:cave_spider" />
-            <spawn id="mvz2:ghast" />
             <spawn id="mvz2:mother_terror" />
         </spawns>
     </stage>
@@ -676,7 +665,6 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:mesmerizer" />
         </spawns>
     </stage>
@@ -693,7 +681,7 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
+            <spawn id="mvz2:cave_spider" />
             <spawn id="mvz2:mesmerizer" />
         </spawns>
     </stage>
@@ -707,11 +695,10 @@
             <talk type="map" value="mvz2:castle_4_map" />
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:stone_shield" />
-        <spawns flags="2">
+        <spawns flags="1">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
         </spawns>
     </stage>
@@ -729,7 +716,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
             <spawn id="mvz2:skeleton" />
         </spawns>
@@ -779,9 +765,7 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:mesmerizer" />
-            <spawn id="mvz2:berserker" />
             <spawn id="mvz2:dullahan" />
         </spawns>
     </stage>
@@ -799,7 +783,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
             <spawn id="mvz2:dullahan" />
         </spawns>
@@ -819,9 +802,7 @@
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:ghast" />
-            <spawn id="mvz2:mesmerizer" />
             <spawn id="mvz2:berserker" />
-            <spawn id="mvz2:dullahan" />
             <spawn id="mvz2:hell_chariot" />
         </spawns>
     </stage>
@@ -859,11 +840,11 @@
             <entry id="mvz2:punchton" count="5" />
             <entry id="mvz2:wooden_dropper" count="5" />
             <entry id="mvz2:spike_block" count="5" />
-            <entry id="mvz2:stone_dropper" count="8" />
+            <entry id="mvz2:stone_dropper" count="5" />
             <entry id="mvz2:stone_shield" count="15" />
             <entry id="mvz2:golden_apple" count="3" />
             <entry id="mvz2:thunder_drum" count="3" />
-            <entry id="mvz2:tesla_coil" count="8" />
+            <entry id="mvz2:tesla_coil" count="12" />
             <entry id="mvz2:giant_bowl" count="1" />
         </conveyor>
         <clear pickupModel="mvz2:entity.money_chest" />
@@ -1007,7 +988,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
         </spawns>
         <properties>
@@ -1028,7 +1008,6 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
             <spawn id="mvz2:spider" />
         </spawns>
@@ -1066,8 +1045,7 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:reflective_barrier_zombie" />
-            <spawn id="mvz2:wicked_hermit_zombie" />
+            <spawn id="mvz2:ghost" />
             <spawn id="mvz2:shikaisen_zombie" />
         </spawns>
         <properties>
@@ -1088,9 +1066,8 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
-            <spawn id="mvz2:ghost" />
+            <spawn id="mvz2:mummy" />
             <spawn id="mvz2:reflective_barrier_zombie" />
-            <spawn id="mvz2:wicked_hermit_zombie" />
             <spawn id="mvz2:shikaisen_zombie" />
         </spawns>
         <properties>
@@ -1113,7 +1090,6 @@
             <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
-            <spawn id="mvz2:shikaisen_zombie" />
             <spawn id="mvz2:emperor_zombie" />
         </spawns>
         <properties>
@@ -1273,7 +1249,6 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:undead_flying_object" />
         </spawns>
     </stage>
@@ -1370,9 +1345,7 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
-            <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:undead_flying_object" />
-            <spawn id="mvz2:zombie_cloud" />
             <spawn id="mvz2:cannoneer_zombie" />
         </spawns>
     </stage>
@@ -1413,7 +1386,6 @@
             <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:undead_flying_object" />
             <spawn id="mvz2:zombie_cloud" />
-            <spawn id="mvz2:cannoneer_zombie" />
             <spawn id="mvz2:flying_pirate" />
             <spawn id="mvz2:pop_captain" />
             <spawn id="mvz2:skeleton" />

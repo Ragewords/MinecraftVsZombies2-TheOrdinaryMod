@@ -79,7 +79,8 @@ namespace MVZ2.GameContent.Enemies
         public static Entity? SpawnStaff(Entity entity)
         {
             var pos = entity.Position + entity.GetFacingDirection() * 30;
-            return entity.SpawnWithParams(VanillaEnemyID.shikaisenStaff, pos)?.Let(e =>
+            var param = entity.GetSpawnParams();
+            return entity.Spawn(VanillaEnemyID.shikaisenStaff, pos, param)?.Let(e =>
             {
                 e.PlaySound(VanillaSoundID.wood);
             });

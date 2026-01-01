@@ -48,12 +48,12 @@ namespace MVZ2.GameContent.Difficulties
         public static readonly VanillaDifficultyPropertyMeta<float> CRUSHING_WALLS_SPEED = Get<float>("crushingWallsSpeed", 4f);
         public static readonly VanillaDifficultyPropertyMeta<float> NIGHTMAREAPER_SPIN_DAMAGE = Get<float>("nightmareaperSpinDamage", 15f);
         public static readonly VanillaDifficultyPropertyMeta<int> NIGHTMAREAPER_TIMEOUT = Get<int>("nightmareaperTimeout", 2700);
-        public static readonly VanillaDifficultyPropertyMeta<float> WITHER_REGENERATION = Get<float>("witherRegeneration", 1);
+        public static readonly VanillaDifficultyPropertyMeta<float> WITHER_REGENERATION = Get<float>("witherRegeneration", 0.5f);
         public static readonly VanillaDifficultyPropertyMeta<bool> WITHER_SKULL_WITHERS_TARGET = Get<bool>("witherSkullWithersTarget");
         public static readonly VanillaDifficultyPropertyMeta<bool> THE_GIANT_IS_MALLEABLE = Get<bool>("theGiantIsMalleable");
         public static readonly VanillaDifficultyPropertyMeta<float> RED_DRAGON_FIRE_EXPLOSION_RADIUS = Get<float>("red_dragon_fire_explosion_radius", 32f);
         public static readonly VanillaDifficultyPropertyMeta<float> RED_DRAGON_GIANT_FIREBALL_SPEED = Get<float>("red_dragon_giant_fireball_speed", 1f);
-        public static readonly VanillaDifficultyPropertyMeta<int> RED_DRAGON_TORNADO_COUNT = Get<int>("red_dragon_tornado_count", 3);
+        public static readonly VanillaDifficultyPropertyMeta<int> RED_DRAGON_TORNADO_COUNT = Get<int>("red_dragon_tornado_count", 1);
         public static readonly VanillaDifficultyPropertyMeta<int> RED_DRAGON_FIRE_TORNADO_COUNT = Get<int>("red_dragon_fire_tornado_count", 1);
 
         public static bool FrankensteinNoSteelPhase(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_NO_STEEL);

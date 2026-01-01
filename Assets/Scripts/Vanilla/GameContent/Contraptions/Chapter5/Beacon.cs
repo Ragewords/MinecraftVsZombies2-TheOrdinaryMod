@@ -127,11 +127,12 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (!EngineEntityExt.IsHostile(faction, BeaconMeteorBuff.GetFaction(enemyBuff)))
                     continue;
-                int variant = BeaconMeteorBuff.GetVariant(enemyBuff);
-                float multiplier = variant == BeaconMeteorBuff.VARIANT_CARPET ? EVOCATION_DAMAGE_MULTIPLIER_CARPET : EVOCATION_DAMAGE_MULTIPLIER_RANDOM;
+                int variant = BeaconMeteorBuff.GetBombardVariant(enemyBuff);
+                float multiplier = variant == BeaconMeteorBuff.BOMBARD_VARIANT_CARPET ? EVOCATION_DAMAGE_MULTIPLIER_CARPET : EVOCATION_DAMAGE_MULTIPLIER_RANDOM;
                 BeaconMeteorBuff.SetFaction(enemyBuff, faction);
                 BeaconMeteorBuff.SetDamage(enemyBuff, entity.GetDamage() * multiplier);
                 BeaconMeteorBuff.SetHSVOffset(enemyBuff, Vector3.zero);
+                BeaconMeteorBuff.SetVariant(enemyBuff, BeaconMeteorBuff.VARIANT_DEFAULT);
             }
 
             // ������ʯBUFF��
@@ -140,7 +141,7 @@ namespace MVZ2.GameContent.Contraptions
             BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER_CARPET);
             BeaconMeteorBuff.SetCount(buff, entity.Level.GetMaxColumnCount());
             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
-            BeaconMeteorBuff.SetVariant(buff, BeaconMeteorBuff.VARIANT_CARPET);
+            BeaconMeteorBuff.SetBombardVariant(buff, BeaconMeteorBuff.BOMBARD_VARIANT_CARPET);
             BeaconMeteorBuff.SetCarpetLane(buff, entity.RNG.Next(entity.Level.GetMaxLaneCount()));
             entity.Level.AddBuff(buff);
         }

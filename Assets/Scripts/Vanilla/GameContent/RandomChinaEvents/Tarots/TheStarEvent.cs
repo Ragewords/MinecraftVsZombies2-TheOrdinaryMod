@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.RandomChinaEvents
             BeaconMeteorBuff.SetDamage(buff, contraption.GetDamage() * 9);
             BeaconMeteorBuff.SetCount(buff, 10);
             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(rng.Next()));
-            BeaconMeteorBuff.SetVariant(buff, BeaconMeteorBuff.VARIANT_RANDOM);
+            BeaconMeteorBuff.SetBombardVariant(buff, BeaconMeteorBuff.BOMBARD_VARIANT_RANDOM);
             BeaconMeteorBuff.GetTimer(buff)?.Let(timer => timer.ResetTime(1));
             level.AddBuff(buff);
         }

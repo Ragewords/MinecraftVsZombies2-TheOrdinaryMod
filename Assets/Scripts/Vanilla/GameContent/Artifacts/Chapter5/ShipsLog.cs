@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Artifacts
         }
         private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {
-            var entity = param.entity;
+            var entity = param.placeOutput.entity;
             if (entity == null)
                 return;
             var level = entity.Level;

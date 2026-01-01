@@ -29,24 +29,20 @@ namespace MVZ2.GameContent.HeldItems
 
         public override bool IsValidFor(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointer)
         {
+            var pointerData = pointer.pointer;
+            if (pointerData.type == PointerTypes.TOUCH && pointerData.button != 0)
+                return false;
             return target is HeldItemTargetGrid || IsDragging(data);
+        }
+        public override void OnBegin(LevelEngine level, IHeldItemData data)
+        {
+            base.OnBegin(level, data);
+            UpdateModel(level, data);
         }
         public override void OnUpdate(LevelEngine level, IHeldItemData data)
         {
             base.OnUpdate(level, data);
-            var modelInterface = level.GetHeldItemModelInterface();
-            if (modelInterface != null)
-            {
-                var dragging = IsDragging(data);
-                modelInterface.SetModelProperty("ShowLine", dragging);
-                if (dragging)
-                {
-                    var startPosition = GetDragStartPosition(data);
-                    var startLawnPos = level.ScreenToLawnPositionByY(startPosition, 0);
-                    modelInterface.SetModelProperty("Dest", startLawnPos);
-                }
-                modelInterface.SetModelProperty("UseLeg", IsUsingLeg(level, data));
-            }
+            UpdateModel(level, data);
             if (!IsValid(level, data))
             {
                 level.ResetHeldItem();
@@ -59,7 +55,6 @@ namespace MVZ2.GameContent.HeldItems
         public override HeldHighlight GetHighlight(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointer)
         {
             var level = target.GetLevel();
-
             var dragged = IsDragging(data);
 
             List<LawnGrid> grids = new List<LawnGrid>();
@@ -134,6 +129,9 @@ namespace MVZ2.GameContent.HeldItems
         {
             if (pointerParams.IsInvalidClickButton())
                 return;
+            var pointer = pointerParams.pointer;
+            if (pointer.type == PointerTypes.TOUCH && pointer.button != 0)
+                return;
             OnMainPointerEvent(target, data, pointerParams);
         }
         private void OnMainPointerEvent(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointerParams)
@@ -143,18 +141,22 @@ namespace MVZ2.GameContent.HeldItems
                 case HeldItemTargetGrid gridTarget:
                     OnPointerEventGrid(gridTarget, data, pointerParams);
                     break;
+                case HeldItemTargetLawn lawnTarget:
+                    OnPointerEventLawn(lawnTarget, data, pointerParams);
+                    break;
             }
+            var pointer = pointerParams.pointer;
             if (pointerParams.interaction == PointerInteraction.Drag)
             {
                 var level = target.GetLevel();
-                var pointer = Global.Input.GetPointerScreenPosition();
-                SetDragPosition(data, pointer);
+                var pointerPosition = Global.Input.GetPointerScreenPosition(pointer.type, pointer.button);
+                SetDragPosition(data, pointerPosition);
             }
             else if (pointerParams.interaction == PointerInteraction.Up)
             {
                 var level = target.GetLevel();
-                var pointer = Global.Input.GetPointerScreenPosition();
-                SetDragPosition(data, pointer);
+                var pointerPosition = Global.Input.GetPointerScreenPosition(pointer.type, pointer.button);
+                SetDragPosition(data, pointerPosition);
                 CastCombat(level, data);
                 level.ResetHeldItem();
             }
@@ -164,21 +166,25 @@ namespace MVZ2.GameContent.HeldItems
             if (pointerParams.interaction == PointerInteraction.Down)
             {
                 var level = gridTarget.GetLevel();
-                var pointer = Global.Input.GetPointerScreenPosition();
-                SetDragStartPosition(data, pointer);
-                SetDragPosition(data, pointer);
+                var pointer = pointerParams.pointer;
+                var pointerPosition = Global.Input.GetPointerScreenPosition(pointer.type, pointer.button);
+                SetDragStartPosition(data, pointerPosition);
+                SetDragPosition(data, pointerPosition);
             }
         }
         private void OnPointerEventLawn(HeldItemTargetLawn lawnTarget, IHeldItemData data, PointerInteractionData pointerParams)
         {
-            var level = lawnTarget.Level;
-            var area = lawnTarget.Area;
-
-            if (area == LawnArea.Side)
+            if (pointerParams.interaction == PointerInteraction.Down)
             {
-                if (level.CancelHeldItem())
+                var level = lawnTarget.Level;
+                var area = lawnTarget.Area;
+
+                if (area == LawnArea.Side)
                 {
-                    level.PlaySound(VanillaSoundID.tap);
+                    if (level.CancelHeldItem())
+                    {
+                        level.PlaySound(VanillaSoundID.tap);
+                    }
                 }
             }
         }
@@ -209,6 +215,21 @@ namespace MVZ2.GameContent.HeldItems
             {
                 return CombatType.Roundkick;
             }
+        }
+        private void UpdateModel(LevelEngine level, IHeldItemData data)
+        {
+            var modelInterface = level.GetHeldItemModelInterface();
+            if (modelInterface == null)
+                return;
+            var dragging = IsDragging(data);
+            modelInterface.SetModelProperty("ShowLine", dragging);
+            if (dragging)
+            {
+                var startPosition = GetDragStartPosition(data);
+                var startLawnPos = level.ScreenToLawnPositionByY(startPosition, 0);
+                modelInterface.SetModelProperty("Dest", startLawnPos);
+            }
+            modelInterface.SetModelProperty("UseLeg", IsUsingLeg(level, data));
         }
         private void CastCombat(LevelEngine level, IHeldItemData data)
         {

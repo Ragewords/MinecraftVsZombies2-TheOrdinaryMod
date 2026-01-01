@@ -76,7 +76,7 @@ namespace MVZ2.GameContent.Buffs.Level
             int startIndex = 0;
             if (random)
             {
-                UndeadFlyingObject.FillUFOVariantRandomPool(level, variantPool);
+                UndeadFlyingObject.FillUFOVariantRandomPool(level, level.Option.RightFaction, variantPool);
 
                 if (variantPool.Count <= 0)
                 {
