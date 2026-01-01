@@ -1632,7 +1632,7 @@
 
                 <idArray name="mvz2:excludedAreaTags" value="mvz2:day" />
 
-                <int name="mvz2:cost" value="125" />
+                <int name="mvz2:cost" value="100" />
                 <int name="mvz2:waterInteraction" value="3" />
                 <int name="mvz2:airInteraction" value="3" />
             </properties>
