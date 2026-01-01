@@ -865,7 +865,7 @@
                 <id name="mvz2:placeSound" value="mvz2:wood" />
                 <id name="mvz2:deathSound" value="mvz2:wood" />
 
-                <int name="mvz2:cost" value="175" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
                 <id name="mvz2:function" value="mvz2:melee" />
             </properties>
@@ -2059,6 +2059,7 @@
             <properties>
                 <vector3 name="mvz2:starting_position_offset" x="0" y="60" z="0" />
                 <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
+                <float name="mvz2:fallResistance" value="20" />
                 <float name="mvz2:maxHealth" value="800" />
                 <int name="mvz2:cost" value="175" />
             </properties>

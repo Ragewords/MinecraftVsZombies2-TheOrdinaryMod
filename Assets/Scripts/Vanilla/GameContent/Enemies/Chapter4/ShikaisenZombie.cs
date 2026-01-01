@@ -38,10 +38,10 @@ namespace MVZ2.GameContent.Enemies
             foreach (var buff in reviveBuffs)
             {
                 var id = ShikaisenReviveBuff.GetSource(buff);
-                if (id == null)
-                    continue;
-                if (id.GetEntity(enemy.Level).ExistsAndAlive())
+                if (id != null && id.GetEntity(enemy.Level).ExistsAndAlive())
+                {
                     canRevive = true;
+                }
             }
 
             if (canRevive)

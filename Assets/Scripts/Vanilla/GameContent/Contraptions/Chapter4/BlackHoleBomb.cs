@@ -77,7 +77,7 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             var range = entity.GetRange();
             var damage = entity.GetDamage();
-            Explode(entity, range, damage);
+            Explode(entity, range, damage * DAMAGE_MULTIPLIER, damage * DAMAGE_MULTIPLIER_PLANET);
             entity.Remove();
         }
         public static void Ignite(Entity entity)
@@ -98,10 +98,10 @@ namespace MVZ2.GameContent.Contraptions
         {
             entity.SetBehaviourField(PROP_EXPLOSION_TIMER, timer);
         }
-        public static Entity? Explode(Entity entity, float range, float damage)
+        public static Entity? Explode(Entity entity, float range, float damage, float planetDamage)
         {
             var planetParam = entity.GetSpawnParams();
-            planetParam.SetProperty(VanillaEntityProps.DAMAGE, damage * 50);
+            planetParam.SetProperty(VanillaEntityProps.DAMAGE, planetDamage);
             planetParam.SetProperty(VanillaEntityProps.RANGE, range);
             entity.Spawn(VanillaEffectID.confusingPlanet, entity.Position, planetParam)?.Let(e =>
             {
@@ -153,18 +153,20 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var range = entity.GetRange();
                 var damage = entity.GetDamage() * DAMAGE_MULTIPLIER;
+                var planetDamage = entity.GetDamage() * DAMAGE_MULTIPLIER_PLANET;
                 if (entity.IsEvoked())
                 {
                     ExplodeEvoked(entity, range);
                 }
                 else
                 {
-                    Explode(entity, range, damage);
+                    Explode(entity, range, damage, planetDamage);
                 }
                 entity.Remove();
             }
         }
         public const float DAMAGE_MULTIPLIER = 0.01f;
+        public const float DAMAGE_MULTIPLIER_PLANET = 0.5f;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_IGNITED = new VanillaEntityPropertyMeta<bool>("Ignited");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EXPLOSION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ExplosionTimer");
     }
