@@ -46,6 +46,7 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.NIGHTMAREAPER_SPIN_DAMAGE, NumberOperator.Add, 10));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.NIGHTMAREAPER_TIMEOUT, IntegerOperator.Add, -1500));
 
+            AddModifier(new FloatModifier(VanillaDifficultyLevelProps.WITHER_REGENERATION, NumberOperator.Set, 1f));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.WITHER_SKULL_WITHERS_TARGET, true));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.THE_GIANT_IS_MALLEABLE, true));
 
