@@ -36,6 +36,8 @@ namespace MVZ2.GameContent.Detections
                 return false;
             if (target.HasBuff<TotenserWebBuff>())
                 return false;
+            if (!target.CanDeactive())
+                return false;
             return true;
         }
         private float range;

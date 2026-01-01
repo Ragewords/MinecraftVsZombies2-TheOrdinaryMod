@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
@@ -104,6 +105,8 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void WebTick(Entity entity)
         {
+            if (entity.Level.IsIZombie() && IsIZOutOfWeb(entity))
+                return;
             var timer = GetShootWebTimer(entity);
             if (timer.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
             {
@@ -123,6 +126,7 @@ namespace MVZ2.GameContent.Contraptions
                     shootParams.soundID = VanillaSoundID.bow;
                     shootParams.damage = 0;
                     entity.ShootProjectile(shootParams);
+                    SetIZOutOfWeb(entity, true);
                 }
                 timer.Reset();
             }
@@ -153,6 +157,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             SetEvocationTime(entity, evocationTime);
         }
+        public static bool IsIZOutOfWeb(Entity entity) => entity.GetBehaviourField<bool>(PROP_IZ_OUT_OF_WEB);
+        public static void SetIZOutOfWeb(Entity entity, bool value) => entity.SetBehaviourField(PROP_IZ_OUT_OF_WEB, value);
         public static FrameTimer? GetShootWebTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_WEB_TIMER);
         public static void SetShootWebTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_SHOOT_WEB_TIMER, timer);
         public static int GetEvocationTime(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
@@ -170,6 +176,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private static readonly NamespaceID ID = VanillaContraptionID.totenser;
         public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("EvocationTime");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_IZ_OUT_OF_WEB = new VanillaEntityPropertyMeta<bool>("iz_out_of_web");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_FIRE_BREATH = new VanillaEntityPropertyMeta<EntityID>("FireBreath");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_SHOOT_WEB_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ShootWebTimer");
         private Detector fireBreathDetector;
