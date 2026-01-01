@@ -4,6 +4,7 @@ using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
@@ -52,8 +53,10 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        if (entity.RNG.Next(10) == 0)
+                        if (entity.RNG.Next(10) == 0 && !entity.Level.IsIZombie())
+                        {
                             SummonWarrior(entity);
+                        }
                         BuildBoneWalls(entity);
                     }
                 }
