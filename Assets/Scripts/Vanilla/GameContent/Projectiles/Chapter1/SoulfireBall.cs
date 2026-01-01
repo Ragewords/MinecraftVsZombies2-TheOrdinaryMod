@@ -57,9 +57,10 @@ namespace MVZ2.GameContent.Projectiles
                     });
                     if (projectile != null)
                     {
-                        projectile.SetScale(new Vector3(0.5f, 0.5f, 0.5f));
-                        projectile.SetDisplayScale(new Vector3(0.5f, 0.5f, 0.5f));
-                        projectile.SetShadowScale(new Vector3(0.5f, 0.5f, 0.5f));
+                        projectile.SetScale(entity.GetScale() * 0.5f);
+                        projectile.SetDisplayScale(entity.GetDisplayScale() * 0.5f);
+                        projectile.SetLightRange(entity.GetLightRange() * 0.5f);
+                        projectile.SetShadowScale(entity.GetShadowScale() * 0.5f);
                         SetSplited(projectile, true);
                     }
                 }
