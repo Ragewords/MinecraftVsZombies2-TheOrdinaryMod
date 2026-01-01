@@ -2373,9 +2373,8 @@ namespace MVZ2.GameContent.Bosses
         {
             STATE_LARGE_FIREBALL,
             STATE_FLAP_WINGS,
-            STATE_ZOMBREATH,
-            STATE_FIRE_BREATH_PLUS,
             STATE_SPIT_UP,
+            STATE_FIRE_BREATH_PLUS,
             STATE_FLY,
             STATE_FIRE_WALL,
             STATE_JUMP

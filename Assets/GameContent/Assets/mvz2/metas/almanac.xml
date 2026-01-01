@@ -601,7 +601,7 @@
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60，电流链每次传递衰减20%</color>]]></p>
                 <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>
-                <p>伤害增幅：<![CDATA[<color=red>+66%电流伤害，使命中的敌人产生电流链</color>]]></p>
+                <p>伤害增幅：<![CDATA[<color=red>+66%电流伤害，使命中的敌人产生100%伤害的电流链</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤闪电风暴，劈击一定范围内的随机位置</color>]]></p>
             </properties>
@@ -2191,7 +2191,7 @@
                 <properties>
                     <p>生命：<![CDATA[<color=red>50000</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>火焰弹、龙卷风、僵尸火焰、吞食、火焰吐息、火墙</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>巨型火球、火焰龙卷风、僵尸火焰、火焰洪流、火焰流星、飞空、扫尾、火墙</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>巨型火球、火焰龙卷风、火焰流星、火焰洪流、飞空、扫尾、火墙</color>]]></p>
                 </properties>
                 <flavor>
                     <p>骑士一行人踏入了一处巨大的山洞，他们举着火把慢慢前进着。</p>
