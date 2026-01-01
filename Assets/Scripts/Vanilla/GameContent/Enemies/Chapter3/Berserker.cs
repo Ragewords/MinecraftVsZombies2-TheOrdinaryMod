@@ -41,8 +41,8 @@ namespace MVZ2.GameContent.Enemies
             var fireRange = range * 1.5f;
             var ligntningRange = range * 2.5f;
             entity.Explode(entity.GetCenter(), range, faction, damage, effects);
-            entity.Explode(entity.GetCenter(), fireRange, faction, damage, new DamageEffectList(effects.GetEffects().Union(fireEffects).ToArray()));
-            entity.Explode(entity.GetCenter(), ligntningRange, faction, damage, new DamageEffectList(effects.GetEffects().Union(lightningEffects).ToArray()));
+            entity.Explode(entity.GetCenter(), fireRange, faction, damage * 0.5f, new DamageEffectList(effects.GetEffects().Union(fireEffects).ToArray()));
+            entity.Explode(entity.GetCenter(), ligntningRange, faction, damage * 0.25f, new DamageEffectList(effects.GetEffects().Union(lightningEffects).ToArray()));
 
             Explosion.Spawn(entity, entity.GetCenter(), range);
 
