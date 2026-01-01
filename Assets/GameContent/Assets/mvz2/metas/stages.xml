@@ -1748,7 +1748,7 @@
             <bool name="autoCollectMoney" value="true" />
         </properties>
     </stage>
-    <stage id="puzzle_dead_balloon" name="来自深渊" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle">
+    <stage id="puzzle_dead_balloon" name="死亡热气球" needBlueprints="false" type="puzzle" startEnergy="150" music="mvz2:puzzle">
         <unlock>
             <condition required="mvz2:level.puzzle_absolute_defense" />
         </unlock>
