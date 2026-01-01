@@ -63,6 +63,7 @@ namespace MVZ2.GameContent.Effects
             }
             else if (Ghost.ShouldExitPossess(parent, target, true))
             {
+                Ghost.SetPossessingEntity(parent, null);
                 entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
                 entity.PlaySound(VanillaSoundID.chainsBreak);
                 entity.Remove();
