@@ -96,6 +96,7 @@ namespace MVZ2.GameContent.Bosses
                                         {
                                             projectileID = VanillaProjectileID.bullet,
                                             position = enemy.Position + offset,
+                                            pivot = new Vector3(0.7f, 0.5f, 0.5f),
                                             velocity = enemy.GetShotVelocity() * enemy.GetFacingX(),
                                             damage = enemy.GetDamage() * 0.1f,
                                             faction = enemy.GetFaction(),

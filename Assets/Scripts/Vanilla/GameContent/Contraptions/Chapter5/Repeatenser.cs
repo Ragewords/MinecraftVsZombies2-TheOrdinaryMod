@@ -94,8 +94,8 @@ namespace MVZ2.GameContent.Contraptions
                 ShootLargeArrow(entity);
                 for (var i = 0; i < 10; i++)
                 {
-                    BurstShoot(entity, i + 1, new Vector3(0, 0, -8));
-                    BurstShoot(entity, i + 1, new Vector3(0, 0, 8));
+                    BurstShoot(entity, i + 1, new Vector3(0, 0, -4));
+                    BurstShoot(entity, i + 1, new Vector3(0, 0, 4));
                 }
                 entity.SetEvoked(false);
                 var shootTimer = GetShootTimer(entity);
