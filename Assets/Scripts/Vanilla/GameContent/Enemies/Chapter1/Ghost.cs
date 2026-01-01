@@ -100,14 +100,17 @@ namespace MVZ2.GameContent.Enemies
                     }
                 }
             }
-            else if (entity.HasBuff<GhostPossessingBuff>())
+            else
             {
                 // 解除附身
-                entity.RemoveBuffs<GhostPossessingBuff>();
-                DeactivatePossession(entity);
-                entity.PlaySound(VanillaSoundID.chainsBreak);
-                entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
-                entity.Velocity += entity.GetFacingDirection() * -3;
+                if (entity.HasBuff<GhostPossessingBuff>())
+                {
+                    entity.RemoveBuffs<GhostPossessingBuff>();
+                    DeactivatePossession(entity);
+                    entity.PlaySound(VanillaSoundID.chainsBreak);
+                    entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
+                    entity.Velocity += entity.GetFacingDirection() * -3;
+                }
                 SetPossessingEntity(entity, null);
             }
         }
