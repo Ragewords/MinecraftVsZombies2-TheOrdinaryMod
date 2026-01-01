@@ -108,6 +108,7 @@ namespace MVZ2.GameContent.Enemies
                 entity.PlaySound(VanillaSoundID.chainsBreak);
                 entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
                 entity.Velocity += entity.GetFacingDirection() * -3;
+                SetPossessingEntity(entity, null);
             }
         }
         public override void PostDeath(Entity entity, DeathInfo info)
