@@ -87,7 +87,7 @@
     </entry>
     <entry id="silverfish">
         <entity id="mvz2:silverfish" />
-        <spawn level="3" />
+        <spawn level="3" minWave="5" />
         <terrain water="true" />
         <weight base="2000" />
     </entry>

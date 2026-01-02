@@ -50,11 +50,11 @@ namespace MVZ2.GameContent.Contraptions
 
                 SetEvocationTargetPositions(entity, positions);
                 entity.PlaySound(VanillaSoundID.spellCard);
-                foreach (var target in entities)
-                {
-                    if (target.CanDeactive())
-                        target.AddBuff<TimeStopBuff>();
-                }
+            }
+            foreach (var target in entities)
+            {
+                if (target.CanDeactive())
+                    target.AddBuff<TimeStopBuff>();
             }
         }
         public static FrameTimer? GetEvocationTimer(Entity entity)
