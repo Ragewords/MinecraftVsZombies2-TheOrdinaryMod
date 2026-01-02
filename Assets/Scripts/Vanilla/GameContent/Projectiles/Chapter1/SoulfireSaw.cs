@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Projectiles
                 if (noPierce)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE);
-                    entity.SplashDamage(hitResult.Collider, entity.Position, 40, entity.GetFaction(), entity.GetDamage() / 4f, damageEffects);
+                    entity.SplashDamage(hitResult.Collider, entity.Position, 48, entity.GetFaction(), entity.GetDamage() / 4f, damageEffects);
                 }
             }
         }

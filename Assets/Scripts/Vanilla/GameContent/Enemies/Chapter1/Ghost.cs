@@ -127,56 +127,54 @@ namespace MVZ2.GameContent.Enemies
         #region 附身
         private bool CanPossess(Entity self, Entity target)
         {
-            // 白天不可用
-            if (self.Level.IsDay())
-                return false;
-            if (target == null)
-                return false;
-            if (target.IsDead)
-                return false;
-            if (target.Type != EntityTypes.ENEMY)
+            if (!ValidTarget(self, target))
                 return false;
             if (target.IsNotActiveEnemy())
                 return false;
-            if (self.IsHostile(target))
-                return false;
-            if (!Detection.CanDetect(target))
-                return false;
-            if (!Detection.IsInSameRow(self, target) && self.Level.IsIZombie())
-                return false;
             // 无视已有GhostBuff的怪物
             if (target.HasBuff<GhostBuff>())
-                return false;
-            // 无视被照亮的怪物
-            if (target.IsIlluminated())
                 return false;
             return true;
         }
         public static bool ShouldExitPossess(Entity self, Entity target, bool chain)
         {
-            // 白天
-            if (self.Level.IsDay())
+            if (!ValidTarget(self, target))
                 return true;
             // 自己被照亮，对于锁链而言无视此条件
             if (self.IsIlluminated() && !chain)
                 return true;
-            if (target == null)
-                return true;
-            if (target.IsDead)
-                return true;
-            if (target.Type != EntityTypes.ENEMY)
-                return true;
-            if (self.IsHostile(target))
-                return true;
-            if (!Detection.CanDetect(target))
-                return true;
             // 其他幽灵
             if (target.IsEntityOf(self.GetDefinitionID()))
                 return true;
-            // 附身对象被照亮
-            if (target.IsIlluminated())
-                return true;
             return false;
+        }
+        public static bool ValidTarget(Entity self, Entity target)
+        {
+            // 白天
+            if (self.Level.IsDay())
+                return false;
+            if (target == null)
+                return false;
+            if (target.IsDead)
+                return false;
+            // 仅附身怪物
+            if (target.Type != EntityTypes.ENEMY)
+                return false;
+            // 敌对
+            if (self.IsHostile(target))
+                return false;
+            // 控制状态
+            if (target.IsAIFrozen())
+                return false;
+            // 离场的怪物
+            if (target.Position.x <= VanillaLevelExt.GetAttackBorderX(false))
+                return false;
+            if (!Detection.CanDetect(target))
+                return false;
+            // 被照亮的怪物
+            if (target.IsIlluminated())
+                return false;
+            return true;
         }
         private bool ExistPossessingGhost(Entity self, Entity target)
         {
