@@ -62,6 +62,7 @@ namespace MVZ2.GameContent.Enemies
                 var target = entity.Level.FindEntities(e => CanPossess(entity, e) && !ExistPossessingGhost(entity, e)).RandomTake(1, entity.RNG);
                 foreach (var id in target)
                 {
+                    entity.SetCasting(true);
                     entity.Spawn(VanillaEffectID.ghostChain, entity.GetCenter())?.Let(c =>
                     {
                         c.SetParent(entity);
@@ -98,6 +99,7 @@ namespace MVZ2.GameContent.Enemies
                     {
                         SetPossessingEntity(entity, null);
                     }
+                    entity.SetCasting(false);
                 }
             }
             else
@@ -111,6 +113,7 @@ namespace MVZ2.GameContent.Enemies
                     entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
                     entity.Velocity += entity.GetFacingDirection() * -3;
                 }
+                entity.SetCasting(false);
                 SetPossessingEntity(entity, null);
             }
         }
