@@ -11,12 +11,10 @@ namespace MVZ2.Models
             base.UpdateFrame(deltaTime);
             var source = sourceTransform.position;
             var dest = Lawn2TransPosition(Model.GetProperty<Vector3>("Dest"));
+            var scaleMultiplier = Model.GetProperty<float>("Multiplier");
             var distance = dest - source;
             distance.z = 0;
-            if (!ignoreSize)
-            {
-                lineSprite.size = new Vector2(distance.magnitude, lineSprite.size.y);
-            }
+            lineSprite.size = new Vector2(distance.magnitude * scaleMultiplier, lineSprite.size.y);
             lineSprite.transform.rotation = Quaternion.LookRotation(distance, Vector3.up);
             lineSprite.transform.rotation = Quaternion.FromToRotation(Vector3.right, distance);
         }
@@ -24,7 +22,5 @@ namespace MVZ2.Models
         private Transform sourceTransform = null!;
         [SerializeField]
         private SpriteRenderer lineSprite = null!;
-        [SerializeField]
-        private bool ignoreSize = false;
     }
 }

@@ -35,16 +35,13 @@ namespace MVZ2.GameContent.Effects
             CheckRemove(entity);
             var parent = entity.Parent;
             if (!parent.ExistsAndAlive())
-            {
                 return;
-            }
             entity.Position = parent.GetCenter();
             stateMachine.UpdateAI(entity);
             stateMachine.UpdateLogic(entity);
 
             var targetID = GetPossessingEntity(entity);
             var target = targetID?.GetEntity(entity.Level);
-            entity.SetAnimationFloat("Distance", GetDistance(entity));
             if (target.ExistsAndAlive())
             {
                 entity.SetModelProperty("Dest", target.GetCenter());
@@ -110,14 +107,7 @@ namespace MVZ2.GameContent.Effects
                 timer.Run(machine.GetSpeed(entity));
 
                 var scaleMultiplier = timer.GetPassedPercentage();
-                var targetID = GetPossessingEntity(entity);
-                var target = targetID?.GetEntity(entity.Level);
-                var distance = 140f;
-                if (target.ExistsAndAlive())
-                {
-                    distance = Vector3.Distance(entity.Position, target.GetCenter());
-                }
-                SetDistance(entity, distance * scaleMultiplier);
+                entity.SetModelProperty("Multiplier", scaleMultiplier);
 
                 if (timer.Expired)
                 {
@@ -145,14 +135,6 @@ namespace MVZ2.GameContent.Effects
                 base.OnUpdateLogic(machine, entity);
                 var timer = machine.GetStateTimer(entity);
                 timer.Run(machine.GetSpeed(entity));
-                var targetID = GetPossessingEntity(entity);
-                var target = targetID?.GetEntity(entity.Level);
-                var distance = 140f;
-                if (target.ExistsAndAlive())
-                {
-                    distance = Vector3.Distance(entity.Position, target.GetCenter());
-                }
-                SetDistance(entity, distance);
                 if (timer.Expired)
                 {
                     machine.StartState(entity, STATE_SUBTRACT);
@@ -186,10 +168,6 @@ namespace MVZ2.GameContent.Effects
                 var parent = entity.Parent;
                 var targetID = GetPossessingEntity(entity);
                 var target = targetID?.GetEntity(entity.Level);
-                if (target.ExistsAndAlive())
-                {
-                    SetDistance(entity, Vector3.Distance(entity.Position, target.GetCenter()));
-                }
                 if (parent.ExistsAndAlive() && target.ExistsAndAlive())
                 {
                     var pos = parent.Position;

@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 176731952764992233, guid: 20878af0986885c4793b4099d7815082, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 531f1e32d2da4a74c81c898a28d22c1c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3693395534727488135, guid: 20878af0986885c4793b4099d7815082, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceTransform: {fileID: 8504839234155973912}
   lineSprite: {fileID: 399975998389385822}
-  ignoreSize: 1
 --- !u!114 &8886721238528049333 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7714736329764049581, guid: 20878af0986885c4793b4099d7815082, type: 3}
