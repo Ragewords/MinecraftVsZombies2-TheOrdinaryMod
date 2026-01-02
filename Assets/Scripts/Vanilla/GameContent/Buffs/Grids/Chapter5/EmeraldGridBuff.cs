@@ -11,7 +11,6 @@ using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Grids;
 using PVZEngine.Level;
-using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
 
@@ -22,7 +21,6 @@ namespace MVZ2.GameContent.Buffs.Grids
     {
         public EmeraldGridBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new BooleanModifier(VanillaGridProps.IS_WATER, false));
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, MODEL_KEY, VanillaModelID.emeraldGrid);
             AddAura(new RestrictAura());
         }
