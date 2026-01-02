@@ -142,6 +142,8 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             if (!Detection.CanDetect(target))
                 return false;
+            if (!Detection.IsInSameRow(self, target) && self.Level.IsIZombie())
+                return false;
             // 无视已有GhostBuff的怪物
             if (target.HasBuff<GhostBuff>())
                 return false;
