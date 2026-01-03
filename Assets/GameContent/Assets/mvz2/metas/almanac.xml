@@ -1028,7 +1028,7 @@
                 <tag id="mvz2:placement_beacon" />
             </tags>
             <header>
-                <p>御天信标会发射光柱持续打击一处定点内的所有敌人，携带的子机会发射星星打击定点前方一定范围的敌人。触发它可以修改打击的定点位置。</p>
+                <p>御天信标会发射光柱持续打击一处定点内的所有敌人，携带的子机会发射星星打击一处定点前方一定范围的敌人。触发它以及它的子机可以修改相应的打击定点位置。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/3秒，1发/2秒（子机）</color>]]></p>
@@ -1133,6 +1133,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>2秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60</color>]]></p>
+                <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速抛射出15枚火焰弹，5支×300%伤害的导弹和3个×500%伤害的小TNT</color>]]></p>
             </properties>
             <flavor>

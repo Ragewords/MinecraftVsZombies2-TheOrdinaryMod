@@ -13,6 +13,7 @@ namespace MVZ2.GameContent.HeldItems
         public const string sword = "sword";
         public const string forcePad = "force_pad";
         public const string skywardBeacon = "skyward_beacon";
+        public const string skywardFamiliar = "skyward_familiar";
         public const string breakoutBoard = "breakout_board";
         public const string blueprintPickup = "blueprint_pickup";
         public const string combat = "combat";
@@ -25,6 +26,7 @@ namespace MVZ2.GameContent.HeldItems
         public static readonly NamespaceID sword = Get(VanillaHeldItemNames.sword);
         public static readonly NamespaceID forcePad = Get(VanillaHeldItemNames.forcePad);
         public static readonly NamespaceID skywardBeacon = Get(VanillaHeldItemNames.skywardBeacon);
+        public static readonly NamespaceID skywardFamiliar = Get(VanillaHeldItemNames.skywardFamiliar);
         public static readonly NamespaceID breakoutBoard = Get(VanillaHeldItemNames.breakoutBoard);
         public static readonly NamespaceID blueprintPickup = Get(VanillaHeldItemNames.blueprintPickup);
         public static readonly NamespaceID combat = Get(VanillaHeldItemNames.combat);

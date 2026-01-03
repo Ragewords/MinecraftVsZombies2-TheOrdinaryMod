@@ -80,6 +80,7 @@ namespace MVZ2.GameContent.Contraptions
                     target = entity.Spawn(VanillaEffectID.skywardBeaconTarget, position)?.Let(e =>
                     {
                         e.SetParent(entity);
+                        e.SetModelProperty("Dest", entity.Position);
                     });
                     SetTargetEntity(entity, new EntityID(target));
                 }
@@ -129,9 +130,12 @@ namespace MVZ2.GameContent.Contraptions
             var familiar = familiarID?.GetEntity(level);
             if (!familiar.ExistsAndAlive())
             {
-                familiar = entity.SpawnWithParams(VanillaContraptionID.miniSkyward, entity.Position)?.Let(e =>
+                familiar = entity.SpawnWithParams(VanillaContraptionID.skywardFamiliar, entity.Position)?.Let(e =>
                 {
                     e.SetParent(entity);
+                    e.SetModelProperty("Dest", entity.GetCenter());
+                    SkywardFamiliar.SetTargetColumn(e, entity.GetColumn());
+                    SkywardFamiliar.SetTargetLane(e, entity.GetLane());
                 });
                 SetFamiliarEntity(entity, new EntityID(familiar));
             }
