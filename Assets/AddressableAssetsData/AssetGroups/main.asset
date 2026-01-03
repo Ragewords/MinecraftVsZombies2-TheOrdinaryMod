@@ -9758,6 +9758,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7c0165cf9b1dc54488e1b1c9b4a66f1
+    m_Address: mvz2:entity/contraptions/mini_skyward_connect_line
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7fc128f694875b4ba7bbeb8bd111ccb
     m_Address: mvz2:entity/armor/sarcophagus
     m_ReadOnly: 0
@@ -13035,7 +13042,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f7376806d664f6140a56685972faf8a1
-    m_Address: mvz2:contraption/upgrade/mini_skyward
+    m_Address: mvz2:contraption/upgrade/skyward_familiar
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
