@@ -55,7 +55,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public const string delayedSpawnerTrigger = "delayed_spawner_trigger";
-            public const string commandBlockBlueprintCheck = "command_block_blueprint_check";
             public const string spiritUniverseNight = "spirit_universe_night";
             public const string theGiantTransition = "the_giant_transition";
             public const string theGiantCleared = "the_giant_cleared";
@@ -374,9 +373,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 3
             public const string witherSkeletonSkullReduceCost = "wither_skeleton_skull_reduce_cost";
-
-            // Chapter 4
-            public const string commandBlockBlueprint = "command_block_blueprint";
         }
     }
     public static class VanillaBuffID
@@ -429,7 +425,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 4
             public static readonly NamespaceID delayedSpawnerTrigger = Get(VanillaBuffNames.Level.delayedSpawnerTrigger);
-            public static readonly NamespaceID commandBlockBlueprintCheck = Get(VanillaBuffNames.Level.commandBlockBlueprintCheck);
             public static readonly NamespaceID spiritUniverseNight = Get(VanillaBuffNames.Level.spiritUniverseNight);
             public static readonly NamespaceID theGiantTransition = Get(VanillaBuffNames.Level.theGiantTransition);
             public static readonly NamespaceID theGiantCleared = Get(VanillaBuffNames.Level.theGiantCleared);
@@ -717,9 +712,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 3
             public static readonly NamespaceID witherSkeletonSkullReduceCost = Get(VanillaBuffNames.SeedPack.witherSkeletonSkullReduceCost);
-        
-            // Chapter 4
-            public static readonly NamespaceID commandBlockBlueprint = Get(VanillaBuffNames.SeedPack.commandBlockBlueprint);
         }
     }
 }
