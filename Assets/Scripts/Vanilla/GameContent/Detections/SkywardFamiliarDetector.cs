@@ -29,7 +29,6 @@ namespace MVZ2.GameContent.Detections
             var sizeZ = projectileSize.z;
             var centerZ = source.z;
 
-
             return new Bounds(new Vector3(centerX, centerY, centerZ), new Vector3(sizeX, sizeY, sizeZ));
         }
         protected override bool ValidateCollider(DetectionParams param, IEntityCollider collider)
@@ -46,7 +45,8 @@ namespace MVZ2.GameContent.Detections
             var radius = Mathf.Max(projectileSize.x, projectileSize.y, projectileSize.z) * 0.5f;
 
             var endRangePoint = self.GetShootPoint().x + range * self.GetFacingX();
-            Vector3 endPoint = new Vector3(endRangePoint, self.GetGroundY(), self.Position.z);
+            Vector3 endPoint = new Vector3(endRangePoint, 0, self.Position.z);
+            endPoint.y = self.Level.GetGroundY(endPoint);
             var angle = (endPoint - self.GetShootPoint()).normalized;
 
             Bounds targetBounds = collider.GetBoundingBox();

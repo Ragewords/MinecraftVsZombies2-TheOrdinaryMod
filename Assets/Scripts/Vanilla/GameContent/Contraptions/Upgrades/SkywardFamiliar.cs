@@ -36,10 +36,10 @@ namespace MVZ2.GameContent.Contraptions
             var magnitude = STAR_VELOCITY.magnitude;
             var range = entity.GetRange();
             var endRangePoint = entity.GetShootPoint().x + range * entity.GetFacingX();
-            Vector3 endPoint = new Vector3(endRangePoint, entity.GetGroundY(), entity.Position.z);
+            Vector3 endPoint = new Vector3(endRangePoint, 0, entity.Position.z);
+            endPoint.y = entity.Level.GetGroundY(endPoint);
             var angle = (endPoint - entity.GetShootPoint()).normalized;
             param.velocity = angle * magnitude;
-            param.pivot = new Vector3(0.5f, 0, 0.5f);
 
             return entity.ShootProjectile(param);
         }
