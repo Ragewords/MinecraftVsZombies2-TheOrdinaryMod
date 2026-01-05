@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MukioI18n;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Buffs.SeedPacks;
@@ -16,7 +15,6 @@ using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic;
@@ -306,13 +304,13 @@ namespace MVZ2.GameContent.Bosses
             switch (option)
             {
                 case FATE_PANDORAS_BOX:
-                    if (altFate) PandorasBoxAltered(boss); else PandorasBox(boss);
+                    PandorasBox(boss);
                     break;
                 case FATE_BIOHAZARD:
                     Biohazard(boss);
                     break;
                 case FATE_DECREPIFY:
-                    if (altFate) DecrepifyAltered(boss); else Decrepify(boss);
+                    Decrepify(boss);
                     break;
                 case FATE_INSANITY:
                     Insanity(boss);
@@ -345,6 +343,11 @@ namespace MVZ2.GameContent.Bosses
                 return;
             var rng = new RandomGenerator(eventRng.Next());
             var contraptions = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss));
+            if (boss.Level.SlendermanAlteredFate())
+            {
+                var count = Mathf.CeilToInt(contraptions.Length * 0.5f);
+                contraptions = contraptions.RandomTake(count, rng).ToArray();
+            }
             foreach (var contraption in contraptions)
             {
                 contraption.ClearTakenGrids();
@@ -364,27 +367,6 @@ namespace MVZ2.GameContent.Bosses
                 var grid = targetGrids.Random(rng);
                 contraption.Position = grid.GetEntityPosition();
                 contraption.UpdateTakenGrids();
-            }
-        }
-        private void PandorasBoxAltered(Entity boss)
-        {
-            boss.PlaySound(VanillaSoundID.odd);
-
-            var level = boss.Level;
-            var eventRng = GetEventRNG(boss);
-            if (eventRng == null)
-                return;
-            var rng = new RandomGenerator(eventRng.Next());
-            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
-            var grids = level.GetAllGrids();
-            foreach (var enemy in enemies)
-            {
-                var targetGrids = grids.Where(g => g.CanSpawnEntity(enemy.GetDefinitionID()));
-                if (targetGrids.Count() <= 0)
-                    continue;
-                var grid = targetGrids.Random(rng);
-                enemy.Position = grid.GetEntityPosition();
-                enemy.AddBuff<WickedHermitWarppedBuff>();
             }
         }
         private void Biohazard(Entity boss)
@@ -408,18 +390,16 @@ namespace MVZ2.GameContent.Bosses
         private void Decrepify(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.decrepify);
-            boss.Level.AddBuff<NightmareDecrepifyBuff>();
-        }
-        private void DecrepifyAltered(Entity boss)
-        {
-            boss.PlaySound(VanillaSoundID.decrepify);
-            boss.Level.AddBuff<NightmareDecrepifyAlteredBuff>();
+            var buff = boss.Level.AddBuff<NightmareDecrepifyBuff>();
+            if (boss.Level.SlendermanAlteredFate())
+            {
+                buff.SetProperty(NightmareDecrepifyBuff.PROP_TIMEOUT, Ticks.FromSeconds(45));
+            }
         }
 
         private void Insanity(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.confuse);
-            boss.PlaySound(VanillaSoundID.mindControl);
 
             var level = boss.Level;
             var rng = GetEventRNG(boss);
@@ -496,18 +476,24 @@ namespace MVZ2.GameContent.Bosses
             var rng = GetEventRNG(boss);
             if (rng == null)
                 return;
-            var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && e.IsAboveLand()).RandomTake(1, rng);
-            foreach (var target in targets)
+            IEnumerable<int> allColumns = Enumerable.Range(0, level.GetMaxColumnCount());
+            var targetColumn = allColumns.Where(c =>
             {
-                var col = target.GetColumn();
-                for (int i = 0; i < level.GetMaxLaneCount(); i++)
+                bool hasEnemy = false;
+                foreach (var target in level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsHostile(boss) && e.IsAboveLand()))
                 {
-                    var grid = level.GetGrid(col, i);
-                    if (grid == null)
-                        continue;
-                    if (grid.IsLand())
-                        boss.SpawnWithParams(VanillaEffectID.executioner, grid.GetEntityPosition());
+                    if (target.GetColumn() == c)
+                        hasEnemy = true;
                 }
+                return hasEnemy;
+            }).Random(boss.RNG);
+            for (int i = 0; i < level.GetMaxLaneCount(); i++)
+            {
+                var grid = level.GetGrid(targetColumn, i);
+                if (grid == null)
+                    continue;
+                if (grid.IsLand())
+                    boss.SpawnWithParams(VanillaEffectID.executioner, grid.GetEntityPosition());
             }
         }
         private static string GetFateOptionText(int option)
