@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Fragments;
@@ -144,7 +145,7 @@ namespace MVZ2.GameContent.Enemies
             if (!ValidTarget(self, target))
                 return true;
             // 自己被照亮，对于锁链而言无视此条件
-            if (self.IsIlluminated() && !chain)
+            if (self.IsIlluminated() && IsIlluminatedByGlowstone(self) && !chain)
                 return true;
             // 其他幽灵
             if (target.IsEntityOf(self.GetDefinitionID()))
@@ -175,7 +176,7 @@ namespace MVZ2.GameContent.Enemies
             if (!Detection.CanDetect(target))
                 return false;
             // 被照亮的怪物
-            if (target.IsIlluminated())
+            if (target.IsIlluminated() && IsIlluminatedByGlowstone(target))
                 return false;
             return true;
         }
@@ -201,6 +202,15 @@ namespace MVZ2.GameContent.Enemies
             var targetID = GetPossessingEntity(self);
             var target = targetID?.GetEntity(self.Level);
             return target.ExistsAndAlive();
+        }
+        public static bool IsIlluminatedByGlowstone(Entity self)
+        {
+            foreach (var glowstone in self.GetIlluminationLightSources())
+            {
+                if (glowstone.IsEntityOf(VanillaContraptionID.glowstone))
+                    return true;
+            }
+            return false;
         }
         public class GhostAura : AuraEffectDefinition
         {
