@@ -286,7 +286,8 @@ namespace MVZ2.GameContent.Bosses
         private static void SetGunDirection(Entity boss, Vector3 direction)
         {
             boss.SetBehaviourField(ID, PROP_GUN_DIRECTION, direction);
-            float innerAngle = Vector2.SignedAngle(boss.GetFacingDirection(), direction);
+            direction.x *= boss.GetFacingX();
+            float innerAngle = Mathf.Repeat(Vector2.SignedAngle(Vector2.right, direction), 360);
             boss.SetAnimationFloat("InnerArmAngle", innerAngle);
         }
 
@@ -297,7 +298,8 @@ namespace MVZ2.GameContent.Bosses
         private static void SetMissileDirection(Entity boss, Vector3 direction)
         {
             boss.SetBehaviourField(ID, PROP_MISSILE_DIRECTION, direction);
-            float innerAngle = Vector2.SignedAngle(boss.GetFacingDirection(), direction);
+            direction.x *= boss.GetFacingX();
+            float innerAngle = Mathf.Repeat(Vector2.SignedAngle(Vector2.right, direction), 360);
             boss.SetAnimationFloat("OuterArmAngle", innerAngle);
         }
         private static void HeadSplit(Entity boss)

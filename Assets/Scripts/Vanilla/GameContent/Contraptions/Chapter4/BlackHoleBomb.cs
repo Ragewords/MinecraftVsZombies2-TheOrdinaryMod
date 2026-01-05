@@ -76,8 +76,9 @@ namespace MVZ2.GameContent.Contraptions
                 !info.HasEffect(VanillaDamageEffects.EXPLOSION))
                 return;
             var range = entity.GetRange();
-            var damage = entity.GetDamage();
-            Explode(entity, range, damage * DAMAGE_MULTIPLIER, damage * DAMAGE_MULTIPLIER_PLANET);
+            var damage = entity.GetDamage() * DAMAGE_MULTIPLIER;
+            var planetDamage = entity.GetDamage() * DAMAGE_MULTIPLIER_PLANET;
+            Explode(entity, range, damage, planetDamage);
             entity.Remove();
         }
         public static void Ignite(Entity entity)
