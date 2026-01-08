@@ -80,6 +80,8 @@ namespace MVZ2.GameContent.Effects
                 return;
             if (!self.IsHostile(other))
                 return;
+            if (!other.IsOnGround)
+                return;
             var effects = new NamespaceID[]{ VanillaDamageEffects.MUTE };
             if (IsStainFrozen(self))
             {
