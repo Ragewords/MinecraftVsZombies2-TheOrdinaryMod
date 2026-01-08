@@ -1619,7 +1619,7 @@
         </entry>
         <entry id="mvz2:rally_zombie">
             <header>
-                <p>集结旗帜僵尸的出现标志着一大波怪物的到来。</p>
+                <p>大动员僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>300</color>]]></p>
