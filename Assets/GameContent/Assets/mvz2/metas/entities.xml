@@ -340,7 +340,7 @@
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:dynamite" value="true" />
                 <bool name="mvz2:noClimb" value="true" />
-                <float name="mvz2:damage" value="900" />
+                <float name="mvz2:damage" value="1800" />
                 <float name="mvz2:range" value="40" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
                 <id name="mvz2:shell" value="mvz2:grass" />
@@ -2122,7 +2122,7 @@
         </enemy>
 
         <!-- Extra Enemies -->
-        <zombie id="rally_zombie" name="集结旗帜僵尸" deathMessage="脑子是好的，但不是每个人都有">
+        <zombie id="rally_zombie" name="大动员僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <unlock>
                 <condition required="mvz2:level.halloween_11" />
             </unlock>
