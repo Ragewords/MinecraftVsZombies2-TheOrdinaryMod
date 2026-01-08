@@ -36,12 +36,12 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateAI(entity);
             var cooldown = GetReviveCooldown(entity);
-            SetActive(entity, cooldown.RunToExpiredAndNotNull(entity.GetAttackSpeed()));
+            float speed = entity.IsAIFrozen() ? 0 : entity.GetAttackSpeed();
+            SetActive(entity, cooldown.RunToExpiredAndNotNull(speed) && !entity.IsAIFrozen());
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            var cooldown = GetReviveCooldown(entity);
             entity.SetAnimationBool("Active", IsActive(entity));
             entity.SetAnimationFloat("MarkBlend", GetMarkBlend(entity));
         }
@@ -64,9 +64,19 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             var level = entity.Level;
             var graves = level.FindEntities(e => e.IsEntityOf(VanillaContraptionID.revivegrave) && e.GetLane() == entity.GetLane() && entity.IsHostile(e));
-            var valid_graves = graves?.Where(e => Revivegrave.GetReviveCooldown(e)!.Expired);
-            var chosen_grave = valid_graves?.RandomTake(1, entity.RNG)!;
-            foreach (var grave in chosen_grave)
+            var validGraves = graves.Where(e => 
+            {
+                if (e.IsAIFrozen())
+                    return false;
+                var cooldown = GetReviveCooldown(e);
+                if (cooldown == null)
+                    return false;
+                if (!cooldown.Expired)
+                    return false;
+                return true;
+            });
+            var chosenGrave = validGraves.RandomTake(1, entity.RNG);
+            foreach (var grave in chosenGrave)
             {
                 ReviveEnemy(grave, entity.GetDefinitionID(), entity.GetMaxHealth());
             }
