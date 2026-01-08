@@ -37,10 +37,10 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 return;
             DragEnemiesNearby(entity);
 
-            var vel = entity.Velocity;
-            vel.y = -1;
-            entity.Velocity = vel;
             var multiplier = entity.IsAboveCloud() ? 10 : 1;
+            var vel = entity.Velocity;
+            vel.y = -1 * multiplier;
+            entity.Velocity = vel;
             if (entity.GetRelativeY() <= -48 * multiplier)
             {
                 entity.Remove();
