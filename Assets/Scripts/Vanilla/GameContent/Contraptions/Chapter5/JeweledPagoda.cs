@@ -79,7 +79,7 @@ namespace MVZ2.GameContent.Contraptions
             if (jewelCount == BLAST)
             {
                 entity.SetProperty(PROP_LIGHT_COLOR, BLAST_JEWEL);
-                TNT.Explode(entity, 120, damage * 9);
+                TNT.Explode(entity, 120, damage * 16);
             }
             else if (jewelCount == LIGHTNING)
             {
@@ -110,16 +110,21 @@ namespace MVZ2.GameContent.Contraptions
             else if (jewelCount >= CHAOS)
             {
                 entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
-                var finalList = entity.Level.FindEntities(e => IsChaosTarget(entity, e)).RandomTake(jewelCount, entity.RNG);
-                foreach (var entityCollider in finalList)
+                var emenyList = entity.Level.FindEntities(e => IsChaosTarget(entity, e));
+                var targetIDs = emenyList.Select(e => e.GetDefinitionID());
+                var finalID = targetIDs.Random(entity.RNG);
+                foreach (Entity target in emenyList)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    entityCollider.TakeDamage(damage * 3, damageEffects, entity);
-                    entity.Spawn(VanillaEffectID.pagodaLaserChaos, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
+                    if (finalID != null && target.IsEntityOf(finalID))
                     {
-                        e.SetParent(entity);
-                        e.SetModelProperty("Dest", entityCollider.GetCenter());
-                    });
+                        target.TakeDamage(damage * 8, damageEffects, entity);
+                        entity.Spawn(VanillaEffectID.pagodaLaserChaos, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
+                        {
+                            e.SetParent(entity);
+                            e.SetModelProperty("Dest", target.GetCenter());
+                        });
+                    }
                 }
             }
         }
