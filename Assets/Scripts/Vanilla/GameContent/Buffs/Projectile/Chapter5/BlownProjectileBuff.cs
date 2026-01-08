@@ -31,14 +31,22 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             var falling = buff.GetProperty<bool>(PROP_FALLING);
             if (timeout <= 0)
             {
+                if (entity == null)
+                {
+                    buff.Remove();
+                    return;
+                }
+
                 if (falling)
                 {
-                    gravity += 0.25f;
+                    var vel = entity.Velocity;
+                    vel.y -= 0.25f;
+                    entity.Velocity = vel;
                     buff.SetProperty(PROP_GRAVITY, gravity);
                     return;
                 }
 
-                if (entity?.Velocity.magnitude <= 1)
+                if (entity.Velocity.magnitude <= 1)
                 {
                     buff.SetProperty(PROP_FALLING, true);
                 }
