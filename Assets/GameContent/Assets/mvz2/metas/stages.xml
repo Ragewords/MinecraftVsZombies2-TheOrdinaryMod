@@ -45,7 +45,7 @@
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
         </spawns>
-        <time firstWave="60" firstWaveLunatic="90" />
+        <time firstWave="60" firstWaveLunatic="100" />
     </stage>
     <stage id="starshard_tutorial" name="教程关" type="special">
         <camera transition="to_lawn" />
@@ -75,6 +75,7 @@
         <properties>
             <integer name="statueCount" value="3" />
         </properties>
+        <time firstWaveLunatic="24" />
     </stage>
     <stage id="halloween_3" name="万圣夜" dayNumber="3">
         <unlock>
