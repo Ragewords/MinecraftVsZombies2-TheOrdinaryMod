@@ -56,11 +56,11 @@ namespace MVZ2.GameContent.Contraptions
                 if (!no_duplicate)
                 {
                     entity.SetProperty(PROP_NO_DUPLICATE, true);
-                    LaneShuffle(entity);
+                    ThrowDuplicate(entity);
                 }
             }
         }
-        private void LaneShuffle(Entity entity)
+        private void ThrowDuplicate(Entity entity)
         {
             List<LawnGrid> grids = new List<LawnGrid>();
             for (int y = 0; y < entity.Level.GetMaxLaneCount(); y++)

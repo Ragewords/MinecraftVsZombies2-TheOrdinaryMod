@@ -18,7 +18,7 @@ using UnityEngine;
 namespace MVZ2.GameContent.Contraptions
 {
     [EntityBehaviourDefinition(VanillaEffectNames.fireWall)]
-    public class FireWall : EntityBehaviourDefinition
+    public class FireWall : EntityBehaviourDefinition, IBeBlownBehaviour
     {
         public FireWall(string nsp, string name) : base(nsp, name)
         {
@@ -67,6 +67,11 @@ namespace MVZ2.GameContent.Contraptions
                 target.PlaySound(VanillaSoundID.fire);
                 target.Remove();
             }
+        }
+        public void BeBlown(Entity entity, Entity source)
+        {
+            entity.Timeout--;
+            entity.Timeout = Mathf.Max(entity.Timeout, 0);
         }
         public static Entity? Spawn(LawnGrid grid, Entity source, SpawnParams spawnParam)
         {
