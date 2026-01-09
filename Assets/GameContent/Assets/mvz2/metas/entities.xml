@@ -2727,9 +2727,15 @@
             </properties>
         </boss>
         <boss id="crescent" name="新月">
+            <behaviours>
+                <properties behaviour="mvz2:boss_resistance">
+                    <float name="max_damage_amount" value="300" />
+                    <float name="decay" value="10" />
+                </properties>
+            </behaviours>
             <properties>
                 <int name="mvz2:waterInteraction" value="0" />
-                <float name="mvz2:maxHealth" value="3500" />
+                <float name="mvz2:maxHealth" value="6000" />
                 <id name="mvz2:shell" value="mvz2:stone" />
                 <vector3 name="mvz2:size" x="64" y="64" z="64" />
                 <color name="mvz2:bloodColor" value="#000000FF" />

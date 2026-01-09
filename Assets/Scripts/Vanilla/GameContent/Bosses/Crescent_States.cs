@@ -68,12 +68,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var stateTimer = stateMachine.GetStateTimer(entity);
-                stateTimer.ResetTime(60);
-            }
-            public override void OnExit(EntityStateMachine stateMachine, Entity entity)
-            {
-                base.OnExit(stateMachine, entity);
-                SetAlterJump(entity, !AlterJump(entity));
+                stateTimer.ResetTime(30);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -87,11 +82,8 @@ namespace MVZ2.GameContent.Bosses
 
                 if (lastState == STATE_DASH)
                 {
-                    lastState = STATE_COCOON;
-                }
-                else if (lastState == STATE_COCOON)
-                {
-                    lastState = STATE_THROW;
+                    lastState = AlterJump(entity) ? STATE_COCOON : STATE_THROW;
+                    SetAlterJump(entity, !AlterJump(entity));
                 }
                 else
                 {
