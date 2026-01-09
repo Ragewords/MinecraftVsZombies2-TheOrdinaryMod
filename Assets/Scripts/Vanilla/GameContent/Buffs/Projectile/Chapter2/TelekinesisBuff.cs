@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -29,7 +30,12 @@ namespace MVZ2.GameContent.Buffs.Projectiles
 
             detectBuffer.Clear();
             var target = absorbDetector.DetectEntityWithTheLeast(entity, e => Mathf.Abs((e.Position - entity.Position).magnitude));
-            if (target != null)
+            if (target == null)
+                return;
+            var targetCollider = target.GetCollider(EntityCollisionHelper.NAME_MAIN);
+            if (targetCollider == null)
+                return;
+            if (!entity.IsProjectileColliderIgnored(targetCollider))
             {
                 var vel = entity.Velocity;
                 var magnitude = vel.magnitude;
