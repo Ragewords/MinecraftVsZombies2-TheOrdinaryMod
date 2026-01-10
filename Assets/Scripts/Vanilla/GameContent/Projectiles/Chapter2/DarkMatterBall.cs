@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Projectiles
                 {
                     projectile.Spawn(VanillaEffectID.nightmareaperSplash, projectile.Position);
                 }
-                return;
+                else return;
             }
             Deflect(projectile);
             var hitCount = GetHitCount(projectile);

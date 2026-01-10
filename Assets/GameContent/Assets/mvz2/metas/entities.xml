@@ -3271,6 +3271,7 @@
                 <float name="mvz2:gravity" value="1" />
                 <float name="mvz2:range" value="120" />
                 <float name="mvz2:damage" value="100" />
+                <int name="mvz2:waterInteraction" value="0" />
             </properties>
         </projectile>
         <projectile id="terror_cocoon">
