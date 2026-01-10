@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Buffs.Level
             else
             {
                 timeout.Run();
-                if (timeout.PassedInterval(5))
+                if (timeout.PassedInterval(10))
                 {
                     buff.SetProperty(PROP_DISABLE_ICON_PICKAXE, !disablePickaxe);
                     buff.SetProperty(PROP_DISABLE_ICON_STARSHARD, !disableShard);
