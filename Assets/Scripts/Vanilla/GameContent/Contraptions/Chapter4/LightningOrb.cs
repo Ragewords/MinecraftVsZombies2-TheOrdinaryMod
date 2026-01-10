@@ -112,6 +112,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.lightningAttack);
             if (!entity.HasBuff<LightningOrbEnergyShieldBuff>())
             {
+                GetShieldRegenerateTimer(entity)?.Reset();
                 entity.AddBuff<LightningOrbEvokedBuff>();
                 return;
             }

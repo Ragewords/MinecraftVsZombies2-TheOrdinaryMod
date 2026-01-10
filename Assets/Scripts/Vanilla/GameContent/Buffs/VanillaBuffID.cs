@@ -253,6 +253,7 @@ namespace MVZ2.GameContent.Buffs
             public const string terrorNest = "terror_nest";
             public const string forcePadDrag = "force_pad_drag";
             public const string nightmareComeTrue = "nightmare_come_true";
+            public const string alteredPandorasBox = "altered_pandoras_box";
             public const string pureFury = "pure_fury";
 
             // Chapter 3

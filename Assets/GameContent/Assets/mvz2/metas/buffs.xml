@@ -138,6 +138,7 @@
     <buff id="drivenser_upgrade" polarity="positive" level="5000" target="contraption" />
     <buff id="totenser_web" polarity="negative" level="0" target="enemy" />
     <buff id="terror_nest" polarity="mixed" level="0" target="enemy" />
+    <buff id="altered_pandoras_box" polarity="none" level="4000" target="enemy" />
     <buff id="pure_fury" polarity="positive" level="1000" target="enemy" />
     <buff id="crescent_anti_gravity" polarity="negative" level="1000" target="entity" />
     <buff id="concealed" polarity="negative" level="1000" target="entity" />

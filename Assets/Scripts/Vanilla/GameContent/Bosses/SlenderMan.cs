@@ -304,13 +304,13 @@ namespace MVZ2.GameContent.Bosses
             switch (option)
             {
                 case FATE_PANDORAS_BOX:
-                    PandorasBox(boss);
+                    if (altFate) PandorasBoxAltered(boss); else PandorasBox(boss);
                     break;
                 case FATE_BIOHAZARD:
                     Biohazard(boss);
                     break;
                 case FATE_DECREPIFY:
-                    Decrepify(boss);
+                    if (altFate) DecrepifyAltered(boss); else Decrepify(boss);
                     break;
                 case FATE_INSANITY:
                     Insanity(boss);
@@ -369,6 +369,27 @@ namespace MVZ2.GameContent.Bosses
                 contraption.UpdateTakenGrids();
             }
         }
+        private void PandorasBoxAltered(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.odd);
+
+            var level = boss.Level;
+            var eventRng = GetEventRNG(boss);
+            if (eventRng == null)
+                return;
+            var rng = new RandomGenerator(eventRng.Next());
+            var enemies = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss));
+            var grids = level.GetAllGrids();
+            foreach (var enemy in enemies)
+            {
+                var targetGrids = grids.Where(g => g.CanSpawnEntity(enemy.GetDefinitionID()));
+                if (targetGrids.Count() <= 0)
+                    continue;
+                var grid = targetGrids.Random(rng);
+                enemy.Position = grid.GetEntityPosition();
+                enemy.AddBuff<AlteredPandorasBoxBuff>();
+            }
+        }
         private void Biohazard(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.biohazard);
@@ -390,10 +411,20 @@ namespace MVZ2.GameContent.Bosses
         private void Decrepify(Entity boss)
         {
             boss.PlaySound(VanillaSoundID.decrepify);
-            var buff = boss.Level.AddBuff<NightmareDecrepifyBuff>();
-            if (boss.Level.SlendermanAlteredFate())
+            boss.Level.AddBuff<NightmareDecrepifyBuff>();
+        }
+        private void DecrepifyAltered(Entity boss)
+        {
+            boss.PlaySound(VanillaSoundID.decrepify);
+            Buff? buff = boss.Level.GetFirstBuff<NightmareDecrepifyAlteredBuff>();
+            if (buff == null)
             {
-                buff.SetProperty(NightmareDecrepifyBuff.PROP_TIMEOUT, Ticks.FromSeconds(45));
+                boss.Level.AddBuff<NightmareDecrepifyAlteredBuff>();
+            }
+            else
+            {
+                var timer = buff.GetProperty<FrameTimer>(NightmareDecrepifyAlteredBuff.PROP_TIMEOUT);
+                timer?.Reset();
             }
         }
 
