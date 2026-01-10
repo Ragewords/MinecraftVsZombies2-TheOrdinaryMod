@@ -70,7 +70,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void BeBlown(Entity entity, Entity source)
         {
-            entity.Timeout--;
+            entity.Timeout -= 2;
             entity.Timeout = Mathf.Max(entity.Timeout, 0);
         }
         public static Entity? Spawn(LawnGrid grid, Entity source, SpawnParams spawnParam)
