@@ -4105,6 +4105,17 @@
                 <vector3 name="mvz2:size" x="240" y="240" z="240" />
             </properties>
         </effect>
+        <effect id="lil_thunder_drum_splash">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
+                <properties behaviour="mvz2:fadeout_by_timeout">
+                    <float name="fade_timeout" value="1" />
+                </properties>
+            </behaviours>
+            <properties>
+                <int name="mvz2:maxTimeout" value="10" />
+            </properties>
+        </effect>
         <effect id="thunder_bolt_horizontal">
             <behaviours>
                 <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>

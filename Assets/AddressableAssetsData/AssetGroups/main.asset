@@ -7462,6 +7462,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cc618d454d5f8c4aade7145ce95d6a4
+    m_Address: mvz2:entity/effects/lil_thunder_drum_splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8cdebccec54e7554e9fa0219707d489d
     m_Address: mvz2:mobile_blueprint/cannonball_zombie
     m_ReadOnly: 0
@@ -10016,6 +10023,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bde3e0a386a81344cae8721ab2c6aba1
+    m_Address: mvz2:effect/lil_thunder_drum_splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bded572031703084ca75d3a1a2cc8785
     m_Address: mvz2:bones/head
