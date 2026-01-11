@@ -174,7 +174,7 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             if (!Detection.CanDetect(target))
                 return false;
-            if (!Detection.IsInSameRow(self, target))
+            if (target.GetLane() > self.GetLane() + 1 || target.GetLane() < self.GetLane() - 1)
                 return false;
             // 被照亮的怪物
             if (target.IsIlluminated() && IsIlluminatedByGlowstone(target))
