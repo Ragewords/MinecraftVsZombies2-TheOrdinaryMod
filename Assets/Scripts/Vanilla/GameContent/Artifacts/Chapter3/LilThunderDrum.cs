@@ -11,10 +11,10 @@ using PVZEngine.Damages;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.heavyBassDrum)]
-    public class HeavyBassDrum : ArtifactDefinition
+    [ArtifactDefinition(VanillaArtifactNames.lilThunderDrum)]
+    public class LilThunderDrum : ArtifactDefinition
     {
-        public HeavyBassDrum(string nsp, string name) : base(nsp, name)
+        public LilThunderDrum(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Artifacts
             }
             if (valid)
             {
-                projectile.SplashDamage(excludeCollider, projectile.GetCenter(), 20, projectile.GetFaction(), projectile.GetDamage() * 0.2f, new DamageEffectList(VanillaDamageEffects.MUTE));
+                projectile.SplashDamage(excludeCollider, projectile.GetCenter(), 40, projectile.GetFaction(), projectile.GetDamage() * 0.2f, new DamageEffectList(VanillaDamageEffects.MUTE));
             }
         }
     }
