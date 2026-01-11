@@ -3161,6 +3161,7 @@
         <projectile id="poison_ball">
             <properties>
                 <vector3 name="mvz2:size" x="15" y="15" z="15" />
+                <idArray name="mvz2:damageEffects" value="mvz2:poison" />
             </properties>
         </projectile>
         <projectile id="poison_potion">

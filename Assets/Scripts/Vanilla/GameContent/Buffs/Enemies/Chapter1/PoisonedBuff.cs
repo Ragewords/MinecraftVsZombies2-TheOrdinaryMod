@@ -27,14 +27,15 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity != null)
             {
+                DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.POISON);
                 var armor = entity.GetMainArmor();
                 if (Armor.Exists(armor) && !armor.IsIgnored())
                 {
-                    entity.TakeDamageNoSource(WITHER_DAMAGE_ARMOR, new DamageEffectList(VanillaDamageEffects.MUTE));
+                    entity.TakeDamageNoSource(WITHER_DAMAGE_ARMOR, damageEffectList);
                 }
                 else if (entity.Health > 20)
                 {
-                    entity.TakeDamageNoSource(WITHER_DAMAGE, new DamageEffectList(VanillaDamageEffects.MUTE));
+                    entity.TakeDamageNoSource(WITHER_DAMAGE, damageEffectList);
                 }
             }
 
