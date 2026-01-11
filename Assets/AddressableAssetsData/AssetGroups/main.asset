@@ -1698,7 +1698,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1f0a8eaf9b153b3429a373a0155f968f
-    m_Address: mvz2:entity/contraptions/tnt
+    m_Address: mvz2:entity/contraptions/etho_slab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

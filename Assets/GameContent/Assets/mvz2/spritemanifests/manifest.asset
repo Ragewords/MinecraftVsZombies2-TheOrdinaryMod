@@ -725,6 +725,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 234c0e3c684ac844bbd71630e112c357, type: 3}
   - name: entity/contraptions/error_block
     sprite: {fileID: 21300000, guid: 1106f96e2391f404caf8c7b2974ba5ea, type: 3}
+  - name: entity/contraptions/etho_slab
+    sprite: {fileID: 21300000, guid: 1f0a8eaf9b153b3429a373a0155f968f, type: 3}
   - name: entity/contraptions/firecharge_dispenser
     sprite: {fileID: 21300000, guid: 78c20e0b07a17e3458c71c08eeba7030, type: 3}
   - name: entity/contraptions/force_wave
@@ -781,8 +783,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 44bd337d7a161b2498137668fbec6e35, type: 3}
   - name: entity/contraptions/stone_dropper
     sprite: {fileID: 21300000, guid: b54fb45c2064c9149942a6ea99c593f3, type: 3}
-  - name: entity/contraptions/tnt
-    sprite: {fileID: 21300000, guid: 1f0a8eaf9b153b3429a373a0155f968f, type: 3}
   - name: entity/contraptions/tnt_full
     sprite: {fileID: 21300000, guid: 3a6712b8d704de34f998f38145bf7638, type: 3}
   - name: entity/contraptions/wooden_dropper
