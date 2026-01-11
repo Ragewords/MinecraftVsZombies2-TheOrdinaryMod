@@ -112,7 +112,6 @@ namespace MVZ2.GameContent.Enemies
                     DeactivatePossession(entity);
                     entity.PlaySound(VanillaSoundID.chainsBreak);
                     entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
-                    entity.Velocity += entity.GetFacingDirection() * -3;
                 }
                 entity.SetCasting(false);
                 SetPossessingEntity(entity, null);
@@ -171,9 +170,11 @@ namespace MVZ2.GameContent.Enemies
             if (target.IsAIFrozen())
                 return false;
             // 离场的怪物
-            if (target.Position.x <= VanillaLevelExt.GetAttackBorderX(false))
+            if (target.Position.x <= VanillaLevelExt.GetAttackBorderX(false) || target.Position.x >= VanillaLevelExt.GetAttackBorderX(true))
                 return false;
             if (!Detection.CanDetect(target))
+                return false;
+            if (!Detection.IsInSameRow(self, target))
                 return false;
             // 被照亮的怪物
             if (target.IsIlluminated() && IsIlluminatedByGlowstone(target))
