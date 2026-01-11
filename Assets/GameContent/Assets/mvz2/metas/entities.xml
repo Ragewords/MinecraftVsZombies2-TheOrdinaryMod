@@ -1290,7 +1290,7 @@
                 <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </contraption>
-        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要比较发射器）\n一次射出六支箭矢">
+        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要连射发射器）\n一次射出六支箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_5" />
             </unlock>
