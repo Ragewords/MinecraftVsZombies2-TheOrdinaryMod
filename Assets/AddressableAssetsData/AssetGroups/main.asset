@@ -95,7 +95,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 022f549e8abae444080c27463da40bb0
-    m_Address: mvz2:artifacts/heavy_bass_drum
+    m_Address: mvz2:artifacts/lil_thunder_drum
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -2032,6 +2032,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25602820e31da35468447d9875882c7b
+    m_Address: mvz2:entity/contraption/poisonser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2562dbc08cdc1bd459d0a70219d7d4e4
     m_Address: mvz2:entity/contraption/hellfire_base
@@ -4319,13 +4326,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 512049488154add4090a1736f3979547
-    m_Address: mvz2:entity/contraptions/poisonser
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 514ab93d42a9aac4095942b065e3352d
     m_Address: mvz2:contraption/dream/drivenser
@@ -9746,13 +9746,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b757bff462de5454c97df5bc746a6c23
     m_Address: mvz2:mobile_blueprint/monster_spawner
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b7b841ed6bb99e546ab2165545440367
-    m_Address: mvz2:entity/contraptions/poisonser_evoked
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

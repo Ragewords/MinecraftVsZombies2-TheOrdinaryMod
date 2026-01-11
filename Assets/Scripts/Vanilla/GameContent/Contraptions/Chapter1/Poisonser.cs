@@ -29,7 +29,7 @@ namespace MVZ2.GameContent.Contraptions
                 Frame = 0
             };
             SetStateTimer(entity, timer);
-            entity.SetAnimationBool("Evoked", false);
+            entity.SetModelProperty("Evoked", false);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -38,7 +38,7 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
-                entity.SetAnimationBool("Evoked", !timer.RunToExpiredOrNull());
+                entity.SetModelProperty("Evoked", !timer.RunToExpiredOrNull());
                 return;
             }
         }
