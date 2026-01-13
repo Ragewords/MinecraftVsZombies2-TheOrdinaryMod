@@ -474,7 +474,7 @@ namespace MVZ2.GameContent.Stages
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "10")]
         public const string STRING_STATE_10 = "请至少放下三个熔炉！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "11")]
-        public const string STRING_STATE_11 = "用黑曜石来挡住僵尸的进攻！";
+        public const string STRING_STATE_11 = "用哭泣的黑曜石来挡住僵尸的进攻！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "12")]
         public const string STRING_STATE_12 = "干得漂亮！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "13")]

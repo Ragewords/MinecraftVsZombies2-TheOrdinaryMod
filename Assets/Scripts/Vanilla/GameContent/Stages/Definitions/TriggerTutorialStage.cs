@@ -309,19 +309,19 @@ namespace MVZ2.GameContent.Stages
         public const string CONTEXT_STATE = CONTEXT_STATE_PREFIX + "{0}";
 
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "0")]
-        public const string STRING_STATE_0 = "放置TNT！";
+        public const string STRING_STATE_0 = "放置Etho台阶！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "1")]
         public const string STRING_STATE_1 = "点击选中触发器！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "2")]
-        public const string STRING_STATE_2 = "点击以触发TNT！";
+        public const string STRING_STATE_2 = "点击以触发Etho台阶！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "3")]
         public const string STRING_STATE_3 = "干得漂亮！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "4")]
         public const string STRING_STATE_4 = "选中触发器！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "5")]
-        public const string STRING_STATE_5 = "点击TNT蓝图！";
+        public const string STRING_STATE_5 = "点击Etho台阶蓝图！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "6")]
-        public const string STRING_STATE_6 = "放置TNT，它会立即被触发！";
+        public const string STRING_STATE_6 = "放置Etho台阶，它会立即被触发！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "7")]
         public const string STRING_STATE_7 = "干得好！";
         [TranslateMsg("教程关指引", CONTEXT_STATE_PREFIX + "8")]
