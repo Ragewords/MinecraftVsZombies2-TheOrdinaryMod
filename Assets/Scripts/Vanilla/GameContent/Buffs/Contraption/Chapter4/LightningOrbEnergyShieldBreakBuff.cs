@@ -18,24 +18,15 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         {
             AddTrigger(VanillaLevelCallbacks.PRE_ENTITY_TAKE_DAMAGE, PreEntityTakeDamageCallback);
         }
-        public override void OnCreate(Buff buff)
-        {
-            base.OnCreate(buff);
-            buff.SetProperty(PROP_TIMER, new FrameTimer(5));
-        }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
-            var timer = buff.GetProperty<FrameTimer>(PROP_TIMER);
             var evoked = buff.GetProperty<bool>(PROP_EVOKED);
             var entity = buff.GetEntity();
-            if (timer.RunToExpiredOrNull())
+            buff.Remove();
+            if (evoked && entity.ExistsAndAlive())
             {
-                buff.Remove();
-                if (evoked && entity.ExistsAndAlive())
-                {
-                    entity.AddBuff<LightningOrbEvokedBuff>();
-                }
+                entity.AddBuff<LightningOrbEvokedBuff>();
             }
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult result)
