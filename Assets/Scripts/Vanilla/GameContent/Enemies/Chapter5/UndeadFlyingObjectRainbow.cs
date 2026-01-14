@@ -48,10 +48,14 @@ namespace MVZ2.GameContent.Enemies
 
             HashSet<LawnGrid> possibleGrids = new HashSet<LawnGrid>();
 
-            for (int i = 0; i < count; i++)
+            // 获取可以随机生成的UFO类型。
+            List<int> typePool = new List<int>();
+            UndeadFlyingObject.FillUFOVariantRandomPool(level, rainbow.GetFaction(), typePool);
+
+            for (int i = 0; i < typePool.Count; i++)
             {
                 // 按顺序获取一个UFO类型。
-                var type = i;
+                var type = typePool[i];
 
                 // 获取可以生成该UFO的网格。
                 possibleGrids.Clear();
