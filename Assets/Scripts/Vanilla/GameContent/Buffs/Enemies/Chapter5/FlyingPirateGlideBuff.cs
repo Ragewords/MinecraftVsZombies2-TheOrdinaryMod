@@ -3,6 +3,7 @@
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Modifiers;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -17,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public FlyingPirateGlideBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Multiply, 0));
-            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Set, 10, 10000));
+            AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Set, 10, VanillaModifierPriorities.FORCE));
             AddModifier(new IntModifier(VanillaEnemyProps.STATE_OVERRIDE, IntegerOperator.Set, VanillaEnemyStates.IDLE));
         }
         public override void PostAdd(Buff buff)
