@@ -3159,7 +3159,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3a6712b8d704de34f998f38145bf7638
-    m_Address: mvz2:entity/contraptions/tnt_full
+    m_Address: mvz2:entity/contraptions/tnt
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

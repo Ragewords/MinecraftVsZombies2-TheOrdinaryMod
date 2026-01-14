@@ -779,7 +779,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 44bd337d7a161b2498137668fbec6e35, type: 3}
   - name: entity/contraptions/stone_dropper
     sprite: {fileID: 21300000, guid: b54fb45c2064c9149942a6ea99c593f3, type: 3}
-  - name: entity/contraptions/tnt_full
+  - name: entity/contraptions/tnt
     sprite: {fileID: 21300000, guid: 3a6712b8d704de34f998f38145bf7638, type: 3}
   - name: entity/contraptions/wooden_dropper
     sprite: {fileID: 21300000, guid: 9ff472ab3deed244c8552a2bd5d7c949, type: 3}
