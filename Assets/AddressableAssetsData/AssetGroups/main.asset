@@ -2830,7 +2830,7 @@ MonoBehaviour:
     - Main
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3579daed6c79cc1439ba871829710bdc
-    m_Address: mvz2:redlightning4
+    m_Address: mvz2:red_lightning4
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -5630,7 +5630,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69eac26259216454f9b14d45b3207838
-    m_Address: mvz2:redlightning1
+    m_Address: mvz2:red_lightning1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6085,7 +6085,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 734db76865ebcb9478c48f1b99045296
-    m_Address: mvz2:redlightning2
+    m_Address: mvz2:red_lightning2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -7554,7 +7554,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8e65e8930fdbf684686698a59587bdc4
-    m_Address: mvz2:redlightning3
+    m_Address: mvz2:red_lightning3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -13459,6 +13459,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe8c56267a9b20f418dc0d9967f7599a
+    m_Address: mvz2:hypercube
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fea59b92a83db3a448792917749dda4a
     m_Address: mvz2:entity/boss/wither_armor_white

@@ -482,6 +482,9 @@
     <sound name="huge_wave" priority="64">
         <sample path="mvz2:huge_wave" weight="1" />
     </sound>
+    <sound name="hypercube" priority="64">
+        <sample path="mvz2:hypercube" weight="1" />
+    </sound>
     <sound name="immortal_totem">
         <sample path="mvz2:entity/totenser/immortal_totem" weight="1" />
     </sound>
@@ -713,10 +716,10 @@
         <sample path="mvz2:ready_set_build" weight="1" />
     </sound>
     <sound name="red_lightning">
-        <sample path="mvz2:redlightning1" weight="1" />
-        <sample path="mvz2:redlightning2" weight="1" />
-        <sample path="mvz2:redlightning3" weight="1" />
-        <sample path="mvz2:redlightning4" weight="1" />
+        <sample path="mvz2:red_lightning1" weight="1" />
+        <sample path="mvz2:red_lightning2" weight="1" />
+        <sample path="mvz2:red_lightning3" weight="1" />
+        <sample path="mvz2:red_lightning4" weight="1" />
     </sound>
     <sound name="reflection">
         <sample path="mvz2:reflection" weight="1" />
