@@ -230,21 +230,6 @@ namespace MVZ2.GameContent.Bosses
                         EnterSteelPhase(entity);
                         DoTransformationEffects(entity);
                     }
-                    else
-                    {
-                        var shockables = entity.Level.FindEntities(e => IsShockable(entity, e));
-                        bool soundPlayed = false;
-                        foreach (Entity contraption in shockables)
-                        {
-                            if (contraption.CanDeactive())
-                                contraption.ShortCircuit(150, new EntitySourceReference(entity));
-                            if (!soundPlayed)
-                            {
-                                contraption.PlaySound(VanillaSoundID.powerOff);
-                                soundPlayed = true;
-                            }
-                        }
-                    }
                     stateMachine.StartState(entity, STATE_WAKING);
                 }
             }
