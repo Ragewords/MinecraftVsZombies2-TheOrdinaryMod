@@ -2,10 +2,13 @@
 
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
@@ -17,6 +20,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public ShikaisenZombie(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(LevelCallbacks.POST_ENTITY_REVIVE, PostEnemyReviveCallback, filter: EntityTypes.ENEMY);
         }
         public override void Init(Entity entity)
         {
@@ -60,18 +64,17 @@ namespace MVZ2.GameContent.Enemies
             entity.SetModelProperty("NoStaff", !HasStaff(entity));
             entity.SetModelProperty("NoPot", !HasPot(entity));
 
-            if (!HasPot(entity))
+            if (!HasPot(entity) && !NoPotCheck(entity))
             {
                 var children = entity.GetChildren();
                 foreach (var child in children)
                 {
                     if (child.IsEntityOf(VanillaEnemyID.shikaisenPot))
                     {
-                        if (!child.ExistsAndAlive())
-                        {
-                            entity.Die(child);
-                            entity.RemoveBuffs<ShikaisenInvincibleBuff>();
-                        }
+                        if (child.ExistsAndAlive())
+                            break;
+                        entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), child);
+                        entity.RemoveBuffs<ShikaisenInvincibleBuff>();
                     }
                 }
             }
@@ -93,11 +96,24 @@ namespace MVZ2.GameContent.Enemies
                 e.SetParent(entity);
             });
         }
+        private void PostEnemyReviveCallback(EntityCallbackParams param, CallbackResult result)
+        {
+            var entity = param.entity;
+            if (!entity.Definition.HasBehaviour(this))
+                return;
+            if (!HasPot(entity))
+            {
+                SetNoPotCheck(entity, true);
+            }
+        }
         public static bool HasStaff(Entity enemy) => enemy.GetBehaviourField<bool>(PROP_HAS_STAFF);
         public static void SetStaff(Entity enemy, bool value) => enemy.SetBehaviourField(PROP_HAS_STAFF, value);
         public static bool HasPot(Entity enemy) => enemy.GetBehaviourField<bool>(PROP_HAS_POT);
         public static void SetPot(Entity enemy, bool value) => enemy.SetBehaviourField(PROP_HAS_POT, value);
+        public static bool NoPotCheck(Entity enemy) => enemy.GetBehaviourField<bool>(PROP_DONT_CHECK_POT);
+        public static void SetNoPotCheck(Entity enemy, bool value) => enemy.SetBehaviourField(PROP_DONT_CHECK_POT, value);
         public static readonly VanillaEntityPropertyMeta<bool> PROP_HAS_STAFF = new VanillaEntityPropertyMeta<bool>("HasStaff");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_HAS_POT = new VanillaEntityPropertyMeta<bool>("HasPot");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_DONT_CHECK_POT = new VanillaEntityPropertyMeta<bool>("DontCheckPot");
     }
 }
