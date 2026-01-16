@@ -823,9 +823,10 @@ namespace MVZ2.GameContent.Bosses
                                 offset = entity.ModifyShotOffset(offset);
                                 param.position = entity.Position + offset;
                                 param.soundID = null;
-                                param.damage = 0;
+                                param.damage = entity.GetDamage() * 0.01f;
                                 param.projectileID = VanillaProjectileID.vomit;
                                 param.velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position + offset, targetPos, 30, 1);
+                                param.pivot = VanillaEntityProps.SHOT_PIVOT_BOTTOM;
                                 var spawnParam = entity.GetSpawnParams();
                                 spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2f);
                                 spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2f);

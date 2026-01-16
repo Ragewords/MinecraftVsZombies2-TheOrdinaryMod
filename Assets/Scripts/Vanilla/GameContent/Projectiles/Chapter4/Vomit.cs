@@ -42,7 +42,9 @@ namespace MVZ2.GameContent.Projectiles
             base.PostDeath(entity, damageInfo);
             if (damageInfo.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
-            entity.SpawnWithParams(VanillaEffectID.vomitSplash, entity.Position);
+            var param = entity.GetSpawnParams();
+            param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage());
+            entity.Spawn(VanillaEffectID.vomitSplash, entity.Position, param);
             entity.PlaySound(VanillaSoundID.splat);
         }
     }
