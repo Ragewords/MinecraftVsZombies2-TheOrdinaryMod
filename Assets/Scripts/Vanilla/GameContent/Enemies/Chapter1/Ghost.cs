@@ -108,6 +108,7 @@ namespace MVZ2.GameContent.Enemies
                 // 解除附身
                 if (entity.HasBuff<GhostPossessingBuff>())
                 {
+                    entity.Velocity += entity.GetFacingDirection() * 1.5f;
                     entity.RemoveBuffs<GhostPossessingBuff>();
                     DeactivatePossession(entity);
                     entity.PlaySound(VanillaSoundID.chainsBreak);
