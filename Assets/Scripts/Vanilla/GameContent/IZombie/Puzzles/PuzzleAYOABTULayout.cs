@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.IZombie
             RandomFillAtLane(map, 2, VanillaContraptionID.punchton, 1, rng);
             RandomFillAtLane(map, 2, VanillaContraptionID.magichest, 3, rng);
 
-            Insert(map, 5, 3, VanillaContraptionID.hellfire);
+            Insert(map, 5, 3, VanillaContraptionID.hellfireDoppelganger);
             RandomFillAtLane(map, 3, VanillaContraptionID.dispenser, 3, rng);
 
             RandomFillAtLane(map, 4, VanillaContraptionID.splitenser, 1, rng);

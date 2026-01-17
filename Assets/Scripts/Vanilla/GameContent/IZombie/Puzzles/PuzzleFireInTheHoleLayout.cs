@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.IZombie
         }
         public override void Fill(IIZombieMap map, RandomGenerator rng)
         {
-            RandomFillAtColumn(map, 4, VanillaContraptionID.hellfire, 3, rng);
+            RandomFillAtColumn(map, 4, VanillaContraptionID.hellfireDoppelganger, 3, rng);
 
             RandomFill(map, VanillaContraptionID.magichest, 3, rng);
             RandomFill(map, VanillaContraptionID.splitenser, 2, rng);

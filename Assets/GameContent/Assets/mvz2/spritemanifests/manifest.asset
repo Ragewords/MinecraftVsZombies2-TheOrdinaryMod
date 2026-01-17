@@ -1732,6 +1732,74 @@ MonoBehaviour:
     - {fileID: -858319120, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
     - {fileID: 1288100966, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
     - {fileID: -220271953, guid: 25f988ff03e536a4e82397cc65d1cd24, type: 3}
+  - name: shading/soul_fire_0
+    spritesheet:
+    - {fileID: -1965304886, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -514412261, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1388822115, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -238502091, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1155934188, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -1919513579, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -213101202, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1114505137, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1578223706, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 2022083948, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 630639247, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 443887884, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 798099831, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 598704869, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -1387514696, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 446785305, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -323322808, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1147779261, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -2067991377, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -1586341201, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 329037762, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -740366319, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1070255498, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 594527013, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 339513177, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -1052729712, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 1312535377, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -237393498, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -735895000, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: -607848026, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 959200696, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+    - {fileID: 877365845, guid: f855bdce37895d448b95ba0aa311486f, type: 3}
+  - name: shading/soul_fire_1
+    spritesheet:
+    - {fileID: 459707921, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -915028961, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 968943784, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1242488848, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1932301582, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1067193419, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -461005098, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 715965820, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -843620583, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1864996303, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1652023870, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1595813053, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1511898546, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 533253951, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1336619470, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 164138682, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1963069104, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1651465510, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1506646523, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 283021581, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 159771352, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1159722033, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1447708319, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1052794500, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1234684914, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -67612830, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1234612851, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 954933589, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1610118727, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -290031370, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: 1305706856, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
+    - {fileID: -1158794410, guid: c5d54ae8d2e1d4b439ccdeb197aa585b, type: 3}
   - name: ui/zoom
     spritesheet:
     - {fileID: 2118295651, guid: 6d34689b106ed35498dffaa3069fa3f5, type: 3}
@@ -2031,6 +2099,10 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 412644075, guid: 2562dbc08cdc1bd459d0a70219d7d4e4, type: 3}
     - {fileID: -1257440946, guid: 2562dbc08cdc1bd459d0a70219d7d4e4, type: 3}
+  - name: entity/contraption/hellfire_doppelganger_base
+    spritesheet:
+    - {fileID: 1037043380, guid: fbf20bf9c20fffa468c972239a61e920, type: 3}
+    - {fileID: -1189074770, guid: fbf20bf9c20fffa468c972239a61e920, type: 3}
   - name: entity/contraption/high_frequency_pulse_dispenser
     spritesheet:
     - {fileID: -474296180, guid: 57298386a0b940c498c0ff59a77ac315, type: 3}

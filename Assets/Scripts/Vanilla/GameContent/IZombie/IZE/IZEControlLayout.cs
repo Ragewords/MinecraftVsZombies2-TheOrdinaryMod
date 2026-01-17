@@ -16,7 +16,7 @@ namespace MVZ2.GameContent.IZombie
         }
         protected override void FillEndlessContraptions(IIZombieMap map, RandomGenerator rng)
         {
-            RandomFill(map, VanillaContraptionID.hellfire, 1, rng);
+            RandomFill(map, VanillaContraptionID.hellfireDoppelganger, 1, rng);
             RandomFill(map, VanillaContraptionID.drivenser, 1, rng);
             RandomFill(map, VanillaContraptionID.spikeBlock, 3, rng);
             RandomFill(map, VanillaContraptionID.stoneDropper, 2, rng);

@@ -3081,6 +3081,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3979c33fd3925c747b6e462780b57f81
+    m_Address: mvz2:contraption/mausoleum/hellfire_doppelganger
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 39ca426b1588ec44b8ebe1bdae2af8ea
     m_Address: mvz2:entity/contraption/revivegrave
     m_ReadOnly: 0
@@ -10381,6 +10388,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5d54ae8d2e1d4b439ccdeb197aa585b
+    m_Address: mvz2:shading/soul_fire_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5ddba030c35ac041b45c907c676ab67
     m_Address: mvz2:confuse
     m_ReadOnly: 0
@@ -13139,6 +13153,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f855bdce37895d448b95ba0aa311486f
+    m_Address: mvz2:shading/soul_fire_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f8aa3c3a44b8f774e9b5441b1cb9f0e6
     m_Address: mvz2:ui/level/progress_bar/nightmare_foreground
     m_ReadOnly: 0
@@ -13347,6 +13368,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbf20bf9c20fffa468c972239a61e920
+    m_Address: mvz2:entity/contraption/hellfire_doppelganger_base
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc1881f740b6b954ea64a5e7abcc23f2
     m_Address: mvz2:armor/sarcophagus
