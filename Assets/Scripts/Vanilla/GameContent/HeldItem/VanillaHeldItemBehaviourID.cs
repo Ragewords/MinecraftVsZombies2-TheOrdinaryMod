@@ -25,6 +25,7 @@ namespace MVZ2.GameContent.HeldItems
         public const string pickup = "pickup";
         public const string selectBlueprint = "select_blueprint";
         public const string putOutFire = "put_out_fire";
+        public const string relocateSkywardFamiliar = "relocate_skyward_familiar";
     }
     public static class VanillaHeldItemBehaviourID
     {
@@ -46,6 +47,7 @@ namespace MVZ2.GameContent.HeldItems
         public static readonly NamespaceID pickup = Get(VanillaHeldItemBehaviourNames.pickup);
         public static readonly NamespaceID selectBlueprint = Get(VanillaHeldItemBehaviourNames.selectBlueprint);
         public static readonly NamespaceID putOutFire = Get(VanillaHeldItemBehaviourNames.putOutFire);
+        public static readonly NamespaceID relocateSkywardFamiliar = Get(VanillaHeldItemBehaviourNames.relocateSkywardFamiliar);
         public static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

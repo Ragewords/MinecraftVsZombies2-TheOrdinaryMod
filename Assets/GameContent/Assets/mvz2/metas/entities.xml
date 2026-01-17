@@ -1549,7 +1549,6 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:remove_without_parent" />
-                <behaviour operator="add" id="skyward_familiar/trigger" />
             </behaviours>
             <properties>
                 <bool name="mvz2:cannotDig" value="true" />
@@ -1561,7 +1560,6 @@
                 <bool name="mvz2:invincible" value="true" />
                 <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:isLightSource" value="true" />
-                <bool name="mvz2:triggerActive" value="true" />
 
                 <color name="mvz2:lightColor" value="#FFFFFF" />
                 <vector3 name="mvz2:lightRange" x="80" y="80" z="80" />
