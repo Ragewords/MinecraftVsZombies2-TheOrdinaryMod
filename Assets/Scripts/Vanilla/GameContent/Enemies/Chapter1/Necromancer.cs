@@ -53,9 +53,11 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        if (entity.RNG.Next(5) == 0 && !entity.Level.IsIZombie())
+                        AddSummonCount(entity);
+                        if (GetSummonCount(entity) >= MAX_SUMMON_COUNT && !entity.Level.IsIZombie())
                         {
                             SummonWarrior(entity);
+                            SetSummonCount(entity, 0);
                         }
                         BuildBoneWalls(entity);
                     }
@@ -139,9 +141,9 @@ namespace MVZ2.GameContent.Enemies
             }
             for (int i = startLine; i <= endLine; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = -1; j <= 1; j++)
                 {
-                    var x = entity.Position.x + level.GetGridWidth() * 0.4f * entity.GetFacingX() * j;
+                    var x = entity.Position.x + level.GetGridWidth() * 0.8f * entity.GetFacingX() * j;
                     var z = entity.Position.z + level.GetGridHeight() * i;
                     var y = level.GetGroundY(x, z) - 100;
                     Vector3 wallPos = new Vector3(x, y, z);
@@ -153,15 +155,29 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
+        public static void SetSummonCount(Entity entity, int value)
+        {
+            entity.SetBehaviourField(ID, PROP_SUMMON_COUNT, value);
+        }
+        public static int GetSummonCount(Entity entity)
+        {
+            return entity.GetBehaviourField<int>(ID, PROP_SUMMON_COUNT);
+        }
+        public static void AddSummonCount(Entity entity)
+        {
+            SetSummonCount(entity, GetSummonCount(entity) + 1);
+        }
         #region 常量
         private const int CAST_COOLDOWN = 300;
         private const int CAST_TIME = 30;
         private const int BUILD_DETECT_TIME = 30;
         private const int MAX_BONE_WALL_COUNT = 15;
+        private const int MAX_SUMMON_COUNT = 3;
         public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
         public const int STATE_CAST = VanillaEnemyStates.CAST;
         public static readonly NamespaceID ID = VanillaEnemyID.necromancer;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_SUMMON_COUNT = new VanillaEntityPropertyMeta<int>("SummonCount");
         #endregion 常量
     }
 }
