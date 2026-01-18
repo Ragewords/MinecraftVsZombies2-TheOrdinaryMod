@@ -1242,6 +1242,7 @@
             </flavor>
         </entry>
         <entry />
+        <entry />
         <entry id="mvz2:skeleton">
             <header>
                 <p>骷髅能够在前线朝你的器械射击。</p>
@@ -1307,6 +1308,7 @@
                 <p>死灵法师想不通，为什么就因为复活了死者，他们就莫名其妙的被人们称为“邪恶巫师”，然后就被多收了税。他们其实只是想砌堵墙罢了。</p>
             </flavor>
         </entry>
+        <entry />
         
         <entry id="mvz2:spider">
             <header>
@@ -1376,6 +1378,7 @@
                 <p>它还没想好自己的网络冷笑话该怎么写。</p>
             </flavor>
         </entry>
+        <entry />
 
         <entry id="mvz2:mesmerizer">
             <header>
@@ -1455,6 +1458,7 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
+        <entry />
         <entry id="mvz2:reflective_barrier_zombie">
             <header>
                 <p>反射壁僵尸使用反射壁保护自己，并对飞来的子弹作出反击。</p>
@@ -1538,6 +1542,7 @@
                 <p><![CDATA[<color=red>【图鉴 已被禁言，有效期是永久】</color>]]></p>
             </flavor>
         </entry>
+        <entry />
 
         <entry id="mvz2:undead_flying_object" name="不死飞行物">
             <header>

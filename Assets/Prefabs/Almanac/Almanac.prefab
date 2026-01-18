@@ -4101,6 +4101,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 234.91
       objectReference: {fileID: 0}
+    - target: {fileID: 2483160903644739752, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_CellSize.x
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483160903644739752, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_CellSize.y
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483160903644739752, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_ConstraintCount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2727166103424126755, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4208,6 +4220,22 @@ PrefabInstance:
     - target: {fileID: 3710069233989101409, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -38.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830822529012096730, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_Horizontal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207660252171983726, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_CellSize.x
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207660252171983726, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_CellSize.y
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207660252171983726, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_ConstraintCount
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5326270164706786740, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4332,6 +4360,10 @@ PrefabInstance:
     - target: {fileID: 7962402837378747778, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964578506578239111, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
+      propertyPath: m_HorizontalFit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8208454956284514687, guid: cb238c0f7601be64bbab92a1bf080192, type: 3}
       propertyPath: m_AnchorMax.y
