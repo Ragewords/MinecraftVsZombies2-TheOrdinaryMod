@@ -53,7 +53,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         StartCasting(entity);
-                        if (entity.RNG.Next(10) == 0 && !entity.Level.IsIZombie())
+                        if (entity.RNG.Next(5) == 0 && !entity.Level.IsIZombie())
                         {
                             SummonWarrior(entity);
                         }
@@ -139,15 +139,18 @@ namespace MVZ2.GameContent.Enemies
             }
             for (int i = startLine; i <= endLine; i++)
             {
-                var x = entity.Position.x + level.GetGridWidth() * 0.8f * entity.GetFacingX();
-                var z = entity.Position.z + level.GetGridHeight() * i;
-                var y = level.GetGroundY(x, z) - 100;
-                Vector3 wallPos = new Vector3(x, y, z);
-                entity.SpawnWithParams(VanillaEnemyID.skeletonWarrior, wallPos)?.Let(e =>
+                for (int j = 0; j < 3; j++)
                 {
-                    e.AddBuff<NecrotombstoneRisingBuff>();
-                    e.UpdateModel();
-                });
+                    var x = entity.Position.x + level.GetGridWidth() * 0.4f * entity.GetFacingX() * j;
+                    var z = entity.Position.z + level.GetGridHeight() * i;
+                    var y = level.GetGroundY(x, z) - 100;
+                    Vector3 wallPos = new Vector3(x, y, z);
+                    entity.SpawnWithParams(VanillaEnemyID.zombie, wallPos)?.Let(e =>
+                    {
+                        e.AddBuff<NecrotombstoneRisingBuff>();
+                        e.UpdateModel();
+                    });
+                }
             }
         }
         #region 常量
