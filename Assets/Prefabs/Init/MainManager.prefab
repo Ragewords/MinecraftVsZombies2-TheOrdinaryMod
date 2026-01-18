@@ -497,7 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintCountPerRowStandalone: 8
   blueprintCountPerRowMobile: 4
-  enemyCountPerRow: 5
+  enemyCountPerRow: 6
   miscCountPerRow: 5
 --- !u!1 &2504117537623525849
 GameObject:

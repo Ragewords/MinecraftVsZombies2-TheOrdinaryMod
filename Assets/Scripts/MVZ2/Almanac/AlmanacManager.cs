@@ -281,7 +281,7 @@ namespace MVZ2.Almanacs
         [SerializeField]
         private int blueprintCountPerRowMobile = 4;
         [SerializeField]
-        private int enemyCountPerRow = 5;
+        private int enemyCountPerRow = 6;
         [SerializeField]
         private int miscCountPerRow = 5;
     }
