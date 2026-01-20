@@ -22,6 +22,15 @@ namespace PVZEngine.Placements
         {
             return methods.Remove(method);
         }
+        public T? GetMethod<T>()
+        {
+            foreach (var method in methods)
+            {
+                if (method is T tMethod)
+                    return tMethod;
+            }
+            return default;
+        }
         public bool ValidateSpawn(LawnGrid grid, EntityDefinition entity)
         {
             var e = spawnCondition.GetSpawnError(this, grid, entity);
