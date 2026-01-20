@@ -207,6 +207,10 @@ namespace PVZEngine.Entities
         {
             return entity.GetProperty<Vector3>(EngineEntityProps.GRID_PIVOT_OFFSET);
         }
+        public static Vector3 GetGridPivotOffset(this EntityDefinition entityDef)
+        {
+            return entityDef.GetProperty<Vector3>(EngineEntityProps.GRID_PIVOT_OFFSET);
+        }
         #endregion
 
         #region 碰撞盒中心点
