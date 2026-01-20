@@ -384,8 +384,11 @@
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
-                <p>技能：<![CDATA[<color=red>时停至多10个敌人，以这些敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在1秒后再次向中心飞行</color>]]></p>
+                <p>控制时间：<![CDATA[<color=red>0.5秒</color>]]></p>
+                <p>飞刀数：<![CDATA[<color=red>10</color>]]></p>
+                <p>飞刀填装时间：<![CDATA[<color=red>30秒</color>]]></p>
+                <p>特点：<![CDATA[<color=red>蓝飞刀穿透多个敌人，但无法穿透硬物；红飞刀在敌人间弹射；绿飞刀时停敌人</color>]]></p>
+                <p>技能：<![CDATA[<color=red>时停至多10个敌人3秒，以这些敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在1秒后再次向中心飞行</color>]]></p>
             </properties>
             <flavor>
                 <p>"发发，我从人生中学到了一件事情，发射器越是发射箭矢，就越会感到无力，除非超越箭矢……""你到底想说什么！""我不发射箭了，发发！"</p>
@@ -1297,12 +1300,12 @@
         </entry>
         <entry id="mvz2:necromancer">
             <header>
-                <p>死灵法师会生成临时的骨墙阻挡子弹，有时还会召唤出成群的僵尸。</p>
+                <p>死灵法师会生成临时的骨墙阻挡子弹，有时还会召唤出骷髅。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
                 <p>骨墙生命：<![CDATA[<color=red>350</color>]]></p>
-                <p>僵尸频率：<![CDATA[<color=red>每3次召唤</color>]]></p>
+                <p>骷髅频率：<![CDATA[<color=red>每3次召唤</color>]]></p>
             </properties>
             <flavor>
                 <p>死灵法师想不通，为什么就因为复活了死者，他们就莫名其妙的被人们称为“邪恶巫师”，然后就被多收了税。他们其实只是想砌堵墙罢了。</p>

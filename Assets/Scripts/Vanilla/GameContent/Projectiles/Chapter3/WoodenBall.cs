@@ -113,9 +113,5 @@ namespace MVZ2.GameContent.Projectiles
             projectile.SetModelProperty("IgniteState", igniteState);
         }
         private List<Buff> ignitedBuffBuffer = new List<Buff>();
-        public static int GetHitCount(Entity entity) => entity.GetBehaviourField<int>(PROP_HIT_COUNT);
-        public static void SetHitCount(Entity entity, int value) => entity.SetBehaviourField(PROP_HIT_COUNT, value);
-        public static readonly VanillaEntityPropertyMeta<int> PROP_HIT_COUNT = new VanillaEntityPropertyMeta<int>("HitCount");
-        public const int MAX_HIT_COUNT = 3;
     }
 }

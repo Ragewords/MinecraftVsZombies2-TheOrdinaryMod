@@ -1956,13 +1956,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 240cfc0f830bde143b3b8fb30c77afdf
-    m_Address: mvz2:icons/time_stop_clockhand
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 244d499bb206eeb41994439f435532e2
     m_Address: mvz2:contraption/mausoleum/black_hole_bomb
     m_ReadOnly: 0
@@ -2936,6 +2929,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36b2d82a0eba62b4fa29a20e722ca6a3
     m_Address: mvz2:mobile_blueprint/giant_bowl
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36bb3ea06d2add54e80dab38d9446db4
+    m_Address: mvz2:icons/clock_hand
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -4140,13 +4140,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4bc6ce89adce4a6418ff0875e511fd9b
     m_Address: mvz2:mobile_blueprint/mutant_zombie
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4be6db7001d9d2342a436c89bc8da11a
-    m_Address: mvz2:icons/time_stop
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -5804,6 +5797,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d0a7a479c157be4f9ca21a72490cec1
+    m_Address: mvz2:icons/clock_end_indicator
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d19f900e36343048a4dac575a84e01d
     m_Address: mvz2:sweeping_beam
     m_ReadOnly: 0
@@ -6425,6 +6425,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79762f6accffb2a45ab7de5bcea784be
+    m_Address: mvz2:icons/clock
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 79a357758cd7dff4d83ebc2928ce0812
     m_Address: mvz2:characters/armor_stand
@@ -11899,6 +11906,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1d0087452a94614aa56f9e38a8b60cf
+    m_Address: mvz2:item_reload
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1fb23c573bc08a4bbdc50771db3851b
     m_Address: mvz2:entity/pot/pot_break1

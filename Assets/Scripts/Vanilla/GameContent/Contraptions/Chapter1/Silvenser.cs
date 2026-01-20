@@ -27,15 +27,55 @@ namespace MVZ2.GameContent.Contraptions
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            entity.SetModelProperty("NotPreview", true);
             InitShootTimer(entity);
             var evocationTimer = new FrameTimer(EVOCATION_DURATION);
+            var knivesFullReloaded = new int[]
+            {
+                FULL_KNIFE_COUNT,
+                FULL_KNIFE_COUNT,
+                FULL_KNIFE_COUNT
+            };
+            var knifeReloadTimers = new FrameTimer[]
+            {
+                TimerHelper.NewSecondTimer(KNIFE_RELOAD_SECONDS),
+                TimerHelper.NewSecondTimer(KNIFE_RELOAD_SECONDS),
+                TimerHelper.NewSecondTimer(KNIFE_RELOAD_SECONDS)
+            };
             SetEvocationTimer(entity, evocationTimer);
+            SetKnivesCount(entity, knivesFullReloaded);
+            SetKnifeReloadTimer(entity, knifeReloadTimers);
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
             ShootTick(entity);
+            ReloadKnives(entity);
+            ChangeKnife(entity);
+            BarsUpdate(entity);
             EvokedUpdate(entity);
+        }
+        public override void OnShootTick(Entity entity)
+        {
+            if (OutOfKnife(entity))
+                return;
+            Shoot(entity);
+        }
+        public override Entity? Shoot(Entity entity)
+        {
+            int index = GetUsingKnife(entity);
+            var param = entity.GetShootParams();
+            int count = GetKnifeCountAt(entity, index);
+            SetKnifeCountAt(entity, index, count - 1);
+            return base.Shoot(entity)?.Let(k =>
+            {
+                k.SetVariant(index);
+                k.SetHSV(GetTypeHSV(index));
+                if (index == VARIANT_RED)
+                {
+                    k.Velocity *= 2;
+                }
+            });
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -72,6 +112,23 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTargetPositions(Entity entity, Vector3[] timer)
         {
             entity.SetBehaviourField(ID, PROP_EVOCATION_TARGET_POSITIONS, timer);
+        }
+        private void BarsUpdate(Entity entity)
+        {
+            var blueTimer = GetKnifeReloadTimerAt(entity, VARIANT_BLUE);
+            int blueCount = GetKnifeCountAt(entity, VARIANT_BLUE);
+            bool blueReloaded = blueCount > 0;
+            entity.SetModelProperty("ProgressBlue", blueReloaded ? (blueCount / (float)FULL_KNIFE_COUNT) : (blueTimer?.GetPassedPercentage() ?? 0));
+
+            var greenTimer = GetKnifeReloadTimerAt(entity, VARIANT_GREEN);
+            int greenCount = GetKnifeCountAt(entity, VARIANT_GREEN);
+            bool greenReloaded = greenCount > 0;
+            entity.SetModelProperty("ProgressGreen", greenReloaded ? (greenCount / (float)FULL_KNIFE_COUNT) : (greenTimer?.GetPassedPercentage() ?? 0));
+
+            var redTimer = GetKnifeReloadTimerAt(entity, VARIANT_RED);
+            int redCount = GetKnifeCountAt(entity, VARIANT_RED);
+            bool redReloaded = redCount > 0;
+            entity.SetModelProperty("ProgressRed", redReloaded ? (redCount / (float)FULL_KNIFE_COUNT) : (redTimer?.GetPassedPercentage() ?? 0));
         }
         private void EvokedUpdate(Entity entity)
         {
@@ -113,6 +170,7 @@ namespace MVZ2.GameContent.Contraptions
                                 var posOffset = direction * layerRadius;
                                 Vector3 knifePos = target + posOffset;
 
+                                int index = GetUsingKnife(entity);
                                 var param = entity.GetSpawnParams();
                                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                                 var projectileID = entity.GetProjectileID();
@@ -121,6 +179,8 @@ namespace MVZ2.GameContent.Contraptions
                                     entity.Spawn(projectileID, knifePos, param)?.Let(e =>
                                     {
                                         e.Velocity = direction * -20;
+                                        e.SetVariant(index);
+                                        e.SetHSV(GetTypeHSV(index));
                                         var buff = e.AddBuff<ProjectileWaitBuff>();
                                         buff.SetProperty(ProjectileWaitBuff.PROP_TIMEOUT, 90);
                                         Knife.SetNoDelay(e, false);
@@ -137,14 +197,137 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
         }
+        #region 飞刀
+        public static void SetKnivesCount(Entity entity, int[] timer)
+        {
+            entity.SetBehaviourField(ID, PROP_VARIANT_KNIVES_COUNT, timer);
+        }
+        public static int[]? GetKnivesCount(Entity entity)
+        {
+            return entity.GetBehaviourField<int[]>(ID, PROP_VARIANT_KNIVES_COUNT);
+        }
+        public static int GetKnifeCountAt(Entity entity, int index)
+        {
+            var all_counts = GetKnivesCount(entity);
+            return all_counts?[index] ?? 0;
+        }
+        public static void SetKnifeCountAt(Entity entity, int index, int timer)
+        {
+            var all_counts = GetKnivesCount(entity);
+            all_counts?.SetValue(timer, index);
+        }
+        public static int GetUsingKnife(Entity entity)
+        {
+            return entity.GetBehaviourField<int>(ID, PROP_USING_KNIFE);
+        }
+        public static void SetUsingKnife(Entity entity, int timer)
+        {
+            entity.SetBehaviourField(ID, PROP_USING_KNIFE, timer);
+        }
+        public static bool OutOfKnife(Entity entity)
+        {
+            var all_counts = entity.GetBehaviourField<int[]>(ID, PROP_VARIANT_KNIVES_COUNT);
+            if (all_counts == null)
+                return true;
+            bool zero = true;
+            for (int i = 0; i < all_counts.Length; i++)
+            {
+                if (!OutOfKnifeAt(entity, i))
+                    zero = false;
+            }
+            return zero;
+        }
+        public static bool OutOfKnifeAt(Entity entity, int index)
+        {
+            var all_counts = entity.GetBehaviourField<int[]>(ID, PROP_VARIANT_KNIVES_COUNT);
+            return all_counts?[index] <= 0;
+        }
+        public static Vector3 GetTypeHSV(int type)
+        {
+            return type switch
+            {
+                VARIANT_RED => Vector3.right * 120,
+                VARIANT_GREEN => Vector3.left * 120,
+                VARIANT_BLUE => Vector3.zero,
+                _ => Vector3.zero
+            };
+        }
+        public static void ChangeKnife(Entity entity)
+        {
+            var all_counts = entity.GetBehaviourField<int[]>(ID, PROP_VARIANT_KNIVES_COUNT);
+            int index = GetUsingKnife(entity);
+            if (OutOfKnifeAt(entity, index))
+            {
+                var validVariants = KNIFE_VARIANTS.Where(v =>
+                {
+                    bool valid = false;
+                    for (int i = 0; i < KNIFE_VARIANTS.Length; i++)
+                    {
+                        if (all_counts?[i] > 0)
+                            valid = true;
+                    }
+                    return valid;
+                });
+                if (validVariants.Count() > 0)
+                {
+                    int validVariant = validVariants.Random(entity.RNG);
+                    SetUsingKnife(entity, validVariant);
+                }
+            }
+        }
+
+        public static void SetKnifeReloadTimer(Entity entity, FrameTimer[] timer)
+        {
+            entity.SetBehaviourField(ID, PROP_KNIFE_RELOAD_TIMER, timer);
+        }
+        public static FrameTimer[]? GetKnifeReloadTimers(Entity entity)
+        {
+            return entity.GetBehaviourField<FrameTimer[]>(ID, PROP_KNIFE_RELOAD_TIMER);
+        }
+        public static FrameTimer? GetKnifeReloadTimerAt(Entity entity, int index)
+        {
+            var all_timers = GetKnifeReloadTimers(entity);
+            return all_timers?[index] ?? null;
+        }
+        public static void ReloadKnives(Entity entity)
+        {
+            var all_counts = GetKnivesCount(entity);
+            for (int i = 0; i < (all_counts?.Length ?? 0); i++)
+            {
+                ReloadKnife(entity, i);
+            }
+        }
+        public static void ReloadKnife(Entity entity, int index)
+        {
+            if (!OutOfKnifeAt(entity, index))
+                return;
+            var timer = GetKnifeReloadTimerAt(entity, index);
+            if (timer.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
+            {
+                timer.Reset();
+                var all_counts = entity.GetBehaviourField<int[]>(ID, PROP_VARIANT_KNIVES_COUNT);
+                all_counts?.SetValue(FULL_KNIFE_COUNT, index);
+                entity.PlaySound(VanillaSoundID.itemReload);
+            }
+        }
+        #endregion
         public const int EVOCATION_MAX_TARGET_COUNT = 10;
         public const int MAX_EVOCATION_KNIFE_COUNT = 90;
         public const int EVOCATION_DURATION = 30;
         public const int EVOCATION_KNIVES_PER_LAYER = 30;
         public const float EVOCATION_RADIUS = 100;
         public const float EVOCATION_DAMAGE_MULTIPLIER = 2;
+        public const int VARIANT_BLUE = 0;
+        public const int VARIANT_RED = 1;
+        public const int VARIANT_GREEN = 2;
+        public const int FULL_KNIFE_COUNT = 10;
+        public const int KNIFE_RELOAD_SECONDS = 30;
+        private static readonly int[] KNIFE_VARIANTS = new int[]{VARIANT_BLUE, VARIANT_RED, VARIANT_GREEN};
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<Vector3[]> PROP_EVOCATION_TARGET_POSITIONS = new VanillaEntityPropertyMeta<Vector3[]>("EvocationTargetPositions");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_USING_KNIFE = new VanillaEntityPropertyMeta<int>("UsingKnife");
+        public static readonly VanillaEntityPropertyMeta<int[]> PROP_VARIANT_KNIVES_COUNT = new VanillaEntityPropertyMeta<int[]>("VariantKnivesCount");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer[]> PROP_KNIFE_RELOAD_TIMER = new VanillaEntityPropertyMeta<FrameTimer[]>("KnifeReloadTimer");
 
         public static readonly NamespaceID ID = VanillaContraptionID.silvenser;
     }

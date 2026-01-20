@@ -503,6 +503,9 @@
         <sample path="mvz2:entity/lost/isaac_dies2" weight="1" />
         <sample path="mvz2:entity/lost/isaac_dies3" weight="1" />
     </sound>
+    <sound name="item_reload">
+        <sample path="mvz2:item_reload" weight="1" />
+    </sound>
     <sound name="large_explosion">
         <sample path="mvz2:large_explosion" weight="1" />
     </sound>

@@ -38,9 +38,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (enemy == null)
                 return;
             var timeout = buff.GetProperty<int>(PROP_TIMEOUT);
+            var endTime = buff.GetProperty<int>(PROP_END_TIME);
             timeout--;
             buff.SetProperty(PROP_TIMEOUT, timeout);
-            if (timeout <= 0)
+            if (timeout <= endTime)
             {
                 buff.Remove();
             }
@@ -48,11 +49,12 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var model = buff.GetInsertedModel(VanillaModelKeys.timeStop);
             if (model != null)
             {
-                model.SetAnimationFloat("Clock", (timeout - RING_DURATION) / (float)(MAX_TIMEOUT - RING_DURATION));
+                model.SetAnimationFloat("Clock", timeout / (float)MAX_TIMEOUT);
+                model.SetAnimationFloat("End", endTime / (float)MAX_TIMEOUT);
             }
         }
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        private const float RING_DURATION = 0.5f;
+        public static readonly VanillaBuffPropertyMeta<int> PROP_END_TIME = new VanillaBuffPropertyMeta<int>("EndTime");
         private const int MAX_TIMEOUT = 90;
     }
 }
