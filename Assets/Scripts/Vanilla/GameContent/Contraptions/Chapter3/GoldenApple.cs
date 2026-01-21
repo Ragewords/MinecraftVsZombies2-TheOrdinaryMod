@@ -105,6 +105,8 @@ namespace MVZ2.GameContent.Contraptions
         #region Reincarnate Restrictions
         private static NamespaceID[] cannotTransformFilter = new NamespaceID[]
         {
+            VanillaEnemyID.zombie,
+            VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.flagZombie,
             VanillaEnemyID.parasiteTerror,
             VanillaEnemyID.dullahan,

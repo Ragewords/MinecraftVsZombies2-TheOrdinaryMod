@@ -155,8 +155,8 @@
     </entry>
     <entry id="tanooki_zombie">
         <entity id="mvz2:tanooki_zombie" />
-        <spawn level="3" minWave="5" />
-        <weight base="3000" />
+        <spawn level="4" minWave="10" />
+        <weight base="2000" />
     </entry>
 
     <!-- Ship -->
