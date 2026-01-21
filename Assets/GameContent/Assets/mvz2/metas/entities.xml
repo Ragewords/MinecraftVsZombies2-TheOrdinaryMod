@@ -356,7 +356,7 @@
         </contraption>
 
         <!-- Halloween Contraptions -->
-        <dispenser id="small_dispenser" name="小型发射器" tooltip="发射减速的短距离雪球">
+        <dispenser id="small_dispenser" name="小型发射器" tooltip="发射短距离雪球">
             <unlock>
                 <condition required="mvz2:level.halloween_1" />
             </unlock>
