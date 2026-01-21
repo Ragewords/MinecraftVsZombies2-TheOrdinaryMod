@@ -3,6 +3,7 @@
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -63,12 +64,17 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 }
                 entity.Velocity = velocity;
             }
+
+            if (source.ExistsAndAlive() && !entity.ImmuneSlowing())
+            {
+                entity.InflictSlow(Ticks.FromSeconds(8), new EntitySourceReference(source));
+            }
         }
         public static float GetBlowMass(Entity entity)
         {
             var mass = entity.GetMass() + entity.GetBlowMassOffset();
-            // ÓÐÖØÁ¦£¬²¢ÇÒÀëµØ¹ý½ü£¬²»±»ÅÐ¶¨ÎªÖÍ¿Õ
-            // ·ÀÖ¹»ÔÕë³Ç×îÓÒ²àµÄ¹ÖÎïÏÂÆÂÊ±±»Ö±½Ó´µ·É
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Îªï¿½Í¿ï¿½
+            // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ö±ï¿½Ó´ï¿½ï¿½ï¿½
             bool onGround = entity.IsOnGround || (entity.GetGravity() >= 0.001f && entity.GetRelativeY() <= 3);
             if (!onGround || entity.IsInCloud())
             {
