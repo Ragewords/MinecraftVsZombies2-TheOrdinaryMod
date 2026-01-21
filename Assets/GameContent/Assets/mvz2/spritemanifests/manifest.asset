@@ -151,6 +151,12 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 39cde1f66d40cb14d8f732d41ea867f2, type: 3}
   - name: entity/height_indicator
     sprite: {fileID: 21300000, guid: 3d0f094a3020c1a4bbec297a273a5ed4, type: 3}
+  - name: icons/clock
+    sprite: {fileID: 21300000, guid: 79762f6accffb2a45ab7de5bcea784be, type: 3}
+  - name: icons/clock_end_indicator
+    sprite: {fileID: 21300000, guid: 6d0a7a479c157be4f9ca21a72490cec1, type: 3}
+  - name: icons/clock_hand
+    sprite: {fileID: 21300000, guid: 36bb3ea06d2add54e80dab38d9446db4, type: 3}
   - name: icons/curse_of_the_abyss
     sprite: {fileID: 21300000, guid: 7149a1e5881e1174ab5514db1475c02a, type: 3}
   - name: icons/disabled
@@ -163,10 +169,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: ef8e70ac08eeb9a4aa57ec0abfff3b47, type: 3}
   - name: icons/sleeping
     sprite: {fileID: 21300000, guid: cac832a88b0c87445b15d989123caa7a, type: 3}
-  - name: icons/time_stop
-    sprite: {fileID: 21300000, guid: 4be6db7001d9d2342a436c89bc8da11a, type: 3}
-  - name: icons/time_stop_clockhand
-    sprite: {fileID: 21300000, guid: 240cfc0f830bde143b3b8fb30c77afdf, type: 3}
   - name: icons/web
     sprite: {fileID: 21300000, guid: 158b9c64b8f0e4d4a978b7b5026c589e, type: 3}
   - name: icons/z
