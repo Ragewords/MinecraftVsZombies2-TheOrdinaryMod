@@ -26,6 +26,12 @@ namespace PVZEngine
         {
             return Ticks.ToSeconds(timer.MaxFrame);
         }
+        public static void SetSeconds(this FrameTimer timer, float seconds)
+        {
+            var frames = seconds * Ticks.GetTPS();
+            timer.Frame = Mathf.FloorToInt(frames);
+            timer.FrameFraction = Mathf.FloorToInt((frames % 1) * timer.Precision);
+        }
         public static void ResetSeconds(this FrameTimer timer, float seconds)
         {
             timer.ResetTime(Ticks.FromSeconds(seconds));
