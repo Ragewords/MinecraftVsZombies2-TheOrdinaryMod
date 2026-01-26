@@ -175,7 +175,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        var direction = Quaternion.Euler(0, i * 90, 0) * Vector3.right * 10;
+                        var direction = Quaternion.Euler(0, 45 + i * 90, 0) * Vector3.right * 10;
                         var velocity = direction;
                         velocity.y = 10;
                         var shootParams = entity.GetShootParams();

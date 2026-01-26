@@ -92,31 +92,25 @@ namespace MVZ2.GameContent.Bosses
                                     {
                                         var offset = new Vector3(25, 2, 0);
                                         offset = enemy.ModifyShotOffset(offset);
-                                        var bullet = enemy.ShootProjectile(new ShootParams()
-                                        {
-                                            projectileID = VanillaProjectileID.bullet,
-                                            position = enemy.Position + offset,
-                                            pivot = new Vector3(0.7f, 0.5f, 0.5f),
-                                            velocity = enemy.GetShotVelocity() * enemy.GetFacingX(),
-                                            damage = enemy.GetDamage() * 0.1f,
-                                            faction = enemy.GetFaction(),
-                                            soundID = VanillaSoundID.gunShot,
-                                        });
+                                        var shootParams = enemy.GetShootParams();
+                                        shootParams.projectileID = VanillaProjectileID.bullet;
+                                        shootParams.position = enemy.Position + offset;
+                                        shootParams.velocity = enemy.GetShotVelocity() * enemy.GetFacingX();
+                                        shootParams.damage = enemy.GetDamage() * 0.1f;
+                                        shootParams.soundID = VanillaSoundID.gunShot;
+                                        var bullet = enemy.ShootProjectile(shootParams);
                                     }
                                 }
                                 break;
                             case MISSILE_MODE:
                                 {
-                                    var missileSpeed = enemy.GetShotVelocity();
-                                    var missile = enemy.ShootProjectile(new ShootParams()
-                                    {
-                                        projectileID = VanillaProjectileID.missile,
-                                        position = enemy.Position,
-                                        velocity = missileSpeed * enemy.GetFacingX(),
-                                        damage = enemy.GetDamage() * 2,
-                                        faction = enemy.GetFaction(),
-                                        soundID = VanillaSoundID.missile
-                                    });
+                                    var shootParams = enemy.GetShootParams();
+                                    shootParams.projectileID = VanillaProjectileID.missile;
+                                    shootParams.position = enemy.Position;
+                                    shootParams.velocity = enemy.GetShotVelocity() * enemy.GetFacingX();
+                                    shootParams.damage = enemy.GetDamage() * 2f;
+                                    shootParams.soundID = VanillaSoundID.missile;
+                                    var missile = enemy.ShootProjectile(shootParams);
                                     var pos = enemy.Position;
                                     pos.x += 80;
                                     SetMoveTarget(enemy, pos);

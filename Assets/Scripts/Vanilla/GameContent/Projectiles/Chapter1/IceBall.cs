@@ -33,14 +33,14 @@ namespace MVZ2.GameContent.Projectiles
                 {
                     var direction = Quaternion.Euler(0, 45 - i * 90, 0) * entity.Velocity.normalized;
                     var velocity = direction * entity.Velocity.magnitude;
-                    var projectile = other.ShootProjectile(new ShootParams()
-                    {
-                        projectileID = VanillaProjectileID.iceBall,
-                        position = entity.Position,
-                        velocity = velocity,
-                        faction = entity.GetFaction(),
-                        damage = entity.GetDamage() / 2
-                    });
+                    var shootParam = entity.GetShootParams();
+                    shootParam.projectileID = VanillaProjectileID.iceBall;
+                    shootParam.position = entity.GetCenter();
+                    shootParam.pivot = VanillaEntityProps.SHOT_PIVOT_BOTTOM;
+                    shootParam.velocity = velocity;
+                    shootParam.faction = entity.GetFaction();
+                    shootParam.damage = entity.GetDamage() / 2;
+                    var projectile = other.ShootProjectile(shootParam);
                     if (projectile != null)
                     {
                         projectile.SetScale(Vector3.one * 0.5f);

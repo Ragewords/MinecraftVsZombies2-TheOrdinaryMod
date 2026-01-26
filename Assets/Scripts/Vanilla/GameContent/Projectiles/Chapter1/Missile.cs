@@ -36,6 +36,7 @@ namespace MVZ2.GameContent.Projectiles
             var shootParams = entity.GetShootParams();
             shootParams.projectileID = projectileID;
             shootParams.position = entity.GetCenter();
+            shootParams.pivot = VanillaEntityProps.SHOT_PIVOT_BOTTOM;
             shootParams.velocity = velocity;
             shootParams.damage = damage;
             entity.ShootProjectile(shootParams);

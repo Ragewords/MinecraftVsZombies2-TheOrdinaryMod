@@ -196,14 +196,12 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     var direction = Quaternion.Euler(0, i * 12, 0) * Vector3.right;
                     var velocity = direction * soulFurnace.GetShotVelocity().magnitude;
-                    entity.ShootProjectile(new ShootParams()
-                    {
-                        projectileID = soulFurnace.GetProjectileID(),
-                        position = entity.GetCenter(),
-                        velocity = velocity,
-                        faction = soulFurnace.GetFaction(),
-                        damage = soulFurnace.GetDamage()
-                    });
+                    var shootParam = entity.GetShootParams();
+                    shootParam.projectileID = soulFurnace.GetProjectileID();
+                    shootParam.position = entity.GetCenter();
+                    shootParam.pivot = VanillaEntityProps.SHOT_PIVOT_BOTTOM;
+                    shootParam.velocity = velocity;
+                    entity.ShootProjectile(shootParam);
                 }
             }
             if (interactionDict.TryGetValue(function, out var type))

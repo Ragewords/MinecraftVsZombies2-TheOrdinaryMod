@@ -72,18 +72,15 @@ namespace MVZ2.GameContent.Contraptions
             }
             return priority;
         }
-        public static void Shoot(Entity entity, NamespaceID projectileID, float damage, Vector3 velocity)
+        public static Entity? Shoot(Entity entity, NamespaceID projectileID, float damage, Vector3 velocity)
         {
             entity.TriggerAnimation("Shoot");
-            var projectile = entity.ShootProjectile(new ShootParams()
-            {
-                projectileID = projectileID,
-                position = entity.GetShootPoint(),
-                faction = entity.GetFaction(),
-                damage = damage,
-                soundID = entity.GetShootSound(),
-                velocity = velocity,
-            })?.Let(e => e.SetGravity(GRAVITY));
+            var shootParams = entity.GetShootParams();
+            shootParams.projectileID = projectileID;
+            shootParams.position = entity.GetShootPoint();
+            shootParams.damage = damage;
+            shootParams.velocity = velocity;
+            return entity.ShootProjectile(shootParams)?.Let(e => e.SetGravity(GRAVITY));
         }
         private void EvokedUpdate(Entity entity)
         {
