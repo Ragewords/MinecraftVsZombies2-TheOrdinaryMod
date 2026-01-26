@@ -12,6 +12,8 @@ namespace PVZEngine.Models
         IAnimatorInterface? GetAnimatorInterface(string name);
         void SetModelProperty(string name, object? value);
         void TriggerModel(string name);
+        string SortingLayer { get; set; }
+        int SortingOrder { get; set; }
         IModelInterface? CreateChildModel(string anchor, NamespaceID key, NamespaceID modelID);
         bool RemoveChildModel(NamespaceID key);
         IModelInterface? GetChildModel(NamespaceID key);
