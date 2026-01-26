@@ -174,6 +174,7 @@ namespace MVZ2.GameContent.Buffs
             public const string dreamCrystalEvocation = "dream_crystal_evocation";
             public const string dreamSilk = "dream_silk";
             public const string bottledBlackholeDamage = "bottled_blackhole_damage";
+            public const string dimensionHammerInvincible = "dimension_hammer_invincible";
 
             // Chapter 3
             public const string stoneShieldProtected = "stone_shield_protected";

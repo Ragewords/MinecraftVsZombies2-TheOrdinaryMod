@@ -129,10 +129,10 @@ namespace MVZ2.GameContent.Contraptions
                 entity.SetProperty(PROP_LIGHT_COLOR, CHAOS_JEWEL);
                 entity.PlaySound(VanillaSoundID.hypercube);
                 var enemyList = entity.Level.FindEntities(e => IsChaosTarget(entity, e));
-                if (enemyList.Count() <= 0)
+                var targetsID = enemyList.Select(e => e.GetDefinitionID());
+                if (targetsID.Count() <= 0)
                     return;
-                var targetIDs = enemyList.Select(e => e.GetDefinitionID());
-                var finalID = targetIDs.Random(entity.RNG);
+                var finalID = targetsID.Random(entity.RNG);
                 foreach (Entity target in enemyList)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);

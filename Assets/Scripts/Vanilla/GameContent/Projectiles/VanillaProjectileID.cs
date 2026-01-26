@@ -11,7 +11,6 @@ namespace MVZ2.GameContent.Projectiles
         public const string mineTNTSeed = "mine_tnt_seed";
         public const string snowball = "snowball";
         public const string largeSnowball = "large_snowball";
-        public const string miniTNT = "mini_tnt";
         public const string flyingTNT = "flying_tnt";
         public const string soulfireBall = "soulfire_ball";
         public const string soulfireSaw = "soulfire_saw";
@@ -84,7 +83,6 @@ namespace MVZ2.GameContent.Projectiles
         public static readonly NamespaceID mineTNTSeed = Get(VanillaProjectileNames.mineTNTSeed);
         public static readonly NamespaceID snowball = Get(VanillaProjectileNames.snowball);
         public static readonly NamespaceID largeSnowball = Get(VanillaProjectileNames.largeSnowball);
-        public static readonly NamespaceID miniTNT = Get(VanillaProjectileNames.miniTNT);
         public static readonly NamespaceID flyingTNT = Get(VanillaProjectileNames.flyingTNT);
         public static readonly NamespaceID soulfireBall = Get(VanillaProjectileNames.soulfireBall);
         public static readonly NamespaceID soulfireSaw = Get(VanillaProjectileNames.soulfireSaw);

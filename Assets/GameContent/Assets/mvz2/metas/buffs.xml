@@ -144,6 +144,7 @@
     <buff id="concealed" polarity="negative" level="1000" target="entity" />
     <buff id="explosive_pearl" polarity="mixed" level="1000" target="projectile" />
     <buff id="bent_spoon" polarity="positive" level="1000" target="projectile" />
+    <buff id="dimension_hammer_invincible" polarity="positive" level="1000" target="contraption" />
 
     <!-- Chapter 3 -->
     <buff id="seija_auto_collect" polarity="none" level="5000" target="level" />

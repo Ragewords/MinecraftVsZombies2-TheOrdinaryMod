@@ -107,8 +107,11 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
-                var grid = entity.Level.GetAllGrids().Where(g => g.Column == (entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0)).Random(entity.RNG);
-                var endGrid = entity.Level.GetAllGrids().Where(g => g.Column >= 2 && g.Column <= 6).Random(entity.RNG);
+                var level = entity.Level;
+                var column = entity.RNG.Next(level.GetMaxColumnCount());
+                var lane = entity.RNG.Next(level.GetMaxLaneCount());
+                var endColumn = entity.RNG.Next(2, 7);
+                var dashTargetColumn = entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0;
 
                 var concealLanes = entity.Level.GetAllLanes().Where(l => 
                 {
@@ -122,7 +125,7 @@ namespace MVZ2.GameContent.Bosses
                 });
                 var deviceGrids = entity.Level.GetAllGrids().Where(g => g.GetEntities().Any(e => !e.HasBuff(VanillaBuffID.Entity.crescentAntiGravity)));
 
-                var dir = (grid.GetEntityPosition() - new Vector3(entity.Position.x, entity.GetGroundY(), entity.Position.z)).normalized;
+                var dir = (level.GetEntityGridPosition(dashTargetColumn, lane) - new Vector3(entity.Position.x, entity.GetGroundY(), entity.Position.z)).normalized;
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.Run(stateMachine.GetSpeed(entity));
                 var substate = stateMachine.GetSubState(entity);
@@ -142,7 +145,7 @@ namespace MVZ2.GameContent.Bosses
                             break;
                         case SUBSTATE_DASH_4:
                             stateMachine.StartSubState(entity, SUBSTATE_END);
-                            SetPositionBeforeDash(entity, endGrid.GetEntityPosition() + Vector3.up * HEIGHT);
+                            SetPositionBeforeDash(entity, level.GetEntityGridPosition(endColumn, lane) + Vector3.up * HEIGHT);
                             subStateTimer.ResetTime(15);
                             break;
                         case SUBSTATE_END:
@@ -161,15 +164,15 @@ namespace MVZ2.GameContent.Bosses
                             entity.Velocity = GetDashDir(entity) * 30;
                             if (subStateTimer.PassedFrame(20))
                             {
-                                var concealGrid = entity.Level.GetAllGrids().Random(entity.RNG);
+                                Vector3 concealGridPos = Vector3.zero;
                                 if (concealLanes.Count() > 0)
                                 {
                                     var concealLane = concealLanes.Random(entity.RNG);
-                                    concealGrid = entity.Level.GetAllGrids().Where(g => g.Lane == concealLane).Random(entity.RNG);
+                                    concealGridPos = level.GetEntityGridPosition(column, concealLane);
                                 }
                                 entity.SpawnWithParams(VanillaProjectileID.deliciousTroll, entity.GetCenter())?.Let(e =>
                                 {
-                                    e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), concealGrid.GetEntityPosition(), 30, e.GetGravity());
+                                    e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), concealGridPos, 30, e.GetGravity());
                                 });
 
                                 if (deviceGrids.Count() > 0)

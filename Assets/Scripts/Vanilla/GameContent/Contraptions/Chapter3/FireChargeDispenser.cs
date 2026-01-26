@@ -89,9 +89,10 @@ namespace MVZ2.GameContent.Contraptions
         {
             var evokeTimer = GetEvocationTimer(entity);
             var level = entity.Level;
-            var grid = level.GetAllGrids().Random(entity.RNG);
+            var column = entity.RNG.Next(level.GetMaxColumnCount());
+            var lane = entity.RNG.Next(level.GetMaxLaneCount());
             var targets = entity.Level.FindEntities(e => IsEvocationTarget(entity, e)).RandomTake(1, entity.RNG);
-            var targetPos = grid.GetEntityPosition();
+            var targetPos = level.GetEntityGridPosition(column, lane);
             int frames = Ticks.FromSeconds(1);
             foreach (var target in targets)
             {
@@ -111,14 +112,14 @@ namespace MVZ2.GameContent.Contraptions
                     Shoot(entity, entity.GetProjectileID() ?? VanillaProjectileID.fireCharge, entity.GetDamage(), velocity);
                 }
 
-                if (evokeTimer.PassedInterval(9))
+                if (evokeTimer.PassedInterval(6))
                 {
-                    Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 3, velocity);
+                    Shoot(entity, VanillaProjectileID.missile, entity.GetDamage() * 5, velocity);
                 }
 
                 if (evokeTimer.PassedInterval(15))
                 {
-                    Shoot(entity, VanillaProjectileID.miniTNT, entity.GetDamage() * 5, velocity);
+                    Shoot(entity, VanillaProjectileID.flyingTNT, entity.GetDamage() * 30, velocity);
                 }
             }
         }
@@ -142,7 +143,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_MISSLE_TIMEOUT, timer);
 
         public const int ATTACK_INTERVAL = 60;
-        public const int EVOKATION_TIMER = 45;
+        public const int EVOKATION_TIMER = 30;
         public const int GRAVITY = 1;
         public const float ATTACK_HEIGHT = 160;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");

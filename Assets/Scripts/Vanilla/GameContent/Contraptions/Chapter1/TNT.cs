@@ -133,12 +133,14 @@ namespace MVZ2.GameContent.Contraptions
                     var speed = 25 * Mathf.Lerp(1f, 0.5f, distance / range);
                     target.Velocity = target.Velocity + Vector3.up * speed;
                 }
-                if (entity.IsEntityOf(VanillaContraptionID.tnt))
+                if (entity.Definition.HasBehaviour<TNT>())
                 {
                     var param = entity.GetSpawnParams();
                     param.SetProperty(VanillaEntityProps.DAMAGE, damage / 18);
                     param.SetProperty(VanillaEntityProps.RANGE, range);
-                    entity.Spawn(VanillaProjectileID.miniTNT, output.Entity.Position + Vector3.up * 800, param);
+                    param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 0.6f);
+                    param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 0.6f);
+                    entity.Spawn(VanillaProjectileID.flyingTNT, output.Entity.Position + Vector3.up * 800, param);
                 }
             }
             Explosion.Spawn(entity, entity.GetCenter(), range);
@@ -173,7 +175,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        var direction = Quaternion.Euler(0, i * 90 + 45, 0) * new Vector3(0f, 1f, -1f) * 10;
+                        var direction = Quaternion.Euler(0, i * 90, 0) * Vector3.right * 10;
                         var velocity = direction;
                         velocity.y = 10;
                         var shootParams = entity.GetShootParams();
@@ -221,12 +223,14 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     Frankenstein.Paralyze(unit, entity);
                 }
-                if (entity.IsEntityOf(VanillaContraptionID.tnt) && unit.IsVulnerableEntity())
+                if (entity.Definition.HasBehaviour<TNT>() && unit.IsVulnerableEntity())
                 {
                     var param = entity.GetSpawnParams();
                     param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 18);
                     param.SetProperty(VanillaEntityProps.RANGE, entity.GetRange());
-                    entity.Spawn(VanillaProjectileID.miniTNT, unit.Position + Vector3.up * 800, param);
+                    param.SetProperty(EngineEntityProps.SCALE, Vector3.one * 0.6f);
+                    param.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 0.6f);
+                    entity.Spawn(VanillaProjectileID.flyingTNT, unit.Position + Vector3.up * 800, param);
                 }
             }
             entity.PlaySound(VanillaSoundID.thunder);
