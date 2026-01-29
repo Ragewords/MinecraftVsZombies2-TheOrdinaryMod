@@ -998,17 +998,17 @@
                 <tag id="mvz2:placement_golden_dropper" />
             </tags>
             <header>
-                <p>珠宝投掷器向敌人发射在敌人间反弹的金球和宝石球，宝石球在击中敌人后有概率产生宝石。</p>
+                <p>宝石投掷器向敌人发射在敌人间反弹的金球和宝石球，宝石球在击中敌人后有概率产生宝石。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60，每次反弹后减半</color>]]></p>
-                <p>宝石球概率：<![CDATA[<color=red>20%</color>]]></p>
-                <p>宝石概率：<![CDATA[<color=red>25%-2%（随宝石价值变化）</color>]]></p>
+                <p>宝石球概率：<![CDATA[<color=red>40%</color>]]></p>
+                <p>宝石概率：<![CDATA[<color=red>50%-5%（随宝石价值变化）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射大型金球和大型宝石球各6颗，每颗造成120点伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>它把木制投掷器的笑话专利买下来了，所以它可以理所应当地玩鑫鑫鑫鑫鑫鑫鑫鑫鑫鑫制投掷器的笑话了，毕竟它投的可是金和钱！</p>
+                <p>它把木制投掷器的笑话专利买下来了，所以它可以理所应当地玩鑫鑫鑫鑫鑫鑫鑫鑫鑫鑫制投掷器的笑话了！</p>
             </flavor>
         </entry>
         <entry id="mvz2:revivegrave">

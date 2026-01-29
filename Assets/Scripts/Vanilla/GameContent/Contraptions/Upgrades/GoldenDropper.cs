@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override Entity? Shoot(Entity entity)
         {
-            if (entity.RNG.Next(5) == 0)
+            if (entity.RNG.Next(5) < 2)
             {
                 var param = entity.GetShootParams();
                 var rng = GetRNG(entity);
@@ -104,10 +104,10 @@ namespace MVZ2.GameContent.Contraptions
         };
         private static int[] projectilePoolWeights = new int[]
         {
-            70,
-            15,
-            10,
-            5,
+            14,
+            3,
+            2,
+            1,
         };
         public static RandomGenerator? GetRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
         public static void SetRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_RNG, value);

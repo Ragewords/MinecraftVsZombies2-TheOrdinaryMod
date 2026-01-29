@@ -192,7 +192,10 @@ namespace MVZ2.GameContent.Projectiles
             }
             else
             {
-                vel.z *= -1; 
+                if ((lane > 0 && lane < knife.Level.GetMaxLaneCount() - 1) || (lane == 0 && vel.z >= 0) || (lane == knife.Level.GetMaxLaneCount() - 1 && vel.z < 0))
+                {
+                    vel.z *= -1; 
+                }
             }
             knife.Velocity = vel;
         }

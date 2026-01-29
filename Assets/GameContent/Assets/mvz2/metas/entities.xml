@@ -1210,7 +1210,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </contraption>
-        <dispenser id="golden_dropper" name="珠宝投掷器" tooltip="（需要木制投掷器）\n投出反弹的金球及产生宝石的宝石球">
+        <dispenser id="golden_dropper" name="宝石投掷器" tooltip="（需要木制投掷器）\n投出反弹的金球及产生宝石的宝石球">
             <unlock>
                 <condition required="mvz2:contraption.golden_dropper" />
             </unlock>
@@ -3348,6 +3348,13 @@
             </properties>
         </projectile>
         <projectile id="emerald_ball">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:gem_ball" />
+                <properties behaviour="mvz2:gem_ball">
+                    <float name="gem_chance" value="50" />
+                    <id name="gem_id" value="mvz2:emerald" />
+                </properties>
+            </behaviours>
             <properties>
                 <bool name="mvz2:killOnGround" value="false" />
                 <bool name="mvz2:rolls" value="true" />
@@ -3357,6 +3364,13 @@
             </properties>
         </projectile>
         <projectile id="ruby_ball">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:gem_ball" />
+                <properties behaviour="mvz2:gem_ball">
+                    <float name="gem_chance" value="25" />
+                    <id name="gem_id" value="mvz2:ruby" />
+                </properties>
+            </behaviours>
             <properties>
                 <bool name="mvz2:killOnGround" value="false" />
                 <bool name="mvz2:rolls" value="true" />
@@ -3366,6 +3380,13 @@
             </properties>
         </projectile>
         <projectile id="sapphire_ball">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:gem_ball" />
+                <properties behaviour="mvz2:gem_ball">
+                    <float name="gem_chance" value="10" />
+                    <id name="gem_id" value="mvz2:sapphire" />
+                </properties>
+            </behaviours>
             <properties>
                 <bool name="mvz2:killOnGround" value="false" />
                 <bool name="mvz2:rolls" value="true" />
@@ -3375,6 +3396,13 @@
             </properties>
         </projectile>
         <projectile id="diamond_ball">
+            <behaviours includeSelf="false">
+                <behaviour operator="add" id="mvz2:gem_ball" />
+                <properties behaviour="mvz2:gem_ball">
+                    <float name="gem_chance" value="5" />
+                    <id name="gem_id" value="mvz2:diamond" />
+                </properties>
+            </behaviours>
             <properties>
                 <bool name="mvz2:killOnGround" value="false" />
                 <bool name="mvz2:rolls" value="true" />

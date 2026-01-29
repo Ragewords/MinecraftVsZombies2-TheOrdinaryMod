@@ -150,8 +150,8 @@
                 <condition required="mvz2:level.castle_6" />
             </unlock>
             <talks>
-                <talk character="mvz2:crazy_villager">把珠宝投掷器放在木制投掷器上，让它能够发射可以反弹的金球和产生宝石的宝石球！</talk>
-                <talk character="mvz2:tokiko">珠宝投掷器能升级木制投掷器，能发出不停弹来弹去的金球，和可以赚钱的宝石球！</talk>
+                <talk character="mvz2:crazy_villager">把宝石投掷器放在木制投掷器上，让它能够发射可以反弹的金球和产生宝石的宝石球！</talk>
+                <talk character="mvz2:tokiko">宝石投掷器能升级木制投掷器，能发出不停弹来弹去的金球，和可以赚钱的宝石球！</talk>
             </talks>
             <stages>
                 <stage price="10000" unlocks="mvz2:contraption.golden_dropper" />

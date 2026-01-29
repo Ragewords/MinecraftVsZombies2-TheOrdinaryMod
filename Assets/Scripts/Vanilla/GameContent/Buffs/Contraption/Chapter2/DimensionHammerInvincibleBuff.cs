@@ -18,6 +18,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
             AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DEACTIVE, false));
             AddModifier(new NamespaceIDArrayModifier(VanillaEntityProps.GRID_LAYERS, SetOperator.Set, Array.Empty<NamespaceID>()));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, IntegerOperator.Set, EntityCollisionHelper.DETECTION_IGNORE));
         }
     }
 }

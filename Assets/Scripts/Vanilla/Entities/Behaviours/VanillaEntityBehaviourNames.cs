@@ -105,6 +105,7 @@ namespace MVZ2.Vanilla.Entities
         public const string projectileExplode = "projectile_explode";
         public const string projectileExplodeMeteor = "projectile_explode_meteor";
         public const string projectileExplodeFirework = "projectile_explode_firework";
+        public const string gemBall = "gem_ball";
         #endregion
 
         #region Effects
