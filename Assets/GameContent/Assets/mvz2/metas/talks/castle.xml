@@ -156,7 +156,7 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">这是尖刺方块！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能对走在它上面的怪物造成伤害并击退！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它能对走在它上面的怪物造成伤害！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">还能破坏敌人的车辆！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">让战场上洒满钉子吧！</sentence>
       </sentences>
