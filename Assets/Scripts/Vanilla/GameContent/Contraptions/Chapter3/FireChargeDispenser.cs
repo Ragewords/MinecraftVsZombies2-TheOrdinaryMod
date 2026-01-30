@@ -104,7 +104,7 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 evokeTimer.Run();
-                if (evokeTimer.PassedInterval(3))
+                if (evokeTimer.PassedInterval(2))
                 {
                     Shoot(entity, entity.GetProjectileID() ?? VanillaProjectileID.fireCharge, entity.GetDamage(), velocity);
                 }

@@ -1412,7 +1412,7 @@
                 <vector3 name="mvz2:shot_pivot" x="0.5" y="0" z="0.5" />
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy mvz2:flying_enemy" />
 
-                <int name="mvz2:cost" value="175" />
+                <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:medium" />
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
@@ -1450,7 +1450,7 @@
                 <bool name="mvz2:isLightSource" value="true" />
                 <vector3 name="mvz2:lightRange" x="80" y="80" z="80" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
-                <float name="mvz2:damage" value="30" />
+                <float name="mvz2:damage" value="45" />
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
@@ -3351,7 +3351,7 @@
             <behaviours includeSelf="false">
                 <behaviour operator="add" id="mvz2:gem_ball" />
                 <properties behaviour="mvz2:gem_ball">
-                    <float name="gem_chance" value="50" />
+                    <float name="gem_chance" value="30" />
                     <id name="gem_id" value="mvz2:emerald" />
                 </properties>
             </behaviours>
@@ -4654,7 +4654,7 @@
         <effect id="smoker_smoke">
             <properties>
                 <bool name="mvz2:decorative" value="false" />
-                <int name="mvz2:maxTimeout" value="35" />
+                <int name="mvz2:maxTimeout" value="45" />
                 <vector3 name="mvz2:boundsPivot" x="0" y="0" z="0.5" />
                 <vector3 name="mvz2:size" x="200" y="60" z="200" />
                 <idArray name="mvz2:damageEffects" value="mvz2:mute" />
@@ -4662,6 +4662,7 @@
         </effect>
         <effect id="smoker_fire">
             <behaviours>
+                <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
                 <behaviour operator="add" id="mvz2:dot_collision_damage"/>
             </behaviours>
             <properties>

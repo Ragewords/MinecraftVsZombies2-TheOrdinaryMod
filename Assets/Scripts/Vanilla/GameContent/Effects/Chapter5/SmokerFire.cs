@@ -3,12 +3,9 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
-using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Entities;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
@@ -30,15 +27,6 @@ namespace MVZ2.GameContent.Effects
         {
             base.Update(entity);
             UpdateIgnite(entity);
-        }
-        public override void PostRemove(Entity entity)
-        {
-            base.PostRemove(entity);
-            entity.PlaySound(VanillaSoundID.fizz);
-            var param = entity.GetSpawnParams();
-            param.SetProperty(EngineEntityProps.SIZE, entity.GetScaledSize());
-            param.SetProperty(EngineEntityProps.TINT, Color.black);
-            entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
         }
         private void UpdateIgnite(Entity fire)
         {

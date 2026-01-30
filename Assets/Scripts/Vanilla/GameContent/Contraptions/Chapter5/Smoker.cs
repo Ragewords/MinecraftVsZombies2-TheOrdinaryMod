@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (target != null)
                 {
                     var param = entity.GetSpawnParams();
-                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / 20);
+                    param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() / SMOKE_DURATION);
                     param.SetProperty(EngineEntityProps.FLIP_X, entity.IsFlipX());
                     entity.Spawn(VanillaEffectID.smokerSmoke, entity.Position, param)?.Let(e =>
                     {
@@ -107,6 +107,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const int SMOKE_INTERVAL = 60;
         public const int SMOKE_INTERVAL_SHORT = 5;
+        public const float SMOKE_DURATION = 30;
         public static FrameTimer? GetSmokeTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SMOKE_TIMER);
         public static void SetSmokeTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_SMOKE_TIMER, timer);
         private static readonly NamespaceID ID = VanillaContraptionID.smoker;

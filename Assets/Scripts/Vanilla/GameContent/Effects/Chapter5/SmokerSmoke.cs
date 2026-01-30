@@ -21,6 +21,11 @@ namespace MVZ2.GameContent.Effects
             entity.CollisionMaskHostile = EntityCollisionHelper.MASK_VULNERABLE;
             entity.Level.AddLoopSoundEntity(VanillaSoundID.fireBreath, entity.ID);
         }
+        public override void Update(Entity entity)
+        {
+            base.Update(entity);
+            entity.SetModelProperty("ParticleStopped", entity.Timeout <= 15);
+        }
         public override void PostCollision(EntityCollision collision, int state)
         {
             base.PostCollision(collision, state);
