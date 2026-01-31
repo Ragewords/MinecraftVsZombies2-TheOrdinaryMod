@@ -6356,13 +6356,6 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 788240ece2bcd42459ca45c8a6842800
-    m_Address: mvz2:data_copy
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7891ad9049ccbeb45810adbce12d4cfa
     m_Address: mvz2:misc/giant_in_mausoleum
     m_ReadOnly: 0
@@ -8336,13 +8329,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9baec9bc53710bf4a8fd74285af99940
-    m_Address: mvz2:entity/totenser/immortal_totem
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9bdca5ac48ec0b544bbe298bec6e82a7
     m_Address: mvz2:armor/wicked_hermit_hat

@@ -46,7 +46,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         private void FindNextTarget(Buff buff, Entity entity, Vector3 origin, int faction, float nextDamage)
         {
             var ignored = buff.GetProperty<IEntityCollider[]>(PROP_IGNORED_ENTITY);
-            IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, 0, EntityCollisionHelper.MASK_VULNERABLE);
+            IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
 
             var validTargets = hitColliders
                 .Where(c => !attackedEnemies.Contains(c.Entity) && !ignored.Contains(c))

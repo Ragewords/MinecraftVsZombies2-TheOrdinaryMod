@@ -16,14 +16,14 @@
     <sound name="anvil">
         <sample path="mvz2:anvil" weight="1" />
     </sound>
-    <sound name="arcane_intellect">
-        <sample path="mvz2:arcane_intellect" weight="1" />
-    </sound>
     <sound name="anvil_fix">
         <sample path="mvz2:entity/anvil/anvil_fix" weight="1" />
     </sound>
     <sound name="anvil_fix_break">
         <sample path="mvz2:entity/anvil/anvil_fix_break" weight="1" />
+    </sound>
+    <sound name="arcane_intellect">
+        <sample path="mvz2:arcane_intellect" weight="1" />
     </sound>
     <sound name="armor_up">
         <sample path="mvz2:armor_up" weight="1" />
@@ -162,9 +162,6 @@
     </sound>
     <sound name="dark_skies_impact" maxCount="10">
         <sample path="mvz2:dark_skies_impact" weight="1" />
-    </sound>
-    <sound name="data_copy">
-        <sample path="mvz2:data_copy" weight="1" />
     </sound>
     <sound name="data_stream">
         <sample path="mvz2:data_stream" weight="1" />
@@ -484,9 +481,6 @@
     </sound>
     <sound name="hypercube" priority="64">
         <sample path="mvz2:hypercube" weight="1" />
-    </sound>
-    <sound name="immortal_totem">
-        <sample path="mvz2:entity/totenser/immortal_totem" weight="1" />
     </sound>
     <sound name="imp_laugh">
         <sample path="mvz2:entity/imp/imp_laugh1" weight="1" />

@@ -51,7 +51,6 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID danmaku = Get("danmaku");
         public readonly static NamespaceID darkSkiesCast = Get("dark_skies_cast");
         public readonly static NamespaceID darkSkiesImpact = Get("dark_skies_impact");
-        public readonly static NamespaceID dataCopy = Get("data_copy");
         public readonly static NamespaceID dataStream = Get("data_stream");
         public readonly static NamespaceID decrepify = Get("decrepify");
         public readonly static NamespaceID desirePotEvocation = Get("desire_pot_evocation");
@@ -128,7 +127,6 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID horseGallop = Get("horse_gallop");
         public readonly static NamespaceID hugeWave = Get("huge_wave");
         public readonly static NamespaceID hypercube = Get("hypercube");
-        public readonly static NamespaceID immortalTotem = Get("immortal_totem");
         public readonly static NamespaceID impLaugh = Get("imp_laugh");
         public readonly static NamespaceID impact = Get("impact");
         public readonly static NamespaceID ironCurtain = Get("iron_curtain");

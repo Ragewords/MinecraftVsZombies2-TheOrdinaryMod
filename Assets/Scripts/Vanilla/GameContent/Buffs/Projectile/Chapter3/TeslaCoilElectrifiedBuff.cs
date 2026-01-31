@@ -70,15 +70,15 @@ namespace MVZ2.GameContent.Buffs.Projectiles
             var target = hit.Other;
             var shield = hit.Shield;
             var armorSlot = shield != null ? shield.Slot : null;
-            float additionalDamage = projectile.GetDamage() / 3;
+            float additionalDamage = projectile.GetDamage();
             var buffs = projectile.GetBuffs(this);
             foreach (var buff in buffs)
             {
-                target.TakeDamage(additionalDamage * 2, new DamageEffectList(VanillaDamageEffects.LIGHTNING), projectile, armorSlot);
+                target.TakeDamage(additionalDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING), projectile, armorSlot);
                 if (armorSlot == null)
                 {
                     var eBuff = target.NewBuff<ElectricChainBuff>();
-                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, projectile.GetDamage());
+                    eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, projectile.GetDamage() * (1 - ElectricChainBuff.DMG_DECAY));
                     eBuff.SetProperty(ElectricChainBuff.PROP_FACTION, projectile.GetFaction());
                     target.AddBuff(eBuff);
                 }
