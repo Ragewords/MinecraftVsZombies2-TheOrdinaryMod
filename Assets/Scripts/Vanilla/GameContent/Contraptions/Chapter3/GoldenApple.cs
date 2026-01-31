@@ -53,8 +53,10 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             if (target.IsAIFrozen())
                 return;
+            NamespaceID? transformID = null;
             if (target.IsEvoked())
             {
+                transformID = VanillaEnemyID.mutantZombie;
                 var mutant = target.Spawn(VanillaEnemyID.mutantZombie, enemy.Position)?.Let(e =>
                 {
                     e.CharmPermanent(target.GetFaction(), new EntitySourceReference(target));
@@ -87,6 +89,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (validEnemies.Count() <= 0)
                     return;
                 var enemyID = validEnemies.Random(rng);
+                transformID = enemyID;
                 var offset = higherSpawnPositionFilter.Contains(enemyID) ? SPAWN_POSITION_ADDTION : Vector3.zero;
                 var random = target.SpawnWithParams(enemyID, enemy.Position + offset)?.Let(e =>
                 {
@@ -98,16 +101,28 @@ namespace MVZ2.GameContent.Contraptions
                 enemy.PlaySound(VanillaSoundID.charmed);
                 enemy.PlaySound(VanillaSoundID.floop);
             }
-            var callbackParam = new EntityCallbackParams(enemy);
+            var callbackParam = new VanillaLevelCallbacks.PostReincarnateParams(enemy, transformID, target.GetFaction(), new EntitySourceReference(target));
             enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, callbackParam);
             target.Remove();
         }
-        #region Reincarnate Restrictions
-        private static NamespaceID[] cannotTransformFilter = new NamespaceID[]
+        public static void Reincarnation(Entity entity, NamespaceID? ID, int faction, ILevelSourceReference? source)
+        {
+            if (ID == null)
+                return;
+            var offset = higherSpawnPositionFilter.Contains(ID) ? SPAWN_POSITION_ADDTION : Vector3.zero;
+            entity.Spawn(ID, entity.Position + offset)?.Let(e =>
+            {
+                e.CharmPermanent(faction, source);
+            });
+            entity.Spawn(VanillaEffectID.mindControlLines, entity.GetCenter());
+            entity.Neutralize();
+            entity.Remove();
+        }
+        #region Reincarnation
+        public static NamespaceID[] cannotTransformFilter = new NamespaceID[]
         {
             VanillaEnemyID.flagZombie,
             VanillaEnemyID.parasiteTerror,
-            VanillaEnemyID.dullahan,
             VanillaEnemyID.hellChariot,
             VanillaEnemyID.talismanZombie,
             VanillaEnemyID.cannonballZombie,
@@ -129,6 +144,6 @@ namespace MVZ2.GameContent.Contraptions
             { VanillaEnemyID.gargoyle, VanillaAreaID.halloween },
         };
         #endregion
-        private static readonly Vector3 SPAWN_POSITION_ADDTION = new Vector3(0, 20, 0);
+        public static readonly Vector3 SPAWN_POSITION_ADDTION = new Vector3(0, 20, 0);
     }
 }

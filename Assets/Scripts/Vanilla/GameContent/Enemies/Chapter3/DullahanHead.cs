@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Contraptions;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -49,7 +50,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             MesmerizeBuff.CloneMesmerize(buff, body);
         }
-        private void PostEntityReincarnateCallback(EntityCallbackParams param, CallbackResult result)
+        private void PostEntityReincarnateCallback(VanillaLevelCallbacks.PostReincarnateParams param, CallbackResult result)
         {
             var entity = param.entity;
             if (!entity.IsEntityOf(VanillaEnemyID.dullahanHead))
@@ -57,7 +58,7 @@ namespace MVZ2.GameContent.Enemies
             var body = GetBody(entity);
             if (!body.ExistsAndAlive())
                 return;
-            body.Die();
+            GoldenApple.Reincarnation(body, param.transformID, param.faction, param.source);
         }
         public static Entity? GetBody(Entity entity)
         {
