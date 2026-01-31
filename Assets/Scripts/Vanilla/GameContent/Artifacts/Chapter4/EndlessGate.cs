@@ -25,10 +25,7 @@ namespace MVZ2.GameContent.Artifacts
         public override void PostAdd(Artifact artifact)
         {
             base.PostAdd(artifact);
-            var timer = new FrameTimer(Ticks.FromSeconds(COOLDOWN_SECONDS))
-            {
-                Frame = 0
-            };
+            var timer = new FrameTimer(Ticks.FromSeconds(COOLDOWN_SECONDS));
             artifact.SetProperty(PROP_ACTIVE_COOLDOWN, timer);
         }
         public override void PostUpdate(Artifact artifact)
@@ -41,10 +38,6 @@ namespace MVZ2.GameContent.Artifacts
             if (timer != null)
             {
                 artifact.SetDisplayText(Mathf.FloorToInt(Ticks.ToSeconds(timer.Frame)).ToString() + "s");
-                if (timer.Expired)
-                {
-                    artifact.SetDisplayText(string.Empty);
-                }
             }
 
             if (active)
@@ -52,15 +45,11 @@ namespace MVZ2.GameContent.Artifacts
                 var xOrderedMobsTake1 = artifact.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsDead && e.IsHostileEntity() && !e.IsHarmless()).OrderBy(e => e.Position.x).Take(1);
                 foreach (var enemy in xOrderedMobsTake1)
                 {
-                    var bound = enemy.GetBounds();
-                    if (bound.min.x <= TRIGGER_X)
-                    {
-                        enemy.PlaySound(VanillaSoundID.revertWarp);
-                        enemy.AddBuff(VanillaBuffID.Enemy.endlessGate);
-                        artifact.Highlight();
-                        timer?.Reset();
-                    }
+                    enemy.PlaySound(VanillaSoundID.revertWarp);
+                    enemy.AddBuff(VanillaBuffID.Enemy.endlessGate);
                 }
+                artifact.Highlight();
+                timer?.Reset();
             }
         }
         public const float TRIGGER_X = 260;
