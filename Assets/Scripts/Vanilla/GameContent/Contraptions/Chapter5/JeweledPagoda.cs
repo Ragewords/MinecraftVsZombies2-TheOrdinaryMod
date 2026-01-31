@@ -5,8 +5,8 @@ using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Grids;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -14,6 +14,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -136,14 +137,26 @@ namespace MVZ2.GameContent.Contraptions
                 foreach (Entity target in enemyList)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR);
-                    if (finalID != null && target.IsEntityOf(finalID))
+                    List<NamespaceID> iDs = new List<NamespaceID>();
+                    if (finalID != null)
                     {
-                        target.TakeDamage(damage * 8, damageEffects, entity);
-                        entity.Spawn(VanillaEffectID.pagodaLaserChaos, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
+                        if (countAsSameFilter.Contains(finalID))
                         {
-                            e.SetParent(entity);
-                            e.SetModelProperty("Dest", target.GetCenter());
-                        });
+                            iDs.AddRange(countAsSameFilter);
+                        }
+                        else
+                        {
+                            iDs.Add(finalID);
+                        }
+                        if (iDs.Contains(target.GetDefinitionID()))
+                        {
+                            target.TakeDamage(damage * 8, damageEffects, entity);
+                            entity.Spawn(VanillaEffectID.pagodaLaserChaos, entity.Position + PagodaLaser.POSITION_OFFSET)?.Let(e =>
+                            {
+                                e.SetParent(entity);
+                                e.SetModelProperty("Dest", target.GetCenter());
+                            });
+                        }
                     }
                 }
             }
@@ -183,11 +196,14 @@ namespace MVZ2.GameContent.Contraptions
         public static Color BLAST_JEWEL = new Color(255, 158, 0);
         public static Color LIGHTNING_JEWEL = new Color(0, 231, 255);
         public static Color CHAOS_JEWEL = new Color(255, 0, 150);
-        private static Detector lawnDetector = new LawnDetector()
+        private static NamespaceID[] countAsSameFilter = new NamespaceID[]
         {
-            mask = EntityCollisionHelper.MASK_VULNERABLE
+            VanillaEnemyID.zombie,
+            VanillaEnemyID.leatherCappedZombie,
+            VanillaEnemyID.ironHelmettedZombie,
+            VanillaEnemyID.flagZombie,
+            VanillaEnemyID.rallyZombie,
         };
-        private static List<Entity> lawnBuffer = new List<Entity>();
         public EntityStateMachine stateMachine = new PagodaStateMachine();
         public static readonly VanillaEntityPropertyMeta<float> PROP_GRAVITY = new VanillaEntityPropertyMeta<float>("gravity");
         public static readonly VanillaEntityPropertyMeta<int> PROP_DISABLED_GRID_COUNT = new VanillaEntityPropertyMeta<int>("disabled_grid_count");

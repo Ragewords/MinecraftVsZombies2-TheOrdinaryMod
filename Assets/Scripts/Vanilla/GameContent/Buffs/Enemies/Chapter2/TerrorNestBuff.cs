@@ -42,12 +42,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 var parasite = entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
                 entity.PlaySound(VanillaSoundID.bloody);
-                entity.TakeDamage(5, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
+                entity.TakeDamage(50, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
                 entity.EmitBlood();
                 timer.Reset();
             }
-            if (entity.IsDead)
-                buff.Remove();
         }
         private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {

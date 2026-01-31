@@ -2,7 +2,6 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
@@ -40,14 +39,6 @@ namespace MVZ2.GameContent.Enemies
                 {
                     results.Add(curseTarget);
                 }
-            }
-            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
-            {
-                base.UpdateTargetBuff(effect, target, buff);
-                var entity = effect.Source.GetEntity();
-                if (entity == null)
-                    return;
-                AbyssBuff.SetCurseFaction(buff, entity.GetFaction());
             }
         }
     }

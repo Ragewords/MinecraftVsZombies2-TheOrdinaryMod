@@ -39,6 +39,8 @@ namespace MVZ2.GameContent.Contraptions
                 var ent = entity.Level.FindEntityByID(id);
                 if (!ent.ExistsAndAlive())
                     continue;
+                if (!ent.IsHostile(entity))
+                    continue;
                 if (ent.Type == EntityTypes.PLANT)
                 {
                     bool playSound = false;

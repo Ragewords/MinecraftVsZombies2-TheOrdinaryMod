@@ -6,13 +6,16 @@ using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Models;
+using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
+using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
+using Tools;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
@@ -25,6 +28,11 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.totenserWeb, VanillaModelID.totenserWeb);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
         }
+        public override void PostAdd(Buff buff)
+        {
+            base.PostAdd(buff);
+            buff.SetProperty(PROP_TIMER, TimerHelper.NewSecondTimer(COOLDOWN_SECONDS));
+        }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
@@ -34,6 +42,13 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 buff.Remove();
                 return;
             }
+
+            var timer = buff.GetProperty<FrameTimer>(PROP_TIMER);
+            if (timer.RunToExpiredOrNull())
+            {
+                buff.Remove();
+            }
+
             if (IsOutsideView(ent) || ent.Definition.HasBehaviour<MutantZombieBase>())
             {
                 ent.TakeDamage(20, new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN), ent);
@@ -45,11 +60,11 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = param.entity;
             entity.RemoveBuffs<TotenserWebBuff>();
         }
-        private bool IsOutsideView(Entity proj)
+        private bool IsOutsideView(Entity entity)
         {
-            var bounds = proj.GetBounds();
-            return bounds.max.x < VanillaLevelExt.ATTACK_LEFT_BORDER ||
-                bounds.min.x > VanillaLevelExt.ATTACK_RIGHT_BORDER;
+            return entity.IsEnemyOutsideLeft() || entity.IsEnemyOutsideRight();
         }
+        public const float COOLDOWN_SECONDS = 15f;
+        public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
     }
 }

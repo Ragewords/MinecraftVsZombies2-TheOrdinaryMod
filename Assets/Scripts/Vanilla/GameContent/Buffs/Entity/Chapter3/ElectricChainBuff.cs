@@ -31,7 +31,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
             attackedEnemies.Add(entity);
             var nextDamage = buff.GetProperty<float>(PROP_DAMAGE);
-            FindNextTarget(buff, entity, entity.Position, entity.GetFaction(), nextDamage);
+            var faction = buff.GetProperty<int>(PROP_FACTION);
+            FindNextTarget(buff, entity, entity.Position, faction, nextDamage);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -81,6 +82,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public const float DMG_DECAY = 0.2f;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_FACTION = new VanillaBuffPropertyMeta<int>("faction");
         public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity", new List<IEntityCollider>().ToArray());
         private List<Entity> attackedEnemies = new List<Entity>();
     }

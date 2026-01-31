@@ -69,7 +69,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var level = target.Level;
                 var rng = target.RNG;
-                var unlockedEnemies = Global.Saves.GetUnlockedEnemies();
+                var unlockedEnemies = level.GetEnemyPool() ?? Global.Saves.GetUnlockedEnemies();
                 var validEnemies = unlockedEnemies.Where(id =>
                 {
                     if (!Global.Almanac.IsEnemyInAlmanac(id))
@@ -105,8 +105,6 @@ namespace MVZ2.GameContent.Contraptions
         #region Reincarnate Restrictions
         private static NamespaceID[] cannotTransformFilter = new NamespaceID[]
         {
-            VanillaEnemyID.zombie,
-            VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.flagZombie,
             VanillaEnemyID.parasiteTerror,
             VanillaEnemyID.dullahan,

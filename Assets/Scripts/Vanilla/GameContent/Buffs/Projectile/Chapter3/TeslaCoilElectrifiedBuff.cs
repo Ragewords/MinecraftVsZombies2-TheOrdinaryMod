@@ -79,6 +79,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
                 {
                     var eBuff = target.NewBuff<ElectricChainBuff>();
                     eBuff.SetProperty(ElectricChainBuff.PROP_DAMAGE, projectile.GetDamage());
+                    eBuff.SetProperty(ElectricChainBuff.PROP_FACTION, projectile.GetFaction());
                     target.AddBuff(eBuff);
                 }
             }
