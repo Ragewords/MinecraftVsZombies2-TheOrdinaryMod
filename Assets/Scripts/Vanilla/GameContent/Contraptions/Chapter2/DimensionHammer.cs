@@ -40,13 +40,22 @@ namespace MVZ2.GameContent.Contraptions
             {
                 hammer.TriggerAnimation("Attack");
             }
-            if (frame == JUMP_FRAME)
+            if (frame == JUMP_FRAME && !IsJumped(hammer))
             {
                 hammer.Velocity = VanillaProjectileExt.GetLobVelocityByTime(hammer.Position, hammer.Position - SMASH_OFFSET * hammer.GetFacingDirection(), SMASH_FRAME - JUMP_FRAME, hammer.GetGravity());
+                SetJumped(hammer, true);
             }
-            if (frame == FLING_FRAME_1 || frame ==  FLING_FRAME_2 || frame ==  FLING_FRAME_3)
+            if (frame == FLING_FRAME)
             {
-                hammer.PlaySound(VanillaSoundID.fling);
+                if (!hammer.IsOnGround)
+                {
+                    hammer.PlaySound(VanillaSoundID.fling);
+                    frame = JUMP_FRAME;
+                }
+                else
+                {
+                    frame = SMASH_FRAME;
+                }
             }
             if (frame == SMASH_FRAME)
             {
@@ -154,16 +163,15 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static int GetFrame(Entity entity) => entity.GetBehaviourField<int>(ID, PROP_EVOCATION_TIME);
         public static void SetFrame(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
+        public static bool IsJumped(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_JUMPED);
+        public static void SetJumped(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_JUMPED, value);
         private static readonly NamespaceID ID = VanillaContraptionID.dimensionHammer;
         public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("frame");
-        public static readonly VanillaEntityPropertyMeta<bool> PROP_SMASH = new VanillaEntityPropertyMeta<bool>("smash");
-        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_POSITION = new VanillaEntityPropertyMeta<Vector3>("position");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_JUMPED = new VanillaEntityPropertyMeta<bool>("jumped");
         public const int START_FRAME = 0;
         public const int JUMP_FRAME = START_FRAME + 5;
-        public const int FLING_FRAME_1 = JUMP_FRAME + 10;
-        public const int FLING_FRAME_2 = FLING_FRAME_1 + 10;
-        public const int FLING_FRAME_3 = FLING_FRAME_2 + 10;
-        public const int SMASH_FRAME = FLING_FRAME_3 + 5;
+        public const int FLING_FRAME = JUMP_FRAME + 10;
+        public const int SMASH_FRAME = FLING_FRAME + 25;
         public const float SMASH_OFFSET = 45f;
     }
 }
