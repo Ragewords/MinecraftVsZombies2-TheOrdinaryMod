@@ -171,11 +171,11 @@ namespace MVZ2.GameContent.Projectiles
             var speed = vel2D.magnitude;
 
             var lane = knife.GetLane();
-            var zSpeed = speed / 2;
+            var zSpeed = speed / Mathf.Sqrt(2);
             int zDir;
             if (vel.z == 0)
             {
-                vel.x = Mathf.Sign(vel.x) * speed * 0.5f;
+                vel.x = Mathf.Sign(vel.x) * speed / Mathf.Sqrt(2);
                 if (lane <= 0)
                 {
                     zDir = -1;
