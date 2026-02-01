@@ -29,10 +29,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity == null)
                 return;
+            entity.PlaySound(VanillaSoundID.redLightning);
             attackedEnemies.Add(entity);
             var nextDamage = buff.GetProperty<float>(PROP_DAMAGE);
-            var faction = buff.GetProperty<int>(PROP_FACTION);
-            FindNextTarget(buff, entity, entity.Position, faction, nextDamage);
+            FindNextTarget(buff, entity, entity.Position, nextDamage);
         }
         public override void PostUpdate(Buff buff)
         {
@@ -43,8 +43,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (attackedEnemies.Count >= MAX_TARGETS || timeout <= 0)
                 buff.Remove();
         }
-        private void FindNextTarget(Buff buff, Entity entity, Vector3 origin, int faction, float nextDamage)
+        private void FindNextTarget(Buff buff, Entity entity, Vector3 origin, float nextDamage)
         {
+            var faction = buff.GetProperty<int>(PROP_FACTION);
             var ignored = buff.GetProperty<IEntityCollider[]>(PROP_IGNORED_ENTITY);
             IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
 
@@ -55,7 +56,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
 
             if (validTargets.Length > 0)
             {
-                entity.PlaySound(VanillaSoundID.redLightning);
                 AttackTarget(buff, entity, validTargets[0].Entity, nextDamage);
             }
         }
@@ -72,9 +72,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 ElectricArc.UpdateArc(e);
                 e.Timeout = 15;
             });
-            
+
             attackedEnemies.Add(target);
-            FindNextTarget(buff, target, target.Position, target.GetFaction(), currentDamage * (1 - DMG_DECAY));
+            FindNextTarget(buff, target, target.Position, currentDamage * (1 - DMG_DECAY));
         }
         public const float ZAP_RADIUS = 120;
         public const float MAX_TARGETS = 5;
