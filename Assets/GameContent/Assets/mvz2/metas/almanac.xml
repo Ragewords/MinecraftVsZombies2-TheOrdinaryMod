@@ -1857,7 +1857,7 @@
                 <p>针妙丸公主赏赐有功之臣史蒂夫的宝物，万宝槌的仿制品，曾被正邪用于逃离通缉。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>+15%器械伤害，对近距离攻击敌人的器械则额外+15%伤害</color>]]></p>
+                <p>效果：<![CDATA[<color=red>+15%器械伤害，近距离攻击敌人的器械额外+15%伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>万宝槌的仿制品，没有什么魔力，只能普通地造成物理伤害。</p>
@@ -2042,7 +2042,7 @@
                 <p>沼泽小屋门口用于装饰的南瓜灯。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>给予非光源器械一个半径1.25格的光源</color>]]></p>
+                <p>效果：<![CDATA[<color=red>给予非光源器械<tag id="mvz2:light_source" />一个直径1.25格的光源</color>]]></p>
             </properties>
             <flavor>
                 <p>在万圣节时可以试试戴在头上，应该会很吓人。</p>
