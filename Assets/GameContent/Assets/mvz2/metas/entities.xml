@@ -2741,12 +2741,6 @@
             </properties>
         </boss>
         <boss id="crescent" name="新月">
-            <behaviours>
-                <properties behaviour="mvz2:boss_resistance">
-                    <float name="max_damage_amount" value="300" />
-                    <float name="decay" value="10" />
-                </properties>
-            </behaviours>
             <properties>
                 <int name="mvz2:waterInteraction" value="0" />
                 <float name="mvz2:maxHealth" value="6000" />
