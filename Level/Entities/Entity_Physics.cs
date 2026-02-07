@@ -13,8 +13,16 @@ namespace PVZEngine.Entities
         public Vector3 GetCenter()
         {
             var center = Position;
-            var pivot = Vector3.one * 0.5f - Cache.BoundsPivot;
-            center += Vector3.Scale(GetScaledSize(), pivot);
+
+            var pivot = Cache.BoundsPivot;
+            var size = Cache.Size;
+            var scale = Cache.GetFinalScale();
+
+            var scaledSize = Vector3.Scale(size, scale);
+            var scaledPivot = Vector3.Scale(pivot, scale);
+
+            center += Vector3.Scale(Vector3.one * 0.5f - pivot, scaledSize);
+
             return center;
         }
         public Vector3 GetScaledSize()
