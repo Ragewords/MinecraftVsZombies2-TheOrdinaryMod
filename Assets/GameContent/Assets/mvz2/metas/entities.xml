@@ -760,7 +760,7 @@
                 <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
-        <contraption id="golden_apple" name="转生苹果" tooltip="转生攻击它的怪物">
+        <contraption id="golden_apple" name="金苹果" tooltip="魅惑攻击它的怪物">
             <unlock>
                 <condition required="mvz2:level.castle_6" />
             </unlock>
@@ -773,7 +773,7 @@
                 <id name="mvz2:placeSound" value="mvz2:metal_break" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
-                <int name="mvz2:cost" value="50" />
+                <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
                 <id name="mvz2:function" value="mvz2:enchanted" />
             </properties>

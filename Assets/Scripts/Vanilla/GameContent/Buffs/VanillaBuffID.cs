@@ -132,6 +132,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 3
             public const string littleZombieArmor = "little_zombie_armor";
             public const string bigTroubleArmor = "big_trouble_armor";
+            public const string eatenGoldenAppleArmor = "eaten_golden_apple_armor";
 
             // Chapter 4
             public const string iZombieSkeletonWarriorArmor = "i_zombie_skeleton_warrior_armor";
@@ -260,6 +261,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 3
             public const string littleZombie = "little_zombie";
             public const string bigTrouble = "big_trouble";
+            public const string eatenGoldenApple = "eaten_golden_apple";
             public const string soulsandSummoned = "soulsand_summoned";
             public const string soulsandSlow = "soulsand_slow";
             public const string seijaMesmerizer = "seija_mesmerizer";
@@ -609,6 +611,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 3
             public static readonly NamespaceID littleZombie = Get(VanillaBuffNames.Enemy.littleZombie);
             public static readonly NamespaceID bigTrouble = Get(VanillaBuffNames.Enemy.bigTrouble);
+            public static readonly NamespaceID eatenGoldenApple = Get(VanillaBuffNames.Enemy.eatenGoldenApple);
             public static readonly NamespaceID soulsandSummoned = Get(VanillaBuffNames.Enemy.soulsandSummoned);
             public static readonly NamespaceID soulsandSlow = Get(VanillaBuffNames.Enemy.soulsandSlow);
             public static readonly NamespaceID seijaMesmerizer = Get(VanillaBuffNames.Enemy.seijaMesmerizer);

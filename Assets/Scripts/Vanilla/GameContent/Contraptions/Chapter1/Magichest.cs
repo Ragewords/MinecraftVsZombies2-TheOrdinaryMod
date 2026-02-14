@@ -157,7 +157,7 @@ namespace MVZ2.GameContent.Contraptions
                                 var id = GetEatenEntityID(entity);
                                 if (id != null)
                                 {
-                                    var offset = GoldenApple.higherSpawnPositionFilter.Contains(id) ? new Vector3(0, 20, 0) : Vector3.zero;
+                                    var offset = entity.Level.Content.GetEntityDefinition(id)?.GetStartingPositionOffset() ?? Vector3.zero;
                                     var enemy = entity.SpawnWithParams(id, entity.Position + offset);
                                 }
                             }

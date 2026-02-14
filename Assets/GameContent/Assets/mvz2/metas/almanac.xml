@@ -574,14 +574,15 @@
         </entry>
         <entry id="mvz2:golden_apple">
             <header>
-                <p>转生苹果可以转生一个近战攻击它的敌方怪物，使其为你而战。</p>
+                <p>金苹果可以魅惑一个近战攻击它的敌方怪物，使其为你而战。</p>
             </header>
             <properties>
-                <p>技能：<![CDATA[<color=red>发出彩色炫光，被转生的敌方怪物变为突变僵尸</color>]]></p>
+                <p>增益：<![CDATA[<color=red>魅惑的怪物+50%生命值</color>]]></p>
+                <p>技能：<![CDATA[<color=red>发出彩色炫光，被魅惑的敌方怪物变为突变僵尸</color>]]></p>
             </properties>
             <flavor>
-                <p>转生苹果对于砸到重力方块这件事情感到很抱歉，所以它赔了重力方块自己的一块皮。</p>
-                <p>这就是为什么重力板是一片紫色的板子。</p>
+                <p>金苹果对于砸伤重力方块这件事情感到很抱歉，所以它赔了重力方块自己的一块金皮。</p>
+                <p>这就是为什么重力板是紫色的。</p>
             </flavor>
         </entry>
         <entry id="mvz2:thunder_drum">

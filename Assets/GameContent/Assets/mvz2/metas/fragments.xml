@@ -131,10 +131,8 @@
     </fragment>
     <fragment name="golden_apple">
         <colorKeys>
-            <key hex="#92e5f8" time="0.25" />
-            <key hex="#13dbc3" time="0.5" />
-            <key hex="#45ece7" time="0.75" />
-            <key hex="#57d1ee" time="1" />
+            <key hex="#FFD400" time="0.5" />
+            <key hex="#FFA900" time="1" />
         </colorKeys>
     </fragment>
     <fragment name="thunder_drum">

@@ -472,8 +472,8 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是转生苹果！能给你新的人生！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">它是一个具有神奇效果的果实，能把第一个攻击它的怪物变形成另一个怪物！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是金苹果！不过它可不是用来回血的！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">实际上它是一个魔力果实，能魅惑第一个攻击它的怪物，并赋予这个怪物额外的生命值！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">然后！这个怪物就会为你作战！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">不过，要注意它也是只能在晚上用的！</sentence>
       </sentences>
@@ -979,8 +979,8 @@
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">不过，应该有办法能阻止它的。</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">试试用强大的东西挡住它的去路，或者直接在它冲锋前把它击垮！</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">以及，也许可以像对付那些皇冠骷髅那样，用荧石打断它的魔法！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">并且，转生苹果对凋灵这种亡灵生物来说可能会产生奇效！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">试着骗它吃掉一些转生苹果！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">并且，金苹果对凋灵这种亡灵生物来说可能会产生奇效！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">试着骗它吃掉一些金苹果！</sentence>
         <sentence speaker="mvz2:shinmyoumaru" sounds="mvz2:talk">我们小人族就靠你了，史蒂夫……</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">遵命。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk"><![CDATA[<color=blue>（辉针城外乌云密布。这些乌云已经笼罩这里太长时间了。）</color>]]></sentence>

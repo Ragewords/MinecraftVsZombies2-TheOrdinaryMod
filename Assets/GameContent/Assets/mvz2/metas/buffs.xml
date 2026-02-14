@@ -172,6 +172,8 @@
     <buff id="detonated" polarity="negative" level="1000" target="contraption" />
     <buff id="soulsand_slow" polarity="negative" level="5000" target="enemy" />
     <buff id="tesla_coil_electrify" polarity="positive" level="1000" target="projectile" />
+    <buff id="eaten_golden_apple" polarity="positive" level="0" target="enemy" />
+    <buff id="eaten_golden_apple_armor" polarity="positive" level="0" target="armor" />
 
     <!-- Chapter 4 -->
     <buff id="delayed_spawner_trigger" polarity="none" level="4000" target="level" />
