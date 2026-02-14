@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
@@ -10,6 +11,8 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 
@@ -26,6 +29,14 @@ namespace MVZ2.GameContent.Contraptions
                 includeSelf = true,
                 factionTarget = FactionTarget.Friendly
             };
+        }
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
+        {
+            base.PreTakeDamage(input, result);
+            if (input.Effects.HasEffect(VanillaDamageEffects.EXPLOSION))
+            {
+                input.Multiply(0.5f);
+            }
         }
         protected override void OnEvoke(Entity contraption)
         {

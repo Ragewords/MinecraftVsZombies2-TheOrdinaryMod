@@ -563,6 +563,7 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+                <p>抗性：<![CDATA[<color=red>受到的爆炸伤害减少50%</color>]]></p>
                 <p>技能：<![CDATA[<color=red>3x3范围内的器械无敌5秒</color>]]></p>
             </properties>
             <flavor>
@@ -1119,12 +1120,12 @@
         </entry>
         <entry id="mvz2:dimension_hammer">
             <header>
-                <p>次元锤会猛击地面上的敌怪，把它们砸晕，同时迸发出大量穿透的箭头弹幕。</p>
+                <p>次元锤会跳起来猛击地面上的敌怪，把它们砸晕，同时迸发出大量穿透的箭头弹幕。</p>
             </header>
             <properties>
                 <p>砸击半径：<![CDATA[<color=red>0.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>300（砸击），50（弹幕）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>砸击半径增加至1.5格</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即开始攻击，砸击半径增加至1.5格</color>]]></p>
             </properties>
             <flavor>
                 <p>次元锤是个致力于探索多元宇宙无限可能性的物理迷。它的家里摆着一本笑话书，里面有无数本量子物理学书和笑话书互相夹在一起。</p>
