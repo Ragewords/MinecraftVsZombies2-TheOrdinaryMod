@@ -62,13 +62,37 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void ThrowDuplicate(Entity entity)
         {
-            List<LawnGrid> grids = new List<LawnGrid>();
-            for (int y = 0; y < entity.Level.GetMaxLaneCount(); y++)
+            var preferredLane = entity.Level.GetAllLanes().Where(l =>
             {
-                var grid = entity.Level.GetGrid(entity.GetColumn(), y);
-                if (grid != null && grid.CanSpawnEntity(VanillaContraptionID.mineTNT))
+                bool hasEnemy = false;
+                foreach (var target in entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsHostile(entity)))
                 {
-                    grids.Add(grid);
+                    if (target.GetLane() == l)
+                        hasEnemy = true;
+                }
+                return hasEnemy;
+            });
+            List<LawnGrid> grids = new List<LawnGrid>();
+            if (preferredLane.Count() > 0)
+            {
+                foreach (int l in preferredLane)
+                {
+                    var grid = entity.Level.GetGrid(entity.GetColumn(), l);
+                    if (grid != null && grid.CanSpawnEntity(VanillaContraptionID.mineTNT))
+                    {
+                        grids.Add(grid);
+                    }
+                }
+            }
+            if (grids.Count() <= 0)
+            {
+                for (int y = 0; y < entity.Level.GetMaxLaneCount(); y++)
+                {
+                    var grid = entity.Level.GetGrid(entity.GetColumn(), y);
+                    if (grid != null && grid.CanSpawnEntity(VanillaContraptionID.mineTNT))
+                    {
+                        grids.Add(grid);
+                    }
                 }
             }
             var selectedGrids = grids.GroupBy(g => g.Column).SelectMany(g => g.Shuffle(entity.RNG)).Take(1);
