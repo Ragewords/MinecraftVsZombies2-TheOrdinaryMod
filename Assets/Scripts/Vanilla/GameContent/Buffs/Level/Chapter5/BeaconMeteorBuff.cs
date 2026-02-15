@@ -53,14 +53,7 @@ namespace MVZ2.GameContent.Buffs.Level
                             var rng = GetRNG(buff);
                             if (rng != null)
                             {
-                                if (GetBombardVariant(buff) == BOMBARD_VARIANT_CARPET)
-                                {
-                                    CarpetBombard(buff.Level, rng, GetFaction(buff), GetDamage(buff), GetCarpetLane(buff), buff.Level.GetMaxColumnCount() - GetCount(buff), GetHSVOffset(buff), GetVariant(buff));
-                                }
-                                else
-                                {
-                                    RandomBombard(buff.Level, rng, GetFaction(buff), GetDamage(buff), GetHSVOffset(buff), GetVariant(buff));
-                                }
+                                SpawnMeteor(buff.Level, rng, GetFaction(buff), GetDamage(buff), GetHSVOffset(buff), GetVariant(buff));
                             }
 
                             var count = GetCount(buff);
@@ -75,19 +68,7 @@ namespace MVZ2.GameContent.Buffs.Level
                     break;
             }
         }
-        public static void CarpetBombard(LevelEngine level, RandomGenerator rng, int faction, float damage, int lane, int column, Vector3 hsvOffset, int variant)
-        {
-            var x = level.GetEntityColumnX(column);
-            if (faction == level.Option.RightFaction)
-            {
-                x = level.GetEntityColumnX(level.GetMaxColumnCount() - 1 - column);
-            }
-            var z = level.GetEntityLaneZ(lane);
-            var y = level.GetGroundY(x, z);
-            var landPos = new Vector3(x, y, z);
-            SpawnMeteor(level, rng, landPos, faction, damage, hsvOffset, variant);
-        }
-        public static void RandomBombard(LevelEngine level, RandomGenerator rng, int faction, float damage, Vector3 hsvOffset, int variant)
+        public static Entity? SpawnMeteor(LevelEngine level, RandomGenerator rng, int faction, float damage, Vector3 hsvOffset, int variant)
         {
             var column = rng.Next(0, level.GetMaxColumnCount());
             var lane = rng.Next(0, level.GetMaxLaneCount());
@@ -95,10 +76,7 @@ namespace MVZ2.GameContent.Buffs.Level
             var z = level.GetEntityLaneZ(lane);
             var y = level.GetGroundY(x, z);
             var landPos = new Vector3(x, y, z);
-            SpawnMeteor(level, rng, landPos, faction, damage, hsvOffset, variant);
-        }
-        public static Entity? SpawnMeteor(LevelEngine level, RandomGenerator rng, Vector3 landPos, int faction, float damage, Vector3 hsvOffset, int variant)
-        {
+
             var velX = rng.Next(VELOCITY_X_MIN, VELOCITY_X_MAX);
             var velZ = rng.Next(VELOCITY_X_MIN, VELOCITY_X_MAX);
             var velocity = new Vector3(velX, VELOCITY_Y, velZ);
@@ -133,10 +111,6 @@ namespace MVZ2.GameContent.Buffs.Level
         public static FrameTimer? GetTimer(Buff buff) => buff.GetProperty<FrameTimer>(PROP_TIMER);
         public static void SetRNG(Buff buff, RandomGenerator value) => buff.SetProperty(PROP_RNG, value);
         public static RandomGenerator? GetRNG(Buff buff) => buff.GetProperty<RandomGenerator>(PROP_RNG);
-        public static void SetBombardVariant(Buff buff, int value) => buff.SetProperty(PROP_BOMBARD_VARIANT, value);
-        public static int GetBombardVariant(Buff buff) => buff.GetProperty<int>(PROP_BOMBARD_VARIANT);
-        public static void SetCarpetLane(Buff buff, int value) => buff.SetProperty(PROP_CARPET_LANE, value);
-        public static int GetCarpetLane(Buff buff) => buff.GetProperty<int>(PROP_CARPET_LANE);
         public const float VELOCITY_X_MIN = -5;
         public const float VELOCITY_X_MAX = 5;
         public const float VELOCITY_Z_MIN = -5;
@@ -144,8 +118,6 @@ namespace MVZ2.GameContent.Buffs.Level
         public const float VELOCITY_Y = -25;
         public const int STATE_WAIT = 0;
         public const int STATE_FALL = 1;
-        public const int BOMBARD_VARIANT_CARPET = 0;
-        public const int BOMBARD_VARIANT_RANDOM = 1;
         public const int FALL_INTERVAL = 6;
         public const int VARIANT_DEFAULT = 0;
         public const int VARIANT_BOULDER = 1;
@@ -157,7 +129,5 @@ namespace MVZ2.GameContent.Buffs.Level
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
         public static readonly VanillaBuffPropertyMeta<RandomGenerator> PROP_RNG = new VanillaBuffPropertyMeta<RandomGenerator>("rng");
         public static readonly VanillaBuffPropertyMeta<int> PROP_STATE = new VanillaBuffPropertyMeta<int>("state");
-        public static readonly VanillaBuffPropertyMeta<int> PROP_BOMBARD_VARIANT = new VanillaBuffPropertyMeta<int>("bombard_variant");
-        public static readonly VanillaBuffPropertyMeta<int> PROP_CARPET_LANE = new VanillaBuffPropertyMeta<int>("carpet_lane");
     }
 }

@@ -58,6 +58,10 @@ namespace MVZ2.GameContent.Contraptions
             else
             {
                 var evoTimer = GetEvocationTimer(entity);
+                if (evoTimer != null && evoTimer.PassedInterval(6))
+                {
+                    EvokedShoot(entity);
+                }
                 if (evoTimer.RunToExpiredAndNotNull())
                 {
                     entity.SetEvoked(false);
@@ -121,28 +125,24 @@ namespace MVZ2.GameContent.Contraptions
             timer?.Reset();
 
 
-            // ת�����ежԵ���ʯBuff��
+            // 转化所有敌对的陨石Buff。
             var faction = entity.GetFaction();
             foreach (var enemyBuff in entity.Level.GetBuffs<BeaconMeteorBuff>())
             {
                 if (!EngineEntityExt.IsHostile(faction, BeaconMeteorBuff.GetFaction(enemyBuff)))
                     continue;
-                int variant = BeaconMeteorBuff.GetBombardVariant(enemyBuff);
-                float multiplier = variant == BeaconMeteorBuff.BOMBARD_VARIANT_CARPET ? EVOCATION_DAMAGE_MULTIPLIER_CARPET : EVOCATION_DAMAGE_MULTIPLIER_RANDOM;
                 BeaconMeteorBuff.SetFaction(enemyBuff, faction);
-                BeaconMeteorBuff.SetDamage(enemyBuff, entity.GetDamage() * multiplier);
+                BeaconMeteorBuff.SetDamage(enemyBuff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
                 BeaconMeteorBuff.SetHSVOffset(enemyBuff, Vector3.zero);
                 BeaconMeteorBuff.SetVariant(enemyBuff, BeaconMeteorBuff.VARIANT_DEFAULT);
             }
 
-            // ������ʯBUFF��
+            // 添加陨石BUFF。
             var buff = entity.Level.NewBuff<BeaconMeteorBuff>();
             BeaconMeteorBuff.SetFaction(buff, faction);
-            BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER_CARPET);
-            BeaconMeteorBuff.SetCount(buff, entity.Level.GetMaxColumnCount());
+            BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * EVOCATION_DAMAGE_MULTIPLIER);
+            BeaconMeteorBuff.SetCount(buff, EVOCATION_METEOR_COUNT);
             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
-            BeaconMeteorBuff.SetBombardVariant(buff, BeaconMeteorBuff.BOMBARD_VARIANT_CARPET);
-            BeaconMeteorBuff.SetCarpetLane(buff, entity.RNG.Next(entity.Level.GetMaxLaneCount()));
             entity.Level.AddBuff(buff);
         }
         public static FrameTimer? GetShootTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_SHOOT_TIMER);
@@ -160,8 +160,7 @@ namespace MVZ2.GameContent.Contraptions
         protected Detector detector;
         private const int ATTACK_INTERVAL_MIN = 40;
         private const int ATTACK_INTERVAL_MAX = 45;
-        public const float EVOCATION_DAMAGE_MULTIPLIER_CARPET = 15;
-        public const float EVOCATION_DAMAGE_MULTIPLIER_RANDOM = 45;
+        public const float EVOCATION_DAMAGE_MULTIPLIER = 45;
         public const int EVOCATION_METEOR_COUNT = 10;
 
         public static Vector3[] shootDirections = new Vector3[]

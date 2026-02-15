@@ -1694,7 +1694,6 @@ namespace MVZ2.GameContent.Bosses
                             BeaconMeteorBuff.SetDamage(buff, entity.GetDamage() * METEOR_DAMAGE_MULTIPLIER);
                             BeaconMeteorBuff.SetCount(buff, METEOR_COUNT);
                             BeaconMeteorBuff.SetHSVOffset(buff, METEOR_HSV_OFFSET);
-                            BeaconMeteorBuff.SetBombardVariant(buff, BeaconMeteorBuff.BOMBARD_VARIANT_RANDOM);
                             BeaconMeteorBuff.SetVariant(buff, BeaconMeteorBuff.VARIANT_BOULDER);
                             BeaconMeteorBuff.SetRNG(buff, new RandomGenerator(entity.RNG.Next()));
                             entity.Level.AddBuff(buff);
