@@ -110,6 +110,8 @@ GameObject:
   - component: {fileID: 8100769416680291803}
   - component: {fileID: 7360928242490656681}
   - component: {fileID: 4268100674727401770}
+  - component: {fileID: 5685481654510999460}
+  - component: {fileID: 2328827635519142662}
   m_Layer: 0
   m_Name: StaticParticle
   m_TagString: Untagged
@@ -4947,6 +4949,32 @@ MonoBehaviour:
   propertyName: DangerLevel
   comparer: 4
   constValue: 2
+--- !u!114 &5685481654510999460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927213632553475558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
+--- !u!114 &2328827635519142662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927213632553475558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6b70938912efd41ae1b06e741430ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAmount: 0
 --- !u!1 &8376057809280146929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,6 +4987,8 @@ GameObject:
   - component: {fileID: 8514490505616764705}
   - component: {fileID: 2358587407371365508}
   - component: {fileID: 6890279219401331810}
+  - component: {fileID: 28302250316111782}
+  - component: {fileID: 1114262342557998050}
   m_Layer: 0
   m_Name: EmberParticle
   m_TagString: Untagged
@@ -9794,6 +9824,32 @@ MonoBehaviour:
   propertyName: DangerLevel
   comparer: 4
   constValue: 1
+--- !u!114 &28302250316111782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376057809280146929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ce2b2a42b33624081ebb4fff663cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludedInGroup: 0
+--- !u!114 &1114262342557998050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376057809280146929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6b70938912efd41ae1b06e741430ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAmount: 0
 --- !u!1001 &3950514745167477870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10124,11 +10180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: particles.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: renderers.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: transforms.Array.size
@@ -10146,6 +10202,14 @@ PrefabInstance:
       propertyPath: particles.Array.data[0]
       value: 
       objectReference: {fileID: 8116022509340892349}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: particles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1114262342557998050}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: particles.Array.data[2]
+      value: 
+      objectReference: {fileID: 2328827635519142662}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: renderers.Array.data[0]
       value: 
@@ -10194,6 +10258,14 @@ PrefabInstance:
       propertyPath: renderers.Array.data[11]
       value: 
       objectReference: {fileID: 5302920564083395686}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: renderers.Array.data[12]
+      value: 
+      objectReference: {fileID: 28302250316111782}
+    - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
+      propertyPath: renderers.Array.data[13]
+      value: 
+      objectReference: {fileID: 5685481654510999460}
     - target: {fileID: 4945177359727147975, guid: ac946405a2f0e214793398af6e8e9112, type: 3}
       propertyPath: transforms.Array.data[0]
       value: 
