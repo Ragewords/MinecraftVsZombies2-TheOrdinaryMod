@@ -36,12 +36,9 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var effects = param.deathInfo.Effects;
             if (effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || effects.HasEffect(VanillaDamageEffects.DIG))
                 return;
-            if (entity.RNG.Next(4) == 0)
-            {
-                var transformParam = sourceEntity.GetSpawnParams();
-                entity.Spawn(VanillaEnemyID.gargoyle, entity.Position, transformParam);
-                entity.PlaySound(VanillaSoundID.lightningAttack);
-            }
+            var transformParam = sourceEntity.GetSpawnParams();
+            entity.Spawn(VanillaEnemyID.gargoyle, entity.Position, transformParam);
+            entity.PlaySound(VanillaSoundID.lightningAttack);
         }
     }
 }

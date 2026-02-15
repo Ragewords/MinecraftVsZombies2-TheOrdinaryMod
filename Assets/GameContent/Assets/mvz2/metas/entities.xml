@@ -1634,7 +1634,7 @@
                 <id name="mvz2:crySound" value="mvz2:gargoyle_cry" />
                 <id name="mvz2:deathSound" value="mvz2:gargoyle_death" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
-                <int name="mvz2:cost" value="100" />
+                <int name="mvz2:cost" value="150" />
             </properties>
         </humanoid>
         <humanoid id="ghost" name="幽灵" deathMessage="现在有伴了。">
