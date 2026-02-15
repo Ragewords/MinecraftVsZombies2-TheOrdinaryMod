@@ -97,7 +97,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             entity.PlaySound(VanillaSoundID.crystalBreak, volume: 0.5f);
             entity.CreateFragmentAndPlay(entity.GetCenter(), VanillaFragmentID.divineShield, 50);
-            Explode(entity, 50, 120, entity.GetFaction());
+            Explode(entity, 50, 40, entity.GetFaction());
         }
         public static void Explode(Entity entity, float damage, float range, int faction)
         {
