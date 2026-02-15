@@ -577,7 +577,7 @@
                 <p>金苹果可以魅惑一个近战攻击它的敌方怪物，使其为你而战。</p>
             </header>
             <properties>
-                <p>增益：<![CDATA[<color=red>魅惑的怪物+50%生命值</color>]]></p>
+                <p>增益：<![CDATA[<color=red>魅惑的怪物+50%最大生命值</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发出彩色炫光，被魅惑的敌方怪物变为突变僵尸</color>]]></p>
             </properties>
             <flavor>
@@ -1594,7 +1594,7 @@
                 <p>炮弹僵尸由炮手僵尸发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100+60</color>]]></p>
+                <p>生命：<![CDATA[<color=red>100+40</color>]]></p>
                 <p>速度：<![CDATA[<color=red>4</color>]]></p>
             </properties>
             <flavor>
@@ -1607,7 +1607,7 @@
                 <p>飞天海盗僵尸会快速突入你的阵型，手中的弯刀使得其能够造成更高的伤害。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>800</color>]]></p>
+                <p>生命：<![CDATA[<color=red>640</color>]]></p>
                 <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域；手持弯刀时伤害×200%</color>]]></p>
             </properties>
             <flavor>

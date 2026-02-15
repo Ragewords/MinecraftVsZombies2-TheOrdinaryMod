@@ -96,7 +96,7 @@
         <entry id="cannonball_hat" type="mvz2:helmet">
             <props>
                 <id name="mvz2:shell" value="mvz2:leather" />
-                <float name="mvz2:maxHealth" value="60" />
+                <float name="mvz2:maxHealth" value="40" />
             </props>
         </entry>
         <entry id="pop_captain_cap" type="mvz2:helmet" ignored="true">
