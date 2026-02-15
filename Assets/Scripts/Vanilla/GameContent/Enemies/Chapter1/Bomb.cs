@@ -33,7 +33,7 @@ namespace MVZ2.GameContent.Enemies
                 entity.Timeout--;
                 if (entity.Timeout <= 0)
                 {
-                    entity.Die(entity);
+                    entity.Die(new DamageEffectList(VanillaDamageEffects.NO_NEUTRALIZE), entity);
                 }
             }
             if (entity.Timeout == 30)

@@ -1401,12 +1401,12 @@
         </entry>
         <entry id="mvz2:berserker">
             <header>
-                <p>狂战士在死亡时会产生<![CDATA[<b>非常</b>]]>猛烈的爆炸。</p>
+                <p>狂战士在死亡时会产生<![CDATA[<b>非常</b>]]>猛烈的爆炸。在场上停留的越久，他们就越危险。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>爆炸伤害：<![CDATA[<color=red>300，150（火焰），75（闪电）</color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red>300，200（火焰），100（闪电）</color>]]></p>
             </properties>
             <flavor>
                 <p>没人喜欢狂战士，他们就是一群到处搞破坏的疯子，追究起责任时还要倒打你一耙，穷途末路了还要拉几个人下水。</p>
@@ -1428,7 +1428,7 @@
                 <p>马速度：<![CDATA[<color=red>2（跳跃前），1（跳跃后）</color>]]></p>
                 <p>身体速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>头颅速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>弱点：<![CDATA[<color=red>转生苹果，金质物品，无法跳过<tag id="mvz2:high" />高器械</color>]]></p>
+                <p>弱点：<![CDATA[<color=red>金质物品，无法跳过<tag id="mvz2:high" />高器械</color>]]></p>
             </properties>
             <flavor>
                 <p>因为无头骑士总是喜欢在写文章的时候把开头擦掉。</p>

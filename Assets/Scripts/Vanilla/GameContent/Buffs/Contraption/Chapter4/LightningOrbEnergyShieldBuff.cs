@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Fragments;
 using MVZ2.Vanilla.Audios;
@@ -68,7 +69,14 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             var amount = damage.Amount;
             foreach (var buff in entity.GetBuffs<LightningOrbEnergyShieldBuff>())
             {
-                TakeDamage(buff, amount);
+                if (!damage.HasEffect(VanillaDamageEffects.LIGHTNING))
+                {
+                    TakeDamage(buff, amount);
+                }
+                else
+                {
+                    Heal(buff, amount);
+                }
                 result.SetFinalValue(false);
             }
         }
