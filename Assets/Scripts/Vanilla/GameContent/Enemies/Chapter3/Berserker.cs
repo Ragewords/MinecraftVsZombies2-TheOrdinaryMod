@@ -137,7 +137,7 @@ namespace MVZ2.GameContent.Enemies
             entity.PlaySound(VanillaSoundID.powerOff, scaleX == 0 ? 1000 : 1 / (scaleX));
         }
         #region 常量
-        private const int CAST_COOLDOWN = 300;
+        private const int CAST_COOLDOWN = 240;
         public static void SetDangerLevel(Entity entity, int value) => entity.SetBehaviourField(PROP_DANGER_LEVEL, value);
         public static int GetDangerLevel(Entity entity) => entity.GetBehaviourField<int>(PROP_DANGER_LEVEL);
         public static void SetDangerTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_STATE_TIMER, timer);
