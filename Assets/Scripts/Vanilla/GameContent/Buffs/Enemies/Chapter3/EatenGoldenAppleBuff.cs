@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModifier(new Vector3Modifier(EngineEntityProps.SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
             AddModifier(new Vector3Modifier(EngineEntityProps.DISPLAY_SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
             AddModifier(new Vector3Modifier(VanillaEntityProps.SHADOW_SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
-            AddModifier(new MaxHealthModifier(NumberOperator.Multiply, 1.5f));
+            AddModifier(new MaxHealthModifier(NumberOperator.AddMultiple, 0.5f));
         }
         public override void PostUpdate(Buff buff)
         {

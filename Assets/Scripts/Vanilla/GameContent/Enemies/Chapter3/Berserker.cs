@@ -69,11 +69,11 @@ namespace MVZ2.GameContent.Enemies
                 var dangerLevel = GetDangerLevel(entity);
                 if (dangerLevel >= 1)
                 {
-                    FireExplode(entity, entity.GetDamage() * 2 / 3, effects, faction);
+                    FireExplode(entity, entity.GetDamage() * 2 / 3f, effects, faction);
                 }
                 if (dangerLevel >= 2)
                 {
-                    LightningExplode(entity, damage / 3, effects, faction);
+                    LightningExplode(entity, damage / 3f, effects, faction);
                 }
             }
         }
