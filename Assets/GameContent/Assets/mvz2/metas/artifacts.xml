@@ -20,7 +20,7 @@
         </unlock>
     </artifact>
     
-    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，处于被控制的状态下恢复量×3" sprite="mvz2:artifacts/sweet_sleep_pillow">
+    <artifact id="sweet_sleep_pillow" name="安眠枕" tooltip="器械每秒恢复10点耐久，被控制时恢复量×3" sprite="mvz2:artifacts/sweet_sleep_pillow">
         <unlock>
             <condition required="mvz2:level.dream_2" />
         </unlock>
