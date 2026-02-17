@@ -2077,7 +2077,7 @@
                 <vector3 name="mvz2:starting_position_offset" x="0" y="60" z="0" />
                 <id name="mvz2:starting_armor" value="mvz2:flying_pirate_hat" />
                 <float name="mvz2:fallResistance" value="20" />
-                <float name="mvz2:maxHealth" value="640" />
+                <float name="mvz2:maxHealth" value="540" />
                 <int name="mvz2:cost" value="175" />
             </properties>
         </zombie>
