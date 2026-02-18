@@ -39,7 +39,7 @@
             <condition required="mvz2:achievement.overdraw" />
         </unlock>
     </achievement>
-    <achievement id="railgun" name="电磁炮" description="使用被闪电充能的TNT杀死一只炮手僵尸。" icon="mvz2:achievements/railgun">
+    <achievement id="railgun" name="电磁炮" description="使用被闪电充能的Etho台阶杀死一只炮手僵尸。" icon="mvz2:achievements/railgun">
         <unlock>
             <condition required="mvz2:achievement.railgun" />
         </unlock>

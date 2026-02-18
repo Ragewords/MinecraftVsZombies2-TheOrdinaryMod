@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-02-18 04:49+0800\n"
+"POT-Creation-Date: 2026-02-18 11:38+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3379,7 +3379,7 @@ msgstr ""
 #. Description for achievement mvz2:railgun
 #: Achievements meta file
 msgctxt "achievement"
-msgid "使用被闪电充能的TNT杀死一只炮手僵尸。"
+msgid "使用被闪电充能的Etho台阶杀死一只炮手僵尸。"
 msgstr ""
 
 #. Name for achievement mvz2:midas_touchdown
