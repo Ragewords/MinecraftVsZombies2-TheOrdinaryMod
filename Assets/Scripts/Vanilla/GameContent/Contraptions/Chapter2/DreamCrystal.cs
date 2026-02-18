@@ -21,9 +21,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateAI(Entity contraption)
         {
             base.UpdateAI(contraption);
-            var health = contraption.Health;
-            var maxHealth = contraption.GetMaxHealth();
-            var heal_multipiler = GetDividedValue3(health, maxHealth);
+            var heal_multipiler = GetDividedValue3(contraption.Health, contraption.GetMaxHealth());
             contraption.HealEffects(HEAL_PER_FRAME * heal_multipiler, contraption);
         }
         protected override void UpdateLogic(Entity contraption)
@@ -41,16 +39,14 @@ namespace MVZ2.GameContent.Contraptions
             contraption.AddBuff<DreamCrystalEvocationBuff>();
             contraption.PlaySound(VanillaSoundID.sparkle);
         }
-        public int GetDividedValue3(float inputValue, float maxValue)
+        public float GetDividedValue3(float inputValue, float maxValue)
         {
             var firstThird = maxValue / 3f;
-            var secondThird = firstThird * 2f;
             inputValue = Mathf.Clamp(inputValue, 0f, maxValue);
 
-            if (inputValue < firstThird) return 3;
-            else if (inputValue < secondThird) return 2;
-            else return 1;
+            if (inputValue < firstThird) return 1.5f;
+            else return 1f;
         }
-        public const float HEAL_PER_FRAME = 1;
+        public const float HEAL_PER_FRAME = 2;
     }
 }

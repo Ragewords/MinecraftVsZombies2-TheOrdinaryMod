@@ -440,7 +440,7 @@
                 <p>技能：<![CDATA[<color=red>铁砧从天而降，砸伤敌人并阻挡怪物们前进</color>]]></p>
             </properties>
             <flavor>
-                <p>从前重力方块坐在一个苹果树下，突然一个苹果掉到了它头上，差点把它砸进地里——那是个转生苹果。</p>
+                <p>从前重力方块坐在一个苹果树下，突然一个苹果掉到了它头上，差点把它砸进地里——那是个金苹果。</p>
             </flavor>
         </entry>
         <entry id="mvz2:vortex_hopper">
@@ -490,7 +490,7 @@
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>恢复速度：<![CDATA[<color=red>30-60-90/秒（随耐久变化）</color>]]></p>
+                <p>恢复速度：<![CDATA[<color=red>60-90/秒（随耐久变化）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，并为周围的器械恢复耐久</color>]]></p>
             </properties>
             <flavor>
