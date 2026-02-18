@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-02-17 09:36+0800\n"
+"POT-Creation-Date: 2026-02-18 04:49+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1029,7 +1029,7 @@ msgstr ""
 #. Flavor for contraptions mvz2:gravity_pad
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "从前重力方块坐在一个苹果树下，突然一个苹果掉到了它头上，差点把它砸进地里——那是个转生苹果。"
+msgid "从前重力方块坐在一个苹果树下，突然一个苹果掉到了它头上，差点把它砸进地里——那是个金苹果。"
 msgstr ""
 
 #. Header for contraptions mvz2:vortex_hopper
@@ -1108,7 +1108,7 @@ msgstr ""
 msgctxt "contraptions.description"
 msgid ""
 "耐久：<color=red>2000</color>\n"
-"恢复速度：<color=red>30-60-90/秒（随耐久变化）</color>\n"
+"恢复速度：<color=red>60-90/秒（随耐久变化）</color>\n"
 "技能：<color=red>进入无敌状态，并为周围的器械恢复耐久</color>"
 msgstr ""
 
