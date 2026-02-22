@@ -105,7 +105,6 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 3
             public const string charm = "charm";
-            public const string mesmerize = "mesmerize";
             public const string electricChain = "electric_chain";
             public const string withered = "withered";
 
@@ -472,7 +471,7 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 3
             public static readonly NamespaceID charm = Get(VanillaBuffNames.Entity.charm);
-            public static readonly NamespaceID mesmerize = Get(VanillaBuffNames.Entity.mesmerize);
+            public static readonly NamespaceID electricChain = Get(VanillaBuffNames.Entity.electricChain);
             public static readonly NamespaceID withered = Get(VanillaBuffNames.Entity.withered);
 
             // Chapter 4

@@ -191,21 +191,6 @@ namespace MVZ2.Vanilla.Callbacks
                 this.source = source;
             }
         }
-        public struct PostReincarnateParams
-        {
-            public Entity entity;
-            public NamespaceID? transformID;
-            public int faction;
-            public ILevelSourceReference? source;
-
-            public PostReincarnateParams(Entity entity, NamespaceID? transformID, int faction, ILevelSourceReference? source)
-            {
-                this.entity = entity;
-                this.transformID = transformID;
-                this.faction = faction;
-                this.source = source;
-            }
-        }
 
 
         public struct ContraptionSacrificeValueParams
@@ -297,7 +282,6 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostApplyStatusEffectParams> POST_APPLY_STATUS_EFFECT = new();
         public readonly static CallbackType<PreRemoveStatusEffectParams> PRE_REMOVE_STATUS_EFFECT = new();
         public readonly static CallbackType<PostRemoveStatusEffectParams> POST_REMOVE_STATUS_EFFECT = new();
-        public readonly static CallbackType<PostReincarnateParams> POST_ENTITY_REINCARNATE = new();
 
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_TRIGGER = new();
         public readonly static CallbackType<EntityCallbackParams> POST_CONTRAPTION_EVOKE = new();

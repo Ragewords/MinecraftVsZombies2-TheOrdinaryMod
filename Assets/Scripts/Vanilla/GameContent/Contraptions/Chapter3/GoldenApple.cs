@@ -7,7 +7,6 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -59,8 +58,6 @@ namespace MVZ2.GameContent.Contraptions
                 enemy.Remove();
                 enemy.PlaySound(VanillaSoundID.charmed);
                 enemy.PlaySound(VanillaSoundID.odd);
-                var callbackParam = new VanillaLevelCallbacks.PostReincarnateParams(enemy, VanillaEnemyID.mutantZombie, target.GetFaction(), new EntitySourceReference(target));
-                enemy.Level.Triggers.RunCallback(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, callbackParam);
             }
             else
             {
@@ -73,18 +70,6 @@ namespace MVZ2.GameContent.Contraptions
                 enemy.PlaySound(VanillaSoundID.floop);
             }
             target.Remove();
-        }
-        public static void Reincarnation(Entity entity, NamespaceID? ID, int faction, ILevelSourceReference? source)
-        {
-            if (ID == null)
-                return;
-            entity.Spawn(ID, entity.Position)?.Let(e =>
-            {
-                e.CharmPermanent(faction, source);
-            });
-            entity.Spawn(VanillaEffectID.mindControlLines, entity.GetCenter());
-            entity.Neutralize();
-            entity.Remove();
         }
     }
 }

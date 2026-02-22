@@ -2,7 +2,6 @@
 
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Contraptions;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -19,8 +18,6 @@ namespace MVZ2.GameContent.Enemies
         public DullahanHead(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_APPLY_STATUS_EFFECT, PostEntityCharmCallback, filter: VanillaBuffID.Entity.charm);
-            AddTrigger(VanillaLevelCallbacks.POST_APPLY_STATUS_EFFECT, PostEntityMesmerizeCallback, filter: VanillaBuffID.Entity.mesmerize);
-            AddTrigger(VanillaLevelCallbacks.POST_ENTITY_REINCARNATE, PostEntityReincarnateCallback);
         }
         public override void Init(Entity entity)
         {
@@ -38,27 +35,6 @@ namespace MVZ2.GameContent.Enemies
             if (!body.ExistsAndAlive())
                 return;
             CharmBuff.CloneCharm(buff, body);
-        }
-        private void PostEntityMesmerizeCallback(VanillaLevelCallbacks.PostApplyStatusEffectParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            var buff = param.buff;
-            if (!entity.IsEntityOf(VanillaEnemyID.dullahanHead))
-                return;
-            var body = GetBody(entity);
-            if (!body.ExistsAndAlive())
-                return;
-            MesmerizeBuff.CloneMesmerize(buff, body);
-        }
-        private void PostEntityReincarnateCallback(VanillaLevelCallbacks.PostReincarnateParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            if (!entity.IsEntityOf(VanillaEnemyID.dullahanHead))
-                return;
-            var body = GetBody(entity);
-            if (!body.ExistsAndAlive())
-                return;
-            GoldenApple.Reincarnation(body, param.transformID, param.faction, param.source);
         }
         public static Entity? GetBody(Entity entity)
         {

@@ -1154,51 +1154,6 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
-
-        #region 催眠
-        public static void MesmerizePermanent(this Entity entity, ILevelSourceReference? source)
-        {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
-            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
-                return;
-            var buff = entity.GetFirstBuff(buffDefinition);
-            if (buff == null)
-            {
-                buff = entity.AddBuff(buffDefinition);
-            }
-            MesmerizeBuff.SetPermanent(buff);
-            buff.Update();
-            PostApplyStatusEffect(entity, buff, source);
-        }
-
-        public static void MesmerizeWithController(this Entity entity, Entity controller, ILevelSourceReference? source)
-        {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
-            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
-                return;
-            var buff = entity.GetFirstBuff(buffDefinition);
-            if (buff == null)
-            {
-                buff = entity.AddBuff(buffDefinition);
-            }
-            MesmerizeBuff.SetController(buff, controller);
-            buff.Update();
-            PostApplyStatusEffect(entity, buff, source);
-        }
-        public static void RemoveMesmerize(this Entity entity, ILevelSourceReference? source)
-        {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.mesmerize);
-            if (buffDefinition == null || !PreRemoveStatusEffect(entity, buffDefinition, source))
-                return;
-            entity.RemoveBuffs(buffDefinition);
-            PostRemoveStatusEffect(entity, buffDefinition, source);
-        }
-        public static bool IsMesmerized(this Entity entity)
-        {
-            return entity.HasBuff<MesmerizeBuff>();
-        }
-        #endregion
-
         #endregion
 
         #region 强力冲击

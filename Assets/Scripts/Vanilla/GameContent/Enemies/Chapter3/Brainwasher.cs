@@ -29,12 +29,6 @@ namespace MVZ2.GameContent.Enemies
                 target.CharmPermanent(entity.GetFaction(), new EntitySourceReference(entity));
                 entity.PlaySound(VanillaSoundID.mindControl);
             }
-            var targets_enemy = entity.Level.FindEntities(e => e.IsFriendly(entity) && e.Type == EntityTypes.ENEMY).RandomTake(10, entity.RNG);
-            foreach (var target in targets_enemy)
-            {
-                target.MesmerizePermanent(new EntitySourceReference(entity));
-                entity.PlaySound(VanillaSoundID.mindControl);
-            }
         }
     }
 }
