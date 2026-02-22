@@ -53,8 +53,11 @@ namespace MVZ2.GameContent.Projectiles
             foreach (var target in collisionDetectBuffer)
             {
                 var projectile = target.Entity;
-                projectile.Remove();
-                entity.PlaySound(VanillaSoundID.hellPlanetDeflect);
+                if (!projectile.DontHitEntities())
+                {
+                    projectile.Remove();
+                    entity.PlaySound(VanillaSoundID.hellPlanetDeflect);
+                }
             }
         }
 

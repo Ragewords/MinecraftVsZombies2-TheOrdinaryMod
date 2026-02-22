@@ -100,7 +100,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void EvokedShoot(Entity entity)
         {
-            var shotSpeed = entity.GetShotVelocity().magnitude;
+            var shotSpeed = entity.GetShotVelocity().magnitude * 1.5f;
             foreach (var direction in shootDirections)
             {
                 var spawnParam = entity.GetSpawnParams();
@@ -116,6 +116,7 @@ namespace MVZ2.GameContent.Contraptions
                 shootParams.spawnParam = spawnParam;
                 entity.ShootProjectile(shootParams);
             }
+            entity.TriggerAnimation("Shoot");
         }
         protected override void OnEvoke(Entity entity)
         {
