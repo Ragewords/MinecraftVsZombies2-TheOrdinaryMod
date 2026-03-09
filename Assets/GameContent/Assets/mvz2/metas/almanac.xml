@@ -772,12 +772,12 @@
         <!-- Chapter 5 -->
         <entry id="mvz2:gunpowder_barrel">
             <header>
-                <p>火药桶能生产为你提供大量能量的火药，但若未及时拾取，则会炸伤周围的友方单位。火药桶在被破坏时也会爆炸。</p>
+                <p>火药桶能生产为你提供大量能量的火药，但若未及时拾取，则会炸伤周围的友方单位。火药桶在被除铁镐外的方式破坏时也会爆炸。</p>
             </header>
             <properties>
                 <p>爆炸伤害：<![CDATA[<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
-                <p>生产时间：<![CDATA[<color=red>36-30秒（场上每个额外的火药桶-1秒）</color>]]></p>
+                <p>生产时间：<![CDATA[<color=red>36秒</color>]]></p>
                 <p>提供能量：<![CDATA[<color=red>50</color>]]></p>
                 <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供100能量，但是会更快爆炸</color>]]></p>
             </properties>
