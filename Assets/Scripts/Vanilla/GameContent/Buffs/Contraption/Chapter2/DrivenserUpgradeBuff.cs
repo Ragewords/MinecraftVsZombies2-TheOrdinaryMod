@@ -14,7 +14,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
         public DrivenserUpgradeBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new Vector3Modifier(VanillaEntityProps.SHOT_VELOCITY, NumberOperator.Multiply, Vector3.one * 1.25f));
-            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 1.6f));
+            AddModifier(new FloatModifier(VanillaEntityProps.ATTACK_SPEED, NumberOperator.Multiply, 1.5f));
         }
     }
 }
