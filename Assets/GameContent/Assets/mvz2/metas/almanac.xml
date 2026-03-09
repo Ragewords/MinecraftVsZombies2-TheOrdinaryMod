@@ -635,7 +635,7 @@
                 <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>3（音符），2（音浪）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>3（音符），1（音浪）</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
                 <p>射程：<![CDATA[<color=red>4格</color>]]></p>

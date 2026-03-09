@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             entity.TriggerAnimation("Sound");
             var rangeMultiplier = entity.HasBuff<NoteBlockLoudBuff>() ? 2 : 1;
-            entity.Explode(entity.GetCenter(), SOUND_RADIUS * rangeMultiplier, entity.GetFaction(), entity.GetDamage() * SOUND_DAMAGE_MULTIPLIER, new DamageEffectList(VanillaDamageEffects.MUTE));
+            entity.Explode(entity.GetCenter(), SOUND_RADIUS * rangeMultiplier, entity.GetFaction(), entity.GetDamage() / 3f, new DamageEffectList(VanillaDamageEffects.MUTE));
         }
         public static List<EntityID>? GetNoteChildren(Entity entity)
         {
@@ -146,7 +146,6 @@ namespace MVZ2.GameContent.Contraptions
         public const int FIRE_INTERVAL = 45;
         public const int WAVE_INTERVAL = 5;
         public const int SOUND_RADIUS = 120;
-        public const float SOUND_DAMAGE_MULTIPLIER = 0.66666666666f;
         public const int MAX_NOTE_COUNT = 10;
         public static FrameTimer? GetWaveTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_WAVE_TIMER);
         public static void SetWaveTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_WAVE_TIMER, timer);
