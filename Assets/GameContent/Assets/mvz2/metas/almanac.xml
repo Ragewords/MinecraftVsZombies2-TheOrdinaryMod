@@ -819,16 +819,16 @@
         </entry>
         <entry id="mvz2:repeatenser">
             <header>
-                <p>连射发射器一次能发射三支箭矢，先发射一支，再发射两支。</p>
+                <p>原装发射器向敌人发射眩晕或击退怪物的原木。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>3支/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢和20支箭矢</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>3秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>50</color>]]></p>
+                <p>特点：<![CDATA[<color=red>原木会眩晕怪物0.5秒，并有50%概率击退怪物</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速发射5个100伤害，能够无视重量击退单格内所有怪物的原木</color>]]></p>
             </properties>
             <flavor>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍，因为它每次说话都要说两遍。</p>
-                <p>它没能有幸加入高频脉冲发射器的士兵队伍！因为它每次说话都要说两遍！</p>
+                <p>原装发射器名字里的“原装”并不代表它很原始，可不要望文生义，毕竟现代的发射器都是以它为蓝本制造的。</p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">
@@ -1065,18 +1065,18 @@
                 <tag id="mvz2:placement_repeatenser" />
             </tags>
             <header>
-                <p>高频脉冲发射器一次能发射六支箭矢，先发射一支，再发射两支，如此循环。</p>
+                <p>高频脉冲发射器一次能发射四支箭矢。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>6支/1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>4支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>永久改为发射十支或十一支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
+                <p>技能：<![CDATA[<color=red>永久改为发射六支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
             <flavor>
                 <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍！它们的入队要求十分严格！包括！！每句话都要说四遍！</p>
                 <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
-                <p>高——你闭嘴！</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高——闭嘴吧。</p>
             </flavor>
         </entry>
         <entry />

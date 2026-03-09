@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -13,57 +17,49 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.woodenBall)]
-    public class WoodenBall : ProjectileBehaviour, IHellfireIgniteBehaviour
+    [EntityBehaviourDefinition(VanillaProjectileNames.log)]
+    public class OakLog : ProjectileBehaviour, IHellfireIgniteBehaviour
     {
-        public WoodenBall(string nsp, string name) : base(nsp, name)
+        public OakLog(string nsp, string name) : base(nsp, name)
         {
         }
         public override void Update(Entity projectile)
         {
             base.Update(projectile);
-            float angleSpeed = -projectile.Velocity.x * 2.5f;
-            projectile.RenderRotation += Vector3.forward * angleSpeed;
-
             UpdateIgnited(projectile);
         }
         protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damage)
         {
             base.PostHitEntity(hitResult, damage);
             var projectile = hitResult.Projectile;
-
-            var dmg = projectile.GetDamage();
-            dmg -= 10f;
-            projectile.SetDamage(dmg);
-            var dmgDecreased = projectile.GetDamage();
-            if (dmgDecreased <= 0)
+            var other = hitResult.Other;
+            bool knockBack = projectile.RNG.Next(2) == 0;
+            bool evoked = projectile.GetProperty<bool>(PROP_EVOKED);
+            if (other.Type == EntityTypes.ENEMY)
             {
-                hitResult.Pierce = false;
-                return;
+                if (other.CanDeactive())
+                {
+                    other.Stun(15);
+                }
+                if (knockBack && !evoked)
+                {
+                    var vel = other.Velocity;
+                    vel.x += 10 * Mathf.Sign(projectile.Velocity.x) * other.GetWeakKnockbackMultiplier();
+                    other.Velocity = vel;
+                }
+                else if (evoked)
+                {
+                    detectBuffer.Clear();
+                    detector.DetectEntities(projectile, detectBuffer);
+                    foreach (var target in detectBuffer)
+                    {
+                        var vel = target.Velocity;
+                        vel.x += 10 * Mathf.Sign(projectile.Velocity.x);
+                        target.Velocity = vel;
+                    }
+                }
             }
-
-            var vel = projectile.Velocity;
-            var vel2D = new Vector2(vel.x, vel.z);
-            var speed = vel2D.magnitude;
-            vel.x = Mathf.Sign(vel.x) * speed * 0.5f;
-
-            var lane = projectile.GetLane();
-            var zSpeed = speed / 2 * Mathf.Sqrt(3);
-            int zDir;
-            if (lane <= 0)
-            {
-                zDir = -1;
-            }
-            else if (lane >= projectile.Level.GetMaxLaneCount() - 1)
-            {
-                zDir = 1;
-            }
-            else
-            {
-                zDir = projectile.RNG.Next(2) * 2 - 1;
-            }
-            vel.z = zDir * zSpeed;
-            projectile.Velocity = vel;
+            projectile.PlaySound(VanillaSoundID.logHit);
         }
         public void Ignite(Entity entity, Entity hellfire, bool cursed)
         {
@@ -111,6 +107,16 @@ namespace MVZ2.GameContent.Projectiles
             }
             projectile.SetModelProperty("IgniteState", igniteState);
         }
+        public static void SetEvoked(Entity entity, bool value)
+        {
+            entity.SetProperty(PROP_EVOKED, value);
+        }
         private List<Buff> ignitedBuffBuffer = new List<Buff>();
+        private Detector detector = new CubeDetector(50)
+        {
+            mask = EntityCollisionHelper.MASK_ENEMY
+        };
+        private List<Entity> detectBuffer = new List<Entity>();
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_EVOKED = new VanillaEntityPropertyMeta<bool>("evoked");
     }
 }
