@@ -141,8 +141,8 @@ namespace MVZ2.GameContent.Contraptions
 
         public const int REPEAT_INVERVAL = 7;
         public const int EVOCATION_TIME = 60;
-        public const int REPEAT_COUNT = 4;
-        public const int REPEAT_COUNT_UPGRADED = 6;
+        public const int REPEAT_COUNT = 6;
+        public const int REPEAT_COUNT_UPGRADED = 8;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");

@@ -186,7 +186,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能够生产火药，一次能给予大量的能量！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">但是，大量的回报也伴随着风险！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">如果火药没能及时被捡起，它就会爆炸！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">同时，如果火药桶被摧毁或者被挖掘，它也会产生爆炸！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">同时，如果火药桶被摧毁，它也会产生爆炸！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1" onClick="end">没时间介绍了！快捡走！</sentence>
       </sentences>
     </section>
@@ -253,7 +253,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1">这是三头发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">它可以向它所在的行，以及相邻的两行发射箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">同时，如果它位于最边缘位置，那么它会改为向自身所在行发射两支箭矢！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">同时，如果它位于最边缘位置，或者是相邻行上没有敌人，那么它会改为向自身所在行发射两支箭矢！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1" onClick="end">把你的火力扩散到全战场吧！</sentence>
       </sentences>
     </section>
@@ -432,10 +432,10 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">连射发射器！连射发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它一次会发射三支箭矢，先一支后两支！它一次会发射三支箭矢，先一支后两支！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">尽情重复吧！尽情重复吧！</sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">……？</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这是原装发射器，发射器之父！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能够向怪物发射原木！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">原木能击晕怪物！还有概率造成击退效果！</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">……什么叫原木能当子弹？</sentence>
       </sentences>
     </section>
   </group>
@@ -490,9 +490,9 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从连射发射器升级！需要——</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">一次发射六支箭矢！一次发射六支箭矢！一次发射六支箭矢！一次发射六支箭矢！一次发射六支箭矢！一次发射六支箭矢！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从原装发射器升级！需要——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_explosive" onStart="shake" onClick="end">好了！够了！</sentence>
       </sentences>
     </section>
@@ -1262,7 +1262,7 @@
         <sentence speaker="mvz2:shou" sounds="mvz2:dialog_weird">这东西怎么长得好像……我师傅的宝塔？</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">当然，这是个仿制品！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能把一整行的空地禁用并变为黄金，暂时无法在上面放置器械！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械做任何事！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械使用星之碎片！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">但是，每禁用一定数量的空地，它就会生成一个星之碎片！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">同时还可以利用绿宝石格子来攻击怪物！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy" onClick="end">把一切都点成黄金和宝石吧！</sentence>

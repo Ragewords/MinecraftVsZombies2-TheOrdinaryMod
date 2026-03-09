@@ -41,7 +41,7 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[4]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
-        <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0">
+        <tag id="placement_repeatenser" name="升级器械：原装发射器" description="必须放置在原装发射器上" priority="0">
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
@@ -791,7 +791,7 @@
         </entry>
         <entry id="mvz2:triplenser">
             <header>
-                <p>三头发射器一次能发射三行的箭矢。如果它位于最外侧的行或者所打击的行上没有敌人，则改为向它自己所在的一行额外发射箭矢。</p>
+                <p>三头发射器一次能发射三行的箭矢。如果它位于最外侧的行或者相邻的行上没有敌人，则改为向它自己所在的一行额外发射箭矢。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>3支/1.5秒</color>]]></p>
@@ -828,7 +828,7 @@
                 <p>技能：<![CDATA[<color=red>快速发射5个100伤害，能够无视重量击退单格内所有怪物的原木</color>]]></p>
             </properties>
             <flavor>
-                <p>原装发射器名字里的“原装”并不代表它很原始，可不要望文生义，毕竟现代的发射器都是以它为蓝本制造的。</p>
+                <p>原装发射器名字里的“原装”并不代表它很原始，可不要望文生义，现代的发射器都是以它为蓝本制造的。</p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">
@@ -1065,17 +1065,19 @@
                 <tag id="mvz2:placement_repeatenser" />
             </tags>
             <header>
-                <p>高频脉冲发射器一次能发射四支箭矢。</p>
+                <p>高频脉冲发射器一次能发射六支箭矢。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>4支/1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>6支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>永久改为发射六支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
+                <p>技能：<![CDATA[<color=red>永久改为发射八支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
             <flavor>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
                 <p>高——闭嘴吧。</p>
             </flavor>
         </entry>
