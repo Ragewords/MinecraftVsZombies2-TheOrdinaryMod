@@ -43,7 +43,7 @@ namespace MVZ2.GameContent.Contraptions
                 var bullet = Shoot(entity);
                 if (bullet == null)
                     continue;
-                if (i < 0 || i >= maxLane)
+                if (i < 0 || i >= maxLane || !IfOtherLaneHasEnemy(entity, i))
                 {
                     makeupCount++;
                     bullet.Velocity *= 1 + (MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT * makeupCount);
@@ -98,6 +98,16 @@ namespace MVZ2.GameContent.Contraptions
                 innerLaneExpansion = 1,
                 outerLaneExpansion = 1,
             };
+        }
+        private bool IfOtherLaneHasEnemy(Entity entity, int lane)
+        {
+            bool hasEnemy = false;
+            foreach (var enemy in entity.Level.FindEntities(e => e.IsHostile(entity) && e.ExistsAndAlive()))
+            {
+                if (enemy.GetLane() == lane)
+                    hasEnemy = true;
+            }
+            return hasEnemy;
         }
         public const float MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT = 0.2f;
     }
