@@ -38,6 +38,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 005a8172ba86b8e4aa61fae98dce9774
+    m_Address: mvz2:entity/projectiles/log_ignited
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 00ad714282dc4364fa67260f36745fae
     m_Address: mvz2:random/netherrack/break3
     m_ReadOnly: 0
@@ -2201,6 +2208,13 @@ MonoBehaviour:
     - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29b883211d4766a4589c70bc7f621d2a
+    m_Address: mvz2:damage/log/log_hit2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29f2ee649e248da4facee783269e0899
     m_Address: mvz2:projectile/boulder
     m_ReadOnly: 0
@@ -2542,6 +2556,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Meta
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f8392620d6912941a51fbc4c901d029
+    m_Address: mvz2:damage/log/log_hit3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 30186cc749987114d9e9551582fb27ca
     m_Address: mvz2:cart/nyaightmare
@@ -5797,6 +5818,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d09d236816b40a479944dab43bdc886
+    m_Address: mvz2:projectile/log
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d0a7a479c157be4f9ca21a72490cec1
     m_Address: mvz2:icons/clock_end_indicator
     m_ReadOnly: 0
@@ -6601,12 +6629,26 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7bfd7a3fca582654a92b807497f1a153
+    m_Address: mvz2:entity/projectiles/log
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c03474b42896f044b99de674b6f9ea0
     m_Address: mvz2:pickup/dream_key
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c3fc5d4c3a4c5149906ff09849d143d
+    m_Address: mvz2:entity/projectiles/log_ignited_cursed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c6a578dbe25d684690f811137ed23d4
     m_Address: mvz2:pickup/zombie_scroll
@@ -11209,6 +11251,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d3abb2eb473d06b4dab0a2d3da4c76d0
     m_Address: mvz2:talk/dialog_weird
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3ade2e4722e84b47911728b6f9d35b4
+    m_Address: mvz2:damage/log/log_hit1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
