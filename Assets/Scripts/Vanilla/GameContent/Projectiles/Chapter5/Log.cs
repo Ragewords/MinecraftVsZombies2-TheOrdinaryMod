@@ -6,6 +6,7 @@ using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
@@ -60,6 +61,8 @@ namespace MVZ2.GameContent.Projectiles
                 }
             }
             projectile.PlaySound(VanillaSoundID.logHit);
+            projectile.PlaySound(VanillaSoundID.wood);
+            projectile.CreateFragmentAndPlay(projectile.GetFragmentID(), 75);
         }
         public void Ignite(Entity entity, Entity hellfire, bool cursed)
         {
