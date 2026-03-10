@@ -115,7 +115,7 @@ namespace MVZ2.GameContent.Projectiles
             entity.SetProperty(PROP_EVOKED, value);
         }
         private List<Buff> ignitedBuffBuffer = new List<Buff>();
-        private Detector detector = new CubeDetector(50)
+        private Detector detector = new CubeDetector(40)
         {
             mask = EntityCollisionHelper.MASK_ENEMY
         };

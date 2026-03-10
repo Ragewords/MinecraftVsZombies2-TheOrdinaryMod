@@ -1063,6 +1063,7 @@
             <properties>
                 <id name="mvz2:shootSound" value="mvz2:click" />
                 <id name="mvz2:projectileId" value="mvz2:log" />
+                <vector3 name="mvz2:shotOffset" x="30" y="32" z="0" />
                 <float name="mvz2:damage" value="50" />
                 <int name="mvz2:cost" value="175" />
             </properties>
@@ -1453,7 +1454,7 @@
                 <bool name="mvz2:isLightSource" value="true" />
                 <vector3 name="mvz2:lightRange" x="80" y="80" z="80" />
                 <color name="mvz2:lightColor" value="#FFAA00" />
-                <float name="mvz2:damage" value="45" />
+                <float name="mvz2:damage" value="30" />
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
@@ -3562,7 +3563,7 @@
         <projectile id="log">
             <properties>
                 <float name="mvz2:damage" value="50" />
-                <vector3 name="mvz2:size" x="48" y="48" z="48" />
+                <vector3 name="mvz2:size" x="32" y="32" z="32" />
                 <vector3 name="mvz2:shadowScale" x="1" y="1" z="1" />
                 <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
             </properties>

@@ -1169,7 +1169,7 @@
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>45/秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>30/秒</color>]]></p>
                 <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
                 <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下燃烧怪物的<tag id="mvz2:fire" />火焰，每团火焰造成总计1800伤害</color>]]></p>
             </properties>
