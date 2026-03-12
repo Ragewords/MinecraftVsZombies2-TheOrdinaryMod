@@ -44,7 +44,7 @@ namespace MVZ2.GameContent.Contraptions
                 var bullet = Shoot(entity);
                 if (bullet == null)
                     continue;
-                if (i < 0 || i >= maxLane || !IfOtherLaneHasEnemy(entity, i))
+                if (i < 0 || i >= maxLane || (i != lane && !IfOtherLaneHasEnemy(entity, i)))
                 {
                     makeupCount++;
                     bullet.Velocity *= 1 + (MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT * makeupCount);
