@@ -121,7 +121,9 @@ namespace MVZ2.GameContent.Stages
         public const string puzzleIZombieEndless = "puzzle_i_zombie_endless";
 
         // Blueprint Crisis
-        public const string pushingBox = "pushing_box";
+        public const string sokoban = "sokoban";
+        public const string bugReport = "bug_report";
+        public const string taikoMaster = "taiko_master";
 
         public const string iZombieDebug = "i_zombie_debug";
     }

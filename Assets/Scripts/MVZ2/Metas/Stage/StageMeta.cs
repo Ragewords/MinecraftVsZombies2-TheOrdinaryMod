@@ -159,7 +159,7 @@ namespace MVZ2.Metas
 
             var timeNode = node["time"];
             var firstWaveTime = timeNode?.GetAttributeFloat("firstWave") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
-            var firstWaveTimeinLunatic = timeNode?.GetAttributeFloat("firstWaveLunatic") ?? Ticks.ToSeconds(spawnNode?.GetAttributeInt("firstWaveTime") ?? 540);
+            var firstWaveTimeinLunatic = timeNode?.GetAttributeFloat("firstWaveLunatic") ?? firstWaveTime;
             var endlessFirstWaveTime = timeNode?.GetAttributeFloat("endlessFirstWave") ?? 6f;
             var maxWaveTime = timeNode?.GetAttributeFloat("waveMax") ?? 30;
             var advanceWaveTime = timeNode?.GetAttributeFloat("waveAdvance") ?? 10;

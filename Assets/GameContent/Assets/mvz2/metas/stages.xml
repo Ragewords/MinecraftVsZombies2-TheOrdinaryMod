@@ -152,7 +152,7 @@
         <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
             <spawn id="mvz2:ghost" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <color name="globalLight" value="#7F7F7F" />
             <bool name="noEnergy" value="true" />
@@ -295,7 +295,7 @@
             <spawn id="mvz2:mummy" />
             <spawn id="mvz2:necromancer" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
             <integer name="statueCount" value="10" />
@@ -466,7 +466,7 @@
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="ignoreHugeWaveEvent" value="true" />
             <bool name="noEnergy" value="true" />
@@ -576,7 +576,7 @@
             <spawn id="mvz2:ghast" />
             <spawn id="mvz2:mother_terror" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
             <bool name="mvz2:adventure" value="true"/>
@@ -747,7 +747,7 @@
             <spawn id="mvz2:iron_helmetted_zombie" />
             <spawn id="mvz2:berserker" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="ignoreHugeWaveEvent" value="true" />
             <bool name="noEnergy" value="true" />
@@ -858,7 +858,7 @@
             <spawn id="mvz2:dullahan" />
             <spawn id="mvz2:hell_chariot" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
             <bool name="mvz2:adventure" value="true"/>
@@ -1149,7 +1149,7 @@
             <spawn id="mvz2:shikaisen_zombie" />
             <spawn id="mvz2:emperor_zombie" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
             <integer name="spawnerCount" value="8" />
@@ -1328,7 +1328,7 @@
             <spawn id="mvz2:undead_flying_object_blitz" />
             <spawn id="mvz2:undead_flying_object" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" waveMax="15" waveAdvance="5" />
+        <time firstWave="1" waveMax="15" waveAdvance="5" />
         <properties>
             <bool name="noEnergy" value="true" />
         </properties>
@@ -1443,7 +1443,7 @@
             <spawn id="mvz2:flying_pirate" />
             <spawn id="mvz2:pop_captain" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="noEnergy" value="true" />
             <bool name="mvz2:adventure" value="true"/>
@@ -1533,7 +1533,7 @@
             <spawn id="mvz2:skeleton_horse" />
             <spawn id="mvz2:dullahan_head" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <color name="globalLight" value="#7F7F7F" />
             <bool name="noEnergy" value="true" />
@@ -1553,7 +1553,7 @@
             <spawn id="mvz2:necromancer" />
             <spawn id="mvz2:emperor_zombie" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="ignoreHugeWaveEvent" value="true" />
             <bool name="noEnergy" value="true" />
@@ -1577,7 +1577,7 @@
             <spawn id="mvz2:mummy" />
             <spawn id="mvz2:ghast" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" />
+        <time firstWave="1" />
         <properties>
             <bool name="ignoreHugeWaveEvent" value="true" />
             <bool name="noEnergy" value="true" />
@@ -1598,7 +1598,7 @@
             <spawn id="mvz2:undead_flying_object_blitz" />
             <spawn id="mvz2:undead_flying_object" />
         </spawns>
-        <time firstWave="1" firstWaveLunatic="1" waveMax="2" waveAdvance="2" />
+        <time firstWave="1" waveMax="2" waveAdvance="2" />
         <properties>
             <bool name="noEnergy" value="true" />
         </properties>
@@ -1817,7 +1817,7 @@
     </stage>
 
     <!-- Blueprint Crisis -->
-    <stage id="pushing_box" name="推箱子" needBlueprints="false" type="puzzle" startEnergy="100">
+    <stage id="sokoban" name="推箱子" needBlueprints="false" type="puzzle" startEnergy="150">
         <unlock>
             <condition required="mvz2:level.halloween_EX2" />
         </unlock>
@@ -1825,14 +1825,53 @@
         <blueprints>
             <blueprint id="mvz2:moonlight_sensor" />
             <blueprint id="mvz2:punchton" />
+            <blueprint id="mvz2:punchton" />
             <blueprint id="mvz2:obsidian" />
         </blueprints>
-        <spawns flags="2" pointsMultiplier="2" pointsAddition="1">
+        <spawns flags="1" pointsMultiplier="2" pointsAddition="1">
             <spawn id="mvz2:skelebomb" />
         </spawns>
-        <time firstWave="30" firstWaveLunatic="30" />
+        <time firstWave="30" />
         <properties>
             <integer name="statueCount" value="5" />
         </properties>
+    </stage>
+    <stage id="bug_report" name="漏洞排查" needBlueprints="false" type="puzzle" startEnergy="150">
+        <unlock>
+            <condition required="mvz2:level.dream_EX2" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.trophy" trophy="true" />
+        <blueprints>
+            <blueprint id="mvz2:furnace" />
+            <blueprint id="mvz2:mine_tnt" />
+            <blueprint id="mvz2:drivenser" />
+            <blueprint id="mvz2:gravity_pad" />
+            <blueprint id="mvz2:vortex_hopper" />
+            <blueprint id="mvz2:dream_crystal" />
+        </blueprints>
+        <spawns flags="2">
+            <spawn id="mvz2:spider" />
+            <spawn id="mvz2:cave_spider" />
+            <spawn id="mvz2:mother_terror" />
+            <spawn id="mvz2:silverfish" />
+        </spawns>
+        <time firstWave="30" />
+    </stage>
+    <stage id="taiko_master" name="太鼓达人" needBlueprints="false" type="puzzle" startEnergy="300">
+        <unlock>
+            <condition required="mvz2:level.castle_EX2" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.trophy" trophy="true" />
+        <blueprints>
+            <blueprint id="mvz2:moonlight_sensor" />
+            <blueprint id="mvz2:thunder_drum" />
+            <blueprint id="mvz2:thunder_drum" />
+            <blueprint id="mvz2:giant_bowl" />
+        </blueprints>
+        <spawns flags="2">
+            <spawn id="mvz2:berserker" />
+            <spawn id="mvz2:spellcaster" />
+        </spawns>
+        <time firstWave="60" />
     </stage>
 </stages>
