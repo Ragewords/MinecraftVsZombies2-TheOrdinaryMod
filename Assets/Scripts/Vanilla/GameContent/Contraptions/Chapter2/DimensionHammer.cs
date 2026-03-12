@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
@@ -24,32 +25,41 @@ namespace MVZ2.GameContent.Contraptions
     {
         public DimensionHammer(string nsp, string name) : base(nsp, name)
         {
+            smashDetector = new MagichestDetector(80);
         }
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
+            SetTargetPos(entity, entity.Position);
         }
-        protected override void UpdateAI(Entity hammer)
+        protected override void UpdateAI(Entity entity)
         {
-            base.UpdateAI(hammer);
-            if (!IsSmashing(hammer))
+            base.UpdateAI(entity);
+
+            var nearest = smashDetector.DetectEntityWithTheLeast(entity, e => (e.GetCenter() - entity.Position).magnitude);
+            if (nearest != null && !IsSmashing(entity))
+            {
+                StartSmash(entity);
+                SetTargetPos(entity, nearest.Position - SMASH_OFFSET * entity.GetFacingDirection());
+            }
+
+            if (!IsSmashing(entity))
                 return;
-            var frame = GetFrame(hammer);
+            var frame = GetFrame(entity);
             if (frame == START_FRAME)
             {
-                hammer.TriggerAnimation("Attack");
+                entity.TriggerAnimation("Attack");
             }
-            if (frame == JUMP_FRAME && !IsJumped(hammer))
+            if (frame == JUMP_FRAME && !IsJumped(entity))
             {
-                hammer.Velocity = VanillaProjectileExt.GetLobVelocityByTime(hammer.Position, hammer.Position - SMASH_OFFSET * hammer.GetFacingDirection(), SMASH_FRAME - JUMP_FRAME, hammer.GetGravity());
-                SetJumped(hammer, true);
+                entity.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.Position, GetTargetPos(entity), 30, entity.GetGravity());
+                SetJumped(entity, true);
             }
             if (frame == FLING_FRAME)
             {
-                if (!hammer.IsOnGround)
+                if (!entity.IsOnGround)
                 {
-                    hammer.PlaySound(VanillaSoundID.fling);
+                    entity.PlaySound(VanillaSoundID.fling);
                     frame = JUMP_FRAME;
                 }
                 else
@@ -59,38 +69,21 @@ namespace MVZ2.GameContent.Contraptions
             }
             if (frame == SMASH_FRAME)
             {
-                hammer.PlaySound(VanillaSoundID.thump);
-                Smash(hammer, hammer.GetDamage(), hammer.GetFaction());
-                hammer.SetAnimationBool("Attacked", true);
+                entity.PlaySound(VanillaSoundID.thump);
+                Smash(entity, entity.GetDamage(), entity.GetFaction());
+                entity.SetAnimationBool("Attacked", true);
             }
             frame++;
-            SetFrame(hammer, frame);
+            SetFrame(entity, frame);
         }
-        protected override void UpdateLogic(Entity hammer)
+        protected override void UpdateLogic(Entity entity)
         {
-            base.UpdateLogic(hammer);
-            var frame = GetFrame(hammer);
+            base.UpdateLogic(entity);
+            var frame = GetFrame(entity);
             if (frame <= SMASH_FRAME)
             {
-                hammer.Timeout = hammer.GetMaxTimeout();
+                entity.Timeout = entity.GetMaxTimeout();
             }
-        }
-        public override void PostCollision(EntityCollision collision, int state)
-        {
-            base.PostCollision(collision, state);
-            if (state == EntityCollisionHelper.STATE_EXIT)
-                return;
-            if (!collision.Collider.IsForMain())
-                return;
-            var hammer = collision.Entity;
-            if (IsSmashing(hammer) || hammer.IsAIFrozen())
-                return;
-            var other = collision.Other;
-            if (other.Type != EntityTypes.ENEMY && !Detection.CanDetect(other))
-                return;
-            if (!IsValidEnemy(hammer, other))
-                return;
-            StartSmash(hammer);
         }
         public override bool CanEvoke(Entity entity)
         {
@@ -104,13 +97,19 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.OnEvoke(entity);
             entity.SetEvoked(true);
+            var nearest = smashDetector.DetectEntityWithTheLeast(entity, e => (e.GetCenter() - entity.Position).magnitude);
+            if (nearest != null && !IsSmashing(entity))
+            {
+                StartSmash(entity);
+                SetTargetPos(entity, nearest.Position - SMASH_OFFSET * entity.GetFacingDirection());
+            }
             StartSmash(entity);
             entity.AddBuff<DimensionHammerEvokedBuff>();
         }
         public static void Smash(Entity entity, float damage, int faction)
         {
             var offset = SMASH_OFFSET * entity.GetFacingDirection();
-            DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE);
+            DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE);
             var groundEntities = entity.Level.OverlapSphere(entity.Position + offset, entity.GetRange(), faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
             foreach (var target in groundEntities)
             {
@@ -132,11 +131,11 @@ namespace MVZ2.GameContent.Contraptions
                 Explosion.Spawn(entity, entity.Position + offset, entity.GetRange());
                 entity.PlaySound(VanillaSoundID.explosion);
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    var angle = i * 36 + j * 18;
+                    var angle = i * 72 + j * 18;
                     var param = entity.GetShootParams();
                     param.projectileID = VanillaProjectileID.arrowBullet;
                     param.position += SMASH_OFFSET * entity.GetFacingDirection();
@@ -165,14 +164,18 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetFrame(Entity entity, int value) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIME, value);
         public static bool IsJumped(Entity entity) => entity.GetBehaviourField<bool>(ID, PROP_JUMPED);
         public static void SetJumped(Entity entity, bool value) => entity.SetBehaviourField(ID, PROP_JUMPED, value);
+        public static Vector3 GetTargetPos(Entity entity) => entity.GetBehaviourField<Vector3>(ID, PROP_TARGET_POSITION);
+        public static void SetTargetPos(Entity entity, Vector3 value) => entity.SetBehaviourField(ID, PROP_TARGET_POSITION, value);
         private static readonly NamespaceID ID = VanillaContraptionID.dimensionHammer;
         public static readonly VanillaEntityPropertyMeta<int> PROP_EVOCATION_TIME = new VanillaEntityPropertyMeta<int>("frame");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_JUMPED = new VanillaEntityPropertyMeta<bool>("jumped");
+        public static readonly VanillaEntityPropertyMeta<Vector3> PROP_TARGET_POSITION = new VanillaEntityPropertyMeta<Vector3>("target_position");
         public const int START_FRAME = 0;
         public const int JUMP_FRAME = START_FRAME + 5;
         public const int FLING_FRAME = JUMP_FRAME + 10;
         public const int SMASH_FRAME = FLING_FRAME + 25;
-        public const float SMASH_OFFSET = 45f;
+        public const float SMASH_OFFSET = 50f;
+        private Detector smashDetector;
     }
 }
 
