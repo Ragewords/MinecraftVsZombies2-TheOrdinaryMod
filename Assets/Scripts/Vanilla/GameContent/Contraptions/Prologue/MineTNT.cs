@@ -65,7 +65,7 @@ namespace MVZ2.GameContent.Contraptions
             var preferredLane = entity.Level.GetAllLanes().Where(l =>
             {
                 bool hasEnemy = false;
-                foreach (var target in entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsHostile(entity)))
+                foreach (var target in entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsHostile(entity) && !e.Definition.IsFlyingEnemy()))
                 {
                     if (target.GetLane() == l)
                         hasEnemy = true;
