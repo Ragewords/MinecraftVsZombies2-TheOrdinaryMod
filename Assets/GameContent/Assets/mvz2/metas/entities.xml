@@ -1214,7 +1214,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </contraption>
-        <dispenser id="golden_dropper" name="宝石投掷器" tooltip="（需要木制投掷器）\n投出反弹的金球及产生宝石的宝石球">
+        <dispenser id="golden_dropper" name="宝石投掷器" tooltip="（需要木制投掷器）\n投出反弹并产生各种宝石的宝石球">
             <unlock>
                 <condition required="mvz2:contraption.golden_dropper" />
             </unlock>
@@ -1287,7 +1287,7 @@
                 <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </contraption>
-        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要原装发射器）\n一次射出六支箭矢">
+        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要原装发射器）\n一次射出四支箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_5" />
             </unlock>
@@ -3371,7 +3371,7 @@
             <behaviours includeSelf="false">
                 <behaviour operator="add" id="mvz2:gem_ball" />
                 <properties behaviour="mvz2:gem_ball">
-                    <float name="gem_chance" value="25" />
+                    <float name="gem_chance" value="20" />
                     <id name="gem_id" value="mvz2:ruby" />
                 </properties>
             </behaviours>

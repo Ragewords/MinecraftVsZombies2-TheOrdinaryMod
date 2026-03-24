@@ -52,14 +52,10 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override Entity? Shoot(Entity entity)
         {
-            if (entity.RNG.Next(5) < 2)
-            {
-                var param = entity.GetShootParams();
-                var rng = GetRNG(entity);
-                param.projectileID = rng == null ? VanillaProjectileID.goldenBall : GetRandomProjectileID(rng);
-                return entity.ShootProjectile(param);
-            }
-            return base.Shoot(entity);
+            var param = entity.GetShootParams();
+            var rng = GetRNG(entity);
+            param.projectileID = rng == null ? VanillaProjectileID.goldenBall : GetRandomProjectileID(rng);
+            return entity.ShootProjectile(param);
         }
         protected override void OnEvoke(Entity entity)
         {
@@ -73,13 +69,9 @@ namespace MVZ2.GameContent.Contraptions
                     var yspeed = rng.Next(30f);
                     var zspeed = rng.Next(-1.5f, 1.5f);
                     var spawnParam = entity.GetSpawnParams();
-                    spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
-                    spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
-                    spawnParam.SetProperty(VanillaEntityProps.SHADOW_SCALE, Vector3.one * 2);
 
                     var param = entity.GetShootParams();
                     param.velocity = new Vector3(xspeed, yspeed, zspeed);
-                    param.damage *= 2;
                     if (i != 0)
                     {
                         param.projectileID = projectilePool[i - 1];

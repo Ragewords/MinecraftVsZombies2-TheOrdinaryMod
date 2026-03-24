@@ -97,11 +97,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override void OnShootTick(Entity entity)
         {
-            int count = 1;
-            if (entity.Level.IsIZombie())
-            {
-                count = GetUpgradeLevel(entity) + 1;
-            }
+            int count = GetUpgradeLevel(entity) + 1;
             SetRepeatCount(entity, count);
             var repeatTimer = GetRepeatTimer(entity);
             if (repeatTimer != null)
@@ -139,10 +135,6 @@ namespace MVZ2.GameContent.Contraptions
             SetUpgradeLevel(drivenser, GetUpgradeLevel(drivenser) + 1);
             drivenser.PlaySound(VanillaSoundID.mechanism);
             drivenser.Level.Spawn(VanillaEffectID.gearParticles, drivenser.Position, drivenser);
-            if (!drivenser.Level.IsIZombie())
-            {
-                drivenser.AddBuff(VanillaBuffID.Contraption.drivenserUpgrade);
-            }
         }
         public const int MAX_UPGRADE_LEVEL = 4;
         public const int I_ZOMBIE_LEVEL = 2;

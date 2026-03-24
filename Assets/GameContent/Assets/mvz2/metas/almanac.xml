@@ -342,7 +342,7 @@
             <properties>
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
-                <p>蓄力：<![CDATA[<color=red>最大300%击退力度，击退敌方怪物后重置蓄力进度，修复期间无法蓄力</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最大得到x300%击退力度，击退敌方怪物后重置蓄力进度，修复期间无法蓄力</color>]]></p>
                 <p>蓄力时间：<![CDATA[<color=red>66.7秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
@@ -380,7 +380,7 @@
         </entry>
         <entry id="mvz2:silvenser">
             <header>
-                <p>银制发射器能发射穿透<![CDATA[<tag id="mvz2:shell" enum="mvz2:flesh" />]]>血肉之躯并造成流血的飞刀。</p>
+                <p>银制发射器能发射穿透<![CDATA[<tag id="mvz2:shell" enum="mvz2:flesh" />]]>血肉之躯并造成流血的不同飞刀。</p>
             </header>
             <properties>
                 <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
@@ -419,12 +419,11 @@
         </entry>
         <entry id="mvz2:drivenser">
             <header>
-                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它的发射速度。</p>
+                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它每次发射的箭的数量。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>升级效果：<![CDATA[<color=red>×150%发射速度，×125%箭矢飞行速度</color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射五支大箭矢及50支箭矢</color>]]></p>
             </properties>
@@ -866,7 +865,7 @@
             <properties>
                 <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
                 <p>耐久消耗：<![CDATA[<color=red>300（怪物），450（怪物，困难/月狂难度），20（子弹）</color>]]></p>
-                <p>蓄力：<![CDATA[<color=red>最大150%击退力度和50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最大得到x150%击退力度和x50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
                 <p>蓄力时间：<![CDATA[<color=red>3.33秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>击退并弹飞半径2.5格内的所有敌方怪物</color>]]></p>
             </properties>
@@ -1002,14 +1001,13 @@
                 <tag id="mvz2:placement_golden_dropper" />
             </tags>
             <header>
-                <p>宝石投掷器向敌人发射在敌人间反弹的金球和宝石球，宝石球在击中敌人后有概率产生宝石。</p>
+                <p>宝石投掷器向敌人发射不同种类的宝石球，宝石球在击中敌人后有概率产生对应的宝石，并在敌人间反弹。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60，每次反弹后减半</color>]]></p>
-                <p>宝石球概率：<![CDATA[<color=red>40%</color>]]></p>
                 <p>宝石概率：<![CDATA[<color=red>30%-5%（随宝石价值变化）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即喷射大型金球和大型宝石球各6颗，每颗造成120点伤害</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即喷射金球和不同的宝石球各6颗</color>]]></p>
             </properties>
             <flavor>
                 <p>它把木制投掷器的笑话专利买下来了，所以它可以理所应当地玩鑫鑫鑫鑫鑫鑫鑫鑫鑫鑫制投掷器的笑话了！</p>
@@ -1065,19 +1063,17 @@
                 <tag id="mvz2:placement_repeatenser" />
             </tags>
             <header>
-                <p>高频脉冲发射器一次能发射六支箭矢。</p>
+                <p>高频脉冲发射器一次能发射四支箭矢。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>6支/1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>4支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>永久改为发射八支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
+                <p>技能：<![CDATA[<color=red>永久改为发射六支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
             <flavor>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
-                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说六遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
+                <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
                 <p>高——闭嘴吧。</p>
             </flavor>
         </entry>

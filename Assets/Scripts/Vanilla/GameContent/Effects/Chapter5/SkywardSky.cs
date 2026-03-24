@@ -33,15 +33,6 @@ namespace MVZ2.GameContent.Effects
                 var targetColumn = rng.Next(level.GetMaxColumnCount());
                 var targetLane = rng.Next(level.GetMaxLaneCount());
 
-                if (rng.Next(3) == 0)
-                {
-                    foreach (var mob in hostileMob)
-                    {
-                        targetColumn = mob.GetColumn();
-                        targetLane = mob.GetLane();
-                    }
-                }
-
                 var targetPos = level.GetEntityGridPosition(targetColumn, targetLane);
                 var flyTime = Ticks.FromSeconds(STAR_FLY_SECONDS);
 

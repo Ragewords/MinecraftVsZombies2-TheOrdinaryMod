@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.Projectiles
                     break;
                 case VARIANT_RED:
                     hitResult.Pierce = true;
-                    if (!sliceCritical)
+                    if (blocksSlice)
                     {
                         var otherCollider = hitResult.Collider;
                         if (IsNoDeflect(projectile))
