@@ -1136,7 +1136,7 @@
                 <p>火焰弹发射器会向周围的怪物抛射火焰弹。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>2秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60</color>]]></p>
                 <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>在1秒内快速抛射15枚火焰弹，5支300伤害的导弹和3个1800伤害的TNT</color>]]></p>
