@@ -91,6 +91,15 @@ namespace PVZEngine.Level
             }
             return false;
         }
+        public bool HasBehaviour(StageBehaviour behaviour)
+        {
+            foreach (var beh in behaviours)
+            {
+                if (beh == behaviour)
+                    return true;
+            }
+            return false;
+        }
         public T? GetBehaviour<T>() where T : StageBehaviour
         {
             foreach (var behaviour in behaviours)

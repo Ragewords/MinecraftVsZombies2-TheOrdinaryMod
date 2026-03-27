@@ -34,6 +34,10 @@ namespace PVZEngine.Entities
         #endregion
 
         #region 占据网格
+        public bool HasTakenGrid()
+        {
+            return takenGrids.Count > 0;
+        }
         public LawnGrid[] GetTakenGrids()
         {
             return takenGrids.ToArray();
