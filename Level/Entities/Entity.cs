@@ -245,6 +245,13 @@ namespace PVZEngine.Entities
         }
         #endregion
 
+        #region 行为
+        public bool HasBehaviour(EntityBehaviourDefinition behaviour)
+        {
+            return Definition.HasBehaviour(behaviour);
+        }
+        #endregion
+
         #region 杂项
         public bool IsEntityOf(NamespaceID id)
         {
