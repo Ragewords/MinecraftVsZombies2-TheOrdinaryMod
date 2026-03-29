@@ -2,12 +2,13 @@
 
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Buffs;
-using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -24,38 +25,39 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             AddModifier(new BooleanModifier(VanillaEntityProps.AI_FROZEN, true));
             AddModifier(new ColorModifier(EngineEntityProps.COLOR_OFFSET, new Color(1, 1, 1, 0.5f)));
-            AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
         }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_SPAWN_TIMER, new FrameTimer(MAX_SPAWN_TIMEOUT));
+            buff.SetProperty(PROP_SPAWN_TIMER, TimerHelper.NewSecondTimer(MAX_SPAWN_TIMEOUT));
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
             var entity = buff.GetEntity();
-            if (entity == null)
+            if (!entity.ExistsAndAlive())
+            {
+                buff.Remove();
                 return;
+            }
             var timer = buff.GetProperty<FrameTimer>(PROP_SPAWN_TIMER);
             if (timer.RunToExpiredAndNotNull())
             {
-                var parasite = entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
-                entity.PlaySound(VanillaSoundID.bloody);
-                entity.TakeDamage(50, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
-                entity.EmitBlood();
+                var output = entity.TakeDamage(50, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), entity);
+                if (output.BodyResult != null && output.BodyResult.ShellDefinition == Global.Game.GetShellDefinition(VanillaShellID.flesh))
+                {
+                    entity.EmitBlood();
+                    entity.PlaySound(VanillaSoundID.bloody);
+                    entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
+                }
+                else
+                {
+                    buff.Remove();
+                }
                 timer.Reset();
             }
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            foreach (var buff in entity.GetBuffs<TerrorNestBuff>())
-            {
-                buff.Remove();
-            }
-        }
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_SPAWN_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("SpawnTimer");
-        public const int MAX_SPAWN_TIMEOUT = 60;
+        public const int MAX_SPAWN_TIMEOUT = 2;
     }
 }
