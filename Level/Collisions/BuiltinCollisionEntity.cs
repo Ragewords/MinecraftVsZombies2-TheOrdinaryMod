@@ -30,7 +30,7 @@ namespace PVZEngine.Collisions
         }
         private void UpdateColliderDetection(BuiltinCollisionCollider collider)
         {
-            collider.SetIgnored(entity.GetCollisionDetection() == EntityCollisionHelper.DETECTION_IGNORE);
+            //collider.SetIgnored(entity.IsCollisionDisabled());
         }
         public void UpdateEntityPosition()
         {

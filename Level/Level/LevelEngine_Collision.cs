@@ -31,29 +31,29 @@ namespace PVZEngine.Level
         {
             collisionSystem.UpdateEntitySize(entity);
         }
-        public IEntityCollider[] OverlapBox(Vector3 center, Vector3 size, int faction, int hostileMask, int friendlyMask)
+        public IEntityCollider[] OverlapBox(Vector3 center, Vector3 size, OverlapParams param)
         {
-            return collisionSystem.OverlapBox(center, size, faction, hostileMask, friendlyMask);
+            return collisionSystem.OverlapBox(center, size, param);
         }
-        public void OverlapBoxNonAlloc(Vector3 center, Vector3 size, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public void OverlapBoxNonAlloc(Vector3 center, Vector3 size, OverlapParams param, List<IEntityCollider> results)
         {
-            collisionSystem.OverlapBoxNonAlloc(center, size, faction, hostileMask, friendlyMask, results);
+            collisionSystem.OverlapBoxNonAlloc(center, size, param, results);
         }
-        public IEntityCollider[] OverlapSphere(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask)
+        public IEntityCollider[] OverlapSphere(Vector3 center, float radius, OverlapParams param)
         {
-            return collisionSystem.OverlapSphere(center, radius, faction, hostileMask, friendlyMask);
+            return collisionSystem.OverlapSphere(center, radius, param);
         }
-        public void OverlapSphereNonAlloc(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public void OverlapSphereNonAlloc(Vector3 center, float radius, OverlapParams param, List<IEntityCollider> results)
         {
-            collisionSystem.OverlapSphereNonAlloc(center, radius, faction, hostileMask, friendlyMask, results);
+            collisionSystem.OverlapSphereNonAlloc(center, radius, param, results);
         }
-        public IEntityCollider[] OverlapCapsule(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask)
+        public IEntityCollider[] OverlapCapsule(Vector3 point0, Vector3 point1, float radius, OverlapParams param)
         {
-            return collisionSystem.OverlapCapsule(point0, point1, radius, faction, hostileMask, friendlyMask);
+            return collisionSystem.OverlapCapsule(point0, point1, radius, param);
         }
-        public void OverlapCapsuleNonAlloc(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public void OverlapCapsuleNonAlloc(Vector3 point0, Vector3 point1, float radius, OverlapParams param, List<IEntityCollider> results)
         {
-            collisionSystem.OverlapCapsuleNonAlloc(point0, point1, radius, faction, hostileMask, friendlyMask, results);
+            collisionSystem.OverlapCapsuleNonAlloc(point0, point1, radius, param, results);
         }
         public IEntityCollider? AddEntityCollider(Entity entity, ColliderConstructor info)
         {

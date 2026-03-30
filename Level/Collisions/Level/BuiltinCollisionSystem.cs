@@ -35,6 +35,8 @@ namespace PVZEngine.Collisions.Level
             foreach (var collider1 in colliderBuffer)
             {
                 var ent1 = collider1.Entity;
+                if (ent1.IsCollisionCheckDisabled())
+                    continue;
                 int maskHostile = ent1.CollisionMaskHostile;
                 int maskFriendly = ent1.CollisionMaskFriendly;
                 var maskTotal = maskHostile | maskFriendly;
@@ -48,6 +50,8 @@ namespace PVZEngine.Collisions.Level
                         return false;
                     var ent2 = collider2.Entity;
                     if (ent1 == ent2)
+                        return false;
+                    if (ent2.IsCollisionCheckDisabled())
                         return false;
                     if (!EntityCollisionHelper.CanCollideFaction(maskHostile, maskFriendly, ent1Faction, ent2))
                         return false;
@@ -192,60 +196,62 @@ namespace PVZEngine.Collisions.Level
         #endregion
 
         #region 检测
-        public IEntityCollider[] OverlapBox(Vector3 center, Vector3 size, int faction, int hostileMask, int friendlyMask)
+        public IEntityCollider[] OverlapBox(Vector3 center, Vector3 size, OverlapParams param)
         {
             var min = center - size * 0.5f;
             var filterRect = new Rect(min.x, min.z, size.x, size.y);
             var bounds = new Bounds(center, size);
-            return Overlap(filterRect, faction, hostileMask, friendlyMask, h => bounds.IntersectsOptimized(h.GetBounds()));
+            return Overlap(filterRect, param, h => bounds.IntersectsOptimized(h.GetBounds()));
         }
-        public void OverlapBoxNonAlloc(Vector3 center, Vector3 size, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public void OverlapBoxNonAlloc(Vector3 center, Vector3 size, OverlapParams param, List<IEntityCollider> results)
         {
             var min = center - size * 0.5f;
             var filterRect = new Rect(min.x, min.z, size.x, size.z);
             var bounds = new Bounds(center, size);
-            OverlapNonAlloc(filterRect, faction, hostileMask, friendlyMask, h => bounds.IntersectsOptimized(h.GetBounds()), results);
+            OverlapNonAlloc(filterRect, param, h => bounds.IntersectsOptimized(h.GetBounds()), results);
         }
-        public IEntityCollider[] OverlapSphere(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask)
+        public IEntityCollider[] OverlapSphere(Vector3 center, float radius, OverlapParams param)
         {
             var min = center - Vector3.one * radius;
             var filterRect = new Rect(min.x, min.z, radius * 2, radius * 2);
-            return Overlap(filterRect, faction, hostileMask, friendlyMask, h => Geometry.CollideBetweenCubeAndSphere(h.GetBounds(), center, radius));
+            return Overlap(filterRect, param, h => Geometry.CollideBetweenCubeAndSphere(h.GetBounds(), center, radius));
         }
-        public void OverlapSphereNonAlloc(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public void OverlapSphereNonAlloc(Vector3 center, float radius, OverlapParams param, List<IEntityCollider> results)
         {
             var min = center - Vector3.one * radius;
             var filterRect = new Rect(min.x, min.z, radius * 2, radius * 2);
-            OverlapNonAlloc(filterRect, faction, hostileMask, friendlyMask, h => Geometry.CollideBetweenCubeAndSphere(h.GetBounds(), center, radius), results);
+            OverlapNonAlloc(filterRect, param, h => Geometry.CollideBetweenCubeAndSphere(h.GetBounds(), center, radius), results);
         }
-        public IEntityCollider[] OverlapCapsule(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask)
-        {
-            var center = (point1 + point0) * 0.5f;
-            var min = center - Vector3.one * radius;
-            var filterRect = new Rect(min.x, min.z, radius * 2, radius * 2);
-            var capsule = new Capsule(point0, point1, radius);
-            return Overlap(filterRect, faction, hostileMask, friendlyMask, h => Geometry.CollideBetweenCubeAndCapsule(capsule, h.GetBounds()));
-        }
-        public void OverlapCapsuleNonAlloc(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
+        public IEntityCollider[] OverlapCapsule(Vector3 point0, Vector3 point1, float radius, OverlapParams param)
         {
             var center = (point1 + point0) * 0.5f;
             var min = center - Vector3.one * radius;
             var filterRect = new Rect(min.x, min.z, radius * 2, radius * 2);
             var capsule = new Capsule(point0, point1, radius);
-            OverlapNonAlloc(filterRect, faction, hostileMask, friendlyMask, h => Geometry.CollideBetweenCubeAndCapsule(capsule, h.GetBounds()), results);
+            return Overlap(filterRect, param, h => Geometry.CollideBetweenCubeAndCapsule(capsule, h.GetBounds()));
         }
-        public IEntityCollider[] Overlap(Rect filterRect, int faction, int hostileMask, int friendlyMask, Predicate<Hitbox> predicate)
+        public void OverlapCapsuleNonAlloc(Vector3 point0, Vector3 point1, float radius, OverlapParams param, List<IEntityCollider> results)
+        {
+            var center = (point1 + point0) * 0.5f;
+            var min = center - Vector3.one * radius;
+            var filterRect = new Rect(min.x, min.z, radius * 2, radius * 2);
+            var capsule = new Capsule(point0, point1, radius);
+            OverlapNonAlloc(filterRect, param, h => Geometry.CollideBetweenCubeAndCapsule(capsule, h.GetBounds()), results);
+        }
+        public IEntityCollider[] Overlap(Rect filterRect, OverlapParams param, Predicate<Hitbox> predicate)
         {
             if (predicate == null)
                 return Array.Empty<IEntityCollider>();
             var entityColliders = new List<BuiltinCollisionCollider>();
-            var totalMask = hostileMask | friendlyMask;
+            var totalMask = param.hostileMask | param.friendlyMask;
             FindCollidersRange(totalMask, filterRect, entityColliders);
             for (int c = entityColliders.Count - 1; c >= 0; c--)
             {
                 var collider = entityColliders[c];
                 var entity = collider.Entity;
-                if (EntityCollisionHelper.CanCollideFaction(hostileMask, friendlyMask, faction, entity))
+                if (!param.includeIgnored && entity.IsCollisionOverlapDisabled())
+                    continue;
+                if (EntityCollisionHelper.CanCollideFaction(param.hostileMask, param.friendlyMask, param.faction, entity))
                 {
                     var hitbox = collider.GetHitbox();
                     if (predicate(hitbox))
@@ -257,19 +263,21 @@ namespace PVZEngine.Collisions.Level
             }
             return entityColliders.ToArray();
         }
-        private void OverlapNonAlloc(Rect filterRect, int faction, int hostileMask, int friendlyMask, Predicate<Hitbox> predicate, List<IEntityCollider> results)
+        private void OverlapNonAlloc(Rect filterRect, OverlapParams param, Predicate<Hitbox> predicate, List<IEntityCollider> results)
         {
             if (predicate == null)
                 return;
             var entityColliders = new List<BuiltinCollisionCollider>();
-            var totalMask = hostileMask | friendlyMask;
+            var totalMask = param.hostileMask | param.friendlyMask;
             FindCollidersRange(totalMask, filterRect, entityColliders);
             foreach (var collider in entityColliders)
             {
                 if (results.Contains(collider))
                     continue;
                 var entity = collider.Entity;
-                if (EntityCollisionHelper.CanCollideFaction(hostileMask, friendlyMask, faction, entity))
+                if (!param.includeIgnored && entity.IsCollisionOverlapDisabled())
+                    continue;
+                if (EntityCollisionHelper.CanCollideFaction(param.hostileMask, param.friendlyMask, param.faction, entity))
                 {
                     var hitbox = collider.GetHitbox();
                     if (predicate(hitbox))

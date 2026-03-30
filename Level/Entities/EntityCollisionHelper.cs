@@ -6,9 +6,10 @@ namespace PVZEngine.Entities
 {
     public static class EntityCollisionHelper
     {
-        public const int DETECTION_DISCRETE = 0;
-        public const int DETECTION_CONTINUOUS = 1;
-        public const int DETECTION_IGNORE = 2;
+        public const int DETECTION_ENABLED = 0;
+        public const int DETECTION_NO_OVERLAP = 1; // Hitbox overlap disabled.
+        public const int DETECTION_NO_COLLISION = 2; // Ignore Collision but hitbox can be overlapped.
+        public const int DETECTION_DISABLED = 3; // Collision and hitbox overlap disabled.
 
         public const string NAME_MAIN = "main";
 

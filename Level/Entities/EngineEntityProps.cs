@@ -272,6 +272,14 @@ namespace PVZEngine.Entities
         {
             return entity.GetProperty<int>(COLLISION_DETECTION);
         }
+        public static bool IsCollisionCheckDisabled(this Entity entity)
+        {
+            return (entity.GetCollisionDetection() & EntityCollisionHelper.DETECTION_NO_COLLISION) != 0;
+        }
+        public static bool IsCollisionOverlapDisabled(this Entity entity)
+        {
+            return (entity.GetCollisionDetection() & EntityCollisionHelper.DETECTION_NO_OVERLAP) != 0;
+        }
         #endregion
 
         #region 碰撞检测样本长度
