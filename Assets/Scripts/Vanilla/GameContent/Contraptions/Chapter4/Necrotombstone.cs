@@ -38,39 +38,15 @@ namespace MVZ2.GameContent.Contraptions
             pos.y = entity.GetGroundY() - 100;
             var mageClass = SkeletonMage.mageVariants.Random(entity.RNG);
             var lane = entity.GetLane();
-            for (int i = -1; i <= 1; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
-                entity.Spawn(VanillaEnemyID.skeletonMage, pos + new Vector3(80 * i, 0, 0), param)?.Let(e =>
+                entity.Spawn(VanillaEnemyID.skeletonMage, pos, param)?.Let(e =>
                 {
                     e.AddBuff<NecrotombstoneRisingBuff>();
                     e.UpdateModel();
 
-                    e.PlaySound(VanillaSoundID.dirtRise);
-                    e.PlaySound(VanillaSoundID.boneWallBuild);
-                });
-            }
-            if (lane != 0)
-            {
-                var param = entity.GetSpawnParams();
-                param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
-                entity.Spawn(VanillaEnemyID.skeletonMage, pos + new Vector3(0, 0, 80), param)?.Let(e =>
-                {
-                    e.AddBuff<NecrotombstoneRisingBuff>();
-                    e.UpdateModel();
-                    e.PlaySound(VanillaSoundID.dirtRise);
-                    e.PlaySound(VanillaSoundID.boneWallBuild);
-                });
-            }
-            if (lane != entity.Level.GetMaxLaneCount() - 1)
-            {
-                var param = entity.GetSpawnParams();
-                param.SetProperty(VanillaEntityProps.VARIANT, mageClass);
-                entity.Spawn(VanillaEnemyID.skeletonMage, pos - new Vector3(0, 0, 80), param)?.Let(e =>
-                {
-                    e.AddBuff<NecrotombstoneRisingBuff>();
-                    e.UpdateModel();
                     e.PlaySound(VanillaSoundID.dirtRise);
                     e.PlaySound(VanillaSoundID.boneWallBuild);
                 });
