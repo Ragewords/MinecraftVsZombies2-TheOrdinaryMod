@@ -28,28 +28,12 @@ namespace MVZ2.GameContent.Buffs.Projectiles
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            UpdateArc(buff);
             UpdateLightRange(buff);
         }
         public override void PostUpdate(Buff buff)
         {
             base.PostUpdate(buff);
-            UpdateArc(buff);
             UpdateLightRange(buff);
-        }
-        private void UpdateArc(Buff buff)
-        {
-            var entity = buff.GetEntity();
-            if (entity != null)
-            {
-                float degree = entity.RNG.Next(360);
-                float rad = degree * Mathf.Deg2Rad;
-                if (entity.IsTimeInterval(5))
-                {
-                    var dest = entity.Position + new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad)) * 10;
-                    TeslaCoil.CreateArc(entity, entity.Position, dest, 5, 10);
-                }
-            }
         }
         private void UpdateLightRange(Buff buff)
         {

@@ -148,25 +148,31 @@ namespace MVZ2.GameContent.Enemies
             ChangeVariant(entity, VARIANT_SNOW);
             result.SetFinalValue(false);
         }
-        private static Bounds GetDetectionBounds(Entity entity, Vector3 position)
+        private static Bounds GetSnowDetectionBounds(Entity entity, Vector3 position)
         {
             var center = position;
             var def = Global.Game.GetEntityDefinition(VanillaEnemyID.zombieCloud);
             var size = def?.GetSize() ?? new Vector3(64, 44, 64);
             size *= 0.5f;
-            size.y = entity.GetRelativeY();
+            size.y = entity.GetRelativeY() + entity.GetSize().y / 2;
             return new Bounds(center, size);
         }
         public static void SlowEnemiesBelow(Entity entity, Vector3 position)
         {
-            var bounds = GetDetectionBounds(entity, position);
+            var bounds = GetSnowDetectionBounds(entity, position);
 
             var mask = EntityCollisionHelper.MASK_ENEMY;
             resultsBuffer.Clear();
             entity.Level.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, mask, mask, resultsBuffer);
             foreach (var collider in resultsBuffer)
             {
-                collider.Entity?.InflictSlow(150, new EntitySourceReference(entity));
+                var affectedEntity = collider.Entity;
+                if (!affectedEntity.ExistsAndAlive())
+                    continue;
+                if (affectedEntity.GetBounds().max.y <= bounds.max.y)
+                {
+                    collider.Entity?.InflictSlow(150, new EntitySourceReference(entity));
+                }
             }
         }
         private static List<IEntityCollider> resultsBuffer = new List<IEntityCollider>();
