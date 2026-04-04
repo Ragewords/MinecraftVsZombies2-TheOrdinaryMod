@@ -20,6 +20,7 @@ namespace MVZ2.GameContent.Shells
         public LightingShell(string nsp, string name) : base(nsp, name)
         {
             SetProperty(VanillaShellProps.HIT_SOUND, VanillaSoundID.energyShieldHit);
+            SetProperty(VanillaShellProps.INSULATOR, true);
             AddTrigger(VanillaLevelCallbacks.PRE_BODY_TAKE_DAMAGE, PreBodyTakeDamageCallback, VanillaCallbackPriorities.LATE);
             AddTrigger(VanillaLevelCallbacks.PRE_ARMOR_TAKE_DAMAGE, PreArmorTakeDamageCallback, VanillaCallbackPriorities.LATE);
         }

@@ -14,6 +14,7 @@ namespace MVZ2.Vanilla.Shells
         }
         public static readonly PropertyMeta<bool> SLICE_CRITICAL = Get<bool>("sliceCritical");
         public static readonly PropertyMeta<bool> BLOCKS_FIRE = Get<bool>("blocksFire");
+        public static readonly PropertyMeta<bool> INSULATOR = Get<bool>("insulator");
         public static readonly PropertyMeta<NamespaceID> HIT_SOUND = Get<NamespaceID>("hitSound");
         public static readonly PropertyMeta<bool> BLOCKS_SLICE = Get<bool>("blocks_slice");
         public static readonly PropertyMeta<bool> REFLECT_SLICE = Get<bool>("reflect_slice");
@@ -33,6 +34,10 @@ namespace MVZ2.Vanilla.Shells
         public static bool ReflectSlice(this ShellDefinition shell)
         {
             return shell.GetProperty<bool>(REFLECT_SLICE);
+        }
+        public static bool IsInsulator(this ShellDefinition shell)
+        {
+            return shell.GetProperty<bool>(INSULATOR);
         }
         public static NamespaceID? GetHitSound(this ShellDefinition shell)
         {

@@ -173,11 +173,11 @@
             <icon sprite="mvz2:ui/almanac/attribute_tags[14]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#b0bec1" />
         </tag>
-        <tag id="block" name="方块" description="具有完整方块表面" priority="4000">
+        <tag id="block" name="方块" description="由单个或多个方块构成" priority="4000">
             <icon sprite="mvz2:ui/almanac/attribute_tags[15]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#1fa067" />
         </tag>
-        <tag id="spider" name="蜘蛛" description="免疫中毒" priority="4000">
+        <tag id="spider" name="毒性免疫" description="不会中毒" priority="4000">
             <icon sprite="mvz2:ui/almanac/attribute_tags[16]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[2]" color="#407512" />
         </tag>
@@ -192,17 +192,17 @@
             <value value="2" name="很重" description="不受到击退" sprite="mvz2:ui/almanac/mass_tags[4]" backgroundColor="#696a7f" />
         </enum>
         <enum id="shell" type="id">
-            <value value="mvz2:stone" name="石头" description="阻挡锐利物体和火焰溅射，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[0]" backgroundColor="#6b6b6b" />
+            <value value="mvz2:stone" name="石头" description="阻挡锐利物体、火焰溅射和电流传递，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[0]" backgroundColor="#6b6b6b" />
             <value value="mvz2:grass" name="草" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[1]" backgroundColor="#a48f34" />
             <value value="mvz2:flesh" name="血肉" description="会被锐利物体穿透" sprite="mvz2:ui/almanac/shell_tags[2]" backgroundColor="#934329" />
             <value value="mvz2:leather" name="皮革" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[3]" backgroundColor="#893b25" />
-            <value value="mvz2:metal" name="金属" description="将锐利物体弹射至其它方向" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa" />
+            <value value="mvz2:metal" name="金属" description="加强电流传递，将锐利物体弹射至其它方向" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa" />
             <value value="mvz2:bone" name="骨" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[5]" backgroundColor="#494b3e" />
             <value value="mvz2:wood" name="木头" description="受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[6]" backgroundColor="#b28553" />
             <value value="mvz2:nether" name="下界" description="免疫火焰伤害" sprite="mvz2:ui/almanac/shell_tags[7]" backgroundColor="#36131d" />
             <value value="mvz2:diamond" name="钻石" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[8]" backgroundColor="#417368" />
-            <value value="mvz2:sand" name="沙子" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590" />
-            <value value="mvz2:netherrack" name="下界岩" description="免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#36131d" />
+            <value value="mvz2:sand" name="沙子" description="阻挡电流传递" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590" />
+            <value value="mvz2:netherrack" name="下界岩" description="免疫火焰伤害，阻挡锐利物体、火焰溅射和电流传递，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#36131d" />
             <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#5aaa43" />
             <value value="mvz2:cloud" name="云" description="受到0.5x冲击或火焰伤害" sprite="mvz2:ui/almanac/shell_tags[12]" backgroundColor="#b67ba6" />
             <value value="mvz2:lightning" name="闪电" description="吸收闪电伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#b38f47" />
@@ -599,7 +599,7 @@
         </entry>
         <entry id="mvz2:tesla_coil">
             <header>
-                <p>磁暴线圈会电击周围大范围内的敌人，同时为经过的金属射弹附上电流。电击命中的敌人会产生连续攻击附近最多4个敌人的电流链。</p>
+                <p>磁暴线圈会电击周围大范围内的敌人，同时为经过的金属射弹附上电流。电击命中的敌人会产生电流链连续攻击附近最多3个敌人。</p>
             </header>
             <properties>
                 <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
@@ -1109,8 +1109,7 @@
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10，30/秒（剧毒），90/秒（剧毒，盔甲）</color>]]></p>
-                <p>特殊：<![CDATA[<color=red>剧毒对<tag id="mvz2:spider" />蜘蛛无效</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>10，30/秒（剧毒），90/秒（剧毒，对盔甲）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射一瓶药水，破碎后释放剧毒毒雾</color>]]></p>
             </properties>
             <flavor>
@@ -1329,12 +1328,12 @@
         </entry>
         <entry id="mvz2:cave_spider">
             <header>
-                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中，同时攻击到的怪物会中毒。</p>
+                <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>120</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>特点：<![CDATA[<color=red>剧毒对<tag id="mvz2:spider" />蜘蛛无效</color>]]></p>
+                <p>特点：<![CDATA[<color=red>使攻击到的怪物中毒</color>]]></p>
             </properties>
             <flavor>
                 <p>曾蝉联多次“蜘蛛网上冲浪比赛”冠军，只是因为那时候其他蜘蛛还不会游泳。</p>

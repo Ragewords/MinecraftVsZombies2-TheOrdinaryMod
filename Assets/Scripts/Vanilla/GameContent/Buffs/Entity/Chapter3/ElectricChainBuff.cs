@@ -7,6 +7,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2.Vanilla.Shells;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
@@ -29,7 +30,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var entity = buff.GetEntity();
             if (entity == null)
                 return;
-            entity.PlaySound(VanillaSoundID.redLightning);
             attackedEnemies.Add(entity);
             var nextDamage = buff.GetProperty<float>(PROP_DAMAGE);
             FindNextTarget(buff, entity, entity.Position, nextDamage);
@@ -61,9 +61,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
         }
         private void AttackTarget(Buff buff, Entity entity, Entity target, float currentDamage)
         {
-            if (attackedEnemies.Count >= MAX_TARGETS || target == null || target.IsDead)
+            var addtion = buff.GetProperty<int>(PROP_MAX_TARGETS_ADDTION);
+            if (attackedEnemies.Count >= MAX_TARGETS + addtion || target == null || target.IsDead)
                 return;
-            target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
+            var output = target.TakeDamage(currentDamage, new DamageEffectList(VanillaDamageEffects.LIGHTNING, VanillaDamageEffects.MUTE), entity);
 
             entity.Spawn(VanillaEffectID.electricArc, entity.Position)?.Let(e =>
             {
@@ -73,16 +74,32 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 e.Timeout = 15;
             });
 
+            if (output == null)
+            {
+                buff.Remove();
+                return;
+            }
+            else
+            {
+                var insulator = output.GetAllResults().Any(e => e?.ShellDefinition?.IsInsulator() ?? false);
+                if (insulator)
+                {
+                    buff.Remove();
+                    return;
+                }
+            }
+
             attackedEnemies.Add(target);
             FindNextTarget(buff, target, target.Position, currentDamage * (1 - DMG_DECAY));
         }
         public const float ZAP_RADIUS = 120;
-        public const float MAX_TARGETS = 5;
+        public const float MAX_TARGETS = 4;
         public const float DMG = 20;
         public const float DMG_DECAY = 0.2f;
         public static readonly VanillaBuffPropertyMeta<float> PROP_DAMAGE = new VanillaBuffPropertyMeta<float>("damage", 20);
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
         public static readonly VanillaBuffPropertyMeta<int> PROP_FACTION = new VanillaBuffPropertyMeta<int>("faction");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_MAX_TARGETS_ADDTION = new VanillaBuffPropertyMeta<int>("max_targets_addtion");
         public static readonly VanillaBuffPropertyMeta<IEntityCollider[]> PROP_IGNORED_ENTITY = new VanillaBuffPropertyMeta<IEntityCollider[]>("ignored_entity", new List<IEntityCollider>().ToArray());
         private List<Entity> attackedEnemies = new List<Entity>();
     }

@@ -17,6 +17,7 @@ namespace MVZ2.GameContent.Shells
             SetProperty(VanillaShellProps.HIT_SOUND, VanillaSoundID.netherrackBreak);
             SetProperty(VanillaShellProps.BLOCKS_SLICE, true);
             SetProperty(VanillaShellProps.BLOCKS_FIRE, true);
+            SetProperty(VanillaShellProps.INSULATOR, true);
         }
         public override void EvaluateDamage(DamageInput damageInfo)
         {
