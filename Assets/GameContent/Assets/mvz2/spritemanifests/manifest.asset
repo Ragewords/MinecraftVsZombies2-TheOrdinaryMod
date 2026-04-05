@@ -2671,6 +2671,8 @@ MonoBehaviour:
     spritesheet:
     - {fileID: -1325256689, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
     - {fileID: 1258825829, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
+    - {fileID: -761011237, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
+    - {fileID: 354280981, guid: 0eda415736b09a64aa6fa6ae8385d4d1, type: 3}
   - name: entity/enemy/skeleton
     spritesheet:
     - {fileID: 21300000, guid: 20e366ae3ad04144489c4e881a2d2b4a, type: 3}
