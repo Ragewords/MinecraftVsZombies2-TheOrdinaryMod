@@ -217,7 +217,7 @@
                 <p>耐久：<![CDATA[<color=red>300</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>特点：<![CDATA[<color=red>有30%的概率连续射击2次</color>]]></p>
+                <p>特点：<![CDATA[<color=red>有50%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速发射60支箭矢</color>]]></p>
             </properties>
             <flavor>
@@ -303,7 +303,7 @@
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>特点：<![CDATA[<color=red>有30%的概率连续射击2次</color>]]></p>
+                <p>特点：<![CDATA[<color=red>有50%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>射出一个越滚越大的雪球</color>]]></p>
             </properties>
             <flavor>
@@ -1664,11 +1664,11 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>速度：<![CDATA[<color=red>3</color>]]></p>
                 <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone" />石头造成5倍伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>众所周知，石头是蠹虫的天然栖息地。很明显石头做成的器械不是。</p>
+                <p>蠹虫并不擅长咬文嚼字，吃书这种事对它而言太深奥了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:spellcaster">
