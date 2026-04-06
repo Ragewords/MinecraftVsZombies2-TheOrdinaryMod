@@ -67,7 +67,7 @@ namespace MVZ2.GameContent.Enemies
                     entity.SpawnWithParams(VanillaEffectID.zombieCloudSnowflake, pos);
                 }
                 var center = entity.Position;
-                center.y = entity.GetRelativeY() / 2;
+                center.y = (entity.GetRelativeY()  + entity.GetSize().y / 2) / 2;
                 SlowEnemiesBelow(entity, center);
             }
             if (variant == ZombieCloud.VARIANT_FIRE)
