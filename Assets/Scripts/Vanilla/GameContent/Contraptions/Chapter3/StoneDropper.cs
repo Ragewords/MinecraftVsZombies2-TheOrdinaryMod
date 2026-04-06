@@ -42,9 +42,7 @@ namespace MVZ2.GameContent.Contraptions
                 var param = entity.GetShootParams();
                 var rng = GetRNG(entity);
                 param.projectileID = rng == null ? VanillaProjectileID.boulder : GetRandomProjectileID(rng);
-                var yspeed = param.projectileID == VanillaProjectileID.bounceBoulder ? 10f : 0f;
                 param.damage = param.projectileID == VanillaProjectileID.bounceBoulder ? entity.GetDamage() * 20 : entity.GetDamage() * 4;
-                param.velocity.y = yspeed;
                 return entity.ShootProjectile(param);
             }
             return base.Shoot(entity);
@@ -64,11 +62,11 @@ namespace MVZ2.GameContent.Contraptions
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
                 entity.ShootProjectile(param);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = -1; i <= 1; i++)
             {
-                var xspeed = entity.GetFacingX() * rng.Next(10f, 18f);
+                var xspeed = 15f;
                 var yspeed = 10f;
-                var zspeed = -1f + i;
+                var zspeed = -3f * i;
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.bounceBoulder;
                 param.damage = entity.GetDamage() * 20;
