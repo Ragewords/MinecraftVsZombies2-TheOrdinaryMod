@@ -39,6 +39,7 @@ namespace MVZ2.GameContent.Projectiles
                     }
                 }
             }
+            projectile.SetModelProperty("Electrified", electrifiedBuffBuffer.Count > 0);
         }
         public void Electrify(Entity entity, Entity coil)
         {
