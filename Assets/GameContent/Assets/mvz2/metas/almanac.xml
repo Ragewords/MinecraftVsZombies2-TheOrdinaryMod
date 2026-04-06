@@ -196,7 +196,7 @@
             <value value="mvz2:grass" name="草" description="会被锐利物体穿透，受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[1]" backgroundColor="#a48f34" />
             <value value="mvz2:flesh" name="血肉" description="会被锐利物体穿透" sprite="mvz2:ui/almanac/shell_tags[2]" backgroundColor="#934329" />
             <value value="mvz2:leather" name="皮革" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[3]" backgroundColor="#893b25" />
-            <value value="mvz2:metal" name="金属" description="加强电流传递，将锐利物体弹射至其它方向" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa" />
+            <value value="mvz2:metal" name="金属" description="将锐利物体弹射至其它方向" sprite="mvz2:ui/almanac/shell_tags[4]" backgroundColor="#aaaaaa" />
             <value value="mvz2:bone" name="骨" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[5]" backgroundColor="#494b3e" />
             <value value="mvz2:wood" name="木头" description="受到2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[6]" backgroundColor="#b28553" />
             <value value="mvz2:nether" name="下界" description="免疫火焰伤害" sprite="mvz2:ui/almanac/shell_tags[7]" backgroundColor="#36131d" />
