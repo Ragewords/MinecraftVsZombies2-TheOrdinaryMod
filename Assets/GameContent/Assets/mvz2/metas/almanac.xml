@@ -1556,7 +1556,7 @@
                 <p>红色：<![CDATA[<color=red>放出僵尸</color>]]></p>
                 <p>绿色：<![CDATA[<color=red>绑架器械</color>]]></p>
                 <p>蓝色：<![CDATA[<color=red>吸取掉落物</color>]]></p>
-                <p>彩色：<![CDATA[<color=red>变成红色、绿色和蓝色的不死飞行物各一个</color>]]></p>
+                <p>彩色：<![CDATA[<color=red>变成两个随机颜色的不死飞行物</color>]]></p>
             </properties>
             <flavor>
                 <p>如果你的农场里大面积地种植了小麦，或者圈养了很多的奶牛，那你可一定要小心这帮家伙了。</p>
