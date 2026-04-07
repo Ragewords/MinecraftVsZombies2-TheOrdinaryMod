@@ -23,8 +23,10 @@ namespace PVZEngine.Modifiers
                 var dst = value;
                 var srcOp = modifier.SrcOperator;
                 var dstOp = modifier.DstOperator;
+                var srcAOp = modifier.SrcAlphaOperator;
+                var dstAOp = modifier.DstAlphaOperator;
 
-                value = Blend(src, dst, srcOp, dstOp);
+                value = Blend(src, dst, srcOp, dstOp, srcAOp, dstAOp);
             }
             return value;
         }
