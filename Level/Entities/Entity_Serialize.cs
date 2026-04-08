@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PVZEngine.Armors;
 using PVZEngine.Base;
+using PVZEngine.Damages;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
@@ -47,6 +48,7 @@ namespace PVZEngine.Entities
             }
 
             seri.isDead = IsDead;
+            seri.lethalDeathInfo = lethalDeathInfo != null ? new SerializableDeathInfo(lethalDeathInfo) : null;
             seri.health = Health;
             seri.isOnGround = IsOnGround;
             seri.properties = properties.ToSerializable();
@@ -125,6 +127,7 @@ namespace PVZEngine.Entities
             Parent = Level.FindEntityByID(seri.parent);
             Target = Level.FindEntityByID(seri.target);
             children.AddRange(seri.children.Select(e => Level.FindEntityByID(e)).OfType<Entity>());
+            lethalDeathInfo = seri.lethalDeathInfo != null ? new DeathInfo(Level, seri.lethalDeathInfo) : null;
         }
         private void UpdateAfterLoadFinished()
         {

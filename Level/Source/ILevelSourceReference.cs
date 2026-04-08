@@ -10,8 +10,13 @@ namespace PVZEngine.Level
         int Faction { get; }
         NamespaceID? DefinitionID { get; }
         long ID { get; }
+        ISerializableSourceReference ToSerializable();
     }
     public interface ILevelSourceTarget
     {
+    }
+    public interface ISerializableSourceReference
+    {
+        ILevelSourceReference ToDeserialized(LevelEngine level);
     }
 }

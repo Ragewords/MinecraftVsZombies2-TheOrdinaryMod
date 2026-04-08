@@ -120,15 +120,15 @@ namespace PVZEngine.Entities
         #endregion
 
         #region 死亡
-        public void Die(Entity? source = null, BodyDamageResult? damage = null)
+        public void Die(Entity? source = null, DamageResultValues? damage = null)
         {
             Die(new DamageEffectList(), source, damage);
         }
-        public void Die(DamageEffectList effects, Entity? source = null, BodyDamageResult? damage = null)
+        public void Die(DamageEffectList effects, Entity? source = null, DamageResultValues? damage = null)
         {
             Die(effects, source == null ? null : new EntitySourceReference(source), damage);
         }
-        public void Die(DamageEffectList effects, ILevelSourceReference? source, BodyDamageResult? damage = null)
+        public void Die(DamageEffectList effects, ILevelSourceReference? source, DamageResultValues? damage = null)
         {
             Die(new DeathInfo(this, effects, source, damage));
         }
@@ -139,6 +139,7 @@ namespace PVZEngine.Entities
             if (!PreDeath(info))
                 return;
             IsDead = true;
+            lethalDeathInfo = info;
             PostDeath(info);
         }
         private bool PreDeath(DeathInfo info)
@@ -163,11 +164,16 @@ namespace PVZEngine.Entities
             if (!IsDead)
                 return;
             IsDead = false;
+            lethalDeathInfo = null;
             Level.Triggers.RunCallbackFiltered(LevelCallbacks.POST_ENTITY_REVIVE, new EntityCallbackParams(this), Type);
         }
         private void LimitHealth()
         {
             Health = Mathf.Min(Health, this.GetMaxHealth());
+        }
+        public DeathInfo? GetLethalDeathInfo()
+        {
+            return lethalDeathInfo;
         }
         #endregion
 
@@ -337,6 +343,7 @@ namespace PVZEngine.Entities
         private long time = 0;
         private List<Entity> children = new List<Entity>();
         private Dictionary<NamespaceID, int> takenConveyorSeeds = new Dictionary<NamespaceID, int>();
+        private DeathInfo? lethalDeathInfo;
         #endregion
     }
 }

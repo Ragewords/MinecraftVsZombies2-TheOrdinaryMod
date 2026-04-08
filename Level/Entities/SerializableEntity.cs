@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using PVZEngine.Armors;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Damages;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
@@ -50,6 +51,7 @@ namespace PVZEngine.Entities
         public Dictionary<string, SerializableArmor>? armors;
 
         public bool isDead;
+        public SerializableDeathInfo? lethalDeathInfo;
         public float health;
         public bool isOnGround;
         [Obsolete]
