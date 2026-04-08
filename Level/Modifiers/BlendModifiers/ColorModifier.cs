@@ -17,7 +17,7 @@ namespace PVZEngine.Modifiers
             SrcOperator = src;
             SrcAlphaOperator = src;
             DstOperator = dest;
-            DstAlphaOperator = src;
+            DstAlphaOperator = dest;
         }
 
         public ColorModifier(PropertyKey<Color> propertyName, BlendOperator src, BlendOperator dest, PropertyKey<Color> buffPropertyName, int priority = 0) : base(propertyName, buffPropertyName, priority)
@@ -25,7 +25,7 @@ namespace PVZEngine.Modifiers
             SrcOperator = src;
             SrcAlphaOperator = src;
             DstOperator = dest;
-            DstAlphaOperator = src;
+            DstAlphaOperator = dest;
         }
         public BlendOperator SrcOperator { get; private set; }
         public BlendOperator DstOperator { get; private set; }
