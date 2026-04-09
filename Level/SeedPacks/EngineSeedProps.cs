@@ -30,6 +30,10 @@ namespace PVZEngine.Level
         {
             seed.SetProperty<float>(RECHARGE, value);
         }
+        public static void AddRecharge(this SeedPack seed, float value)
+        {
+            seed.SetRecharge(seed.GetRecharge() + value);
+        }
         public static NamespaceID? GetRechargeID(this SeedPack seed)
         {
             return seed.GetProperty<NamespaceID>(RECHARGE_ID);
