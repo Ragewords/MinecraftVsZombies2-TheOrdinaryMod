@@ -602,7 +602,7 @@
                 <p>磁暴线圈会电击周围大范围内的敌人，同时为经过的金属射弹附上电流。电击命中的敌人会产生电流链连续攻击附近最多3个敌人。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>1200</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>60，电流链每次传递衰减20%</color>]]></p>
                 <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>

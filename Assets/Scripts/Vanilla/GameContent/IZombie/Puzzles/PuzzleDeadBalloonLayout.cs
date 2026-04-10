@@ -27,7 +27,7 @@ namespace MVZ2.GameContent.IZombie
             Insert(map, 0, 2, VanillaContraptionID.totenser);
             Insert(map, 1, 2, VanillaContraptionID.furnace);
             Insert(map, 2, 2, VanillaContraptionID.furnace);
-            Insert(map, 3, 2, VanillaContraptionID.teslaCoil);
+            Insert(map, 3, 2, VanillaContraptionID.fireChargeDispenser);
 
             int lane1 = 0, lane2 = 0;
             while (lane1 == lane2 || lane1 == 2 || lane2 == 2)
