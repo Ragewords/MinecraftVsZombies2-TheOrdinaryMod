@@ -5,6 +5,7 @@ using MVZ2.Vanilla.Callbacks;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using MVZ2.GameContent.Damages;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -24,17 +25,17 @@ namespace MVZ2.GameContent.Enemies
             var bodyResult = output.BodyResult;
             var armorResult = output.ArmorResult;
             bool poison = false;
-            if (bodyResult != null && bodyResult.Source?.DefinitionID == GetID())
+            if (bodyResult != null && bodyResult.Source?.DefinitionID == GetID() && bodyResult.HasEffect(VanillaDamageEffects.ENEMY_MELEE))
             {
                 poison = !entity.IsSpider();
             }
-            if (armorResult != null && armorResult.Source?.DefinitionID == GetID())
+            if (armorResult != null && armorResult.Source?.DefinitionID == GetID() && armorResult.HasEffect(VanillaDamageEffects.ENEMY_MELEE))
             {
                 poison = !entity.IsSpider();
             }
             if (poison)
             {
-                entity.InflictPoison(150, bodyResult?.Source);
+                entity.InflictPoison(150, bodyResult?.Source ?? armorResult?.Source);
             }
         }
     }
