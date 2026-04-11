@@ -31,6 +31,10 @@ namespace PVZEngine.Entities
             }
             return entityCache;
         }
+        public bool IsEntity(Entity entity)
+        {
+            return ID == entity.ID;
+        }
         public bool Exists(LevelEngine game)
         {
             var entity = GetEntity(game);
