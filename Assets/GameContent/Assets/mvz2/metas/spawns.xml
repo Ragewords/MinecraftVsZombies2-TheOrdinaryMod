@@ -56,7 +56,7 @@
     </entry>
     <entry id="skelebomb">
         <entity id="mvz2:skelebomb" />
-        <spawn level="3" minWave="10" />
+        <spawn level="4" minWave="5" />
         <weight base="3000" />
     </entry>
 

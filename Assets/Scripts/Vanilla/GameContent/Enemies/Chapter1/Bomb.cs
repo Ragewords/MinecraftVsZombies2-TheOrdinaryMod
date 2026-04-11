@@ -54,7 +54,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (info.Effects.HasEffect(VanillaDamageEffects.DROWN))
                 return;
-            Skelebomb.Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
+            Skelebomb.Explode(entity, entity.GetDamage() * 3, entity.GetFaction(), entity.GetCenter());
             entity.Remove();
         }
         public static readonly VanillaEntityPropertyMeta<Color> PROP_COLOR_OFFSET = new VanillaEntityPropertyMeta<Color>("ColorOffset");

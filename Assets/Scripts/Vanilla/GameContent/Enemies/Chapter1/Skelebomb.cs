@@ -31,7 +31,11 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
+            bool earlyExplode = entity.RNG.Next(20) == 0;
+            float surpriseTimeEarly = entity.RNG.Next(SURPRISE_TIME_MIN_EARLY, SURPRISE_TIME_MAX_EARLY);
+            float surpriseTimeLate = entity.RNG.Next(SURPRISE_TIME_MIN_LATE, SURPRISE_TIME_MAX_LATE);
+            float time = earlyExplode ? surpriseTimeEarly : surpriseTimeLate;
+            SetStateTimer(entity, TimerHelper.NewSecondTimer(time));
             SetHoldingBomb(entity, true);
         }
         protected override void UpdateLogic(Entity entity)
@@ -45,11 +49,8 @@ namespace MVZ2.GameContent.Enemies
             {
                 if (stateTimer.RunToExpiredOrNull())
                 {
-                    EndCasting(entity);
-                    SetHoldingBomb(entity, false);
-                    Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
+                    ExplodeAndRemoveBomb(entity);
                     entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), entity);
-                    entity.Level.ShakeScreen(5, 0, 20);
                 }
             }
         }
@@ -58,9 +59,10 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateAI(entity);
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEnemyStates.MELEE_ATTACK && IsHoldingBomb(entity))
+            var stateTimer = GetStateTimer(entity);
+            if (!entity.IsPerformingSpecialMove() && IsHoldingBomb(entity))
             {
-                if (entity.RNG.Next(200) == 0)
+                if (stateTimer.RunToExpiredOrNull())
                 {
                     StartCasting(entity);
                 }
@@ -91,10 +93,7 @@ namespace MVZ2.GameContent.Enemies
                 return;
             if (entity.IsPerformingSpecialMove())
             {
-                EndCasting(entity);
-                SetHoldingBomb(entity, false);
-                Explode(entity, entity.GetDamage() * 3, entity.GetFaction());
-                entity.Level.ShakeScreen(5, 0, 20);
+                ExplodeAndRemoveBomb(entity);
             }
             else
             {
@@ -129,15 +128,25 @@ namespace MVZ2.GameContent.Enemies
             entity.SetPerformingSpecialMove(true);
             entity.PlaySound(VanillaSoundID.fuse);
             var stateTimer = GetStateTimer(entity);
-            stateTimer?.ResetTime(CAST_TIME);
+            stateTimer?.ResetTime(Ticks.FromSeconds(FUSE_LIT_TIME));
         }
         private void EndCasting(Entity entity)
         {
             entity.SetPerformingSpecialMove(false);
             var stateTimer = GetStateTimer(entity);
-            stateTimer?.ResetTime(CAST_COOLDOWN);
+            stateTimer?.Stop();
         }
-        public static void Explode(Entity entity, float damage, int faction)
+        private void ExplodeAndRemoveBomb(Entity entity)
+        {
+            var offset = BOMB_OFFSET;
+            offset.x *= entity.GetFacingX();
+            offset.Scale(entity.GetScale());
+            EndCasting(entity);
+            SetHoldingBomb(entity, false);
+            Explode(entity, entity.GetDamage() * 3, entity.GetFaction(), entity.Position + offset);
+            entity.Level.ShakeScreen(5, 0, 20);
+        }
+        public static void Explode(Entity entity, float damage, int faction, Vector3 position)
         {
             var scale = entity.GetFinalScale();
             var scaleX = Mathf.Abs(scale.x);
@@ -146,11 +155,11 @@ namespace MVZ2.GameContent.Enemies
             DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE);
             if (entity.HasBuff<SkelebombPunchedBuff>())
             {
-                entity.ExplodeAgainstFriendly(entity.GetCenter(), range, faction, damage, damageEffectList);
+                entity.ExplodeAgainstFriendly(position, range, faction, damage, damageEffectList);
             }
             else
             {
-                entity.Explode(entity.GetCenter(), range, faction, damage, damageEffectList);
+                entity.Explode(position, range, faction, damage, damageEffectList);
             }
 
             Explosion.Spawn(entity, entity.GetCenter(), range);
@@ -158,10 +167,13 @@ namespace MVZ2.GameContent.Enemies
         }
 
         #region ����
-        private const int CAST_COOLDOWN = 300;
-        private const int CAST_TIME = 30;
+        private const float SURPRISE_TIME_MIN_EARLY = 4.4f;
+        private const float SURPRISE_TIME_MAX_EARLY = 7.54f;
+        private const float SURPRISE_TIME_MIN_LATE = 13.22f;
+        private const float SURPRISE_TIME_MAX_LATE = 22.68f;
+        private const float FUSE_LIT_TIME = 1.1f;
         private const int STATE_SPECIAL_MOVE = VanillaEnemyStates.SPECIAL_MOVE;
-        private Vector3 BOMB_OFFSET = new Vector3(32, 40, 0);
+        private Vector3 BOMB_OFFSET = new Vector3(30, 54, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.skelebomb;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");

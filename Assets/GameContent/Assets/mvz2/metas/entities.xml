@@ -49,7 +49,6 @@
                 <bool name="mvz2:block" value="true" />
                 <bool name="mvz2:isDispenser" value="false" />
                 <bool name="mvz2:contactDamage" value="false" />
-                <bool name="mvz2:conductor" value="false" />
                 <float name="mvz2:produceSpeed" value="1" />
                 <float name="mvz2:damage" value="100" />
                 <float name="mvz2:fallResistance" value="9" />
