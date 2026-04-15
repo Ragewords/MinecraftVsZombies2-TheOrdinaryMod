@@ -1793,7 +1793,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
                 <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤2个伞兵僵尸作为支援。最多召唤5个伞兵僵尸。</color>]]></p>
+                <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤2个<ref=[misc]mvz2:paratrooper_zombie>伞兵僵尸</ref>作为支援。最多召唤5个伞兵僵尸。</color>]]></p>
             </properties>
             <flavor>
                 <p>航海者僵尸有着丰富的航海经验，在因故离开航海事业后，他将自己的航海故事写成了一本书，名为“航僵王”。</p>
