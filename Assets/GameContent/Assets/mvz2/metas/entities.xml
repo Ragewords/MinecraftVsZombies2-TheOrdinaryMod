@@ -506,6 +506,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:lily_pad_carrier" />
+                <behaviour operator="add" id="mvz2:destroy_outside_water" />
             </behaviours>
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
@@ -566,6 +567,9 @@
             <unlock>
                 <condition required="mvz2:level.dream_4" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:destroy_outside_water" />
+            </behaviours>
             <properties>
                 <bool name="mvz2:isFloor" value="true" />
                 <bool name="mvz2:loyal" value="true" />
@@ -1270,7 +1274,6 @@
                 <bool name="mvz2:upgradeBlueprint" value="true" />
                 <id name="mvz2:upgradeFrom" value="mvz2:beacon" />
 
-                <bool name="mvz2:triggerActive" value="true" />
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
 
@@ -1533,12 +1536,13 @@
                 <id name="mvz2:rechargeId" value="mvz2:none" />
             </properties>
         </contraption>
-        <dispenser id="skyward_familiar" name="御天信标子机" tooltip="向怪物发射星星">
+        <dispenser id="skyward_option" name="御天信标子机" tooltip="向怪物发射星星">
             <unlock>
                 <condition required="mvz2:contraption.skyward_beacon" />
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:remove_without_parent" />
+                <behaviour operator="add" id="skyward_option/trigger" />
             </behaviours>
             <properties>
                 <bool name="mvz2:cannotDig" value="true" />

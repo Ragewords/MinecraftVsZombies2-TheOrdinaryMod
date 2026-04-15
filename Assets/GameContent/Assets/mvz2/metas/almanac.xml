@@ -208,15 +208,25 @@
             <value value="mvz2:lightning" name="闪电" description="吸收闪电伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#b38f47" />
         </enum>
     </tags>
+    <globalVariables>
+        <variable name="entity_health">property("mvz2:entity/maxHealth")</variable>
+        <variable name="entity_damage">property("mvz2:entity/damage")</variable>
+        <variable name="entity_speed">property("mvz2:entity/speed")</variable>
+        
+        <variable name="redstone_value">property("mvz2:entity/energyValue", "mvz2:redstone", "entity")</variable>
+
+        <variable name="armor_hp">property("mvz2:armor/maxHealth", property("mvz2:entity/starting_armor"), "armor")</variable>
+        <variable name="shield_hp">property("mvz2:armor/maxHealth", property("mvz2:entity/starting_shield"), "armor")</variable>
+    </globalVariables>
     <contraptions>
         <entry id="mvz2:dispenser">
             <header>
                 <p>发射器是你的第一道防线，它们发射箭来保卫你的房子。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>300</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>有40%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速发射60支箭矢</color>]]></p>
             </properties>
@@ -229,10 +239,10 @@
                 <p>熔炉能为你提供额外的红石。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>300</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>生产时间：<![CDATA[<color=red>24秒</color>]]></p>
-                <p>提供能量：<![CDATA[<color=red>25</color>]]></p>
-                <p>技能：<![CDATA[<color=red>瞬间生成6枚红石，场上每多一个熔炉则额外生成1枚红石</color>]]></p>
+                <p>提供能量：<![CDATA[<color=red><var id="mvz2:redstone_value" /></color>]]></p>
+                <p>技能：<![CDATA[<color=red>瞬间生成6枚红石，场上每多一个熔炉，额外生成1枚红石</color>]]></p>
             </properties>
             <flavor>
                 <p>精准采集是你这样用的？</p>
@@ -243,7 +253,7 @@
                 <p>哭泣的黑曜石的强力装甲能够抵御敌人的攻击，同时能够照亮周围区域。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>照明半径：<![CDATA[<color=red>1.1格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>获得下界合金装甲，耐久提高至10000</color>]]></p>
             </properties>
@@ -283,9 +293,9 @@
                 <p>地雷TNT在一定时间的准备后能够炸飞接近的敌方怪物。放下后，地雷TNT会向所在列的随机一个空位投掷新的地雷TNT。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>300</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>准备时间：<![CDATA[<color=red>15秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>1800</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即准备完毕，并向最前方投掷两个新的地雷TNT</color>]]></p>
             </properties>
             <flavor>
@@ -302,7 +312,7 @@
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>有40%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>射出一个越滚越大的雪球</color>]]></p>
             </properties>
@@ -342,8 +352,8 @@
             <properties>
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
-                <p>蓄力：<![CDATA[<color=red>最大得到x300%击退力度，击退敌方怪物后重置蓄力进度，修复期间无法蓄力</color>]]></p>
-                <p>蓄力时间：<![CDATA[<color=red>66.7秒</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最多得到x300%击退速度，攻击后重置蓄力进度</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>66.7秒（修复时无法蓄力）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
             <flavor>
@@ -351,11 +361,14 @@
             </flavor>
         </entry>
         <entry id="mvz2:tnt">
+            <variables>
+                <variable name="mini_tnt_damage">toDouble(global("mvz2:entity_damage")) / 18</variable>
+            </variables>
             <header>
                 <p>Etho台阶在触发后能炸飞周围的敌人，并在他们的头顶生成迷你TNT。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>1800，100（迷你TNT）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，<var local="mvz2:mini_tnt_damage" />（迷你TNT）</color>]]></p>
                 <p>半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>炸出4个TNT分身</color>]]></p>
             </properties>
@@ -364,13 +377,17 @@
             </flavor>
         </entry>
         <entry id="mvz2:soul_furnace">
+            <variables>
+                <variable name="split_damage">toDouble(global("mvz2:entity_damage")) * 0.25</variable>
+                <variable name="splash_damage">toDouble(global("mvz2:entity_damage")) * 0.25</variable>
+            </variables>
             <header>
                 <p><![CDATA[灵魂熔炉发射恐怖的<tag id="mvz2:fire" />灵魂火，但需要烧毁前方的器械来补充燃料。]]></p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>80，20（分裂后）</color>]]></p>
-                <p>溅射伤害：<![CDATA[<color=red>20（不伤害直接目标）</color>]]></p>
-                <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，<var local="split_damage" />（分裂后）</color>]]></p>
+                <p>溅射伤害：<![CDATA[<color=red><var local="splash_damage" />（不伤害直接目标）</color>]]></p>
+                <p>特点：<![CDATA[<color=red>需要烧毁器械补充燃料，并可与部分器械产生协同效应</color>]]></p>
                 <p>燃料上限：<![CDATA[<color=red>120</color>]]></p>
                 <p>技能：<![CDATA[<color=red>消耗所有燃料，每有一发燃料被消耗，便随机对一个敌人发射爆炸灵魂火球</color>]]></p>
             </properties>
@@ -379,16 +396,18 @@
             </flavor>
         </entry>
         <entry id="mvz2:silvenser">
+            <variables>
+                <variable name="flesh_damage">toDouble(global("mvz2:entity_damage")) * 2</variable>
+            </variables>
             <header>
                 <p>银制发射器能发射穿透<![CDATA[<tag id="mvz2:shell" enum="mvz2:flesh" />]]>血肉之躯并造成流血的不同飞刀。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
-                <p>控制时间：<![CDATA[<color=red>0.5秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，<var local="flesh_damage"/>（对肉体）</color>]]></p>
                 <p>飞刀数：<![CDATA[<color=red>10</color>]]></p>
-                <p>飞刀填装时间：<![CDATA[<color=red>30秒</color>]]></p>
-                <p>特点：<![CDATA[<color=red>蓝飞刀穿透多个敌人，但无法穿透硬物；红飞刀在敌人间弹射；绿飞刀时停敌人</color>]]></p>
-                <p>技能：<![CDATA[<color=red>时停至多10个敌人3秒，以这些敌人为中心创造飞刀圈，数秒后飞刀开始飞行，并在1秒后再次向中心飞行</color>]]></p>
+                <p>飞刀装填时间：<![CDATA[<color=red>30秒</color>]]></p>
+                <p>特点：<![CDATA[<color=red>蓝飞刀穿透多个敌人，但无法穿透硬物；红飞刀击中硬物时弹射；绿飞刀时停敌人0.5秒</color>]]></p>
+                <p>技能：<![CDATA[<color=red>时停至多10个敌人3秒，以这些敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>]]></p>
             </properties>
             <flavor>
                 <p>"发发，我从人生中学到了一件事情，发射器越是发射箭矢，就越会感到无力，除非超越箭矢……""你到底想说什么！""我不发射箭了，发发！"</p>
@@ -423,7 +442,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射五支大箭矢及50支箭矢</color>]]></p>
             </properties>
@@ -459,7 +478,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>能够攻击高处或低矮的敌人</color>]]></p>
                 <p>技能：<![CDATA[<color=red>向至多20个敌人发射穿甲的巨型尖刺</color>]]></p>
             </properties>
@@ -488,7 +507,7 @@
                 <p>梦境结晶会慢慢地恢复自己的生命。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>恢复速度：<![CDATA[<color=red>60-90/秒（随耐久变化）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，并为周围的器械恢复耐久</color>]]></p>
             </properties>
@@ -518,7 +537,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30，每次反弹后-10</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，每次反弹后-10</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射30颗大型木球，每颗造成120点伤害</color>]]></p>
             </properties>
             <flavor>
@@ -531,9 +550,9 @@
                 <p>尖刺方块会对走在上面的敌人造成伤害。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>900</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>攻击频率：<![CDATA[<color=red>1秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>对一整行地面上的敌人快速造成伤害，并将它们拉向自身</color>]]></p>
             </properties>
             <flavor>
@@ -542,6 +561,10 @@
             </flavor>
         </entry>
         <entry id="mvz2:stone_dropper">
+            <variables>
+                <variable name="boulder_damage">toDouble(global("mvz2:entity_damage")) * 4</variable>
+                <variable name="bouncy_boulder_damage">toDouble(global("mvz2:entity_damage")) * 20</variable>
+            </variables>
             <header>
                 <p>石制投掷器向敌人发射小型卵石，偶尔会发射能击退敌方怪物并分裂的巨石，有更低的概率发射不断弹跳的弹力巨石。</p>
             </header>
@@ -549,8 +572,8 @@
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>巨石概率：<![CDATA[<color=red>20%</color>]]></p>
                 <p>弹力巨石概率：<![CDATA[<color=red>5%</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10（卵石），40（巨石），200（弹力巨石）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>立即喷射30发巨石和3个弹力巨石</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（卵石），<var local="boulder_damage" />（巨石），<var local="bouncy_boulder_damage" />（弹力巨石）</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即喷射30发巨石和3发弹力巨石</color>]]></p>
             </properties>
             <flavor>
                 <p>它本来想学木制投掷器玩一个磊磊磊磊磊磊磊磊磊磊制投掷器的笑话的，但是不幸的是木制投掷器为这个笑话申请了专利。</p>
@@ -561,7 +584,7 @@
                 <p>黏液护罩可以和其他器械放在一起，并保护其内部的器械。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>3x3范围内的器械无敌5秒</color>]]></p>
             </properties>
             <flavor>
@@ -601,9 +624,9 @@
                 <p>磁暴线圈会电击周围大范围内的敌人，同时为经过的金属射弹附上电流。电击命中的敌人会产生电流链连续攻击附近最多3个敌人。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>1000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>攻击速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>60，电流链每次传递衰减20%</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，电流链每次传递衰减20%</color>]]></p>
                 <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%电流伤害，使命中的敌人产生电流链</color>]]></p>
                 <p>特殊：<![CDATA[<color=red>可以攻击空中敌人；电击水域会对周围水域也造成伤害</color>]]></p>
@@ -629,11 +652,14 @@
 
         <!-- Chapter 4 -->
         <entry id="mvz2:note_block">
+            <variables>
+                <variable name="sound_wave_damage">toDouble(global("mvz2:entity_damage")) / 3</variable>
+            </variables>
             <header>
                 <p>唱片机发射在自身和敌人间不停反弹的音符，持续造成伤害，音符撞击自身时会释放音浪攻击周围的敌人。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>3（音符），1（音浪）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（音符），<var local="sound_wave_damage" />（音浪）</color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>音符上限：<![CDATA[<color=red>10</color>]]></p>
                 <p>射程：<![CDATA[<color=red>4格</color>]]></p>
@@ -649,7 +675,7 @@
                 <p>闪电之珠张开能量护盾阻挡大范围敌人的攻击，并可以通过吸收敌弹来治疗自己。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>3000/</color><color=#00BBFF>3000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" />/</color><color=#00BBFF><var id="mvz2:entity_health" /></color>]]></p>
                 <p>能量护盾恢复时间：<![CDATA[<color=red>20秒</color>]]></p>
                 <p>特点：<![CDATA[<color=red>吸收敌弹，并恢复100/</color><color=#00BBFF>50</color><color=red>耐久</color>]]></p>
                 <p>技能：<![CDATA[<color=red>关闭能量护盾，在5秒内吸收所有伤害并治疗自己，之后将这些伤害返还给所有敌人（最高1800）</color>]]></p>
@@ -660,12 +686,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:splitenser">
+            <variables>
+                <variable name="backwards_damage">toDouble(global("mvz2:entity_damage")) * 0.75</variable>
+            </variables>
             <header>
                 <p>双向发射器在向前发射箭矢的同时，也会向后方发射双倍的飞刀。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/1.5秒（前方），2发/1.5秒（后方）</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20（前方），15（后方）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（前方），<var local="backwards_damage" />（后方）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>当场上存在大量敌人时进入狂热状态，获得元素属性加成</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速向前后分别发射60支箭矢和飞刀，最后向前后分别发射10把飞刀和一支大箭矢</color>]]></p>
             </properties>
@@ -701,8 +730,8 @@
                 <p>地狱火会烧伤接近的敌人，并点燃穿过它的箭矢，使其额外造成火焰伤害。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>伤害增幅：<![CDATA[<color=red>+100%火焰伤害，+66%溅射伤害</color>]]></p>
                 <p>被摧毁：<![CDATA[<color=red>爆炸，对一整条线的所有敌人造成900火焰伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变为诅咒火焰，x200%自身伤害，为箭矢+200%火焰伤害，+133%溅射伤害</color>]]></p>
@@ -718,13 +747,22 @@
             </flavor>
         </entry>
         <entry id="necrotombstone">
+            <variables>
+                <variable name="token">"mvz2:skeleton_warrior"</variable>
+                <variable name="warrior_hp">property("mvz2:entity/maxHealth", local("token"), "entity")</variable>
+                <variable name="warrior_speed">property("mvz2:entity/speed", local("token"), "entity")</variable>
+                <variable name="helmet">property("mvz2:entity/starting_armor", local("token"), "entity")</variable>
+                <variable name="shield">property("mvz2:entity/starting_shield", local("token"), "entity")</variable>
+                <variable name="helmet_hp">property("mvz2:armor/maxHealth", local("helmet"), "armor")</variable>
+                <variable name="shield_hp">property("mvz2:armor/maxHealth", local("shield"), "armor")</variable>
+            </variables>
             <header>
                 <p>死灵墓碑会不断召唤友方的骷髅、死灵法师和骷髅战士，让它们为你而战。</p>
             </header>
             <properties>
                 <p>召唤时间：<![CDATA[<color=red>15秒</color>]]></p>
-                <p>骷髅战士生命：<![CDATA[<color=red>200+300（头盔）+200（盾）</color>]]></p>
-                <p>骷髅战士速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>骷髅战士生命：<![CDATA[<color=red><var local="warrior_hp" />+<var local="helmet_hp" />（头盔）+<var local="shield_hp" />（盾）</color>]]></p>
+                <p>骷髅战士速度：<![CDATA[<color=red><var local="warrior_speed" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤3个同种的火焰、冰霜或闪电骷髅法师</color>]]></p>
             </properties>
             <flavor>
@@ -735,12 +773,16 @@
             </flavor>
         </entry>
         <entry id="black_hole_bomb">
+            <variables>
+                <variable name="dps">toDouble(global("mvz2:entity_damage")) * 0.3</variable>
+                <variable name="satellite">toDouble(global("mvz2:entity_damage")) * 0.5</variable>
+            </variables>
             <header>
                 <p>行星炸弹在触发后会产生一个由小型黑洞和环绕的行星组成的星系。行星碰撞伤害周围敌方怪物，小型黑洞吸引周围所有的敌方怪物和子弹，并在消失时将它们传送至场地边缘。</p>
             </header>
             <properties>
                 <p>持续时间：<![CDATA[<color=red>8秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30/秒（小型黑洞），50（行星）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var local="dps" />/秒（小型黑洞），<var local="satellite" />（行星）</color>]]></p>
                 <p>半径：<![CDATA[<color=red>1.5格（小型黑洞）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>产生湮灭领域，直接消灭范围内的所有敌人和敌弹</color>]]></p>
             </properties>
@@ -769,6 +811,10 @@
         
         <!-- Chapter 5 -->
         <entry id="mvz2:gunpowder_barrel">
+            <variables>
+                <variable name="gunpowder_value">property("mvz2:entity/energyValue", "mvz2:gunpowder", "entity")</variable>
+                <variable name="furious_gunpowder_value">property("mvz2:entity/energyValue", "mvz2:furious_gunpowder", "entity")</variable>
+            </variables>
             <header>
                 <p>火药桶能生产为你提供大量能量的火药，但若未及时拾取，则会炸伤周围的友方单位。火药桶在被除铁镐外的方式破坏时也会爆炸。</p>
             </header>
@@ -776,8 +822,8 @@
                 <p>爆炸伤害：<![CDATA[<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>生产时间：<![CDATA[<color=red>36秒</color>]]></p>
-                <p>提供能量：<![CDATA[<color=red>50</color>]]></p>
-                <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供100能量，但是会更快爆炸</color>]]></p>
+                <p>提供能量：<![CDATA[<color=red><var local="gunpowder_value" /></color>]]></p>
+                <p>技能：<![CDATA[<color=red>改为生成暴怒火药，提供<var local="furious_gunpowder_value" />能量，但是会更快爆炸</color>]]></p>
             </properties>
             <flavor>
                 <p>众所周知，最早的黑火药由三种材料制作：</p>
@@ -793,8 +839,8 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>3支/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
-                <p>技能：<![CDATA[<color=red>发射三颗缓慢飞行的，互相环绕的星球，穿透并反复打击敌人和阻挡敌弹</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
+                <p>技能：<![CDATA[<color=red>发射三颗缓慢飞行的，互相环绕的星球，穿透并反复打击敌人，能够阻挡敌弹</color>]]></p>
             </properties>
             <flavor>
                 <p>它喜欢看的典故有很多：三打白骨精、三顾茅庐、三打祝家庄……</p>
@@ -807,7 +853,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>200，只能伤害高空中的敌人</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，只能伤害高空中的敌人</color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>爆炸半径永久+1格</color>]]></p>
             </properties>
@@ -821,7 +867,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>3秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>50</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>原木会眩晕怪物0.5秒，并有50%概率击退怪物</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速发射5个100伤害，能够无视重量击退单格内所有怪物的原木</color>]]></p>
             </properties>
@@ -835,9 +881,9 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>5发/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:block" />方块器械为自己+10%攻击力（最高+100%）</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向5个方向各射出10个80伤害的大手里剑，随后召唤10颗陨石，打击场上随机位置</color>]]></p>
+                <p>技能：<![CDATA[<color=red>召唤10颗陨石，打击场上随机位置</color>]]></p>
             </properties>
             <flavor>
                 <p>它其实不是用下界之星做的，只是一个会发射手里剑的发射器改成的高仿产品而已。</p>
@@ -862,9 +908,9 @@
                 <p>弹性云会以自身的耐久为代价，弹开接触到的敌方怪物和子弹。自身可通过蓄力增强击退并减少耐久消耗。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>3000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>耐久消耗：<![CDATA[<color=red>300（怪物），450（怪物，困难/月狂难度），20（子弹）</color>]]></p>
-                <p>蓄力：<![CDATA[<color=red>最大得到x150%击退力度和x50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
+                <p>蓄力：<![CDATA[<color=red>最多得到x150%击退力度和x50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
                 <p>蓄力时间：<![CDATA[<color=red>3.33秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>击退并弹飞半径2.5格内的所有敌方怪物</color>]]></p>
             </properties>
@@ -972,7 +1018,7 @@
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>使所有寄生中的机器人自爆</color>]]></p>
             </properties>
             <flavor>
@@ -1004,7 +1050,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>60，每次反弹后减半</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，每次反弹后减半</color>]]></p>
                 <p>宝石概率：<![CDATA[<color=red>30%-5%（随宝石价值变化）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射金球和不同的宝石球各6颗</color>]]></p>
             </properties>
@@ -1029,15 +1075,18 @@
             </flavor>
         </entry>
         <entry id="mvz2:skyward_beacon">
+            <variables>
+                <variable name="option_damage">property("mvz2:entity/damage", "mvz2:skyward_option", "entity")</variable>
+            </variables>
             <tags>
                 <tag id="mvz2:placement_beacon" />
             </tags>
             <header>
-                <p>御天信标会发射光柱持续打击一处定点内的所有敌人，携带的子机会发射星星打击一处定点前方一定范围的敌人。触发它以及它的子机可以修改相应的打击定点位置。</p>
+                <p>御天信标会发射光柱持续打击一处定点内的所有敌人，携带的子机会发射星星穿透前方一定范围的敌人。点击它以及它的子机可以修改相应的打击的定点位置。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1发/3秒，1发/2秒（子机）</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>147，55（子机）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，<var local="option_damage" />（子机）</color>]]></p>
                 <p>子机射程：<![CDATA[<color=red>2格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>展开一片星空，将场地临时变为黑夜，空中会掉落总共300颗星星子弹，每颗星星造成55点伤害，持续30秒。</color>]]></p>
             </properties>
@@ -1066,7 +1115,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>4支/1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>永久改为发射六支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
             <flavor>
@@ -1089,9 +1138,9 @@
                 <p>钻石尖刺会对走在上面的敌人造成双重伤害，并具有更高的耐久。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>5400</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>攻击频率：<![CDATA[<color=red>0.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>技能：<![CDATA[<color=red>对一整行地面上的敌人快速造成伤害，并将它们拉向自身；向周围扔出30个钻石蒺藜，对踩到的敌人造成100伤害</color>]]></p>
             </properties>
             <flavor>
@@ -1103,12 +1152,16 @@
 
         <!-- Extras -->
         <entry id="mvz2:poisonser">
+            <variables>
+                <variable name="poison_damage">toDouble(global("mvz2:entity_damage")) * 3</variable>
+                <variable name="armor_poison_damage">toDouble(global("mvz2:entity_damage")) * 9</variable>
+            </variables>
             <header>
                 <p>淬毒发射器能够发射使怪物中毒的毒液球。</p>
             </header>
             <properties>
                 <p>射程：<![CDATA[<color=red>5.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10，30/秒（剧毒），90/秒（剧毒，对盔甲）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />，<var local="poison_damage" />/秒（剧毒），<var local="armor_poison_damage" />/秒（剧毒，对盔甲）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射一瓶药水，破碎后释放剧毒毒雾</color>]]></p>
             </properties>
             <flavor>
@@ -1117,12 +1170,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:dimension_hammer">
+            <variables>
+                <variable name="bullet_damage">toDouble(global("mvz2:entity_damage")) / 6</variable>
+            </variables>
             <header>
                 <p>次元锤会跳起来猛击地面上的敌怪，把它们砸晕，同时迸发出大量穿透的箭头弹幕。</p>
             </header>
             <properties>
                 <p>砸击半径：<![CDATA[<color=red>0.5格</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>300（砸击），50（弹幕）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（砸击），<var local="bullet_damage" />（弹幕）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即开始攻击，砸击半径增加至1.5格</color>]]></p>
             </properties>
             <flavor>
@@ -1135,7 +1191,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>60</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>半径：<![CDATA[<color=red>2.5格</color>]]></p>
                 <p>技能：<![CDATA[<color=red>在1秒内快速抛射15枚火焰弹，5支300伤害的导弹和3个1800伤害的TNT</color>]]></p>
             </properties>
@@ -1149,7 +1205,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>模仿怪物生命：<![CDATA[<color=red>300</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即模仿场上的至多3个怪物，随后自身消失</color>]]></p>
             </properties>
@@ -1163,7 +1219,7 @@
             </header>
             <properties>
                 <p>攻击速度：<![CDATA[<color=red>2秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>30/秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />/秒</color>]]></p>
                 <p>范围：<![CDATA[<color=red>前方3×2的格子</color>]]></p>
                 <p>技能：<![CDATA[<color=red>点燃前方3×3的格子，留下燃烧怪物的<tag id="mvz2:fire" />火焰，每团火焰造成总计1800伤害</color>]]></p>
             </properties>
@@ -1184,7 +1240,7 @@
                 <p>命令方块允许你同时携带两份同样的蓝图，分别计算充能时间。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>300</color>]]></p>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>变形时间：<![CDATA[<color=red>1.2秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>变形为器械后立即将其激发</color>]]></p>
             </properties>
@@ -1199,8 +1255,8 @@
                 <p>僵尸会在死掉之前一直冲向你的脑子。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
             </properties>
             <flavor>
                 <p>在上一次尸界大战失败后，僵尸在墙角里做了三天三夜的反省。后来他开始锻炼自己，想让自己变得更强以吃到更多的脑子。现在的他看起来……好吧还是没变。</p>
@@ -1211,8 +1267,8 @@
                 <p>旗帜僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>存活时，所有怪物速度+1</color>]]></p>
             </properties>
             <flavor>
@@ -1224,8 +1280,8 @@
                 <p>皮帽僵尸拥有能抵抗子弹的皮帽护甲。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+370</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
             </properties>
             <flavor>
                 <p>随着时代的发展，皮帽已经逐渐淡出了人们的视线。但仍有一些僵尸在坚守着皮帽。当问及为什么时，他们总会说：“玩个游戏还BB啥！”</p>
@@ -1236,11 +1292,11 @@
                 <p>铁盔僵尸的铁盔给他提供了极高的防护。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+1100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
             </properties>
             <flavor>
-                <p>戴着铁盔的僵尸好像是生前是个战士一样，其实不是，它只是比较有智商而已。</p>
+                <p>戴着铁盔的僵尸好像是生前是个战士一样，其实不是，他只是比较有智商而已。</p>
             </flavor>
         </entry>
         <entry />
@@ -1250,8 +1306,8 @@
                 <p>骷髅能够在前线朝你的器械射击。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>箭矢伤害：<![CDATA[<color=red>每发100</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>箭矢伤害：<![CDATA[<color=red>每发<var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>无法射中并无视低矮器械</color>]]></p>
             </properties>
             <flavor>
@@ -1263,7 +1319,7 @@
                 <p>堕化石像鬼会在最后一波到来时复苏并进攻你的房子。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>900</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>弱点：<![CDATA[<color=red>冲击活塞</color>]]></p>
                 <p>特点：<![CDATA[<color=red>诅咒触碰的<tag id="mvz2:shell" enum="mvz2:stone" /><tag id="mvz2:shell" enum="mvz2:netherrack" />石制器械，使其摧毁时变为新的堕化石像鬼</color>]]></p>
             </properties>
@@ -1276,7 +1332,7 @@
                 <p>幽灵能够在虚无的情况下极大降低受到的伤害，同时还能附身其他怪物，使它们也进入虚无状态。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>抗性：<![CDATA[<color=red>虚无状态下减少90%受到的伤害</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>被<tag id="mvz2:light_source" />光照到时会失去虚无效果；荧石光会强制解除附身</color>]]></p>
             </properties>
@@ -1285,12 +1341,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:mummy">
+            <variables>
+                <variable name="sacrophagus_speed">toDouble(global("mvz2:entity_speed")) * 0.5</variable>
+            </variables>
             <header>
                 <p>木乃伊带着沉重的石棺，并且会在死后放出能治疗亡灵并伤害器械的毒雾。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+1200（石棺）</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1，2（失去石棺后）</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var local="sacrophagus_speed" />，<var id="mvz2:entity_speed" />（失去石棺后）</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>毒雾可以被<tag id="mvz2:fire" />火烧掉</color>]]></p>
             </properties>
             <flavor>
@@ -1298,12 +1357,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:necromancer">
+            <variables>
+                <variable name="bone_wall_hp">property("mvz2:entity/maxHealth", "mvz2:bone_wall", "entity")</variable>
+            </variables>
             <header>
                 <p>死灵法师会生成临时的骨墙阻挡子弹，有时还会召唤出骷髅。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>骨墙生命：<![CDATA[<color=red>350</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>骨墙生命：<![CDATA[<color=red><var local="bone_wall_hp" /></color>]]></p>
                 <p>骷髅频率：<![CDATA[<color=red>每3次召唤</color>]]></p>
             </properties>
             <flavor>
@@ -1317,8 +1379,8 @@
                 <p>蜘蛛能够游泳，并且可以爬过你的防御。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>160</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>可以爬上并越过<tag id="mvz2:block" />方块器械</color>]]></p>
             </properties>
             <flavor>
@@ -1330,8 +1392,8 @@
                 <p>洞穴蜘蛛不能爬上障碍物，但十分低矮且不会被普通高度的子弹打中。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>120</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>使攻击到的怪物中毒</color>]]></p>
             </properties>
             <flavor>
@@ -1343,8 +1405,8 @@
                 <p>恶魂能够飞在天上并对你的器械进行轰炸。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
             </properties>
             <flavor>
                 <p>########公告########</p>
@@ -1355,12 +1417,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:mother_terror">
+            <variables>
+                <variable name="laid_speed">toDouble(global("mvz2:entity_speed")) * 0.3</variable>
+            </variables>
             <header>
                 <p>恐怖之母会向血肉之躯寄生虫卵。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>，而后<color=red>0.6</color>（产卵后）]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>，而后<color=red><var local="laid_speed" /></color>（产卵后）]]></p>
                 <p>特点：<![CDATA[<color=red>碰到的<tag id="mvz2:shell" enum="mvz2:flesh" />血肉之躯会被寄生</color>]]></p>
             </properties>
             <flavor>
@@ -1372,8 +1437,8 @@
                 <p>恐怖寄生虫会在宿主死亡或者成长到极限后撕碎身体并钻出来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>0-50（变化）</color>]]></p>
-                <p>速度：<![CDATA[<color=red>4</color>]]></p>
+                <p>生命：<![CDATA[<color=red>0-<var id="mvz2:entity_health" /></color>（变化）]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>成长到极限后，将宿主变为巢穴，不断产生恐怖寄生虫</color>]]></p>
             </properties>
             <flavor>
@@ -1387,8 +1452,8 @@
                 <p>催眠者能够精神控制你的器械使其倒戈。杀死催眠者可以解除精神控制。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>弱点：<![CDATA[<color=red>荧石周围的器械无法被控制</color>]]></p>
             </properties>
             <flavor>
@@ -1397,13 +1462,17 @@
             </flavor>
         </entry>
         <entry id="mvz2:berserker">
+            <variables>
+                <variable name="explosion_damage">toDouble(global("mvz2:entity_damage")) * 3</variable>
+                <variable name="explosion_damage_fire">toDouble(global("mvz2:entity_damage")) * 2</variable>
+            </variables>
             <header>
                 <p>狂战士在死亡时会产生<![CDATA[<b>非常</b>]]>猛烈的爆炸。在场上停留的越久，他们就越危险。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>爆炸伤害：<![CDATA[<color=red>300，200（火焰），100（闪电）</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red><var local="explosion_damage" />，<var local="explosion_damage_fire" />（火焰），<var id="entity_damage" />（闪电）</color>]]></p>
             </properties>
             <flavor>
                 <p>没人喜欢狂战士，他们就是一群到处搞破坏的疯子，追究起责任时还要倒打你一耙，穷途末路了还要拉几个人下水。</p>
@@ -1411,6 +1480,13 @@
             </flavor>
         </entry>
         <entry id="mvz2:dullahan">
+            <variables>
+                <variable name="horse_hp">property("mvz2:entity/maxHealth", "mvz2:skeleton_horse", "entity")</variable>
+                <variable name="horse_speed">property("mvz2:entity/speed", "mvz2:skeleton_horse", "entity")</variable>
+                <variable name="horse_speed_jumped">toDouble(local("horse_speed")) * 0.5</variable>
+                <variable name="head_hp">property("mvz2:entity/maxHealth", "mvz2:dullahan_head", "entity")</variable>
+                <variable name="head_speed">property("mvz2:entity/speed", "mvz2:dullahan_head", "entity")</variable>
+            </variables>
             <tags>
                 <tag id="mvz2:shell_head" value="mvz2:nether" />
                 <tag id="mvz2:shell_horse" value="mvz2:bone" />
@@ -1421,10 +1497,10 @@
                 <p>无头骑士伴随着一匹骷髅马出现，能够跳过器械并留下它的头颅，最终变成三个不同的怪物。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>400（马），300（身体），200（头）</color>]]></p>
-                <p>马速度：<![CDATA[<color=red>2（跳跃前），1（跳跃后）</color>]]></p>
-                <p>身体速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>头颅速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var local="horse_hp" />（马），<var id="mvz2:entity_health" />（身体），<var local="head_hp" />（头）</color>]]></p>
+                <p>马速度：<![CDATA[<color=red><var local="horse_speed" />（跳跃前），<var local="horse_speed_jumped" />（跳跃后）</color>]]></p>
+                <p>身体速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>头颅速度：<![CDATA[<color=red><var local="head_speed" /></color>]]></p>
                 <p>弱点：<![CDATA[<color=red>金质物品，无法跳过<tag id="mvz2:high" />高器械</color>]]></p>
             </properties>
             <flavor>
@@ -1436,8 +1512,8 @@
                 <p>地狱战车会碾压行进路上的所有器械，并在被摧毁后放出棺材中的恶魂和灵魂沙王。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>1350，低于200时每秒失去60生命</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />，低于200时每秒失去60生命</color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>碾压伤害：<![CDATA[<color=red>10000000</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>尖刺方块</color>]]></p>
             </properties>
@@ -1447,13 +1523,16 @@
             </flavor>
         </entry>
         <entry id="mvz2:anubisand">
+            <variables>
+                <variable name="soulsand_hp">property("mvz2:entity/maxHealth", "mvz2:soulsand", "entity")</variable>
+            </variables>
             <header>
                 <p>灵魂沙王飞在空中，不时向下方召唤阻挡子弹并减速怪物的灵魂沙。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
-                <p>灵魂沙生命：<![CDATA[<color=red>300</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>灵魂沙生命：<![CDATA[<color=red><var local="soulsand_hp" /></color>]]></p>
             </properties>
             <flavor>
                 <p>其实他用来审判罪行的天平已经坏了很久了，它常放羽毛的那一端比较重一些。</p>
@@ -1466,8 +1545,8 @@
                 <p>反射壁僵尸使用反射壁保护自己，并对飞来的子弹作出反击。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+1100（头盔）+710（反射壁）</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" />（头盔）+<var id="shield_hp" />（反射壁）</color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>子弹击中反射壁时，产生伤害和属性相同的子弹进行回击</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>音符不会产生反射弹幕</color>]]></p>
             </properties>
@@ -1484,8 +1563,8 @@
                 <p>邪仙僵尸出场时会召唤一只灵符僵尸，在灵符僵尸死后会传送到最左侧，反向破坏你的阵型。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>自带灵符僵尸。灵符僵尸死后传送到最左侧，从后方攻击，并再召唤一只灵符僵尸</color>]]></p>
             </properties>
             <flavor>
@@ -1500,8 +1579,8 @@
                 <p>灵符僵尸跳跃前进，并能够在攻击的同时恢复生命值。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>350</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>攻击时恢复等量生命值</color>]]></p>
             </properties>
             <flavor>
@@ -1510,6 +1589,10 @@
             </flavor>
         </entry>
         <entry id="mvz2:shikaisen_zombie">
+            <variables>
+                <variable name="staff_hp">property("mvz2:entity/maxHealth", "mvz2:shikaisen_staff", "entity")</variable>
+                <variable name="pot_hp">property("mvz2:entity/maxHealth", "mvz2:shikaisen_pot", "entity")</variable>
+            </variables>
             <tags>
                 <tag id="mvz2:shell_staff" value="mvz2:wood" />
                 <tag id="mvz2:shell_pot" value="mvz2:stone" />
@@ -1519,9 +1602,9 @@
                 <p>尸解仙僵尸在生命较低时会将竹杖插入地面，形成可以复活周围所有怪物的图腾。生命归零时，灵魂寄托于身上的壶，使肉身能够继续行动。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>竹杖耐久：<![CDATA[<color=red>1200</color>]]></p>
-                <p>壶耐久：<![CDATA[<color=red>30</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>竹杖耐久：<![CDATA[<color=red><var local="staff_hp" /></color>]]></p>
+                <p>壶耐久：<![CDATA[<color=red><var local="pot_hp" /></color>]]></p>
                 <p>壶抗性：<![CDATA[<color=red>只会受到1点伤害</color>]]></p>
                 <p>特点：<![CDATA[<color=red>生命低于50%时将竹杖插入地面，竹杖会以自己的耐久为代价复活周围死亡并倒下的怪物；生命归零时放下身上的壶，进入假死状态，直到壶被破坏</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>火焰会直接烧掉竹杖；冲击和爆炸会无视壶的抗性</color>]]></p>
@@ -1535,7 +1618,7 @@
                 <p>皇帝僵尸使用手中的圣剑来给予周围的友方单位圣盾，使它们免疫下一次受到的伤害。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+50</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
                 <p>施法冷却：<![CDATA[<color=red>5秒</color>]]></p>
                 <p>特点：<![CDATA[<color=red>一次最多给予10个周围的友方单位圣盾，抵消下一次受到的伤害，并产生一次爆炸，造成50伤害</color>]]></p>
             </properties>
@@ -1551,7 +1634,7 @@
                 <p>不死飞行物从空中来袭并对你进行干扰。在那之后它们就会离开。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>红色：<![CDATA[<color=red>放出僵尸</color>]]></p>
                 <p>绿色：<![CDATA[<color=red>绑架器械</color>]]></p>
                 <p>蓝色：<![CDATA[<color=red>吸取掉落物</color>]]></p>
@@ -1566,7 +1649,7 @@
                 <p>僵尸云飞在空中，向下降雨形成水迹，水迹会对接触到的器械造成伤害，同时踩到水迹的怪物会向前滑动。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>水迹伤害：<![CDATA[<color=red>5/秒</color>]]></p>
             </properties>
             <flavor>
@@ -1574,12 +1657,15 @@
             </flavor>
         </entry>
         <entry id="mvz2:cannoneer_zombie">
+            <variables>
+                <variable name="cannon_speed">toDouble(global("mvz2:entity_speed")) * 0.5</variable>
+            </variables>
             <header>
                 <p>炮手僵尸的重型铁炮可以帮他阻挡子弹，并且每隔一段时间便会发射一只炮弹僵尸。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+1110（铁炮）</color>]]></p>
-                <p>速度：<![CDATA[<color=red>0.5，1（失去铁炮后）</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="shield_hp" />（铁炮）</color>]]></p>
+                <p>速度：<![CDATA[<color=red><var local="cannon_speed" />，<var id="mvz2:entity_speed" />（失去铁炮后）</color>]]></p>
                 <p>发射间隔：<![CDATA[<color=red>8秒</color>]]></p>
             </properties>
             <flavor>
@@ -1591,8 +1677,8 @@
                 <p>炮弹僵尸由炮手僵尸发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100+40</color>]]></p>
-                <p>速度：<![CDATA[<color=red>4</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
             </properties>
             <flavor>
                 <p>没错，炮弹也是一只僵尸！</p>
@@ -1604,8 +1690,8 @@
                 <p>飞天海盗僵尸会快速突入你的阵型，手中的弯刀使得其破坏力增强。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>540</color>]]></p>
-                <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域；手持弯刀时伤害×200%</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域</color>]]></p>
             </properties>
             <flavor>
                 <p>他是荷兰人。</p>
@@ -1616,9 +1702,9 @@
                 <p>大力船长僵尸会使用铁锚将遇到的器械打飞到上方或下方的一行，或者将友方怪物向前方打飞。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>1100</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>100（冲击）</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1.5</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（冲击）</color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特殊：<![CDATA[<color=red>若被移动的器械移动到已有器械的位置，原来的器械将直接被摧毁。</color>]]></p>
             </properties>
             <flavor>
@@ -1630,8 +1716,8 @@
                 <p>大动员僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>300</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>存活时，所有怪物速度+1</color>]]></p>
             </properties>
             <flavor>
@@ -1639,6 +1725,10 @@
             </flavor>
         </entry>
         <entry id="mvz2:skelebomb">
+            <variables>
+                <variable name="bomb_hp">property("mvz2:entity/maxHealth", "mvz2:bomb", "entity")</variable>
+                <variable name="explosion_damage">toDouble(global("mvz2:entity_damage")) * 3</variable>
+            </variables>
             <tags>
                 <tag id="mvz2:shell_bomb" value="mvz2:metal" />
             </tags>
@@ -1646,10 +1736,10 @@
                 <p>爆破骨兵抱着一个随时都会爆炸的炸弹，死亡时手中的炸弹会掉落。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+270</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
-                <p>炸弹耐久：<![CDATA[<color=red>300</color>]]></p>
-                <p>爆炸伤害：<![CDATA[<color=red>300</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>炸弹耐久：<![CDATA[<color=red><var local="bomb_hp" /></color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red><var local="explosion_damage" /></color>]]></p>
                 <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
                 <p>特点：<![CDATA[<color=red>受到冲击伤害时会被立即引爆，并转而对友方单位造成伤害</color>]]></p>
             </properties>
@@ -1662,8 +1752,8 @@
                 <p>蠹虫会对石头造成更高的伤害。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>3</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone" />石头造成5倍伤害</color>]]></p>
             </properties>
             <flavor>
@@ -1675,8 +1765,8 @@
                 <p>咒术师能够治疗场上的敌人。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>300</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>恢复生命：<![CDATA[<color=red>200</color>]]></p>
             </properties>
             <flavor>
@@ -1688,8 +1778,8 @@
                 <p>妖怪狸僵尸会跳起来变成地藏雕像，然后砸扁你的器械。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>跳跃间隔：<![CDATA[<color=red>7秒</color>]]></p>
             </properties>
             <flavor>
@@ -1701,8 +1791,8 @@
                 <p>航海者僵尸会吹响手中的号角来呼叫支援。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200+200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>吹响号角，在周围召唤2个伞兵僵尸作为支援。最多召唤5个伞兵僵尸。</color>]]></p>
             </properties>
             <flavor>
@@ -2102,11 +2192,14 @@
                     <condition required="mvz2:level.halloween_11" />
                 </unlock>
                 <picture sprite="mvz2:misc/frankenstein" />
+                <variables>
+                    <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:frankenstein", "entity")</variable>
+                </variables>
                 <header>
                     <p>尸块组成的怪物，科幻小说中的杀人魔。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>25000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp" /></color>]]></p>
                     <p>特殊：<![CDATA[<color=red>放电攻击总是瞄准Etho台阶；钢铁身躯反弹特定子弹</color>]]></p>
                 </properties>
                 <flavor>
@@ -2119,11 +2212,16 @@
                     <condition required="mvz2:level.dream_11" />
                 </unlock>
                 <picture sprite="mvz2:misc/nightmare_art" />
+                <variables>
+                    <variable name="hp1">property("mvz2:entity/maxHealth", "mvz2:crescent", "entity")</variable>
+                    <variable name="hp2">property("mvz2:entity/maxHealth", "mvz2:slenderman", "entity")</variable>
+                    <variable name="hp3">property("mvz2:entity/maxHealth", "mvz2:nightmareaper", "entity")</variable>
+                </variables>
                 <header>
                     <p>梦魇是具有蒙骗感官和腐蚀能力的恐怖魔物，具有无数的化身。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>6000+2500+4000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp1" />+<var local="hp2" />+<var local="hp3" /></color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>冲刺，投掷恶搞道具、寄生虫茧和暗物质球</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>]]></p>
                     <p>阶段3：<![CDATA[<color=red>限时击杀，并且需要阻止碾压墙</color>]]></p>
@@ -2141,13 +2239,16 @@
                     <condition required="mvz2:level.castle_11" />
                 </unlock>
                 <picture sprite="mvz2:misc/wither" />
+                <variables>
+                    <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:wither", "entity")</variable>
+                </variables>
                 <header>
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>12000，每秒恢复15</color>]]></p>
-                    <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬，使用魔法</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，使用魔法，召唤“洗脑者”、“床战士”和“万圣骑士”</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp" />，每秒恢复15</color>]]></p>
+                    <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“洗脑者”、“床战士”和“万圣骑士”</color>]]></p>
                 </properties>
                 <flavor>
                     <p>单枪匹马对付众多的怪物并不是个好主意，骑士打算去招募一些帮手。</p>
@@ -2165,11 +2266,15 @@
                     <condition required="mvz2:level.mausoleum_11" />
                 </unlock>
                 <picture sprite="mvz2:misc/giant_in_mausoleum[4]" />
+                <variables>
+                    <variable name="hp1">property("mvz2:entity/maxHealth", "mvz2:the_giant", "entity")</variable>
+                    <variable name="hp2">toDouble(local("hp1")) * 0.4</variable>
+                </variables>
                 <header>
                     <p>巨人是众多僵尸的集合体，它吞噬、吞噬，要吃掉一切。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>30000+12000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp1" />+<var local="hp2" /></color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>直线尸块；眼弹；重砸；吼叫；喷雾</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>跳跃尸块；呕吐；喷嚏；吃豆人变形；贪吃蛇变形</color>]]></p>
                     <p>阶段3：<![CDATA[<color=red>爬行</color>]]></p>
@@ -2193,11 +2298,14 @@
                     <condition required="mvz2:level.ship_11"/>
                 </unlock>
                 <picture sprite="mvz2:misc/red_dragon"/>
+                <variables>
+                    <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:red_dragon", "entity")</variable>
+                </variables>
                 <header>
                     <p>红龙是一头喷火的猛兽，为了报杀母之仇，定要摧毁幻想乡的一切。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>50000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp" /></color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>火焰弹、龙卷风、僵尸火焰、吞食、火焰吐息、火墙</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>巨型火球、火焰龙卷风、火焰流星、火焰洪流、飞空、扫尾、火墙</color>]]></p>
                 </properties>
@@ -2232,7 +2340,7 @@
                 </header>
                 <properties>
                     <p>生产时间：<![CDATA[<color=red>10秒</color>]]></p>
-                    <p>提供能量：<![CDATA[<color=red>25</color>]]></p>
+                    <p>提供能量：<![CDATA[<color=red><var id="mvz2:redstone_value"/></color>]]></p>
                 </properties>
                 <flavor>
                     <p>史蒂夫精通机械，这台自动矿场出自他的手中。依靠太阳能工作，自动寻找地下存储的红石矿，然后将其运输到地表。</p>
@@ -2261,7 +2369,7 @@
                     <p>石像鬼雕像会在最后一波时变成石像鬼。</p>
                 </header>
                 <properties>
-                    <p>耐久：<![CDATA[<color=red>1800</color>]]></p>
+                    <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 </properties>
                 <flavor>
                     <p>永夜沼泽的诅咒不止将天空定格在了午夜，它也把地下的石块塑造成雕像的形状，将它们移出地面。这些雕像一旦受到魔电的冲击，便会被赋予生命而变成活物。</p>
@@ -2355,11 +2463,14 @@
                     <tag id="mvz2:flying" />
                     <tag id="mvz2:not_undead" />
                 </tags>
+                <variables>
+                    <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:reverse_satellite", "entity")</variable>
+                </variables>
                 <header>
                     <p>反则卫星是在一大波僵尸出现后，在辉针城中出现的可疑飞行物，会将你的视野180度旋转。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp" /></color>]]></p>
                     <p>停留时间：<![CDATA[<color=red>30秒</color>]]></p>
                 </properties>
                 <flavor>
@@ -2427,12 +2538,17 @@
                     <tag id="mvz2:mass" value="0"/>
                     <tag id="mvz2:shell_shield" value="mvz2:leather"/>
                 </tags>
+                <variables>
+                    <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:zombie", "entity")</variable>
+                    <variable name="speed">property("mvz2:entity/speed", "mvz2:zombie", "entity")</variable>
+                    <variable name="shield_hp">property("mvz2:armor/maxHealth", "mvz2:umbrella_shield", "armor")</variable>
+                </variables>
                 <header>
                     <p>伞兵僵尸会在圣辇船的每一大波怪物到来时从天而降，然后将雨伞作为护盾。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>200+270（雨伞）+？（随机头盔）</color>]]></p>
-                    <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                    <p>生命：<![CDATA[<color=red><var local="hp"/>+<var local="shield_hp" />（雨伞）+？（随机头盔）</color>]]></p>
+                    <p>速度：<![CDATA[<color=red><var local="speed"/></color>]]></p>
                 </properties>
                 <flavor>
                     <p>危险动作，小鬼僵尸请勿轻易尝试。</p>

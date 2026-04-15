@@ -21,7 +21,7 @@ namespace MVZ2.GameContent.Projectiles
             AddModifier(new Vector3Modifier(EngineEntityProps.DISPLAY_SCALE, NumberOperator.Multiply, PROP_SCALE));
             AddModifier(new Vector3Modifier(EngineEntityProps.SCALE, NumberOperator.Multiply, PROP_SCALE));
             AddModifier(new BooleanModifier(VanillaProjectileProps.NO_DESTROY_OUTSIDE_LAWN, PROP_NO_DESTROY_OUTSIDE_LAWN));
-            collisionDetector = new CollisionDetector()
+            collisionDetector = new CollisionDetector(true)
             {
                 mask = EntityCollisionHelper.MASK_PROJECTILE
             };

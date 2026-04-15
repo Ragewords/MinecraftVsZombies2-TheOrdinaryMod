@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Contraptions
     {
         public Anvil(string nsp, string name) : base(nsp, name)
         {
-            smashDetector = new CollisionDetector();
+            smashDetector = new CollisionDetector(true);
             fixDetector = new LawnDetector()
             {
                 factionTarget = FactionTarget.Friendly,

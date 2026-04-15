@@ -10,10 +10,10 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.skywardFamiliar)]
-    public class SkywardFamiliar : DispenserFamily
+    [EntityBehaviourDefinition(VanillaContraptionNames.skywardOption)]
+    public class SkywardOption : DispenserFamily
     {
-        public SkywardFamiliar(string nsp, string name) : base(nsp, name)
+        public SkywardOption(string nsp, string name) : base(nsp, name)
         {
         }
         public override void Init(Entity entity)

@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
         {
-            smashDetector = new CollisionDetector();
+            smashDetector = new CollisionDetector(true);
         }
         public override void Init(Entity entity)
         {

@@ -24,6 +24,7 @@ namespace MVZ2.GameContent.Enemies
         {
             absorbDetector = new SphereDetector(ABSORB_RADIUS)
             {
+                canDetectInvisible = true,
                 mask = EntityCollisionHelper.MASK_PROJECTILE,
             };
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
