@@ -10,8 +10,8 @@ namespace MVZ2.GameContent.HeldItems
     {
         public SwordHeldItemDefinition(string nsp, string name) : base(nsp, name)
         {
+            AddBehaviour(VanillaHeldItemBehaviourID.emptyHandEntity);
             AddBehaviour(VanillaHeldItemBehaviourID.putOutFire);
-            AddBehaviour(VanillaHeldItemBehaviourID.relocateSkywardFamiliar);
             AddBehaviour(VanillaHeldItemBehaviourID.pickup);
             AddBehaviour(VanillaHeldItemBehaviourID.triggerCart);
             AddBehaviour(VanillaHeldItemBehaviourID.selectBlueprint);

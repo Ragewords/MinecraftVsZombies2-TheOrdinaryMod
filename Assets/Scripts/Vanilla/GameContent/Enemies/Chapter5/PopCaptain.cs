@@ -65,9 +65,9 @@ namespace MVZ2.Vanilla.Enemies
         public const float STUN_SECONDS = 3;
         private static EntityStateMachine stateMachine = new MutantZombieStateMachine();
         private static Detector smashDetector = new PopCaptainDetector(0, false);
+        private static Detector damageDetector = new PopCaptainDetector(60, false) { canDetectInvisible = true };
         private static Detector smashDetectorFriendly = new PopCaptainDetector(0, true);
-        private static Detector damageDetector = new PopCaptainDetector(60, false);
-        private static Detector damageDetectorFriendly = new PopCaptainDetector(60, true);
+        private static Detector damageDetectorFriendly = new PopCaptainDetector(60, true) { canDetectInvisible = true };
     }
 
 }
