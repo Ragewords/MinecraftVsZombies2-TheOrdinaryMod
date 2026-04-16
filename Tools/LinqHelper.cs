@@ -95,9 +95,20 @@ namespace Tools
             }
             return results;
         }
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> list, RandomGenerator rng)
+        public static IEnumerable<T> Randomize<T>(this IEnumerable<T> list, RandomGenerator rng)
         {
             return list.RandomTake(list.Count(), rng);
+        }
+        public static void Shuffle<T>(this T[] array, RandomGenerator rng)
+        {
+            if (array.Length <= 1) 
+                return;
+
+            for (int i = array.Length - 1; i > 0; i--)
+            {
+                int j = rng.Next(i + 1);
+                (array[i], array[j]) = (array[j], array[i]);
+            }
         }
         public static IEnumerable<T> TakeWhileLast<T>(this IEnumerable<T> list, Func<T, bool> predicate)
         {
