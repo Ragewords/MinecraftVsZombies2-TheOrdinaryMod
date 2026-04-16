@@ -31,6 +31,9 @@ namespace PVZEngine.Modifiers
                         case BooleanOperator.Set:
                             setValue = modifierValue;
                             break;
+                        case BooleanOperator.SetNot:
+                            setValue = !modifierValue;
+                            break;
                         case BooleanOperator.Not:
                             reverse = !reverse;
                             break;

@@ -5,6 +5,7 @@ namespace PVZEngine.Modifiers
     public enum BooleanOperator
     {
         Set,
+        SetNot,
         And,
         Or,
         Not,
