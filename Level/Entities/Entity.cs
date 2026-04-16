@@ -256,6 +256,10 @@ namespace PVZEngine.Entities
         {
             return Definition.HasBehaviour(behaviour);
         }
+        public bool HasBehaviour<T>()
+        {
+            return Definition.HasBehaviour<T>();
+        }
         #endregion
 
         #region 杂项
