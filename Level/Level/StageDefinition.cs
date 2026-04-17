@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PVZEngine.Base;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
+using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace PVZEngine.Level
@@ -108,6 +110,10 @@ namespace PVZEngine.Level
                     return tBehaviour;
             }
             return null;
+        }
+        public PropertyModifier[] GetModifiers()
+        {
+            return behaviours.SelectMany(b => b.GetModifiers()).ToArray();
         }
         public sealed override string GetDefinitionType() => EngineDefinitionTypes.STAGE;
         private List<StageBehaviour> behaviours = new List<StageBehaviour>();

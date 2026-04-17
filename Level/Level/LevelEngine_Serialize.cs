@@ -115,7 +115,8 @@ namespace PVZEngine.Level
         }
         private void UpdateAfterReadFromSerializable(SerializableLevel seri)
         {
-            UpdateAllBuffedProperties(false);
+            ReevaluateModifierCaches();
+            UpdateAllModifiedProperties(false);
         }
         public void InitComponentsFromSerializable(SerializableLevel seri)
         {

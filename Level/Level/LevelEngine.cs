@@ -2,11 +2,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PVZEngine.Base;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Collisions.Level;
 using PVZEngine.Entities;
+using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace PVZEngine.Level
@@ -19,7 +21,9 @@ namespace PVZEngine.Level
             Content = contentProvider;
             Triggers = triggers;
             InitBuffList();
-            properties = new PropertyBlock(this, buffs);
+            properties = new PropertyBlock(this, this, buffs);
+            modifierLibrary = new ModifierLibrary();
+            modifierLibrary.OnModifiedPropertyNeedsUpdate += OnModifiedPropertyNeedsUpdateCallback;
             this.collisionSystem = collisionSystem;
         }
         public void Dispose()
@@ -85,9 +89,17 @@ namespace PVZEngine.Level
             var definition = Content.GetStageDefinition(stageId);
             if (definition != null)
             {
+                var oldDefinition = StageDefinition;
+                if (oldDefinition != null)
+                {
+                    modifierLibrary.RemoveModifierCaches(oldDefinition.GetModifiers().Select(m => new ModifierSourceItem(this, m)));
+                }
+
                 StageID = stageId;
                 StageDefinition = definition;
                 properties.ClearFallbackCaches();
+
+                modifierLibrary.AddModifierCaches(definition.GetModifiers().Select(m => new ModifierSourceItem(this, m)));
             }
             else
             {
@@ -100,9 +112,17 @@ namespace PVZEngine.Level
             var definition = Content.GetAreaDefinition(areaId);
             if (definition != null)
             {
+                var oldDefinition = StageDefinition;
+                if (oldDefinition != null)
+                {
+                    modifierLibrary.RemoveModifierCaches(oldDefinition.GetModifiers().Select(m => new ModifierSourceItem(this, m)));
+                }
+
                 AreaID = areaId;
                 AreaDefinition = definition;
                 properties.ClearFallbackCaches();
+
+                modifierLibrary.AddModifierCaches(definition.GetModifiers().Select(m => new ModifierSourceItem(this, m)));
             }
             else
             {

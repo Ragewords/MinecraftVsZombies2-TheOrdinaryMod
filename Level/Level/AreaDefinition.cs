@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using PVZEngine.Base;
 using PVZEngine.Definitions;
+using PVZEngine.Modifiers;
 
 namespace PVZEngine.Level
 {
@@ -27,7 +28,16 @@ namespace PVZEngine.Level
         public virtual void PostFinalWaveEvent(LevelEngine level) { }
         public virtual void Update(LevelEngine level) { }
         public virtual float GetGroundY(LevelEngine level, float x, float z) { return 0; }
+        public PropertyModifier[] GetModifiers()
+        {
+            return modifiers.ToArray();
+        }
+        protected void AddModifier(PropertyModifier modifier)
+        {
+            modifiers.Add(modifier);
+        }
         public sealed override string GetDefinitionType() => EngineDefinitionTypes.AREA;
         protected List<NamespaceID> grids = new List<NamespaceID>();
+        private List<PropertyModifier> modifiers = new List<PropertyModifier>();
     }
 }

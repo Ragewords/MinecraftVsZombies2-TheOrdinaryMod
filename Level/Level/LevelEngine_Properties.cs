@@ -19,7 +19,7 @@ namespace PVZEngine.Level
         {
             properties.SetProperty(name, value);
         }
-        private void UpdateAllBuffedProperties(bool triggersEvaluation)
+        private void UpdateAllModifiedProperties(bool triggersEvaluation)
         {
             properties.UpdateAllModifiedProperties(triggersEvaluation);
         }
