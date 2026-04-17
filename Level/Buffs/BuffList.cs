@@ -11,16 +11,21 @@ namespace PVZEngine.Buffs
 {
     public class BuffList : IEnumerable<Buff>, IBuffList
     {
+        public BuffList()
+        {
+            modifierLibrary = new ModifierLibrary();
+            modifierLibrary.OnModifiedPropertyNeedsUpdate += OnModifiedPropertyNeedsUpdateCallback;
+        }
+
         #region 增益操作
+        public long AllocBuffID()
+        {
+            return currentBuffID++;
+        }
         public bool AddBuff(Buff buff, IBuffTarget target)
         {
-            changedPropertiesBuffer.Clear();
             if (AddBuffImplement(buff))
             {
-                foreach (var prop in changedPropertiesBuffer)
-                {
-                    OnPropertyChangedCallback(prop);
-                }
                 buff.AddToTarget(target);
                 return true;
             }
@@ -30,16 +35,7 @@ namespace PVZEngine.Buffs
         #region 移除
         public bool RemoveBuff(Buff buff)
         {
-            changedPropertiesBuffer.Clear();
-            if (RemoveBuffImplement(buff))
-            {
-                foreach (var prop in changedPropertiesBuffer)
-                {
-                    OnPropertyChangedCallback(prop);
-                }
-                return true;
-            }
-            return false;
+            return RemoveBuffImplement(buff);
         }
         #endregion
 
@@ -49,7 +45,6 @@ namespace PVZEngine.Buffs
             if (buffDef == null)
                 return 0;
 
-            changedPropertiesBuffer.Clear();
             int count = 0;
             for (int i = buffs.Count - 1; i >= 0; i--)
             {
@@ -58,10 +53,6 @@ namespace PVZEngine.Buffs
                     continue;
                 count += RemoveBuffImplement(buff) ? 1 : 0;
             }
-            foreach (var prop in changedPropertiesBuffer)
-            {
-                OnPropertyChangedCallback(prop);
-            }
             return count;
         }
         public int RemoveBuffs(IEnumerable<Buff> buffs)
@@ -69,15 +60,10 @@ namespace PVZEngine.Buffs
             if (buffs == null)
                 return 0;
 
-            changedPropertiesBuffer.Clear();
             int count = 0;
             foreach (var buff in buffs)
             {
                 count += RemoveBuffImplement(buff) ? 1 : 0;
-            }
-            foreach (var prop in changedPropertiesBuffer)
-            {
-                OnPropertyChangedCallback(prop);
             }
             return count;
         }
@@ -86,7 +72,6 @@ namespace PVZEngine.Buffs
             if (!NamespaceID.IsValid(id))
                 return 0;
 
-            changedPropertiesBuffer.Clear();
             int count = 0;
             for (int i = buffs.Count - 1; i >= 0; i--)
             {
@@ -95,15 +80,10 @@ namespace PVZEngine.Buffs
                     continue;
                 count += RemoveBuffImplement(buff) ? 1 : 0;
             }
-            foreach (var prop in changedPropertiesBuffer)
-            {
-                OnPropertyChangedCallback(prop);
-            }
             return count;
         }
         public int RemoveBuffs<T>() where T : BuffDefinition
         {
-            changedPropertiesBuffer.Clear();
             int count = 0;
             for (int i = buffs.Count - 1; i >= 0; i--)
             {
@@ -111,10 +91,6 @@ namespace PVZEngine.Buffs
                 if (buff.Definition is not T)
                     continue;
                 count += RemoveBuffImplement(buff) ? 1 : 0;
-            }
-            foreach (var prop in changedPropertiesBuffer)
-            {
-                OnPropertyChangedCallback(prop);
             }
             return count;
         }
@@ -291,7 +267,7 @@ namespace PVZEngine.Buffs
             buffs.Add(buff);
             AddModifierCaches(buff);
             OnBuffAdded?.Invoke(buff);
-            buff.OnPropertyChanged += OnPropertyChangedCallback;
+            buff.OnPropertyChanged += OnBuffPropertyChangedCallback;
 
             var insertions = buff.GetModelInsertions();
             foreach (var insertion in insertions)
@@ -313,7 +289,7 @@ namespace PVZEngine.Buffs
                 buff.RemoveFromTarget();
                 RemoveModifierCaches(buff);
                 OnBuffRemoved?.Invoke(buff);
-                buff.OnPropertyChanged -= OnPropertyChangedCallback;
+                buff.OnPropertyChanged -= OnBuffPropertyChangedCallback;
 
                 var insertions = buff.GetModelInsertions();
                 var currentInsertions = GetModelInsertions();
@@ -331,78 +307,26 @@ namespace PVZEngine.Buffs
         }
         #endregion
 
-        #region 属性
-        public object? CalculateProperty<T>(PropertyKey<T> name, T value)
+        #region 修改器
+        public IEnumerable<IPropertyKey> GetModifiedProperties()
         {
-            if (buffs.Count == 0)
-                return value;
-
-            modifierItemBuffer.Clear();
-            GetModifierItems(name, modifierItemBuffer);
-            return modifierItemBuffer.CalculateProperty(value);
+            return modifierLibrary.GetModifyPropertyKeys();
         }
-        private void OnPropertyChangedCallback(IPropertyKey name)
+        public void GetModifierItemsForProperty(IPropertyKey name, List<ModifierSourceItem> results)
         {
-            OnPropertyChanged?.Invoke(name);
-        }
-        public IPropertyKey[] GetModifierPropertyNames()
-        {
-            return modifierCaches.Keys.ToArray();
-        }
-        #endregion
-
-        #region 修改器缓存
-        public void GetModifierItems(IPropertyKey name, List<ModifierContainerItem> results)
-        {
-            if (modifierCaches.TryGetValue(name, out var list))
-            {
-                noStackModifierBuffer.Clear();
-                foreach (var element in list)
-                {
-                    var modifier = element.modifier;
-                    if (modifier.NoStack)
-                    {
-                        if (noStackModifierBuffer.Contains(modifier))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            noStackModifierBuffer.Add(modifier);
-                        }
-                    }
-                    results.Add(element);
-                }
-            }
+            modifierLibrary.GetModifierItemsForProperty(name, results);
         }
         private void AddModifierCaches(Buff buff)
         {
-            foreach (var modifier in buff.GetModifiers())
-            {
-                var name = modifier.PropertyName;
-                if (!modifierCaches.TryGetValue(name, out var list))
-                {
-                    list = new List<ModifierContainerItem>();
-                    modifierCaches.Add(name, list);
-                }
-                list.Add(new ModifierContainerItem(buff, modifier));
-                changedPropertiesBuffer.Add(name);
-            }
+            modifierLibrary.AddModifierCaches(buff.GetModifiers().Select(m => new ModifierSourceItem(buff, m)));
         }
         private void RemoveModifierCaches(Buff buff)
         {
-            foreach (var modifier in buff.GetModifiers())
-            {
-                var name = modifier.PropertyName;
-                if (modifierCaches.TryGetValue(name, out var list))
-                {
-                    list.RemoveAll(b => b.container == buff);
-                }
-                changedPropertiesBuffer.Add(name);
-            }
+            modifierLibrary.RemoveModifierCaches(buff.GetModifiers().Select(m => new ModifierSourceItem(buff, m)));
         }
-        private void UpdateModifierCaches()
+        private void ReevaluateModifierCaches()
         {
+            modifierLibrary.ClearModifierCaches();
             foreach (var buff in buffs)
             {
                 AddModifierCaches(buff);
@@ -426,13 +350,12 @@ namespace PVZEngine.Buffs
                 currentBuffID = currentBuffID,
             };
         }
-        public static BuffList CreateFromSerializable(SerializableBuffList? serializable, LevelEngine level, IBuffTarget target)
+        public void InitFromSerializable(SerializableBuffList? serializable, LevelEngine level, IBuffTarget target)
         {
-            var buffList = new BuffList();
-
             if (serializable == null)
-                return buffList;
+                return;
 
+            buffs.Clear();
             if (serializable.buffs != null)
             {
                 foreach (var seriBuff in serializable.buffs)
@@ -440,13 +363,12 @@ namespace PVZEngine.Buffs
                     var buff = Buff.CreateFromSerializable(seriBuff, level, target);
                     if (buff == null)
                         continue;
-                    buff.OnPropertyChanged += buffList.OnPropertyChangedCallback;
-                    buffList.buffs.Add(buff);
+                    buff.OnPropertyChanged += OnBuffPropertyChangedCallback;
+                    buffs.Add(buff);
                 }
             }
-            buffList.currentBuffID = serializable.currentBuffID;
-            buffList.UpdateModifierCaches();
-            return buffList;
+            currentBuffID = serializable.currentBuffID;
+            ReevaluateModifierCaches();
         }
         public void LoadFromSerializable(SerializableBuffList serializable)
         {
@@ -462,10 +384,23 @@ namespace PVZEngine.Buffs
         }
         #endregion
 
-        public long AllocBuffID()
+        #region 事件回调
+        private void OnBuffPropertyChangedCallback(Buff buff, IPropertyKey key)
         {
-            return currentBuffID++;
+            modifierLibrary.CallPropertyChanged(buff, key);
         }
+        void OnModifiedPropertyNeedsUpdateCallback(IPropertyKey name)
+        {
+            OnModifiedPropertyNeedsUpdate?.Invoke(name);
+        }
+        #endregion
+
+        #region 接口实现
+        void IModifierProvider.GetModifiersForProperty(IPropertyKey name, List<ModifierSourceItem> results)
+        {
+            GetModifierItemsForProperty(name, results);
+        }
+
         IEnumerator<Buff> IEnumerable<Buff>.GetEnumerator()
         {
             return buffs.GetEnumerator();
@@ -475,20 +410,22 @@ namespace PVZEngine.Buffs
         {
             return buffs.GetEnumerator();
         }
+        #endregion
 
+        #region 事件
         public event Action<Buff>? OnBuffAdded;
         public event Action<Buff>? OnBuffRemoved;
         public event Action<ModelInsertion>? OnModelInsertionAdded;
         public event Action<ModelInsertion>? OnModelInsertionRemoved;
-        public event Action<IPropertyKey>? OnPropertyChanged;
+        public event Action<IPropertyKey>? OnModifiedPropertyNeedsUpdate;
+        #endregion
 
+        #region 属性
         private long currentBuffID = 1;
         private List<Buff> updateBuffer = new List<Buff>();
         private List<Buff> buffs = new List<Buff>();
-        private HashSet<IPropertyKey> changedPropertiesBuffer = new HashSet<IPropertyKey>();
-        private Dictionary<IPropertyKey, List<ModifierContainerItem>> modifierCaches = new Dictionary<IPropertyKey, List<ModifierContainerItem>>(new PropertyKeyComparer());
-        private List<ModifierContainerItem> modifierItemBuffer = new List<ModifierContainerItem>();
-        private static HashSet<PropertyModifier> noStackModifierBuffer = new HashSet<PropertyModifier>();
+        private ModifierLibrary modifierLibrary;
+        #endregion
     }
     public class MultipleValueModifierException : Exception
     {

@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace PVZEngine.Buffs
 {
-    public partial class Buff : IAuraSource, IModifierContainer
+    public partial class Buff : IAuraSource, IModifierSource
     {
         #region 构造器
         public Buff(LevelEngine level, BuffDefinition definition, long id)

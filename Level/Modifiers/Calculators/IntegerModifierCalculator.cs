@@ -7,7 +7,7 @@ namespace PVZEngine.Modifiers
 {
     public abstract class IntegerModifierCalculator<T> : ModifierCalculator<T, IntegerModifier<T>>
     {
-        public override T? CalculateGeneric(T? value, IEnumerable<ModifierContainerItem> modifiers)
+        public override T? CalculateGeneric(T? value, IEnumerable<ModifierSourceItem> modifiers)
         {
             if (modifiers.Count() == 0)
                 return value;

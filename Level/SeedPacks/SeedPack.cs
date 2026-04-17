@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace PVZEngine.SeedPacks
 {
-    public abstract partial class SeedPack : IPropertyModifyTarget, IAuraSource, IModeledBuffTarget
+    public abstract partial class SeedPack : IModifiablePropertyTarget, IAuraSource, IModeledBuffTarget
     {
         #region 构造器
         public SeedPack(LevelEngine level, SeedDefinition definition, long id)
@@ -19,7 +19,7 @@ namespace PVZEngine.SeedPacks
             Level = level;
             Definition = definition;
 
-            properties = new PropertyBlock(this);
+            properties = new PropertyBlock(this, buffs);
             InitBuffs();
             CreateAuraEffects();
         }

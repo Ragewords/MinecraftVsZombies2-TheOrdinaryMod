@@ -9,7 +9,7 @@ namespace PVZEngine.Modifiers
 {
     public static class PropertyCalculator
     {
-        public static object? CalculateProperty(this IEnumerable<ModifierContainerItem> modifiers, object? value)
+        public static object? CalculateProperty(this IEnumerable<ModifierSourceItem> modifiers, object? value)
         {
             if (modifiers == null || modifiers.Count() == 0)
                 return value;
@@ -26,7 +26,7 @@ namespace PVZEngine.Modifiers
                 throw new NullReferenceException($"Calculator for property does not exists.");
             return calculator.Calculate(value, modifiers);
         }
-        public static T? CalculateProperty<T>(this IEnumerable<ModifierContainerItem> modifiers, T? value)
+        public static T? CalculateProperty<T>(this IEnumerable<ModifierSourceItem> modifiers, T? value)
         {
             if (modifiers == null || modifiers.Count() == 0)
                 return value;

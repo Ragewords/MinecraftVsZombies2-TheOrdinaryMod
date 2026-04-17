@@ -25,6 +25,9 @@ namespace PVZEngine.Level
         {
             return new Buff(this, buffDef, buffID);
         }
+        private void InitBuffList()
+        {
+        }
         #endregion
 
         #region 序列化
@@ -34,8 +37,7 @@ namespace PVZEngine.Level
         }
         private void InitBuffsFromSerializable(SerializableLevel seri)
         {
-            buffs = BuffList.CreateFromSerializable(seri.buffs, this, this);
-            buffs.OnPropertyChanged += UpdateBuffedProperty;
+            buffs.InitFromSerializable(seri.buffs, this, this);
         }
         private void LoadBuffsFromSerializable(SerializableLevel seri)
         {

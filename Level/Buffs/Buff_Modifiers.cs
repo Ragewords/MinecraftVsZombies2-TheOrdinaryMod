@@ -14,6 +14,6 @@ namespace PVZEngine.Buffs
         {
             return Definition.GetModifiers(propName);
         }
-        T? IModifierContainer.GetProperty<T>(PropertyKey<T> name) where T : default => GetProperty<T>(name);
+        T? IModifierSource.GetProperty<T>(PropertyKey<T> name) where T : default => GetProperty<T>(name);
     }
 }

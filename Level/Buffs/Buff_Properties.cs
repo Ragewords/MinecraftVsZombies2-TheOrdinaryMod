@@ -14,14 +14,7 @@ namespace PVZEngine.Buffs
         {
             if (propertyDict.SetProperty<T>(name, value))
             {
-                // 增益属性更改时，如果有利用该增益属性修改属性的修改器，调用一次属性更改时事件。
-                foreach (var modifier in GetModifiers())
-                {
-                    if (name.Equals(modifier.UsingContainerPropertyName))
-                    {
-                        CallPropertyChanged(modifier.PropertyName);
-                    }
-                }
+                OnPropertyChanged?.Invoke(this, name);
             }
         }
         private void WritePropertiesToSerializable(SerializableBuff seri)
@@ -30,13 +23,9 @@ namespace PVZEngine.Buffs
         }
         private void InitPropertiesFromSerializable(SerializableBuff seri)
         {
-            propertyDict = PropertyDictionary.FromSerializable(seri.propertyDict);
+            propertyDict.LoadFromSerializable(seri.propertyDict);
         }
-        private void CallPropertyChanged(IPropertyKey name)
-        {
-            OnPropertyChanged?.Invoke(name);
-        }
-        public event Action<IPropertyKey>? OnPropertyChanged;
+        public event Action<Buff, IPropertyKey>? OnPropertyChanged;
 
         private PropertyDictionary propertyDict = new PropertyDictionary();
     }

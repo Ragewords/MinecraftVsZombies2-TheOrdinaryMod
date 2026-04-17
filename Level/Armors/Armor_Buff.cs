@@ -11,18 +11,10 @@ namespace PVZEngine.Armors
             buffs.Update();
         }
 
-        #region 事件回调
-        private void OnBuffedPropertyChangedCallback(IPropertyKey name)
-        {
-            properties.UpdateModifiedProperty(name);
-        }
-        #endregion
-
         #region 增益
         public BuffReference GetBuffReference(Buff buff) => new BuffReferenceArmor(Owner.ID, Slot, buff.ID);
         private void InitBuffEvents()
         {
-            buffs.OnPropertyChanged += OnBuffedPropertyChangedCallback;
         }
         #endregion
 
@@ -32,8 +24,7 @@ namespace PVZEngine.Armors
         }
         private void InitBuffsFromSerializable(SerializableArmor seri)
         {
-            buffs = BuffList.CreateFromSerializable(seri.buffs, Owner.Level, Owner);
-            InitBuffEvents();
+            buffs.InitFromSerializable(seri.buffs, Owner.Level, Owner);
         }
         private void LoadBuffsFromSerializable(SerializableArmor seri)
         {

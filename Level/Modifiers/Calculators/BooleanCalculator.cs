@@ -7,7 +7,7 @@ namespace PVZEngine.Modifiers
 {
     public class BooleanCalculator : ModifierCalculator<bool, BooleanModifier>
     {
-        public override bool CalculateGeneric(bool value, IEnumerable<ModifierContainerItem> modifiers)
+        public override bool CalculateGeneric(bool value, IEnumerable<ModifierSourceItem> modifiers)
         {
             if (modifiers.Count() == 0)
                 return value;

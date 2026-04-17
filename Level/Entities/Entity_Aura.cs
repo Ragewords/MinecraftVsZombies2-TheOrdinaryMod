@@ -5,7 +5,7 @@ using PVZEngine.Auras;
 
 namespace PVZEngine.Entities
 {
-    public partial class Entity
+    public sealed partial class Entity : IAuraSource
     {
         private void CreateAuraEffects()
         {

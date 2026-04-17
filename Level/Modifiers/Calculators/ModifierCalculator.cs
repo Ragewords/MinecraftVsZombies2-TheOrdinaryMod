@@ -8,29 +8,29 @@ namespace PVZEngine.Modifiers
 {
     public abstract class ModifierCalculator
     {
-        public abstract object? Calculate(object? value, IEnumerable<ModifierContainerItem> modifiers);
+        public abstract object? Calculate(object? value, IEnumerable<ModifierSourceItem> modifiers);
     }
     public abstract class ModifierCalculator<TValue> : ModifierCalculator
     {
-        public override sealed object? Calculate(object? value, IEnumerable<ModifierContainerItem> modifiers)
+        public override sealed object? Calculate(object? value, IEnumerable<ModifierSourceItem> modifiers)
         {
             if (!value.TryToGeneric<TValue>(out var tValue))
                 return value;
-            return CalculateGeneric(tValue, modifiers.OfType<ModifierContainerItem>());
+            return CalculateGeneric(tValue, modifiers.OfType<ModifierSourceItem>());
         }
-        public abstract TValue? CalculateGeneric(TValue? value, IEnumerable<ModifierContainerItem> modifiers);
+        public abstract TValue? CalculateGeneric(TValue? value, IEnumerable<ModifierSourceItem> modifiers);
     }
     public abstract class ModifierCalculator<TValue, TModifier> : ModifierCalculator<TValue> where TModifier : PropertyModifier<TValue>
     {
     }
-    public struct ModifierContainerItem
+    public struct ModifierSourceItem
     {
-        public ModifierContainerItem(IModifierContainer container, PropertyModifier modifier)
+        public ModifierSourceItem(IModifierSource container, PropertyModifier modifier)
         {
             this.container = container;
             this.modifier = modifier;
         }
-        public IModifierContainer container;
+        public IModifierSource container;
         public PropertyModifier modifier;
     }
 }

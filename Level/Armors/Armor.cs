@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace PVZEngine.Armors
 {
-    public partial class Armor : IPropertyModifyTarget, IAuraSource, IModeledBuffTarget
+    public partial class Armor : IModifiablePropertyTarget, IAuraSource, IModeledBuffTarget
     {
         #region 构造器
         private Armor()
@@ -23,7 +23,7 @@ namespace PVZEngine.Armors
             Slot = null!;
             Definition = null!;
 
-            properties = new PropertyBlock(this);
+            properties = new PropertyBlock(this, buffs);
             InitBuffEvents();
         }
         public Armor(Entity owner, NamespaceID slot, ArmorDefinition definition) : this()

@@ -15,10 +15,6 @@ namespace PVZEngine.Grids
         #endregion
 
         #region 事件回调
-        private void OnBuffPropertyChangedCallback(IPropertyKey name)
-        {
-            properties.UpdateModifiedProperty(name);
-        }
         private void OnModelInsertionAddedCallback(ModelInsertion insertion)
         {
             OnModelInsertionAdded?.Invoke(insertion);
@@ -36,7 +32,6 @@ namespace PVZEngine.Grids
         }
         private void InitBuffList()
         {
-            buffs.OnPropertyChanged += OnBuffPropertyChangedCallback;
             buffs.OnModelInsertionAdded += OnModelInsertionAddedCallback;
             buffs.OnModelInsertionRemoved += OnModelInsertionRemovedCallback;
         }
@@ -49,8 +44,7 @@ namespace PVZEngine.Grids
         }
         private void InitBuffsFromSerializable(SerializableGrid seri)
         {
-            buffs = BuffList.CreateFromSerializable(seri.buffs, Level, this);
-            InitBuffList();
+            buffs.InitFromSerializable(seri.buffs, Level, this);
         }
         private void LoadBuffsFromSerializable(SerializableGrid seri)
         {

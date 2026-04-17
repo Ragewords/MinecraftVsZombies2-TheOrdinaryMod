@@ -2,8 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using PVZEngine.Auras;
-using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
 using PVZEngine.Level;
@@ -13,7 +11,7 @@ using UnityEngine;
 
 namespace PVZEngine.Entities
 {
-    public sealed partial class Entity : IAuraSource, IModifierContainer, IPropertyModifyTarget, ILevelSourceTarget, IModeledBuffTarget
+    public sealed partial class Entity : ILevelSourceTarget
     {
         #region 构造器
         public Entity(LevelEngine level, long id, ILevelSourceReference? spawnerSource, EntityDefinition definition, int seed) : this(level, id, definition, spawnerSource)
@@ -23,13 +21,15 @@ namespace PVZEngine.Entities
             DropRNG = new RandomGenerator(RNG.Next());
 
             InitBuffEvents();
-            UpdateModifierCaches();
+            ReevaluateModifierCaches();
             Cache.UpdateAll(this);
         }
         private Entity(LevelEngine level, long id, EntityDefinition definition, ILevelSourceReference? spawnerSource)
         {
             Cache = new EntityCache();
-            properties = new PropertyBlock(this);
+            properties = new PropertyBlock(this, this, buffs);
+            modifierLibrary = new ModifierLibrary();
+            modifierLibrary.OnModifiedPropertyNeedsUpdate += OnModifiedPropertyNeedsUpdateCallback;
 
             Level = level;
 

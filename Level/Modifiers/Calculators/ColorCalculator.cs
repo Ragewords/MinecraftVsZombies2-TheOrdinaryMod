@@ -8,7 +8,7 @@ namespace PVZEngine.Modifiers
 {
     public class ColorCalculator : ModifierCalculator<Color, ColorModifier>
     {
-        public override Color CalculateGeneric(Color value, IEnumerable<ModifierContainerItem> modifiers)
+        public override Color CalculateGeneric(Color value, IEnumerable<ModifierSourceItem> modifiers)
         {
             if (modifiers.Count() == 0)
                 return value;

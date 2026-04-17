@@ -93,19 +93,17 @@ namespace PVZEngine
             }
             return new SerializablePropertyDictionary(properties);
         }
-        public static PropertyDictionary FromSerializable(SerializablePropertyDictionary? seri)
+        public void LoadFromSerializable(SerializablePropertyDictionary? seri)
         {
-            var dict = new PropertyDictionary();
-            dict.propertyDict.Clear();
+            propertyDict.Clear();
             if (seri != null && seri.properties != null)
             {
                 foreach (var pair in seri.properties)
                 {
                     var key = PropertyMapper.ConvertFromName(pair.Key);
-                    dict.propertyDict.Add(key, pair.Value);
+                    propertyDict.Add(key, pair.Value);
                 }
             }
-            return dict;
         }
         public int Count => propertyDict.Count;
         private Dictionary<IPropertyKey, object?> propertyDict = new Dictionary<IPropertyKey, object?>(32, new PropertyKeyComparer());

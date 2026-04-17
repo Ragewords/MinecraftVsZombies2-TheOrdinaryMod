@@ -6,7 +6,7 @@ namespace PVZEngine.Modifiers
 {
     public interface IPropertyModifier
     {
-        object? GetModifierValue(IModifierContainer buff);
+        object? GetModifierValue(IModifierSource buff);
     }
     public abstract class PropertyModifier : IPropertyModifier
     {
@@ -14,15 +14,15 @@ namespace PVZEngine.Modifiers
         {
             Priority = priority;
         }
-        public virtual void PostAdd(IModifierContainer container, IBuffTarget target)
+        public virtual void PostAdd(IModifierSource container, IBuffTarget target)
         {
 
         }
-        public virtual void PostRemove(IModifierContainer container, IBuffTarget target)
+        public virtual void PostRemove(IModifierSource container, IBuffTarget target)
         {
 
         }
-        public abstract object? GetModifierValue(IModifierContainer container);
+        public abstract object? GetModifierValue(IModifierSource container);
         public abstract ModifierCalculator GetCalculator();
         public abstract IPropertyKey PropertyName { get; }
         public abstract object? ConstValue { get; }
@@ -43,11 +43,11 @@ namespace PVZEngine.Modifiers
             PropertyNameGeneric = propertyName;
             UsingContainerPropertyNameGeneric = buffPropertyName;
         }
-        public override object? GetModifierValue(IModifierContainer container)
+        public override object? GetModifierValue(IModifierSource container)
         {
             return GetModifierValueGeneric(container);
         }
-        public T? GetModifierValueGeneric(IModifierContainer container)
+        public T? GetModifierValueGeneric(IModifierSource container)
         {
             if (PropertyKeyHelper.IsValid(UsingContainerPropertyName))
             {

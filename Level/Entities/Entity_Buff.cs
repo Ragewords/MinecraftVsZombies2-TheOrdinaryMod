@@ -10,7 +10,6 @@ namespace PVZEngine.Entities
         #region 生命周期
         private void InitBuffEvents()
         {
-            buffs.OnPropertyChanged += UpdateModifiedProperty;
             buffs.OnModelInsertionAdded += OnModelInsertionAddedCallback;
             buffs.OnModelInsertionRemoved += OnModelInsertionRemovedCallback;
         }
@@ -27,8 +26,7 @@ namespace PVZEngine.Entities
         #region 序列化
         private void InitBuffsFromSerializable(SerializableEntity seri)
         {
-            buffs = BuffList.CreateFromSerializable(seri.buffs, Level, this);
-            InitBuffEvents();
+            buffs.InitFromSerializable(seri.buffs, Level, this);
         }
         private void LoadBuffsFromSerializable(SerializableEntity seri)
         {

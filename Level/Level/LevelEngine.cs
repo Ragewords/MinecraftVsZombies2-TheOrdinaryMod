@@ -11,15 +11,15 @@ using UnityEngine;
 
 namespace PVZEngine.Level
 {
-    public partial class LevelEngine : IBuffTarget, IDisposable, IPropertyModifyTarget
+    public partial class LevelEngine : IBuffTarget, IDisposable, IModifiablePropertyTarget
     {
         #region 公有方法
         public LevelEngine(IGameContent contentProvider, IGameTriggerSystem triggers, ICollisionSystem collisionSystem)
         {
             Content = contentProvider;
             Triggers = triggers;
-            buffs.OnPropertyChanged += UpdateBuffedProperty;
-            properties = new PropertyBlock(this);
+            InitBuffList();
+            properties = new PropertyBlock(this, buffs);
             this.collisionSystem = collisionSystem;
         }
         public void Dispose()

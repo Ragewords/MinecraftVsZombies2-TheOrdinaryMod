@@ -9,47 +9,51 @@ namespace PVZEngine.Level
 {
     public class ModifiableProperties
     {
-        public ModifiableProperties(IPropertyModifyTarget container)
+        public ModifiableProperties(IModifiablePropertyTarget target, params IModifierProvider[] providers)
         {
-            Container = container;
+            Target = target;
+            Providers = providers;
+            foreach (var provider in providers)
+            {
+                provider.OnModifiedPropertyNeedsUpdate += OnModifiedPropertyNeedsUpdateCallback;
+            }
         }
+
+        #region 设置属性
         public void SetProperty<T>(PropertyKey<T> name, T? value)
         {
+            var beforeValue = GetProperty<T>(name);
             if (properties.SetProperty(name, value))
             {
-                UpdateModifiedProperty<T>(name);
-                // 实体属性更改时，如果有利用该实体属性修改属性的修改器，更新一次该属性。
-                var modifiersUsingThisProperty = Container.GetModifiersUsingProperty(name);
-                if (modifiersUsingThisProperty != null && modifiersUsingThisProperty.Length > 0)
-                {
-                    foreach (var modifier in modifiersUsingThisProperty)
-                    {
-                        UpdateModifiedPropertyObject(modifier.PropertyName);
-                    }
-                }
+                UpdateModifiedProperty<T>(name, beforeValue);
             }
         }
         public void SetPropertyObject(IPropertyKey name, object? value)
         {
+            var beforeValue = GetPropertyObject(name);
             if (properties.SetPropertyObject(name, value))
             {
-                UpdateModifiedPropertyObject(name);
-                // 实体属性更改时，如果有利用该实体属性修改属性的修改器，更新一次该属性。
-                var modifiersUsingThisProperty = Container.GetModifiersUsingProperty(name);
-                if (modifiersUsingThisProperty != null && modifiersUsingThisProperty.Length > 0)
-                {
-                    foreach (var modifier in modifiersUsingThisProperty)
-                    {
-                        UpdateModifiedPropertyObject(modifier.PropertyName);
-                    }
-                }
+                UpdateModifiedPropertyObject(name, beforeValue);
             }
         }
+        public bool RemoveProperty(IPropertyKey name)
+        {
+            var beforeValue = GetPropertyObject(name);
+            if (properties.RemovePropertyObject(name))
+            {
+                UpdateModifiedPropertyObject(name, beforeValue);
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region 获取属性
         public bool TryGetPropertyObject(IPropertyKey name, out object? result, bool ignoreBuffs = false)
         {
             if (!ignoreBuffs)
             {
-                if (buffedProperties.TryGetPropertyObject(name, out var value))
+                if (modifiedProperties.TryGetPropertyObject(name, out var value))
                 {
                     result = value;
                     return true;
@@ -65,7 +69,7 @@ namespace PVZEngine.Level
                 result = fallbackCache;
                 return true;
             }
-            if (Container.GetFallbackProperty(name, out var fallback))
+            if (Target.GetFallbackProperty(name, out var fallback))
             {
                 AddFallbackCache(name, fallback);
                 result = fallback;
@@ -103,10 +107,9 @@ namespace PVZEngine.Level
             }
             return name.DefaultValue;
         }
-        public bool RemoveProperty(IPropertyKey name)
-        {
-            return properties.RemovePropertyObject(name);
-        }
+        #endregion
+
+        #region 后备缓存
         public void AddFallbackCache(IPropertyKey key, object? value)
         {
             fallbackCaches.Add(key, value);
@@ -123,57 +126,72 @@ namespace PVZEngine.Level
         {
             return properties.GetPropertyNames();
         }
+        #endregion
 
-        #region 增益
+        #region 修改器
         public void UpdateAllModifiedProperties(bool triggersEvaluation)
         {
-            var paths = Container.GetModifiedProperties();
-            foreach (var path in paths)
+            foreach (var provider in Providers)
             {
-                UpdateModifiedPropertyObject(path, triggersEvaluation);
+                foreach (var key in provider.GetModifiedProperties())
+                {
+                    var beforeValue = GetPropertyObject(key);
+                    UpdateModifiedPropertyObject(key, beforeValue, triggersEvaluation);
+                }
             }
         }
-        public void UpdateModifiedPropertyObject(IPropertyKey name, bool triggersEvaluation = true)
+        public void UpdateModifiedPropertyObject(IPropertyKey name, object? beforeValue, bool triggersEvaluation = true)
         {
             var baseValue = GetPropertyObject(name, ignoreBuffs: true);
 
             modifierContainerBuffer.Clear();
-            Container.GetModifierItems(name, modifierContainerBuffer);
+            foreach (var provider in Providers)
+            {
+                provider.GetModifiersForProperty(name, modifierContainerBuffer);
+            }
 
-            var beforeValue = GetPropertyObject(name);
             var value = baseValue;
             if (modifierContainerBuffer.Count > 0)
             {
                 value = modifierContainerBuffer.CalculateProperty(baseValue);
-                buffedProperties.SetPropertyObject(name, value);
+                modifiedProperties.SetPropertyObject(name, value);
             }
             else
             {
-                buffedProperties.RemovePropertyObject(name);
+                modifiedProperties.RemovePropertyObject(name);
             }
-            Container.OnPropertyChanged(name, beforeValue, value, triggersEvaluation);
+            CallPropertyChanged(name, beforeValue, value, triggersEvaluation);
         }
-        public void UpdateModifiedProperty<T>(PropertyKey<T> name, bool triggersEvaluation = true)
+        public void UpdateModifiedProperty<T>(PropertyKey<T> name, T? beforeValue, bool triggersEvaluation = true)
         {
             var baseValue = GetProperty<T>(name, ignoreBuffs: true);
 
             modifierContainerBuffer.Clear();
-            Container.GetModifierItems(name, modifierContainerBuffer);
+            foreach (var provider in Providers)
+            {
+                provider.GetModifiersForProperty(name, modifierContainerBuffer);
+            }
 
-            var beforeValue = GetProperty<T>(name);
             var value = baseValue;
             if (modifierContainerBuffer.Count > 0)
             {
                 value = modifierContainerBuffer.CalculateProperty<T>(baseValue);
-                buffedProperties.SetProperty(name, value);
+                modifiedProperties.SetProperty(name, value);
             }
             else
             {
-                buffedProperties.RemoveProperty(name);
+                modifiedProperties.RemoveProperty(name);
             }
-            Container.OnPropertyChanged(name, beforeValue, value, triggersEvaluation);
+            CallPropertyChanged(name, beforeValue, value, triggersEvaluation);
+        }
+        private void CallPropertyChanged(IPropertyKey name, object? beforeValue, object? afterValue, bool triggersEvaluation)
+        {
+            RemoveFallbackCache(name);
+            Target.OnPropertyChanged(name, beforeValue, afterValue, triggersEvaluation);
         }
         #endregion
+
+        #region 序列化
         public SerializableModifiableProperties ToSerializable()
         {
             return new SerializableModifiableProperties()
@@ -181,24 +199,27 @@ namespace PVZEngine.Level
                 properties = properties.ToSerializable()
             };
         }
-        public static ModifiableProperties FromSerializable(SerializableModifiableProperties? seri, IPropertyModifyTarget container)
+        public void LoadFromSerializable(SerializableModifiableProperties? seri)
         {
-            var block = new ModifiableProperties(container);
             if (seri != null)
             {
-                block.properties = PropertyDictionary.FromSerializable(seri.properties);
+                properties.LoadFromSerializable(seri.properties);
             }
-            return block;
+        }
+        #endregion
+
+        void OnModifiedPropertyNeedsUpdateCallback(IPropertyKey name)
+        {
+            var beforeValue = GetPropertyObject(name);
+            UpdateModifiedPropertyObject(name, beforeValue);
         }
 
-        public IPropertyModifyTarget Container { get; }
-        private PropertyDictionary properties = new PropertyDictionary();
-        private PropertyDictionary buffedProperties = new PropertyDictionary();
+        public IModifiablePropertyTarget Target { get; }
+        public IModifierProvider[] Providers { get; }
         private Dictionary<IPropertyKey, object?> fallbackCaches = new Dictionary<IPropertyKey, object?>(new PropertyKeyComparer());
-        private readonly Dictionary<Type, Action<object, object, object>> setPropertyDelegates = new();
-        private readonly Dictionary<Type, Action<object, object>> updateModifiedPropertyDelegates = new();
-        private List<ModifierContainerItem> modifierContainerBuffer = new List<ModifierContainerItem>();
-        private delegate object UpdateModifiedPropertyDelegate(ModifiableProperties self, IPropertyKey key);
+        private List<ModifierSourceItem> modifierContainerBuffer = new List<ModifierSourceItem>();
+        private PropertyDictionary properties = new PropertyDictionary();
+        private PropertyDictionary modifiedProperties = new PropertyDictionary();
     }
     [Serializable]
     public class SerializableModifiableProperties

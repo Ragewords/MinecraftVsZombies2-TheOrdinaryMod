@@ -9,7 +9,6 @@ namespace PVZEngine.SeedPacks
     {
         private void InitBuffs()
         {
-            buffs.OnPropertyChanged += UpdateBuffedProperty;
             buffs.OnModelInsertionAdded += OnModelInsertionAddedCallback;
             buffs.OnModelInsertionRemoved += OnModelInsertionRemovedCallback;
         }
@@ -40,8 +39,7 @@ namespace PVZEngine.SeedPacks
         }
         private void InitBuffsFromSerializable(SerializableSeedPack seri)
         {
-            buffs = BuffList.CreateFromSerializable(seri.buffs, Level, this);
-            InitBuffs();
+            buffs.InitFromSerializable(seri.buffs, Level, this);
         }
         private void LoadBuffsFromSerializable(SerializableSeedPack seri)
         {
