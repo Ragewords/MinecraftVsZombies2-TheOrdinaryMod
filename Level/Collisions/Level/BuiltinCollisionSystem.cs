@@ -37,6 +37,8 @@ namespace PVZEngine.Collisions.Level
                 var ent1 = collider1.Entity;
                 if (ent1.IsCollisionCheckDisabled())
                     continue;
+                if (ent1.Cache.CollisionInterval > 1 && !ent1.IsTimeInterval(ent1.Cache.CollisionInterval))
+                    continue;
                 int maskHostile = ent1.CollisionMaskHostile;
                 int maskFriendly = ent1.CollisionMaskFriendly;
                 var maskTotal = maskHostile | maskFriendly;

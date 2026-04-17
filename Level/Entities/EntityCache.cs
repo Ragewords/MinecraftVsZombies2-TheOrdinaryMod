@@ -20,7 +20,7 @@ namespace PVZEngine.Entities
             FlipX = entity.IsFlipX();
             BoundsPivot = entity.GetBoundsPivot();
             CollisionDetection = entity.GetCollisionDetection();
-            CollisionSampleLength = entity.GetCollisionSampleLength();
+            CollisionInterval = entity.GetCollisionInterval();
             entity.UpdateCollision();
         }
         public void UpdateProperty(Entity entity, IPropertyKey name, object? beforeValue, object? afterValue)
@@ -74,9 +74,9 @@ namespace PVZEngine.Entities
                 CollisionDetection = afterValue.ToGeneric<int>();
                 entity.UpdateCollisionDetection();
             }
-            else if (EngineEntityProps.COLLISION_SAMPLE_LENGTH.Equals(name))
+            else if (EngineEntityProps.COLLISION_INTERVAL.Equals(name))
             {
-                CollisionSampleLength = afterValue.ToGeneric<float>();
+                CollisionInterval = afterValue.ToGeneric<int>();
             }
         }
         public Vector3 GetFinalScale()
@@ -96,6 +96,6 @@ namespace PVZEngine.Entities
         public Vector3 Scale { get; private set; }
         public Vector3 BoundsPivot { get; private set; }
         public int CollisionDetection { get; private set; }
-        public float CollisionSampleLength { get; private set; }
+        public int CollisionInterval { get; private set; }
     }
 }

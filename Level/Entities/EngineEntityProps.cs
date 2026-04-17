@@ -283,10 +283,10 @@ namespace PVZEngine.Entities
         #endregion
 
         #region 碰撞检测样本长度
-        public static readonly PropertyMeta<float> COLLISION_SAMPLE_LENGTH = Get<float>("collisionSampleLength");
-        public static float GetCollisionSampleLength(this Entity entity)
+        public static readonly PropertyMeta<int> COLLISION_INTERVAL = Get<int>("collision_interval");
+        public static int GetCollisionInterval(this Entity entity)
         {
-            return entity.GetProperty<float>(COLLISION_SAMPLE_LENGTH);
+            return entity.GetProperty<int>(COLLISION_INTERVAL);
         }
         #endregion
     }
