@@ -20,7 +20,6 @@ namespace PVZEngine.Entities
             RNG = new RandomGenerator(seed);
             DropRNG = new RandomGenerator(RNG.Next());
 
-            InitBuffEvents();
             ReevaluateModifierCaches();
             Cache.UpdateAll(this);
         }
@@ -30,6 +29,7 @@ namespace PVZEngine.Entities
             properties = new PropertyBlock(this, this, buffs);
             modifierLibrary = new ModifierLibrary();
             modifierLibrary.OnModifiedPropertyNeedsUpdate += OnModifiedPropertyNeedsUpdateCallback;
+            InitBuffEvents();
 
             Level = level;
 
