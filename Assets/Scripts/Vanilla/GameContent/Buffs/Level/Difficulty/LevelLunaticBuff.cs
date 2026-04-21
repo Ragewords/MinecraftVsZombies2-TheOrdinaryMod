@@ -21,9 +21,8 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.ELASTIC_CLOUD_BOUNCE_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 1.5f));
 
-            AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.USE_LUNATIC_PROPERTY, true));
             AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.1f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.2f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.NAPSTABLOOK_PARALYSIS_TIME, IntegerOperator.Multiply, 2));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GHAST_DAMAGE_MULTIPLIER, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.MOTHER_TERROR_EGG_COUNT, IntegerOperator.Add, 1));
@@ -54,26 +53,13 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.RED_DRAGON_GIANT_FIREBALL_SPEED, NumberOperator.Multiply, 3f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_TORNADO_COUNT, IntegerOperator.Set, 5));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_TORNADO_COUNT, IntegerOperator.Set, 3));
-            AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());
         }
 
-        public class ContraptionAura : AuraEffectDefinition
-        {
-            public ContraptionAura() : base(VanillaBuffID.Contraption.lunaticContraption, 2)
-            {
-            }
-
-            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
-            {
-                var level = auraEffect.Source.GetLevel();
-                results.AddRange(level.GetEntities(EntityTypes.PLANT));
-            }
-        }
         public class EnemyAura : AuraEffectDefinition
         {
-            public EnemyAura() : base(VanillaBuffID.Enemy.lunaticEnemy)
+            public EnemyAura() : base(VanillaBuffID.Enemy.hardEnemy)
             {
             }
 

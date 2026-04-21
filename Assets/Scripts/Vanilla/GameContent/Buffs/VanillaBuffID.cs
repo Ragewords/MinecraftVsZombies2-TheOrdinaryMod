@@ -140,7 +140,6 @@ namespace MVZ2.GameContent.Buffs
         {
             // Difficulty
             public const string easyContraption = "easy_contraption";
-            public const string lunaticContraption = "lunatic_contraption";
 
             // Prologue
             public const string obsidianArmor = "obsidian_armor";
@@ -217,7 +216,6 @@ namespace MVZ2.GameContent.Buffs
         {
             // Difficulty
             public const string hardEnemy = "hard_enemy";
-            public const string lunaticEnemy = "lunatic_enemy";
 
             // Core
             public const string randomEnemySpeed = "random_enemy_speed";
@@ -504,7 +502,6 @@ namespace MVZ2.GameContent.Buffs
         {
             // Difficulty
             public static readonly NamespaceID easyContraption = Get(VanillaBuffNames.Contraption.easyContraption);
-            public static readonly NamespaceID lunaticContraption = Get(VanillaBuffNames.Contraption.lunaticContraption);
 
             // Prologue
             public static readonly NamespaceID obsidianArmor = Get(VanillaBuffNames.Contraption.obsidianArmor);
@@ -574,7 +571,6 @@ namespace MVZ2.GameContent.Buffs
         {
             // Difficulty
             public static readonly NamespaceID hardEnemy = Get(VanillaBuffNames.Enemy.hardEnemy);
-            public static readonly NamespaceID lunaticEnemy = Get(VanillaBuffNames.Enemy.lunaticEnemy);
 
             // Core
             public static readonly NamespaceID randomEnemySpeed = Get(VanillaBuffNames.Enemy.randomEnemySpeed);
