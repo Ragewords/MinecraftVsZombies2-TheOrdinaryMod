@@ -666,7 +666,7 @@
 			</characters>
 			<sentences>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">这是淬毒发射器！能够在较远的一段距离发射毒液球！</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">毒液球击中的怪物会中毒，持续受到伤害！并且能快速腐蚀它们的盔甲！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">毒液球击中的怪物会中毒，持续受到伤害！并且能腐蚀它们的盔甲！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2" onClick="end">也许是女巫制造的机械？谁知道呢！</sentence>
 			</sentences>
 		</section>

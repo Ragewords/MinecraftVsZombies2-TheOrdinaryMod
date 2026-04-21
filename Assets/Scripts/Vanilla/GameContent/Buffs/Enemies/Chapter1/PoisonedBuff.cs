@@ -6,7 +6,6 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Models;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
-using PVZEngine.Armors;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Level;
@@ -28,12 +27,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             if (entity != null)
             {
                 DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.POISON);
-                var armor = entity.GetMainArmor();
-                if (Armor.Exists(armor) && !armor.IsIgnored())
-                {
-                    entity.TakeDamageNoSource(WITHER_DAMAGE_ARMOR, damageEffectList);
-                }
-                else if (entity.Health > 20)
+                if (entity.Health > 20)
                 {
                     entity.TakeDamageNoSource(WITHER_DAMAGE, damageEffectList);
                 }
