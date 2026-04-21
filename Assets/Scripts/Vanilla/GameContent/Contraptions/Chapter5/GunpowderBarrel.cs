@@ -52,7 +52,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
             base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
                 return;
             var damage = entity.GetDamage() * entity.Level.GetGunpowderDamageMultiplier();
             var range = entity.GetRange();

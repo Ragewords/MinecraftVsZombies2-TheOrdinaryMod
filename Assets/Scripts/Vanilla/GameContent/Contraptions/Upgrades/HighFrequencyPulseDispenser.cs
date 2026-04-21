@@ -55,7 +55,11 @@ namespace MVZ2.GameContent.Contraptions
                     var repeatTimer = GetRepeatTimer(entity);
                     if (repeatTimer != null && repeatTimer.RunToExpired(entity.GetAttackSpeed()))
                     {
-                        Shoot(entity);
+                        if (DoubleShoot(entity))
+                            ShootDouble(entity);
+                        else
+                            Shoot(entity);
+                        SetDoubleShoot(entity, !DoubleShoot(entity));
                         SetRepeatCount(entity, repeatCount - 1);
                         repeatTimer.Reset();
                     }
@@ -126,6 +130,23 @@ namespace MVZ2.GameContent.Contraptions
                 shootTimer?.Reset();
             }
         }
+        private void ShootDouble(Entity entity)
+        {
+            SetGatlinAlt(entity, !IsGatlinAlt(entity));
+            ModifiedShoot(entity, new Vector3(0, 0, -4));
+            ModifiedShoot(entity, new Vector3(0, 0, 4));
+        }
+        public Entity? ModifiedShoot(Entity entity, Vector3 modify)
+        {
+            entity.TriggerAnimation("Shoot");
+            var param = entity.GetShootParams();
+
+            var offset = entity.GetShotOffset() + modify;
+            offset = entity.ModifyShotOffset(offset);
+            param.position = entity.Position + offset;
+
+            return entity?.ShootProjectile(param);
+        }
         private Entity? ShootLargeArrow(Entity entity)
         {
             entity.TriggerAnimation("Shoot");
@@ -153,14 +174,17 @@ namespace MVZ2.GameContent.Contraptions
         public static bool IsUpgraded(Entity entity) => entity.HasBuff<HFPDUpgradedBuff>();
         public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_REPEAT_COUNT);
         public static void SetRepeatCount(Entity entity, int count) => entity.SetBehaviourField(PROP_REPEAT_COUNT, count);
+        public static bool DoubleShoot(Entity entity) => entity.GetBehaviourField<bool>(PROP_DOUBLE_SHOOT);
+        public static void SetDoubleShoot(Entity entity, bool value) => entity.SetBehaviourField(PROP_DOUBLE_SHOOT, value);
 
         public const int REPEAT_INVERVAL = 7;
         public const int EVOCATION_TIME = 60;
         public const int REPEAT_COUNT = 4;
-        public const int REPEAT_COUNT_UPGRADED = 6;
+        public const int REPEAT_COUNT_UPGRADED = 7;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_DOUBLE_SHOOT = new VanillaEntityPropertyMeta<bool>("DoubleShoot");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_GATLIN_ALT = new VanillaEntityPropertyMeta<bool>("gatlin_alt");
     }
 }

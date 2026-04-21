@@ -227,7 +227,6 @@
                 <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>有40%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>快速发射60支箭矢</color>]]></p>
             </properties>
             <flavor>
@@ -313,7 +312,6 @@
             <properties>
                 <p>射程：<![CDATA[<color=red>3.5格</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>有40%的概率连续射击2次</color>]]></p>
                 <p>技能：<![CDATA[<color=red>射出一个越滚越大的雪球</color>]]></p>
             </properties>
             <flavor>
@@ -816,7 +814,7 @@
                 <variable name="furious_gunpowder_value">property("mvz2:entity/energyValue", "mvz2:furious_gunpowder", "entity")</variable>
             </variables>
             <header>
-                <p>火药桶能生产为你提供大量能量的火药，但若未及时拾取，则会炸伤周围的友方单位。火药桶在被除铁镐外的方式破坏时也会爆炸。</p>
+                <p>火药桶能生产为你提供大量能量的火药，但若未及时拾取，则会炸伤周围的友方单位。火药桶在被破坏时也会爆炸。</p>
             </header>
             <properties>
                 <p>爆炸伤害：<![CDATA[<color=red>100（简单）、150（普通）、300（困难）、600（月狂）</color>]]></p>
@@ -863,16 +861,16 @@
         </entry>
         <entry id="mvz2:repeatenser">
             <header>
-                <p>原装发射器向敌人发射眩晕或击退怪物的原木。</p>
+                <p>连射发射器一次能发射两支箭矢。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>3秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>2支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>原木会眩晕怪物0.5秒，并有50%概率击退怪物</color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速发射5个100伤害，能够无视重量击退单格内所有怪物的原木</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢及10支箭矢</color>]]></p>
             </properties>
             <flavor>
-                <p>原装发射器并不像人们想象中那么原始，实际上，现代发射器的功能跟它比起来已经很克制了。</p>
+                <p><![CDATA[它没能有幸加入<ref=[contraptions]mvz2:high_frequency_pulse_dispenser>高频脉冲发射器</ref>的士兵队伍，因为它每次说话都要说两遍。]]></p>
+                <p><![CDATA[它没能有幸加入<ref=[contraptions]mvz2:high_frequency_pulse_dispenser>高频脉冲发射器</ref>的士兵队伍，因为它每次说话都要说两遍。]]></p>
             </flavor>
         </entry>
         <entry id="mvz2:beacon">

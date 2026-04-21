@@ -4,12 +4,9 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
-using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
-using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
@@ -25,7 +22,6 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetRepeatTimer(entity, new FrameTimer(15));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -33,31 +29,7 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
-                int repeatCount = GetRepeatCount(entity);
-                if (repeatCount > 0)
-                {
-                    var repeatTimer = GetRepeatTimer(entity);
-                    if (repeatTimer.RunToExpiredAndNotNull(entity.GetAttackSpeed()))
-                    {
-                        Shoot(entity);
-                        SetRepeatCount(entity, repeatCount - 1);
-                        repeatTimer.Reset();
-                    }
-                }
                 return;
-            }
-        }
-        public override void OnShootTick(Entity entity)
-        {
-            int count = 1;
-            if (entity.RNG.Next(5) < 2)
-                count = 2;
-            SetRepeatCount(entity, count);
-            var repeatTimer = GetRepeatTimer(entity);
-            if (repeatTimer != null)
-            {
-                repeatTimer.ResetTime(5);
-                repeatTimer.Frame = 0;
             }
         }
         public override Entity? Shoot(Entity entity)
@@ -81,12 +53,5 @@ namespace MVZ2.GameContent.Contraptions
             entity.ShootProjectile(VanillaProjectileID.largeSnowball, velocity);
             entity.PlaySound(VanillaSoundID.odd);
         }
-        public static FrameTimer? GetRepeatTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_REPEAT_TIMER);
-        public static void SetRepeatTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_REPEAT_TIMER, timer);
-        public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_REPEAT_COUNT);
-        public static void SetRepeatCount(Entity entity, int count) => entity.SetBehaviourField(PROP_REPEAT_COUNT, count);
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
-        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
-        public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
     }
 }

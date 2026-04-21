@@ -66,7 +66,7 @@ namespace MVZ2.GameContent.Contraptions
                 if (behaviour == null)
                     return;
                 target.PlaySound(VanillaSoundID.fire);
-                if (target.IsEntityOf(VanillaProjectileID.log))
+                if (target.IsEntityOf(VanillaProjectileID.largeArrow))
                 {
                     behaviour.Ignite(target, hellfire, false);
                 }

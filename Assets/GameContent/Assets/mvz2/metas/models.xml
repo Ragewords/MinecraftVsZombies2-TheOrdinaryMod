@@ -81,9 +81,9 @@
     <model name="youkai_leaf" type="entity" path="mvz2:contraption/mausoleum/youkai_leaf" width="64" height="64" xOffset="0" yOffset="-28" />
 
     <model name="gunpowder_barrel" type="entity" path="mvz2:contraption/ship/gunpowder_barrel" width="64" height="64" xOffset="0" yOffset="-28" />
-    <model name="triplenser" type="entity" path="mvz2:contraption/ship/triplenser" width="64" height="64" xOffset="0" yOffset="-28" />
+    <model name="triplenser" type="entity" path="mvz2:contraption/ship/triplenser" width="64" height="72" xOffset="0" yOffset="-32" />
     <model name="firework_dispenser" type="entity" path="mvz2:contraption/ship/firework_dispenser" width="64" height="64" xOffset="0" yOffset="-28" />
-    <model name="repeatenser" type="entity" path="mvz2:contraption/ship/repeatenser" width="64" height="64" xOffset="4" yOffset="-28" />
+    <model name="repeatenser" type="entity" path="mvz2:contraption/ship/repeatenser" width="64" height="64" xOffset="0" yOffset="-28" />
     <model name="beacon" type="entity" path="mvz2:contraption/ship/beacon" width="64" height="64" xOffset="0" yOffset="-28" />
     <model name="wooden_fan" type="entity" path="mvz2:contraption/ship/wooden_fan" width="64" height="64" xOffset="0" yOffset="-28" />
     <model name="elastic_cloud" type="entity" path="mvz2:contraption/ship/elastic_cloud" width="64" height="64" xOffset="0" yOffset="-28" />
@@ -102,7 +102,7 @@
     <model name="anvil" type="entity" path="mvz2:contraption/dream/anvil" width="64" height="64" xOffset="0" yOffset="-28" />
     <model name="random_china" type="entity" path="mvz2:contraption/prologue/random_china" width="64" height="64" xOffset="0" yOffset="-28" />
     <model name="error_block" type="entity" path="mvz2:contraption/upgrade/error_block" width="64" height="64" xOffset="0" yOffset="-28" />
-    <model name="skyward_option" type="entity" path="mvz2:contraption/upgrade/skyward_familiar" width="64" height="64" xOffset="0" yOffset="-15" />
+    <model name="skyward_familiar" type="entity" path="mvz2:contraption/upgrade/skyward_familiar" width="64" height="64" xOffset="0" yOffset="-15" />
 
 
     <!-- Enemies -->
@@ -559,7 +559,6 @@
     <model name="hell_planet_otherworld" type="entity" path="mvz2:projectile/hell_planet_otherworld" width="56" height="56" xOffset="0" yOffset="-26" />
     <model name="hell_planet_earth" type="entity" path="mvz2:projectile/hell_planet_earth" width="46" height="46" xOffset="0" yOffset="-21" />
     <model name="hell_planet_moon" type="entity" path="mvz2:projectile/hell_planet_moon" width="26" height="26" xOffset="0" yOffset="-11" />
-    <model name="log" type="entity" path="mvz2:projectile/log" width="50" height="48" xOffset="0" yOffset="0" />
     <model name="shuriken" type="entity" path="mvz2:projectile/shuriken" width="26" height="26" xOffset="0" yOffset="0" />
     <model name="beacon_meteor" type="entity" path="mvz2:projectile/beacon_meteor" width="64" height="64" xOffset="0" yOffset="-25" />
     <model name="firework" type="entity" path="mvz2:projectile/firework" width="38" height="12" xOffset="0" yOffset="-6" />

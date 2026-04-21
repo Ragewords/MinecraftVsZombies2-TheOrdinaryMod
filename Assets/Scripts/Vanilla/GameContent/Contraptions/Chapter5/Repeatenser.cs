@@ -4,7 +4,6 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -24,7 +23,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetEvocationTimer(entity, new FrameTimer(50));
+            SetEvocationTimer(entity, new FrameTimer(120));
             SetRepeatTimer(entity, new FrameTimer(15));
         }
         protected override void UpdateAI(Entity entity)
@@ -39,8 +38,6 @@ namespace MVZ2.GameContent.Contraptions
                     var repeatTimer = GetRepeatTimer(entity);
                     if (repeatTimer != null && repeatTimer.RunToExpired(entity.GetAttackSpeed()))
                     {
-                        entity.PlaySound(VanillaSoundID.shot);
-                        entity.PlaySound(VanillaSoundID.bow);
                         Shoot(entity);
                         SetRepeatCount(entity, repeatCount - 1);
                         repeatTimer.Reset();
@@ -77,33 +74,43 @@ namespace MVZ2.GameContent.Contraptions
             if (evocationTimer == null)
                 return;
             evocationTimer.Run();
-            if (evocationTimer.PassedInterval(10))
+            if (evocationTimer.PassedInterval(2))
             {
-                entity.TriggerAnimation("Shoot");
-                entity.PlaySound(VanillaSoundID.shot);
-                entity.PlaySound(VanillaSoundID.bow);
-                var shootParams = entity.GetShootParams();
-                shootParams.velocity *= 2;
-                shootParams.damage *= 2;
-                entity.ShootProjectile(shootParams)?.Let(p => 
-                {
-                    OakLog.SetEvoked(p, true);
-                });
+                var projectile = Shoot(entity);
+                if (projectile != null)
+                    projectile.Velocity *= 2;
             }
             if (evocationTimer.Expired)
             {
+                ShootLargeArrow(entity);
+                for (var i = 0; i < 10; i++)
+                {
+                    var burstShootParams = entity.GetShootParams();
+                    burstShootParams.soundID = null;
+                    burstShootParams.velocity = burstShootParams.velocity.normalized * (i + 1);
+                    entity.ShootProjectile(burstShootParams);
+                }
                 entity.SetEvoked(false);
                 var shootTimer = GetShootTimer(entity);
                 shootTimer?.Reset();
             }
         }
-        protected override int GetTimerTime(Entity entity)
+        private Entity? ShootLargeArrow(Entity entity)
         {
-            if (entity.Level.IsIZombie())
-            {
-                return ATTACK_INTERVAL_MAX;
-            }
-            return entity.RNG.Next(ATTACK_INTERVAL_MIN, ATTACK_INTERVAL_MAX + 1);
+            entity.TriggerAnimation("Shoot");
+
+            var param = entity.GetShootParams();
+
+            var offset = entity.GetShotOffset();
+            offset = entity.ModifyShotOffset(offset);
+            param.position = entity.Position + offset;
+            param.velocity = param.velocity.normalized;
+
+            param.projectileID = VanillaProjectileID.largeArrow;
+            param.damage = entity.GetDamage() * 30;
+            param.soundID = VanillaSoundID.spellCard;
+
+            return entity?.ShootProjectile(param);
         }
         public static FrameTimer? GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_EVOCATION_TIMER);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
@@ -113,9 +120,7 @@ namespace MVZ2.GameContent.Contraptions
         public static int GetRepeatCount(Entity entity) => entity.GetBehaviourField<int>(PROP_REPEAT_COUNT);
         public static void SetRepeatCount(Entity entity, int count) => entity.SetBehaviourField(PROP_REPEAT_COUNT, count);
 
-        public const int REPEAT_COUNT = 1;
-        private const int ATTACK_INTERVAL_MIN = 85;
-        private const int ATTACK_INTERVAL_MAX = 90;
+        public const int REPEAT_COUNT = 2;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");
