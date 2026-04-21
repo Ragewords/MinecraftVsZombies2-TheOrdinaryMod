@@ -20,6 +20,8 @@ namespace PVZEngine.Modifiers
                 if (modi is not ColorModifier modifier)
                     continue;
                 var src = modifier.GetModifierValueGeneric(buff);
+                if (!modifier.FitsConditionGeneric(src))
+                    continue;
                 var dst = value;
                 var srcOp = modifier.SrcOperator;
                 var dstOp = modifier.DstOperator;

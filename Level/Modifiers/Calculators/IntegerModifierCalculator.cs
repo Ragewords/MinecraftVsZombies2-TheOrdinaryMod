@@ -30,6 +30,8 @@ namespace PVZEngine.Modifiers
                     if (modi.modifier is not IntegerModifier<T> modifier)
                         continue;
                     var modifierValue = modifier.GetModifierValueGeneric(buff);
+                    if (!modifier.FitsConditionGeneric(modifierValue))
+                        continue;
                     switch (modifier.Operator)
                     {
                         case IntegerOperator.Set:

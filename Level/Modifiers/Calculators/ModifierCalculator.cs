@@ -16,7 +16,7 @@ namespace PVZEngine.Modifiers
         {
             if (!value.TryToGeneric<TValue>(out var tValue))
                 return value;
-            return CalculateGeneric(tValue, modifiers.OfType<ModifierSourceItem>());
+            return CalculateGeneric(tValue, modifiers);
         }
         public abstract TValue? CalculateGeneric(TValue? value, IEnumerable<ModifierSourceItem> modifiers);
     }

@@ -26,6 +26,8 @@ namespace PVZEngine.Modifiers
                     if (modi.modifier is not NumberModifier<T> modifier)
                         continue;
                     var modifierValue = modifier.GetModifierValueGeneric(buff);
+                    if (!modifier.FitsConditionGeneric(modifierValue))
+                        continue;
                     switch (modifier.Operator)
                     {
                         case NumberOperator.Set:

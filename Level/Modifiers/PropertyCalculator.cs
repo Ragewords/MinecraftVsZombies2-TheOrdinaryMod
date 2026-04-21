@@ -14,7 +14,7 @@ namespace PVZEngine.Modifiers
             if (modifiers == null || modifiers.Count() == 0)
                 return value;
 
-            var calculators = modifiers.Select(p => p.modifier.GetCalculator()).Where(p => p != null).Distinct();
+            var calculators = modifiers.Select(p => p.modifier.GetCalculator()).Where(c => c != null).Distinct();
             ModifierCalculator? calculator = null;
             foreach (var calc in calculators)
             {

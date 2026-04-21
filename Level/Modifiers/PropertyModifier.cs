@@ -58,11 +58,19 @@ namespace PVZEngine.Modifiers
                 return ConstValueGeneric;
             }
         }
+        public bool FitsConditionGeneric(T? modifierValue)
+        {
+            if (Condition == null)
+                return true;
+            return Condition(modifierValue);
+        }
         public PropertyKey<T> PropertyNameGeneric { get; }
         public T? ConstValueGeneric { get; }
+        public ModifierCondition<T>? Condition { get; set; }
         public PropertyKey<T> UsingContainerPropertyNameGeneric { get; }
         public override IPropertyKey PropertyName => PropertyNameGeneric;
         public override object? ConstValue => ConstValueGeneric;
         public override IPropertyKey UsingContainerPropertyName => UsingContainerPropertyNameGeneric;
     }
+    public delegate bool ModifierCondition<T>(T? modifierValue);
 }

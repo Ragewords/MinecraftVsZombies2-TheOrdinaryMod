@@ -21,6 +21,8 @@ namespace PVZEngine.Modifiers
                 var modifier = (SetModifier<T>)modifierContainer.modifier;
                 var container = modifierContainer.container;
                 var modifierValue = modifier.GetModifierValueGeneric(container);
+                if (!modifier.FitsConditionGeneric(modifierValue))
+                    continue;
                 if (modifier.Operator == SetOperator.SetIfNotNull && modifierValue == null)
                     continue;
                 return modifierValue;

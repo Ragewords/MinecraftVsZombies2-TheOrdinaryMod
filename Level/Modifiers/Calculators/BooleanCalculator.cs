@@ -26,6 +26,8 @@ namespace PVZEngine.Modifiers
                     if (modi.modifier is not BooleanModifier modifier)
                         continue;
                     var modifierValue = modifier.GetModifierValueGeneric(buff);
+                    if (!modifier.FitsConditionGeneric(modifierValue))
+                        continue;
                     switch (modifier.Operator)
                     {
                         case BooleanOperator.Set:
