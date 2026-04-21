@@ -3557,14 +3557,6 @@
                 <color name="mvz2:lightColor" value="#FFFFFF" />
             </properties>
         </projectile>
-        <projectile id="log">
-            <properties>
-                <float name="mvz2:damage" value="50" />
-                <vector3 name="mvz2:size" x="32" y="32" z="32" />
-                <vector3 name="mvz2:shadowScale" x="1" y="1" z="1" />
-                <id name="mvz2:fragmentId" value="mvz2:wooden_dropper" />
-            </properties>
-        </projectile>
         <projectile id="shuriken">
             <behaviours>
                 <behaviour operator="add" id="mvz2:tesla_coil_electrify" />

@@ -186,7 +186,7 @@
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能够生产火药，一次能给予大量的能量！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">但是，大量的回报也伴随着风险！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">如果火药没能及时被捡起，它就会爆炸！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">同时，如果火药桶被摧毁，它也会产生爆炸！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">同时，如果火药桶被摧毁或者被挖掘，它也会产生爆炸！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short1" onClick="end">没时间介绍了！快捡走！</sentence>
       </sentences>
     </section>
@@ -432,10 +432,10 @@
         <character id="mvz2:steve" side="self" />
       </characters>
       <sentences>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">这是原装发射器，发射器之父！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">它能够向怪物发射原木！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">原木能击晕怪物！还有概率造成击退效果！</sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">……什么叫原木能当子弹？</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short2">连射发射器！连射发射器！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">它一次会发射两支箭矢！它一次会发射两支箭矢！</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">尽情重复吧！尽情重复吧！</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird" onClick="end">……？</sentence>
       </sentences>
     </section>
   </group>

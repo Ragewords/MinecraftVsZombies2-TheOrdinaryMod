@@ -1690,6 +1690,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>利用藏宝图滑翔伞快速越过场地大部分区域</color>]]></p>
+                <p>弱点：<![CDATA[<color=red>滑翔时会被<tag id="mvz2:high" />高器械拦下</color>]]></p>
             </properties>
             <flavor>
                 <p>他是荷兰人。</p>

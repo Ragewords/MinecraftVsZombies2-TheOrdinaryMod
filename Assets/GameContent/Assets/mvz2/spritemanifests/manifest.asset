@@ -1071,12 +1071,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d2942d45e742fcd46962d384ec537d7a, type: 3}
   - name: entity/projectiles/lingering_potion
     sprite: {fileID: 21300000, guid: de92cafa97933f14ca26c5babda512d8, type: 3}
-  - name: entity/projectiles/log
-    sprite: {fileID: 21300000, guid: 7bfd7a3fca582654a92b807497f1a153, type: 3}
-  - name: entity/projectiles/log_ignited
-    sprite: {fileID: 21300000, guid: 005a8172ba86b8e4aa61fae98dce9774, type: 3}
-  - name: entity/projectiles/log_ignited_cursed
-    sprite: {fileID: 21300000, guid: 7c3fc5d4c3a4c5149906ff09849d143d, type: 3}
   - name: entity/projectiles/mine_tnt_seed
     sprite: {fileID: 21300000, guid: b71c1daafbba0124f80126366dd3a4e6, type: 3}
   - name: entity/projectiles/missile
