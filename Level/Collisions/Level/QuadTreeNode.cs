@@ -51,16 +51,16 @@ namespace PVZEngine.Collisions.Level
             item.node = this;
             GainObject();
         }
-        private void GainObject()
+        private void IncreaseObjectCounter()
         {
             totalTargetCount++;
-            var parent = Parent;
-            while (parent != null)
+            if (Parent != null)
             {
-                parent.totalTargetCount++;
-                parent = parent.Parent;
+                Parent.IncreaseObjectCounter();
             }
-
+        }
+        private void SplitIfPossible()
+        {
             //判断是否创建子节点
             if (children.Count <= 0 && (totalTargetCount > Tree.MaxObjects && depth < Tree.MaxDepth))
             {
@@ -69,6 +69,11 @@ namespace PVZEngine.Collisions.Level
                 //填充对象到新创建的子节点中
                 SpreadObjectsToChildren();
             }
+        }
+        private void GainObject()
+        {
+            IncreaseObjectCounter();
+            SplitIfPossible();
         }
         #endregion
 
@@ -84,10 +89,30 @@ namespace PVZEngine.Collisions.Level
             }
             return false;
         }
+        private void DecreaseObjectCounter()
+        {
+            totalTargetCount--;
+            if (Parent != null)
+            {
+                Parent.DecreaseObjectCounter();
+            }
+        }
+        private void CollapseIfPossible()
+        {
+            if (totalTargetCount <= Tree.CollapseObjects)
+            {
+                RecycleObjectsFromChildren();
+                RemoveChildren();
+            }
+            if (Parent != null)
+            {
+                Parent.CollapseIfPossible();
+            }
+        }
         private void LoseObject()
         {
             totalTargetCount--;
-            if (totalTargetCount <= Tree.MaxObjects)
+            if (totalTargetCount <= Tree.CollapseObjects)
             {
                 RecycleObjectsFromChildren();
                 RemoveChildren();
@@ -104,12 +129,16 @@ namespace PVZEngine.Collisions.Level
         {
             if (this == targetNode)
                 return;
+
             if (!items.Remove(item))
                 return;
             targetNode.items.Add(item);
             item.node = targetNode;
-            targetNode.GainObject();
-            LoseObject();
+
+            DecreaseObjectCounter();
+            targetNode.IncreaseObjectCounter();
+            CollapseIfPossible();
+            targetNode.SplitIfPossible();
         }
         #endregion
 
@@ -120,25 +149,12 @@ namespace PVZEngine.Collisions.Level
             {
                 return this;
             }
-            if (!CanChildContain(rect))
-                return this;
             var child = GetContainerChild(rect);
+            if (child == null)
+                return this;
             return child.EvaluateNode(rect);
         }
-        public bool CanContain(Rect rect)
-        {
-            var thisSize = bounds.size;
-            var rectSize = rect.size;
-            return rectSize.x < thisSize.y && rectSize.y < thisSize.y;
-        }
-        public bool CanChildContain(Rect rect)
-        {
-            var thisSize = bounds.size;
-            var childSize = thisSize * 0.5f;
-            var rectSize = rect.size;
-            return rectSize.x < childSize.y && rectSize.y < childSize.y;
-        }
-        public QuadTreeNode<T> GetContainerChild(Rect rect)
+        public QuadTreeNode<T>? GetContainerChild(Rect rect)
         {
             var thisCenter = bounds.center;
             var center = rect.center;
@@ -151,12 +167,20 @@ namespace PVZEngine.Collisions.Level
             {
                 index |= 2;
             }
-            return children[index];
+            var child = children[index];
+            if (!ContainsFully(child.bounds, rect))
+                return null;
+            return child;
+        }
+        private bool ContainsFully(Rect outer, Rect inner)
+        {
+            return inner.xMin >= outer.xMin && inner.xMax <= outer.xMax &&
+                inner.yMin >= outer.yMin && inner.yMax <= outer.yMax;
         }
         #endregion
 
         #region 查找目标
-        public void FindTargetsInRect(Rect rect, List<T> results, float rewind = 0, Predicate<T>? predicate = null, IComparer<T>? sorter = null)
+        public void FindTargetsInRect(Rect rect, List<T> results, float rewind = 0, Predicate<T>? predicate = null)
         {
             if (!rect.OverlapOptimized(looseBounds))
                 return;
@@ -165,27 +189,17 @@ namespace PVZEngine.Collisions.Level
             foreach (var item in items)
             {
                 var target = item.target;
-                if (rect.OverlapOptimized(target.GetCollisionRect(rewind)) && (predicate == null || predicate(target)))
-                {
-                    if (sorter != null)
-                    {
-                        var index = results.BinarySearch(target, sorter);
-                        if (index < 0)
-                        {
-                            results.Insert(~index, target);
-                        }
-                    }
-                    else
-                    {
-                        results.Add(target);
-                    }
-                }
+                if (!rect.OverlapOptimized(target.GetCollisionRect(rewind)))
+                    continue;
+                if (predicate != null && !predicate(target))
+                    continue;
+                results.Add(target);
             }
 
             //遍历子节点
             foreach (var child in children)
             {
-                child.FindTargetsInRect(rect, results, rewind, predicate, sorter);
+                child.FindTargetsInRect(rect, results, rewind, predicate);
             }
         }
         #endregion
@@ -215,9 +229,9 @@ namespace PVZEngine.Collisions.Level
                 var movingItem = items[i];
                 var target = movingItem.target;
                 var movingRect = target.GetCollisionRect();
-                if (!CanChildContain(movingRect))
-                    continue;
                 var child = GetContainerChild(movingRect);
+                if (child == null)
+                    continue;
                 child.items.Add(movingItem);
                 child.totalTargetCount++;
                 movingItem.node = child;
@@ -231,6 +245,7 @@ namespace PVZEngine.Collisions.Level
         {
             foreach (var child in children)
             {
+                child.RemoveChildren();
                 Tree.ReleaseNode(child);
             }
             children.Clear();
@@ -257,7 +272,7 @@ namespace PVZEngine.Collisions.Level
             looseBounds = default;
             items.Clear();
             totalTargetCount = 0;
-            children.Clear();
+            RemoveChildren();
             depth = 0;
         }
         public override string ToString()

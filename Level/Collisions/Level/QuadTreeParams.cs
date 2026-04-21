@@ -8,6 +8,7 @@ namespace PVZEngine.Collisions.Level
     {
         public Rect size;
         public int maxObjects;
+        public int collapseObjects;
         public int maxDepth;
     }
 }

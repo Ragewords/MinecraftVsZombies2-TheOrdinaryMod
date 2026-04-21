@@ -6,7 +6,7 @@ namespace PVZEngine.Collisions.Level
 {
     public class QuadTreeCollider : QuadTree<BuiltinCollisionCollider>
     {
-        public QuadTreeCollider(Rect size, int maxObjects = 1, int maxDepth = 5) : base(size, maxObjects, maxDepth)
+        public QuadTreeCollider(Rect size, int maxObjects = 1, int collapseObjects = 1, int maxDepth = 5) : base(size, maxObjects, collapseObjects, maxDepth)
         {
         }
     }

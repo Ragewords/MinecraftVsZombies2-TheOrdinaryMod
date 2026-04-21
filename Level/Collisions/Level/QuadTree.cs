@@ -9,22 +9,25 @@ namespace PVZEngine.Collisions.Level
 {
     public class QuadTree<T> where T : IQuadTreeNodeObject
     {
-        public QuadTree(Rect size, int maxObjects = 1, int maxDepth = 5)
+        public QuadTree(Rect size, int maxObjects = 1, int collapseObjects = 1, int maxDepth = 5)
         {
-            itemPool = new ObjectPool<QuadTreeItem<T>>(CreateQuadTreeItemFunc);
-            nodePool = new ObjectPool<QuadTreeNode<T>>(CreateQuadTreeNodeFunc, actionOnRelease: a => a.Reset());
+            itemPool = new ObjectPool<QuadTreeItem<T>>(CreateQuadTreeItemFunc, maxSize: 128);
+            nodePool = new ObjectPool<QuadTreeNode<T>>(CreateQuadTreeNodeFunc, actionOnRelease: a => a.Reset(), maxSize: 128);
 
             root = CreateNode(this, null, size, 0);
             MaxObjects = maxObjects;
+            CollapseObjects = collapseObjects;
             MaxDepth = maxDepth;
         }
         public void Insert(T target)
         {
+            var rect = target.GetCollisionRect();
+            var nodeToInsert = root.EvaluateNode(rect);
+
             var item = itemPool.Get();
             item.target = target;
             items.Add(item);
-            var rect = target.GetCollisionRect();
-            var nodeToInsert = root.EvaluateNode(rect);
+
             nodeToInsert.Insert(item);
         }
         public void Remove(T target)
@@ -35,9 +38,9 @@ namespace PVZEngine.Collisions.Level
             item.node.Remove(item);
             RemoveItem(item);
         }
-        public void FindTargetsInRect(Rect rect, List<T> results, float rewind = 0, Predicate<T>? predicate = null, IComparer<T>? sorter = null)
+        public void FindTargetsInRect(Rect rect, List<T> results, float rewind = 0, Predicate<T>? predicate = null)
         {
-            root.FindTargetsInRect(rect, results, rewind, predicate, sorter);
+            root.FindTargetsInRect(rect, results, rewind, predicate);
         }
         public void GetAllTargets(List<T> results)
         {
@@ -52,11 +55,9 @@ namespace PVZEngine.Collisions.Level
         }
         public void Update()
         {
-            refreshTargetBuffer.Clear();
-            refreshTargetBuffer.AddRange(items);
-            foreach (var item in refreshTargetBuffer)
+            for (int i = items.Count - 1; i >= 0; i--)
             {
-                UpdateTarget(item);
+                UpdateTarget(items[i]);
             }
         }
         public QuadTreeNode<T> CreateNode(QuadTree<T> tree, QuadTreeNode<T>? parent, Rect size, int depth = 0)
@@ -100,10 +101,10 @@ namespace PVZEngine.Collisions.Level
             return new QuadTreeNode<T>(this);
         }
         public int MaxObjects { get; }
+        public int CollapseObjects { get; }
         public int MaxDepth { get; }
         private QuadTreeNode<T> root;
         private List<QuadTreeItem<T>> items = new List<QuadTreeItem<T>>();
-        private List<QuadTreeItem<T>> refreshTargetBuffer = new List<QuadTreeItem<T>>();
         private ObjectPool<QuadTreeItem<T>> itemPool;
         private ObjectPool<QuadTreeNode<T>> nodePool;
     }
@@ -116,6 +117,5 @@ namespace PVZEngine.Collisions.Level
 
         public T target = default!;
         public QuadTreeNode<T> node = null!;
-
     }
 }
