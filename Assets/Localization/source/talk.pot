@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-02-18 11:39+0800\n"
+"POT-Creation-Date: 2026-04-21 06:47+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2606,19 +2606,19 @@ msgstr ""
 #. Text for talk sentence 2 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "但你能够在它上面再放置驱动发射器，以提升发射箭矢的速度！"
+msgid "但你能够在它上面再放置驱动发射器，以提升每次发射的箭矢数量！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "最多能够提升4次！"
+msgid "最多能够提升4次，也就是一次发射5支箭矢！"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group dream_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_2_over"
-msgid "天下武功，唯快不破！"
+msgid "一支解决不了的，那就用一堆！"
 msgstr ""
 
 #. Archive name for talk group dream_2_map
@@ -6326,7 +6326,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group halloween_EX1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_EX1_over"
-msgid "毒液球击中的怪物会中毒，持续受到伤害！并且能快速腐蚀它们的盔甲！"
+msgid "毒液球击中的怪物会中毒，持续受到伤害！并且能腐蚀它们的盔甲！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_EX1_over's section 0
@@ -10280,7 +10280,7 @@ msgstr ""
 #. Text for talk sentence 2 in talk group ship_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_2_over"
-msgid "同时，如果它位于最边缘位置，那么它会改为向自身所在行发射两支箭矢！"
+msgid "同时，如果它位于最边缘位置，或者是相邻行上没有敌人，那么它会改为向自身所在行发射两支箭矢！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group ship_2_over's section 0
@@ -10664,7 +10664,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group ship_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_4_over"
-msgid "它一次会发射三支箭矢，先一支后两支！它一次会发射三支箭矢，先一支后两支！"
+msgid "它一次会发射两支箭矢！它一次会发射两支箭矢！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group ship_4_over's section 0
@@ -10832,7 +10832,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group ship_5_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_5_over"
-msgid "一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！一次发射六支箭矢，先一支后两支！"
+msgid "一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group ship_5_over's section 0
@@ -12290,7 +12290,7 @@ msgstr ""
 #. Text for talk sentence 4 in talk group ship_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_9_over"
-msgid "反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械做任何事！"
+msgid "反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械使用星之碎片！"
 msgstr ""
 
 #. Text for talk sentence 5 in talk group ship_9_over's section 0

@@ -492,7 +492,7 @@
       <sentences>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！高频脉冲发射器！</sentence>
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long2">一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！一次发射四支箭矢！</sentence>
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从原装发射器升级！需要——</sentence>
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">需要从连射发射器升级！需要——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_explosive" onStart="shake" onClick="end">好了！够了！</sentence>
       </sentences>
     </section>

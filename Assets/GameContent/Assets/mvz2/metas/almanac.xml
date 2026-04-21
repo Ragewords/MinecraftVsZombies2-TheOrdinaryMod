@@ -41,7 +41,7 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_new[4]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
-        <tag id="placement_repeatenser" name="升级器械：原装发射器" description="必须放置在原装发射器上" priority="0">
+        <tag id="placement_repeatenser" name="升级器械：连射发射器" description="必须放置在连射发射器上" priority="0">
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[0]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>

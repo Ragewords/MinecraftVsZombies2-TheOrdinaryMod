@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-02-18 11:38+0800\n"
+"POT-Creation-Date: 2026-04-21 06:46+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1836,38 +1836,38 @@ msgid "作者：{0}"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:788
+#: Scripts\MVZ2\Map\MapController.cs:796
 msgid ""
 "按住右键拖动以移动视图\n"
 "滚轮以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:790
+#: Scripts\MVZ2\Map\MapController.cs:798
 msgid ""
 "单指拖动以移动视图\n"
 "双指触摸以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:792
+#: Scripts\MVZ2\Map\MapController.cs:800
 msgid "正在进入关卡……"
 msgstr ""
 
 # 地图的无尽模式提示文本，{0}为当前轮数，{1}为历史最高
-#: Scripts\MVZ2\Map\MapController.cs:794
+#: Scripts\MVZ2\Map\MapController.cs:802
 msgid ""
 "轮数\n"
 "{0}/{1}"
 msgstr ""
 
 # 进入关卡的错误信息，{0}为地点ID
-#: Scripts\MVZ2\Map\MapController.cs:796
+#: Scripts\MVZ2\Map\MapController.cs:804
 msgid "目标地点{0}不存在。"
 msgstr ""
 
 # 进入关卡的错误信息，{0}为关卡ID
-#: Scripts\MVZ2\Map\MapController.cs:798
+#: Scripts\MVZ2\Map\MapController.cs:806
 msgid "目标关卡{0}不存在。"
 msgstr ""
 
@@ -2885,37 +2885,37 @@ msgid ""
 msgstr ""
 
 # 图鉴描述模板，{0}为能量
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:843
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:964
 msgctxt "almanac"
 msgid "花费：<color=red>{0}</color>"
 msgstr ""
 
 # 图鉴描述模板，{0}为冷却时间
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:845
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:966
 msgctxt "almanac"
 msgid "冷却时间：<color=red>{0}</color>"
 msgstr ""
 
 # 图鉴放大选项，{0}为缩放等级
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:847
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:968
 msgctxt "almanac"
 msgid "缩放：{0}"
 msgstr ""
 
 # 图鉴标签枚举值的名称模板，{0}为标签名，{1}为值名
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:849
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:970
 msgctxt "almanac"
 msgid "{0}：{1}"
 msgstr ""
 
 # 图鉴缩放提示文本
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:851
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:972
 msgctxt "almanac"
 msgid "左键拖拽以移动视图；滚轮以缩放视图"
 msgstr ""
 
 # 图鉴缩放提示文本
-#: Scripts\MVZ2\Almanac\AlmanacController.cs:853
+#: Scripts\MVZ2\Almanac\AlmanacController.cs:974
 msgctxt "almanac"
 msgid "单指拖拽以移动视图；双指拖拽以缩放视图"
 msgstr ""
@@ -3190,10 +3190,22 @@ msgctxt "levelname"
 msgid "我是僵尸无尽"
 msgstr ""
 
-#. Name for stage mvz2:pushing_box
+#. Name for stage mvz2:sokoban
 #: Stage meta file
 msgctxt "levelname"
 msgid "推箱子"
+msgstr ""
+
+#. Name for stage mvz2:bug_report
+#: Stage meta file
+msgctxt "levelname"
+msgid "漏洞排查"
+msgstr ""
+
+#. Name for stage mvz2:taiko_master
+#: Stage meta file
+msgctxt "levelname"
+msgid "太鼓达人"
 msgstr ""
 
 #. Name for stat category mvz2:contraption_place
@@ -4569,13 +4581,13 @@ msgstr ""
 #. Store item description of mvz2:golden_dropper by character mvz2:crazy_villager
 #: Store meta file
 msgctxt "store_talk"
-msgid "把宝石投掷器放在木制投掷器上，让它能够发射可以反弹的金球和产生宝石的宝石球！"
+msgid "把宝石投掷器放在木制投掷器上，让它能够发射可以反弹，并产生各种宝石的宝石球！"
 msgstr ""
 
 #. Store item description of mvz2:golden_dropper by character mvz2:tokiko
 #: Store meta file
 msgctxt "store_talk"
-msgid "宝石投掷器能升级木制投掷器，能发出不停弹来弹去的金球，和可以赚钱的宝石球！"
+msgid "宝石投掷器能升级木制投掷器，能发出不停弹来弹去，并且可以赚钱的宝石球！"
 msgstr ""
 
 #. Store item description of mvz2:revivegrave by character mvz2:crazy_villager
