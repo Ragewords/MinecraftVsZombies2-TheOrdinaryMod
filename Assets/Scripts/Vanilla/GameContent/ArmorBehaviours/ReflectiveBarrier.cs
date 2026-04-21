@@ -49,7 +49,7 @@ namespace MVZ2.GameContent.Armors
         {
             var hit = param.hit;
             var damage = param.damage;
-            if (hit.Projectile.IsEntityOf(VanillaProjectileID.note))
+            if (hit.Projectile.IsEntityOf(VanillaProjectileID.note) || hit.Projectile.IsEntityOf(VanillaProjectileID.crossbowBolt))
                 return;
 
             var shield = hit.Shield;
