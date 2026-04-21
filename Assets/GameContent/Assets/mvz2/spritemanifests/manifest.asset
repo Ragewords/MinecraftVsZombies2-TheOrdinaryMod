@@ -711,8 +711,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0f9ff25f9f164584e85c12f40dbebdd0, type: 3}
   - name: entity/contraptions/dimension_hammer
     sprite: {fileID: 21300000, guid: 62f3c44e84a435d4caa46ddc5376cc4f, type: 3}
-  - name: entity/contraptions/dispenser_bookworm
-    sprite: {fileID: 21300000, guid: 89feb926e3a033d4e950965b3ad380c9, type: 3}
   - name: entity/contraptions/dream_crystal_supernatural
     sprite: {fileID: 21300000, guid: f6655a00eb7e10343929a4e216bb0f2b, type: 3}
   - name: entity/contraptions/dream_rainbow
