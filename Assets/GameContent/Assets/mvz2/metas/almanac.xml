@@ -2394,6 +2394,18 @@
                     <p>只是个路过的幽灵而已。</p>
                 </flavor>
             </entry>
+            <entry id="mvz2:lost" name="游魂">
+                <unlock>
+                    <condition required="mvz2:level.halloween_6" />
+                </unlock>
+                <picture model="mvz2:entity.lost" />
+                <header>
+                    <p>用铁剑误杀游魂会导致你面临更多的敌人。</p>
+                </header>
+                <flavor>
+                    <p>一个已逝孩童的灵魂，不知为何在此处游荡。</p>
+                </flavor>
+            </entry>
             <entry id="mvz2:nyan_cat" name="彩虹猫">
                 <unlock>
                     <condition required="mvz2:level.dream_1" />
