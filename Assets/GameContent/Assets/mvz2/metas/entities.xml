@@ -46,7 +46,6 @@
                 <float name="mvz2:gravity" value="1" />
                 <float name="mvz2:attackSpeed" value="1" />
                 <bool name="mvz2:defensive" value="false" />
-                <bool name="mvz2:block" value="true" />
                 <bool name="mvz2:isDispenser" value="false" />
                 <bool name="mvz2:contactDamage" value="false" />
                 <float name="mvz2:produceSpeed" value="1" />
@@ -189,7 +188,6 @@
 
         <dispenser id="1" parent="contraption">
             <properties>
-                <bool name="mvz2:isDispenser" value="true" />
                 <float name="mvz2:damage" value="20" />
                 <float name="mvz2:range" value="800" />
                 <vector3 name="mvz2:shotVelocity" x="10" y="0" z="0" />
@@ -511,7 +509,6 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
-                <bool name="mvz2:block" value="false" />
 
                 <id name="mvz2:shell" value="mvz2:grass" />
                 <id name="mvz2:placeSound" value="mvz2:grass" />
@@ -568,7 +565,7 @@
                 <condition required="mvz2:level.dream_4" />
             </unlock>
             <behaviours>
-                <behaviour operator="add" id="mvz2:destroy_outside_water" />
+                <behaviour operator="add" id="mvz2:destroy_outside_water_and_cloud" />
             </behaviours>
             <properties>
                 <bool name="mvz2:isFloor" value="true" />
@@ -648,7 +645,6 @@
                 <bool name="mvz2:invisible" value="true" />
                 <bool name="mvz2:invincible" value="true" />
                 <bool name="mvz2:shadowHidden" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:instantEvoke" value="false" />
@@ -701,7 +697,6 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <float name="mvz2:damage" value="20" />
-                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:contactDamage" value="true" />
                 <float name="mvz2:maxHealth" value="900" />
                 <bool name="mvz2:shadowHidden" value="true" />
@@ -768,7 +763,6 @@
             </unlock>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
@@ -808,7 +802,6 @@
                 <float name="mvz2:damage" value="60" />
                 <float name="mvz2:maxHealth" value="1000" />
                 <bool name="mvz2:blocksJump" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <id name="mvz2:shell" value="mvz2:metal" />
                 <id name="mvz2:placeSound" value="mvz2:tesla_construction" />
                 <id name="mvz2:deathSound" value="mvz2:tesla_destroy" />
@@ -831,7 +824,6 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <vector3 name="mvz2:size" x="60" y="40" z="60" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
@@ -873,7 +865,6 @@
                 <bool name="mvz2:defensive" value="true" />
                 <bool name="mvz2:noClimb" value="true" />
                 <bool name="mvz2:fragments/noDamageFragments" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <float name="mvz2:maxHealth" value="3000" />
                 <float name="mvz2:fallResistance" value="10000" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
@@ -960,7 +951,6 @@
                 <id name="mvz2:placement" value="mvz2:buried" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
-                <bool name="mvz2:block" value="false" />
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
@@ -993,7 +983,6 @@
             <properties>
                 <bool name="mvz2:canDeactive" value="false" />
                 <bool name="mvz2:loyal" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <vector3 name="mvz2:size" x="30" y="54" z="30" />
                 <id name="mvz2:deathSound" value="mvz2:pot_break" />
 
@@ -1100,7 +1089,6 @@
                 <bool name="mvz2:triggerActive" value="true" />
                 <bool name="mvz2:instantTrigger" value="true" />
                 <bool name="mvz2:canDeactive" value="false" />
-                <bool name="mvz2:block" value="false" />
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
@@ -1147,7 +1135,6 @@
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:instantEvoke" value="false" />
                 <bool name="mvz2:no_evoke" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <int name="mvz2:waterInteraction" value="0" />
                 <int name="mvz2:airInteraction" value="0" />
                 <float name="mvz2:gravity" value="0" />
@@ -1250,7 +1237,6 @@
                 <id name="mvz2:placement" value="mvz2:upgrade" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
                 <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
-                <bool name="mvz2:block" value="false" />
 
                 <int name="mvz2:cost" value="200" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
@@ -1307,7 +1293,6 @@
             <properties>
                 <float name="mvz2:maxHealth" value="5400" />
                 <bool name="mvz2:contactDamage" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <float name="mvz2:damage" value="20" />
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
@@ -1377,7 +1362,6 @@
                 <behaviour operator="add" id="mvz2:fadeout_by_timeout"/>
             </behaviours>
             <properties>
-                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:loyal" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
                 <bool name="mvz2:contactDamage" value="true" />
@@ -1423,6 +1407,7 @@
             </unlock>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
+                <bool name="mvz2:noClimb" value="true" />
                 <float name="mvz2:damage" value="10" />
                 <float name="mvz2:fallResistance" value="10000" />
                 <vector3 name="mvz2:size" x="48" y="48" z="48" />
@@ -1548,7 +1533,6 @@
                 <bool name="mvz2:no_evoke" value="true" />
                 <bool name="mvz2:invisible" value="true" />
                 <bool name="mvz2:invincible" value="true" />
-                <bool name="mvz2:block" value="false" />
                 <bool name="mvz2:isLightSource" value="true" />
 
                 <color name="mvz2:lightColor" value="#FFFFFF" />

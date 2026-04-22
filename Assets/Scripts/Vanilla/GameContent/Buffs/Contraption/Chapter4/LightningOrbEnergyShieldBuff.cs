@@ -32,7 +32,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModifier(new IntModifier(VanillaEntityProps.VEHICLE_INTERACTION, IntegerOperator.Set, VehicleInteraction.BLOCK));
             AddModifier(new BooleanModifier(VanillaContraptionProps.BLOCKS_JUMP, true));
             AddModifier(new BooleanModifier(VanillaContraptionProps.NO_CLIMB, false));
-            AddModifier(new BooleanModifier(VanillaContraptionProps.BLOCK, true));
             AddAura(new EnergyShieldAura());
         }
         public override void PostAdd(Buff buff)
