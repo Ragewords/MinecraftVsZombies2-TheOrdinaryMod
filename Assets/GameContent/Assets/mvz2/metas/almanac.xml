@@ -880,7 +880,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>5发/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:grid_layer_main" />主要位器械为自己+10%攻击力（最高+100%）</color>]]></p>
+                <p>特点：<![CDATA[<color=red>3×3范围内的每个<tag id="mvz2:grid_layer_main" />主要位器械为自己+10%攻击力（其它信标除外）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>召唤10颗陨石，打击场上随机位置</color>]]></p>
             </properties>
             <flavor>
