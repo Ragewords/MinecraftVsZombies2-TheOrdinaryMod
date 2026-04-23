@@ -9,6 +9,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
@@ -69,7 +70,6 @@ namespace MVZ2.GameContent.Contraptions
             }
             if (frame == SMASH_FRAME)
             {
-                entity.PlaySound(VanillaSoundID.thump);
                 Smash(entity, entity.GetDamage(), entity.GetFaction());
                 entity.SetAnimationBool("Attacked", true);
             }
@@ -98,9 +98,8 @@ namespace MVZ2.GameContent.Contraptions
             base.OnEvoke(entity);
             entity.SetEvoked(true);
             var nearest = smashDetector.DetectEntityWithTheLeast(entity, e => (e.GetCenter() - entity.Position).magnitude);
-            if (nearest != null && !IsSmashing(entity))
+            if (nearest != null)
             {
-                StartSmash(entity);
                 SetTargetPos(entity, nearest.Position - SMASH_OFFSET * entity.GetFacingDirection());
             }
             StartSmash(entity);
@@ -109,15 +108,17 @@ namespace MVZ2.GameContent.Contraptions
         public static void Smash(Entity entity, float damage, int faction)
         {
             var offset = SMASH_OFFSET * entity.GetFacingDirection();
+            var pos = entity.Position + offset;
+            if (entity.Level.IsWaterAt(pos.x, pos.z) || entity.Level.IsAirAt(pos.x, pos.z))
+                return;
+            entity.PlaySound(VanillaSoundID.thump);
             DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE);
-            var groundEntities = entity.Level.OverlapSphere(entity.Position + offset, entity.GetRange(), faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
+            var groundEntities = entity.Level.OverlapSphere(pos, entity.GetRange(), faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
             foreach (var target in groundEntities)
             {
                 var ent = target.Entity;
-                if (!ent.IsOnGround && !ent.IsAboveLand())
-                    continue;
                 target.TakeDamage(damage, damageEffectList, entity);
-                if (ent.Type == EntityTypes.ENEMY)
+                if (ent.Type == EntityTypes.ENEMY && ent.IsOnGround && ent.IsAboveLand())
                 {
                     if (ent.CanDeactive())
                     {

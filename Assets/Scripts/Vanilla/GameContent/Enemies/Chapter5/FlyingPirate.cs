@@ -49,6 +49,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
+            entity.SetModelProperty("Parachute", FlyingPirateGlideBuff.IsParachuting(entity));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -56,7 +57,6 @@ namespace MVZ2.GameContent.Enemies
 
 
             bool parachute = FlyingPirateGlideBuff.IsParachuting(entity);
-            entity.SetModelProperty("Parachute", parachute);
             if (!parachute)
             {
                 DiscardParaglider(entity);
@@ -67,6 +67,7 @@ namespace MVZ2.GameContent.Enemies
                 var vel = entity.Velocity;
                 vel.x = 0;
                 entity.Velocity = vel;
+                entity.Stun(30);
                 entity.PlaySound(VanillaSoundID.bonk);
             }
         }
