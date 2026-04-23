@@ -101,7 +101,7 @@ namespace Tools
         }
         public static void Shuffle<T>(this T[] array, RandomGenerator rng)
         {
-            if (array.Length <= 1) 
+            if (array.Length <= 1)
                 return;
 
             for (int i = array.Length - 1; i > 0; i--)
@@ -114,5 +114,46 @@ namespace Tools
         {
             return list.Reverse().TakeWhile(predicate).Reverse();
         }
+
+        #region 极端值
+        public static IEnumerable<float> GetMostOnes(this IEnumerable<float> targets)
+        {
+            return GetExtremeOnes(targets, v => v, comparer: (current, max) => current > max, initialValue: float.MinValue);
+        }
+        public static IEnumerable<float> GetLeastOnes(this IEnumerable<float> targets)
+        {
+            return GetExtremeOnes(targets, v => v, comparer: (current, max) => current < max, initialValue: float.MaxValue);
+        }
+        public static IEnumerable<T> GetMostOnes<T>(this IEnumerable<T> targets, Func<T, float> selector)
+        {
+            return GetExtremeOnes(targets, selector, comparer: (current, max) => current > max, initialValue: float.MinValue);
+        }
+        public static IEnumerable<T> GetLeastOnes<T>(this IEnumerable<T> targets, Func<T, float> selector)
+        {
+            return GetExtremeOnes(targets, selector, comparer: (current, max) => current < max, initialValue: float.MaxValue);
+        }
+        private static IEnumerable<T> GetExtremeOnes<T>(IEnumerable<T> targets, Func<T, float> selector, Func<float, float, bool> comparer, float initialValue)
+        {
+            List<T> bestItems = new List<T>();
+            float extremeValue = initialValue;
+
+            foreach (var item in targets)
+            {
+                float value = selector(item);
+                if (comparer(value, extremeValue))
+                {
+                    extremeValue = value;
+                    bestItems.Clear();
+                    bestItems.Add(item);
+                }
+                else if (value == extremeValue)
+                {
+                    bestItems.Add(item);
+                }
+            }
+
+            return bestItems;
+        }
+        #endregion
     }
 }
