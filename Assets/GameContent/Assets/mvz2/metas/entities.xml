@@ -597,7 +597,6 @@
 
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
-                <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </dispenser>
         <dispenser id="totenser" name="图腾发射器" tooltip="发射虚弱的飞镖并灼烧前方的僵尸">
