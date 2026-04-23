@@ -18,7 +18,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
     {
         public BentSpoonBuff(string nsp, string name) : base(nsp, name)
         {
-            absorbDetector = new SphereDetector(ABSORB_RADIUS);
+            absorbDetector = new BentSpoonDetector(ABSORB_RADIUS);
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostProjectileHitCallback);
         }
         public override void PostUpdate(Buff buff)
@@ -40,6 +40,7 @@ namespace MVZ2.GameContent.Buffs.Projectiles
                 var vel = entity.Velocity;
                 var magnitude = vel.magnitude;
                 var normalize = (target.GetCenter() - entity.GetCenter()).normalized;
+                normalize.y = 0;
                 vel += normalize * magnitude;
                 vel = vel.normalized * magnitude;
                 entity.Velocity = vel;

@@ -472,13 +472,13 @@
         </entry>
         <entry id="mvz2:pistenser">
             <header>
-                <p>活塞发射器能够伸缩自己来攻击高处或低矮的敌人，向他们发射能够穿过最多3个敌人的尖刺。</p>
+                <p>活塞发射器能够伸缩自己来攻击高处或低矮的敌人。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>特点：<![CDATA[<color=red>能够攻击高处或低矮的敌人</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向至多20个敌人发射穿甲的巨型尖刺</color>]]></p>
+                <p>技能：<![CDATA[<color=red>向至多10个敌人发射穿甲的巨型尖刺</color>]]></p>
             </properties>
             <flavor>
                 <p>活塞发射器其实可以伸的非常长，甚至能达到直升机飞行的高度。</p>
