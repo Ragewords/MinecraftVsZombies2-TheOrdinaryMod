@@ -12,7 +12,7 @@ namespace PVZEngine.Entities
         #region 体积
         public Vector3 GetCenter()
         {
-            var center = Position;
+            var center = Position + Cache.BoundsOffset;
 
             var pivot = Cache.BoundsPivot;
             var size = Cache.Size;

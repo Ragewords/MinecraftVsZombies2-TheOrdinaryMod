@@ -229,6 +229,23 @@ namespace PVZEngine.Entities
         }
         #endregion
 
+
+        #region 碰撞盒偏移
+        public static readonly PropertyMeta<Vector3> BOUNDS_OFFSET = Get<Vector3>("bounds_offset");
+        public static Vector3 GetBoundsOffset(this EntityDefinition entity)
+        {
+            return entity.GetProperty<Vector3>(BOUNDS_OFFSET);
+        }
+        public static Vector3 GetBoundsOffset(this Entity entity, bool ignoreBuffs = false)
+        {
+            return entity.GetProperty<Vector3>(BOUNDS_OFFSET, ignoreBuffs: ignoreBuffs);
+        }
+        public static void SetBoundsOffset(this Entity entity, Vector3 value)
+        {
+            entity.SetProperty(BOUNDS_OFFSET, value);
+        }
+        #endregion
+
         #region 最大血量
         public static readonly PropertyMeta<float> MAX_HEALTH = Get<float>("maxHealth");
         public static float GetMaxHealth(this Entity entity, bool ignoreBuffs = false)
