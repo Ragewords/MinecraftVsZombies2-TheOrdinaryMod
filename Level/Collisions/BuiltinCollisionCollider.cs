@@ -79,6 +79,10 @@ namespace PVZEngine.Collisions
         }
 
         #region 检测
+        public bool CheckBox(Vector3 center, Vector3 size)
+        {
+            return hitbox.IsInBox(center, size);
+        }
         public bool CheckSphere(Vector3 center, float radius)
         {
             return hitbox.IsInSphere(center, radius);

@@ -12,6 +12,7 @@ namespace PVZEngine.Collisions
         bool Enabled { get; }
         NamespaceID? ArmorSlot { get; }
         EntityColliderReference ToReference();
+        bool CheckBox(Vector3 center, Vector3 size);
         bool CheckSphere(Vector3 center, float radius);
         bool CheckCapsule(Vector3 pos1, Vector3 pos2, float radius);
         Bounds GetBoundingBox();

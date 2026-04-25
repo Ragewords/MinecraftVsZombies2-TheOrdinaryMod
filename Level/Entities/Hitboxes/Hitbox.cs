@@ -31,6 +31,11 @@ namespace PVZEngine.Collisions
             var boundsSize = scaledSize.Abs();
             cache = new Bounds(boundsCenter, boundsSize);
         }
+        public bool IsInBox(Vector3 center, Vector3 size)
+        {
+            var bounds = GetBounds();
+            return bounds.IntersectsOptimized(new Bounds(center, size));
+        }
         public bool IsInSphere(Vector3 center, float radius)
         {
             var bounds = GetBounds();
