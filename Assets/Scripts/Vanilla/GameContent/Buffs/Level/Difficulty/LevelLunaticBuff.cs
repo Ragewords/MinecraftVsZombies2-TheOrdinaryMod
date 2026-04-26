@@ -54,6 +54,7 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.RED_DRAGON_GIANT_FIREBALL_SPEED, NumberOperator.Multiply, 3f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_TORNADO_COUNT, IntegerOperator.Set, 5));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_TORNADO_COUNT, IntegerOperator.Set, 3));
+            AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.RED_DRAGON_SELF_DAMAGE_RESISTANCE, true));
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());
         }

@@ -1344,7 +1344,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 damage = 1800;
             }
-            else if (entity.Level.UseLunaticProperty())
+            else if (entity.Level.RedDragonSelfDamageResistance())
             {
                 damage = entity.GetMaxHealth() * 0.25f;
             }
