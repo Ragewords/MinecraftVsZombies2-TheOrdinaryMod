@@ -13,13 +13,18 @@ namespace PVZEngine.Level
         }
         public void Apply(Entity entity)
         {
+            if (EntityParent != null)
+            {
+                entity.SetParent(EntityParent);
+            }
             foreach (var property in properties.GetPropertyNames())
             {
                 entity.SetPropertyObject(property, properties.GetPropertyObject(property));
             }
             OnApply?.Invoke(entity);
         }
-        private PropertyDictionary properties = new PropertyDictionary();
         public event Action<Entity>? OnApply;
+        public Entity? EntityParent { get; set; }
+        private PropertyDictionary properties = new PropertyDictionary();
     }
 }
