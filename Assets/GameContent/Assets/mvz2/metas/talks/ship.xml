@@ -157,9 +157,10 @@
       </characters>
       <sentences>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">这里的风可真大，我都快站不住脚了。</sentence>
-        <sentence speaker="mvz2:shou" sounds="mvz2:talk">是的。不知为何，最近的风力开始出现异常的变化，这也成了行船的一大阻碍。</sentence>
-        <sentence speaker="mvz2:shou" sounds="mvz2:talk">风可能会让那些僵尸走得更快，你可要小心。</sentence>
-        <sentence speaker="mvz2:steve" sounds="mvz2:talk">嗯。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">是的。最近的风力变化异常，这也成了行船的一大阻碍。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">起初我们担心这可能是那艘船搞出来的花招，但……看起来似乎只是自然现象。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">风可能会让那些僵尸走得更快，你要小心。</sentence>
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">嗯，我明白了。</sentence>
         <sentence speaker="mvz2:shou" sounds="mvz2:talk">它们来了！那艘船出现了！</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">怎么回事？对方是——</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird">……末地船？</sentence>
@@ -1240,7 +1241,7 @@
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">前面好像出现了一种很壮的僵尸，还拿着锈蚀船锚。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:talk">他不会用那个玩意砸我的器械吧？</sentence>
         <sentence speaker="mvz2:shou" sounds="mvz2:talk">……可能更糟。</sentence>
-        <sentence speaker="mvz2:shou" sounds="mvz2:talk">他能把其他的僵尸往前打飞，这些家伙有好几回都是靠这种方式偷袭我们的。</sentence>
+        <sentence speaker="mvz2:shou" sounds="mvz2:talk">他能把其他的僵尸往前打飞，虽然这也会重创那些僵尸……但是反应时间太短了，通常来不及处理。</sentence>
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_cut" onStart="shake" onClick="end">啊？</sentence>
       </sentences>
     </section>

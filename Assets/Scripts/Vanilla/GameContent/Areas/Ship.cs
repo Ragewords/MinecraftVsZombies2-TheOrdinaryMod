@@ -164,7 +164,7 @@ namespace MVZ2.GameContent.Areas
             {
                 if (projectile == null)
                     continue;
-                if (projectile.Definition.HasBehaviour<HellPlanet>() || projectile.IsEntityOf(VanillaProjectileID.explosiveLargeFireball))
+                if (ignoredBlowProjectiles.Contains(projectile.GetDefinitionID()))
                     continue;
                 if (projectile.Velocity.magnitude < 30)
                     projectile.Velocity += PROJECTILE_BLOW_MULTIPILER * speed * multipiler * Vector3.left;
@@ -194,6 +194,20 @@ namespace MVZ2.GameContent.Areas
         public static readonly float[] possibleWindSpeed = new float[]
         {
             -2, 1, 0, 1, 2, 3
+        };
+        public static readonly NamespaceID[] ignoredBlowProjectiles = new NamespaceID[]
+        {
+            VanillaProjectileID.mineTNTSeed,
+            VanillaProjectileID.breakoutPearl,
+            VanillaProjectileID.antigravityDevice,
+            VanillaProjectileID.deliciousTroll,
+            VanillaProjectileID.terrorCocoon,
+            VanillaProjectileID.vomit,
+            VanillaProjectileID.hellPlanetMoon,
+            VanillaProjectileID.hellPlanetEarth,
+            VanillaProjectileID.hellPlanetOtherworld,
+            VanillaProjectileID.beaconMeteor,
+            VanillaProjectileID.explosiveLargeFireball,
         };
         public const int SPAWNER_MIN_COLUMN = 5;
         public const float SKY_OFFSET_SPEED_NORMAL = 1;
