@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-04-21 09:39+0800\n"
+"POT-Creation-Date: 2026-04-30 01:19+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3188,24 +3188,6 @@ msgstr ""
 #: Stage meta file
 msgctxt "levelname"
 msgid "我是僵尸无尽"
-msgstr ""
-
-#. Name for stage mvz2:sokoban
-#: Stage meta file
-msgctxt "levelname"
-msgid "推箱子"
-msgstr ""
-
-#. Name for stage mvz2:bug_report
-#: Stage meta file
-msgctxt "levelname"
-msgid "漏洞排查"
-msgstr ""
-
-#. Name for stage mvz2:taiko_master
-#: Stage meta file
-msgctxt "levelname"
-msgid "太鼓达人"
 msgstr ""
 
 #. Name for stat category mvz2:contraption_place

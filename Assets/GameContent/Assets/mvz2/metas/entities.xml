@@ -419,7 +419,7 @@
                 <id name="mvz2:function" value="mvz2:melee" />
             </properties>
         </contraption>
-        <contraption id="tnt" name="Etho台阶" tooltip="触发后炸飞周围敌人，并在他们的头顶生成小炸药">
+        <contraption id="tnt" name="Etho台阶" tooltip="触发后炸飞周围敌人，并在他们的头顶生成小炸弹">
             <unlock>
                 <condition required="mvz2:level.halloween_6" />
             </unlock>
@@ -527,7 +527,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </contraption>
-        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后发射速度增加">
+        <dispenser id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后子弹数量增加">
             <unlock>
                 <condition required="mvz2:level.dream_2" />
             </unlock>
@@ -1268,7 +1268,7 @@
                 <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </contraption>
-        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要原装发射器）\n一次射出四支箭矢">
+        <dispenser id="high_frequency_pulse_dispenser" name="高频脉冲发射器" tooltip="（需要连射发射器）\n一次射出四支箭矢">
             <unlock>
                 <condition required="mvz2:level.ship_5" />
             </unlock>
@@ -2189,7 +2189,7 @@
                 <int name="mvz2:cost" value="200" />
             </properties>
         </witherSkeleton>
-        <humanoid id="tanooki_zombie" name="妖怪狸僵尸" deathMessage="老身可还没使出全力呢？">
+        <humanoid id="tanooki_zombie" name="妖怪狸僵尸" deathMessage="让俺先喘口气吧">
             <unlock>
                 <condition required="mvz2:level.mausoleum_EX1" />
             </unlock>

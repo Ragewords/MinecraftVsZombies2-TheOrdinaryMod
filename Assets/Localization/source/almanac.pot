@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-04-21 09:39+0800\n"
+"POT-Creation-Date: 2026-04-30 01:23+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -452,7 +452,7 @@ msgstr ""
 #. Description for almanac tag block
 #: Almanac meta file
 msgctxt "almanac_tag.description"
-msgid "由单个或多个方块构成"
+msgid "由单个完整方块组成"
 msgstr ""
 
 #. Name for almanac tag spider
@@ -1055,7 +1055,7 @@ msgstr ""
 #. Header for contraptions mvz2:pistenser
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "活塞发射器能够伸缩自己来攻击高处或低矮的敌人，向他们发射能够穿过最多3个敌人的尖刺。"
+msgid "活塞发射器能够伸缩自己来攻击高处或低矮的敌人。"
 msgstr ""
 
 #. Properties for contraptions mvz2:pistenser
@@ -1065,7 +1065,7 @@ msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red><var id=\"mvz2:entity_damage\" /></color>\n"
 "特点：<color=red>能够攻击高处或低矮的敌人</color>\n"
-"技能：<color=red>向至多20个敌人发射穿甲的巨型尖刺</color>"
+"技能：<color=red>向至多10个敌人发射穿甲的巨型尖刺</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:pistenser
@@ -1641,7 +1641,7 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>5发/1.5秒</color>\n"
 "伤害：<color=red><var id=\"mvz2:entity_damage\" /></color>\n"
-"特点：<color=red>3×3范围内的每个<tag id=\"mvz2:block\" />方块器械为自己+10%攻击力（最高+100%）</color>\n"
+"特点：<color=red>3×3范围内的每个<tag id=\"mvz2:grid_layer_main\" />主要位器械为自己+10%攻击力（其它信标除外）</color>\n"
 "技能：<color=red>召唤10颗陨石，打击场上随机位置</color>"
 msgstr ""
 
@@ -2041,15 +2041,6 @@ msgctxt "enemies.description"
 msgid "旗帜僵尸的出现标志着一大波怪物的到来。"
 msgstr ""
 
-#. Properties for enemies mvz2:flag_zombie
-#: Almanac meta file
-msgctxt "enemies.description"
-msgid ""
-"生命：<color=red><var id=\"mvz2:entity_health\" /></color>\n"
-"速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
-"特点：<color=red>存活时，所有怪物速度+1</color>"
-msgstr ""
-
 #. Flavor for enemies mvz2:flag_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
@@ -2205,7 +2196,7 @@ msgctxt "enemies.description"
 msgid ""
 "生命：<color=red><var id=\"mvz2:entity_health\" /></color>\n"
 "速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
-"特点：<color=red>可以爬上并越过<tag id=\"mvz2:block\" />方块器械</color>"
+"特点：<color=red>可以爬上并越过<tag id=\"mvz2:defensive\" />防御性器械</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:spider
@@ -2665,6 +2656,15 @@ msgctxt "enemies.description"
 msgid "大动员僵尸的出现标志着一大波怪物的到来。"
 msgstr ""
 
+#. Properties for enemies mvz2:rally_zombie
+#: Almanac meta file
+msgctxt "enemies.description"
+msgid ""
+"生命：<color=red><var id=\"mvz2:entity_health\" /></color>\n"
+"速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
+"特点：<color=red>存活时，所有怪物速度+1</color>"
+msgstr ""
+
 #. Flavor for enemies mvz2:rally_zombie
 #: Almanac meta file
 msgctxt "enemies.description"
@@ -2713,7 +2713,7 @@ msgstr ""
 #. Flavor for enemies mvz2:silverfish
 #: Almanac meta file
 msgctxt "enemies.description"
-msgid "蠹虫并不擅长咬文嚼字，吃书这种事对它而言太深奥了。"
+msgid "蠹虫并不擅长咬文嚼字，吃书这种事对它而言太过深奥。"
 msgstr ""
 
 #. Header for enemies mvz2:spellcaster
@@ -3508,7 +3508,7 @@ msgctxt "misc.description"
 msgid ""
 "生命：<color=red><var local=\"hp\" /></color>\n"
 "阶段1：<color=red>火焰弹、龙卷风、僵尸火焰、吞食、火焰吐息、火墙</color>\n"
-"阶段2：<color=red>巨型火球、火焰龙卷风、火焰流星、火焰洪流、飞空、扫尾、火墙</color>"
+"阶段2：<color=red>巨型火球、火焰龙卷风、火焰流星、火焰洪流、飞空、扫尾</color>"
 msgstr ""
 
 #. Flavor for misc mvz2:red_dragon
@@ -3648,6 +3648,24 @@ msgstr ""
 #: Almanac meta file
 msgctxt "misc.description"
 msgid "只是个路过的幽灵而已。"
+msgstr ""
+
+#. Name for misc mvz2:lost
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "游魂"
+msgstr ""
+
+#. Header for misc mvz2:lost
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "用铁剑误杀游魂会导致你面临更多的敌人。"
+msgstr ""
+
+#. Flavor for misc mvz2:lost
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "一个已逝孩童的灵魂，不知为何在此处游荡。"
 msgstr ""
 
 #. Name for misc mvz2:nyan_cat
@@ -4900,7 +4918,7 @@ msgstr ""
 #. Tooltip for entity mvz2:tnt
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "触发后炸飞周围敌人，并在他们的头顶生成小炸药"
+msgid "触发后炸飞周围敌人，并在他们的头顶生成小炸弹"
 msgstr ""
 
 #. Name for entity mvz2:soul_furnace
@@ -4960,7 +4978,7 @@ msgstr ""
 #. Tooltip for entity mvz2:drivenser
 #: Entity meta file
 msgctxt "entity.tooltip"
-msgid "能够堆叠放置，堆叠后发射速度增加"
+msgid "能够堆叠放置，堆叠后子弹数量增加"
 msgstr ""
 
 #. Name for entity mvz2:gravity_pad
@@ -5403,7 +5421,7 @@ msgstr ""
 #: Entity meta file
 msgctxt "entity.tooltip"
 msgid ""
-"（需要原装发射器）\n"
+"（需要连射发射器）\n"
 "一次射出四支箭矢"
 msgstr ""
 
@@ -5972,7 +5990,7 @@ msgstr ""
 #. Death message for entity mvz2:tanooki_zombie
 #: Entity meta file
 msgctxt "death_message"
-msgid "老身可还没使出全力呢？"
+msgid "让俺先喘口气吧"
 msgstr ""
 
 #. Name for entity mvz2:admiral_zombie
