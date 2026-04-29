@@ -55,13 +55,26 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_TORNADO_COUNT, IntegerOperator.Set, 5));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_TORNADO_COUNT, IntegerOperator.Set, 3));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.RED_DRAGON_SELF_DAMAGE_RESISTANCE, true));
+            AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());
         }
 
+        public class ContraptionAura : AuraEffectDefinition
+        {
+            public ContraptionAura() : base(VanillaBuffID.Contraption.lunaticContraption, 2)
+            {
+            }
+
+            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
+            {
+                var level = auraEffect.Source.GetLevel();
+                results.AddRange(level.GetEntities(EntityTypes.PLANT));
+            }
+        }
         public class EnemyAura : AuraEffectDefinition
         {
-            public EnemyAura() : base(VanillaBuffID.Enemy.hardEnemy)
+            public EnemyAura() : base(VanillaBuffID.Enemy.lunaticEnemy)
             {
             }
 

@@ -1266,7 +1266,6 @@
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>存活时，所有怪物速度+1</color>]]></p>
             </properties>
             <flavor>
                 <p>当他被授予旗帜时，他感到无比的荣幸和骄傲。他觉得自己作为僵尸的领导拥有至高无上的地位，便无时无刻不飘飘然。然而他不知道他的背后有多少人在嘲笑他是个肉盾。</p>
@@ -1755,7 +1754,7 @@
                 <p>特点：<![CDATA[<color=red>对<tag id="mvz2:shell" enum="mvz2:stone" />石头造成5倍伤害</color>]]></p>
             </properties>
             <flavor>
-                <p>蠹虫并不擅长咬文嚼字，吃书这种事对它而言太深奥了。</p>
+                <p>蠹虫并不擅长咬文嚼字，吃书这种事对它而言太过深奥。</p>
             </flavor>
         </entry>
         <entry id="mvz2:spellcaster">

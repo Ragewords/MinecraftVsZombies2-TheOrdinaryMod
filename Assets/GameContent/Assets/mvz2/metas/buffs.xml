@@ -9,6 +9,8 @@
     <buff id="easy_contraption" polarity="positive" level="5000" target="contraption" />
     <buff id="easy_blueprint" polarity="positive" level="5000" target="blueprint" />
     <buff id="hard_enemy" polarity="positive" level="5000" target="enemy" />
+    <buff id="lunatic_contraption" polarity="negative" level="5000" target="contraption" />
+    <buff id="lunatic_enemy" polarity="positive" level="5000" target="enemy" />
     <buff id="lunatic_blueprint" polarity="negative" level="5000" target="blueprint" />
 
     <!-- Debug -->

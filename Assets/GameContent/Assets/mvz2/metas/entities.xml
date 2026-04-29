@@ -1613,7 +1613,7 @@
             <properties>
                 <float name="mvz2:mass" value="1" />
                 <bool name="mvz2:undead" value="false" />
-                <float name="mvz2:maxHealth" value="900" />
+                <float name="mvz2:maxHealth" value="600" />
                 <id name="mvz2:shell" value="mvz2:stone" />
                 <id name="mvz2:crySound" value="mvz2:gargoyle_cry" />
                 <id name="mvz2:deathSound" value="mvz2:gargoyle_death" />
