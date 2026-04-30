@@ -37,12 +37,9 @@ namespace MVZ2.GameContent.Buffs.Level
                 paratrooperWave++;
                 buff.SetProperty(PROP_UFO_WAVE, ufoWave);
                 buff.SetProperty(PROP_PARATROOPER_WAVE, paratrooperWave);
-                // Boss复仇模式下生成间隔更慢。
-                int ufoIntervalAddtion = level.IsBossRevenge() ? 2 : 0;
-                int paratrooperIntervalMultiplier = level.IsBossRevenge() ? 2 : 1;
 
                 // 生成UFO。
-                int ufoInterval = UFO_INTERVAL + ufoIntervalAddtion;
+                int ufoInterval = UFO_INTERVAL;
                 if (ufoWave == ufoInterval - 1)
                 {
                     var ufoDefinition = level.Content.GetSpawnDefinition(VanillaEnemyID.undeadFlyingObject);
@@ -57,7 +54,7 @@ namespace MVZ2.GameContent.Buffs.Level
                 }
 
                 // 生成伞兵。
-                int paratrooperInterval = PARATROOPER_INTERVAL * paratrooperIntervalMultiplier;
+                int paratrooperInterval = PARATROOPER_INTERVAL;
                 if (paratrooperWave >= paratrooperInterval)
                 {
                     Ship.SpawnParatroops(level, 4);
@@ -121,8 +118,8 @@ namespace MVZ2.GameContent.Buffs.Level
             }
             level.PlaySound(VanillaSoundID.ufoAlert);
         }
-        public const int UFO_INTERVAL = 3;
-        public const int PARATROOPER_INTERVAL = 5;
+        public const int UFO_INTERVAL = 5;
+        public const int PARATROOPER_INTERVAL = 10;
         public const float TARGET_BACKGROUND_TIME = 6f;
         public static readonly VanillaBuffPropertyMeta<int> PROP_UFO_WAVE = new VanillaBuffPropertyMeta<int>("ufo_wave");
         public static readonly VanillaBuffPropertyMeta<int> PROP_PARATROOPER_WAVE = new VanillaBuffPropertyMeta<int>("paratrooper_wave");
