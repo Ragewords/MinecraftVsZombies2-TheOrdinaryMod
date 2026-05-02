@@ -74,7 +74,7 @@ namespace MVZ2.GameContent.Buffs.Level
         }
         public class EnemyAura : AuraEffectDefinition
         {
-            public EnemyAura() : base(VanillaBuffID.Enemy.lunaticEnemy)
+            public EnemyAura() : base(VanillaBuffID.Enemy.hardEnemy, 30)
             {
             }
 

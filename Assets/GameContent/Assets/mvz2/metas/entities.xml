@@ -595,7 +595,7 @@
                 <idArray name="mvz2:counter_for" value="mvz2:low_enemy mvz2:flying_enemy" />
                 <float name="mvz2:damage" value="20" />
 
-                <int name="mvz2:cost" value="150" />
+                <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
             </properties>
         </dispenser>
@@ -1483,7 +1483,6 @@
                 <condition required="mvz2:level.mausoleum_6" />
             </unlock>
             <properties>
-                <float name="mvz2:maxHealth" value="1000" />
                 <float name="mvz2:range" value="40" />
                 <float name="mvz2:damage" value="80" />
                 <bool name="mvz2:canDeactive" value="false" />
@@ -1618,7 +1617,7 @@
                 <id name="mvz2:crySound" value="mvz2:gargoyle_cry" />
                 <id name="mvz2:deathSound" value="mvz2:gargoyle_death" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
-                <int name="mvz2:cost" value="150" />
+                <int name="mvz2:cost" value="100" />
             </properties>
         </humanoid>
         <humanoid id="ghost" name="幽灵" deathMessage="现在有伴了。">
