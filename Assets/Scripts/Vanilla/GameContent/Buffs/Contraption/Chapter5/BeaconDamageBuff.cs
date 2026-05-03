@@ -2,20 +2,21 @@
 
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.beaconDamage)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.beaconDamage)]
     public class BeaconDamageBuff : BuffDefinition
     {
         public BeaconDamageBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(VanillaEntityProps.DAMAGE, NumberOperator.AddMultiple, PROP_DAMAGE_MULTIPLIER));
-            AddModifier(new Vector3Modifier(VanillaEntityProps.LIGHT_RANGE, NumberOperator.Add, PROP_LIGHT_RANGE_MULTIPLIER));
+            AddModifier(new Vector3Modifier(LogicEntityProps.LIGHT_RANGE, NumberOperator.Add, PROP_LIGHT_RANGE_MULTIPLIER));
         }
         public static void SetDamageMultiplier(Buff buff, float value)
         {

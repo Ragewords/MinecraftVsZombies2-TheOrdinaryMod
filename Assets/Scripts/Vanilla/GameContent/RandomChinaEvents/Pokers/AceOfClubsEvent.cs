@@ -3,9 +3,11 @@
 using MukioI18n;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Pickups;
-using MVZ2.GameContent.Seeds;
-using MVZ2.Vanilla;
+using MVZ2.Vanilla.Definitions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Localization;
+using MVZ2.Vanilla.Pickups;
+using MVZ2Logic.Blueprints;
 using PVZEngine.Entities;
 using UnityEngine;
 
@@ -20,7 +22,7 @@ namespace MVZ2.GameContent.RandomChinaEvents
         protected override void Transform(Entity target, Entity china)
         {
             var param = china.GetSpawnParams();
-            param.SetProperty(VanillaPickupProps.CONTENT_ID, VanillaBlueprintID.FromEntity(VanillaContraptionID.tnt));
+            param.SetProperty(VanillaPickupProps.CONTENT_ID, LogicBlueprintID.FromEntity(VanillaContraptionID.tnt));
             china.Spawn(VanillaPickupID.blueprintPickup, target.Position, param)?.Let(e =>
             {
                 e.Velocity = Vector3.up * 2f;

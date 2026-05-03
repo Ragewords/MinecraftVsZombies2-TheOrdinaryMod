@@ -2,16 +2,17 @@
 
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Entities;
-using MVZ2Logic;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2Logic.Artifacts;
+using MVZ2Logic.Definitions;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.bentSpoon)]
+    [AutoArtifactDefinition(VanillaArtifactNames.bentSpoon)]
     public class BentSpoon : ArtifactDefinition
     {
         public BentSpoon(string nsp, string name) : base(nsp, name)

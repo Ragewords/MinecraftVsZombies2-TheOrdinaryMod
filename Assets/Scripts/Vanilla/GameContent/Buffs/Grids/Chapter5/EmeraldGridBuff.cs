@@ -9,14 +9,14 @@ using MVZ2Logic.Models;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Grids;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Grids
 {
-    [BuffDefinition(VanillaBuffNames.Grid.emeraldGrid)]
+    [AutoBuffDefinition(VanillaBuffNames.Grid.emeraldGrid)]
     public class EmeraldGridBuff : BuffDefinition
     {
         public EmeraldGridBuff(string nsp, string name) : base(nsp, name)
@@ -24,11 +24,15 @@ namespace MVZ2.GameContent.Buffs.Grids
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, MODEL_KEY, VanillaModelID.emeraldGrid);
             AddAura(new RestrictAura());
         }
+        public override void OnCreate(Buff buff)
+        {
+            base.OnCreate(buff);
+            buff.SetProperty(PROP_FLASH_TIMER, TimerHelper.NewSecondTimer(FLASH_SECONDS));
+            buff.SetProperty(PROP_TIMEOUT_TIMER, TimerHelper.NewSecondTimer(MAX_TIMEOUT_SECONDS));
+        }
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            buff.SetProperty(PROP_FLASH_TIMER, TimerHelper.NewSecondTimer(FLASH_SECONDS));
-            buff.SetProperty(PROP_TIMEOUT_TIMER, TimerHelper.NewSecondTimer(MAX_TIMEOUT_SECONDS));
             UpdateModel(buff);
         }
         public override void PostUpdate(Buff buff)
@@ -74,9 +78,9 @@ namespace MVZ2.GameContent.Buffs.Grids
 
                 var timeoutTimer = buff.GetProperty<FrameTimer>(PROP_TIMEOUT_TIMER);
 
-                model.SetModelProperty("GridType", GetGridType(grid));
-                model.SetShaderFloat("_BurnValue", buff.GetProperty<float>(PROP_DISAPPEAR_VALUE));
-                model.SetColorOffset(colorOffset);
+                model.SetModelProperty("GridType", grid.GetGridModelType());
+                model.SetShaderFloat(ShaderProperties.BURN_VALUE, buff.GetProperty<float>(PROP_DISAPPEAR_VALUE));
+                model.SetShaderColor(ShaderProperties.COLOR_OFFSET, colorOffset);
             }
         }
         public static void Flash(Buff buff)
@@ -84,26 +88,6 @@ namespace MVZ2.GameContent.Buffs.Grids
             var flashTimer = buff.GetProperty<FrameTimer>(PROP_FLASH_TIMER);
             flashTimer?.Reset();
         }
-        public int GetGridType(LawnGrid grid)
-        {
-            if (grid.GetSlope() > 0)
-            {
-                return TYPE_SLOPE;
-            }
-            if (grid.Definition.IsCloud())
-            {
-                return TYPE_CLOUD;
-            }
-            if (grid.Definition.IsWater())
-            {
-                return TYPE_WATER;
-            }
-            return TYPE_NORMAL;
-        }
-        public const int TYPE_NORMAL = 0;
-        public const int TYPE_WATER = 1;
-        public const int TYPE_CLOUD = 2;
-        public const int TYPE_SLOPE = 3;
         public const float FLASH_SECONDS = 1;
         public const float MAX_TIMEOUT_SECONDS = 60;
         public static readonly NamespaceID MODEL_KEY = VanillaModelKeys.emeraldGrid;

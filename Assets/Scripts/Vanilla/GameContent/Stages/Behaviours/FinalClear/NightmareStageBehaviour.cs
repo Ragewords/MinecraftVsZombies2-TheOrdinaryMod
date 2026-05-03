@@ -3,13 +3,8 @@
 using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Pickups;
-using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
-using PVZEngine.Definitions;
-using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
 
@@ -27,14 +22,14 @@ namespace MVZ2.GameContent.Stages
                 return;
             if (!level.EntityExists(VanillaEffectID.nightmareWatchingEye))
             {
-                var pos = new Vector3((VanillaLevelExt.LEFT_BORDER + VanillaLevelExt.RIGHT_BORDER) * 0.5f, 0, VanillaLevelExt.LAWN_HEIGHT * 0.5f);
+                var pos = new Vector3((LevelPositions.LEFT_BORDER + LevelPositions.RIGHT_BORDER) * 0.5f, 0, LevelPositions.LAWN_HEIGHT * 0.5f);
                 level.Spawn(VanillaEffectID.nightmareWatchingEye, pos, null);
             }
         }
         protected override void AfterFinalWaveUpdate(LevelEngine level)
         {
             base.AfterFinalWaveUpdate(level);
-            CrescentTransitionUpdate(level);
+            StartBossTransitionUpdate<CrescentTransitionBuff>(level);
         }
         protected override void BossFightWaveUpdate(LevelEngine level)
         {
@@ -59,144 +54,90 @@ namespace MVZ2.GameContent.Stages
                     break;
             }
         }
-        private void CrescentTransitionUpdate(LevelEngine level)
-        {
-            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
-            {
-                // 新月出现
-                level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
-                return;
-            }
-            if (!level.HasBuff<CrescentTransitionBuff>())
-            {
-                level.AddBuff<CrescentTransitionBuff>();
-            }
-        }
         private void CrescentUpdate(LevelEngine level)
         {
             // 新月战斗
-            // 如果不存在Boss，进入BOSS后阶段。
             // 如果有Boss存活，不停生成怪物。
-            var targetAliveBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead);
-            var targetBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity());
-            if (targetAliveBosses.Length <= 0)
-            {
-                level.StopMusic();
-                ClearEnemies(level);
-            }
-            else
+            if (level.EntityExists(IsAliveHostileBoss))
             {
                 RunBossWave(level);
+                return;
             }
-            if (targetAliveBosses.Length <= 0 && targetBosses.Length <= 0)
-            {
-                SetBossState(level, BOSS_STATE_SLENDERMAN_TRANSITION);
-                level.AddBuff<SlendermanTransitionBuff>();
-            }
+            level.StopMusic();
+            ClearEnemies(level);
+
+            // 如果不存在Boss，进入BOSS后阶段。
+            if (level.EntityExists(IsHostileBoss))
+                return;
+            SetBossState(level, BOSS_STATE_SLENDERMAN_TRANSITION);
+            level.AddBuff<SlendermanTransitionBuff>();
         }
         private void SlendermanTransitionUpdate(LevelEngine level)
         {
             ClearEnemies(level);
-            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
+
+            StartTransitionUntilBossExists<SlendermanTransitionBuff>(level, () =>
             {
                 // 瘦长鬼影出现
-                level.WaveState = VanillaLevelStates.STATE_BOSS_FIGHT;
+                level.SetUIAndInputDisabled(false);
                 SetBossState(level, BOSS_STATE_SLENDERMAN);
-                return;
-            }
-            if (!level.HasBuff<SlendermanTransitionBuff>())
-            {
-                level.AddBuff<SlendermanTransitionBuff>();
-            }
+            });
         }
         private void SlendermanUpdate(LevelEngine level)
         {
             // 瘦长鬼影战斗
-            // 如果不存在Boss，或者所有Boss死亡，进入BOSS后阶段。
             // 如果有Boss存活，不停生成怪物。
-            var targetBosses = level.FindEntities(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead);
-            if (targetBosses.Length <= 0)
-            {
-                SetBossState(level, BOSS_STATE_NIGHTMAREAPER_TRANSITION);
-                level.AddBuff<NightmareaperTransitionBuff>();
-
-                // 隐藏UI，关闭输入
-                level.ResetHeldItem();
-                level.SetUIAndInputDisabled(true);
-                level.StopMusic();
-            }
-            else
+            // 如果不存在Boss，或者所有Boss死亡，进入BOSS后阶段。
+            if (level.EntityExists(IsAliveHostileBoss))
             {
                 RunBossWave(level);
+                return;
             }
+            // 隐藏UI，关闭输入
+            DisableUIAndInput(level);
+            level.StopMusic();
+
+            SetBossState(level, BOSS_STATE_NIGHTMAREAPER_TRANSITION);
+            level.AddBuff<NightmareaperTransitionBuff>();
         }
         private void NightmareaperTransitionUpdate(LevelEngine level)
         {
             ClearEnemies(level);
-            if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
+
+            StartTransitionUntilBossExists<NightmareaperTransitionBuff>(level, () =>
             {
                 // 梦魇收割者出现
                 level.SetUIAndInputDisabled(false);
                 SetBossState(level, BOSS_STATE_NIGHTMAREAPER);
-                return;
-            }
-            if (!level.HasBuff<NightmareaperTransitionBuff>())
-            {
-                level.AddBuff<NightmareaperTransitionBuff>();
-            }
+            });
         }
         private void NightmareaperUpdate(LevelEngine level)
         {
             // 梦魇收割者战斗
             // 如果不存在Boss，或者所有Boss死亡，进入BOSS后阶段。
             // 如果有Boss存活，不停生成怪物。
-            if (!level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
-            {
-                level.WaveState = VanillaLevelStates.STATE_AFTER_BOSS;
-                level.StopMusic();
-                if (!level.IsRerun && level.IsAdventure())
-                {
-                    // 隐藏UI，关闭输入
-                    level.ResetHeldItem();
-                    level.SetUIAndInputDisabled(true);
-                }
-                else
-                {
-                    var reaper = level.FindFirstEntity(VanillaBossID.nightmareaper);
-                    Vector3 position;
-                    if (reaper != null)
-                    {
-                        position = reaper.Position;
-                    }
-                    else
-                    {
-                        var x = level.GetLawnCenterX();
-                        var z = level.GetLawnCenterZ();
-                        var y = level.GetGroundY(x, z);
-                        position = new Vector3(x, y, z);
-                    }
-                    ClearPickup.Produce(level, position);
-                }
-            }
-            else
+            if (level.EntityExists(IsAliveHostileBoss))
             {
                 RunBossWave(level);
+                return;
             }
+
+            StartAfterBossState(level, VanillaBossID.nightmareaper);
         }
         protected override void AfterBossWaveUpdate(LevelEngine level)
         {
             base.AfterBossWaveUpdate(level);
             ClearEnemies(level);
-            if (!level.IsRerun && level.IsAdventure() && !level.IsCleared)
-            {
-                if (!level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity()))
-                {
-                    if (!level.HasBuff<NightmareClearedBuff>())
-                    {
-                        level.AddBuff<NightmareClearedBuff>();
-                    }
-                }
-            }
+            if (!level.IsFirstAdventure())
+                return;
+            if (level.IsCleared)
+                return;
+            if (level.HasBuff<NightmareClearedBuff>())
+                return;
+            if (level.EntityExists(IsHostileBoss))
+                return;
+
+            level.AddBuff<NightmareClearedBuff>();
         }
 
         public const int BOSS_STATE_CRESCENT = 0;

@@ -9,18 +9,20 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.hellfireDoppelganger)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.hellfireDoppelganger)]
     public class HellfireDoppelganger : ContraptionBehaviour
     {
         public HellfireDoppelganger(string nsp, string name) : base(nsp, name)

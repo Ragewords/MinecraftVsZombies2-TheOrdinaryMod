@@ -8,7 +8,7 @@ using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Stages
 {
-    [StageDefinition(VanillaStageNames.taikoMaster)]
+    //[AutoStageDefinition(VanillaStageNames.taikoMaster)]
     public partial class TaikoMaster : BlueprintCrisisStage
     {
         public TaikoMaster(string nsp, string name) : base(nsp, name)

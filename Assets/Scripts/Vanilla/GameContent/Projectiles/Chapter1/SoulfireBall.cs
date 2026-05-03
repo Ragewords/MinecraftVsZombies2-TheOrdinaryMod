@@ -3,65 +3,73 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.soulfireBall)]
-    public class SoulfireBall : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.soulfireBall)]
+    public class SoulfireBall : EntityBehaviourDefinition
     {
         public SoulfireBall(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback);
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damageOutput)
+        private void PostHitEntityCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
-            base.PostHitEntity(hitResult, damageOutput);
+            var hitResult = param.hit;
+            var projectile = hitResult.Projectile;
+            if (!projectile.Definition.HasBehaviour(this))
+                return;
+            var damageOutput = param.damage;
             if (damageOutput == null)
                 return;
-            var entity = hitResult.Projectile;
             var other = hitResult.Other;
 
             bool blocksFire = damageOutput.WillDamageBlockFire();
 
-            var blast = IsBlast(entity);
+            var blast = IsBlast(projectile);
             if (blast)
             {
-                entity.PlaySound(VanillaSoundID.darkSkiesImpact);
-                entity.Level.ShakeScreen(3, 3, 3);
-                entity.Level.Spawn(VanillaEffectID.soulfireBlast, entity.Position, entity);
+                projectile.PlaySound(VanillaSoundID.darkSkiesImpact);
+                projectile.Level.ShakeScreen(3, 3, 3);
+                projectile.Level.Spawn(VanillaEffectID.soulfireBlast, projectile.Position, projectile);
             }
             else if (!blocksFire)
             {
-                entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
+                projectile.Level.Spawn(VanillaEffectID.soulfire, projectile.Position, projectile);
             }
-            if (!IsSplited(entity) && !hitResult.Pierce)
+            if (!IsSplited(projectile) && !hitResult.Pierce)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    var direction = Quaternion.Euler(0, 45 - i * 30, 0) * entity.Velocity.normalized;
-                    var velocity = direction * entity.Velocity.magnitude;
-                    var shootParam = entity.GetShootParams();
+                    var direction = Quaternion.Euler(0, 45 - i * 30, 0) * projectile.Velocity.normalized;
+                    var velocity = direction * projectile.Velocity.magnitude;
+                    var shootParam = projectile.GetShootParams();
                     shootParam.projectileID = VanillaProjectileID.soulfireBall;
-                    shootParam.position = entity.GetCenter();
+                    shootParam.position = projectile.GetCenter();
                     shootParam.pivot = VanillaEntityProps.SHOT_PIVOT_BOTTOM;
                     shootParam.velocity = velocity;
-                    shootParam.faction = entity.GetFaction();
-                    shootParam.damage = entity.GetDamage() / 4;
-                    var projectile = other.ShootProjectile(shootParam);
-                    if (projectile != null)
+                    shootParam.faction = projectile.GetFaction();
+                    shootParam.damage = projectile.GetDamage() / 4;
+                    var projectile_split = other.ShootProjectile(shootParam);
+                    if (projectile_split != null)
                     {
-                        projectile.SetScale(entity.GetScale() * 0.5f);
-                        projectile.SetDisplayScale(entity.GetDisplayScale() * 0.5f);
-                        projectile.SetLightRange(entity.GetLightRange() * 0.5f);
-                        projectile.SetShadowScale(entity.GetShadowScale() * 0.5f);
-                        SetSplited(projectile, true);
+                        projectile_split.SetScale(projectile.GetScale() * 0.5f);
+                        projectile_split.SetDisplayScale(projectile.GetDisplayScale() * 0.5f);
+                        projectile_split.SetLightRange(projectile.GetLightRange() * 0.5f);
+                        projectile_split.SetShadowScale(projectile.GetShadowScale() * 0.5f);
+                        SetSplited(projectile_split, true);
                     }
                 }
             }
@@ -69,7 +77,7 @@ namespace MVZ2.GameContent.Projectiles
             if (!blocksFire || blast)
             {
                 var damageEffects = new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.MUTE);
-                entity.SplashDamage(hitResult.Collider, entity.Position, 40, entity.GetFaction(), entity.GetDamage() / 4f, damageEffects);
+                projectile.SplashDamage(hitResult.Collider, projectile.Position, 40, projectile.GetFaction(), projectile.GetDamage() / 4f, damageEffects);
             }
         }
         public static void SetBlast(Entity entity, bool value)

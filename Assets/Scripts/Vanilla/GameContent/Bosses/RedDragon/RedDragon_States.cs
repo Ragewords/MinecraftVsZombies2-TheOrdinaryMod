@@ -16,9 +16,13 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using Tools;
@@ -67,10 +71,14 @@ namespace MVZ2.GameContent.Bosses
             var lane = entity.GetLane();
             return entity.Level.EntityExists(e => e.GetLane() == lane && entity.IsHostile(e) && e.IsVulnerableEntity());
         }
-        private static void Roar(Entity entity)
+        public static void Roar(Entity entity)
+        {
+            var position = GetSpitSourcePosition(entity);
+            Roar(entity, position);
+        }
+        public static void Roar(Entity entity, Vector3 position)
         {
             var param = entity.GetSpawnParams();
-            var position = GetSpitSourcePosition(entity);
             entity.Spawn(VanillaEffectID.amplifiedRoar, position, param);
             var time = Ticks.FromSeconds(ROAR_SECONDS);
             entity.Level.ShakeScreen(15, 0, time);
@@ -460,7 +468,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (timer.Expired)
                         {
-                            if (entity.Level.AreaID == VanillaAreaID.ship && !entity.Level.IsRerun && entity.Level.IsAdventure())
+                            if (entity.Level.AreaID == VanillaAreaID.ship && entity.Level.IsFirstAdventure())
                             {
                                 stateMachine.StartSubState(entity, SUBSTATE_SPECIAL);
                                 timer.ResetSeconds(2f);
@@ -690,7 +698,7 @@ namespace MVZ2.GameContent.Bosses
                     areaModel?.SetModelProperty("Broken", true);
                     DestroyShipEntities(entity);
                     DestroyShipGrids(entity);
-                    entity.Spawn(VanillaEffectID.fallenEndShip, new Vector3(VanillaLevelExt.LEVEL_WIDTH, 0, 0))?.Let(e =>
+                    entity.Spawn(VanillaEffectID.fallenEndShip, new Vector3(LevelPositions.LEVEL_WIDTH, 0, 0))?.Let(e =>
                     {
                         var velocity = e.Velocity;
                         velocity.y = entity.Velocity.y;
@@ -704,9 +712,9 @@ namespace MVZ2.GameContent.Bosses
                 {
                     if (entity.IsVulnerableEntity())
                     {
-                        entity.Die(new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE), dragon);
+                        entity.Die(new DamageEffectList(VanillaDamageEffects.INSTA_KILL), dragon);
                     }
-                    else if (entity.IsEntityOf(VanillaEffectID.gridFire) || entity.IsEntityOf(VanillaEffectID.fireWall))
+                    else if (entity.IsEntityOf(VanillaEffectID.gridFire) || entity.IsEntityOf(VanillaEffectID.fireWall) || entity.IsEntityOf(VanillaEffectID.waterStain))
                     {
                         entity.Remove();
                     }
@@ -750,14 +758,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private static float GetJumpBorderX(Entity boss)
         {
-            if (boss.IsFacingLeft())
-            {
-                return VanillaLevelExt.RIGHT_BORDER + 80;
-            }
-            else
-            {
-                return VanillaLevelExt.LEFT_BORDER - 80;
-            }
+            return boss.GetMirroredX(LevelPositions.RIGHT_BORDER + 80, false);
         }
         private static Vector3 GetJumpBorderPositionByLane(Entity boss, int lane)
         {
@@ -1090,7 +1091,7 @@ namespace MVZ2.GameContent.Bosses
                 }
 
                 var param = entity.GetSpawnParams();
-                param.SetProperty(VanillaEntityProps.VARIANT, variant);
+                param.SetProperty(LogicEntityProps.VARIANT, variant);
 
                 var lane = entity.GetLane();
                 for (int i = 0; i < count; i++)
@@ -1249,8 +1250,8 @@ namespace MVZ2.GameContent.Bosses
             private void Eat(Entity entity, float time)
             {
                 var hitbox = GetEatHitbox(entity, time);
-                var mask = EntityCollisionHelper.MASK_VULNERABLE;
-                var targets = entity.Level.OverlapBox(hitbox.center, hitbox.size, entity.GetFaction(), mask, mask);
+                var overlapParam = OverlapParams.AnyFaction(EntityCollisionHelper.MASK_VULNERABLE);
+                var targets = entity.Level.OverlapBox(hitbox.center, hitbox.size, overlapParam);
                 foreach (var collider in targets)
                 {
                     var target = collider.Entity;
@@ -1264,7 +1265,7 @@ namespace MVZ2.GameContent.Bosses
                         }
                         if (!LightningOrb.NegateInstantKill(target))
                         {
-                            target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER), entity);
+                            target.Die(new DamageEffectList(VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_EFFECTS), entity);
                         }
                         EatEntity(entity, target);
                     }
@@ -1453,7 +1454,7 @@ namespace MVZ2.GameContent.Bosses
                 var fireVariant = GetFireVariant(entity);
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * FIRE_BREATH_DAMAGE_MULTIPLIER);
-                param.SetProperty(VanillaEntityProps.VARIANT, fireVariant);
+                param.SetProperty(LogicEntityProps.VARIANT, fireVariant);
                 var position = GetSpitSourcePosition(entity) + Vector3.down * 48; // 龙息高度的一半
                 entity.Spawn(VanillaEffectID.dragonFireBreath, position, param)?.Let(e =>
                 {
@@ -1731,7 +1732,7 @@ namespace MVZ2.GameContent.Bosses
                 var fireVariant = GetFireVariant(entity);
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * FIRE_BREATH_DAMAGE_MULTIPLIER);
-                param.SetProperty(VanillaEntityProps.VARIANT, fireVariant);
+                param.SetProperty(LogicEntityProps.VARIANT, fireVariant);
                 param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 30);
                 var source = GetNeckRootPosition(entity);
                 var direction = new Vector3(entity.GetFacingX() * 0.3f, 1).normalized;
@@ -1878,7 +1879,7 @@ namespace MVZ2.GameContent.Bosses
                 var fireVariant = GetFireVariant(entity);
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * FIRE_BREATH_DAMAGE_MULTIPLIER);
-                param.SetProperty(VanillaEntityProps.VARIANT, fireVariant);
+                param.SetProperty(LogicEntityProps.VARIANT, fireVariant);
                 param.SetProperty(VanillaEntityProps.MAX_TIMEOUT, 30);
                 var source = GetNeckRootPosition(entity);
                 var direction = new Vector3(entity.GetFacingX() * 0.3f, -1).normalized;
@@ -1946,7 +1947,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnExit(EntityStateMachine machine, Entity entity)
             {
                 base.OnExit(machine, entity);
-                SetRotation(entity, (GetRotation(entity) + 180) % 360);
+                SetRotation(entity, Mathf.Repeat(GetRotation(entity) + 180, 360));
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -2006,7 +2007,7 @@ namespace MVZ2.GameContent.Bosses
                 var level = entity.Level;
                 var column = entity.GetColumn();
                 var lane = entity.GetLane();
-                var columnDirection = entity.IsFacingLeft() ? -1 : 1;
+                var columnDirection = entity.GetFacingX();
                 var column2 = column + columnDirection * TAIL_SWIPE_COLUMN_RANGE;
                 var minColumn = Mathf.Min(column, column2);
                 var maxColumn = Mathf.Max(column, column2);
@@ -2220,7 +2221,7 @@ namespace MVZ2.GameContent.Bosses
                 var fireVariant = GetFireVariant(entity);
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * (entity.IsBossRevengeVersion() ? FIRE_BREATH_DAMAGE_MULTIPLIER : FIRE_BREATH_PLUS_DAMAGE_MULTIPLIER));
-                param.SetProperty(VanillaEntityProps.VARIANT, fireVariant);
+                param.SetProperty(LogicEntityProps.VARIANT, fireVariant);
                 var position = GetSpitSourcePosition(entity) + Vector3.down * 48; // 龙息高度的一半
                 entity.Spawn(VanillaEffectID.dragonFireBreathDOT, position, param)?.Let(e =>
                 {
@@ -2336,7 +2337,7 @@ namespace MVZ2.GameContent.Bosses
                 var fireVariant = GetFireVariant(entity);
                 var param = entity.GetSpawnParams();
                 param.SetProperty(VanillaEntityProps.DAMAGE, entity.GetDamage() * FIRE_BREATH_DAMAGE_MULTIPLIER);
-                param.SetProperty(VanillaEntityProps.VARIANT, fireVariant);
+                param.SetProperty(LogicEntityProps.VARIANT, fireVariant);
                 var grid = entity.Level.GetGridAt(GetSpitSourcePosition(entity));
                 if (grid != null)
                 {

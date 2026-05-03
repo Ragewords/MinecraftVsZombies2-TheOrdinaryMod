@@ -3,24 +3,28 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Shells;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
+using PVZEngine.Callbacks;
+using PVZEngine.Collisions;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.knife)]
-    public class Knife : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.knife)]
+    public class Knife : EntityBehaviourDefinition
     {
         public Knife(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback);
         }
         public override void Init(Entity projectile)
         {
@@ -53,16 +57,19 @@ namespace MVZ2.GameContent.Projectiles
                 }
             }
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damageOutput)
+        private void PostHitEntityCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
-            base.PostHitEntity(hitResult, damageOutput);
+            var hitResult = param.hit;
+            var projectile = hitResult.Projectile;
+            if (!projectile.Definition.HasBehaviour(this))
+                return;
+            var damageOutput = param.damage;
             if (damageOutput == null)
                 return;
             var sliceCritical = damageOutput.GetAllResults().Any(e => e?.ShellDefinition?.IsSliceCritical() ?? false);
             var blocksSlice = damageOutput.GetAllResults().Any(e => e?.ShellDefinition?.BlocksSlice() ?? false);
             var reflectSlice = damageOutput.GetAllResults().Any(e => e?.ShellDefinition?.ReflectSlice() ?? false);
 
-            var projectile = hitResult.Projectile;
             int variant = projectile.GetVariant();
             switch (variant)
             {

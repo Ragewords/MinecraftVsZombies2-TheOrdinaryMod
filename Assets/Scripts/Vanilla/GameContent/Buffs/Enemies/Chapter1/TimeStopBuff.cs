@@ -7,12 +7,12 @@ using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.timeStop)]
+    [AutoBuffDefinition(VanillaBuffNames.Enemy.timeStop)]
     public class TimeStopBuff : BuffDefinition
     {
         public TimeStopBuff(string nsp, string name) : base(nsp, name)
@@ -26,7 +26,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             base.PostAdd(buff);
             buff.SetProperty(PROP_TIMEOUT, MAX_TIMEOUT);
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
             entity.RemoveBuffs<TimeStopBuff>();

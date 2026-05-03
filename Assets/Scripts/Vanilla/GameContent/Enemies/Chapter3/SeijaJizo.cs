@@ -2,12 +2,12 @@
 
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.seijaJizo)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.seijaJizo)]
     public class SeijaJizo : EnemyBehaviour
     {
         public SeijaJizo(string nsp, string name) : base(nsp, name)

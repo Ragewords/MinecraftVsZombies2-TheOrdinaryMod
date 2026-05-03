@@ -3,20 +3,24 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Entities;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Contents.Enemies;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.jackDullahan)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.jackDullahan)]
     public class JackDullahan : AIEntityBehaviour
     {
         public JackDullahan(string nsp, string name) : base(nsp, name)
@@ -30,7 +34,7 @@ namespace MVZ2.GameContent.Enemies
             var param = entity.GetSpawnParams();
             if (entity.IsPreviewEnemy())
             {
-                param.SetProperty(VanillaEnemyProps.PREVIEW_ENEMY, true);
+                param.SetProperty(LogicEnemyProps.PREVIEW_ENEMY, true);
             }
             entity.Spawn(VanillaEnemyID.soulSkeletonHorse, entity.Position, param)?.Let(e =>
             {
@@ -95,7 +99,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS))
             {
                 return;
             }
@@ -114,6 +118,7 @@ namespace MVZ2.GameContent.Enemies
 
         public static readonly VanillaEntityPropertyMeta<bool> FIELD_HEAD_DROPPED = new VanillaEntityPropertyMeta<bool>("HeadDropped");
         private static readonly NamespaceID ID = VanillaEnemyID.jackDullahan;
+        public const int STATE_SWING = VanillaEnemyStates.JACK_DULLAHAN_SWING;
         private Detector spinDetector;
         private List<Entity> spinBuffer = new List<Entity>();
     }

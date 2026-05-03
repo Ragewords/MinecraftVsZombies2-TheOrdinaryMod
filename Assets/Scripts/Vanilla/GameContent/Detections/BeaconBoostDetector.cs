@@ -2,8 +2,9 @@
 
 using System.Linq;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
+using MVZ2Logic.Entities;
+using PVZEngine.Collisions;
 using PVZEngine.Entities;
 using UnityEngine;
 

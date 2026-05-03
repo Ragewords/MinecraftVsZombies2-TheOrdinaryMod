@@ -2,28 +2,28 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Difficulties;
-using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Level
 {
-    [BuffDefinition(VanillaBuffNames.Level.levelLunatic)]
+    [AutoBuffDefinition(VanillaBuffNames.Level.levelLunatic)]
     public class LevelLunaticBuff : BuffDefinition
     {
         public LevelLunaticBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new BooleanModifier(VanillaLevelProps.NO_CARTS, true));
+            AddModifier(new BooleanModifier(LogicLevelProps.NO_CARTS, true));
 
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GUNPOWDER_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.ELASTIC_CLOUD_BOUNCE_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 1.5f));
 
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.USE_LUNATIC_PROPERTY, true));
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.1f));
+            AddModifier(new FloatModifier(LogicLevelProps.SPAWN_POINTS_ADDITION, NumberOperator.Add, 1f));
+            AddModifier(new FloatModifier(LogicLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiple, 0.1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.NAPSTABLOOK_PARALYSIS_TIME, IntegerOperator.Multiply, 2));
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.GHAST_DAMAGE_MULTIPLIER, NumberOperator.Add, 1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.MOTHER_TERROR_EGG_COUNT, IntegerOperator.Add, 1));

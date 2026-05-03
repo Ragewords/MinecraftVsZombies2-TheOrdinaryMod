@@ -3,13 +3,14 @@
 using MVZ2.GameContent.Contraptions;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.zombreath)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.zombreath)]
     public class Zombreath : EffectBehaviour, IBeBlownBehaviour
     {
         #region 公有方法

@@ -7,18 +7,19 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.detonated)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.detonated)]
     public class DetonatedBuff : BuffDefinition
     {
         public DetonatedBuff(string nsp, string name) : base(nsp, name)
@@ -62,7 +63,7 @@ namespace MVZ2.GameContent.Buffs
             entity.Explode(centerPos, range, GetFaction(buff), 600, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY, VanillaDamageEffects.MUTE));
             Explosion.Spawn(entity, centerPos, range);
             entity.PlaySound(VanillaSoundID.explosion);
-            entity.Die();
+            entity.Die(new DamageEffectList(VanillaDamageEffects.INSTA_KILL));
             level.ShakeScreen(10, 0, 15);
             entity.Level.Triggers.RunCallbackFiltered(VanillaLevelCallbacks.POST_CONTRAPTION_DETONATE, new EntityCallbackParams(entity), entity.GetDefinitionID());
         }
@@ -74,7 +75,7 @@ namespace MVZ2.GameContent.Buffs
         {
             return buff.GetProperty<int>(PROP_EXPLODE_TIME);
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
             var info = param.deathInfo;

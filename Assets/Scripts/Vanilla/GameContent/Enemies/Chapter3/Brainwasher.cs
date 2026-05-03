@@ -4,14 +4,15 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.brainwasher)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.brainwasher)]
     public class Brainwasher : Mesmerizer
     {
         public Brainwasher(string nsp, string name) : base(nsp, name)
@@ -20,7 +21,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS))
                 return;
             entity.Level.Spawn(VanillaEffectID.brainwasherExplosion, entity.GetCenter(), entity);
             var targets = entity.Level.FindEntities(e => e.IsHostile(entity) && e.Type == EntityTypes.PLANT && !e.IsLoyal()).RandomTake(5, entity.RNG);

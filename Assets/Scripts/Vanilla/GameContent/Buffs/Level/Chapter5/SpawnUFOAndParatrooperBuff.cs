@@ -4,22 +4,24 @@ using System.Collections.Generic;
 using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Spawns;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using MVZ2Logic.Spawns;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Level;
+using PVZEngine.Spawns;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Level
 {
-    [BuffDefinition(VanillaBuffNames.Level.spawnUFOAndParatrooperBuff)]
+    [AutoBuffDefinition(VanillaBuffNames.Level.spawnUFOAndParatrooperBuff)]
     public class SpawnUFOAndParatrooperBuff : BuffDefinition
     {
         public SpawnUFOAndParatrooperBuff(string nsp, string name) : base(nsp, name)
@@ -96,9 +98,9 @@ namespace MVZ2.GameContent.Buffs.Level
                 }
                 if (level.AreaID == VanillaAreaID.ship)
                 {
-                    var x = rng.Next(UFOBackground.MIN_X, UFOBackground.MAX_X);
-                    var z = rng.Next(UFOBackground.MIN_Z, UFOBackground.MAX_Z);
-                    var y = rng.Next(UFOBackground.MIN_Y, UFOBackground.MAX_Y);
+                    var x = rng.Next(UFOSpawnInLevelBehaviour.BACKGROUND_MIN_X, UFOSpawnInLevelBehaviour.BACKGROUND_MAX_X);
+                    var z = rng.Next(UFOSpawnInLevelBehaviour.BACKGROUND_MIN_Z, UFOSpawnInLevelBehaviour.BACKGROUND_MAX_Z);
+                    var y = rng.Next(UFOSpawnInLevelBehaviour.BACKGROUND_MIN_Y, UFOSpawnInLevelBehaviour.BACKGROUND_MAX_Y);
                     var pos = new Vector3(x, y, z);
                     var background = level.Spawn(VanillaEffectID.ufoBackground, pos, null);
                     float speedMultiplier = 1;
@@ -109,7 +111,7 @@ namespace MVZ2.GameContent.Buffs.Level
                     }
                     if (background != null)
                     {
-                        var velocity = UFOBackground.FLY_DIRECTION * rng.Next(UFOBackground.MIN_SPEED, UFOBackground.MAX_SPEED) * speedMultiplier;
+                        var velocity = UFOSpawnInLevelBehaviour.BACKGROUND_FLY_DIRECTION * rng.Next(UFOSpawnInLevelBehaviour.BACKGROUND_MIN_SPEED, UFOSpawnInLevelBehaviour.BACKGROUND_MAX_SPEED) * speedMultiplier;
                         background.Velocity = velocity;
                         background.SetVariant(variant);
                     }

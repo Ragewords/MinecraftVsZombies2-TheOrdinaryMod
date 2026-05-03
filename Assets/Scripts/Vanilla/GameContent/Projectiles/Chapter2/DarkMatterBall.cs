@@ -4,18 +4,21 @@ using System.Linq;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Grids;
 using MVZ2Logic.Level;
+using PVZEngine.Collisions.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.darkMatterBall)]
-    public class DarkMatterBall : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.darkMatterBall)]
+    public class DarkMatterBall : EntityBehaviourDefinition
     {
         public DarkMatterBall(string nsp, string name) : base(nsp, name)
         {
@@ -72,7 +75,7 @@ namespace MVZ2.GameContent.Projectiles
         }
         public static void Explode(Entity entity, float range)
         {
-            var damageOutputs = entity.Level.OverlapSphere(entity.GetCenter(), range, entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
+            var damageOutputs = entity.Level.OverlapSphere(entity.GetCenter(), range, OverlapParams.Hostile(entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE));
             foreach (var id in damageOutputs)
             {
                 var target = id.Entity;

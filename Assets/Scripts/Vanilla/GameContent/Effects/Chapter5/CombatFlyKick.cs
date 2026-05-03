@@ -3,15 +3,18 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.combatFlyKick)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.combatFlyKick)]
     public class CombatFlyKick : EffectBehaviour
     {
         public CombatFlyKick(string nsp, string name) : base(nsp, name)
@@ -33,7 +36,8 @@ namespace MVZ2.GameContent.Effects
             var direction = entity.GetFacingDirection();
             var damageEffects = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
             var level = entity.Level;
-            foreach (IEntityCollider entityCollider in level.OverlapSphere(entity.GetCenter(), radius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0))
+            var overlapParam = OverlapParams.Hostile(faction, EntityCollisionHelper.MASK_VULNERABLE);
+            foreach (IEntityCollider entityCollider in level.OverlapSphere(entity.GetCenter(), radius, overlapParam))
             {
                 entityCollider.TakeDamage(damage, damageEffects, entity);
                 var target = entityCollider.Entity;

@@ -8,9 +8,10 @@ namespace MVZ2.GameContent.Enemies
     public static class VanillaEnemyNames
     {
         public const string zombie = "zombie";
+        public const string flagZombie = "flag_zombie";
         public const string leatherCappedZombie = "leather_capped_zombie";
         public const string ironHelmettedZombie = "iron_helmetted_zombie";
-        public const string flagZombie = "flag_zombie";
+        public const string diamondHelmettedZombie = "diamond_helmetted_zombie";
         public const string rallyZombie = "rally_zombie";
 
         public const string skeleton = "skeleton";
@@ -50,6 +51,12 @@ namespace MVZ2.GameContent.Enemies
         public const string popCaptain = "pop_captain";
         public const string admiralZombie = "admiral_zombie";
 
+        public const string shadowCell = "shadow_cell";
+        public const string skeletonStatue = "skeleton_statue";
+        public const string hacker = "hacker";
+        public const string zombieCat = "zombie_cat";
+        public const string wispFly = "wisp_fly";
+
         public const string mutantZombie = "mutant_zombie";
         public const string megaMutantZombie = "mega_mutant_zombie";
         public const string imp = "imp";
@@ -74,14 +81,20 @@ namespace MVZ2.GameContent.Enemies
         public const string skeletonMage = "skeleton_mage";
         public const string shikaisenStaff = "shikaisen_staff";
         public const string shikaisenPot = "shikaisen_pot";
-
+        public const string netherHunter = "nether_hunter";
+        public const string netherMage = "nether_mage";
+        public const string rollingHayBale = "rolling_hay_bale";
+        public const string rollingWood = "rolling_wood";
+        public const string rollingStone = "rolling_stone";
+        public const string lockedChestBalloon = "locked_chest_balloon";
     }
     public static class VanillaEnemyID
     {
         public static readonly NamespaceID zombie = Get(VanillaEnemyNames.zombie);
+        public static readonly NamespaceID flagZombie = Get(VanillaEnemyNames.flagZombie);
         public static readonly NamespaceID leatherCappedZombie = Get(VanillaEnemyNames.leatherCappedZombie);
         public static readonly NamespaceID ironHelmettedZombie = Get(VanillaEnemyNames.ironHelmettedZombie);
-        public static readonly NamespaceID flagZombie = Get(VanillaEnemyNames.flagZombie);
+        public static readonly NamespaceID diamondHelmettedZombie = Get(VanillaEnemyNames.diamondHelmettedZombie);
         public static readonly NamespaceID rallyZombie = Get(VanillaEnemyNames.rallyZombie);
 
         public static readonly NamespaceID skeleton = Get(VanillaEnemyNames.skeleton);
@@ -121,6 +134,12 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID popCaptain = Get(VanillaEnemyNames.popCaptain);
         public static readonly NamespaceID admiralZombie = Get(VanillaEnemyNames.admiralZombie);
 
+        public static readonly NamespaceID shadowCell = Get(VanillaEnemyNames.shadowCell);
+        public static readonly NamespaceID skeletonStatue = Get(VanillaEnemyNames.skeletonStatue);
+        public static readonly NamespaceID hacker = Get(VanillaEnemyNames.hacker);
+        public static readonly NamespaceID zombieCat = Get(VanillaEnemyNames.zombieCat);
+        public static readonly NamespaceID wispFly = Get(VanillaEnemyNames.wispFly);
+
         public static readonly NamespaceID mutantZombie = Get(VanillaEnemyNames.mutantZombie);
         public static readonly NamespaceID megaMutantZombie = Get(VanillaEnemyNames.megaMutantZombie);
         public static readonly NamespaceID imp = Get(VanillaEnemyNames.imp);
@@ -145,6 +164,12 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
         public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);
         public static readonly NamespaceID shikaisenPot = Get(VanillaEnemyNames.shikaisenPot);
+        public static readonly NamespaceID netherHunter = Get(VanillaEnemyNames.netherHunter);
+        public static readonly NamespaceID netherMage = Get(VanillaEnemyNames.netherMage);
+        public static readonly NamespaceID rollingHayBale = Get(VanillaEnemyNames.rollingHayBale);
+        public static readonly NamespaceID rollingWood = Get(VanillaEnemyNames.rollingWood);
+        public static readonly NamespaceID rollingStone = Get(VanillaEnemyNames.rollingStone);
+        public static readonly NamespaceID lockedChestBalloon = Get(VanillaEnemyNames.lockedChestBalloon);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

@@ -6,18 +6,18 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.youkaiLeaf)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.youkaiLeaf)]
     public class YoukaiLeaf : DispenserFamily
     {
         public YoukaiLeaf(string nsp, string name) : base(nsp, name)

@@ -5,14 +5,18 @@ using System.Linq;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
+using MVZ2Logic.Entities;
 using PVZEngine;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.tinyBlaze)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.tinyBlaze)]
     public class TinyBlaze : EntityBehaviourDefinition, IBeBlownBehaviour
     {
         public TinyBlaze(string nsp, string name) : base(nsp, name)
@@ -60,7 +64,8 @@ namespace MVZ2.GameContent.Effects
 
             var mask = EntityCollisionHelper.MASK_EFFECT;
             resultsBuffer.Clear();
-            level.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, mask, mask, resultsBuffer);
+            var overlapParam = OverlapParams.AnyFaction(mask);
+            level.OverlapBoxNonAlloc(bounds.center, bounds.size, overlapParam, resultsBuffer);
             return resultsBuffer.FirstOrDefault(c => c.Entity.IsEntityOf(VanillaEffectID.tinyBlaze))?.Entity;
         }
         private static Bounds GetDetectionBounds(Vector3 position)

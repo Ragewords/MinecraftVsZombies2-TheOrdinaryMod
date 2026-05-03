@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-04-30 01:19+0800\n"
+"POT-Creation-Date: 2026-04-11 09:19+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group castle_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_1_over"
-msgid "它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸，并在敌群中反弹！"
+msgid "它能投出木球，木球能从斜坡上滚下去，打击下方的僵尸！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group castle_1_over's section 0
@@ -506,12 +506,6 @@ msgstr ""
 #. Text for talk sentence 2 in talk group castle_3_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_3_over"
-msgid "甚至有可能弹出不断弹跳的弹力巨石！"
-msgstr ""
-
-#. Text for talk sentence 3 in talk group castle_3_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_3_over"
 msgid "在洞穴中，你最好当心脚下的踏板！"
 msgstr ""
 
@@ -698,19 +692,19 @@ msgstr ""
 #. Text for talk sentence 0 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "这个是黏液护罩！他能和普通的器械重叠放置！"
+msgid "这个是石护罩！他能和普通的器械重叠放置！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "它的弹性能够保护它里面的器械不受伤害！"
+msgid "它的硬度能够保护它里面的器械不受伤害！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group castle_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_4_over"
-msgid "有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉黏液护罩！"
+msgid "有个小技巧，如果你拿着铁镐，并且瞄准它的下部，就会挖掉石护罩！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group castle_4_over's section 0
@@ -974,7 +968,7 @@ msgstr ""
 #. Text for talk sentence 4 in talk group castle_6's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6"
-msgid "当然，好像也不止是小僵尸……"
+msgid "当然，好像也不止是小……"
 msgstr ""
 
 #. Archive name for talk group castle_6_over
@@ -992,7 +986,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group castle_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_6_over"
-msgid "实际上它是一个魔力果实，能魅惑第一个攻击它的怪物，并赋予这个怪物额外的生命值！"
+msgid "实际上它是一个魅惑果实，能魅惑第一个攻击它的怪物！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group castle_6_over's section 0
@@ -2090,64 +2084,52 @@ msgstr ""
 #. Text for talk sentence 2 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "它还能使用特殊的魔法，扰乱你的阵型！"
+msgid "……听起来确实难搞。"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "……听起来确实难搞。"
+msgid "不过，应该有办法能阻止它的。"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "不过，应该有办法能阻止它的。"
+msgid "试试用强大的东西挡住它的去路，或者直接在它冲锋前把它击垮！"
 msgstr ""
 
 #. Text for talk sentence 5 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "试试用强大的东西挡住它的去路，或者直接在它冲锋前把它击垮！"
+msgid "并且，金苹果对凋灵这种亡灵生物来说可能会产生奇效！"
 msgstr ""
 
 #. Text for talk sentence 6 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "以及，也许可以像对付那些皇冠骷髅那样，用荧石打断它的魔法！"
+msgid "试着骗它吃掉一些金苹果！"
 msgstr ""
 
 #. Text for talk sentence 7 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "并且，金苹果对凋灵这种亡灵生物来说可能会产生奇效！"
+msgid "我们小人族就靠你了，史蒂夫……"
 msgstr ""
 
 #. Text for talk sentence 8 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "试着骗它吃掉一些金苹果！"
+msgid "遵命。"
 msgstr ""
 
 #. Text for talk sentence 9 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
-msgid "我们小人族就靠你了，史蒂夫……"
-msgstr ""
-
-#. Text for talk sentence 10 in talk group castle_11's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_11"
-msgid "遵命。"
-msgstr ""
-
-#. Text for talk sentence 11 in talk group castle_11's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_11"
 msgid "<color=blue>（辉针城外乌云密布。这些乌云已经笼罩这里太长时间了。）</color>"
 msgstr ""
 
-#. Text for talk sentence 12 in talk group castle_11's section 0
+#. Text for talk sentence 10 in talk group castle_11's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11"
 msgid "<color=blue>（是时候该让它们散去了。）</color>"
@@ -2361,30 +2343,6 @@ msgstr ""
 #: Talk meta file
 msgctxt "talk-mvz2:castle_11_map"
 msgid "<color=blue>（只是那背影，无比落寞，逐渐消失在了漆黑的夜空中，化作了一颗小小的星星。）</color>"
-msgstr ""
-
-#. Archive name for talk group castle_EX1_over
-#: Talk meta file
-msgctxt "archive"
-msgid "辉针城拓展第1天结束"
-msgstr ""
-
-#. Text for talk sentence 0 in talk group castle_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_EX1_over"
-msgid "这是火焰弹发射器！"
-msgstr ""
-
-#. Text for talk sentence 1 in talk group castle_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_EX1_over"
-msgid "它能够向周围的怪物投掷火焰弹，造成群体伤害！"
-msgstr ""
-
-#. Text for talk sentence 2 in talk group castle_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:castle_EX1_over"
-msgid "是时候给怪物们一点火力威慑了！"
 msgstr ""
 
 #. Archive name for talk group dream_1
@@ -3266,7 +3224,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group dream_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_6_over"
-msgid "它会发射和箭矢类似的尖刺，能够穿过3个怪物！并且在遇见飞行和低矮怪物的时候会伸缩脖子来攻击怪物！"
+msgid "它会发射和箭矢类似的尖刺！并且在遇见飞行怪物的时候会伸长脖子来攻击怪物！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group dream_6_over's section 0
@@ -3434,7 +3392,7 @@ msgstr ""
 #. Text for talk sentence 2 in talk group dream_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:dream_7_over"
-msgid "而且还能够向近处的敌人喷出火焰，持续进行灼烧，并发射困住敌人的捕猎网！"
+msgid "而且还能够向近处的敌人喷出火焰，持续进行灼烧！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group dream_7_over's section 0
@@ -4991,36 +4949,6 @@ msgctxt "talk-mvz2:exited_kourindou"
 msgid "试试就知道了！"
 msgstr ""
 
-#. Archive name for talk group dream_EX1_over
-#: Talk meta file
-msgctxt "archive"
-msgid "梦境世界拓展第1天结束"
-msgstr ""
-
-#. Text for talk sentence 0 in talk group dream_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:dream_EX1_over"
-msgid "这是次元锤！"
-msgstr ""
-
-#. Text for talk sentence 1 in talk group dream_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:dream_EX1_over"
-msgid "它能够重击地面，对怪物造成大量伤害，并击晕它们！"
-msgstr ""
-
-#. Text for talk sentence 2 in talk group dream_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:dream_EX1_over"
-msgid "锤击地面还会生成弹幕！"
-msgstr ""
-
-#. Text for talk sentence 3 in talk group dream_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:dream_EX1_over"
-msgid "这样一把武器，简直是天赐良“击”！"
-msgstr ""
-
 #. Archive name for talk group halloween_1
 #: Talk meta file
 msgctxt "archive"
@@ -5492,7 +5420,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group halloween_4_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_4_over"
-msgid "它能够蓄力击退前方的怪物一大格距离！并且重创脆弱的石头或者其他东西！"
+msgid "它能够击退前方的怪物一大格距离！并且重创脆弱的石头或者其他东西！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_4_over's section 0
@@ -5744,7 +5672,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group halloween_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_6_over"
-msgid "这个是Etho台阶！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！"
+msgid "这个是TNT！在你触发他之后，他就会爆炸，炸飞周围的所有敌人！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_6_over's section 0
@@ -5870,7 +5798,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group halloween_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_7_over"
-msgid "看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后会焚烧一群敌人，还能分裂！"
+msgid "看吧，灵魂熔炉！它能发射致命的灵魂火球，击中后还会焚烧一群敌人！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_7_over's section 0
@@ -5880,12 +5808,6 @@ msgid "但代价是什么？它需要牺牲前方的器械来当作它的燃料�
 msgstr ""
 
 #. Text for talk sentence 3 in talk group halloween_7_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:halloween_7_over"
-msgid "幸运的是，特定的器械会与灵魂熔炉产生协同效应！"
-msgstr ""
-
-#. Text for talk sentence 4 in talk group halloween_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_7_over"
 msgid "让怪物们下地狱吧！"
@@ -6068,7 +5990,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group halloween_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_9_over"
-msgid "魔术箱！它会吃掉并召唤前方的一个怪物，然后自己变成一个星之碎片！"
+msgid "魔术箱！它会吃掉前方的一个怪物，然后自己变成一个星之碎片！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group halloween_9_over's section 0
@@ -6309,30 +6231,6 @@ msgstr ""
 #: Talk meta file
 msgctxt "talk-mvz2:halloween_final"
 msgid "该你出场的时候了，朋友。"
-msgstr ""
-
-#. Archive name for talk group halloween_EX1_over
-#: Talk meta file
-msgctxt "archive"
-msgid "万圣夜拓展第1天结束"
-msgstr ""
-
-#. Text for talk sentence 0 in talk group halloween_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:halloween_EX1_over"
-msgid "这是淬毒发射器！能够在较远的一段距离发射毒液球！"
-msgstr ""
-
-#. Text for talk sentence 1 in talk group halloween_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:halloween_EX1_over"
-msgid "毒液球击中的怪物会中毒，持续受到伤害！并且能腐蚀它们的盔甲！"
-msgstr ""
-
-#. Text for talk sentence 2 in talk group halloween_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:halloween_EX1_over"
-msgid "也许是女巫制造的机械？谁知道呢！"
 msgstr ""
 
 #. Archive name for talk group kourindou_visit_mausoleum_1
@@ -6734,13 +6632,13 @@ msgstr ""
 #. Text for talk sentence 0 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "这是唱片机！"
+msgid "这是音符盒！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group mausoleum_1_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_1_over"
-msgid "它能发射近程的音符，音符会在唱片机和敌人之间来回反弹，并产生音浪！"
+msgid "它能发射近程的音符，音符会在音符盒和敌人之间来回反弹！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_1_over's section 0
@@ -6962,7 +6860,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_2_over"
-msgid "它能够够张开护盾，阻挡大范围怪物的前进，并且免疫对方的子弹！"
+msgid "它能够阻挡怪物的前进，并且免疫对方的子弹！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_2_over's section 0
@@ -7088,7 +6986,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_3_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_3_over"
-msgid "它能够像发射器一样向前发射箭矢，并且还可以同时向后方发射双倍的飞刀！"
+msgid "它能够像发射器一样向前发射箭矢，并且还可以同时向后方发射双倍的箭矢！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_3_over's section 0
@@ -7784,7 +7682,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_6_over"
-msgid "这是地狱火，它能烧伤附近的敌人，点燃飞过它的箭矢，造成额外的火焰伤害！"
+msgid "这是地狱火，它能点燃飞过它的箭矢，造成额外的火焰伤害！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_6_over's section 0
@@ -8006,7 +7904,7 @@ msgstr ""
 #. Text for talk sentence 3 in talk group mausoleum_7's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_7"
-msgid "还有，好像有一种拿着竹竿和壶的僵尸出现了！"
+msgid "还有，好像有一种拿着竹竿的僵尸出现了！"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group mausoleum_7's section 0
@@ -8036,7 +7934,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_7_over"
-msgid "这是死灵墓碑，它可以不停召唤各种骷髅，为你而战！"
+msgid "这是死灵墓碑，它可以不停召唤骷髅战士，为你而战！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_7_over's section 0
@@ -8186,13 +8084,13 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_8_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_8_over"
-msgid "这是行星炸弹，它在引爆后会炸出一个卫星和一个小型黑洞！"
+msgid "这是黑洞炸弹，它在引爆后会炸出一个小型黑洞，吸引周围的怪物！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_8_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_8_over"
-msgid "卫星会环绕小型黑洞并撞击敌人，小型黑洞吸引周围的怪物，并且能持续对范围内的敌人造成伤害！"
+msgid "并且，能持续对范围内的敌人造成伤害！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group mausoleum_8_over's section 0
@@ -8492,7 +8390,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group mausoleum_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:mausoleum_9_over"
-msgid "这是欲望壶，它在拥有星之碎片的怪物出现时，会吸走怪物身上的星之碎片并复制！"
+msgid "这是欲望壶，它在拥有星之碎片的怪物出现时，会复制怪物身上的星之碎片！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group mausoleum_9_over's section 0
@@ -9539,36 +9437,6 @@ msgctxt "talk-mvz2:mausoleum_11_map"
 msgid "呜呜呜……呜呜呜……"
 msgstr ""
 
-#. Archive name for talk group mausoleum_EX1_over
-#: Talk meta file
-msgctxt "archive"
-msgid "梦殿大祀庙拓展第1天结束"
-msgstr ""
-
-#. Text for talk sentence 0 in talk group mausoleum_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:mausoleum_EX1_over"
-msgid "狸猫十变化！"
-msgstr ""
-
-#. Text for talk sentence 1 in talk group mausoleum_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:mausoleum_EX1_over"
-msgid "这是妖怪树叶！能发射穿透怪物的叶片！"
-msgstr ""
-
-#. Text for talk sentence 2 in talk group mausoleum_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:mausoleum_EX1_over"
-msgid "同时，当一个怪物攻击它时，它就会变成这个怪物的样子！"
-msgstr ""
-
-#. Text for talk sentence 3 in talk group mausoleum_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:mausoleum_EX1_over"
-msgid "<color=blue>（它看起来好可爱！）</color>"
-msgstr ""
-
 #. Archive name for talk group tutorial
 #: Talk meta file
 msgctxt "archive"
@@ -10046,70 +9914,40 @@ msgstr ""
 #. Text for talk sentence 0 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "这里的风可真大，我都快站不住脚了。"
+msgid "它们来了！那艘船出现了！"
 msgstr ""
 
 #. Text for talk sentence 1 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "是的。最近的风力变化异常，这也成了行船的一大阻碍。"
+msgid "怎么回事？对方是——"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "起初我们担心这可能是那艘船搞出来的花招，但……看起来似乎只是自然现象。"
+msgid "……末地船？"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "风可能会让那些僵尸走得更快，你要小心。"
+msgid "您原来认识它吗？它就是我们之前和你说过的那艘袭击我们的船！"
 msgstr ""
 
 #. Text for talk sentence 4 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "嗯，我明白了。"
+msgid "我知道了，那就让我来吧！"
 msgstr ""
 
 #. Text for talk sentence 5 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
-msgid "它们来了！那艘船出现了！"
-msgstr ""
-
-#. Text for talk sentence 6 in talk group ship_1's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_1"
-msgid "怎么回事？对方是——"
-msgstr ""
-
-#. Text for talk sentence 7 in talk group ship_1's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_1"
-msgid "……末地船？"
-msgstr ""
-
-#. Text for talk sentence 8 in talk group ship_1's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_1"
-msgid "您原来认识它吗？它就是我们之前和你说过的那艘袭击我们的船！"
-msgstr ""
-
-#. Text for talk sentence 9 in talk group ship_1's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_1"
-msgid "我知道了，那就让我来吧！"
-msgstr ""
-
-#. Text for talk sentence 10 in talk group ship_1's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_1"
 msgid "<color=blue>（虽然现在是白天，但是我们的矿场无法带到船上。）</color>"
 msgstr ""
 
-#. Text for talk sentence 11 in talk group ship_1's section 0
+#. Text for talk sentence 6 in talk group ship_1's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_1"
 msgid "<color=blue>（因此，战斗所需要的能量可能会比较吃紧了。）</color>"
@@ -10286,7 +10124,7 @@ msgstr ""
 #. Text for talk sentence 2 in talk group ship_2_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_2_over"
-msgid "同时，如果它位于最边缘位置，或者是相邻行上没有敌人，那么它会改为向自身所在行发射两支箭矢！"
+msgid "同时，如果它位于最边缘位置，那么它会改为向自身所在行发射两支箭矢！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group ship_2_over's section 0
@@ -10976,7 +10814,7 @@ msgstr ""
 #. Text for talk sentence 2 in talk group ship_6_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_6_over"
-msgid "它会向五个不同的方向发射手里剑！非常适合跨行攻击！而且周围的器械还能为它提供伤害加成！"
+msgid "它会向五个不同的方向发射手里剑！非常适合跨行攻击！"
 msgstr ""
 
 #. Text for talk sentence 3 in talk group ship_6_over's section 0
@@ -11306,7 +11144,7 @@ msgstr ""
 #. Text for talk sentence 1 in talk group ship_7_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_7_over"
-msgid "这是木风扇，它在被触发后会立即减速并吹动一整行的怪物，还可以改变战场的风力！"
+msgid "这是木风扇，它在被触发后会立即吹动一整行的怪物！"
 msgstr ""
 
 #. Text for talk sentence 2 in talk group ship_7_over's section 0
@@ -11813,18 +11651,6 @@ msgctxt "talk-mvz2:ship_8"
 msgid "不过，那艘末地船又出现了，等我把它们击退再说！"
 msgstr ""
 
-#. Text for talk sentence 5 in talk group ship_8's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_8"
-msgid "<color=blue>（这次对面又多了一种看上去像是海盗的僵尸，手里还拿着弯刀。）</color>"
-msgstr ""
-
-#. Text for talk sentence 6 in talk group ship_8's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_8"
-msgid "<color=blue>（感觉会是个不好对付的家伙啊。）</color>"
-msgstr ""
-
 #. Archive name for talk group ship_8_over
 #: Talk meta file
 msgctxt "archive"
@@ -12248,19 +12074,7 @@ msgstr ""
 #. Text for talk sentence 4 in talk group ship_9's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_9"
-msgid "……可能更糟。"
-msgstr ""
-
-#. Text for talk sentence 5 in talk group ship_9's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_9"
-msgid "他能把其他的僵尸往前打飞，虽然这也会重创那些僵尸……但是反应时间太短了，通常来不及处理。"
-msgstr ""
-
-#. Text for talk sentence 6 in talk group ship_9's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_9"
-msgid "啊？"
+msgid "……那应该就是了。"
 msgstr ""
 
 #. Archive name for talk group ship_9_over
@@ -12296,25 +12110,13 @@ msgstr ""
 #. Text for talk sentence 4 in talk group ship_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_9_over"
-msgid "反之则会变成绿宝石，可以放置器械，但不能对放在上面的器械使用星之碎片！"
+msgid "但是，每禁用一定数量的空地，它就会生成一个星之碎片！"
 msgstr ""
 
 #. Text for talk sentence 5 in talk group ship_9_over's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_9_over"
-msgid "但是，每禁用一定数量的空地，它就会生成一个星之碎片！"
-msgstr ""
-
-#. Text for talk sentence 6 in talk group ship_9_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_9_over"
-msgid "同时还可以利用绿宝石格子来攻击怪物！"
-msgstr ""
-
-#. Text for talk sentence 7 in talk group ship_9_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_9_over"
-msgid "把一切都点成黄金和宝石吧！"
+msgid "把一切都点成黄金吧！"
 msgstr ""
 
 #. Archive name for talk group ship_9_map
@@ -12758,7 +12560,7 @@ msgstr ""
 #. Text for talk sentence 4 in talk group ship_11_map's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_11_map"
-msgid "<color=blue>（天上下起了雨，周围的人越来越多，它们看着这头恶龙，和它保持着距离。）</color>"
+msgid "<color=blue>（天上下起了雨，周围的人越来越多，他们看着这头恶龙，和它保持着距离。）</color>"
 msgstr ""
 
 #. Text for talk sentence 5 in talk group ship_11_map's section 0
@@ -12866,7 +12668,7 @@ msgstr ""
 #. Text for talk sentence 22 in talk group ship_11_map's section 0
 #: Talk meta file
 msgctxt "talk-mvz2:ship_11_map"
-msgid "其实，我有一事相告。四年前，曾有一位访客曾来到命莲寺。"
+msgid "其实，我有一事相告。四年前，曾有一位访客来到命莲寺。"
 msgstr ""
 
 #. Text for talk sentence 23 in talk group ship_11_map's section 0
@@ -12987,29 +12789,5 @@ msgstr ""
 #: Talk meta file
 msgctxt "talk-mvz2:ship_11_map"
 msgid "告辞了，祝您一路顺风。"
-msgstr ""
-
-#. Archive name for talk group ship_EX1_over
-#: Talk meta file
-msgctxt "archive"
-msgid "圣辇船拓展第1天结束"
-msgstr ""
-
-#. Text for talk sentence 0 in talk group ship_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_EX1_over"
-msgid "烧烤时间到！"
-msgstr ""
-
-#. Text for talk sentence 1 in talk group ship_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_EX1_over"
-msgid "这是烟熏炉！它可以喷出浓烟，对前方一定范围的所有怪物造成伤害！"
-msgstr ""
-
-#. Text for talk sentence 2 in talk group ship_EX1_over's section 0
-#: Talk meta file
-msgctxt "talk-mvz2:ship_EX1_over"
-msgid "有烟无伤定律在它这儿可是无效的！"
 msgstr ""
 

@@ -4,16 +4,16 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Fragments;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Effects;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
-using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.ghostChain)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.ghostChain)]
     public class GhostChain : EffectBehaviour
     {
 
@@ -25,7 +25,7 @@ namespace MVZ2.GameContent.Effects
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.PlaySound(VanillaSoundID.chainsTrap);
+            entity.PlaySound(VanillaSoundID.ghostChainsTrap);
             stateMachine.Init(entity);
             stateMachine.StartState(entity, STATE_EXPAND);
         }
@@ -55,14 +55,14 @@ namespace MVZ2.GameContent.Effects
             if (!parent.ExistsAndAlive() || !target.ExistsAndAlive())
             {
                 entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
-                entity.PlaySound(VanillaSoundID.chainsBreak);
+                entity.PlaySound(VanillaSoundID.ghostChainsBreak);
                 entity.Remove();
             }
             else if (Ghost.ShouldExitPossess(parent, target, true))
             {
                 Ghost.SetPossessingEntity(parent, null);
                 entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
-                entity.PlaySound(VanillaSoundID.chainsBreak);
+                entity.PlaySound(VanillaSoundID.ghostChainsBreak);
                 entity.Remove();
             }
         }
@@ -127,7 +127,7 @@ namespace MVZ2.GameContent.Effects
                 base.OnEnter(machine, entity);
                 var timer = machine.GetStateTimer(entity);
                 timer.ResetTime(30);
-                entity.Level.AddLoopSoundEntity(VanillaSoundID.chainsRattle, entity.ID);
+                entity.Level.AddLoopSoundEntity(VanillaSoundID.ghostChainsRattle, entity.ID);
             }
 
             public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)

@@ -3,14 +3,15 @@
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.skywardOption)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.skywardOption)]
     public class SkywardOption : DispenserFamily
     {
         public SkywardOption(string nsp, string name) : base(nsp, name)

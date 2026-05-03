@@ -5,28 +5,31 @@ using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Entities;
+using MVZ2.Vanilla.Unlocks;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Fragments;
-using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
+using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using MVZ2.Vanilla.Effects;
+using MVZ2Logic.Entities;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.ghost)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.ghost)]
     public class Ghost : AIEntityBehaviour
     {
         public Ghost(string nsp, string name) : base(nsp, name)
@@ -111,7 +114,7 @@ namespace MVZ2.GameContent.Enemies
                     entity.Velocity -= entity.GetFacingDirection();
                     entity.RemoveBuffs<GhostPossessingBuff>();
                     DeactivatePossession(entity);
-                    entity.PlaySound(VanillaSoundID.chainsBreak);
+                    entity.PlaySound(VanillaSoundID.ghostChainsBreak);
                     entity.CreateFragmentAndPlay(VanillaFragmentID.ghostChain, 50);
                 }
                 entity.SetCasting(false);
@@ -171,7 +174,7 @@ namespace MVZ2.GameContent.Enemies
             if (target.IsAIFrozen())
                 return false;
             // 离场的怪物
-            if (target.Position.x <= VanillaLevelExt.GetAttackBorderX(false) || target.Position.x >= VanillaLevelExt.GetAttackBorderX(true))
+            if (target.Position.x <= LevelPositions.GetAttackBorderX(false) || target.Position.x >= LevelPositions.GetAttackBorderX(true))
                 return false;
             if (!Detection.CanDetect(target))
                 return false;
@@ -207,8 +210,11 @@ namespace MVZ2.GameContent.Enemies
         }
         public static bool IsIlluminatedByGlowstone(Entity self)
         {
-            foreach (var glowstone in self.GetIlluminationLightSources())
+            foreach (var id in self.Level.GetIlluminationLightSources(self))
             {
+                var glowstone = self.Level.FindEntityByID(id);
+                if (!glowstone.ExistsAndAlive())
+                    continue;
                 if (glowstone.IsEntityOf(VanillaContraptionID.glowstone))
                     return true;
             }
@@ -244,7 +250,7 @@ namespace MVZ2.GameContent.Enemies
         public static void DeactivatePossession(Entity entity) => entity.SetBehaviourField(PROP_ACTIVATE_POSSESSION, false);
         public static bool IsPossessionActivated(Entity entity) => entity.GetBehaviourField<bool>(PROP_ACTIVATE_POSSESSION);
         private const int CAST_COOLDOWN = 90;
-        public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
+        public const int STATE_MELEE_ATTACK = LogicEnemyStates.MELEE_ATTACK;
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_TARGET_ENTITY = new VanillaEntityPropertyMeta<EntityID>("target_entity");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_ACTIVATE_POSSESSION = new VanillaEntityPropertyMeta<bool>("activate_possession");

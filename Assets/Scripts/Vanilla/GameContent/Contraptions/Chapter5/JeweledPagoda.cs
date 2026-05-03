@@ -7,33 +7,37 @@ using MVZ2.GameContent.Buffs.Grids;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Entities;
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
+using PVZEngine.Definitions;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
+using MVZ2.Vanilla.Entities;
+using PVZEngine.Collisions.Level;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.jeweledPagoda)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.jeweledPagoda)]
     public class JeweledPagoda : AIEntityBehaviour
     {
         public JeweledPagoda(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new FloatModifier(EngineEntityProps.GRAVITY, NumberOperator.Set, PROP_GRAVITY));
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
-            AddModifier(ColorModifier.Override(VanillaEntityProps.LIGHT_COLOR, PROP_LIGHT_COLOR));
-            AddModifier(ColorModifier.Multiply(VanillaEntityProps.LIGHT_COLOR, PROP_TINT_MULTIPLIER));
+            AddModifier(ColorModifier.Override(LogicEntityProps.LIGHT_COLOR, PROP_LIGHT_COLOR));
+            AddModifier(ColorModifier.Multiply(LogicEntityProps.LIGHT_COLOR, PROP_TINT_MULTIPLIER));
         }
         public override void Init(Entity entity)
         {
@@ -105,8 +109,8 @@ namespace MVZ2.GameContent.Contraptions
                 entity.PlaySound(VanillaSoundID.tridentThunder);
                 entity.Level.Thunder();
                 var border_distance = 1600f;
-                var horizonalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
-                var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 1200), entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0);
+                var horizonalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(border_distance, 1000, 80), OverlapParams.Hostile(entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE));
+                var verticalCollider = entity.Level.OverlapBox(entity.GetCenter(), new Vector3(80, 1000, 1200), OverlapParams.Hostile(entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE));
                 var finalColliders = horizonalCollider.Union(verticalCollider);
                 foreach (var entityCollider in finalColliders)
                 {

@@ -8,7 +8,7 @@ using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Stages
 {
-    [StageDefinition(VanillaStageNames.bugReport)]
+    //[AutoStageDefinition(VanillaStageNames.bugReport)]
     public partial class BugReport : BlueprintCrisisStage
     {
         public BugReport(string nsp, string name) : base(nsp, name)

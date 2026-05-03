@@ -3,22 +3,24 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.flyingPirate)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.flyingPirate)]
     public class FlyingPirate : AIEntityBehaviour
     {
         public FlyingPirate(string nsp, string name) : base(nsp, name)
@@ -31,13 +33,6 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 60f);
-            var level = entity.Level;
-            var lane = entity.GetLane();
-            if (level.IsWaterLane(lane) || level.IsAirLane(lane))
-            {
-                entity.AddBuff<BoatBuff>();
-                entity.SetModelProperty("HasBoat", true);
-            }
             if (!entity.IsPreviewEnemy())
             {
                 entity.PlaySound(VanillaSoundID.wind, volume: 0.5f);

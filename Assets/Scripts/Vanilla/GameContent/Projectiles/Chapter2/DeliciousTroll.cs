@@ -4,15 +4,16 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.deliciousTroll)]
-    public class DeliciousTroll : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.deliciousTroll)]
+    public class DeliciousTroll : EntityBehaviourDefinition
     {
         public DeliciousTroll(string nsp, string name) : base(nsp, name)
         {
@@ -26,7 +27,7 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            if (damageInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            if (damageInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS))
                 return;
             entity.PlaySound(VanillaSoundID.glassBreak);
             entity.PlaySound(VanillaSoundID.smallExplosion);

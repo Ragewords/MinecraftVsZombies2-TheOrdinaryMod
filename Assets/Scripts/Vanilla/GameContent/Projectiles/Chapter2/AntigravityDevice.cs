@@ -4,17 +4,18 @@ using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.antigravityDevice)]
-    public class AntigravityDevice : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.antigravityDevice)]
+    public class AntigravityDevice : EntityBehaviourDefinition
     {
         public AntigravityDevice(string nsp, string name) : base(nsp, name)
         {
@@ -28,12 +29,13 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            if (damageInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            if (damageInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS))
                 return;
             var pos = entity.GetCenter();
             entity.PlaySound(VanillaSoundID.nimbleFabric);
             entity.Spawn(VanillaEffectID.smokeCluster, pos);
-            foreach (var collider in entity.Level.OverlapBox(pos, Vector3.one * 60, entity.GetFaction(), EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY, 0))
+            var ovarlapParam = OverlapParams.Hostile(entity.GetFaction(), EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY);
+            foreach (var collider in entity.Level.OverlapBox(pos, Vector3.one * 60, ovarlapParam))
             {
                 collider.Entity.AddBuff<CrescentAntiGravityBuff>();
             }

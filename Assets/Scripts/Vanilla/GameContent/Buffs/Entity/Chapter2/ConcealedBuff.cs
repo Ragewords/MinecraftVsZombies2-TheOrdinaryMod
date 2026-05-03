@@ -2,12 +2,12 @@
 
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Entity.concealed)]
+    [AutoBuffDefinition(VanillaBuffNames.Entity.concealed)]
     public class ConcealedBuff : BuffDefinition
     {
         public ConcealedBuff(string nsp, string name) : base(nsp, name)

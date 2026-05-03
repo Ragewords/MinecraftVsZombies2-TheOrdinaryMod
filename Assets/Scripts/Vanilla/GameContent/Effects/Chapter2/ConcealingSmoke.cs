@@ -5,12 +5,12 @@ using MVZ2.GameContent.Buffs;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.concealingSmoke)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.concealingSmoke)]
     public class ConcealingSmoke : EffectBehaviour
     {
 

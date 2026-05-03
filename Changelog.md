@@ -1,9 +1,46 @@
+## Added
+- Added commands for Debug mode:
+  - /gotolevel: Goto a level.
+  - /unlock listlocked: Lists all locked game states.
+  - /unlock all: Unlocks all game states.
+  - /unlock none: Relocks all game states.
+- Added hyperlinks to Almanac, allowing users to navigate between different entries by clicking on text within the Almanac.
+
 ## Modified
+
 - Skyward Beacon's strike position now can be changed by just clicking on it instead of triggering it.
+
+### Balance
+- Moonlight Sensor
+  - Material: Stone -> Wood
+- Spike Block
+  - Now can destroy multiple Hell Chariots at once.
+- Stone Dropper
+  - When making attack checks, use the volume of boulders instead of the volume of pebbles.
+- Jeweled Pagoda
+  - Recharge time: Very Long -> Short
+  - Tile disabling duration: 4 minutes -> 2 minutes
+- Command Block
+  - Material: Stone -> Metal
+- Dark Matter now make monsters invisible instead of making the battlefield dark.
+- The total flag amount of level 1-3 is from 2 -> 1.
+- These artifacts now only work for friendly contraptions:
+  - Sweet Sleep Pillow
+  - Dark Matter
+  - Bottled Blackhold
+  - Miracle Mallet
+  - Broken Lantern
+  - Lightbomb
+  - Eye of the Giant
+- The spawn rate of monsters during the boss battle in level 5-11 has been increased to 150% of the original rate.
 
 ## Fixed
 - Fixed the issue where when Pop Captain knocked a contraption onto a lilypad with a contraption on it, the knocked contraption will fall into water instead.
 - Fixed the issue where Pop Captain can knock a lily pad onto land.
+- Fixed the issue where monsters sometimes continue to attack after leaving the attack range when attacking a contraption inside the stone shield during melee attacks.
+- Fixed the issue where starshards at the topmost cannot be stolen by blue UFOs at the topmost.
+- Fixed the issue where damage resistance of bosses works incorrectly.
+- Fixed the issue where the texture in the command block blueprint pickup was not grayscale.
 
 ---
 

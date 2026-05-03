@@ -3,10 +3,10 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
-using MVZ2Logic;
 using MVZ2Logic.Artifacts;
+using MVZ2Logic.Definitions;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.endlessGate)]
+    [AutoArtifactDefinition(VanillaArtifactNames.endlessGate)]
     public class EndlessGate : ArtifactDefinition
     {
         public EndlessGate(string nsp, string name) : base(nsp, name)

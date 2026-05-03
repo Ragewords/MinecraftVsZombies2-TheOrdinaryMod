@@ -7,15 +7,17 @@ using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.lightningBall)]
-    public class LightningBall : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.lightningBall)]
+    public class LightningBall : EntityBehaviourDefinition
     {
         public LightningBall(string nsp, string name) : base(nsp, name)
         {

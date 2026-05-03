@@ -6,22 +6,23 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.dimensionHammer)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.dimensionHammer)]
     public class DimensionHammer : ContraptionBehaviour
     {
         public DimensionHammer(string nsp, string name) : base(nsp, name)
@@ -113,7 +114,7 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             entity.PlaySound(VanillaSoundID.thump);
             DamageEffectList damageEffectList = new DamageEffectList(VanillaDamageEffects.IMPACT, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.MUTE);
-            var groundEntities = entity.Level.OverlapSphere(pos, entity.GetRange(), faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
+            var groundEntities = entity.Level.OverlapSphere(pos, entity.GetRange(), OverlapParams.Hostile(faction, EntityCollisionHelper.MASK_VULNERABLE));
             foreach (var target in groundEntities)
             {
                 var ent = target.Entity;

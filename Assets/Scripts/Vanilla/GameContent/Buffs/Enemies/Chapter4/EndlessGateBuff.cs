@@ -2,15 +2,16 @@
 
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Level;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemy
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.endlessGate)]
+    [AutoBuffDefinition(VanillaBuffNames.Enemy.endlessGate)]
     public class EndlessGateBuff : BuffDefinition
     {
         public EndlessGateBuff(string nsp, string name) : base(nsp, name)
@@ -55,7 +56,7 @@ namespace MVZ2.GameContent.Buffs.Enemy
             buff.SetProperty(PROP_COLOR_OFFSET, new Color(1, 1, 1, alpha));
             buff.SetProperty(PROP_TIME, time);
         }
-        public const float TLELPORT_X = VanillaLevelExt.RIGHT_BORDER;
+        public const float TLELPORT_X = LevelPositions.RIGHT_BORDER;
         public const int MAX_TIME = 15;
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIME = new VanillaBuffPropertyMeta<int>("Time");
         public static readonly VanillaBuffPropertyMeta<int> PROP_EFFECT_DURATION = new VanillaBuffPropertyMeta<int>("effect_duration");

@@ -3,11 +3,11 @@
 using MVZ2.GameContent.Bosses;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.seijaMesmerizer)]
+    [AutoBuffDefinition(VanillaBuffNames.Enemy.seijaMesmerizer)]
     public class SeijaMesmerizerBuff : BuffDefinition
     {
         public SeijaMesmerizerBuff(string nsp, string name) : base(nsp, name)
@@ -15,7 +15,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
             AddTrigger(LevelCallbacks.POST_ENTITY_REMOVE, PostEntityRemoveCallback);
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
             var info = param.deathInfo;

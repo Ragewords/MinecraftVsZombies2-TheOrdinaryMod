@@ -4,20 +4,21 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.revivegraveRevive)]
+    [AutoBuffDefinition(VanillaBuffNames.Enemy.revivegraveRevive)]
     public class RevivegraveReviveBuff : BuffDefinition
     {
         public RevivegraveReviveBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new BooleanModifier(VanillaEnemyProps.ASSUME_ALIVE, true));
+            AddModifier(new BooleanModifier(LogicEnemyProps.ASSUME_ALIVE, true));
             AddTrigger(VanillaLevelCallbacks.PRE_ENEMY_FAINT, PreEnemyFaintCallback, priority: -200);
         }
         private void PreEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)

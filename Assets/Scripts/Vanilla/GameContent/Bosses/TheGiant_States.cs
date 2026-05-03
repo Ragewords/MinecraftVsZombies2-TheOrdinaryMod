@@ -2,14 +2,17 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.Bosses;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -81,7 +84,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private static bool CanCrawl(Entity entity)
         {
-            return entity.GetBounds().min.x > VanillaLevelExt.GetAttackBorderX(false);
+            return entity.GetBounds().min.x > LevelPositions.GetAttackBorderX(false);
         }
         private static void CheckDeath(Entity entity)
         {
@@ -338,7 +341,7 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 int column = GetZombieBlockStartColumn(entity, x, atLeft);
                                 int columnEnd = GetZombieBlockEndColumn(entity, x, atLeft);
-                                var lanesPool = validLanes.Shuffle(rng);
+                                var lanesPool = validLanes.Randomize(rng);
                                 for (int y = 0; y < lanes; y++)
                                 {
                                     var i = y + x * lanes;
@@ -525,10 +528,9 @@ namespace MVZ2.GameContent.Bosses
                 param.damage = entity.GetDamage() * EYE_BULLET_DAMAGE_MULTIPLIER;
                 param.projectileID = VanillaProjectileID.reflectionBullet;
                 param.velocity = (target.GetCenter() - param.position).normalized * EYE_BULLET_SPEED;
-                var spawnParam = entity.GetSpawnParams();
+                var spawnParam = param.spawnParam;
                 spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
                 spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
-                param.spawnParam = spawnParam;
                 var bullet = entity.ShootProjectile(param);
                 if (bullet != null)
                 {
@@ -637,10 +639,9 @@ namespace MVZ2.GameContent.Bosses
                 param.damage = entity.GetDamage() * EYE_BULLET_DAMAGE_MULTIPLIER;
                 param.projectileID = VanillaProjectileID.reflectionBullet;
                 param.velocity = (target.GetCenter() - param.position).normalized * EYE_BULLET_SPEED;
-                var spawnParam = entity.GetSpawnParams();
+                var spawnParam = param.spawnParam;
                 spawnParam.SetProperty(EngineEntityProps.SCALE, Vector3.one * 2);
                 spawnParam.SetProperty(EngineEntityProps.DISPLAY_SCALE, Vector3.one * 2);
-                param.spawnParam = spawnParam;
                 var bullet = entity.ShootProjectile(param);
                 if (bullet != null)
                 {
@@ -1724,7 +1725,7 @@ namespace MVZ2.GameContent.Bosses
                     for (int i = 0; i < 50; i++)
                     {
                         var zombieParam = entity.GetSpawnParams();
-                        zombieParam.SetProperty(VanillaEnemyProps.HARMLESS, true);
+                        zombieParam.SetProperty(LogicEnemyProps.HARMLESS, true);
                         zombieParam.SetProperty(VanillaEnemyProps.NO_REWARD, true);
                         zombieParam.SetProperty(VanillaEntityProps.FALL_RESISTANCE, -10000f);
                         entity.Spawn(VanillaEnemyID.zombie, entity.GetCenter(), zombieParam)?.Let(e =>

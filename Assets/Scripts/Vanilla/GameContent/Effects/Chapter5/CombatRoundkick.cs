@@ -4,15 +4,18 @@ using System.Linq;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.combatRoundkick)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.combatRoundkick)]
     public class CombatRoundkick : EffectBehaviour
     {
         public CombatRoundkick(string nsp, string name) : base(nsp, name)
@@ -36,7 +39,8 @@ namespace MVZ2.GameContent.Effects
                 var radius = entity.GetRange();
                 var damage = 500;
                 var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
-                foreach (IEntityCollider entityCollider in level.OverlapSphere(entity.Position, radius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0).Where(c => !c.Entity.IsDead).RandomTake(10, entity.RNG))
+                var overlapParam = OverlapParams.Hostile(faction, EntityCollisionHelper.MASK_VULNERABLE);
+                foreach (IEntityCollider entityCollider in level.OverlapSphere(entity.Position, radius, overlapParam).Where(c => !c.Entity.IsDead).RandomTake(10, entity.RNG))
                 {
                     entityCollider.TakeDamage(damage, damageEffects, entity);
                     entity.Level.ShakeScreen(10, 0, 15);

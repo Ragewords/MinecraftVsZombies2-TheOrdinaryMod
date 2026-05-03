@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Armors;
 using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Armors;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
@@ -26,7 +27,7 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Areas
 {
-    [AreaDefinition(VanillaAreaNames.ship)]
+    [AutoAreaDefinition(VanillaAreaNames.ship)]
     public class Ship : AreaDefinition
     {
         public Ship(string nsp, string name) : base(nsp, name)
@@ -127,7 +128,7 @@ namespace MVZ2.GameContent.Areas
             var entity = level.Spawn(enemyID, position, null)?.Let(e =>
             {
                 e.ChangeModel(VanillaModelID.karakasaZombie);
-                e.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
+                e.EquipArmorTo(LogicArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 e.AddBuff<ParatroopBuff>();
             });
             return entity;
@@ -157,7 +158,7 @@ namespace MVZ2.GameContent.Areas
             {
                 if (enemy == null)
                     continue;
-                if (enemy.State != VanillaEnemyStates.MELEE_ATTACK)
+                if (enemy.State != LogicEnemyStates.MELEE_ATTACK)
                     enemy.Position += ENEMY_BLOW_MULTIPILER * speed * multipiler * enemy.GetStrongKnockbackMultiplier() * Vector3.left;
             }
             foreach (var projectile in level.FindEntities(e => e.Type == EntityTypes.PROJECTILE))
@@ -176,10 +177,10 @@ namespace MVZ2.GameContent.Areas
         }
         public static float GetSkyOffsetSpeed(LevelEngine level) => level.GetProperty<float>(PROP_SKY_OFFSET_SPEED);
         public static void SetSkyOffsetSpeed(LevelEngine level, float value) => level.SetProperty<float>(PROP_SKY_OFFSET_SPEED, value);
-        public static RandomGenerator? GetRNG(LevelEngine level) => level.GetBehaviourField<RandomGenerator>(PROP_RNG);
-        public static void SetRNG(LevelEngine level, RandomGenerator rng) => level.SetBehaviourField(PROP_RNG, rng);
-        public static RandomGenerator? GetBreezeRNG(LevelEngine level) => level.GetBehaviourField<RandomGenerator>(PROP_BREEZE_RNG);
-        public static void SetBreezeRNG(LevelEngine level, RandomGenerator rng) => level.SetBehaviourField(PROP_BREEZE_RNG, rng);
+        public static RandomGenerator? GetRNG(LevelEngine level) => level.GetProperty<RandomGenerator>(PROP_RNG);
+        public static void SetRNG(LevelEngine level, RandomGenerator rng) => level.SetProperty(PROP_RNG, rng);
+        public static RandomGenerator? GetBreezeRNG(LevelEngine level) => level.GetProperty<RandomGenerator>(PROP_BREEZE_RNG);
+        public static void SetBreezeRNG(LevelEngine level, RandomGenerator rng) => level.SetProperty(PROP_BREEZE_RNG, rng);
         public static float GetBreezeSpeed(LevelEngine level) => level.GetProperty<float>(PROP_BREEZE_SPEED);
         public static void SetBreezeSpeed(LevelEngine level, float value) => level.SetProperty<float>(PROP_BREEZE_SPEED, value);
         public static float GetNextBreezeSpeed(LevelEngine level) => level.GetProperty<float>(PROP_NEXT_BREEZE_SPEED);

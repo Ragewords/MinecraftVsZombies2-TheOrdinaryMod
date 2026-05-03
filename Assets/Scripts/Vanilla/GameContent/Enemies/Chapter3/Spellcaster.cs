@@ -3,20 +3,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.spellcaster)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.spellcaster)]
     public class Spellcaster : AIEntityBehaviour
     {
         public Spellcaster(string nsp, string name) : base(nsp, name)
@@ -91,8 +93,8 @@ namespace MVZ2.GameContent.Enemies
         #region ����
         private const int CAST_COOLDOWN = 180;
         private const int CONTROL_DETECT_TIME = 30;
-        public const int STATE_WALK = VanillaEnemyStates.WALK;
-        public const int STATE_CAST = VanillaEnemyStates.CAST;
+        public const int STATE_WALK = LogicEnemyStates.WALK;
+        public const int STATE_CAST = LogicEnemyStates.CAST;
         private Detector detector;
         private List<Entity> healBuffer = new List<Entity>();
 

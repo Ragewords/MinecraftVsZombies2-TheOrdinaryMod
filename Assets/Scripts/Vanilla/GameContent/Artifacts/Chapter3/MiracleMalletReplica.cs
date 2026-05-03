@@ -2,16 +2,18 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
-using MVZ2.Vanilla.Contraptions;
-using MVZ2Logic;
+using MVZ2.GameContent.Seeds;
+using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Artifacts;
+using MVZ2Logic.Definitions;
+using MVZ2Logic.Entities;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.miracleMalletReplica)]
+    [AutoArtifactDefinition(VanillaArtifactNames.miracleMalletReplica)]
     public class MiracleMalletReplica : ArtifactDefinition
     {
         public MiracleMalletReplica(string nsp, string name) : base(nsp, name)
@@ -33,7 +35,7 @@ namespace MVZ2.GameContent.Artifacts
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
             {
                 var level = auraEffect.Source.GetLevel();
-                results.AddRange(level.GetEntities(EntityTypes.PLANT));
+                results.AddRange(level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsFriendlyEntity()));
             }
         }
         public class ContactDamageAura : AuraEffectDefinition
@@ -44,9 +46,9 @@ namespace MVZ2.GameContent.Artifacts
             public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
             {
                 var level = auraEffect.Source.GetLevel();
-                foreach (var target in level.GetEntities(EntityTypes.PLANT))
+                foreach (var target in level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsFriendlyEntity()))
                 {
-                    if (target.IsContactDamage())
+                    if (target.GetFunction() == VanillaBlueprintFunctions.melee)
                         results.Add(target);
                 }
             }

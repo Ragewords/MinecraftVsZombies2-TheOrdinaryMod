@@ -3,14 +3,15 @@
 using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.terrorCocoon)]
-    public class TerrorCocoon : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.terrorCocoon)]
+    public class TerrorCocoon : EntityBehaviourDefinition
     {
         public TerrorCocoon(string nsp, string name) : base(nsp, name)
         {

@@ -2,15 +2,15 @@
 
 using MVZ2.GameContent.HeldItems;
 using MVZ2.Vanilla.Entities;
-using MVZ2Logic;
 using MVZ2Logic.HeldItems;
+using MVZ2Logic.Inputs;
 using MVZ2Logic.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaEntityBehaviourNames.skywardOption_Trigger)]
+    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.skywardOption_Trigger)]
     public class SkywardOption_Trigger : EntityEmptyHandClickBehaviour
     {
         public SkywardOption_Trigger(string nsp, string name) : base(nsp, name)
@@ -18,17 +18,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public override bool IsValidPointerInteraction(Entity entity, PointerInteractionData interaction)
         {
-            if (interaction.pointer.type == PointerTypes.TOUCH)
-            {
-                if (interaction.interaction == PointerInteraction.Release || interaction.interaction == PointerInteraction.Drag)
-                    return true;
-            }
-            else if (interaction.pointer.type == PointerTypes.MOUSE)
-            {
-                if (interaction.interaction == PointerInteraction.Down)
-                    return true;
-            }
-            return false;
+            return interaction.IsPointerDownOrDrag();
         }
         public override void EmptyHandClick(Entity entity)
         {

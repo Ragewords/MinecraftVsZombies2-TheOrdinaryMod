@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
@@ -9,13 +10,13 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.spider)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.spider)]
     public class Spider : AIEntityBehaviour
     {
         public Spider(string nsp, string name) : base(nsp, name)
@@ -137,7 +138,7 @@ namespace MVZ2.GameContent.Enemies
         }
         protected virtual bool ValidateClimbTarget(Entity enemy, Entity target)
         {
-            return CanClimb(enemy, target) && !enemy.IsAIFrozen() && !enemy.IsDead && Detection.IsInFrontOf(enemy, target, -enemy.GetScaledSize().x * 0.25f);
+            return CanClimb(enemy, target) && !enemy.IsAIFrozen() && !enemy.IsDead && target.IsAheadOf(enemy, -enemy.GetScaledSize().x * 0.25f);
         }
 
         public static Entity? GetClimbTarget(Entity spider)

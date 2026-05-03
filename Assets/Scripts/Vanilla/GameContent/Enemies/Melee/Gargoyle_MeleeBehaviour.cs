@@ -3,16 +3,15 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Shells;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEntityBehaviourNames.gargoyle_Melee)]
+    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.gargoyle_Melee)]
     public class Gargoyle_MeleeBehaviour : EnemyMeleeBehaviour
     {
         public Gargoyle_MeleeBehaviour(string nsp, string name) : base(nsp, name)

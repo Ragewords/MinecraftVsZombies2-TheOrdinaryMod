@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.GameContent.Buffs.Entities;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
@@ -10,18 +11,21 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
-using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -29,7 +33,7 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.soulFurnace)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.soulFurnace)]
     public class SoulFurnace : DispenserFamily
     {
         public SoulFurnace(string nsp, string name) : base(nsp, name)
@@ -155,7 +159,7 @@ namespace MVZ2.GameContent.Contraptions
             if (!result.GetValue<bool>())
                 return;
 
-            var effects = new DamageEffectList(VanillaDamageEffects.SACRIFICE, VanillaDamageEffects.SELF_DAMAGE);
+            var effects = new DamageEffectList(VanillaDamageEffects.SACRIFICE);
             entity.Die(effects, soulFurnace);
             AddFuel(soulFurnace, fuel);
             SacrificeInteractions(entity, soulFurnace);

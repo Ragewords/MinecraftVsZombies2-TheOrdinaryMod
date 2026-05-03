@@ -2,13 +2,13 @@
 
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.drivenserUpgrade)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.drivenserUpgrade)]
     public class DrivenserUpgradeBuff : BuffDefinition
     {
         public DrivenserUpgradeBuff(string nsp, string name) : base(nsp, name)

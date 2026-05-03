@@ -6,13 +6,13 @@ using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.ruaWizard)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.ruaWizard)]
     public class RUAWizardBuff : BuffDefinition
     {
         public RUAWizardBuff(string nsp, string name) : base(nsp, name)

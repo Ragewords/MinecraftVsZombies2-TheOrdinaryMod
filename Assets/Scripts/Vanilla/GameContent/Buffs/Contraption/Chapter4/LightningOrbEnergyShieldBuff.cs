@@ -9,19 +9,21 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Effects;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.lightningOrbEnergyShield)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.lightningOrbEnergyShield)]
     public class LightningOrbEnergyShieldBuff : BuffDefinition
     {
         public LightningOrbEnergyShieldBuff(string nsp, string name) : base(nsp, name)
@@ -79,7 +81,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
                 result.SetFinalValue(false);
             }
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
             var buffs = entity.GetBuffs<LightningOrbEnergyShieldBuff>();

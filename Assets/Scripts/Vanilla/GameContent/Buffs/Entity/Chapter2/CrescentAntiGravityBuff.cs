@@ -5,14 +5,14 @@ using MVZ2.Vanilla.Models;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Models;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Entity.crescentAntiGravity)]
+    [AutoBuffDefinition(VanillaBuffNames.Entity.crescentAntiGravity)]
     public class CrescentAntiGravityBuff : BuffDefinition
     {
         public CrescentAntiGravityBuff(string nsp, string name) : base(nsp, name)

@@ -3,28 +3,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Armors;
-using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Armors;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.admiralZombie)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.admiralZombie)]
     public class AdmiralZombie : AIEntityBehaviour
     {
         public AdmiralZombie(string nsp, string name) : base(nsp, name)
@@ -157,7 +158,7 @@ namespace MVZ2.GameContent.Enemies
             var paratrooper = entity.SpawnWithParams(enemyID, position)?.Let(e =>
             {
                 e.ChangeModel(VanillaModelID.karakasaZombie);
-                e.EquipArmorTo(VanillaArmorSlots.shield, VanillaArmorID.umbrellaShield);
+                e.EquipArmorTo(LogicArmorSlots.shield, VanillaArmorID.umbrellaShield);
                 e.AddBuff<ParatroopBuff>();
             });
             return paratrooper;
@@ -176,8 +177,8 @@ namespace MVZ2.GameContent.Enemies
             return childrenCount;
         }
         #region 常量
-        public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
-        public const int STATE_CAST = VanillaEnemyStates.CAST;
+        public const int STATE_MELEE_ATTACK = LogicEnemyStates.MELEE_ATTACK;
+        public const int STATE_CAST = LogicEnemyStates.CAST;
         public const int CAST_COOLDOWN = 300;
         public const int CAST_TIME = 75;
         public const int CALL_DETECT_TIME = 60;

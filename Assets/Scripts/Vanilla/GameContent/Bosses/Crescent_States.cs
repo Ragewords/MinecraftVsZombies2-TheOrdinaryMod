@@ -2,12 +2,14 @@
 
 using System.Linq;
 using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.Bosses;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
@@ -102,7 +104,7 @@ namespace MVZ2.GameContent.Bosses
                 var stateTimer = stateMachine.GetSubStateTimer(entity);
                 stateTimer.ResetTime(15);
                 entity.PlaySound(VanillaSoundID.crescentPreDash);
-                SetPositionBeforeDash(entity, entity.Position + Vector3.right * 80 * (entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? -1 : 1));
+                SetPositionBeforeDash(entity, entity.Position + Vector3.right * 80 * (entity.Position.x < LevelPositions.LAWN_CENTER_X ? -1 : 1));
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -111,7 +113,7 @@ namespace MVZ2.GameContent.Bosses
                 var column = entity.RNG.Next(level.GetMaxColumnCount());
                 var lane = entity.RNG.Next(level.GetMaxLaneCount());
                 var endColumn = entity.RNG.Next(2, 7);
-                var dashTargetColumn = entity.Position.x < VanillaLevelExt.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0;
+                var dashTargetColumn = entity.Position.x < LevelPositions.LAWN_CENTER_X ? entity.Level.GetMaxColumnCount() - 1 : 0;
 
                 var concealLanes = entity.Level.GetAllLanes().Where(l => 
                 {
@@ -196,14 +198,14 @@ namespace MVZ2.GameContent.Bosses
             private void ResetPosition(Entity entity)
             {
                 var pos1 = entity.Position;
-                if (pos1.x < VanillaLevelExt.ENEMY_LEFT_BORDER)
+                if (pos1.x < LevelPositions.ENEMY_LEFT_BORDER)
                 {
-                    pos1.x = VanillaLevelExt.ENEMY_LEFT_BORDER;
+                    pos1.x = LevelPositions.ENEMY_LEFT_BORDER;
                     entity.Position = pos1;
                 }
-                else if (pos1.x > VanillaLevelExt.ENEMY_RIGHT_BORDER)
+                else if (pos1.x > LevelPositions.ENEMY_RIGHT_BORDER)
                 {
-                    pos1.x = VanillaLevelExt.ENEMY_RIGHT_BORDER;
+                    pos1.x = LevelPositions.ENEMY_RIGHT_BORDER;
                     entity.Position = pos1;
                 }
             }

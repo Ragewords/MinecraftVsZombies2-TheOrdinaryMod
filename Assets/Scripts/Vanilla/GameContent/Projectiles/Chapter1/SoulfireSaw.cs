@@ -2,20 +2,23 @@
 
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.soulfireSaw)]
-    public class SoulfireSaw : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.soulfireSaw)]
+    public class SoulfireSaw : EntityBehaviourDefinition
     {
         public SoulfireSaw(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback);
         }
         public override void Init(Entity projectile)
         {
@@ -31,28 +34,32 @@ namespace MVZ2.GameContent.Projectiles
                 timeout?.Run();
             }
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damageOutput)
+        private void PostHitEntityCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
-            base.PostHitEntity(hitResult, damageOutput);
+            var hitResult = param.hit;
+            var projectile = hitResult.Projectile;
+            if (!projectile.Definition.HasBehaviour(this))
+                return;
+
+            var damageOutput = param.damage;
             if (damageOutput == null)
                 return;
-            var entity = hitResult.Projectile;
 
             bool blocksFire = damageOutput.WillDamageBlockFire();
-            SetPierced(entity, true);
+            SetPierced(projectile, true);
 
-            var timeout = GetPiercedTimeout(entity);
-            bool noPierce = IsPierced(entity) && (timeout == null || timeout.Expired);
+            var timeout = GetPiercedTimeout(projectile);
+            bool noPierce = IsPierced(projectile) && (timeout == null || timeout.Expired);
             if (noPierce)
                 hitResult.Pierce = false;
 
             if (!blocksFire)
             {
-                entity.Level.Spawn(VanillaEffectID.soulfire, entity.Position, entity);
+                projectile.Level.Spawn(VanillaEffectID.soulfire, projectile.Position, projectile);
                 if (noPierce)
                 {
                     var damageEffects = new DamageEffectList(VanillaDamageEffects.FIRE, VanillaDamageEffects.MUTE);
-                    entity.SplashDamage(hitResult.Collider, entity.Position, 48, entity.GetFaction(), entity.GetDamage() / 4f, damageEffects);
+                    projectile.SplashDamage(hitResult.Collider, projectile.Position, 48, projectile.GetFaction(), projectile.GetDamage() / 4f, damageEffects);
                 }
             }
         }

@@ -4,7 +4,9 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Entities;
 using UnityEngine;
 
@@ -39,7 +41,7 @@ namespace MVZ2.GameContent.Detections
                 return false;
             if (friendlyChecker)
             {
-                if (!Detection.IsInFrontOf(self.entity, target))
+                if (self.entity.IsInTheFrontOf(target.Position.x))
                     return false;
                 if (target.IsNotActiveEnemy())
                     return false;

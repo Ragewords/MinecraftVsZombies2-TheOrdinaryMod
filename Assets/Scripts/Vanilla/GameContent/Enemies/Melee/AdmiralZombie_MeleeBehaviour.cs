@@ -3,12 +3,12 @@
 using System.Diagnostics.CodeAnalysis;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEntityBehaviourNames.admiralZombie_Melee)]
+    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.admiralZombie_Melee)]
     public class AdmiralZombie_MeleeBehaviour : EnemyMeleeBehaviour
     {
         public AdmiralZombie_MeleeBehaviour(string nsp, string name) : base(nsp, name)

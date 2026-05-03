@@ -6,15 +6,16 @@ using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.glowstone)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.glowstone)]
     public class Glowstone : ContraptionBehaviour
     {
         public Glowstone(string nsp, string name) : base(nsp, name)
@@ -33,7 +34,7 @@ namespace MVZ2.GameContent.Contraptions
             entity.UpdateShineRing();
 
             illuminateBuffer.Clear();
-            entity.Level.GetIlluminatiingEntities(entity, illuminateBuffer);
+            entity.Level.GetIlluminatiingEntitiesNonAlloc(entity, illuminateBuffer);
             foreach (var id in illuminateBuffer)
             {
                 var ent = entity.Level.FindEntityByID(id);
@@ -92,7 +93,7 @@ namespace MVZ2.GameContent.Contraptions
                     return;
                 detectBuffer.Clear();
                 var level = auraEffect.Level;
-                level.GetIlluminatiingEntities(source, detectBuffer);
+                level.GetIlluminatiingEntitiesNonAlloc(source, detectBuffer);
                 foreach (var id in detectBuffer)
                 {
                     var ent = level.FindEntityByID(id);

@@ -5,17 +5,18 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.lightningOrb)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.lightningOrb)]
     public class LightningOrb : ContraptionBehaviour
     {
         public LightningOrb(string nsp, string name) : base(nsp, name)

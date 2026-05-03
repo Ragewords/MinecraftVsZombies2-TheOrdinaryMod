@@ -5,19 +5,20 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.silvenser)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.silvenser)]
     public class Silvenser : DispenserFamily
     {
         public Silvenser(string nsp, string name) : base(nsp, name)
@@ -70,7 +71,7 @@ namespace MVZ2.GameContent.Contraptions
             return base.Shoot(entity)?.Let(k =>
             {
                 k.SetVariant(index);
-                k.SetHSV(GetTypeHSV(index));
+                k.SetHSVOffset(GetTypeHSV(index));
                 if (index == VARIANT_RED)
                 {
                     k.Velocity *= 2;
@@ -180,7 +181,7 @@ namespace MVZ2.GameContent.Contraptions
                                     {
                                         e.Velocity = direction * -20;
                                         e.SetVariant(index);
-                                        e.SetHSV(GetTypeHSV(index));
+                                        e.SetHSVOffset(GetTypeHSV(index));
                                         var buff = e.AddBuff<ProjectileWaitBuff>();
                                         buff.SetProperty(ProjectileWaitBuff.PROP_TIMEOUT, 90);
                                         Knife.SetNoDelay(e, false);

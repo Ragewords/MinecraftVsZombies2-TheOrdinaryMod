@@ -5,22 +5,26 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.tanookiZombie)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.tanookiZombie)]
     public class TanookiZombie : AIEntityBehaviour
     {
         public TanookiZombie(string nsp, string name) : base(nsp, name)
@@ -39,7 +43,7 @@ namespace MVZ2.GameContent.Enemies
 
             if (entity.IsDead)
                 return;
-            if (entity.State == VanillaEnemyStates.MELEE_ATTACK)
+            if (entity.State == LogicEnemyStates.MELEE_ATTACK)
                 return;
             if (entity.HasBuff<TanookiZombieStoneBuff>())
                 return;

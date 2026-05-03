@@ -5,15 +5,16 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.soulSkeletonHorse)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.soulSkeletonHorse)]
     public class SoulSkeletonHorse : SkeletonHorse
     {
         public SoulSkeletonHorse(string nsp, string name) : base(nsp, name)

@@ -6,19 +6,21 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.seijaYinyangOrb)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.seijaYinyangOrb)]
     public class SeijaYinyangOrb : EnemyBehaviour
     {
         public SeijaYinyangOrb(string nsp, string name) : base(nsp, name)
@@ -59,7 +61,7 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+            if (entity.WillRemoveOnDeath(info))
                 return;
             var param = entity.GetSpawnParams();
             param.SetProperty(EngineEntityProps.SIZE, entity.GetSize());

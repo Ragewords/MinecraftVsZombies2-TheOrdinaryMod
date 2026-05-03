@@ -6,30 +6,29 @@ using MVZ2.GameContent.Buffs.Projectiles;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
+using MVZ2.Vanilla.Callbacks;
+using PVZEngine.Callbacks;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.woodenBall)]
-    public class WoodenBall : ProjectileBehaviour, IHellfireIgniteBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.woodenBall)]
+    public class WoodenBall : EntityBehaviourDefinition, IHellfireIgniteBehaviour
     {
         public WoodenBall(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback, VanillaCallbackPriorities.LATE);
         }
         public override void Update(Entity projectile)
         {
             base.Update(projectile);
-            float angleSpeed = -projectile.Velocity.x * 2.5f;
-            projectile.RenderRotation += Vector3.forward * angleSpeed;
-
             UpdateIgnited(projectile);
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damage)
+        private void PostHitEntityCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
-            base.PostHitEntity(hitResult, damage);
+            var hitResult = param.hit;
             var projectile = hitResult.Projectile;
 
             var dmg = projectile.GetDamage();

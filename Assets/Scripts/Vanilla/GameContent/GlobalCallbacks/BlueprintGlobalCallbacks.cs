@@ -4,12 +4,10 @@ using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Contraptions;
-using MVZ2.Vanilla.Level;
 using MVZ2Logic.Blueprints;
 using MVZ2Logic.Callbacks;
 using MVZ2Logic.Level;
 using MVZ2Logic.Modding;
-using MVZ2Logic.SeedPacks;
 using PVZEngine;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
@@ -22,11 +20,11 @@ namespace MVZ2.GameContent.GlobalCallbacks
     {
         public override void Apply(Mod mod)
         {
-            mod.AddTrigger(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
+            mod.AddTrigger(LogicLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
             mod.AddTrigger(LogicCallbacks.GET_BLUEPRINT_STYLE, GetBlueprintStyleCallback);
             mod.AddTrigger(LogicCallbacks.GET_BLUEPRINT_FUNCTION, GetBlueprintFunctionCallback);
         }
-        private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
+        private void PostUseEntityBlueprintCallback(LogicLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {
             var output = param.placeOutput;
             var entity = output.entity;
@@ -66,7 +64,7 @@ namespace MVZ2.GameContent.GlobalCallbacks
         {
             var definition = param.blueprintDefinition;
             var seedID = definition.GetID();
-            if (seedID == VanillaBlueprintID.FromEntity(VanillaContraptionID.commandBlock) || param.isCommandBlock)
+            if (seedID == LogicBlueprintID.FromEntity(VanillaContraptionID.commandBlock) || param.isCommandBlock)
             {
                 result.SetValue(LogicBlueprintStyles.commandBlock);
             }

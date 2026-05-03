@@ -2,35 +2,32 @@
 
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Damages;
-using MVZ2.Vanilla;
-using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Definitions;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Grids;
+using MVZ2.Vanilla.Localization;
+using MVZ2.Vanilla.RandomChina;
 using MVZ2Logic;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Grids;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.randomChina)]
-    public class RandomChina : ContraptionBehaviour
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.randomChina)]
+    public class RandomChina : ContraptionBehaviour, IDeathEffectsBehaviour
     {
         public RandomChina(string nsp, string name) : base(nsp, name)
         {
         }
 
-        public override void PostDeath(Entity entity, DeathInfo damageInfo)
+        public void DeathEffects(Entity entity, DeathInfo damageInfo)
         {
-            base.PostDeath(entity, damageInfo);
-            if (damageInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
-                return;
-
             var grid = entity.GetGrid();
             if (grid == null)
                 return;

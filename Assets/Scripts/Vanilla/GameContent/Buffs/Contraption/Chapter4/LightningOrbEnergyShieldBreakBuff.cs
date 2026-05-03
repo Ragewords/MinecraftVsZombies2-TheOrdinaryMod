@@ -2,16 +2,15 @@
 
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Properties;
-using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.lightningOrbEnergyShieldBreak)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.lightningOrbEnergyShieldBreak)]
     public class LightningOrbEnergyShieldBreakBuff : BuffDefinition
     {
         public LightningOrbEnergyShieldBreakBuff(string nsp, string name) : base(nsp, name)

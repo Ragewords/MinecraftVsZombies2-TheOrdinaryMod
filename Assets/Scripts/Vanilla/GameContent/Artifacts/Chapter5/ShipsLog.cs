@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.SeedPacks;
-using MVZ2Logic;
+using MVZ2.Vanilla.Pickups;
 using MVZ2Logic.Artifacts;
+using MVZ2Logic.Blueprints;
+using MVZ2Logic.Callbacks;
+using MVZ2Logic.Definitions;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Callbacks;
@@ -19,12 +19,12 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Artifacts
 {
-    [ArtifactDefinition(VanillaArtifactNames.shipsLog)]
+    [AutoArtifactDefinition(VanillaArtifactNames.shipsLog)]
     public class ShipsLog : ArtifactDefinition
     {
         public ShipsLog(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(VanillaLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
+            AddTrigger(LogicLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
         }
         public override void PostAdd(Artifact artifact)
         {
@@ -36,7 +36,7 @@ namespace MVZ2.GameContent.Artifacts
             base.PostUpdate(artifact);
             artifact.SetNumber(recordList.Count);
         }
-        private void PostUseEntityBlueprintCallback(VanillaLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
+        private void PostUseEntityBlueprintCallback(LogicLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {
             var entity = param.placeOutput.entity;
             if (entity == null)

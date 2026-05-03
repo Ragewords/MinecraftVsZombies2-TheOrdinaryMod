@@ -4,12 +4,11 @@ using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using PVZEngine.Callbacks;
-using PVZEngine.Entities;
-using PVZEngine.Level;
+using PVZEngine.Definitions;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.jackDullahanHead)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.jackDullahanHead)]
     public class JackDullahanHead : DullahanHead
     {
         public JackDullahanHead(string nsp, string name) : base(nsp, name)

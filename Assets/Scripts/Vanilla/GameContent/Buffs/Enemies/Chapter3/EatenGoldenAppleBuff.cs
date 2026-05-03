@@ -2,22 +2,23 @@
 
 using MVZ2.GameContent.Buffs.Armors;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Enemy.eatenGoldenApple)]
+    [AutoBuffDefinition(VanillaBuffNames.Enemy.eatenGoldenApple)]
     public class EatenGoldenAppleBuff : BuffDefinition
     {
         public EatenGoldenAppleBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new Vector3Modifier(EngineEntityProps.SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
             AddModifier(new Vector3Modifier(EngineEntityProps.DISPLAY_SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
-            AddModifier(new Vector3Modifier(VanillaEntityProps.SHADOW_SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
+            AddModifier(new Vector3Modifier(LogicEntityProps.SHADOW_SCALE, NumberOperator.Multiply, new Vector3(1.2f, 1.2f, 1.2f)));
             AddModifier(new MaxHealthModifier(NumberOperator.AddMultiple, 0.5f));
         }
         public override void PostUpdate(Buff buff)

@@ -7,16 +7,17 @@ using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.blackhole)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.blackhole)]
     public class Blackhole : EffectBehaviour
     {
 
@@ -112,7 +113,7 @@ namespace MVZ2.GameContent.Effects
                     if (hostile)
                     {
                         var pos = target.Position;
-                        pos.x = VanillaLevelExt.RIGHT_BORDER;
+                        pos.x = LevelPositions.RIGHT_BORDER;
                         pos.y = entity.Position.y;
                         pos.z = entity.Position.z;
                         target.Position = pos;
@@ -122,7 +123,7 @@ namespace MVZ2.GameContent.Effects
                 else if (target.Type == EntityTypes.PROJECTILE)
                 {
                     var pos = target.Position;
-                    pos.x = VanillaLevelExt.LEFT_BORDER;
+                    pos.x = LevelPositions.LEFT_BORDER;
                     pos.y = entity.Position.y;
                     pos.z = entity.Position.z;
                     target.Position = pos;
@@ -130,9 +131,9 @@ namespace MVZ2.GameContent.Effects
                 }
             }
             if (whitehole_left)
-                entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.LEFT_BORDER, entity.Position.y, entity.Position.z));
+                entity.Spawn(VanillaEffectID.whitehole, new Vector3(LevelPositions.LEFT_BORDER, entity.Position.y, entity.Position.z));
             if (whitehole_right)
-                entity.Spawn(VanillaEffectID.whitehole, new Vector3(VanillaLevelExt.RIGHT_BORDER, entity.Position.y, entity.Position.z));
+                entity.Spawn(VanillaEffectID.whitehole, new Vector3(LevelPositions.RIGHT_BORDER, entity.Position.y, entity.Position.z));
         }
         private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
         private List<Entity> snakeBuffer = new List<Entity>();

@@ -3,25 +3,27 @@
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.skelebomb)]
-    public class Skelebomb : AIEntityBehaviour
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.skelebomb)]
+    public class Skelebomb : AIEntityBehaviour, IDeathEffectsBehaviour
     {
         public Skelebomb(string nsp, string name) : base(nsp, name)
         {
@@ -84,11 +86,8 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-        public override void PostDeath(Entity entity, DeathInfo info)
+        public void DeathEffects(Entity entity, DeathInfo info)
         {
-            base.PostDeath(entity, info);
-            if (info.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
-                return;
             if (!IsHoldingBomb(entity))
                 return;
             if (entity.IsPerformingSpecialMove())
@@ -172,7 +171,7 @@ namespace MVZ2.GameContent.Enemies
         private const float SURPRISE_TIME_MIN_LATE = 13.22f;
         private const float SURPRISE_TIME_MAX_LATE = 22.68f;
         private const float FUSE_LIT_TIME = 1.1f;
-        private const int STATE_SPECIAL_MOVE = VanillaEnemyStates.SPECIAL_MOVE;
+        private const int STATE_SPECIAL_MOVE = VanillaEnemyStates.SKELEBOMB_PRE_EXPLODE;
         private Vector3 BOMB_OFFSET = new Vector3(30, 54, 0);
         public static readonly NamespaceID ID = VanillaEnemyID.skelebomb;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

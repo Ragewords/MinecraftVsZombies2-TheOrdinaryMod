@@ -13,19 +13,21 @@ using MVZ2.Options;
 using MVZ2.Saves;
 using MVZ2.Scenes;
 using MVZ2.Talk;
-using MVZ2.Talks;
-using MVZ2.Vanilla;
-using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Callbacks;
-using MVZ2.Vanilla.Saves;
-using MVZ2.Vanilla.Stats;
+using MVZ2.UI.Map;
 using MVZ2Logic;
+using MVZ2Logic.Audios;
+using MVZ2Logic.Callbacks;
 using MVZ2Logic.Difficulties;
+using MVZ2Logic.Inputs;
 using MVZ2Logic.Level;
+using MVZ2Logic.Localization;
 using MVZ2Logic.Maps;
+using MVZ2Logic.Saves;
+using MVZ2Logic.Stats;
 using MVZ2Logic.Talk;
+using MVZ2Logic.Unlocks;
 using PVZEngine;
-using PVZEngine.Definitions;
+using PVZEngine.Level;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -45,9 +47,9 @@ namespace MVZ2.Map
             ui.SetDragRootVisible(false);
             ui.SetOptionsDialogActive(false);
             ui.SetRaycastBlockerActive(false);
-            if (!Main.SoundManager.IsPlaying(VanillaSoundID.travel))
+            if (!Main.SoundManager.IsPlaying(LogicSoundID.travel))
             {
-                Main.SoundManager.Play2D(VanillaSoundID.travel);
+                Main.SoundManager.Play2D(LogicSoundID.travel);
             }
             Main.Scene.SetPortalAlpha(1);
             Main.Scene.PortalFadeOut();
@@ -163,7 +165,7 @@ namespace MVZ2.Map
             UpdateModelElements(model);
             UpdateModelEndlessFlags(model);
             SetCameraBackgroundColor(mapPreset.backgroundColor);
-            model.SetMapKeyArrowVisible(!Main.SaveManager.IsUnlocked(VanillaUnlockID.enteredDream));
+            model.SetMapKeyArrowVisible(!Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapter_Dream));
         }
         #endregion
 
@@ -174,6 +176,7 @@ namespace MVZ2.Map
         {
             ui.OnButtonClick += OnButtonClickCallback;
             talkController.OnTalkAction += OnTalkActionCallback;
+            optionDialogController.OnClose += OnOptionsDialogCloseCallback;
 
             talkSystem = new MapTalkSystem(this, talkController);
         }
@@ -231,24 +234,17 @@ namespace MVZ2.Map
                 case MapUI.ButtonType.Setting:
                     ui.SetOptionsDialogActive(true);
                     ui.OptionsDialog.ResetPosition();
-                    optionsLogic = new OptionsLogicMap(this, ui.OptionsDialog);
-                    optionsLogic.InitDialog();
-                    optionsLogic.OnClose += OnOptionsDialogCloseCallback;
+                    var context = new OptionContextMap();
+                    optionDialogController.Open(context);
                     break;
             }
         }
         private void OnTalkActionCallback(string cmd, string[] parameters)
         {
-            Global.Game.RunCallbackFiltered(VanillaCallbacks.TALK_ACTION, new VanillaCallbacks.TalkActionParams(talkSystem, cmd, parameters), cmd);
+            Global.Game.RunCallbackFiltered(LogicCallbacks.TALK_ACTION, new LogicCallbacks.TalkActionParams(talkSystem, cmd, parameters), cmd);
         }
-        private void OnOptionsDialogCloseCallback()
+        private void OnOptionsDialogCloseCallback(bool needsReload)
         {
-            if (optionsLogic == null)
-                return;
-            bool needsReload = optionsLogic.NeedsReload;
-            optionsLogic.OnClose -= OnOptionsDialogCloseCallback;
-            optionsLogic.Dispose();
-            optionsLogic = null;
             ui.SetOptionsDialogActive(false);
             if (needsReload)
             {
@@ -279,7 +275,7 @@ namespace MVZ2.Map
         private async void OnMapKeyClickCallback()
         {
             ui.SetRaycastBlockerActive(true);
-            if (!Main.SaveManager.IsUnlocked(VanillaUnlockID.enteredDream) && MapID == VanillaMapID.halloween)
+            if (!Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapter_Dream) && MapID == VanillaMapID.halloween)
             {
                 await talkController.SimpleStartTalkAsync(VanillaTalkID.halloweenFinal, 0, 0);
             }
@@ -298,14 +294,7 @@ namespace MVZ2.Map
         }
         private void OnMapNightmareBoxClickCallback()
         {
-            if (Main.SaveManager.DreamIsNightmare())
-            {
-                Main.SaveManager.Relock(VanillaUnlockID.dreamIsNightmare);
-            }
-            else
-            {
-                Main.SaveManager.Unlock(VanillaUnlockID.dreamIsNightmare);
-            }
+            Main.SaveManager.SetDreamIsNightmare(!Main.SaveManager.DreamIsNightmare());
             ReloadMap();
         }
         private void OnMapPinClickCallback(NamespaceID id)
@@ -329,6 +318,10 @@ namespace MVZ2.Map
             else if (id == MapPinID.ship)
             {
                 Main.Scene.DisplayMap(VanillaMapID.ship);
+            }
+            else if (id == MapPinID.palace)
+            {
+                Main.Scene.DisplayMap(VanillaMapID.palace);
             }
             else if (id == MapPinID.kourindou)
             {
@@ -584,7 +577,7 @@ namespace MVZ2.Map
             var cameraPos = mapCamera.transform.position;
             var targetWorldPos = (Vector2)mapCamera.ScreenToWorldPoint(position);
             var fromWorldPos = (Vector2)mapCamera.ScreenToWorldPoint(mapDragStartPos);
-            cameraPos += (Vector3)((targetWorldPos - fromWorldPos) * 0.1f);
+            cameraPos += (Vector3)((targetWorldPos - fromWorldPos) * (6 * Time.deltaTime));
             mapCamera.transform.position = cameraPos;
         }
         private void OnRightMouseUp()
@@ -634,14 +627,14 @@ namespace MVZ2.Map
         {
             if (!NamespaceID.IsValid(areaID) || Global.Game.GetAreaDefinition(areaID) == null)
             {
-                var title = Main.LanguageManager._(VanillaStrings.ERROR);
+                var title = Main.LanguageManager._(LogicStrings.ERROR);
                 var desc = Main.LanguageManager._(ERROR_AREA_NOT_EXISTS, areaID);
                 Main.Scene.ShowDialogMessage(title, desc);
                 yield break;
             }
             if (!NamespaceID.IsValid(stageID) || Global.Game.GetStageDefinition(stageID) == null)
             {
-                var title = Main.LanguageManager._(VanillaStrings.ERROR);
+                var title = Main.LanguageManager._(LogicStrings.ERROR);
                 var desc = Main.LanguageManager._(ERROR_STAGE_NOT_EXISTS, stageID);
                 Main.Scene.ShowDialogMessage(title, desc);
                 yield break;
@@ -650,7 +643,7 @@ namespace MVZ2.Map
             ui.SetHintText(Main.LanguageManager._(HINT_TEXT_ENTERING_LEVEL));
             ui.SetRaycastBlockerActive(true);
             Main.MusicManager.Stop();
-            Main.SoundManager.Play2D(VanillaSoundID.spring);
+            Main.SoundManager.Play2D(LogicSoundID.spring);
             yield return new WaitForSeconds(1);
             var task = GotoLevelAsync(areaID, stageID);
             while (!task.IsCompleted)
@@ -727,7 +720,7 @@ namespace MVZ2.Map
             model.SetEndlessButtonColor(endlessColor);
             model.SetEndlessButtonText("\u221E");
 
-            model.SetMapKeyActive(Main.SaveManager.IsUnlocked(VanillaUnlockID.halloween11));
+            model.SetMapKeyActive(Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapterFinished_Halloween));
 
 
             if (unclearedMapButtonIndex >= 0)
@@ -743,11 +736,13 @@ namespace MVZ2.Map
         }
         private void UpdateModelElements(MapModel model)
         {
-            var unlocks = model.GetMapElementUnlocks();
-            for (int i = 0; i < unlocks.Length; i++)
+            var elements = model.GetMapElements();
+            foreach (var element in elements)
             {
-                var unlock = unlocks[i];
-                model.SetMapElementUnlocked(unlock, Main.SaveManager.IsUnlocked(unlock));
+                if (element.unlockGroup == null)
+                    continue;
+                var unlocked = Main.SaveManager.IsGroupUnlocked(element.unlockGroup.Get());
+                element.SetActive(unlocked);
             }
         }
         private void UpdateModelEndlessFlags(MapModel model)
@@ -784,10 +779,11 @@ namespace MVZ2.Map
             var stageID = mapMeta.endlessStage;
             if (!NamespaceID.IsValid(stageID))
                 return 0;
-            return (int)Main.SaveManager.GetStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
+            return (int)Main.SaveManager.GetStat(LogicStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
         }
         private void ReloadMap()
         {
+            Main.Scene.HidePages();
             Main.Scene.DisplayMap(MapID);
         }
 
@@ -811,7 +807,6 @@ namespace MVZ2.Map
         private bool draggingView;
         private Vector2 mapDragStartPos;
         private float cameraScaleSpeed;
-        private OptionsLogicMap? optionsLogic;
         private List<RaycastResult> raycastResultCache = new List<RaycastResult>();
         private List<TouchData> touchDatas = new List<TouchData>();
         private ITalkSystem talkSystem = null!;
@@ -830,6 +825,8 @@ namespace MVZ2.Map
         private Camera mapCamera = null!;
         [SerializeField]
         private float minCameraSize = 2;
+        [SerializeField]
+        private OptionsDialogController optionDialogController = null!;
 
         [Header("Button Colors")]
         [SerializeField]

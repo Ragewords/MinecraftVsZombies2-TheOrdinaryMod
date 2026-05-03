@@ -8,24 +8,27 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Level;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
+using MVZ2Logic.Grids;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.mineTNT)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.mineTNT)]
     public class MineTNT : ContraptionBehaviour
     {
         public MineTNT(string nsp, string name) : base(nsp, name)
@@ -65,7 +68,7 @@ namespace MVZ2.GameContent.Contraptions
             var preferredLane = entity.Level.GetAllLanes().Where(l =>
             {
                 bool hasEnemy = false;
-                foreach (var target in entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsHostile(entity) && !e.Definition.IsFlyingEnemy()))
+                foreach (var target in entity.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsHostile(entity) && (e.Position.x - entity.Position.x) * entity.GetFacingX() >= 0 && !e.Definition.IsFlyingEnemy()))
                 {
                     if (target.GetLane() == l)
                         hasEnemy = true;
@@ -95,7 +98,7 @@ namespace MVZ2.GameContent.Contraptions
                     }
                 }
             }
-            var selectedGrids = grids.GroupBy(g => g.Column).SelectMany(g => g.Shuffle(entity.RNG)).Take(1);
+            var selectedGrids = grids.GroupBy(g => g.Column).SelectMany(g => g.Randomize(entity.RNG)).Take(1);
             foreach (var grid in selectedGrids)
             {
                 FireSeed(entity, grid, VARIANT_DELAY);
@@ -123,7 +126,7 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
             var groups = grids.GroupBy(g => g.Column).OrderByDescending(g => g.Key).Take(2);
-            var selectedGrids = groups.SelectMany(g => g.Shuffle(entity.RNG)).Take(2);
+            var selectedGrids = groups.SelectMany(g => g.Randomize(entity.RNG)).Take(2);
             foreach (var grid in selectedGrids)
             {
                 FireSeed(entity, grid);
@@ -177,7 +180,7 @@ namespace MVZ2.GameContent.Contraptions
             var riseTimer = GetRiseTimer(self);
             if (riseTimer == null || !riseTimer.Expired)
                 return;
-            var damageEffects = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER, VanillaDamageEffects.EXPLOSION);
+            var damageEffects = new DamageEffectList(VanillaDamageEffects.MUTE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_EFFECTS, VanillaDamageEffects.EXPLOSION);
             self.Explode(self.Position, self.GetRange(), self.GetFaction(), self.GetDamage(), damageEffects);
             self.Level.Spawn(VanillaEffectID.mineDebris, self.Position, self);
             self.Remove();

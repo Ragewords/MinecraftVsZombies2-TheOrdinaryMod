@@ -4,19 +4,19 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Modifiers;
 using MVZ2.Vanilla.Properties;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
-namespace MVZ2.GameContent.Buffs.Enemies
+namespace MVZ2.GameContent.Buffs.Bosses
 {
-    [BuffDefinition(VanillaBuffNames.Boss.seijaLantern)]
+    [AutoBuffDefinition(VanillaBuffNames.Boss.seijaLantern)]
     public class SeijaLanternBuff : BuffDefinition
     {
         public SeijaLanternBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, IntegerOperator.Set, EntityCollisionHelper.DETECTION_IGNORE, VanillaModifierPriorities.FORCE));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, IntegerOperator.Set, EntityCollisionHelper.DETECTION_NO_COLLISION, VanillaModifierPriorities.FORCE));
             AddModifier(ColorModifier.Multiply(EngineEntityProps.TINT, PROP_TINT_MULTIPLIER));
             AddModifier(new BooleanModifier(VanillaEntityProps.INVISIBLE, true));
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));

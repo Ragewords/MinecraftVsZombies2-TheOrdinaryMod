@@ -8,9 +8,11 @@ using MukioI18n;
 using MVZ2.Managers;
 using MVZ2.TalkData;
 using MVZ2.UI;
-using MVZ2.Vanilla;
-using MVZ2.Vanilla.Audios;
+using MVZ2.UI.Talk;
 using MVZ2Logic;
+using MVZ2Logic.Audios;
+using MVZ2Logic.Localization;
+using MVZ2Logic.Resources;
 using PVZEngine;
 using UnityEngine;
 
@@ -34,7 +36,10 @@ namespace MVZ2.Talk
         {
             var group = Main.ResourceManager.GetTalkGroup(groupId);
             if (group == null)
-                throw new ArgumentException($"Could not find talk group with id {groupId}.");
+            {
+                Log.LogWarning($"Could not find talk group with id {groupId}.");
+                return;
+            }
             if (IsTalking)
                 return;
             tcs = new TaskCompletionSource<object?>();
@@ -89,7 +94,7 @@ namespace MVZ2.Talk
                 return;
             if (group.archive != null)
             {
-                var dialogName = Main.LanguageManager._p(VanillaStrings.CONTEXT_ARCHIVE, group.archive.name);
+                var dialogName = Main.LanguageManager._p(LogicStrings.CONTEXT_ARCHIVE, group.archive.name);
                 var popup = Main.LanguageManager._(DIALOG_SKIPPED, dialogName);
                 Main.Scene.ShowPopup(popup);
             }
@@ -550,14 +555,14 @@ namespace MVZ2.Talk
                                 var sprite = Main.GetFinalSprite(ParseArgumentSpriteReference(args[1]));
                                 ui.ShowTalkItem(sprite);
                                 showingTalkItem = true;
-                                Main.SoundManager.Play2D(VanillaSoundID.dialogItemShow);
+                                Main.SoundManager.Play2D(LogicSoundID.dialogItemShow);
                                 break;
                             case "hide":
                                 if (showingTalkItem)
                                 {
                                     showingTalkItem = false;
                                     ui.HideTalkItem();
-                                    Main.SoundManager.Play2D(VanillaSoundID.dialogItemHide);
+                                    Main.SoundManager.Play2D(LogicSoundID.dialogItemHide);
                                 }
                                 break;
                         }
@@ -726,7 +731,7 @@ namespace MVZ2.Talk
             string bubbleText;
             if (NamespaceID.IsValid(groupID))
             {
-                var context = VanillaStrings.GetTalkTextContext(groupID);
+                var context = LogicStrings.GetTalkTextContext(groupID);
                 bubbleText = Main.LanguageManager._p(context, textKey);
             }
             else
@@ -758,7 +763,7 @@ namespace MVZ2.Talk
             }
             if (showSpeakerName)
             {
-                bubbleText = Main.LanguageManager._p(VanillaStrings.CONTEXT_TALK, FORGROUND_TALK_TEMPLATE, speakerName, bubbleText);
+                bubbleText = Main.LanguageManager._p(LogicStrings.CONTEXT_TALK, FORGROUND_TALK_TEMPLATE, speakerName, bubbleText);
             }
             ui.SetSpeechBubbleText(bubbleText);
             ui.SetSpeechBubbleDirection(bubbleDirection);

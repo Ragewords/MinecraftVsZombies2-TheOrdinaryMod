@@ -4,24 +4,24 @@ using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Grids;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using MVZ2Logic.Grids;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.skywardBeacon)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.skywardBeacon)]
     public class SkywardBeacon : AIEntityBehaviour
     {
         public SkywardBeacon(string nsp, string name) : base(nsp, name)
@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Contraptions
         public override void PostDeath(Entity entity, DeathInfo deathInfo)
         {
             base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || deathInfo.HasEffect(VanillaDamageEffects.DIG))
+            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS) || deathInfo.HasEffect(VanillaDamageEffects.PICKAXE))
                 return;
             var grid = entity.GetGrid();
             if (grid == null)
@@ -77,11 +77,9 @@ namespace MVZ2.GameContent.Contraptions
                 var position = strikeGrid.GetEntityPosition();
                 if (!target.ExistsAndAlive())
                 {
-                    target = entity.Spawn(VanillaEffectID.skywardBeaconTarget, position)?.Let(e =>
-                    {
-                        e.SetParent(entity);
-                        e.SetModelProperty("Dest", entity.Position);
-                    });
+                    var param = entity.GetSpawnParams();
+                    param.EntityParent = entity;
+                    target = entity.Spawn(VanillaEffectID.skywardBeaconTarget, position, param);
                     SetTargetEntity(entity, new EntityID(target));
                 }
                 else

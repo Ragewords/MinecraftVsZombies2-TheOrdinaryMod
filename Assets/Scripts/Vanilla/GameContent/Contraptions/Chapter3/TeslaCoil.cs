@@ -13,18 +13,21 @@ using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Shells;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Grids;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Contraptions
 {
-    [EntityBehaviourDefinition(VanillaContraptionNames.teslaCoil)]
+    [AutoEntityBehaviourDefinition(VanillaContraptionNames.teslaCoil)]
     public class TeslaCoil : ContraptionBehaviour
     {
         public TeslaCoil(string nsp, string name) : base(nsp, name)
@@ -122,7 +125,8 @@ namespace MVZ2.GameContent.Contraptions
             var level = source.Level;
             detectBuffer.Clear();
             gridDetectBuffer.Clear();
-            level.OverlapSphereNonAlloc(targetPosition, shockRadius, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
+            var overlapParam = OverlapParams.Hostile(faction, EntityCollisionHelper.MASK_VULNERABLE);
+            level.OverlapSphereNonAlloc(targetPosition, shockRadius, overlapParam, detectBuffer);
             if (targetPosition.y <= level.GetGroundY(targetPosition.x, targetPosition.z) && level.IsConductiveAt(targetPosition.x, targetPosition.z))
             {
                 level.GetConnectedConductiveGrids(targetPosition, 1, 1, gridDetectBuffer);
@@ -130,7 +134,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     var column = grid.Column;
                     var lane = grid.Lane;
-                    Detection.OverlapGridGroundNonAlloc(level, column, lane, faction, EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
+                    Detection.OverlapGridGroundNonAlloc(level, column, lane, overlapParam, detectBuffer);
                     var x = level.GetColumnCenterX(column);
                     var z = level.GetLaneCenterZ(lane);
                     var y = level.GetGroundY(x, z);
@@ -176,10 +180,7 @@ namespace MVZ2.GameContent.Contraptions
             electrifyDetector.DetectEntities(coil, electrifyBuffer);
             foreach (Entity target in electrifyBuffer)
             {
-                var behaviour = target.Definition?.GetBehaviour<ITeslaCoilElectrifyBehaviour>();
-                if (behaviour == null)
-                    return;
-                behaviour.Electrify(target, coil);
+                target.TeslaCoilElectrify(coil);
             }
         }
         public static FrameTimer? GetAttackTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_ATTACK_TIMER);

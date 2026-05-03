@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.smokerFire)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.smokerFire)]
     public class SmokerFire : EntityBehaviourDefinition
     {
 

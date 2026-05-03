@@ -3,25 +3,33 @@
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
-using PVZEngine.Damages;
+using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.iceBall)]
-    public class IceBall : ProjectileBehaviour, IHellfireIgniteBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.iceBall)]
+    public class IceBall : EntityBehaviourDefinition, IHellfireIgniteBehaviour
     {
         public IceBall(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback);
         }
-        protected override void PostHitEntity(ProjectileHitOutput hitResult, DamageOutput? damageOutput)
+        private void PostHitEntityCallback(VanillaLevelCallbacks.PostProjectileHitParams param, CallbackResult result)
         {
-            base.PostHitEntity(hitResult, damageOutput);
+            var hitResult = param.hit;
+            var projectile = hitResult.Projectile;
+            if (!projectile.Definition.HasBehaviour(this))
+                return;
+            var damageOutput = param.damage;
             if (damageOutput == null)
                 return;
             var entity = hitResult.Projectile;
@@ -40,13 +48,13 @@ namespace MVZ2.GameContent.Projectiles
                     shootParam.velocity = velocity;
                     shootParam.faction = entity.GetFaction();
                     shootParam.damage = entity.GetDamage() / 2;
-                    var projectile = other.ShootProjectile(shootParam);
-                    if (projectile != null)
+                    var projectile_split = other.ShootProjectile(shootParam);
+                    if (projectile_split != null)
                     {
-                        projectile.SetScale(Vector3.one * 0.5f);
-                        projectile.SetDisplayScale(Vector3.one * 0.5f);
-                        projectile.SetShadowScale(Vector3.one * 0.5f);
-                        SetSplited(projectile, true);
+                        projectile_split.SetScale(Vector3.one * 0.5f);
+                        projectile_split.SetDisplayScale(Vector3.one * 0.5f);
+                        projectile_split.SetShadowScale(Vector3.one * 0.5f);
+                        SetSplited(projectile_split, true);
                     }
                 }
             }

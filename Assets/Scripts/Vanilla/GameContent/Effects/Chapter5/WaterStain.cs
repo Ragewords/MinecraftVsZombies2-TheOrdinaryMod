@@ -4,26 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Effects;
-using MVZ2.Vanilla;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
-using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Modifiers;
-using Tools;
 using UnityEngine;
+using MVZ2Logic.Entities;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaEffectNames.waterStain)]
+    [AutoEntityBehaviourDefinition(VanillaEffectNames.waterStain)]
     public class WaterStain : EffectBehaviour
     {
         public WaterStain(string nsp, string name) : base(nsp, name)
@@ -131,7 +132,8 @@ namespace MVZ2.GameContent.Effects
 
             var mask = EntityCollisionHelper.MASK_EFFECT;
             resultsBuffer.Clear();
-            level.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, mask, mask, resultsBuffer);
+            var overlapParam = OverlapParams.AnyFaction(mask);
+            level.OverlapBoxNonAlloc(bounds.center, bounds.size, overlapParam, resultsBuffer);
             return resultsBuffer.FirstOrDefault(c => c.Entity.IsEntityOf(VanillaEffectID.waterStain) && !IsDisappearing(c.Entity))?.Entity;
         }
         public static void Disappear(Entity stain)

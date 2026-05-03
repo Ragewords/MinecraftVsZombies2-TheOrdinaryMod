@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Entities;
+using MVZ2.Vanilla.Effects;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.soulsand)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.soulsand)]
     public class Soulsand : EnemyBehaviour
     {
         public Soulsand(string nsp, string name) : base(nsp, name)

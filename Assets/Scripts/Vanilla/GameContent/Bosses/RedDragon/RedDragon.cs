@@ -8,17 +8,19 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaBossNames.redDragon)]
+    [AutoEntityBehaviourDefinition(VanillaBossNames.redDragon)]
     public partial class RedDragon : BossBehaviour
     {
         public RedDragon(string nsp, string name) : base(nsp, name)

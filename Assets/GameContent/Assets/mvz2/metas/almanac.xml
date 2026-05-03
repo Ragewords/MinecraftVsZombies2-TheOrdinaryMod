@@ -49,6 +49,10 @@
             <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[6]" />
             <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
         </tag>
+        <tag id="placement_two_gravelpults" name="升级器械：一对沙砾投手" description="必须放置在一对相邻的沙砾投手上" priority="0">
+            <icon sprite="mvz2:ui/almanac/placement_tags_upgrade_origin[7]" />
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[0]" color="#ff00ff" />
+        </tag>
 
         <tag id="grid_layer_main" name="主要位" description="占据格子的主要位" priority="1000">
             <icon sprite="mvz2:ui/almanac/grid_layer_tags[0]" />
@@ -203,9 +207,11 @@
             <value value="mvz2:diamond" name="钻石" description="阻挡锐利物体" sprite="mvz2:ui/almanac/shell_tags[8]" backgroundColor="#417368" />
             <value value="mvz2:sand" name="沙子" description="阻挡电流传递" sprite="mvz2:ui/almanac/shell_tags[9]" backgroundColor="#b4b590" />
             <value value="mvz2:netherrack" name="下界岩" description="免疫火焰伤害，阻挡锐利物体、火焰溅射和电流传递，但受到20x冲击伤害" sprite="mvz2:ui/almanac/shell_tags[10]" backgroundColor="#36131d" />
-            <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#5aaa43" />
-            <value value="mvz2:cloud" name="云" description="受到0.5x冲击或火焰伤害" sprite="mvz2:ui/almanac/shell_tags[12]" backgroundColor="#b67ba6" />
-            <value value="mvz2:lightning" name="闪电" description="吸收闪电伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#b38f47" />
+            <value value="mvz2:cloud" name="云" description="受到0.5x冲击或火焰伤害" sprite="mvz2:ui/almanac/shell_tags[11]" backgroundColor="#b67ba6" />
+            <value value="mvz2:lightning" name="闪电" description="吸收闪电伤害" sprite="mvz2:ui/almanac/shell_tags[12]" backgroundColor="#b38f47" />
+            <value value="mvz2:shadow" name="暗影" description="受到1.5x火焰、闪电和光明伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#3f3f3f" />
+            <value value="mvz2:normal" name="普通" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[14]" backgroundColor="#6b6b6b" />
+            <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[15]" backgroundColor="#5aaa43" />
         </enum>
     </tags>
     <globalVariables>
@@ -524,7 +530,7 @@
                 <p>睡眠时间：<![CDATA[<color=red>50秒</color>]]></p>
             </properties>
             <flavor>
-                <p>美梦丝是个睡货，它每天睁开眼睛做的第一件事就是睡觉。瞧瞧它睡的，把自己的冷却时间也给睡长了。</p>
+                <p>美梦丝是个睡货，它每天睁开眼睛做的第一件事就是睡觉。瞧瞧它睡的，把自己的充能时间也给睡长了。</p>
             </flavor>
         </entry>
 
@@ -792,7 +798,7 @@
         </entry>
         <entry id="desire_pot">
             <header>
-                <p><![CDATA[欲望壶会从怪物身上吸取其携带的<ref=[misc]mvz2:starshard.shinrei>星之碎片</ref>并复制，每个欲望壶最多复制三次。]]></p>
+                <p><![CDATA[欲望壶会从怪物身上复制其携带的<ref=[misc]mvz2:starshard.shinrei>星之碎片</ref>，每个欲望壶最多复制三个。]]></p>
             </header>
             <properties>
                 <p>特殊：<![CDATA[<color=red>如果场上同时有多个欲望壶，则只有最先放下的欲望壶会吸取</color>]]></p>
@@ -937,14 +943,172 @@
         </entry>
 
         <!-- Chapter 6 -->
-        <entry />
-        <entry />
-        <entry />
-        <entry />
-        <entry />
-        <entry />
-        <entry />
-        <entry />
+        <entry id="mvz2:transfenser">
+            <variables>
+                <variable name="laser_dps">global("mvz2:entity_damage") * 0.25</variable>
+                <variable name="fire_interval">1.5</variable>
+                <variable name="glowing_duration">5</variable>
+                <variable name="glowing_damage_addition">50</variable>
+                <variable name="evocation_arrow_count">60</variable>
+                <variable name="evocation_laser_damage">global("mvz2:entity_damage") * 10</variable>
+                <variable name="evocation_glowing_duration">30</variable>
+            </variables>
+            <header>
+                <p>变形发射器发射的光灵箭能让敌人发光，被触发后还会切换为激光模式，用激光持续对前方的所有敌人造成伤害并使其发光。</p>
+            </header>
+            <properties>
+                <p>特点：<![CDATA[<color=red>发光的敌人额外受到<var local="glowing_damage_addition" />%伤害</color>]]></p>
+                <p>射击模式：</p>
+                <p>  伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
+                <p>  发射间隔：<![CDATA[<color=red><var local="fire_interval" />秒</color>]]></p>
+                <p>  发光时长：<![CDATA[<color=red><var local="glowing_duration" />秒</color>]]></p>
+                <p>  技能：<![CDATA[<color=red>射出<var local="evocation_arrow_count" />支光灵箭</color>]]></p>
+                <p>激光模式：</p>
+                <p>  伤害：<![CDATA[<color=red><var local="laser_dps" />/秒</color>]]></p>
+                <p>  发光时长：<![CDATA[<color=red>瞬间</color>]]></p>
+                <p>  技能：<![CDATA[<color=red>对前方的所有敌人造成<var local="evocation_laser_damage" />点伤害并使其发光<var local="evocation_glowing_duration" />秒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>相比其他器械，变形发射器算是比较富裕的了。其实只要去它家看看就明白，这些钱都是它自己日积月累省出来的。它家连一盏灯都没有——毕竟它自己就是一个超大瓦的灯泡。</p>
+                <p>不过它也有它自己的烦恼，那就是上街的时候太引人注目，经常成为别人的电灯泡。另外，它喜欢用激光逗自己家的小猫。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:gravelpult">
+            <variables>
+                <variable name="gravel_damage">global("mvz2:entity_damage") * 2</variable>
+            </variables>
+            <header>
+                <p>沙砾投手向敌人投出燧石，偶尔投出能够将怪物定身的沙砾。</p>
+            </header>
+            <properties>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" />（燧石），<var local="gravel_damage" />（沙砾）</color>]]></p>
+                <p>投掷间隔：<![CDATA[<color=red>3秒</color>]]></p>
+                <p>定身时长：<![CDATA[<color=red>5秒</color>]]></p>
+                <p>沙砾概率：<![CDATA[<color=red>25%</color>]]></p>
+                <p>技能：<![CDATA[<color=red>向每个敌人投出一块沙砾</color>]]></p>
+            </properties>
+            <flavor>
+                <p>不要问它为什么他投出的燧石比沙砾更多，因为</p>
+                <p/>
+                <p/>
+                <p/>
+                <p/>
+                <p>它自己</p>
+                <p/>
+                <p/>
+                <p/>
+                <p/>
+                <p>乐意。还有你</p>
+                <p/>
+                <p/>
+                <p/>
+                <p/>
+                <p>能不能别砸我了！</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:cursed_candle">
+            <header>
+                <p>徒手摧毁诅咒蜡烛的怪物会被诅咒，不停受到火焰伤害，并在死亡后自爆。</p>
+            </header>
+            <properties>
+                <p>火焰伤害：<![CDATA[<color=red>20/秒</color>]]></p>
+                <p>爆炸伤害：<![CDATA[<color=red>900</color>]]></p>
+                <p>爆炸半径：<![CDATA[<color=red>1.5格</color>]]></p>
+                <p>特点：<![CDATA[<color=red>不会触发死亡效果</color>]]></p>
+                <p>技能：<![CDATA[<color=red>插在蛋糕上，怪物自爆时半径和伤害翻倍，并且被炸死的其他怪物也不会触发死亡效果</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<b>项目编号：</b>]]>MCP-310</p>
+                <p><![CDATA[<b>项目等级：</b>]]>Safe</p>
+                <p><![CDATA[<b>特殊收容措施：</b>]]>项目MCP-310应放置在一个由阻燃材料制成的容器内，并存放于一间未经授权不得进入的房间中，附近的研究室不得有任何可燃物。</p>
+                <p><![CDATA[<b>描述：</b>]]>MCP-310是一支白色偏绿的蜡烛，由未知生物的脂肪制成。无论何时，其总是处于点燃状态，蜡烛火焰呈绿色，且不可通过大部分方式熄灭。</p>
+                <p>若有生物试图对蜡烛本体造成物理损害，则蜡烛会在极短的时间内燃尽，同时使用绿色火焰点燃该生物。若生物在此状态下死亡，则该生物的尸体会发生爆炸，爆炸当量相当于约0.5立方米的TNT炸药。蜡烛在燃尽的30秒之后会快速再生，并恢复成最初的结构。</p>
+                <p>若MCP-310被插入到一块蛋糕之上，该蛋糕会立即被转换为绿色。若此时有生物对蜡烛或蛋糕产生物理损害，则蜡烛和蛋糕会同时燃尽并点燃该生物，之后若该生物死亡，则[数据删除]（在■■■■-■■-■■这一天造成了事件[已编辑]）。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:stone_eye">
+            <header>
+                <p>石眼会降低前方敌人的攻击速度和移动速度。</p>
+            </header>
+            <properties>
+                <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>范围：<![CDATA[<color=red>前方1格</color>]]></p>
+                <p>特点：<![CDATA[<color=red>范围内的敌人攻击速度和移动速度x50%</color>]]></p>
+                <p>技能：<![CDATA[<color=red>石化前方的敌人10秒，期间它们可以被铁镐挖掘</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<b>项目编号：</b>]]>MCP-531</p>
+                <p><![CDATA[<b>项目等级：</b>]]>Safe</p>
+                <p><![CDATA[<b>特殊收容措施：</b>]]>MCP-531应被保管于一个光亮度可控且无窗户的密闭收容间内。除测试目的外，任何人员不得进入其正面视线范围。任何人员暴露于 MCP-531 正面视线的累计时间不得超过 60 秒。</p>
+                <p><![CDATA[<b>描述：</b>]]>MCP-531是一块边长约1m的暗绿色正方体石块，其材质与玄武岩相近，表面无明显风化或磨损痕迹。石块正面刻有一枚位于菱形轮廓中央的眼睛图案，两个侧面均刻有未知体系的象形文字，初步解读表明其内容为对MCP-531异常性质的警示性说明。</p>
+                <p>当任何有机生命体或衍生有机组织位于MCP-531正面方向直线距离2米以内时，该类对象将逐渐发生物理性质的转变：质地逐渐硬化，密度相应增加，最终在持续暴露3至5分钟后完全转化为与MCP-531材质相同的岩石。此过程伴随对象生物活性的丧失，且转化后的雕塑在形态上会保留转化前一瞬间的视觉特征。</p>
+                <p>该效应在对象完全矿化前为可逆：一旦移出MCP-531的视线作用范围，石化进程将停止并缓慢逆转。恢复原状所需时间与暴露时长呈正相关，观测案例中从数分钟至最长17天不等。多次实验表明，无机物及通过光学滤镜观察MCP-531均不会触发该异常效应。</p>
+                <p><![CDATA[<b>附录 MCP-531-A：</b>]]> 实验记录显示，被部分转化的对象在恢复期间报告有持续的“钝感”及局部麻木现象，但未发现永久性生理损伤。进一步跨文化考古比对工作正在进行，以确认MCP-531与多个神话中“凝视石化”传说的潜在关联。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:cooling_cell">
+            <header>
+                <p>冷却单元可以放在器械上来缩短其蓝图的充能时间。</p>
+            </header>
+            <properties>
+                <p>缩短时间：<![CDATA[<color=red>30秒</color>]]></p>
+                <p>技能：<![CDATA[<color=red>无</color>]]></p>
+            </properties>
+            <flavor>
+                <p>核电站中常用的冷却单元。虽然摸起来不算很冷，却也十分有效。</p>
+                <p>核能真是太酷了！</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:amethyst_pylon">
+            <header>
+                <p><![CDATA[紫晶塔向前发射穿透所有敌人的激光。周围的<tag id="mvz2:light_source"/>光源越多，紫晶塔的伤害越高。]]></p>
+            </header>
+            <properties>
+                <p>伤害：<![CDATA[<color=red>10（无光源），20（1光源），40（2光源），60（3光源）</color>]]></p>
+                <p>攻击间隔：<![CDATA[<color=red>3秒</color>]]></p>
+                <p>技能：<![CDATA[<color=red>发射一道贯穿三行的超能光束，之后紫晶塔被禁用30秒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>有个人曾经想搞一个望远镜，但是他搞错了紫水晶和铜锭的数量——现在它成为了你必须建造更多的玩意。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:nuke">
+            <header>
+                <p>核弹在触发后会摧毁大范围内的敌人，让它们尸骨无存，但会暂时破坏所在的地块。</p>
+            </header>
+            <properties>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
+                <p>半径：<![CDATA[<color=red>3.5格</color>]]></p>
+                <p>特点：<![CDATA[<color=red>不会触发死亡效果；引爆后破坏所在的地块，无法放置器械，持续3分钟</color>]]></p>
+                <p>技能：<![CDATA[<color=red>消灭所有敌怪</color>]]></p>
+            </properties>
+            <flavor>
+                <p>“我诞生于人类与恶魔的交易之中。相信我，你绝对不会想要见到我的。”</p>
+                <p>“最好让我一直沉睡下去，一直一直沉睡下去，这对我和你们都有好处。”</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:nether_reactor_core">
+            <variables>
+                <variable name="min_produce_time">property("mvz2:entity_behaviour/nether_reactor_core/min_produce_time")</variable>
+                <variable name="max_produce_time">property("mvz2:entity_behaviour/nether_reactor_core/max_produce_time")</variable>
+            </variables>
+            <header>
+                <p>如果下界反应核被放置在一个由器械组成的特殊结构的中心，则会持续产出<![CDATA[<ref=[misc]mvz2:starshard.uranium_235>星之碎片</ref>]]>。</p>
+            </header>
+            <properties>
+                <p>结构：<![CDATA[<color=red><color=black>X</color>为下界反应核，A和<color=blue>B</color>为两种不同的器械</color>]]></p>
+                <p><![CDATA[<color=red>A<color=blue>B</color>A</color>]]></p>
+                <p><![CDATA[<color=blue>B<color=black>X</color>B</color>]]></p>
+                <p><![CDATA[<color=red>A<color=blue>B</color>A</color>]]></p>
+                <p>生产时间：<![CDATA[<color=red><var local="min_produce_time"/>-<var local="max_produce_time"/>秒（根据器械A和B的花费和充能时间而定）</color>]]></p>
+                <p>技能：<![CDATA[<color=red>召唤4个友方的凋灵骷髅，分别是<ref=[enemies]mvz2:berserker>狂战士</ref>、猎手、法师和<ref=[enemies]mvz2:mesmerizer>催眠者</ref></color>]]></p>
+            </properties>
+            <flavor>
+                <p>传说在先古时期，有人用一种蓝色的东西作为核心，创造了一座尖塔。</p>
+                <p>尖塔中存在着各式各样的宝物，塔内也有着四个生物。</p>
+                <p>有一天，这座尖塔就被杀戮了，它在之后再也没有出现过。</p>
+            </flavor>
+        </entry>
 
         <!-- Chapter 7 -->
         <entry />
@@ -1146,7 +1310,28 @@
                 <p>……哈哈，怎么可能会有这种荒唐的事情呢？</p>
             </flavor>
         </entry>
-        <entry />
+        <entry id="mvz2:brick_cannon">
+            <tags>
+                <tag id="mvz2:placement_two_gravelpults" />
+            </tags>
+            <header>
+                <p>点击石砖加农炮发射毁灭性的导弹。</p>
+            </header>
+            <properties>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
+                <p>装载时间：<![CDATA[<color=red>30秒</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>占两格地块；被炸死的怪物不会触发死亡效果</color>]]></p>
+                <p>技能：<![CDATA[<color=red>立即装载导弹，且下一发导弹会炸出36个火焰弹，每个造成135爆炸伤害</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<b>项目编号：</b>]]>MCP-044</p>
+                <p><![CDATA[<b>项目等级：</b>]]>Safe</p>
+                <p><![CDATA[<b>特殊收容措施：</b>]]>MCP-044应被保管于一个专用的隔音收容室内，须永久放置一枚经过安全处理的同口径训练弹（哑弹）于炮管内，以抑制其再生功能。未经至少一名3级研究员的明确许可，禁止任何人员进入其收容间或向其发出语音指令。所有测试须在50公里范围内的指定远程靶场进行。</p>
+                <p><![CDATA[<b>描述：</b>]]>MCP-044是一门全长约2.3米的石质前装滑膛加农炮，炮身由整块安山岩雕琢而成，炮架为针叶木材质。考古分析表明其制造年代约为三千年前。炮管表面刻有大量铭文与象形图案，暗示古人可能将其视为某种仪式性或防御性圣物。</p>
+                <p>MCP-044能理解并响应以任何已知人类语言发出的口头攻击指令。接到指令后，它将自动调整射角，并从炮膛内生成并发射一枚高爆导弹，有效射程精确为50公里。超出此距离的指令会被其“拒绝”，表现为炮管无反应。</p>
+                <p>炮膛内的导弹具备再生能力。每次发射后约30秒，一枚新的导弹会于膛内原位形成。此再生过程可被人工干预：若在发射后立即向炮管内填入与导弹体积相近的物体，再生将中止，且MCP-044会将该物体作为下一次发射的弹体使用。任何未用于攻击指令的再生导弹均无法被安全取出。</p>
+            </flavor>
+        </entry>
 
         <!-- Extras -->
         <entry id="mvz2:poisonser">
@@ -1295,7 +1480,18 @@
                 <p>戴着铁盔的僵尸好像是生前是个战士一样，其实不是，他只是比较有智商而已。</p>
             </flavor>
         </entry>
-        <entry />
+        <entry id="mvz2:diamond_helmetted_zombie">
+            <header>
+                <p>钻石盔僵尸的钻石盔给他提供了最高的防护。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+            </properties>
+            <flavor>
+                <p>不好意思，因为他之前在挖钻石，所以迟到了！</p>
+            </flavor>
+        </entry>
         <entry />
         <entry id="mvz2:skeleton">
             <header>
@@ -1543,7 +1739,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" />（头盔）+<var id="shield_hp" />（反射壁）</color>]]></p>
                 <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
-                <p>特点：<![CDATA[<color=red>子弹击中反射壁时，产生伤害和属性相同的子弹进行回击</color>]]></p>
+                <p>特点：<![CDATA[<color=red>子弹击中反射壁后，产生伤害相同的子弹进行回击</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>音符不会产生反射弹幕</color>]]></p>
             </properties>
             <flavor>
@@ -1670,7 +1866,7 @@
         </entry>
         <entry id="mvz2:cannonball_zombie">
             <header>
-                <p>炮弹僵尸由炮手僵尸发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。</p>
+                <p>炮弹僵尸由<![CDATA[<ref=[enemies]mvz2:cannoneer_zombie>炮手僵尸</ref>]]>发射而来。它们飘浮在空中，并且会像普通的僵尸一样攻击器械。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />+<var id="armor_hp" /></color>]]></p>
@@ -1706,6 +1902,96 @@
             </properties>
             <flavor>
                 <p>他以前当水手的时候喜欢吃菠菜，不过自从他当了船长之后，他就更喜欢吃橘子了。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:shadow_cell">
+            <variables>
+                <variable name="small_hp">global("mvz2:entity_health") * 0.5</variable>
+            </variables>
+            <header>
+                <p>暗影细胞漂浮在低空中，在被击杀后会向上下两行分裂出两个小型的暗影细胞。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />（本体），<var local="small_hp" />（小型）</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>在地面上每秒受到100点伤害</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<align="center"><b>《暗影细胞的研究报告》</b></align>]]></p>
+                <p>    暗影细胞是暗影生物的组成单位。暗影生物即一种寄生于尸体之上，操控尸体进行活动的生物<![CDATA[<sup>[1]</sup>]]>。而这些尸体和暗影生物的组合体被称为亡灵生物。</p>
+                <p>    暗影生物通过蚕食尸体的肉，并袭击人类来获取养分，通过养分来加深对宿主的寄生，并产生类似生物一般的结构以及器官，甚至有些暗影生物还通过此方法产生了智慧。</p>
+                <p>    暗影生物可以通过剧毒来治疗自己，但会被具有治疗效果的化学成分所伤。同时，暗影生物惧怕阳光，它们在阳光下会开始自燃<![CDATA[<sup>[2]</sup>]]>。</p>
+                <p>    在下界，存在着暗影生物的亚种，这种亚种具有抗火能力，但是也牺牲了自己从尸体处获取养分的能力，只能通过摄取真菌来获取成长所需的养分。</p>
+                <p/>
+                <p>1. 有报告称，出现了一种不依赖于寄生便可存活的巨型暗影细胞，目前这种生物的存在仍需进一步确认。</p>
+                <p>2. 如今世界各地的阳光底下却存在亡灵生物不燃烧的现象，此事相当异常，需要进一步调查。</p>
+            </flavor>
+        </entry>
+        <entry />
+        <entry id="mvz2:skeleton_statue">
+            <header>
+                <p>骷髅雕像在死亡后会变为低矮的残骸，若残骸没有及时被摧毁，则会复活。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />（本体），<var id="mvz2:entity_health" />（残骸）</color>]]></p>
+                <p>移速：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>复活时长：<![CDATA[<color=red>5秒，每次死亡+2秒</color>]]></p>
+                <p>特殊：<![CDATA[<color=red>攻击速度越快复活越快</color>]]></p>
+                <p>弱点：<![CDATA[<color=red>被注视时停止移动</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<b>项目编号：</b>]]>MCP-173</p>
+                <p><![CDATA[<b>项目等级：</b>]]>Keter</p>
+                <p><![CDATA[<b>特殊收容措施：</b>]]>MCP-173须收容于一个内衬光滑加固玻璃的球形强化舱内。舱体被无影灯持续照亮，并由六组独立供电的摄像头进行全方位、不间断监控。一旦任何视频信号中断超过0.5秒，将自动触发应急协议。球形舱外依次包裹三层可密封的合金隔离层，夹层中填充重型细砂，以极大迟滞其可能的挖掘行为。</p>
+                <p><![CDATA[<b>描述：</b>]]>MCP-173为一具高度约1.7米的石英质骷髅状雕塑，表面呈灰白色并带有若干细微裂痕。其面部雕刻被普遍描述为“令人不安”，多名人员报告在非接触期梦境中反复出现类似面容。颚部区域可见已干涸的暗红色颜料痕迹，成分分析显示为氧化铁混合物。</p>
+                <p>MCP-173在受到持续直接目视观测时保持完全静止。一旦失去视觉监视，它将立即以约20 km/h的速度移动至最近的活体目标，并尝试实施攻击。如路径受阻，MCP-173能够通过物理挖掘方式破坏障碍物。</p>
+                <p>若MCP-173受到物理破坏，其残骸将在约10秒内迅速重组，恢复至初始完整状态，该过程只能通过再次摧毁其残骸来阻止。即便如此，其残骸碎片在约1天内仍会自行缓慢重组。</p>
+                <p><![CDATA[<b>附录 MCP-173-A：</b>]]>实验记录显示，当处于项目<![CDATA[<ref=[contraptions]mvz2:stone_eye>MCP-531</ref>]]>的视线范围内时，MCP-173会表现出与受人类直视时相同的静止状态。基于该现象，已提案研究将MCP-531纳入MCP-173长期收容方案的可行性，相关测试待批准。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:hacker">
+            <header>
+                <p>黑客会使用它的奇硅电脑骇入并暂时禁用最后方的器械。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>骇入时长：<![CDATA[<color=red>8秒</color>]]></p>
+                <p>禁用时长：<![CDATA[<color=red>32秒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>&gt;rm -rf</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:zombie_cat">
+            <header>
+                <p>僵尸猫拥有9条命，并且每次死亡时都有50%的概率召唤一只<![CDATA[<ref=[enemies]mvz2:wisp_fly>鬼火苍蝇</ref>]]>。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>特点：<![CDATA[<color=red>能复活8次</color>]]></p>
+            </properties>
+            <flavor>
+                <p>我们修复了在夜间游荡的僵尸不会攻击村庄中的流浪猫的问题。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:wisp_fly">
+            <variables>
+                <variable name="easy_damage">global("mvz2:entity_damage")</variable>
+                <variable name="normal_damage">global("mvz2:entity_damage") * 1.5</variable>
+                <variable name="hard_damage">global("mvz2:entity_damage") * 3</variable>
+            </variables>
+            <header>
+                <p>鬼火苍蝇会冲向你的器械，并产生一次小型自爆，造成<![CDATA[<tag id="mvz2:fire" />]]>火焰伤害。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
+                <p>自爆伤害：<![CDATA[<color=red><var local="easy_damage"/>（简单），<var local="normal_damage"/>（普通），<var local="hard_damage"/>（困难）</color>]]></p>
+            </properties>
+            <flavor>
+                <p>一：为了解决现实中青蛙吃萤火虫会中毒的问题，我们干脆不加入萤火虫。</p>
+                <p>二：我们反悔了，这次我们加入了萤火虫，但是只是方块的视觉效果。</p>
+                <p>三：现在我们真的加入“萤火虫”了。</p>
             </flavor>
         </entry>
         <entry id="mvz2:rally_zombie">
@@ -1856,7 +2142,7 @@
                 <p><![CDATA[<ref=[misc]mvz2:doremy>哆来咪</ref>赠予的奇妙枕头，拥有让人安眠的效果。]]></p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>器械每秒钟恢复10点耐久，被控制时恢复量×3</color>]]></p>
+                <p>效果：<![CDATA[<color=red>友方器械每秒钟恢复10点耐久，被控制时恢复量×3</color>]]></p>
             </properties>
             <flavor>
                 <p>好困啊，先不写趣文了。</p>
@@ -1892,7 +2178,7 @@
                 <p>暗物质是宇宙中大量存在的一种不可见的物质。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>器械生产效率×200%，但场景变得黑暗</color>]]></p>
+                <p>效果：<![CDATA[<color=red>友方器械生产效率×200%，但怪物隐形</color>]]></p>
             </properties>
             <flavor>
                 <p><![CDATA[<color=white>你看不见我</color>]]></p>
@@ -1906,7 +2192,7 @@
                 <p>被装入瓶子中的一个小型黑洞。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>每有一个蓝图空位，器械+10%伤害</color>]]></p>
+                <p>效果：<![CDATA[<color=red>每有一个蓝图空位，友方器械+10%伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>瓶中的火焰，强化你的攻击；</p>
@@ -1943,7 +2229,7 @@
                 <p><![CDATA[<ref=[misc]mvz2:shinmyoumaru>针妙丸</ref>公主赏赐有功之臣史蒂夫的宝物，万宝槌的仿制品，曾被<ref=[misc]mvz2:seija>正邪</ref>用于逃离通缉。]]></p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>+15%器械伤害，近距离攻击敌人的器械额外+15%伤害</color>]]></p>
+                <p>效果：<![CDATA[<color=red>+15%友方器械伤害，近距离攻击敌人的器械额外+15%伤害</color>]]></p>
             </properties>
             <flavor>
                 <p>万宝槌的仿制品，没有什么魔力，只能普通地造成物理伤害。</p>
@@ -1967,17 +2253,6 @@
                 <p>那么星之碎片到底是什么东西……？</p>
             </flavor>
         </entry>
-        <!-- <entry id="mvz2:wither_skeleton_skull">
-            <header>
-                <p>凋灵骷髅的头颅。</p>
-            </header>
-            <properties>
-                <p>效果：<![CDATA[<color=red>×80%蓝图消耗，×70%蓝图充能时间，但新放下的器械的最大耐久×60%</color>]]></p>
-            </properties>
-            <flavor>
-                <p>多么惊悚恐怖的骷髅头！</p>
-            </flavor>
-        </entry> -->
         <entry id="mvz2:broken_lantern">
             <silhouette>
                 <condition required="mvz2:level.castle_11" />
@@ -1986,7 +2261,7 @@
                 <p><![CDATA[<ref=[misc]mvz2:shining_needle_castle>辉针城</ref>]]>内装饰用的灯笼，被扯坏了。会减少发光器械的光照范围，但提升它们的生产速度和攻击速度。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red><tag id="mvz2:light_source" />发光的器械+25%生产速度和攻击速度，但×50%光照范围</color>]]></p>
+                <p>效果：<![CDATA[<color=red><tag id="mvz2:light_source" />发光的友方器械+25%生产速度和攻击速度，但×50%光照范围</color>]]></p>
             </properties>
             <flavor>
                 <p><![CDATA[呃，还是别告诉<ref=[misc]mvz2:shinmyoumaru>针妙丸</ref>了吧，她可能会生气的。]]></p>
@@ -2024,7 +2299,7 @@
                 <p><![CDATA[<ref=[misc]mvz2:miko>神子</ref>]]>赠送的一种武器，在爆炸时会产生炫目的光芒。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>器械自爆时，对所有敌人额外造成等同于该器械能量消耗的伤害，并眩晕它们2秒</color>]]></p>
+                <p>效果：<![CDATA[<color=red>友方器械自爆时，对所有敌人额外造成等同于该器械能量消耗的伤害，并眩晕它们2秒</color>]]></p>
             </properties>
             <flavor>
                 <p>神子说，</p>
@@ -2046,7 +2321,7 @@
                 <p><![CDATA[<ref=[misc]mvz2:the_giant>巨人</ref>]]>的眼睛。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>器械x250%伤害，但x50%攻击速度</color>]]></p>
+                <p>效果：<![CDATA[<color=red>友方器械x250%伤害，但x50%攻击速度</color>]]></p>
             </properties>
             <flavor>
                 <p>巨人的眼睛盯着你看——它似乎有话想对你说。</p>
@@ -2120,6 +2395,74 @@
                 <p>而如今，少年举起孩子的牙齿，助其解脱。</p>
                 <p>这最后的“仿制品”你也拿到了。它的主人完全没有它母亲那般仁慈，口中喷出的满是残暴，对于弱者毫无任何慈悲之心。</p>
                 <p>此仇，永世无法平息。</p>
+            </flavor>
+        </entry>
+        <entry/>
+
+        <!-- Palace Artifacts -->
+        <entry id="mvz2:control_rod">
+            <header>
+                <p><![CDATA[<ref=[misc]mvz2:utsuho>灵乌路 空</ref>]]>的一根备用核能控制棒。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>蓝图充能速度x150%，但怪物死亡后爆炸</color>]]></p>
+            </properties>
+            <flavor>
+                <p>不要觉得有了这东西，控制核能就变得轻而易举了——该坏了的时候还是会坏了的。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:ghostly_cart">
+            <header>
+                <p><![CDATA[<ref=[misc]mvz2:rin>火焰猫 燐</ref>]]>的一辆用于运送尸体的推车。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>每3分钟刷新你的最终防线小车</color>]]></p>
+            </properties>
+            <flavor>
+                <p>车的正面被画上了一只黑白相间的小猫的脸，但你并不认识这是哪只猫。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:censer_of_forgotten">
+            <header>
+                <p><![CDATA[<ref=[misc]mvz2:koishi>不知何人</ref>]]>赠予的奇怪香炉。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>每60秒眩晕所有敌怪5秒</color>]]></p>
+            </properties>
+            <flavor>
+                <p>不是，你什么时候解锁这个制品的？</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:broken_lock">
+            <header>
+                <p>从<![CDATA[<ref=[misc]mvz2:locked_chest>上锁的箱子</ref>]]>上掉落的损坏挂锁。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>器械每受到1%伤害，其蓝图冷却时间便减少1%</color>]]></p>
+            </properties>
+            <flavor>
+                <p><![CDATA[<b>项目编号：</b>]]>MCP-988</p>
+                <p><![CDATA[<b>项目等级：</b>]]>Keter</p>
+                <p><![CDATA[<b>特殊收容措施：</b>]]>由于MCP-988“瞬移”区域十分广阔，收容是不可能的。MCP-988已被埋入███区域地下██米，█国政府已经批准建立一个对外宣称是军事行动区的区域来阻止人员靠近这些区域。</p>
+                <p><![CDATA[<b>描述：</b>]]>MCP-988是一个长0.85米，宽1.7米，高1米的木制箱子，其边缘部分由未知的紫色金属条固定。一般情况下的MCP-988被铁链和一块坚固的锁头（下称MCP-988-1）锁住。</p>
+                <p>每隔约2小时，MCP-988会随机锁定最近约150米，最远约200米范围内的一名落单的人员作为其狩猎目标并瞬间移动至其附近。一旦目标从MCP-988身上转移注意力并远离时，MCP-988会以高速跃起并砸向目标的头部。</p>
+                <p>此行为造成的伤害不足以杀死一名人类，但可以将其击晕，表明MCP-988会避免杀死猎物来摄取猎物的精神力量。此后MCP-988-1会脱落，且MCP-988会将目标吞入箱中。</p>
+                <p>被吞入箱中的受害者会随着被吞入的时间而受到不同程度的损害。时间较短者不会受到除重击之外的任何物理损伤，但会永久性失去意识；时间较长者会因箱中分泌物质的物理侵蚀而受到物理损伤，因此导致死亡甚至溶化。</p>
+                <p>MCP-988似乎拥有某种智慧。若MCP-988的意图在多名人员眼前暴露，MCP-988会表现出极度的攻击欲，以跳跃、撞击等物理攻击手段表现。若MCP-988-1处于脱落状态，则其会尝试以喷吐大量有毒垃圾的手段进行攻击。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:magma_stone">
+            <silhouette>
+                <condition required="mvz2:level.palace_11" />
+            </silhouette>
+            <header>
+                <p>一块岩浆石。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>敌人受到的火焰伤害+50%</color>]]></p>
+            </properties>
+            <flavor>
+                <p>都说了不要在地下引发地震！！！</p>
             </flavor>
         </entry>
         <entry />
@@ -2332,6 +2675,7 @@
         <group id="mvz2:misc_entities" name="杂项实体" order="200">
             <entry id="mvz2:miner" name="矿场">
                 <picture model="mvz2:entity.miner" />
+                <tags sourceEntity="mvz2:miner"/>
                 <header>
                     <p>史蒂夫制造的自动矿场，会在白天的时候自动挖掘红石矿。</p>
                 </header>
@@ -2346,6 +2690,7 @@
             </entry>
             <entry id="mvz2:minecart" name="矿车">
                 <picture model="mvz2:entity.minecart" />
+                <tags sourceEntity="mvz2:minecart"/>
                 <header>
                     <p>史蒂夫家里的最后防线，当怪物突破器械阵线后会碾压前方一行的敌人。</p>
                 </header>
@@ -2357,13 +2702,9 @@
             </entry>
             <entry id="mvz2:gargoyle_statue" name="石像鬼雕像">
                 <picture model="mvz2:entity.gargoyle_statue" />
-                <tags>
-                    <tag id="mvz2:shell" value="mvz2:stone" />
-                    <tag id="mvz2:grid_layer_main" />
-                    <tag id="mvz2:grid_layer_carrier" />
-                </tags>
+                <tags sourceEntity="mvz2:gargoyle_statue"/>
                 <header>
-                    <p>石像鬼雕像会在最后一波时变成石像鬼。</p>
+                    <p>石像鬼雕像会在最后一波时变成<![CDATA[<ref=[enemies]mvz2:gargoyle>石像鬼</ref>]]>。</p>
                 </header>
                 <properties>
                     <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
@@ -2374,6 +2715,7 @@
             </entry>
             <entry id="mvz2:pumpkin_carriage" name="南瓜马车">
                 <picture model="mvz2:entity.pumpkin_carriage" />
+                <tags sourceEntity="mvz2:pumpkin_carriage"/>
                 <header>
                     <p><![CDATA[<ref=[misc]mvz2:eternal_night_swamp>永夜沼泽</ref>]]>的最后防线，会发出绿色光芒，当怪物突破器械阵线后会碾压前方一行的敌人。</p>
                 </header>
@@ -2386,6 +2728,7 @@
                     <condition required="mvz2:level.halloween_6" />
                 </unlock>
                 <picture model="mvz2:entity.napstablook" />
+                <tags sourceEntity="mvz2:napstablook"/>
                 <header>
                     <p>小幽灵会在你使用铁剑击中它时生气，然后麻痹你的剑。</p>
                 </header>
@@ -2398,6 +2741,7 @@
                     <condition required="mvz2:level.halloween_6" />
                 </unlock>
                 <picture model="mvz2:entity.lost" />
+                <tags sourceEntity="mvz2:lost"/>
                 <header>
                     <p>用铁剑误杀游魂会导致你面临更多的敌人。</p>
                 </header>
@@ -2410,6 +2754,7 @@
                     <condition required="mvz2:level.dream_1" />
                 </unlock>
                 <picture model="mvz2:entity.nyan_cat" />
+                <tags sourceEntity="mvz2:nyan_cat"/>
                 <header>
                     <p>彩虹猫能萌死任何接触到的敌人。</p>
                 </header>
@@ -2423,6 +2768,7 @@
                 </unlock>
                 <thumbnail sprite="mvz2:misc/boat_zombie"/>
                 <picture model="mvz2:entity.boat_zombie" />
+                <tags sourceEntity="mvz2:zombie"/>
                 <header>
                     <p>船僵尸能够浮在水上——甚至是云上作战。</p>
                 </header>
@@ -2443,6 +2789,7 @@
                     <condition required="mvz2:level.dream_7" />
                 </unlock>
                 <picture model="mvz2:entity.nyaightmare" />
+                <tags sourceEntity="mvz2:nyan_cat"/>
                 <header>
                     <p>噩梦猫会刺死任何它所恨的人。</p>
                 </header>
@@ -2455,6 +2802,7 @@
                     <condition required="mvz2:level.castle_1" />
                 </unlock>
                 <picture model="mvz2:entity.bowl_chariot" />
+                <tags sourceEntity="mvz2:bowl_chariot"/>
                 <header>
                     <p>碗车在碰到敌人后会冲锋，并把碗里的巨石掉出来二次打击敌人。</p>
                 </header>
@@ -2467,11 +2815,7 @@
                     <condition required="mvz2:level.castle_1" />
                 </unlock>
                 <picture model="mvz2:entity.reverse_satellite" />
-                <tags>
-                    <tag id="mvz2:shell" value="mvz2:metal" />
-                    <tag id="mvz2:flying" />
-                    <tag id="mvz2:not_undead" />
-                </tags>
+                <tags sourceEntity="mvz2:reverse_satellite"/>
                 <variables>
                     <variable name="hp">property("mvz2:entity/maxHealth", "mvz2:reverse_satellite", "entity")</variable>
                 </variables>
@@ -2493,6 +2837,7 @@
                     <condition required="mvz2:level.mausoleum_1" />
                 </unlock>
                 <picture model="mvz2:entity.ballista" />
+                <tags sourceEntity="mvz2:ballista"/>
                 <header>
                     <p>小型弩车在碰到敌人后会发射致命弩箭，并向前冲锋碾压敌人。</p>
                 </header>
@@ -2508,16 +2853,13 @@
                     <condition required="mvz2:level.mausoleum_2" />
                 </unlock>
                 <picture model="mvz2:entity.monster_spawner" />
-                <tags>
-                    <tag id="mvz2:grid_layer_main" />
-                    <tag id="mvz2:grid_layer_carrier" />
-                </tags>
+                <tags sourceEntity="mvz2:monster_spawner"/>
                 <header>
                     <p>刷怪笼会每过一段时间或在一大波怪物来临时召唤一只其内部的怪物。</p>
                 </header>
                 <properties>
-                    <p>召唤间隔：<![CDATA[<color=red>120-180秒，第一次召唤敌人后60-80秒</color>]]></p>
-                    <p>弱点：<![CDATA[<color=red><tag id="mvz2:light_source" />光源会阻止刷怪笼持续召唤敌人</color>]]></p>
+                    <p>召唤间隔：<![CDATA[<color=red>120-180秒，第一次召唤怪物后60-80秒</color>]]></p>
+                    <p>弱点：<![CDATA[<color=red><tag id="mvz2:light_source" />光源会阻止刷怪笼持续召唤怪物</color>]]></p>
                 </properties>
                 <flavor>
                     <p>我的水桶、告示牌和灵魂沙呢？</p>
@@ -2528,6 +2870,7 @@
                     <condition required="mvz2:level.ship_1"/>
                 </unlock>
                 <picture model="mvz2:entity.unzan_fist"/>
+                <tags sourceEntity="mvz2:unzan_fist"/>
                 <header>
                     <p>云山之拳在碰到敌人后会向前发射，击杀并打飞一行的敌怪。</p>
                 </header>
@@ -2542,9 +2885,7 @@
                     <condition required="mvz2:level.ship_1"/>
                 </unlock>
                 <picture model="mvz2:entity.paratrooper_zombie"/>
-                <tags>
-                    <tag id="mvz2:shell" value="mvz2:flesh"/>
-                    <tag id="mvz2:mass" value="0"/>
+                <tags sourceEntity="mvz2:zombie" >
                     <tag id="mvz2:shell_shield" value="mvz2:leather"/>
                 </tags>
                 <variables>
@@ -3075,7 +3416,7 @@
         <group id="mvz2:important" name="重要物品" order="600">
             <entry id="mvz2:ender_chest" name="末影箱">
                 <unlock>
-                    <condition required="mvz2:level.dream_5" />
+                    <condition requiredGroups="mvz2:store" />
                 </unlock>
                 <picture model="mvz2:entity.ender_chest" />
                 <header>
@@ -3126,6 +3467,23 @@
                     <p>“你的修复术好像和我的不太一样，你这是怎么修的？”</p>
                     <p>“只要你手速够快，就可以在一瞬间内挖掉器械，再重新放一个。”</p>
                     <p>“？”</p>
+                </flavor>
+            </entry>
+            <entry id="mvz2:satori_detector" name="觉眼探测器">
+                <unlock>
+                    <condition required="mvz2:satori_detector" />
+                </unlock>
+                <picture sprite="mvz2:products/satori_detector" fixedSize="true" zoom="false" />
+                <header>
+                    <p>用于洞悉器械和怪物内心的高科技眼镜。</p>
+                </header>
+                <properties>
+                    <p>效果：<![CDATA[<color=red>可以查看器械和怪物的血量</color>]]></p>
+                </properties>
+                <flavor>
+                    <p>基于来自外界的装置进行改造，并融合了觉妖怪的读心能力。</p>
+                    <p>据说，这在外界是人们用于欺骗自己眼睛的装置，用以逃离残酷的现实。</p>
+                    <p>装置在外界似乎意外地流行，不由得让人思考，那里究竟是何种地狱。</p>
                 </flavor>
             </entry>
         </group>

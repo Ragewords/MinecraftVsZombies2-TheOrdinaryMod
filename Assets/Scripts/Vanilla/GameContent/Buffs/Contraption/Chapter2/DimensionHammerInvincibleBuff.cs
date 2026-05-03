@@ -2,23 +2,24 @@
 
 using System;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.mineTNTInvincible)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.dimensionHammerInvincible)]
     public class DimensionHammerInvincibleBuff : BuffDefinition
     {
         public DimensionHammerInvincibleBuff(string nsp, string name) : base(nsp, name)
         {
             AddModifier(new BooleanModifier(EngineEntityProps.INVINCIBLE, true));
             AddModifier(new BooleanModifier(VanillaEntityProps.CAN_DEACTIVE, false));
-            AddModifier(new NamespaceIDArrayModifier(VanillaEntityProps.GRID_LAYERS, SetOperator.Set, Array.Empty<NamespaceID>()));
-            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, IntegerOperator.Set, EntityCollisionHelper.DETECTION_IGNORE));
+            AddModifier(new NamespaceIDArrayModifier(LogicEntityProps.GRID_LAYERS, SetOperator.Set, Array.Empty<NamespaceID>()));
+            AddModifier(new IntModifier(EngineEntityProps.COLLISION_DETECTION, IntegerOperator.Set, EntityCollisionHelper.DETECTION_NO_COLLISION));
         }
     }
 }

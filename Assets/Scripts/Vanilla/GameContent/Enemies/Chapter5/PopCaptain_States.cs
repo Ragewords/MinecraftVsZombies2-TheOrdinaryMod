@@ -2,15 +2,18 @@
 
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Shells;
+using MVZ2.Vanilla.StateMachine;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using UnityEngine;
 
-namespace MVZ2.Vanilla.Enemies
+namespace MVZ2.GameContent.Enemies
 {
     public partial class PopCaptain : EnemyBehaviour
     {
@@ -161,7 +164,7 @@ namespace MVZ2.Vanilla.Enemies
                 if (targetGrid == null)
                 {
                     // 如果目标地格不存在，直接秒杀器械。
-                    target.Die(outOfBoundDamageEffects, entity, damageOutput.BodyResult);
+                    target.Die(outOfBoundDamageEffects, entity, damageOutput.BodyResult?.GetValues());
                 }
                 else
                 {
@@ -357,19 +360,19 @@ namespace MVZ2.Vanilla.Enemies
         }
         #endregion
 
-        public const int STATE_IDLE = VanillaEnemyStates.IDLE;
-        public const int STATE_WALK = VanillaEnemyStates.WALK;
-        public const int STATE_MELEE_ATTACK = VanillaEnemyStates.MELEE_ATTACK;
+        public const int STATE_IDLE = LogicEnemyStates.IDLE;
+        public const int STATE_WALK = LogicEnemyStates.WALK;
+        public const int STATE_MELEE_ATTACK = LogicEnemyStates.MELEE_ATTACK;
         public const int STATE_SMASH_DOWN = VanillaEnemyStates.POP_CAPTAIN_SMASH_DOWN;
         public const int STATE_SMASH_UP = VanillaEnemyStates.POP_CAPTAIN_SMASH_UP;
-        public const int STATE_DEATH = VanillaEnemyStates.DEATH;
+        public const int STATE_DEATH = LogicEnemyStates.DEATH;
 
-        public const int ANIMATION_STATE_IDLE = EnemyStateBehaviour.ANIMATION_STATE_IDLE;
-        public const int ANIMATION_STATE_WALK = EnemyStateBehaviour.ANIMATION_STATE_WALK;
-        public const int ANIMATION_STATE_ATTACK = EnemyStateBehaviour.ANIMATION_STATE_ATTACK;
-        public const int ANIMATION_STATE_DEATH = EnemyStateBehaviour.ANIMATION_STATE_DEATH;
-        public const int ANIMATION_STATE_SMASH_DOWN = EnemyStateBehaviour.ANIMATION_STATE_PRIVATE + 0;
-        public const int ANIMATION_STATE_SMASH_UP = EnemyStateBehaviour.ANIMATION_STATE_PRIVATE + 1;
+        public const int ANIMATION_STATE_IDLE = EnemyCommonAnimationBehaviour.ANIMATION_STATE_IDLE;
+        public const int ANIMATION_STATE_WALK = EnemyCommonAnimationBehaviour.ANIMATION_STATE_WALK;
+        public const int ANIMATION_STATE_ATTACK = EnemyCommonAnimationBehaviour.ANIMATION_STATE_ATTACK;
+        public const int ANIMATION_STATE_DEATH = EnemyCommonAnimationBehaviour.ANIMATION_STATE_DEATH;
+        public const int ANIMATION_STATE_SMASH_DOWN = EnemyCommonAnimationBehaviour.ANIMATION_STATE_PRIVATE + 0;
+        public const int ANIMATION_STATE_SMASH_UP = EnemyCommonAnimationBehaviour.ANIMATION_STATE_PRIVATE + 1;
     }
 
 }

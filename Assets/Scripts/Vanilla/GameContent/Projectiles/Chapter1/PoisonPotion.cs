@@ -3,14 +3,15 @@
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.poisonPotion)]
-    public class PoisonPotion : ProjectileBehaviour
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.poisonPotion)]
+    public class PoisonPotion : EntityBehaviourDefinition
     {
         public PoisonPotion(string nsp, string name) : base(nsp, name)
         {
@@ -18,7 +19,7 @@ namespace MVZ2.GameContent.Projectiles
         public override void PostDeath(Entity entity, DeathInfo damageInfo)
         {
             base.PostDeath(entity, damageInfo);
-            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER))
+            if (damageInfo.Effects.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS))
                 return;
 
             entity.PlaySound(VanillaSoundID.glassBreak);

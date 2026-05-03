@@ -16,8 +16,10 @@ using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Callbacks;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -25,7 +27,7 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaBossNames.wither)]
+    [AutoEntityBehaviourDefinition(VanillaBossNames.wither)]
     public partial class Wither : BossBehaviour
     {
         public Wither(string nsp, string name) : base(nsp, name)
@@ -155,7 +157,7 @@ namespace MVZ2.GameContent.Bosses
         {
             var hit = param.hit;
             var self = hit.Other;
-            if (!self.IsEntityOf(VanillaBossID.wither))
+            if (!self.Definition.HasBehaviour(this))
                 return;
             if (!HasArmor(self))
                 return;
@@ -264,7 +266,7 @@ namespace MVZ2.GameContent.Bosses
                         angle -= HEAD_ROTATE_SPEED;
                     }
                 }
-                angle = (angle + 360) % 360;
+                angle = Mathf.Repeat(angle, 360);
                 headAngles[head] = angle;
 
                 switch (head)

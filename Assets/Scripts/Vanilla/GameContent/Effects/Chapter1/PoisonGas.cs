@@ -3,13 +3,14 @@
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Effects
 {
-    [EntityBehaviourDefinition(VanillaProjectileNames.poisonGas)]
+    [AutoEntityBehaviourDefinition(VanillaProjectileNames.poisonGas)]
     public class PoisonGas : EffectBehaviour
     {
 

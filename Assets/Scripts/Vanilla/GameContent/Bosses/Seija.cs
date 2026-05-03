@@ -6,18 +6,18 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Detections;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using Tools;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaBossNames.seija)]
+    [AutoEntityBehaviourDefinition(VanillaBossNames.seija)]
     public partial class Seija : BossBehaviour
     {
         public Seija(string nsp, string name) : base(nsp, name)
@@ -213,16 +213,9 @@ namespace MVZ2.GameContent.Bosses
         }
         public static bool ShouldGapBomb(Entity boss)
         {
-            if (boss.IsFacingLeft())
-            {
-                if (boss.GetColumn() < boss.Level.GetMaxColumnCount() - 1)
-                    return false;
-            }
-            else
-            {
-                if (boss.GetColumn() > 0)
-                    return false;
-            }
+            var column = boss.GetMirroredColumn(0, true);
+            if (boss.IsAheadOfColumn(column))
+                return false;
             return gapBombDetector.DetectEntityCount(boss) >= GAP_BOMB_ENEMY_COUNT;
         }
         public static bool ShouldYinyangOrb(Entity boss)
@@ -245,23 +238,21 @@ namespace MVZ2.GameContent.Bosses
         }
         public static bool ShouldFrontFlip(Entity boss)
         {
-            var level = boss.Level;
-            return boss.IsFacingLeft() ? boss.GetColumn() > level.GetMaxColumnCount() / 2 : boss.GetColumn() < level.GetMaxColumnCount() / 2;
+            return boss.IsBehindOfColumn(boss.Level.GetMaxColumnCount() / 2);
         }
         public static bool ShouldBackflip(Entity boss)
         {
-            var level = boss.Level;
-            return boss.IsFacingLeft() ? boss.GetColumn() <= level.GetMaxColumnCount() / 2 : boss.GetColumn() >= level.GetMaxColumnCount() / 2;
+            return boss.IsAheadOfOrAtColumn(boss.Level.GetMaxColumnCount() / 2);
         }
         public static bool CanFrontflip(Entity boss)
         {
-            var level = boss.Level;
-            return boss.IsFacingLeft() ? boss.GetColumn() > 1 : boss.GetColumn() < level.GetMaxColumnCount() - 2;
+            var column = boss.GetMirroredColumn(1, false);
+            return boss.IsBehindOfColumn(column);
         }
         public static bool CanBackflip(Entity boss)
         {
-            var level = boss.Level;
-            return boss.IsFacingLeft() ? boss.GetColumn() < level.GetMaxColumnCount() - 2 : boss.GetColumn() > 1;
+            var column = boss.GetMirroredColumn(1, true);
+            return boss.IsAheadOfColumn(column);
         }
         public static Entity? FindHammerTarget(Entity boss)
         {

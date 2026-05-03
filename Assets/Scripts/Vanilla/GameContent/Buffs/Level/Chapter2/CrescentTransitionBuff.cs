@@ -5,18 +5,18 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.ProgressBars;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
-using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Buffs;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Level
 {
-    [BuffDefinition(VanillaBuffNames.Level.crescentTransition)]
+    [AutoBuffDefinition(VanillaBuffNames.Level.crescentTransition)]
     public class CrescentTransitionBuff : BuffDefinition
     {
         public CrescentTransitionBuff(string nsp, string name) : base(nsp, name)

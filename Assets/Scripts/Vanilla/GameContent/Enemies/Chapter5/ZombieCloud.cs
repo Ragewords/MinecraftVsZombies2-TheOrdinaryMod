@@ -6,21 +6,25 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
+using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.zombieCloud)]
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.zombieCloud)]
     public class ZombieCloud : AIEntityBehaviour
     {
         public ZombieCloud(string nsp, string name) : base(nsp, name)
@@ -64,7 +68,7 @@ namespace MVZ2.GameContent.Enemies
                 {
                     var x = entity.RNG.NextFloat() * 32f - 16f;
                     var pos = entity.Position + new Vector3(x, 0, 0);
-                    entity.SpawnWithParams(VanillaEffectID.zombieCloudSnowflake, pos);
+                    entity.Spawn(VanillaEffectID.zombieCloudSnowflake, pos);
                 }
                 var center = entity.Position;
                 center.y = (entity.GetRelativeY()  + entity.GetSize().y / 2) / 2;
@@ -79,11 +83,6 @@ namespace MVZ2.GameContent.Enemies
                     entity.SpawnWithParams(VanillaEffectID.zombieCloudEmber, pos);
                 }
             }
-        }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            entity.SetModelProperty("Variant", entity.GetVariant());
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
@@ -163,7 +162,7 @@ namespace MVZ2.GameContent.Enemies
 
             var mask = EntityCollisionHelper.MASK_ENEMY;
             resultsBuffer.Clear();
-            entity.Level.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, mask, mask, resultsBuffer);
+            entity.Level.OverlapBoxNonAlloc(bounds.center, bounds.size, OverlapParams.AnyFaction(mask), resultsBuffer);
             foreach (var collider in resultsBuffer)
             {
                 var affectedEntity = collider.Entity;

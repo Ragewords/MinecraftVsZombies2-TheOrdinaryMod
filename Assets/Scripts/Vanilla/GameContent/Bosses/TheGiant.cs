@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Buffs.Bosses;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
@@ -11,24 +11,24 @@ using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
-using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Modifiers;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine.Base;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
-    [EntityBehaviourDefinition(VanillaBossNames.theGiant)]
+    [AutoEntityBehaviourDefinition(VanillaBossNames.theGiant)]
     public partial class TheGiant : BossBehaviour
     {
         public TheGiant(string nsp, string name) : base(nsp, name)
@@ -106,7 +106,7 @@ namespace MVZ2.GameContent.Bosses
                 }
                 if (!other.IsInvincible() && !IsPacmanPanic(self))
                 {
-                    var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_TRIGGER, VanillaDamageEffects.MUTE);
+                    var damageEffects = new DamageEffectList(VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_DEATH_EFFECTS, VanillaDamageEffects.MUTE);
                     var result = collision.OtherCollider.TakeDamage(self.GetDamage() * PACMAN_DAMAGE_MULTIPLIER, damageEffects, self);
                     if (result != null)
                     {
@@ -270,7 +270,7 @@ namespace MVZ2.GameContent.Bosses
         }
         public static bool AtLeft(Entity entity)
         {
-            return entity.Position.x < VanillaLevelExt.LAWN_CENTER_X;
+            return entity.Position.x < LevelPositions.LAWN_CENTER_X;
         }
         public static bool CanBeStunned(Entity entity)
         {

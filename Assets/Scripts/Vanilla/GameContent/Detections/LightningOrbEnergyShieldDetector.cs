@@ -3,6 +3,7 @@
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Detections;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
 using PVZEngine.Entities;
 using UnityEngine;
 

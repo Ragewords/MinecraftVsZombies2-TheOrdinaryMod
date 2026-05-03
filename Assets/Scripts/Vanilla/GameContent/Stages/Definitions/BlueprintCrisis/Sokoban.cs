@@ -8,7 +8,7 @@ using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Stages
 {
-    [StageDefinition(VanillaStageNames.sokoban)]
+    //[AutoStageDefinition(VanillaStageNames.sokoban)]
     public partial class Sokoban : BlueprintCrisisStage
     {
         public Sokoban(string nsp, string name) : base(nsp, name)

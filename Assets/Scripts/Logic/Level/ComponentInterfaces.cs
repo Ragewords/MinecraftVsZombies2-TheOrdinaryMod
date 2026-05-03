@@ -3,8 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MVZ2.HeldItems;
 using MVZ2Logic.Artifacts;
+using MVZ2Logic.HeldItems;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -153,9 +153,12 @@ namespace MVZ2Logic.Level.Components
     public interface ILightComponent : ILevelComponent
     {
         bool IsIlluminated(Entity entity);
-        long GetIlluminationLightSourceID(Entity entity);
-        IEnumerable<long> GetAllIlluminationLightSources(Entity entity);
-        void GetIlluminatingEntities(Entity entity, HashSet<long> results);
+        bool IsIlluminatedBy(Entity entity, long lightSourceID);
+        IEnumerable<long> GetIlluminationLightSources(Entity entity);
+        void GetIlluminationLightSourcesNonAlloc(Entity entity, HashSet<long> results);
+        IEnumerable<long> GetIlluminatingEntities(long lightSourceID);
+        void GetIlluminatingEntitiesNonAlloc(long lightSourceID, HashSet<long> results);
+        int GetIlluminationCount(long lightSourceID);
     }
     public interface IArtifactComponent : ILevelComponent
     {

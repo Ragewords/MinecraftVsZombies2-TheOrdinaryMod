@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
-using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Shells;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Buffs.Enemies
 {
-    [BuffDefinition(VanillaBuffNames.Entity.electricChain)]
+    [AutoBuffDefinition(VanillaBuffNames.Entity.electricChain)]
     public class ElectricChainBuff : BuffDefinition
     {
         public ElectricChainBuff(string nsp, string name) : base(nsp, name)
@@ -47,7 +48,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             var faction = buff.GetProperty<int>(PROP_FACTION);
             var ignored = buff.GetProperty<IEntityCollider[]>(PROP_IGNORED_ENTITY);
-            IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, faction, EntityCollisionHelper.MASK_VULNERABLE, 0);
+            IEntityCollider[] hitColliders = entity.Level.OverlapSphere(origin, ZAP_RADIUS, OverlapParams.Hostile(faction, EntityCollisionHelper.MASK_VULNERABLE));
 
             var validTargets = hitColliders
                 .Where(c => !attackedEnemies.Contains(c.Entity) && !ignored.Contains(c))

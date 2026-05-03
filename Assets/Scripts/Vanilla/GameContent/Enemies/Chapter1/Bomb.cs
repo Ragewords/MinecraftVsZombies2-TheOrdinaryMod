@@ -4,16 +4,17 @@ using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 using PVZEngine.Modifiers;
 using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [EntityBehaviourDefinition(VanillaEnemyNames.bomb)]
-    public class Bomb : EnemyBehaviour
+    [AutoEntityBehaviourDefinition(VanillaEnemyNames.bomb)]
+    public class Bomb : EnemyBehaviour, IDeathEffectsBehaviour
     {
         public Bomb(string nsp, string name) : base(nsp, name)
         {
@@ -47,9 +48,8 @@ namespace MVZ2.GameContent.Enemies
             }
             entity.SetProperty(PROP_COLOR_OFFSET, color);
         }
-        public override void PostDeath(Entity entity, DeathInfo info)
+        public void DeathEffects(Entity entity, DeathInfo info)
         {
-            base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
             if (info.Effects.HasEffect(VanillaDamageEffects.DROWN))

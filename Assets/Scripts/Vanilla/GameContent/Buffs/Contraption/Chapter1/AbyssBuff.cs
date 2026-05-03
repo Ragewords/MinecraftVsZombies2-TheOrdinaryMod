@@ -6,16 +6,17 @@ using MVZ2.GameContent.Models;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Models;
-using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Models;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Buffs.Contraptions
 {
-    [BuffDefinition(VanillaBuffNames.Contraption.abyss)]
+    [AutoBuffDefinition(VanillaBuffNames.Contraption.abyss)]
     public class AbyssBuff : BuffDefinition
     {
         public AbyssBuff(string nsp, string name) : base(nsp, name)
@@ -23,7 +24,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.curseOfTheAbyss, VanillaModelID.curseOfTheAbyss);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback, filter: EntityTypes.PLANT);
         }
-        private void PostEntityDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
+        private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)
         {
             var entity = param.entity;
             if (entity == null)
@@ -34,7 +35,7 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             if (sourceEntity == null)
                 return;
             var effects = param.deathInfo.Effects;
-            if (effects.HasEffect(VanillaDamageEffects.NO_DEATH_TRIGGER) || effects.HasEffect(VanillaDamageEffects.DIG))
+            if (effects.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS) || effects.HasEffect(VanillaDamageEffects.PICKAXE))
                 return;
             var transformParam = sourceEntity.GetSpawnParams();
             entity.Spawn(VanillaEnemyID.gargoyle, entity.Position, transformParam);

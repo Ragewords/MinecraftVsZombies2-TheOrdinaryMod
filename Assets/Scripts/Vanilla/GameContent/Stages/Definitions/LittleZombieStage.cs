@@ -14,7 +14,7 @@ using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Stages
 {
-    [StageDefinition(VanillaStageNames.bigTroubleAndLittleZombie)]
+    [AutoStageDefinition(VanillaStageNames.bigTroubleAndLittleZombie)]
     public partial class LittleZombieStage : StageDefinition
     {
         public LittleZombieStage(string nsp, string name) : base(nsp, name)
@@ -81,8 +81,8 @@ namespace MVZ2.GameContent.Stages
                 }
             }
         }
-        public static int GetBigCounter(LevelEngine level) => level.GetBehaviourField<int>(FIELD_BIG_COUNTER);
-        public static void SetBigCounter(LevelEngine level, int value) => level.SetBehaviourField(FIELD_BIG_COUNTER, value);
+        public static int GetBigCounter(LevelEngine level) => level.GetProperty<int>(FIELD_BIG_COUNTER);
+        public static void SetBigCounter(LevelEngine level, int value) => level.SetProperty(FIELD_BIG_COUNTER, value);
 
         public const string REGION_NAME = "little_zombie_stage";
         [LevelPropertyRegistry(REGION_NAME)]

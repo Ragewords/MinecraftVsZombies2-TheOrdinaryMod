@@ -6,15 +6,18 @@ using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
+using MVZ2Logic.Entities;
 using PVZEngine.Buffs;
+using PVZEngine.Collisions;
+using PVZEngine.Collisions.Level;
 using PVZEngine.Damages;
+using PVZEngine.Definitions;
 using PVZEngine.Entities;
-using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Projectiles
 {
-    [EntityBehaviourDefinition(VanillaEntityBehaviourNames.teslaCoilElectrify)]
-    public class TeslaCoilElectrifyBehaviour : ProjectileBehaviour, ITeslaCoilElectrifyBehaviour
+    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.teslaCoilElectrify)]
+    public class TeslaCoilElectrifyBehaviour : EntityBehaviourDefinition, ITeslaCoilElectrifyBehaviour
     {
         public TeslaCoilElectrifyBehaviour(string nsp, string name) : base(nsp, name)
         {
@@ -29,7 +32,7 @@ namespace MVZ2.GameContent.Projectiles
             if (projectile.IsInWater() && projectile.IsTimeInterval(5))
             {
                 shockBuffer.Clear();
-                projectile.Level.OverlapSphereNonAlloc(projectile.Position, 20, projectile.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0, shockBuffer);
+                projectile.Level.OverlapSphereNonAlloc(projectile.Position, 20, OverlapParams.Hostile(projectile.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE), shockBuffer);
                 foreach (var buff in electrifiedBuffBuffer)
                 {
                     foreach (var collider in shockBuffer)
