@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Seeds;
-using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Artifacts;
 using MVZ2Logic.Definitions;
 using MVZ2Logic.Entities;
@@ -48,7 +47,7 @@ namespace MVZ2.GameContent.Artifacts
                 var level = auraEffect.Source.GetLevel();
                 foreach (var target in level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsFriendlyEntity()))
                 {
-                    if (target.GetFunction() == VanillaBlueprintFunctions.melee)
+                    if (target.Definition.GetFunction() == VanillaBlueprintFunctions.melee)
                         results.Add(target);
                 }
             }

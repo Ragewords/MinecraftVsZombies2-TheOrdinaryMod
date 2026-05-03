@@ -191,7 +191,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void SacrificeInteractions(Entity entity, Entity soulFurnace)
         {
-            NamespaceID? function = entity.GetFunction();
+            NamespaceID? function = entity.Definition.GetFunction();
             if (function == null)
                 return;
             if (function == VanillaBlueprintFunctions.bomb)

@@ -90,11 +90,14 @@ namespace MVZ2.Vanilla.Entities
         public const string skeletonHorse_Animation = "skeleton_horse/animation";
         public const string skeletonHorse_State = "skeleton_horse/state";
         public const string skeletonHorse_Melee = "skeleton_horse/melee";
+        public const string jackDullahan_Animation = "jackdullahan/animation";
         public const string jackDullahan_State = "jackdullahan/state";
         public const string jackDullahan_Move = "jackdullahan/move";
 
         public const string skeletonMage_State = "skeleton_mage/state";
         public const string wickedHermitZombie_State = "wicked_hermit_zombie/state";
+        public const string tanookiZombie_Animation = "tanooki_zombie/animation";
+        public const string tanookiZombie_State = "tanooki_zombie/state";
 
         public const string undeadFlyingObject_State = "undead_flying_object/state";
         public const string flyingPirate_Move = "flying_pirate/move";

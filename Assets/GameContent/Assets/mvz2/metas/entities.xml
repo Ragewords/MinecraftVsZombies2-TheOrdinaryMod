@@ -2629,6 +2629,10 @@
             <unlock>
                 <condition required="mvz2:level.mausoleum_EX1" />
             </unlock>
+            <behaviours>
+                <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:tanooki_zombie/animation" />
+                <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:tanooki_zombie/state" />
+            </behaviours>
             <properties>
                 <int name="mvz2:cost" value="150" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
@@ -2962,6 +2966,7 @@
             <behaviours>
                 <behaviour operator="add" id="mvz2:damage_by_gold" />
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:jackdullahan/state" />
+                <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:jackdullahan/animation" />
                 <behaviour operator="replace" source="mvz2:enemy_walk" id="mvz2:jackdullahan/move" />
                 <behaviour operator="remove" id="mvz2:enemy_melee" />
             </behaviours>

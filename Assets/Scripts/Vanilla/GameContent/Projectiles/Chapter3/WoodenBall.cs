@@ -30,6 +30,8 @@ namespace MVZ2.GameContent.Projectiles
         {
             var hitResult = param.hit;
             var projectile = hitResult.Projectile;
+            if (!projectile.Definition.HasBehaviour(this))
+                return;
 
             var dmg = projectile.GetDamage();
             dmg -= 10f;

@@ -144,6 +144,7 @@
         </unlock>
     </artifact>
 
+    <!-- Extra -->
     <artifact id="jack_o_lantern" name="南瓜灯" tooltip="给予非光源器械一个小范围光源" sprite="mvz2:artifacts/jack_o_lantern">
         <unlock>
             <condition required="mvz2:level.halloween_EX3" />

@@ -317,11 +317,6 @@ namespace MVZ2.Vanilla.Entities
         }
         #endregion
 
-        #region 功能
-        public static readonly PropertyMeta<NamespaceID> FUNCTION = Get<NamespaceID>("function");
-        public static NamespaceID? GetFunction(this Entity entity) => entity.GetProperty<NamespaceID>(FUNCTION);
-        #endregion
-
         #region 摩擦力
         public static readonly PropertyMeta<bool> KEEP_GROUND_FRICTION = Get<bool>("KeepGroundFriction");
         public static bool KeepGroundFriction(this Entity entity)

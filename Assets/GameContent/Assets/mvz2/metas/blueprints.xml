@@ -107,13 +107,13 @@
             <icon model="mvz2:entity.zombie_cloud_fire" mobile="mvz2:mobile_blueprint/zombie_cloud_fire" />
         </entity>
 
-        <entity id="nether_mage_fire" cost="75" name="下界法师（火）" entity="mvz2:nether_mage" variant="1">
+        <entity id="nether_mage_fire" cost="75" function="monster" name="下界法师（火）" entity="mvz2:nether_mage" variant="1">
             <icon model="mvz2:entity.nether_mage_fire" mobile="mvz2:mobile_blueprint/nether_mage_fire" />
         </entity>
-        <entity id="nether_mage_frost" cost="75" name="下界法师（冰）" entity="mvz2:nether_mage" variant="2">
+        <entity id="nether_mage_frost" cost="75" function="monster" name="下界法师（冰）" entity="mvz2:nether_mage" variant="2">
             <icon model="mvz2:entity.nether_mage_frost" mobile="mvz2:mobile_blueprint/nether_mage_frost" />
         </entity>
-        <entity id="nether_mage_lightning" cost="75" name="下界法师（电）" entity="mvz2:nether_mage" variant="3">
+        <entity id="nether_mage_lightning" cost="75" function="monster" name="下界法师（电）" entity="mvz2:nether_mage" variant="3">
             <icon model="mvz2:entity.nether_mage_lightning" mobile="mvz2:mobile_blueprint/nether_mage_lightning" />
         </entity>
     </entities>
