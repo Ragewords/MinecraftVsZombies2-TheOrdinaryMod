@@ -310,6 +310,7 @@ namespace MVZ2.GameContent.Buffs
             // Chapter 6
             public const string gravelOnFace = "gravel_on_face";
             public const string smallShadowCell = "small_shadow_cell";
+            public const string shadowCellHealthUp = "shadow_cell_health_up";
             public const string controlRodUnstable = "control_rod_unstable";
         }
         public static class Obstacle

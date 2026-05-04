@@ -909,6 +909,9 @@
     <sound name="slow_down" priority="64">
         <sample path="mvz2:slow_down" weight="1" />
     </sound>
+    <sound name="slurp">
+        <sample path="mvz2:slurp" weight="1" />
+    </sound>
     <sound name="small_explosion">
         <sample path="mvz2:small_explosion" weight="1" />
     </sound>

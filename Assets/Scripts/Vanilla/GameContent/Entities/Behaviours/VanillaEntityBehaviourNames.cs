@@ -100,6 +100,7 @@ namespace MVZ2.Vanilla.Entities
         public const string tanookiZombie_State = "tanooki_zombie/state";
 
         public const string undeadFlyingObject_State = "undead_flying_object/state";
+        public const string flyingPirate_Animation = "flying_pirate/animation";
         public const string flyingPirate_Move = "flying_pirate/move";
         public const string admiralZombie_Melee = "admiral_zombie/melee";
         public const string skeletonStatue_Animation = "skeleton_statue/animation";

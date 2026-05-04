@@ -43,14 +43,11 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
             entity.SetModelProperty("Parachute", FlyingPirateGlideBuff.IsParachuting(entity));
         }
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-
-
             bool parachute = FlyingPirateGlideBuff.IsParachuting(entity);
             if (!parachute)
             {

@@ -38,16 +38,6 @@ namespace MVZ2.GameContent.Enemies
             var lane = entity.GetLane();
             SetRNG(entity, entity.RNG);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
-            if (level.IsWaterLane(lane) || level.IsAirLane(lane))
-            {
-                entity.AddBuff<BoatBuff>();
-                entity.SetModelProperty("HasBoat", true);
-            }
-        }
-        protected override void UpdateLogic(Entity entity)
-        {
-            base.UpdateLogic(entity);
-            entity.SetModelProperty("HasBoat", entity.HasBuff<BoatBuff>());
         }
         protected override void UpdateAI(Entity entity)
         {

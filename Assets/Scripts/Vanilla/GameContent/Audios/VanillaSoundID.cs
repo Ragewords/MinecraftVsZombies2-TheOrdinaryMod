@@ -239,6 +239,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID slendermanDeath = Get("slenderman_death");
         public readonly static NamespaceID slice = Get("slice");
         public readonly static NamespaceID slime = Get("slime");
+        public readonly static NamespaceID slurp = Get("slurp");
         public readonly static NamespaceID smallExplosion = Get("small_explosion");
         public readonly static NamespaceID smallHit = Get("small_hit");
         public readonly static NamespaceID smash = Get("smash");

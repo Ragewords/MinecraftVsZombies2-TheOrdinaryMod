@@ -83,7 +83,7 @@ namespace MVZ2.GameContent.Bosses
         public static int GetFireVariant(Entity entity)
         {
             var eatenFlags = GetEatenFlags(entity);
-            if ((eatenFlags & EATEN_FLAG_CORPSE) != 0 || stateMachine.GetStateNumber(entity) == STATE_ZOMBREATH)
+            if ((eatenFlags & EATEN_FLAG_CORPSE) != 0)
                 return DragonFireBreath.VARIANT_CYAN;
             if ((eatenFlags & EATEN_FLAG_CHARCOAL) != 0 || stateMachine.GetStateNumber(entity) == STATE_FIRE_BREATH_PLUS)
                 return DragonFireBreath.VARIANT_RED;

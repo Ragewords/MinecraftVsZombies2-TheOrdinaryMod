@@ -406,10 +406,6 @@ MonoBehaviour:
   - {fileID: 8408306103035653857}
   - {fileID: 6221957571071680960}
   - {fileID: 396709424945173548}
-  mapExtraButtons:
-  - {fileID: 1742028313774687955}
-  - {fileID: 8156724907531911518}
-  - {fileID: 6328763570519547101}
   mapElements:
   - {fileID: 990900076812835926}
   - {fileID: 3991290998786978955}
@@ -421,6 +417,10 @@ MonoBehaviour:
   - {fileID: 1817524613267992338}
   - {fileID: 768219761912188804}
   - {fileID: 4439505224555918900}
+  mapExtraButtons:
+  - {fileID: 1742028313774687955}
+  - {fileID: 8156724907531911518}
+  - {fileID: 6328763570519547101}
   mapPins: []
 --- !u!1001 &166450652676475631
 PrefabInstance:
@@ -1787,8 +1787,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296375411447829916}
     m_Modifications:
     - target: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
-      propertyPath: unlock.path
-      value: level.castle_EX1
+      propertyPath: unlockGroup.path
+      value: contraption.fire_charge_dispenser
       objectReference: {fileID: 0}
     - target: {fileID: 1741428518060487703, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_Name

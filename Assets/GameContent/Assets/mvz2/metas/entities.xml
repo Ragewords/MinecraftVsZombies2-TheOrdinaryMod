@@ -1196,6 +1196,7 @@
                 <bool name="mvz2:isLightSource" value="true" />
                 <vector3 name="mvz2:lightRange" x="256" y="256" z="256" />
                 <color name="mvz2:lightColor" value="#FFFF00" />
+                <id name="mvz2:function" value="mvz2:potion" />
             </properties>
         </dispenser>
         <contraption id="gravelpult" name="沙砾投手" tooltip="投出燧石或沙砾">
@@ -1222,6 +1223,7 @@
 
                 <int name="mvz2:cost" value="100" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </contraption>
         <contraption id="cursed_candle" name="诅咒蜡烛" tooltip="诅咒并焚烧怪物，使其自爆">
@@ -1249,6 +1251,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:combustor" />
             </properties>
         </contraption>
         <contraption id="stone_eye" name="石眼" tooltip="减速并阻挡前方敌人">
@@ -1267,6 +1270,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:defender" />
             </properties>
         </contraption>
         <contraption id="cooling_cell" name="冷却单元" tooltip="加快器械的充能进度">
@@ -1302,6 +1306,7 @@
 
                 <int name="mvz2:cost" value="75" />
                 <id name="mvz2:rechargeId" value="mvz2:long" />
+                <id name="mvz2:function" value="mvz2:frosty" />
             </properties>
         </contraption>
         <contraption id="amethyst_pylon" name="紫晶塔" tooltip="发射穿透激光，在光线中增强">
@@ -1325,6 +1330,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:short" />
+                <id name="mvz2:function" value="mvz2:sharpener" />
             </properties>
         </contraption>
         <contraption id="nuke" name="核弹" tooltip="触发后摧毁大范围内的敌人以及所在地块">
@@ -1352,6 +1358,7 @@
 
                 <int name="mvz2:cost" value="125" />
                 <id name="mvz2:rechargeId" value="mvz2:very_long" />
+                <id name="mvz2:function" value="mvz2:bomb" />
             </properties>
         </contraption>
         <contraption id="nether_reactor_core" name="下界反应核" tooltip="在特殊阵型中持续提供星之碎片">
@@ -2371,6 +2378,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:boated_enemy" />
+                <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:flying_pirate/animation" />
                 <behaviour operator="replace" source="mvz2:enemy_walk" id="mvz2:flying_pirate/move" />
             </behaviours>
             <properties>
@@ -2556,9 +2564,11 @@
             <unlock>
                 <condition required="mvz2:level.halloween_11" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:boated_enemy" />
+            </behaviours>
             <properties>
                 <float name="mvz2:maxHealth" value="300" />
-
                 <int name="mvz2:cost" value="300" />
             </properties>
         </zombie>
@@ -2643,6 +2653,7 @@
                 <condition required="mvz2:level.ship_EX1" />
             </unlock>
             <behaviours>
+                <behaviour operator="add" id="mvz2:boated_enemy" />
                 <behaviour operator="replace" source="mvz2:enemy_melee" id="mvz2:admiral_zombie/melee" />
             </behaviours>
             <properties>
@@ -4349,7 +4360,7 @@
             </properties>
         </projectile>
         <projectile id="flint">
-            <behaviours includeSelf="false">
+            <behaviours>
                 <behaviour operator="add" id="mvz2:projectile_rotating" />
             </behaviours>
             <properties>

@@ -405,10 +405,6 @@ MonoBehaviour:
   - {fileID: 8408306103035653857}
   - {fileID: 6221957571071680960}
   - {fileID: 396709424945173548}
-  mapExtraButtons:
-  - {fileID: 3883917424279701026}
-  - {fileID: 5304289264727488388}
-  - {fileID: 6621394681000420204}
   mapElements:
   - {fileID: 6236066859186727525}
   - {fileID: 6271099625235015345}
@@ -419,6 +415,10 @@ MonoBehaviour:
   - {fileID: 8964921800513774531}
   - {fileID: 4976107172084042411}
   - {fileID: 5708058130573553263}
+  mapExtraButtons:
+  - {fileID: 3883917424279701026}
+  - {fileID: 5304289264727488388}
+  - {fileID: 6621394681000420204}
   mapPins: []
 --- !u!1001 &169044856077270187
 PrefabInstance:
@@ -2220,8 +2220,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296375411447829916}
     m_Modifications:
     - target: {fileID: 1316803536713982302, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
-      propertyPath: unlock.path
-      value: level.mausoleum_EX1
+      propertyPath: unlockGroup.path
+      value: contraption.youkai_leaf
       objectReference: {fileID: 0}
     - target: {fileID: 1741428518060487703, guid: 34ed1cdc8a174114e8899f0abb6e93fc, type: 3}
       propertyPath: m_Name

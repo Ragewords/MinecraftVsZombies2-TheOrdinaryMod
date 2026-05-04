@@ -4,6 +4,7 @@ using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Entities;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Entities;
 using PVZEngine;
@@ -26,6 +27,7 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             var buff = entity.AddBuff<FlyBuff>();
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 20f);
+            entity.CollisionMaskFriendly |= EntityCollisionHelper.MASK_ENEMY;
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -37,6 +39,30 @@ namespace MVZ2.GameContent.Enemies
                 entity.TakeDamage(damage, effects, entity);
             }
             entity.SetAnimationFloat("AnimationSpeed", entity.IsAIFrozen() ? 0 : 1);
+        }
+        public override void PostCollision(EntityCollision collision, int state)
+        {
+            base.PostCollision(collision, state);
+            if (state == EntityCollisionHelper.STATE_EXIT)
+                return;
+            if (!collision.Collider.IsForMain())
+                return;
+            var other = collision.Other;
+            var cell = collision.Entity;
+            if (!cell.ExistsAndAlive())
+                return;
+            if (cell.IsHostile(other))
+                return;
+            if (!other.HasBehaviour(this))
+                return;
+
+            if (other.HasBuff<SmallShadowCellBuff>())
+            {
+                other.Die(new DamageEffectList(VanillaDamageEffects.NO_DEATH_EFFECTS, VanillaDamageEffects.REMOVE_ON_DEATH, VanillaDamageEffects.NO_NEUTRALIZE, VanillaDamageEffects.INSTA_KILL), cell);
+                other.PlaySound(VanillaSoundID.slurp);
+                cell.AddBuff<ShadowCellHealthUpBuff>();
+                cell.HealEffects(100, other);
+            }
         }
 
         public void DeathEffects(Entity entity, DeathInfo info)

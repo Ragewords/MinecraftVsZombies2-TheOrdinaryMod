@@ -81,6 +81,7 @@ namespace MVZ2.GameContent.Buffs.Grids
                 model.SetModelProperty("GridType", grid.GetGridModelType());
                 model.SetShaderFloat(ShaderProperties.BURN_VALUE, buff.GetProperty<float>(PROP_DISAPPEAR_VALUE));
                 model.SetShaderColor(ShaderProperties.COLOR_OFFSET, colorOffset);
+                model.ApplyShaderProperties();
             }
         }
         public static void Flash(Buff buff)

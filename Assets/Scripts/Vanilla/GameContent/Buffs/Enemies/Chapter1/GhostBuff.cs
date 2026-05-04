@@ -42,7 +42,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public override void PostAdd(Buff buff)
         {
             base.PostAdd(buff);
-            bool totallyInvisible = buff.Level.StageDefinition.HasBehaviour<WhackAGhostBehaviour>() || Ghost.IsPossessingEntity(buff.GetEntity());
+            bool totallyInvisible = buff.Level.StageDefinition.HasBehaviour<WhackAGhostBehaviour>();
             SetTotallyInvisible(buff, totallyInvisible);
             buff.SetProperty(PROP_HP_BAR_VISIBLITY, totallyInvisible ? HPBarVisibility.HIDDEN : HPBarVisibility.NORMAL);
             buff.SetProperty(PROP_TINT_MULTIPLIER, new Color(1, 1, 1, GetMinAlpha(buff)));
@@ -52,6 +52,12 @@ namespace MVZ2.GameContent.Buffs.Enemies
         {
             base.PostUpdate(buff);
             UpdateIllumination(buff);
+
+            if (buff.Level.StageDefinition.HasBehaviour<WhackAGhostBehaviour>())
+                return;
+            bool totallyInvisible = Ghost.IsPossessingEntity(buff.GetEntity());
+            SetTotallyInvisible(buff, totallyInvisible);
+            buff.SetProperty(PROP_HP_BAR_VISIBLITY, totallyInvisible ? HPBarVisibility.HIDDEN : HPBarVisibility.NORMAL);
         }
         private void PreEntityTakeDamageCallback(VanillaLevelCallbacks.PreTakeDamageParams param, CallbackResult callbackResult)
         {

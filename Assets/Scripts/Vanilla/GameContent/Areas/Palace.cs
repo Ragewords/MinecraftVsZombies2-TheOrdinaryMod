@@ -3,11 +3,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs.SeedPacks;
+using MVZ2.GameContent.Placements;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic;
+using MVZ2Logic.Callbacks;
+using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
+using PVZEngine;
 using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
+using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.SeedPacks;
 using Tools;
@@ -19,6 +26,25 @@ namespace MVZ2.GameContent.Areas
     {
         public Palace(string nsp, string name) : base(nsp, name)
         {
+            AddTrigger(LogicCallbacks.GET_INNATE_BLUEPRINTS, GetInnateBlueprintsCallback);
+        }
+        public void GetInnateBlueprintsCallback(LogicCallbacks.GetInnateBlueprintsParams param, CallbackResult result)
+        {
+            var level = Global.Level.GetLevel();
+            if (level == null)
+                return;
+            if (level.AreaDefinition != this)
+                return;
+            var rng = GetRNG(level);
+            if (rng == null)
+            {
+                rng = level.CreateRNG();
+                SetRNG(level, rng);
+            }
+            foreach (var contraption in GetInnateContraptions(level).RandomTake(3, rng))
+            {
+                param.list.Add(contraption);
+            }
         }
         public override void PostHugeWaveEvent(LevelEngine level)
         {
@@ -51,9 +77,42 @@ namespace MVZ2.GameContent.Areas
             }
             level.PlaySound(VanillaSoundID.locked);
         }
+        private static NamespaceID[] GetInnateContraptions(LevelEngine level)
+        {
+            var almanac = Global.Almanac;
+            HashSet<NamespaceID> results = new HashSet<NamespaceID>();
+            var unlocked = Global.Saves.GetUnlockedContraptions();
+            foreach (var contraptionID in unlocked)
+            {
+                var definition = level.Content.GetEntityDefinition(contraptionID);
+                if (definition == null)
+                    continue;
+                // 图鉴里没有的不出
+                if (!almanac.IsContraptionInAlmanac(contraptionID))
+                    continue;
+                // 紫卡不出
+                if (definition.IsUpgradeBlueprint())
+                    continue;
+                // 白天不出夜间器械
+                if (level.IsDay() && definition.IsNocturnal())
+                    continue;
+                // 无水路不出水生器械
+                var areaTags = level.GetAreaTags();
+                if (areaTags != null)
+                {
+                    if (areaTags.Contains(LogicAreaTags.noWater) && definition.GetPlacementID() == VanillaPlacementID.aquatic)
+                        continue;
+                    if (areaTags.Contains(LogicAreaTags.landOnly) && definition.GetPlacementID() == VanillaPlacementID.unsodded)
+                        continue;
+                }
+                results.Add(contraptionID);
+            }
+            return results.ToArray();
+        }
         public static RandomGenerator? GetRNG(LevelEngine level) => level.GetProperty<RandomGenerator>(PROP_RNG);
         public static void SetRNG(LevelEngine level, RandomGenerator? rng) => level.SetProperty(PROP_RNG, rng);
         public const int LOCK_DIVISION = 3;
+        public const int INNATE_COUNT = 3;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("rng");
     }
 }

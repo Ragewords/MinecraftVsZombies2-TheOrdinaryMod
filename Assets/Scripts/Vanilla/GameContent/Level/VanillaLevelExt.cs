@@ -184,7 +184,7 @@ namespace MVZ2.Vanilla.Level
         public static Entity? SpawnFlagZombie(this LevelEngine level, bool spawnRally)
         {
             var lane = level.GetRandomEnemySpawnLane();
-            return level.SpawnFlagZombie(spawnRally);
+            return level.SpawnFlagZombie(lane, spawnRally);
         }
         public static Entity? SpawnFlagZombie(this LevelEngine level, int lane, bool spawnRally)
         {
@@ -193,7 +193,7 @@ namespace MVZ2.Vanilla.Level
             var y = level.GetGroundY(x, z);
             var pos = new Vector3(x, y, z);
             var id = spawnRally ? VanillaEnemyID.rallyZombie : VanillaEnemyID.flagZombie;
-            return level.Spawn(VanillaEnemyID.flagZombie, pos, null);
+            return level.Spawn(id, pos, null);
         }
         #endregion
 

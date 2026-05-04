@@ -253,6 +253,7 @@
     <buff id="transfenser_glowing" polarity="negative" level="0" target="entity" />
     <buff id="gravel_on_face" polarity="negative" level="0" target="enemy" />
     <buff id="small_shadow_cell" polarity="mixed" level="1000" target="enemy" />
+    <buff id="shadow_cell_health_up" polarity="positive" level="1000" target="enemy" />
     <buff id="cursed_candle" polarity="negative" level="0" target="entity" />
     <buff id="stone_eye_slowing" polarity="negative" level="0" target="entity" />
     <buff id="petrified" polarity="negative" level="0" target="entity" />
