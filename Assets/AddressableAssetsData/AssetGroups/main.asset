@@ -15028,6 +15028,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc426a005aa0fb84eb81cd6999b8fb71
+    m_Address: mvz2:slurp
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc48781f16aacf545871a4e206555d4b
     m_Address: mvz2:entity/effects/water_stain_frozen
     m_ReadOnly: 0
