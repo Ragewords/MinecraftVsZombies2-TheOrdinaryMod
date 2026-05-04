@@ -268,6 +268,7 @@
     </model>
 
     <model name="shadow_cell" type="entity" path="mvz2:enemy/palace/shadow_cell" width="64" height="64" xOffset="0" yOffset="-28" />
+    <model name="blaze" type="entity" path="mvz2:enemy/palace/blaze" width="48" height="65" xOffset="0" yOffset="-33" />
     <model name="skeleton_statue" type="entity" path="mvz2:enemy/palace/skeleton_statue" width="64" height="96" xOffset="10" yOffset="-44">
         <armorconfig>mvz2:humanoid</armorconfig>
     </model>

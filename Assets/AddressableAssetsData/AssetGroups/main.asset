@@ -500,6 +500,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0832cda489f0c5d42b080ab55898d975
+    m_Address: mvz2:enemy/palace/blaze
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 086fdabba3ee34247b66efccb94193d5
     m_Address: mvz2:nimble_fabric
     m_ReadOnly: 0
@@ -761,6 +768,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d4b43785901a8f4390699a767958f94
     m_Address: mvz2:arcade/the_giants_revenge
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d4d195cc83f3054089e7fe9c32afec0
+    m_Address: mvz2:mobile_blueprint/blaze
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -4012,6 +4026,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41b8b1da0aae7ce4ca2f884df9b30083
+    m_Address: mvz2:note/palace
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41dcf35c43418054cb6d7b6eb542f543
     m_Address: mvz2:maps
     m_ReadOnly: 0
@@ -5883,6 +5904,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5fe877b614795e144996e5d0ede65e81
     m_Address: mvz2:starshards/default
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fe8cc97fa275b24c8696a7ff5c984fa
+    m_Address: mvz2:note/background_palace
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -12537,6 +12565,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d17d37c1a790e63419fc44c2c577189a
+    m_Address: mvz2:archive/palace_note
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1bf852fe2722b54e9735417e907a23c
     m_Address: mvz2:mobile_blueprint/necrotombstone
     m_ReadOnly: 0
@@ -15076,6 +15111,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd4144b430c45d745bf562bb10f5a39b
+    m_Address: mvz2:entity/enemy/blaze
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd41a1e6f80c559498a8a48404908643
     m_Address: mvz2:contraption/castle/wooden_dropper

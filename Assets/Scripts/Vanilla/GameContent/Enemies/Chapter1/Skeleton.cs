@@ -24,11 +24,6 @@ namespace MVZ2.GameContent.Enemies
                 ignoreLowEnemy = true
             };
         }
-        public override void Init(Entity entity)
-        {
-            base.Init(entity);
-            var level = entity.Level;
-        }
         protected override void UpdateAI(Entity enemy)
         {
             base.UpdateAI(enemy);

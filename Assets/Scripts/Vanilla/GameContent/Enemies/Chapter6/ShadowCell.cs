@@ -51,6 +51,8 @@ namespace MVZ2.GameContent.Enemies
             var cell = collision.Entity;
             if (!cell.ExistsAndAlive())
                 return;
+            if (cell.HasBuff<SmallShadowCellBuff>())
+                return;
             if (cell.IsHostile(other))
                 return;
             if (!other.HasBehaviour(this))
@@ -78,6 +80,10 @@ namespace MVZ2.GameContent.Enemies
                 entity.Spawn(VanillaEnemyID.shadowCell, entity.Position, spawnParam)?.Let(e =>
                 {
                     e.StartChangingLane(l, CHANGE_LANE_SPEED);
+                    foreach (var healthBuff in entity.GetBuffs<ShadowCellHealthUpBuff>())
+                    {
+                        e.AddBuff<ShadowCellHealthUpBuff>();
+                    }
                     e.AddBuff<SmallShadowCellBuff>();
                 });
             }

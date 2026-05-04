@@ -212,6 +212,7 @@
             <value value="mvz2:shadow" name="暗影" description="吸收剧毒伤害，但受到1.5x火焰、闪电和光明伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#3f3f3f" />
             <value value="mvz2:normal" name="普通" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[14]" backgroundColor="#6b6b6b" />
             <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[15]" backgroundColor="#5aaa43" />
+            <value value="mvz2:fire" name="火焰" description="吸收火焰伤害，但受到3x冰霜伤害" sprite="mvz2:ui/almanac/shell_tags[16]" backgroundColor="#7c2e00" />
         </enum>
     </tags>
     <globalVariables>
@@ -1927,7 +1928,20 @@
                 <p>2. 如今世界各地的阳光底下却存在亡灵生物不燃烧的现象，此事相当异常，需要进一步调查。</p>
             </flavor>
         </entry>
-        <entry />
+        <entry id="mvz2:blaze">
+            <header>
+                <p>烈焰人会在前线向你的器械发射多个火球。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>3发/6秒</color>]]></p>
+                <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
+            </properties>
+            <flavor>
+                <p>原本作为下界要塞守护者的烈焰人突然出现在了别的地方。这给人们带来了不少的麻烦，就连炼药师们也苦不堪言。</p>
+                <p>至于为什么他们会出现在下界要塞外？也许只是在休假吧……</p>
+            </flavor>
+        </entry>
         <entry id="mvz2:skeleton_statue">
             <header>
                 <p>骷髅雕像在死亡后会变为低矮的残骸，若残骸没有及时被摧毁，则会复活。</p>
@@ -1980,6 +1994,7 @@
                 <variable name="easy_damage">global("mvz2:entity_damage")</variable>
                 <variable name="normal_damage">global("mvz2:entity_damage") * 1.5</variable>
                 <variable name="hard_damage">global("mvz2:entity_damage") * 3</variable>
+                <variable name="lunatic_damage">global("mvz2:entity_damage") * 6</variable>
             </variables>
             <header>
                 <p>鬼火苍蝇会冲向你的器械，并产生一次小型自爆，造成<![CDATA[<tag id="mvz2:fire" />]]>火焰伤害。</p>
@@ -1987,7 +2002,7 @@
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
-                <p>自爆伤害：<![CDATA[<color=red><var local="easy_damage"/>（简单），<var local="normal_damage"/>（普通），<var local="hard_damage"/>（困难）</color>]]></p>
+                <p>自爆伤害：<![CDATA[<color=red><var local="easy_damage"/>（简单），<var local="normal_damage"/>（普通），<var local="hard_damage"/>（困难），<var local="lunatic_damage"/>（月狂）</color>]]></p>
             </properties>
             <flavor>
                 <p>一：为了解决现实中青蛙吃萤火虫会中毒的问题，我们干脆不加入萤火虫。</p>

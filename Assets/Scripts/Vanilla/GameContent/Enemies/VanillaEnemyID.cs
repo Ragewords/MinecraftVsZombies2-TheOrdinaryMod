@@ -52,6 +52,7 @@ namespace MVZ2.GameContent.Enemies
         public const string admiralZombie = "admiral_zombie";
 
         public const string shadowCell = "shadow_cell";
+        public const string blaze = "blaze";
         public const string skeletonStatue = "skeleton_statue";
         public const string hacker = "hacker";
         public const string zombieCat = "zombie_cat";
@@ -135,6 +136,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID admiralZombie = Get(VanillaEnemyNames.admiralZombie);
 
         public static readonly NamespaceID shadowCell = Get(VanillaEnemyNames.shadowCell);
+        public static readonly NamespaceID blzae = Get(VanillaEnemyNames.blaze);
         public static readonly NamespaceID skeletonStatue = Get(VanillaEnemyNames.skeletonStatue);
         public static readonly NamespaceID hacker = Get(VanillaEnemyNames.hacker);
         public static readonly NamespaceID zombieCat = Get(VanillaEnemyNames.zombieCat);

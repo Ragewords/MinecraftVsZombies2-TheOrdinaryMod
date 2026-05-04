@@ -75,7 +75,6 @@
     <group id="contraption.soul_furnace"><conditions><condition required="mvz2:level.halloween_7" /></conditions></group>
     <group id="contraption.silvenser"><conditions><condition required="mvz2:level.halloween_8" /></conditions></group>
     <group id="contraption.magichest"><conditions><condition required="mvz2:level.halloween_9" /></conditions></group>
-    <group id="contraption.poisonser"><conditions><condition required="mvz2:level.halloween_EX1" /></conditions></group>
 
     <!-- Dream Contraptions -->
     <group id="contraption.lily_pad"><conditions><condition required="mvz2:level.dream_1" /></conditions></group>
@@ -86,7 +85,6 @@
     <group id="contraption.totenser"><conditions><condition required="mvz2:level.dream_7" /></conditions></group>
     <group id="contraption.dream_crystal"><conditions><condition required="mvz2:level.dream_8" /></conditions></group>
     <group id="contraption.dream_silk"><conditions><condition required="mvz2:level.dream_9" /></conditions></group>
-    <group id="contraption.dimension_hammer"><conditions><condition required="mvz2:level.dream_EX1" /></conditions></group>
 
     <!-- Castle Contraptions -->
     <group id="contraption.wooden_dropper"><conditions><condition required="mvz2:level.castle_1" /></conditions></group>
@@ -97,7 +95,6 @@
     <group id="contraption.thunder_drum"><conditions><condition required="mvz2:level.castle_7" /></conditions></group>
     <group id="contraption.tesla_coil"><conditions><condition required="mvz2:level.castle_8" /></conditions></group>
     <group id="contraption.giant_bowl"><conditions><condition required="mvz2:level.castle_9" /></conditions></group>
-    <group id="contraption.fire_charge_dispenser"><conditions><condition required="mvz2:level.castle_EX1" /></conditions></group>
     
     <!-- Mausoleum Contraptions -->
     <group id="contraption.note_block"><conditions><condition required="mvz2:level.mausoleum_1" /></conditions></group>
@@ -108,7 +105,6 @@
     <group id="contraption.necrotombstone"><conditions><condition required="mvz2:level.mausoleum_7" /></conditions></group>
     <group id="contraption.black_hole_bomb"><conditions><condition required="mvz2:level.mausoleum_8" /></conditions></group>
     <group id="contraption.desire_pot"><conditions><condition required="mvz2:level.mausoleum_9" /></conditions></group>
-    <group id="contraption.youkai_leaf"><conditions><condition required="mvz2:level.mausoleum_EX1" /></conditions></group>
     
     <!-- Ship Contraptions -->
     <group id="contraption.gunpowder_barrel"><conditions><condition required="mvz2:level.ship_1" /></conditions></group>
@@ -119,7 +115,6 @@
     <group id="contraption.wooden_fan"><conditions><condition required="mvz2:level.ship_7" /></conditions></group>
     <group id="contraption.elastic_cloud"><conditions><condition required="mvz2:level.ship_8" /></conditions></group>
     <group id="contraption.jeweled_pagoda"><conditions><condition required="mvz2:level.ship_9" /></conditions></group>
-    <group id="contraption.smoker"><conditions><condition required="mvz2:level.ship_EX1" /></conditions></group>
     
     <!-- Palace Contraptions -->
     <group id="contraption.transfenser"><conditions><condition required="mvz2:level.palace_1" /></conditions></group>
@@ -144,4 +139,11 @@
     <group id="contraption.diamond_spikes"><conditions><condition required="mvz2:level.castle_5" /></conditions></group>
     <group id="contraption.brick_cannon"><conditions><condition required="mvz2:level.palace_5" /></conditions></group>
     <group id="contraption.command_block"><conditions><condition required="mvz2:level.mausoleum_5" /></conditions></group>
+
+    <!-- Extra Contraptions -->
+    <group id="contraption.poisonser"><conditions><condition required="mvz2:level.halloween_EX1" /></conditions></group>
+    <group id="contraption.dimension_hammer"><conditions><condition required="mvz2:level.dream_EX1" /></conditions></group>
+    <group id="contraption.fire_charge_dispenser"><conditions><condition required="mvz2:level.castle_EX1" /></conditions></group>
+    <group id="contraption.youkai_leaf"><conditions><condition required="mvz2:level.mausoleum_EX1" /></conditions></group>
+    <group id="contraption.smoker"><conditions><condition required="mvz2:level.ship_EX1" /></conditions></group>
 </unlocks>

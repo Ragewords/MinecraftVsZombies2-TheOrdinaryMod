@@ -167,6 +167,8 @@ namespace MVZ2.GameContent.Enemies
             // 仅附身怪物
             if (target.Type != EntityTypes.ENEMY)
                 return false;
+            if (target.GetDefinitionID() == VanillaEnemyID.shadowCell)
+                return false;
             // 敌对
             if (self.IsHostile(target))
                 return false;

@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Difficulties;
+using MVZ2.GameContent.Enemies;
+using MVZ2Logic.Blueprints;
 using MVZ2Logic.Level;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
@@ -31,6 +33,7 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new FloatModifier(VanillaDifficultyLevelProps.REVERSE_SATELLITE_DAMAGE_MULTIPLIER, NumberOperator.AddMultiple, 1f));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.SKELETON_HORSE_JUMP_TIMES, IntegerOperator.Add, 2));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.WICKED_HERMIT_ZOMBIE_STUN_TIME, IntegerOperator.Add, -150));
+            AddModifier(new FloatModifier(VanillaDifficultyLevelProps.WISP_FLY_DAMAGE_MULTIPLIER, NumberOperator.Multiply, 4f));
 
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.FRANKENSTEIN_INSTANT_STEEL, true));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.FRANKENSTEIN_SPLITS_HEAD, true));
@@ -55,6 +58,9 @@ namespace MVZ2.GameContent.Buffs.Level
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_TORNADO_COUNT, IntegerOperator.Set, 5));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.RED_DRAGON_FIRE_TORNADO_COUNT, IntegerOperator.Set, 3));
             AddModifier(new BooleanModifier(VanillaDifficultyLevelProps.RED_DRAGON_SELF_DAMAGE_RESISTANCE, true));
+
+            AddModifier(new NamespaceIDModifier(VanillaDifficultyLevelProps.LOCKED_CHEST_SPIT_BLUEPRINT_ID, SetOperator.Set, LogicBlueprintID.FromEntity(VanillaEnemyID.diamondHelmettedZombie)));
+            AddModifier(new IntModifier(VanillaDifficultyLevelProps.LOCKED_CHEST_REQUIRED_STARSHARDS, IntegerOperator.Add, 1));
             AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());

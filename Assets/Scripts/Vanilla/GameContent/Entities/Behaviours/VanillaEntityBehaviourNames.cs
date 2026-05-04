@@ -24,6 +24,7 @@ namespace MVZ2.Vanilla.Entities
         public const string destroyOutsideWater = "destroy_outside_water";
         public const string destroyOutsideWaterAndCloud = "destroy_outside_water_and_cloud";
         public const string burnAtDay = "burn_at_day";
+        public const string hurtInWater = "hurt_in_water";
         public const string explodeOnFireDeath = "explode_on_fire_death";
         public const string ignitable = "ignitable";
         public const string ignitable_Trigger = "ignitable/trigger";
@@ -103,6 +104,7 @@ namespace MVZ2.Vanilla.Entities
         public const string flyingPirate_Animation = "flying_pirate/animation";
         public const string flyingPirate_Move = "flying_pirate/move";
         public const string admiralZombie_Melee = "admiral_zombie/melee";
+        public const string blaze_State = "blaze/state";
         public const string skeletonStatue_Animation = "skeleton_statue/animation";
         public const string skeletonStatue_Death = "skeleton_statue/death";
         public const string skeletonStatue_State = "skeleton_statue/state";
