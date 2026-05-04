@@ -388,7 +388,7 @@
             <grid id="mvz2:stone" />
         </grids>
     </area>
-    <area id="palace" model="mvz2:palace" music="mvz2:palace_level" cart="mvz2:corpse_cart" starshard="mvz2:starshards/palace" tags="mvz2:night mvz2:no_water">
+    <area id="palace" model="mvz2:palace" music="mvz2:palace_level" cart="mvz2:corpse_cart" starshard="mvz2:starshards/palace" tags="mvz2:night mvz2:no_water mvz2:land_only">
         <positions enemySpawnX="1080" doorZ="240" />
         <lighting background="#7F7F7F" />
         <grids width="80" height="80" leftX="260" bottomZ="40" lanes="6" columns="9">
