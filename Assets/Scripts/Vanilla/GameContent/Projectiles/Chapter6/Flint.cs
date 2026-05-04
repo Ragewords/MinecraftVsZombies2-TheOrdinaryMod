@@ -2,9 +2,11 @@
 
 using System.Linq;
 using MVZ2.GameContent.Contraptions;
+using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Shells;
+using MVZ2Logic.Entities;
 using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
@@ -36,6 +38,7 @@ namespace MVZ2.GameContent.Projectiles
             var grid = enemy.GetGrid();
             if (grid == null)
                 return;
+            projectile.PlaySound(VanillaSoundID.ignite);
             GridFire.Spawn(grid, projectile, projectile.GetSpawnParams());
         }
     }

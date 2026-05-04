@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Entities;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -70,7 +71,7 @@ namespace MVZ2.GameContent.Enemies
         }
         private bool CanShoot(Entity enemy)
         {
-            return enemy.Position.x <= enemy.Level.GetEntityColumnX(enemy.Level.GetMaxColumnCount() - 1);
+            return enemy.Position.x <= enemy.Level.GetEntityColumnXFloat(enemy.Level.GetMaxColumnCount() - 0.5f);
         }
         private Entity? FindTarget(Entity entity)
         {
@@ -126,6 +127,8 @@ namespace MVZ2.GameContent.Enemies
             var speed = velocity.magnitude;
             var direciton = (target.GetCenter() - shootPoint).normalized;
             param.velocity = speed * direciton;
+            var damageMultiplier = self.Level.GetBlazeDamageMultiplier();
+            param.damage = self.GetDamage() * damageMultiplier;
 
             self.ShootProjectile(param);
             self.PlaySound(VanillaSoundID.fireCharge);
@@ -146,7 +149,7 @@ namespace MVZ2.GameContent.Enemies
         private Detector detector;
         public const int STATE_WALK = LogicEnemyStates.WALK;
         public const int STATE_RANGED_ATTACK = LogicEnemyStates.RANGED_ATTACK;
-        public const int SHOOT_COOLDOWN = 180;
+        public const int SHOOT_COOLDOWN = 120;
         public const int SHOOT_DURATION = 35;
     }
 }

@@ -21,8 +21,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Update(entity);
             var interval = entity.GetProperty<int>(PROP_BURN_INTERVAL);
-            var grid = entity.GetGrid();
-            if (entity.IsTimeInterval(interval) && (entity.IsInWater() || entity.Level.EntityExists(e => e.IsEntityOf(VanillaEffectID.rain)) || (grid != null && grid.IsWet() && entity.IsOnGround)))
+            if (entity.IsTimeInterval(interval) && (entity.IsInWater() || entity.Level.EntityExists(e => e.IsEntityOf(VanillaEffectID.rain))))
             {
                 var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE);
                 entity.TakeDamage(entity.GetProperty<float>(PROP_BURN_DAMAGE), effects, entity);

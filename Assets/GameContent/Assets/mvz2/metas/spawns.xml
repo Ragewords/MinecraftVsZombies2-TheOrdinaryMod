@@ -214,9 +214,9 @@
     </entry>
     <entry id="blaze">
         <entity id="mvz2:blaze" />
-        <spawn level="2" minWave="5" />
+        <spawn level="3" minWave="5" />
         <terrain air="true" />
-        <weight base="2000" />
+        <weight base="2500" />
     </entry>
     <entry id="skeleton_statue">
         <entity id="mvz2:skeleton_statue" />

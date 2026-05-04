@@ -1646,6 +1646,7 @@
             <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
             <spawn id="mvz2:shadow_cell" />
+            <spawn id="mvz2:blaze" />
         </spawns>
         <time firstWave="1" />
         <properties>

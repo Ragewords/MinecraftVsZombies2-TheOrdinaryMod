@@ -525,6 +525,9 @@
     <sound name="hypercube" priority="64">
         <sample path="mvz2:hypercube" weight="1" />
     </sound>
+    <sound name="ignite">
+        <sample path="mvz2:ignite" weight="1" />
+    </sound>
     <sound name="imp_laugh">
         <sample path="mvz2:entity/imp/imp_laugh1" weight="1" />
         <sample path="mvz2:entity/imp/imp_laugh2" weight="1" />
