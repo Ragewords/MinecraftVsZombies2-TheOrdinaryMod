@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2026-05-02 09:04+0800\n"
-"PO-Revision-Date: 2026-05-02 21:06+0800\n"
+"POT-Creation-Date: 2026-05-05 12:46+0800\n"
+"PO-Revision-Date: 2026-05-05 12:47+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -4448,6 +4448,86 @@ msgstr ""
 "bones, scales, and heart as their trophies.\n"
 "The Knight watched their exhilaration in silence. In the end, he claimed nothing for himself."
 
+#. Name for misc mvz2:locked_chest
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "上锁的箱子"
+msgstr "Locked Chest"
+
+#. Header for misc mvz2:locked_chest
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "上锁的箱子通过引诱、击晕他人，并将其吞下的方式，狩猎他人的灵魂。"
+msgstr "The Locked Chest hunts for souls by luring, knocking out and then swallowing its victims."
+
+#. Properties for misc mvz2:locked_chest
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"生命：<color=red><var local=\"hp\" /></color>\n"
+"阶段1：<color=red>冲刺、高跳、封锁、粉碎之锁</color>\n"
+"阶段2：<color=red>冲刺、高跳、喷吐废物、召唤气球铁盔僵尸/滚干草/滚木/滚石、石化相机、喷吐僵尸蓝图、付费招式、愚人节玩笑</color>"
+msgstr ""
+"Toughness: <color=red><var local=\"hp\" /></color>\n"
+"Phase 1: <color=red>Dash, High Jump, Chains, Crushing Lock</color>\n"
+"Phase 2: <color=red>Dash, High Jump, Spit Trash, Summon a Balloon Iron Helmet Zombie/Rolling Hay/Rolling Log/Rolling Stone, Petrifying "
+"Camera, Spit zombie blueprints, Paid Moves, April Fools' Joke</color>"
+
+#. Flavor for misc mvz2:locked_chest
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"这天，骑士单独出行，像往常一样探索着周围的地牢和洞穴，这时他看到了一个形状奇特的宝箱。\n"
+"宝箱上挂着一把坚固的锁，骑士又劈又砸，然而宝箱纹丝不动。骑士只能作罢，便准备回头。\n"
+"这时，他突然感到背后有一阵寒意，连忙躲闪。在这之后的一瞬间，那宝箱便重重地砸到了他原先的位置。\n"
+"“咯咯咯咯，你身手还挺不错的嘛咯咯咯咯”\n"
+"宝箱发出了诡异的笑声。\n"
+"“别见外，我只是饿了好几天而已。”\n"
+"“我知道你是来干什么的，受国王之命铲除怪物的吧？”\n"
+"“可是你有没有想过，真正的怪物到底在哪里呢？”\n"
+"宝箱快速地进行着致命的跳跃，骑士的剑却无法伤及其钢铁的外壳。\n"
+"就在穷途末路之际，宝箱的一次跳跃让它重重砸到了墙壁之上，它面前的锁因此破碎，而后它打开自己，露出了里面的血肉。\n"
+"就在这时，骑士看准时机，将剑刺入了它内部的血肉。\n"
+"“哎呀，真是不听人讲话啊咯咯咯”\n"
+"宝箱受了致命伤，只能瘫在地上。\n"
+"“我说啊，你就没有怀疑过，自古以来这些怪物都存在，为什么偏偏这个时候危害到你们王国了？”\n"
+"“你的那老国王，他的噩梦真的会是怪物们造成的吗？”\n"
+"骑士怒道：“你是怪物，又怎能了解我们人类的事情？”\n"
+"“咯咯咯，实话告诉你，其实我之前就在给那老国王卖命。结果那家伙就因为几条罪名就打算把我杀了，真是无聊咯咯咯。”\n"
+"“幸好我还留了几手变成了这模样，不然今天杀掉我的可不是你了咯咯咯”\n"
+"“是啊，你怎么知道你的后面不会有人准备对你动手呢？”\n"
+"箱子最后还在咯咯地笑着，那之后便散架了。\n"
+"骑士沉思了。"
+msgstr ""
+"That day, the knight set out alone, exploring the surrounding dungeons and cave as usual. Before long, he came across a strangely "
+"shaped chest.\n"
+"A sturdy lock hung from the chest, the knight slashed and struck at it but the chest did not budge. The knight had no choice but to "
+"give up and turned to leave.\n"
+"Just then, he felt a chill run down his spine and quickly dodged. In the very next instant, the chest slammed down heavily onto the "
+"spot where he had just been standing.\n"
+"\"Kekekeke... you've got some moves, kekekeke...\"\n"
+"The chest let out an eerie laugh.\n"
+"\"Don't be so shy, I've just been starving for a few days.\"\n"
+"\"I know what you're here for—sent by the king to eliminate the monsters, right?\"\n"
+"\"But have you ever wondered... where the real monster actually is?\"\n"
+"The chest leapt about with deadly force, yet the knight's sword could not pierce its iron shell.\n"
+"Just as all hope seemed lost, a leap sent it crashing hard against a wall. With the lock on its front broken, it then opened itself, "
+"revealing the flesh within. \n"
+"Seizing the moment, the knight thrust his sword deep into its flesh.\n"
+"\"Oh dear... you really don't listen, do you? Kekeke...\"\n"
+"Mortally wounded, the chest collapsed to the ground.\n"
+"\"Tell me—have you never questioned it? Monsters have existed since ancient times... so why is it only now that they've begun "
+"threatening your kingdom?\"\n"
+"\"And that old king of yours—are his nightmares really caused by monsters?\"\n"
+"The knight snapped: \"You're a monster, how could you possibly understand about human affairs?\"\n"
+"\"Kekeke... I'll tell you the truth, I used to serve that old king myself. But that man—he decided to have me executed over a few "
+"charges. How dull, kekeke...\"\n"
+"\"Good thing I had a few tricks up my sleeve and turned myself into this form. Otherwise, the one killing me today wouldn't be you, "
+"kekeke...\"\n"
+"\"Then again... how do you know there isn't someone behind you, waiting to make their move?\"\n"
+"The chest continued its eerie chuckling until, at last, it fell apart.\n"
+"The knight fell into deep thought."
+
 #. Name for almanac group mvz2:misc_entities
 #: Almanac meta file
 msgctxt "almanac.group_name"
@@ -4621,6 +4701,40 @@ msgctxt "misc.description"
 msgid "它是怎么浮在空中的？我的朋友，你都已经在天上乘船了，船僵尸能浮在空中又怎么样呢？"
 msgstr "How do they float in the air? My friend, you're already on a ship in the sky, so what if they float in the air too?"
 
+#. Name for misc mvz2:tainted_sun
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "受污染的太阳"
+msgstr "Tainted Sun"
+
+#. Header for misc mvz2:tainted_sun
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "在梦境世界中的一大波怪物来临时，太阳突然异常消失，产生黑暗。"
+msgstr ""
+"When a huge wave of monsters approached in the Dream World, the sun suddenly and abnormally vanished, plunging everything into "
+"darkness."
+
+#. Properties for misc mvz2:tainted_sun
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "持续时间：<color=red><var local=\"duration\"/>秒</color>"
+msgstr "Duration: <color=red><var local=\"duration\"/> seconds</color>"
+
+#. Flavor for misc mvz2:tainted_sun
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "原因暂不明确。"
+msgstr "The cause is currently unknown."
+
+#. Flavor for misc mvz2:tainted_sun
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "梦魇来到梦境世界之后，开始对梦境世界进行污染，并将整个世界伪装成什么都没有发生过的样子，然而这受污染的太阳便是它唯一的疏忽。"
+msgstr ""
+"After Nightmare arrived in the Dream World, it began to corrupt the realm and disguise the entire world as if nothing had ever "
+"happened. However, the tainted sun was its one and only oversight."
+
 #. Name for misc mvz2:nyaightmare
 #: Almanac meta file
 msgctxt "misc.name"
@@ -4697,6 +4811,44 @@ msgstr ""
 "\n"
 "Yet one cannot help but marvel: since when have these withered fiends possessed such cunning? Such mastery of technology, warping the "
 "very fabric of perception?"
+
+#. Name for misc mvz2:bedserker
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "床战士"
+msgstr "Bedserker"
+
+#. Header for misc mvz2:bedserker
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "床战士被<ref=[misc]mvz2:wither>凋灵</ref>召唤，背着床朝你的防线冲去，并在一定时间后自爆。"
+msgstr ""
+"Bedserkers are summoned by the <ref=[misc]mvz2:wither>Wither</ref>, they charge toward your defenses carrying beds and self-destruct "
+"after a certain amount of time."
+
+#. Properties for misc mvz2:bedserker
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"生命：<color=red><var local=\"hp\"/>+<var local=\"armor_hp\" /></color>\n"
+"速度：<color=red><var local=\"speed\"/></color>\n"
+"爆炸时间：<color=red><var local=\"explosion_time\"/>秒</color>\n"
+"爆炸伤害：<color=red><var local=\"explosion_damage\"/></color>\n"
+"特殊：<color=red>自爆也会伤害到友军</color>"
+msgstr ""
+"Health: <color=red><var local=\"hp\"/>+<var local=\"armor_hp\" /></color>\n"
+"Speed: <color=red><var local=\"speed\"/></color>\n"
+"Explosion Time: <color=red><var local=\"explosion_time\"/> seconds</color>\n"
+"Explosion Damage: <color=red><var local=\"explosion_damage\"/></color>\n"
+"Special: <color=red>Self-destruct also damages allies</color>"
+
+#. Flavor for misc mvz2:bedserker
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "一些主世界人向下界走私过很多床，这些床后来也都成为了凋灵骷髅战无不胜的法宝——仅限下界和末地。"
+msgstr ""
+"Many Overworlders smuggled a large number of beds into the Nether. These beds later became the Wither Skeletons' unbeatable secret "
+"weapon — but only in the Nether and The End."
 
 #. Name for misc mvz2:ballista
 #: Almanac meta file
@@ -4795,6 +4947,101 @@ msgstr ""
 msgctxt "misc.description"
 msgid "危险动作，<ref=[enemies]mvz2:imp>小鬼僵尸</ref>请勿轻易尝试。"
 msgstr "Dangerous action. <ref=[enemies]mvz2:imp>Imps</ref> should not attempt this."
+
+#. Name for misc mvz2:corpse_cart
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "尸体推车"
+msgstr "Corpse Cart"
+
+#. Header for misc mvz2:corpse_cart
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "尸体推车在接触到敌人后会碾压一整行的敌怪，并在后方留下数只友方的<ref=[enemies]mvz2:zombie>僵尸</ref>。"
+msgstr ""
+"When an enemy comes in contact with the Corpse Cart, it will activate and trample the entire row of enemies in front of it. "
+"Additionally, it will leave a few ally <ref=[enemies]mvz2:zombie>zombies</ref> at the back of the battlefield."
+
+#. Flavor for misc mvz2:corpse_cart
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"<ref=[misc]mvz2:rin>火焰猫 燐</ref>用来偷窃并运输尸体的推车，现如今被作为最终防线加入了战场。\n"
+"为什么里面的僵尸是我们这边的？呃，因为车里有张纸条：\n"
+"<align=\"center\">工作帮助</align>\n"
+"    当推车开动的时候，只需要下来然后前进，攻击你遇到的所有怪物，你就赢了。\n"
+"<align=\"right\">——这部分帮助是燐送给你的</align>"
+msgstr ""
+"The cart that <ref=[misc]mvz2:rin>Rin Kaenbyou</ref> uses to steal and transport corpses, now joins the battle as your final line of "
+"defense.\n"
+"Why are the zombies inside of it friendly? Well, it's because there's a note in the cart:\n"
+"<align=\"center\">Help for working</align>\n"
+"    When the cart starts moving, just get off and move forward, you win the game after attacking all the monsters you encounter.\n"
+"<align=\"right\"><size=75%>-this help section brought to you by Rin</size></align>"
+
+#. Name for misc mvz2:psychic_chains
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "心灵锁链"
+msgstr "Psychic Chains"
+
+#. Header for misc mvz2:psychic_chains
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "心灵锁链会在每一大波怪物到来时出现，封锁你的一部分蓝图。"
+msgstr "Whenever a huge waves of enemies are approaching, Psychic Chains will lock up a portion of your blueprints."
+
+#. Properties for misc mvz2:psychic_chains
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"数量：<color=red>携带的蓝图数量÷3（向下取整）</color>\n"
+"持续时间：<color=red><var local=\"duration\"/>秒</color>"
+msgstr ""
+"Amount: <color=red>Amount of blueprints selected÷3(rounded down)</color>\n"
+"Duration: <color=red><var local=\"duration\"/> Seconds</color>"
+
+#. Flavor for misc mvz2:psychic_chains
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"一张破碎的实验记录中的部分信息：\n"
+"MCP-988-2是目标遭到MCP-988锁定时，间断产生的精神异常，表现为患者暂时失去针对自身手臂器官或义体的部分操控能力，每次持续约30秒。"
+msgstr ""
+"A section of notes written on a piece of a torn lab report:\n"
+"When MCP-988-2 became the target as MCP-988 locked onto it, MCP-988-2 demonstrated intermittent mental instability. The target of "
+"MCP-988 demonstrated a temporary loss of control of their motor functions within their arms or prosthetics, with each paralysis "
+"episode lasting roughly 30 seconds."
+
+#. Name for misc mvz2:snipenser
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "狙击发射器"
+msgstr "Snipenser"
+
+#. Header for misc mvz2:snipenser
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "狙击发射器会朝你指向的位置发射箭矢。"
+msgstr "The Snipenser will fire arrows at the direction you are pointing at."
+
+#. Properties for misc mvz2:snipenser
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"耐久：<color=red><var local=\"hp\"/></color>\n"
+"伤害：<color=red><var local=\"damage\"/></color>\n"
+"射速：<color=red>1支/<var local=\"fire_interval\"/>秒</color>"
+msgstr ""
+"Toughness：<color=red><var local=\"hp\"/></color>\n"
+"Damage：<color=red><var local=\"damage\"/></color>\n"
+"Speed：<color=red>1 arrow /<var local=\"fire_interval\"/> Seconds</color>"
+
+#. Flavor for misc mvz2:snipenser
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "他没有消失。他只是累了，想休息了。"
+msgstr "He never disappeared. He was simply tired, and wanted rest."
 
 #. Name for almanac group mvz2:characters
 #: Almanac meta file
@@ -5257,6 +5504,142 @@ msgstr ""
 "time, and she was summoned to eliminate the Red Dragon. However, this kept her bound in the chains of causality for the following "
 "three years."
 
+#. Name for misc mvz2:eirin
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "八意 永琳"
+msgstr "Eirin Yagokoro"
+
+#. Header for misc mvz2:eirin
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "永远亭的医师。"
+msgstr "The physician of Eientei."
+
+#. Flavor for misc mvz2:eirin
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"永远亭的医师，在幻想乡中行医，并进行药物研究。\n"
+"来自月球，曾是月之都的贤者之一，是个天才，智力极其之高。"
+msgstr ""
+"She practices medicine while also conducting pharmaceutical research within Gensokyo.\n"
+"Originally from the Moon, she was once one of the sages of the Lunar Capital—a true genius with extraordinarily high intelligence."
+
+#. Name for misc mvz2:satori
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "古明地 觉"
+msgstr "Satori Komeiji"
+
+#. Header for misc mvz2:satori
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "居住于地下的觉妖怪，<ref=[misc]mvz2:chireiden>地灵殿</ref>的主人。"
+msgstr "A satori youkai who lives underground, and the mistress of the <ref=[misc]mvz2:chireiden>Palace of the Earth Spirits</ref>."
+
+#. Flavor for misc mvz2:satori
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"居住于地灵殿的觉妖怪，被委托管理旧地狱-灼热地狱遗址的怨灵。\n"
+"性格老实、和蔼，有些内向。然而因为拥有读取他人内心想法的能力，且可以施展催眠术，因此被绝大多数人和妖怪畏惧并排斥。\n"
+"喜爱动物，养了非常多的宠物，并且可以使用自身的能力与它们进行交流，很受动物欢迎。\n"
+"\n"
+"在调查最近发生的一些连环袭击事件。"
+msgstr ""
+"Residing in the Palace of the Earth Spirits, she has been entrusted with managing the vengeful spirits of Old Hell—specifically, "
+"Remains of Blazing Hell.\n"
+"She is honest and gentle, though somewhat introverted. However, because she possesses the ability to read the thoughts of others—and "
+"can even employ hypnosis—she is feared and shunned by most humans and youkai.\n"
+"She loves animals and keeps a great many pets. Using her abilities, she can communicate with them, and is well loved by animals in "
+"return.\n"
+"\n"
+"She is currently investigating a series of recent attacks."
+
+#. Name for misc mvz2:rin
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "火焰猫 燐"
+msgstr "Rin Kaenbyou"
+
+#. Header for misc mvz2:rin
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "<ref=[misc]mvz2:satori>古明地 觉</ref>的宠物之一，偷尸体的火车妖怪。"
+msgstr "One of <ref=[misc]mvz2:satori>Satori Komeiji</ref>'s pets—a corpse-stealing kasha youkai."
+
+#. Flavor for misc mvz2:rin
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"栖息于火焰中的火车妖怪，性格开朗。\n"
+"对尸体极其感兴趣，但已经下葬的尸体除外，也不会主动去杀人。身上有着腐臭的味道。\n"
+"收集的尸体会给<ref=[misc]mvz2:utsuho>空</ref>用于调节灼热地狱遗迹的火力。\n"
+"她也可以和尸体以及灵体对话，或者捕捉并操纵她们。\n"
+"\n"
+"她并不喜欢那些由异变产生的、方形的僵尸。"
+msgstr ""
+"A kasha youkai that dwells within flames, with a cheerful personality.\n"
+"She is extremely interested in corpses, though she avoids those that have already been buried and does not actively kill people. Her "
+"body carries the stench of decay.\n"
+"The corpses she collects are given to <ref=[misc]mvz2:utsuho>Utsuho</ref> to help regulate the heat of Remains of Blazing Hell.\n"
+"She can also communicate with corpses and spirits, or can capture and control them.\n"
+"\n"
+"She dislikes those blocky zombies created by The Incident."
+
+#. Name for misc mvz2:utsuho
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "灵乌路 空"
+msgstr "Utsuho Reiuji"
+
+#. Header for misc mvz2:utsuho
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "<ref=[misc]mvz2:satori>古明地 觉</ref>的宠物之一，能够操纵核能的地狱鸦。"
+msgstr "One of <ref=[misc]mvz2:satori>Satori Komeiji</ref>'s pets—a hell raven capable of controlling nuclear energy."
+
+#. Flavor for misc mvz2:utsuho
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"空原先只是个普通的地狱鸦，鸟脑袋，傻里傻气，十分健忘。\n"
+"之后她的体内寄宿了神明八咫乌，因此获得了操控核聚变的力量。\n"
+"同时负责着排除核聚变炉中的异物，以及调节灼热地狱遗址的火力这两件事情。"
+msgstr ""
+"Utsuho was originally just an ordinary hell raven—birdbrained, airheaded, and extremely forgetful.\n"
+"The god Yatagarasu came to reside within her body afterwards, thus granting her the power to manipulate nuclear fusion.\n"
+"She is also responsible for two tasks: removing foreign matter from the Nuclear Furnace and regulating the fires of Remains of Blazing "
+"Hell."
+
+#. Name for misc mvz2:koishi
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "古明地 恋"
+msgstr "Koishi Komeiji"
+
+#. Header for misc mvz2:koishi
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "<ref=[misc]mvz2:chireiden>古明地 觉</ref>的妹妹。"
+msgstr "<ref=[misc]mvz2:satori>Satori Komeiji</ref>'s younger sister."
+
+#. Flavor for misc mvz2:koishi
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"恋是自主封闭了自己的第三只眼的觉妖怪，她因此失去了读心的能力，并获得了操纵无意识的能力。\n"
+"因此她会长期陷入无意识状态，自己也不知道自己接下来的行动会是什么，无欲无求，没有任何目的，内心十分空洞。\n"
+"周围的人也会因为她的能力而难以察觉她的存在。觉能够感知到她的存在，但是无法读取她的内心。"
+msgstr ""
+"Koishi is a satori youkai who voluntarily sealed her own third eye. As a result, she lost her ability to read minds and instead gained "
+"the power to manipulate the unconscious.\n"
+"Because of this, she remains in a prolonged unconscious state—unaware even of her own future actions. She is without desires or "
+"attachments, acts without purpose, and her inner self is profoundly hollow.\n"
+"Those around her also find it difficult to perceive her presence due to her ability. Satori can sense that she is there but cannot "
+"read her thoughts."
+
 #. Name for almanac group mvz2:areas
 #: Almanac meta file
 msgctxt "almanac.group_name"
@@ -5419,8 +5802,6 @@ msgid ""
 "\n"
 "顺带一提，天花板——哦不，地板上好像有什么东西在微微发光。"
 msgstr ""
-"Shining Needle Castle is where the inchlings reside. It was invaded by wither skeletons one year ago.\n"
-"\n"
 "An upside-down castle hanging in the air, its origin can be traced back far.\n"
 "When the first generation of inchlings—Issun-boushi—came into possession of the Miracle Mallet, he dared not use it as it was the "
 "oni's secret treasure.\n"
@@ -5527,6 +5908,41 @@ msgstr ""
 "\n"
 "There are rumors that aliens have visited the skies above Gensokyo. It seems that certain teleportation signals might be able to draw "
 "them out."
+
+#. Name for misc mvz2:chireiden
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "地灵殿"
+msgstr "Palace of the Earth Spirits"
+
+#. Header for misc mvz2:chireiden
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "一座位于地下深处的巨大西洋别墅。"
+msgstr "A massive Western-styled mansion situated deep in the Underworld."
+
+#. Flavor for misc mvz2:chireiden
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"地灵殿位于旧地狱街道中心，它的主人是<ref=[misc]mvz2:satori>古明地 觉</ref>。\n"
+"其下方是灼热地狱遗址，遗址最深处是核聚变炉。自从旧地狱被废弃后，觉被委托在这里管理遗留下来的怨灵和核聚变炉。\n"
+"觉饲养了大量的宠物，并用它们来管理地灵殿和遗迹。其中<ref=[misc]mvz2:rin>火焰猫 燐</ref>负责管理这里的怨灵，<ref=[misc]mvz2:utsuho>灵乌"
+"路 空</ref>则负责调节灼热地狱的火力。\n"
+"曾经热闹非凡的旧地狱街道，如今也因为异变的原因变得冷清了许多。\n"
+"\n"
+"这里如果发生地震……好吧。"
+msgstr ""
+"The Palace of the Earth Spirits is located in the center of Old Hell, with the mistress of the mansion being <ref=[misc]mvz2:"
+"satori>Satori Komeiji</ref>.\n"
+"Beneath it lies the Remains of Blazing Hell, with the Nuclear Furnace located at its deepest point. Ever since Old Hell was abandoned, "
+"Satori was entrusted with managing the vengeful spirits lingering here and the Nuclear Furnace.\n"
+"Satori keeps a large number of pets that assist her in managing the mansion and the Remains of Blazing Hell. Among such pets are "
+"<ref=[misc]mvz2:rin>Rin Kaenbyou</ref>, who is responsible for managing the vengeful spirits here, and <ref=[misc]mvz2:utsuho>Utsuho "
+"Reiuji</ref>, who is responsible for regulating the heat in the Remains of Blazing Hell.\n"
+"The once bustling streets of Former Capital had become much quieter due to the incident.\n"
+"\n"
+"If an earthquake were to occur here… well…"
 
 #. Name for almanac group mvz2:starshards
 #: Almanac meta file
@@ -5686,6 +6102,26 @@ msgstr ""
 "I saw things I shouldn't have seen, then the hallucinations vanished immediately.\n"
 "Those saucers are still flying in the sky.\n"
 "How much longer can I hold on...?"
+
+#. Name for misc mvz2:starshard.uranium_235
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "星之碎片：铀-235"
+msgstr "Starshard: Uranium-235"
+
+#. Flavor for misc mvz2:starshard.uranium_235
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"未知人士留下了一些记录。\n"
+"\n"
+"星之记录 其六：\n"
+"（这张纸条上什么也没有写，并且被暴力地扯烂了。）"
+msgstr ""
+"Records left by an anonymous person.\n"
+"\n"
+"Star Record 6:\n"
+"(This note has nothing written on it and has been violently torn.)"
 
 #. Name for almanac group mvz2:important
 #: Almanac meta file
@@ -5908,6 +6344,14 @@ msgstr ""
 "This incident may also cause the wither skeletons that appeared in <ref=[misc]mvz2:shining_needle_castle>Shining Needle Castle</ref> "
 "later."
 
+#. Flavor for misc mvz2:explosion_before_3_years
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "根据<ref=[misc]mvz2:satori>觉</ref>所说，三年前爆炸的位置位于妖怪之山上，大概是河童基地的位置。"
+msgstr ""
+"According to <ref=[misc]mvz2:satori>Satori</ref>, the location of the explosion three years ago was on the Youkai Mountain, presumably "
+"at the Kappa base."
+
 #. Name for misc mvz2:two_travelers
 #: Almanac meta file
 msgctxt "misc.name"
@@ -6008,6 +6452,27 @@ msgstr ""
 "The visitor claimed to be Sakura Touran and had come in search of the visitor's child.\n"
 "After failing to find the child, the visitor never appeared again. However, Byakuren remained optimistic about the presence of this "
 "visitor."
+
+#. Name for misc mvz2:mysterious_hacker
+#: Almanac meta file
+msgctxt "misc.name"
+msgid "神秘黑客"
+msgstr "Mysterious Hacker"
+
+#. Header for misc mvz2:mysterious_hacker
+#: Almanac meta file
+msgctxt "misc.description"
+msgid "在<ref=[misc]mvz2:chireiden>地灵殿</ref>中出现过的特殊的神秘黑客。"
+msgstr "A special mysterious hacker who appeared in the <ref=[misc]mvz2:chireiden>Palace of the Earth Spirits</ref>."
+
+#. Flavor for misc mvz2:mysterious_hacker
+#: Almanac meta file
+msgctxt "misc.description"
+msgid ""
+"据<ref=[misc]mvz2:rin>燐</ref>和<ref=[misc]mvz2:tokiko>朱鹭子</ref>称，地灵殿中曾出现过一位特殊的凋灵骷髅黑客，它控制了燐和朱鹭子。"
+msgstr ""
+"According to <ref=[misc]mvz2:rin>Rin</ref> and <ref=[misc]mvz2:tokiko>Tokiko</ref>, a special Wither Skeleton hacker once appeared in "
+"the Palace of the Earth Spirits, it controlled Rin and Tokiko."
 
 #. Name for entity counter mvz2:low_enemy
 #: Entity meta file
@@ -7698,6 +8163,36 @@ msgstr "Sekibanki"
 msgctxt "character.name"
 msgid "白莲"
 msgstr "Byakuren"
+
+#. Name for character mvz2:eirin
+#: Character meta file
+msgctxt "character.name"
+msgid "永琳"
+msgstr "Eirin"
+
+#. Name for character mvz2:satori
+#: Character meta file
+msgctxt "character.name"
+msgid "觉"
+msgstr "Satori"
+
+#. Name for character mvz2:koishi
+#: Character meta file
+msgctxt "character.name"
+msgid "恋"
+msgstr "Koishi"
+
+#. Name for character mvz2:rin
+#: Character meta file
+msgctxt "character.name"
+msgid "燐"
+msgstr "Rin"
+
+#. Name for character mvz2:utsuho
+#: Character meta file
+msgctxt "character.name"
+msgid "空"
+msgstr "Utsuho"
 
 #. Name for artifact mvz2:almanac
 #: Artifact meta file
