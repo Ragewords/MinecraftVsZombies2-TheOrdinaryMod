@@ -28,6 +28,17 @@ namespace MVZ2.GameContent.Areas
         {
             AddTrigger(LogicCallbacks.GET_INNATE_BLUEPRINTS, GetInnateBlueprintsCallback);
         }
+        public override void Setup(LevelEngine level)
+        {
+            var rng = GetRNG(level);
+            if (rng == null)
+            {
+                rng = level.CreateRNG();
+                SetRNG(level, rng);
+            }
+            var blueprints = GetInnateContraptions(level);
+            SetInnateContraption(level, blueprints.RandomTake(3, rng).ToArray());
+        }
         public void GetInnateBlueprintsCallback(LogicCallbacks.GetInnateBlueprintsParams param, CallbackResult result)
         {
             var level = Global.Level.GetLevel();
@@ -35,13 +46,10 @@ namespace MVZ2.GameContent.Areas
                 return;
             if (level.AreaDefinition != this)
                 return;
-            var rng = GetRNG(level);
-            if (rng == null)
-            {
-                rng = level.CreateRNG();
-                SetRNG(level, rng);
-            }
-            foreach (var contraption in GetInnateContraptions(level).RandomTake(3, rng))
+            var blueprints = GetInnateContraption(level);
+            if (blueprints == null)
+                return;
+            foreach (var contraption in blueprints)
             {
                 param.list.Add(contraption);
             }
@@ -111,8 +119,11 @@ namespace MVZ2.GameContent.Areas
         }
         public static RandomGenerator? GetRNG(LevelEngine level) => level.GetProperty<RandomGenerator>(PROP_RNG);
         public static void SetRNG(LevelEngine level, RandomGenerator? rng) => level.SetProperty(PROP_RNG, rng);
+        public static NamespaceID[]? GetInnateContraption(LevelEngine level) => level.GetProperty<NamespaceID[]>(PROP_INNATE_BLUEPRINTS);
+        public static void SetInnateContraption(LevelEngine level, NamespaceID[]? rng) => level.SetProperty(PROP_INNATE_BLUEPRINTS, rng);
         public const int LOCK_DIVISION = 3;
         public const int INNATE_COUNT = 3;
         public static readonly VanillaLevelPropertyMeta<RandomGenerator> PROP_RNG = new VanillaLevelPropertyMeta<RandomGenerator>("rng");
+        public static readonly VanillaLevelPropertyMeta<NamespaceID[]> PROP_INNATE_BLUEPRINTS = new VanillaLevelPropertyMeta<NamespaceID[]>("innate_blueprints");
     }
 }

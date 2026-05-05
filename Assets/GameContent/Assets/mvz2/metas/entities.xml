@@ -1606,7 +1606,7 @@
         <!-- Extra Contraptions -->
         <dispenser id="poisonser" name="淬毒发射器" tooltip="发射使怪物中毒的毒液球">
             <unlock>
-                <condition requiredGroups="mvz2:poisonser" />
+                <condition requiredGroups="mvz2:contraption.poisonser" />
             </unlock>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
@@ -1626,7 +1626,7 @@
         </dispenser>
         <contraption id="dimension_hammer" name="次元锤" tooltip="重击地面并迸发弹幕">
             <unlock>
-                <condition requiredGroups="mvz2:dimension_hammer" />
+                <condition requiredGroups="mvz2:contraption.dimension_hammer" />
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:timeout_remove"/>
@@ -1654,7 +1654,7 @@
         </contraption>
         <contraption id="fire_charge_dispenser" name="火焰弹发射器" tooltip="向周围的怪物抛射火焰弹">
             <unlock>
-                <condition requiredGroups="mvz2:fire_charge_dispenser" />
+                <condition requiredGroups="mvz2:contraption.fire_charge_dispenser" />
             </unlock>
             <properties>
                 <float name="mvz2:range" value="200" />
@@ -1673,7 +1673,7 @@
         </contraption>
         <dispenser id="youkai_leaf" name="妖怪树叶" tooltip="发射穿透叶片，能够模仿攻击自己的怪物">
             <unlock>
-                <condition requiredGroups="mvz2:youkai_leaf" />
+                <condition requiredGroups="mvz2:contraption.youkai_leaf" />
             </unlock>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
@@ -1697,7 +1697,7 @@
         </dispenser>
         <contraption id="smoker" name="烟熏炉" tooltip="喷出浓烟，对一定区域的怪物造成伤害">
             <unlock>
-                <condition requiredGroups="mvz2:smoker" />
+                <condition requiredGroups="mvz2:contraption.smoker" />
             </unlock>
             <properties>
                 <vector3 name="mvz2:size" x="32" y="48" z="32" />
@@ -2439,7 +2439,7 @@
                 <int name="mvz2:cost" value="125" />
             </properties>
         </enemy>
-        <enemy id="blaze" name="烈焰人" deathMessage="真该死，又没出烈焰棒！">
+        <enemy id="blaze" name="烈焰人" deathMessage="把你烤个外焦里嫩">
             <unlock>
                 <condition required="mvz2:level.palace_2" />
             </unlock>

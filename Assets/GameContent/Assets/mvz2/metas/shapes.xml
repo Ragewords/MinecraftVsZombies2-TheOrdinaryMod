@@ -347,16 +347,16 @@
     <shape id="blaze">
         <armors>
             <armor slot="mvz2:main">
-                <position x="0" y="45" z="0" />
-                <scale x="0.9" y="0.9" z="0.9" />
+                <position x="0" y="68" z="0" />
+                <scale x="1.08" y="1.08" z="1.08" />
             </armor>
             <armor slot="mvz2:shield">
-                <position x="-25" y="39" z="0" />
-                <scale x="0.9" y="0.9" z="0.9" />
+                <position x="-25" y="50" z="0" />
+                <scale x="1.08" y="1.08" z="1.08" />
             </armor>
             <armor slot="mvz2:shield" type="mvz2:handheld">
-                <position x="-30" y="29" z="0" />
-                <scale x="0.9" y="0.9" z="0.9" />
+                <position x="-30" y="40" z="0" />
+                <scale x="1.08" y="1.08" z="1.08" />
             </armor>
         </armors>
     </shape>
