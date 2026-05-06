@@ -6525,13 +6525,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6bee683f524982b47a3a95f3e910cce7
-    m_Address: mvz2:armor/brainwasher_hat
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6bf42fc5212331940ab9616c1c85e98e
     m_Address: mvz2:screw
     m_ReadOnly: 0
@@ -11871,13 +11864,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c8054f8190ff5fc45a11697ceefe738e
-    m_Address: mvz2:entity/enemy/hypnotizer
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c82886228e56ce84d8d101bb2e34ab8d
     m_Address: mvz2:armor/reflective_barrier
