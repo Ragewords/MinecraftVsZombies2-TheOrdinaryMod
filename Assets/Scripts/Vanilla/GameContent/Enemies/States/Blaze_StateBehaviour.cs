@@ -14,7 +14,7 @@ namespace MVZ2.GameContent.Enemies
         }
         protected override int GetActiveState(Entity enemy)
         {
-            if (enemy.Target.ExistsAndAlive())
+            if (enemy.Target.ExistsAndAlive() || Blaze.IsFiring(enemy))
             {
                 return STATE_RANGED_ATTACK;
             }

@@ -105,10 +105,7 @@ namespace MVZ2.GameContent.Enemies
                     if (shootTimer.PassedInterval(10))
                     {
                         var target = FindTarget(entity);
-                        if (target.ExistsAndAlive())
-                        {
-                            Fire(entity, target);
-                        }
+                        Fire(entity, target);
                     }
                 }
             }
@@ -119,14 +116,17 @@ namespace MVZ2.GameContent.Enemies
             shootTimer?.ResetTime(SHOOT_COOLDOWN);
             SetFiring(enemy, false);
         }
-        private void Fire(Entity self, Entity target)
+        private void Fire(Entity self, Entity? target)
         {
             var param = self.GetShootParams();
             var shootPoint = self.GetShootPoint();
             var velocity = self.GetShotVelocity();
             var speed = velocity.magnitude;
-            var direciton = (target.GetCenter() - shootPoint).normalized;
-            param.velocity = speed * direciton;
+            if (target.ExistsAndAlive())
+            {
+                var direciton = (target.GetCenter() - shootPoint).normalized;
+                param.velocity = speed * direciton;
+            }
             var damageMultiplier = self.Level.GetBlazeDamageMultiplier();
             param.damage = self.GetDamage() * damageMultiplier;
 
