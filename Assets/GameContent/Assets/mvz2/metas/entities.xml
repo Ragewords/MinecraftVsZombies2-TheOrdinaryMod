@@ -2533,6 +2533,7 @@
                 <id name="mvz2:crySound" value="mvz2:zombie_cat_meow" />
                 <id name="mvz2:deathSound" value="mvz2:zombie_cat_death" />
                 <id name="mvz2:shape" value="mvz2:cat" />
+                <id name="mvz2:modelId" value="mvz2:entity.zombie_cat_full" />
 
                 <int name="mvz2:cost" value="150" />
             </properties>
@@ -3157,6 +3158,31 @@
                 <vector3 name="mvz2:size" x="30" y="30" z="30" />
 
                 <int name="mvz2:cost" value="50" />
+            </properties>
+        </entity>
+        <entity template="enemy" id="zombie_cat_cart" name="僵尸猫推车" deathMessage="？">
+            <unlock>
+                <condition required="mvz2:level.palace_8" />
+            </unlock>
+            <behaviours>
+                <behaviour operator="remove" id="mvz2:enemy_melee" />
+            </behaviours>
+            <properties>
+                <float name="mvz2:maxHealth" value="650" />
+                <id name="mvz2:shell" value="mvz2:bone" />
+                <id name="mvz2:shape" value="mvz2:cart" />
+                <id name="mvz2:crySound" null="true" />
+                <id name="mvz2:deathSound" value="mvz2:bone_wall_destroyed" />
+                <int name="mvz2:vehicleInteraction" value="2" />
+                <bool name="mvz2:canDeactive" value="false" />
+                <bool name="mvz2:immune_slowing" value="true" />
+                <vector3 name="mvz2:size" x="67" y="40" z="45" />
+                <vector3 name="mvz2:shadowScale" x="1.5" y="1" z="1" />
+                <vector3 name="mvz2:passengerOffset" x="0" y="21" z="1" />
+                <int name="mvz2:waterInteraction" value="2" />
+                <int name="mvz2:airInteraction" value="2" />
+
+                <int name="mvz2:cost" value="200" />
             </properties>
         </entity>
         <entity template="humanoid" id="nether_hunter" name="下界猎手" deathMessage="转来转去像个小丑">

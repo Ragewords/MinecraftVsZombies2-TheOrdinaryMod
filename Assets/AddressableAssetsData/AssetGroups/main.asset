@@ -9364,6 +9364,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b058f7eb8b68cd4787b5c55a4184169
+    m_Address: mvz2:enemy/palace/zombie_cat_cart
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b0ae17858b30854380a3a68f83e2a5f
     m_Address: mvz2:entity/carts/ballista_body
     m_ReadOnly: 0
@@ -9622,6 +9629,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e51124b575d6714a9f9a9da4c26e561
+    m_Address: mvz2:enemy/palace/zombie_cat_full
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e74a7a12d5351549a77cabbe4735460
     m_Address: mvz2:entity/enemies/jackdullahan_jackolantern

@@ -344,7 +344,8 @@
     </model>
     <model name="shikaisen_staff" type="entity" path="mvz2:enemy/mausoleum/shikaisen_staff" width="24" height="64" xOffset="0" yOffset="-26" />
     <model name="shikaisen_pot" type="entity" path="mvz2:enemy/mausoleum/shikaisen_pot" width="48" height="48" xOffset="0" yOffset="-16" />
-    <model name="zombie_cat_cart" type="entity" path="mvz2:enemy/palace/zombie_cat_cart" width="48" height="48" xOffset="0" yOffset="-16" />
+    <model name="zombie_cat_cart" type="entity" path="mvz2:enemy/palace/zombie_cat_cart" width="78" height="40" xOffset="0" yOffset="-24" />
+    <model name="zombie_cat_full" type="entity" path="mvz2:enemy/palace/zombie_cat_full" width="92" height="59" xOffset="-8" yOffset="-29" />
     <model name="nether_hunter" type="entity" path="mvz2:enemy/palace/nether_hunter" width="77" height="120" xOffset="12" yOffset="-55">
         <armorconfig>mvz2:humanoid</armorconfig>
     </model>

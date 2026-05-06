@@ -82,6 +82,7 @@ namespace MVZ2.GameContent.Enemies
         public const string skeletonMage = "skeleton_mage";
         public const string shikaisenStaff = "shikaisen_staff";
         public const string shikaisenPot = "shikaisen_pot";
+        public const string zombieCatCart = "zombie_cat_cart";
         public const string netherHunter = "nether_hunter";
         public const string netherMage = "nether_mage";
         public const string rollingHayBale = "rolling_hay_bale";
@@ -166,6 +167,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
         public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);
         public static readonly NamespaceID shikaisenPot = Get(VanillaEnemyNames.shikaisenPot);
+        public static readonly NamespaceID zombieCatCart = Get(VanillaEnemyNames.zombieCatCart);
         public static readonly NamespaceID netherHunter = Get(VanillaEnemyNames.netherHunter);
         public static readonly NamespaceID netherMage = Get(VanillaEnemyNames.netherMage);
         public static readonly NamespaceID rollingHayBale = Get(VanillaEnemyNames.rollingHayBale);
