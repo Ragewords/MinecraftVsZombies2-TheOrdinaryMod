@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using MukioI18n;
 using MVZ2.GameContent.Maps;
-using MVZ2.GameContent.Talk;
 using MVZ2.Managers;
 using MVZ2.Metas;
 using MVZ2.Options;
@@ -17,7 +16,9 @@ using MVZ2.UI.Map;
 using MVZ2Logic;
 using MVZ2Logic.Audios;
 using MVZ2Logic.Callbacks;
+using MVZ2Logic.Conditions;
 using MVZ2Logic.Difficulties;
+using MVZ2Logic.Games;
 using MVZ2Logic.Inputs;
 using MVZ2Logic.Level;
 using MVZ2Logic.Localization;
@@ -25,7 +26,6 @@ using MVZ2Logic.Maps;
 using MVZ2Logic.Saves;
 using MVZ2Logic.Stats;
 using MVZ2Logic.Talk;
-using MVZ2Logic.Unlocks;
 using PVZEngine;
 using PVZEngine.Level;
 using UnityEngine;
@@ -60,11 +60,7 @@ namespace MVZ2.Map
             if (model.Exists())
             {
                 model.OnMapButtonClick -= OnMapButtonClickCallback;
-                model.OnExtraMapButtonClick -= OnExtraMapButtonClickCallback;
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
-                model.OnMapKeyClick -= OnMapKeyClickCallback;
-                model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
-                model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
                 model = null;
             }
@@ -143,11 +139,7 @@ namespace MVZ2.Map
             if (model.Exists())
             {
                 model.OnMapButtonClick -= OnMapButtonClickCallback;
-                model.OnExtraMapButtonClick -= OnExtraMapButtonClickCallback;
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
-                model.OnMapKeyClick -= OnMapKeyClickCallback;
-                model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
-                model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
             }
             if (!modelPrefab.Exists())
@@ -155,17 +147,29 @@ namespace MVZ2.Map
 
             model = Instantiate(modelPrefab.gameObject, modelRoot).GetComponent<MapModel>();
             model.OnMapButtonClick += OnMapButtonClickCallback;
-            model.OnExtraMapButtonClick += OnExtraMapButtonClickCallback;
             model.OnEndlessButtonClick += OnEndlessButtonClickCallback;
-            model.OnMapKeyClick += OnMapKeyClickCallback;
-            model.OnMapNightmareBoxClick += OnMapNightmareBoxClickCallback;
-            model.OnMapPinClick += OnMapPinClickCallback;
 
             UpdateModelButtons(model);
             UpdateModelElements(model);
             UpdateModelEndlessFlags(model);
             SetCameraBackgroundColor(mapPreset.backgroundColor);
-            model.SetMapKeyArrowVisible(!Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapter_Dream));
+        }
+        public void ChangeMap(NamespaceID id)
+        {
+            Hide();
+            Main.Scene.DisplayMap(id);
+        }
+        public void SetRaycastBlockerActive(bool active)
+        {
+            ui.SetRaycastBlockerActive(active);
+        }
+        public NamespaceID GetMapID()
+        {
+            return MapID;
+        }
+        public ITalkSystem GetTalkSystem()
+        {
+            return talkSystem;
         }
         #endregion
 
@@ -259,74 +263,15 @@ namespace MVZ2.Map
             var area = GetStageArea(index) ?? mapMeta.area;
             StartCoroutine(EnterLevel(area, stageID));
         }
-        private void OnExtraMapButtonClickCallback(int index)
-        {
-            var stageID = GetStageID(index + 11);
-            if (stageID == null)
-                return;
-            var area = GetStageArea(index) ?? mapMeta.area;
-            StartCoroutine(EnterLevel(area, stageID));
-        }
         private void OnEndlessButtonClickCallback()
         {
             var stageID = mapMeta.endlessStage;
             StartCoroutine(EnterLevel(mapMeta.area, stageID));
         }
-        private async void OnMapKeyClickCallback()
-        {
-            ui.SetRaycastBlockerActive(true);
-            if (!Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapter_Dream) && MapID == VanillaMapID.halloween)
-            {
-                await talkController.SimpleStartTalkAsync(VanillaTalkID.halloweenFinal, 0, 0);
-            }
-            else
-            {
-                Hide();
-                if (MapID == VanillaMapID.halloween)
-                {
-                    Main.Scene.DisplayMap(VanillaMapID.dream);
-                }
-                else
-                {
-                    Main.Scene.DisplayMap(VanillaMapID.halloween);
-                }
-            }
-        }
         private void OnMapNightmareBoxClickCallback()
         {
             Main.SaveManager.SetDreamIsNightmare(!Main.SaveManager.DreamIsNightmare());
             ReloadMap();
-        }
-        private void OnMapPinClickCallback(NamespaceID id)
-        {
-            if (id == MapPinID.halloween)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.halloween);
-            }
-            else if (id == MapPinID.dream)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.dream);
-            }
-            else if (id == MapPinID.castle)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.castle);
-            }
-            else if (id == MapPinID.mausoleum)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.mausoleum);
-            }
-            else if (id == MapPinID.ship)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.ship);
-            }
-            else if (id == MapPinID.palace)
-            {
-                Main.Scene.DisplayMap(VanillaMapID.palace);
-            }
-            else if (id == MapPinID.kourindou)
-            {
-                Main.Scene.DisplayStore(() => Main.Scene.DisplayMap(MapID), true);
-            }
         }
         #endregion
 
@@ -434,27 +379,6 @@ namespace MVZ2.Map
                 }
             }
             model.SetMapButtonBorderToDefault(index);
-        }
-        private void SetExtraMapButtonDifficulty(MapModel model, int index)
-        {
-            var stageID = GetStageID(index + 11);
-            if (!NamespaceID.IsValid(stageID))
-                return;
-            var difficulty = Main.SaveManager.GetLevelDifficulty(stageID);
-            if (NamespaceID.IsValid(difficulty))
-            {
-                var game = Main.Game;
-                var difficultyMeta = game.GetDifficultyDefinition(difficulty);
-                if (difficultyMeta != null)
-                {
-                    var back = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBack());
-                    var bottom = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderBottom());
-                    var overlay = Main.GetFinalSprite(difficultyMeta.GetMapButtonBorderOverlay());
-                    model.SetExtraMapButtonBorder(index, back, bottom, overlay);
-                    return;
-                }
-            }
-            model.SetExtraMapButtonBorderToDefault(index);
         }
         private bool IsEndlessUnlocked()
         {
@@ -680,38 +604,23 @@ namespace MVZ2.Map
 
                 if (unlocked && !cleared)
                 {
+                    if (i >= 11)
+                        continue;
                     unclearedMapButtonIndex = i;
                 }
 
                 model.SetMapButtonInteractable(i, unlocked);
                 model.SetMapButtonColor(i, color);
-                model.SetMapButtonText(i, (i + 1).ToString());
+                if (i < 11)
+                {
+                    model.SetMapButtonText(i, (i + 1).ToString());
+                }
+                else
+                {
+                    model.SetMapButtonText(i, "EX" + (i - 10).ToString());
+                }
                 SetMapButtonDifficulty(model, i);
             }
-
-            for (int i = 0; i < model.GetExtraMapButtonCount(); i++)
-            {
-                var j = i + model.GetMapButtonCount();
-                var unlocked = IsLevelUnlocked(j);
-                var cleared = IsLevelCleared(j);
-                var stageType = GetStageType(j);
-
-                var color = buttonColorClearedExtra;
-                if (!unlocked)
-                    color = buttonColorLocked;
-                else if (stageType == StageTypes.TYPE_MINIGAME || stageType == StageTypes.TYPE_PUZZLE)
-                    color = buttonColorMinigame;
-                else if (stageType == StageTypes.TYPE_BOSS)
-                    color = buttonColorBoss;
-                else if (!cleared)
-                    color = buttonColorUncleared;
-
-                model.SetExtraMapButtonInteractable(i, unlocked);
-                model.SetExtraMapButtonColor(i, color);
-                model.SetExtraMapButtonText(i, "EX" + (i + 1).ToString());
-                SetExtraMapButtonDifficulty(model, i);
-            }
-
             var endlessColor = buttonColorEndless;
             var endlessUnlocked = IsEndlessUnlocked();
             if (!endlessUnlocked)
@@ -719,8 +628,6 @@ namespace MVZ2.Map
             model.SetEndlessButtonInteractable(endlessUnlocked);
             model.SetEndlessButtonColor(endlessColor);
             model.SetEndlessButtonText("\u221E");
-
-            model.SetMapKeyActive(Main.SaveManager.IsGroupUnlocked(LogicUnlockGroupID.chapterFinished_Halloween));
 
 
             if (unclearedMapButtonIndex >= 0)
@@ -739,10 +646,17 @@ namespace MVZ2.Map
             var elements = model.GetMapElements();
             foreach (var element in elements)
             {
-                if (element.unlockGroup == null)
+                var id = element.definitionID?.Get();
+                var mapElementDefinition = Main.Game.GetMapElementDefinition(id);
+                if (mapElementDefinition == null)
+                {
+                    element.SetActive(false);
+                    Log.LogWarning($"Cannot find the MapElementDefinition of id {id}.");
                     continue;
-                var unlocked = Main.SaveManager.IsGroupUnlocked(element.unlockGroup.Get());
-                element.SetActive(unlocked);
+                }
+                element.Init(this, mapElementDefinition);
+                var unlockGroup = mapElementDefinition.GetUnlockConditions();
+                element.SetActive(unlockGroup.IsNullOrMeetsConditions(Main.SaveManager));
             }
         }
         private void UpdateModelEndlessFlags(MapModel model)
@@ -841,8 +755,6 @@ namespace MVZ2.Map
         private Color buttonColorUncleared = new Color(0, 1, 0, 1);
         [SerializeField]
         private Color buttonColorCleared = new Color(0, 0.5f, 1, 1);
-        [SerializeField]
-        private Color buttonColorClearedExtra = new Color(1, 0.5f, 0, 1);
 
         private class TouchData
         {

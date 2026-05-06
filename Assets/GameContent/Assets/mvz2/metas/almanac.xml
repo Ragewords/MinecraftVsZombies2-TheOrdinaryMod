@@ -212,7 +212,7 @@
             <value value="mvz2:shadow" name="暗影" description="吸收剧毒伤害，但受到1.5x火焰、闪电和光明伤害" sprite="mvz2:ui/almanac/shell_tags[13]" backgroundColor="#3f3f3f" />
             <value value="mvz2:normal" name="普通" description="无特殊效果" sprite="mvz2:ui/almanac/shell_tags[14]" backgroundColor="#6b6b6b" />
             <value value="mvz2:slime" name="黏液" description="受到0.5x冲击伤害和2x火焰伤害" sprite="mvz2:ui/almanac/shell_tags[15]" backgroundColor="#5aaa43" />
-            <value value="mvz2:fire" name="火焰" description="吸收火焰伤害，但受到3x冰霜伤害" sprite="mvz2:ui/almanac/shell_tags[16]" backgroundColor="#7c2e00" />
+            <value value="mvz2:fire" name="火焰" description="吸收火焰伤害，但受到3x冰霜伤害" sprite="mvz2:ui/almanac/shell_tags[16]" backgroundColor="#96503a" />
         </enum>
     </tags>
     <globalVariables>
@@ -925,15 +925,15 @@
         </entry>
         <entry id="mvz2:jeweled_pagoda">
             <header>
-                <p><![CDATA[取决于地格是否被占用，珠光宝塔会暂时禁用或软锁一整行内的所有地格，并在立即生产<ref=[misc]mvz2:starshard.ufo_fragment>星之碎片</ref>和使用宝石攻击后消失。]]></p>
+                <p><![CDATA[珠光宝塔会暂时禁用一整行内的所有空地格，并在立即生产<ref=[misc]mvz2:starshard.ufo_fragment>星之碎片</ref>后消失。它还会将被占用的地格上锁，当上锁的地格达到一定数量时，它可以使用独特的攻击。]]></p>
             </header>
             <properties>
-                <p>特点：<![CDATA[<color=red>被软锁的地格上可以放置器械，但不能使用星之碎片</color>]]></p>
-                <p>作用时长：<![CDATA[<color=red>2分钟（禁用）/1分钟（软锁）</color>]]></p>
+                <p>特点：<![CDATA[<color=red>被上锁的地格上可以放置器械，但不能使用星之碎片</color>]]></p>
+                <p>作用时长：<![CDATA[<color=red>2分钟（禁用）/1分钟（上锁）</color>]]></p>
                 <p>产量：<![CDATA[<color=red>1星之碎片/3禁用的地格</color>]]></p>
-                <p>4软锁地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，1600点伤害的爆炸</color>]]></p>
-                <p>5软锁地格：<![CDATA[<color=red>闪电宝石，对整行及整列的敌方单位造成1200点闪电伤害</color>]]></p>
-                <p>6+软锁地格：<![CDATA[<color=red>混沌宝石，对随机一种敌方单位无视护甲造成800点伤害</color>]]></p>
+                <p>4上锁地格：<![CDATA[<color=red>火焰宝石，产生半径1.5格，1600点伤害的爆炸</color>]]></p>
+                <p>5上锁地格：<![CDATA[<color=red>闪电宝石，对整行及整列的敌方单位造成1200点闪电伤害</color>]]></p>
+                <p>6+上锁地格：<![CDATA[<color=red>混沌宝石，对随机一种敌方单位无视护甲造成800点伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>无</color>]]></p>
             </properties>
             <flavor>
@@ -2467,7 +2467,7 @@
                 <p><![CDATA[<b>特殊收容措施：</b>]]>由于MCP-988“瞬移”区域十分广阔，收容是不可能的。MCP-988已被埋入███区域地下██米，█国政府已经批准建立一个对外宣称是军事行动区的区域来阻止人员靠近这些区域。</p>
                 <p><![CDATA[<b>描述：</b>]]>MCP-988是一个长0.85米，宽1.7米，高1米的木制箱子，其边缘部分由未知的紫色金属条固定。一般情况下的MCP-988被铁链和一块坚固的锁头（下称MCP-988-1）锁住。</p>
                 <p>每隔约2小时，MCP-988会随机锁定最近约150米，最远约200米范围内的一名落单的人员作为其狩猎目标并瞬间移动至其附近。一旦目标从MCP-988身上转移注意力并远离时，MCP-988会以高速跃起并砸向目标的头部。</p>
-                <p>此行为造成的伤害不足以杀死一名人类，但可以将其击晕，表明MCP-988会避免杀死猎物来摄取猎物的精神力量。此后MCP-988-1会脱落，且MCP-988会将目标吞入箱中。</p>
+                <p>此行为造成的伤害不足以立即杀死一名人类，但可以将其击晕或使其陷入濒死状态，表明MCP-988会避免杀死猎物来摄取猎物的精神力量。此后MCP-988-1会脱落，且MCP-988会将目标吞入箱中。</p>
                 <p>被吞入箱中的受害者会随着被吞入的时间而受到不同程度的损害。时间较短者不会受到除重击之外的任何物理损伤，但会永久性失去意识；时间较长者会因箱中分泌物质的物理侵蚀而受到物理损伤，因此导致死亡甚至溶化。</p>
                 <p>MCP-988似乎拥有某种智慧。若MCP-988的意图在多名人员眼前暴露，MCP-988会表现出极度的攻击欲，以跳跃、撞击等物理攻击手段表现。若MCP-988-1处于脱落状态，则其会尝试以喷吐大量有毒垃圾的手段进行攻击。</p>
             </flavor>
