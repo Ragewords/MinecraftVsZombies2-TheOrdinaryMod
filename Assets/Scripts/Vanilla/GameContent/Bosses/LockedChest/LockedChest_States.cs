@@ -53,6 +53,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new JumpState());
                 AddState(new ChargeState());
                 AddState(new HighJumpState());
+                AddState(new BoulderState());
                 AddState(new LockState());
                 AddState(new CrushingLockState());
 
@@ -685,6 +686,162 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_END = 3;
             public const int SUBSTATE_PRICKED = 4;
         }
+        #endregion
+
+        #region 巨石
+        private static void EarthQuake(Entity entity, LevelEngine level)
+        {
+            var center = level.GetLawnCenter();
+            var artifactPos = center + Vector3.up * 600;
+
+            var rng = level.CreateRNG();
+            var xSize = level.GetGridWidth() * level.GetMaxColumnCount();
+            var ySize = 600f;
+            var zSize = level.GetGridHeight() * level.GetMaxLaneCount();
+            var xStart = -xSize * 0.5f;
+            var yStart = 0;
+            var zStart = -zSize * 0.5f;
+
+            var spawnParam = new SpawnParams();
+            spawnParam.SetProperty(EngineEntityProps.FACTION, entity.GetFaction());
+            spawnParam.SetProperty(VanillaEntityProps.MAX_TIMEOUT, Ticks.FromSeconds(5));
+            spawnParam.SetProperty(VanillaEntityProps.DAMAGE, 20f);
+            spawnParam.SetProperty(VanillaProjectileProps.NO_DESTROY_OUTSIDE_LAWN, true);
+            for (int i = 0; i < COBBLE_COUNT; i++)
+            {
+                var x = rng.NextFloat() * xSize + xStart;
+                var y = rng.NextFloat() * ySize + yStart;
+                var z = rng.NextFloat() * zSize + zStart;
+                var pos = artifactPos + new Vector3(x, y, z);
+                level.Spawn(VanillaProjectileID.cobble, pos, null, spawnParam)?.Let(boulder =>
+                {
+                    var angle = rng.NextFloat() * 360f;
+                    var length = rng.NextFloat() * 5 + 5;
+                    var speed2D = (Vector2.right * length).RotateClockwise(angle);
+                    boulder.Velocity = new Vector3(speed2D.x, 0, speed2D.y);
+                });
+            }
+            spawnParam.SetProperty(VanillaEntityProps.DAMAGE, 80f);
+            for (int i = 0; i < BOULDER_COUNT; i++)
+            {
+                var x = rng.NextFloat() * xSize + xStart;
+                var y = rng.NextFloat() * ySize + yStart;
+                var z = rng.NextFloat() * zSize + zStart;
+                var pos = artifactPos + new Vector3(x, y, z);
+                level.Spawn(VanillaProjectileID.boulder, pos, null, spawnParam)?.Let(boulder =>
+                {
+                    var angle = rng.NextFloat() * 360f;
+                    var length = rng.NextFloat() * 5 + 5;
+                    var speed2D = (Vector2.right * length).RotateClockwise(angle);
+                    boulder.Velocity = new Vector3(speed2D.x, 0, speed2D.y);
+                });
+            }
+        }
+        private class BoulderState : EntityStateMachineState
+        {
+            public BoulderState() : base(STATE_BOULDER, ANIMATION_STATE_SMASH) { }
+            public override int GetAnimationState(int substate)
+            {
+                if (substate == SUBSTATE_SHAKE || substate == SUBSTATE_END)
+                {
+                    return ANIMATION_STATE_IDLE;
+                }
+                return base.GetAnimationState(substate);
+            }
+            public override int GetAnimationSubstate(int substate)
+            {
+                return ANIMATION_SUBSTATE_SMASH_JUMP;
+            }
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                var timer = stateMachine.GetSubStateTimer(entity);
+                timer.ResetSeconds(1);
+                SetShake(entity, true);
+                SetRemainedBoulderSmashTimes(entity, ULTIMATE_SMASH_TIMES - 3);
+            }
+            public override void OnExit(EntityStateMachine machine, Entity entity)
+            {
+                base.OnExit(machine, entity);
+                SetShake(entity, false);
+            }
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+                var substate = stateMachine.GetSubState(entity);
+                var timer = stateMachine.GetSubStateTimer(entity);
+                timer.Run(stateMachine.GetSpeed(entity));
+                switch (substate)
+                {
+                    case SUBSTATE_SHAKE:
+                        if (timer.Expired)
+                        {
+                            entity.Velocity = Vector3.up * 25;
+                            stateMachine.StartSubState(entity, SUBSTATE_JUMP);
+                            timer.ResetSeconds(0.2f);
+                            SetShake(entity, false);
+                            entity.PlaySound(VanillaSoundID.launch);
+                        }
+                        break;
+                    case SUBSTATE_JUMP:
+                        {
+                            SpawnShadow(entity);
+                            if (timer.Expired)
+                            {
+                                stateMachine.StartSubState(entity, SUBSTATE_FALL);
+                                timer.ResetSeconds(0.2f);
+                            }
+                        }
+                        break;
+                    case SUBSTATE_FALL:
+                        {
+                            SpawnShadow(entity, true);
+                            if (entity.IsOnGround)
+                            {
+                                entity.PlaySound(VanillaSoundID.smash);
+                                entity.Level.ShakeScreen(10, 0, 15);
+                                EarthQuake(entity, entity.Level);
+                                ChargeCrush(entity);
+
+                                var times = GetRemainedBoulderSmashTimes(entity);
+                                if (times > 0)
+                                {
+                                    SetRemainedBoulderSmashTimes(entity, times - 1);
+                                    SetShake(entity, true);
+                                    stateMachine.StartSubState(entity, SUBSTATE_SHAKE);
+                                }
+                                else
+                                {
+                                    stateMachine.StartSubState(entity, SUBSTATE_END);
+                                }
+                                timer.ResetSeconds(1);
+                            }
+                        }
+                        break;
+                    case SUBSTATE_END:
+                        if (timer.Expired)
+                        {
+                            stateMachine.StartState(entity, STATE_IDLE);
+                        }
+                        break;
+                }
+            }
+            public static void HighJumpSmash(Entity entity, float damage)
+            {
+                highJumpDamageBuffer.Clear();
+                highJumpDetector.DetectMultiple(entity, highJumpDamageBuffer);
+                foreach (var target in highJumpDamageBuffer)
+                {
+                    target.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.EXPLOSION, VanillaDamageEffects.IGNORE_ARMOR), entity);
+                }
+            }
+            public const int SUBSTATE_SHAKE = 0;
+            public const int SUBSTATE_JUMP = 1;
+            public const int SUBSTATE_FALL = 2;
+            public const int SUBSTATE_END = 3;
+        }
+        public const int COBBLE_COUNT = 20;
+        public const int BOULDER_COUNT = 10;
         #endregion
 
         #region 封锁
@@ -1755,6 +1912,8 @@ namespace MVZ2.GameContent.Bosses
                 var damageEffects = new DamageEffectList(VanillaDamageEffects.INSTA_KILL);
                 foreach (var ent in grid.GetEntities())
                 {
+                    if (LightningOrb.NegateInstantKill(ent))
+                        continue;
                     ent.Die(damageEffects, entity);
                 }
                 BrokenTileBuff.Break(grid);
@@ -2972,6 +3131,10 @@ namespace MVZ2.GameContent.Bosses
             STATE_JUMP,
             STATE_JUMP,
             STATE_JUMP,
+            STATE_BOULDER,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
             STATE_LOCK,
             STATE_JUMP,
             STATE_JUMP,
@@ -3001,6 +3164,10 @@ namespace MVZ2.GameContent.Bosses
             STATE_JUMP,
             STATE_JUMP,
             STATE_SPIT_ZOMBIE_BLUEPRINTS,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_BOULDER,
             STATE_JUMP,
             STATE_JUMP,
             STATE_JUMP,

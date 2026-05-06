@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Enemies
             }
             entity.SetProperty(PROP_SPEED_MULTIPLIER, speedMultiplier);
             entity.SetAnimationFloat("AnimationSpeed", entity.IsAIFrozen() ? 0 : speedMultiplier);
-            entity.SetAnimationBool("Motor", IsMotoring(entity));
+            entity.SetModelProperty("Motor", IsMotoring(entity));
         }
         public override void PostCollision(EntityCollision collision, int state)
         {

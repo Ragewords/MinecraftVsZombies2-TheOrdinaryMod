@@ -62,6 +62,7 @@ namespace MVZ2.GameContent.Buffs.Level
 
             AddModifier(new NamespaceIDModifier(VanillaDifficultyLevelProps.LOCKED_CHEST_SPIT_BLUEPRINT_ID, SetOperator.Set, LogicBlueprintID.FromEntity(VanillaEnemyID.diamondHelmettedZombie)));
             AddModifier(new IntModifier(VanillaDifficultyLevelProps.LOCKED_CHEST_REQUIRED_STARSHARDS, IntegerOperator.Add, 1));
+            AddModifier(new FloatModifier(VanillaDifficultyLevelProps.LOCKED_CHEST_REVIVE_HEALTH_MULTIPLIER, NumberOperator.Add, 1f));
             AddAura(new ContraptionAura());
             AddAura(new EnemyAura());
             AddAura(new BlueprintAura());

@@ -170,6 +170,8 @@ namespace MVZ2.GameContent.Bosses
         public static void SetCoughType(Entity entity, int value) => entity.SetProperty(PROP_COUGH_TYPE, value);
         public static int GetUsedCoughType(Entity entity) => entity.GetProperty<int>(PROP_USED_COUGH_TYPES);
         public static void SetUsedCoughType(Entity entity, int value) => entity.SetProperty(PROP_USED_COUGH_TYPES, value);
+        public static int GetRemainedBoulderSmashTimes(Entity entity) => entity.GetProperty<int>(PROP_REMAINED_ULTIMATE_SMASH_TIMES);
+        public static void SetRemainedBoulderSmashTimes(Entity entity, int value) => entity.SetProperty(PROP_REMAINED_ULTIMATE_SMASH_TIMES, value);
         public static int GetRemainedUltimateSmashTimes(Entity entity) => entity.GetProperty<int>(PROP_REMAINED_ULTIMATE_SMASH_TIMES);
         public static void SetRemainedUltimateSmashTimes(Entity entity, int value) => entity.SetProperty(PROP_REMAINED_ULTIMATE_SMASH_TIMES, value);
         public static int GetNextJoke(Entity entity) => entity.GetProperty<int>(PROP_NEXT_JOKE);
@@ -182,6 +184,7 @@ namespace MVZ2.GameContent.Bosses
         public static readonly VanillaEntityPropertyMeta<int> PROP_COUGH_TYPE = new VanillaEntityPropertyMeta<int>("cough_type");
         public static readonly VanillaEntityPropertyMeta<int> PROP_USED_COUGH_TYPES = new VanillaEntityPropertyMeta<int>("used_cough_types");
         public static readonly VanillaEntityPropertyMeta<int> PROP_NEXT_JUMP_STATE = new VanillaEntityPropertyMeta<int>("next_jump_state");
+        public static readonly VanillaEntityPropertyMeta<int> PROP_REMAINED_BOULDER_SMASH_TIMES = new VanillaEntityPropertyMeta<int>("remained_boulder_smash_times");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REMAINED_ULTIMATE_SMASH_TIMES = new VanillaEntityPropertyMeta<int>("remained_ultimate_smash_times");
         public static readonly VanillaEntityPropertyMeta<int> PROP_NEXT_JOKE = new VanillaEntityPropertyMeta<int>("next_joke");
         public static readonly VanillaEntityPropertyMeta<bool> PROP_FLIP_X = new VanillaEntityPropertyMeta<bool>("flip_x");
@@ -199,6 +202,7 @@ namespace MVZ2.GameContent.Bosses
         public const int STATE_JUMP = VanillaBossStates.LOCKED_CHEST_JUMP;
         public const int STATE_CHARGE = VanillaBossStates.LOCKED_CHEST_CHARGE;
         public const int STATE_SMASH = VanillaBossStates.LOCKED_CHEST_SMASH;
+        public const int STATE_BOULDER = VanillaBossStates.LOCKED_CHEST_BOULDER;
         public const int STATE_LOCK = VanillaBossStates.LOCKED_CHEST_LOCK;
         public const int STATE_CRUSHING_LOCK = VanillaBossStates.LOCKED_CHEST_CRUSH_LOCK;
 
