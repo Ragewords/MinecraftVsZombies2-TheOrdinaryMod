@@ -3178,7 +3178,7 @@
                 <int name="mvz2:cost" value="50" />
             </properties>
         </entity>
-        <entity template="enemy" id="zombie_cat_cart" name="僵尸猫推车" deathMessage="？">
+        <entity template="enemy" id="zombie_cat_cart" name="僵尸猫推车" deathMessage="运输尸体真快乐！">
             <unlock>
                 <condition required="mvz2:level.palace_8" />
             </unlock>
