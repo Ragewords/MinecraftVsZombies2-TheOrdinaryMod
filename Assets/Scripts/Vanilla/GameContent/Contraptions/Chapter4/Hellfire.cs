@@ -28,7 +28,7 @@ using PVZEngine.Collisions;
 namespace MVZ2.GameContent.Contraptions
 {
     [AutoEntityBehaviourDefinition(VanillaContraptionNames.hellfire)]
-    public class Hellfire : ContraptionBehaviour
+    public class Hellfire : ContraptionBehaviour, IDeathEffectsBehaviour
     {
         public Hellfire(string nsp, string name) : base(nsp, name)
         {
@@ -88,11 +88,8 @@ namespace MVZ2.GameContent.Contraptions
             }
             entity.SetAnimationBool("Evoked", IsCursed(entity));
         }
-        public override void PostDeath(Entity entity, DeathInfo deathInfo)
+        public void DeathEffects(Entity entity, DeathInfo info)
         {
-            base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS) || deathInfo.HasEffect(VanillaDamageEffects.PICKAXE))
-                return;
             if (IsExtinguished(entity))
                 return;
 

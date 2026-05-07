@@ -14,6 +14,7 @@ using MVZ2.GameContent.Difficulties;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.Fragments;
+using MVZ2.GameContent.Models;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla;
@@ -688,7 +689,7 @@ namespace MVZ2.GameContent.Bosses
         }
         #endregion
 
-        #region 巨石
+        #region 震地
         private static void EarthQuake(Entity entity, LevelEngine level)
         {
             var center = level.GetLawnCenter();
@@ -750,6 +751,10 @@ namespace MVZ2.GameContent.Bosses
             }
             public override int GetAnimationSubstate(int substate)
             {
+                if (substate == SUBSTATE_FALL)
+                {
+                    return ANIMATION_SUBSTATE_SMASH_FALL;
+                }
                 return ANIMATION_SUBSTATE_SMASH_JUMP;
             }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
@@ -1906,6 +1911,7 @@ namespace MVZ2.GameContent.Bosses
             }
             public static void UltimateSmash(Entity entity)
             {
+                bool breakGrid = true;
                 var grid = entity.GetGrid();
                 if (grid == null)
                     return;
@@ -1913,9 +1919,13 @@ namespace MVZ2.GameContent.Bosses
                 foreach (var ent in grid.GetEntities())
                 {
                     if (LightningOrb.NegateInstantKill(ent))
+                    {
+                        breakGrid = false;
                         continue;
+                    }
                     ent.Die(damageEffects, entity);
                 }
+                if (breakGrid)
                 BrokenTileBuff.Break(grid);
             }
             public const int SUBSTATE_SHAKE = 0;
@@ -2470,6 +2480,7 @@ namespace MVZ2.GameContent.Bosses
                 {
                     entity.Spawn(VanillaContraptionID.tnt, grid.GetEntityPosition() + Vector3.up * 1000, spawnParams)?.Let(tnt =>
                     {
+                        tnt.ChangeModel(VanillaModelID.tntUnedited);
                         IgnitableBehaviour.Ignite(tnt);
                         var timer = IgnitableBehaviour.GetExplosionTimer(tnt);
                         timer?.ResetSeconds(3f);

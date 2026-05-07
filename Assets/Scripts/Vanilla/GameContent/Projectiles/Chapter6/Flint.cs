@@ -7,6 +7,7 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Shells;
 using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
@@ -25,6 +26,8 @@ namespace MVZ2.GameContent.Projectiles
             var hitResult = param.hit;
             var projectile = hitResult.Projectile;
             if (!projectile.Definition.HasBehaviour(this))
+                return;
+            if (projectile.Level.IsIZombie())
                 return;
             if (hitResult.Pierce)
                 return;

@@ -60,9 +60,7 @@ namespace MVZ2.GameContent.Buffs.Entities
                 timer.Reset();
             }
 
-            if (NoExplode(buff))
-                return;
-            if (entity != null)
+            if (entity.ExistsAndAlive())
             {
                 colllisionDetector.DetectEntities(entity, detectBuffer);
                 foreach (var item in detectBuffer)

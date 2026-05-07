@@ -5,7 +5,6 @@ using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.GameContent.Buffs.Entities;
 using MVZ2.GameContent.Buffs.Projectiles;
-using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.HeldItems;
@@ -14,13 +13,11 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Entities;
-using MVZ2Logic.Grids;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Auras;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using UnityEngine;
@@ -35,18 +32,6 @@ namespace MVZ2.GameContent.Contraptions
             AddAura(new DragAura());
             enemyDetector = new ForcePadDetector(EntityCollisionHelper.MASK_ENEMY, AFFECT_HEIGHT, 1);
             projectileDetector = new ForcePadDetector(EntityCollisionHelper.MASK_PROJECTILE, AFFECT_HEIGHT, 0.5f);
-        }
-        public override void PostDeath(Entity entity, DeathInfo deathInfo)
-        {
-            base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS) || deathInfo.HasEffect(VanillaDamageEffects.PICKAXE))
-                return;
-            var grid = entity.GetGrid();
-            if (grid == null)
-                return;
-            if (!grid.CanSpawnEntity(VanillaContraptionID.gravityPad))
-                return;
-            entity.Spawn(VanillaContraptionID.gravityPad, entity.Position);
         }
         protected override void UpdateAI(Entity entity)
         {

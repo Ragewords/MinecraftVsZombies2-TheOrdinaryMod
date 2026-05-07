@@ -3,7 +3,6 @@
 using System.Linq;
 using MVZ2.GameContent.Buffs;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Artifacts;
 using MVZ2Logic.Definitions;
 using MVZ2Logic.Entities;
@@ -11,8 +10,7 @@ using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Entities;
-using Tools;
-using UnityEngine;
+using PVZEngine.Level;
 
 namespace MVZ2.GameContent.Artifacts
 {
@@ -25,36 +23,42 @@ namespace MVZ2.GameContent.Artifacts
         public override void PostAdd(Artifact artifact)
         {
             base.PostAdd(artifact);
-            var timer = new FrameTimer(Ticks.FromSeconds(COOLDOWN_SECONDS));
-            artifact.SetProperty(PROP_ACTIVE_COOLDOWN, timer);
+            artifact.SetSecondTimer(TimerHelper.NewSecondTimer(1));
         }
         public override void PostUpdate(Artifact artifact)
         {
             base.PostUpdate(artifact);
-            var timer = artifact.GetProperty<FrameTimer>(PROP_ACTIVE_COOLDOWN);
-            bool active = timer.RunToExpiredAndNotNull();
-            artifact.SetGlowing(active);
-            artifact.SetInactive(!active);
-            if (timer != null)
+            var secondTimer = artifact.GetSecondTimer();
+            if (secondTimer == null)
             {
-                artifact.SetDisplayText(Mathf.FloorToInt(Ticks.ToSeconds(timer.Frame)).ToString() + "s");
+                secondTimer = TimerHelper.NewSecondTimer(1);
+                artifact.SetSecondTimer(secondTimer);
             }
 
-            if (active)
+            if (secondTimer.RunToExpired())
             {
-                var xOrderedMobsTake1 = artifact.Level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsDead && e.IsHostileEntity() && !e.IsHarmless()).OrderBy(e => e.Position.x).Take(1);
-                foreach (var enemy in xOrderedMobsTake1)
+                var number = artifact.GetNumber();
+                number--;
+                if (number <= 0)
                 {
-                    enemy.PlaySound(VanillaSoundID.revertWarp);
-                    enemy.AddBuff(VanillaBuffID.Enemy.endlessGate);
+                    number = COOLDOWN_SECONDS;
+                    Teleport(artifact.Level);
+                    artifact.Highlight();
                 }
-                artifact.Highlight();
-                timer?.Reset();
+                artifact.SetNumber(number);
+                secondTimer.Reset();
             }
         }
-        public const float TRIGGER_X = 260;
+        public static void Teleport(LevelEngine level)
+        {
+            var xOrderedMobsTake1 = level.FindEntities(e => e.Type == EntityTypes.ENEMY && !e.IsDead && e.IsHostileEntity() && !e.IsHarmless()).OrderBy(e => e.Position.x).Take(1);
+            foreach (var enemy in xOrderedMobsTake1)
+            {
+                enemy.PlaySound(VanillaSoundID.revertWarp);
+                enemy.AddBuff(VanillaBuffID.Enemy.endlessGate);
+            }
+        }
         public const int COOLDOWN_SECONDS = 40;
-        public static readonly VanillaArtifactPropertyMeta<FrameTimer> PROP_ACTIVE_COOLDOWN = new VanillaArtifactPropertyMeta<FrameTimer>("active_cooldown");
     }
 }
 

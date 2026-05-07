@@ -67,7 +67,9 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationBool("Shooting", entity.State == STATE_RANGED_ATTACK);
+            entity.SetAnimationFloat("AnimationSpeed", entity.IsAIFrozen() ? 0 : 1);
+            entity.SetAnimationBool("AIFrozen", entity.IsAIFrozen());
+            entity.SetAnimationBool("Shooting", entity.State == STATE_RANGED_ATTACK && !entity.IsAIFrozen());
         }
         private bool CanShoot(Entity enemy)
         {

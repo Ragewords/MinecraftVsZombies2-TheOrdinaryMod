@@ -1989,7 +1989,7 @@
             <variables>
                 <variable name="cart_hp">property("mvz2:entity/maxHealth", "mvz2:zombie_cat_cart", "entity")</variable>
                 <variable name="cart_speed">property("mvz2:entity/speed", "mvz2:zombie_cat_cart", "entity")</variable>
-                <variable name="cart_speed_motor">local("cart_speed") * 5</variable>
+                <variable name="cart_speed_motor">local("cart_speed") * 6</variable>
             </variables>
             <tags>
                 <tag id="mvz2:shell_cart" value="mvz2:bone" />

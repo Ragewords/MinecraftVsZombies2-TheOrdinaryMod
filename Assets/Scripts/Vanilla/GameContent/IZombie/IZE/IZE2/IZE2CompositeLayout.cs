@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.IZombie
             RandomFill(map, VanillaContraptionID.totenser, 1, rng);
             RandomFill(map, VanillaContraptionID.woodenDropper, 1, rng);
             RandomFill(map, VanillaContraptionID.spikeBlock, 1, rng);
-            RandomFill(map, VanillaContraptionID.hellfire, 1, rng);
+            RandomFill(map, VanillaContraptionID.hellfireDoppelganger, 1, rng);
 
             // Chapter 5
             RandomFill(map, VanillaContraptionID.triplenser, 1, rng);

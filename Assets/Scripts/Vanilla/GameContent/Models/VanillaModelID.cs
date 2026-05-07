@@ -19,6 +19,7 @@ namespace MVZ2.GameContent.Models
         public static readonly NamespaceID brokenTile = Get("broken_tile", TYPE_GRID);
 
         public static readonly NamespaceID zombie = Get("zombie", EngineModelID.TYPE_ENTITY);
+        public static readonly NamespaceID tntUnedited = Get("tnt_unedited", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID moneyChest = Get("money_chest", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID blueprintPickup = Get("blueprint_pickup", EngineModelID.TYPE_ENTITY);
         public static readonly NamespaceID artifactPickup = Get("artifact_pickup", EngineModelID.TYPE_ENTITY);

@@ -1394,6 +1394,9 @@
             <unlock>
                 <condition requiredGroups="mvz2:contraption.infectenser" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
+            </behaviours>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
                 <bool name="mvz2:upgradeBlueprint" value="true" />
@@ -1415,6 +1418,9 @@
             <unlock>
                 <condition requiredGroups="mvz2:contraption.force_pad" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
+            </behaviours>
 
             <properties>
                 <bool name="mvz2:upgradeBlueprint" value="true" />
@@ -1440,6 +1446,9 @@
             <unlock>
                 <condition requiredGroups="mvz2:contraption.golden_dropper" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
+            </behaviours>
             <properties>
                 <id name="mvz2:projectileId" value="mvz2:golden_ball" />
                 <id name="mvz2:shootSound" value="mvz2:click" />
@@ -1467,6 +1476,9 @@
             <unlock>
                 <condition requiredGroups="mvz2:contraption.revivegrave" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
+            </behaviours>
             <properties>
                 <bool name="mvz2:nocturnal" value="true" />
                 <id name="mvz2:fragmentId" value="mvz2:furnace" />
@@ -1488,6 +1500,7 @@
             <behaviours>
                 <behaviour operator="add" id="skyward_beacon/trigger" />
                 <behaviour operator="add" id="skyward_beacon/evoke" />
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
             </behaviours>
             <properties>
                 <float name="damage" value="147" />
@@ -1511,6 +1524,9 @@
             <unlock>
                 <condition requiredGroups="mvz2:contraption.high_frequency_pulse_dispenser" />
             </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
+            </behaviours>
             <properties>
                 <bool name="mvz2:upgradeBlueprint" value="true" />
                 <id name="mvz2:upgradeFrom" value="mvz2:repeatenser" />
@@ -1527,6 +1543,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:model_damage_percent" />
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
             </behaviours>
             <properties>
                 <float name="mvz2:maxHealth" value="5400" />
@@ -1560,6 +1577,7 @@
             <behaviours>
                 <behaviour operator="add" id="mvz2:brick_cannon/trigger" />
                 <behaviour operator="add" id="mvz2:brick_cannon/evoke" />
+                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
             </behaviours>
             <properties>
                 <float name="mvz2:damage" value="1800" />
@@ -2535,7 +2553,7 @@
                 <id name="mvz2:shape" value="mvz2:cat" />
                 <id name="mvz2:modelId" value="mvz2:entity.zombie_cat_full" />
 
-                <int name="mvz2:cost" value="150" />
+                <int name="mvz2:cost" value="250" />
             </properties>
         </entity>
         <entity template="enemy" id="wisp_fly" name="鬼火苍蝇" deathMessage="嗡嗡嗡嗡嗡嗡嗡嗡嗡嗡">

@@ -19,7 +19,7 @@ namespace MVZ2.GameContent.IZombie
             RandomFill(map, VanillaContraptionID.soulFurnace, 5, rng);
             RandomFill(map, VanillaContraptionID.woodenDropper, 3, rng);
             RandomFill(map, VanillaContraptionID.totenser, 2, rng);
-            RandomFill(map, VanillaContraptionID.hellfire, 3, rng);
+            RandomFill(map, VanillaContraptionID.hellfireDoppelganger, 3, rng);
             RandomFill(map, VanillaContraptionID.repeatenser, 2, rng);
             RandomFill(map, VanillaContraptionID.transfenser, 1, rng);
             RandomFill(map, VanillaContraptionID.fireworkDispenser, 1, rng);

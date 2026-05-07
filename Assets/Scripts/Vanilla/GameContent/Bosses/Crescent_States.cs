@@ -125,7 +125,7 @@ namespace MVZ2.GameContent.Bosses
                     }
                     return noGas;
                 });
-                var deviceGrids = entity.Level.GetAllGrids().Where(g => g.GetEntities().Any(e => !e.HasBuff(VanillaBuffID.Entity.crescentAntiGravity)));
+                var deviceGrids = entity.Level.GetAllGrids().Where(g => g.GetEntities().Any(e => e.ExistsAndAlive() && !e.HasBuff(VanillaBuffID.Entity.crescentAntiGravity) && e.IsHostile(entity)));
 
                 var dir = (level.GetEntityGridPosition(dashTargetColumn, lane) - new Vector3(entity.Position.x, entity.GetGroundY(), entity.Position.z)).normalized;
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
@@ -248,9 +248,11 @@ namespace MVZ2.GameContent.Bosses
                         if (subStateTimer.PassedInterval(5))
                         {
                             entity.PlaySound(VanillaSoundID.bow);
+                            var realCocoonGridCol = entity.GetMirroredColumn(cocoonGrid.Column, false);
+                            Vector3 pos = entity.Level.GetEntityGridPosition(realCocoonGridCol, cocoonGrid.Lane);
                             entity.SpawnWithParams(VanillaProjectileID.terrorCocoon, entity.GetCenter())?.Let(e =>
                             {
-                                e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), cocoonGrid.GetEntityPosition(), 30, e.GetGravity());
+                                e.Velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetCenter(), pos, 30, e.GetGravity());
                             });
                         }
                         if (subStateTimer.Expired)
@@ -297,7 +299,6 @@ namespace MVZ2.GameContent.Bosses
                         if (subStateTimer.PassedFrame(18))
                         {
                             var vector = new Vector3(0, 40, 0);
-                            entity.PlaySound(VanillaSoundID.explosion);
                             entity.PlaySound(VanillaSoundID.reflection);
                             entity.Level.ShakeScreen(10, 0, 10);
                             var param = entity.GetSpawnParams();

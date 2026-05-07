@@ -31,7 +31,7 @@ namespace MVZ2.GameContent.Enemies
             float speedMultiplier = 1f;
             if (passenger == null || (passenger.IsDead && !passenger.AssumeAlive()))
             {
-                speedMultiplier = 5f;
+                speedMultiplier = 6f;
                 if (!IsMotoring(entity) && entity.ExistsAndAlive())
                 {
                     entity.PlaySound(VanillaSoundID.motor);
@@ -60,14 +60,12 @@ namespace MVZ2.GameContent.Enemies
                 {
                     HellChariot.Crush(cart, collision.OtherCollider);
                 }
-                else
+                else if (other.GetVehicleInteraction() != VehicleInteraction.IGNORE)
                 {
-                    var crushDamageEffects = new DamageEffectList(VanillaDamageEffects.IMPACT);
+                    var crushDamageEffects = new DamageEffectList(VanillaDamageEffects.GRIND);
                     other.TakeDamage(cart.GetDamage() * 18, crushDamageEffects, cart);
                     var selfDamageEffects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.INSTA_KILL);
-                    Explosion.Spawn(cart, cart.GetCenter(), 60);
                     cart.Die(selfDamageEffects, cart);
-                    cart.PlaySound(VanillaSoundID.largeExplosion);
                 }
             }
         }
@@ -76,6 +74,11 @@ namespace MVZ2.GameContent.Enemies
             base.PostDeath(entity, info);
             if (!entity.WillRemoveOnDeath(info))
             {
+                if (IsMotoring(entity))
+                {
+                    Explosion.Spawn(entity, entity.GetCenter(), 60);
+                    entity.PlaySound(VanillaSoundID.largeExplosion);
+                }
                 entity.Spawn(VanillaEffectID.boneParticles, entity.GetCenter());
                 entity.Remove();
             }

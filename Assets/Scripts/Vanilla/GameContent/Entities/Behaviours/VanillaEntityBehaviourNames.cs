@@ -29,6 +29,7 @@ namespace MVZ2.Vanilla.Entities
         public const string ignitable = "ignitable";
         public const string ignitable_Trigger = "ignitable/trigger";
         public const string ignitable_Evoke = "ignitable/evoke";
+        public const string spawnUpgradeFromEntity = "spawn_upgrade_from_entity";
 
         public const string instakillByWind = "instakill_by_wind";
         public const string instakillByFire = "instakill_by_fire";

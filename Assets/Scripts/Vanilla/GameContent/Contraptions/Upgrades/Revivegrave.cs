@@ -8,7 +8,6 @@ using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Entities;
-using MVZ2Logic.Grids;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
@@ -44,18 +43,6 @@ namespace MVZ2.GameContent.Contraptions
             base.UpdateLogic(entity);
             entity.SetAnimationBool("Active", IsActive(entity));
             entity.SetAnimationFloat("MarkBlend", GetMarkBlend(entity));
-        }
-        public override void PostDeath(Entity entity, DeathInfo deathInfo)
-        {
-            base.PostDeath(entity, deathInfo);
-            if (deathInfo.HasEffect(VanillaDamageEffects.NO_DEATH_EFFECTS) || deathInfo.HasEffect(VanillaDamageEffects.PICKAXE))
-                return;
-            var grid = entity.GetGrid();
-            if (grid == null)
-                return;
-            if (!grid.CanSpawnEntity(VanillaContraptionID.necrotombstone))
-                return;
-            entity.Spawn(VanillaContraptionID.necrotombstone, entity.Position);
         }
         private void PostEnemyFaintCallback(EntityCallbackParams param, CallbackResult result)
         {
