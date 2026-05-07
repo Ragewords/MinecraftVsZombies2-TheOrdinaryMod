@@ -23,6 +23,7 @@ namespace MVZ2.GameContent.Artifacts
         public override void PostAdd(Artifact artifact)
         {
             base.PostAdd(artifact);
+            artifact.SetNumber(COOLDOWN_SECONDS);
             artifact.SetSecondTimer(TimerHelper.NewSecondTimer(1));
         }
         public override void PostUpdate(Artifact artifact)

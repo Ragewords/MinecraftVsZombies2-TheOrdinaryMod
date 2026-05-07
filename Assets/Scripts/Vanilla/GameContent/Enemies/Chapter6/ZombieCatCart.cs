@@ -69,7 +69,7 @@ namespace MVZ2.GameContent.Enemies
                 }
                 else if (other.GetVehicleInteraction() != VehicleInteraction.IGNORE)
                 {
-                    var crushDamageEffects = new DamageEffectList(VanillaDamageEffects.GRIND);
+                    var crushDamageEffects = new DamageEffectList(VanillaDamageEffects.GRIND, VanillaDamageEffects.DAMAGE_BODY_AFTER_ARMOR_BROKEN);
                     other.TakeDamage(cart.GetDamage() * 18, crushDamageEffects, cart);
                     var selfDamageEffects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.INSTA_KILL);
                     cart.Die(selfDamageEffects, cart);
