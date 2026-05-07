@@ -24,19 +24,26 @@ namespace MVZ2.GameContent.Enemies
         {
             AddModifier(new FloatModifier(VanillaEnemyProps.SPEED, NumberOperator.Multiply, PROP_SPEED_MULTIPLIER));
         }
-        protected override void UpdateLogic(Entity entity)
+        protected override void UpdateAI(Entity entity)
         {
-            base.UpdateLogic(entity);
+            base.UpdateAI(entity);
             var passenger = entity.GetRideablePassenger();
-            float speedMultiplier = 1f;
             if (passenger == null || (passenger.IsDead && !passenger.AssumeAlive()))
             {
-                speedMultiplier = 6f;
                 if (!IsMotoring(entity) && entity.ExistsAndAlive())
                 {
                     entity.PlaySound(VanillaSoundID.motor);
                 }
                 SetMotoring(entity, true);
+            }
+        }
+        protected override void UpdateLogic(Entity entity)
+        {
+            base.UpdateLogic(entity);
+            float speedMultiplier = 1f;
+            if (IsMotoring(entity))
+            {
+                speedMultiplier = 6f;
             }
             entity.SetProperty(PROP_SPEED_MULTIPLIER, speedMultiplier);
             entity.SetAnimationFloat("AnimationSpeed", entity.IsAIFrozen() ? 0 : speedMultiplier);
