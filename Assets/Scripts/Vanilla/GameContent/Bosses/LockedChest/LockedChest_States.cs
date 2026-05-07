@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Areas;
 using MVZ2.GameContent.Buffs.Bosses;
 using MVZ2.GameContent.Buffs.Entities;
 using MVZ2.GameContent.Buffs.Grids;
@@ -146,6 +147,8 @@ namespace MVZ2.GameContent.Bosses
             {
                 case STATE_SMASH:
                     return FindHighJumpSmashTargetEntity(entity) != null;
+                case STATE_BOULDER:
+                    return entity.Level.AreaID == VanillaAreaID.palace;
                 case STATE_LOCK:
                     return CanSwitchToLockState(entity);
                 case STATE_CRUSHING_LOCK:
@@ -163,6 +166,8 @@ namespace MVZ2.GameContent.Bosses
                     return CanSwitchToSpitTrashState(entity);
                 case STATE_CAMERA:
                     return CanSwitchToCameraState(entity);
+                case STATE_BOULDER:
+                    return entity.Level.AreaID == VanillaAreaID.palace;
                 case STATE_PAY_TO_WIN:
                     return CanSwitchToPayToWinState(entity);
             }
