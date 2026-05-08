@@ -4,6 +4,7 @@ using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Shells;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Damages;
 using PVZEngine.Definitions;
@@ -18,9 +19,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public BleedingBuff(string nsp, string name) : base(nsp, name)
         {
         }
-        public override void PostAdd(Buff buff)
+        public override void OnCreate(Buff buff)
         {
-            base.PostAdd(buff);
+            base.OnCreate(buff);
             buff.SetProperty(PROP_TIMEOUT, new FrameTimer(150));
         }
         public override void PostUpdate(Buff buff)
@@ -35,7 +36,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
                 return;
 
             buff.SetProperty(PROP_TIMEOUT, timeout);
-            if (timeout == null || timeout.Expired)
+            if (timeout.RunToExpiredOrNull())
             {
                 buff.Remove();
             }
@@ -49,6 +50,13 @@ namespace MVZ2.GameContent.Buffs.Enemies
                         entity.EmitBlood();
                 }
             }
+        }
+        public static void MaxTime(Buff buff, int frames)
+        {
+            var timer = buff.GetProperty<FrameTimer>(PROP_TIMEOUT);
+            if (timer == null || timer.Frame >= frames)
+                return;
+            timer.ResetTime(frames);
         }
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMEOUT = new VanillaBuffPropertyMeta<FrameTimer>("Timeout");
         public const float WITHER_DAMAGE = 2f;

@@ -1094,7 +1094,7 @@ namespace MVZ2.Vanilla.Entities
             buff.SetProperty(FrankensteinShockedBuff.PROP_TIMEOUT, time);
             PostApplyStatusEffect(entity, buff, source);
         }
-        public static void Bleed(this Entity entity, ILevelSourceReference? source)
+        public static void Bleed(this Entity entity, int time, ILevelSourceReference? source)
         {
             var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.bleeding);
             if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
@@ -1104,8 +1104,21 @@ namespace MVZ2.Vanilla.Entities
             {
                 buff = entity.AddBuff(buffDefinition);
             }
-            var timer = buff.GetProperty<FrameTimer>(BleedingBuff.PROP_TIMEOUT);
-            timer?.Reset();
+            BleedingBuff.MaxTime(buff, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
+        public static void TimeFreeze(this Entity entity, int time, int endTime, ILevelSourceReference? source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.timeFreeze);
+            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            buff.SetProperty(TimeStopBuff.PROP_TIMEOUT, time);
+            buff.SetProperty(TimeStopBuff.PROP_END_TIME, endTime);
             PostApplyStatusEffect(entity, buff, source);
         }
 

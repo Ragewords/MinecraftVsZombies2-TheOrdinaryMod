@@ -21,9 +21,9 @@ namespace MVZ2.GameContent.Buffs.Enemies
             AddModelInsertion(LogicModelHelper.ANCHOR_CENTER, VanillaModelKeys.timeStop, VanillaModelID.timeStop);
             AddTrigger(LevelCallbacks.POST_ENTITY_DEATH, PostEntityDeathCallback);
         }
-        public override void PostAdd(Buff buff)
+        public override void OnCreate(Buff buff)
         {
-            base.PostAdd(buff);
+            base.OnCreate(buff);
             buff.SetProperty(PROP_TIMEOUT, MAX_TIMEOUT);
         }
         private void PostEntityDeathCallback(LevelCallbacks.EntityDeathParams param, CallbackResult result)

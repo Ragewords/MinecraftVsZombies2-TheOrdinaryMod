@@ -95,7 +95,7 @@ namespace MVZ2.GameContent.Contraptions
             foreach (var target in entities)
             {
                 if (target.CanDeactive())
-                    target.AddBuff<TimeStopBuff>();
+                    target.TimeFreeze(90, 0 , new EntitySourceReference(entity));
             }
         }
         public static FrameTimer? GetEvocationTimer(Entity entity)

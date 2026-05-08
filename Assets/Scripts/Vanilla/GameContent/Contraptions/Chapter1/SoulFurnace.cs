@@ -20,7 +20,6 @@ using MVZ2Logic;
 using MVZ2Logic.Entities;
 using MVZ2Logic.Level;
 using PVZEngine;
-using PVZEngine.Auras;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
 using PVZEngine.Collisions;
@@ -39,7 +38,6 @@ namespace MVZ2.GameContent.Contraptions
         public SoulFurnace(string nsp, string name) : base(nsp, name)
         {
             evocationDetector = new SoulFurnaceEvocationDetector();
-            AddAura(new SacrificeAura());
         }
 
         public override void Init(Entity entity)
@@ -70,6 +68,10 @@ namespace MVZ2.GameContent.Contraptions
             }
 
             UpdateSacrifice(entity);
+            if (!entity.IsEvoked())
+            {
+                UpdateSacrificeInteractions(entity);
+            }
             var percentage = fuel / (float)MAX_FUEL;
             float light = 0;
             if (fuel > 0)
@@ -99,6 +101,7 @@ namespace MVZ2.GameContent.Contraptions
             var fuel = GetFuel(entity);
             fuel = Mathf.Max(REFUEL_THRESOLD, fuel);
             SetFuel(entity, fuel);
+            entity.RemoveBuffs(VanillaBuffID.Contraption.soulFurnaceSacrificeInteraction);
             entity.SetEvoked(true);
         }
 
@@ -191,6 +194,8 @@ namespace MVZ2.GameContent.Contraptions
         }
         private void SacrificeInteractions(Entity entity, Entity soulFurnace)
         {
+            if (soulFurnace.IsEvoked())
+                return;
             NamespaceID? function = entity.Definition.GetFunction();
             if (function == null)
                 return;
@@ -212,6 +217,37 @@ namespace MVZ2.GameContent.Contraptions
             {
                 SwitchInteraction(soulFurnace, type);
             }
+        }
+        private void UpdateSacrificeInteractions(Entity furnace)
+        {
+            var interactionBuff = furnace.GetFirstBuff(VanillaBuffID.Contraption.soulFurnaceSacrificeInteraction);
+            if (interactionBuff == null)
+            {
+                interactionBuff = furnace.AddBuff(VanillaBuffID.Contraption.soulFurnaceSacrificeInteraction);
+            }
+            NamespaceID projectileID = VanillaProjectileID.soulfireBall;
+            float attackSpeedMultiplier = 1f;
+            float damageMultiplier = 1f;
+            Vector3 shotspeedMultiplier = Vector3.one;
+            switch (GetSacrificeInteraction(furnace))
+            {
+                case SACRIFICE_INTERACTION_PIERCE:
+                    shotspeedMultiplier = Vector3.one * 1.333f;
+                    projectileID = VanillaProjectileID.soulfireSaw;
+                    break;
+                case SACRIFICE_INTERACTION_ICE:
+                    damageMultiplier = 1.25f;
+                    projectileID = VanillaProjectileID.iceBall;
+                    break;
+                case SACRIFICE_INTERACTION_LIGNTNING:
+                    attackSpeedMultiplier = 0.667f;
+                    projectileID = VanillaProjectileID.lightningBall;
+                    break;
+            }
+            SoulFurnaceSacrificeInteractionBuff.SetProjectileID(interactionBuff, projectileID);
+            SoulFurnaceSacrificeInteractionBuff.SetAttackSpeedMultiplier(interactionBuff, attackSpeedMultiplier);
+            SoulFurnaceSacrificeInteractionBuff.SetDamageMultiplier(interactionBuff, damageMultiplier);
+            SoulFurnaceSacrificeInteractionBuff.SetShotVelocityMultiplier(interactionBuff, shotspeedMultiplier);
         }
         private void EvokedUpdate(Entity entity)
         {
@@ -258,51 +294,6 @@ namespace MVZ2.GameContent.Contraptions
             if (interaction != interactionBefore)
             {
                 WhiteFlashBuff.AddToEntity(furnace, 30);
-            }
-        }
-        public class SacrificeAura : AuraEffectDefinition
-        {
-            public SacrificeAura() : base(VanillaBuffID.Contraption.soulFurnaceSacrificeInteraction)
-            {
-            }
-            public override void GetAuraTargets(AuraEffect auraEffect, List<IBuffTarget> results)
-            {
-                var entity = auraEffect.Source.GetEntity();
-                if (entity == null)
-                    return;
-                if (entity.IsEvoked() || entity.IsDead || GetSacrificeInteraction(entity) == SACRIFICE_INTERACTION_FIRE)
-                    return;
-                results.Add(entity);
-            }
-            public override void UpdateTargetBuff(AuraEffect effect, IBuffTarget target, Buff buff)
-            {
-                base.UpdateTargetBuff(effect, target, buff);
-                var entity = effect.Source.GetEntity();
-                if (entity == null)
-                    return;
-                NamespaceID projectileID = VanillaProjectileID.soulfireBall;
-                float attackSpeedMultiplier = 1f;
-                float damageMultiplier = 1f;
-                Vector3 shotspeedMultiplier = Vector3.one;
-                switch (SoulFurnace.GetSacrificeInteraction(entity))
-                {
-                    case SACRIFICE_INTERACTION_PIERCE:
-                        shotspeedMultiplier = Vector3.one * 1.333f;
-                        projectileID = VanillaProjectileID.soulfireSaw;
-                        break;
-                    case SACRIFICE_INTERACTION_ICE:
-                        damageMultiplier = 1.25f;
-                        projectileID = VanillaProjectileID.iceBall;
-                        break;
-                    case SACRIFICE_INTERACTION_LIGNTNING:
-                        attackSpeedMultiplier = 0.667f;
-                        projectileID = VanillaProjectileID.lightningBall;
-                        break;
-                }
-                SoulFurnaceSacrificeInteractionBuff.SetProjectileID(buff, projectileID);
-                SoulFurnaceSacrificeInteractionBuff.SetAttackSpeedMultiplier(buff, attackSpeedMultiplier);
-                SoulFurnaceSacrificeInteractionBuff.SetDamageMultiplier(buff, damageMultiplier);
-                SoulFurnaceSacrificeInteractionBuff.SetShotVelocityMultiplier(buff, shotspeedMultiplier);
             }
         }
 

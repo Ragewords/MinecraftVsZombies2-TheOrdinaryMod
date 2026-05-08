@@ -110,7 +110,7 @@ namespace MVZ2.GameContent.GlobalCallbacks
 
             if (bleed)
             {
-                entity.Bleed(bleedSource);
+                entity.Bleed(150, bleedSource);
             }
         }
         private void PostDamageCallback(VanillaLevelCallbacks.PostTakeDamageParams param, CallbackResult callbackResult)

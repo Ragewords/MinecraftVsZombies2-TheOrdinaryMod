@@ -629,6 +629,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID bleeding = Get(VanillaBuffNames.Enemy.bleeding);
             public static readonly NamespaceID frankensteinTransformer = Get(VanillaBuffNames.Enemy.frankensteinTransformer);
             public static readonly NamespaceID poisoned = Get(VanillaBuffNames.Enemy.poisoned);
+            public static readonly NamespaceID timeFreeze = Get(VanillaBuffNames.Enemy.timeStop);
 
             // Chapter 2
             public static readonly NamespaceID boat = Get(VanillaBuffNames.Enemy.boat);

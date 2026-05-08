@@ -103,8 +103,7 @@ namespace MVZ2.GameContent.Projectiles
                     var other = hitResult.Collider.Entity;
                     if (other.CanDeactive())
                     {
-                        var buff = other.AddBuff<TimeStopBuff>();
-                        buff.SetProperty(TimeStopBuff.PROP_END_TIME, 75);
+                        other.TimeFreeze(90, 75, new EntitySourceReference(projectile));
                     }
                     else if (!blocksSlice)
                     {
