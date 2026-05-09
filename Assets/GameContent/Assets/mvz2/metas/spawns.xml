@@ -230,7 +230,7 @@
     </entry>
     <entry id="zombie_cat">
         <entity id="mvz2:zombie_cat" />
-        <spawn level="4" minWave="5" />
+        <spawn level="5" minWave="5" />
         <weight base="2500" />
     </entry>
     

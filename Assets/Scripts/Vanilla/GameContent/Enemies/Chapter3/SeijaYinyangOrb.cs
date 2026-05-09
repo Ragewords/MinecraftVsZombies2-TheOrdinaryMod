@@ -26,7 +26,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public SeijaYinyangOrb(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(LogicLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
+            AddTrigger(LogicLevelCallbacks.POST_PLACE_ENTITY, PostPlaceEntityCallback);
         }
         public override void Init(Entity entity)
         {
@@ -69,15 +69,15 @@ namespace MVZ2.GameContent.Enemies
             var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
             entity.Remove();
         }
-        private void PostUseEntityBlueprintCallback(LogicLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
+        private void PostPlaceEntityCallback(LogicLevelCallbacks.PostPlaceEntityParams param, CallbackResult callbackResult)
         {
-            var output = param.placeOutput;
-            var entity = output.entity;
+            var entity = param.entity;
+            var grid = param.grid;
             if (entity == null)
                 return;
             foreach (Entity orb in entity.Level.FindEntities(VanillaEnemyID.seijaYinyangOrb))
             {
-                SetMoveTarget(orb, entity.Position);
+                SetMoveTarget(orb, grid.GetEntityPosition());
             }
         }
         private void Shoot(Entity entity)

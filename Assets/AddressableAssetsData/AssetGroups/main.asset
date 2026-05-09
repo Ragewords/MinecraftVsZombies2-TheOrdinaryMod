@@ -360,6 +360,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 068e4db971a1f074a9a586a4ddf1ef68
+    m_Address: mvz2:entity/contraptions/respawn_anchor
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06bd83f6d02e8394fab6740abdfe9321
     m_Address: mvz2:entity/bone_wall/bone_wall_destroyed
     m_ReadOnly: 0
@@ -2411,6 +2418,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27c7e906258f23c40b92dd9b156b5c09
+    m_Address: mvz2:respawn_anchor_deplete2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27e34115defaab8419d3558436e8c270
     m_Address: mvz2:entity/effect/tiny_blaze
     m_ReadOnly: 0
@@ -4151,6 +4165,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43a4ecdf18557eb45b0a3de98bcc6a42
+    m_Address: mvz2:respawn_anchor_charge2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43d0c46d78f545946b9f8472fc64be72
     m_Address: mvz2:ui/level/progress_bar/level_progress_banner
@@ -6195,6 +6216,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65873894de8fed54d81883cc96848077
+    m_Address: mvz2:respawn_anchor_charge3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6597f6cec408d594588c484f332ed431
     m_Address: mvz2:enemy/halloween/bone_wall
     m_ReadOnly: 0
@@ -6330,6 +6358,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 682a1f5ec6af4b54d81d95c0fcf56384
     m_Address: mvz2:mobile_blueprint/leather_capped_zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6832f824ada21b64da76ec16a79e811f
+    m_Address: mvz2:mobile_blueprint/respawn_anchor
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -6911,6 +6946,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 734db76865ebcb9478c48f1b99045296
     m_Address: mvz2:red_lightning2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 736bf3bb7ffee974c8768d3a61935c8b
+    m_Address: mvz2:respawn_anchor_deplete1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -9217,6 +9259,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96f3d060ffd0e7048b2756ca146c16b5
+    m_Address: mvz2:respawn_anchor_charge1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9715bb3348d5b30448e5b28dfde0a228
     m_Address: mvz2:entity/armor/brainwasher_crown
     m_ReadOnly: 0
@@ -10154,6 +10203,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7c24ff7d4af82745be3369d88363bb2
+    m_Address: mvz2:entity/contraption/respawn_anchor_charges
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7d312b9d416ec04ca162b27d0183eba
     m_Address: mvz2:effect/smoke_cluster
@@ -12620,6 +12676,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d17d37c1a790e63419fc44c2c577189a
     m_Address: mvz2:archive/palace_note
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d19caa7e22b82014db04515df5954694
+    m_Address: mvz2:entity/contraptions/respawn_anchor_top_mask
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -15278,6 +15341,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: feacf1a64113a6d49a3091fce2a296b2
     m_Address: mvz2:projectile/soulfire_saw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fec6eff5732fcd9479c2648c367d3f3e
+    m_Address: mvz2:contraption/palace/respawn_anchor
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

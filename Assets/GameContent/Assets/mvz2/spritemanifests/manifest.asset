@@ -493,6 +493,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 61e062545e6a32f479757806ec86d744, type: 3}
   - name: mobile_blueprint/repeatenser
     sprite: {fileID: 21300000, guid: 8ca4037f1d5fcf342b4ffe04c46d6590, type: 3}
+  - name: mobile_blueprint/respawn_anchor
+    sprite: {fileID: 21300000, guid: 6832f824ada21b64da76ec16a79e811f, type: 3}
   - name: mobile_blueprint/return_pearl
     sprite: {fileID: 21300000, guid: 90b1efed9d95d3b43a897fa9d566324a, type: 3}
   - name: mobile_blueprint/reverse_satellite
@@ -899,6 +901,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7cd67e193c23b1f46ae2e123c4a0bd3a, type: 3}
   - name: entity/contraptions/punchton_arm
     sprite: {fileID: 21300000, guid: d00aabb5514ee4743a361ad46e38de95, type: 3}
+  - name: entity/contraptions/respawn_anchor
+    sprite: {fileID: 21300000, guid: 068e4db971a1f074a9a586a4ddf1ef68, type: 3}
+  - name: entity/contraptions/respawn_anchor_top_mask
+    sprite: {fileID: 21300000, guid: d19caa7e22b82014db04515df5954694, type: 3}
   - name: entity/contraptions/snipenser_pillar
     sprite: {fileID: 21300000, guid: 91a213214c945d84a864047eff5a7532, type: 3}
   - name: entity/contraptions/soul_furnace
@@ -2446,6 +2452,12 @@ MonoBehaviour:
     spritesheet:
     - {fileID: 1355251931, guid: e45d0cf1efcdf424ca5b2b1bbc8b18a8, type: 3}
     - {fileID: 1296306111, guid: e45d0cf1efcdf424ca5b2b1bbc8b18a8, type: 3}
+  - name: entity/contraption/respawn_anchor_charges
+    spritesheet:
+    - {fileID: -598431004, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
+    - {fileID: 1404112554, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
+    - {fileID: -1534748755, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
+    - {fileID: -1843211856, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
   - name: entity/contraption/revivegrave
     spritesheet:
     - {fileID: -1745854922, guid: 39ca426b1588ec44b8ebe1bdae2af8ea, type: 3}

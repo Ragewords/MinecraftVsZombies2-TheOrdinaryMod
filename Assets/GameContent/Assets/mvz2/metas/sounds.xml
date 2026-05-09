@@ -805,6 +805,15 @@
     <sound name="refuel">
         <sample path="mvz2:refuel" weight="1" />
     </sound>
+    <sound name="respawn_anchor_charge">
+        <sample path="mvz2:respawn_anchor_charge1" weight="1" />
+        <sample path="mvz2:respawn_anchor_charge2" weight="1" />
+        <sample path="mvz2:respawn_anchor_charge3" weight="1" />
+    </sound>
+    <sound name="respawn_anchor_deplete">
+        <sample path="mvz2:respawn_anchor_deplete1" weight="1" />
+        <sample path="mvz2:respawn_anchor_deplete2" weight="1" />
+    </sound>
     <sound name="reverse_vampire">
         <sample path="mvz2:reverse_vampire" weight="1" />
     </sound>

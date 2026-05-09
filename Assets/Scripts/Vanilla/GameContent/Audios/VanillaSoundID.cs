@@ -220,6 +220,8 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID redLightning = Get("red_lightning");
         public readonly static NamespaceID reflection = Get("reflection");
         public readonly static NamespaceID refuel = Get("refuel");
+        public readonly static NamespaceID respawnAnchorCharge = Get("respawn_anchor_charge");
+        public readonly static NamespaceID respawnAnchorDeplete = Get("respawn_anchor_deplete");
         public readonly static NamespaceID reviveCast = Get("revive_cast");
         public readonly static NamespaceID revived = Get("revived");
         public readonly static NamespaceID reverseVampire = Get("reverse_vampire");
