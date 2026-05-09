@@ -2321,6 +2321,7 @@
                 <bool name="mvz2:harmless" value="true" />
                 <bool name="mvz2:no_align_to_lane" value="true" />
                 <bool name="mvz2:noReward" value="true" />
+                <bool name="mvz2:undead" value="false" />
                 <vector3 name="mvz2:starting_position_offset" x="0" y="600" z="0" />
                 <vector3 name="mvz2:size" x="80" y="56" z="56" />
                 <id name="mvz2:shell" value="mvz2:metal" />
@@ -2922,6 +2923,7 @@
                 <id name="mvz2:crySound" null="true" />
                 <id name="mvz2:deathSound" null="true" />
                 <float name="mvz2:maxHealth" value="9999" />
+                <float name="mvz2:blow_mass_offset" value="10000" />
                 <vector3 name="mvz2:size" x="24" y="32" z="24" />
 
                 <int name="mvz2:cost" value="25" />

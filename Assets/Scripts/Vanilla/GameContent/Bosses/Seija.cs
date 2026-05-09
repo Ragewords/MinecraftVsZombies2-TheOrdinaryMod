@@ -6,6 +6,7 @@ using MVZ2.GameContent.Enemies;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Bosses;
 using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Entities;
@@ -41,13 +42,11 @@ namespace MVZ2.GameContent.Bosses
             SetFabricCount(boss, MAX_FABRIC_COUNT);
             SetDanmakuTimer(boss, new FrameTimer(4));
 
-            boss.Spawn(VanillaEnemyID.seijaCursedDoll, boss.Position)?.Let(e =>
+            var spawnParam = boss.GetSpawnParams();
+            spawnParam.EntityParent = boss;
+            boss.Spawn(VanillaEnemyID.seijaCursedDoll, boss.Position, spawnParam);
+            boss.Spawn(VanillaEnemyID.seijaYinyangOrb, boss.Position, spawnParam)?.Let(e =>
             {
-                e.SetParent(boss);
-            });
-            boss.Spawn(VanillaEnemyID.seijaYinyangOrb, boss.Position)?.Let(e =>
-            {
-                e.SetParent(boss);
                 SetOrb(boss, e);
             });
         }
