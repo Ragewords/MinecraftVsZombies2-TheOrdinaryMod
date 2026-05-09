@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Bosses
                         transitionTimer.ResetTime(TRANSITION_INTERVAL);
                         var pos = enemy.Position;
                         var level = enemy.Level;
-                        pos.x = level.GetEntityColumnX(enemy.IsFacingLeft() ? enemy.RNG.Next(level.GetMaxColumnCount() - 4, level.GetMaxColumnCount() - 1) : enemy.RNG.Next(0, 3));
+                        pos.x = level.GetEntityColumnX(enemy.IsFacingLeft() ? enemy.RNG.Next(level.GetMaxColumnCount() - 4, level.GetMaxColumnCount() - 1) : enemy.RNG.Next(1, 4));
                         var lane = enemy.RNG.Next(level.GetMaxLaneCount());
                         pos.z = level.GetEntityLaneZ(lane);
                         SetMoveTarget(enemy, pos);
@@ -204,7 +204,7 @@ namespace MVZ2.GameContent.Bosses
             boss.SetBehaviourField(ID, PROP_MOVE_TARGET, target);
         }
         public static readonly NamespaceID ID = VanillaBossID.frankensteinsHead;
-        public const int TRANSITION_COOLDOWN = 180;
+        public const int TRANSITION_COOLDOWN = 240;
         public const int TRANSITION_INTERVAL = 20;
         private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_TARGET = new VanillaEntityPropertyMeta<Vector3>("MoveTarget");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

@@ -3437,6 +3437,7 @@
         <entity template="boss" id="frankenstein_s_head" name="科学怪人的怪物的头">
             <properties>
                 <bool name="mvz2:undead" value="true" />
+                <bool name="mvz2:dont_count_boss_hp" value="true" />
                 <int name="mvz2:waterInteraction" value="1" />
                 <float name="mvz2:maxHealth" value="15000" />
                 <vector3 name="mvz2:size" x="51" y="42" z="51" />
