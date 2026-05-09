@@ -442,7 +442,7 @@ namespace MVZ2.GameContent.Bosses
                             substateTimer.ResetTime(15);
                             var level = entity.Level;
                             var pos = entity.Position;
-                            pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? entity.RNG.Next(level.GetMaxColumnCount() - 3, level.GetMaxColumnCount() - 1) : entity.RNG.Next(0, 2));
+                            pos.x = level.GetEntityColumnX(entity.GetMirroredColumn(entity.RNG.Next(level.GetMaxColumnCount() - 3, level.GetMaxColumnCount()), false));
                             var lane = entity.RNG.Next(level.GetMaxLaneCount());
                             pos.z = level.GetEntityLaneZ(lane);
                             pos.y = level.GetGroundY(pos.x, pos.z);

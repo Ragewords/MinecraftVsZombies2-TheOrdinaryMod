@@ -59,7 +59,7 @@ namespace MVZ2.GameContent.Bosses
                         transitionTimer.ResetTime(TRANSITION_INTERVAL);
                         var pos = enemy.Position;
                         var level = enemy.Level;
-                        pos.x = level.GetEntityColumnX(enemy.IsFacingLeft() ? enemy.RNG.Next(level.GetMaxColumnCount() - 4, level.GetMaxColumnCount() - 1) : enemy.RNG.Next(1, 4));
+                        pos.x = level.GetEntityColumnX(enemy.GetMirroredColumn(enemy.RNG.Next(level.GetMaxColumnCount() - 4, level.GetMaxColumnCount() - 1), false));
                         var lane = enemy.RNG.Next(level.GetMaxLaneCount());
                         pos.z = level.GetEntityLaneZ(lane);
                         SetMoveTarget(enemy, pos);
