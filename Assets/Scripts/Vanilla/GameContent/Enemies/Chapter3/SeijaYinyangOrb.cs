@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Callbacks;
 using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Buffs;
@@ -25,7 +26,7 @@ namespace MVZ2.GameContent.Enemies
     {
         public SeijaYinyangOrb(string nsp, string name) : base(nsp, name)
         {
-            AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostPlantInitCallback, filter: EntityTypes.PLANT);
+            AddTrigger(LogicLevelCallbacks.POST_USE_ENTITY_BLUEPRINT, PostUseEntityBlueprintCallback);
         }
         public override void Init(Entity entity)
         {
@@ -35,7 +36,7 @@ namespace MVZ2.GameContent.Enemies
             SetShootTimer(entity, new FrameTimer(300));
             SetRepeatTime(entity, 5);
             SetRepeatShootTimer(entity, new FrameTimer(5));
-            var x = entity.Level.GetEntityColumnX(entity.Level.GetMaxColumnCount() - 2);
+            var x = entity.Level.GetEntityColumnX(entity.GetMirroredColumn(entity.Level.GetMaxColumnCount() - 2, false));
             var z = entity.Level.GetEntityLaneZ(entity.Level.GetMaxLaneCount() / 2);
             var y = 20;
             SetMoveTarget(entity, new Vector3(x, y, z));
@@ -68,10 +69,11 @@ namespace MVZ2.GameContent.Enemies
             var smoke = entity.Spawn(VanillaEffectID.smoke, entity.GetCenter(), param);
             entity.Remove();
         }
-        private void PostPlantInitCallback(EntityCallbackParams param, CallbackResult result)
+        private void PostUseEntityBlueprintCallback(LogicLevelCallbacks.PostUseEntityBlueprintParams param, CallbackResult callbackResult)
         {
-            var entity = param.entity;
-            if (entity.IsOnWater() || entity.IsAboveCloud())
+            var output = param.placeOutput;
+            var entity = output.entity;
+            if (entity == null)
                 return;
             foreach (Entity orb in entity.Level.FindEntities(VanillaEnemyID.seijaYinyangOrb))
             {

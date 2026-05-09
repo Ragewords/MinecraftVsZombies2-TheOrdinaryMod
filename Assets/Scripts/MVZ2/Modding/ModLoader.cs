@@ -581,8 +581,8 @@ namespace MVZ2.Modding
 
                 stageDef.SetProperty(EngineStageProps.TOTAL_FLAGS, meta.TotalFlags);
                 stageDef.SetProperty(EngineStageProps.FIRST_WAVE_TIME, meta.FirstWaveTime);
-                stageDef.SetProperty(EngineStageProps.LUNATIC_FIRST_WAVE_TIME, meta.FirstWaveTimeInLunatic);
                 stageDef.SetProperty(EngineStageProps.CONTINUED_FIRST_WAVE_TIME, meta.EndlessFirstWaveTime);
+                stageDef.SetProperty(LogicStageProps.LUNATIC_FIRST_WAVE_TIME, meta.FirstWaveTimeInLunatic);
                 stageDef.SetProperty(LogicStageProps.WAVE_MAX_TIME, meta.MaxWaveTime);
                 stageDef.SetProperty(LogicStageProps.WAVE_ADVANCE_TIME, meta.AdvanceWaveTime);
                 stageDef.SetProperty(LogicStageProps.WAVE_ADVANCE_HEALTH_PERCENT, meta.AdvanceHealthPercent);

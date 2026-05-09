@@ -202,6 +202,14 @@ namespace MVZ2Logic.Level
         public static float GetWaveAdvanceHealthPercent(this LevelEngine level) => level.GetProperty<float>(WAVE_ADVANCE_HEALTH_PERCENT);
         #endregion
 
+        #region 月狂初始出怪时间
+        public static readonly PropertyMeta<float> LUNATIC_FIRST_WAVE_TIME = Get<float>("lunaticFirstWaveTime");
+        public static float GetLunaticFirstWaveTime(this LevelEngine level)
+        {
+            return level.GetProperty<float>(LUNATIC_FIRST_WAVE_TIME);
+        }
+        #endregion
+
         #region 无能量
         public static readonly PropertyMeta<bool> NO_ENERGY = Get<bool>("noEnergy");
         public static bool IsNoEnergy(this LevelEngine game)

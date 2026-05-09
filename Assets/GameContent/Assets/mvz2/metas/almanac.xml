@@ -1998,7 +1998,7 @@
                 <p>僵尸猫乘坐着它的推车出现，碾压遇到的器械。拥有9条命，并且每次死亡时都有50%的概率召唤一只<![CDATA[<ref=[enemies]mvz2:wisp_fly>鬼火苍蝇</ref>]]>。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />（猫）+<var local="cart_hp" />（推车）</color>]]></p>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" />（猫），<var local="cart_hp" />（推车）</color>]]></p>
                 <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>推车速度：<![CDATA[<color=red><var local="cart_speed" />，<var local="cart_speed_motor" />（冲刺）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>能复活8次；推车在无乘客时冲刺撞毁器械，并且被毁后也会出现鬼火苍蝇</color>]]></p>
