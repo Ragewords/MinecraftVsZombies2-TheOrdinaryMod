@@ -1932,6 +1932,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>速度：<![CDATA[<color=red><var id="mvz2:entity_speed" /></color>]]></p>
                 <p>发射速度：<![CDATA[<color=red>3发/4秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
             </properties>

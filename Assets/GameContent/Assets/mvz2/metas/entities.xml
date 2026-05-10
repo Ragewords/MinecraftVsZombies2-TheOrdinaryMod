@@ -2468,6 +2468,7 @@
             <properties>
                 <float name="mvz2:damage" value="150" />
                 <float name="mvz2:range" value="800" />
+                <float name="mvz2:speed" value="2" />
                 <vector3 name="mvz2:size" x="35" y="78" z="35" />
                 <vector3 name="mvz2:shotOffset" x="10" y="39" z="0" />
                 <vector3 name="mvz2:shotVelocity" x="15" y="0" z="0" />
@@ -2721,6 +2722,7 @@
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:grave_warden/state" />
             </behaviours>
             <properties>
+                <float name="mvz2:maxHealth" value="300" />
                 <id name="mvz2:shell" value="mvz2:bone" />
                 <id name="mvz2:crySound" value="mvz2:skeleton_cry" />
                 <id name="mvz2:deathSound" value="mvz2:skeleton_death" />
