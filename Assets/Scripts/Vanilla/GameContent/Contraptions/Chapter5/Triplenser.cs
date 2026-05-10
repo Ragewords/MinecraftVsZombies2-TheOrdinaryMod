@@ -8,6 +8,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Projectiles;
 using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace MVZ2.GameContent.Contraptions
                 var bullet = Shoot(entity);
                 if (bullet == null)
                     continue;
-                if (i < 0 || i >= maxLane || (i != lane && !IfOtherLaneHasEnemy(entity, i)))
+                if (i < 0 || i >= maxLane || (i != lane && !IfOtherLaneHasEnemy(entity, i) && !entity.Level.IsIZombie()))
                 {
                     makeupCount++;
                     bullet.Velocity *= 1 + (MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT * makeupCount);
