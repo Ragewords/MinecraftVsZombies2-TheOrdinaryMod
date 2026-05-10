@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39ca426b1588ec44b8ebe1bdae2af8ea
+guid: 97f22fbfe9c331d47bbeba71db828f8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: revivegrave_0
+      name: grave_warden_grave_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 16
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f638454b8d57125468e0383a3d928d55
-      internalID: -1745854922
+      spriteID: fc6491b2216f7be4b9015266a5dde3a3
+      internalID: -1106801836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: revivegrave_1
+      name: grave_warden_grave_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 17
         y: 0
-        width: 64
+        width: 16
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,8 +145,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 004c8880e27f5294396bc2039039e084
-      internalID: 2043493000
+      spriteID: 4e5de7beee372f942acc57e39c747d41
+      internalID: -1799968103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grave_warden_grave_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18197993b2a6d241a7c932100b60029
+      internalID: 309551289
       vertices: []
       indices: 
       edges: []
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      revivegrave_0: -1745854922
-      revivegrave_1: 2043493000
+      grave_warden_grave_0: -1106801836
+      grave_warden_grave_1: -1799968103
+      grave_warden_grave_2: 309551289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -892,13 +892,6 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0f3d7481f0cd9624cbde52bf4ab9dc2c
-    m_Address: mvz2:mobile_blueprint/revivegrave
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f8038ac8fbb1f44193adf72f4eeaa3a
     m_Address: mvz2:entity/effects/combat_slide
     m_ReadOnly: 0
@@ -1633,6 +1626,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1aa7daaad45058c41b2130f440332ae9
+    m_Address: mvz2:enemy/palace/zombie_spectre
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1adb67d35f526fa46b4f9eef62188a56
     m_Address: mvz2:entity/cart/nyaightmare
@@ -3493,13 +3493,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 39ca426b1588ec44b8ebe1bdae2af8ea
-    m_Address: mvz2:entity/contraption/revivegrave
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 39cde1f66d40cb14d8f732d41ea867f2
     m_Address: mvz2:characters/hologram
@@ -8147,6 +8140,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85f3800e1f8aff341b3d54a86b80a709
+    m_Address: mvz2:mobile_blueprint/grave_warden
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85fc4cf81c16b5f40a5aca54cdc85565
     m_Address: mvz2:level/shadow
     m_ReadOnly: 0
@@ -8356,13 +8356,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8a1d30e11638ade42a73008d10651952
-    m_Address: mvz2:contraption/upgrade/revivegrave
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a2e7dea253a9e84c910acffe8c3e79e
     m_Address: mvz2:mainmenu/view/nightmare_censored
@@ -9294,6 +9287,13 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97f22fbfe9c331d47bbeba71db828f8a
+    m_Address: mvz2:entity/obstacle/grave_warden_grave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 97fb6eef6b0b240438ad3bc4f783cf48
     m_Address: mvz2:entity/cart/rainbow_trail
     m_ReadOnly: 0
@@ -9377,6 +9377,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9959c2dce5b322146ac7f564db0c3c6a
+    m_Address: mvz2:enemy/palace/grave_warden
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9961075f520971143aa9e624000a1d95
     m_Address: mvz2:firework_blast
@@ -10336,6 +10343,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a97f731f9bed5644a9fbc805038ee926
+    m_Address: mvz2:entity/enemy/zombie_spectre
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a983f0772541d504c8614fb33d2a87ec
     m_Address: mvz2:entity/boss/seija_gap
@@ -12877,6 +12891,13 @@ MonoBehaviour:
     - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d54dc5c570eec644d9c49d16cabdce2f
+    m_Address: mvz2:entity/enemy/grave_warden
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d57efe1c2239b6748bd289baef3bab74
     m_Address: mvz2:poison_cast
     m_ReadOnly: 0
@@ -14698,6 +14719,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f4f8e61b7c7d50243bb37fafee955fca
     m_Address: mvz2:projectile/wither_skull
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f518a3ca3e146c74880dc36a7bc6d2d5
+    m_Address: mvz2:obstacle/grave
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

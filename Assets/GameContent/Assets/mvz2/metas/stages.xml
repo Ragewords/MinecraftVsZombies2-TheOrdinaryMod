@@ -2006,7 +2006,7 @@
     </stage>
     <stage id="locked_chests_revenge" name="上锁箱子的复仇" type="minigame" music="mvz2:palace_final" >
         <unlock>
-            <condition required="mvz2:level.palace_11"/>
+            <condition required="mvz2:level.palace_EX4"/>
         </unlock>
         <clear pickupModel="mvz2:entity.trophy" trophy="true"/>
         <spawns flags="2" >
@@ -2019,6 +2019,7 @@
             <spawn id="mvz2:skeleton_statue" />
             <spawn id="mvz2:hacker" />
             <spawn id="mvz2:zombie_cat" />
+            <spawn id="mvz2:grave_warden" />
         </spawns>
         <properties>
             <bool name="mvz2:boss_revenge" value="true"/>

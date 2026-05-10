@@ -1472,27 +1472,6 @@
                 <id name="mvz2:function" value="mvz2:armed" />
             </properties>
         </entity>
-        <entity template="contraption" id="revivegrave" name="还魂冢" tooltip="（需要死灵墓碑）\n复活并友好化倒下的亡灵类敌人">
-            <unlock>
-                <condition requiredGroups="mvz2:contraption.revivegrave" />
-            </unlock>
-            <behaviours>
-                <behaviour operator="add" id="mvz2:spawn_upgrade_from_entity" />
-            </behaviours>
-            <properties>
-                <bool name="mvz2:nocturnal" value="true" />
-                <id name="mvz2:fragmentId" value="mvz2:furnace" />
-                <bool name="mvz2:upgradeBlueprint" value="true" />
-                <id name="mvz2:upgradeFrom" value="mvz2:necrotombstone" />
-                <id name="mvz2:placement" value="mvz2:upgrade" />
-                <vector3 name="mvz2:size" x="48" y="48" z="48" />
-                <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
-
-                <int name="mvz2:cost" value="200" />
-                <id name="mvz2:rechargeId" value="mvz2:very_long" />
-                <id name="mvz2:function" value="mvz2:enchanted" />
-            </properties>
-        </entity>
         <entity template="contraption" id="skyward_beacon" name="御天信标" tooltip="（需要信标）\n使用光柱并操纵子机定点打击位置">
             <unlock>
                 <condition requiredGroups="mvz2:contraption.skyward_beacon" />
@@ -2733,6 +2712,22 @@
                 <int name="mvz2:cost" value="200" />
             </properties>
         </entity>
+        <entity template="humanoid" id="grave_warden" name="守墓人" deathMessage="有如此的恶意涂满了你的心">
+            <unlock>
+                <condition required="mvz2:level.palace_EX1" />
+            </unlock>
+            <behaviours>
+                <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:grave_warden/animation" />
+                <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:grave_warden/state" />
+            </behaviours>
+            <properties>
+                <id name="mvz2:shell" value="mvz2:bone" />
+                <id name="mvz2:crySound" value="mvz2:skeleton_cry" />
+                <id name="mvz2:deathSound" value="mvz2:skeleton_death" />
+
+                <int name="mvz2:cost" value="150" />
+            </properties>
+        </entity>
         
         <!-- Token Enemies-->
         <entity template="specialEnemy" id="bone_wall" name="骨墙" deathMessage="你是怎么做到的？">
@@ -3408,6 +3403,23 @@
                 <int name="mvz2:cost" value="300" />
             </properties>
         </entity>
+        <entity template="zombie" id="zombie_spectre" name="僵尸鬼魂" deathMessage="鬼图打码">
+            <unlock>
+                <condition required="mvz2:level.palace_EX2" />
+            </unlock>
+            <behaviours>
+                <behaviour operator="add" id="mvz2:boated_enemy" />
+                <behaviour operator="add" id="mvz2:rickroll_drown_achievement" />
+                <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:zombie_spectre/animation" />
+                <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:zombie_spectre/state" />
+            </behaviours>
+            <properties>
+                <float name="mvz2:maxHealth" value="400" />
+                <id name="mvz2:shell" value="mvz2:normal" />
+
+                <int name="mvz2:cost" value="50" />
+            </properties>
+        </entity>
 
         <!-- Obstacles -->
         <entity template="obstacle" id="gargoyle_statue" name="石像鬼雕像">
@@ -3439,6 +3451,22 @@
                 <bool name="mvz2:invincible" value="true" />
                 <bool name="mvz2:invisible" value="true" />
                 <int name="mvz2:hp_bar_visibility" value="-1" />
+            </properties>
+        </entity>
+        <entity template="obstacle" id="grave" name="招魂墓碑">
+            <behaviours>
+                <behaviour operator="add" id="mvz2:take_grid" />
+                <behaviour operator="add" id="mvz2:fragmented" />
+                <behaviour operator="add" id="mvz2:obstacle_destroy_contraption" />
+                <behaviour operator="add" id="mvz2:model_damage_percent" />
+                <behaviour operator="add" id="mvz2:remove_on_death" />
+            </behaviours>
+            <properties>
+                <float name="mvz2:maxHealth" value="1800" />
+                <vector3 name="mvz2:size" x="8" y="64" z="16" />
+                <vector3 name="mvz2:shadowScale" x="0.6" y="1" z="0.6" />
+                <id name="mvz2:fragmentId" value="mvz2:furnace" />
+                <idArray name="mvz2:gridLayers" value="mvz2:main mvz2:carrier" />
             </properties>
         </entity>
 

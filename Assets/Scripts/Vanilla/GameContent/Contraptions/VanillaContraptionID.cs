@@ -69,7 +69,6 @@ namespace MVZ2.GameContent.Contraptions
         public const string infectenser = "infectenser";
         public const string forcePad = "force_pad";
         public const string goldenDropper = "golden_dropper";
-        public const string revivegrave = "revivegrave";
         public const string skywardBeacon = "skyward_beacon";
 
         public const string highFrequencyPulseDispenser = "high_frequency_pulse_dispenser";
@@ -156,7 +155,6 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly NamespaceID infectenser = Get(VanillaContraptionNames.infectenser);
         public static readonly NamespaceID forcePad = Get(VanillaContraptionNames.forcePad);
         public static readonly NamespaceID goldenDropper = Get(VanillaContraptionNames.goldenDropper);
-        public static readonly NamespaceID revivegrave = Get(VanillaContraptionNames.revivegrave);
         public static readonly NamespaceID skywardBeacon = Get(VanillaContraptionNames.skywardBeacon);
 
         public static readonly NamespaceID highFrequencyPulseDispenser = Get(VanillaContraptionNames.highFrequencyPulseDispenser);

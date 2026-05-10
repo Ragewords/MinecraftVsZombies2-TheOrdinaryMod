@@ -57,6 +57,7 @@ namespace MVZ2.GameContent.Enemies
         public const string hacker = "hacker";
         public const string zombieCat = "zombie_cat";
         public const string wispFly = "wisp_fly";
+        public const string graveWarden = "grave_warden";
 
         public const string mutantZombie = "mutant_zombie";
         public const string megaMutantZombie = "mega_mutant_zombie";
@@ -89,6 +90,7 @@ namespace MVZ2.GameContent.Enemies
         public const string rollingWood = "rolling_wood";
         public const string rollingStone = "rolling_stone";
         public const string lockedChestBalloon = "locked_chest_balloon";
+        public const string zombieSpectre = "zombie_spectre";
     }
     public static class VanillaEnemyID
     {
@@ -174,6 +176,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID rollingWood = Get(VanillaEnemyNames.rollingWood);
         public static readonly NamespaceID rollingStone = Get(VanillaEnemyNames.rollingStone);
         public static readonly NamespaceID lockedChestBalloon = Get(VanillaEnemyNames.lockedChestBalloon);
+        public static readonly NamespaceID zombieSpectre = Get(VanillaEnemyNames.zombieSpectre);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

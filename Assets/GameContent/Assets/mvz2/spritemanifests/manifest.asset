@@ -389,6 +389,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 55c4fb06ca097e24eaa9171673390143, type: 3}
   - name: mobile_blueprint/gravelpult
     sprite: {fileID: 21300000, guid: 6edd9e40e4ec07849b044419d54304d8, type: 3}
+  - name: mobile_blueprint/grave_warden
+    sprite: {fileID: 21300000, guid: 85f3800e1f8aff341b3d54a86b80a709, type: 3}
   - name: mobile_blueprint/gravity_pad
     sprite: {fileID: 21300000, guid: b362171cd0a32824e9b3ac7c42f24dd7, type: 3}
   - name: mobile_blueprint/gunpowder_barrel
@@ -499,8 +501,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 90b1efed9d95d3b43a897fa9d566324a, type: 3}
   - name: mobile_blueprint/reverse_satellite
     sprite: {fileID: 21300000, guid: 35f80fb8af94a064f86a987dc6dae8e0, type: 3}
-  - name: mobile_blueprint/revivegrave
-    sprite: {fileID: 21300000, guid: 0f3d7481f0cd9624cbde52bf4ab9dc2c, type: 3}
   - name: mobile_blueprint/seija
     sprite: {fileID: 21300000, guid: 9390c4e06c35d1849b57a496ba6b0339, type: 3}
   - name: mobile_blueprint/seija_cursed_doll
@@ -2458,10 +2458,6 @@ MonoBehaviour:
     - {fileID: 1404112554, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
     - {fileID: -1534748755, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
     - {fileID: -1843211856, guid: a7c24ff7d4af82745be3369d88363bb2, type: 3}
-  - name: entity/contraption/revivegrave
-    spritesheet:
-    - {fileID: -1745854922, guid: 39ca426b1588ec44b8ebe1bdae2af8ea, type: 3}
-    - {fileID: 2043493000, guid: 39ca426b1588ec44b8ebe1bdae2af8ea, type: 3}
   - name: entity/contraption/silvenser
     spritesheet:
     - {fileID: 1795380811, guid: 4b61b6a8f9cd754419a8862656f249c1, type: 3}
@@ -2845,6 +2841,14 @@ MonoBehaviour:
     - {fileID: 1603489236, guid: 5ced55b015735534ea11b4302ca7f87b, type: 3}
     - {fileID: -786789113, guid: 5ced55b015735534ea11b4302ca7f87b, type: 3}
     - {fileID: -471910337, guid: 5ced55b015735534ea11b4302ca7f87b, type: 3}
+  - name: entity/enemy/grave_warden
+    spritesheet:
+    - {fileID: -1632734005, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
+    - {fileID: -1245540834, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
+    - {fileID: 1333690959, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
+    - {fileID: -1033573124, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
+    - {fileID: -825723019, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
+    - {fileID: -1698948188, guid: d54dc5c570eec644d9c49d16cabdce2f, type: 3}
   - name: entity/enemy/hacker
     spritesheet:
     - {fileID: -933410910, guid: 1cffeb798b5d3c646b2556be70630109, type: 3}
@@ -3209,6 +3213,13 @@ MonoBehaviour:
     - {fileID: -150382349, guid: 3fb9e3cc152d92149914e1b4e20ea5f1, type: 3}
     - {fileID: 1723291530, guid: 3fb9e3cc152d92149914e1b4e20ea5f1, type: 3}
     - {fileID: 1477121384, guid: 3fb9e3cc152d92149914e1b4e20ea5f1, type: 3}
+  - name: entity/enemy/zombie_spectre
+    spritesheet:
+    - {fileID: -1086757628, guid: a97f731f9bed5644a9fbc805038ee926, type: 3}
+    - {fileID: 1281658849, guid: a97f731f9bed5644a9fbc805038ee926, type: 3}
+    - {fileID: 738289581, guid: a97f731f9bed5644a9fbc805038ee926, type: 3}
+    - {fileID: 38749107, guid: a97f731f9bed5644a9fbc805038ee926, type: 3}
+    - {fileID: 199485602, guid: a97f731f9bed5644a9fbc805038ee926, type: 3}
   - name: entity/obstacle/gargoyle_statue
     spritesheet:
     - {fileID: 1300053136, guid: 684ec7aa8b558924d9d579d222e0eac5, type: 3}
@@ -3216,6 +3227,11 @@ MonoBehaviour:
     - {fileID: 1066313923, guid: 684ec7aa8b558924d9d579d222e0eac5, type: 3}
     - {fileID: 639807706, guid: 684ec7aa8b558924d9d579d222e0eac5, type: 3}
     - {fileID: 26981402, guid: 684ec7aa8b558924d9d579d222e0eac5, type: 3}
+  - name: entity/obstacle/grave_warden_grave
+    spritesheet:
+    - {fileID: -1106801836, guid: 97f22fbfe9c331d47bbeba71db828f8a, type: 3}
+    - {fileID: -1799968103, guid: 97f22fbfe9c331d47bbeba71db828f8a, type: 3}
+    - {fileID: 309551289, guid: 97f22fbfe9c331d47bbeba71db828f8a, type: 3}
   - name: entity/obstacle/monster_spawner
     spritesheet:
     - {fileID: 1118952533, guid: 9d7d8c34fc25cfc48886195628af3adf, type: 3}

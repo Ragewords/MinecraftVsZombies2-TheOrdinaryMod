@@ -172,18 +172,6 @@
                 <stage price="10000" unlocks="mvz2:contraption.golden_dropper" />
             </stages>
         </product>
-        <product id="revivegrave" blueprintId="mvz2:revivegrave">
-            <unlock>
-                <condition required="mvz2:level.mausoleum_EX3"/>
-            </unlock>
-            <talks>
-                <talk character="mvz2:crazy_villager">把还魂冢放在死灵墓碑上，让它能够复活并友好化亡灵敌人！</talk>
-                <talk character="mvz2:tokiko">还魂冢能升级死灵墓碑，能复活亡灵怪物，并把它们变得友好！</talk>
-            </talks>
-            <stages>
-                <stage price="10000" unlocks="mvz2:contraption.revivegrave"/>
-            </stages>
-        </product>
         <product id="skyward_beacon" blueprintId="mvz2:skyward_beacon">
             <unlock>
                 <condition required="mvz2:level.ship_6" />
@@ -196,8 +184,6 @@
                 <stage price="14370" unlocks="mvz2:contraption.skyward_beacon" />
             </stages>
         </product>
-        <product />
-        <product />
         <product />
         <product />
         <product />

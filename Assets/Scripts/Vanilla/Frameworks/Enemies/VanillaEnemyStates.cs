@@ -28,6 +28,8 @@ namespace MVZ2.Vanilla.Enemies
         public const int SKELEBOMB_PRE_EXPLODE = PRIVATE_NUMBER + 0;
         public const int JACK_DULLAHAN_SWING = PRIVATE_NUMBER + 0;
         public const int TANOOKI_ZOMBIE_JUMP = PRIVATE_NUMBER + 0;
+        public const int GRAVE_WARDEN_PLACE = PRIVATE_NUMBER + 0;
+        public const int ZOMBIE_SPECTRE_APPEAR = PRIVATE_NUMBER + 0;
 
         private const int PRIVATE_NUMBER = 10000;
     }

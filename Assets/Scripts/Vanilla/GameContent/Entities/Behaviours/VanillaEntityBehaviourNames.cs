@@ -113,8 +113,12 @@ namespace MVZ2.Vanilla.Entities
         public const string hacker_State = "hacker/state";
         public const string zombieCat_Model = "zombie_cat/model";
         public const string wispFly_SelfDestruct = "wisp_fly/self_destruct";
+        public const string graveWarden_Animation = "grave_warden/animation";
+        public const string graveWarden_State = "grave_warden/state";
         public const string crusherBall = "crusher_ball";
         public const string rollingGiantBlock = "rolling_giant_block";
+        public const string zombieSpectre_Animation = "zombie_spectre/animation";
+        public const string zombieSpectre_State = "zombie_spectre/state";
         #endregion
 
         #region Obstacles

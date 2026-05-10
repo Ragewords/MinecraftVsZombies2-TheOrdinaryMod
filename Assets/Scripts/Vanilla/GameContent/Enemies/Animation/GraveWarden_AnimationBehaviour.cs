@@ -7,22 +7,21 @@ using PVZEngine.Entities;
 
 namespace MVZ2.GameContent.Enemies
 {
-    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.jackDullahan_Animation)]
-    public class JackDullahan_AnimationBehaviour : HumanoidAnimationBehaviour
+    [AutoEntityBehaviourDefinition(VanillaEntityBehaviourNames.graveWarden_Animation)]
+    public class GraveWarden_AnimationBehaviour : HumanoidAnimationBehaviour
     {
-        public JackDullahan_AnimationBehaviour(string nsp, string name) : base(nsp, name)
+        public GraveWarden_AnimationBehaviour(string nsp, string name) : base(nsp, name)
         {
         }
         protected override void ModifyAnimationParameters(Entity entity, int state, ref AnimationParameters parameters)
         {
             base.ModifyAnimationParameters(entity, state, ref parameters);
-            if (state == STATE_SWING)
+            if (state == STATE_PLACE)
             {
                 parameters.walkState = WALK_STATE_NONE;
-                parameters.armState = SPECIAL_STATE_SWING;
+                parameters.armState = ARM_STATE_SPECIAL_1;
             }
         }
-        public const int STATE_SWING = VanillaEnemyStates.JACK_DULLAHAN_SWING;
-        public const int SPECIAL_STATE_SWING = 1;
+        public const int STATE_PLACE = VanillaEnemyStates.GRAVE_WARDEN_PLACE;
     }
 }

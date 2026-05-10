@@ -233,6 +233,11 @@
         <spawn level="5" minWave="5" />
         <weight base="2500" />
     </entry>
+    <entry id="grave_warden">
+        <entity id="mvz2:grave_warden" />
+        <spawn level="4" minWave="5" />
+        <weight base="2000" />
+    </entry>
     
     <entry id="mutant_zombie">
         <entity id="mvz2:mutant_zombie" />
