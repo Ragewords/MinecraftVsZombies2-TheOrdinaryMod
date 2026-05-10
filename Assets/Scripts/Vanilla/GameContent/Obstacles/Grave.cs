@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Obstacles
             if (entity.IsEntityOf(VanillaEnemyID.zombieSpectre))
                 return;
             var level = entity.Level;
-            var graves = level.FindEntities(e => e.Definition.HasBehaviour(this) && e.GetLane() == entity.GetLane() && entity.IsFriendly(e));
+            var graves = level.FindEntities(e => e.Definition.HasBehaviour(this) && entity.IsFriendly(e));
             var chosenGrave = graves.RandomTake(1, entity.RNG);
             foreach (var grave in chosenGrave)
             {

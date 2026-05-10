@@ -64,6 +64,7 @@ namespace MVZ2.GameContent.Difficulties
         public static readonly VanillaDifficultyPropertyMeta<bool> RED_DRAGON_SELF_DAMAGE_RESISTANCE = Get<bool>("red_dragon_self_damage_resistance");
         public static readonly VanillaDifficultyPropertyMeta<NamespaceID> LOCKED_CHEST_SPIT_BLUEPRINT_ID = Get<NamespaceID>("locked_chest_spit_blueprint_id", LogicBlueprintID.FromEntity(VanillaEnemyID.leatherCappedZombie));
         public static readonly VanillaDifficultyPropertyMeta<int> LOCKED_CHEST_REQUIRED_STARSHARDS = Get<int>("locked_chest_required_starshards", 1);
+        public static readonly VanillaDifficultyPropertyMeta<bool> LOCKED_CHEST_MEND_SELF = Get<bool>("locked_chest_mend_self");
         public static readonly VanillaDifficultyPropertyMeta<float> LOCKED_CHEST_REVIVE_HEALTH_MULTIPLIER = Get<float>("locked_chest_revive_health_multiplier", 1f);
 
         public static bool FrankensteinNoSteelPhase(this LevelEngine level) => level.GetProperty<bool>(FRANKENSTEIN_NO_STEEL);
@@ -88,6 +89,7 @@ namespace MVZ2.GameContent.Difficulties
         public static bool RedDragonSelfDamageResistance(this LevelEngine level) => level.GetProperty<bool>(RED_DRAGON_SELF_DAMAGE_RESISTANCE);
         public static NamespaceID? GetLockedChestSpitBlueprintID(this LevelEngine level) => level.GetProperty<NamespaceID>(LOCKED_CHEST_SPIT_BLUEPRINT_ID);
         public static int GetLockedChestRequiredStarshards(this LevelEngine level) => level.GetProperty<int>(LOCKED_CHEST_REQUIRED_STARSHARDS);
+        public static bool LockedChestSelfMend(this LevelEngine level) => level.GetProperty<bool>(LOCKED_CHEST_MEND_SELF);
         public static float GetLockedChestReviveHealthMultiplier(this LevelEngine level) => level.GetProperty<float>(LOCKED_CHEST_REVIVE_HEALTH_MULTIPLIER);
 
         // Level

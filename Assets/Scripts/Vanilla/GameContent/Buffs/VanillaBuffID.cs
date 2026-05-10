@@ -342,6 +342,7 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 6
             public const string lockedChestInvincible = "locked_chest_invincible";
+            public const string lockedChestTempered = "locked_chest_tempered";
         }
         public static class Cart
         {
