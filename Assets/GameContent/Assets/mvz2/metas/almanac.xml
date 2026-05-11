@@ -370,7 +370,7 @@
                 <p>伤害：<![CDATA[<color=red>100（无视护甲）</color>]]></p>
                 <p>修复时间：<![CDATA[<color=red>20秒</color>]]></p>
                 <p>蓄力：<![CDATA[<color=red>最多得到x300%击退速度，攻击后重置蓄力进度</color>]]></p>
-                <p>蓄力时间：<![CDATA[<color=red>66.7秒（修复时无法蓄力）</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>30秒（修复时无法蓄力）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对前方的所有敌人造成500点伤害，并将其击退至最右侧</color>]]></p>
             </properties>
             <flavor>
@@ -928,7 +928,7 @@
                 <p>耐久：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>耐久消耗：<![CDATA[<color=red>300（怪物），450（怪物，困难/月狂难度），20（子弹）</color>]]></p>
                 <p>蓄力：<![CDATA[<color=red>最多得到x150%击退力度和x50%耐久消耗，弹开敌方怪物时重置蓄力进度</color>]]></p>
-                <p>蓄力时间：<![CDATA[<color=red>3.33秒</color>]]></p>
+                <p>蓄力时间：<![CDATA[<color=red>5秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>击退并弹飞半径2.5格内的所有敌方怪物</color>]]></p>
             </properties>
             <flavor>
@@ -1415,7 +1415,7 @@
                 <p>技能：<![CDATA[<color=red>恢复所有耐久和充能数</color>]]></p>
             </properties>
             <flavor>
-                <p>这个重生锚上并没有什么刻意的设计，所以不用担心它会不会在使用时爆炸。</p>
+                <p>这个重生锚上并没有什么刻意的设计，不会爆炸。放心大胆用吧！</p>
             </flavor>
         </entry>
         <entry/>

@@ -47,7 +47,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer());
-            SetKnockBackMultipiler(entity, 1f);
+            SetKnockBackMultipiler(entity, MULTIPLIER_LEAST);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -86,8 +86,9 @@ namespace MVZ2.GameContent.Contraptions
                 
                 if (!entity.Level.IsIZombie())
                 {
-                    var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 3f, 0.001f);
-                    SetKnockBackMultipiler(entity, push);
+                    var push = GetKnockBackMultipiler(entity);
+                    push += (MULTIPLIER_MOST - MULTIPLIER_LEAST) / CHARGE_SECONDS / 30f;
+                    SetKnockBackMultipiler(entity, Mathf.Min(push, MULTIPLIER_MOST));
                 }
 
                 if (detector.DetectExists(entity))
@@ -104,7 +105,7 @@ namespace MVZ2.GameContent.Contraptions
                 extension = extension * 0.5f + entity.GetRange() * 0.5f;
                 SetArmExtension(entity, extension);
 
-                var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 1f, 0.1f);
+                var push = Mathf.Lerp(GetKnockBackMultipiler(entity), MULTIPLIER_LEAST, 0.1f);
                 SetKnockBackMultipiler(entity, push);
 
                 var timer = GetStateTimer(entity);
@@ -112,6 +113,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     timer.ResetTime(RESTORE_TIME);
                     entity.State = STATE_BROKEN;
+                    SetKnockBackMultipiler(entity, MULTIPLIER_LEAST);
 
                     // Spawn droken piston palm.
                     var direction = entity.GetFacingDirection();
@@ -240,6 +242,9 @@ namespace MVZ2.GameContent.Contraptions
         }
         public const int RESTORE_TIME = 600;
         public const float EVOKED_DAMAGE_MULTIPLIER = 5;
+        public const float MULTIPLIER_LEAST = 1;
+        public const float MULTIPLIER_MOST = 3;
+        public const float CHARGE_SECONDS = 30;
         public const int STATE_IDLE = VanillaContraptionStates.IDLE;
         public const int STATE_PUNCH = VanillaContraptionStates.PUNCHTON_PUNCH;
         public const int STATE_BROKEN = VanillaContraptionStates.PUNCHTON_BROKEN;

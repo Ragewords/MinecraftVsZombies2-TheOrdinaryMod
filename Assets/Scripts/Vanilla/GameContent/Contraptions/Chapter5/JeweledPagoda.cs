@@ -203,9 +203,10 @@ namespace MVZ2.GameContent.Contraptions
         private static NamespaceID[] countAsSameFilter = new NamespaceID[]
         {
             VanillaEnemyID.zombie,
+            VanillaEnemyID.flagZombie,
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie,
-            VanillaEnemyID.flagZombie,
+            VanillaEnemyID.diamondHelmettedZombie,
             VanillaEnemyID.rallyZombie,
         };
         public EntityStateMachine stateMachine = new PagodaStateMachine();

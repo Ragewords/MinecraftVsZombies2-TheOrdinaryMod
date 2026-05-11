@@ -10,6 +10,7 @@ using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Buffs;
 using PVZEngine.Callbacks;
@@ -31,9 +32,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_ENEMY;
-            SetKnockBackMultipiler(entity, 1f);
-            SetHealthCostMultipiler(entity, 1f);
-            SetAnimationSpeedMultipiler(entity, 1f);
+            ResetMultipliers(entity);
             SetChargeCooldownTimer(entity, new FrameTimer(Ticks.FromSeconds(KNOCKBACK_COOLDOWN_SECONDS)));
         }
         public override void PostCollision(EntityCollision collision, int state)
@@ -53,12 +52,17 @@ namespace MVZ2.GameContent.Contraptions
             var timer = GetChargeCooldownTimer(entity);
             if (!timer.RunToExpiredAndNotNull())
                 return;
-            var push = Mathf.Lerp(GetKnockBackMultipiler(entity), 1.5f, 0.005f);
-            SetKnockBackMultipiler(entity, push);
-            var cost = Mathf.Lerp(GetHealthCostMultipiler(entity), 0.5f, 0.005f);
-            SetHealthCostMultipiler(entity, cost);
-            var speed = Mathf.Lerp(GetAnimationSpeedMultipiler(entity), 2f, 0.01f);
-            SetAnimationSpeedMultipiler(entity, speed);
+            if (entity.Level.IsIZombie())
+                return;
+            var push = GetKnockBackMultipiler(entity);
+            push += (KNOCKBACK_MULTIPLIER_MOST - KNOCKBACK_MULTIPLIER_LEAST) / CHARGE_SECONDS / 30f;
+            SetKnockBackMultipiler(entity, Mathf.Min(push, KNOCKBACK_MULTIPLIER_MOST));
+            var cost = GetHealthCostMultipiler(entity);
+            cost -= (HEALTH_COST_MULTIPLIER_MOST - HEALTH_COST_MULTIPLIER_LEAST) / CHARGE_SECONDS / 30f;
+            SetHealthCostMultipiler(entity, Mathf.Max(cost, HEALTH_COST_MULTIPLIER_LEAST));
+            var speed = GetAnimationSpeedMultipiler(entity);
+            speed += (ANIMATION_SPEED_MAX - ANIMATION_SPEED_MIN) / CHARGE_SECONDS / 30f;
+            SetAnimationSpeedMultipiler(entity, Mathf.Min(speed, ANIMATION_SPEED_MAX));
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -108,9 +112,9 @@ namespace MVZ2.GameContent.Contraptions
         }
         public static void ResetMultipliers(Entity entity)
         {
-            SetKnockBackMultipiler(entity, 1f);
-            SetHealthCostMultipiler(entity, 1f);
-            SetAnimationSpeedMultipiler(entity, 1f);
+            SetKnockBackMultipiler(entity, KNOCKBACK_MULTIPLIER_LEAST);
+            SetHealthCostMultipiler(entity, HEALTH_COST_MULTIPLIER_MOST);
+            SetAnimationSpeedMultipiler(entity, ANIMATION_SPEED_MIN);
         }
         public static void AddEnemyKnockbackCooldown(Entity self, Entity enemy, int cooldown)
         {
@@ -146,6 +150,13 @@ namespace MVZ2.GameContent.Contraptions
         public const float KNOCKBACK_DISTANCE = 20f;
         public const float BOUNCE_DAMAGE = 300f;
         public const float KNOCKBACK_COOLDOWN_SECONDS = 1f;
+        public const float KNOCKBACK_MULTIPLIER_LEAST = 1;
+        public const float KNOCKBACK_MULTIPLIER_MOST = 1.5f;
+        public const float HEALTH_COST_MULTIPLIER_LEAST = 0.5f;
+        public const float HEALTH_COST_MULTIPLIER_MOST = 1;
+        public const float ANIMATION_SPEED_MIN = 1;
+        public const float ANIMATION_SPEED_MAX = 2;
+        public const float CHARGE_SECONDS = 5;
         public static readonly VanillaEntityPropertyMeta<float> KNOCKBACK_MULTIPLIER = new VanillaEntityPropertyMeta<float>("KnockBackMultipiler");
         public static readonly VanillaEntityPropertyMeta<float> HEALTH_COST_MULTIPLIER = new VanillaEntityPropertyMeta<float>("HealthCostMultipiler");
         public static readonly VanillaEntityPropertyMeta<float> ANIMATION_SPEED_MULTIPLIER = new VanillaEntityPropertyMeta<float>("AnimationSpeedMultipiler");
