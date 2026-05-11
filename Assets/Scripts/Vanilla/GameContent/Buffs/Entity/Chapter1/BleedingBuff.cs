@@ -11,9 +11,9 @@ using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using Tools;
 
-namespace MVZ2.GameContent.Buffs.Enemies
+namespace MVZ2.GameContent.Buffs.Entities
 {
-    [AutoBuffDefinition(VanillaBuffNames.Enemy.bleeding)]
+    [AutoBuffDefinition(VanillaBuffNames.Entity.bleeding)]
     public class BleedingBuff : BuffDefinition
     {
         public BleedingBuff(string nsp, string name) : base(nsp, name)

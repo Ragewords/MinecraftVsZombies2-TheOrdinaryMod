@@ -106,6 +106,14 @@
             <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
             <mark sprite="mvz2:ui/almanac/special_marks[7]" />
         </tag>
+        <tag id="shell_grave" name="墓碑材质" enum="mvz2:shell" priority="2000">
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
+            <mark sprite="mvz2:ui/almanac/special_marks[8]" />
+        </tag>
+        <tag id="shell_spectre" name="鬼魂材质" enum="mvz2:shell" priority="2000">
+            <background sprite="mvz2:ui/almanac/tag_backgrounds[3]" />
+            <mark sprite="mvz2:ui/almanac/special_marks[9]" />
+        </tag>
 
         <tag id="mass" name="质量" enum="mvz2:mass" priority="3000">
             <background sprite="mvz2:ui/almanac/tag_backgrounds[4]" />
@@ -2104,6 +2112,27 @@
             </properties>
             <flavor>
                 <p>航海者僵尸有着丰富的航海经验，在因故离开航海事业后，他将自己的航海故事写成了一本书，名为“航僵王”。</p>
+            </flavor>
+        </entry>
+        <entry id="mvz2:grave_warden">
+            <variables>
+                <variable name="grave_hp">property("mvz2:entity/maxHealth", "mvz2:grave", "entity")</variable>
+                <variable name="spectre_hp">property("mvz2:entity/maxHealth", "mvz2:zombie_spectre", "entity")</variable>
+            </variables>
+            <tags>
+                <tag id="mvz2:shell_grave" value="mvz2:stone" />
+                <tag id="mvz2:shell_spectre" value="mvz2:normal" />
+            </tags>
+            <header>
+                <p>守墓人会放下携带的墓碑。每有两个怪物倒下，墓碑就会召唤一个僵尸鬼魂。</p>
+            </header>
+            <properties>
+                <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
+                <p>墓碑生命：<![CDATA[<color=red><var local="grave_hp" /></color>]]></p>
+                <p>僵尸鬼魂生命：<![CDATA[<color=red><var local="spectre_hp" /></color>]]></p>
+            </properties>
+            <flavor>
+                <p>总是有人问守墓人：他招魂出来的僵尸鬼魂究竟是僵尸还是幽灵？守墓人总是以沉默回应，因为他自己也不知道。</p>
             </flavor>
         </entry>
     </enemies>

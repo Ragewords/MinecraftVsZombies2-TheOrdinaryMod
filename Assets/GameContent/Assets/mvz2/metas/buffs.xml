@@ -88,8 +88,8 @@
     <buff id="abyss" polarity="negative" level="2000" target="contraption" />
     <buff id="jack_o_lantern" polarity="positive" level="2000" target="contraption" />
     <buff id="conductor" polarity="positive" level="4000" target="contraption" />
-    <buff id="bleeding" polarity="negative" level="2000" target="enemy" />
-    <buff id="time_stop" polarity="negative" level="3000" target="enemy" />
+    <buff id="bleeding" polarity="negative" level="2000" target="entity" />
+    <buff id="time_stop" polarity="negative" level="3000" target="entity" />
     <buff id="poisoned" polarity="negative" level="1000" target="enemy" />
     <buff id="skelebomb_punched" polarity="mixed" level="4000" target="enemy" />
     <buff id="lost_death_punish" polarity="negative" level="5000" target="level" />

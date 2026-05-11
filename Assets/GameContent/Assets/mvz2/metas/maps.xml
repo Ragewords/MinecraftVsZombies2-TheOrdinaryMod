@@ -161,6 +161,7 @@
         <element id="amethyst_pylon" template="contraption"><unlock><condition requiredGroups="mvz2:contraption.amethyst_pylon"/></unlock></element>
         <element id="nuke" template="contraption"><unlock><condition requiredGroups="mvz2:contraption.nuke"/></unlock></element>
         <element id="nether_reactor_core" template="contraption"><unlock><condition requiredGroups="mvz2:contraption.nether_reactor_core"/></unlock></element>
+        <element id="respawn_anchor" template="contraption"><unlock><condition requiredGroups="mvz2:contraption.respawn_anchor"/></unlock></element>
     </elements>
     
     <map id="halloween" area="mvz2:halloween">
@@ -316,6 +317,10 @@
             <stage id="mvz2:palace_9" />
             <stage id="mvz2:palace_10" />
             <stage id="mvz2:palace_11" />
+            <stage id="mvz2:palace_EX1" />
+            <stage id="mvz2:palace_EX2" />
+            <stage id="mvz2:palace_EX3" />
+            <stage id="mvz2:palace_EX4" />
         </stages>
     </map>
 </maps>

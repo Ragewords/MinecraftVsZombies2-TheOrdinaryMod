@@ -81,7 +81,7 @@ namespace MVZ2.GameContent.Enemies
             var grid = enemy.GetGrid();
             if (grid == null)
                 return false;
-            if (grid.GetEntities().Any(e => e.IsEntityOf(VanillaObstacleID.grave)))
+            if (grid.GetEntities().Any(e => e.Type == EntityTypes.OBSTACLE))
                 return false;
             return true;
         }

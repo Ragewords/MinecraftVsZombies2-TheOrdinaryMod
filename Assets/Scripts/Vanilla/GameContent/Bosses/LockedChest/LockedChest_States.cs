@@ -162,6 +162,8 @@ namespace MVZ2.GameContent.Bosses
             {
                 case STATE_SMASH:
                     return FindHighJumpSmashTargetEntity(entity) != null;
+                case STATE_CRUSHING_LOCK:
+                    return CanSwitchToCrushingLockState(entity);
                 case STATE_SPIT_TRASH:
                     return CanSwitchToSpitTrashState(entity);
                 case STATE_CAMERA:
@@ -170,6 +172,8 @@ namespace MVZ2.GameContent.Bosses
                     return entity.Level.AreaID == VanillaAreaID.palace;
                 case STATE_PAY_TO_WIN:
                     return CanSwitchToPayToWinState(entity);
+                case STATE_LOCK:
+                    return CanSwitchToLockState(entity);
             }
             return true;
         }
@@ -239,7 +243,7 @@ namespace MVZ2.GameContent.Bosses
                     }
                     else
                     {
-                        pool = statePoolPhase2;
+                        pool = entity.Level.LockedChestSelfMend() ? statePoolPhase2Lunatic : statePoolPhase2;
                         nextIndex = pool.FindNextStateIndex(nextIndex, state => CanSwitchStatePhase2(entity, state));
                     }
                     if (nextIndex >= 0)
@@ -3188,6 +3192,46 @@ namespace MVZ2.GameContent.Bosses
             STATE_JUMP,
             STATE_JUMP,
             STATE_PAY_TO_WIN,
+        };
+        private static int[] statePoolPhase2Lunatic = new int[]
+        {
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_CHARGE,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_SMASH,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_CHARGE,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_CRUSHING_LOCK,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_SPIT_TRASH,
+            STATE_CAMERA,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_SPIT_ZOMBIE_BLUEPRINTS,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_BOULDER,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_PAY_TO_WIN,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_JUMP,
+            STATE_LOCK,
         };
         private abstract class PayToWinAction
         {

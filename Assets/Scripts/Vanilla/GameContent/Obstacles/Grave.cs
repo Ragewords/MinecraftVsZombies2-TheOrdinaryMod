@@ -26,7 +26,7 @@ namespace MVZ2.GameContent.Obstacles
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            SetReviveCooldown(entity, TimerHelper.NewSecondTimer(1));
+            SetReviveCooldown(entity, TimerHelper.NewSecondTimer(2));
         }
         public override void Update(Entity entity)
         {

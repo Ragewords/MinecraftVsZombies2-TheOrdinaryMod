@@ -1791,6 +1791,69 @@
             <bool name="endless" value="true" />
         </properties>
     </stage>
+    <stage id="palace_EX1" name="地灵殿" dayNumber="12">
+        <unlock>
+            <condition required="mvz2:level.palace_11" />
+        </unlock>
+        <talks>
+            <talk type="end" value="mvz2:palace_EX1_over" />
+        </talks>
+        <clear pickupModel="mvz2:entity.blueprint_pickup" pickupContentID="mvz2:respawn_anchor" />
+        <spawns flags="1">
+            <spawn id="mvz2:zombie" />
+            <spawn id="mvz2:leather_capped_zombie" />
+            <spawn id="mvz2:iron_helmetted_zombie" />
+            <spawn id="mvz2:diamond_helmetted_zombie" />
+        </spawns>
+    </stage>
+    <stage id="palace_EX2" name="地灵殿" dayNumber="13">
+        <unlock>
+            <condition required="mvz2:level.palace_EX1" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.vault" />
+        <spawns flags="2">
+            <spawn id="mvz2:zombie" />
+            <spawn id="mvz2:leather_capped_zombie" />
+            <spawn id="mvz2:iron_helmetted_zombie" />
+            <spawn id="mvz2:diamond_helmetted_zombie" />
+            <spawn id="mvz2:blaze" />
+            <spawn id="mvz2:hacker" />
+            <spawn id="mvz2:grave_warden" />
+        </spawns>
+    </stage>
+    <stage id="palace_EX3" name="地灵殿" dayNumber="14">
+        <unlock>
+            <condition required="mvz2:level.palace_EX2" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.vault" />
+        <spawns flags="2">
+            <spawn id="mvz2:zombie" />
+            <spawn id="mvz2:leather_capped_zombie" />
+            <spawn id="mvz2:iron_helmetted_zombie" />
+            <spawn id="mvz2:shadow_cell" />
+            <spawn id="mvz2:skeleton_statue" />
+            <spawn id="mvz2:zombie_cat" />
+            <spawn id="mvz2:grave_warden" />
+        </spawns>
+    </stage>
+    <stage id="palace_EX4" name="地灵殿" dayNumber="14">
+        <unlock>
+            <condition required="mvz2:level.palace_EX3" />
+        </unlock>
+        <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:create" />
+        <spawns flags="2">
+            <spawn id="mvz2:zombie" />
+            <spawn id="mvz2:leather_capped_zombie" />
+            <spawn id="mvz2:iron_helmetted_zombie" />
+            <spawn id="mvz2:diamond_helmetted_zombie" />
+            <spawn id="mvz2:shadow_cell" />
+            <spawn id="mvz2:blaze" />
+            <spawn id="mvz2:skeleton_statue" />
+            <spawn id="mvz2:hacker" />
+            <spawn id="mvz2:zombie_cat" />
+            <spawn id="mvz2:grave_warden" />
+        </spawns>
+    </stage>
 
 
     

@@ -97,6 +97,8 @@ namespace MVZ2.GameContent.Buffs
 
             // Chapter 1
             public const string lightFadeout = "light_fadeout";
+            public const string bleeding = "bleeding";
+            public const string timeStop = "time_stop";
 
             // Chapter 2
             public const string inWater = "in_water";
@@ -252,8 +254,6 @@ namespace MVZ2.GameContent.Buffs
             public const string stun = "stun";
             public const string minigameEnemySpeed = "minigame_enemy_speed";
             public const string napstablookAngry = "napstablook_angry";
-            public const string bleeding = "bleeding";
-            public const string timeStop = "time_stop";
             public const string frankensteinTransformer = "frankenstein_transformer";
             public const string poisoned = "poisoned";
             public const string skelebombPunched = "skelebomb_punched";
@@ -486,6 +486,10 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID temporaryUpdateBeforeGame = Get(VanillaBuffNames.Entity.temporaryUpdateBeforeGame);
             public static readonly NamespaceID destroyConflictGridEntitiesOnLand = Get(VanillaBuffNames.Entity.destroyConflictGridEntitiesOnLand);
 
+            // Chapter 1
+            public static readonly NamespaceID bleeding = Get(VanillaBuffNames.Entity.bleeding);
+            public static readonly NamespaceID timeFreeze = Get(VanillaBuffNames.Entity.timeStop);
+
             // Chapter 2
             public static readonly NamespaceID inWater = Get(VanillaBuffNames.Entity.inWater);
             public static readonly NamespaceID whiteFlash = Get(VanillaBuffNames.Entity.whiteFlash);
@@ -627,10 +631,8 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID stun = Get(VanillaBuffNames.Enemy.stun);
             public static readonly NamespaceID minigameEnemySpeed = Get(VanillaBuffNames.Enemy.minigameEnemySpeed);
             public static readonly NamespaceID napstablookAngry = Get(VanillaBuffNames.Enemy.napstablookAngry);
-            public static readonly NamespaceID bleeding = Get(VanillaBuffNames.Enemy.bleeding);
             public static readonly NamespaceID frankensteinTransformer = Get(VanillaBuffNames.Enemy.frankensteinTransformer);
             public static readonly NamespaceID poisoned = Get(VanillaBuffNames.Enemy.poisoned);
-            public static readonly NamespaceID timeFreeze = Get(VanillaBuffNames.Enemy.timeStop);
 
             // Chapter 2
             public static readonly NamespaceID boat = Get(VanillaBuffNames.Enemy.boat);

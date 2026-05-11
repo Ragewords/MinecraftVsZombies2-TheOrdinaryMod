@@ -62,9 +62,9 @@ namespace MVZ2.GameContent.Bosses
                 SetPhase(entity, PHASE_2);
                 if (entity.Level.LockedChestSelfMend())
                 {
-                    entity.HealEffects(entity.GetMaxHealth(), entity);
                     entity.AddBuff<LockedChestTemperedBuff>();
                     entity.PlaySound(VanillaSoundID.armorUp);
+                    entity.Spawn(VanillaEffectID.lockSigil, entity.GetCenter());
                 }
                 stateMachine.SetNextStateIndex(entity, 1);
             }

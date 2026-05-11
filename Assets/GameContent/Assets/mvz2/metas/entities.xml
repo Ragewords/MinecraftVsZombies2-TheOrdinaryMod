@@ -2480,6 +2480,7 @@
                 <int name="mvz2:waterInteraction" value="3" />
                 <vector3 name="mvz2:starting_position_offset" x="0" y="1" z="0" />
 
+                <bool name="mvz2:KeepGroundFriction" value="true" />
                 <bool name="mvz2:undead" value="false" />
                 <bool name="mvz2:isFire" value="true" />
                 <bool name="mvz2:isLightSource" value="true" />
@@ -3411,7 +3412,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:boated_enemy" />
-                <behaviour operator="add" id="mvz2:rickroll_drown_achievement" />
+                <behaviour operator="add" id="mvz2:remove_on_death" />
                 <behaviour operator="replace" source="mvz2:humanoid_animation" id="mvz2:zombie_spectre/animation" />
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:zombie_spectre/state" />
             </behaviours>

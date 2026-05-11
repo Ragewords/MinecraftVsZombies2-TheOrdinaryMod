@@ -73,7 +73,7 @@ namespace MVZ2.GameContent.Enemies
         }
         private bool CanShoot(Entity enemy)
         {
-            return enemy.Position.x <= enemy.Level.GetEntityColumnXFloat(enemy.Level.GetMaxColumnCount() - 0.5f);
+            return enemy.Position.x <= enemy.Level.GetEntityColumnX(enemy.Level.GetMaxColumnCount() - 1);
         }
         private Entity? FindTarget(Entity entity)
         {

@@ -1096,7 +1096,7 @@ namespace MVZ2.Vanilla.Entities
         }
         public static void Bleed(this Entity entity, int time, ILevelSourceReference? source)
         {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.bleeding);
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.bleeding);
             if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
                 return;
             var buff = entity.GetFirstBuff(buffDefinition);
@@ -1109,7 +1109,7 @@ namespace MVZ2.Vanilla.Entities
         }
         public static void TimeFreeze(this Entity entity, int time, int endTime, ILevelSourceReference? source)
         {
-            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Enemy.timeFreeze);
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Entity.timeFreeze);
             if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
                 return;
             var buff = entity.GetFirstBuff(buffDefinition);

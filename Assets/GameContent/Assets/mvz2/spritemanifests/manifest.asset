@@ -3449,6 +3449,8 @@ MonoBehaviour:
     - {fileID: -1632814386, guid: 8f5188cc46ef9a44696613996b27b1ec, type: 3}
     - {fileID: -696898837, guid: 8f5188cc46ef9a44696613996b27b1ec, type: 3}
     - {fileID: 1367999227, guid: 8f5188cc46ef9a44696613996b27b1ec, type: 3}
+    - {fileID: 84335896, guid: 8f5188cc46ef9a44696613996b27b1ec, type: 3}
+    - {fileID: 400171677, guid: 8f5188cc46ef9a44696613996b27b1ec, type: 3}
   - name: ui/almanac/tag_backgrounds
     spritesheet:
     - {fileID: 533723679, guid: fd045d9b19051854898d84facdd55d17, type: 3}

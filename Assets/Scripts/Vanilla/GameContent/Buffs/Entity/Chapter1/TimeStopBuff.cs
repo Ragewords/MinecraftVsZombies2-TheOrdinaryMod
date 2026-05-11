@@ -10,9 +10,9 @@ using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Modifiers;
 
-namespace MVZ2.GameContent.Buffs.Enemies
+namespace MVZ2.GameContent.Buffs.Entities
 {
-    [AutoBuffDefinition(VanillaBuffNames.Enemy.timeStop)]
+    [AutoBuffDefinition(VanillaBuffNames.Entity.timeStop)]
     public class TimeStopBuff : BuffDefinition
     {
         public TimeStopBuff(string nsp, string name) : base(nsp, name)

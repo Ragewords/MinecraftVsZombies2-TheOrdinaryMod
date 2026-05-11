@@ -604,10 +604,8 @@ namespace MVZ2.Map
                 else if (!cleared)
                     color = buttonColorUncleared;
 
-                if (unlocked && !cleared)
+                if (unlocked && !cleared && i < 11)
                 {
-                    if (i >= 11)
-                        continue;
                     unclearedMapButtonIndex = i;
                 }
 
