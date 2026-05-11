@@ -2,6 +2,7 @@
 
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla.Audios;
+using MVZ2.Vanilla.Callbacks;
 using MVZ2.Vanilla.Entities;
 using MVZ2Logic;
 using MVZ2Logic.Blueprints;
@@ -14,6 +15,7 @@ using MVZ2Logic.Level;
 using MVZ2Logic.Options;
 using MVZ2Logic.Saves;
 using PVZEngine;
+using PVZEngine.Callbacks;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.SeedPacks;
@@ -118,6 +120,19 @@ namespace MVZ2.GameContent.HeldItems
             var blueprintError = blueprint.GetPickError();
             if (NamespaceID.IsValid(blueprintError))
             {
+                // 使用星之碎片快速充能蓝图。
+                if (blueprintError == LogicBlueprintErrors.recharging && pickData.instantEvoke && level.GetStarshardCount() > 0 && level.StarshardRechargesBlueprint())
+                {
+                    level.AddStarshardCount(-1);
+                    level.PlaySound(VanillaSoundID.starshardUse);
+                    blueprint.FullRecharge();
+                    level.Triggers.RunCallback(VanillaLevelCallbacks.POST_STARSHARD_RECHARGE, new SeedPackCallbackParams(blueprint));
+                    if (level.CancelHeldItem())
+                    {
+                        level.PlaySound(VanillaSoundID.tap);
+                    }
+                    return;
+                }
                 if (blueprintError == LogicBlueprintErrors.notEnoughEnergy)
                 {
                     level.FlickerEnergy();

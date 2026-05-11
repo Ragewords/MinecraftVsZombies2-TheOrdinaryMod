@@ -45,6 +45,7 @@ namespace MVZ2.GameContent.Artifacts
         public const string lilThunderDrum = "lil_thunder_drum";
         public const string endlessGate = "endless_gate";
         public const string shipsLog = "ship_s_log";
+        public const string create = "create";
     }
     public static class VanillaArtifactID
     {
@@ -86,6 +87,7 @@ namespace MVZ2.GameContent.Artifacts
         public static readonly NamespaceID lilThunderDrum = Get(VanillaArtifactNames.lilThunderDrum);
         public static readonly NamespaceID endlessGate = Get(VanillaArtifactNames.endlessGate);
         public static readonly NamespaceID shipsLog = Get(VanillaArtifactNames.shipsLog);
+        public static readonly NamespaceID create = Get(VanillaArtifactNames.create);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

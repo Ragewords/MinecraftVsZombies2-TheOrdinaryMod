@@ -170,4 +170,9 @@
             <condition required="mvz2:level.ship_EX4" />
         </unlock>
     </artifact>
+    <artifact id="create" name="机械动力" tooltip="可以使用星之碎片立即充能蓝图" sprite="mvz2:artifacts/create">
+        <unlock>
+            <condition required="mvz2:level.palace_EX4" />
+        </unlock>
+    </artifact>
 </artifacts>

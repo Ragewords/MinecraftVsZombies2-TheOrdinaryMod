@@ -1791,7 +1791,7 @@
             <bool name="endless" value="true" />
         </properties>
     </stage>
-    <stage id="palace_EX1" name="地灵殿" dayNumber="12">
+    <stage id="palace_EX1" name="地灵殿" dayNumber="12" type="extra" music="mvz2:palace_level_extra">
         <unlock>
             <condition required="mvz2:level.palace_11" />
         </unlock>
@@ -1806,7 +1806,7 @@
             <spawn id="mvz2:diamond_helmetted_zombie" />
         </spawns>
     </stage>
-    <stage id="palace_EX2" name="地灵殿" dayNumber="13">
+    <stage id="palace_EX2" name="地灵殿" dayNumber="13" type="extra" music="mvz2:palace_level_extra">
         <unlock>
             <condition required="mvz2:level.palace_EX1" />
         </unlock>
@@ -1821,7 +1821,7 @@
             <spawn id="mvz2:grave_warden" />
         </spawns>
     </stage>
-    <stage id="palace_EX3" name="地灵殿" dayNumber="14">
+    <stage id="palace_EX3" name="地灵殿" dayNumber="14" type="extra" music="mvz2:palace_level_extra">
         <unlock>
             <condition required="mvz2:level.palace_EX2" />
         </unlock>
@@ -1836,12 +1836,12 @@
             <spawn id="mvz2:grave_warden" />
         </spawns>
     </stage>
-    <stage id="palace_EX4" name="地灵殿" dayNumber="14">
+    <stage id="palace_EX4" name="地灵殿" dayNumber="15" type="extra" music="mvz2:palace_level_extra">
         <unlock>
             <condition required="mvz2:level.palace_EX3" />
         </unlock>
         <clear pickupModel="mvz2:entity.artifact_pickup" pickupContentID="mvz2:create" />
-        <spawns flags="2">
+        <spawns flags="3">
             <spawn id="mvz2:zombie" />
             <spawn id="mvz2:leather_capped_zombie" />
             <spawn id="mvz2:iron_helmetted_zombie" />

@@ -103,6 +103,7 @@ namespace MVZ2Logic.Level
         public static readonly PropertyMeta<int> STARSHARD_SLOT_COUNT = Get<int>("starshardSlotCount");
         public static readonly PropertyMeta<NamespaceID> STARSHARD_DISABLE_ID = Get<NamespaceID>("starshardDisableID");
         public static readonly PropertyMeta<bool> STARSHARD_DISABLE_ICON = Get<bool>("starshardDisableIcon");
+        public static readonly PropertyMeta<bool> STARSHARD_RECHARGES_BLUEPRINT = Get<bool>("starshardRechargesBlueprint");
         public static int GetStarshardSlotCount(this LevelEngine game)
         {
             return game.GetProperty<int>(STARSHARD_SLOT_COUNT);
@@ -122,6 +123,10 @@ namespace MVZ2Logic.Level
         public static bool ShouldShowStarshardDisableIcon(this LevelEngine level)
         {
             return level.GetProperty<bool>(STARSHARD_DISABLE_ICON);
+        }
+        public static bool StarshardRechargesBlueprint(this LevelEngine level)
+        {
+            return level.GetProperty<bool>(STARSHARD_RECHARGES_BLUEPRINT);
         }
         public static bool CanUseStarshard(this LevelEngine level)
         {

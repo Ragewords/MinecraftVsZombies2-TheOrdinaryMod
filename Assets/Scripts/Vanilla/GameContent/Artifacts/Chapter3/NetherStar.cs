@@ -7,6 +7,7 @@ using MVZ2Logic.Definitions;
 using MVZ2Logic.Level;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Artifacts
 {
@@ -16,6 +17,7 @@ namespace MVZ2.GameContent.Artifacts
         public NetherStar(string nsp, string name) : base(nsp, name)
         {
             AddTrigger(VanillaLevelCallbacks.POST_USE_STARSHARD, PostUseStarshardCallback);
+            AddTrigger(VanillaLevelCallbacks.POST_STARSHARD_RECHARGE, PostStarshardRechargeCallback);
         }
         public override void PostUpdate(Artifact artifact)
         {
@@ -46,6 +48,29 @@ namespace MVZ2.GameContent.Artifacts
                     artifact.Highlight();
                     number -= MAX_NUMBER;
                     contraption.Spawn(VanillaPickupID.starshard, contraption.Position);
+                }
+                artifact.SetNumber(number);
+            }
+        }
+        private void PostStarshardRechargeCallback(SeedPackCallbackParams param, CallbackResult result)
+        {
+            var seed = param.seedPack;
+            var level = seed.Level;
+            var artifacts = level.GetArtifacts();
+            foreach (var artifact in artifacts)
+            {
+                if (artifact == null)
+                    continue;
+                if (artifact.Definition != this)
+                    continue;
+                var number = artifact.GetNumber();
+                number++;
+                if (number >= MAX_NUMBER)
+                {
+                    artifact.Highlight();
+                    number -= MAX_NUMBER;
+                    Vector3 slotPosition = level.GetStarshardEntityPosition();
+                    level.Spawn(VanillaPickupID.starshard, new Vector3(slotPosition.x, slotPosition.y, 0), null);
                 }
                 artifact.SetNumber(number);
             }

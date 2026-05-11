@@ -108,6 +108,13 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02a33616cda822c498b5190380bc9571
+    m_Address: mvz2:artifacts/create
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 02b2a6769dd3bb84d92a60b6d1867601
     m_Address: mvz2:entity/projectiles/stoneball
     m_ReadOnly: 0
@@ -11882,6 +11889,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5e232d61c6492c448d1f26186579c38
+    m_Address: mvz2:palace_level_extra
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5e542b668451eb45987e6cfc2d49ead
     m_Address: mvz2:entity/enemies/dullahan_head

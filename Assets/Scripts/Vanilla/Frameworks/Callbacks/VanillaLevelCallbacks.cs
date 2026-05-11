@@ -250,5 +250,6 @@ namespace MVZ2.Vanilla.Callbacks
         public readonly static CallbackType<PostProjectileHitParams> POST_PROJECTILE_HIT = new();
 
         public readonly static CallbackType<EntityCallbackParams> POST_USE_STARSHARD = new();
+        public readonly static CallbackType<SeedPackCallbackParams> POST_STARSHARD_RECHARGE = new();
     }
 }

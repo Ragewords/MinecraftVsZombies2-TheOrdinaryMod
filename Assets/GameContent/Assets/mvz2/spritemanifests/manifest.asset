@@ -97,6 +97,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 319433371d6e7c945a25348c8bd53839, type: 3}
   - name: artifacts/control_rod
     sprite: {fileID: 21300000, guid: 7661d066eb4c9de4989300fb69c48e31, type: 3}
+  - name: artifacts/create
+    sprite: {fileID: 21300000, guid: 02a33616cda822c498b5190380bc9571, type: 3}
   - name: artifacts/dark_matter
     sprite: {fileID: 21300000, guid: 1a62ec6260923674096be59047f89949, type: 3}
   - name: artifacts/dowsing_rods

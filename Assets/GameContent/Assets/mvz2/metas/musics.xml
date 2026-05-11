@@ -551,4 +551,17 @@
             <p>不可名状的巨型血肉墙壁正在朝你冲过来！！！！！</p>
         </description>
     </music>
+    <music id="palace_level_extra" name="Heartfelt Fancy">
+        <unlock>
+            <condition required="mvz2:level.palace_EX1" />
+        </unlock>
+        <track main="mvz2:palace_level_extra" />
+        <source>东方地灵殿</source>
+        <description>
+            <p>地灵殿拓展关的音乐。</p>
+            <p>是《东方地灵殿》中第4关的音乐。</p>
+            <p>“猎手”已经消失，但是异常仍然在继续下去。</p>
+            <p>真心希望这一切可以结束……</p>
+        </description>
+    </music>
 </musics>

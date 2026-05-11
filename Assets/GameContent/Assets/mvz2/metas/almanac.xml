@@ -2575,6 +2575,18 @@
                 <p>快写不动了……头好晕啊……</p>
             </flavor>
         </entry>
+        <entry id="mvz2:create">
+            <header>
+                <p>一个构造精良的扳手。</p>
+            </header>
+            <properties>
+                <p>效果：<![CDATA[<color=red>可以使用星之碎片立即充能蓝图</color>]]></p>
+            </properties>
+            <flavor>
+                <p>仔细看的话，会发现这个扳手上附带了一个小纸条，上面写着——</p>
+                <p>“按住[W]开始思考”</p>
+            </flavor>
+        </entry>
     </artifacts>
     <misc>
         <!-- Bosses -->
