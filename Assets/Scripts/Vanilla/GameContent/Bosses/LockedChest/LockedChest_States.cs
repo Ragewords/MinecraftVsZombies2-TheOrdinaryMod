@@ -752,7 +752,7 @@ namespace MVZ2.GameContent.Bosses
             public BoulderState() : base(STATE_BOULDER, ANIMATION_STATE_JUMP_AND_SMASH) { }
             public override int GetAnimationState(int substate)
             {
-                if (substate == SUBSTATE_SHAKE)
+                if (substate == SUBSTATE_SHAKE || substate == SUBSTATE_END)
                 {
                     return ANIMATION_STATE_IDLE;
                 }
@@ -760,7 +760,7 @@ namespace MVZ2.GameContent.Bosses
             }
             public override int GetAnimationSubstate(int substate)
             {
-                if (substate == SUBSTATE_FALL || substate == SUBSTATE_END)
+                if (substate == SUBSTATE_FALL)
                 {
                     return ANIMATION_SUBSTATE_SMASH_FALL;
                 }
