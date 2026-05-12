@@ -238,6 +238,7 @@ namespace MVZ2.GameContent.Bosses
         public const int ANIMATION_STATE_JUMP = 10000;
         public const int ANIMATION_STATE_SMASH = 10001;
         public const int ANIMATION_STATE_OPEN_CHEST = 10002;
+        public const int ANIMATION_STATE_JUMP_AND_SMASH = 10003;
 
 
         public const int ANIMATION_SUBSTATE_JUMP_JUMP = 0;

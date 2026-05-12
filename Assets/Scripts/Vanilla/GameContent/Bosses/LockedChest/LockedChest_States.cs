@@ -749,7 +749,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private class BoulderState : EntityStateMachineState
         {
-            public BoulderState() : base(STATE_BOULDER, ANIMATION_STATE_SMASH) { }
+            public BoulderState() : base(STATE_BOULDER, ANIMATION_STATE_JUMP_AND_SMASH) { }
             public override int GetAnimationState(int substate)
             {
                 if (substate == SUBSTATE_SHAKE || substate == SUBSTATE_END)
@@ -792,7 +792,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             entity.Velocity = Vector3.up * 25;
                             stateMachine.StartSubState(entity, SUBSTATE_JUMP);
-                            timer.ResetSeconds(0.2f);
+                            timer.ResetSeconds(0.4f);
                             SetShake(entity, false);
                             entity.PlaySound(VanillaSoundID.launch);
                         }
@@ -803,7 +803,6 @@ namespace MVZ2.GameContent.Bosses
                             if (timer.Expired)
                             {
                                 stateMachine.StartSubState(entity, SUBSTATE_FALL);
-                                timer.ResetSeconds(0.2f);
                             }
                         }
                         break;
