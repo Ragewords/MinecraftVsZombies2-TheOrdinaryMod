@@ -2414,6 +2414,7 @@
             <behaviours>
                 <behaviour operator="remove" id="mvz2:enemy_state" />
                 <behaviour operator="remove" id="mvz2:enemy_death_disappear" />
+                <behaviour operator="add" id="mvz2:pop_captain/animation" />
             </behaviours>
             <properties>
                 <id name="mvz2:starting_armor" value="mvz2:pop_captain_cap" />
@@ -3224,7 +3225,7 @@
         </entity>
         <entity template="humanoid" id="nether_hunter" name="下界猎手" deathMessage="转来转去像个小丑">
             <unlock>
-                <condition required="mvz2:contraption.nether_reactor_core" />
+                <condition requiredGroups="mvz2:contraption.nether_reactor_core" />
             </unlock>
             <behaviours includeSelf="false">
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:skeleton/state" />
@@ -3250,7 +3251,7 @@
         </entity>
         <entity template="humanoid" id="nether_mage" name="下界法师" deathMessage="我已启动">
             <unlock>
-                <condition required="mvz2:contraption.nether_reactor_core" />
+                <condition requiredGroups="mvz2:contraption.nether_reactor_core" />
             </unlock>
             <behaviours includeSelf="false">
                 <behaviour operator="replace" source="mvz2:enemy_state" id="mvz2:skeleton_mage/state" />
@@ -3774,7 +3775,7 @@
             <behaviours>
                 <behaviour operator="add" id="mvz2:pickup_collect_clear" />
                 <behaviour operator="add" id="mvz2:pickup_stop_on_land" />
-                <behaviour operator="add" id="mvz2:pickup_with_content" />
+                <behaviour operator="add" id="mvz2:pickup_with_content" priority="9999" />
             </behaviours>
             <properties>
                 <bool name="mvz2:important" value="true" />

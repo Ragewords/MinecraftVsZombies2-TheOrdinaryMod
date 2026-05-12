@@ -104,7 +104,9 @@ namespace MVZ2.Vanilla.Entities
         public const string undeadFlyingObject_State = "undead_flying_object/state";
         public const string flyingPirate_Animation = "flying_pirate/animation";
         public const string flyingPirate_Move = "flying_pirate/move";
+        public const string popCaptain_Animation = "pop_captain/animation";
         public const string admiralZombie_Melee = "admiral_zombie/melee";
+
         public const string blaze_State = "blaze/state";
         public const string skeletonStatue_Animation = "skeleton_statue/animation";
         public const string skeletonStatue_Death = "skeleton_statue/death";

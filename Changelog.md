@@ -5,10 +5,13 @@
   - /unlock all: Unlocks all game states.
   - /unlock none: Relocks all game states.
 - Added hyperlinks to Almanac, allowing users to navigate between different entries by clicking on text within the Almanac.
+- Added 8 new Random China events.
 
 ## Modified
 
 - Skyward Beacon's strike position now can be changed by just clicking on it instead of triggering it.
+- After completing all levels in a map, entering the map will now set the view to the position of the endless level button.
+- Random China now displays both of evocation event's name and description instead of its name only.
 
 ### Balance
 - Moonlight Sensor
