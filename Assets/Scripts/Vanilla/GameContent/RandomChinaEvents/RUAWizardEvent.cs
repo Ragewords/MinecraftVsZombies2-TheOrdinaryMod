@@ -16,7 +16,7 @@ namespace MVZ2.GameContent.RandomChinaEvents
     [RandomChinaEventDefinition(VanillaRandomChinaEventNames.ruaWizard)]
     public class RUAWizardEvent : RandomChinaEventDefinition
     {
-        public RUAWizardEvent(string nsp, string path) : base(nsp, path, NAME)
+        public RUAWizardEvent(string nsp, string path) : base(nsp, path, NAME, DESCRIPTION)
         {
         }
         public override void Run(Entity contraption, RandomGenerator rng)
