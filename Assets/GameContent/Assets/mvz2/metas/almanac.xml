@@ -3103,7 +3103,7 @@
                 <unlock>
                     <condition required="mvz2:level.ship_1"/>
                 </unlock>
-                <picture sprite="mvz2:misc/ship"/>
+                <picture sprite="mvz2:misc/anomalous_wind_direction"/>
                 <header>
                     <p>在圣辇船出现的异常自然现象，会影响怪物和射弹的运动。</p>
                 </header>
@@ -3150,6 +3150,19 @@
                     <p><![CDATA[<align="center">工作帮助</align>]]></p>
                     <p>    当推车开动的时候，只需要下来然后前进，攻击你遇到的所有怪物，你就赢了。</p>
                     <p><![CDATA[<align="right">——这部分帮助是燐送给你的</align>]]></p>
+                </flavor>
+            </entry>
+            <entry id="mvz2:folly_shackle" name="愚行枷锁" >
+                <unlock>
+                    <condition required="mvz2:level.palace_1"/>
+                </unlock>
+                <picture sprite="mvz2:misc/folly_shackle"/>
+                <header>
+                    <p>愚行枷锁会在战斗的准备阶段强制为你选择3张蓝图。</p>
+                </header>
+                <flavor>
+                    <p>一张破碎的实验记录中的部分信息：</p>
+                    <p>MCP-988-3是目标遭到MCP-988锁定时，持续性产生的精神异常，表现为患者四肢（尤其是腿部）运动困难，描述为有重物束缚感。</p>
                 </flavor>
             </entry>
             <entry id="mvz2:psychic_chains" name="心灵锁链" >

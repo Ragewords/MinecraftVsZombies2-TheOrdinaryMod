@@ -231,6 +231,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0bad8dd7ca96eb047840a09bdbdcc162, type: 3}
   - name: misc/abandoned_house
     sprite: {fileID: 21300000, guid: 50bf732bad4c58e4594fe0d57da0eeff, type: 3}
+  - name: misc/anomalous_wind_direction
+    sprite: {fileID: 21300000, guid: b65b2f12fb63d744398990ff460f5b7d, type: 3}
   - name: misc/boat_zombie
     sprite: {fileID: 21300000, guid: bf74c11d6e254354486cefc7df391641, type: 3}
   - name: misc/castle
@@ -251,6 +253,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 831f7ad8d2311d448970951982d07ad8, type: 3}
   - name: misc/fall_from_ship
     sprite: {fileID: 21300000, guid: a81e7ee6085bf10488c8ac5cec8948f8, type: 3}
+  - name: misc/folly_shackle
+    sprite: {fileID: 21300000, guid: e2fb58cdd534cdc43a9c943f95d1434e, type: 3}
   - name: misc/frankenstein
     sprite: {fileID: 21300000, guid: c52ffe26b09fa8d43bfa1881edcd3b04, type: 3}
   - name: misc/graveyard

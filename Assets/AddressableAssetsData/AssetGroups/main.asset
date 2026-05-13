@@ -11100,6 +11100,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b65b2f12fb63d744398990ff460f5b7d
+    m_Address: mvz2:misc/anomalous_wind_direction
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6787cff33fe5384d8592394db3eac63
     m_Address: mvz2:projectile/charged_bolt
     m_ReadOnly: 0
@@ -13702,6 +13709,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2fb58cdd534cdc43a9c943f95d1434e
+    m_Address: mvz2:misc/folly_shackle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2fcfb282a3d6aa4eb0b3512fce5fc79
     m_Address: mvz2:mobile_blueprint/heavy_weapon_spread
