@@ -152,7 +152,7 @@ namespace MVZ2.GameContent.Bosses
         {
             if (!target.IsVulnerableEntity())
                 return false;
-            return boss.IsHostile(target) && target.IsAheadOfRange(boss, 20, 80) && target.GetLane() == boss.GetLane();
+            return boss.IsHostile(target) && target.IsAheadOfRange(boss, 20, 110) && target.GetLane() == boss.GetLane();
         }
         private static bool IsShockable(Entity boss, Entity target)
         {
@@ -332,8 +332,6 @@ namespace MVZ2.GameContent.Bosses
         {
             boss.SetBehaviourField(ID, PROP_JUMP_TARGET, target);
         }
-
-
         #endregion 属性
 
         #region 常量
