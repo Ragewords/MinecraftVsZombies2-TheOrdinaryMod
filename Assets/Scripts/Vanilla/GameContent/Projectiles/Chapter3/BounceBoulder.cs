@@ -18,12 +18,6 @@ namespace MVZ2.GameContent.Projectiles
         {
             AddTrigger(VanillaLevelCallbacks.POST_PROJECTILE_HIT, PostHitEntityCallback);
         }
-        public override void Update(Entity projectile)
-        {
-            base.Update(projectile);
-            float angleSpeed = -projectile.Velocity.x * 2.5f;
-            projectile.RenderRotation += Vector3.forward * angleSpeed;
-        }
         public override void PostContactGround(Entity projectile, Vector3 velocity)
         {
             base.PostContactGround(projectile, velocity);
