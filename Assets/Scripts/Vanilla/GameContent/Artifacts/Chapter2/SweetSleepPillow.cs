@@ -4,6 +4,7 @@ using MVZ2.Vanilla.Entities;
 using MVZ2Logic.Artifacts;
 using MVZ2Logic.Definitions;
 using MVZ2Logic.Entities;
+using MVZ2Logic.Level;
 using PVZEngine.Entities;
 
 namespace MVZ2.GameContent.Artifacts
@@ -17,14 +18,19 @@ namespace MVZ2.GameContent.Artifacts
         public override void PostUpdate(Artifact artifact)
         {
             base.PostUpdate(artifact);
-            artifact.SetGlowing(true);
-            var level = artifact.Level;
-            foreach (var contraption in level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsFriendlyEntity()))
+            if (artifact.Level.IsAllEnemiesCleared() || artifact.Level.IsCleared)
             {
-                var healAmount = 0.33333333f;
-                if (contraption.IsAIFrozen())
-                    healAmount *= 3;
-                contraption.HealEffects(healAmount, contraption);
+                artifact.SetGlowing(false);
+            }
+            else
+            {
+                artifact.SetGlowing(true);
+                var level = artifact.Level;
+                foreach (var contraption in level.FindEntities(e => e.Type == EntityTypes.PLANT && e.IsFriendlyEntity()))
+                {
+                    var multiplier = contraption.IsAIFrozen() ? 3 : 1;
+                    contraption.HealEffects(0.33333333f * multiplier, contraption);
+                }
             }
         }
     }

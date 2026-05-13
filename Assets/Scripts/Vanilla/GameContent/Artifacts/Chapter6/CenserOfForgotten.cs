@@ -27,6 +27,9 @@ namespace MVZ2.GameContent.Artifacts
         public override void PostUpdate(Artifact artifact)
         {
             base.PostUpdate(artifact);
+            if (artifact.Level.IsAllEnemiesCleared() || artifact.Level.IsCleared)
+                return;
+
             var secondTimer = artifact.GetSecondTimer();
             if (secondTimer == null)
             {
@@ -62,6 +65,6 @@ namespace MVZ2.GameContent.Artifacts
             }
         }
         public const int MAX_COOLDOWN_SECONDS = 60;
-        public const float STUN_SECONDS = 5;
+        public const float STUN_SECONDS = 10;
     }
 }

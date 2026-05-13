@@ -69,6 +69,7 @@ namespace MVZ2.GameContent.Stages
             base.AfterBossWaveUpdate(level);
             ClearEnemies(level);
             level.RemoveBuffs<SpawnUFOAndParatrooperBuff>();
+            EnterLevelEnemiesClearedState(level);
 
             if (!level.IsFirstAdventure())
                 return;
