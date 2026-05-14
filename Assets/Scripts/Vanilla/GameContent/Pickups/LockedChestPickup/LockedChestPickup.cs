@@ -184,6 +184,10 @@ namespace MVZ2.GameContent.Pickups
                     if (revival)
                     {
                         e.Health = e.GetMaxHealth() * LockedChest.REVIVAL_HEALTH_PERCENTAGE * level.GetLockedChestReviveHealthMultiplier();
+                        if (level.LockedChestSelfMend())
+                        {
+                            e.AddBuff<Buffs.Bosses.LockedChestTemperedBuff>();
+                        }
                     }
                 });
                 pickup.Remove();
