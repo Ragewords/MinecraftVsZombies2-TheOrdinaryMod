@@ -5538,13 +5538,6 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5a1b2822216b76243b6a5ac76e3e1fbe
-    m_Address: mvz2:mobile_blueprint/hypnotizer
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5a43bbbdfc2dfc64382269576cdd5203
     m_Address: mvz2:shading/pool
     m_ReadOnly: 0
@@ -14793,13 +14786,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f5f28e9f69ec69d4c8a128faadbacd70
-    m_Address: mvz2:mobile_blueprint/funnelenser
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f5f3ab77342594147baa89febd10ca30
     m_Address: mvz2:effect/iz_observer
