@@ -2698,6 +2698,10 @@
         </sentence>
         <!--语句6-->
         <sentence speaker="mvz2:steve" sounds="mvz2:dialog_cut">
+          <!--语句开始脚本-->
+          <onStart>
+            <script>shake</script>
+          </onStart>
           <text>啊？</text>
           <!--语句点击脚本-->
           <onClick>
