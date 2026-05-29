@@ -206,6 +206,7 @@ namespace MVZ2.GameContent.Contraptions
             VanillaEnemyID.flagZombie,
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie,
+            VanillaEnemyID.reflectiveBarrierZombie,
             VanillaEnemyID.diamondHelmettedZombie,
             VanillaEnemyID.rallyZombie,
         };

@@ -2620,6 +2620,7 @@
             </unlock>
             <behaviours>
                 <behaviour operator="add" id="mvz2:boated_enemy" />
+                <behaviour operator="add" id="mvz2:rickroll_drown_achievement" />
             </behaviours>
             <properties>
                 <float name="mvz2:maxHealth" value="300" />
