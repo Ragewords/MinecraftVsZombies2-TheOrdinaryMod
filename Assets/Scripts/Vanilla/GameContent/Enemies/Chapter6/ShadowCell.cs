@@ -84,6 +84,10 @@ namespace MVZ2.GameContent.Enemies
                     {
                         e.AddBuff<ShadowCellHealthUpBuff>();
                     }
+                    foreach (var healthBuff in entity.GetBuffs<EatenGoldenAppleBuff>())
+                    {
+                        e.AddBuff<EatenGoldenAppleBuff>();
+                    }
                     e.AddBuff<SmallShadowCellBuff>();
                 });
             }
