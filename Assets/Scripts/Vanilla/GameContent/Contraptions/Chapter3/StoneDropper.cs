@@ -5,8 +5,8 @@ using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.Projectiles;
+using MVZ2.Vanilla.Properties;
 using MVZ2Logic.Entities;
 using PVZEngine;
 using PVZEngine.Definitions;
@@ -42,10 +42,17 @@ namespace MVZ2.GameContent.Contraptions
         {
             if (entity.RNG.Next(4) == 0)
             {
-                var param = entity.GetShootParams();
                 var rng = GetRNG(entity);
-                param.projectileID = rng == null ? VanillaProjectileID.boulder : GetRandomProjectileID(rng);
-                param.damage = param.projectileID == VanillaProjectileID.bounceBoulder ? entity.GetDamage() * 20 : entity.GetDamage() * 4;
+                NamespaceID id = VanillaProjectileID.boulder;
+                float multiplier = BOULDER_DAMAGE_MULTIPLIER;
+                if (rng != null && rng.Next(5) == 0)
+                {
+                    id = VanillaProjectileID.bounceBoulder;
+                    multiplier = BOUNCY_BOULDER_DAMAGE_MULTIPLIER;
+                }
+                var param = entity.GetShootParams();
+                param.projectileID = id;
+                param.damage = entity.GetDamage() * multiplier;
                 return entity.ShootProjectile(param);
             }
             return base.Shoot(entity);
@@ -61,7 +68,7 @@ namespace MVZ2.GameContent.Contraptions
                 var zspeed = rng.Next(-1.5f, 1.5f);
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.boulder;
-                param.damage = entity.GetDamage() * 4;
+                param.damage = entity.GetDamage() * BOULDER_DAMAGE_MULTIPLIER;
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);
                 entity.ShootProjectile(param);
             }
@@ -69,11 +76,10 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var xspeed = 15f;
                 var yspeed = 10f;
-                var zspeed = -3f * i;
                 var param = entity.GetShootParams();
                 param.projectileID = VanillaProjectileID.bounceBoulder;
-                param.damage = entity.GetDamage() * 20;
-                param.velocity = new Vector3(xspeed, yspeed, zspeed);
+                param.damage = entity.GetDamage() * BOUNCY_BOULDER_DAMAGE_MULTIPLIER;
+                param.velocity = new Vector3(xspeed, yspeed, 0);
                 entity.ShootProjectile(param);
             }
             entity.PlaySound(VanillaSoundID.launch);
@@ -86,24 +92,10 @@ namespace MVZ2.GameContent.Contraptions
                 projectileID = VanillaProjectileID.boulder,
             };
         }
-        private NamespaceID GetRandomProjectileID(RandomGenerator rng)
-        {
-            var index = rng.WeightedRandom(projectilePoolWeights);
-            return projectilePool[index];
-        }
-        private static NamespaceID[] projectilePool = new NamespaceID[]
-        {
-            VanillaProjectileID.boulder,
-            VanillaProjectileID.bounceBoulder,
-        };
-        private static int[] projectilePoolWeights = new int[]
-        {
-            4,
-            1
-        };
-        public static RandomGenerator? GetRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(ID, PROP_RNG);
-        public static void SetRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(ID, PROP_RNG, value);
+        public static RandomGenerator? GetRNG(Entity boss) => boss.GetBehaviourField<RandomGenerator>(PROP_RNG);
+        public static void SetRNG(Entity boss, RandomGenerator value) => boss.SetBehaviourField(PROP_RNG, value);
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");
-        public static readonly NamespaceID ID = VanillaContraptionID.stoneDropper;
+        public const float BOULDER_DAMAGE_MULTIPLIER = 2;
+        public const float BOUNCY_BOULDER_DAMAGE_MULTIPLIER = 10;
     }
 }

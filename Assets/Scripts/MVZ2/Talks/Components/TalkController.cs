@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using MukioI18n;
 using MVZ2.Managers;
@@ -17,7 +16,6 @@ using MVZ2Logic.Resources;
 using MVZ2Logic.Talk;
 using PVZEngine;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 namespace MVZ2.Talk
 {
@@ -51,7 +49,10 @@ namespace MVZ2.Talk
 
             // 执行开始指令。
             var section = group.sections[startingSection];
-            await ExecuteScriptsAsync(section.startScripts);
+            if (section.startScripts != null)
+            {
+                await ExecuteScriptsAsync(section.startScripts);
+            }
 
             // 延迟。
             if (delay > 0)
@@ -61,14 +62,7 @@ namespace MVZ2.Talk
 
             // 延迟完毕。
             // 创建角色。
-            var characters = section.characters;
-            if (characters != null)
-            {
-                foreach (TalkCharacter chr in characters)
-                {
-                    CreateCharacter(chr.id, chr.variant, ParseCharacterSide(chr.side));
-                }
-            }
+            InitSectionCharacters(section);
 
             // 延迟半秒。
             await Main.CoroutineManager.DelaySeconds(0.5f);
@@ -103,7 +97,20 @@ namespace MVZ2.Talk
             }
             var section = group.sections[startSection];
             // 执行开始指令。
-            await ExecuteScriptsAsync(section.autoSkipScripts ?? section.skipScripts);
+            TalkScript[] skipScripts;
+            if (section.autoSkipScripts != null)
+            {
+                skipScripts = section.autoSkipScripts;
+            }
+            else if (section.skipScripts != null && !section.notUseSkipScriptsForAutoSkip)
+            {
+                skipScripts = section.skipScripts;
+            }
+            else
+            {
+                skipScripts = GetDefaultSectionSkipScripts();
+            }
+            await ExecuteScriptsAsync(skipScripts);
         }
         public bool WillSkipTalk(NamespaceID groupId, int sectionIndex)
         {
@@ -142,7 +149,8 @@ namespace MVZ2.Talk
                 NextSentence();
                 return;
             }
-            _ = ExecuteScriptsAsync(sentence.clickScripts);
+            var scripts = sentence.clickScripts ?? GetDefaultSentenceClickScripts();
+            _ = ExecuteScriptsAsync(scripts);
         }
         private void OnSkipClickedCallback()
         {
@@ -152,7 +160,8 @@ namespace MVZ2.Talk
                 EndTalk();
                 return;
             }
-            _ = ExecuteScriptsAsync(section.skipScripts);
+            var skipScripts = section.skipScripts ?? GetDefaultSectionSkipScripts();
+            _ = ExecuteScriptsAsync(skipScripts);
         }
         #endregion
 
@@ -224,10 +233,6 @@ namespace MVZ2.Talk
                     NextSentence();
                     break;
 
-                case "section":
-                    StartSection(ParseArgumentInt(args[0]));
-                    break;
-
                 case "sentence":
                     SetSentence(ParseArgumentInt(args[0]));
                     break;
@@ -289,6 +294,40 @@ namespace MVZ2.Talk
                                         break;
 
                                     CharacterFaint(characterIndex, duration);
+                                }
+                                break;
+                            case "clear":
+                                {
+                                    ClearCharacters();
+                                }
+                                break;
+                            case "init":
+                                {
+                                    var section = GetTalkSection();
+                                    if (section == null)
+                                        break;
+                                    InitSectionCharacters(section);
+                                }
+                                break;
+                            case "layer":
+                                {
+                                    var characterId = ParseArgumentNamespaceID(args[1]);
+                                    var layer = args[2];
+                                    var characterIndex = GetCharacterIndex(characterId);
+                                    if (characterIndex < 0)
+                                        break;
+                                    var controller = GetCharacter(characterIndex);
+                                    if (!controller.Exists())
+                                        break;
+                                    switch (layer)
+                                    {
+                                        case "first":
+                                            controller.SetToTheFirstLayer();
+                                            break;
+                                        case "last":
+                                            controller.SetToTheLastLayer();
+                                            break;
+                                    }
                                 }
                                 break;
                         }
@@ -608,6 +647,9 @@ namespace MVZ2.Talk
             var args = script.arguments;
             switch (script.function)
             {
+                case "section":
+                    await StartSection(ParseArgumentInt(args[0]));
+                    break;
                 case "delay":
                     canClick = false;
                     await Main.CoroutineManager.DelaySeconds(ParseArgumentFloat(args[0]));
@@ -666,10 +708,15 @@ namespace MVZ2.Talk
         /// <summary>
         /// 开始区间。
         /// </summary>
-        public void StartSection(int index)
+        public async Task StartSection(int index)
         {
             sectionIndex = index;
             sentenceIndex = 0;
+            var section = GetTalkSection();
+            if (section?.startScripts != null)
+            {
+                await ExecuteScriptsAsync(section.startScripts);
+            }
             StartSentence();
         }
 
@@ -713,7 +760,7 @@ namespace MVZ2.Talk
                 controller.SetSpeaking(isSpeaker);
                 if (isSpeaker)
                 {
-                    controller.SetToTheFirstLayer(i);
+                    controller.SetToTheFirstLayer();
                 }
             }
 
@@ -777,7 +824,8 @@ namespace MVZ2.Talk
             }
 
             // 执行脚本组。
-            _ = ExecuteScriptsAsync(sentence.startScripts);
+            var scripts = sentence.startScripts ?? GetDefaultSentenceStartScripts();
+            _ = ExecuteScriptsAsync(scripts);
         }
 
         private void EndTalk()
@@ -807,12 +855,28 @@ namespace MVZ2.Talk
         }
 
 
+        private void InitSectionCharacters(TalkSection section)
+        {
+            var characters = section.characters;
+            foreach (TalkCharacter chr in characters)
+            {
+                CreateCharacter(chr.id, chr.variant, ParseCharacterSide(chr.side));
+            }
+        }
         public void CreateCharacter(NamespaceID characterId, NamespaceID? variant, CharacterSide side)
         {
             var chr = Instantiate(characterTemplate, characterRoot).GetComponent<TalkCharacterController>();
             chr.gameObject.SetActive(true);
+
+            bool faceRight = false;
+            var characterMeta = Main.ResourceManager.GetCharacterMeta(characterId);
+            if (characterMeta != null)
+            {
+                faceRight = characterMeta.faceRight;
+            }
+
             chr.SetVariant(characterId, variant);
-            chr.SetSide(side);
+            chr.SetSide(side, faceRight);
             characterList.Add(new CharacterData(characterId, side, chr));
         }
 
@@ -962,10 +1026,20 @@ namespace MVZ2.Talk
             ui.SetSpeechBubbleShowing(false);
             ui.SetRaycastReceiverActive(false);
 
-            ui.StartBackcolorFade(Color.clear, 1);
-            ui.StartForecolorFade(Color.clear, 1);
-            ui.StartBackgroundFade(0, 1);
-            ui.StartForegroundFade(0, 1);
+            if (ui.gameObject.activeInHierarchy)
+            {
+                ui.StartBackcolorFade(Color.clear, 1);
+                ui.StartForecolorFade(Color.clear, 1);
+                ui.StartBackgroundFade(0, 1);
+                ui.StartForegroundFade(0, 1);
+            }
+            else
+            {
+                ui.SetBackcolor(Color.clear);
+                ui.SetForecolor(Color.clear);
+                ui.SetBackgroundAlpha(0);
+                ui.SetForegroundAlpha(0);
+            }
 
             ui.SetBlockerActive(false);
             ui.SetSkipButtonActive(false);
@@ -973,6 +1047,10 @@ namespace MVZ2.Talk
             AllCharactersLeave();
         }
 
+        private static TalkScript[] GetDefaultSectionStartScripts() => emptyScripts;
+        private static TalkScript[] GetDefaultSectionSkipScripts() => defaultSectionSkipScripts;
+        private static TalkScript[] GetDefaultSentenceStartScripts() => emptyScripts;
+        private static TalkScript[] GetDefaultSentenceClickScripts() => defaultSentenceClickScripts;
         #endregion
 
         #region 事件
@@ -987,6 +1065,15 @@ namespace MVZ2.Talk
         public int RunningScriptCount { get; private set; }
         public bool IsTalking { get; private set; }
         public readonly static NamespaceID DEFAULT_VARIANT_ID = new NamespaceID("mvz2", "normal");
+        private readonly static TalkScript[] emptyScripts = new TalkScript[0];
+        private readonly static TalkScript[] defaultSectionSkipScripts = new TalkScript[]
+        {
+            new TalkScript("end")
+        };
+        private readonly static TalkScript[] defaultSentenceClickScripts = new TalkScript[]
+        {
+            new TalkScript("next")
+        };
         private MainManager Main => MainManager.Instance;
 
         private bool showingTalkItem = false;

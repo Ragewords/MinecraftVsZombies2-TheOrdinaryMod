@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2026-05-13 01:45+0800\n"
+"POT-Creation-Date: 2026-05-28 10:03+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -293,25 +293,25 @@ msgctxt "almanac_tag.description"
 msgid "不会被一般怪物发现"
 msgstr ""
 
-#. Name for almanac tag low
+#. Name for almanac tag short_enemy
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "低矮"
 msgstr ""
 
-#. Description for almanac tag low
+#. Description for almanac tag short_enemy
 #: Almanac meta file
 msgctxt "almanac_tag.description"
 msgid "不会被一般高度或更高的子弹击中"
 msgstr ""
 
-#. Name for almanac tag high
+#. Name for almanac tag tall
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "高"
 msgstr ""
 
-#. Description for almanac tag high
+#. Description for almanac tag tall
 #: Almanac meta file
 msgctxt "almanac_tag.description"
 msgid "阻挡跳跃"
@@ -1819,7 +1819,7 @@ msgstr ""
 #. Header for contraptions mvz2:nether_reactor_core
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "如果下界反应核被放置在一个由器械组成的特殊结构的中心，则会持续产出<ref=[misc]mvz2:starshard.uranium_235>星之碎片</ref>。"
+msgid "如果下界反应核被放置在一个由器械组成的特殊结构的中心，则会持续产出<ref=[misc]mvz2:starshard.uranium_235>星之碎片</ref>并<tag id=\"mvz2:light_source\"/>发光。"
 msgstr ""
 
 #. Properties for contraptions mvz2:nether_reactor_core
@@ -2359,7 +2359,7 @@ msgid ""
 "马速度：<color=red><var local=\"horse_speed\" />（跳跃前），<var local=\"horse_speed_jumped\" />（跳跃后）</color>\n"
 "身体速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "头颅速度：<color=red><var local=\"head_speed\" /></color>\n"
-"弱点：<color=red>金质物品，无法跳过<tag id=\"mvz2:high\" />高器械</color>"
+"弱点：<color=red>金质物品，无法跳过<tag id=\"mvz2:tall\" />高器械</color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:dullahan
@@ -2381,7 +2381,7 @@ msgid ""
 "生命：<color=red><var id=\"mvz2:entity_health\" />，低于200时每秒失去60生命</color>\n"
 "速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "碾压伤害：<color=red>10000000</color>\n"
-"弱点：<color=red>尖刺方块</color>"
+"弱点：<color=red><ref=[contraptions]mvz2:spike_block>尖刺方块</ref></color>"
 msgstr ""
 
 #. Flavor for enemies mvz2:hell_chariot
@@ -4210,7 +4210,7 @@ msgstr ""
 msgctxt "misc.description"
 msgid ""
 "在幻想乡四处游荡、采集的人类，职业是魔法使（而非种族）。\n"
-"曾经和森近 霖之助关系很好，后来也因他的失踪翻遍了整个幻想乡，无果。\n"
+"曾经和森近 霖之助关系很好，称呼他为“香霖”。后来也因他的失踪翻遍了整个幻想乡，无果。\n"
 "随后她为霖之助立了衣冠冢，隔三岔五就会去纪念一次。"
 msgstr ""
 
@@ -4473,7 +4473,7 @@ msgstr ""
 #. Header for misc mvz2:koishi
 #: Almanac meta file
 msgctxt "misc.description"
-msgid "<ref=[misc]mvz2:chireiden>古明地 觉</ref>的妹妹。"
+msgid "<ref=[misc]mvz2:satori>古明地 觉</ref>的妹妹。"
 msgstr ""
 
 #. Flavor for misc mvz2:koishi

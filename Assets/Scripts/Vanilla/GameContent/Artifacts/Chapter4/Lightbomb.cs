@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Artifacts
 
                 foreach (var enemy in level.FindEntities(e => e.IsVulnerableEntity() && e.IsHostile(contraption)))
                 {
-                    enemy.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.MUTE), contraption);
+                    enemy.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.LIGHT, VanillaDamageEffects.MUTE), contraption);
                     if (enemy.CanDeactive())
                         enemy.Stun(60);
                 }

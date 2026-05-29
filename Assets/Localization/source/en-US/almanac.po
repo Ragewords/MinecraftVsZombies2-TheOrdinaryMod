@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2026-05-13 01:45+0800\n"
-"PO-Revision-Date: 2026-05-13 13:46+0800\n"
+"POT-Creation-Date: 2026-05-28 10:03+0800\n"
+"PO-Revision-Date: 2026-05-28 22:13+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -255,7 +255,7 @@ msgstr "Horse Mass"
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "发光"
-msgstr "Illuminative"
+msgstr "Luminous"
 
 #. Description for almanac tag light_source
 #: Almanac meta file
@@ -299,29 +299,29 @@ msgctxt "almanac_tag.description"
 msgid "不会被一般怪物发现"
 msgstr "Undiscovered by regular monsters"
 
-#. Name for almanac tag low
+#. Name for almanac tag short_enemy
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "低矮"
 msgstr "Short"
 
-#. Description for almanac tag low
+#. Description for almanac tag short_enemy
 #: Almanac meta file
 msgctxt "almanac_tag.description"
 msgid "不会被一般高度或更高的子弹击中"
 msgstr "Will not be hit by medium height projectiles or higher"
 
-#. Name for almanac tag high
+#. Name for almanac tag tall
 #: Almanac meta file
 msgctxt "almanac_tag.name"
 msgid "高"
 msgstr "Tall"
 
-#. Description for almanac tag high
+#. Description for almanac tag tall
 #: Almanac meta file
 msgctxt "almanac_tag.description"
 msgid "阻挡跳跃"
-msgstr "Blocks jump"
+msgstr "Blocks jumps"
 
 #. Name for almanac tag flying
 #: Almanac meta file
@@ -477,7 +477,7 @@ msgstr "Stone"
 #: Almanac meta file
 msgctxt "almanac_tag_enum.description"
 msgid "阻挡锐利物体和火焰溅射，但受到20x冲击伤害"
-msgstr "Stops piercing attacks and fire splashes, but takes 20x impact damage"
+msgstr "Stops sharp objects and fire splashes, but takes 20x impact damage"
 
 #. Name for almanac tag enum value mvz2:grass of enum shell
 #: Almanac meta file
@@ -489,7 +489,7 @@ msgstr "Grass"
 #: Almanac meta file
 msgctxt "almanac_tag_enum.description"
 msgid "会被锐利物体穿透，受到2x火焰伤害"
-msgstr "Can be pierced, takes 2x fire damage"
+msgstr "Pierced by sharp objects, takes 2x fire damage"
 
 #. Name for almanac tag enum value mvz2:flesh of enum shell
 #: Almanac meta file
@@ -501,7 +501,7 @@ msgstr "Flesh"
 #: Almanac meta file
 msgctxt "almanac_tag_enum.description"
 msgid "会被锐利物体穿透"
-msgstr "Can be pierced"
+msgstr "Pierced by sharp objects"
 
 #. Name for almanac tag enum value mvz2:leather of enum shell
 #: Almanac meta file
@@ -525,7 +525,7 @@ msgstr "Metal"
 #: Almanac meta file
 msgctxt "almanac_tag_enum.description"
 msgid "阻挡锐利物体"
-msgstr "Stops piercing attacks"
+msgstr "Stops sharp objects"
 
 #. Name for almanac tag enum value mvz2:bone of enum shell
 #: Almanac meta file
@@ -579,7 +579,7 @@ msgstr "Netherrack"
 #: Almanac meta file
 msgctxt "almanac_tag_enum.description"
 msgid "免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害"
-msgstr "Immune to fire damage, stops piercing attacks and fire splashes, but takes 20x impact damage"
+msgstr "Immune to fire damage, Stops sharp objects and fire splashes, but takes 20x impact damage"
 
 #. Name for almanac tag enum value mvz2:cloud of enum shell
 #: Almanac meta file
@@ -2225,10 +2225,12 @@ msgstr ""
 #. Header for contraptions mvz2:nether_reactor_core
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "如果下界反应核被放置在一个由器械组成的特殊结构的中心，则会持续产出<ref=[misc]mvz2:starshard.uranium_235>星之碎片</ref>。"
+msgid ""
+"如果下界反应核被放置在一个由器械组成的特殊结构的中心，则会持续产出<ref=[misc]mvz2:starshard.uranium_235>星之碎片</ref>并<tag id=\"mvz2:"
+"light_source\"/>发光。"
 msgstr ""
 "If a Nether Reactor Core is placed at the center of a special structure made of contraptions, it will continuously produce "
-"<ref=[misc]mvz2:starshard.uranium_235>starshards</ref>."
+"<ref=[misc]mvz2:starshard.uranium_235>starshards</ref> and <tag id=\"mvz2:light_source\"/> glow."
 
 #. Properties for contraptions mvz2:nether_reactor_core
 #: Almanac meta file
@@ -2638,7 +2640,7 @@ msgid ""
 msgstr ""
 "Toughness: <color=red><var id=\"mvz2:entity_health\" /></color>\n"
 "Arrow Damage: <color=red><var id=\"mvz2:entity_damage\" /> per arrow</color>\n"
-"Special: <color=red>unable to shoot and ignore low-height contraptions</color>"
+"Special: <color=red>unable to hit and ignores short contraptions</color>"
 
 #. Flavor for enemies mvz2:skeleton
 #: Almanac meta file
@@ -2929,14 +2931,14 @@ msgid ""
 "马速度：<color=red><var local=\"horse_speed\" />（跳跃前），<var local=\"horse_speed_jumped\" />（跳跃后）</color>\n"
 "身体速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "头颅速度：<color=red><var local=\"head_speed\" /></color>\n"
-"弱点：<color=red>金质物品，无法跳过<tag id=\"mvz2:high\" />高器械</color>"
+"弱点：<color=red>金质物品，无法跳过<tag id=\"mvz2:tall\" />高器械</color>"
 msgstr ""
 "Toughness: <color=red><var local=\"horse_hp\" /> (Horse), <var id=\"mvz2:entity_health\" /> (Body), <var local=\"head_hp\" /> (Head)</"
 "color>\n"
 "Horse Speed: <color=red><var local=\"horse_speed\" /> (Before jump), <var local=\"horse_speed_jumped\" /> (After jump)</color>\n"
 "Body Speed: <color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "Head Speed: <color=red><var local=\"head_speed\" /></color>\n"
-"Weakness: <color=red>Golden objects; could not jump over <tag id=\"mvz2:high\"/>high contraptions</color>"
+"Weakness: <color=red>Golden objects; could not jump over <tag id=\"mvz2:tall\"/>tall contraptions</color>"
 
 #. Flavor for enemies mvz2:dullahan
 #: Almanac meta file
@@ -2959,12 +2961,12 @@ msgid ""
 "生命：<color=red><var id=\"mvz2:entity_health\" />，低于200时每秒失去60生命</color>\n"
 "速度：<color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "碾压伤害：<color=red>10000000</color>\n"
-"弱点：<color=red>尖刺方块</color>"
+"弱点：<color=red><ref=[contraptions]mvz2:spike_block>尖刺方块</ref></color>"
 msgstr ""
 "Toughness: <color=red><var id=\"mvz2:entity_health\" />, loses 60/s while under 200</color>\n"
 "Speed: <color=red><var id=\"mvz2:entity_speed\" /></color>\n"
 "Crush Damage: <color=red>10000000</color>\n"
-"Weakness: <color=red>Spike Block</color>"
+"Weakness: <color=red><ref=[contraptions]mvz2:spike_block>Spike Block</ref></color>"
 
 #. Flavor for enemies mvz2:hell_chariot
 #: Almanac meta file
@@ -3342,7 +3344,7 @@ msgstr ""
 #: Almanac meta file
 msgctxt "enemies.description"
 msgid "骷髅雕像在死亡后会变为低矮的残骸，若残骸没有及时被摧毁，则会复活。"
-msgstr "Skeleton Statues turn into low-height remains upon death, if the remains are not destroyed in time, they will revive."
+msgstr "Skeleton Statues turn into short remains upon death, if the remains are not destroyed in time, they will revive."
 
 #. Properties for enemies mvz2:skeleton_statue
 #: Almanac meta file
@@ -5281,12 +5283,12 @@ msgstr "An ordinary magician, and also a former good friend of <ref=[misc]mvz2:r
 msgctxt "misc.description"
 msgid ""
 "在幻想乡四处游荡、采集的人类，职业是魔法使（而非种族）。\n"
-"曾经和森近 霖之助关系很好，后来也因他的失踪翻遍了整个幻想乡，无果。\n"
+"曾经和森近 霖之助关系很好，称呼他为“香霖”。后来也因他的失踪翻遍了整个幻想乡，无果。\n"
 "随后她为霖之助立了衣冠冢，隔三岔五就会去纪念一次。"
 msgstr ""
 "A human who wanders around Gensokyo collecting various items. Her profession is a magician (not the race).\n"
-"She was once on very good terms with Rinnosuke Morichika, but after his disappearance, she searched all over Gensokyo for him, but to "
-"no avail.\n"
+"She was once on very good terms with Rinnosuke Morichika and even calling him by his nickname \"Kourin\", but after his disappearance, "
+"she searched all over Gensokyo for him, but to no avail.\n"
 "Afterwards, she built a memorial for Rinnosuke and would visit him every now and then to commemorate him."
 
 #. Name for misc mvz2:miko
@@ -5567,7 +5569,7 @@ msgstr "Rin Kaenbyou"
 #: Almanac meta file
 msgctxt "misc.description"
 msgid "<ref=[misc]mvz2:satori>古明地 觉</ref>的宠物之一，偷尸体的火车妖怪。"
-msgstr "One of <ref=[misc]mvz2:satori>Satori Komeiji</ref>'s pets—a corpse-stealing kasha youkai."
+msgstr "One of <ref=[misc]mvz2:satori>Satori Komeiji</ref>'s pets, a corpse-stealing kasha youkai."
 
 #. Flavor for misc mvz2:rin
 #: Almanac meta file
@@ -5580,13 +5582,13 @@ msgid ""
 "\n"
 "她并不喜欢那些由异变产生的、方形的僵尸。"
 msgstr ""
-"A kasha youkai that dwells within flames, with a cheerful personality.\n"
-"She is extremely interested in corpses, though she avoids those that have already been buried and does not actively kill people. Her "
-"body carries the stench of decay.\n"
-"The corpses she collects are given to <ref=[misc]mvz2:utsuho>Utsuho</ref> to help regulate the heat of Remains of Blazing Hell.\n"
-"She can also communicate with corpses and spirits, or can capture and control them.\n"
+"She is a cheerful kasha youkai who dwells in flames.\n"
+"She is extremely interested in corpses, but loses interest in those that are properly buried and does not actively kill people. Her "
+"body reeks of decay.\n"
+"The corpses she collect are given to <ref=[misc]mvz2:utsuho>Utsuho</ref> for regulating the heat of the Remains of Blazing Hell.\n"
+"She can also communicate with corpses and spirits, or capture and control them.\n"
 "\n"
-"She dislikes those blocky zombies created by The Incident."
+"She dislikes those blocky zombies created by The Incident. "
 
 #. Name for misc mvz2:utsuho
 #: Almanac meta file
@@ -5622,7 +5624,7 @@ msgstr "Koishi Komeiji"
 #. Header for misc mvz2:koishi
 #: Almanac meta file
 msgctxt "misc.description"
-msgid "<ref=[misc]mvz2:chireiden>古明地 觉</ref>的妹妹。"
+msgid "<ref=[misc]mvz2:satori>古明地 觉</ref>的妹妹。"
 msgstr "<ref=[misc]mvz2:satori>Satori Komeiji</ref>'s younger sister."
 
 #. Flavor for misc mvz2:koishi
@@ -6478,7 +6480,7 @@ msgstr ""
 #: Entity meta file
 msgctxt "entity_counter.name"
 msgid "低矮怪物"
-msgstr "low monsters"
+msgstr "short monsters"
 
 #. Name for entity counter mvz2:flying_enemy
 #: Entity meta file
