@@ -35,18 +35,10 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             if (info.HasEffect(VanillaDamageEffects.PICKAXE) || !entity.ShouldTriggerDeathEffects(info))
                 return;
-            var anchor = entity.Level.FindFirstEntity(e => e.Definition.HasBehaviour(this) && IsWorking(e));
-            if (anchor == null || anchor.IsHostileEntity())
+            var anchor = FindAvaliableAnchor(entity);
+            if (anchor == null)
                 return;
-            var spawnParams = anchor.GetSpawnParams();
-            spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, LogicBlueprintID.FromEntity(entity.GetDefinitionID()));
-            spawnParams.SetProperty(BlueprintPickup.PROP_COMMAND_BLOCK, entity.HasBuff(VanillaBuffID.Contraption.imitated));
-            anchor.Produce(VanillaPickupID.blueprintPickup, spawnParams);
-
-            var charge = GetCharges(anchor);
-            charge--;
-            SetCharges(anchor, charge);
-            anchor.PlaySound(VanillaSoundID.respawnAnchorDeplete);
+            TryRespawn(anchor, entity);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -62,6 +54,38 @@ namespace MVZ2.GameContent.Contraptions
             entity.PlaySound(VanillaSoundID.respawnAnchorCharge);
             entity.HealEffects(entity.GetMaxHealth(), entity);
             SetCharges(entity, MAX_CHARGES);
+        }
+        private static Entity? FindAvaliableAnchor(Entity entity)
+        {
+            var anchor = entity.Level.FindFirstEntity(e => e.Definition.HasBehaviour<RespawnAnchor>() && IsWorking(e));
+            if (anchor == null || anchor.IsHostileEntity())
+                return null;
+            return anchor;
+        }
+        private static int DepleteCharge(Entity anchor)
+        {
+            var charge = GetCharges(anchor);
+            charge--;
+            SetCharges(anchor, charge);
+            anchor.PlaySound(VanillaSoundID.respawnAnchorDeplete);
+            return GetCharges(anchor);
+        }
+        private static void TryRespawn(Entity anchor, Entity entity)
+        {
+            var chargeDepleted = DepleteCharge(anchor);
+            if (chargeDepleted < 0)
+            {
+                SetWorking(anchor, false);
+                var newAnchor = FindAvaliableAnchor(entity);
+                if (newAnchor == null)
+                    return;
+                anchor = newAnchor;
+            }
+
+            var spawnParams = anchor.GetSpawnParams();
+            spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, LogicBlueprintID.FromEntity(entity.GetDefinitionID()));
+            spawnParams.SetProperty(BlueprintPickup.PROP_COMMAND_BLOCK, entity.HasBuff(VanillaBuffID.Contraption.imitated));
+            anchor.Produce(VanillaPickupID.blueprintPickup, spawnParams);
         }
         public const int MAX_CHARGES = 4;
         public static bool IsWorking(Entity entity) => entity.GetProperty<bool>(PROP_WORKING);

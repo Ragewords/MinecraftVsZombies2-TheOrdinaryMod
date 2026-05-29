@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Seeds;
 using MVZ2Logic.Blueprints;
 using PVZEngine;
 using PVZEngine.Level;
@@ -48,7 +49,7 @@ namespace MVZ2.GameContent.Stages
             yield return LogicBlueprintID.FromEntity(VanillaEnemyID.shadowCell);
             yield return LogicBlueprintID.FromEntity(VanillaEnemyID.zombieCloud);
             yield return LogicBlueprintID.FromEntity(VanillaEnemyID.popCaptain);
-            yield return LogicBlueprintID.FromEntity(VanillaEnemyID.zombieCat);
+            yield return VanillaBlueprintID.zombieCatNoCart;
         }
     }
 }

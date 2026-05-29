@@ -21,6 +21,8 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             entity.ChangeModel(VanillaModelID.zombie_cat);
+            if (entity.GetVariant() == VARIANT_NO_INIT)
+                return;
             var param = entity.GetSpawnParams();
             if (entity.IsPreviewEnemy())
             {
@@ -41,5 +43,6 @@ namespace MVZ2.GameContent.Enemies
                 entity.SpawnWithParams(VanillaEnemyID.wispFly, entity.GetCenter());
             }
         }
+        public const int VARIANT_NO_INIT = 1;
     }
 }

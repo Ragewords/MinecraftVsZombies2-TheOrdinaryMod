@@ -80,7 +80,20 @@ namespace MVZ2.GameContent.Contraptions
                 param.projectileID = VanillaProjectileID.bounceBoulder;
                 param.damage = entity.GetDamage() * BOUNCY_BOULDER_DAMAGE_MULTIPLIER;
                 param.velocity = new Vector3(xspeed, yspeed, 0);
-                entity.ShootProjectile(param);
+                entity.ShootProjectile(param)?.Let(e =>
+                {
+                    int makeupCount = 0;
+                    var lane = entity.GetLane() + i;
+                    if (lane >= 0 && lane < entity.Level.GetMaxLaneCount())
+                    {
+                        e.StartChangingLane(lane);
+                    }
+                    else
+                    {
+                        makeupCount++;
+                        e.Velocity *= 1 + (MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT * makeupCount);
+                    }
+                });
             }
             entity.PlaySound(VanillaSoundID.launch);
         }
@@ -97,5 +110,6 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("RNG");
         public const float BOULDER_DAMAGE_MULTIPLIER = 2;
         public const float BOUNCY_BOULDER_DAMAGE_MULTIPLIER = 10;
+        public const float MAKE_UP_VELOCITY_MULTIPLIER_INCREAMENT = 0.2f;
     }
 }

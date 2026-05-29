@@ -1167,13 +1167,14 @@
           <text>既然这样，那我还是先去准备今天的战斗吧。</text>
           <!--语句点击脚本-->
           <onClick>
+            <script>bubble hide</script>
             <script>character leave mvz2:satori</script>
             <script>delay 1</script>
             <script>next</script>
           </onClick>
         </sentence>
         <!--语句7-->
-        <sentence speaker="mvz2:steve" sounds="mvz2:question">
+        <sentence speaker="mvz2:steve" sounds="mvz2:dialog_weird">
           <text>……烈焰人？在这种地方？</text>
           <!--语句点击脚本-->
           <onClick>
@@ -1215,7 +1216,7 @@
           <text>被诅咒的怪物会染上诅咒的火焰，并且在死亡后会直接爆开！</text>
         </sentence>
         <!--语句4-->
-        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long1">
+        <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_extra_long3">
           <text>这种火焰还会传染，使其它怪物也燃烧起来！</text>
         </sentence>
         <!--语句5-->
@@ -3222,7 +3223,7 @@
           <text>啊？居然还是只僵尸猫，已经烂的不成样子了……</text>
         </sentence>
         <!--语句2-->
-        <sentence speaker="mvz2:steve" sounds="mvz2:question">
+        <sentence speaker="mvz2:steve" sounds="mvz2:talk">
           <text>还坐着推车？就像你推着的那个那样。</text>
         </sentence>
         <!--语句3-->

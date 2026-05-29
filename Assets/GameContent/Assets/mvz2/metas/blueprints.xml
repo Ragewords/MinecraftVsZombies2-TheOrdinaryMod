@@ -107,6 +107,9 @@
             <icon model="mvz2:entity.zombie_cloud_fire" mobile="mvz2:mobile_blueprint/zombie_cloud_fire" />
         </entity>
 
+        <entity id="zombie_cat_no_cart" cost="150" function="monster" name="僵尸猫" entity="mvz2:zombie_cat" variant="1">
+            <icon model="mvz2:entity.zombie_cat" mobile="mvz2:mobile_blueprint/zombie_cat_no_cart" />
+        </entity>
         <entity id="nether_mage_fire" cost="75" function="monster" name="下界法师（火）" entity="mvz2:nether_mage" variant="1">
             <icon model="mvz2:entity.nether_mage_fire" mobile="mvz2:mobile_blueprint/nether_mage_fire" />
         </entity>

@@ -28,6 +28,8 @@ namespace MVZ2.GameContent.Seeds
         public const string ufoGreen = undeadFlyingObjectGreen;
         public const string ufoBlue = undeadFlyingObjectBlue;
         public const string ufoRainbow = undeadFlyingObjectRainbow;
+
+        public const string zombieCatNoCart = "zombie_cat_no_cart";
     }
     public static class VanillaBlueprintID
     {
@@ -52,6 +54,8 @@ namespace MVZ2.GameContent.Seeds
         public static readonly NamespaceID ufoGreen = Get(VanillaBlueprintNames.ufoGreen);
         public static readonly NamespaceID ufoBlue = Get(VanillaBlueprintNames.ufoBlue);
         public static readonly NamespaceID ufoRainbow = Get(VanillaBlueprintNames.ufoRainbow);
+
+        public static readonly NamespaceID zombieCatNoCart = Get(VanillaBlueprintNames.zombieCatNoCart);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

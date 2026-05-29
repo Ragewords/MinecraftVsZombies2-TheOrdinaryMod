@@ -160,7 +160,7 @@
             <condition required="mvz2:level.castle_EX3" />
         </unlock>
     </artifact>
-    <artifact id="endless_gate" name="无尽门扉" tooltip="每过40秒，将一个接近最终防线的敌方怪物传送至战场最右侧" sprite="mvz2:artifacts/endless_gate">
+    <artifact id="endless_gate" name="无尽门扉" tooltip="每40秒将一个接近最终防线的敌方怪物传送至战场最右侧" sprite="mvz2:artifacts/endless_gate">
         <unlock>
             <condition required="mvz2:level.mausoleum_EX3" />
         </unlock>
