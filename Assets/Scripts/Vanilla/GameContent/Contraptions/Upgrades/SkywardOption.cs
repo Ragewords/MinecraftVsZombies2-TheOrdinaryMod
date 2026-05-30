@@ -5,6 +5,7 @@ using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Projectiles;
 using MVZ2.Vanilla.Properties;
+using MVZ2Logic.Entities;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.UpdateAI(entity);
             entity.SetModelProperty("Multiplier", 1f);
+            entity.SetModelProperty("FlipX", entity.IsHostileEntity());
             UpdatePosition(entity);
             ShootTick(entity);
         }

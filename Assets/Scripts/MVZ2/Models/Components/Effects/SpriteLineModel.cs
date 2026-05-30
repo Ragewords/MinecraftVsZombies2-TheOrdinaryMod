@@ -17,6 +17,7 @@ namespace MVZ2.Models
             lineSprite.size = new Vector2(distance.magnitude * scaleMultiplier, lineSprite.size.y);
             lineSprite.transform.rotation = Quaternion.LookRotation(distance, Vector3.up);
             lineSprite.transform.rotation = Quaternion.FromToRotation(Vector3.right, distance);
+            lineSprite.flipX = Model.GetProperty<bool>("FlipX");
         }
         [SerializeField]
         private Transform sourceTransform = null!;

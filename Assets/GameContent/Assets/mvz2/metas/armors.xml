@@ -70,7 +70,7 @@
         <entry id="brainwasher_crown" type="mvz2:helmet">
             <props>
                 <id name="mvz2:shell" value="mvz2:metal" />
-                <float name="mvz2:maxHealth" value="1000" />
+                <float name="mvz2:maxHealth" value="800" />
             </props>
         </entry>
         <entry id="bedserker_helmet" type="mvz2:helmet">

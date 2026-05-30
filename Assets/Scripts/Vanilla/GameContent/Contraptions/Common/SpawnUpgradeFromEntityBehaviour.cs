@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Contraptions
         }
         public void DeathEffects(Entity entity, DeathInfo info)
         {
-            if (info.HasEffect(VanillaDamageEffects.PICKAXE) || entity.WillRemoveOnDeath(info) || entity.ShouldTriggerDeathEffects(info))
+            if (info.HasEffect(VanillaDamageEffects.PICKAXE) || entity.WillRemoveOnDeath(info) || !entity.ShouldTriggerDeathEffects(info))
                 return;
             foreach (var grid in entity.GetGridsToTake())
             {
