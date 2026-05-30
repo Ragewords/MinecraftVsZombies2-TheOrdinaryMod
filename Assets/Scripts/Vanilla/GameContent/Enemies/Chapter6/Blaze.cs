@@ -151,7 +151,7 @@ namespace MVZ2.GameContent.Enemies
         private Detector detector;
         public const int STATE_WALK = LogicEnemyStates.WALK;
         public const int STATE_RANGED_ATTACK = LogicEnemyStates.RANGED_ATTACK;
-        public const int SHOOT_COOLDOWN = 120;
+        public const int SHOOT_COOLDOWN = 150;
         public const int SHOOT_DURATION = 35;
     }
 }
