@@ -55,7 +55,6 @@ MonoBehaviour:
   triggerCostRoot: {fileID: 5733510557835331678}
   costText: {fileID: 7046473907322951345}
   iconSpriteSize: {x: 120, y: 55}
-  functionTag: {fileID: 2938436476944517283}
   functionTagRenderer: {fileID: 9201145207909979796}
   standaloneBackground: {fileID: 0}
   mobileBackground: {fileID: 2081803665859915828}
@@ -356,7 +355,6 @@ GameObject:
   - component: {fileID: 9008313502066449685}
   - component: {fileID: 9201145207909979796}
   - component: {fileID: 9117951685119945806}
-  - component: {fileID: 5854626502092297421}
   m_Layer: 0
   m_Name: FunctionTag
   m_TagString: Untagged
@@ -444,34 +442,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excludedInGroup: 0
---- !u!114 &5854626502092297421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2938436476944517283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50435992d69428c4db295c41af96e2ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -1779215277, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: -1018101932, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: -2054337474, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 1537697257, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 1812950368, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 2009568430, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 318035043, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 1751193901, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 2077275615, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: -1526567999, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 884720526, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: -721585861, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: 1385793848, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  - {fileID: -382571705, guid: 4ccd6fdf3fa98f74aaaaefa8a82f42c3, type: 3}
-  propertyName: FunctionTagIndex
 --- !u!1 &4645716838788776582
 GameObject:
   m_ObjectHideFlags: 0

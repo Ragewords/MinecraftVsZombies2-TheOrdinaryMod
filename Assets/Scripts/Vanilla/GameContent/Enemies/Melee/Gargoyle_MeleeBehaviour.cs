@@ -34,7 +34,7 @@ namespace MVZ2.GameContent.Enemies
                 if (curseTarget == null)
                     return;
                 bool stoneShell = curseTarget.GetShellDefinition()?.GetID() == VanillaShellID.stone || curseTarget.GetShellDefinition()?.GetID() == VanillaShellID.netherrack;
-                if (curseTarget.Type == EntityTypes.PLANT && stoneShell)
+                if ((curseTarget.Type == EntityTypes.PLANT || curseTarget.Type == EntityTypes.OBSTACLE) && stoneShell)
                 {
                     results.Add(curseTarget);
                 }

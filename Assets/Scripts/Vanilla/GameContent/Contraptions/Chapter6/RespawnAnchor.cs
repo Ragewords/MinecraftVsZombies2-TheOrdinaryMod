@@ -73,14 +73,17 @@ namespace MVZ2.GameContent.Contraptions
         private static void TryRespawn(Entity anchor, Entity entity)
         {
             var chargeDepleted = DepleteCharge(anchor);
-            if (chargeDepleted < 0)
+            while (chargeDepleted < 0)
             {
                 SetWorking(anchor, false);
                 var newAnchor = FindAvaliableAnchor(entity);
                 if (newAnchor == null)
-                    return;
+                    break;
                 anchor = newAnchor;
+                chargeDepleted = DepleteCharge(anchor);
             }
+            if (!IsWorking(anchor))
+                return;
 
             var spawnParams = anchor.GetSpawnParams();
             spawnParams.SetProperty(VanillaPickupProps.CONTENT_ID, LogicBlueprintID.FromEntity(entity.GetDefinitionID()));
