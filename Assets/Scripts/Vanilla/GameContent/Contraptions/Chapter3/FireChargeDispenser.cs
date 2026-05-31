@@ -51,7 +51,9 @@ namespace MVZ2.GameContent.Contraptions
                     if (target != null)
                     {
                         int frames = Ticks.FromSeconds(1);
-                        var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), target.GetCenter() + frames * target.Velocity, frames, GRAVITY);
+                        Vector3 targetPosition = target.GetBounds().center;
+                        targetPosition.y = target.GetBounds().max.y;
+                        var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPosition + frames * target.Velocity, frames, GRAVITY);
                         Shoot(entity, entity.GetProjectileID() ?? VanillaProjectileID.fireCharge, entity.GetDamage(), velocity);
                     }
                     shootTimer.Reset();
@@ -94,7 +96,9 @@ namespace MVZ2.GameContent.Contraptions
             int frames = Ticks.FromSeconds(1);
             foreach (var target in targets)
             {
-                targetPos = target.GetCenter() + frames * target.Velocity;
+                Vector3 targetPosition = target.GetBounds().center;
+                targetPosition.y = target.GetBounds().max.y;
+                targetPos = targetPosition + frames * target.Velocity;
             }
             var velocity = VanillaProjectileExt.GetLobVelocityByTime(entity.GetShootPoint(), targetPos, frames, GRAVITY);
 
