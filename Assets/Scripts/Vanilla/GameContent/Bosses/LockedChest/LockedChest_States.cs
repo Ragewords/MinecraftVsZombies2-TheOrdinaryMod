@@ -713,7 +713,7 @@ namespace MVZ2.GameContent.Bosses
             var spawnParam = new SpawnParams();
             spawnParam.SetProperty(EngineEntityProps.FACTION, entity.GetFaction());
             spawnParam.SetProperty(VanillaEntityProps.MAX_TIMEOUT, Ticks.FromSeconds(5));
-            spawnParam.SetProperty(VanillaEntityProps.DAMAGE, 20f);
+            spawnParam.SetProperty(VanillaEntityProps.DAMAGE, 40f);
             spawnParam.SetProperty(VanillaProjectileProps.NO_DESTROY_OUTSIDE_LAWN, true);
             for (int i = 0; i < COBBLE_COUNT; i++)
             {
@@ -721,12 +721,12 @@ namespace MVZ2.GameContent.Bosses
                 var y = rng.NextFloat() * ySize + yStart;
                 var z = rng.NextFloat() * zSize + zStart;
                 var pos = artifactPos + new Vector3(x, y, z);
-                level.Spawn(VanillaProjectileID.cobble, pos, null, spawnParam)?.Let(boulder =>
+                level.Spawn(VanillaProjectileID.cobble, pos, null, spawnParam)?.Let(cobble =>
                 {
                     var angle = rng.NextFloat() * 360f;
                     var length = rng.NextFloat() * 5 + 5;
                     var speed2D = (Vector2.right * length).RotateClockwise(angle);
-                    boulder.Velocity = new Vector3(speed2D.x, 0, speed2D.y);
+                    cobble.Velocity = new Vector3(speed2D.x, 0, speed2D.y);
                 });
             }
             spawnParam.SetProperty(VanillaEntityProps.DAMAGE, 80f);
