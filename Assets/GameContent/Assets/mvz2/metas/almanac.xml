@@ -1936,7 +1936,7 @@
         </entry>
         <entry id="mvz2:blaze">
             <variables>
-                <variable name="dmg_high_difficulty">global("mvz2:entity_damage") * 2</variable>
+                <variable name="dmg_high_difficulty">global("mvz2:entity_damage") * 1.5</variable>
             </variables>
             <header>
                 <p>烈焰人会在前线向你的器械发射多个火球。</p>

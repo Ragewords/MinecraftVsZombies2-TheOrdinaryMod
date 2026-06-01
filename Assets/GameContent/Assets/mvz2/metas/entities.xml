@@ -2472,7 +2472,7 @@
                 <behaviour operator="add" id="mvz2:hurt_in_water" />
             </behaviours>
             <properties>
-                <float name="mvz2:damage" value="150" />
+                <float name="mvz2:damage" value="100" />
                 <float name="mvz2:range" value="800" />
                 <float name="mvz2:speed" value="2" />
                 <vector3 name="mvz2:size" x="35" y="78" z="35" />
