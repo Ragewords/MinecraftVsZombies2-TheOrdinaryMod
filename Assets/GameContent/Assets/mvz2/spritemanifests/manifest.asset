@@ -2165,6 +2165,8 @@ MonoBehaviour:
     - {fileID: -1843165124, guid: 3a54d5bb3b16e9e4fa22639a67ef8836, type: 3}
     - {fileID: 647350883, guid: 3a54d5bb3b16e9e4fa22639a67ef8836, type: 3}
     - {fileID: 454575737, guid: 3a54d5bb3b16e9e4fa22639a67ef8836, type: 3}
+    - {fileID: 1277939301, guid: 3a54d5bb3b16e9e4fa22639a67ef8836, type: 3}
+    - {fileID: 56649018, guid: 3a54d5bb3b16e9e4fa22639a67ef8836, type: 3}
   - name: entity/boss/nightmareaper
     spritesheet:
     - {fileID: 8620300422851923600, guid: 9b42d523d4b6eae419bc6d9e83b028f1, type: 3}

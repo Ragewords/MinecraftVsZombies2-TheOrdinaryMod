@@ -52,6 +52,7 @@ namespace MVZ2.GameContent.Bosses
         {
             base.UpdateLogic(entity);
             stateMachine.UpdateLogic(entity);
+            bool phase2lock = entity.Level.LockedChestSelfMend();
 
             if (GetPhase(entity) == PHASE_1 && entity.Health / (float)entity.GetMaxHealth() < PHASE_2_THRESOLD)
             {
@@ -59,7 +60,7 @@ namespace MVZ2.GameContent.Bosses
                 entity.CreateFragmentAndPlay(VanillaFragmentID.furnace);
                 entity.PlaySound(VanillaSoundID.chainsBreak);
                 SetPhase(entity, PHASE_2);
-                if (entity.Level.LockedChestSelfMend())
+                if (phase2lock)
                 {
                     entity.AddBuff<LockedChestTemperedBuff>();
                     entity.PlaySound(VanillaSoundID.armorUp);
@@ -77,6 +78,7 @@ namespace MVZ2.GameContent.Bosses
             var phase = GetPhase(entity);
             entity.SetAnimationInt("Phase", phase);
             entity.SetModelProperty("Phase", phase);
+            entity.SetModelProperty("Phase2Lock", phase == PHASE_2 && phase2lock);
         }
         public override void PostCollision(EntityCollision collision, int state)
         {

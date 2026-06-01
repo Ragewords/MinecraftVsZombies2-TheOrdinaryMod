@@ -509,7 +509,7 @@ TextureImporter:
         width: 40
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -517,6 +517,48 @@ TextureImporter:
       bones: []
       spriteID: a1719e934da1e574f8f037f14b5b0b14
       internalID: 454575737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_chest_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b95cdd398f3cc049bad8076557209d2
+      internalID: 1277939301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_chest_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 22
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e4ddf3a6384a44583c3c179d17b825
+      internalID: 56649018
       vertices: []
       indices: 
       edges: []
@@ -543,7 +585,9 @@ TextureImporter:
       locked_chest_16: -1843165124
       locked_chest_17: 647350883
       locked_chest_18: 454575737
+      locked_chest_19: 1277939301
       locked_chest_2: 556626312
+      locked_chest_20: 56649018
       locked_chest_3: 1771207860
       locked_chest_4: 38766023
       locked_chest_5: -1608747267
