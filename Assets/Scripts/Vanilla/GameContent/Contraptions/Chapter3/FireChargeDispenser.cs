@@ -83,6 +83,7 @@ namespace MVZ2.GameContent.Contraptions
             shootParams.position = entity.GetShootPoint();
             shootParams.damage = damage;
             shootParams.velocity = velocity;
+            shootParams.spawnParam.SetProperty(VanillaProjectileProps.IGNORE_SHIELDS, true);
             return entity.ShootProjectile(shootParams)?.Let(e => e.SetGravity(GRAVITY));
         }
         private void EvokedUpdate(Entity entity)
