@@ -309,6 +309,10 @@
     <entries>
         <!-- Contraptions -->
         <entity template="dispenser" id="dispenser" name="发射器" tooltip="向敌人射出箭" />
+            <properties>
+                <int name="mvz2:cost" value="75" />
+            </properties>
+        </entity>
         <entity template="contraption" id="furnace" name="熔炉" tooltip="提供给你额外的红石">
             <properties>
                 <bool name="mvz2:producer" value="true" />
