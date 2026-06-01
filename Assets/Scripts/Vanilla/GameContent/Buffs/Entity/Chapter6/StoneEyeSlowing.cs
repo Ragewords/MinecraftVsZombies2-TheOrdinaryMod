@@ -56,7 +56,7 @@ namespace MVZ2.GameContent.Buffs.Entities
         }
         public static FrameTimer? GetTimer(Buff buff) => buff.GetProperty<FrameTimer>(PROP_TIMER);
         public static void SetTimer(Buff buff, FrameTimer? value) => buff.SetProperty(PROP_TIMER, value);
-        public const float SECONDS = 30f;
+        public const float SECONDS = 20f;
         public const float PETRIFY_DURATION_SECONDS = 10f;
         public static readonly VanillaBuffPropertyMeta<FrameTimer> PROP_TIMER = new VanillaBuffPropertyMeta<FrameTimer>("timer");
     }
