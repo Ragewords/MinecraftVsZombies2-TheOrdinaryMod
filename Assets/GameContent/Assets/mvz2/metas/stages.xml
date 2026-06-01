@@ -1953,7 +1953,7 @@
             <spawn id="mvz2:dullahan" />
             <spawn id="mvz2:reflective_barrier_zombie" />
             <spawn id="mvz2:wicked_hermit_zombie" />
-            <spawn id="mvz2:shikaisen_zombie" />
+            <spawn id="mvz2:flying_pirate" />
             <spawn id="mvz2:cannoneer_zombie" />
             <spawn id="mvz2:zombie_cat" />
         </spawns>

@@ -142,7 +142,7 @@
         <entity id="mvz2:reflective_barrier_zombie" />
         <spawn level="3" minWave="5" />
         <terrain water="true" air="true" />
-        <weight base="3000" />
+        <weight base="2000" />
     </entry>
     <entry id="wicked_hermit_zombie">
         <entity id="mvz2:wicked_hermit_zombie" />
@@ -151,7 +151,7 @@
     </entry>
     <entry id="shikaisen_zombie">
         <entity id="mvz2:shikaisen_zombie" />
-        <spawn level="4" minWave="5" />
+        <spawn level="5" minWave="5" />
         <weight base="2000" />
     </entry>
     <entry id="emperor_zombie">
@@ -230,7 +230,7 @@
     </entry>
     <entry id="zombie_cat">
         <entity id="mvz2:zombie_cat" />
-        <spawn level="5" minWave="5" />
+        <spawn level="6" minWave="5" />
         <weight base="2500" />
     </entry>
     <entry id="grave_warden">
