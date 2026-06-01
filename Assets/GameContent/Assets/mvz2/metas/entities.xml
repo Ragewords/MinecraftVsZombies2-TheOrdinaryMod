@@ -308,7 +308,7 @@
     </templates>
     <entries>
         <!-- Contraptions -->
-        <entity template="dispenser" id="dispenser" name="发射器" tooltip="向敌人射出箭" />
+        <entity template="dispenser" id="dispenser" name="发射器" tooltip="向敌人射出箭">
             <properties>
                 <int name="mvz2:cost" value="75" />
             </properties>
