@@ -1094,7 +1094,7 @@
             <properties>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>半径：<![CDATA[<color=red>3.5格</color>]]></p>
-                <p>特点：<![CDATA[<color=red>不会触发死亡效果；引爆后破坏所在的地块，无法放置器械，持续3分钟</color>]]></p>
+                <p>特点：<![CDATA[<color=red>不会触发死亡效果；引爆后破坏所在的地块，无法放置器械，持续3分钟；每个被引爆摧毁的器械都会产生一次相同的爆炸</color>]]></p>
                 <p>技能：<![CDATA[<color=red>消灭所有敌怪</color>]]></p>
             </properties>
             <flavor>

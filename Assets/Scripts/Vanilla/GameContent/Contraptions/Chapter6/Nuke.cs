@@ -109,6 +109,8 @@ namespace MVZ2.GameContent.Contraptions
                 if (entity == source)
                     continue;
                 entity.DieOrRemove(damageEffects, entity);
+                Explode(entity, source.GetRange(), source.GetDamage());
+                ExplodeEffects(entity);
             }
         }
         public const float BREAK_TILE_HEIGHT = 64f;
