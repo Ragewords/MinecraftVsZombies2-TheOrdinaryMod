@@ -491,7 +491,7 @@
         </entry>
         <entry id="mvz2:pistenser">
             <header>
-                <p>活塞发射器能够伸缩自己来攻击高处或低矮的敌人。</p>
+                <p>活塞发射器能够伸缩自己来攻击高处或低矮的敌人，发射能够穿过最多3个敌人的尖刺。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>

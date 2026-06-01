@@ -941,7 +941,7 @@
         </sentence>
         <!--语句1-->
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">
-          <text>它会发射和箭矢类似的尖刺！并且在遇见飞行和低矮怪物的时候会伸缩脖子来攻击怪物！</text>
+          <text>它会发射和箭矢类似的尖刺，能够穿过3个怪物！并且在遇见飞行和低矮怪物的时候会伸缩脖子来攻击怪物！</text>
         </sentence>
         <!--语句2-->
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_short3">
