@@ -176,6 +176,11 @@
     <sound name="dark_skies_impact" maxCount="10">
         <sample path="mvz2:dark_skies_impact" weight="1" />
     </sound>
+    <sound name="dataminer">
+        <sample path="mvz2:dataminer1" weight="1" />
+        <sample path="mvz2:dataminer2" weight="1" />
+        <sample path="mvz2:dataminer3" weight="1" />
+    </sound>
     <sound name="data_stream">
         <sample path="mvz2:data_stream" weight="1" />
     </sound>

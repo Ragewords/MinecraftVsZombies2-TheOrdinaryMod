@@ -228,6 +228,7 @@ namespace MVZ2.GameContent.Buffs
             public const string skywardBeaconNight = "skyward_beacon_night";
 
             // Chapter 6
+            public const string hackerGlitched = "hacker_glitched";
             public const string psychicShackled = "psychic_shackled";
             public const string stoneEyeCharged = "stone_eye_charged";
 
@@ -613,6 +614,7 @@ namespace MVZ2.GameContent.Buffs
             public static readonly NamespaceID skywardBeaconNight = Get(VanillaBuffNames.Contraption.skywardBeaconNight);
 
             // Chapter 6
+            public static readonly NamespaceID hackerGlitched = Get(VanillaBuffNames.Contraption.hackerGlitched);
             public static readonly NamespaceID psychicShackled = Get(VanillaBuffNames.Contraption.psychicShackled);
         }
         public static class Enemy

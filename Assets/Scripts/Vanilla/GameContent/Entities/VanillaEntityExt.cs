@@ -1147,6 +1147,20 @@ namespace MVZ2.Vanilla.Entities
             entity.RemoveBuffs(buffDefinition);
             PostRemoveStatusEffect(entity, buffDefinition, source);
         }
+        public static void HackerGlitched(this Entity entity, int delayTime, int time, ILevelSourceReference? source)
+        {
+            var buffDefinition = entity.Level.Content.GetBuffDefinition(VanillaBuffID.Contraption.hackerGlitched);
+            if (buffDefinition == null || !PreApplyStatusEffect(entity, buffDefinition, source))
+                return;
+            var buff = entity.GetFirstBuff(buffDefinition);
+            if (buff == null)
+            {
+                buff = entity.AddBuff(buffDefinition);
+            }
+            HackerGlitchedBuff.MaxDelayTime(buff, delayTime);
+            HackerGlitchedBuff.MaxTime(buff, time);
+            PostApplyStatusEffect(entity, buff, source);
+        }
         #region 魅惑
         public static void CharmPermanent(this Entity entity, int faction, ILevelSourceReference? source)
         {

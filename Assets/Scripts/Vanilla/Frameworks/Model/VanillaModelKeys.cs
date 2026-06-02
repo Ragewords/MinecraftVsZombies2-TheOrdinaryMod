@@ -31,6 +31,7 @@ namespace MVZ2.Vanilla.Models
         public static readonly NamespaceID gravelOnFace = Get("gravel_on_face");
         public static readonly NamespaceID candleCursed = Get("candle_cursed");
         public static readonly NamespaceID petrifiedFeet = Get("petrified_feet");
+        public static readonly NamespaceID glitched = Get("glitched");
         public static readonly NamespaceID blueprintLock = Get("blueprint_lock");
         public static readonly NamespaceID brokenTile = Get("broken_tile");
         public static readonly NamespaceID psychicShackled = Get("psychic_shackled");

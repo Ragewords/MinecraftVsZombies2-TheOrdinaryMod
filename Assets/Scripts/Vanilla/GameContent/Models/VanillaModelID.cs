@@ -65,6 +65,7 @@ namespace MVZ2.GameContent.Models
         public static readonly NamespaceID gravelOnFace = Get("gravel_on_face", TYPE_ICON);
         public static readonly NamespaceID candleCursed = Get("candle_cursed", TYPE_ICON);
         public static readonly NamespaceID petrifiedFeet = Get("petrified_feet", TYPE_ICON);
+        public static readonly NamespaceID glitched = Get("glitched", TYPE_ICON);
         public static readonly NamespaceID shackled = Get("shackled", TYPE_ICON);
         public static readonly NamespaceID burning = Get("burning", TYPE_ICON);
 

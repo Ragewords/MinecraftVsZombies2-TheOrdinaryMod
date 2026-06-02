@@ -3879,6 +3879,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e8cfb9709270884493ef14a5745c4c7
+    m_Address: mvz2:dataminer3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3eeaaee3b5925f349bc67370a4813884
     m_Address: mvz2:mobile_blueprint/mine_tnt
     m_ReadOnly: 0
@@ -6860,6 +6867,13 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70ba89b6bcd190a4f9d6c479b0a45081
+    m_Address: mvz2:entity/projectiles/arrow_bundle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70bd3779c2eea2b4fb4e071481e6acb1
     m_Address: mvz2:mobile_blueprint/talisman_zombie
     m_ReadOnly: 0
@@ -9391,6 +9405,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98347b75dcf1e3c43847e73aecd4d512
+    m_Address: mvz2:dataminer2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 983c95778175afa4899ce4ca543a5a13
     m_Address: mvz2:units/colliders/wither_skeleton
@@ -13066,6 +13087,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6a6838601bb64046a18624815640fb7
+    m_Address: mvz2:dataminer1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6a955717c4507e4aa60b1e721268640
     m_Address: mvz2:talk/speech_bubble_center
     m_ReadOnly: 0
@@ -13607,6 +13635,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e069cfa2229df844da2746efe98322c9
     m_Address: mvz2:projectile/antigravity_device
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e07e0256ea1d8994c89648ecac31eea1
+    m_Address: mvz2:icon/glitched
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
@@ -15313,6 +15348,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb8d1a996398fc349b3d0ef7daaba903
     m_Address: mvz2:projectile/seija_magic_bomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbd62a05ba65ddc43bd42cab07c70437
+    m_Address: mvz2:projectile/arrow_bundle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main

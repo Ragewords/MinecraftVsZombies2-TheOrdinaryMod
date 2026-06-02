@@ -87,6 +87,7 @@ namespace MVZ2.GameContent.Enemies
             enemy.PlaySound(VanillaSoundID.dataStream);
             target.PlaySound(VanillaSoundID.powerOff);
             target.ShortCircuit(Ticks.FromSeconds(HACK_EFFECT_DURATION_SECONDS), new EntitySourceReference(enemy));
+            target.HackerGlitched(Ticks.FromSeconds(HACK_GLITCH_DELAY_SECONDS), Ticks.FromSeconds(HACK_GLITCH_DURATION_SECONDS), new EntitySourceReference(enemy));
 
             var param = target.GetSpawnParams();
             param.SetProperty(EngineEntityProps.TINT, Color.green);
@@ -104,6 +105,8 @@ namespace MVZ2.GameContent.Enemies
         };
         public const float HACK_DURATION_SECONDS = 8f;
         public const float HACK_EFFECT_DURATION_SECONDS = 32f;
+        public const float HACK_GLITCH_DELAY_SECONDS = 32f;
+        public const float HACK_GLITCH_DURATION_SECONDS = 64f;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_HACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("hack_timer");
         public const int STATE_WALK = LogicEnemyStates.WALK;
         public const int STATE_HACK = VanillaEnemyStates.HACKER_HACK;

@@ -1975,12 +1975,13 @@
         </entry>
         <entry id="mvz2:hacker">
             <header>
-                <p>黑客会使用它的奇硅电脑骇入并暂时禁用最后方的器械。</p>
+                <p>黑客会使用它的奇硅电脑骇入并暂时禁用最后方的器械，被骇入的器械会故障。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red><var id="mvz2:entity_health" /></color>]]></p>
                 <p>骇入时长：<![CDATA[<color=red>8秒</color>]]></p>
                 <p>禁用时长：<![CDATA[<color=red>32秒</color>]]></p>
+                <p>故障时长：<![CDATA[<color=red>64秒</color>]]></p>
             </properties>
             <flavor>
                 <p>&gt;rm -rf</p>
