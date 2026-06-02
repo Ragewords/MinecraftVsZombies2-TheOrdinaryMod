@@ -233,11 +233,11 @@
         </sentence>
         <!--语句2-->
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long1">
-          <text>但你能够在它上面再放置驱动发射器，以提升每次发射的箭矢数量！</text>
+          <text>但你能够在它上面再放置驱动发射器，以提升每次发射箭矢的速度！</text>
         </sentence>
         <!--语句3-->
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">
-          <text>最多能够提升4次，也就是一次发射5支箭矢！</text>
+          <text>最多能够提升4次！</text>
         </sentence>
         <!--语句4-->
         <sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_crazy">

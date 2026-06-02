@@ -455,10 +455,10 @@
         </entry>
         <entry id="mvz2:drivenser">
             <header>
-                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它每次发射的箭的数量。</p>
+                <p>在一个驱动发射器上再放置一个驱动发射器，可以增加它发射箭的速度。</p>
             </header>
             <properties>
-                <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
+                <p>发射速度：<![CDATA[<color=red>1.5秒，每级减少33%</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
                 <p>升级上限：<![CDATA[<color=red>5</color>]]></p>
                 <p>技能：<![CDATA[<color=red>发射五支大箭矢及50支箭矢</color>]]></p>

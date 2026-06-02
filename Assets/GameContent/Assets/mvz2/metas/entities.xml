@@ -550,7 +550,7 @@
                 <id name="mvz2:function" value="mvz2:assistance" />
             </properties>
         </entity>
-        <entity template="dispenser" id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后子弹数量增加">
+        <entity template="dispenser" id="drivenser" name="驱动发射器" tooltip="能够堆叠放置，堆叠后射速增加">
             <unlock>
                 <condition requiredGroups="mvz2:contraption.drivenser" />
             </unlock>
