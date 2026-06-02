@@ -61,6 +61,18 @@ namespace MVZ2.GameContent.Contraptions
                 repeatTimer.Frame = 0;
             }
         }
+        public override Entity? Shoot(Entity entity)
+        {
+            int repeatCount = GetRepeatCount(entity);
+            if (repeatCount == BUNDLE_ORDER && !entity.IsEvoked())
+            {
+                entity.TriggerAnimation("Shoot");
+                var param = entity.GetShootParams();
+                param.projectileID = VanillaProjectileID.arrowBundle;
+                return entity.ShootProjectile(param);
+            }
+            return base.Shoot(entity);
+        }
 
         protected override void OnEvoke(Entity entity)
         {
@@ -88,6 +100,7 @@ namespace MVZ2.GameContent.Contraptions
                 {
                     var burstShootParams = entity.GetShootParams();
                     burstShootParams.soundID = null;
+                    burstShootParams.projectileID = VanillaProjectileID.arrowBundle;
                     burstShootParams.velocity = burstShootParams.velocity.normalized * (i + 1);
                     entity.ShootProjectile(burstShootParams);
                 }
@@ -122,6 +135,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetRepeatCount(Entity entity, int count) => entity.SetBehaviourField(PROP_REPEAT_COUNT, count);
 
         public const int REPEAT_COUNT = 2;
+        public const int BUNDLE_ORDER = 1;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta<int> PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta<int>("RepeatCount");

@@ -880,12 +880,12 @@
         </entry>
         <entry id="mvz2:repeatenser">
             <header>
-                <p>连射发射器一次能发射两支箭矢。</p>
+                <p>连射发射器一次能发射两支箭矢，其中一支为箭矢束，能够向相邻行分裂出箭矢。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>2支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢及10支箭矢</color>]]></p>
+                <p>技能：<![CDATA[<color=red>快速发射60支箭矢，最后发射一支大箭矢及10支箭矢束</color>]]></p>
             </properties>
             <flavor>
                 <p><![CDATA[它没能有幸加入<ref=[contraptions]mvz2:high_frequency_pulse_dispenser>高频脉冲发射器</ref>的士兵队伍，因为它每次说话都要说两遍。]]></p>
@@ -1269,12 +1269,12 @@
                 <tag id="mvz2:placement_repeatenser" />
             </tags>
             <header>
-                <p>高频脉冲发射器一次能发射四支箭矢。</p>
+                <p>高频脉冲发射器一次能发射六支箭矢，这些箭矢会分四次发射出去。</p>
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>4支/1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red><var id="mvz2:entity_damage" /></color>]]></p>
-                <p>技能：<![CDATA[<color=red>永久改为发射六支箭矢，并<tag id="mvz2:light_source" />发光</color>]]></p>
+                <p>技能：<![CDATA[<color=red>永久改为发射九支箭矢，分六次发射，并<tag id="mvz2:light_source" />发光</color>]]></p>
             </properties>
             <flavor>
                 <p>高频脉冲发射器的队伍是一支训练有素的队伍，它们的入队要求十分严格，包括——每句话都要说四遍。</p>
